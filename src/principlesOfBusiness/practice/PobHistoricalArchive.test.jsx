@@ -136,3 +136,26 @@ test("source-dependent diagrams are shown but explicitly excluded from provision
  expect(screen.getByText(/Original-source review pending/)).toBeInTheDocument();
  expect(screen.getByText(/excluded from the provisional score until checked/)).toBeInTheDocument();
 });
+
+test("Paper 1 timed attempt survives remount without granting a fresh timer",()=>{
+ const props={onBack:jest.fn(),onOpenJanuary2026:jest.fn()};
+ const first=render(<PobHistoricalArchive {...props}/>);
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2002"}});
+ fireEvent.click(screen.getByRole("button",{name:/2002 May\/June.*Paper 1.*60-question text practice/}));
+ fireEvent.click(screen.getByRole("button",{name:"Start 60-question Paper 1"}));
+ const stored=JSON.parse(window.localStorage.getItem("spark:pob:source-questions:POB-P1-2002-MJ:attempt"));
+ expect(stored.deadline).toBeGreaterThan(Date.now());
+ fireEvent.click(screen.getByRole("button",{name:"2"}));
+ fireEvent.click(screen.getByRole("button",{name:"Back to paper details"}));
+ first.unmount();
+ render(<PobHistoricalArchive {...props}/>);
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2002"}});
+ fireEvent.click(screen.getByRole("button",{name:/2002 May\/June.*Paper 1.*60-question text practice/}));
+ expect(screen.getByText("Question 1 of 60")).toBeInTheDocument();
+ expect(screen.queryByRole("button",{name:"Start 60-question Paper 1"})).not.toBeInTheDocument();
+ expect(JSON.parse(window.localStorage.getItem("spark:pob:source-questions:POB-P1-2002-MJ:attempt")).deadline).toBe(stored.deadline);
+ fireEvent.click(screen.getByRole("button",{name:"Submit and review"}));
+ expect(JSON.parse(window.localStorage.getItem("spark:pob:source-questions:POB-P1-2002-MJ:attempt")).review).toBe(true);
+ fireEvent.click(screen.getByRole("button",{name:"Try again"}));
+ expect(window.localStorage.getItem("spark:pob:source-questions:POB-P1-2002-MJ:attempt")).toBeNull();
+});
