@@ -7,6 +7,8 @@ import {POB_2005_MJ_P1_AUTHORED_KEY,verifyPob2005MjP1AuthoredKey} from "./pobHis
 import {POB_2008_MJ_P1_AUTHORED_KEY,verifyPob2008MjP1AuthoredKey} from "./pobHistorical2008MjP1AuthoredKey";
 import {POB_2006_MJ_P1_AUTHORED_KEY,verifyPob2006MjP1AuthoredKey} from "./pobHistorical2006MjP1AuthoredKey";
 import {POB_2007_MJ_P1_AUTHORED_KEY,verifyPob2007MjP1AuthoredKey} from "./pobHistorical2007MjP1AuthoredKey";
+import {POB_2007_MJ_P1_AUTHORED_KEY,verifyPob2007MjP1AuthoredKey} from "./pobHistorical2007MjP1AuthoredKey";
+import {POB_2008_MJ_P1_AUTHORED_KEY,verifyPob2008MjP1AuthoredKey} from "./pobHistorical2008MjP1AuthoredKey";
 import {POB_2011_MJ_P1_AUTHORED_KEY,verifyPob2011MjP1AuthoredKey} from "./pobHistorical2011MjP1AuthoredKey";
 import {POB_2012_MJ_P1_AUTHORED_KEY,auditPob2012MjP1AuthorKey} from "./pobHistorical2012MjP1AuthoredKey";
 import {POB_2014_MJ_P1_AUTHORED_KEY,validatePob2014MjP1AuthoredKey} from "./pobHistorical2014MjP1AuthoredKey";
@@ -98,6 +100,8 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   expect(verifyPob2004MjP1AuthoredKey().disputedNumbers).toEqual([3,9,16,43,57,58]);
   expect(verifyPob2005MjP1AuthoredKey().disputed).toEqual([2,7,8,20,37,58,60]);
   expect(verifyPob2006MjP1AuthoredKey().disputes).toEqual([8,9,13,15,18,22,32,43,59]);
+  expect(verifyPob2007MjP1AuthoredKey().disputes).toEqual([9,29,32,38,47,58]);
+  expect(verifyPob2008MjP1AuthoredKey().disputes).toEqual([2,10,12,16,17,29,39,43,50,53,54,56,57]);
   expect(verifyPob2011MjP1AuthoredKey().disputed).toEqual([6,22,40,43,55,56]);
   expect(auditPob2012MjP1AuthorKey().disputes).toEqual([16,27,41,45,55]);
   expect(validatePob2014MjP1AuthoredKey().disputedNumbers).toEqual([51,53,56,57,60]);
