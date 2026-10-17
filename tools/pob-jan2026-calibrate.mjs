@@ -2,14 +2,15 @@
 // Real provider execution only. Never invent scores or enable production grading.
 // Reports contain student-like examples; keep them local and out of production logs.
 import {build} from "esbuild";
-import {mkdtemp,readFile,writeFile,rm} from "node:fs/promises";
+import {mkdtemp,writeFile,rm} from "node:fs/promises";
 import {tmpdir} from "node:os";
 import {join} from "node:path";
 import {pathToFileURL} from "node:url";
 
+const validationOnly=process.argv.includes("--validate");
 const apiKey=process.env.OPENAI_API_KEY;
 const model=process.env.SPARK_MARKING_MODEL;
-if(!apiKey||!model){console.error("Missing OPENAI_API_KEY or SPARK_MARKING_MODEL. No calibration run occurred.");process.exit(2);}
+if(!validationOnly&&(!apiKey||!model)){console.error("Missing OPENAI_API_KEY or SPARK_MARKING_MODEL. No provider execution occurred.");process.exit(2);}
 const dir=await mkdtemp(join(tmpdir(),"spark-pob-calibrate-"));
 try{
  const entry=join(dir,"entry.mjs"),bundle=join(dir,"bundle.mjs");
@@ -30,6 +31,22 @@ try{
  ]));
  const cases=[...seed,...generated];
  const audit=validate();if(!audit.valid)throw Error("Fixture validation failed: "+audit.issues.join("; "));
+ const keys=new Set(),coverage=new Set();
+ for(const c of cases){
+  if(keys.has(c.id))throw Error("Duplicate calibration case: "+c.id);
+  keys.add(c.id);
+  const responseKeys=Object.fromEntries(Object.entries(c.responses).map(([id,value])=>["POB-P2-2026-JAN:Q"+id,value]));
+  const pack=makePack({responses:responseKeys});
+  const found=source.questions.some(q=>q.items.some(i=>q.number+":"+i.id===c.part&&i.marks>=c.max));
+  if(!found)throw Error("Out-of-range or unknown calibration target: "+c.id);
+  if(c.min>0&&!pack.items.some(i=>i.id==="POB-P2-2026-JAN:Q"+c.part))throw Error("Missing positive response: "+c.id);
+  if(c.id.startsWith("all-parts-model-"))coverage.add(c.part);
+ }
+ if(cases.length!==84||coverage.size!==32)throw Error("Expected 84 cases covering all 32 printed parts.");
+ if(validationOnly){
+  console.log(JSON.stringify({status:"fixtures_valid_only",cases:cases.length,parts:coverage.size,printedMarks:100,providerExecuted:false,releaseApproved:false}));
+  process.exit(0);
+ }
  const results=[];let failures=0,disputed=0;const observedParts=new Set();
  for(const c of cases){
   const responses=Object.fromEntries(Object.entries(c.responses).map(([id,value])=>["POB-P2-2026-JAN:Q"+id,value]));
@@ -52,7 +69,7 @@ try{
   }catch(error){failures++;results.push({id:c.id,result:"error",error:String(error.message||error)});}
   console.log(c.id+": "+results.at(-1).result);
  }
- const report={paper:"POB-P2-2026-JAN",model,generatedAt:new Date().toISOString(),cases:cases.length,failures,disputed,coverage:{uniqueParts:32,criterionMarks:100,semanticBenchmarkedParts:observedParts.size},results,releaseApproved:false};
+ const report={paper:"POB-P2-2026-JAN",model,runId:process.env.GITHUB_RUN_ID||null,sourceCommit:process.env.GITHUB_SHA||null,providerExecuted:true,generatedAt:new Date().toISOString(),cases:cases.length,failures,disputed,coverage:{uniqueParts:32,criterionMarks:100,semanticBenchmarkedParts:observedParts.size},results,releaseApproved:false};
  const out=process.env.SPARK_CALIBRATION_REPORT||join(process.cwd(),"pob-jan2026-calibration-results.json");
  await writeFile(out,JSON.stringify(report,null,2)+"\n",{mode:0o600});
  console.log("Wrote local report: "+out+". Scoring remains blocked.");
