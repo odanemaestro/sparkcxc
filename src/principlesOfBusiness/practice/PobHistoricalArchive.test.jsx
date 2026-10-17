@@ -19,23 +19,37 @@ test("all 46 historical sources load: 20 Paper 1 and 26 Paper 2, one unique sour
  }
  expect(getPobHistoricalReviewBank("POB-P2-2019-MJ-ALT").source.reclassifiedFromPaper1).toBe(true);
 });
-test("renders whole searchable archive and opens a past Paper 1 answer sheet",()=>{
- render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
- expect(screen.getByText(/46 source papers shown/)).toBeTruthy();
+test("source-backed 2023 Paper 1 shows original question and four complete answer choices, not blank bubbles",()=>{
+ const {container}=render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
+ expect(screen.getByText(/46 source papers shown/)).toBeInTheDocument();
  fireEvent.change(screen.getByLabelText("Paper type"),{target:{value:"1"}});
- expect(screen.getByText(/20 source papers shown/)).toBeTruthy();
+ expect(screen.getByText(/20 source papers shown/)).toBeInTheDocument();
  fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2023"}});
  fireEvent.click(screen.getByRole("button",{name:/2023 January.*Answer-sheet and explanations/}));
- expect(screen.getByText(/Paper 1 · Answer-sheet practice/)).toBeTruthy();
- expect(screen.getByText(/60 numbered slots/)).toBeTruthy();
- fireEvent.click(screen.getByRole("button",{name:"Check answers against SPARK key"}));
- expect(screen.getByText(/Provisional score:/)).toBeTruthy();
+ expect(screen.getByText(/January 2023 Paper 1 · Source question preview/)).toBeInTheDocument();
+ expect(screen.getByText(/remaining 50 questions have not passed transcription checks/)).toBeInTheDocument();
+ fireEvent.click(screen.getByRole("button",{name:"Practise original Questions 1–10"}));
+ expect(screen.getByText(/type of business environment MOST typical/)).toBeInTheDocument();
+ expect(screen.getByText("mixed economy")).toBeInTheDocument();
+ expect(container.querySelectorAll(".pob-exam-number-grid button")).toHaveLength(10);
+ fireEvent.click(screen.getByRole("button",{name:"Next question"}));
+ expect(screen.getByText("Question 2 of 10")).toBeInTheDocument();
+ fireEvent.click(screen.getByRole("button",{name:"Submit and review"}));
+ expect(screen.getByText(/Provisional answer comparison/)).toBeInTheDocument();
+});
+test("undigitised historical Paper 1 never presents anonymous A-D slots as a finished simulation",()=>{
+ render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2005"}});
+ fireEvent.click(screen.getByRole("button",{name:/2005 May\/June.*Paper 1.*Answer-sheet and explanations/}));
+ expect(screen.getByText(/Paper 1 · Source-text incomplete/)).toBeInTheDocument();
+ expect(screen.getByText(/An answer key alone is not a simulated examination/)).toBeInTheDocument();
+ expect(screen.getByText(/Use optional answer sheet with your own original paper/)).toBeInTheDocument();
 });
 test("2018 scan gap is visible and never marked wrong",()=>{
  render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
  fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2018"}});
  fireEvent.click(screen.getByRole("button",{name:/2018 May\/June.*Paper 1.*Answer-sheet and explanations/}));
- expect(screen.getAllByText(/omits original questions 53–57|Missing or academically disputed source answer/).length).toBeGreaterThan(0);
+ expect(screen.getByText(/omits original questions 53–57/)).toBeInTheDocument();
 });
 test("historical Paper 2 allows written answers and shows actual authored rubrics without a fake score",()=>{
  render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
