@@ -13,6 +13,8 @@ import {POB_2012_MJ_P1_AUTHORED_KEY,auditPob2012MjP1AuthorKey} from "./pobHistor
 import {POB_2014_MJ_P1_AUTHORED_KEY,validatePob2014MjP1AuthoredKey} from "./pobHistorical2014MjP1AuthoredKey";
 import {POB_2015_MJ_P1_AUTHORED_KEY,verifyPob2015MjP1AuthoredKey} from "./pobHistorical2015MjP1AuthoredKey";
 import {POB_2016_MJ_P1_AUTHORED_KEY,verifyPob2016MjP1AuthoredKey} from "./pobHistorical2016MjP1AuthoredKey";
+import {POB_2018_MJ_P1_AUTHORED_KEY,verifyPob2018MjP1AuthoredKey} from "./pobHistorical2018MjP1AuthoredKey";
+import {POB_2019_MJ_ALT_P2_AUTHORED_SCHEME,verifyPob2019MjAltP2AuthoredScheme} from "./pobHistorical2019MjAltP2AuthoredScheme";
 import {POB_2017_MJ_P1_AUTHORED_KEY,verifyPob2017MjP1AuthoredKey} from "./pobHistorical2017MjP1AuthoredKey";
 import {POB_SUPPLIED_ARCHIVE,pobReleasedHistoricalPapers} from "./pobHistoricalInventory";
 
@@ -39,7 +41,14 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   expect(audit.totalBatchSources).toBe(15);
   expect(audit.authoredPaper1SourceCount).toBe(13);
   expect(audit.authoredQuestions).toBe(780);
-  expect(audit.remainingBatchSources).toBe(2);
+  expect(audit.remainingBatchSources).toBe(0);
+  expect(audit.sourcesWithAuthoredMaterial).toBe(15);
+  expect(audit.completedOriginalSourceQuestionSets).toBe(14);
+  expect(audit.incompleteOriginalSourceFiles).toBe(1);
+  expect(audit.authored2018PartialMcqs).toBe(55);
+  expect(audit.missing2018OriginalQuestionNumbers).toEqual([53,54,55,56,57]);
+  expect(audit.authored2019AltPaper2RubricParts).toBe(32);
+  expect(audit.authored2019AltPaper2RubricMarks).toBe(100);
   expect(audit.historicalLiveScoringEnabled).toBe(0);
   for(const summary of audit.status){
    expect(summary.internallyAuthoredCount).toBe(60);
@@ -144,6 +153,38 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   expect(q47.explanation).toContain("$200m");
   expect(paper.entries[39]).toMatchObject({number:40,pdfPage:6,proposedOption:"C"});
   expect(paper.liveScoringApproved).toBe(false);
+ });
+ test("2018 paper has five original questions physically missing, never invented or marked",()=>{
+  const key=POB_2018_MJ_P1_AUTHORED_KEY;
+  expect(verifyPob2018MjP1AuthoredKey()).toEqual({
+   valid:true,issues:[],authored:55,missing:[53,54,55,56,57],disputes:[2,15,38,46]
+  });
+  expect(key.questions.filter(q=>q.sourceQuestionPresent===false).map(q=>q.number))
+   .toEqual([53,54,55,56,57]);
+  expect(key.questions.slice(52,57).every(q=>
+   q.proposedOption===null&&q.status==="source-question-missing")).toBe(true);
+  expect(key.questions[41]).toMatchObject({number:42,proposedOption:"D"});
+  expect(key.questions[42]).toMatchObject({number:43,proposedOption:"C"});
+  expect(key.sourceQuestionsRecovered).toBe(55);
+  expect(key.liveScoringApproved).toBe(false);
+ });
+ test("mislabelled 2019 May/June P1-named source is exact 100-mark Paper 2 rubric",()=>{
+  const p2=POB_2019_MJ_ALT_P2_AUTHORED_SCHEME;
+  expect(verifyPob2019MjAltP2AuthoredScheme()).toEqual({
+   valid:true,issues:[],marks:100,parts:32
+  });
+  expect(p2.id).toBe("POB-P2-2019-MJ-ALT");
+  expect(p2.sourceFilename).toBe("CSEC_Principles_of_Business_P1_2019_MJ.pdf");
+  expect(p2.printedTestCode).toBe("01240020");
+  expect(p2.originalFilenamePaper).toBe(1);
+  expect(p2.actualCoverPaper).toBe(2);
+  expect(p2.questions.every(q=>q.parts.reduce((sum,part)=>sum+part.marks,0)===20)).toBe(true);
+  expect(p2.questions[3].parts.find(part=>part.id==="c.ii").modelAnswer)
+   .toMatch(/toll-free/i);
+  const damaged=JSON.parse(JSON.stringify(p2));
+  damaged.questions[4].parts[0].criteria.pop();
+  expect(verifyPob2019MjAltP2AuthoredScheme(damaged).valid).toBe(false);
+  expect(p2.liveScoringApproved).toBe(false);
  });
  test("source manipulation, removed disputes or fake live switches cannot pass",()=>{
   let clone=JSON.parse(JSON.stringify(POB_2002_MJ_P1_AUTHORED_KEY));
