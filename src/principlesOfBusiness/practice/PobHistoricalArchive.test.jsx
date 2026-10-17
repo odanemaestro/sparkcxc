@@ -15,7 +15,7 @@ test("all 46 historical sources load: 20 Paper 1 and 26 Paper 2, one unique sour
  for(const record of all){
   expect(record.bank.id).toBe(record.source.id);
   expect(record.bank.sourceSha256).toBe(record.source.sourceSha256);
-  expect(Array.isArray(record.bank.questions)||Array.isArray(record.bank.entries)).toBe(true);
+  expect(Array.isArray(record.bank.questions)||Array.isArray(record.bank.entries)||Array.isArray(record.bank.proposedEntries)).toBe(true);
  }
  expect(getPobHistoricalReviewBank("POB-P2-2019-MJ-ALT").source.reclassifiedFromPaper1).toBe(true);
 });
