@@ -28,7 +28,9 @@ for(const file of [
  "20261016072500_pob_unscored_paper2_submission.sql",
  "20261017190000_pob_original_p2_controlled_queue.sql",
  "20261017201000_pob_jan2026_historical_queue_canary.sql",
- "20261017201500_pob_jan2026_historical_submission_canary.sql"
+ "20261017201500_pob_jan2026_historical_submission_canary.sql",
+ "20261017210500_pob_jan2026_owner_pilot_practice.sql",
+ "20261017230000_pob_historical_archive_experimental_scoring.sql"
 ])await db.exec(read(file));
 const tester=randomUUID(),other=randomUUID();
 await db.query("insert into auth.users(id) values($1),($2)",[tester,other]);
@@ -99,7 +101,40 @@ const original=(await db.query(`select * from public.spark_start_exam_attempt(
  '{"paper_id":"pob-original-paper2-01"}'::jsonb)`)).rows[0].attempt_id;
 await submit(original);
 await assert.rejects(enqueue(original),/POB internal marking not enabled/);
+// Archive pilots must stay closed by default, require exact canonical paper
+// identity, and preserve original bank and existing queue quota protections.
+const archiveId="POB-P2-2025-JAN";
+const archiveSha="3bf50ed41965c7f84efa8b321d235c38a5425b45216ed528ca7d6a1bf6f571cf";
+const archiveMeta={paper_id:archiveId,source_sha256:archiveSha,
+ selected_questions:[1,2,3,4,5]};
+async function startArchive(meta=archiveMeta){
+ const {rows}=await db.query(`select * from public.spark_start_exam_attempt(
+ 'principles-of-business','02','timed',7200,
+ 'pob-archive-v1-pob-p2-2025-jan','pob-historical-archive-rubric-v1',
+ 'online-v1',$1::jsonb)`,[JSON.stringify(meta)]);
+ return rows[0].attempt_id;
+}
+const candidate=await startArchive();
+await assert.rejects(submit(candidate),/Historical archive POB submission not enabled/);
+await root();
+const state=(await db.query("select pob_historical_archive_pilot_enabled from public.spark_marking_config")).rows[0];
+assert.equal(state.pob_historical_archive_pilot_enabled,false);
+await db.exec("update public.spark_marking_config set pob_historical_archive_pilot_enabled=true");
+await asUser(tester);
+const invalid=await startArchive({...archiveMeta,source_sha256:"bad"});
+await assert.rejects(submit(invalid),/Historical archive POB submission not enabled/);
+const live=await startArchive();
+await submit(live,{paper_id:"forged",selected_questions:[5,4,3,2,1],source_sha256:"wrong"});
+const data=(await db.query("select score,metadata from public.spark_exam_attempts where id=$1",[live])).rows[0];
+assert.equal(data.score,null);
+assert.equal(data.metadata.paper_id,archiveId);
+assert.equal(data.metadata.source_sha256,archiveSha);
+assert.deepEqual(data.metadata.selected_questions,[1,2,3,4,5]);
+const archiveJob=(await enqueue(live)).rows[0];
+assert.equal(archiveJob.user_id,tester);
+assert.equal((await enqueue(live)).rows[0].id,archiveJob.id);
+await root();
 console.log(JSON.stringify({offlinePostgres:true,sourceChecked:true,canaryDefaultsClosed:true,
  testerOnly:true,metadataImmutable:true,queueIdempotent:true,originalBankUnaffected:true,
- productionModified:false,providerExecuted:false,releaseApproved:false},null,2));
+ archivePilotDefaultClosed:true,archiveIdentityProtected:true,productionModified:false,providerExecuted:false,releaseApproved:false},null,2));
 await db.close();
