@@ -43,3 +43,10 @@ Run the full test suite and build before merge.
 - Client-provided first pass decisions are not server-authenticated. A locally reconciled result remains nonpublishable.
 - Five dedicated second-pass regression tests added.
 - Next: server-owned rubric lookup, robust semantic analysis under rubric constraints, tamper-proof job execution, and official calibration.
+
+## Batch 3: evidence adjudication
+- `markingAdjudicationV2.js` audits criterion IDs, mark bounds, evidence references, grader run IDs and conflicting grader-method claims.
+- Generates a structured review queue for unresolved criteria.
+- Distinct client-supplied grader run IDs are *not* proof of independence. Only a future trusted server may attest these identities.
+- Always returns `canPublish: false`. No production grading or score-publication connection is enabled.
+- Five dedicated regression tests were added. CI execution still needs verification.
