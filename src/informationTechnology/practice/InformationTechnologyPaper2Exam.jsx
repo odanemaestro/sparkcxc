@@ -292,6 +292,7 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
     record.paperReleaseStatus=publication.audit.releaseStatus;
     record.paperReleaseIssues=publication.audit.issues;
     record.unresolvedMarks=publication.metadata.unresolved_marks;
+    record.paperReleaseMetadata=publication.metadata;
     const results = readJson(RESULTS_KEY, []);
     localStorage.setItem(RESULTS_KEY, JSON.stringify([record, ...results].slice(0, 20)));
     try {
@@ -303,6 +304,8 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
         maxScore: 90,
         percent: record.percent,
         profiles: record.profiles,
+        confirmedMarks:record.confirmedMarks,
+        paperReleaseMetadata:record.paperReleaseMetadata,
         timedOut: record.timedOut,
         durationSeconds: record.durationSeconds,
         at: record.completedAt,
