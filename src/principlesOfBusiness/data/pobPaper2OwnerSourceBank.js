@@ -15,6 +15,17 @@ export const POB_OWNER_P2_GROUPED_RUBRICS=Object.freeze({
  "POB-P2-2005-MJ":Object.freeze(["1:c","4:b","5:c"]),
  "POB-P2-2006-MJ":Object.freeze(["6:a"]),
  "POB-P2-2007-MJ":Object.freeze(["3:b","4:a","5:b"]),
+ "POB-P2-2009-MJ":Object.freeze(["4:a","4:c","5:c","6:c","7:a"]),
+ "POB-P2-2010-MJ":Object.freeze(["1:b"]),
+ "POB-P2-2011-MJ":Object.freeze(["4:d","6:c","7:a","7:b"]),
+ "POB-P2-2012-MJ":Object.freeze(["1:b","2:a","4:c","5:b","6:a","7:c","7:d"]),
+ "POB-P2-2013-MJ":Object.freeze(["3:b"]),
+ "POB-P2-2017-MJ":Object.freeze(["1:a"]),
+ "POB-P2-2018-MJ":Object.freeze(["4:c","5:a","5:b"]),
+ "POB-P2-2019-JAN":Object.freeze(["3:e"]),
+ "POB-P2-2019-MJ":Object.freeze(["1:c","2:b","3:c","4:c"]),
+ "POB-P2-2021-MJ":Object.freeze(["1:c","2:c","4:a"]),
+ "POB-P2-2023-JAN":Object.freeze(["3:b"]),
 });
 const groupedCriteria=(paperId,question,partId,marks)=>{
  if(!POB_OWNER_P2_GROUPED_RUBRICS[paperId]?.includes(question.number+":"+partId))return [];
