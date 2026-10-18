@@ -5,8 +5,11 @@
 export const SOURCE_BANK_AUDIT_VERSION="1.0.0";
 
 const valid=value=>Number.isFinite(value)&&value>=0;
-const flattenQuestion=q=>(q?.items||q?.parts||[]).flatMap(part=>
-  Array.isArray(part.items)?part.items:[part]
+const flattenQuestion=q=>(q?.items||q?.parts||[]).flatMap((part,sectionIndex)=>
+  Array.isArray(part.items)?part.items.map((item,itemIndex)=>({
+    ...item,__auditKey:String(part?.id??part?.label??sectionIndex)+":"+
+      String(item?.id??item?.label??itemIndex)
+  })):[{...part,__auditKey:String(part?.id??part?.label??sectionIndex)}]
 );
 function authoredEvidence(item){
   const source=item?.markScheme;
@@ -31,7 +34,7 @@ export function auditPaper2SourceBank({subjectId,paperId,questions=[],expectedPa
     const partIds=new Set();
     let questionMarks=0;
     parts.forEach((part,pi)=>{
-      const label=String(part?.id??part?.label??pi);
+      const label=String(part?.__auditKey??part?.id??part?.label??pi);
       if(partIds.has(label))critical.push("duplicate-part-id:"+key+":"+label);
       partIds.add(label);
       const marks=Number(part?.marks);
