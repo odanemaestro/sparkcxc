@@ -168,9 +168,10 @@ test("owner supplied 2015 historical Paper 2 shows real written prompts and work
 });
 
 test("January 2022 owner-source pilot submits only its versioned 100-mark bank",async()=>{
- const old1=process.env.REACT_APP_SERVER_MARKING,old2=process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING;
+ const old1=process.env.REACT_APP_SERVER_MARKING,old2=process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING,old3=process.env.REACT_APP_POB_OWNER_SOURCE_MARKING;
  process.env.REACT_APP_SERVER_MARKING="true";
  process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING="true";
+ process.env.REACT_APP_POB_OWNER_SOURCE_MARKING="true";
  try{
   const rpc=jest.fn(async name=>{
    if(name==="spark_start_exam_attempt")return {data:[{attempt_id:"owner-source-pilot"}],error:null};
@@ -192,6 +193,7 @@ test("January 2022 owner-source pilot submits only its versioned 100-mark bank",
  }finally{
   if(old1===undefined)delete process.env.REACT_APP_SERVER_MARKING;else process.env.REACT_APP_SERVER_MARKING=old1;
   if(old2===undefined)delete process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING;else process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING=old2;
+  if(old3===undefined)delete process.env.REACT_APP_POB_OWNER_SOURCE_MARKING;else process.env.REACT_APP_POB_OWNER_SOURCE_MARKING=old3;
  }
 });
 
@@ -213,4 +215,23 @@ test("January 2022 source rubric pilot remains eligible while May 2022 printed d
  expect(auditPobOwnerPaper2Calibration(may).rubricReady).toBe(true);
  expect(auditPobOwnerPaper2Calibration(may).ready).toBe(false);
  expect(auditPobOwnerPaper2Calibration(may).visualIssues.some(issue=>issue.includes("original_visual_needs_qa"))).toBe(true);
+});
+
+test("owner Paper 2 pilot stays hidden when source marking release switch is off",()=>{
+ const old1=process.env.REACT_APP_SERVER_MARKING,old2=process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING,old3=process.env.REACT_APP_POB_OWNER_SOURCE_MARKING;
+ process.env.REACT_APP_SERVER_MARKING="true";
+ process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING="true";
+ delete process.env.REACT_APP_POB_OWNER_SOURCE_MARKING;
+ try{
+  render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
+  fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2022"}});
+  fireEvent.click(screen.getByRole("button",{name:/2022 January.*Paper 2.*Written answers and mark schemes/}));
+  fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
+  expect(screen.queryByRole("button",{name:"Request detailed AI practice marking"})).not.toBeInTheDocument();
+  expect(screen.getAllByText(/SPARK model answer/).length).toBeGreaterThan(0);
+ }finally{
+  if(old1===undefined)delete process.env.REACT_APP_SERVER_MARKING;else process.env.REACT_APP_SERVER_MARKING=old1;
+  if(old2===undefined)delete process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING;else process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING=old2;
+  if(old3===undefined)delete process.env.REACT_APP_POB_OWNER_SOURCE_MARKING;else process.env.REACT_APP_POB_OWNER_SOURCE_MARKING=old3;
+ }
 });
