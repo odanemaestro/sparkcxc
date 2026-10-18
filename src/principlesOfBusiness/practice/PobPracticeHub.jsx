@@ -241,6 +241,17 @@ export function PobPaper2Exam({onBack,userId,supabase,paperOverride=null}){
        :{paper_id:paper.id,source:"spark-original"}});
    if(saved.available)setAttempt(old=>old.attemptId===active.attemptId?{...old,serverAttemptId:saved.attempt_id}:old);
  };
+ useEffect(()=>{
+   if(!historical||!review||!userId||!supabase?.rpc||recorded.current.has(attempt.attemptId))return;
+   recorded.current.add(attempt.attemptId);
+   recordSubjectActivity({supabase,activity:{
+     subjectId:SUBJECT,activityKey:"exam:pob-historical-paper2:"+paper.id+":"+attempt.attemptId,
+     activityType:"exam",title:"Principles of Business: "+paper.title,completed:true,
+     score:null,maxScore:null,percent:null,
+     metadata:{source:"historical-cxc",paper:"02",paper_id:paper.id,answered_parts:answered,grading_status:"awaiting-server-assessment",no_final_grade:true}
+   }}).then(result=>{if(result?.error||result?.skipped)recorded.current.delete(attempt.attemptId)})
+     .catch(()=>recorded.current.delete(attempt.attemptId));
+ },[historical,review,userId,supabase,attempt.attemptId,answered,paper.id,paper.title]);
  const finish=()=>{update({phase:"review",submittedAt:Date.now()});setConfirm(false)};
  return <main className="pob-exam"><div className="pob-exam-shell">
   <div className="pob-exam-nav"><button type="button" onClick={onBack}>← Practice home</button><span>CSEC PRINCIPLES OF BUSINESS · PAPER 02</span></div>
