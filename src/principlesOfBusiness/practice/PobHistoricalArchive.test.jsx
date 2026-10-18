@@ -248,7 +248,7 @@ test("the SPARK historical Paper 2 marking scheme works with AI switches disable
   expect(screen.getByText(/SPARK marking scheme ready/)).toBeInTheDocument();
   fireEvent.change(screen.getAllByRole("textbox")[0],{target:{value:"Jane might want to earn more money and become independent."}});
   fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
-  const region=screen.getByRole("status",{name:"SPARK Paper 2 marking scheme results"});
+  const region=screen.getByText("SPARK rubric review").closest("section");
   expect(region).toHaveTextContent("Confirmed marks: 0 / 100");
   expect(region).toHaveTextContent("1 written part(s) still require evidence-based assessment");
   expect(screen.getAllByText(/SPARK model answer/).length).toBeGreaterThan(0);
