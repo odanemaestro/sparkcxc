@@ -1,8 +1,9 @@
 import { readScienceGraph, graphPoints } from "../../integratedScience/practice/scienceGraphModel";
+import { matchScienceWrittenEvidence } from "../../grading/scienceWrittenEvidence";
 // Chemistry Paper 02 deterministic practice grader.
 // Authored mark schemes remain the source of truth. Free-response scores are estimates.
 
-export const CHEMISTRY_P2_GRADER_VERSION="1.1.3";
+export const CHEMISTRY_P2_GRADER_VERSION="1.2.0";
 
 const STOP=new Set("a an and are as at be because been by for from has have in into is it of on or that the their then this to was were when which with".split(" "));
 const SYN={
@@ -45,12 +46,10 @@ function alternatives(point){
   return strip(point).split(/\s+(?:OR|or)\s+|\s*\/\s*/i).map(v=>v.trim()).filter(Boolean);
 }
 function textMatch(response,reference){
-  const ref=tokens(reference).filter(t=>!/^(mark|marks|one|two|three|four|five|six|any)$/.test(t));
-  if(!ref.length) return false;
-  const neg=/\b(?:not|no|never|cannot|without)\b/;
-  if(neg.test(clean(response))&&!neg.test(clean(reference))) return false;
-  const hits=ref.filter(t=>tokenPresent(response,t)).length;
-  return ref.length<=3 ? hits===ref.length : hits/ref.length>=0.52;
+  return matchScienceWrittenEvidence(response,reference,{
+    tokens:value=>tokens(value).filter(t=>!/^(mark|marks|one|two|three|four|five|six|any)$/.test(t)),
+    tokenPresent
+  }).matched;
 }
 function numbers(value){
   return [...String(value||"").matchAll(/[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:\s*[x×*]\s*10\s*\^?\s*[+-]?\d+)?/gi)]
@@ -59,29 +58,48 @@ function numbers(value){
 }
 function numericExpected(point){
   const p=strip(point);
-  const out=numbers(p);
-  return out.filter(value=>Math.abs(value)>0 || /(?:=|about|approximately|answer|mass|moles|concentration|charge|temperature|volume|rate)/i.test(p));
+  // Do not treat incidental counts or chemical subscripts as target answers.
+  if(/\b(?:question|figure|diagram|marks?|steps?|examples?)\b/i.test(p)||
+    /\b(?:[A-Z][a-z]?\d+[A-Z][A-Za-z\d]*|[A-Z]{2}\d+)\b/.test(p))return [];
+  const values=numbers(p);
+  return values.length===1?values:[];
 }
-function numericMatch(response,expected){
-  const got=numbers(response);
-  return got.some(a=>expected.some(b=>Math.abs(a-b)<=Math.max(.005,Math.abs(b)*.025)));
+function numericMatch(response,expected,reference){
+  const final=String(response||"").match(/(?:^|[\n;])\s*(?:final\s+answer|answer|ans)\s*[:=]\s*([^\n;]+)/i);
+  const got=numbers(final?final[1]:response);
+  const printed=strip(reference).match(/[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:\s*[x×*]\s*10\s*\^?\s*[+-]?\d+)?/i)?.[0]||"";
+  const mantissa=printed.split(/\s*[x×*]\s*10/i)[0];
+  const decimals=(mantissa.split(".")[1]||"").length;
+  const exponent=Number(printed.match(/\s*[x×*]\s*10\s*\^?\s*([+-]?\d+)/i)?.[1]||0);
+  const tolerance=Math.max(1e-12,0.5*10**(exponent-decimals)+1e-12);
+  return got.some(a=>expected.some(b=>Math.abs(a-b)<=tolerance));
 }
 
 function lineResult(base,item,response){
   const points=(item.markScheme?.points||[]).filter(Boolean);
+  const maxMarks=Math.max(0,Number(item.marks||0));
+  const seen=new Set();
   const criteria=points.map((point,index)=>{
     const refs=alternatives(point);
     const expectedNums=numericExpected(point);
-    const earned=(expectedNums.length&&numericMatch(response,expectedNums))||refs.some(ref=>textMatch(response,ref));
-    return {id:`${base}:p${index+1}`,label:strip(point),marks:earned?1:0,maxMarks:1,earned,evidence:earned?response:""};
+    const numeric=expectedNums.length>0;
+    const selected=refs.find(ref=>numeric
+      ?numericMatch(response,expectedNums,point)
+      :textMatch(response,ref));
+    const signature=selected?clean(strip(point)):"";
+    const earned=Boolean(selected)&&!seen.has(signature);
+    if(earned)seen.add(signature);
+    return {id:`${base}:p${index+1}`,label:strip(point),marks:earned?1:0,
+      maxMarks:1,earned,evidence:earned?response:""};
   });
-  let score=criteria.reduce((sum,row)=>sum+row.marks,0);
-  score=Math.min(Number(item.marks||0),score);
-  if(points.length===1 && Number(item.marks)>1 && textMatch(response,points[0])){
-    const coverage=tokens(points[0]).filter(t=>tokenPresent(response,t)).length/Math.max(1,tokens(points[0]).length);
-    score=Math.max(score,Math.min(Number(item.marks),Math.max(1,Math.round(coverage*Number(item.marks)))));
-  }
-  return {score,maxMarks:Number(item.marks||0),criteria,confidence:"medium",provisional:true};
+  // One authored point does not justify inventing several independent marks.
+  // Any missing mark allocation requires a more detailed source rubric.
+  const score=Math.min(maxMarks,criteria.reduce((sum,row)=>sum+row.marks,0));
+  const unresolved=String(response||"").trim()
+    ?Math.max(0,maxMarks-Math.min(maxMarks,points.length)):0;
+  return {score,maxMarks,criteria,confidence:"medium",provisional:true,
+    unassessedMarks:unresolved,
+    ...(unresolved?{reason:"Additional marks need separate verified marking criteria."}:{})};
 }
 
 function tableResult(base,item,responses){
