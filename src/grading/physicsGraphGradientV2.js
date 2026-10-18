@@ -1,3 +1,4 @@
+import {validatePhysicsGradientTriangle,validatePhysicsPressureReading} from "./physicsGraphWorkingEvidenceV2";
 /**
  * Advisory calibration for Physics Paper 2 Practice 1 Q1(c) and Q1(d).
  * The graph plots P against (1/V) x 10^-2, so its on-screen slope is ~24
@@ -36,19 +37,19 @@ function envelope(criteria,sourcePart){
   suggestedMarks:criteria.reduce((s,c)=>s+(c.candidateMarks??0),0),
   unresolvedMarks:criteria.reduce((s,c)=>s+(c.candidateMarks===null?c.maxMarks:0),0)};
 }
-export function evaluatePhysicsGraphGradient({response={}}={}){
+export function evaluatePhysicsGraphGradient({response={},previousGraphResponse={}}={}){
  const quantity=numericUnit(response?.answer??"",/^(?:gradient|grad)(?:=|:)/,["kpacm3","kpa/cm-3",""]);
  const numeric=quantity!==null&&quantity.value>=2300&&quantity.value<=2500;
  const unit=quantity!==null&&gradientUnit(quantity.unit);
  return envelope([
-  // This requires a drawn triangle using at least half the line's length.
-  // Q1(c) only saves text, not triangle geometry; never infer its 2 marks.
-  candidate("M1",2,false,""),
+  candidate("M1",2,
+   validatePhysicsGradientTriangle({graphResponse:previousGraphResponse,response}),
+   "recorded-half-length-gradient-triangle"),
   candidate("A1",1,numeric,"source-accepted-gradient-range"),
   candidate("B1",1,unit,"source-accepted-gradient-unit")
  ],"phy-p2-1-q1::c");
 }
-export function evaluatePhysicsGraphPressure({response={},previousGradientResponse={}}={}){
+export function evaluatePhysicsGraphPressure({response={},previousGradientResponse={},previousGraphResponse={}}={}){
  const quantity=numericUnit(response?.answer??"",/^(?:pressure|p|answer)(?:=|:)/,["kpa"]);
  const previous=numericUnit(previousGradientResponse?.answer??"",/^(?:gradient|grad)(?:=|:)/,["kpacm3","kpa/cm-3",""]);
  const previousValid=previous!==null&&gradientUnit(previous.unit)&&previous.value>0;
@@ -66,9 +67,13 @@ export function evaluatePhysicsGraphPressure({response={},previousGradientRespon
  // The marking note permits P=2400/18 instead of an explicit inverse
  // calculation, but never claims this is an actual graph reading.
  const method=correctInverse||sourceOrFollow&&(direct||followThrough);
+ const reading=validatePhysicsPressureReading({graphResponse:previousGraphResponse,response})
+  &&quantity?.unit==="kpa"
+  &&Math.abs(quantity.value-response.graphEvidence.point.y)<=
+    Math.max(3,response.graphEvidence.point.y*0.04);
  return envelope([
   candidate("M1",1,method,"supported-inverse-volume-or-division"),
-  candidate("M2",1,false,""), // No graph-reading trace is stored for Q1(d).
+  candidate("M2",1,reading,"recorded-reading-from-student-graph"),
   candidate("A1",1,direct||followThrough,
    followThrough&&!direct?"supported-earlier-gradient-follow-through":"source-accepted-pressure-range")
  ],"phy-p2-1-q1::d");
