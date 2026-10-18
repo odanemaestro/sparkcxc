@@ -32,6 +32,8 @@ jobs:
         run: |
           node --check tools/pob-jan2026-calibrate.mjs
           node tools/pob-jan2026-calibrate.mjs --validate
+          node --check tools/calibrate-pob-owner-p2.mjs
+          node tools/calibrate-pob-owner-p2.mjs --plan
 
       - name: Run regression tests
         run: npm test -- --watchAll=false --runInBand
