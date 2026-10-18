@@ -44,8 +44,11 @@ function gradientWorking(w,source){
  const second="("+signed(py)+"-"+signed(qy)+")/("+signed(px)+"-"+signed(qx)+")";
  const simple=String(dy)+"/"+String(dx);
  const reverse=String(-dy)+"/"+String(-dx);
- return [first,second,simple,reverse].some(term=>s.includes(term))||
-  /(?:^|[;=\n])(?:gradient|m)=/.test(s)&&s.includes(simple);
+ // A textual prefix is not enough: "-12/60" is NOT "-12/6".
+ const atomic=term=>new RegExp("(?:^|[^0-9.])"+
+  term.replace(/[.*+?^$\{\}()|[\]\\]/g,"\\ return [first,second,simple,reverse].some(term=>s.includes(term))||
+  /(?:^|[;=\n])(?:gradient|m)=/.test(s)&&s.includes(simple);")+"(?=$|[^0-9.])").test(s);
+ return [first,second,simple,reverse].some(atomic);
 }
 function distanceWorking(w,source){
  const s=clean(w).replace(/√/g,"sqrt").replace(/²/g,"^2");
@@ -54,8 +57,11 @@ function distanceWorking(w,source){
  const root=s.includes("sqrt")||s.includes("^0.5");
  const squared=[dx+"^2+"+dy+"^2",dy+"^2+"+dx+"^2",
   "(" +dx+"^2+"+dy+"^2)", "(" +dy+"^2+"+dx+"^2)"];
- return root&&(squared.some(term=>s.includes(term))||
-  s.includes("sqrt("+sum+")")||s.includes("sqrt"+sum));
+ const whole=term=>new RegExp("(?:^|[^0-9.])"+
+  term.replace(/[.*+?^$\{\}()|[\]\\]/g,"\\ return root&&(squared.some(term=>s.includes(term))||
+  s.includes("sqrt("+sum+")")||s.includes("sqrt"+sum));")+"(?=$|[^0-9.])").test(s);
+ return root&&(squared.some(whole)||
+  whole("sqrt("+sum+")")||whole("sqrt"+sum));
 }
 function twoDecimals(s,expected){
  const text=clean(s).replace(/units?$/,"");
@@ -102,10 +108,10 @@ function lineMethod(w,source,previous){
     ||s.includes("y"+minus(y)+"="+a+"*"+signedX);
   }));
  });
- const gradient=used.some(m=>close(m,source.gradient))&&(
-  s.includes("m="+String(source.gradient))||
-  source.gradient===0.75&&s.includes("m=3/4")||
-  gradientWorking(w,source));
+ const declarations=[...s.matchAll(/(?:^|[;\n])m=([+-]?(?:\d+(?:\.\d+)?|\.\d+)(?:\/[+-]?(?:\d+(?:\.\d+)?|\.\d+))?)(?=$|[;\n])/g)];
+ const declared=declarations.some(match=>close(rational(match[1]),source.gradient));
+ const gradient=used.some(m=>close(m,source.gradient))&&
+  (declared||gradientWorking(w,source));
  return {gradient,pointSlope};
 }
 export function evaluateMathCoordinateLinesV2({
