@@ -34,21 +34,19 @@ function pair(s){
  const m=new RegExp("^\\(\\s*("+val+")\\s*,\\s*("+val+")\\s*\\)$").exec(input(s).trim());
  return m?{x:Number(m[1]),y:Number(m[2])}:null;
 }
+function atomicEvidence(s,term){
+ const escaped=term.replace(/[-/\\^$*+?.()|[\]{}]/g,ch=>"\\"+ch);
+ return new RegExp("(?:^|[^0-9.])"+escaped+"(?=$|[^0-9.])").test(s);
+}
 function gradientWorking(w,source){
  const s=clean(w);
  const [px,py]=source.p,[qx,qy]=source.q;
  const dy=qy-py,dx=qx-px;
- // Both oriented differences produce the same gradient.
  const signed=n=>n<0?"("+n+")":String(n);
  const first="("+signed(qy)+"-"+signed(py)+")/("+signed(qx)+"-"+signed(px)+")";
  const second="("+signed(py)+"-"+signed(qy)+")/("+signed(px)+"-"+signed(qx)+")";
- const simple=String(dy)+"/"+String(dx);
- const reverse=String(-dy)+"/"+String(-dx);
- // A textual prefix is not enough: "-12/60" is NOT "-12/6".
- const atomic=term=>new RegExp("(?:^|[^0-9.])"+
-  term.replace(/[.*+?^$\{\}()|[\]\\]/g,"\\ return [first,second,simple,reverse].some(term=>s.includes(term))||
-  /(?:^|[;=\n])(?:gradient|m)=/.test(s)&&s.includes(simple);")+"(?=$|[^0-9.])").test(s);
- return [first,second,simple,reverse].some(atomic);
+ const simple=String(dy)+"/"+String(dx),reverse=String(-dy)+"/"+String(-dx);
+ return [first,second,simple,reverse].some(term=>atomicEvidence(s,term));
 }
 function distanceWorking(w,source){
  const s=clean(w).replace(/√/g,"sqrt").replace(/²/g,"^2");
@@ -56,12 +54,9 @@ function distanceWorking(w,source){
  const sum=dx*dx+dy*dy;
  const root=s.includes("sqrt")||s.includes("^0.5");
  const squared=[dx+"^2+"+dy+"^2",dy+"^2+"+dx+"^2",
-  "(" +dx+"^2+"+dy+"^2)", "(" +dy+"^2+"+dx+"^2)"];
- const whole=term=>new RegExp("(?:^|[^0-9.])"+
-  term.replace(/[.*+?^$\{\}()|[\]\\]/g,"\\ return root&&(squared.some(term=>s.includes(term))||
-  s.includes("sqrt("+sum+")")||s.includes("sqrt"+sum));")+"(?=$|[^0-9.])").test(s);
- return root&&(squared.some(whole)||
-  whole("sqrt("+sum+")")||whole("sqrt"+sum));
+  "("+dx+"^2+"+dy+"^2)","("+dy+"^2+"+dx+"^2)"];
+ return root&&(squared.some(term=>atomicEvidence(s,term))||
+  atomicEvidence(s,"sqrt("+sum+")")||atomicEvidence(s,"sqrt"+sum));
 }
 function twoDecimals(s,expected){
  const text=clean(s).replace(/units?$/,"");
