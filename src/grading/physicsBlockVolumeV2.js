@@ -14,8 +14,8 @@ const parse=s=>{
 };
 export function evaluatePhysicsBlockVolume({answer="",working=""}={}){
  const text=String(working).toLowerCase().replace(/\s+/g,"");
- const converted=/0\.2(?:0)?\D+0\.1(?:0)?\D+0\.05(?:0)?/.test(text);
- const centimeterMethod=/20\D+10\D+5(?:\.0)?/.test(text)&&/1000/.test(text);
+ const converted=/0\.2(?:0)?(?:x|×|\*)0\.1(?:0)?(?:x|×|\*)0\.05(?:0)?/.test(text);
+ const centimeterMethod=/20(?:x|×|\*)10(?:x|×|\*)5(?:\.0)?/.test(text)&&/1000/.test(text);
  const numeric=parse(answer);
  const unit=/m³|m3/i.test(String(answer))&&!/cm³|cm3/i.test(String(answer));
  const valid=unit&&numeric!==null&&Math.abs(numeric-0.001)<=0.00000001;
