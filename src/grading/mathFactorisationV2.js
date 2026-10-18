@@ -34,7 +34,7 @@ export function evaluateMathFactorisationV2({questionId,partId,response={}}={}){
  const working=clean(response&&typeof response==="object"?response.working:"");
  const allSteps=terms(working);
  const partial=partId==="b1"
-  ?allSteps.some(s=>equivalent(s,source.partial)&&!equivalent(s,source.original.replace(/m\^2-\d+n\^2/,"0")))
+  ?allSteps.some(s=>/^\s*[34]\s*\(/.test(s)&&/m\s*\^2/.test(s)&&/n\s*\^2/.test(s)&&equivalent(s,source.partial))
   :allSteps.some(s=>source.split.test(s.replace(/\s+/g,""))&&equivalent(s,source.original));
  const inAnswer=answer&&equivalent(answer,source.partial);
  const method=partial||!!inAnswer;
