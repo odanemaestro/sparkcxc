@@ -1,48 +1,57 @@
+import {getPhysicsGraphWorkingSpec} from "./physicsGraphWorkingSpecsV2";
 /**
- * Structural checks for candidate-created Physics Q1 graph working.
- * Evidence is submitted by the client: these checks are advisory only.
- * The source is the student's saved Q1(b) plotted line, not a model line.
+ * Graph working geometry is compared with the student's plotted line and the
+ * fixed graph limits from the source paper. All results are advisory.
  */
 export const PHYSICS_GRAPH_LIMITS=Object.freeze({xMin:0,xMax:11,yMin:0,yMax:260});
 const finite=v=>typeof v==="number"&&Number.isFinite(v);
-const inGrid=p=>p&&finite(p.x)&&finite(p.y)
- &&p.x>=PHYSICS_GRAPH_LIMITS.xMin&&p.x<=PHYSICS_GRAPH_LIMITS.xMax
- &&p.y>=PHYSICS_GRAPH_LIMITS.yMin&&p.y<=PHYSICS_GRAPH_LIMITS.yMax;
-export function physicsGraphLine(graphResponse){
+const limitsFor=questionId=>{
+ const spec=questionId?getPhysicsGraphWorkingSpec(questionId):null;
+ return questionId&&!spec?null:spec?.limits||PHYSICS_GRAPH_LIMITS;
+};
+const inGrid=(p,limits)=>!!p&&!!limits&&finite(p.x)&&finite(p.y)
+ &&p.x>=limits.xMin&&p.x<=limits.xMax&&p.y>=limits.yMin&&p.y<=limits.yMax;
+export function physicsGraphLine(graphResponse,questionId){
+ const limits=limitsFor(questionId);
  const points=graphResponse?.graph?.line;
- if(!Array.isArray(points)||points.length!==2||!points.every(inGrid))return null;
+ if(!limits||!Array.isArray(points)||points.length!==2||!points.every(p=>inGrid(p,limits)))return null;
  const [a,b]=points;
  if(Math.abs(a.x-b.x)<1e-9||Math.abs(a.y-b.y)<1e-9)return null;
  return {a,b,minX:Math.min(a.x,b.x),maxX:Math.max(a.x,b.x)};
 }
-export function samplePhysicsGraphLine(graphResponse,x){
- const line=physicsGraphLine(graphResponse);
+export function samplePhysicsGraphLine(graphResponse,x,questionId){
+ const limits=limitsFor(questionId);
+ const line=physicsGraphLine(graphResponse,questionId);
  if(!line||!finite(x)||x<line.minX||x>line.maxX)return null;
  const y=line.a.y+(x-line.a.x)*(line.b.y-line.a.y)/(line.b.x-line.a.x);
- return Number.isFinite(y)&&inGrid({x,y})?{x,y}:null;
+ return Number.isFinite(y)&&inGrid({x,y},limits)?{x,y}:null;
 }
-export function validatePhysicsGradientTriangle({graphResponse,response}={}){
+export function validatePhysicsGradientTriangle({graphResponse,response,questionId}={}){
+ const spec=questionId?getPhysicsGraphWorkingSpec(questionId):null;
+ if(questionId&&!spec?.trianglePart)return false;
+ const limits=limitsFor(questionId);
  const evidence=response?.graphEvidence;
  if(evidence?.kind!=="physics-gradient-triangle-v1"||
   !Array.isArray(evidence.points)||evidence.points.length!==2)return false;
- const line=physicsGraphLine(graphResponse);
+ const line=physicsGraphLine(graphResponse,questionId);
  if(!line)return false;
  const [a,b]=evidence.points;
- if(!inGrid(a)||!inGrid(b))return false;
- // A source marker requires the triangle to span at least half the line.
- // Also require half the original grid to avoid gaming a tiny segment.
- if(Math.abs(a.x-b.x)<Math.max(5.5,0.5*(line.maxX-line.minX)))return false;
+ if(!inGrid(a,limits)||!inGrid(b,limits))return false;
+ const minWidth=Math.max(0.5*(limits.xMax-limits.xMin),0.5*(line.maxX-line.minX));
+ if(Math.abs(a.x-b.x)+1e-10<minWidth)return false;
  return [a,b].every(p=>{
-  const onLine=samplePhysicsGraphLine(graphResponse,p.x);
-  return onLine&&Math.abs(p.y-onLine.y)<0.000001;
+  const onLine=samplePhysicsGraphLine(graphResponse,p.x,questionId);
+  return onLine&&Math.abs(p.y-onLine.y)<=Math.max(1e-10,1e-8*(limits.yMax-limits.yMin));
  });
 }
-export function validatePhysicsPressureReading({graphResponse,response}={}){
+export function validatePhysicsPressureReading({graphResponse,response,questionId="phy-p2-1-q1"}={}){
+ const spec=getPhysicsGraphWorkingSpec(questionId);
+ if(!spec?.readingPart)return false;
+ const limits=limitsFor(questionId);
  const evidence=response?.graphEvidence;
  const p=evidence?.point;
- if(evidence?.kind!=="physics-pressure-reading-v1"||!inGrid(p))return false;
- // 1/V at V=18 cm3 on the displayed x-axis (units of 10^-2 cm^-3).
+ if(evidence?.kind!=="physics-pressure-reading-v1"||!inGrid(p,limits))return false;
  if(Math.abs(p.x-100/18)>0.12)return false;
- const onLine=samplePhysicsGraphLine(graphResponse,p.x);
- return !!onLine&&Math.abs(p.y-onLine.y)<0.000001;
+ const onLine=samplePhysicsGraphLine(graphResponse,p.x,questionId);
+ return !!onLine&&Math.abs(p.y-onLine.y)<=Math.max(1e-10,1e-8*(limits.yMax-limits.yMin));
 }
