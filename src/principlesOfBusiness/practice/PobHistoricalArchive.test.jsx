@@ -37,10 +37,10 @@ test("January 2023 P1 is a real timed 60-item original source exam, not an answe
  fireEvent.click(screen.getByRole("button",{name:"Submit and review"}));
  expect(screen.getByText(/Provisional answer comparison/)).toBeInTheDocument();
 });
-test("undigitised historical Paper 1 never presents anonymous A-D slots as a finished simulation",()=>{
+test("incomplete 2018 historical Paper 1 never presents anonymous A-D slots as a finished simulation",()=>{
  render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
- fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2015"}});
- fireEvent.click(screen.getByRole("button",{name:/2015 May\/June.*Paper 1.*Answer-key reference/}));
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2018"}});
+ fireEvent.click(screen.getByRole("button",{name:/2018 May\/June.*Paper 1.*Answer-key reference/}));
  expect(screen.getByText(/Paper 1 · Source-text incomplete/)).toBeInTheDocument();
  expect(screen.getByText(/An answer key alone is not a simulated examination/)).toBeInTheDocument();
  expect(screen.getByText(/Use optional answer sheet with your own original paper/)).toBeInTheDocument();
