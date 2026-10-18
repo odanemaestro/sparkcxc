@@ -13,7 +13,7 @@ const SPECS=Object.freeze({
 });
 const asString=x=>typeof x==="string"?x:typeof x==="number"&&Number.isFinite(x)?String(x):"";
 const norm=s=>asString(s).replace(/[−–—]/g,"-").replace(/[×*]/g,"x")
- .replace(/,/g,"").replace(/\$/g,"").toLowerCase().trim();
+ .replace(/\$/g,"").toLowerCase().trim();
 const finite=s=>/^[+]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(s)?Number(s):null;
 const approx=(x,y)=>x!==null&&Math.abs(x-y)<=0.011;
 const vote=(id,maxMarks,yes,reason)=>({id,maxMarks,candidateMarks:yes?maxMarks:null,
@@ -45,8 +45,8 @@ function parsePair(answer,spec){
  // Anchored labelled x and y, with no other text. Values stay associated
  // with the proper variables even if the student reverses their order.
  const v="([+]?(?:\\d+(?:\\.\\d*)?|\\.\\d+))";
- const xPattern=new RegExp("(?:^|,)\\s*(?:x|"+nameX+")\\s*(?:=|:)\\s*"+v+"\\s*(?=,|$)","g");
- const yPattern=new RegExp("(?:^|,)\\s*(?:y|"+nameY+")\\s*(?:=|:)\\s*"+v+"\\s*(?=,|$)","g");
+ const xPattern=new RegExp("(?:^|,)\\s*(?:x|"+nameX+")\\s*(?:=|:)?\\s*"+v+"\\s*(?=,|$)","g");
+ const yPattern=new RegExp("(?:^|,)\\s*(?:y|"+nameY+")\\s*(?:=|:)?\\s*"+v+"\\s*(?=,|$)","g");
  const xs=[...raw.matchAll(xPattern)],ys=[...raw.matchAll(yPattern)];
  if(xs.length!==1||ys.length!==1)return null;
  const left=finite(xs[0][1]),right=finite(ys[0][1]);
