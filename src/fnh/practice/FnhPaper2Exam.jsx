@@ -129,7 +129,7 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
               {review&&<div className="fnh-p2-model-answer">
                 <strong>SPARK example answer points ({part.marks} possible marks, not an official CXC marking scheme)</strong>
                 <p>{fnhPartMarkingScheme(part).rule}</p>
-                <div className="fnh-p2-marking-points">{assessed.criteria.map(point=><p key={point.id}>
+                <div className="fnh-p2-marking-points">{assessed.criteria.map(point=><p key={point.id} className={point.confirmed?"fnh-mark-point-confirmed":"fnh-mark-point-pending"}>
                   <strong>{point.confirmed?"Confirmed":"Not yet verified"}:</strong> {point.rule}
                 </p>)}</div>
                 {historical&&fnhWorkedSupplement(historicalPaper.year,question.number,part.id)&&<details className="fnh-p2-worked-reference"><summary>Additional worked-answer guidance</summary><p>{fnhWorkedSupplement(historicalPaper.year,question.number,part.id)}</p><small>Course reference only. Equivalent correct answers can earn credit; these examples do not add automatic marks.</small></details>}
