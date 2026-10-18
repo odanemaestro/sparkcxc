@@ -38,8 +38,8 @@ for(const fixture of allCases){
  if(!part||part.maxMarks!==fixture.maxMarks)throw new Error("Fixture/bank mark mismatch: "+fixture.id);
 }
 if(plan){
- console.log(JSON.stringify({mode:"preflight-only",paperId,fixtures:fixtures.length,
-  categories:[...new Set(fixtures.map(x=>x.category))],
+ console.log(JSON.stringify({mode:"preflight-only",paperId,fixtures:allCases.length,parts:empty.parts.length,
+  categories:[...new Set(allCases.map(x=>x.category))],
   selectedQuestions,maxMarks:empty.maxMarks,sourceSha256:empty.sourceSha256,
   note:"No provider called; this does not certify examiner agreement."},null,2));
  process.exit(0);
