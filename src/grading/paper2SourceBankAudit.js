@@ -5,12 +5,22 @@
 export const SOURCE_BANK_AUDIT_VERSION="1.0.0";
 
 const valid=value=>Number.isFinite(value)&&value>=0;
-const flattenQuestion=q=>(q?.items||q?.parts||[]).flatMap((part,sectionIndex)=>
-  Array.isArray(part.items)?part.items.map((item,itemIndex)=>({
-    ...item,__auditKey:String(part?.id??part?.label??sectionIndex)+":"+
-      String(item?.id??item?.label??itemIndex)
-  })):[{...part,__auditKey:String(part?.id??part?.label??sectionIndex)}]
-);
+const flattenQuestion=q=>{
+  // Social Studies extended responses award separately authored content and
+  // organisation marks rather than storing structured per-part objects.
+  if(q?.type==="essay"&&!q?.parts?.length&&Array.isArray(q.tasks)){
+    return [
+      {__auditKey:"essay-content",marks:q.contentMarks,markScheme:q.tasks},
+      {__auditKey:"essay-organisation",marks:q.organizationMarks,markScheme:q.guide}
+    ];
+  }
+  return (q?.items||q?.parts||[]).flatMap((part,sectionIndex)=>
+    Array.isArray(part.items)?part.items.map((item,itemIndex)=>({
+      ...item,__auditKey:String(part?.id??part?.label??sectionIndex)+":"+
+        String(item?.id??item?.label??itemIndex)
+    })):[{...part,__auditKey:String(part?.id??part?.label??sectionIndex)}]
+  );
+};
 function authoredEvidence(item){
   const source=item?.markScheme;
   if(Array.isArray(item?.modelPoints))return item.modelPoints.filter(Boolean).length;
