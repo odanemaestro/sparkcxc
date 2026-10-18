@@ -158,8 +158,19 @@ function hasCompetingNumericAlternatives(response) {
   return /\bor\b/i.test(text) && numericValuesInPhysicsResponse(text).length > 1;
 }
 
+// A candidate's explicit final answer takes precedence over intermediate
+// calculations. Multiple declared finals cannot be resolved automatically.
+function finalPhysicsAnswerEvidence(response) {
+  const source=String(response ?? "");
+  const statements=[...source.matchAll(/\b(?:final\s+answer|answer|ans)\s*(?:is\s+|[:=]\s*)([^\n;]+)/gi)];
+  if(statements.length>1)return null;
+  return statements.length ? statements[0][1].trim() : source;
+}
+
 export function physicsValueCheck(response, check, context = "") {
   if (hasCompetingNumericAlternatives(response)) return false;
+  const finalEvidence=finalPhysicsAnswerEvidence(response);
+  if (finalEvidence===null)return false;
   const expected = Number(check?.value);
   if (!Number.isFinite(expected)) return false;
   const expectedUnit = check?.unit || "";
@@ -169,7 +180,7 @@ export function physicsValueCheck(response, check, context = "") {
   // A unitless criterion is deliberately numeric-only. This preserves valid
   // forms such as "60%" where the marker stores 60 and does not require a unit.
   if (!expectedUnit) {
-    const values = numericValuesInPhysicsResponse(response);
+    const values = numericValuesInPhysicsResponse(finalEvidence);
     if (!values.length) return false;
     const scale = Math.max(1, Math.abs(expected));
     return values.some(value => {
@@ -179,7 +190,7 @@ export function physicsValueCheck(response, check, context = "") {
   }
 
   if (normalizeUnitText(expectedUnit) === "neutron") {
-    const values = neutronValues(response);
+    const values = neutronValues(finalEvidence);
     const scale = Math.max(1, Math.abs(expected));
     return values.some(value => {
       if (range && value >= range[0] && value <= range[1]) return true;
@@ -190,7 +201,7 @@ export function physicsValueCheck(response, check, context = "") {
   const quantity = quantityForPaper2Unit(expectedUnit);
   if (!quantity) return false;
 
-  return physicsResponseFragments(response).some(fragment => {
+  return physicsResponseFragments(finalEvidence).some(fragment => {
     if (quantityRangeMatch(fragment, range, expectedUnit, quantity)) return true;
     return comparePhysicsQuantity(fragment, { value: expected, unit: expectedUnit }, {
       quantity,
@@ -589,7 +600,10 @@ function axisLabelCorrect(actual, expected) {
     const symbolAndUnit = normaliseAxisLabel(expectedText.slice(commaIndex + 1));
     if (symbolAndUnit && got === symbolAndUnit) return true;
   }
-  return got.includes(want) || (want.includes(got) && got.length >= Math.min(4, want.length));
+  // A shortened quantity name is not a complete axis label when the source
+  // requires its unit. Accept an exact symbol/unit alias or a fuller label.
+  // Never credit "Pressure" for "Pressure, P/kPa".
+  return got.includes(want);
 }
 
 function graphAxesLabelledCorrect(part, response) {
@@ -650,8 +664,12 @@ function graphCriterionAward(part, response, criterion, marks) {
   if (criterion.code === "B3") {
     const expectedCount = (part?.graph?.points || []).length;
     const hits = graphPointHits(part, response);
+    // Extra plotted coordinates are not free evidence. Each unexpected
+    // point above the source dataset size costs up to one available plot mark.
+    const submittedCount=Array.isArray(response?.graph?.points)?response.graph.points.length:0;
     const misses = Math.max(0, expectedCount - hits);
-    return Math.max(0, marks - misses);
+    const excess = Math.max(0,submittedCount-expectedCount);
+    return Math.max(0, marks - misses - excess);
   }
   if (criterion.code === "B4") return graphLineCorrect(part, response) ? marks : 0;
   return null;
@@ -670,15 +688,19 @@ function partRequiresWorking(part = {}, question = {}) {
 }
 
 function valueCorrectIgnoringMissingUnit(response, check, context = "") {
+  const evidence=finalPhysicsAnswerEvidence(response);
+  if(evidence===null || hasCompetingNumericAlternatives(response))return false;
   const expected = Number(check?.value);
   const expectedUnit = check?.unit || "";
-  if (!Number.isFinite(expected) || !expectedUnit || responseHasPhysicsUnit(response, expectedUnit)) return false;
+  if (!Number.isFinite(expected) || !expectedUnit || responseHasPhysicsUnit(evidence, expectedUnit)) return false;
   const quantity = quantityForPaper2Unit(expectedUnit);
-  if (quantity && physicsResponseFragments(response).some(fragment => parsePhysicsQuantity(fragment, quantity).unit)) return false;
+  // Only the declared final answer determines whether its unit is missing.
+  // A correct unit on an unrelated working line cannot repair a unitless final.
+  if (quantity && physicsResponseFragments(evidence).some(fragment => parsePhysicsQuantity(fragment, quantity).unit)) return false;
   const range = explicitAcceptRange(context);
   const relativeTolerance = Math.max(0, Number(check?.tolerance || 0));
   const scale = Math.max(1, Math.abs(expected));
-  return numericValuesInPhysicsResponse(response).some(value => {
+  return numericValuesInPhysicsResponse(evidence).some(value => {
     if (range && value >= range[0] && value <= range[1]) return true;
     return Math.abs(value - expected) <= Math.max(1e-9, relativeTolerance * scale);
   });
@@ -701,8 +723,9 @@ const PAPER2_ECF_RULES = Object.freeze({
 
 function sourceValueForEcf(question, sourcePartId, responses) {
   const sourceResponse=responses[physicsPaper2PartKey(question.question_id, sourcePartId)] || {};
-  const answer=String(sourceResponse.answer || "").trim();
-  if (!answer || hasCompetingNumericAlternatives(answer)) return null;
+  const original=String(sourceResponse.answer || "").trim();
+  const answer=finalPhysicsAnswerEvidence(original);
+  if (!answer || hasCompetingNumericAlternatives(original)) return null;
 
   const sourcePart=(question.parts || []).find(item=>String(item.id)===String(sourcePartId));
   const checks=(sourcePart?.criteria || []).map(item=>item?.check).filter(item=>item?.type==="value");

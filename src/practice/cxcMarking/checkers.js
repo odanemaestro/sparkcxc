@@ -160,6 +160,12 @@ function toleranceFor(spec) {
 // ---------------------------------------------------------------------------
 
 export function checkNumeric(raw, spec) {
+  const source=String(raw ?? "");
+  // "4 or 5" is a set of competing guesses, not one final answer. A
+  // bare numeric fallback must never silently select its last value.
+  if (/\b(?:or|either)\b/i.test(source) && numbersIn(source).length>1) {
+    return {ok:false,why:"more than one competing numerical answer was given",got:null};
+  }
   const bare = stripDressing(raw);
   let got = value(bare);
   if (got === null) {
