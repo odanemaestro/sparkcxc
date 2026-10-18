@@ -20,7 +20,7 @@ export default function PobHistoricalDiagramEditor({paperId,partKey,value,onChan
  const node=(x,y,w,h,label,key)=>(
   <g key={key}>
    <rect x={x} y={y} width={w} height={h} rx="9" fill="#eff5ff" stroke="#31588f" strokeWidth="1.5"/>
-   <text x={x+w/2} y={y+h/2} dominantBaseline="middle" textAnchor="middle" fontSize="12" fill="#172f56">
+   <text x={x+w/2} y={y+h/2} dominantBaseline="middle" textAnchor="middle" fontSize="12" fill="#172f56" textLength={Math.min((label||"Choose a position").length*6.4,w-16)} lengthAdjust="spacingAndGlyphs">
     {label||"Choose a position"}
    </text>
   </g>
@@ -79,6 +79,13 @@ export default function PobHistoricalDiagramEditor({paperId,partKey,value,onChan
     </div>)}
    </div>
   </div>
+  {span&&<fieldset className="pob-visual-connection" disabled={disabled}>
+   <legend>Number of direct reports</legend>
+   <div className="pob-visual-connection-options">
+    {task.fields.count.choices.filter(Boolean).map(count=><button key={count} type="button"
+     aria-pressed={at("count")===count} onClick={()=>setField("count",count)}>{count}</button>)}
+   </div>
+  </fieldset>}
   {Object.entries(task.fields).filter(([key])=>key.endsWith("Parent")).map(([key,field])=>
    <fieldset className="pob-visual-connection" key={key} disabled={disabled}>
     <legend>{field.label}</legend>
@@ -111,7 +118,7 @@ export default function PobHistoricalDiagramEditor({paperId,partKey,value,onChan
        <text x={index*pitch+pitch/2} y="44" fontSize="11" fill="#172f56" textAnchor="middle">
         {task.kind==="distribution-missing"&&index===0?"A":task.kind==="distribution-missing"&&index===2?"B":"Link "+(index+1)}
        </text>
-       <text x={index*pitch+pitch/2} y="63" fontSize="11" fill="#172f56" textAnchor="middle">{(value||"?").replace("Sales Supervisor","Sales Sup.")}</text>
+       <text x={index*pitch+pitch/2} y="63" fontSize="11" fill="#172f56" textAnchor="middle" textLength={Math.min((value||"?").length*5.6,pitch-20)} lengthAdjust="spacingAndGlyphs">{(value||"?").replace("Sales Supervisor","Sales Sup.")}</text>
        {index<boxes.length-1&&connector((index+1)*pitch-7,52,(index+1)*pitch+4,52,"arr"+index)}
       </g>
     )):<>{React.Children.toArray([...paths,...(labels||[])])}</>}
