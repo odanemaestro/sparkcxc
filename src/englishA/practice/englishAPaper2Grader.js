@@ -54,6 +54,11 @@ function repetitionCap(result,response){
   const scale=max/result.score;
   const dimensions=(result.dimensions||[]).map(row=>({...row,score:round(row.score*scale)}));
   const newScore=round(dimensions.reduce((total,row)=>total+row.score,0));
+  // Reconcile independently rounded profile marks with the total cap.
+  if(newScore>max&&dimensions.length){
+    const last=dimensions[dimensions.length-1];
+    last.score=round(Math.max(0,last.score-(newScore-max)));
+  }
   return {...result,score:Math.min(max,newScore),dimensions,
     confidence:"low",diagnostics:{...result.diagnostics,repetition},
     feedback:[...(result.feedback||[]),
@@ -141,7 +146,10 @@ function sourceIdeaCoverage(stimulus,response){
       const candidateText=clean(unit).toLowerCase();
       const candidate=new Set(tokenise(unit).map(stem));
       const matched=terms.filter(term=>ideaTermPresent(candidate,candidateText,term));
-      const negated=/\b(?:not|never|cannot|can't|doesn't|don't|isn't)\b/i.test(unit);
+      const negative=/\b(?:not|never|cannot|can't|doesn't|don't|isn't)\b/i;
+      // A faithful negative paraphrase should not be rejected solely because
+      // the source expresses the same idea negatively.
+      const negated=negative.test(unit)&&!negative.test(line);
       return {matched,unit,valid:matched.length>=needed&&!negated};
     }).sort((a,b)=>b.matched.length-a.matched.length)[0];
     return {index,line,matched:(best?.matched||[]).slice(0,6),
@@ -356,18 +364,21 @@ function gradeExposition(task,response){
   const audience=/\b(you|your|we|our|principal|manager|students|council|community|readers)\b/i.test(response)?2:1;
   const structuredReport=formatName==="report" && fmt.matched.includes("numbered sections") && fmt.matched.includes("recommendations");
   const sequencing=(d.paragraphCount>=3&&connectors>=2)||structuredReport?2:d.paragraphCount>=2?1:0;
-  const analysing=round(clamp(formatMarks+audience+sequencing,0,7));
+  let analysing=round(clamp(formatMarks+audience+sequencing,0,7));
 
   const concision=round(clamp(3*length.factor,0,3));
   const coherence=connectors>=3&&d.paragraphCount>=3?2:connectors>=1?1:0;
   const mechanics=round(clamp(3-(d.lowercaseStarts*.4+d.repeatedPunct*.4+d.longSentences*.2),0,3));
   const language=round(clamp(lang.score*length.factor,0,8));
-  const evaluating=round(clamp(concision+coherence+language+mechanics,0,16));
+  let evaluating=round(clamp(concision+coherence+language+mechanics,0,16));
+  // Good-looking headings are not a substitute for addressing source facts.
+  if(cov?.total&&cov.covered===0){analysing=Math.min(analysing,3);evaluating=Math.min(evaluating,6);}
+  else if(cov?.total&&cov.covered===1){analysing=Math.min(analysing,5);evaluating=Math.min(evaluating,10);}
 
   return {
     score:round(understanding+analysing+evaluating),
     maxMarks:30,
-    confidence:cov?.total?"medium-high":"medium",
+    confidence:cov?.total&&cov.covered===0?"low":cov?.total?"medium-high":"medium",
     dimensions:[
       {id:"understanding",label:"P1 Understanding: relevance, clarity, accuracy and completeness",score:understanding,max:7,evidence:cov?.rows||[]},
       {id:"analysing",label:"P2 Analysing: format, audience and sequencing",score:analysing,max:7,evidence:fmt.matched},
