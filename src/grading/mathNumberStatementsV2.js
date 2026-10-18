@@ -59,7 +59,7 @@ function statementEvidence(answer,working,k){
 }
 function sourceStructure(s){
  const t=compact(s);
- return /(?:^|=|;|\n)n(?:\*|x)?\(n\+2\)(?:\+\(n\+1\)|\+n\+1)?(?=$|=|;|\n)/.test(t);
+ return /(?:^|=|;|\n)n(?:\*|x)?\(n\+2\)(?:\+\(n\+1\)|\+n\+1)(?=$|=|;|\n)/.test(t);
 }
 function nthPieces(s){
  const t=compact(s);
@@ -112,7 +112,9 @@ function reverseMethod(working,source){
 }
 function indexFinal(answer,source){
  if(veto(answer))return false;
- const s=compact(answer).replace(/^n=/,"").replace(/^(?:the)?(?:statementnumber|statement)=?/,"")
+ const s=compact(answer).replace(/^n=/,"")
+  .replace(/^(?:the)?(?:statementnumber|statement)=?/,"")
+  .replace(/^the(?=\d)/,"")
   .replace(/(?:st|nd|rd|th)?statement$/,"");
  return isPositiveInteger(s)===source.index;
 }
