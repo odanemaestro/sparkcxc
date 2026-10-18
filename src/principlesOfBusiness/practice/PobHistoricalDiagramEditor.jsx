@@ -9,7 +9,8 @@ export default function PobHistoricalDiagramEditor({paperId,partKey,value,onChan
  const fields=value?.kind===task.kind&&value?.fields?value.fields:{};
  const setField=(key,text)=>onChange({kind:task.kind,fields:{...fields,[key]:text}});
  const at=k=>fields[k]||"";
- const branch=task.kind==="org-branch",chain=task.kind==="org-chain";
+ const span=task.kind==="org-span";
+ const branch=task.kind==="org-branch"||span,chain=task.kind==="org-chain";
  const node=(x,y,w,h,label,key)=>(
   <g key={key}>
    <rect x={x} y={y} width={w} height={h} rx="9" fill="#eff5ff" stroke="#31588f" strokeWidth="1.5"/>
@@ -19,7 +20,7 @@ export default function PobHistoricalDiagramEditor({paperId,partKey,value,onChan
   </g>
  );
  const labels=branch?[
-   node(175,10,170,48,at("top"),"top"),
+   node(175,10,170,48,span?"Marketing Manager":at("top"),"top"),
    node(30,145,210,48,at("left"),"left"),
    node(285,145,210,48,at("right"))
   ]:chain?[
@@ -33,16 +34,17 @@ export default function PobHistoricalDiagramEditor({paperId,partKey,value,onChan
  );
  let paths=[];
  if(branch){
-  if(at("leftParent")==="Top position")paths.push(connector(230,58,130,145,"l"));
-  if(at("rightParent")==="Top position")paths.push(connector(290,58,390,145,"r"));
+  if(span?!!at("left"):at("leftParent")==="Top position")paths.push(connector(230,58,130,145,"l"));
+  if(span?!!at("right"):at("rightParent")==="Top position")paths.push(connector(290,58,390,145,"r"));
  }else if(chain){
   if(at("middleParent")==="Top position")paths.push(connector(260,52,260,93,"m"));
   if(at("bottomParent")==="Middle position")paths.push(connector(260,137,260,178,"b"));
  }
- const distribution=task.kind.startsWith("distribution");
- const boxes=task.kind==="distribution"
-   ?[at("box1"),at("box2"),at("box3"),at("box4")]
-   :[at("A"),"Wholesaler",at("B"),"Consumer"];
+ const distribution=task.kind.startsWith("distribution")||task.kind==="command-path";
+ const boxes=task.kind==="command-path"?["Consultant",at("step1"),at("step2"),at("step3"),at("step4")]:
+  task.kind==="distribution"?[at("box1"),at("box2"),at("box3"),at("box4")]:
+   [at("A"),"Wholesaler",at("B"),"Consumer"];
+ const pitch=520/boxes.length;
  return <div className="pob-visual-editor" aria-label={task.title}>
   <h4>{task.title}</h4>
   <p>Choose the positions or links and connect the chart. SPARK will mark the completed structure against the original question.</p>
@@ -56,20 +58,20 @@ export default function PobHistoricalDiagramEditor({paperId,partKey,value,onChan
    </label>)}
   </div>
   <div className="pob-visual-preview">
-   <svg role="img" aria-label={"Your constructed "+(distribution?"distribution chain":"organisational chart")}
+   <svg role="img" aria-label={"Your constructed "+(task.kind==="command-path"?"reporting path":distribution?"distribution chain":"organisational chart")}
     viewBox={distribution?"0 0 520 115":"0 0 520 235"} xmlns="http://www.w3.org/2000/svg">
     <defs><marker id="pobArrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
       <path d="M0 0 L6 3 L0 6" fill="none" stroke="#31588f" strokeWidth="1.3"/></marker></defs>
     {distribution?boxes.map((value,index)=>(
       <g key={index}>
-       <rect x={6+index*132} y="23" width="113" height="58" rx="9" fill="#eff5ff" stroke="#31588f" strokeWidth="1.5"/>
-       <text x={62+index*132} y="44" fontSize="11" fill="#172f56" textAnchor="middle">
+       <rect x={5+index*pitch} y="23" width={pitch-12} height="58" rx="9" fill="#eff5ff" stroke="#31588f" strokeWidth="1.5"/>
+       <text x={index*pitch+pitch/2} y="44" fontSize="11" fill="#172f56" textAnchor="middle">
         {task.kind==="distribution-missing"&&index===0?"A":task.kind==="distribution-missing"&&index===2?"B":"Link "+(index+1)}
        </text>
-       <text x={62+index*132} y="63" fontSize="11" fill="#172f56" textAnchor="middle">{value||"?"}</text>
-       {index<3&&connector(119+index*132,52,132+index*132,52,"arr"+index)}
+       <text x={index*pitch+pitch/2} y="63" fontSize="11" fill="#172f56" textAnchor="middle">{(value||"?").replace("Sales Supervisor","Sales Sup.")}</text>
+       {index<boxes.length-1&&connector((index+1)*pitch-7,52,(index+1)*pitch+4,52,"arr"+index)}
       </g>
-    )):<>{paths}{labels}</>}
+    )):<>{React.Children.toArray([...paths,...(labels||[])])}</>}
    </svg>
   </div>
  </div>;
