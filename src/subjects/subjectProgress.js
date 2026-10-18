@@ -16,7 +16,7 @@ import { ATOMIC_INTERACTIVES } from "../physics/atomic/interactives/eAtomicInter
 import { readPhysicsAtomicProgress } from "../physics/atomic/physicsAtomicProgress.mjs";
 import { readPhysicsCourseProgress } from "../physics/course/physicsCourseProgress.mjs";
 import { observeRecommendationOutcome } from "../learning/learnerIntelligencePersistence";
-import { preparePaper2SubjectActivity, isPaper2Activity } from "../grading/scorePublication";
+import { preparePaper2SubjectActivity } from "../grading/scorePublication";
 
 export const SUBJECT_PROGRESS_VERSION = 1;
 
@@ -284,8 +284,7 @@ export async function recordSubjectActivity({ supabase, activity, silent = false
   });
 
   // Recommendation outcome tracking must never block canonical progress.
-  if (!result?.error && activity.completed &&
-      (!isPaper2Activity(publishedActivity)||publishedActivity.metadata?.paper_release_status==="verified-final")) {
+  if (!result?.error && activity.completed) {
     observeRecommendationOutcome({
       supabase,
       subjectId,
