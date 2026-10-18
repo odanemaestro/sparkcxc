@@ -1,6 +1,6 @@
 import {physicsValueCheck,markPhysicsPaper2} from "../physics/paper2/physicsPaper2Marking";
 import {checkNumeric} from "../practice/cxcMarking/checkers";
-import {markPart,carryForward} from "../practice/cxcMarking/markScheme";
+import {markPart,markQuestion,carryForward} from "../practice/cxcMarking/markScheme";
 
 test("Physics accepts equivalent units and scientific notation in final answers",()=>{
  expect(physicsValueCheck("Working: 1000 J; final answer: 4 kJ",{type:"value",value:4000,unit:"J"})).toBe(true);
@@ -91,4 +91,20 @@ test("Mathematics retains numerical and precision checks on single final results
  expect(checkNumeric("23.2",{type:"numeric",value:23.25,dp:2}).ok).toBe(false);
  expect(checkNumeric("25 cm",{type:"numeric",value:25,requireUnit:"cm"}).ok).toBe(true);
  expect(checkNumeric("25 m",{type:"numeric",value:25,requireUnit:"cm"}).ok).toBe(false);
+});
+
+test("Mathematics blocks ECF from competing earlier guesses but honours a single wrong value",()=>{
+ const question={question_id:"ecf-fixture",marks:2,parts:[
+  {id:"a",marks:1,criteria:[{code:"A1",kind:"A",marks:1,check:{type:"numeric",value:5}}]},
+  {id:"b",marks:1,criteria:[{code:"A1",kind:"A",marks:1,check:{type:"numeric",value:10},
+   ecf:{uses:["a"],formula:"2*a"}}]},
+ ]};
+ const ambiguous=markQuestion({a:{answer:"4 or 5"},b:{answer:"8"}},question);
+ expect(ambiguous.parts[0].marks).toBe(0);
+ expect(ambiguous.parts[0].value).toBe(null);
+ expect(ambiguous.parts[1].marks).toBe(0);
+ const validECF=markQuestion({a:{answer:"4"},b:{answer:"8"}},question);
+ expect(validECF.parts[0].marks).toBe(0);
+ expect(validECF.parts[1].marks).toBe(1);
+ expect(validECF.parts[1].ecf).toBe(true);
 });
