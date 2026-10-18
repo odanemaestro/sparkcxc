@@ -50,3 +50,13 @@ Run the full test suite and build before merge.
 - Distinct client-supplied grader run IDs are *not* proof of independence. Only a future trusted server may attest these identities.
 - Always returns `canPublish: false`. No production grading or score-publication connection is enabled.
 - Five dedicated regression tests were added. CI execution still needs verification.
+
+## Batch 4: server-job orchestration foundation
+- `gradingJobRunnerV2.js` adds a lease-aware, idempotency-friendly worker contract for the future server implementation.
+- `store.claim(jobId)` must atomically create an expiring lease; `store.commit(jobId, token, outcome)` must reject expired or mismatched leases. `store.retry` has the same fencing requirement.
+- Response snapshots, versions and rubric definitions must be fetched from trusted server storage, not supplied by the caller as grading authority.
+- Failed jobs retry up to a bounded maximum, with sanitized error reasons that do not expose essays or secrets.
+- Worker outputs always remain provisional, even when the grader reports all marks resolved. Grader claims of attestation are not trusted.
+- This batch does NOT yet contain a concrete PostgreSQL queue adapter, Edge Function, server proof verification, deployed migration, or production integration.
+- Six regression tests added but not yet executed. CI and integration tests are required.
+- Follow current Supabase Edge Function resource limits and process long written scripts in bounded jobs.
