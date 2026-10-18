@@ -74,7 +74,7 @@ function HistoricalPaper1({record,userId,supabase}){
 }
 
 function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
- const ownerBank=useMemo(()=>buildPobOwnerPaper2Bank(record.id),[record.id]);
+ const ownerBank=useMemo(()=>buildPobOwnerPaper2Bank(record.id,record.bank),[record.id,record.bank]);
  const paper=ownerBank||record.bank,questions=Array.isArray(paper.questions)?paper.questions:[];
  const [answers,setAnswers]=useState(()=>read(record.id));
  const [submitted,setSubmitted]=useState(false);
