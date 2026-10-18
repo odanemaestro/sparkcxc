@@ -37,3 +37,8 @@ test("Integrated Science legacy graph rejects malformed extra lines",()=>{
  expect(good.score).toBe(2);
  expect(bad.score).toBe(0);
 });
+
+test("accepts a calibrated, equivalent shorter scientific definition",()=>{
+ const result=grade(1,["Heat is a form of energy (1)"],"Heat is energy.");
+ expect(result.score).toBe(1);
+});
