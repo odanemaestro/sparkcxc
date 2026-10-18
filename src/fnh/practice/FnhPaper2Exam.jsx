@@ -86,6 +86,7 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
         historical,year:historicalPaper?.year||null,marking_scheme:historical?"spark_reference_explanations":"spark_original",
         provisional:!writtenGrade.fullyAssessed,spark_scoring_status:writtenGrade.fullyAssessed?"verified":"rubric_review_required",
         confirmed_marks:writtenGrade.confirmedMarks,unresolved_marks:writtenGrade.unresolvedMarks,
+        rubric_version:writtenGrade.rubricVersion,
         question_count:paper.length,total_marks:writtenGrade.maxMarks,
         duration_minutes:examMinutes,answered_parts:answered,at:new Date().toISOString()},
     }}).catch(e=>console.warn("FNH Paper 2 completion could not be saved",e));
