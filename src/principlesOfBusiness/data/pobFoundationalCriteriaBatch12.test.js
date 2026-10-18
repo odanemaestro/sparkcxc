@@ -30,7 +30,8 @@ test("productivity gets one mark for output-input relationship and one for usabl
  expect(scored.assessedMarks).toBe(2);
  expect(scored.rubricVersion).toBe(POB_FOUNDATIONAL_CRITERIA_VERSION);
  expect(review(2,"a",full).confirmedMarks).toBe(2);
- expect(mark("Q2:a","Productivity is the output divided by input.").confirmedMarks).toBe(1);
+ expect(mark("Q2:a","Productivity is the output divided by input.").confirmedMarks).toBe(2);
+ expect(mark("Q2:a","Productivity measures output relative to the resources used.").confirmedMarks).toBe(1);
  expect(mark("Q2:a","Productivity is input/output.").confirmedMarks).toBe(0);
  expect(mark("Q2:a","Productivity is simply how rich the owner is.").confirmedMarks).toBe(0);
 });
