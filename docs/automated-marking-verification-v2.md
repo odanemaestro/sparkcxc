@@ -118,3 +118,11 @@ Run the full test suite and build before merge.
 - Does not promote worked answers or model-point phrases into automatic trusted decisions. `acceptedPhrases` intentionally remains empty until authoritatively reviewed rubric definitions are available.
 - Four regression tests added. This is a source-format adapter, not an enabled grading or score publication endpoint.
 - Further course mappings require verifying each course's response and marking structures before rollout.
+
+## Paper 2 adapter expansion: English A and Integrated Science
+- `paper2AdditionalAdaptersV2.js` maps English A essay tasks with their rubric total marks and selected creative writing choice; no automatic semantic grading credit is assigned.
+- Integrated Science uses `question.id:partIndex:itemIndex`, matching the current responseKey helper.
+- No source marking descriptions are elevated into trusted rubric evidence. Missing or invalid mark allocations fail closed.
+- Four new Jest cases added. Tests have not been executed in this session.
+- Adapter implementation is feature-branch only and is not called by the production submission or score-publication paths.
+- Remaining subjects require individual shape audits, followed by real paper integration tests and staging execution.
