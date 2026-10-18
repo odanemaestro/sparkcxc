@@ -1,7 +1,7 @@
 import {FNH_HISTORICAL_P2_2005} from "../data/fnhHistorical2005Paper2";
 import {FNH_HISTORICAL_P2_2018} from "../data/fnhHistorical2018Paper2";
 import {getFnhHistoricalStructuredTask,FNH_STRUCTURED_CRITERIA_VERSION} from "./fnhHistoricalStructuredCriteria";
-import {gradeFnhWrittenPart,gradeFnhWrittenPaper} from "./fnhPaper2Marking";
+import {gradeFnhWrittenPart,gradeFnhWrittenPaper,fnhPartMarkingScheme} from "./fnhPaper2Marking";
 
 const q18=FNH_HISTORICAL_P2_2018.questions[0];
 const community=q18.items.find(p=>p.id==="b");
@@ -72,4 +72,9 @@ test("historical totals and normal-scoring fallback remain intact",()=>{
    "increased thirst; frequent urination");
  expect(standard.confirmedMarks).toBe(2);
  expect(standard.maxMarks).toBe(2);
+});
+
+test("Paper 2 review guidance states the same independent marks as the grader",()=>{
+ expect(fnhPartMarkingScheme(community).rule).toMatch(/1 mark for identification.*1 more for a relevant explanation/);
+ expect(fnhPartMarkingScheme(dehydration).rule).toMatch(/removal of water.*limits spoilage organisms/);
 });
