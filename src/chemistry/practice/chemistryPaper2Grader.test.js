@@ -55,3 +55,19 @@ test("incidental source numbers do not award the scientific explanation",()=>{
  expect(grade(1,["2 electrons are transferred"],"2").score).toBe(0);
  expect(grade(1,["2 electrons are transferred"],"Two electrons are transferred.").score).toBe(0);
 });
+
+
+test("a real graph intersection is not treated as an invalid duplicate across series",()=>{
+ const item={marks:3,response:{type:"graph",x:"time",y:"temperature",points:[
+  {x:0,y:0},{x:1,y:1},{x:0,y:0},{x:2,y:2}
+ ]},markScheme:{points:[]}};
+ const graph={version:1,kind:"line",connection:"smooth",
+  x:{min:0,max:5,step:1},y:{min:0,max:5,step:1},
+  series:[{name:"A",points:"0, 0\n1, 1"},{name:"B",points:"0, 0\n2, 2"}]};
+ const result=gradeChemistryPaper2Item(question,0,0,item,{
+  "CHEM:0:0:graph":JSON.stringify(graph),
+  "CHEM:0:0:xLabel":"time","CHEM:0:0:yLabel":"temperature"
+ });
+ expect(result.visualEvidence.validPoints).toBe(true);
+ expect(result.score).toBe(3);
+});
