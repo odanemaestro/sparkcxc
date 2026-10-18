@@ -3595,7 +3595,9 @@ function gradeScienceGraph(question2, partIndex, itemIndex, item2, responses, ax
   const structured = readScienceGraph(responses[`${base}:graph`]) || legacyGraph(base, responses, scienceGraphRubrics_default[base]);
   if (structured && scienceGraphRubrics_default[base]) return gradeConstructedGraph(base, item2, responses, structured, scienceGraphRubrics_default[base], axisMatches);
   const expected = expectedScienceGraphPoints(question2, partIndex, item2);
-  const submitted = parseScienceGraphPoints(responses[`${base}:points`]);
+  const input = String(responses[`${base}:points`] || "");
+  const rawLines = input.split(/\n|;/).filter((line) => line.trim());
+  const submitted = parseScienceGraphPoints(input);
   const points = submitted.filter(Boolean);
   const seen = /* @__PURE__ */ new Set();
   let correct = 0;
@@ -3606,7 +3608,7 @@ function gradeScienceGraph(question2, partIndex, itemIndex, item2, responses, ax
       correct += 1;
     }
   });
-  const valid = submitted.length === points.length && new Set(points.map((p) => `${p.x},${p.y}`)).size === points.length;
+  const valid = rawLines.length === points.length && new Set(points.map((p) => `${p.x},${p.y}`)).size === points.length;
   const plottingMarks = Number(item2.marks) === 5 ? 2 : 0;
   const earned = expected.length && valid && points.length <= expected.length ? correct === expected.length ? plottingMarks : correct >= Math.ceil(expected.length / 2) ? Math.min(1, plottingMarks) : 0 : 0;
   const axes = axisMatches(String(responses[`${base}:xLabel`] || ""), item2.response?.x || "") && axisMatches(String(responses[`${base}:yLabel`] || ""), item2.response?.y || "");
@@ -3621,7 +3623,7 @@ function gradeScienceGraph(question2, partIndex, itemIndex, item2, responses, ax
     confidence: "low",
     provisional: true,
     visualEvidenceRequired: true,
-    unassessedMarks: Number(item2.marks) - (expected.length ? plottingMarks : 0) - 1,
+    unassessedMarks: Math.max(0, Number(item2.marks) - (expected.length ? plottingMarks : 0) - 1),
     visualEvidence: { plottedPoints: points.length, correctPoints: correct },
     reason: "Coordinates and axis labels are checked automatically. Scale, construction and unsupported series remain unassessed by this graph editor."
   };
@@ -3705,8 +3707,27 @@ function gradeConstructedGraph(base, item2, responses, graph, rubric, axisMatche
   };
 }
 
+// src/grading/scienceWrittenEvidence.js
+var NEGATION = /\b(?:not|no|never|cannot|can't|without|doesn'?t|isn'?t|don'?t|neither|nor)\b/i;
+function scienceResponseClauses(value2) {
+  return String(value2 ?? "").split(/(?:[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)|\s+\b(?:however|whereas|but)\b\s+)/i).map((part2) => part2.trim()).filter(Boolean);
+}
+function matchScienceWrittenEvidence(response, reference, { tokens: tokens2, tokenPresent: tokenPresent2, strict = false }) {
+  const terms = [...new Set(tokens2(reference))];
+  if (!terms.length) return { matched: false, evidence: "", contradicted: false };
+  const hasNegation = (value2) => NEGATION.test(String(value2 || ""));
+  const negativeReference = hasNegation(reference);
+  const minimum = strict ? terms.length : terms.length <= 3 ? terms.length : Math.ceil(terms.length * 0.75);
+  const clauses = scienceResponseClauses(response);
+  const hits = (clause) => terms.filter((term) => tokenPresent2(clause, term)).length;
+  const contradicted = clauses.some((clause) => hasNegation(clause) !== negativeReference && hits(clause) >= minimum);
+  if (contradicted) return { matched: false, evidence: "", contradicted: true };
+  const evidence = clauses.find((clause) => hasNegation(clause) === negativeReference && hits(clause) >= minimum);
+  return { matched: Boolean(evidence), evidence: evidence || "", contradicted: false };
+}
+
 // src/integratedScience/practice/integratedSciencePaper2Grader.js
-var INTEGRATED_SCIENCE_P2_GRADER_VERSION = "2.2.0";
+var INTEGRATED_SCIENCE_P2_GRADER_VERSION = "2.3.0";
 var STOPWORDS2 = new Set("a an and are as at be been being but by can could did do does for from had has have in into is it its may more most of on or that the their them then there these they this those to too was were what when where which who will with would".split(" "));
 var SYNONYMS = Object.freeze({
   microorganisms: ["microbes", "germs", "bacteria"],
@@ -3740,7 +3761,7 @@ function tokenPresent(candidate, token) {
   const variants = SYNONYMS[t] || [];
   if (variants.some((item2) => (" " + c + " ").includes(" " + clean2(item2) + " "))) return true;
   const wanted = stem2(t);
-  return tokens(c).some((item2) => stem2(item2) === wanted);
+  return tokens(c).some((item2) => stem2(item2) === wanted || item2 === t.replace(/s$/, "") || t === item2.replace(/s$/, ""));
 }
 function stripMarkingNoise(point) {
   return String(point || "").replace(/\([^)]*\b(?:1|2|3|4|5)\s*\)/gi, "").replace(/^\s*(?:OR|Accept:)\s*/i, "").replace(/\s*\(Accept:[\s\S]*$/i, "").trim();
@@ -3749,16 +3770,11 @@ function pointAlternatives(point) {
   return stripMarkingNoise(point).split(/\s+(?:OR|\/|;\s*or\s+)\s+/i).map((item2) => item2.trim()).filter(Boolean);
 }
 function evidenceMatch(response, reference, strict = false) {
-  const negated = /\b(?:not|no|never|cannot|without|doesnt|isnt|dont)\b/i;
-  if (negated.test(clean2(response)) && !negated.test(clean2(reference))) return false;
-  const refTokens = tokens(reference).filter((token) => !/^(mark|marks|one|two|three|four|any)$/.test(token));
-  if (!refTokens.length) return false;
-  const hits = refTokens.filter((token) => tokenPresent(response, token)).length;
-  const ratio = hits / refTokens.length;
-  if (strict) return ratio === 1;
-  if (refTokens.length <= 2) return ratio === 1;
-  if (refTokens.length <= 5) return ratio >= 0.6;
-  return ratio >= 0.5;
+  return matchScienceWrittenEvidence(response, reference, {
+    tokens: (value2) => tokens(String(value2).replace(/\b(?:form|type|kind)\s+of\s+/gi, "")).filter((token) => !/^(mark|marks|one|two|three|four|any)$/.test(token)),
+    tokenPresent,
+    strict
+  }).matched;
 }
 function parseLabelPoint(point) {
   const match = String(point || "").match(/^\s*([A-Za-z0-9]+)\s*[-–:]\s*([^()]+?)(?:\s*\(|$)/);
@@ -3808,12 +3824,16 @@ function lineResult(questionId, partIndex, itemIndex, item2, responses) {
   });
   let score = criteria.reduce((sum, row) => sum + row.marks, 0);
   score = Math.min(maxMarks, score);
-  if (rawPoints.length === 1 && maxMarks > 1 && response.trim() && evidenceMatch(response, stripMarkingNoise(rawPoints[0]))) {
-    const coverage = tokens(rawPoints[0]).filter((token) => tokenPresent(response, token)).length / Math.max(1, tokens(rawPoints[0]).length);
-    score = Math.max(score, Math.min(maxMarks, Math.floor(coverage * maxMarks + 0.25)));
-    criteria[0] = { ...criteria[0], marks: score, maxMarks, earned: score === maxMarks };
-  }
-  return { score, maxMarks, criteria, confidence: "medium", provisional: true };
+  const unassessedMarks = String(response || "").trim() ? Math.max(0, maxMarks - Math.min(maxMarks, rawPoints.length)) : 0;
+  return {
+    score,
+    maxMarks,
+    criteria,
+    confidence: "medium",
+    provisional: true,
+    unassessedMarks,
+    ...unassessedMarks ? { reason: "Additional marks require separately verified marking criteria." } : {}
+  };
 }
 function tableResult(questionId, partIndex, itemIndex, item2, responses) {
   const base = `${questionId}:${partIndex}:${itemIndex}`;
@@ -4591,24 +4611,4 @@ var PRINTED = Object.freeze([
   [4, "b.i", "Describe the marketing activity known as 'branding'."],
   [4, "b.ii", "Colour is a critical component of a brand. Identify TWO other components that should be considered when creating a brand."],
   [4, "c.i", "Outline TWO factors the firm should consider in determining the most suitable packaging for the new ice-cream product."],
-  [4, "c.ii", "Explain TWO factors that could influence consumers' response to Flavourful's new ice cream."],
-  [5, "a.i", "Define the term 'business technology'."],
-  [5, "a.ii", "Identify TWO forms of technology and state how EACH form has influenced the services offered by commercial banks to their customers."],
-  [5, "b", "List FOUR types of productivity tools and/or specialist ICT applications used in business operations."],
-  [5, "c.i", "Define the term E-commerce."],
-  [5, "c.ii", "Define the term E-business."],
-  [5, "d", "Explain ONE advantage and ONE disadvantage of online shopping to Caribbean citizens and/or Caribbean economies."]
-].map(([questionNumber, partId, prompt]) => Object.freeze({
-  questionNumber,
-  partId,
-  prompt,
-  sourcePdfPage: questionNumber + 1,
-  visuallyChecked: true
-})));
-var POB_2026_JAN_HISTORICAL_BANK_VERSION = "pob-historical-2026-jan-p2-v1";
-function buildPob2026JanHistoricalPaper() {
-  const source2 = POB_2026_JAN_P2_AUTHORED_SCHEME;
-  const byId = new Map(PRINTED.map((row) => [row.questionNumber + ":" + row.partId, row]));
-  return Object.freeze({
-    id: source2.id,
-    bankVersion: POB_2026_JAN_HISTOR
+  [4, "c.ii", "Explain TWO factors that could influence consumers' response to Flavourful's new

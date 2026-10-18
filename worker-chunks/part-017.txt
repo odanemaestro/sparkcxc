@@ -1,4 +1,28 @@
-of the following terms:\n(i) Enterprise\n(ii) Entrepreneurship",
+e or affordable education (1). This can be judged by literacy rates, school enrolment and completion rates, and the number of trained teachers (1). Educated citizens get better jobs and make better-informed decisions, which improves their lives (1)."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paper": "Paper 2 (Structured Response)",
+      "year": "2017",
+      "session": "May/June",
+      "duration": "2 hours",
+      "instructions": "1. This paper consists of FIVE questions. Answer all questions.\n2. Write your answers in the spaces provided in this answer booklet.\n3. Do NOT write in the margins.\n4. You are advised to take some time to read through the paper and plan your answers.",
+      "total_questions": 5,
+      "questions": [
+        {
+          "number": 1,
+          "section": "All questions",
+          "section_instructions": "Answer ALL the questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Define EACH of the following terms:\n(i) Enterprise\n(ii) Entrepreneurship",
               "marks": 4,
               "answer": "2 marks each:\n(i) Enterprise: a business organization or undertaking set up to produce goods or services, usually for profit (the term is also used for the factor of production that organises the others and bears risk).\n(ii) Entrepreneurship: the ability and willingness to identify a business opportunity, organise the resources needed and take the risks of starting and running a business in order to make a profit."
             },

@@ -1,4 +1,7 @@
-e or market share.", ["1:First legitimate productivity gain", "1:Explains how gains arise, e.g. output per worker or cost per unit", "1:Links to a competitive or financial advantage", "1:Second distinct productivity advantage", "1:Explains the mechanism of output gain", "1:Explains expected business performance result"]],
+ds circulating inventory and daily costs such as stock and cash.", ["1:Explains meaning of fixed long-term productive capital", "1:Provides appropriate fixed-capital example", "1:Explains meaning of working capital used in daily production or short-term operations", "1:Provides a fitting working-capital example"]],
+  [3, "c.i", "Growth can give customers a wider range of products or improved service because the company can afford new outlets and equipment.", ["1:Identifies real customer benefit of company growth", "1:Explains practical improvement for consumers"]],
+  [3, "c.ii", "Successful growth can support higher dividends and a stronger share price for shareholders, although returns are not guaranteed.", ["1:Identifies genuine potential shareholder benefit", "1:Explains the link between business expansion and shareholder return"]],
+  [3, "d", "Higher productivity lowers labour cost per unit, allowing more competitive prices or better profit margins. More output from the same workforce also improves ability to fill orders promptly, raising revenue or market share.", ["1:First legitimate productivity gain", "1:Explains how gains arise, e.g. output per worker or cost per unit", "1:Links to a competitive or financial advantage", "1:Second distinct productivity advantage", "1:Explains the mechanism of output gain", "1:Explains expected business performance result"]],
   [4, "a", "Consumer associations educate buyers about rights and safe products and investigate complaints or advocate fair treatment and remedies.", ["2:First accurate consumer organisation function with practical purpose", "2:Second different accurate consumer organisation function developed"]],
   [4, "b", "Prompt complaint handling strengthens customer loyalty and repeat purchases. Helpful assistance and accurate answers enhance reputation, encouraging positive referrals.", ["2:First different developed benefit of good customer service", "2:Second different developed benefit"]],
   [4, "c.i", "A warranty is the manufacturer's or seller's promise to repair, replace or otherwise remedy covered defects under agreed conditions during a stated period.", ["1:Identifies product quality or defect promise subject to agreed period/terms", "1:Explains repair, replacement or other covered remedy"]],
@@ -2068,19 +2071,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
             },
             {
               "label": "(d)",
-              "question": "Select an appropriate method of transportation for EACH of the following products giving ONE reason for your choice.\n(i) Fresh flowers\n(ii) Cement\n(iii) Daily newspaper\n(iv) Money",
-              "marks": 8,
-              "answer": "2 marks each (1 for the method, 1 for the reason):\n(i) Fresh flowers: air transport (or a refrigerated van for local delivery), because flowers are perishable and must reach the market quickly.\n(ii) Cement: sea transport (or rail/heavy truck locally), because it is heavy and bulky and sea transport is cheapest per tonne.\n(iii) Daily newspaper: road transport (vans, motorcycles), because papers must be delivered early each morning to many shops and homes, door to door.\n(iv) Money: road transport in an armoured security vehicle, because money must be protected from theft."
-            }
-          ]
-        },
-        {
-          "number": 4,
-          "section": "Section II",
-          "section_instructions": "Answer TWO questions in this section as indicated.",
-          "choice": "Answer EITHER Question 4 OR Question 5. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-  
+              "question": "Select an appropriate method of transportation for EACH of the following products giving ONE reason for your choice.\n(i) Fres

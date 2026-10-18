@@ -1,4 +1,24 @@
-ICAL_BANK_VERSION,
+ ice cream."],
+  [5, "a.i", "Define the term 'business technology'."],
+  [5, "a.ii", "Identify TWO forms of technology and state how EACH form has influenced the services offered by commercial banks to their customers."],
+  [5, "b", "List FOUR types of productivity tools and/or specialist ICT applications used in business operations."],
+  [5, "c.i", "Define the term E-commerce."],
+  [5, "c.ii", "Define the term E-business."],
+  [5, "d", "Explain ONE advantage and ONE disadvantage of online shopping to Caribbean citizens and/or Caribbean economies."]
+].map(([questionNumber, partId, prompt]) => Object.freeze({
+  questionNumber,
+  partId,
+  prompt,
+  sourcePdfPage: questionNumber + 1,
+  visuallyChecked: true
+})));
+var POB_2026_JAN_HISTORICAL_BANK_VERSION = "pob-historical-2026-jan-p2-v1";
+function buildPob2026JanHistoricalPaper() {
+  const source2 = POB_2026_JAN_P2_AUTHORED_SCHEME;
+  const byId = new Map(PRINTED.map((row) => [row.questionNumber + ":" + row.partId, row]));
+  return Object.freeze({
+    id: source2.id,
+    bankVersion: POB_2026_JAN_HISTORICAL_BANK_VERSION,
     title: "CSEC Principles of Business \xB7 January 2026 \xB7 Paper 02",
     paper: "02",
     origin: "historical-cxc-source",
@@ -1468,8 +1488,4 @@ var POB_2012_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 43, "pdfPage": 7, "proposedOption": "B", "explanation": "Tax paid on wages and salaries is income tax.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 44, "pdfPage": 7, "proposedOption": "C", "explanation": "Reducing tax on low-income households can increase their real disposable purchasing power.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 45, "pdfPage": 7, "proposedOption": "C", "explanation": "PAYE and National Insurance were grouped in the original source as government redistribution arrangements, though the contribution basis varies.", "status": "academic-dispute", "dispute": "national-insurance-purpose-context", "alternatives": ["C"], "note": "NI is primarily social insurance in some Caribbean systems and its characterisation as a redistributive tax needs syllabus-era checking." }),
-    Object.freeze({ "number": 46, "pdfPage": 7, "proposedOption": "A", "explanation": "Excise duties are levied on selected goods produced within a country.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 47, "pdfPage": 7, "proposedOption": "D", "explanation": "Proportional taxation charges the same rate on different incomes.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 48, "pdfPage": 8, "proposedOption": "A", "explanation": "A favourable goods-trade balance means the country sells abroad more than it buys.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 49, "pdfPage": 8, "proposedOption": "B", "explanation": "International trade involves exchanges of goods and services between countries.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 50, "pdfPage": 8, "proposedOption"
+    Object.freeze({ "number": 

@@ -1,4 +1,19 @@
-            "question": "State TWO reasons why an individual may want to set up a business.",
+h flowers\n(ii) Cement\n(iii) Daily newspaper\n(iv) Money",
+              "marks": 8,
+              "answer": "2 marks each (1 for the method, 1 for the reason):\n(i) Fresh flowers: air transport (or a refrigerated van for local delivery), because flowers are perishable and must reach the market quickly.\n(ii) Cement: sea transport (or rail/heavy truck locally), because it is heavy and bulky and sea transport is cheapest per tonne.\n(iii) Daily newspaper: road transport (vans, motorcycles), because papers must be delivered early each morning to many shops and homes, door to door.\n(iv) Money: road transport in an armoured security vehicle, because money must be protected from theft."
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "section": "Section II",
+          "section_instructions": "Answer TWO questions in this section as indicated.",
+          "choice": "Answer EITHER Question 4 OR Question 5. Do NOT answer both.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "State TWO reasons why an individual may want to set up a business.",
               "marks": 4,
               "answer": "Any TWO, 2 marks each:\n\u2022 To earn a profit and income.\n\u2022 To be his or her own boss and have independence.\n\u2022 To meet a need in the community or make use of a business idea.\n\u2022 To use his or her skills and talents.\n\u2022 To provide employment for himself or herself and family members.\n\u2022 For personal satisfaction, prestige or flexible working hours."
             },
@@ -2792,28 +2807,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
                   "label": "(ii)",
                   "question": "Right to education",
                   "marks": 3,
-                  "answer": "Quality of life is higher where all citizens have access to free or affordable education (1). This can be judged by literacy rates, school enrolment and completion rates, and the number of trained teachers (1). Educated citizens get better jobs and make better-informed decisions, which improves their lives (1)."
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "paper": "Paper 2 (Structured Response)",
-      "year": "2017",
-      "session": "May/June",
-      "duration": "2 hours",
-      "instructions": "1. This paper consists of FIVE questions. Answer all questions.\n2. Write your answers in the spaces provided in this answer booklet.\n3. Do NOT write in the margins.\n4. You are advised to take some time to read through the paper and plan your answers.",
-      "total_questions": 5,
-      "questions": [
-        {
-          "number": 1,
-          "section": "All questions",
-          "section_instructions": "Answer ALL the questions.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Define EACH 
+                  "answer": "Quality of life is higher where all citizens have access to fre
