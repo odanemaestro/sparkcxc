@@ -70,3 +70,12 @@ Run the full test suite and build before merge.
 - No automatic enqueue trigger yet. The worker storage adapter and server-only execution still need implementation.
 - Migration is committed only to the feature branch and has **not** been applied to production.
 - Before rollout: run SQL migration in staging, inspect privilege grants and function owners, check retry races and expired lease behaviour, exercise service JWT authorization, and complete server-side submission validation.
+
+## Batch 4 continued: PostgreSQL storage adapter
+- Added `postgresGradingJobStoreV2.js`, a server-only adapter for parameterized SQL calls to the private claim/finish functions.
+- Enforces UUID validation, limited completion states, and lease-token fencing. Lost leases throw and never report successful completion.
+- Retry handling discards potential student-response data from the result payload.
+- Added five regression tests; the tests have not been executed in this session.
+- Private function authorization permits direct trusted PostgreSQL sessions and service-role JWTs, not anonymous or authenticated student roles.
+- A running backend with database credentials, atomic enqueue path, grading rubric registry, response loader, and live worker is still missing.
+- No database migration deployed or verified in production. Do not merge without staging role/RLS/lease tests.
