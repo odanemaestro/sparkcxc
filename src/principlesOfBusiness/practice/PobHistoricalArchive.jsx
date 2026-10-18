@@ -105,8 +105,8 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
   try{
    const started=await startServerExamAttempt({supabase,subjectId:"principles-of-business",
      paper:"02",mode:"timed",durationSeconds:7200,
-     bankVersion:pobArchiveBankVersion(record.id),
-     rubricVersion:POB_ARCHIVE_RUBRIC_VERSION,graderVersion:"online-v1",
+     bankVersion:ownerBank?pobOwnerP2BankVersion(record.id):pobArchiveBankVersion(record.id),
+     rubricVersion:ownerBank?POB_OWNER_P2_RUBRIC_VERSION:POB_ARCHIVE_RUBRIC_VERSION,graderVersion:"online-v1",
      metadata:{paper_id:record.id,source_sha256:record.source.sourceSha256,
        selected_questions:selected,source:"historical-cxc-archive",
        owner_source_provisional:Boolean(ownerBank)}});
