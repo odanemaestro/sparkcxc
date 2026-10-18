@@ -60,7 +60,7 @@ test("historical Paper 2 allows written answers and shows actual authored rubric
  fireEvent.change(entry,{target:{value:"A registered company follows national company law."}});
  fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
  expect(screen.getAllByText(/SPARK model answer/).length).toBeGreaterThan(0);
- expect(screen.getByText(/Question wording and worked solutions come from your uploaded Paper 2 transcription/)).toBeTruthy();
+ expect(screen.getByText(/Question wording and worked solutions come from the uploaded Paper 2 transcription/)).toBeTruthy();
 });
 test("January 2026 archive route goes to the already implemented live pilot exam",()=>{
  const open=jest.fn();
@@ -182,7 +182,7 @@ test("January 2022 owner-source pilot submits only its versioned 100-mark bank",
    userId="pob-pilot-tester" supabase={{rpc}}/>);
   fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2022"}});
   fireEvent.click(screen.getByRole("button",{name:/2022 January.*Paper 2.*Written answers and mark schemes/}));
-  expect(screen.getByText(/source-aligned rubric for provisional practice assessment/)).toBeInTheDocument();
+  expect(screen.getByText(/SPARK marking scheme ready/)).toBeInTheDocument();
   fireEvent.change(screen.getAllByRole("textbox")[0],{target:{value:"To earn a profit and to help the community."}});
   fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
   fireEvent.click(screen.getByRole("button",{name:"Request detailed AI practice marking"}));
@@ -233,5 +233,30 @@ test("owner Paper 2 pilot stays hidden when source marking release switch is off
   if(old1===undefined)delete process.env.REACT_APP_SERVER_MARKING;else process.env.REACT_APP_SERVER_MARKING=old1;
   if(old2===undefined)delete process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING;else process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING=old2;
   if(old3===undefined)delete process.env.REACT_APP_POB_OWNER_SOURCE_MARKING;else process.env.REACT_APP_POB_OWNER_SOURCE_MARKING=old3;
+ }
+});
+
+test("the SPARK historical Paper 2 marking scheme works with AI switches disabled",()=>{
+ const oldA=process.env.REACT_APP_SERVER_MARKING;
+ const oldB=process.env.REACT_APP_POB_OWNER_SOURCE_MARKING;
+ delete process.env.REACT_APP_SERVER_MARKING;
+ delete process.env.REACT_APP_POB_OWNER_SOURCE_MARKING;
+ try{
+  render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
+  fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2022"}});
+  fireEvent.click(screen.getByRole("button",{name:/2022 January.*Paper 2.*Written answers and mark schemes/}));
+  expect(screen.getByText(/SPARK marking scheme ready/)).toBeInTheDocument();
+  fireEvent.change(screen.getAllByRole("textbox")[0],{target:{value:"Jane might want to earn more money and become independent."}});
+  fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
+  const region=screen.getByText("SPARK rubric review").closest("section");
+  expect(region).toHaveTextContent("Confirmed marks: 0 / 100");
+  expect(region).toHaveTextContent("1 written part(s) still require evidence-based assessment");
+  expect(screen.getAllByText(/SPARK model answer/).length).toBeGreaterThan(0);
+  expect(screen.queryByRole("button",{name:"Request detailed AI practice marking"})).not.toBeInTheDocument();
+ }finally{
+  if(oldA===undefined)delete process.env.REACT_APP_SERVER_MARKING;
+  else process.env.REACT_APP_SERVER_MARKING=oldA;
+  if(oldB===undefined)delete process.env.REACT_APP_POB_OWNER_SOURCE_MARKING;
+  else process.env.REACT_APP_POB_OWNER_SOURCE_MARKING=oldB;
  }
 });
