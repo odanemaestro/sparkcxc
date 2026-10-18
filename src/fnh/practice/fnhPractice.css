@@ -206,3 +206,18 @@ html[data-theme="dark"] .fnh-choice-number,body[data-theme="dark"] .fnh-choice-n
   line-height: 1.5;
   opacity: .8;
 }
+
+
+/* Evidence cards replace former candidate-selected score checkboxes. */
+.fnh-p2 .fnh-p2-marking-points p {
+  margin:0;min-width:0;overflow-wrap:anywhere;
+  padding:11px 12px;border:1px solid var(--fnh-border);border-radius:10px;
+  background:var(--fnh-card);color:var(--fnh-ink);font-size:13px;line-height:1.65;
+}
+.fnh-p2 .fnh-p2-marking-points .fnh-mark-point-confirmed {
+  border-color:color-mix(in srgb,var(--fnh-accent) 42%,var(--fnh-border));
+  background:color-mix(in srgb,var(--fnh-card) 94%,var(--fnh-accent));
+}
+.fnh-p2 .fnh-p2-marking-points p strong{font-size:13px;color:var(--fnh-ink);margin-right:4px}
+.fnh-p2 .fnh-self-review-summary{overflow-wrap:anywhere}
+@media(max-width:560px){.fnh-p2 .fnh-p2-marking-points p{padding:11px;font-size:13px}}
