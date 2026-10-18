@@ -178,3 +178,30 @@ test("unapproved relation, unrelated part and historical paper IDs are rejected"
   expect(()=>grade({...args,response:{answer:"yes"}})).toThrow(/Unsupported/);
  }
 });
+
+
+describe.each(cases)("authored relation-reason working-field safeguards",f=>{
+ test("a conclusion in the answer and a valid reason in working earn separate candidates",()=>{
+  const r=grade({questionId:f.id,partId:"d",
+   response:{answer:"Yes, one-to-one",working:"The gradient is non-zero, so every x gives a different output."}});
+  expect(r.criteria.map(c=>c.candidateMarks)).toEqual([1,1]);
+  expect(r.rubricAllocation).toBe("authored");
+  expect(r.publishable).toBe(false);
+ });
+ test("reason in working without a one-to-one claim earns only explanation evidence",()=>{
+  const r=grade({questionId:f.id,partId:"d",
+   response:{answer:"",working:"Different outputs for each input."}});
+  expect(r.criteria.map(c=>c.candidateMarks)).toEqual([null,1]);
+ });
+ test("claims about repeated outputs cannot count as evidence of injectivity",()=>{
+  const r=grade({questionId:f.id,partId:"d",
+   response:{answer:"Yes",working:"There are repeated outputs."}});
+  expect(r.criteria[1].candidateMarks).toBeNull();
+ });
+ test("contradictory working prevents a purportedly correct injectivity statement",()=>{
+  const r=grade({questionId:f.id,partId:"d",
+   response:{answer:"Yes, one-to-one",working:"Two distinct inputs have the same output."}});
+  expect(r.suggestedMarks).toBe(0);
+  expect(r.publishable).toBe(false);
+ });
+});
