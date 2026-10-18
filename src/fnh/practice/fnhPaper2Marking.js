@@ -40,58 +40,33 @@ export function fnhSelfAssessmentTotal(paper=[],selfReview={},answers=null){
 }
 
 
-// Candidate-selected checkboxes are legacy review data, NOT grading evidence.
-// The non-AI marker only confirms points supported by written candidate text.
-// Anything not established remains unresolved; it is never assumed incorrect.
-const FNH_NOISE=new Set("the a an and of to in on for with is are was were be being that this these those their it its from by at into or as can may should such one two three four marks mark award give point points example examples accepted also any".split(" "));
-const fnhWords=value=>String(value??"").toLowerCase().replace(/[’‘]/g,"'")
-  .match(/[a-z]+|\d+(?:\.\d+)?/g)||[];
-const fnhKeyTerms=value=>[...new Set(fnhWords(value).filter(w=>w.length>=3&&!FNH_NOISE.has(w)))];
-const fnhNegated=value=>/\b(?:not|never|no|cannot|can't|doesn't|don't|isn't|without)\b/i.test(String(value||""));
-const fnhStatements=value=>String(value??"").split(/[;\n]+|(?<!\d)\.\s+(?!\d)/)
-  .map(s=>s.trim()).filter(Boolean);
-function fnhVerifiablePoint(text){
-  const raw=String(text||"");
-  return !/^\s*(?:award|give|accept|credit|any\s+(?:two|three|four)|up\s+to)\b/i.test(raw)
-    && fnhKeyTerms(raw).length>=4;
-}
+import {matchFnhCriterionEvidence,FNH_P2_RUBRIC_CALIBRATION_VERSION} from "./fnhPaper2RubricCalibration";
+export {FNH_P2_RUBRIC_CALIBRATION_VERSION};
+
+// Legacy self-check helpers above are preserved for historic stored attempts
+// and tests, but they do not participate in live exam scoring.
 export function gradeFnhWrittenPart(part,response){
   const maxMarks=Math.max(0,Number(part?.marks)||0);
   const original=String(response??"");
-  const statements=fnhStatements(original);
-  const used=new Set();
+  const accepted=[];
   let confirmed=0;
   const criteria=(part?.modelPoints||[]).map((modelPoint,index)=>{
-    const text=String(modelPoint||"");
-    const reference=fnhKeyTerms(text);
-    let evidence="";
-    if(confirmed<maxMarks&&fnhVerifiablePoint(text)){
-      for(let i=0;i<statements.length;i++){
-        if(used.has(i)||fnhNegated(text)!==fnhNegated(statements[i]))continue;
-        const candidate=new Set(fnhKeyTerms(statements[i]));
-        const hits=reference.filter(term=>candidate.has(term)).length;
-        const threshold=Math.max(4,Math.ceil(reference.length*.85));
-        const sourceNumbers=(text.match(/\b\d+(?:\.\d+)?\b/g)||[]);
-        const responseNumbers=(statements[i].match(/\b\d+(?:\.\d+)?\b/g)||[]);
-        const numbersMatch=sourceNumbers.every(n=>responseNumbers.includes(n));
-        // Conflicting assertions about the same point need adjudication.
-        const contradicted=statements.some(other=>
-          fnhNegated(other)!==fnhNegated(text)&&
-          reference.filter(term=>new Set(fnhKeyTerms(other)).has(term)).length>=threshold);
-        if(hits>=threshold&&numbersMatch&&!contradicted){
-          evidence=statements[i];used.add(i);confirmed+=1;break;
-        }
-      }
+    const match=matchFnhCriterionEvidence(modelPoint,original,{usedEvidence:accepted});
+    const earned=confirmed<maxMarks && match.confirmed;
+    if(earned){
+      accepted.push({index:match.sourceIndex,signature:match.evidenceKey,terms:match.terms});
+      confirmed+=1;
     }
-    return {id:String(index),rule:text,confirmed:Boolean(evidence),marks:evidence?1:0,
-      evidence,reviewRequired:!evidence};
+    return {id:String(index),rule:String(modelPoint||""),confirmed:earned,
+      marks:earned?1:0,evidence:earned?match.evidence:"",
+      reviewRequired:!earned,reason:match.reason||null};
   });
   const blank=!original.trim();
   const unresolvedMarks=blank?0:Math.max(0,maxMarks-confirmed);
   return {maxMarks,confirmedMarks:confirmed,unresolvedMarks,
     assessedMarks:blank||unresolvedMarks===0?confirmed:null,
     status:blank?"unanswered":unresolvedMarks?"requires-rubric-assessment":"criterion-verified",
-    criteria};
+    rubricVersion:FNH_P2_RUBRIC_CALIBRATION_VERSION,criteria};
 }
 export function gradeFnhWrittenPaper(paper=[],answers={}){
   const questions=(paper||[]).map(question=>{
@@ -109,6 +84,7 @@ export function gradeFnhWrittenPaper(paper=[],answers={}){
   const unresolvedMarks=questions.reduce((n,q)=>n+q.unresolvedMarks,0);
   const fullyAssessed=unresolvedMarks===0;
   return {questions,maxMarks,confirmedMarks,unresolvedMarks,fullyAssessed,
+    rubricVersion:FNH_P2_RUBRIC_CALIBRATION_VERSION,
     assessedMarks:fullyAssessed?confirmedMarks:null,
     reviewedParts:questions.flatMap(q=>q.parts).filter(p=>p.status==="criterion-verified").length,
     unresolvedParts:questions.flatMap(q=>q.parts).filter(p=>p.assessedMarks===null).length};
