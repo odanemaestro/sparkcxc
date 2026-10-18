@@ -67,5 +67,5 @@ test("the 20 supplied owner-transcribed POB Paper 2 archives expose mark-level r
  // The current banks may be structurally complete; missing criteria are
  // exercised explicitly in the malformed-source regression above.
  expect(audits.some(a=>a.gaps.some(g=>g.reason==="multi-mark-criterion-needs-subcriteria"))).toBe(true);
- expect(POB_HISTORICAL_RUBRIC_REVIEW_VERSION).toContain("v4");
+ expect(POB_HISTORICAL_RUBRIC_REVIEW_VERSION).toContain("v5");
 });
