@@ -48,6 +48,7 @@ export default function PobHistoricalPaper1Preview({record}){
        <article className="pob-exam-card pob-exam-question">
          <div className="pob-question-head"><span>Question {current.number} of 60</span><span>{record.source.year} {record.source.sitting==="JAN"?"January":"May/June"} · Paper 1</span></div>
          <h1>{current.stem}</h1>
+         {current.diagram_svg&&<div className="pob-source-diagram"><img alt={"Diagram for question "+current.number} src={"data:image/svg+xml;charset=utf-8,"+encodeURIComponent(current.diagram_svg)}/></div>}
          {(current.sourceReviewPending||current.sourceGraphicPending)&&<div className="pob-source-caveat" role="note"><strong>Original-source review pending</strong><p>{current.sourcePlaceholderNote||"This question depends on an original figure or source passage that needs verification."} It is excluded from the provisional score until checked against the supplied PDF.</p></div>}
          <fieldset disabled={review}><legend className="pob-visually-hidden">Choose one answer</legend>
          {current.options.map((label,i)=><label key={i} className={"pob-exam-option "+(responses[current.number]===CHOICES[i]?"selected ":"")}>
