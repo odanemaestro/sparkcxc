@@ -228,7 +228,7 @@ export async function observeRecommendationOutcome({
       p_subject_id:String(subjectId).toLowerCase(),
       p_activity_type:String(activityType).toLowerCase(),
       p_activity_key:String(activityKey),
-      p_percent:Number.isFinite(Number(percent)) ? Number(percent) : null,
+      p_percent:percent!==null&&percent!==undefined&&Number.isFinite(Number(percent)) ? Number(percent) : null,
       p_metadata:metadata || {},
     });
     return { data, error };
