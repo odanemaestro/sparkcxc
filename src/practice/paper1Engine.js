@@ -228,8 +228,8 @@ export function validatePaper1Exam(exam) {
 
 export function scorePaper1(questions, answers) {
   const rows = questions.map(q => {
-    const selected = answers[q.question_id] || "";
-    const correct = selected === q.correct_option;
+    const selected = String(answers?.[q.question_id] ?? "").trim().toUpperCase();
+    const correct = selected !== "" && selected === String(q.correct_option ?? "").trim().toUpperCase();
     return { question: q, selected, correct, unanswered: !selected };
   });
 
