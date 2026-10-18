@@ -112,3 +112,23 @@ test("every part is capped, and unknown source and question IDs fail closed",()=
  expect(()=>examine({questionId:"p2-q1-v1",partId:"a",
   response:{answer:"7"}})).toThrow(/Uncalibrated/);
 });
+
+
+test("separate arithmetic sentences or lines are not mistaken for decimals",()=>{
+ const examples=[
+  "Increase = 4900 - 4500 = 400. 400 / 4500 x 100 = 8.89",
+  "Increase = 4900 - 4500 = 400\n400 / 4500 x 100 = 8.89",
+  "4900-4500=400;400/4500x100=8.89"
+ ];
+ for(const working of examples){
+  const r=mark("b3",{answer:"8.89",working},{b2});
+  expect(r.criteria.map(c=>c.candidateMarks)).toEqual([1,1]);
+ }
+});
+test("incorrect operation or a written decimal does not masquerade as two-step working",()=>{
+ const wrong=mark("b1",{answer:"3600",working:"4500 / 100 / 125 = 3600"});
+ expect(wrong.criteria[0].candidateMarks).toBeNull();
+ const falseSeparator=mark("b3",{answer:"8.89%",
+  working:"4900-4500=400.400/4500x100=8.89"},{b2});
+ expect(falseSeparator.criteria[0].candidateMarks).toBeNull();
+});
