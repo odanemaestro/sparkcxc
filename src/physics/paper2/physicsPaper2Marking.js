@@ -692,9 +692,11 @@ function valueCorrectIgnoringMissingUnit(response, check, context = "") {
   if(evidence===null || hasCompetingNumericAlternatives(response))return false;
   const expected = Number(check?.value);
   const expectedUnit = check?.unit || "";
-  if (!Number.isFinite(expected) || !expectedUnit || responseHasPhysicsUnit(response, expectedUnit)) return false;
+  if (!Number.isFinite(expected) || !expectedUnit || responseHasPhysicsUnit(evidence, expectedUnit)) return false;
   const quantity = quantityForPaper2Unit(expectedUnit);
-  if (quantity && physicsResponseFragments(response).some(fragment => parsePhysicsQuantity(fragment, quantity).unit)) return false;
+  // Only the declared final answer determines whether its unit is missing.
+  // A correct unit on an unrelated working line cannot repair a unitless final.
+  if (quantity && physicsResponseFragments(evidence).some(fragment => parsePhysicsQuantity(fragment, quantity).unit)) return false;
   const range = explicitAcceptRange(context);
   const relativeTolerance = Math.max(0, Number(check?.tolerance || 0));
   const scale = Math.max(1, Math.abs(expected));
