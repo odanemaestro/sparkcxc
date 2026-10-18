@@ -4,10 +4,28 @@
 const field=(label,choices)=>Object.freeze({label,choices:Object.freeze(choices)});
 const roles=["","Manager","Supervisor of mail delivery","Supervisor of mail sorting",
  "Board of Directors","Managing Director","Operations Manager","Supervisor",
- "Marketing Manager","Production Manager","Finance Manager","Sales Clerk"];
+ "Marketing Manager","Production Manager","Finance Manager","Sales Clerk",
+ "Sales Supervisor North","Sales Supervisor South","Consultant"];
 const links=["","Top position","Middle position","No reporting relationship"];
 
 export const POB_P2_VISUAL_TASKS=Object.freeze({
+ "POB-P2-2006-MJ:Q4:c.ii":Object.freeze({
+  kind:"org-span",title:"Identify the marketing manager’s direct span of control",marks:2,
+  fields:{
+   count:field("Direct reports",["","1","2","3","8"]),
+   left:field("First direct report",roles),
+   right:field("Second direct report",roles)
+  }
+ }),
+ "POB-P2-2006-MJ:Q4:d.ii":Object.freeze({
+  kind:"command-path",title:"Build the consultant-to-sales-clerk reporting path",marks:4,
+  fields:{
+   step1:field("Consultant advises",roles),
+   step2:field("First manager passes instructions to",roles),
+   step3:field("Second manager instructs",roles),
+   step4:field("Final recipient",roles)
+  }
+ }),
  "POB-P2-2014-MJ:Q1:c.ii":Object.freeze({
   kind:"org-branch",title:"Build the line-relationship organisation chart",marks:3,
   fields:{
@@ -76,6 +94,16 @@ export function gradePobP2VisualTask(paperId,partKey,response){
    value("middleParent")==="Top position"&&value("bottomParent")==="Middle position"&&
     validMiddle&&validBottom
   ];
+ }else if(task.kind==="org-span"){
+  const names=[value("left"),value("right")];
+  points=[value("count")==="2",
+   names.includes("Sales Supervisor North")&&names.includes("Sales Supervisor South")&&names[0]!==names[1]];
+ }else if(task.kind==="command-path"){
+  const supervisor=["Sales Supervisor North","Sales Supervisor South"].includes(value("step3"));
+  points=[value("step1")==="Managing Director",
+   value("step1")==="Managing Director"&&value("step2")==="Marketing Manager",
+   value("step2")==="Marketing Manager"&&supervisor,
+   supervisor&&value("step4")==="Sales Clerk"];
  }else if(task.kind==="distribution"){
   points=[["Manufacturer","Producer"].includes(value("box1")),
    value("box2")==="Wholesaler",value("box3")==="Retailer",
