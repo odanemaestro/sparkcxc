@@ -6,11 +6,12 @@ const reports=POB_HISTORICAL_REVIEW_BANKS.filter(r=>r.paper===2)
  .map(auditPobOwnerPaper2Calibration).filter(r=>r.issues[0]!=="owner_source_unavailable");
 test("all 20 uploaded papers have an explicit detailed rubric compatibility report",()=>{
  expect(reports).toHaveLength(20);
- console.info("POB_OWNER_RUBRIC_QA",JSON.stringify(reports.map(r=>({paper:r.id,ready:r.ready,parts:r.sourceParts,matched:r.rubricParts,issues:r.issues.slice(0,6)}))));
  expect(new Set(reports.map(r=>r.id)).size).toBe(20);
  expect(reports.every(r=>r.sourceParts>0&&r.candidateChoices>0)).toBe(true);
- // Baseline reports identify outstanding differences rather than silently granting marks.
- expect(reports.some(r=>!r.ready)).toBe(true);
+ // All source-part IDs and marks now reconcile; this is only a structural check.
+ // Pilot authorisation and real answer grading remain independent gates.
+ expect(reports.every(r=>r.ready)).toBe(true);
+ expect(POB_OWNER_P2_PILOT_IDS).toEqual(["POB-P2-2022-JAN"]);
 });
 test("released pilot has full 100-mark criteria, all five compulsory questions and source prompts",()=>{
  expect(POB_OWNER_P2_PILOT_IDS).toEqual(["POB-P2-2022-JAN"]);
