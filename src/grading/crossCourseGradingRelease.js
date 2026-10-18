@@ -12,6 +12,10 @@ export const PAPER2_GRADING_SUBJECTS=Object.freeze([
   "information-technology","integrated-science","mathematics",
   "physics","principles-of-business","social-studies"
 ]);
+export const OFFICIAL_CXC_RULE_SUBJECTS=Object.freeze([
+  "english-a","information-technology","integrated-science",
+  "mathematics","physics","social-studies"
+]);
 
 const num=value=>typeof value==="number"&&Number.isFinite(value);
 const nonnegative=value=>num(value)&&value>=0;
@@ -100,6 +104,12 @@ export function auditCrossCourseCalibration({officialReport,subjectCases=[],
   };
   (Array.isArray(official)?official:[]).forEach(row=>accept(row,"official"));
   (Array.isArray(subjectCases)?subjectCases:[]).forEach(row=>accept(row,"authored"));
+  // Authored subject tests cannot substitute for a missing CXC-anchored
+  // case in courses that claim an official-rule calibration suite.
+  for(const subjectId of OFFICIAL_CXC_RULE_SUBJECTS){
+    if(!perSubject[subjectId]||perSubject[subjectId].official<minCasesPerSubject)
+      issues.push("missing-official-rule-coverage:"+subjectId);
+  }
   for(const subjectId of requiredSubjects){
     const row=perSubject[subjectId];
     if(!row||row.total<minCasesPerSubject)issues.push("missing-subject-coverage:"+subjectId);
