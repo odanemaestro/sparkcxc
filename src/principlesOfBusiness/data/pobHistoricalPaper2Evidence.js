@@ -100,9 +100,9 @@ export function gradePobHistoricalArithmetic(paperId,partKey,response){
  if(partKey==="Q9:b"){
   const visible=negative2000;
   const invisible=number("5000")||(number("20000")&&number("15000")&&/[-−]/.test(s));
-  const balance=!ambiguousFinal && (finalValue===null?(
-    (number("3000")&&(/surplus/.test(s)||/\+3000\b/.test(compact)))):finalValue===3000)||
-   (/current[ -]?account/.test(s)&&number("3000")&&!negative2000);
+  const evidenceForBalance=(number("3000")&&(/surplus/.test(s)||/\+3000\b/.test(compact)))||
+    (/current[ -]?account/.test(s)&&number("3000")&&!negative2000);
+  const balance=!ambiguousFinal&&(finalValue===null?evidenceForBalance:finalValue===3000);
   return {maximum:3,marks:Number(visible)+Number(invisible)+Number(balance),
    criteria:[Number(visible),Number(invisible),Number(balance)],exact:true};
  }
