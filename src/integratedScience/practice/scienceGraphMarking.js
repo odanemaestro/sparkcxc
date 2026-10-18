@@ -27,7 +27,9 @@ export function gradeScienceGraph(question,partIndex,itemIndex,item,responses,ax
   const structured=readScienceGraph(responses[`${base}:graph`]) || legacyGraph(base,responses,graphRubrics[base]);
   if(structured && graphRubrics[base]) return gradeConstructedGraph(base,item,responses,structured,graphRubrics[base],axisMatches);
   const expected=expectedScienceGraphPoints(question,partIndex,item);
-  const submitted=parseScienceGraphPoints(responses[`${base}:points`]);
+  const input=String(responses[`${base}:points`]||"");
+  const rawLines=input.split(/\n|;/).filter(line=>line.trim());
+  const submitted=parseScienceGraphPoints(input);
   const points=submitted.filter(Boolean);
   const seen=new Set();
   let correct=0;
@@ -35,7 +37,7 @@ export function gradeScienceGraph(question,partIndex,itemIndex,item,responses,ax
     const index=expected.findIndex(want=>Math.abs(point.x-want.x)<1e-7 && Math.abs(point.y-want.y)<1e-7);
     if(index>=0 && !seen.has(index)){seen.add(index);correct+=1;}
   });
-  const valid=submitted.length===points.length && new Set(points.map(p=>`${p.x},${p.y}`)).size===points.length;
+  const valid=rawLines.length===points.length && new Set(points.map(p=>`${p.x},${p.y}`)).size===points.length;
   const plottingMarks=Number(item.marks)===5?2:0;
   const earned=expected.length && valid && points.length<=expected.length
     ? correct===expected.length ? plottingMarks : correct>=Math.ceil(expected.length/2) ? Math.min(1,plottingMarks) : 0 : 0;
@@ -48,7 +50,7 @@ export function gradeScienceGraph(question,partIndex,itemIndex,item,responses,ax
   // The current widget auto-scales and joins points; those actions do not
   // demonstrate that the candidate selected a scale or constructed a curve.
   return {score:earned+(axes?1:0),maxMarks:Number(item.marks),criteria,confidence:"low",provisional:true,
-    visualEvidenceRequired:true,unassessedMarks:Number(item.marks)-(expected.length?plottingMarks:0)-1,
+    visualEvidenceRequired:true,unassessedMarks:Math.max(0,Number(item.marks)-(expected.length?plottingMarks:0)-1),
     visualEvidence:{plottedPoints:points.length,correctPoints:correct},
     reason:"Coordinates and axis labels are checked automatically. Scale, construction and unsupported series remain unassessed by this graph editor."};
 }
