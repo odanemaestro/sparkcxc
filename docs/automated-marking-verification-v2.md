@@ -133,3 +133,9 @@ Run the full test suite and build before merge.
 - Physics checks criterion marks against part maximum; both subjects fail closed for duplicate IDs and invalid marks.
 - Four tests added, not yet executed. This module is source-shape preparation only, not a trusted marking scheme or production feature.
 - Still required: Social Studies, Principles of Business and Mathematics source-shape adapters, verified rubric calibration, real-file end-to-end tests and server runtime.
+
+## Social Studies and Mathematics source mapping
+- Added `paper2RemainingAdaptersV2.js`, preserving Social Studies structured part keys and essay IDs, and Mathematics nested question/part response objects.
+- Five regression tests added, not executed. These adapters grant no marking authority.
+- POB source structure still needs a verified inspection before an adapter is written. Do not guess response keys or exam structure.
+- All V2 adapters remain disconnected from live publication and require real-bank fixtures and validation.
