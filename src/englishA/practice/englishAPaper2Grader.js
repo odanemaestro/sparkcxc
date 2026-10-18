@@ -49,8 +49,10 @@ function repetitionCap(result,response){
   const count=countEnglishWords(response);
   const max=count>=100&&repetition.repeatedShare>=.4?14
     :count>=100&&repetition.repeatedShare>=.2?22:null;
-  if(max===null||result.score<=max)
-    return {...result,diagnostics:{...result.diagnostics,repetition}};
+  if(max===null)return {...result,diagnostics:{...result.diagnostics,repetition}};
+  if(result.score<=max)return {...result,confidence:"low",
+    diagnostics:{...result.diagnostics,repetition},
+    feedback:[...(result.feedback||[]),"Repeated statements limit demonstrated content development. The score remains a provisional estimate."]};
   const scale=max/result.score;
   const dimensions=(result.dimensions||[]).map(row=>({...row,score:round(row.score*scale)}));
   const newScore=round(dimensions.reduce((total,row)=>total+row.score,0));
@@ -450,7 +452,7 @@ function gradeLiterary(task,response){
   const storyElements=Math.min(6,(narrative>=3?2:1)+(resolution?1.5:.5)+(dialogue?1.25:.5)+(sensory>=2?1.25:.5));
   const development=Math.min(6,d.wordCount>=300?6:d.wordCount>=200?4:d.wordCount>=120?2:1);
   let evaluating=round(clamp((promptUse+storyElements+development)*length.factor,0,16));
-  if(!literal.fulfilled)evaluating=Math.min(evaluating,8);
+  if(!literal.fulfilled)evaluating=round(Math.min(evaluating*.65,8));
 
   let analysing=round(clamp((d.paragraphCount>=5?3:d.paragraphCount>=3?2:1)+(narrative>=4?2:narrative>=2?1:0)+(resolution?2:1),0,7));
   if(!literal.fulfilled)analysing=Math.min(analysing,5);
@@ -474,7 +476,7 @@ function gradeLiterary(task,response){
       {id:"analysing",label:"P2 Analysing: organisation and sequencing",score:analysing,max:7},
       {id:"understanding",label:"P1 Understanding: language, grammar, mechanics and narrative control",score:understanding,max:7,evidence:lang.notes},
     ],
-    feedback,diagnostics:d,
+    feedback,diagnostics:{...d,literalRequirement:literal},
   };
 }
 
