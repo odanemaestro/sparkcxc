@@ -111,3 +111,10 @@ Run the full test suite and build before merge.
 - `objectiveMarkingV2.js` now uses the quantity comparison for numeric candidate evidence, while keeping all decisions advisory.
 - Seven added regression scenarios cover conversions, dimensions, invalid expressions, scientific notation and integration.
 - No real grading scores are published. These checks require staging execution and historical-rubric calibration before any trusted decisions are enabled.
+
+## Paper 2 source-shape adapter
+- `paper2CriteriaAdapterV2.js` maps FNH historical responses using `question.id:part.id` and Chemistry responses using `question.id:partIndex:itemIndex`.
+- Retains source mark maximums and blank responses, and rejects missing/duplicate part IDs and invalid mark allocations.
+- Does not promote worked answers or model-point phrases into automatic trusted decisions. `acceptedPhrases` intentionally remains empty until authoritatively reviewed rubric definitions are available.
+- Four regression tests added. This is a source-format adapter, not an enabled grading or score publication endpoint.
+- Further course mappings require verifying each course's response and marking structures before rollout.
