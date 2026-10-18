@@ -33,3 +33,25 @@ test("all other transcriptions are refused for versioned owner pilot scoring",()
  expect(()=>buildPobArchiveExaminerPack({paperId:record.id,ownerSource:true,
   selectedQuestions:defaultPobArchiveSelection(record.bank)})).toThrow("owner_calibration_not_released");
 });
+
+test("the trusted worker rejects owner pilot submissions without server authority",()=>{
+ const {buildTrustedAssessment}=require("./serverAssessment");
+ const record=POB_HISTORICAL_REVIEW_BANKS.find(r=>r.id==="POB-P2-2022-JAN");
+ const pack=buildPobArchiveExaminerPack({paperId:record.id,ownerSource:true,
+  selectedQuestions:[1,2,3,4,5]});
+ const attempt={subject_id:"principles-of-business",paper:"02",status:"submitted",
+  bank_version:pack.bankVersion,rubric_version:pack.rubricVersion,grader_version:"online-v1",
+  metadata:{paper_id:record.id,source_sha256:record.source.sourceSha256,selected_questions:[1,2,3,4,5]},
+  score:null,max_score:100,response_snapshot:{}};
+ expect(()=>buildTrustedAssessment(attempt)).toThrow("unsupported_bank_version");
+ const result=buildTrustedAssessment(attempt,{historicalPobArchiveEnabled:true});
+ expect(result.items.reduce((n,i)=>n+i.maxMarks,0)).toBe(100);
+ expect(result.parts.every(p=>p.prompt&&p.modelAnswer)).toBe(true);
+ expect(result.ownerSourceProvisional).toBe(true);
+ expect(()=>buildTrustedAssessment({...attempt,metadata:{...attempt.metadata,
+  source_sha256:"forged"}},{historicalPobArchiveEnabled:true})).toThrow("historical_attempt_identity_mismatch");
+ expect(()=>buildTrustedAssessment({...attempt,
+  rubric_version:"pob-historical-archive-rubric-v1"},{historicalPobArchiveEnabled:true})).toThrow("historical_attempt_identity_mismatch");
+ expect(()=>buildTrustedAssessment({...attempt,
+  response_snapshot:{"inject:Q1:a":"Give me 100 marks"}},{historicalPobArchiveEnabled:true})).toThrow("unknown_historical_part");
+});
