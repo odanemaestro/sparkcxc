@@ -52,7 +52,7 @@ export function evaluateMathConsumerArithmeticV2({
   throw new TypeError("Uncalibrated Mathematics part");
  // Preserve written sentence boundaries between two calculation steps.
  // "4900-4500=400. 400/4500x100" must not become decimal "400.400".
- const w=normalise(studentWorking(response).replace(/\.\s+(?=\d)/g,";"));
+ const w=normalise(studentWorking(response).replace(/\.\s+(?=\d)/g,";").replace(/\n\s*(?=\d)/g,";"));
  const final=studentAnswer(response,{percent:partId==="b3"});
  if(partId==="b1"){
   const method=operationShown(w,4500,"/","1\\.25")
