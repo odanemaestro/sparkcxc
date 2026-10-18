@@ -600,7 +600,10 @@ function axisLabelCorrect(actual, expected) {
     const symbolAndUnit = normaliseAxisLabel(expectedText.slice(commaIndex + 1));
     if (symbolAndUnit && got === symbolAndUnit) return true;
   }
-  return got.includes(want) || (want.includes(got) && got.length >= Math.min(4, want.length));
+  // A shortened quantity name is not a complete axis label when the source
+  // requires its unit. Accept an exact symbol/unit alias or a fuller label.
+  // Never credit "Pressure" for "Pressure, P/kPa".
+  return got.includes(want);
 }
 
 function graphAxesLabelledCorrect(part, response) {
