@@ -173,7 +173,7 @@ export function readLocalPhysicsSubjectRows(userId) {
   return rows;
 }
 
-function activityPayloadFromPhysicsEvent(event = {}) {
+export function activityPayloadFromPhysicsEvent(event = {}) {
   const section = String(event.section || event.topic || "A").slice(0, 1).toUpperCase();
   const topic = event.topic ? String(event.topic) : null;
   const type = String(event.type || "");
