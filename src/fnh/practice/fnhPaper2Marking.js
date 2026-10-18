@@ -41,12 +41,15 @@ export function fnhSelfAssessmentTotal(paper=[],selfReview={},answers=null){
 
 
 import {matchFnhCriterionEvidence,FNH_P2_RUBRIC_CALIBRATION_VERSION} from "./fnhPaper2RubricCalibration";
+import {gradeFnhHistoricalStructuredPart} from "./fnhHistoricalStructuredCriteria";
 export {FNH_P2_RUBRIC_CALIBRATION_VERSION};
 
 // Legacy self-check helpers above are preserved for historic stored attempts
 // and tests, but they do not participate in live exam scoring.
 export function gradeFnhWrittenPart(part,response){
   const maxMarks=Math.max(0,Number(part?.marks)||0);
+  const structured=gradeFnhHistoricalStructuredPart(part,response);
+  if(structured)return structured;
   const original=String(response??"");
   const accepted=[];
   let confirmed=0;
