@@ -4,7 +4,7 @@ import {runShadowPaper2Job} from "./shadowPaper2WorkerV2";
 const jobId="11111111-1111-4111-8111-111111111111";
 const attemptId="22222222-2222-4222-8222-222222222222";
 const leaseId="33333333-3333-4333-8333-333333333333";
-function harness({missingRubric=false,expiredLease=false,secondClaim=false}={}){
+function harness({missingRubric=false,expiredLease=false}={}){
  const state={status:"queued",attempts:0,commits:[],reads:0};
  const db={query:jest.fn(async(sql,params)=>{
   if(sql.includes("enqueue_marking_job_v2")){
@@ -48,7 +48,7 @@ test("submitted attempt flows through enqueue, claim, trusted lookup and provisi
  expect(stored.maxMarks).toBe(2);
  expect(stored.confirmedMarks).toBe(0);
  expect(stored.unresolvedMarks).toBe(2);
- expect(db.query.mock.calls.every(([sql])=>!(/update\\s+public\\.spark_exam_attempts/i.test(sql)))).toBe(true);
+ expect(db.query.mock.calls.every(([sql])=>!sql.toLowerCase().includes("update public.spark_exam_attempts"))).toBe(true);
 });
 test("completed job is not claimed again or double-committed",async()=>{
  const {db,state}=harness();
