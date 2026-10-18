@@ -126,3 +126,10 @@ Run the full test suite and build before merge.
 - Four new Jest cases added. Tests have not been executed in this session.
 - Adapter implementation is feature-branch only and is not called by the production submission or score-publication paths.
 - Remaining subjects require individual shape audits, followed by real paper integration tests and staging execution.
+
+## Technical subject mapping: Physics and Information Technology
+- `paper2TechnicalAdaptersV2.js` maps Physics `question_id::part.id` and IT `question.number-part.id` response identities.
+- Structured graphs, tables, pseudocode and working remain intact as response objects for later specialized grading.
+- Physics checks criterion marks against part maximum; both subjects fail closed for duplicate IDs and invalid marks.
+- Four tests added, not yet executed. This module is source-shape preparation only, not a trusted marking scheme or production feature.
+- Still required: Social Studies, Principles of Business and Mathematics source-shape adapters, verified rubric calibration, real-file end-to-end tests and server runtime.
