@@ -2,6 +2,7 @@ import {preparePaper2ScorePublication,preparePaper2SubjectActivity,isPaper2Activ
 import {buildAttemptProvenance} from "./attemptProvenance";
 import {recordSubjectActivity,activityPayloadFromInformationTechnologyEvent,activityPayloadFromPhysicsEvent} from "../subjects/subjectProgress";
 import {submitServerExamAttempt} from "./serverExamAttempt";
+import {observeRecommendationOutcome} from "../learning/learnerIntelligencePersistence";
 import {paper2ResultToAttempt,preparePaper2PersistedAttempt,savePracticeExamAttempt} from "../practice/persistence";
 
 const provenance=(subjectId="chemistry",paper="02",responses={q:"evidence"})=>
@@ -149,4 +150,14 @@ test("IT/Physics progress event adapters preserve null provisional marks, not 0"
  expect(phy.score).toBeNull();expect(phy.percent).toBeNull();
  expect(it.metadata.confirmed_marks).toBe(12);
  expect(phy.metadata.confirmed_marks).toBe(20);
+});
+
+test("the recommendation outcome records completion without converting provisional percentages to 0",async()=>{
+ const supabase={rpc:jest.fn().mockResolvedValue({data:{ok:true},error:null})};
+ await observeRecommendationOutcome({supabase,subjectId:"physics",activityType:"exam",
+  activityKey:"paper2:practice",percent:null});
+ expect(supabase.rpc.mock.calls[0][1].p_percent).toBeNull();
+ await observeRecommendationOutcome({supabase,subjectId:"physics",activityType:"exam",
+  activityKey:"paper2:practice",percent:86});
+ expect(supabase.rpc.mock.calls[1][1].p_percent).toBe(86);
 });
