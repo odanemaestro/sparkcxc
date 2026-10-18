@@ -65,7 +65,7 @@ function numericExpected(point){
   return values.length===1?values:[];
 }
 function numericMatch(response,expected,reference){
-  const final=String(response||"").match(/(?:^|[\n;])\s*(?:final\s+answer|answer|ans)\s*[:=]\s*([^\n;]+)/i);
+  const final=String(response||"").match(/\b(?:final\s+answer|answer|ans)\s*[:=]\s*([^\n;]+)/i);
   const got=numbers(final?final[1]:response);
   const printed=strip(reference).match(/[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:\s*[x×*]\s*10\s*\^?\s*[+-]?\d+)?/i)?.[0]||"";
   const mantissa=printed.split(/\s*[x×*]\s*10/i)[0];
@@ -188,6 +188,10 @@ function graphResult(base,item,responses){
   const plotted=graph
     ? (graph.series || []).flatMap(series => graphPoints(series.points,graph.kind).filter(Boolean))
     : [];
+  const rawPointCount=(graph?.series||[]).reduce((sum,series)=>
+    sum+String(series.points||"").split(/\n|;/).filter(row=>row.trim()).length,0);
+  const validPoints=Boolean(graph)&&rawPointCount===plotted.length&&
+    new Set(plotted.map(p=>`${p.x},${p.y}`)).size===plotted.length;
 
   const xLabel=String(responses[`${base}:xLabel`] || "").trim();
   const yLabel=String(responses[`${base}:yLabel`] || "").trim();
@@ -206,7 +210,7 @@ function graphResult(base,item,responses){
   // Otherwise a single mark near repeated/close targets inflates graph credit.
   const unused=new Set(plotted.map((_,index)=>index));
   let matched=0;
-  expected.forEach(target=>{
+  if(validPoints && plotted.length<=expected.length)expected.forEach(target=>{
     const index=[...unused].find(i=>
       Math.abs(Number(plotted[i].x)-Number(target.x))<=xTolerance &&
       Math.abs(Number(plotted[i].y)-Number(target.y))<=yTolerance
@@ -250,7 +254,8 @@ function graphResult(base,item,responses){
         : null;
     const connection=String(graph?.connection || "");
     // Selecting a line style without plotting a graph is not evidence of a drawn fit.
-    const styleOk=matched>=2 && (wanted ? connection===wanted : Boolean(connection && connection!=="none"));
+    const styleOk=validPoints && plotted.length<=expected.length && matched>=2 &&
+      (wanted ? connection===wanted : Boolean(connection && connection!=="none"));
     criteria.push({
       id:`${base}:fit`,
       label:wanted==="best-fit"?"Line of best fit selected":wanted==="smooth"?"Smooth best-fit curve selected":"Suitable line or curve selected",
@@ -264,7 +269,7 @@ function graphResult(base,item,responses){
     score,maxMarks:max,criteria,confidence:"medium",provisional:true,visualEvidenceRequired:true,
     unassessedMarks:Math.max(0,max-assessed),
     reason:max>assessed?"Remaining graph presentation marks need visual examiner judgement.":undefined,
-    visualEvidence:{plottedPoints:plotted.length,expectedPoints:expected.length,matchedPoints:matched,connection:graph?.connection||null},
+    visualEvidence:{plottedPoints:plotted.length,expectedPoints:expected.length,matchedPoints:matched,validPoints,connection:graph?.connection||null},
   };
 }
 
