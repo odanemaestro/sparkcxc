@@ -88,3 +88,11 @@ Run the full test suite and build before merge.
 - Schema migration and tests are NOT executed or deployed. No authenticated frontend receives permissions to enqueue jobs or read private rubrics.
 - The registry is currently empty. It needs validated subject rubrics, approved versions, content constraints, and staging role/RLS checks before enabling real grading.
 - The job processor still lacks a deployed runtime and end-to-end server integration. No trigger, worker deployment or score publication was enabled.
+
+## Batch 4 continuation: integrated shadow grading worker
+- `shadowPaper2WorkerV2.js` composes the private PostgreSQL lease adapter, submitted-answer repository, rubric phrase suggestions, adjudication and job runner.
+- Deliberately sends **no trusted first-pass marks**. All criteria stay unresolved until calibrated, independent server-side graders are connected. Phrase matches serve as diagnostic evidence only.
+- Four integration-oriented Jest tests cover advisory-only output, identity mismatch, mocked database end-to-end persistence, and missing-rubric retries.
+- This is a server-side library, not a deployed Edge Function, runtime scheduler or automatically invoked submission hook.
+- No grading migrations were applied. No production publication path was modified.
+- Before activation: provide server runtime credentials securely, test with a staging DB, populate approved rubric criteria, reconcile response schema/IDs and run the project test/build suite.
