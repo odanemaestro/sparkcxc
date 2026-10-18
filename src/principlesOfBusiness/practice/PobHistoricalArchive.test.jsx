@@ -274,7 +274,7 @@ test("students complete and receive criterion marks for a source-specific distri
  fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
  expect(screen.getByText("4 / 4 marks confirmed by SPARK")).toBeInTheDocument();
  expect(screen.getAllByText(/1 mark\(s\) confirmed/).length).toBeGreaterThanOrEqual(4);
- expect(screen.getByRole("status",{name:"SPARK Paper 2 marking scheme results"})).toHaveTextContent(/Confirmed marks: 4 \/ 100/);
+ expect(screen.getByRole("status",{name:"SPARK Paper 2 marking scheme results"})).toHaveTextContent(/Confirmed score: 4 \/ 100/);
 });
 test("organisation chart supports reporting links and saved structured answers",()=>{
  const {unmount}=render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
