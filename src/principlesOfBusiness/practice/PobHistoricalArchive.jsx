@@ -2,6 +2,8 @@ import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {buildPobOwnerPaper2Bank} from "../data/pobPaper2OwnerSourceBank";
 import {reviewPobHistoricalPaper2} from "../data/pobHistoricalPaper2RubricReview";
+import {getPobP2VisualTask} from "../data/pobHistoricalPaper2Visual";
+import PobHistoricalDiagramEditor from "./PobHistoricalDiagramEditor";
 import {auditPobOwnerPaper2Calibration,POB_OWNER_P2_PILOT_IDS,pobOwnerP2BankVersion,POB_OWNER_P2_RUBRIC_VERSION} from "../../grading/pobOwnerArchiveCalibration";
 import {POB_HISTORICAL_REVIEW_BANKS,getPobHistoricalReviewBank} from "../data/pobHistoricalArchiveRegistry";
 import "./pobHistoricalArchive.css";
@@ -171,13 +173,18 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
        const exact=(sourceComplete&&!ownerBank&&POB_2009_MJ_P2_SOURCE.prompts[q.number+":"+part.id])||part.prompt||part.sourceQuestion||null;
        const prompt=exact||part.sourcePromptSummary||null;
        const partReview=rubricReview?.questions.find(row=>row.number===q.number)?.parts.find(row=>row.id===id);
+       const visualTask=ownerBank&&getPobP2VisualTask(record.id,id);
        return <div className="pob-archive-written" key={id}>
          <label htmlFor={record.id+id}><strong>({part.id})</strong> {prompt||"Answer this part using the printed question paper."} <span>{part.marks} marks</span></label>
          {ownerBank&&part.diagramSvg&&<div className="pob-archive-source-diagram"><img alt={"Supplied figure for Question "+q.number+" ("+part.id+")"} src={"data:image/svg+xml;charset=utf-8,"+encodeURIComponent(part.diagramSvg)}/></div>}
          {!exact&&<p className="pob-archive-small" role="note">SPARK question summary only. Original printed wording and any accompanying figures have not been verified here.</p>}
-         <textarea id={record.id+id} rows={3} value={answers[id]||""} disabled={submitted}
+         {visualTask?<PobHistoricalDiagramEditor paperId={record.id} partKey={id}
+           value={answers[id]} disabled={submitted}
+           onChange={value=>setAnswers(prev=>({...prev,[id]:value}))}/>:
+          <textarea id={record.id+id} rows={3}
+           value={typeof answers[id]==="string"?answers[id]:""} disabled={submitted}
            placeholder="Write your answer in complete sentences."
-           onChange={e=>setAnswers(prev=>({...prev,[id]:e.target.value}))}/>
+           onChange={e=>setAnswers(prev=>({...prev,[id]:e.target.value}))}/>}
          {submitted&&<div className="pob-archive-scheme">
            {partReview&&<p className="pob-archive-part-status"><strong>{partReview.assessedMarks===null?"Written response: further rubric assessment needed":partReview.assessedMarks+" / "+partReview.availableMarks+" marks confirmed by SPARK"}</strong></p>}
            <strong>SPARK model answer</strong><p>{part.modelAnswer||"Model answer is still being authored."}</p>
