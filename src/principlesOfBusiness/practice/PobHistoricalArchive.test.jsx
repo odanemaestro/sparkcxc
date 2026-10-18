@@ -260,3 +260,37 @@ test("the SPARK historical Paper 2 marking scheme works with AI switches disable
   else process.env.REACT_APP_POB_OWNER_SOURCE_MARKING=oldB;
  }
 });
+
+test("students complete and receive criterion marks for a source-specific distribution diagram",()=>{
+ const {container}=render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2019"}});
+ fireEvent.click(screen.getByRole("button",{name:/2019 January.*Paper 2.*Written answers and mark schemes/}));
+ expect(screen.getByLabelText("Your constructed distribution chain")).toBeInTheDocument();
+ fireEvent.change(screen.getByLabelText("Box 1"),{target:{value:"Manufacturer"}});
+ fireEvent.change(screen.getByLabelText("Box 2"),{target:{value:"Wholesaler"}});
+ fireEvent.change(screen.getByLabelText("Box 3"),{target:{value:"Retailer"}});
+ fireEvent.change(screen.getByLabelText("Box 4"),{target:{value:"Consumer"}});
+ expect(container.querySelector(".pob-visual-preview")).toHaveTextContent("Wholesaler");
+ fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
+ expect(screen.getByText("4 / 4 marks confirmed by SPARK")).toBeInTheDocument();
+ expect(screen.getAllByText(/1 mark\(s\) confirmed/).length).toBeGreaterThanOrEqual(4);
+ expect(screen.getByRole("status",{name:"SPARK Paper 2 marking scheme results"})).toHaveTextContent(/Confirmed score: 4 \/ 100/);
+});
+test("organisation chart supports reporting links and saved structured answers",()=>{
+ const {unmount}=render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2014"}});
+ fireEvent.click(screen.getByRole("button",{name:/2014 May\/June.*Paper 2.*Written answers and mark schemes/}));
+ expect(screen.getByLabelText("Your constructed organisational chart")).toBeInTheDocument();
+ fireEvent.change(screen.getByLabelText("Top position"),{target:{value:"Manager"}});
+ fireEvent.change(screen.getByLabelText("Left reporting position"),{target:{value:"Supervisor of mail delivery"}});
+ fireEvent.change(screen.getByLabelText("Right reporting position"),{target:{value:"Supervisor of mail sorting"}});
+ fireEvent.change(screen.getByLabelText("Who does the left position report to?"),{target:{value:"Top position"}});
+ fireEvent.change(screen.getByLabelText("Who does the right position report to?"),{target:{value:"Top position"}});
+ fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
+ expect(screen.getByText("3 / 3 marks confirmed by SPARK")).toBeInTheDocument();
+ unmount();
+ render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2014"}});
+ fireEvent.click(screen.getByRole("button",{name:/2014 May\/June.*Paper 2.*Written answers and mark schemes/}));
+ expect(screen.getByLabelText("Top position")).toHaveValue("Manager");
+});

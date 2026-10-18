@@ -57,7 +57,8 @@ export function buildPobOwnerPaper2Bank(id,existingBank=null){
       const exact=Array.isArray(prior?.criteria)&&prior.criteria.reduce((n,item)=>n+Number(item.marks||0),0)===child.marks?prior.criteria:[];
       const criteria=exact.length?exact:groupedCriteria(id,authored||{},subId,child.marks);
       return {id:subId,prompt:[part.subparts?part.question:null,child.question].filter(Boolean).join("\n"),marks:child.marks,modelAnswer:child.answer,criteria,
-       diagramSvg:child.diagram_svg||part.diagram_svg||null};
+       diagramSvg:child.diagram_svg||part.diagram_svg||null,
+       answerDiagramSvg:child.answer_diagram_svg||part.answer_diagram_svg||null};
     });
    })
   })),
