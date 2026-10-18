@@ -56,7 +56,16 @@ export async function submitServerExamAttempt({
     provenance:metadata.attempt_provenance??null,
   }):null;
   const safeScore=publication?publication.score:score;
-  const safeMetadata=publication?publication.metadata:metadata;
+  // The response snapshot is already a first-class SQL argument. Duplicating
+  // full candidate essays in p_metadata can exceed the 16 KB RPC limit.
+  const safeMetadata=publication?(()=>{
+    const {attempt_provenance:identity,score_parts:items,...summary}=publication.metadata;
+    return {...summary,
+      attempt_snapshot_hash:attemptSnapshotHash(responses),
+      bank_version:identity?.bank_version||null,
+      rubric_version:identity?.rubric_version||null,
+      grader_version:identity?.grader_version||null};
+  })():metadata;
   try{
     const {data,error}=await supabase.rpc("spark_submit_exam_attempt",{
       p_attempt_id:attemptId,
