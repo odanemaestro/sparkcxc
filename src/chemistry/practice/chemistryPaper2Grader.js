@@ -193,8 +193,13 @@ function graphResult(base,item,responses){
     : [];
   const rawPointCount=(graph?.series||[]).reduce((sum,series)=>
     sum+String(series.points||"").split(/\n|;/).filter(row=>row.trim()).length,0);
+  // Identical coordinates are legitimate when two different series intersect.
+  // Duplicates within the same series are still invalid.
   const validPoints=Boolean(graph)&&rawPointCount===plotted.length&&
-    new Set(plotted.map(p=>`${p.x},${p.y}`)).size===plotted.length;
+    (graph.series||[]).every(series=>{
+      const points=graphPoints(series.points,graph.kind).filter(Boolean);
+      return new Set(points.map(p=>`${p.x},${p.y}`)).size===points.length;
+    });
 
   const xLabel=String(responses[`${base}:xLabel`] || "").trim();
   const yLabel=String(responses[`${base}:yLabel`] || "").trim();
