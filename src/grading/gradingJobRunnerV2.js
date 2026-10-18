@@ -22,9 +22,7 @@ export function classifyGradingResult(result){
  if(result.reconciliation.unresolvedMarks>0)
    return {status:"provisional",reason:"unresolved-criteria"};
  // A local pass is not sufficient for a verified server result.
- if(result.serverAttested!==true)
-   return {status:"provisional",reason:"missing-server-attestation"};
- return {status:"verified",reason:"server-attested"};
+ return {status:"provisional",reason:"awaiting-independent-server-verification"};
 }
 /**
  * store.claim() must be transactional: one runner receives a lease per job.
