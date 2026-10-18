@@ -8,6 +8,7 @@ import {createGradingSubmissionRepository} from "./gradingSubmissionRepositoryV2
 import {processGradingJob} from "./gradingJobRunnerV2";
 import {suggestSecondPassEvidence} from "./markingSecondPassV2";
 import {adjudicateMarkingEvidence} from "./markingAdjudicationV2";
+import {evaluateObjectiveCriteria} from "./objectiveMarkingV2";
 
 const nonEmpty=value=>typeof value==="string"&&value.trim().length>0;
 export function createShadowPaper2Grader(repository){
@@ -24,6 +25,7 @@ export function createShadowPaper2Grader(repository){
   const advisory=suggestSecondPassEvidence({
     criteria:submission.criteria,responses:submission.responses
   });
+  const objectiveEvidence=evaluateObjectiveCriteria({criteria:submission.criteria,responses:submission.responses});
   const adjudication=adjudicateMarkingEvidence({
     criteria:submission.criteria,evidence:[]
   });
@@ -32,6 +34,7 @@ export function createShadowPaper2Grader(repository){
    reconciliation:adjudication.reconciliation,
    // Suggestions are intentionally not persisted with raw response text.
    advisoryCount:advisory.filter(x=>x.matchedPhrases.length>0).length,
+   objectiveCandidateCount:objectiveEvidence.length,
    serverAttested:false
   };
  };
