@@ -28,7 +28,7 @@ test("the same complete SPARK worked answer earns its authored marks without opt
  const result=reviewPobHistoricalPaper2({[key]:part.modelAnswer},paper,[1,2,3,4,5]);
  expect(result.availableMarks).toBe(100);
  expect(result.confirmedMarks).toBe(part.marks);
- expect(result.assessedMarks).toBeNull();
+ expect(result.assessedMarks).toBe(4);
  expect(result.unresolvedMarks).toBe(0);
  expect(result.questions[0].parts[0].status).toBe("verified-model-match");
  expect(result.questions[0].parts[0].criteria.reduce((n,c)=>n+c.assessedMarks,0)).toBe(part.marks);
