@@ -61,7 +61,7 @@ export function gradePobP2VisualTask(paperId,partKey,response){
    same(top,"manager"),
    two.includes("Supervisor of mail delivery")&&two.includes("Supervisor of mail sorting")&&two[0]!==two[1],
    value("leftParent")==="Top position"&&value("rightParent")==="Top position"&&
-    two[0]&&two[1]&&two[0]!==two[1]
+    two.includes("Supervisor of mail delivery")&&two.includes("Supervisor of mail sorting")&&two[0]!==two[1]
   ];
  }else if(task.kind==="org-chain"){
   const validMiddle=(top==="Board of Directors"&&middle==="Managing Director")||
