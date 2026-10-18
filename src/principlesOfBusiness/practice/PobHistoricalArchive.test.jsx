@@ -194,3 +194,23 @@ test("January 2022 owner-source pilot submits only its versioned 100-mark bank",
   if(old2===undefined)delete process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING;else process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING=old2;
  }
 });
+
+test("historical Paper 2 restores supplied SVG figures without authorizing figure grading",()=>{
+ const {container}=render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2019"}});
+ fireEvent.click(screen.getByRole("button",{name:/2019 January.*Paper 2.*Written answers and mark schemes/}));
+ const img=container.querySelector('img[alt="Supplied figure for Question 3 (c)"]');
+ expect(img).toBeInTheDocument();
+ expect(img.getAttribute("src")).toMatch(/^data:image\/svg\+xml/);
+ expect(screen.getByRole("note")).toHaveTextContent(/not approved for numerical marking of visual tasks/);
+ expect(screen.queryByRole("button",{name:"Request detailed AI practice marking"})).not.toBeInTheDocument();
+});
+test("January 2022 source rubric pilot remains eligible while May 2022 printed diagram blocks grading",()=>{
+ const january=getPobHistoricalReviewBank("POB-P2-2022-JAN");
+ const may=getPobHistoricalReviewBank("POB-P2-2022-MJ");
+ const {auditPobOwnerPaper2Calibration}=require("../../grading/pobOwnerArchiveCalibration");
+ expect(auditPobOwnerPaper2Calibration(january).ready).toBe(true);
+ expect(auditPobOwnerPaper2Calibration(may).rubricReady).toBe(true);
+ expect(auditPobOwnerPaper2Calibration(may).ready).toBe(false);
+ expect(auditPobOwnerPaper2Calibration(may).visualIssues.some(issue=>issue.includes("original_visual_needs_qa"))).toBe(true);
+});

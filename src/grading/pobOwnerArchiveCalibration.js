@@ -25,9 +25,13 @@ export function auditPobOwnerPaper2Calibration(record){
    if(ids.has(id))issues.push(id+":duplicate");
    ids.add(id);
    if(!p.prompt?.trim()||!p.modelAnswer?.trim())issues.push(id+":text_or_answer_missing");
-   // A text transcription cannot by itself authenticate a printed source figure.
-   if(/\\b(?:figure|diagram|graph|chart|table)\\s*(?:\\d+|below|above|provided)\\b/i.test([q.context,p.prompt].filter(Boolean).join(" ")))
+   // A complete question transcription does not itself certify a printed figure.
+   const originalText=[q.context,p.prompt].filter(Boolean).join(" ").toLowerCase();
+   if(q.diagramSvg||p.diagramSvg||/figure\s*\d+/.test(originalText))
     issues.push(id+":original_visual_needs_qa");
+   if(/\b(?:construct|sketch|draw|plot)\b/.test(originalText) &&
+      /\b(?:chart|graph|diagram)\b/.test(originalText))
+    issues.push(id+":candidate_drawing_input_missing");
    if(!Array.isArray(p.criteria)||p.criteria.length===0)issues.push(id+":rubric_absent_or_mark_mismatch");
    if(p.criteria?.some(c=>!c.rule?.trim()||!Number.isInteger(c.marks)||c.marks<=0))
     issues.push(id+":invalid_criterion");
@@ -41,8 +45,10 @@ export function auditPobOwnerPaper2Calibration(record){
   const total=bank.questions.filter(q=>list.includes(q.number)).reduce((n,q)=>n+q.marks,0);
   if(total!==100)issues.push("selection_not_100:"+list.join(","));
  }
- return {id:record.id,ready:issues.length===0,issues,offeredQuestions:bank.questions.length,
+ const visualIssues=issues.filter(x=>x.endsWith(":original_visual_needs_qa")||x.endsWith(":candidate_drawing_input_missing"));
+ const rubricReady=issues.length===visualIssues.length;
+ return {id:record.id,ready:issues.length===0,rubricReady,issues,visualIssues,offeredQuestions:bank.questions.length,
    sourceParts:ids.size,rubricParts:bank.questions.flatMap(q=>q.parts).filter(p=>p.criteria.length>0).length,
-   candidateChoices:options.length,status:issues.length?"needs_source_rubric_reconciliation":
-   "structurally_compatible_not_benchmarked"};
+   candidateChoices:options.length,status:!rubricReady?"needs_source_rubric_reconciliation":
+   visualIssues.length?"structurally_compatible_visual_review_pending":"structurally_compatible_not_benchmarked"};
 }

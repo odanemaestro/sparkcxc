@@ -72,3 +72,8 @@
 
 .pob-source-paper .pob-source-diagram{max-width:100%;margin:0 0 1rem;padding:.6rem;border-radius:12px;background:#fff;overflow:hidden}
 .pob-source-paper .pob-source-diagram img{display:block;max-width:100%;height:auto;margin-inline:auto}
+
+/* Safe display of owner supplied Paper 2 diagrams, including in dark mode. */
+.pob-archive .pob-archive-source-diagram{width:100%;max-width:100%;margin:.8rem 0 1rem;padding:.8rem;border:1px solid #d8e0ea;background:#fff;border-radius:12px;overflow:auto}
+.pob-archive .pob-archive-source-diagram img{display:block;max-width:100%;height:auto;margin-inline:auto}
+.pob-archive .pob-archive-visual-note{margin:1rem 0;padding:.9rem 1rem;border:1px solid color-mix(in srgb,currentColor 20%,transparent);border-radius:12px;line-height:1.6;font-size:.9rem}
