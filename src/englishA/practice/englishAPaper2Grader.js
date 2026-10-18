@@ -176,10 +176,15 @@ function copiedPhraseRatio(stimulus,response){
 function situationCoverage(task,response){
   const rows=(task?.stimulus?.situation||[]).map(line=>{
     const terms=tokenise(line).map(stem).filter(w=>w.length>=4&&!STOPWORDS.has(w));
-    const candidate=new Set(tokenise(response).map(stem));
-    const matched=terms.filter(w=>candidate.has(w));
     const needed=Math.min(2,Math.max(1,Math.ceil(terms.length*.2)));
-    return {line,matched:matched.slice(0,4),covered:matched.length>=needed};
+    const evidence=claimUnits(response).map(unit=>{
+      const words=new Set(tokenise(unit).map(stem));
+      const matched=terms.filter(w=>words.has(w));
+      return {unit,matched};
+    }).sort((a,b)=>b.matched.length-a.matched.length)[0];
+    return {line,matched:(evidence?.matched||[]).slice(0,4),
+      covered:tokenise(evidence?.unit||"").length>=5&&(evidence?.matched||[]).length>=needed,
+      evidence:evidence?.unit||""};
   });
   return {rows,covered:rows.filter(r=>r.covered).length,total:rows.length};
 }
@@ -378,6 +383,44 @@ function gradeExposition(task,response){
   };
 }
 
+// A prescribed opening, closing line, or quotation is an explicit candidate
+// requirement. A well-written unrelated story cannot receive full content marks.
+function requiredLiteraryText(task,response){
+  const instructions=String(task?.instructions||"");
+  const match=instructions.match(/\b(ends with|beginning with|includes the sentence)\s*:\s*['“"]([^'”"]+)['”"]/i);
+  if(!match)return {required:false,fulfilled:true,type:""};
+  const type=match[1].toLowerCase();
+  const normalise=value=>String(value).toLowerCase()
+    .replace(/[‘’]/g,"'").replace(/[“”]/g,'"')
+    .replace(/\s+/g," ").trim().replace(/^["']|["']$/g,"").replace(/[.?!]+$/,"");
+  const required=normalise(match[2]);
+  const submission=normalise(response);
+  const fulfilled=type==="ends with"?submission.endsWith(required)
+    :type==="beginning with"?submission.startsWith(required)
+    :submission.includes(required);
+  return {required:true,fulfilled,type};
+}
+const TOPIC_NOISE=new Set("write writing words word approximately essay speech letter statement position presenting based discuss about question answer following views view should student students youth club debate debating your their with after before from short story school schools required given on for whether topic task titled which".split(" "));
+function taskTopicalEvidence(task,response){
+  const instructions=String(task?.instructions||"");
+  const terms=[...new Set(tokenise(instructions).map(stem)
+    .filter(word=>word.length>=4&&!TOPIC_NOISE.has(word)))];
+  if(terms.length<2)return {required:false,hits:[],terms};
+  const student=new Set(tokenise(response).map(stem));
+  const hits=terms.filter(word=>student.has(word));
+  return {required:true,terms,hits};
+}
+function supportedArgumentCount(response){
+  const statements=claimUnits(response).filter(line=>tokenise(line).length>=9);
+  const unique=new Set();
+  for(const statement of statements){
+    if(!/\b(?:because|since|for example|for instance|such as|this means|as a result|therefore|helps?|allows?|provides?|improves?|can reduce|can increase)\b/i.test(statement))continue;
+    const signature=tokenise(statement).map(stem).join(" ");
+    unique.add(signature);
+  }
+  return unique.size;
+}
+
 function gradeLiterary(task,response){
   const lang=languageBand(response,7);
   const d=lang.diagnostics;
@@ -390,17 +433,21 @@ function gradeLiterary(task,response){
   const candidate=new Set(tokenise(response).map(stem));
   const promptHits=promptTerms.filter(w=>candidate.has(w)).length;
   const length=wordRangePenalty(task,response);
+  const literal=requiredLiteraryText(task,response);
 
   const promptUse=Math.min(4,1+promptHits*.8);
   const storyElements=Math.min(6,(narrative>=3?2:1)+(resolution?1.5:.5)+(dialogue?1.25:.5)+(sensory>=2?1.25:.5));
   const development=Math.min(6,d.wordCount>=300?6:d.wordCount>=200?4:d.wordCount>=120?2:1);
-  const evaluating=round(clamp((promptUse+storyElements+development)*length.factor,0,16));
+  let evaluating=round(clamp((promptUse+storyElements+development)*length.factor,0,16));
+  if(!literal.fulfilled)evaluating=Math.min(evaluating,8);
 
-  const analysing=round(clamp((d.paragraphCount>=5?3:d.paragraphCount>=3?2:1)+(narrative>=4?2:narrative>=2?1:0)+(resolution?2:1),0,7));
+  let analysing=round(clamp((d.paragraphCount>=5?3:d.paragraphCount>=3?2:1)+(narrative>=4?2:narrative>=2?1:0)+(resolution?2:1),0,7));
+  if(!literal.fulfilled)analysing=Math.min(analysing,5);
   const understanding=round(clamp(lang.score,0,7));
 
   const score=round(clamp(evaluating+analysing+understanding,0,30));
   const feedback=[
+    ...(literal.required&&!literal.fulfilled?["The required story opening, ending, or quoted sentence was not included in the specified position."]:[]),
     promptHits?"The response is visibly connected to the chosen stimulus.":"Make the required stimulus unmistakably central to the story.",
     dialogue?`Dialogue appears ${dialogue} time(s); make sure it develops character, action or atmosphere.`:"Dialogue is optional, but purposeful dialogue can help characterisation.",
     sensory>=2?"Sensory detail is used to build the scene.":"Use selective sensory detail to establish setting and atmosphere.",
@@ -434,7 +481,10 @@ function persuasiveSignals(response){
   const stance=/\b(?:i believe|i think|i support|i oppose|i stand firmly|in favour|in favor|against|should|should not|must|must not|in my view|my position)\b/.test(low);
   const hasOpening=paragraphs.slice(0,2).some(p=>/\b(?:good morning|good afternoon|good evening|fellow members|friends|members|today|i stand|i believe|i support|i oppose|in favour|in favor|against)\b/i.test(p));
   const hasConclusion=paragraphs.slice(-2).some(p=>/\b(?:therefore|so let us|let us|i urge|in conclusion|finally|vote|thank you|must act|should support|should reject)\b/i.test(p));
-  return {paragraphs,rhetorical,directAddress,calls,repetition,counterOpeners,rebuttals,supportSignals,stance,hasOpening,hasConclusion};
+  const opposition=/\b(?:some (?:will|may|might) (?:say|argue)|some people (?:argue|say)|others (?:say|argue)|critics (?:argue|say)|opponents (?:say|argue))\b/i.test(raw);
+  const responseToOpposition=opposition&&/\b(?:i disagree|but|however|yet|that concern|this concern|in response|the answer is)\b/i.test(raw);
+  return {paragraphs,rhetorical,directAddress,calls,repetition,counterOpeners,rebuttals,
+    opposition,responseToOpposition,supportSignals,stance,hasOpening,hasConclusion};
 }
 
 function gradePersuasive(task,response){
@@ -442,19 +492,25 @@ function gradePersuasive(task,response){
   const d=lang.diagnostics;
   const sig=persuasiveSignals(response);
   const length=wordRangePenalty(task,response);
+  const topic=taskTopicalEvidence(task,response);
+  const developedReasons=supportedArgumentCount(response);
 
   const position=sig.stance?3:1;
   const support=Math.min(5,sig.supportSignals>=8?5:sig.supportSignals>=5?4:sig.supportSignals>=3?3:sig.supportSignals>=1?1.5:0);
   const audience=Math.min(2,sig.directAddress>=4?2:sig.directAddress?1.5:.5);
-  const opposition=Math.min(2,sig.counterOpeners&&sig.rebuttals?2:sig.counterOpeners?1:0);
+  const opposition=sig.responseToOpposition?2:sig.opposition?1:0;
   const devices=Math.min(4,(sig.rhetorical?1:0)+(sig.repetition>=2?1:sig.repetition?0.5:0)+(sig.calls?1:0)+(sig.directAddress>=4?1:0));
   let evaluating=round(clamp((position+support+audience+opposition+devices)*length.factor,0,16));
+  if(!developedReasons)evaluating=Math.min(evaluating,6);
+  if(topic.required&&!topic.hits.length)evaluating=Math.min(evaluating,5);
 
   const structure=sig.paragraphs.length>=5?2:sig.paragraphs.length>=3?1:0;
   const progression=sig.supportSignals>=5?2:sig.supportSignals>=2?1:0;
-  const counterFlow=sig.counterOpeners&&sig.rebuttals?1:0;
+  const counterFlow=sig.responseToOpposition?1:0;
   const framing=(sig.hasOpening?1:0)+(sig.hasConclusion?1:0);
   let analysing=round(clamp(structure+progression+counterFlow+framing,0,7));
+  if(!developedReasons)analysing=Math.min(analysing,3);
+  if(topic.required&&!topic.hits.length)analysing=Math.min(analysing,3);
 
   let understanding=round(clamp(lang.score,0,7));
   if(d.wordCount<150){
@@ -474,15 +530,17 @@ function gradePersuasive(task,response){
     ],
     feedback:[
       sig.stance?"A clear position is established and maintained.":"State a clear position early and maintain it.",
-      sig.counterOpeners&&sig.rebuttals?"The response raises an opposing view and answers it.":"A relevant opposing view and rebuttal can strengthen the argument.",
-      sig.supportSignals?"The response develops reasons with examples, effects or supporting explanation.":"Develop reasons with examples, evidence, causes/effects or comparisons.",
+      sig.responseToOpposition?"The response raises an opposing view and answers it.":"A relevant opposing view and rebuttal can strengthen the argument.",
+      developedReasons?"The response includes developed reason statements.":"Develop reasons with specific examples, causes, effects or supporting explanation.",
+    ...(topic.required&&!topic.hits.length?["The response lacks clear evidence of the topic named in the question."]:[]),
       deviceNames.length?"Persuasive devices detected: "+deviceNames.join(", ")+".":"Use purposeful persuasive devices rather than relying only on assertion.",
       sig.hasOpening&&sig.hasConclusion?"The argument has a recognisable opening and conclusion.":"Strengthen the introduction and conclusion so the argument is clearly framed.",
       d.paragraphCount>=5?"The response has a developed multi-paragraph structure.":"The specimen mark scheme expects a developed structure with introduction, body paragraphs and conclusion.",
       d.wordCount<150?"The specimen mark scheme states that a response under about 150 words cannot earn above the low range.":"Word count: "+d.wordCount+".",
       ...lang.notes,
     ],
-    diagnostics:{...d,persuasiveSignals:{...sig,paragraphs:sig.paragraphs.length}},
+    diagnostics:{...d,developedReasons,topicEvidence:topic,
+      persuasiveSignals:{...sig,paragraphs:sig.paragraphs.length}},
   };
 }
 
