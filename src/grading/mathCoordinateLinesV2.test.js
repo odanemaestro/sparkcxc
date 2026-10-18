@@ -125,3 +125,36 @@ test("unsupported question and part IDs never activate calibration",()=>{
   expect(()=>evaluate({...args,response:{answer:"2"}})).toThrow(/Unsupported/);
  }
 });
+
+
+describe.each(cases)("numeric-prefix and follow-through safeguards",f=>{
+ test("a near-miss denominator does not count as the gradient method",()=>{
+  const nearMiss=f.gradientAnswer.replace(/(\d+)$/,(_,digits)=>digits+"0");
+  const result=check(f,"a",{answer:String(f.gradient),working:nearMiss});
+  expect(result.criteria.map(c=>c.candidateMarks)).toEqual([null,1]);
+ });
+ test("a larger square-root radicand does not create distance-method credit",()=>{
+  const sum=Math.round(f.length*f.length);
+  const result=check(f,"c",{answer:f.length.toFixed(2),
+   working:"sqrt("+sum+"0)"});
+  expect(result.criteria.map(c=>c.candidateMarks)).toEqual([null,1]);
+ });
+ test("an incorrect declared gradient never receives source method credit",()=>{
+  const wrong=f.gradient*10;
+  const r=check(f,"d",{answer:f.line,working:"m="+wrong});
+  expect(r.criteria.map(c=>c.candidateMarks)).toEqual([null,null,1]);
+ });
+ test("working consistently with an earlier wrong gradient can support substitution but not accuracy",()=>{
+  const wrong=3;
+  const [x,y]=f.p;
+  const yside="y"+(y<0?"+"+(-y):"-"+y);
+  const xside="(x"+(x<0?"+"+(-x):"-"+x)+")";
+  const worked=yside+"="+wrong+xside;
+  const prev={a:{answer:String(wrong)}};
+  const r=check(f,"d",{answer:"y=99x+99",working:worked},prev);
+  expect(r.criteria.map(c=>c.candidateMarks)).toEqual([null,1,null]);
+  expect(r.publishable).toBe(false);
+  const absent=check(f,"d",{answer:"y=99x+99",working:worked});
+  expect(absent.criteria[1].candidateMarks).toBeNull();
+ });
+});
