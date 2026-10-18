@@ -60,7 +60,7 @@ test("historical Paper 2 allows written answers and shows actual authored rubric
  fireEvent.change(entry,{target:{value:"A registered company follows national company law."}});
  fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
  expect(screen.getAllByText(/SPARK model answer/).length).toBeGreaterThan(0);
- expect(screen.getByText(/Question wording and worked solutions come from your uploaded Paper 2 transcription/)).toBeTruthy();
+ expect(screen.getByText(/Question wording and worked solutions come from the uploaded Paper 2 transcription/)).toBeTruthy();
 });
 test("January 2026 archive route goes to the already implemented live pilot exam",()=>{
  const open=jest.fn();
@@ -182,7 +182,7 @@ test("January 2022 owner-source pilot submits only its versioned 100-mark bank",
    userId="pob-pilot-tester" supabase={{rpc}}/>);
   fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2022"}});
   fireEvent.click(screen.getByRole("button",{name:/2022 January.*Paper 2.*Written answers and mark schemes/}));
-  expect(screen.getByText(/source-aligned rubric for provisional practice assessment/)).toBeInTheDocument();
+  expect(screen.getByText(/SPARK marking scheme ready/)).toBeInTheDocument();
   fireEvent.change(screen.getAllByRole("textbox")[0],{target:{value:"To earn a profit and to help the community."}});
   fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
   fireEvent.click(screen.getByRole("button",{name:"Request detailed AI practice marking"}));
