@@ -425,7 +425,16 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
       if(active?.serverAttemptId){
         await submitServerExamAttempt({
           supabase,attemptId:active.serverAttemptId,responses,score:result.score,maxScore:result.maxScore,
-          metadata:{subject:"integrated-science",paper:"02",client_timed_out:Boolean(timedOut)},
+          metadata:{subject:"integrated-science",paper:"02",client_timed_out:Boolean(timedOut),
+            provisional:Boolean(result.provisional),unresolved_marks:result.unassessedMarks,
+            confirmed_marks:result.score,assessed_marks:!result.provisional&&!result.unassessedMarks?result.score:null,
+            spark_scoring_status:!result.provisional&&!result.unassessedMarks?"verified":"rubric_review_required",
+            attempt_provenance:buildAttemptProvenance({
+              subjectId:"integrated-science",paper:"02",mode:"timed",
+              bankVersion:"integrated-science-v1.2.0",rubricVersion:"item-mark-schemes-v1",
+              graderVersion:INTEGRATED_SCIENCE_P2_GRADER_VERSION,
+              startedAt:active?.startedAt || null,submittedAt:completedAt,responses,
+            })},
         });
       }
       await recordSubjectActivity({
@@ -449,6 +458,14 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
             grader_version:INTEGRATED_SCIENCE_P2_GRADER_VERSION,
             bank_version:"integrated-science-v1.2.0",
             provisional_grading:Boolean(result.provisional),
+            unresolved_marks:result.unassessedMarks,
+            confirmed_marks:result.score,
+            spark_scoring_status:!result.provisional&&!result.unassessedMarks?"verified":"rubric_review_required",
+            assessed_marks:!result.provisional&&!result.unassessedMarks?result.score:null,
+            score_parts:result.questions.map(q=>({id:q.question.id,score:q.score,maxMarks:q.maxMarks,
+              unresolvedMarks:q.items.reduce((n,item)=>n+(item.unassessedMarks||0),0),
+              assessedMarks:q.items.every(item=>!item.provisional)&&!q.items.some(item=>item.unassessedMarks)?q.score:null,
+              provisional:q.items.some(item=>item.provisional)})),
             low_confidence_items:result.lowConfidence,
             attempt_provenance:buildAttemptProvenance({
               subjectId:"integrated-science",paper:"02",mode:"timed",
