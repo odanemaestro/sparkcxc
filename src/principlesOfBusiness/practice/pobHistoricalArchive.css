@@ -69,3 +69,6 @@
 .pob-source-paper .pob-source-caveat{border:1px solid color-mix(in srgb,currentColor 20%,transparent);border-radius:12px;background:color-mix(in srgb,currentColor 4%,transparent);padding:.75rem .95rem;margin:0 0 1rem}
 .pob-source-caveat strong{font-size:.87rem}
 .pob-source-caveat p{font-size:.84rem;margin:.35rem 0 0;line-height:1.55}
+
+.pob-source-paper .pob-source-diagram{max-width:100%;margin:0 0 1rem;padding:.6rem;border-radius:12px;background:#fff;overflow:hidden}
+.pob-source-paper .pob-source-diagram img{display:block;max-width:100%;height:auto;margin-inline:auto}
