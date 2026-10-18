@@ -166,3 +166,31 @@ test("owner supplied 2015 historical Paper 2 shows real written prompts and work
  expect(screen.getByText(/Profit is the amount by which a business/)).toBeInTheDocument();
  expect(screen.queryByRole("button",{name:/Request detailed AI practice marking/})).not.toBeInTheDocument();
 });
+
+test("January 2022 owner-source pilot submits only its versioned 100-mark bank",async()=>{
+ const old1=process.env.REACT_APP_SERVER_MARKING,old2=process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING;
+ process.env.REACT_APP_SERVER_MARKING="true";
+ process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING="true";
+ try{
+  const rpc=jest.fn(async name=>{
+   if(name==="spark_start_exam_attempt")return {data:[{attempt_id:"owner-source-pilot"}],error:null};
+   if(name==="spark_submit_exam_attempt")return {data:[{attempt_id:"owner-source-pilot"}],error:null};
+   return {data:null,error:null};
+  });
+  render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}
+   userId="pob-pilot-tester" supabase={{rpc}}/>);
+  fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2022"}});
+  fireEvent.click(screen.getByRole("button",{name:/2022 January.*Paper 2.*Written answers and mark schemes/}));
+  expect(screen.getByText(/source-aligned rubric for provisional practice assessment/)).toBeInTheDocument();
+  fireEvent.change(screen.getAllByRole("textbox")[0],{target:{value:"To earn a profit and to help the community."}});
+  fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
+  fireEvent.click(screen.getByRole("button",{name:"Request detailed AI practice marking"}));
+  await waitFor(()=>expect(rpc).toHaveBeenCalledWith("spark_start_exam_attempt",
+   expect.objectContaining({p_bank_version:"pob-archive-owner-v2-pob-p2-2022-jan",
+    p_rubric_version:"pob-owner-historical-rubric-v2",
+    p_metadata:expect.objectContaining({paper_id:"POB-P2-2022-JAN",owner_source_provisional:true})})));
+ }finally{
+  if(old1===undefined)delete process.env.REACT_APP_SERVER_MARKING;else process.env.REACT_APP_SERVER_MARKING=old1;
+  if(old2===undefined)delete process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING;else process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING=old2;
+ }
+});

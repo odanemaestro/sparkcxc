@@ -10,6 +10,7 @@ import {POB_2026_JAN_HISTORICAL_BANK_VERSION,buildPob2026JanHistoricalPaper} fro
 import {gradePobListingPart} from "../principlesOfBusiness/data/pobDeterministicMarks";
 import {gradePobCalculationResultPart} from "../principlesOfBusiness/data/pobDeterministicCalculationMarks";
 import {buildPobArchiveExaminerPack,pobArchiveBankVersion,POB_ARCHIVE_RUBRIC_VERSION,eligiblePobArchiveScoringSources} from "./pobArchiveExaminer";
+import {pobOwnerP2BankVersion,POB_OWNER_P2_RUBRIC_VERSION,POB_OWNER_P2_PILOT_IDS} from "./pobOwnerArchiveCalibration";
 import {SEMANTIC_MARKING_REVISION} from "./semanticMarking";
 export {requestSemanticPass,reconcileSemanticPasses,SEMANTIC_MARKING_REVISION} from "./semanticMarking";
 export {summarizePobJan2026Marks} from "../principlesOfBusiness/data/pobJan2026ExaminerMarking";
@@ -47,20 +48,23 @@ export function buildTrustedAssessment(attempt,authority={}){
       historicalPaperId:paper.id,sourceSha256:paper.sourceSha256,parts:pack.parts,criterionLevel:true};
   }
   if(attempt.subject_id==="principles-of-business" &&
-      String(attempt.bank_version||"").startsWith("pob-archive-v1-")){
+      (String(attempt.bank_version||"").startsWith("pob-archive-v1-") ||
+       String(attempt.bank_version||"").startsWith("pob-archive-owner-v2-"))){
     if(authority.historicalPobArchiveEnabled!==true)
       throw new Error("unsupported_bank_version");
     const paperId=attempt.metadata?.paper_id;
+    const ownerSource=String(attempt.bank_version||"").startsWith("pob-archive-owner-v2-");
     const record=eligiblePobArchiveScoringSources().find(p=>p.id===paperId);
-    if(!record||attempt.bank_version!==pobArchiveBankVersion(paperId)||
+    if(ownerSource&&!POB_OWNER_P2_PILOT_IDS.includes(paperId))throw new Error("owner_calibration_not_released");
+    if(!record||attempt.bank_version!==(ownerSource?pobOwnerP2BankVersion(paperId):pobArchiveBankVersion(paperId))||
        attempt.metadata?.source_sha256!==record.source.sourceSha256||
-       attempt.rubric_version!==POB_ARCHIVE_RUBRIC_VERSION||
+       attempt.rubric_version!==(ownerSource?POB_OWNER_P2_RUBRIC_VERSION:POB_ARCHIVE_RUBRIC_VERSION)||
        attempt.grader_version!==SEMANTIC_MARKING_REVISION||
        attempt.score!=null||Number(attempt.max_score)!==100)
       throw new Error("historical_attempt_identity_mismatch");
     const pack=buildPobArchiveExaminerPack({
       paperId,selectedQuestions:attempt.metadata?.selected_questions,
-      responses
+      responses,ownerSource
     });
     return {...pack,deterministicScore:0,baselineScore:0,unassessedMarks:0};
   }

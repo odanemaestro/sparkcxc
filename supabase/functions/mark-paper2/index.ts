@@ -37,10 +37,12 @@ const handler = {
         }
         let historicalPobArchiveEnabled=false;
         if(attempt.subject_id==="principles-of-business" &&
-           String(attempt.bank_version||"").startsWith("pob-archive-v1-")){
+           (String(attempt.bank_version||"").startsWith("pob-archive-v1-")||
+            String(attempt.bank_version||"").startsWith("pob-archive-owner-v2-"))){
           const {data:config,error:configError}=await db.from("spark_marking_config")
-            .select("pob_historical_archive_pilot_enabled").eq("singleton",true).single();
-          if(configError||!config?.pob_historical_archive_pilot_enabled)
+            .select("pob_historical_archive_pilot_enabled,pob_owner_p2_source_pilot_enabled").eq("singleton",true).single();
+          const ownerBank=String(attempt.bank_version||"").startsWith("pob-archive-owner-v2-");
+          if(configError||!(ownerBank?config?.pob_owner_p2_source_pilot_enabled:config?.pob_historical_archive_pilot_enabled))
             throw new Error("historical_marking_disabled");
           historicalPobArchiveEnabled=true;
         }
