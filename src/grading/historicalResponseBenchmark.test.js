@@ -2,6 +2,7 @@ import {evaluateHistoricalResponseBenchmarks,historicalPaperEligibility} from ".
 import {FNH_HISTORICAL_P2_2005} from "../fnh/data/fnhHistorical2005Paper2";
 import {FNH_HISTORICAL_P2_2018} from "../fnh/data/fnhHistorical2018Paper2";
 import {gradeFnhWrittenPart,FNH_P2_RUBRIC_CALIBRATION_VERSION} from "../fnh/practice/fnhPaper2Marking";
+import {FNH_STRUCTURED_CRITERIA_VERSION} from "../fnh/practice/fnhHistoricalStructuredCriteria";
 import {POB_HISTORICAL_REVIEW_BANKS} from "../principlesOfBusiness/data/pobHistoricalArchiveRegistry";
 import {buildPobOwnerPaper2Bank} from "../principlesOfBusiness/data/pobPaper2OwnerSourceBank";
 import {reviewPobHistoricalPaper2,POB_HISTORICAL_RUBRIC_REVIEW_VERSION} from "../principlesOfBusiness/data/pobHistoricalPaper2RubricReview";
@@ -11,13 +12,13 @@ const fnhPapers=[FNH_HISTORICAL_P2_2005,FNH_HISTORICAL_P2_2018];
 const pobRecords=POB_HISTORICAL_REVIEW_BANKS.filter(row=>["POB-P2-2005-MJ","POB-P2-2019-JAN"].includes(row.id));
 const pobPapers=pobRecords.map(record=>buildPobOwnerPaper2Bank(record.id,record.bank));
 
-const fnh=(paper,question,part,category,response,confirmed,unresolved,id)=>({
+const fnh=(paper,question,part,category,response,confirmed,unresolved,id,version=FNH_P2_RUBRIC_CALIBRATION_VERSION)=>({
   caseId:id,subjectId:"food-nutrition-and-health",
   benchmarkAuthority:"spark-authored-candidate-fixture",
   paperId:paper.id,sourceFile:paper.sourceFile,
   questionId:paper.questions.find(q=>q.number===question).id,
   partId:part,category,response,expectedConfirmed:confirmed,
-  expectedUnresolved:unresolved,rubricVersion:FNH_P2_RUBRIC_CALIBRATION_VERSION
+  expectedUnresolved:unresolved,rubricVersion:version
 });
 const pob=(paperId,question,part,category,response,confirmed,id)=>({
   caseId:id,subjectId:"principles-of-business",
@@ -53,7 +54,7 @@ const cases=[
  fnh(FNH_HISTORICAL_P2_2018,1,"a","partial",
   "UNICEF.",1,2,"fnh-2018-one-international-agency"),
  fnh(FNH_HISTORICAL_P2_2018,1,"b","partial",
-  "Educate families about balanced diets, food safety and affordable food choices.",1,3,"fnh-2018-community-nutrition-explanation"),
+  "Educate families about balanced diets, food safety and affordable food choices.",2,2,"fnh-2018-community-nutrition-explanation",FNH_STRUCTURED_CRITERIA_VERSION),
  pob("POB-P2-2005-MJ",9,"a.ii","correct",
   "24,000 - 26,000 = -2,000 deficit.",2,"pob-2005-trade-full"),
  pob("POB-P2-2005-MJ",9,"a.ii","partial",
