@@ -28,3 +28,12 @@ test("conservatively separates verified and unresolved scores in full papers",()
  expect(result.unassessedMarks).toBe(2);
  expect(result.maxPossibleScore).toBe(3);
 });
+
+
+test("Integrated Science legacy graph rejects malformed extra lines",()=>{
+ const item={marks:5,response:{type:"graph",x:"time",y:"temperature"},markScheme:{points:["Plot (0, 0), (1, 1), (2, 2)"]}};
+ const good=gradeIntegratedSciencePaper2Item(question,0,0,item,{"SCI:0:0:points":"0, 0\n1, 1\n2, 2"});
+ const bad=gradeIntegratedSciencePaper2Item(question,0,0,item,{"SCI:0:0:points":"0, 0\n1, 1\n2, 2\ninvalid data"});
+ expect(good.score).toBe(2);
+ expect(bad.score).toBe(0);
+});
