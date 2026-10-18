@@ -3,6 +3,8 @@ import {
  PHYSICS_GRAPH_LIMITS,
  physicsGraphLine,
  samplePhysicsGraphLine,
+ validatePhysicsGradientTriangle,
+ validatePhysicsPressureReading,
 } from "../../../grading/physicsGraphWorkingEvidenceV2";
 
 /**
@@ -18,10 +20,14 @@ export default function PhysicsGraphWorking({questionId,partId,graphResponse={},
  const selected=samplePhysicsGraphLine(graphResponse,Number(selection));
  const evidence=response?.graphEvidence;
  const points=partId==="c"&&evidence?.kind==="physics-gradient-triangle-v1"
-  ?evidence.points||[]:[];
+  &&Array.isArray(evidence.points)?evidence.points:[];
  const readPoint=partId==="d"&&evidence?.kind==="physics-pressure-reading-v1"
+  &&evidence.point&&Number.isFinite(evidence.point.x)&&Number.isFinite(evidence.point.y)
   ?evidence.point:null;
- const pointA=points[0],pointB=points[1];
+ const pointA=points[0]&&Number.isFinite(points[0].x)&&Number.isFinite(points[0].y)?points[0]:null;
+ const pointB=points[1]&&Number.isFinite(points[1].x)&&Number.isFinite(points[1].y)?points[1]:null;
+ const triangleValid=pointB&&validatePhysicsGradientTriangle({graphResponse,response});
+ const readingValid=readPoint&&validatePhysicsPressureReading({graphResponse,response});
  const limits=PHYSICS_GRAPH_LIMITS;
  const area={left:66,top:18,width:550,height:240};
  const px=x=>area.left+(x-limits.xMin)/(limits.xMax-limits.xMin)*area.width;
@@ -46,7 +52,7 @@ export default function PhysicsGraphWorking({questionId,partId,graphResponse={},
   {!line?<p className="phy-p2-graph-working-help">Draw your best-fit line in Question 1(b) first. Your own line will appear here for this working.</p>:<>
    <p className="phy-p2-graph-working-help">
     {partId==="c"
-     ?"Choose two different positions on your own best-fit line. Record both points to draw a large right-angled triangle showing the gradient."
+     ?"Choose two different positions on your own best-fit line, at least half the graph width apart, to draw the gradient triangle."
      :"Choose the position near 1/V = 5.56 on your own graph, record the point, then write your pressure reading in the answer field."}
    </p>
    <svg viewBox="0 0 640 305" role="img" aria-label="Your saved best-fit pressure graph with selected working" className="phy-p2-working-graph">
@@ -64,7 +70,7 @@ export default function PhysicsGraphWorking({questionId,partId,graphResponse={},
     <line x1={px(line.a.x)} y1={py(line.a.y)} x2={px(line.b.x)} y2={py(line.b.y)} className="phy-p2-working-line"/>
     {selected&&<circle cx={px(selected.x)} cy={py(selected.y)} r="5" className="phy-p2-working-selection"/>}
     {pointA&&<circle cx={px(pointA.x)} cy={py(pointA.y)} r="6" className="phy-p2-working-saved"/>}
-    {pointB&&<><polyline points={[[pointA.x,pointA.y],[pointB.x,pointA.y],[pointB.x,pointB.y]]
+    {pointA&&pointB&&<><polyline points={[[pointA.x,pointA.y],[pointB.x,pointA.y],[pointB.x,pointB.y]]
      .map(([x,y])=>px(x)+","+py(y)).join(" ")} className="phy-p2-working-triangle"/>
      <circle cx={px(pointB.x)} cy={py(pointB.y)} r="6" className="phy-p2-working-saved"/>
     </>}
@@ -87,8 +93,8 @@ export default function PhysicsGraphWorking({questionId,partId,graphResponse={},
      {evidence&&<button type="button" className="phy-p2-working-clear" onClick={clear}>Clear working</button>}
     </div>
     <p role="status" className="phy-p2-graph-working-help">
-     {partId==="c"?(pointB?"Gradient triangle recorded.":pointA?"First point recorded. Choose the second.":"No triangle recorded yet.")
-      :readPoint?"Graph-reading point recorded. Enter the pressure in your answer.":"No graph-reading point recorded yet."}
+     {partId==="c"?(pointB?(triangleValid?"Gradient triangle recorded.":"Triangle is too short or does not match your saved line. Choose two points farther apart.") :pointA?"First point recorded. Choose the second.":"No triangle recorded yet.")
+      :readPoint?(readingValid?"Graph-reading point recorded. Enter the pressure in your answer.":"Reading no longer matches your line. Record it again."):"No graph-reading point recorded yet."}
     </p>
    </div>
   </>}
