@@ -50,7 +50,7 @@ function tokenPresent(candidate, token){
   const variants=SYNONYMS[t] || [];
   if(variants.some(item=>(" "+c+" ").includes(" "+clean(item)+" "))) return true;
   const wanted=stem(t);
-  return tokens(c).some(item=>stem(item)===wanted);
+  return tokens(c).some(item=>stem(item)===wanted||item===t.replace(/s$/,"")||t===item.replace(/s$/,""));
 }
 
 function stripMarkingNoise(point){
