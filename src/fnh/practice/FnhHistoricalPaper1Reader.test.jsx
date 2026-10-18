@@ -101,7 +101,7 @@ test("FNH historical provisional score excludes unanswered or unresolved keys",(
  fireEvent.click(screen.getByRole("button",{name:"Submit and review provisional score"}));
   expect(screen.getByText(/Practice result: 1/)).toBeInTheDocument();
  expect(screen.getByText(/SPARK suggested answer: A/)).toBeInTheDocument();
- expect(screen.getAllByRole("radio").every(input=>input.disabled)).toBe(true);
+ expect(screen.getAllByRole("radio").every(input=>input.matches(":disabled"))).toBe(true);
  fireEvent.click(screen.getByRole("button",{name:"Start another attempt"}));
  expect(screen.queryByText(/SPARK suggested answer:/)).not.toBeInTheDocument();
 });
