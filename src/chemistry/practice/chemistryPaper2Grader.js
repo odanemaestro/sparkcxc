@@ -75,9 +75,8 @@ export function chemistryFinalNumericEvidence(response){
   const declarations=[...source.matchAll(/\b(?:final\s+answer|answer|ans)\s*(?:is\s+|[:=]\s*)([^\n;]+)/gi)];
   if(declarations.length>1)return {values:[],ambiguous:true,declared:true};
   const selected=declarations.length?declarations[0][1]:source;
-  // A choice between numeric answers is not a correct single result.
-  if(/(?:[-+]?(?:\d+(?:\.\d*)?|\.\d+)\s*(?:%|°?[a-z]+)?\s+(?:or|either|versus|vs\.?|\/?)\s*[-+]?(?:\d+(?:\.\d*)?|\.\d+))/i.test(selected)&&
-    /\b(?:or|either|versus|vs\.?|\/?)\b/i.test(selected))
+  // "25 or 30" and "either 25 or 30" are competing, not one answer.
+  if(/[-+]?(?:\d+(?:\.\d*)?|\.\d+)\s+(?:or|versus|vs\.?)\s+[-+]?(?:\d+(?:\.\d*)?|\.\d+)/i.test(selected))
     return {values:[],ambiguous:true,declared:Boolean(declarations.length)};
   const values=numbers(selected);
   return {values,ambiguous:Boolean(declarations.length)&&values.length!==1,
