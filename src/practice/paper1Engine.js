@@ -82,18 +82,22 @@ function repeatKey(question) {
   return explicitRepeatKey(question) || `shape:${structuralFingerprint(question)}`;
 }
 
+function validPaper1Options(question) {
+  const options=["option_a","option_b","option_c","option_d"].map(key=>
+    String(question?.[key]??"").trim().replace(/\s+/g," ").toLowerCase()
+  );
+  return options.every(Boolean)&&new Set(options).size===4;
+}
+
 function isUsableQuestion(question) {
   return Boolean(
     question &&
     question.question_id &&
     Number(question.question_number) >= 1 &&
     Number(question.question_number) <= PAPER1_QUESTION_COUNT &&
-    ["A", "B", "C", "D"].includes(String(question.correct_option || "").toUpperCase()) &&
+    ["A", "B", "C", "D"].includes(String(question.correct_option || "").trim().toUpperCase()) &&
     question.stem &&
-    question.option_a &&
-    question.option_b &&
-    question.option_c &&
-    question.option_d &&
+    validPaper1Options(question) &&
     question.record_status !== "Source gap"
   );
 }
@@ -211,9 +215,12 @@ export function validatePaper1Exam(exam) {
   const repeats = questions.map(repeatKey);
   const fingerprints = questions.map(structuralFingerprint);
   const positions = questions.map(q => Number(q.question_number));
+  const sourceAudit=auditPaper1OptionIntegrity(questions);
+  const invalidQuestions=questions.filter(q=>!isUsableQuestion(q)).map(q=>String(q?.question_id??""));
 
   return {
     valid: questions.length === PAPER1_QUESTION_COUNT &&
+      sourceAudit.clean && invalidQuestions.length===0 &&
       new Set(ids).size === PAPER1_QUESTION_COUNT &&
       new Set(repeats).size === PAPER1_QUESTION_COUNT &&
       new Set(fingerprints).size === PAPER1_QUESTION_COUNT &&
@@ -223,6 +230,8 @@ export function validatePaper1Exam(exam) {
     uniqueRepeatKeys: new Set(repeats).size,
     uniqueFingerprints: new Set(fingerprints).size,
     positions,
+    sourceAudit,
+    invalidQuestions,
   };
 }
 
@@ -246,8 +255,15 @@ export function scorePaper1(questions, answers) {
     topicMap.set(topic, stat);
   });
 
+  const invalidQuestionIds=rows.filter(row=>!row.validKey)
+    .map(row=>String(row.question?.question_id??""));
   return {
     correct,
+    invalidQuestionIds,
+    // Never describe a result built from invalid answer keys as a fully
+    // verified score. Preserve numeric counts for backward compatibility.
+    fullyGraded:invalidQuestionIds.length===0,
+    gradingStatus:invalidQuestionIds.length?"source-answer-key-review-required":"verified",
     incorrect: rows.length - correct - unanswered,
     unanswered,
     total: rows.length,
