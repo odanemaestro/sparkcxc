@@ -50,3 +50,8 @@ test("extra or malformed Chemistry graph points cannot earn full plotting credit
  expect(extra.visualEvidence.validPoints).toBe(true);
  expect(malformed.visualEvidence.validPoints).toBe(false);
 });
+
+test("incidental source numbers do not award the scientific explanation",()=>{
+ expect(grade(1,["2 electrons are transferred"],"2").score).toBe(0);
+ expect(grade(1,["2 electrons are transferred"],"Two electrons are transferred.").score).toBe(0);
+});
