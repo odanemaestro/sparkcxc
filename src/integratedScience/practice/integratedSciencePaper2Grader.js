@@ -1,9 +1,10 @@
 import { markScienceCalculation, SCIENCE_TABLES } from "./scienceStructuredMarking";
 import { gradeScienceGraph } from "./scienceGraphMarking";
+import { matchScienceWrittenEvidence } from "../../grading/scienceWrittenEvidence";
 // SPARK Integrated Science Paper 02 automatic practice grader.
 // This is an evidence-based estimate, not an examiner certification.
 
-export const INTEGRATED_SCIENCE_P2_GRADER_VERSION = "2.2.0";
+export const INTEGRATED_SCIENCE_P2_GRADER_VERSION = "2.3.0";
 
 const STOPWORDS=new Set(("a an and are as at be been being but by can could did do does for from had has have in into is it its may more most of on or that the their them then there these they this those to too was were what when where which who will with would").split(" "));
 const SYNONYMS=Object.freeze({
@@ -68,17 +69,10 @@ function pointAlternatives(point){
 }
 
 function evidenceMatch(response, reference, strict=false){
-  // Never award a positive claim from its explicitly negated version.
-  const negated=/\b(?:not|no|never|cannot|without|doesnt|isnt|dont)\b/i;
-  if(negated.test(clean(response)) && !negated.test(clean(reference))) return false;
-  const refTokens=tokens(reference).filter(token=>!/^(mark|marks|one|two|three|four|any)$/.test(token));
-  if(!refTokens.length) return false;
-  const hits=refTokens.filter(token=>tokenPresent(response,token)).length;
-  const ratio=hits/refTokens.length;
-  if(strict) return ratio===1;
-  if(refTokens.length<=2) return ratio===1;
-  if(refTokens.length<=5) return ratio>=0.6;
-  return ratio>=0.5;
+  return matchScienceWrittenEvidence(response,reference,{
+    tokens:value=>tokens(value).filter(token=>!/^(mark|marks|one|two|three|four|any)$/.test(token)),
+    tokenPresent,strict
+  }).matched;
 }
 
 function parseLabelPoint(point){
@@ -132,14 +126,14 @@ function lineResult(questionId,partIndex,itemIndex,item,responses){
   let score=criteria.reduce((sum,row)=>sum+row.marks,0);
   score=Math.min(maxMarks,score);
 
-  // Some schemes describe a multi-mark developed explanation as one long point.
-  if(rawPoints.length===1 && maxMarks>1 && response.trim() && evidenceMatch(response,stripMarkingNoise(rawPoints[0]))){
-    const coverage=tokens(rawPoints[0]).filter(token=>tokenPresent(response,token)).length / Math.max(1,tokens(rawPoints[0]).length);
-    score=Math.max(score,Math.min(maxMarks,Math.floor(coverage*maxMarks+0.25)));
-    criteria[0]={...criteria[0],marks:score,maxMarks,earned:score===maxMarks};
-  }
+  // A single generic point cannot establish every independently awarded mark.
+  // Retain confirmed credit and expose missing detailed criteria explicitly.
+  const unassessedMarks=String(response||"").trim()
+    ?Math.max(0,maxMarks-Math.min(maxMarks,rawPoints.length)):0;
+  return {score,maxMarks,criteria,confidence:"medium",provisional:true,
+    unassessedMarks,
+    ...(unassessedMarks?{reason:"Additional marks require separately verified marking criteria."}:{})};
 
-  return {score,maxMarks,criteria,confidence:"medium",provisional:true};
 }
 
 function tableResult(questionId,partIndex,itemIndex,item,responses){
