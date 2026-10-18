@@ -34,7 +34,7 @@ function tokenPresent(text,token){
   if((" "+c+" ").includes(" "+t+" ")) return true;
   if((SYN[t]||[]).some(v=>(" "+c+" ").includes(" "+clean(v)+" "))) return true;
   const wanted=stem(t);
-  return tokens(c).some(v=>stem(v)===wanted);
+  return tokens(c).some(v=>stem(v)===wanted||v===t.replace(/s$/,"")||t===v.replace(/s$/,""));
 }
 function strip(point){
   return String(point||"")
