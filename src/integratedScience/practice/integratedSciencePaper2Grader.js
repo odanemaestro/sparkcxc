@@ -70,7 +70,7 @@ function pointAlternatives(point){
 
 function evidenceMatch(response, reference, strict=false){
   return matchScienceWrittenEvidence(response,reference,{
-    tokens:value=>tokens(value).filter(token=>!/^(mark|marks|one|two|three|four|any)$/.test(token)),
+    tokens:value=>tokens(String(value).replace(/\b(?:form|type|kind)\s+of\s+/gi,"")).filter(token=>!/^(mark|marks|one|two|three|four|any)$/.test(token)),
     tokenPresent,strict
   }).matched;
 }
