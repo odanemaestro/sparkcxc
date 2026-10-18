@@ -368,6 +368,7 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
       stored.provisionalGrading=!publication.canPublishFinalScore;
       stored.paperReleaseStatus=publication.audit.releaseStatus;
       stored.paperReleaseIssues=publication.audit.issues;
+      stored.paperReleaseMetadata=publication.metadata;
       savePhysicsPaper2Result(userId, stored);
       setActive(previous => previous ? {
         ...previous,
@@ -377,7 +378,7 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
         resultId: stored.id,
         resultSaved: true,
       } : previous);
-      onActivity?.({ type: "physics_paper2_exam", paperId: paper.paper_id, paperNumber, paperLabel: stored.paperLabel, score: stored.score, maxScore: stored.maxScore, percent: stored.percent, provisionalGrading:stored.provisionalGrading, reviewRecommended:stored.reviewRecommended, at: completedAt });
+      onActivity?.({ type: "physics_paper2_exam", paperId: paper.paper_id, paperNumber, paperLabel: stored.paperLabel, score: stored.score, maxScore: stored.maxScore, percent: stored.percent, provisionalGrading:stored.provisionalGrading, reviewRecommended:stored.reviewRecommended, paperReleaseMetadata:stored.paperReleaseMetadata, confirmedMarks:stored.confirmedMarks, at: completedAt });
       return stored;
     } catch (error) {
       submissionGuardRef.current = false;
