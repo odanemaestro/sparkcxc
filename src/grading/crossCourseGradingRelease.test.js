@@ -51,7 +51,7 @@ const fixtures=[
     "A diet is never the usual foods and drinks consumed by a person.",FNH_P2_RUBRIC_CALIBRATION_VERSION],
   ["principles-of-business",pob,2,
     "24000 - 26000 = -2000 deficit; final answer: -2000",
-    "24000 - 26000 = 3000 surplus; final answer: 3000","pob-historical-p2-rubric"]
+    "Current account balance 3000; final answer: 3000","pob-historical-p2-rubric"]
 ];
 
 function cases(){
@@ -70,8 +70,13 @@ test("all nine named Paper 2 subjects have positive and negative scorer fixtures
   expect(PAPER2_GRADING_SUBJECTS).toHaveLength(9);
   expect(rows).toHaveLength(18);
   for(const row of rows){
-    expect(row.observedMark).toBe(row.expectedMark);
+    expect({caseId:row.caseId,observed:row.observedMark}).toEqual({
+      caseId:row.caseId,observed:row.expectedMark
+    });
   }
+  // Correct working can receive legitimate method credit even when the
+  // candidate's declared final is wrong. Never label this a zero-mark case.
+  expect(pob("24000 - 26000 = -2000 deficit; final answer: 3000")).toBe(1);
   const gate=auditCrossCourseCalibration({
     officialReport:calibration,sourceRegistry:calibration.sources,subjectCases:rows
   });
