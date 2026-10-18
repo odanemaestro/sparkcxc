@@ -1,5 +1,6 @@
 import {gradePobP2VisualTask,getPobP2VisualTask} from "./pobHistoricalPaper2Visual";
 import {gradePobHistoricalArithmetic,matchPobWrittenEvidence} from "./pobHistoricalPaper2Evidence";
+import {gradePobDevelopedPart,getPobDevelopedTask,POB_DEVELOPED_SUBCRITERIA_VERSION} from "./pobHistoricalDevelopedMarking";
 
 // SPARK's source-linked, conservative Paper 2 rubric assessment.
 // Marks are confirmed per criterion only where a testable response supports
@@ -7,7 +8,7 @@ import {gradePobHistoricalArithmetic,matchPobWrittenEvidence} from "./pobHistori
 // incorrect. AI is NOT part of this marking function.
 const normalize=text=>String(text??"").toLowerCase().replace(/[’‘]/g,"'")
  .replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");
-export const POB_HISTORICAL_RUBRIC_REVIEW_VERSION="pob-historical-p2-rubric-review-v3";
+export const POB_HISTORICAL_RUBRIC_REVIEW_VERSION="pob-historical-p2-rubric-review-v4";
 
 export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[]){
  if(!paper||!Array.isArray(paper.questions))throw new Error("historical_paper_missing");
@@ -29,14 +30,22 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
     ?gradePobP2VisualTask(paper.id,id,raw):null;
    const sameAsGuide=Boolean(!visualTask&&response&&valid&&normalize(response)===normalize(part.modelAnswer));
    const arithmetic=!visualTask&&valid&&response?gradePobHistoricalArithmetic(paper.id,id,response):null;
+   const developedTask=getPobDevelopedTask(paper.id,id);
+   const developed=valid&&developedTask&&criteria.length===developedTask.maxDistinct&&
+     criteria.every(c=>c.marks===2)&&maxMarks===developedTask.maxMarks&&response
+     ?gradePobDevelopedPart(paper.id,id,response):null;
    const blank=visual?visual.blank:!raw||typeof raw==="string"&&!response;
-   const evidenced=!visualTask&&!sameAsGuide&&!arithmetic&&response&&valid
+   const evidenced=!visualTask&&!sameAsGuide&&!arithmetic&&!developed&&response&&valid
     ?matchPobWrittenEvidence(response,part.modelAnswer,criteria):null;
    let assessed,confirmed,status;
    if(blank){assessed=criteria.map(()=>0);status="unanswered";}
    else if(visual){assessed=criteria.map((_,i)=>visual.criteria[i]?.marks??null);status="diagram-verified";}
    else if(sameAsGuide){assessed=criteria.map(c=>c.marks);status="verified-model-match";}
    else if(arithmetic){assessed=criteria.map((c,i)=>arithmetic.criteria[i]?c.marks:0);status="calculation-verified";}
+   else if(developed){
+    assessed=criteria.map((_,i)=>developed.criteria[i]?.marks??null);
+    status=developed.status;
+   }
    else if(evidenced){
     // Matching one response clause establishes at most one mark. Where
     // the source criterion is worth several marks, its remaining marks need
@@ -54,16 +63,19 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
    // Exact arithmetic and diagram checkers explicitly resolve every
    // criterion, including known incorrect results. Only open prose and
    // structurally invalid rubrics keep undetermined marks pending.
-   const determined=Boolean(valid&&(visual||arithmetic||sameAsGuide));
+   const determined=Boolean(valid&&(visual||arithmetic||sameAsGuide||(developed&&developed.assessedMarks!==null)));
    const unresolved=blank||determined?0:valid
      ?Math.max(0,maxMarks-confirmed):maxMarks;
    const assessedMarks=valid&&unresolved===0&&assessed.every(n=>n!==null)?confirmed:null;
    return {id,question:question.number,part:part.id,availableMarks:maxMarks,
     confirmedMarks:confirmed,unresolvedMarks:unresolved,assessedMarks,
     rubricComplete:valid,status,
+    subcriteriaVersion:developed?POB_DEVELOPED_SUBCRITERIA_VERSION:null,
     criteria:criteria.map((criterion,index)=>({
      id:id+":criterion-"+(index+1),rule:criterion.rule,availableMarks:criterion.marks,
      assessedMarks:assessed[index],alternatives:criterion.alternatives||[],
+     evidence:developed?.criteria[index]?.evidence||null,
+     developedPoint:developed?.criteria[index]?.conceptId||null,
     })),
    };
   });
