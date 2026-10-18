@@ -1,4 +1,4 @@
-import {gradePobP2VisualTask} from "./pobHistoricalPaper2Visual";
+import {gradePobP2VisualTask,getPobP2VisualTask} from "./pobHistoricalPaper2Visual";
 import {gradePobHistoricalArithmetic,matchPobWrittenEvidence} from "./pobHistoricalPaper2Evidence";
 
 // SPARK's source-linked, conservative Paper 2 rubric assessment.
@@ -24,11 +24,13 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
    const valid=criteria.length>0&&criteria.every(c=>
     Number.isInteger(c.marks)&&c.marks>0&&String(c.rule||"").trim())&&
     criteria.reduce((n,c)=>n+c.marks,0)===maxMarks;
-   const visual=valid?gradePobP2VisualTask(paper.id,id,raw):null;
-   const sameAsGuide=Boolean(response&&valid&&normalize(response)===normalize(part.modelAnswer));
-   const arithmetic=valid&&response?gradePobHistoricalArithmetic(paper.id,id,response):null;
-   const blank=visual?visual.blank:!response;
-   const evidenced=!visual&&!sameAsGuide&&!arithmetic&&response&&valid
+   const visualTask=getPobP2VisualTask(paper.id,id);
+   const visual=valid&&visualTask&&raw?.kind===visualTask.kind
+    ?gradePobP2VisualTask(paper.id,id,raw):null;
+   const sameAsGuide=Boolean(!visualTask&&response&&valid&&normalize(response)===normalize(part.modelAnswer));
+   const arithmetic=!visualTask&&valid&&response?gradePobHistoricalArithmetic(paper.id,id,response):null;
+   const blank=visual?visual.blank:!raw||typeof raw==="string"&&!response;
+   const evidenced=!visualTask&&!sameAsGuide&&!arithmetic&&response&&valid
     ?matchPobWrittenEvidence(response,part.modelAnswer,criteria):null;
    let assessed,confirmed,status;
    if(blank){assessed=criteria.map(()=>0);status="unanswered";}
@@ -38,7 +40,7 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
    else if(evidenced){
     assessed=criteria.map((c,i)=>evidenced.confirmed.some(hit=>hit.criterion===i)?c.marks:null);
     status=assessed.every(n=>n!==null)?"criterion-verified":"requires-rubric-assessment";
-   }else{assessed=criteria.map(()=>null);status="requires-rubric-assessment";}
+   }else{assessed=criteria.map(()=>null);status=visualTask?"diagram-input-required":"requires-rubric-assessment";}
    // Invalid or missing source criteria cannot become a final grade.
    if(!valid&&!blank){assessed=criteria.map(()=>null);status="requires-rubric-assessment";}
    confirmed=assessed.reduce((n,m)=>n+(m||0),0);
