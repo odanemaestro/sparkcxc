@@ -31,6 +31,34 @@ const tokenise=v=>clean(v).toLowerCase().match(/[a-z]+(?:'[a-z]+)?/g)||[];
 export const countEnglishWords=v=>(String(v||"").match(/[A-Za-z0-9]+(?:['’][A-Za-z]+)?(?:-[A-Za-z0-9]+(?:['’][A-Za-z]+)?)*/g)||[]).length;
 const sentenceList=v=>String(v||"").split(/[.!?]+/).map(s=>s.trim()).filter(s=>s.split(/\s+/).length>=2);
 const paragraphList=v=>String(v||"").split(/\n\s*\n|\n/).map(s=>s.trim()).filter(Boolean);
+
+// Score a source idea from one meaningful statement, not keywords assembled
+// across disconnected sentences. Protect decimal values when splitting.
+const claimUnits=v=>String(v||"").split(/[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)/)
+  .map(part=>part.trim()).filter(Boolean);
+function repeatedWritingEvidence(response){
+  const sentences=claimUnits(response).map(line=>tokenise(line).join(" ")).filter(line=>line.split(" ").length>=5);
+  const counts=new Map();
+  sentences.forEach(line=>counts.set(line,(counts.get(line)||0)+1));
+  const repeated=[...counts.values()].reduce((sum,count)=>sum+Math.max(0,count-1),0);
+  return {total:sentences.length,unique:counts.size,
+    repeatedShare:sentences.length?repeated/sentences.length:0};
+}
+function repetitionCap(result,response){
+  const repetition=repeatedWritingEvidence(response);
+  const count=countEnglishWords(response);
+  const max=count>=100&&repetition.repeatedShare>=.4?14
+    :count>=100&&repetition.repeatedShare>=.2?22:null;
+  if(max===null||result.score<=max)
+    return {...result,diagnostics:{...result.diagnostics,repetition}};
+  const scale=max/result.score;
+  const dimensions=(result.dimensions||[]).map(row=>({...row,score:round(row.score*scale)}));
+  const newScore=round(dimensions.reduce((total,row)=>total+row.score,0));
+  return {...result,score:Math.min(max,newScore),dimensions,
+    confidence:"low",diagnostics:{...result.diagnostics,repetition},
+    feedback:[...(result.feedback||[]),
+      "Repeated sentences limit demonstrated development. SPARK has capped the provisional practice estimate."]};
+}
 const countMatches=(value,list)=>list.filter(term=>clean(value).toLowerCase().includes(term)).length;
 const uniqueRatio=v=>{const w=tokenise(v);return w.length?new Set(w).size/w.length:0;};
 
@@ -104,20 +132,20 @@ function ideaTermPresent(candidateTokens,candidateText,term){
 }
 
 function sourceIdeaCoverage(stimulus,response){
-  const rows=[
-    ...(stimulus?.paragraphs || []),
-    ...(stimulus?.situation || []),
-  ].filter(Boolean);
-  const candidateText=clean(response).toLowerCase();
-  const candidate=new Set(tokenise(response).map(stem));
+  const rows=[...(stimulus?.paragraphs || []),...(stimulus?.situation || [])].filter(Boolean);
+  const units=claimUnits(response).filter(line=>tokenise(line).length>=5);
   const ideas=rows.map((line,index)=>{
     const terms=[...new Set(tokenise(line).map(stem).filter(w=>w.length>=4&&!STOPWORDS.has(w)))];
-    const matched=terms.filter(term=>ideaTermPresent(candidate,candidateText,term));
-    // CXC rewards a main idea expressed in the candidate's own words. Requiring
-    // three exact content words can punish legitimate paraphrase, so two
-    // independent semantic anchors are sufficient for a source idea.
     const needed=Math.min(2,Math.max(1,Math.ceil(terms.length*.18)));
-    return {index,line,matched:matched.slice(0,6),covered:matched.length>=needed};
+    const best=units.map(unit=>{
+      const candidateText=clean(unit).toLowerCase();
+      const candidate=new Set(tokenise(unit).map(stem));
+      const matched=terms.filter(term=>ideaTermPresent(candidate,candidateText,term));
+      const negated=/\b(?:not|never|cannot|can't|doesn't|don't|isn't)\b/i.test(unit);
+      return {matched,unit,valid:matched.length>=needed&&!negated};
+    }).sort((a,b)=>b.matched.length-a.matched.length)[0];
+    return {index,line,matched:(best?.matched||[]).slice(0,6),
+      covered:Boolean(best?.valid),evidence:best?.valid?best.unit:""};
   });
   return {ideas,covered:ideas.filter(row=>row.covered).length,total:ideas.length};
 }
@@ -160,6 +188,7 @@ function diagnostics(response){
   const w=tokenise(response);
   const sentences=sentenceList(response);
   const paras=paragraphList(response);
+  const repetition=repeatedWritingEvidence(response);
   const avgSentence=sentences.length?w.length/sentences.length:0;
   return {
     wordCount:countEnglishWords(response),
@@ -171,6 +200,7 @@ function diagnostics(response){
     lowercaseStarts:sentences.filter(s=>/^[a-z]/.test(s)).length,
     repeatedPunct:(String(response).match(/[!?]{2,}|\.{4,}/g)||[]).length,
     diversity:uniqueRatio(response),
+    repetition,
   };
 }
 
@@ -185,6 +215,10 @@ function languageBand(response,max=7){
   if(d.veryShort>=Math.max(3,Math.ceil(d.sentenceCount*.3))){score-=.7;notes.push("Frequent very short sentences make the writing choppy.");}
   if(d.lowercaseStarts>0){score-=.5;notes.push("Check sentence capitalisation.");}
   if(d.repeatedPunct>0){score-=.3;notes.push("Proofread repeated punctuation.");}
+  if(d.wordCount>=100&&d.repetition.repeatedShare>=.2){
+    score-=d.repetition.repeatedShare>=.4?3:1.5;
+    notes.push("Repeated sentences do not demonstrate additional language development.");
+  }
   if(!notes.length) notes.push("Language is generally controlled, varied and readable.");
   return {score:round(clamp(score,0,max)),notes,diagnostics:d};
 }
@@ -459,9 +493,9 @@ export function gradeEnglishAPaper2Response(task,response,analysisResponse=""){
     return gradeSummary(task,value,analysisResponse);
   }
   if(!value.trim()) return {score:0,maxMarks:task?.rubric?.marks||0,confidence:"high",dimensions:[],feedback:["No response was submitted."],diagnostics:diagnostics(value)};
-  if(task.kind==="exposition") return gradeExposition(task,value);
-  if(task.kind==="persuasive") return gradePersuasive(task,value);
-  if(task.kind==="literary") return gradeLiterary(task,value);
+  if(task.kind==="exposition") return repetitionCap(gradeExposition(task,value),value);
+  if(task.kind==="persuasive") return repetitionCap(gradePersuasive(task,value),value);
+  if(task.kind==="literary") return repetitionCap(gradeLiterary(task,value),value);
   return {score:0,maxMarks:task?.rubric?.marks||0,confidence:"low",dimensions:[],feedback:["This task type does not yet have a practice rubric."],diagnostics:diagnostics(value)};
 }
 
