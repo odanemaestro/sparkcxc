@@ -41,13 +41,24 @@ test("source PDF hashes remain paired to the existing trusted POB inventory",()=
 test("all twenty historical Paper 1 sittings have an explicit source-QA status",()=>{
  const report=auditPobHistoricalP1SourceReadiness(POB_HISTORICAL_REVIEW_BANKS);
  expect(report.totalSittings).toBe(20);
- expect(report.completeTranscriptions).toBe(11);
+ expect(report.completeTranscriptions).toBe(19);
  expect(report.pendingTranscriptions.map(p=>p.id)).toEqual([
-  "POB-P1-2015-MJ","POB-P1-2016-MJ","POB-P1-2017-MJ",
-  "POB-P1-2018-MJ","POB-P1-2020-JAN","POB-P1-2020-MJ",
-  "POB-P1-2021-MJ","POB-P1-2022-JAN","POB-P1-2024-MJ"
+  "POB-P1-2018-MJ"
  ]);
  expect(report.sourceQuestionsToReview.length).toBeGreaterThanOrEqual(30);
  expect(report.sourceQuestionsToReview.every(q=>q.paperId&&Number.isInteger(q.number)&&q.reason)).toBe(true);
  expect(report.sourceVerifiedForOfficialScoring).toBe(0);
+});
+
+test("eight owner supplied Batch 2 sittings have 60 complete question choices and preserve source-figure exclusions",()=>{
+ for(const id of ["POB-P1-2015-MJ","POB-P1-2016-MJ","POB-P1-2017-MJ",
+   "POB-P1-2020-JAN","POB-P1-2020-MJ","POB-P1-2021-MJ",
+   "POB-P1-2022-JAN","POB-P1-2024-MJ"]){
+  const record=POB_HISTORICAL_REVIEW_BANKS.find(p=>p.id===id);
+  const exam=buildPobHistoricalP1Exam(record);
+  expect(exam.questions).toHaveLength(60);
+  expect(exam.questions.every((q,i)=>q.number===i+1&&q.stem&&q.options.length===4&&q.options.every(Boolean))).toBe(true);
+  expect(exam.questions.filter(q=>q.sourceGraphicPending).every(q=>!q.scoringEligible)).toBe(true);
+ }
+ expect(getPobHistoricalP1Source("POB-P1-2018-MJ")).toBeNull();
 });
