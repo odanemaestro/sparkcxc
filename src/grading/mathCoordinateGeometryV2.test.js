@@ -8,9 +8,12 @@ const cases=[
 const c=(fixture,partId,response)=>mark({questionId:fixture.id,partId,response});
 describe.each(cases)("Math coordinate geometry source variation",fixture=>{
  const bank=PAPER2_QUESTION_BANK.find(q=>q.question_id===fixture.id);
+ const revised=fixture.id==="p2-q3-v1";
  test("source preserves reflection, translated coordinates and two-decimal BC",()=>{
   expect(bank).toBeDefined();
-  expect(bank.parts.map(p=>[p.id,p.marks])).toEqual([["a",3],["b",3],["c",3]]);
+  expect(bank.parts.map(p=>[p.id,p.marks])).toEqual(revised
+   ?[["a",3],["b",2],["c",2],["d",2]]
+   :[["a",3],["b",3],["c",3]]);
   expect(bank.parts[0].answer).toContain(fixture.axis+"-axis");
   expect(bank.parts[1].prompt).toContain(fixture.vector);
   expect(bank.parts[2].prompt).toMatch(/2 decimal places/);
@@ -36,20 +39,20 @@ describe.each(cases)("Math coordinate geometry source variation",fixture=>{
   const text=fixture.points.map(p=>"("+p.join(",")+")");
   for(const candidate of [text.join("; "),text.slice().reverse().join(", ")]) {
    const r=c(fixture,"b",{answer:candidate});
-   expect(r.criteria.map(x=>x.candidateMarks)).toEqual([1,1,1]);
+   expect(r.criteria.map(x=>x.candidateMarks)).toEqual(revised?[1,1]:[1,1,1]);
    expect(r.publishable).toBe(false);
   }
  });
  test("labelled A B C coordinates preserve vertex correspondence",()=>{
   const raw=fixture.points.map((p,i)=>"ABC"[i]+"'("+p.join(",")+")").join(", ");
   const r=c(fixture,"b",{answer:raw});
-  expect(r.suggestedMarks).toBe(3);
+  expect(r.suggestedMarks).toBe(revised?2:3);
  });
  test("a single valid vertex earns one, not all three, marks",()=>{
   const p=fixture.points[0];
   const r=c(fixture,"b",{answer:"("+p.join(",")+")"});
   expect(r.suggestedMarks).toBe(1);
-  expect(r.unresolvedMarks).toBe(2);
+  expect(r.unresolvedMarks).toBe(revised?1:2);
  });
  test("duplicate coordinate, bogus point and extra fourth point cannot earn full marks",()=>{
   const [a,b]=fixture.points;
@@ -63,28 +66,41 @@ describe.each(cases)("Math coordinate geometry source variation",fixture=>{
  test("source distance formula, evaluated components and 5.00 give three candidates",()=>{
   const response={answer:"5.00 units",working:fixture.sqrt+"; 16+9=25"};
   const r=c(fixture,"c",{response, ...response});
-  expect(r.criteria.map(x=>x.candidateMarks)).toEqual([1,1,1]);
+  expect(r.criteria.map(x=>x.candidateMarks)).toEqual(revised?[1,1]:[1,1,1]);
   expect(r.publishable).toBe(false);
  });
  test("correct 5.00 alone cannot claim invisible distance working",()=>{
   const r=c(fixture,"c",{answer:"5.00"});
-  expect(r.criteria.map(x=>x.candidateMarks)).toEqual([null,null,1]);
+  expect(r.criteria.map(x=>x.candidateMarks)).toEqual(revised?[null,1]:[null,null,1]);
  });
  test("numerically equal but not 2dp, or wrong length, lacks final format credit",()=>{
   for(const raw of ["5","5.0","4.99","5.000","5 cm","4.00 units"]){
-   expect(c(fixture,"c",{answer:raw}).criteria[2].candidateMarks).toBeNull();
+   expect(c(fixture,"c",{answer:raw}).criteria.at(-1).candidateMarks).toBeNull();
   }
  });
  test("correct method with wrong final receives only supported partial marks",()=>{
   const r=c(fixture,"c",{answer:"7.00",working:fixture.sqrt});
-  expect(r.criteria.map(v=>v.candidateMarks)).toEqual([1,null,null]);
+  expect(r.criteria.map(v=>v.candidateMarks)).toEqual(revised?[1,null]:[1,null,null]);
  });
  test("numeric coincidences without working do not invent method evidence",()=>{
   const r=c(fixture,"c",{answer:"5.00",working:"The sides have 3 and 4, so I guessed 5"});
-  expect(r.criteria.map(v=>v.candidateMarks)).toEqual([null,null,1]);
+  expect(r.criteria.map(v=>v.candidateMarks)).toEqual(revised?[null,1]:[null,null,1]);
  });
 });
 test("unknown question or part IDs cannot activate the geometry checker",()=>{
  expect(()=>mark({questionId:"p2-q3-v8",partId:"a",response:{answer:"reflection in x-axis"}})).toThrow();
  expect(()=>mark({questionId:"p2-q3-v1",partId:"d",response:{answer:"5.00"}})).toThrow();
+});
+
+
+test("reallocated Q3-v1(d) verifies a reflected segment's length and its reason",()=>{
+ const result=c(cases[0],"d",{answer:"5.00 cm because a reflection preserves length"});
+ expect(result.criteria.map(x=>x.candidateMarks)).toEqual([1,1]);
+ expect(result.suggestedMarks).toBe(2);
+ expect(result.publishable).toBe(false);
+ const noReason=c(cases[0],"d",{answer:"5 cm"});
+ expect(noReason.criteria.map(x=>x.candidateMarks)).toEqual([1,null]);
+ const contradiction=c(cases[0],"d",{answer:"5 cm, reflection changes the length"});
+ expect(contradiction.criteria[1].candidateMarks).toBeNull();
+ expect(()=>c(cases[1],"d",{answer:"5 cm, reflection preserves length"})).toThrow();
 });
