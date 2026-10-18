@@ -27,10 +27,10 @@ export function auditPobOwnerPaper2Calibration(record){
    if(!p.prompt?.trim()||!p.modelAnswer?.trim())issues.push(id+":text_or_answer_missing");
    // A complete question transcription does not itself certify a printed figure.
    const originalText=[q.context,p.prompt].filter(Boolean).join(" ").toLowerCase();
-   if(q.diagramSvg||p.diagramSvg||/figure\\s*\\d+/.test(originalText))
+   if(q.diagramSvg||p.diagramSvg||/figure\s*\d+/.test(originalText))
     issues.push(id+":original_visual_needs_qa");
-   if(/\\b(?:construct|sketch|draw|plot)\\b/.test(originalText) &&
-      /\\b(?:chart|graph|diagram)\\b/.test(originalText))
+   if(/\b(?:construct|sketch|draw|plot)\b/.test(originalText) &&
+      /\b(?:chart|graph|diagram)\b/.test(originalText))
     issues.push(id+":candidate_drawing_input_missing");
    if(!Array.isArray(p.criteria)||p.criteria.length===0)issues.push(id+":rubric_absent_or_mark_mismatch");
    if(p.criteria?.some(c=>!c.rule?.trim()||!Number.isInteger(c.marks)||c.marks<=0))
