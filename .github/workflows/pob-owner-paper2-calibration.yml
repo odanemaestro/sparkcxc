@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       confirm_provider_cost:
-        description: "Type RUN_14_CASE_CALIBRATION to authorize 14 synthetic cases"
+        description: "Type RUN_68_CASE_CALIBRATION to authorize full 68-case synthetic calibration"
         required: true
         type: string
 
@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   source-bound-calibration:
-    if: ${{ inputs.confirm_provider_cost == 'RUN_14_CASE_CALIBRATION' }}
+    if: ${{ inputs.confirm_provider_cost == 'RUN_68_CASE_CALIBRATION' }}
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
