@@ -62,7 +62,10 @@ function numericExpected(point){
   if(/\b(?:question|figure|diagram|marks?|steps?|examples?)\b/i.test(p)||
     /\b(?:[A-Z][a-z]?\d+[A-Z][A-Za-z\d]*|[A-Z]{2}\d+)\b/.test(p))return [];
   const values=numbers(p);
-  return values.length===1?values:[];
+  const bareNumeric=/^\s*[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:\s*(?:%|°c|g|kg|mg|mol|mmol|ml|l|cm\^?[23]?|dm\^?[23]?|s|k|pa|j|kj))?\s*$/i.test(p);
+  const namedQuantity=/\b(?:mass|moles?|volume|concentration|temperature|pressure|time|rate|ph|density|percentage|titre|yield|value|answer)\b/i.test(p);
+  // A number in descriptive text is not automatically a numerical answer.
+  return values.length===1&&(bareNumeric||namedQuantity||/[=:]/.test(p))?values:[];
 }
 function numericMatch(response,expected,reference){
   const final=String(response||"").match(/\b(?:final\s+answer|answer|ans)\s*[:=]\s*([^\n;]+)/i);
