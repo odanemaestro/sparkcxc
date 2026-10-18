@@ -143,7 +143,7 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
             {review&&<div className="fnh-p2-model-answer">
               <strong>Correct answer and marking points ({part.marks} marks)</strong>
               <p>{scheme.rule}</p>
-              <div className="fnh-p2-marking-points">{assessed.criteria.map(point=><p key={point.id}><strong>{point.confirmed?"Confirmed":"Not yet verified"}:</strong> {point.rule}</p>)}</div>
+              <div className="fnh-p2-marking-points">{assessed.criteria.map(point=><p key={point.id} className={point.confirmed?"fnh-mark-point-confirmed":"fnh-mark-point-pending"}><strong>{point.confirmed?"Confirmed":"Not yet verified"}:</strong> {point.rule}</p>)}</div>
               <p><b>Explanation:</b> {part.explanation}</p><p><b>SPARK confirmed:</b> {assessed.confirmedMarks} / {part.marks} marks. {assessed.unresolvedMarks} marks remain unresolved.</p>
               <small>{scheme.note} Written-answer evidence is checked automatically. Other correct wording can remain unresolved.</small>
             </div>}
