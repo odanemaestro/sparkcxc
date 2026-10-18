@@ -3,6 +3,8 @@
 // For most older papers the full CXC stems are NOT yet digitised. Results
 // must be labelled provisional practice estimates, never official CXC marks.
 import {POB_HISTORICAL_REVIEW_BANKS,getPobHistoricalReviewBank} from "../principlesOfBusiness/data/pobHistoricalArchiveRegistry";
+import {buildPobOwnerPaper2Bank} from "../principlesOfBusiness/data/pobPaper2OwnerSourceBank";
+import {POB_OWNER_P2_PILOT_IDS,POB_OWNER_P2_RUBRIC_VERSION,pobOwnerP2BankVersion,auditPobOwnerPaper2Calibration} from "./pobOwnerArchiveCalibration";
 import {POB_2009_MJ_P2_SOURCE,verifyPob2009SourcePrompts} from "../principlesOfBusiness/data/pobHistorical2009MjP2SourceQuestions";
 import {requestSemanticPass,reconcileSemanticPasses} from "./semanticMarking";
 
@@ -34,10 +36,14 @@ export function defaultPobArchiveSelection(paper){
  if(paper.questions.length===9)return [1,2,3,4,6,8];
  return [];
 }
-export function buildPobArchiveExaminerPack({paperId,selectedQuestions,responses={}}={}){
+export function buildPobArchiveExaminerPack({paperId,selectedQuestions,responses={},ownerSource=false}={}){
  const record=getPobHistoricalReviewBank(paperId);
  if(!record||record.paper!==2||record.id==="POB-P2-2026-JAN")throw new Error("unsupported_bank_version");
- const paper=record.bank;
+ if(ownerSource){
+  if(!POB_OWNER_P2_PILOT_IDS.includes(paperId))throw new Error("owner_calibration_not_released");
+  if(!auditPobOwnerPaper2Calibration(record).ready)throw new Error("owner_rubric_calibration_incomplete");
+ }
+ const paper=ownerSource?buildPobOwnerPaper2Bank(paperId,record.bank):record.bank;
  const fullSource=paperId==="POB-P2-2009-MJ"&&verifyPob2009SourcePrompts(paper).valid;
  if(paper.sourceSha256!==record.source.sourceSha256)throw new Error("historical_source_not_verified");
  if(!validatePobArchiveSelection(paper,selectedQuestions))throw new Error("invalid_historical_question_selection");
@@ -87,9 +93,10 @@ export function buildPobArchiveExaminerPack({paperId,selectedQuestions,responses
    maxMarks:100,criterionLevel:true,
    historicalArchiveId:paperId,historicalPaperId:paperId,
    sourceSha256:record.source.sourceSha256,
-   bankVersion:pobArchiveBankVersion(paperId),
-   rubricVersion:POB_ARCHIVE_RUBRIC_VERSION,
-   calibrationVerified:false,sourceQuestionsDigitised:fullSource
+   bankVersion:ownerSource?pobOwnerP2BankVersion(paperId):pobArchiveBankVersion(paperId),
+   rubricVersion:ownerSource?POB_OWNER_P2_RUBRIC_VERSION:POB_ARCHIVE_RUBRIC_VERSION,
+   calibrationVerified:false,sourceQuestionsDigitised:Boolean(ownerSource||fullSource),
+   ownerSourceProvisional:Boolean(ownerSource)
  };
 }
 export async function gradePobArchiveExaminerPaper({
