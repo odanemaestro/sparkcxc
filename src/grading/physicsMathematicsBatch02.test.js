@@ -71,3 +71,24 @@ test("Mathematics error-carried-forward uses only declared prior dependencies",(
  expect(carryForward({uses:["a"],formula:"2*a"},{a:{value:8,correct:false}})).toBe(16);
  expect(carryForward({uses:["a"],formula:"2*a"},{a:{value:undefined,correct:false}})).toBe(null);
 });
+
+
+test("Physics requires both quantity and unit for graph axis labels",()=>{
+ const paper={paper_id:"fixture-axis",marks:1,questions:[{question_id:"fixture-axis-q",parts:[{
+   id:"a",responseType:"graph",marks:1,
+   grid:{xLabel:"Length, l/m",yLabel:"Pressure, P/kPa"},
+   criteria:[{code:"B1",marks:1,description:"Both axes correctly labelled"}],
+ }]}]};
+ const run=(axisXLabel,axisYLabel)=>markPhysicsPaper2(paper,{
+   "fixture-axis-q::a":{graph:{axisXLabel,axisYLabel}}
+ }).marks;
+ expect(run("Length","Pressure")).toBe(0);
+ expect(run("l/m","P/kPa")).toBe(1);
+ expect(run("Length, l/m","Pressure, P/kPa")).toBe(1);
+});
+test("Mathematics retains numerical and precision checks on single final results",()=>{
+ expect(checkNumeric("23.25",{type:"numeric",value:23.25,dp:2}).ok).toBe(true);
+ expect(checkNumeric("23.2",{type:"numeric",value:23.25,dp:2}).ok).toBe(false);
+ expect(checkNumeric("25 cm",{type:"numeric",value:25,requireUnit:"cm"}).ok).toBe(true);
+ expect(checkNumeric("25 m",{type:"numeric",value:25,requireUnit:"cm"}).ok).toBe(false);
+});
