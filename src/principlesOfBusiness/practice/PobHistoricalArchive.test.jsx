@@ -171,3 +171,15 @@ test("approved owner supplied SVGs appear on historical Paper 1 questions",()=>{
  expect(diagram.getAttribute("src")).toMatch(/^data:image\/svg\+xml/);
  expect(diagram).toHaveAttribute("alt","Diagram for question 10");
 });
+
+test("owner supplied 2015 historical Paper 2 shows real written prompts and worked answers after submission",()=>{
+ render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2015"}});
+ fireEvent.click(screen.getByRole("button",{name:/2015 May\/June.*Paper 2.*Written answers/}));
+ expect(screen.getByText("Profit")).toBeInTheDocument();
+ expect(screen.getByText("Define EACH of the following business concepts:")).toBeInTheDocument();
+ expect(screen.getByText(/Owner-supplied numbered questions and detailed worked answers/)).toBeInTheDocument();
+ fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
+ expect(screen.getByText(/Profit is the amount by which a business/)).toBeInTheDocument();
+ expect(screen.queryByRole("button",{name:/Request detailed AI practice marking/})).not.toBeInTheDocument();
+});
