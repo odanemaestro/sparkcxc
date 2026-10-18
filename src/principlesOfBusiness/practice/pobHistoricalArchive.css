@@ -83,3 +83,15 @@
 .pob-archive .pob-archive-marking-summary p{margin:.4rem 0}
 .pob-archive .pob-archive-marking-summary small{opacity:.82}
 .pob-archive .pob-archive-part-status{margin:.2rem 0 .75rem;font-size:.9rem}
+
+/* Diagram response editor: accessible selects and live SVG, navy-friendly. */
+.pob-archive .pob-visual-editor{margin:1rem 0;padding:1.05rem;border-radius:14px;border:1px solid color-mix(in srgb,currentColor 18%,transparent)}
+.pob-archive .pob-visual-editor h4{font-size:1rem;margin:0 0 .35rem}
+.pob-archive .pob-visual-editor p{font-size:.87rem;line-height:1.55;margin:.25rem 0 .95rem}
+.pob-archive .pob-visual-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px}
+.pob-archive .pob-visual-fields label{display:flex;flex-direction:column;gap:7px;font-size:.87rem;font-weight:600}
+.pob-archive .pob-visual-fields select{min-height:44px;max-width:100%;width:100%;border-radius:10px;padding:.55rem .65rem;border:1px solid color-mix(in srgb,currentColor 22%,transparent);background:var(--card,#fff);color:inherit}
+.pob-archive .pob-visual-preview{margin-top:1rem;background:#fff;border-radius:12px;padding:.75rem;overflow-x:auto}
+.pob-archive .pob-visual-preview svg{display:block;width:100%;max-width:650px;height:auto;margin-inline:auto;min-width:310px}
+.pob-archive .pob-criterion-result{display:block;margin:.25rem 0 .25rem;color:inherit;opacity:.75;font-size:.8rem}
+@media(max-width:560px){.pob-archive .pob-visual-editor{padding:.7rem}.pob-archive .pob-visual-fields{grid-template-columns:1fr}.pob-archive .pob-visual-preview svg{min-width:280px}}
