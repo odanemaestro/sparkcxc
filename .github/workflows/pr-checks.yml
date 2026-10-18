@@ -50,6 +50,9 @@ jobs:
       - name: Verify marking database and build worker
         run: npm run test:marking-db && npm run build:marker
 
+      - name: Verify V2 private grading migrations in isolated PostgreSQL
+        run: node tools/test-marking-v2-database.mjs
+
       - name: Upload verified server marking bundle
         uses: actions/upload-artifact@v4
         with:
