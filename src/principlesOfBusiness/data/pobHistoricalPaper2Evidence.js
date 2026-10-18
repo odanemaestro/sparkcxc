@@ -42,6 +42,11 @@ const candidateClauses=text=>String(text||"").split(/[.;\n]+/).map(x=>x.trim()).
 export function matchPobWrittenEvidence(response,modelAnswer,criteria){
  if(!String(response||"").trim()||!Array.isArray(criteria)||!criteria.length)
   return {confirmed:[],unresolved:criteria?.map((_,i)=>i)||[]};
+ // Only apply generic list evidence where the authored SPARK criteria ask for
+ // independently listed examples/reasons. Formula, explanation, and method
+ // criteria need their own explicit verifier, not keyword-based reassignment.
+ const listing=criteria.every(c=>/\b(?:first|second|third|fourth|fifth|sixth|different|distinct)\b/i.test(c.rule||""));
+ if(!listing)return {confirmed:[],unresolved:criteria.map((_,i)=>i)};
  const reference=claims(modelAnswer),candidate=candidateClauses(response);
  if(!reference.length||!candidate.length)return {confirmed:[],unresolved:criteria.map((_,i)=>i)};
  const accepted=[],used=new Set();
