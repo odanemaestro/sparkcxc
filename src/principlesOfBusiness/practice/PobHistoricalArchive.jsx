@@ -1,4 +1,5 @@
-import React,{useEffect,useMemo,useState} from "react";
+import React,{useEffect,useMemo,useRef,useState} from "react";
+import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {POB_HISTORICAL_REVIEW_BANKS,getPobHistoricalReviewBank} from "../data/pobHistoricalArchiveRegistry";
 import "./pobHistoricalArchive.css";
 import PobHistoricalPaper1Preview from "./PobHistoricalPaper1Preview";
@@ -27,8 +28,8 @@ const key=(id)=>"spark:pob:archive:answers:"+id;
 const read=id=>{try{return JSON.parse(window.localStorage.getItem(key(id))||"{}")}catch{return {}}};
 const save=(id,value)=>{try{window.localStorage.setItem(key(id),JSON.stringify(value))}catch{}};
 
-function HistoricalPaper1({record}){
- if(getPobHistoricalP1Source(record.id))return <PobHistoricalPaper1Preview record={record}/>;
+function HistoricalPaper1({record,userId,supabase}){
+ if(getPobHistoricalP1Source(record.id))return <PobHistoricalPaper1Preview record={record} userId={userId} supabase={supabase}/>;
  const mcqs=useMemo(()=>getMcqs(record.bank),[record]);
  const [answers,setAnswers]=useState(()=>read(record.id));
  const [submitted,setSubmitted]=useState(false);
@@ -75,6 +76,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
  const paper=record.bank,questions=Array.isArray(paper.questions)?paper.questions:[];
  const [answers,setAnswers]=useState(()=>read(record.id));
  const [submitted,setSubmitted]=useState(false);
+ const notificationAttempt=useRef(null);
  const [selected,setSelected]=useState(()=>defaultPobArchiveSelection(paper));
  const [serverAttemptId,setServerAttemptId]=useState(null);
  const [gradingBusy,setGradingBusy]=useState(false);
@@ -83,6 +85,11 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
    setSelected(defaultPobArchiveSelection(paper));setServerAttemptId(null);setGradingError("");
  },[record.id,paper]);
  useEffect(()=>save(record.id,answers),[record.id,answers]);
+ useEffect(()=>{
+  if(!submitted||!userId||!supabase?.rpc||notificationAttempt.current===record.id)return;
+  notificationAttempt.current=record.id;
+  recordSubjectActivity({supabase,activity:{subjectId:"principles-of-business",activityKey:"exam:pob-historical-paper2:"+record.id+":"+Date.now(),activityType:"exam",title:"Principles of Business: "+record.label,completed:true,score:null,maxScore:null,percent:null,metadata:{paper:"02",paper_id:record.id,source:"historical-cxc-archive",grading_status:"model-answers-review",no_final_grade:true}}}).then(result=>{if(result?.error||result?.skipped)notificationAttempt.current=null}).catch(()=>{notificationAttempt.current=null});
+ },[submitted,userId,supabase,record.id,record.label]);
  const selectionValid=validatePobArchiveSelection(paper,selected);
  const openQuestionCount=questions.length;
  const scoreEnabled=process.env.REACT_APP_SERVER_MARKING==="true" &&
@@ -140,7 +147,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
     </label>)}
   </div>}
   {questions.length?<>
-   {questions.filter(q=>selected.includes(q.number)).map(q=><details className="pob-archive-question" key={q.number} open={q.number===1?true:undefined}>
+   {questions.filter(q=>selected.includes(q.number)).map(q=><details className="pob-archive-question" key={q.number} open={submitted||q.number===1}>
      <summary>Question {q.number} · {q.marks||q.maxMarks||q.maximumMarks||"?"} marks</summary>
      {sourceComplete&&POB_2009_MJ_P2_SOURCE.contexts[q.number]&&<p className="pob-archive-context">{POB_2009_MJ_P2_SOURCE.contexts[q.number]}</p>}
      {(q.parts||q.items||[]).map(part=>{
@@ -202,7 +209,7 @@ export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,
    {record.id==="POB-P1-2018-MJ"&&<p>The supplied scan omits original questions 53–57. SPARK does not invent these questions.</p>}
    {record.id==="POB-P2-2024-JAN"&&<p>Only a two-page typed transcription was supplied for this sitting; it is not the full original printed booklet.</p>}
   </div>
-  {record.paper===1?<HistoricalPaper1 key={record.id} record={record}/>:<HistoricalPaper2 key={record.id} record={record} onOpenJanuary2026={onOpenJanuary2026} supabase={supabase} userId={userId}/>}
+  {record.paper===1?<HistoricalPaper1 key={record.id} record={record} userId={userId} supabase={supabase}/>:<HistoricalPaper2 key={record.id} record={record} onOpenJanuary2026={onOpenJanuary2026} supabase={supabase} userId={userId}/>}
   <button type="button" className="secondary pob-archive-return" onClick={()=>setSelected(null)}>Back to all 46 historical papers</button>
   </>:<>
     <div className="pob-archive-toolbar"><label htmlFor="pob-archive-search">Find a historical sitting
