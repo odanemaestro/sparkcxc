@@ -2004,7 +2004,8 @@ function buildPobOwnerPaper2Bank(id, existingBank = null) {
             marks: child.marks,
             modelAnswer: child.answer,
             criteria,
-            diagramSvg: child.diagram_svg || part2.diagram_svg || null
+            diagramSvg: child.diagram_svg || part2.diagram_svg || null,
+            answerDiagramSvg: child.answer_diagram_svg || part2.answer_diagram_svg || null
           };
         });
       })
