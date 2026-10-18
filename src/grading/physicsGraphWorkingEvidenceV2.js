@@ -37,8 +37,12 @@ export function validatePhysicsGradientTriangle({graphResponse,response,question
  if(!line)return false;
  const [a,b]=evidence.points;
  if(!inGrid(a,limits)||!inGrid(b,limits))return false;
- const minWidth=Math.max(0.5*(limits.xMax-limits.xMin),0.5*(line.maxX-line.minX));
- if(Math.abs(a.x-b.x)+1e-10<minWidth)return false;
+ const lineWidth=line.maxX-line.minX;
+ // Reject a token line too short to represent the source experiment.
+ if(spec&&lineWidth+1e-10<0.5*spec.referenceXSpan)return false;
+ // The marking scheme measures the triangle against the line drawn,
+ // rather than against the whole plotting grid.
+ if(Math.abs(a.x-b.x)+1e-10<0.5*lineWidth)return false;
  return [a,b].every(p=>{
   const onLine=samplePhysicsGraphLine(graphResponse,p.x,questionId);
   return onLine&&Math.abs(p.y-onLine.y)<=Math.max(1e-10,1e-8*(limits.yMax-limits.yMin));
