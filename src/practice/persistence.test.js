@@ -42,13 +42,14 @@ describe("practice exam persistence mapping", () => {
     expect(row).toMatchObject({
       attempt_key: "paper2-seed",
       paper_type: "paper2",
-      score: 73,
+      score: null,
       max_score: 100,
-      percent: 73,
+      percent: null,
       answered_count: 9,
       total_questions: 10,
       correct_count: 19,
       timed_out: true,
+      metadata: {confirmed_marks:73,spark_scoring_status:"rubric_review_required"},
     });
   });
 });
