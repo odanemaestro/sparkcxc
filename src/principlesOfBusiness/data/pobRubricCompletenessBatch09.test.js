@@ -9,8 +9,8 @@ const synthetic={
  id:"POB-P2-SOURCE-BENCH",
  questions:[{number:1,marks:3,parts:[{id:"a",marks:3,
  modelAnswer:"Skilled workers develop practical skills through training. Foreign trade expands regional sales and creates jobs.",
- criteria:[{marks:2,rule:"Explain how worker training raises ability"},
-           {marks:1,rule:"Identify another benefit of trade"}]}]}]
+ criteria:[{marks:2,rule:"First distinct worker training benefit and explanation"},
+           {marks:1,rule:"Second different trade benefit"}]}]}]
 };
 
 test("a weighted POB criterion cannot award two marks from one recognised claim",()=>{
@@ -62,7 +62,7 @@ test("the 20 supplied owner-transcribed POB Paper 2 archives expose mark-level r
    selectedQuestionIds:selection,expectedSelectedMarks:100
   });
  });
- expect(audits.every(a=>a.markStructureValid)).toBe(true);
+ expect(audits.filter(a=>!a.markStructureValid).map(a=>({paperId:a.paperId,errors:a.errors.slice(0,10)}))).toEqual([]);
  expect(audits.every(a=>a.selectedMarks===100)).toBe(true);
  expect(audits.some(a=>a.gaps.some(g=>g.reason==="missing-criterion-evidence"))).toBe(true);
  expect(audits.some(a=>a.gaps.some(g=>g.reason==="multi-mark-criterion-needs-subcriteria"))).toBe(true);
