@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { buildPaper1Exam, structuralFingerprint, validatePaper1Exam } from "./paper1Engine";
+import { buildPaper1Exam, structuralFingerprint, validatePaper1Exam, scorePaper1 } from "./paper1Engine";
 
 function makeQuestion(paper, position, variant, repeat = "") {
   return {
@@ -74,4 +74,16 @@ describe("Paper 1 exam engine", () => {
       expect(topicMatches).toBeGreaterThanOrEqual(50);
     }
   });
+});
+
+
+test("Paper 1 scoring treats option-letter casing and whitespace consistently",()=>{
+ const questions=[{question_id:"one",topic:"Maths",correct_option:"a"},{question_id:"two",topic:"Maths",correct_option:"B"},{question_id:"three",topic:"Science",correct_option:"C"}];
+ const result=scorePaper1(questions,{one:" A ",two:"b",three:" "});
+ expect(result.correct).toBe(2);
+ expect(result.unanswered).toBe(1);
+ expect(result.incorrect).toBe(0);
+ expect(result.percent).toBe(67);
+ expect(result.rows[0].selected).toBe("A");
+ expect(result.topics.find(t=>t.topic==="Maths").percent).toBe(100);
 });
