@@ -387,7 +387,7 @@ function gradeExposition(task,response){
 // requirement. A well-written unrelated story cannot receive full content marks.
 function requiredLiteraryText(task,response){
   const instructions=String(task?.instructions||"");
-  const match=instructions.match(/\b(ends with|beginning with|includes the sentence)\s*:\s*['“"]([^'”"]+)['”"]/i);
+  const match=instructions.match(/\b(ends with(?: the sentence)?|beginning with|includes the sentence)\s*:\s*['“"]([^'”"]+)['”"]/i);
   if(!match)return {required:false,fulfilled:true,type:""};
   const type=match[1].toLowerCase();
   const normalise=value=>String(value).toLowerCase()
@@ -395,7 +395,7 @@ function requiredLiteraryText(task,response){
     .replace(/\s+/g," ").trim().replace(/^["']|["']$/g,"").replace(/[.?!]+$/,"");
   const required=normalise(match[2]);
   const submission=normalise(response);
-  const fulfilled=type==="ends with"?submission.endsWith(required)
+  const fulfilled=type.startsWith("ends with")?submission.endsWith(required)
     :type==="beginning with"?submission.startsWith(required)
     :submission.includes(required);
   return {required:true,fulfilled,type};
