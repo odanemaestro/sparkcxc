@@ -30,7 +30,7 @@ function slopeMatches(value,expected){
  // The source accepts -0.333 for -1/3. Recognise more precise,
  // correctly rounded decimals without accepting broad near-misses.
  if(expected===-1/3&&n!==null){
-  const decimal=/^-(?:\\d+)?\\.(\\d{3,12})$/.exec(clean(value));
+  const decimal=/^-(?:\d+)?\.(\d{3,12})$/.exec(clean(value));
   return !!decimal&&n===Number(expected.toFixed(decimal[1].length));
  }
  return false;
