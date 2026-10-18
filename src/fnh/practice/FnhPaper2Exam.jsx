@@ -2,7 +2,7 @@ import FnhNavArrow from "./FnhNavArrow";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {FNH_PAPER2_FORMAT,fnhGetPaper2Set} from "../data/fnhPaper2Bank";
-import {fnhPartMarkingScheme,fnhSelfAssessmentMark,fnhSelfAssessmentTotal} from "./fnhPaper2Marking";
+import {fnhPartMarkingScheme,gradeFnhWrittenPart,gradeFnhWrittenPaper} from "./fnhPaper2Marking";
 import {fnhWorkedSupplement} from "../data/fnhPaper2WorkedAnswerSupplements";
 import FnhHistoricalDiagram from "./FnhHistoricalDiagram";
 import FnhFoodLabelDesigner from "./FnhFoodLabelDesigner";
@@ -58,12 +58,9 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
     return()=>{active=false;};
   },[review,historical,historicalPaper?.year]);
   const evidence=useMemo(()=>fnhPaper2EvidenceSummary(paper,attempt.answers),[paper,attempt.answers]);
-  const selfScore=useMemo(()=>fnhSelfAssessmentTotal(paper,attempt.selfReview||{},attempt.answers),[paper,attempt.selfReview,attempt.answers]);
+  const writtenGrade=useMemo(()=>gradeFnhWrittenPaper(paper,attempt.answers),[paper,attempt.answers]);
   const answered=paper.reduce((sum,q)=>sum+q.items.filter(item=>String(attempt.answers[`${q.id}:${item.id}`]||"").trim()).length,0);
   const update=patch=>setAttempt(old=>({...old,...patch}));
-  const togglePoint=(key,id)=>setAttempt(old=>{const review=old.selfReview||{};const chosen=review[key]||[];
-    return {...old,selfReview:{...review,[key]:chosen.includes(id)?chosen.filter(point=>point!==id):[...chosen,id]}};
-  });
   useEffect(()=>{try{localStorage.setItem(saveKey(userId,paperId),JSON.stringify(attempt));}catch{}},[attempt,userId,paperId]);
   useEffect(()=>{
     if(!exam)return undefined;
@@ -78,18 +75,21 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
   useEffect(()=>{
     if(!review||!userId||!supabase?.rpc||recorded.current.has(attempt.attemptId))return;
     recorded.current.add(attempt.attemptId);
-    // Open responses are currently self-reviewed. Record completion without inventing an automatically graded percentage.
+    // Confirm only verified criteria; unresolved free text never becomes a fabricated final mark.
     recordSubjectActivity({supabase,activity:{
       subjectId:"food-nutrition-and-health",
       activityKey:`practice:fnh-paper2:${paperId}:${attempt.attemptId}`,
       activityType:"exam",title:`Food, Nutrition and Health Paper 02 · ${examLabel}`,
-      completed:true,score:null,maxScore:96,percent:null,
+      completed:true,score:writtenGrade.assessedMarks,maxScore:writtenGrade.maxMarks,
+      percent:writtenGrade.fullyAssessed?Math.round(writtenGrade.confirmedMarks/writtenGrade.maxMarks*100):null,
       metadata:{source:historical?"historical_user_supplied_pdf":"fnh_paper2_original_v1",paper:"02",paper_id:paperId,
         historical,year:historicalPaper?.year||null,marking_scheme:historical?"spark_reference_explanations":"spark_original",
-        provisional:true,spark_scoring_status:"self_review_only",question_count:6,total_marks:96,
+        provisional:!writtenGrade.fullyAssessed,spark_scoring_status:writtenGrade.fullyAssessed?"verified":"rubric_review_required",
+        confirmed_marks:writtenGrade.confirmedMarks,unresolved_marks:writtenGrade.unresolvedMarks,
+        question_count:paper.length,total_marks:writtenGrade.maxMarks,
         duration_minutes:examMinutes,answered_parts:answered,at:new Date().toISOString()},
     }}).catch(e=>console.warn("FNH Paper 2 completion could not be saved",e));
-  },[review,userId,supabase,attempt.attemptId,answered,paperId,examLabel,examMinutes,historical,historicalPaper?.year]);
+  },[review,userId,supabase,attempt.attemptId,answered,paperId,examLabel,examMinutes,historical,historicalPaper?.year,paper,writtenGrade]);
   const start=()=>{setAttempt({...make(paperId),phase:"exam",deadline:Date.now()+durationSeconds*1000});setRemaining(durationSeconds);setModal("");};
   const submit=()=>{update({phase:"review",submittedAt:Date.now()});setModal("");};
   return <main className="fnh-exam fnh-p2"><div className="fnh-exam-container">
@@ -107,17 +107,17 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
         <li>The examination submits automatically when the time expires.</li>
         <li>After submission, your answer appears beside model marking points and explanations.</li>
       </ol>
-      <p className="fnh-exam-note">{historical?"Original questions have been transcribed from the supplied examination scan. The correct-answer explanations were written by SPARK and are not an official CXC marking scheme.":"SPARK currently provides marking points for self-review. Your written answers are not automatically graded yet."}</p>
+      <p className="fnh-exam-note">{historical?"Original questions have been transcribed from the supplied examination scan. The correct-answer explanations were written by SPARK and are not an official CXC marking scheme.":"SPARK checks written answers against verified marking points. Unrecognised valid wording remains unresolved rather than being marked wrong."}</p>
       <button type="button" className="fnh-primary" onClick={start}>Start examination</button>
     </section>:<div className="fnh-session">
-      <header className="fnh-exam-card fnh-session-heading"><div><small>{review?"ANSWER REVIEW · OPEN RESPONSE":"PAPER 02 · LIVE PRACTICE"}</small><h1>Food, Nutrition and Health</h1><p>{review?"Compare your answer with SPARK example points. Tick only ideas you actually wrote. This is self-check practice, not a grade.":`Question ${index+1} of 6 · ${answered}/${totalParts} parts answered`}</p></div><div className="fnh-timer"><span>{review?"Self-check · not graded":"Time remaining"}</span><strong>{review?`${selfScore.checked}/${selfScore.maximum}`:clock(remaining)}</strong></div></header>
+      <header className="fnh-exam-card fnh-session-heading"><div><small>{review?"ANSWER REVIEW · OPEN RESPONSE":"PAPER 02 · LIVE PRACTICE"}</small><h1>Food, Nutrition and Health</h1><p>{review?"SPARK has checked identifiable marking points in your written work. Unresolved marks remain subject to the source rubric.":`Question ${index+1} of 6 · ${answered}/${totalParts} parts answered`}</p></div><div className="fnh-timer"><span>{review?"Confirmed marking points":"Time remaining"}</span><strong>{review?`${writtenGrade.confirmedMarks}/${writtenGrade.maxMarks}`:clock(remaining)}</strong></div></header>
       <div className="fnh-exam-layout">
         <section className="fnh-exam-card fnh-question">
           <div className="fnh-question-head"><h2>Question {question.number}: {question.title}</h2><span className="fnh-p2-marks">16 marks</span></div>
           <p className="fnh-p2-context">{question.context}</p>
           {question.diagramId&&<FnhHistoricalDiagram type={question.diagramId}/>}
           <div className="fnh-p2-parts">{question.items.map(part=>{
-            const key=`${question.id}:${part.id}`,text=attempt.answers[key]||"";
+            const key=`${question.id}:${part.id}`,text=attempt.answers[key]||"",assessed=gradeFnhWrittenPart(part,text);
             return <div className="fnh-p2-part" key={part.id}>
               <div className="fnh-p2-prompt"><b>({part.id}) {part.prompt}</b><span>{part.marks} marks</span></div>
               {historicalPaper?.year===2018&&question.number===6&&part.id==="d-i"
@@ -129,22 +129,20 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
               {review&&<div className="fnh-p2-model-answer">
                 <strong>SPARK example answer points ({part.marks} possible marks, not an official CXC marking scheme)</strong>
                 <p>{fnhPartMarkingScheme(part).rule}</p>
-                <div className="fnh-p2-marking-points">{fnhPartMarkingScheme(part).points.map(point=><label key={point.id}>
-                  <input type="checkbox" disabled={!String(text).trim()} checked={Boolean((attempt.selfReview?.[key]||[]).includes(point.id))}
-                    onChange={()=>togglePoint(key,point.id)} aria-label={`My response includes marking point ${Number(point.id)+1} for question ${question.number} part ${part.id}`}/>
-                  <span>{point.text}</span>
-                </label>)}</div>
+                <div className="fnh-p2-marking-points">{assessed.criteria.map(point=><p key={point.id}>
+                  <strong>{point.confirmed?"Confirmed":"Not yet verified"}:</strong> {point.rule}
+                </p>)}</div>
                 {historical&&fnhWorkedSupplement(historicalPaper.year,question.number,part.id)&&<details className="fnh-p2-worked-reference"><summary>Additional worked-answer guidance</summary><p>{fnhWorkedSupplement(historicalPaper.year,question.number,part.id)}</p><small>Course reference only. Equivalent correct answers can earn credit; these examples do not add automatic marks.</small></details>}
                 <p><b>Explanation:</b> {part.explanation}</p>
-                <p><b>Your own check:</b> {fnhSelfAssessmentMark(part,attempt.selfReview?.[key]||[],text)} / {part.marks} possible points. This is not a marked result.</p>
-                <small>{fnhPartMarkingScheme(part).note} Your self-check is practice feedback, not an official examination mark.</small>
+                <p><b>SPARK confirmed:</b> {assessed.confirmedMarks} / {part.marks} marks. {assessed.unresolvedMarks} marks remain unresolved.</p>
+                <small>{fnhPartMarkingScheme(part).note} The marker does not use student-selected checkboxes. Equivalent answers not recognised automatically may still deserve marks.</small>
               </div>}
             </div>;
           })}</div>
         {review&&historical&&workedByQuestion[String(question.number)]&&<details className="fnh-p2-worked-reference"><summary>Full worked answers and accepted examples for Question {question.number}</summary><p className="fnh-p2-worked-preformatted">{workedByQuestion[String(question.number)]}</p><small>Supplementary worked examples provided for practice. Use the existing mark-by-mark rubric to award credit. Other valid answers may earn marks; this reference does not automatically grade writing.</small></details>}
           <div className="fnh-question-actions"><button type="button" className="fnh-outline" disabled={index===0} onClick={()=>update({index:index-1})}>Previous</button><button type="button" className="fnh-outline" disabled={index===5} onClick={()=>update({index:index+1})}>Next</button>{exam&&<button type="button" className="fnh-primary" onClick={()=>setModal("submit")}>Submit Paper 2</button>}{review&&<button type="button" className="fnh-primary" onClick={()=>setModal("restart")}>Start new attempt</button>}</div>
         </section>
-        <aside className="fnh-exam-card fnh-navigation"><h2>Question navigator</h2><p>{answered} of {totalParts} parts answered</p><div className="fnh-nav-grid fnh-p2-nav">{evidence.map((row,i)=><button type="button" className={`${index===i?"active":""} ${row.answers.every(v=>v.answered)?"answered":""}`} key={row.id} aria-label={`Question ${i+1}`} onClick={()=>update({index:i})}>Q{i+1}</button>)}</div><p>{historical?`Six compulsory historical questions, 16 marks each.`:"Six questions. Each carries 6 knowledge and 10 application marks."}</p>{review&&<div className="fnh-self-review-summary"><strong>{selfScore.checked} / {selfScore.maximum} points you selected yourself</strong><p>{selfScore.reviewedParts} of {selfScore.totalParts} parts checked against the model answers.</p><small>Not a grade, percentage or verified CXC mark. SPARK has not automatically assessed your written responses.</small></div>}</aside>
+        <aside className="fnh-exam-card fnh-navigation"><h2>Question navigator</h2><p>{answered} of {totalParts} parts answered</p><div className="fnh-nav-grid fnh-p2-nav">{evidence.map((row,i)=><button type="button" className={`${index===i?"active":""} ${row.answers.every(v=>v.answered)?"answered":""}`} key={row.id} aria-label={`Question ${i+1}`} onClick={()=>update({index:i})}>Q{i+1}</button>)}</div><p>{historical?`Six compulsory historical questions, 16 marks each.`:"Six questions. Each carries 6 knowledge and 10 application marks."}</p>{review&&<div className="fnh-self-review-summary"><strong>{writtenGrade.confirmedMarks} / {writtenGrade.maxMarks} marks confirmed by SPARK</strong><p>{writtenGrade.unresolvedMarks} marks require further rubric assessment.</p><small>{writtenGrade.fullyAssessed?"All marks assessed using verified criteria.":"This is a verified lower bound, not the candidate’s final examination score."}</small></div>}</aside>
       </div>
     </div>}
     {modal&&<div className="fnh-modal-layer"><section className="fnh-modal" role="dialog" aria-modal="true" aria-label={modal==="submit"?"Submit examination":modal==="exit"?"Exit examination":"Restart examination"}><h2>{modal==="exit"?"Save and exit?":modal==="submit"?"Submit your six answers?":"Start another attempt?"}</h2><p>{modal==="exit"?"Your answers and timer deadline will be preserved.":modal==="submit"?"Your written answers will be locked and the marking points shown.":"The new attempt replaces the current responses."}</p><div><button type="button" className="fnh-outline" onClick={()=>setModal("")}>Cancel</button><button type="button" className="fnh-primary" onClick={()=>modal==="exit"?onBack?.():modal==="submit"?submit():start()}>{modal==="exit"?"Save and exit":modal==="submit"?"Submit now":"Start again"}</button></div></section></div>}
