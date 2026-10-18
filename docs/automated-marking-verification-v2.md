@@ -145,3 +145,8 @@ Run the full test suite and build before merge.
 - Rejects duplicate IDs, duplicate response keys and inconsistent paper totals. It does not infer the historical paper's structure or publish marks.
 - Five regression tests added, not yet executed.
 - Real POB bank manifest population and source-response key inspection remain pending. No source matching or live grading integration has been claimed.
+
+## Real-bank fixture regression pass
+- Added `paper2RealBankFixturesV2.test.js` to import the authored Physics practice 1 JSON and all IT Paper 2 JSON banks directly, then assert criteria counts and paper-level mark totals.
+- This supplements synthetic adapter tests with actual repository question structures; no new grades are published.
+- GitHub PR checks were running during this batch. Do not describe results as passed until the workflow concludes.
