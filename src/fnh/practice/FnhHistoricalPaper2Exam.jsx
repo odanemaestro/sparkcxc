@@ -74,6 +74,7 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
         paper_id:PAPER.id,selected_part_b:attempt.partB,marking_scheme:"spark_explanatory",
         spark_scoring_status:writtenGrade.fullyAssessed?"verified":"rubric_review_required",
         confirmed_marks:writtenGrade.confirmedMarks,unresolved_marks:writtenGrade.unresolvedMarks,
+        rubric_version:writtenGrade.rubricVersion,
         at:new Date().toISOString()},
     }}).catch(error=>console.warn("Historical FNH result could not be saved",error));
   },[review,attempt.attemptId,attempt.partB,supabase,userId,writtenGrade,PAPER.id,PAPER.subjectAtExamination,PAPER.year]);
