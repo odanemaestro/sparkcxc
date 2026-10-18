@@ -1,6 +1,7 @@
 import {gradePobP2VisualTask,getPobP2VisualTask} from "./pobHistoricalPaper2Visual";
 import {gradePobHistoricalArithmetic,matchPobWrittenEvidence} from "./pobHistoricalPaper2Evidence";
 import {gradePobDevelopedPart,getPobDevelopedTask,POB_DEVELOPED_SUBCRITERIA_VERSION} from "./pobHistoricalDevelopedMarking";
+import {gradePobDemandPricePart,getPobDemandPriceTask,POB_DEMAND_PRICE_RUBRIC_VERSION} from "./pobHistoricalDemandPriceMarking";
 
 // SPARK's source-linked, conservative Paper 2 rubric assessment.
 // Marks are confirmed per criterion only where a testable response supports
@@ -8,7 +9,7 @@ import {gradePobDevelopedPart,getPobDevelopedTask,POB_DEVELOPED_SUBCRITERIA_VERS
 // incorrect. AI is NOT part of this marking function.
 const normalize=text=>String(text??"").toLowerCase().replace(/[’‘]/g,"'")
  .replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");
-export const POB_HISTORICAL_RUBRIC_REVIEW_VERSION="pob-historical-p2-rubric-review-v4";
+export const POB_HISTORICAL_RUBRIC_REVIEW_VERSION="pob-historical-p2-rubric-review-v5";
 
 export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[]){
  if(!paper||!Array.isArray(paper.questions))throw new Error("historical_paper_missing");
@@ -34,8 +35,12 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
    const developed=valid&&developedTask&&criteria.length===developedTask.maxDistinct&&
      criteria.every(c=>c.marks===2)&&maxMarks===developedTask.maxMarks&&response
      ?gradePobDevelopedPart(paper.id,id,response):null;
+   const demandTask=getPobDemandPriceTask(paper.id,id);
+   const demandPrice=valid&&demandTask&&criteria.length===3&&
+     criteria.every(c=>c.marks===2)&&maxMarks===demandTask.maximum&&response
+     ?gradePobDemandPricePart(paper.id,id,response):null;
    const blank=visual?visual.blank:!raw||typeof raw==="string"&&!response;
-   const evidenced=!visualTask&&!sameAsGuide&&!arithmetic&&!developed&&response&&valid
+   const evidenced=!visualTask&&!sameAsGuide&&!arithmetic&&!developed&&!demandPrice&&response&&valid
     ?matchPobWrittenEvidence(response,part.modelAnswer,criteria):null;
    let assessed,confirmed,status;
    if(blank){assessed=criteria.map(()=>0);status="unanswered";}
@@ -45,6 +50,10 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
    else if(developed){
     assessed=criteria.map((_,i)=>developed.criteria[i]?.marks??null);
     status=developed.status;
+   }
+   else if(demandPrice){
+    assessed=criteria.map((_,i)=>demandPrice.criteria[i]?.marks??null);
+    status=demandPrice.status;
    }
    else if(evidenced){
     // Matching one response clause establishes at most one mark. Where
@@ -63,19 +72,22 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
    // Exact arithmetic and diagram checkers explicitly resolve every
    // criterion, including known incorrect results. Only open prose and
    // structurally invalid rubrics keep undetermined marks pending.
-   const determined=Boolean(valid&&(visual||arithmetic||sameAsGuide||(developed&&developed.assessedMarks!==null)));
+   const determined=Boolean(valid&&(visual||arithmetic||sameAsGuide||
+     developed?.assessedMarks!==null&&Boolean(developed)||
+     demandPrice?.assessedMarks!==null&&Boolean(demandPrice)));
    const unresolved=blank||determined?0:valid
      ?Math.max(0,maxMarks-confirmed):maxMarks;
    const assessedMarks=valid&&unresolved===0&&assessed.every(n=>n!==null)?confirmed:null;
    return {id,question:question.number,part:part.id,availableMarks:maxMarks,
     confirmedMarks:confirmed,unresolvedMarks:unresolved,assessedMarks,
     rubricComplete:valid,status,
-    subcriteriaVersion:developed?POB_DEVELOPED_SUBCRITERIA_VERSION:null,
+    subcriteriaVersion:developed?POB_DEVELOPED_SUBCRITERIA_VERSION:
+      demandPrice?POB_DEMAND_PRICE_RUBRIC_VERSION:null,
     criteria:criteria.map((criterion,index)=>({
      id:id+":criterion-"+(index+1),rule:criterion.rule,availableMarks:criterion.marks,
      assessedMarks:assessed[index],alternatives:criterion.alternatives||[],
-     evidence:developed?.criteria[index]?.evidence||null,
-     developedPoint:developed?.criteria[index]?.conceptId||null,
+     evidence:developed?.criteria[index]?.evidence||demandPrice?.criteria[index]?.evidence||null,
+     developedPoint:developed?.criteria[index]?.conceptId||demandPrice?.criteria[index]?.conceptId||null,
     })),
    };
   });
