@@ -49,7 +49,7 @@ export function matchPobWrittenEvidence(response,modelAnswer,criteria){
  if(!listing)return {confirmed:[],unresolved:criteria.map((_,i)=>i)};
  const reference=claims(modelAnswer),candidate=candidateClauses(response);
  if(!reference.length||!candidate.length)return {confirmed:[],unresolved:criteria.map((_,i)=>i)};
- const accepted=[],used=new Set();
+ const accepted=[],used=new Set(),usedCandidate=new Set();
  for(let index=0;index<criteria.length;index++){
   let hit=null;
   for(let j=0;j<reference.length;j++){
@@ -57,21 +57,24 @@ export function matchPobWrittenEvidence(response,modelAnswer,criteria){
    const keywords=unique(terms(reference[j]));
    // Do not infer marks from generic phrases (e.g. "good business").
    if(keywords.length<4)continue;
-   for(const student of candidate){
-    if(!noExtraNegation(reference[j],student))continue;
+   for(let candidateIndex=0;candidateIndex<candidate.length;candidateIndex++){
+    const student=candidate[candidateIndex];
+    if(usedCandidate.has(candidateIndex)||!noExtraNegation(reference[j],student))continue;
     const studentTokens=new Set(terms(student));
     const overlap=keywords.filter(w=>studentTokens.has(w)).length;
     // Require substantial concrete correspondence, including two substantial
     // ideas, not a single repeated exam keyword.
     const threshold=Math.max(3,Math.ceil(keywords.length*.8));
-    if(overlap>=threshold&&studentTokens.size>=threshold){
-     hit={criterion:index,reference:j,evidence:student};
+    const contradicted=candidate.some(clause=>!noExtraNegation(reference[j],clause)
+      && keywords.filter(word=>new Set(terms(clause)).has(word)).length>=threshold);
+    if(overlap>=threshold&&studentTokens.size>=threshold&&!contradicted){
+     hit={criterion:index,reference:j,candidateIndex,evidence:student};
      break;
     }
    }
    if(hit)break;
   }
-  if(hit){used.add(hit.reference);accepted.push(hit)}
+  if(hit){used.add(hit.reference);usedCandidate.add(hit.candidateIndex);accepted.push(hit)}
  }
  return {confirmed:accepted,unresolved:criteria.map((_,i)=>i).filter(i=>!accepted.some(c=>c.criterion===i))};
 }
@@ -84,16 +87,21 @@ export function gradePobHistoricalArithmetic(paperId,partKey,response){
  const compact=s.replace(/\s/g,"");
  const number=n=>new RegExp("(?<![0-9])"+n+"(?![0-9])").test(compact);
  const negative2000=/-2000(?![0-9])/.test(compact)||(/\bdeficit\b/.test(s)&&number("2000"));
+ const declared=String(response||"").match(/\b(?:final\s+answer|answer)\s*(?:is\s+|[:=]\s*)([^\n;.]+)/i);
+ const finalNumbers=declared?declared[1].replace(/,/g,"").match(/[-+]?\d+(?:\.\d+)?/g)?.map(Number):null;
+ const finalValue=finalNumbers?.length===1?finalNumbers[0]:null;
+ const ambiguousFinal=Boolean(declared)&&finalValue===null;
  if(partKey==="Q9:a.ii"){
   const method=number("24000")&&number("26000")&&
    (/[-−]/.test(s)||/subtract|less|minus|difference/.test(s));
-  const final=negative2000;
+  const final=!ambiguousFinal&&(finalValue===null?negative2000:finalValue===-2000);
   return {maximum:2,marks:Number(method)+Number(final),criteria:[Number(method),Number(final)],exact:true};
  }
  if(partKey==="Q9:b"){
   const visible=negative2000;
   const invisible=number("5000")||(number("20000")&&number("15000")&&/[-−]/.test(s));
-  const balance=(number("3000")&&(/surplus/.test(s)||/\+3000\b/.test(compact)))||
+  const balance=!ambiguousFinal && (finalValue===null?(
+    (number("3000")&&(/surplus/.test(s)||/\+3000\b/.test(compact)))):finalValue===3000)||
    (/current[ -]?account/.test(s)&&number("3000")&&!negative2000);
   return {maximum:3,marks:Number(visible)+Number(invisible)+Number(balance),
    criteria:[Number(visible),Number(invisible),Number(balance)],exact:true};
