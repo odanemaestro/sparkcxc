@@ -10,7 +10,7 @@ const owner=POB_HISTORICAL_REVIEW_BANKS.find(entry=>entry.id===id);
 const bank=buildPobOwnerPaper2Bank(id,owner.bank);
 const score=(partKey,response)=>gradePobDevelopedPart(id,partKey,response);
 const reviewed=(question,partId,response)=>reviewPobHistoricalPaper2(
- {"Q"+question+":"+partId:response},bank,[question]).questions[0].parts.find(row=>row.part===partId);
+ {["Q"+question+":"+partId]:response},bank,[question]).questions[0].parts.find(row=>row.part===partId);
 
 test("rules apply only to the source-matched 2005 historical multi-mark questions",()=>{
  expect(getPobDevelopedTask(id,"Q2:c")?.maxMarks).toBe(6);
