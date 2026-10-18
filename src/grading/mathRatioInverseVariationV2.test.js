@@ -5,8 +5,8 @@ import {
 } from "./mathRatioInverseVariationV2";
 
 const fixtures=[
- {id:"p2-q1-v9",total:5040,ratios:[2,3,4],parts:9,unit:560,
-  largest:2240,smallest:1120,difference:1120,workers:8,days:15,
+ {id:"p2-q1-v9",total:6000,ratios:[2,3,5],parts:10,unit:600,
+  largest:3000,smallest:1200,difference:1800,workers:8,days:15,
   newWorkers:12,newDays:10,numStep:"15/4-3/2=9/4",
   denStep:"3/8-1/6=5/24",final:"54/5",differentLargest:2200},
  {id:"p2-q1-v10",total:7200,ratios:[3,4,5],parts:12,unit:600,
@@ -22,6 +22,8 @@ describe.each(fixtures)("Math P2 source-calibrated Q1 ratio and inverse variatio
  test("real assembled question and all published mark ceilings are preserved",()=>{
   expect(paper).toBeDefined();
   expect(paper.marks).toBe(9);
+  expect(paper.stem).toContain("$"+f.total.toLocaleString("en-US"));
+  expect(paper.stem).toContain(f.ratios.join(" : "));
   expect(paper.parts.map(p=>[p.id,p.marks])).toEqual([
    ["a",3],["b1",2],["b2",2],["c",2]
   ]);
