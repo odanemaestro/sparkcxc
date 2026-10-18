@@ -82,13 +82,11 @@ html[data-theme="dark"] .spark-student-home{
 .ssh-aside{grid-template-columns:1fr}
 
 @media(min-width:1280px){
-  .ssh-top{
-    grid-template-columns:minmax(0,1.6fr) minmax(320px,.88fr);
-    align-items:stretch;
-  }
+  .ssh-top,
+  .ssh-main{grid-template-columns:minmax(0,1fr) minmax(300px,340px)}
+  .ssh-top{align-items:stretch}
   .ssh-top>.ssh-hero,
   .ssh-top>.ssh-spotlight{height:100%}
-  .ssh-main{grid-template-columns:minmax(0,1fr) minmax(300px,340px)}
 }
 
 /* Buttons */
