@@ -95,8 +95,8 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
  },[submitted,userId,supabase,record.id,record.label]);
  const selectionValid=validatePobArchiveSelection(paper,selected);
  const openQuestionCount=questions.length;
- const ownerPilotReady=Boolean(ownerBank&&POB_OWNER_P2_PILOT_IDS.includes(record.id)&&
-   auditPobOwnerPaper2Calibration(record).ready);
+ const ownerAudit=useMemo(()=>ownerBank?auditPobOwnerPaper2Calibration(record):null,[ownerBank,record]);
+ const ownerPilotReady=Boolean(ownerBank&&POB_OWNER_P2_PILOT_IDS.includes(record.id)&&ownerAudit?.ready);
  const scoreEnabled=(!ownerBank||ownerPilotReady)&&process.env.REACT_APP_SERVER_MARKING==="true" &&
    process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING==="true";
  const gradeWithServer=async()=>{
@@ -138,6 +138,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
  return <section className="pob-archive-exam" aria-label="Historical Paper 2 answer-bank review">
   <h3>Paper 2 · Written-answer practice and marking guide</h3>
   <p>{ownerBank?"Owner-supplied numbered questions and detailed worked answers are included. Answer the compulsory questions and any permitted alternatives. Answers remain provisional; source-aligned examiner marking is available only for a paper that passes the release audit.":sourceComplete?"All seven original source questions, case studies, question choices and 36 written parts are transcribed for this sitting. Submit five questions according to the original examination rules.":"SPARK-authored answers and mark allocations are available. Many printed questions, diagrams and tables have not been faithfully digitised; source summaries are identified and cannot be treated as the original examination."}</p>
+  {ownerAudit?.visualIssues?.length>0&&<p className="pob-archive-visual-note" role="note">This source contains a figure requiring original-page review or a diagram students must draw. The figure is shown where supplied, but this sitting is not approved for numerical marking of visual tasks.</p>}
   <div className="pob-archive-summary"><span>{questions.length} offered questions</span><span>{parts} answer parts</span><span>{total} offered marks</span><span>100 candidate marks</span></div>
   {openQuestionCount>5&&<div className="pob-archive-optional" aria-label="Original Paper 2 optional question selection">
     <strong>Choose the questions required by this sitting</strong>
@@ -156,6 +157,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
    {questions.filter(q=>selected.includes(q.number)).map(q=><details className="pob-archive-question" key={q.number} open={submitted||q.number===1}>
      <summary>Question {q.number} · {q.marks||q.maxMarks||q.maximumMarks||"?"} marks</summary>
      {ownerBank&&q.context&&<p className="pob-archive-context">{q.context}</p>}
+     {ownerBank&&q.diagramSvg&&<div className="pob-archive-source-diagram"><img alt={"Supplied figure for Question "+q.number} src={"data:image/svg+xml;charset=utf-8,"+encodeURIComponent(q.diagramSvg)}/></div>}
      {sourceComplete&&!ownerBank&&POB_2009_MJ_P2_SOURCE.contexts[q.number]&&<p className="pob-archive-context">{POB_2009_MJ_P2_SOURCE.contexts[q.number]}</p>}
      {(q.parts||q.items||[]).map(part=>{
        const id="Q"+q.number+":"+part.id;
@@ -163,6 +165,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
        const prompt=exact||part.sourcePromptSummary||null;
        return <div className="pob-archive-written" key={id}>
          <label htmlFor={record.id+id}><strong>({part.id})</strong> {prompt||"Answer this part using the printed question paper."} <span>{part.marks} marks</span></label>
+         {ownerBank&&part.diagramSvg&&<div className="pob-archive-source-diagram"><img alt={"Supplied figure for Question "+q.number+" ("+part.id+")"} src={"data:image/svg+xml;charset=utf-8,"+encodeURIComponent(part.diagramSvg)}/></div>}
          {!exact&&<p className="pob-archive-small" role="note">SPARK question summary only. Original printed wording and any accompanying figures have not been verified here.</p>}
          <textarea id={record.id+id} rows={3} value={answers[id]||""} disabled={submitted}
            placeholder="Write your answer in complete sentences."
