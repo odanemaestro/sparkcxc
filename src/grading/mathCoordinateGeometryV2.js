@@ -39,12 +39,21 @@ const same=(p,a)=>p.x===a[0]&&p.y===a[1];
 function translationCriteria(value,source){
  const points=parseCoordinates(value)||[];
  const used=new Set();
- return source.target.map((target,i)=>{
+ const individual=source.target.map((target,i)=>{
   const found=points.findIndex((p,j)=>!used.has(j)&&
    (p.label===null||p.label==="ABC"[i])&&same(p,target));
   if(found>=0)used.add(found);
   return vote("B"+(i+1),1,found>=0,"correct-translated-vertex");
  });
+ // The assembled course reallocates 1 mark each from v1(b) and v1(c)
+ // to its authored reasoning part (d). Do not return 3 marks for a live
+ // part worth only 2.
+ if(source===SOURCES["p2-q3-v1"]){
+  const count=individual.filter(v=>v.candidateMarks===1).length;
+  return [vote("M1",1,count>=1,"at-least-one-translated-vertex"),
+   vote("A1",1,count>=2,"second-distinct-translated-vertex")];
+ }
+ return individual;
 }
 function reflection(raw,axis){
  const s=clean(raw).replace(/\s+/g," ");
@@ -75,7 +84,7 @@ function distanceWorking(raw,source){
 }
 export function evaluateMathCoordinateGeometryV2({questionId,partId,response={}}={}){
  const source=SOURCES[questionId];
- if(!source||!["a","b","c"].includes(partId))
+ if(!source||!(["a","b","c"].includes(partId)||(questionId==="p2-q3-v1"&&partId==="d")))
   throw new TypeError("Uncalibrated Mathematics coordinate-geometry part");
  const answer=typeof response==="string"?response:response?.answer;
  const working=typeof response==="object"&&response!==null?response.working:"";
@@ -86,10 +95,25 @@ export function evaluateMathCoordinateGeometryV2({questionId,partId,response={}}
   ]);
  }
  if(partId==="b")return result(questionId,partId,translationCriteria(answer,source));
+ if(partId==="d"&&questionId==="p2-q3-v1"){
+  const s=clean(answer).replace(/\s+/g," ");
+  const length=/(?:^|\b)5(?:\.0+)?\s*cm\b/.test(s);
+  const positive=/(?:reflect(?:ion|ed)?).{0,65}(?:preserv\w*|unchanged|same length|equal length|does not change|doesn't change|isometry)/.test(s)
+   ||/(?:length).{0,30}(?:unchanged|stays the same|preserved).{0,40}reflect/.test(s);
+  const contradicted=/reflect\w*.{0,30}(?:changes? (?:the )?length|increases? (?:the )?length|decreases? (?:the )?length)/.test(s);
+  return result(questionId,partId,[
+   vote("B1",1,length,"reflected-segment-length"),
+   vote("B2",1,positive&&!contradicted,"reflection-preserves-length")
+  ]);
+ }
  const steps=distanceWorking(working,source);
  // This source explicitly requests an answer correct to two decimal places.
  // A bare "5" is mathematically equivalent, but does not satisfy that format.
  const final=/^5\.00(?:\s*units?)?$/i.test(str(answer).trim());
+ if(questionId==="p2-q3-v1")return result(questionId,partId,[
+  vote("M1",1,steps.validMethod||steps.numericWork,"supported-distance-method"),
+  vote("A1",1,final,"correct-length-to-two-decimal-places")
+ ]);
  return result(questionId,partId,[
   vote("M1",1,steps.validMethod,"distance-formula-using-source-coordinates"),
   vote("M2",1,steps.numericWork,"squared-components-summed"),
