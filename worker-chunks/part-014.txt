@@ -1,4 +1,4 @@
-tOfficial": true }),
+capacity.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
     Object.freeze({ "number": 58, "pdfPage": 10, "proposedOption": "A", "explanation": "CSME integration helps members coordinate trade policies through regional market arrangements.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
     Object.freeze({ "number": 59, "pdfPage": 10, "proposedOption": "C", "explanation": "Population growth alone does not necessarily increase living standards per person without matching output growth.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
     Object.freeze({ "number": 60, "pdfPage": 10, "proposedOption": "A", "explanation": "Job losses caused by a downturn in the business cycle are cyclical unemployment.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true })
@@ -60,20 +60,20 @@ var EVIDENCE = Object.freeze([
 var POB_HISTORICAL_BATCH03_SOURCE_QA = Object.freeze(EVIDENCE.map(([stem3, pages, lowTextPages, sourceSha256]) => {
   const [sourcePaper, year, sitting] = stem3.split("_");
   const id = "POB-" + sourcePaper + "-" + year + "-" + sitting;
-  const source = POB_SUPPLIED_ARCHIVE.find((p) => p.id === id);
-  if (!source || source.filename !== "CSEC_Principles_of_Business_" + stem3 + ".pdf" || source.pages !== pages || source.sourceSha256 !== sourceSha256)
+  const source2 = POB_SUPPLIED_ARCHIVE.find((p) => p.id === id);
+  if (!source2 || source2.filename !== "CSEC_Principles_of_Business_" + stem3 + ".pdf" || source2.pages !== pages || source2.sourceSha256 !== sourceSha256)
     throw new Error("Unknown or mismatched historical source " + id);
   let sittingRule = "not-verified";
-  if (source.paper === 1) sittingRule = "paper-1-60-objective-items-pending-options-qa";
-  if (source.paper === 2 && Number(year) >= 2019) sittingRule = "paper-2-five-compulsory-cover";
-  if (source.paper === 2 && Number(year) <= 2007) sittingRule = "paper-2-section-I-2005-07-Q1-Q2-10-each-Q3-20-and-Q4-9-choose-3";
-  if (source.paper === 2 && Number(year) === 2008) sittingRule = "paper-2-three-section-I-and-two-section-II-cover";
+  if (source2.paper === 1) sittingRule = "paper-1-60-objective-items-pending-options-qa";
+  if (source2.paper === 2 && Number(year) >= 2019) sittingRule = "paper-2-five-compulsory-cover";
+  if (source2.paper === 2 && Number(year) <= 2007) sittingRule = "paper-2-section-I-2005-07-Q1-Q2-10-each-Q3-20-and-Q4-9-choose-3";
+  if (source2.paper === 2 && Number(year) === 2008) sittingRule = "paper-2-three-section-I-and-two-section-II-cover";
   return Object.freeze({
     id,
-    paper: source.paper,
+    paper: source2.paper,
     year: Number(year),
     sitting,
-    filename: source.filename,
+    filename: source2.filename,
     pages,
     sourceSha256,
     lowTextPages,
@@ -88,8 +88,8 @@ var POB_HISTORICAL_BATCH03_SOURCE_QA = Object.freeze(EVIDENCE.map(([stem3, pages
   });
 }));
 function validatePob2005to2007P2Selection(id, selectedQuestionNumbers) {
-  const source = POB_HISTORICAL_BATCH03_SOURCE_QA.find((x) => x.id === id && x.paper === 2);
-  if (!source || source.year < 2005 || source.year > 2007)
+  const source2 = POB_HISTORICAL_BATCH03_SOURCE_QA.find((x) => x.id === id && x.paper === 2);
+  if (!source2 || source2.year < 2005 || source2.year > 2007)
     return { valid: false, maximumMarks: 0, issue: "Unsupported historic Paper 2 sitting." };
   if (!Array.isArray(selectedQuestionNumbers) || selectedQuestionNumbers.length !== 6 || selectedQuestionNumbers.some((n) => !Number.isInteger(n)) || new Set(selectedQuestionNumbers).size !== 6)
     return { valid: false, maximumMarks: 0, issue: "Must select six distinct questions." };
@@ -259,8 +259,8 @@ function makePobEarlyP2AuthoredScheme({ year, sourceSha256, sourcePages, parts }
 function verifyPobEarlyP2AuthoredScheme(paper) {
   const issues = [], seen = /* @__PURE__ */ new Set();
   let total = 0, parts = 0;
-  const source = POB_SUPPLIED_ARCHIVE.find((x) => x.id === paper?.id);
-  if (!source || source.paper !== 2 || source.sourceSha256 !== paper.sourceSha256 || source.filename !== paper.sourceFilename)
+  const source2 = POB_SUPPLIED_ARCHIVE.find((x) => x.id === paper?.id);
+  if (!source2 || source2.paper !== 2 || source2.sourceSha256 !== paper.sourceSha256 || source2.filename !== paper.sourceFilename)
     issues.push("Source identity mismatch.");
   if (!Array.isArray(paper?.questions) || paper.questions.length !== 9)
     issues.push("Nine distinct source questions required.");
@@ -497,8 +497,8 @@ function validatePob2008MjP2Choices(numbers) {
 }
 function verifyPob2008MjP2AuthoredScheme(paper = POB_2008_MJ_P2_AUTHORED_SCHEME) {
   const issues = [];
-  const source = POB_SUPPLIED_ARCHIVE.find((x) => x.id === paper?.id);
-  if (!source || source.sourceSha256 !== paper.sourceSha256 || source.paper !== 2 || source.filename !== paper.sourceFilename)
+  const source2 = POB_SUPPLIED_ARCHIVE.find((x) => x.id === paper?.id);
+  if (!source2 || source2.sourceSha256 !== paper.sourceSha256 || source2.paper !== 2 || source2.filename !== paper.sourceFilename)
     issues.push("Source SHA-256, identity or paper type mismatch.");
   if (!Array.isArray(paper?.questions) || paper.questions.length !== 7)
     issues.push("Seven source questions required.");
@@ -1504,4 +1504,4 @@ var AUTHORED = Object.freeze([
   [3, "b.ii", "Fixed capital is long-lived productive property such as a bottling machine; working capital funds circulating inventory and daily costs such as stock and cash.", ["1:Explains meaning of fixed long-term productive capital", "1:Provides appropriate fixed-capital example", "1:Explains meaning of working capital used in daily production or short-term operations", "1:Provides a fitting working-capital example"]],
   [3, "c.i", "Growth can give customers a wider range of products or improved service because the company can afford new outlets and equipment.", ["1:Identifies real customer benefit of company growth", "1:Explains practical improvement for consumers"]],
   [3, "c.ii", "Successful growth can support higher dividends and a stronger share price for shareholders, although returns are not guaranteed.", ["1:Identifies genuine potential shareholder benefit", "1:Explains the link between business expansion and shareholder return"]],
-  [3, "d", "Higher productivity lowers labour cost per unit, allowing more competitive prices or better profit margins. More output from the same workforce also improves ability to fill orders promptly, raising revenue or market share.", ["1:First legitimate productivity gain", "1:Explains how gains arise, e.g. output per worker or 
+  [3, "d", "Higher productivity lowers labour cost per unit, allowing more competitive prices or better profit margins. More output from the same workforce also improves ability to fill orders promptly, raising revenu

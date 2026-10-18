@@ -1,4 +1,4 @@
- itself promote domestic economic development.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+: "C", "explanation": "Simply increasing consumer imports does not itself promote domestic economic development.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 51, "pdfPage": 8, "proposedOption": "D", "explanation": "Crime, poor literacy and pollution can each damage residents' quality and standard of living.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 52, "pdfPage": 8, "proposedOption": "A", "explanation": "Protectionism involves restrictions and is inconsistent with unrestricted free trade.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 53, "pdfPage": 8, "proposedOption": "B", "explanation": "Higher customs duties can reduce import demand and foreign-exchange spending, though the effect is conditional.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
@@ -13,8 +13,8 @@
 });
 function auditPob2012MjP1AuthorKey(key = POB_2012_MJ_P1_AUTHORED_KEY) {
   const issues = [], numbers = /* @__PURE__ */ new Set(), disputes = [];
-  const source = POB_SUPPLIED_ARCHIVE.find((p) => p.id === "POB-P1-2012-MJ");
-  if (!source || key?.id !== source.id || key.sourceSha256 !== source.sourceSha256)
+  const source2 = POB_SUPPLIED_ARCHIVE.find((p) => p.id === "POB-P1-2012-MJ");
+  if (!source2 || key?.id !== source2.id || key.sourceSha256 !== source2.sourceSha256)
     issues.push("Missing 2012 trusted source or PDF fingerprint differs.");
   if (!Array.isArray(key?.entries) || key.entries.length !== 60)
     return { valid: false, issues: [...issues, "Must have all sixty item drafts."], disputes };
@@ -252,8 +252,8 @@ var POB_2015_MJ_P1_AUTHORED_KEY = Object.freeze({
 });
 function verifyPob2015MjP1AuthoredKey(key = POB_2015_MJ_P1_AUTHORED_KEY) {
   const problems = [], seen = /* @__PURE__ */ new Set(), disputes = [];
-  const source = POB_SUPPLIED_ARCHIVE.find((x) => x.id === "POB-P1-2015-MJ");
-  if (key?.id !== source?.id || key.sourceSha256 !== source.sourceSha256)
+  const source2 = POB_SUPPLIED_ARCHIVE.find((x) => x.id === "POB-P1-2015-MJ");
+  if (key?.id !== source2?.id || key.sourceSha256 !== source2.sourceSha256)
     problems.push("Source identity or fingerprint mismatch.");
   if (!Array.isArray(key?.questions) || key.questions.length !== 60)
     return { valid: false, problems: [...problems, "Exactly 60 answer models required."], disputes: [] };
@@ -481,8 +481,8 @@ var POB_2017_MJ_P1_AUTHORED_KEY = Object.freeze({
 });
 function verifyPob2017MjP1AuthoredKey(key = POB_2017_MJ_P1_AUTHORED_KEY) {
   const problems = [], seen = /* @__PURE__ */ new Set(), disputes = [];
-  const source = POB_SUPPLIED_ARCHIVE.find((p) => p.id === key?.id);
-  if (!source || source.id !== "POB-P1-2017-MJ" || source.sourceSha256 !== key.sourceSha256)
+  const source2 = POB_SUPPLIED_ARCHIVE.find((p) => p.id === key?.id);
+  if (!source2 || source2.id !== "POB-P1-2017-MJ" || source2.sourceSha256 !== key.sourceSha256)
     problems.push("Changed or unknown 2017 exam PDF.");
   if (!Array.isArray(key?.entries) || key.entries.length !== 60)
     return { valid: false, problems: [...problems, "Complete 60-question key required."], disputes: [] };
@@ -597,8 +597,8 @@ var POB_2018_MJ_P1_AUTHORED_KEY = Object.freeze({
 });
 function verifyPob2018MjP1AuthoredKey(key = POB_2018_MJ_P1_AUTHORED_KEY) {
   const issues = [], seen = /* @__PURE__ */ new Set(), disputes = [], missing = [];
-  const source = POB_SUPPLIED_ARCHIVE.find((s) => s.id === key?.id);
-  if (!source || source.paper !== 1 || key?.sourceSha256 !== source.sourceSha256 || key.sourceFilename !== source.filename) issues.push("Wrong source PDF digest.");
+  const source2 = POB_SUPPLIED_ARCHIVE.find((s) => s.id === key?.id);
+  if (!source2 || source2.paper !== 1 || key?.sourceSha256 !== source2.sourceSha256 || key.sourceFilename !== source2.filename) issues.push("Wrong source PDF digest.");
   if (!Array.isArray(key?.questions) || key.questions.length !== 60)
     return { valid: false, issues: [...issues, "60 question slots must be explicitly represented."], missing };
   for (const item2 of key.questions) {
@@ -714,8 +714,8 @@ var POB_2020_JAN_P1_AUTHORED_KEY = Object.freeze({
 });
 function verifyPob2020JanP1AuthoredKey(paper = POB_2020_JAN_P1_AUTHORED_KEY) {
   const issues = [], seen = /* @__PURE__ */ new Set(), disputes = [];
-  const source = POB_SUPPLIED_ARCHIVE.find((s) => s.id === paper?.id);
-  if (!source || source.paper !== 1 || source.sourceSha256 !== paper.sourceSha256 || source.filename !== paper.sourceFilename) issues.push("Unapproved source PDF or fingerprint.");
+  const source2 = POB_SUPPLIED_ARCHIVE.find((s) => s.id === paper?.id);
+  if (!source2 || source2.paper !== 1 || source2.sourceSha256 !== paper.sourceSha256 || source2.filename !== paper.sourceFilename) issues.push("Unapproved source PDF or fingerprint.");
   if (!Array.isArray(paper?.entries) || paper.entries.length !== 60)
     return { valid: false, issues: [...issues, "Exactly sixty slots required."], disputes: [] };
   for (const item2 of paper.entries) {
@@ -1048,8 +1048,8 @@ var POB_2022_JAN_P1_AUTHORED_KEY = Object.freeze({
 });
 function verifyPob2022JanP1AuthoredKey(key = POB_2022_JAN_P1_AUTHORED_KEY) {
   const problems = [], numbers = /* @__PURE__ */ new Set(), disputed = [];
-  const source = POB_SUPPLIED_ARCHIVE.find((s) => s.id === key?.id);
-  if (!source || source.paper !== 1 || source.sourceSha256 !== key.sourceSha256 || source.filename !== key.sourceFilename)
+  const source2 = POB_SUPPLIED_ARCHIVE.find((s) => s.id === key?.id);
+  if (!source2 || source2.paper !== 1 || source2.sourceSha256 !== key.sourceSha256 || source2.filename !== key.sourceFilename)
     problems.push("Original Jan 2022 PDF hash/filename mismatch.");
   if (!Array.isArray(key?.entries) || key.entries.length !== 60)
     return { valid: false, problems: [...problems, "Sixty original MCQ slots required."], disputed: [] };
@@ -1261,4 +1261,4 @@ var POB_2024_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 54, "pdfPage": 9, "proposedOption": "A", "explanation": "A tax refund is not itself one of the social services such as clinics, schooling or public transportation.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
     Object.freeze({ "number": 55, "pdfPage": 9, "proposedOption": "B", "explanation": "Cross-border buying and selling of goods and services is international trade.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
     Object.freeze({ "number": 56, "pdfPage": 9, "proposedOption": null, "explanation": "GNP equals GDP plus net primary income received from abroad, so the offered 'value produced by the country' describes GDP, not strictly GNP; the other choices also omit necessary components.", "status": "academic-dispute", "disputeEvidence": "No answer exactly defines GNP as resident national output plus net primary income from abroad; D describes GDP instead.", "markedUpCopyNotOfficial": true }),
-    Object.freeze({ "number": 57, "pdfPage": 9, "proposedOption": "D", "explanation": "Technical assistance and loans to new local firms build national productive capacity.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNo
+    Object.freeze({ "number": 57, "pdfPage": 9, "proposedOption": "D", "explanation": "Technical assistance and loans to new local firms build national productive 

@@ -1855,12 +1855,12 @@ function ngrams(value2, n = 5) {
   return set;
 }
 function copiedPhraseRatio(stimulus, response) {
-  const source = ngrams(sourceText(stimulus), 5);
+  const source2 = ngrams(sourceText(stimulus), 5);
   const candidate = ngrams(response, 5);
-  if (!candidate.size || !source.size) return 0;
+  if (!candidate.size || !source2.size) return 0;
   let copied = 0;
   candidate.forEach((item2) => {
-    if (source.has(item2)) copied += 1;
+    if (source2.has(item2)) copied += 1;
   });
   return copied / candidate.size;
 }
@@ -3583,8 +3583,8 @@ function parseScienceGraphPoints(value2) {
   });
 }
 function expectedScienceGraphPoints(question2, partIndex, item2) {
-  const source = (item2.markScheme?.points || []).join(" ");
-  const explicit = [...source.matchAll(/\(([+-]?\d+(?:\.\d+)?),\s*([+-]?\d+(?:\.\d+)?)\)/g)].map((match) => ({ x: Number(match[1]), y: Number(match[2]) }));
+  const source2 = (item2.markScheme?.points || []).join(" ");
+  const explicit = [...source2.matchAll(/\(([+-]?\d+(?:\.\d+)?),\s*([+-]?\d+(?:\.\d+)?)\)/g)].map((match) => ({ x: Number(match[1]), y: Number(match[2]) }));
   if (explicit.length) return explicit;
   const table = question2.parts?.[partIndex]?.table;
   if (table?.rows?.length !== 1 || table.headers?.length !== table.rows[0].length) return [];
@@ -3909,13 +3909,13 @@ function graphResult(questionId, partIndex, itemIndex, item2, responses) {
   if (criteria.reduce((sum, row) => sum + row.maxMarks, 0) < maxMarks) {
     criteria.push({ id: `${base}:scale`, label: "Scale is valid and uses the plotting area sensibly", marks: scale.suitable ? 1 : 0, maxMarks: 1, earned: scale.suitable, evidence: `x ${scale.xMin} to ${scale.xMax}; y ${scale.yMin} to ${scale.yMax}` });
   }
-  const source = `${item2?.prompt || ""} ${(item2?.markScheme?.points || []).join(" ")}`.toLowerCase();
+  const source2 = `${item2?.prompt || ""} ${(item2?.markScheme?.points || []).join(" ")}`.toLowerCase();
   const selected = String(responses[`${base}:connection`] || "");
   let wanted = null;
-  if (source.includes("bar chart") || source.includes("bars ")) wanted = "bars";
-  else if (source.includes("best fit")) wanted = "best-fit";
-  else if (source.includes("smooth")) wanted = "smooth";
-  else if (source.includes("straight line") || source.includes("straight lines")) wanted = "straight";
+  if (source2.includes("bar chart") || source2.includes("bars ")) wanted = "bars";
+  else if (source2.includes("best fit")) wanted = "best-fit";
+  else if (source2.includes("smooth")) wanted = "smooth";
+  else if (source2.includes("straight line") || source2.includes("straight lines")) wanted = "straight";
   const remainingBeforeStyle = maxMarks - criteria.reduce((sum, row) => sum + row.maxMarks, 0);
   if (remainingBeforeStyle > 0) {
     const styleOk = wanted ? selected === wanted : Boolean(selected && selected !== "points");
@@ -4345,15 +4345,15 @@ var OTHER_BATCHES = Object.freeze([
 ]);
 var POB_HISTORICAL_SCORING_BATCHES = Object.freeze([
   Object.freeze(FIRST_FIFTEEN.map(([id, pages, pagesNeedingImageReview, rule, sourceForm]) => {
-    const source = POB_SUPPLIED_ARCHIVE.find((row) => row.id === id);
-    if (!source) throw new Error("Unknown POB batch source: " + id);
+    const source2 = POB_SUPPLIED_ARCHIVE.find((row) => row.id === id);
+    if (!source2) throw new Error("Unknown POB batch source: " + id);
     const lowTextPagesReviewed = id === "POB-P2-2022-JAN" ? [2, 19] : id === "POB-P2-2023-JAN" ? [2, 23] : [];
     return Object.freeze({
       id,
       batch: 1,
-      paper: source.paper,
-      filename: source.filename,
-      sourceSha256: source.sourceSha256,
+      paper: source2.paper,
+      filename: source2.filename,
+      sourceSha256: source2.sourceSha256,
       pages,
       pagesNeedingImageReview,
       // Both 2022/2023 low-text pairs are non-question DO NOT WRITE pages.
@@ -4371,15 +4371,15 @@ var POB_HISTORICAL_SCORING_BATCHES = Object.freeze([
     });
   })),
   ...OTHER_BATCHES.map((ids, i) => Object.freeze(ids.map((id) => {
-    const source = POB_SUPPLIED_ARCHIVE.find((row) => row.id === id);
-    if (!source) throw new Error("Unknown POB batch source: " + id);
+    const source2 = POB_SUPPLIED_ARCHIVE.find((row) => row.id === id);
+    if (!source2) throw new Error("Unknown POB batch source: " + id);
     return Object.freeze({
       id,
       batch: i + 2,
-      paper: source.paper,
-      filename: source.filename,
-      sourceSha256: source.sourceSha256,
-      pages: source.pages,
+      paper: source2.paper,
+      filename: source2.filename,
+      sourceSha256: source2.sourceSha256,
+      pages: source2.pages,
       rule: "unverified-instructions",
       sourceForm: "not-reviewed-in-this-batch",
       fullPageVisualQA: false,
@@ -4607,9 +4607,8 @@ var PRINTED = Object.freeze([
 })));
 var POB_2026_JAN_HISTORICAL_BANK_VERSION = "pob-historical-2026-jan-p2-v1";
 function buildPob2026JanHistoricalPaper() {
-  const source = POB_2026_JAN_P2_AUTHORED_SCHEME;
+  const source2 = POB_2026_JAN_P2_AUTHORED_SCHEME;
   const byId = new Map(PRINTED.map((row) => [row.questionNumber + ":" + row.partId, row]));
   return Object.freeze({
-    id: source.id,
-    bankVersion: POB_2026_JAN_HISTORICAL_BANK_VERSION,
-    ti
+    id: source2.id,
+    bankVersion: POB_2026_JAN_HISTOR

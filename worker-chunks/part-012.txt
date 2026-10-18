@@ -1,10 +1,11 @@
-tle: "CSEC Principles of Business \xB7 January 2026 \xB7 Paper 02",
+ICAL_BANK_VERSION,
+    title: "CSEC Principles of Business \xB7 January 2026 \xB7 Paper 02",
     paper: "02",
     origin: "historical-cxc-source",
     year: 2026,
     sitting: "JAN",
-    sourceFilename: source.sourceFilename,
-    sourceSha256: source.sourceSha256,
+    sourceFilename: source2.sourceFilename,
+    sourceSha256: source2.sourceSha256,
     testCode: null,
     date: "2026-01-08",
     timeLimitMinutes: 120,
@@ -14,8 +15,8 @@ tle: "CSEC Principles of Business \xB7 January 2026 \xB7 Paper 02",
     maxMarks: 100,
     liveScoringApproved: false,
     gradingStatus: "internal-benchmark-only",
-    questions: Object.freeze(source.questions.map((q) => Object.freeze({
-      id: source.id + ":Q" + q.number,
+    questions: Object.freeze(source2.questions.map((q) => Object.freeze({
+      id: source2.id + ":Q" + q.number,
       number: q.number,
       marks: q.marks,
       title: "Question " + q.number,
@@ -40,10 +41,10 @@ tle: "CSEC Principles of Business \xB7 January 2026 \xB7 Paper 02",
   });
 }
 function verifyPob2026JanHistoricalPaper(paper = buildPob2026JanHistoricalPaper()) {
-  const issues = [], ids = /* @__PURE__ */ new Set(), source = POB_SUPPLIED_ARCHIVE.find((s) => s.id === "POB-P2-2026-JAN");
+  const issues = [], ids = /* @__PURE__ */ new Set(), source2 = POB_SUPPLIED_ARCHIVE.find((s) => s.id === "POB-P2-2026-JAN");
   const draft = verifyPob2026JanP2AuthoredScheme();
   if (!draft.valid) issues.push(...draft.issues);
-  if (paper?.id !== source?.id || paper?.sourceSha256 !== source?.sourceSha256 || paper?.sourceFilename !== source?.filename)
+  if (paper?.id !== source2?.id || paper?.sourceSha256 !== source2?.sourceSha256 || paper?.sourceFilename !== source2?.filename)
     issues.push("Historical paper source must match owner archive identity.");
   if (paper?.bankVersion !== POB_2026_JAN_HISTORICAL_BANK_VERSION)
     issues.push("Wrong historic server bundle version.");
@@ -93,12 +94,12 @@ function buildPob2026JanHistoricalCalibrationPack({
     throw new Error("unsupported_historical_calibration_bank");
   if (!responses || typeof responses !== "object" || Array.isArray(responses))
     throw new Error("invalid_historical_responses");
-  const source = buildPob2026JanHistoricalPaper();
-  if (!verifyPob2026JanHistoricalPaper(source).valid)
+  const source2 = buildPob2026JanHistoricalPaper();
+  if (!verifyPob2026JanHistoricalPaper(source2).valid)
     throw new Error("historical_source_not_verified");
-  const permitted = new Set(source.questions.flatMap((q) => q.items.map((p) => q.id + ":" + p.id)));
+  const permitted = new Set(source2.questions.flatMap((q) => q.items.map((p) => q.id + ":" + p.id)));
   const items = [], clean3 = {};
-  for (const q of source.questions) for (const part2 of q.items) {
+  for (const q of source2.questions) for (const part2 of q.items) {
     const id = q.id + ":" + part2.id;
     const answer2 = readResponse(responses, id);
     if (!answer2) continue;
@@ -106,7 +107,7 @@ function buildPob2026JanHistoricalCalibrationPack({
     const companions = relationships[q.number + ":" + part2.id] || [];
     const responseKeys = [id];
     for (const ref of companions) {
-      const companionId = source.id + ":Q" + ref.replace(":", ":");
+      const companionId = source2.id + ":Q" + ref.replace(":", ":");
       if (permitted.has(companionId)) {
         const companion = readResponse(responses, companionId);
         if (companion) {
@@ -128,9 +129,9 @@ function buildPob2026JanHistoricalCalibrationPack({
       })),
       constraints: {
         subject: "principles-of-business",
-        paperId: source.id,
+        paperId: source2.id,
         sourcePage: part2.sourcePdfPage,
-        bankVersion: source.bankVersion,
+        bankVersion: source2.bankVersion,
         benchmarkOnly: true,
         requiresLinkedAnswer: companions.length > 0
       }
@@ -139,8 +140,8 @@ function buildPob2026JanHistoricalCalibrationPack({
   const rubricMaximum = items.reduce((total, item2) => total + item2.maxMarks, 0);
   if (rubricMaximum > 100 || items.length > 32) throw new Error("historical_calibration_overflow");
   return Object.freeze({
-    paperId: source.id,
-    bankVersion: source.bankVersion,
+    paperId: source2.id,
+    bankVersion: source2.bankVersion,
     benchmarkOnly: true,
     productionEligible: false,
     items,
@@ -149,7 +150,7 @@ function buildPob2026JanHistoricalCalibrationPack({
     maxMarks: 100,
     unassessedMarks: 0,
     baselineScore: 0,
-    sourceSha256: source.sourceSha256
+    sourceSha256: source2.sourceSha256
   });
 }
 
@@ -284,15 +285,15 @@ function summarizePobJan2026Marks(marking, pack) {
       minMarks,
       maxPossibleMarks,
       status: blank ? "blank" : score !== null ? "agreed" : incomplete ? "incomplete" : "uncertain",
-      criteria: part2.criteria.map((source, index) => {
+      criteria: part2.criteria.map((source2, index) => {
         const awarded = criteria[index];
         return {
-          id: source.id,
-          rule: source.rule,
-          maxMarks: source.marks,
+          id: source2.id,
+          rule: source2.rule,
+          maxMarks: source2.marks,
           marks: blank ? 0 : awarded?.marks ?? (awarded ? null : 0),
           minMarks: blank ? 0 : awarded?.minMarks ?? 0,
-          maxPossibleMarks: blank ? 0 : awarded?.maxPossibleMarks ?? source.marks,
+          maxPossibleMarks: blank ? 0 : awarded?.maxPossibleMarks ?? source2.marks,
           status: blank ? "blank" : awarded?.status || (awarded ? "uncertain" : "incomplete"),
           feedback: blank ? "No answer submitted. No mark awarded." : awarded?.feedback || "This marking criterion has not been evaluated.",
           evidence: awarded?.evidence || []
@@ -578,8 +579,8 @@ var POB_2002_MJ_P1_AUTHORED_KEY = Object.freeze({
 });
 function verifyPob2002MjP1AuthoredKey(key = POB_2002_MJ_P1_AUTHORED_KEY) {
   const issues = [], seen = /* @__PURE__ */ new Set(), disputed = [];
-  const source = POB_SUPPLIED_ARCHIVE.find((p) => p.id === key?.id);
-  if (!source || source.paper !== 1 || key?.sourceSha256 !== source.sourceSha256 || key.sourceFilename !== source.filename)
+  const source2 = POB_SUPPLIED_ARCHIVE.find((p) => p.id === key?.id);
+  if (!source2 || source2.paper !== 1 || key?.sourceSha256 !== source2.sourceSha256 || key.sourceFilename !== source2.filename)
     issues.push("2002 owner-supplied source PDF identity or SHA-256 mismatch.");
   if (!Array.isArray(key?.questions) || key.questions.length !== 60)
     return { valid: false, issues: [...issues, "Sixty MCQ answers required."], disputes: 0 };
@@ -916,8 +917,8 @@ var POB_2005_MJ_P1_AUTHORED_KEY = Object.freeze({
 });
 function verifyPob2005MjP1AuthoredKey(key = POB_2005_MJ_P1_AUTHORED_KEY) {
   const issues = [], disputed = [], seen = /* @__PURE__ */ new Set();
-  const source = POB_SUPPLIED_ARCHIVE.find((x) => x.id === key?.id);
-  if (!source || source.id !== "POB-P1-2005-MJ" || source.sourceSha256 !== key.sourceSha256 || source.filename !== key.sourceFilename)
+  const source2 = POB_SUPPLIED_ARCHIVE.find((x) => x.id === key?.id);
+  if (!source2 || source2.id !== "POB-P1-2005-MJ" || source2.sourceSha256 !== key.sourceSha256 || source2.filename !== key.sourceFilename)
     issues.push("Source PDF or trusted SHA-256 mismatch.");
   if (!Array.isArray(key?.questions) || key.questions.length !== 60)
     return { valid: false, issues: [...issues, "Missing sixty source answers."], disputed };
@@ -1143,8 +1144,8 @@ var POB_2007_MJ_P1_AUTHORED_KEY = Object.freeze({
 });
 function verifyPob2007MjP1AuthoredKey(key = POB_2007_MJ_P1_AUTHORED_KEY) {
   const issues = [], seen = /* @__PURE__ */ new Set(), disputes = [];
-  const source = POB_SUPPLIED_ARCHIVE.find((x) => x.id === "POB-P1-2007-MJ");
-  if (!source || key?.id !== source.id || key.sourceSha256 !== source.sourceSha256)
+  const source2 = POB_SUPPLIED_ARCHIVE.find((x) => x.id === "POB-P1-2007-MJ");
+  if (!source2 || key?.id !== source2.id || key.sourceSha256 !== source2.sourceSha256)
     issues.push("Incorrect 2007 source PDF identity.");
   if (!Array.isArray(key?.entries) || key.entries.length !== 60)
     return { valid: false, issues: [...issues, "Sixty answer models required."], disputes };
@@ -1258,8 +1259,8 @@ var POB_2008_MJ_P1_AUTHORED_KEY = Object.freeze({
 });
 function verifyPob2008MjP1AuthoredKey(key = POB_2008_MJ_P1_AUTHORED_KEY) {
   const issues = [], numbers = /* @__PURE__ */ new Set(), disputes = [];
-  const source = POB_SUPPLIED_ARCHIVE.find((p) => p.id === "POB-P1-2008-MJ");
-  if (!source || key?.id !== source.id || key.sourceSha256 !== source.sourceSha256)
+  const source2 = POB_SUPPLIED_ARCHIVE.find((p) => p.id === "POB-P1-2008-MJ");
+  if (!source2 || key?.id !== source2.id || key.sourceSha256 !== source2.sourceSha256)
     issues.push("May/June 2008 trusted source mismatch.");
   if (!Array.isArray(key?.entries) || key.entries.length !== 60)
     return { valid: false, issues: [...issues, "Missing 60 answers."], disputes };
@@ -1471,4 +1472,4 @@ var POB_2012_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 47, "pdfPage": 7, "proposedOption": "D", "explanation": "Proportional taxation charges the same rate on different incomes.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 48, "pdfPage": 8, "proposedOption": "A", "explanation": "A favourable goods-trade balance means the country sells abroad more than it buys.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 49, "pdfPage": 8, "proposedOption": "B", "explanation": "International trade involves exchanges of goods and services between countries.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 50, "pdfPage": 8, "proposedOption": "C", "explanation": "Simply increasing consumer imports does not
+    Object.freeze({ "number": 50, "pdfPage": 8, "proposedOption"
