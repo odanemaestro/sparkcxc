@@ -24,7 +24,16 @@ const code=Buffer.from(bundled.outputFiles[0].text).toString("base64");
 const {POB_OWNER_P2_BENCHMARK:fixtures,buildPobArchiveExaminerPack:makePack,gradePobArchiveExaminerPaper:grade}=await import("data:text/javascript;base64,"+code);
 const paperId="POB-P2-2022-JAN",selectedQuestions=[1,2,3,4,5];
 const empty=makePack({paperId,ownerSource:true,selectedQuestions});
-for(const fixture of fixtures){
+// Exhaustive part coverage: every supplied worked answer and a blank-control,
+// in addition to carefully authored full/partial/incorrect/adversarial cases.
+const generated=empty.parts.flatMap(part=>[
+ {id:"source-model-"+part.part+"-Q"+part.question,part:"Q"+part.question+":"+part.part,
+  maxMarks:part.maxMarks,expectedMarks:part.maxMarks,category:"model-reference",answer:part.modelAnswer},
+ {id:"source-blank-"+part.part+"-Q"+part.question,part:"Q"+part.question+":"+part.part,
+  maxMarks:part.maxMarks,expectedMarks:0,category:"blank-control",answer:""}
+]);
+const allCases=[...fixtures,...generated];
+for(const fixture of allCases){
  const part=empty.parts.find(p=>p.id===paperId+":"+fixture.part);
  if(!part||part.maxMarks!==fixture.maxMarks)throw new Error("Fixture/bank mark mismatch: "+fixture.id);
 }
@@ -37,7 +46,7 @@ if(plan){
 }
 const model=process.env.SPARK_MARKING_MODEL,apiKey=process.env.OPENAI_API_KEY;
 if(!model||!apiKey)throw new Error("Live calibration requires SPARK_MARKING_MODEL and OPENAI_API_KEY; no scoring requested.");
-const cases=fixtures.slice(0,limit),records=[];
+const cases=allCases.slice(0,limit),records=[];
 for(const fixture of cases){
  const id=paperId+":"+fixture.part;
  const pack=makePack({paperId,ownerSource:true,selectedQuestions,responses:{[id]:fixture.answer}});
@@ -60,13 +69,13 @@ const maximumError=deviations.length?Math.max(...deviations):null;
 const meanAbsoluteError=deviations.length?deviations.reduce((n,a)=>n+a,0)/deviations.length:null;
 const crucial=records.filter(r=>["incorrect","adversarial","duplicate"].includes(r.category));
 const criticalFalseCredit=crucial.filter(r=>r.score!==null&&r.score>r.expectedMarks);
-const complete=records.length===fixtures.length;
+const complete=records.length===allCases.length;
 const passed=complete&&records.every(r=>r.score!==null&&!r.error)&&
  criticalFalseCredit.length===0&&maximumError<=1&&meanAbsoluteError<=0.5&&
  records.filter(r=>r.exact).length/records.length>=0.75;
 const report={paperId,model,version:empty.bankVersion,rubricVersion:empty.rubricVersion,
  sourceSha256:empty.sourceSha256,runAt:new Date().toISOString(),
- sampleCount:records.length,expectedCaseCount:fixtures.length,complete,
+ sampleCount:records.length,expectedCaseCount:allCases.length,complete,
  exactMatchCount:records.filter(r=>r.exact).length,maximumError,meanAbsoluteError,
  criticalFalseCreditCount:criticalFalseCredit.length,passed,
  records,
