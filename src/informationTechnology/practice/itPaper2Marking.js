@@ -73,10 +73,17 @@ function expandSimpleSumRange(formula) {
 
 function normaliseCommutativeFormula(formula) {
   const value=expandSimpleSumRange(formula);
-  const match=value.match(/^=([A-Z]+\d+|\d+(?:\.\d+)?)([+*])([A-Z]+\d+|\d+(?:\.\d+)?)$/);
-  if(!match) return value;
-  const terms=[match[1],match[3]].sort();
-  return `=${terms[0]}${match[2]}${terms[1]}`;
+  // Flat addition/multiplication of cells and numeric constants is
+  // commutative, including a SUM-range expanded into its actual cells.
+  // Leave mixed operators, parentheses, and division in exact source form.
+  for(const operator of ["+","*"]){
+    if(!new RegExp("^=[A-Z]+\\d+|^=\\d").test(value)||!value.includes(operator))continue;
+    const terms=value.slice(1).split(operator);
+    if(terms.length>=2&&terms.every(term=>/^(?:[A-Z]+\d+|\d+(?:\.\d+)?)$/.test(term))){
+      return "="+terms.sort().join(operator);
+    }
+  }
+  return value;
 }
 
 export function formulaMatches(answer, accepted) {
@@ -94,15 +101,30 @@ function normaliseQueryCondition(value) {
 }
 
 function queryConditions(value) {
-  return String(value ?? "")
-    .replace(/&&/g," AND ")
-    .split(/\band\b/i)
-    .map(normaliseQueryCondition)
-    .filter(Boolean)
-    .sort();
+  const source=String(value??"").replace(/&&/g," AND ");
+  const pieces=[];
+  let quote="",start=0;
+  for(let i=0;i<source.length;i++){
+    const ch=source[i];
+    if(quote){
+      if(ch===quote){
+        if(source[i+1]===quote){i++;continue;}
+        quote="";
+      }
+      continue;
+    }
+    if(ch==="'"||ch==='"'){quote=ch;continue;}
+    if(source.slice(i,i+3).toUpperCase()==="AND" &&
+      (i===0||/\W/.test(source[i-1])) &&
+      (i+3===source.length||/\W/.test(source[i+3]))){
+      pieces.push(source.slice(start,i));start=i+3;i+=2;
+    }
+  }
+  pieces.push(source.slice(start));
+  return pieces.map(normaliseQueryCondition).filter(Boolean).sort();
 }
 
-function queryMatches(answer, expected) {
+export function queryMatches(answer, expected) {
   const a = queryConditions(answer);
   const b = queryConditions(expected);
   return a.length === b.length && a.every((item, index) => item === b[index]);
