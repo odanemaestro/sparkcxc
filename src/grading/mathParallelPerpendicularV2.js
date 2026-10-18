@@ -37,7 +37,7 @@ function readSlopeIntercept(answer){
  // Require actual y=mx+c form. No point-slope, general equation, or
  // extra mathematical terms. Recognise x/2 and (-1/3)x as well as 3x.
  const fraction="(?:[+-]?"+N+"/"+N+")";
- const prefix="(?:[+-]?\\("+N+"/"+N+"\\)|[+-]?"+N+"|[+-]?)";
+ const prefix="(?:[+-]?\\([+-]?"+N+"/"+N+"\\)|[+-]?"+N+"|[+-]?)";
  const rx=new RegExp("^("+prefix+")\\*?x(?:/("+N+"))?([+-](?:"+N+"(?:/"+N+")?))?$");
  const match=rx.exec(value);
  if(!match)return null;
