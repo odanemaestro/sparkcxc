@@ -70,7 +70,12 @@ function HistoricalPaper1({record,userId,supabase}){
       <p>{rubricReview.assessedMarks!==null?"Confirmed score: "+rubricReview.assessedMarks+" / "+rubricReview.availableMarks+" marks":"Confirmed marks: "+rubricReview.confirmedMarks+" / "+rubricReview.availableMarks+". "+rubricReview.unresolvedParts+" written part(s) still require evidence-based assessment. This is not a final grade."}</p>
       <small>Blank parts earn zero. Exact SPARK worked-answer matches can receive marks. Other valid wording stays pending rather than being automatically marked wrong. AI is optional, not the source of these decisions.</small>
     </section>}
-    <div className="pob-archive-actions">
+    {submitted&&rubricReview&&<section className="pob-archive-marking-summary" aria-label="SPARK Paper 2 marking scheme results" role="status">
+     <strong>SPARK rubric review</strong>
+     <p>{rubricReview.assessedMarks!==null?"Confirmed score: "+rubricReview.assessedMarks+" / "+rubricReview.availableMarks+" marks":"Confirmed marks: "+rubricReview.confirmedMarks+" / "+rubricReview.availableMarks+". "+rubricReview.unresolvedParts+" written part(s) still require evidence-based assessment. This is not a final grade."}</p>
+     <small>Blank parts earn zero. Exact worked-answer matches receive authored marks. Valid alternative wording remains pending, never silently marked wrong. AI is optional.</small>
+   </section>}
+   <div className="pob-archive-actions">
        {!submitted?<button type="button" className="pob-primary" onClick={()=>setSubmitted(true)}>Check answers against SPARK key</button>
        :<><strong role="status">Provisional score: {correct} / {gradable.length}</strong>
          <button type="button" className="secondary" onClick={()=>setSubmitted(false)}>Edit my answers</button></>}
@@ -175,6 +180,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
        const id="Q"+q.number+":"+part.id;
        const exact=(sourceComplete&&!ownerBank&&POB_2009_MJ_P2_SOURCE.prompts[q.number+":"+part.id])||part.prompt||part.sourceQuestion||null;
        const prompt=exact||part.sourcePromptSummary||null;
+       const partReview=rubricReview?.questions.find(row=>row.number===q.number)?.parts.find(row=>row.id===id);
        return <div className="pob-archive-written" key={id}>
          <label htmlFor={record.id+id}><strong>({part.id})</strong> {prompt||"Answer this part using the printed question paper."} <span>{part.marks} marks</span></label>
          {ownerBank&&part.diagramSvg&&<div className="pob-archive-source-diagram"><img alt={"Supplied figure for Question "+q.number+" ("+part.id+")"} src={"data:image/svg+xml;charset=utf-8,"+encodeURIComponent(part.diagramSvg)}/></div>}
@@ -183,6 +189,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
            placeholder="Write your answer in complete sentences."
            onChange={e=>setAnswers(prev=>({...prev,[id]:e.target.value}))}/>
          {submitted&&<div className="pob-archive-scheme">
+           {partReview&&<p className="pob-archive-part-status"><strong>{partReview.assessedMarks===null?"Written response: further rubric assessment needed":partReview.assessedMarks+" / "+partReview.availableMarks+" marks confirmed by SPARK"}</strong></p>}
            <strong>SPARK model answer</strong><p>{part.modelAnswer||"Model answer is still being authored."}</p>
            {part.criteria?.length>0&&<><strong>Marking criteria</strong><ul>{part.criteria.map((criterion,i)=><li key={i}>
              {criterion.marks} mark{criterion.marks===1?"":"s"}: {criterion.rule}
@@ -207,7 +214,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
       {gradingError&&<p role="status">{gradingError}</p>}
       {serverAttemptId&&<ServerMarkingReview supabase={supabase} attemptId={serverAttemptId} autoStart/>}
     </div>}
-   <small>{ownerBank?<>Question wording and worked solutions come from your uploaded Paper 2 transcription. They are not official CXC keys. {ownerPilotReady?"This sitting has a source-aligned rubric for provisional practice assessment.":"Numerical marking remains disabled until its detailed rubric is reconciled."}</>:scoreEnabled?"This sitting is a pilot assessment using internally authored criteria, not an official CXC grade.":"This sitting currently offers SPARK model answers and rubrics. Online numerical marking is unavailable until the archive pilot is deployed."}</small>
+   <small>{ownerBank?<>Question wording and worked solutions come from the uploaded Paper 2 transcription. They are not official CXC keys. The completed SPARK marking criteria are available independently of optional AI.</>:scoreEnabled?"This sitting is a pilot assessment using internally authored criteria, not an official CXC grade.":"SPARK model answers and rubrics are available independently of AI."}</small>
   </>:<p>No question-level marking guidance is available in this archive entry.</p>}
  </section>;
 }
