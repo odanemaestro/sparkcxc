@@ -6,6 +6,7 @@ const reports=POB_HISTORICAL_REVIEW_BANKS.filter(r=>r.paper===2)
  .map(auditPobOwnerPaper2Calibration).filter(r=>r.issues[0]!=="owner_source_unavailable");
 test("all 20 uploaded papers have an explicit detailed rubric compatibility report",()=>{
  expect(reports).toHaveLength(20);
+ console.info("POB_OWNER_RUBRIC_QA",JSON.stringify(reports.map(r=>({paper:r.id,ready:r.ready,parts:r.sourceParts,matched:r.rubricParts,issues:r.issues.slice(0,6)}))));
  expect(new Set(reports.map(r=>r.id)).size).toBe(20);
  expect(reports.every(r=>r.sourceParts>0&&r.candidateChoices>0)).toBe(true);
  // Baseline reports identify outstanding differences rather than silently granting marks.
