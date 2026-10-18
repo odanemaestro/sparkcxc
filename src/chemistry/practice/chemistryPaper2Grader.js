@@ -67,9 +67,24 @@ function numericExpected(point){
   // A number in descriptive text is not automatically a numerical answer.
   return values.length===1&&(bareNumeric||namedQuantity||/[=:]/.test(p))?values:[];
 }
+// An explicitly labelled final result outranks earlier working. A student
+// who gives mutually competing numeric finals has not supplied one result.
+// This extractor is used for calculation points AND numeric table entries.
+export function chemistryFinalNumericEvidence(response){
+  const source=String(response??"");
+  const declarations=[...source.matchAll(/\b(?:final\s+answer|answer|ans)\s*(?:is\s+|[:=]\s*)([^\n;]+)/gi)];
+  if(declarations.length>1)return {values:[],ambiguous:true,declared:true};
+  const selected=declarations.length?declarations[0][1]:source;
+  // "25 or 30" and "either 25 or 30" are competing, not one answer.
+  if(/[-+]?(?:\d+(?:\.\d*)?|\.\d+)\s+(?:or|versus|vs\.?)\s+[-+]?(?:\d+(?:\.\d*)?|\.\d+)/i.test(selected))
+    return {values:[],ambiguous:true,declared:Boolean(declarations.length)};
+  const values=numbers(selected);
+  return {values,ambiguous:Boolean(declarations.length)&&values.length!==1,
+    declared:Boolean(declarations.length)};
+}
 function numericMatch(response,expected,reference){
-  const final=String(response||"").match(/\b(?:final\s+answer|answer|ans)\s*[:=]\s*([^\n;]+)/i);
-  const got=numbers(final?final[1]:response);
+  const evidence=chemistryFinalNumericEvidence(response);
+  const got=evidence.ambiguous?[]:evidence.values;
   const printed=strip(reference).match(/[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:\s*[x×*]\s*10\s*\^?\s*[+-]?\d+)?/i)?.[0]||"";
   const mantissa=printed.split(/\s*[x×*]\s*10/i)[0];
   const decimals=(mantissa.split(".")[1]||"").length;

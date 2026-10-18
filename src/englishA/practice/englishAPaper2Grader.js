@@ -574,23 +574,34 @@ export function gradeEnglishAPaper2(paper,answers={},choiceId=""){
   const allTasks=paper?.tasks||[];
   const normalTasks=allTasks.filter(task=>!task.choiceGroup);
   const choiceGroups=[...new Set(allTasks.map(task=>task.choiceGroup).filter(Boolean))];
+  // A stored or imported attempt can contain a response without retaining
+  // its selected creative-task ID. Recover only one unambiguous answered
+  // option. Never award marks for two competing choice responses.
+  const unresolvedChoices=[];
   const choiceTasks=choiceGroups.map(group=>{
     const options=allTasks.filter(task=>task.choiceGroup===group);
-    return options.find(task=>task.id===choiceId) || options[0];
+    const explicitlySelected=options.find(task=>task.id===choiceId);
+    if(explicitlySelected)return explicitlySelected;
+    const answered=options.filter(task=>String(answers?.[task.id]??"").trim()||
+      String(answers?.[`${task.id}:analysis`]??"").trim());
+    if(answered.length===1)return answered[0];
+    if(answered.length>1)unresolvedChoices.push(group);
+    return options[0];
   }).filter(Boolean);
   const tasks=[...normalTasks,...choiceTasks];
   const rows=tasks.map(task=>({
     task,
     ...gradeEnglishAPaper2Response(
       task,
-      task.choiceGroup && task.id!==choiceId ? "" : answers[task.id]||"",
-      task.choiceGroup && task.id!==choiceId ? "" : answers[`${task.id}:analysis`]||""
+      unresolvedChoices.includes(task.choiceGroup) ? "" : answers[task.id]||"",
+      unresolvedChoices.includes(task.choiceGroup) ? "" : answers[`${task.id}:analysis`]||""
     ),
   }));
   const score=round(rows.reduce((sum,row)=>sum+row.score,0));
   const maxScore=rows.reduce((sum,row)=>sum+row.maxMarks,0);
   return {
     rows,
+    unresolvedChoices,
     score,
     maxScore,
     percent:maxScore?Math.round(score/maxScore*100):0,
