@@ -38,3 +38,18 @@ test("Physics exam response key preserves actual table coordinates",()=>{
  const result=evaluatePhysicsReciprocalTable({response:{table:Object.fromEntries(blanks.map(k=>[k,"5.0"]))}});
  expect(result.criteria.slice(1).map(c=>c.key)).toEqual(blanks);
 });
+
+test("one-decimal near misses and overly coarse unscaled guesses remain unresolved",()=>{
+ const r=evaluatePhysicsReciprocalTable({response:{table:{
+  "1:2":"8.4","3:2":"5.1","5:2":"0.03"
+ }}});
+ expect(r.suggestedMarks).toBe(0);
+ expect(r.unresolvedMarks).toBe(6);
+});
+test("exact integer and higher-precision reciprocal values remain acceptable",()=>{
+ const r=evaluatePhysicsReciprocalTable({response:{table:{
+  "1:2":"8.333333","3:2":"5","5:2":"0.033333"
+ }}});
+ expect(r.suggestedMarks).toBe(5);
+ expect(r.unresolvedMarks).toBe(1);
+});
