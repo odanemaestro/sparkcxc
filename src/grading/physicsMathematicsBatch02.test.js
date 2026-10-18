@@ -108,3 +108,17 @@ test("Mathematics blocks ECF from competing earlier guesses but honours a single
  expect(validECF.parts[1].marks).toBe(1);
  expect(validECF.parts[1].ecf).toBe(true);
 });
+
+test("Physics applies the one-per-question missing-unit deduction against declared finals",()=>{
+ const paper={paper_id:"unit-policy",marks:2,questions:[{question_id:"unit-question",parts:[
+  {id:"a",marks:1,criteria:[{code:"A1",marks:1,description:"energy",check:{type:"value",value:4000,unit:"J"}}]},
+  {id:"b",marks:1,criteria:[{code:"A1",marks:1,description:"power",check:{type:"value",value:200,unit:"W"}}]},
+ ]}]};
+ const responses={
+  "unit-question::a":{answer:"Working: 4000 J; final answer: 4000"},
+  "unit-question::b":{answer:"final answer: 200"}
+ };
+ const result=markPhysicsPaper2(paper,responses);
+ expect(result.marks).toBe(1);
+ expect(result.criteria.map(row=>row.earned)).toEqual([0,1]);
+});
