@@ -1,4 +1,48 @@
-ds circulating inventory and daily costs such as stock and cash.", ["1:Explains meaning of fixed long-term productive capital", "1:Provides appropriate fixed-capital example", "1:Explains meaning of working capital used in daily production or short-term operations", "1:Provides a fitting working-capital example"]],
+lated through compulsory licensing and registration, enforced worker health-and-safety standards and product quality or consumer-protection legislation.", ["1:First valid state business regulation", "1:Second distinct regulation", "1:Third DIFFERENT measure"]],
+  [5, "d", "Consumer-protection agencies can investigate misleading advertising and require redress for unfair trade. Government standards inspectors can recall unsafe food/products and enforce clear labelling or safety requirements.", ["2:First developed government consumer-protection measure", "2:Second distinct developed measure"]],
+  [5, "e", "Publicly funded computer engineering courses improve residents' technical employability and access to better-paid work. Small appliance repair training also supports new local repair businesses, reducing spending on replacements and stimulating enterprise.", ["3:First training benefit with process and social/economic outcome", "3:Second DISTINCT training benefit explained"]]
+]);
+var POB_2019_JAN_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
+  year: 2019,
+  sitting: "JAN",
+  sourcePages: 14,
+  sourceSha256: "cdcdfdbb46cb5faff3867c42eb26e382ed10c3db36c4a5cd6d29d6f2ec50d5e1",
+  parts: PARTS2
+});
+var verifyPob2019JanP2AuthoredScheme = (paper = POB_2019_JAN_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
+
+// src/principlesOfBusiness/data/pobHistorical2019MjP2AuthoredScheme.js
+var pobHistorical2019MjP2AuthoredScheme_exports = {};
+__export(pobHistorical2019MjP2AuthoredScheme_exports, {
+  POB_2019_MJ_P2_AUTHORED_SCHEME: () => POB_2019_MJ_P2_AUTHORED_SCHEME,
+  verifyPob2019MjP2AuthoredScheme: () => verifyPob2019MjP2AuthoredScheme
+});
+
+// src/principlesOfBusiness/data/pobHistorical2019MjAltP2AuthoredScheme.js
+var pobHistorical2019MjAltP2AuthoredScheme_exports = {};
+__export(pobHistorical2019MjAltP2AuthoredScheme_exports, {
+  POB_2019_MJ_ALT_P2_AUTHORED_SCHEME: () => POB_2019_MJ_ALT_P2_AUTHORED_SCHEME,
+  verifyPob2019MjAltP2AuthoredScheme: () => verifyPob2019MjAltP2AuthoredScheme
+});
+var AUTHORED = Object.freeze([
+  [1, "a.i", "Stakeholder is an individual or group that can affect or be affected by a firm's activities.", ["1:Defines person, group or body with an interest in the business", "1:Explains their stake, influence, or exposure to business effects"]],
+  [1, "a.ii", "Employees and customers are two business stakeholders. Owners, suppliers, government, creditors and communities also qualify.", ["1:Names one genuine stakeholder", "1:Names a different legitimate stakeholder"]],
+  [1, "b", "Employees provide labour to operate the business; customers purchase its offerings and give feedback.", ["2:Describes the real function of FIRST named stakeholder, with a relevant business outcome", "2:Describes an accurate and distinct function of SECOND named stakeholder from a.ii"]],
+  [1, "c.i", "The marketing department researches buyer needs, runs advertisements and chooses promotion and distribution methods.", ["1:Identifies a genuine marketing activity", "1:Describes how that activity reaches or serves customers"]],
+  [1, "c.ii", "The finance department prepares budgets and manages cash flow, payments and sources of business funding.", ["1:Identifies genuine finance activity", "1:Describes how money, capital or financial reporting is handled"]],
+  [1, "c.iii", "The HR department hires employees, provides training and handles recruitment, development and employee relations.", ["1:Identifies genuine HR activity", "1:Describes how recruitment, training or employee relations work"]],
+  [1, "d", "A food seller should comply with product-safety regulations by ensuring meals are stored hygienically and labelled accurately. It should also conduct business honestly, such as avoiding misleading advertisements that promise unsupported health claims.", ["1:First distinct valid ethical or legal principle", "1:Explains how the FIRST principle should guide business decisions", "1:Gives a practical valid example of FIRST principle", "1:Second distinct principle", "1:Explains compliance or ethical behaviour for SECOND principle", "1:Gives relevant example of SECOND principle"]],
+  [2, "a.i", "Planning and controlling are recognised management functions. Organising, staffing and leading also qualify.", ["1:First genuine management function", "1:Different genuine management function"]],
+  [2, "a.ii", "Planning sets goals and chooses means to reach them; controlling checks actual results against targets and corrects deviations.", ["2:Accurately describes activities and purpose of FIRST function selected in a.i", "2:Accurately describes SECOND distinct named function selected in a.i"]],
+  [2, "b.i", "Management should pay workers fairly and on time, and maintain safe working conditions under labour law.", ["1:First genuine employer responsibility to employees", "1:Second distinct responsibility to employees"]],
+  [2, "b.ii", "Management should pay taxes lawfully owed and comply with licensing, regulatory and reporting requirements.", ["1:First genuine business obligation to government", "1:Second distinct government obligation"]],
+  [2, "c.i", "Teamwork is coordinated work by two or more people who combine efforts to achieve a shared objective.", ["1:Identifies collective effort of two or more people", "1:Identifies a shared organisational goal or coordinated result"]],
+  [2, "c.ii", "Teamwork combines diverse skills for better solutions, but coordination and disagreement can consume time.", ["1:Valid teamwork advantage", "1:Valid distinct teamwork disadvantage"]],
+  [2, "d", "Regular two-way staff meetings allow managers to explain policies and answer questions, preventing misunderstandings. A confidential employee feedback and grievance channel with documented responses lets workers raise issues safely and see how management has acted.", ["1:Identifies first workable communication improvement strategy", "1:Explains how the first strategy would operate within ABC Plastic Co.", "1:Explains expected communication outcome", "1:Identifies SECOND distinct strategy", "1:Explains its working process", "1:Links strategy to improved trust or employee-manager understanding"]],
+  [3, "a.i", "Production is the creation of goods and delivery of services by combining inputs through an economic process.", ["1:Identifies creating goods or services", "1:Describes combining productive resources or inputs"]],
+  [3, "a.ii", "Labour and land are two production factors other than capital. Enterprise/entrepreneurship is another acceptable factor.", ["1:Correct first non-capital factor", "1:Different correct non-capital factor"]],
+  [3, "b.i", "Capital is man-made wealth and productive assets, such as machinery, used to produce further goods and services.", ["1:Defines man-made productive resources", "1:Explains their use in further production"]],
+  [3, "b.ii", "Fixed capital is long-lived productive property such as a bottling machine; working capital funds circulating inventory and daily costs such as stock and cash.", ["1:Explains meaning of fixed long-term productive capital", "1:Provides appropriate fixed-capital example", "1:Explains meaning of working capital used in daily production or short-term operations", "1:Provides a fitting working-capital example"]],
   [3, "c.i", "Growth can give customers a wider range of products or improved service because the company can afford new outlets and equipment.", ["1:Identifies real customer benefit of company growth", "1:Explains practical improvement for consumers"]],
   [3, "c.ii", "Successful growth can support higher dividends and a stronger share price for shareholders, although returns are not guaranteed.", ["1:Identifies genuine potential shareholder benefit", "1:Explains the link between business expansion and shareholder return"]],
   [3, "d", "Higher productivity lowers labour cost per unit, allowing more competitive prices or better profit margins. More output from the same workforce also improves ability to fill orders promptly, raising revenue or market share.", ["1:First legitimate productivity gain", "1:Explains how gains arise, e.g. output per worker or cost per unit", "1:Links to a competitive or financial advantage", "1:Second distinct productivity advantage", "1:Explains the mechanism of output gain", "1:Explains expected business performance result"]],
@@ -2002,73 +2046,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
               "label": "(c)",
               "question": "There is an increased demand for soft drinks at Christmas time. Explain how this increased demand will affect the activities of any FOUR departments in a soft drink firm.",
               "marks": 8,
-              "answer": "Any FOUR, 2 marks each:\n\u2022 Production: must increase output by running extra shifts or overtime and making sure machines are in good working order.\n\u2022 Purchasing: must order more sugar, flavouring, bottles and labels early so production is not held up.\n\u2022 Marketing: plans Christmas advertising and promotions and arranges distribution to more outlets so that drinks are on the shelves.\n\u2022 Finance: must find funds for the extra raw materials and overtime pay, prepare the budget, and collect the increased sales revenue.\n\u2022 Human Resources: recruits temporary workers and arranges overtime and holiday schedules.\n\u2022 Distribution/Transport: must arrange more deliveries to customers."
-            },
-            {
-              "label": "(d)",
-              "question": "State TWO ways in which management can resolve conflict within the organisation.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Hold open meetings and improve communication so that each side can explain its concerns.\n\u2022 Negotiate (collective bargaining) with the workers or their trade union to reach a compromise.\n\u2022 Use a third party: conciliation or mediation, or arbitration where the decision is binding.\n\u2022 Follow an agreed grievance procedure.\n\u2022 Deal with the cause of the conflict, for example by improving working conditions or pay.\n\u2022 Involve workers in decision making."
-            }
-          ]
-        },
-        {
-          "number": 2,
-          "section": "Section I",
-          "section_instructions": "Answer the THREE questions in this section.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "List TWO levels of production and explain the MAIN difference between them.",
-              "marks": 4,
-              "answer": "Levels (1 mark each): subsistence production and surplus production (commercial production is also acceptable).\nMain difference (2 marks): in subsistence production people produce only enough for their own and their family's use, with nothing left over; in surplus production more is produced than the producer needs, and the extra is sold or exchanged."
-            },
-            {
-              "label": "(b)",
-              "question": "Outline ONE main difference between primary and secondary production, giving ONE example of EACH.",
-              "marks": 4,
-              "answer": "Difference (2 marks): primary production extracts raw materials from nature (farming, fishing, mining, forestry), while secondary production changes raw materials into finished or semi-finished goods (manufacturing and construction).\nExamples (1 mark each): primary, such as sugar cane farming, fishing or bauxite mining; secondary, such as sugar refining, alumina processing, furniture making or building houses."
-            },
-            {
-              "label": "(c)",
-              "question": "(i) Describe TWO features of cottage industries.\n(ii) State ONE way in which EACH feature described in (i) above, contributes to economic development.",
-              "marks": 6,
-              "answer": "3 marks for each feature (1 for the feature, 2 for how it contributes), for example:\n\u2022 Uses local raw materials (straw, wood, fruit, clay): this saves foreign exchange on imports and creates linkages with local farmers and suppliers.\n\u2022 Uses family labour in the home: provides employment and income for family members, reducing unemployment and poverty.\n\u2022 Needs little capital and simple tools: it is easy to start, so it encourages entrepreneurship and small business development.\n\u2022 Produces handmade craft items: these can be sold to tourists, earning foreign exchange."
-            },
-            {
-              "label": "(d)",
-              "question": "Discuss TWO ways in which linkage industries can assist in the development of Caribbean economies.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 They create employment both in the industries that supply inputs and in those that use the output, reducing unemployment.\n\u2022 They use local raw materials instead of imports, which saves foreign exchange and improves the balance of payments.\n\u2022 They add value locally: processing raw materials (for example sugar into rum, fruit into juices) earns more income than exporting the raw material.\n\u2022 Money circulates within the economy (multiplier effect), increasing incomes and economic growth.\n\u2022 They help diversify the economy and make use of by-products that would otherwise be wasted (for example bagasse for fuel)."
-            }
-          ]
-        },
-        {
-          "number": 3,
-          "section": "Section I",
-          "section_instructions": "Answer the THREE questions in this section.",
-          "stem": "Flour Hill has one shopping mart that purchases baked goods from a supplier in the nearest city, which is 75 miles away. In the last two weeks the owner of the shopping mart has had an unusual amount of complaints about the baked goods being spoilt and stale.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "State THREE factors that influence consumer behaviour.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each (1 for the factor, 1 for a brief explanation):\n\u2022 Price: consumers usually buy more when prices are lower.\n\u2022 Income: higher incomes allow consumers to buy more and better-quality goods.\n\u2022 Tastes and preferences, including fashion.\n\u2022 Quality of the product.\n\u2022 Advertising and sales promotion.\n\u2022 Culture and religion.\n\u2022 Family, friends and other reference groups.\n\u2022 Availability and convenience.\n\u2022 Brand loyalty."
-            },
-            {
-              "label": "(b)",
-              "question": "Identify TWO organisations in your country where consumers can seek redress for unfair treatment.",
-              "marks": 2,
-              "answer": "Any TWO, 1 mark each, for example: Consumer Affairs Commission/Division, Fair Trading Commission, Bureau of Standards, Small Claims Court, Ministry of Trade/Commerce, Consumer Guidance Society, the Ombudsman."
-            },
-            {
-              "label": "(c)",
-              "question": "Outline TWO possible distribution channels that can be used to deliver the baked products to the final consumer.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Producer \u2192 Retailer \u2192 Consumer: the bakery delivers directly to the shopping mart, which sells to consumers.\n\u2022 Producer \u2192 Wholesaler \u2192 Retailer \u2192 Consumer: a wholesaler buys in bulk from the bakery and supplies shops.\n\u2022 Producer \u2192 Consumer: the bakery sells directly, for example through its own outlet, delivery van or online orders.\n\u2022 Producer \u2192 Agent \u2192 Retailer \u2192 Consumer."
-            },
-            {
-              "label": "(d)",
-              "question": "Select an appropriate method of transportation for EACH of the following products giving ONE reason for your choice.\n(i) Fres
+              "answer": "Any FOUR, 2 marks each:\n\u2022 Production: must increase output by running extra shifts or overtime and making sure machines are in good working order.\n\u2022 Purchasing: must order more sugar, flavouring, bottles and labels early so production is not held up.\n\u2022 Marketing: plans Chri

@@ -1762,6 +1762,48 @@ var tokenise = (v) => clean(v).toLowerCase().match(/[a-z]+(?:'[a-z]+)?/g) || [];
 var countEnglishWords = (v) => (String(v || "").match(/[A-Za-z0-9]+(?:['’][A-Za-z]+)?(?:-[A-Za-z0-9]+(?:['’][A-Za-z]+)?)*/g) || []).length;
 var sentenceList = (v) => String(v || "").split(/[.!?]+/).map((s) => s.trim()).filter((s) => s.split(/\s+/).length >= 2);
 var paragraphList = (v) => String(v || "").split(/\n\s*\n|\n/).map((s) => s.trim()).filter(Boolean);
+var claimUnits = (v) => String(v || "").split(/[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)/).map((part2) => part2.trim()).filter(Boolean);
+function repeatedWritingEvidence(response) {
+  const sentences = claimUnits(response).map((line) => tokenise(line).join(" ")).filter((line) => line.split(" ").length >= 5);
+  const counts = /* @__PURE__ */ new Map();
+  sentences.forEach((line) => counts.set(line, (counts.get(line) || 0) + 1));
+  const repeated = [...counts.values()].reduce((sum, count) => sum + Math.max(0, count - 1), 0);
+  return {
+    total: sentences.length,
+    unique: counts.size,
+    repeatedShare: sentences.length ? repeated / sentences.length : 0
+  };
+}
+function repetitionCap(result, response) {
+  const repetition = repeatedWritingEvidence(response);
+  const count = countEnglishWords(response);
+  const max = count >= 100 && repetition.repeatedShare >= 0.4 ? 14 : count >= 100 && repetition.repeatedShare >= 0.2 ? 22 : null;
+  if (max === null) return { ...result, diagnostics: { ...result.diagnostics, repetition } };
+  if (result.score <= max) return {
+    ...result,
+    confidence: "low",
+    diagnostics: { ...result.diagnostics, repetition },
+    feedback: [...result.feedback || [], "Repeated statements limit demonstrated content development. The score remains a provisional estimate."]
+  };
+  const scale = max / result.score;
+  const dimensions = (result.dimensions || []).map((row) => ({ ...row, score: round(row.score * scale) }));
+  const newScore = round(dimensions.reduce((total, row) => total + row.score, 0));
+  if (newScore > max && dimensions.length) {
+    const last = dimensions[dimensions.length - 1];
+    last.score = round(Math.max(0, last.score - (newScore - max)));
+  }
+  return {
+    ...result,
+    score: Math.min(max, newScore),
+    dimensions,
+    confidence: "low",
+    diagnostics: { ...result.diagnostics, repetition },
+    feedback: [
+      ...result.feedback || [],
+      "Repeated sentences limit demonstrated development. SPARK has capped the provisional practice estimate."
+    ]
+  };
+}
 var countMatches = (value2, list) => list.filter((term) => clean(value2).toLowerCase().includes(term)).length;
 var uniqueRatio = (v) => {
   const w = tokenise(v);
@@ -1828,17 +1870,26 @@ function ideaTermPresent(candidateTokens, candidateText, term) {
   });
 }
 function sourceIdeaCoverage(stimulus, response) {
-  const rows = [
-    ...stimulus?.paragraphs || [],
-    ...stimulus?.situation || []
-  ].filter(Boolean);
-  const candidateText = clean(response).toLowerCase();
-  const candidate = new Set(tokenise(response).map(stem));
+  const rows = [...stimulus?.paragraphs || [], ...stimulus?.situation || []].filter(Boolean);
+  const units = claimUnits(response).filter((line) => tokenise(line).length >= 5);
   const ideas = rows.map((line, index) => {
     const terms = [...new Set(tokenise(line).map(stem).filter((w) => w.length >= 4 && !STOPWORDS.has(w)))];
-    const matched = terms.filter((term) => ideaTermPresent(candidate, candidateText, term));
     const needed = Math.min(2, Math.max(1, Math.ceil(terms.length * 0.18)));
-    return { index, line, matched: matched.slice(0, 6), covered: matched.length >= needed };
+    const best = units.map((unit) => {
+      const candidateText = clean(unit).toLowerCase();
+      const candidate = new Set(tokenise(unit).map(stem));
+      const matched = terms.filter((term) => ideaTermPresent(candidate, candidateText, term));
+      const negative = /\b(?:not|never|cannot|can't|doesn't|don't|isn't)\b/i;
+      const negated = negative.test(unit) && !negative.test(line);
+      return { matched, unit, valid: matched.length >= needed && !negated };
+    }).sort((a, b) => b.matched.length - a.matched.length)[0];
+    return {
+      index,
+      line,
+      matched: (best?.matched || []).slice(0, 6),
+      covered: Boolean(best?.valid),
+      evidence: best?.valid ? best.unit : ""
+    };
   });
   return { ideas, covered: ideas.filter((row) => row.covered).length, total: ideas.length };
 }
@@ -1867,10 +1918,18 @@ function copiedPhraseRatio(stimulus, response) {
 function situationCoverage(task3, response) {
   const rows = (task3?.stimulus?.situation || []).map((line) => {
     const terms = tokenise(line).map(stem).filter((w) => w.length >= 4 && !STOPWORDS.has(w));
-    const candidate = new Set(tokenise(response).map(stem));
-    const matched = terms.filter((w) => candidate.has(w));
     const needed = Math.min(2, Math.max(1, Math.ceil(terms.length * 0.2)));
-    return { line, matched: matched.slice(0, 4), covered: matched.length >= needed };
+    const evidence = claimUnits(response).map((unit) => {
+      const words = new Set(tokenise(unit).map(stem));
+      const matched = terms.filter((w) => words.has(w));
+      return { unit, matched };
+    }).sort((a, b) => b.matched.length - a.matched.length)[0];
+    return {
+      line,
+      matched: (evidence?.matched || []).slice(0, 4),
+      covered: tokenise(evidence?.unit || "").length >= 5 && (evidence?.matched || []).length >= needed,
+      evidence: evidence?.unit || ""
+    };
   });
   return { rows, covered: rows.filter((r) => r.covered).length, total: rows.length };
 }
@@ -1878,6 +1937,7 @@ function diagnostics(response) {
   const w = tokenise(response);
   const sentences = sentenceList(response);
   const paras = paragraphList(response);
+  const repetition = repeatedWritingEvidence(response);
   const avgSentence = sentences.length ? w.length / sentences.length : 0;
   return {
     wordCount: countEnglishWords(response),
@@ -1888,7 +1948,8 @@ function diagnostics(response) {
     veryShort: sentences.filter((s) => tokenise(s).length < 4).length,
     lowercaseStarts: sentences.filter((s) => /^[a-z]/.test(s)).length,
     repeatedPunct: (String(response).match(/[!?]{2,}|\.{4,}/g) || []).length,
-    diversity: uniqueRatio(response)
+    diversity: uniqueRatio(response),
+    repetition
   };
 }
 function languageBand(response, max = 7) {
@@ -1919,6 +1980,10 @@ function languageBand(response, max = 7) {
   if (d.repeatedPunct > 0) {
     score -= 0.3;
     notes.push("Proofread repeated punctuation.");
+  }
+  if (d.wordCount >= 100 && d.repetition.repeatedShare >= 0.2) {
+    score -= d.repetition.repeatedShare >= 0.4 ? 3 : 1.5;
+    notes.push("Repeated sentences do not demonstrate additional language development.");
   }
   if (!notes.length) notes.push("Language is generally controlled, varied and readable.");
   return { score: round(clamp(score, 0, max)), notes, diagnostics: d };
@@ -2033,16 +2098,23 @@ function gradeExposition(task3, response) {
   const audience = /\b(you|your|we|our|principal|manager|students|council|community|readers)\b/i.test(response) ? 2 : 1;
   const structuredReport = formatName === "report" && fmt.matched.includes("numbered sections") && fmt.matched.includes("recommendations");
   const sequencing = d.paragraphCount >= 3 && connectors >= 2 || structuredReport ? 2 : d.paragraphCount >= 2 ? 1 : 0;
-  const analysing = round(clamp(formatMarks + audience + sequencing, 0, 7));
+  let analysing = round(clamp(formatMarks + audience + sequencing, 0, 7));
   const concision = round(clamp(3 * length.factor, 0, 3));
   const coherence = connectors >= 3 && d.paragraphCount >= 3 ? 2 : connectors >= 1 ? 1 : 0;
   const mechanics = round(clamp(3 - (d.lowercaseStarts * 0.4 + d.repeatedPunct * 0.4 + d.longSentences * 0.2), 0, 3));
   const language = round(clamp(lang.score * length.factor, 0, 8));
-  const evaluating = round(clamp(concision + coherence + language + mechanics, 0, 16));
+  let evaluating = round(clamp(concision + coherence + language + mechanics, 0, 16));
+  if (cov?.total && cov.covered === 0) {
+    analysing = Math.min(analysing, 3);
+    evaluating = Math.min(evaluating, 6);
+  } else if (cov?.total && cov.covered === 1) {
+    analysing = Math.min(analysing, 5);
+    evaluating = Math.min(evaluating, 10);
+  }
   return {
     score: round(understanding + analysing + evaluating),
     maxMarks: 30,
-    confidence: cov?.total ? "medium-high" : "medium",
+    confidence: cov?.total && cov.covered === 0 ? "low" : cov?.total ? "medium-high" : "medium",
     dimensions: [
       { id: "understanding", label: "P1 Understanding: relevance, clarity, accuracy and completeness", score: understanding, max: 7, evidence: cov?.rows || [] },
       { id: "analysing", label: "P2 Analysing: format, audience and sequencing", score: analysing, max: 7, evidence: fmt.matched },
@@ -2057,6 +2129,36 @@ function gradeExposition(task3, response) {
     diagnostics: d
   };
 }
+function requiredLiteraryText(task3, response) {
+  const instructions = String(task3?.instructions || "");
+  const match = instructions.match(/\b(ends with(?: the sentence)?|beginning with|includes the sentence)\s*:\s*['“"]([^'”"]+)['”"]/i);
+  if (!match) return { required: false, fulfilled: true, type: "" };
+  const type = match[1].toLowerCase();
+  const normalise2 = (value2) => String(value2).toLowerCase().replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/\s+/g, " ").trim().replace(/^["']|["']$/g, "").replace(/[.?!]+$/, "");
+  const required = normalise2(match[2]);
+  const submission = normalise2(response);
+  const fulfilled = type.startsWith("ends with") ? submission.endsWith(required) : type === "beginning with" ? submission.startsWith(required) : submission.includes(required);
+  return { required: true, fulfilled, type };
+}
+var TOPIC_NOISE = new Set("write writing words word approximately essay speech letter statement position presenting based discuss about question answer following views view should student students youth club debate debating your their with after before from short story school schools required given on for whether topic task titled which".split(" "));
+function taskTopicalEvidence(task3, response) {
+  const instructions = String(task3?.instructions || "");
+  const terms = [...new Set(tokenise(instructions).map(stem).filter((word) => word.length >= 4 && !TOPIC_NOISE.has(word)))];
+  if (terms.length < 2) return { required: false, hits: [], terms };
+  const student = new Set(tokenise(response).map(stem));
+  const hits = terms.filter((word) => student.has(word));
+  return { required: true, terms, hits };
+}
+function supportedArgumentCount(response) {
+  const statements = claimUnits(response).filter((line) => tokenise(line).length >= 9);
+  const unique = /* @__PURE__ */ new Set();
+  for (const statement of statements) {
+    if (!/\b(?:because|since|for example|for instance|such as|this means|as a result|therefore|helps?|allows?|provides?|improves?|can reduce|can increase)\b/i.test(statement)) continue;
+    const signature = tokenise(statement).map(stem).join(" ");
+    unique.add(signature);
+  }
+  return unique.size;
+}
 function gradeLiterary(task3, response) {
   const lang = languageBand(response, 7);
   const d = lang.diagnostics;
@@ -2069,14 +2171,18 @@ function gradeLiterary(task3, response) {
   const candidate = new Set(tokenise(response).map(stem));
   const promptHits = promptTerms.filter((w) => candidate.has(w)).length;
   const length = wordRangePenalty(task3, response);
+  const literal = requiredLiteraryText(task3, response);
   const promptUse = Math.min(4, 1 + promptHits * 0.8);
   const storyElements = Math.min(6, (narrative >= 3 ? 2 : 1) + (resolution ? 1.5 : 0.5) + (dialogue ? 1.25 : 0.5) + (sensory >= 2 ? 1.25 : 0.5));
   const development = Math.min(6, d.wordCount >= 300 ? 6 : d.wordCount >= 200 ? 4 : d.wordCount >= 120 ? 2 : 1);
-  const evaluating = round(clamp((promptUse + storyElements + development) * length.factor, 0, 16));
-  const analysing = round(clamp((d.paragraphCount >= 5 ? 3 : d.paragraphCount >= 3 ? 2 : 1) + (narrative >= 4 ? 2 : narrative >= 2 ? 1 : 0) + (resolution ? 2 : 1), 0, 7));
+  let evaluating = round(clamp((promptUse + storyElements + development) * length.factor, 0, 16));
+  if (!literal.fulfilled) evaluating = round(Math.min(evaluating * 0.65, 8));
+  let analysing = round(clamp((d.paragraphCount >= 5 ? 3 : d.paragraphCount >= 3 ? 2 : 1) + (narrative >= 4 ? 2 : narrative >= 2 ? 1 : 0) + (resolution ? 2 : 1), 0, 7));
+  if (!literal.fulfilled) analysing = Math.min(analysing, 5);
   const understanding = round(clamp(lang.score, 0, 7));
   const score = round(clamp(evaluating + analysing + understanding, 0, 30));
   const feedback = [
+    ...literal.required && !literal.fulfilled ? ["The required story opening, ending, or quoted sentence was not included in the specified position."] : [],
     promptHits ? "The response is visibly connected to the chosen stimulus." : "Make the required stimulus unmistakably central to the story.",
     dialogue ? `Dialogue appears ${dialogue} time(s); make sure it develops character, action or atmosphere.` : "Dialogue is optional, but purposeful dialogue can help characterisation.",
     sensory >= 2 ? "Sensory detail is used to build the scene." : "Use selective sensory detail to establish setting and atmosphere.",
@@ -2094,7 +2200,7 @@ function gradeLiterary(task3, response) {
       { id: "understanding", label: "P1 Understanding: language, grammar, mechanics and narrative control", score: understanding, max: 7, evidence: lang.notes }
     ],
     feedback,
-    diagnostics: d
+    diagnostics: { ...d, literalRequirement: literal }
   };
 }
 function persuasiveSignals(response) {
@@ -2111,24 +2217,46 @@ function persuasiveSignals(response) {
   const stance = /\b(?:i believe|i think|i support|i oppose|i stand firmly|in favour|in favor|against|should|should not|must|must not|in my view|my position)\b/.test(low);
   const hasOpening = paragraphs.slice(0, 2).some((p) => /\b(?:good morning|good afternoon|good evening|fellow members|friends|members|today|i stand|i believe|i support|i oppose|in favour|in favor|against)\b/i.test(p));
   const hasConclusion = paragraphs.slice(-2).some((p) => /\b(?:therefore|so let us|let us|i urge|in conclusion|finally|vote|thank you|must act|should support|should reject)\b/i.test(p));
-  return { paragraphs, rhetorical, directAddress, calls, repetition, counterOpeners, rebuttals, supportSignals, stance, hasOpening, hasConclusion };
+  const opposition = /\b(?:some (?:will|may|might) (?:say|argue)|some people (?:argue|say)|others (?:say|argue)|critics (?:argue|say)|opponents (?:say|argue))\b/i.test(raw);
+  const responseToOpposition = opposition && /\b(?:i disagree|but|however|yet|that concern|this concern|in response|the answer is)\b/i.test(raw);
+  return {
+    paragraphs,
+    rhetorical,
+    directAddress,
+    calls,
+    repetition,
+    counterOpeners,
+    rebuttals,
+    opposition,
+    responseToOpposition,
+    supportSignals,
+    stance,
+    hasOpening,
+    hasConclusion
+  };
 }
 function gradePersuasive(task3, response) {
   const lang = languageBand(response, 7);
   const d = lang.diagnostics;
   const sig = persuasiveSignals(response);
   const length = wordRangePenalty(task3, response);
+  const topic = taskTopicalEvidence(task3, response);
+  const developedReasons = supportedArgumentCount(response);
   const position = sig.stance ? 3 : 1;
   const support = Math.min(5, sig.supportSignals >= 8 ? 5 : sig.supportSignals >= 5 ? 4 : sig.supportSignals >= 3 ? 3 : sig.supportSignals >= 1 ? 1.5 : 0);
   const audience = Math.min(2, sig.directAddress >= 4 ? 2 : sig.directAddress ? 1.5 : 0.5);
-  const opposition = Math.min(2, sig.counterOpeners && sig.rebuttals ? 2 : sig.counterOpeners ? 1 : 0);
+  const opposition = sig.responseToOpposition ? 2 : sig.opposition ? 1 : 0;
   const devices = Math.min(4, (sig.rhetorical ? 1 : 0) + (sig.repetition >= 2 ? 1 : sig.repetition ? 0.5 : 0) + (sig.calls ? 1 : 0) + (sig.directAddress >= 4 ? 1 : 0));
   let evaluating = round(clamp((position + support + audience + opposition + devices) * length.factor, 0, 16));
+  if (!developedReasons) evaluating = Math.min(evaluating, 6);
+  if (topic.required && !topic.hits.length) evaluating = Math.min(evaluating, 5);
   const structure = sig.paragraphs.length >= 5 ? 2 : sig.paragraphs.length >= 3 ? 1 : 0;
   const progression = sig.supportSignals >= 5 ? 2 : sig.supportSignals >= 2 ? 1 : 0;
-  const counterFlow = sig.counterOpeners && sig.rebuttals ? 1 : 0;
+  const counterFlow = sig.responseToOpposition ? 1 : 0;
   const framing = (sig.hasOpening ? 1 : 0) + (sig.hasConclusion ? 1 : 0);
   let analysing = round(clamp(structure + progression + counterFlow + framing, 0, 7));
+  if (!developedReasons) analysing = Math.min(analysing, 3);
+  if (topic.required && !topic.hits.length) analysing = Math.min(analysing, 3);
   let understanding = round(clamp(lang.score, 0, 7));
   if (d.wordCount < 150) {
     evaluating = Math.min(evaluating, 6);
@@ -2148,15 +2276,21 @@ function gradePersuasive(task3, response) {
     ],
     feedback: [
       sig.stance ? "A clear position is established and maintained." : "State a clear position early and maintain it.",
-      sig.counterOpeners && sig.rebuttals ? "The response raises an opposing view and answers it." : "A relevant opposing view and rebuttal can strengthen the argument.",
-      sig.supportSignals ? "The response develops reasons with examples, effects or supporting explanation." : "Develop reasons with examples, evidence, causes/effects or comparisons.",
+      sig.responseToOpposition ? "The response raises an opposing view and answers it." : "A relevant opposing view and rebuttal can strengthen the argument.",
+      developedReasons ? "The response includes developed reason statements." : "Develop reasons with specific examples, causes, effects or supporting explanation.",
+      ...topic.required && !topic.hits.length ? ["The response lacks clear evidence of the topic named in the question."] : [],
       deviceNames.length ? "Persuasive devices detected: " + deviceNames.join(", ") + "." : "Use purposeful persuasive devices rather than relying only on assertion.",
       sig.hasOpening && sig.hasConclusion ? "The argument has a recognisable opening and conclusion." : "Strengthen the introduction and conclusion so the argument is clearly framed.",
       d.paragraphCount >= 5 ? "The response has a developed multi-paragraph structure." : "The specimen mark scheme expects a developed structure with introduction, body paragraphs and conclusion.",
       d.wordCount < 150 ? "The specimen mark scheme states that a response under about 150 words cannot earn above the low range." : "Word count: " + d.wordCount + ".",
       ...lang.notes
     ],
-    diagnostics: { ...d, persuasiveSignals: { ...sig, paragraphs: sig.paragraphs.length } }
+    diagnostics: {
+      ...d,
+      developedReasons,
+      topicEvidence: topic,
+      persuasiveSignals: { ...sig, paragraphs: sig.paragraphs.length }
+    }
   };
 }
 function gradeEnglishAPaper2Response(task3, response, analysisResponse = "") {
@@ -2166,9 +2300,9 @@ function gradeEnglishAPaper2Response(task3, response, analysisResponse = "") {
     return gradeSummary(task3, value2, analysisResponse);
   }
   if (!value2.trim()) return { score: 0, maxMarks: task3?.rubric?.marks || 0, confidence: "high", dimensions: [], feedback: ["No response was submitted."], diagnostics: diagnostics(value2) };
-  if (task3.kind === "exposition") return gradeExposition(task3, value2);
-  if (task3.kind === "persuasive") return gradePersuasive(task3, value2);
-  if (task3.kind === "literary") return gradeLiterary(task3, value2);
+  if (task3.kind === "exposition") return repetitionCap(gradeExposition(task3, value2), value2);
+  if (task3.kind === "persuasive") return repetitionCap(gradePersuasive(task3, value2), value2);
+  if (task3.kind === "literary") return repetitionCap(gradeLiterary(task3, value2), value2);
   return { score: 0, maxMarks: task3?.rubric?.marks || 0, confidence: "low", dimensions: [], feedback: ["This task type does not yet have a practice rubric."], diagnostics: diagnostics(value2) };
 }
 function gradeEnglishAPaper2(paper, answers = {}, choiceId = "") {
@@ -4509,106 +4643,4 @@ var POB_2026_JAN_P2_AUTHORED_SCHEME = Object.freeze({
   questions: Object.freeze([1, 2, 3, 4, 5].map((number) => Object.freeze({
     number,
     marks: 20,
-    parts: Object.freeze(ROWS.filter((r) => r[0] === number).map(([, id, sourceQuestion, modelAnswer, rawRules]) => Object.freeze({
-      id,
-      sourceQuestion,
-      sourcePdfPage: number + 1,
-      originalQuestionVisualRead: true,
-      modelAnswer,
-      marks: rawRules.reduce((sum, t) => sum + Number(t.slice(0, t.indexOf(":"))), 0),
-      criteria: Object.freeze(rawRules.map((s) => {
-        const at = s.indexOf(":");
-        return Object.freeze({
-          marks: Number(s.slice(0, at)),
-          rule: s.slice(at + 1),
-          acceptedEquivalentIdeas: true,
-          sourceSchemeVerified: false,
-          authoredBySpark: true
-        });
-      }))
-    })))
-  })))
-});
-function verifyPob2026JanP2AuthoredScheme(paper = POB_2026_JAN_P2_AUTHORED_SCHEME) {
-  const issues = [], seen = /* @__PURE__ */ new Set();
-  let offered = 0, parts = 0, criterionMarks = 0;
-  const trusted = POB_SUPPLIED_ARCHIVE.find((p) => p.id === "POB-P2-2026-JAN");
-  if (!trusted || paper?.id !== trusted.id || trusted.paper !== 2 || paper.sourceSha256 !== trusted.sourceSha256 || paper.sourceFilename !== trusted.filename || paper.sourcePages !== trusted.pages)
-    issues.push("The six-page original source identity or SHA-256 has changed.");
-  if (!Array.isArray(paper?.questions) || paper.questions.length !== 5)
-    issues.push("All five compulsory questions required.");
-  for (const q of paper?.questions || []) {
-    if (!Number.isInteger(q.number) || q.number < 1 || q.number > 5 || seen.has(q.number))
-      issues.push("Duplicate or absent original question number.");
-    seen.add(q.number);
-    const ids = /* @__PURE__ */ new Set();
-    let marks = 0;
-    for (const p of q.parts || []) {
-      parts++;
-      marks += p.marks;
-      if (typeof p.id !== "string" || !p.id || ids.has(p.id)) issues.push("Repeated or invalid subpart.");
-      ids.add(p.id);
-      if (p.sourcePdfPage !== q.number + 1 || p.originalQuestionVisualRead !== true || typeof p.sourceQuestion !== "string" || p.sourceQuestion.length < 12)
-        issues.push("Printed source question absent or mismapped: " + q.number + ":" + p.id);
-      if (typeof p.modelAnswer !== "string" || p.modelAnswer.length < 75)
-        issues.push("Answer underdeveloped: " + q.number + ":" + p.id);
-      if (!Number.isInteger(p.marks) || p.marks < 1 || !Array.isArray(p.criteria) || p.criteria.length === 0 || p.criteria.reduce((n, c) => n + c.marks, 0) !== p.marks)
-        issues.push("Inconsistent subpart grading maximum: " + q.number + ":" + p.id);
-      if (p.criteria?.some((c) => !Number.isInteger(c.marks) || c.marks < 1 || !c.rule || c.sourceSchemeVerified !== false || c.authoredBySpark !== true))
-        issues.push("Incomplete SPARK-owned criterion or untrue source attribution.");
-      criterionMarks += p.criteria?.reduce((n, c) => n + c.marks, 0) || 0;
-    }
-    if (marks !== 20 || q.marks !== 20) issues.push("Original question does not total 20 marks: " + q.number);
-    offered += marks;
-  }
-  if (parts !== 32 || offered !== 100 || criterionMarks !== 100 || paper?.maximumCandidateMarks !== 100)
-    issues.push("Incorrect 32-part 100-mark historical source total.");
-  if (!validatePobHistoricalP2Selection(paper?.id, [1, 2, 3, 4, 5]).valid)
-    issues.push("Original 2026 five-compulsory selection rules are unavailable.");
-  if (paper?.liveScoringApproved !== false || paper?.publishedCxcExaminerSchemeSupplied !== false || paper?.semanticScoringCalibrated !== false)
-    issues.push("Internally authored responses cannot be passed off as official live student grades.");
-  return {
-    valid: issues.length === 0,
-    issues,
-    offeredMarks: offered,
-    partCount: parts,
-    criterionMarks,
-    liveApproved: false
-  };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2026JanP2RealPaper.js
-var SOURCE_CONTEXT = Object.freeze({
-  1: "Maria is a student at Happy Valley High School. She wants to pursue business education but is uncertain of the career choices in the field of business.",
-  2: "Juan wants to establish a fast-food business. He has been advised to conduct a feasibility study.",
-  3: "The construction industry in Cocoa Island is experiencing a boom but builders have reported a shortage of construction workers to meet the demand.",
-  4: "Flavourful Distribution Co. is about to launch a new fruit-based, non-dairy ice cream. However, the managers are undecided as to the most appropriate type of packaging for the new product.",
-  5: "In recent years, online shopping has increased significantly in the Caribbean."
-});
-var PRINTED = Object.freeze([
-  [1, "a", "List THREE careers in the field of business that Maria could pursue."],
-  [1, "b", "List THREE stakeholders involved in business activities."],
-  [1, "c.i", "Describe the functional area of a business known as Production."],
-  [1, "c.ii", "Describe the functional area of a business known as Research and development (R&D)."],
-  [1, "d", "Define the term 'code of ethics'."],
-  [1, "e.i", "State TWO legal and/or ethical practices that business owners are expected to adopt in the operations of a business."],
-  [1, "e.ii", "Explain ONE negative effect that could occur if a business fails to engage in EACH practice stated in (e) (i)."],
-  [2, "a.i", "Define the term 'collateral'."],
-  [2, "a.ii", "List THREE examples of collateral."],
-  [2, "b", "List THREE elements of a business plan."],
-  [2, "c.i", "Outline TWO reasons why it is important for Juan to conduct a feasibility study."],
-  [2, "c.ii", "Identify ONE primary and ONE secondary source of information that Juan could use when conducting the feasibility study. State the primary source and the secondary source separately."],
-  [2, "d", "Explain TWO factors Juan should consider when determining the location of his fast-food business."],
-  [3, "a.i", "Identify TWO factors of production."],
-  [3, "a.ii", "Identify TWO major natural resources of the Caribbean."],
-  [3, "a.iii", "Name ONE industry developed from EACH of the natural resources identified in (a) (ii)."],
-  [3, "b.i", "Define the level of production known as Subsistence and state ONE example of this level of production."],
-  [3, "b.ii", "Define the level of production known as Domestic consumption and state ONE example of this level of production."],
-  [3, "c", "Differentiate between 'production' and 'productivity'."],
-  [3, "d", "Explain TWO factors that may have contributed to the shortage of construction workers in Cocoa Island."],
-  [4, "a.i", "Define the term 'marketing'."],
-  [4, "a.ii", "List the FOUR elements of the traditional marketing mix."],
-  [4, "b.i", "Describe the marketing activity known as 'branding'."],
-  [4, "b.ii", "Colour is a critical component of a brand. Identify TWO other components that should be considered when creating a brand."],
-  [4, "c.i", "Outline TWO factors the firm should consider in determining the most suitable packaging for the new ice-cream product."],
-  [4, "c.ii", "Explain TWO factors that could influence consumers' response to Flavourful's new
+    parts: Object.freeze(ROWS.filter((r) => r[0]

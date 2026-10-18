@@ -1,4 +1,106 @@
- ice cream."],
+ === number).map(([, id, sourceQuestion, modelAnswer, rawRules]) => Object.freeze({
+      id,
+      sourceQuestion,
+      sourcePdfPage: number + 1,
+      originalQuestionVisualRead: true,
+      modelAnswer,
+      marks: rawRules.reduce((sum, t) => sum + Number(t.slice(0, t.indexOf(":"))), 0),
+      criteria: Object.freeze(rawRules.map((s) => {
+        const at = s.indexOf(":");
+        return Object.freeze({
+          marks: Number(s.slice(0, at)),
+          rule: s.slice(at + 1),
+          acceptedEquivalentIdeas: true,
+          sourceSchemeVerified: false,
+          authoredBySpark: true
+        });
+      }))
+    })))
+  })))
+});
+function verifyPob2026JanP2AuthoredScheme(paper = POB_2026_JAN_P2_AUTHORED_SCHEME) {
+  const issues = [], seen = /* @__PURE__ */ new Set();
+  let offered = 0, parts = 0, criterionMarks = 0;
+  const trusted = POB_SUPPLIED_ARCHIVE.find((p) => p.id === "POB-P2-2026-JAN");
+  if (!trusted || paper?.id !== trusted.id || trusted.paper !== 2 || paper.sourceSha256 !== trusted.sourceSha256 || paper.sourceFilename !== trusted.filename || paper.sourcePages !== trusted.pages)
+    issues.push("The six-page original source identity or SHA-256 has changed.");
+  if (!Array.isArray(paper?.questions) || paper.questions.length !== 5)
+    issues.push("All five compulsory questions required.");
+  for (const q of paper?.questions || []) {
+    if (!Number.isInteger(q.number) || q.number < 1 || q.number > 5 || seen.has(q.number))
+      issues.push("Duplicate or absent original question number.");
+    seen.add(q.number);
+    const ids = /* @__PURE__ */ new Set();
+    let marks = 0;
+    for (const p of q.parts || []) {
+      parts++;
+      marks += p.marks;
+      if (typeof p.id !== "string" || !p.id || ids.has(p.id)) issues.push("Repeated or invalid subpart.");
+      ids.add(p.id);
+      if (p.sourcePdfPage !== q.number + 1 || p.originalQuestionVisualRead !== true || typeof p.sourceQuestion !== "string" || p.sourceQuestion.length < 12)
+        issues.push("Printed source question absent or mismapped: " + q.number + ":" + p.id);
+      if (typeof p.modelAnswer !== "string" || p.modelAnswer.length < 75)
+        issues.push("Answer underdeveloped: " + q.number + ":" + p.id);
+      if (!Number.isInteger(p.marks) || p.marks < 1 || !Array.isArray(p.criteria) || p.criteria.length === 0 || p.criteria.reduce((n, c) => n + c.marks, 0) !== p.marks)
+        issues.push("Inconsistent subpart grading maximum: " + q.number + ":" + p.id);
+      if (p.criteria?.some((c) => !Number.isInteger(c.marks) || c.marks < 1 || !c.rule || c.sourceSchemeVerified !== false || c.authoredBySpark !== true))
+        issues.push("Incomplete SPARK-owned criterion or untrue source attribution.");
+      criterionMarks += p.criteria?.reduce((n, c) => n + c.marks, 0) || 0;
+    }
+    if (marks !== 20 || q.marks !== 20) issues.push("Original question does not total 20 marks: " + q.number);
+    offered += marks;
+  }
+  if (parts !== 32 || offered !== 100 || criterionMarks !== 100 || paper?.maximumCandidateMarks !== 100)
+    issues.push("Incorrect 32-part 100-mark historical source total.");
+  if (!validatePobHistoricalP2Selection(paper?.id, [1, 2, 3, 4, 5]).valid)
+    issues.push("Original 2026 five-compulsory selection rules are unavailable.");
+  if (paper?.liveScoringApproved !== false || paper?.publishedCxcExaminerSchemeSupplied !== false || paper?.semanticScoringCalibrated !== false)
+    issues.push("Internally authored responses cannot be passed off as official live student grades.");
+  return {
+    valid: issues.length === 0,
+    issues,
+    offeredMarks: offered,
+    partCount: parts,
+    criterionMarks,
+    liveApproved: false
+  };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2026JanP2RealPaper.js
+var SOURCE_CONTEXT = Object.freeze({
+  1: "Maria is a student at Happy Valley High School. She wants to pursue business education but is uncertain of the career choices in the field of business.",
+  2: "Juan wants to establish a fast-food business. He has been advised to conduct a feasibility study.",
+  3: "The construction industry in Cocoa Island is experiencing a boom but builders have reported a shortage of construction workers to meet the demand.",
+  4: "Flavourful Distribution Co. is about to launch a new fruit-based, non-dairy ice cream. However, the managers are undecided as to the most appropriate type of packaging for the new product.",
+  5: "In recent years, online shopping has increased significantly in the Caribbean."
+});
+var PRINTED = Object.freeze([
+  [1, "a", "List THREE careers in the field of business that Maria could pursue."],
+  [1, "b", "List THREE stakeholders involved in business activities."],
+  [1, "c.i", "Describe the functional area of a business known as Production."],
+  [1, "c.ii", "Describe the functional area of a business known as Research and development (R&D)."],
+  [1, "d", "Define the term 'code of ethics'."],
+  [1, "e.i", "State TWO legal and/or ethical practices that business owners are expected to adopt in the operations of a business."],
+  [1, "e.ii", "Explain ONE negative effect that could occur if a business fails to engage in EACH practice stated in (e) (i)."],
+  [2, "a.i", "Define the term 'collateral'."],
+  [2, "a.ii", "List THREE examples of collateral."],
+  [2, "b", "List THREE elements of a business plan."],
+  [2, "c.i", "Outline TWO reasons why it is important for Juan to conduct a feasibility study."],
+  [2, "c.ii", "Identify ONE primary and ONE secondary source of information that Juan could use when conducting the feasibility study. State the primary source and the secondary source separately."],
+  [2, "d", "Explain TWO factors Juan should consider when determining the location of his fast-food business."],
+  [3, "a.i", "Identify TWO factors of production."],
+  [3, "a.ii", "Identify TWO major natural resources of the Caribbean."],
+  [3, "a.iii", "Name ONE industry developed from EACH of the natural resources identified in (a) (ii)."],
+  [3, "b.i", "Define the level of production known as Subsistence and state ONE example of this level of production."],
+  [3, "b.ii", "Define the level of production known as Domestic consumption and state ONE example of this level of production."],
+  [3, "c", "Differentiate between 'production' and 'productivity'."],
+  [3, "d", "Explain TWO factors that may have contributed to the shortage of construction workers in Cocoa Island."],
+  [4, "a.i", "Define the term 'marketing'."],
+  [4, "a.ii", "List the FOUR elements of the traditional marketing mix."],
+  [4, "b.i", "Describe the marketing activity known as 'branding'."],
+  [4, "b.ii", "Colour is a critical component of a brand. Identify TWO other components that should be considered when creating a brand."],
+  [4, "c.i", "Outline TWO factors the firm should consider in determining the most suitable packaging for the new ice-cream product."],
+  [4, "c.ii", "Explain TWO factors that could influence consumers' response to Flavourful's new ice cream."],
   [5, "a.i", "Define the term 'business technology'."],
   [5, "a.ii", "Identify TWO forms of technology and state how EACH form has influenced the services offered by commercial banks to their customers."],
   [5, "b", "List FOUR types of productivity tools and/or specialist ICT applications used in business operations."],
@@ -1463,29 +1565,4 @@ var POB_2012_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 18, "pdfPage": 4, "proposedOption": "A", "explanation": "A contractual breach can terminate agreed performance obligations or trigger remedies.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 19, "pdfPage": 4, "proposedOption": "B", "explanation": "Insurance policyholders pay premiums for protection.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 20, "pdfPage": 5, "proposedOption": "A", "explanation": "An open cheque can normally be presented for cash, subject to bank verification.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 21, "pdfPage": 5, "proposedOption": "D", "explanation": "Working capital covers short-term business operations.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 22, "pdfPage": 5, "proposedOption": "B", "explanation": "A home-based craft supplier is a typical cottage business.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 23, "pdfPage": 5, "proposedOption": "B", "explanation": "Skilled or educated workers leaving a country can contribute to brain drain.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 24, "pdfPage": 5, "proposedOption": "D", "explanation": "Underemployment includes working at jobs below one's qualifications or insufficient hours.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 25, "pdfPage": 5, "proposedOption": "A", "explanation": "Mechanisation can reduce employment opportunities for unskilled workers.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 26, "pdfPage": 5, "proposedOption": "C", "explanation": "Many buyers and sellers are characteristic of perfect competition.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 27, "pdfPage": 5, "proposedOption": "C", "explanation": "Communication does not necessarily increase in effectiveness as organisations grow; unlike capital use and specialisation, it may become more complicated.", "status": "academic-dispute", "dispute": "relative-likelihood-ambiguous", "alternatives": ["C"], "note": "Growth increases capital and specialisation, but communication volume may also increase, despite coordination difficulty; the question does not define which sense." }),
-    Object.freeze({ "number": 28, "pdfPage": 5, "proposedOption": "B", "explanation": "Distribution to commercial selling outlets is a marketing function.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 29, "pdfPage": 6, "proposedOption": "D", "explanation": "An economic market consists of interactions through which buyers and sellers influence trading terms and prices.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 30, "pdfPage": 6, "proposedOption": "D", "explanation": "Transporting products into storage facilities is mainly a logistics/wholesale function rather than core retailing.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 31, "pdfPage": 6, "proposedOption": "C", "explanation": "A loss leader is sold at a deliberately low price to draw shoppers.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 32, "pdfPage": 6, "proposedOption": "B", "explanation": "A brand identifies products from a particular supplier.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 33, "pdfPage": 6, "proposedOption": "D", "explanation": "Toothpaste buyers may consider pack size, brand and flavour.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 34, "pdfPage": 6, "proposedOption": "C", "explanation": "At equilibrium quantity demanded equals quantity supplied at the ruling price.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 35, "pdfPage": 6, "proposedOption": "B", "explanation": "Publicly quoted companies have shares traded on stock exchanges.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 36, "pdfPage": 6, "proposedOption": "C", "explanation": "Standing orders are a bank instruction for fixed recurring payments.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 37, "pdfPage": 6, "proposedOption": "B", "explanation": "Shares in public markets create financial risks and potential benefits.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 38, "pdfPage": 7, "proposedOption": "D", "explanation": "Company shareholders may receive dividends.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 39, "pdfPage": 7, "proposedOption": "A", "explanation": "Central banks issue currency and guide monetary policy.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 40, "pdfPage": 7, "proposedOption": "D", "explanation": "Commercial banks accept customer deposits.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 41, "pdfPage": 7, "proposedOption": "C", "explanation": "Price controls and consumer subsidies more directly protect consumers; taxation may also influence harmful consumption.", "status": "academic-dispute", "dispute": "government-consumer-protection-tool-overlap", "alternatives": ["C", "D"], "note": "The source intends price controls and subsidies, but indirect or excise taxes can also protect consumers against harmful use or excessive consumption." }),
-    Object.freeze({ "number": 42, "pdfPage": 7, "proposedOption": "A", "explanation": "Reducing business tax burdens can stimulate production or investment.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 43, "pdfPage": 7, "proposedOption": "B", "explanation": "Tax paid on wages and salaries is income tax.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 44, "pdfPage": 7, "proposedOption": "C", "explanation": "Reducing tax on low-income households can increase their real disposable purchasing power.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 45, "pdfPage": 7, "proposedOption": "C", "explanation": "PAYE and National Insurance were grouped in the original source as government redistribution arrangements, though the contribution basis varies.", "status": "academic-dispute", "dispute": "national-insurance-purpose-context", "alternatives": ["C"], "note": "NI is primarily social insurance in some Caribbean systems and its characterisation as a redistributive tax needs syllabus-era checking." }),
-    Object.freeze({ "number": 
+    Object.freeze({ "number": 21, "pdfPage": 5, "proposedOption": "D", "explanation": "Working capital covers short-term business

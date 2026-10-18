@@ -1,4 +1,73 @@
-h flowers\n(ii) Cement\n(iii) Daily newspaper\n(iv) Money",
+stmas advertising and promotions and arranges distribution to more outlets so that drinks are on the shelves.\n\u2022 Finance: must find funds for the extra raw materials and overtime pay, prepare the budget, and collect the increased sales revenue.\n\u2022 Human Resources: recruits temporary workers and arranges overtime and holiday schedules.\n\u2022 Distribution/Transport: must arrange more deliveries to customers."
+            },
+            {
+              "label": "(d)",
+              "question": "State TWO ways in which management can resolve conflict within the organisation.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Hold open meetings and improve communication so that each side can explain its concerns.\n\u2022 Negotiate (collective bargaining) with the workers or their trade union to reach a compromise.\n\u2022 Use a third party: conciliation or mediation, or arbitration where the decision is binding.\n\u2022 Follow an agreed grievance procedure.\n\u2022 Deal with the cause of the conflict, for example by improving working conditions or pay.\n\u2022 Involve workers in decision making."
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "section": "Section I",
+          "section_instructions": "Answer the THREE questions in this section.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "List TWO levels of production and explain the MAIN difference between them.",
+              "marks": 4,
+              "answer": "Levels (1 mark each): subsistence production and surplus production (commercial production is also acceptable).\nMain difference (2 marks): in subsistence production people produce only enough for their own and their family's use, with nothing left over; in surplus production more is produced than the producer needs, and the extra is sold or exchanged."
+            },
+            {
+              "label": "(b)",
+              "question": "Outline ONE main difference between primary and secondary production, giving ONE example of EACH.",
+              "marks": 4,
+              "answer": "Difference (2 marks): primary production extracts raw materials from nature (farming, fishing, mining, forestry), while secondary production changes raw materials into finished or semi-finished goods (manufacturing and construction).\nExamples (1 mark each): primary, such as sugar cane farming, fishing or bauxite mining; secondary, such as sugar refining, alumina processing, furniture making or building houses."
+            },
+            {
+              "label": "(c)",
+              "question": "(i) Describe TWO features of cottage industries.\n(ii) State ONE way in which EACH feature described in (i) above, contributes to economic development.",
+              "marks": 6,
+              "answer": "3 marks for each feature (1 for the feature, 2 for how it contributes), for example:\n\u2022 Uses local raw materials (straw, wood, fruit, clay): this saves foreign exchange on imports and creates linkages with local farmers and suppliers.\n\u2022 Uses family labour in the home: provides employment and income for family members, reducing unemployment and poverty.\n\u2022 Needs little capital and simple tools: it is easy to start, so it encourages entrepreneurship and small business development.\n\u2022 Produces handmade craft items: these can be sold to tourists, earning foreign exchange."
+            },
+            {
+              "label": "(d)",
+              "question": "Discuss TWO ways in which linkage industries can assist in the development of Caribbean economies.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 They create employment both in the industries that supply inputs and in those that use the output, reducing unemployment.\n\u2022 They use local raw materials instead of imports, which saves foreign exchange and improves the balance of payments.\n\u2022 They add value locally: processing raw materials (for example sugar into rum, fruit into juices) earns more income than exporting the raw material.\n\u2022 Money circulates within the economy (multiplier effect), increasing incomes and economic growth.\n\u2022 They help diversify the economy and make use of by-products that would otherwise be wasted (for example bagasse for fuel)."
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "section": "Section I",
+          "section_instructions": "Answer the THREE questions in this section.",
+          "stem": "Flour Hill has one shopping mart that purchases baked goods from a supplier in the nearest city, which is 75 miles away. In the last two weeks the owner of the shopping mart has had an unusual amount of complaints about the baked goods being spoilt and stale.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "State THREE factors that influence consumer behaviour.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each (1 for the factor, 1 for a brief explanation):\n\u2022 Price: consumers usually buy more when prices are lower.\n\u2022 Income: higher incomes allow consumers to buy more and better-quality goods.\n\u2022 Tastes and preferences, including fashion.\n\u2022 Quality of the product.\n\u2022 Advertising and sales promotion.\n\u2022 Culture and religion.\n\u2022 Family, friends and other reference groups.\n\u2022 Availability and convenience.\n\u2022 Brand loyalty."
+            },
+            {
+              "label": "(b)",
+              "question": "Identify TWO organisations in your country where consumers can seek redress for unfair treatment.",
+              "marks": 2,
+              "answer": "Any TWO, 1 mark each, for example: Consumer Affairs Commission/Division, Fair Trading Commission, Bureau of Standards, Small Claims Court, Ministry of Trade/Commerce, Consumer Guidance Society, the Ombudsman."
+            },
+            {
+              "label": "(c)",
+              "question": "Outline TWO possible distribution channels that can be used to deliver the baked products to the final consumer.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Producer \u2192 Retailer \u2192 Consumer: the bakery delivers directly to the shopping mart, which sells to consumers.\n\u2022 Producer \u2192 Wholesaler \u2192 Retailer \u2192 Consumer: a wholesaler buys in bulk from the bakery and supplies shops.\n\u2022 Producer \u2192 Consumer: the bakery sells directly, for example through its own outlet, delivery van or online orders.\n\u2022 Producer \u2192 Agent \u2192 Retailer \u2192 Consumer."
+            },
+            {
+              "label": "(d)",
+              "question": "Select an appropriate method of transportation for EACH of the following products giving ONE reason for your choice.\n(i) Fresh flowers\n(ii) Cement\n(iii) Daily newspaper\n(iv) Money",
               "marks": 8,
               "answer": "2 marks each (1 for the method, 1 for the reason):\n(i) Fresh flowers: air transport (or a refrigerated van for local delivery), because flowers are perishable and must reach the market quickly.\n(ii) Cement: sea transport (or rail/heavy truck locally), because it is heavy and bulky and sea transport is cheapest per tonne.\n(iii) Daily newspaper: road transport (vans, motorcycles), because papers must be delivered early each morning to many shops and homes, door to door.\n(iv) Money: road transport in an armoured security vehicle, because money must be protected from theft."
             }
@@ -2697,114 +2766,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
                   "label": "(i)",
                   "question": "Protection of the environment",
                   "marks": 2,
-                  "answer": "Any ONE, 2 marks, for example: passing environmental laws and setting up agencies that require environmental impact assessments and fine polluters; creating protected areas and national parks; providing garbage collection and recycling programmes."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Security of the state",
-                  "marks": 2,
-                  "answer": "Any ONE, 2 marks, for example: maintaining a police force, defence force and coast guard to protect citizens and the country's borders; passing laws and running courts; immigration and border control."
-                },
-                {
-                  "label": "(iii)",
-                  "question": "Maintenance of a safe climate for investors",
-                  "marks": 2,
-                  "answer": "Any ONE, 2 marks, for example: keeping political and economic stability; protecting property rights through fair laws and courts; offering tax incentives; controlling crime."
-                }
-              ]
-            },
-            {
-              "label": "(c)",
-              "question": "Outline TWO ways in which governments' decision to provide laptops to primary school children can positively impact their education.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Children can research information online for assignments.\n\u2022 They develop computer skills at an early age.\n\u2022 Educational software and games make learning more interesting.\n\u2022 They can complete and submit work electronically and take part in online classes.\n\u2022 Children from poor homes get the same access to technology as others (closing the digital divide)."
-            },
-            {
-              "label": "(d)",
-              "question": "Explain how governments use EACH of the following measures to regulate business activities:",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Taxation",
-                  "marks": 3,
-                  "answer": "Taxes such as corporation tax, VAT and import duties affect business costs and profits (1). Government places high taxes on harmful products (tobacco, alcohol) to discourage them, and gives tax incentives to encourage desired activities such as manufacturing or investment in certain areas (1). Businesses must register for tax and show tax compliance certificates to operate or win government contracts (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Safety and health",
-                  "marks": 3,
-                  "answer": "Laws require businesses to provide safe working conditions, such as protective equipment, fire exits and first aid (1). Food businesses need health certificates and food handler's permits, and premises are inspected (1). Businesses that break the rules can be fined or closed, which protects workers and consumers (1)."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "number": 7,
-          "section": "Section III",
-          "section_instructions": "Answer EITHER Question 6 OR Question 7. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Define EACH of the following terms:",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Standard of living",
-                  "marks": 2,
-                  "answer": "The standard of living is the level of material well-being of people (1), measured by the quantity and quality of goods and services they can afford, usually using real income per head (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "National income",
-                  "marks": 2,
-                  "answer": "National income is the total value of all goods and services produced by a country's factors of production in a year (1), or the total income they earn, after allowing for depreciation (1)."
-                }
-              ]
-            },
-            {
-              "label": "(b)",
-              "question": "Describe ONE way in which EACH of the following indicators affects an individual's standard of living:",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Quality and availability of employment",
-                  "marks": 2,
-                  "answer": "When good jobs are available, people earn a steady income and can afford food, housing and other goods and services, raising their standard of living (1). Unemployment or poorly paid jobs reduce income and living standards (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Quality and affordable housing",
-                  "marks": 2,
-                  "answer": "Decent, affordable housing gives shelter, sanitation and safety, which improves health and comfort (1). When housing is affordable, less income goes on rent or mortgage, leaving more for other needs (1)."
-                },
-                {
-                  "label": "(iii)",
-                  "question": "Access to affordable and quality health care",
-                  "marks": 2,
-                  "answer": "People stay healthy and live longer, so they can work and earn (1), and they spend less of their income on medical bills (1)."
-                }
-              ]
-            },
-            {
-              "label": "(c)",
-              "question": "Describe TWO approaches used to measure national income.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Income approach: add all incomes earned by the factors of production (wages, rent, interest and profits), excluding transfer payments.\n\u2022 Expenditure approach: add total spending on final goods and services: C + I + G + (X \u2212 M).\n\u2022 Output (product) approach: add the value added by every sector of the economy, or the value of final goods and services only."
-            },
-            {
-              "label": "(d)",
-              "question": "Explain how EACH of the following indicators can be used to evaluate the quality of life of citizens in your country:",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Right to privacy",
-                  "marks": 3,
-                  "answer": "Quality of life is higher where citizens' homes, communications and personal information are protected from unlawful intrusion by the state or others (1). This can be judged by the existence of privacy and data protection laws and how well they are enforced (1). Citizens who feel secure and free from surveillance enjoy a better quality of life (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Right to education",
-                  "marks": 3,
-                  "answer": "Quality of life is higher where all citizens have access to fre
+                  "answer": "Any ONE, 2 marks, for example: passing environmental laws and setting up agencies that require environmental impact assessments and fine polluters; creating protected areas and national parks; providing garbage collection and recy

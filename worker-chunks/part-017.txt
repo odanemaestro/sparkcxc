@@ -1,4 +1,114 @@
-e or affordable education (1). This can be judged by literacy rates, school enrolment and completion rates, and the number of trained teachers (1). Educated citizens get better jobs and make better-informed decisions, which improves their lives (1)."
+cling programmes."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Security of the state",
+                  "marks": 2,
+                  "answer": "Any ONE, 2 marks, for example: maintaining a police force, defence force and coast guard to protect citizens and the country's borders; passing laws and running courts; immigration and border control."
+                },
+                {
+                  "label": "(iii)",
+                  "question": "Maintenance of a safe climate for investors",
+                  "marks": 2,
+                  "answer": "Any ONE, 2 marks, for example: keeping political and economic stability; protecting property rights through fair laws and courts; offering tax incentives; controlling crime."
+                }
+              ]
+            },
+            {
+              "label": "(c)",
+              "question": "Outline TWO ways in which governments' decision to provide laptops to primary school children can positively impact their education.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Children can research information online for assignments.\n\u2022 They develop computer skills at an early age.\n\u2022 Educational software and games make learning more interesting.\n\u2022 They can complete and submit work electronically and take part in online classes.\n\u2022 Children from poor homes get the same access to technology as others (closing the digital divide)."
+            },
+            {
+              "label": "(d)",
+              "question": "Explain how governments use EACH of the following measures to regulate business activities:",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Taxation",
+                  "marks": 3,
+                  "answer": "Taxes such as corporation tax, VAT and import duties affect business costs and profits (1). Government places high taxes on harmful products (tobacco, alcohol) to discourage them, and gives tax incentives to encourage desired activities such as manufacturing or investment in certain areas (1). Businesses must register for tax and show tax compliance certificates to operate or win government contracts (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Safety and health",
+                  "marks": 3,
+                  "answer": "Laws require businesses to provide safe working conditions, such as protective equipment, fire exits and first aid (1). Food businesses need health certificates and food handler's permits, and premises are inspected (1). Businesses that break the rules can be fined or closed, which protects workers and consumers (1)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "section": "Section III",
+          "section_instructions": "Answer EITHER Question 6 OR Question 7. Do NOT answer both.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Define EACH of the following terms:",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Standard of living",
+                  "marks": 2,
+                  "answer": "The standard of living is the level of material well-being of people (1), measured by the quantity and quality of goods and services they can afford, usually using real income per head (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "National income",
+                  "marks": 2,
+                  "answer": "National income is the total value of all goods and services produced by a country's factors of production in a year (1), or the total income they earn, after allowing for depreciation (1)."
+                }
+              ]
+            },
+            {
+              "label": "(b)",
+              "question": "Describe ONE way in which EACH of the following indicators affects an individual's standard of living:",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Quality and availability of employment",
+                  "marks": 2,
+                  "answer": "When good jobs are available, people earn a steady income and can afford food, housing and other goods and services, raising their standard of living (1). Unemployment or poorly paid jobs reduce income and living standards (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Quality and affordable housing",
+                  "marks": 2,
+                  "answer": "Decent, affordable housing gives shelter, sanitation and safety, which improves health and comfort (1). When housing is affordable, less income goes on rent or mortgage, leaving more for other needs (1)."
+                },
+                {
+                  "label": "(iii)",
+                  "question": "Access to affordable and quality health care",
+                  "marks": 2,
+                  "answer": "People stay healthy and live longer, so they can work and earn (1), and they spend less of their income on medical bills (1)."
+                }
+              ]
+            },
+            {
+              "label": "(c)",
+              "question": "Describe TWO approaches used to measure national income.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Income approach: add all incomes earned by the factors of production (wages, rent, interest and profits), excluding transfer payments.\n\u2022 Expenditure approach: add total spending on final goods and services: C + I + G + (X \u2212 M).\n\u2022 Output (product) approach: add the value added by every sector of the economy, or the value of final goods and services only."
+            },
+            {
+              "label": "(d)",
+              "question": "Explain how EACH of the following indicators can be used to evaluate the quality of life of citizens in your country:",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Right to privacy",
+                  "marks": 3,
+                  "answer": "Quality of life is higher where citizens' homes, communications and personal information are protected from unlawful intrusion by the state or others (1). This can be judged by the existence of privacy and data protection laws and how well they are enforced (1). Citizens who feel secure and free from surveillance enjoy a better quality of life (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Right to education",
+                  "marks": 3,
+                  "answer": "Quality of life is higher where all citizens have access to free or affordable education (1). This can be judged by literacy rates, school enrolment and completion rates, and the number of trained teachers (1). Educated citizens get better jobs and make better-informed decisions, which improves their lives (1)."
                 }
               ]
             }
