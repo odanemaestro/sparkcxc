@@ -166,7 +166,12 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
       if(serverAttemptId){
         await submitServerExamAttempt({
           supabase,attemptId:serverAttemptId,responses:answers,score:result.score,maxScore:result.maxScore,
-            metadata:{subject:"english-a",paper:"02",paper_id:paper.id,selected_creative_prompt:choiceId || null,client_timed_out:Boolean(timedOut)},
+            metadata:{subject:"english-a",paper:"02",paper_id:paper.id,selected_creative_prompt:choiceId || null,client_timed_out:Boolean(timedOut),
+              provisional:true,confirmed_marks:result.score,unresolved_marks:Math.max(0,result.maxScore-result.score),
+              assessed_marks:null,spark_scoring_status:"rubric_review_required",
+              attempt_provenance:buildAttemptProvenance({subjectId:"english-a",paper:"02",mode:"timed",
+                bankVersion:"english-a-paper2-v1",rubricVersion:"CXC-01-G-SYLL-25",
+                graderVersion:"english-a-rubric-v2",startedAt:startedAt||null,submittedAt:completedAt,responses:answers})},
         });
       }
       await recordSubjectActivity({
@@ -190,6 +195,10 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
             response_word_counts:Object.fromEntries(responses.map(item => [item.id,countEnglishWords(answers[item.id])])),
             selected_creative_prompt:choiceId || null,
             provisional_grading:true,
+            spark_scoring_status:"rubric_review_required",confirmed_marks:result.score,
+            unresolved_marks:Math.max(0,result.maxScore-result.score),assessed_marks:null,
+            score_parts:result.rows.map(row=>({id:row.task.id,score:row.score,maxMarks:row.maxMarks,
+              unresolvedMarks:Math.max(0,row.maxMarks-row.score),assessedMarks:null,provisional:true})),
             module_scores:result.modules,
             attempt_provenance:buildAttemptProvenance({
               subjectId:"english-a",paper:"02",mode:"timed",bankVersion:"english-a-paper2-v1",
