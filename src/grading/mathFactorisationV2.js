@@ -36,7 +36,10 @@ export function evaluateMathFactorisationV2({questionId,partId,response={}}={}){
  const partial=partId==="b1"
   ?allSteps.some(s=>/^\s*[34]\s*\(/.test(s)&&/m\s*\^2/.test(s)&&/n\s*\^2/.test(s)&&equivalent(s,source.partial))
   :allSteps.some(s=>(source.split.test(s.replace(/\s+/g,""))||s.replace(/\s+/g,"")===source.group)&&equivalent(s,source.original));
- const inAnswer=answer&&equivalent(answer,source.partial);
+ const inAnswer=partId==="b1"
+  ?/^\s*[34]\s*\(/.test(answer)&&/m\s*\^2/.test(answer)&&equivalent(answer,source.partial)
+  :(source.split.test(answer.replace(/\s+/g,""))||answer.replace(/\s+/g,"")===source.group)
+   &&equivalent(answer,source.original);
  const method=partial||!!inAnswer;
  // Numeric equivalence alone is not enough: the result must be in a product
  // with all nontrivial algebraic factors extracted.
