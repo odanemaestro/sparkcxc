@@ -23,7 +23,7 @@ test("all 38 specifically reviewed grouped prompts retain original source and cr
    expect(source.criteria.length).toBe(split.flatMap(p=>p.criteria).length);
    expect(source.criteria.reduce((sum,c)=>sum+c.marks,0)).toBe(source.marks);
    expect(source.modelAnswer.length).toBeGreaterThan(20);
-   expect(source.prompt).toMatch(/\\(i\\)/);
+   expect(source.prompt).toContain("(i)");
   }
   // A previously missing mark key is now reconciled, but does not grant
   // official or public numerical grading.
