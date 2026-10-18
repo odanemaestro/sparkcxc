@@ -112,3 +112,10 @@
  .pob-exam .pob-exam-question h1{font-size:1.125rem;line-height:1.52}
  .pob-exam .pob-exam-skip{justify-content:space-between;width:100%}
 }
+
+/* Keep review navigation and the new-attempt action comfortably separated on mobile. */
+.pob-exam .pob-retry-actions{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap}
+.pob-exam .pob-retry-actions button{min-height:48px}
+.pob-exam .pob-exam-controls{column-gap:14px;row-gap:14px}
+.pob-exam .pob-p2-criteria[open]{padding:16px 18px}
+.pob-exam .pob-p2-criteria[open] summary{margin-bottom:12px}
