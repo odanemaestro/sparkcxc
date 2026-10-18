@@ -54,3 +54,16 @@ test("source audit reports an incomplete multi-mark scheme as needing calibratio
  expect(result.rubricReviewRequired).toBe(true);
  expect(result.warnings).toContain("under-specified-subcriteria:q:a");
 });
+
+
+test("essay questions preserve separately awarded content and organisation marks",()=>{
+ const essay=SOCIAL_STUDIES_PAPER2.find(q=>q.id==="ss-p2-q5");
+ const report=auditPaper2SourceBank({subjectId:"social-studies",
+   paperId:"essay-provenance",questions:[essay],expectedPaperMarks:22});
+ expect(report.critical).toEqual([]);
+ expect(report.totalMarks).toBe(22);
+ expect(report.byQuestion[0].parts).toBe(2);
+ expect(report.warnings).toEqual(expect.arrayContaining([
+   "under-specified-subcriteria:ss-p2-q5:essay-content"
+ ]));
+});
