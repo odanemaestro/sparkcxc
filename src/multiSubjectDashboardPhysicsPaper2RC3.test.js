@@ -112,7 +112,12 @@ describe("SPARK RC3 dashboard restoration and Physics Paper 2", () => {
     expect(outcomeCalls[0].args.p_subject_id).toBe("physics");
     expect(outcomeCalls[0].args.p_activity_type).toBe("exam");
     expect(outcomeCalls[0].args.p_activity_key).toBe("paper2:spark-phy-p02-practice-4");
-    expect(outcomeCalls[0].args.p_percent).toBe(72);
+    // A legacy Physics result without reconciled evidence remains provisional.
+    // Preserve completion and confirmed evidence, not a purported final score.
+    expect(progressCalls[0].args.p_score).toBeNull();
+    expect(progressCalls[0].args.p_percent).toBeNull();
+    expect(progressCalls[0].args.p_metadata.confirmed_marks).toBe(72);
+    expect(outcomeCalls[0].args.p_percent).toBeNull();
   });
 
   test("full Physics exams contribute to generic assessment summaries", () => {
