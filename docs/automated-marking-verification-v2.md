@@ -104,3 +104,10 @@ Run the full test suite and build before merge.
 - `shadowPaper2WorkerV2.js` now observes the count of candidate objective decisions; reconciliation still receives no trusted automatic marks.
 - Four dedicated objective regression tests added. Not executed in this session.
 - Next: canonical schema mapping of actual question part IDs, trustworthy independent server calculation checks, rubric quality review, and staging runtime execution.
+
+## Batch 5 continuation: numeric quantities
+- `numericQuantityV2.js` parses finite numbers, scientific notation, and an explicitly limited set of metric units.
+- Converts compatible units to a canonical representation; rejects incompatible dimensions and unsupported units as unresolved.
+- `objectiveMarkingV2.js` now uses the quantity comparison for numeric candidate evidence, while keeping all decisions advisory.
+- Seven added regression scenarios cover conversions, dimensions, invalid expressions, scientific notation and integration.
+- No real grading scores are published. These checks require staging execution and historical-rubric calibration before any trusted decisions are enabled.
