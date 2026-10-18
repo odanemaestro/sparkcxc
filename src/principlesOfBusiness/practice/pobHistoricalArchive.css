@@ -113,3 +113,11 @@
 .pob-archive .pob-visual-precise summary{font-size:.88rem;font-weight:700;cursor:pointer;padding:.5rem}
 .pob-archive .pob-visual-precise[open] .pob-visual-fields{padding-top:.6rem}
 @media(max-width:560px){.pob-archive .pob-visual-bank button{font-size:.79rem}.pob-archive .pob-visual-slot-actions{flex-wrap:wrap}}
+
+
+.pob-archive .pob-visual-connection{border:1px solid color-mix(in srgb,currentColor 18%,transparent);border-radius:10px;margin:.8rem 0;padding:.65rem}
+.pob-archive .pob-visual-connection legend{font-weight:700;font-size:.84rem;padding:0 .3rem}
+.pob-archive .pob-visual-connection-options{display:flex;flex-wrap:wrap;gap:.4rem}
+.pob-archive .pob-visual-connection-options button{font:inherit;font-size:.82rem;min-height:44px;padding:.5rem .7rem;border-radius:9px;border:1px solid color-mix(in srgb,currentColor 25%,transparent);background:var(--card,#fff);color:inherit}
+.pob-archive .pob-visual-connection-options button[aria-pressed=true]{outline:2px solid #648bd1;outline-offset:1px}
+.pob-archive .pob-visual-connection-options button:focus-visible{outline:3px solid #648bd1;outline-offset:2px}
