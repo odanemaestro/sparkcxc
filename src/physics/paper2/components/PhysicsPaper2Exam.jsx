@@ -20,6 +20,7 @@ import {
 } from "../physicsPaper2Bank";
 import { markPhysicsPaper2, modelResponsesForPhysicsPaper2 } from "../physicsPaper2Marking";
 import { buildAttemptProvenance } from "../../../grading/attemptProvenance";
+import { preparePaper2ScorePublication } from "../../../grading/scorePublication";
 import "./physicsPaper2.css";
 
 function formatTime(totalSeconds) {
@@ -345,6 +346,28 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
           startedAt:active?.startedAt || null,submittedAt:completedAt,responses,
         }),
       };
+      const publication=preparePaper2ScorePublication({
+        subjectId:"physics",paperId:"02",score:stored.score,maxScore:stored.maxScore,
+        percent:stored.percent,provenance:stored.attemptProvenance,
+        metadata:{paper:"02",source_verified:true,rubric_verified:true,
+          provisional:hasProvisionalEvidence,
+          spark_scoring_status:hasProvisionalEvidence?"rubric_review_required":"verified",
+          assessed_marks:hasProvisionalEvidence?null:stored.score,
+          unresolved_marks:hasProvisionalEvidence?Math.max(0,stored.maxScore-stored.score):0,
+          score_parts:final.criteria.map(row=>({
+            id:row.id,score:row.earned,maxMarks:row.possible,
+            unresolvedMarks:!row.criterion?.check?Math.max(0,row.possible-row.earned):0,
+            assessedMarks:row.criterion?.check?row.earned:null,
+            provisional:!row.criterion?.check
+          })),
+        }
+      });
+      stored.confirmedMarks=final.marks;
+      stored.score=publication.score;
+      stored.percent=publication.percent;
+      stored.provisionalGrading=!publication.canPublishFinalScore;
+      stored.paperReleaseStatus=publication.audit.releaseStatus;
+      stored.paperReleaseIssues=publication.audit.issues;
       savePhysicsPaper2Result(userId, stored);
       setActive(previous => previous ? {
         ...previous,
