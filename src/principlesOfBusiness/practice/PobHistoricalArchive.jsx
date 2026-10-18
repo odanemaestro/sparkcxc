@@ -1,6 +1,7 @@
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {buildPobOwnerPaper2Bank} from "../data/pobPaper2OwnerSourceBank";
+import {auditPobOwnerPaper2Calibration,POB_OWNER_P2_PILOT_IDS,pobOwnerP2BankVersion,POB_OWNER_P2_RUBRIC_VERSION} from "../../grading/pobOwnerArchiveCalibration";
 import {POB_HISTORICAL_REVIEW_BANKS,getPobHistoricalReviewBank} from "../data/pobHistoricalArchiveRegistry";
 import "./pobHistoricalArchive.css";
 import PobHistoricalPaper1Preview from "./PobHistoricalPaper1Preview";
@@ -94,7 +95,9 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
  },[submitted,userId,supabase,record.id,record.label]);
  const selectionValid=validatePobArchiveSelection(paper,selected);
  const openQuestionCount=questions.length;
- const scoreEnabled=!ownerBank&&process.env.REACT_APP_SERVER_MARKING==="true" &&
+ const ownerPilotReady=Boolean(ownerBank&&POB_OWNER_P2_PILOT_IDS.includes(record.id)&&
+   auditPobOwnerPaper2Calibration(record).ready);
+ const scoreEnabled=(!ownerBank||ownerPilotReady)&&process.env.REACT_APP_SERVER_MARKING==="true" &&
    process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING==="true";
  const gradeWithServer=async()=>{
   if(!selectionValid||gradingBusy||serverAttemptId)return;
@@ -105,7 +108,8 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
      bankVersion:pobArchiveBankVersion(record.id),
      rubricVersion:POB_ARCHIVE_RUBRIC_VERSION,graderVersion:"online-v1",
      metadata:{paper_id:record.id,source_sha256:record.source.sourceSha256,
-       selected_questions:selected,source:"historical-cxc-archive"}});
+       selected_questions:selected,source:"historical-cxc-archive",
+       owner_source_provisional:Boolean(ownerBank)}});
    if(!started.available||!started.attempt_id)throw new Error("Historical attempt could not start");
    const snapshot={};
    for(const q of questions.filter(q=>selected.includes(q.number)))
@@ -116,7 +120,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
    const result=await submitServerExamAttempt({
      supabase,attemptId:started.attempt_id,responses:snapshot,
      score:null,maxScore:100,metadata:{source:"historical-archive-practice",
-       grading_status:"server-pending"}});
+       grading_status:"server-pending",owner_source_provisional:Boolean(ownerBank)}});
    if(!result.available)throw new Error("Historical answers could not be submitted");
    setServerAttemptId(started.attempt_id);
   }catch{
@@ -133,7 +137,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
  const sourceComplete=record.id==="POB-P2-2009-MJ"&&verifyPob2009SourcePrompts(paper).valid;
  return <section className="pob-archive-exam" aria-label="Historical Paper 2 answer-bank review">
   <h3>Paper 2 · Written-answer practice and marking guide</h3>
-  <p>{ownerBank?"Owner-supplied numbered questions and detailed worked answers are included. Answer the compulsory questions and any permitted alternatives. Answers remain provisional; automatic scoring is not yet calibrated for this transcription.":sourceComplete?"All seven original source questions, case studies, question choices and 36 written parts are transcribed for this sitting. Submit five questions according to the original examination rules.":"SPARK-authored answers and mark allocations are available. Many printed questions, diagrams and tables have not been faithfully digitised; source summaries are identified and cannot be treated as the original examination."}</p>
+  <p>{ownerBank?"Owner-supplied numbered questions and detailed worked answers are included. Answer the compulsory questions and any permitted alternatives. Answers remain provisional; source-aligned examiner marking is available only for a paper that passes the release audit.":sourceComplete?"All seven original source questions, case studies, question choices and 36 written parts are transcribed for this sitting. Submit five questions according to the original examination rules.":"SPARK-authored answers and mark allocations are available. Many printed questions, diagrams and tables have not been faithfully digitised; source summaries are identified and cannot be treated as the original examination."}</p>
   <div className="pob-archive-summary"><span>{questions.length} offered questions</span><span>{parts} answer parts</span><span>{total} offered marks</span><span>100 candidate marks</span></div>
   {openQuestionCount>5&&<div className="pob-archive-optional" aria-label="Original Paper 2 optional question selection">
     <strong>Choose the questions required by this sitting</strong>
@@ -179,8 +183,8 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
          <button type="button" className="secondary" onClick={()=>setSubmitted(false)}>Edit responses</button></>}
    </div>
    {submitted&&scoreEnabled&&<div className="pob-archive-scoring">
-      <strong>Experimental AI-assisted Paper 2 examiner</strong>
-      <p>Scores are provisional SPARK practice estimates. The original booklet and some question wording still require independent verification. Two automated assessments check each criterion; disagreement is shown as an uncertain score range.</p>
+      <strong>Provisional SPARK Paper 2 examiner</strong>
+      <p>Scores are provisional SPARK practice estimates. The source questions and authored criteria are used for this practice estimate, not an official CXC grade. Two automated assessments check each criterion; disagreement is shown as an uncertain score range.</p>
       {!serverAttemptId&&<button type="button" className="pob-primary"
        disabled={gradingBusy||!supabase?.rpc||!userId} onClick={gradeWithServer}>
        {gradingBusy?"Sending responses…":"Request detailed AI practice marking"}
@@ -188,7 +192,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
       {gradingError&&<p role="status">{gradingError}</p>}
       {serverAttemptId&&<ServerMarkingReview supabase={supabase} attemptId={serverAttemptId} autoStart/>}
     </div>}
-   <small>{ownerBank?"Question wording and worked solutions come from your uploaded Paper 2 transcription. They have not been authenticated against a published CXC key; final numerical marking remains disabled.":scoreEnabled?"This sitting is a pilot assessment using internally authored criteria, not an official CXC grade.":"This sitting currently offers SPARK model answers and rubrics. Online numerical marking is unavailable until the archive pilot is deployed."}</small>
+   <small>{ownerBank?"Question wording and worked solutions come from your uploaded Paper 2 transcription. They are not official CXC keys.  ${ownerPilotReady?"This sitting has a source-aligned rubric for provisional practice assessment.":"Numerical marking remains disabled until its detailed rubric is reconciled."}":scoreEnabled?"This sitting is a pilot assessment using internally authored criteria, not an official CXC grade.":"This sitting currently offers SPARK model answers and rubrics. Online numerical marking is unavailable until the archive pilot is deployed."}</small>
   </>:<p>No question-level marking guidance is available in this archive entry.</p>}
  </section>;
 }
