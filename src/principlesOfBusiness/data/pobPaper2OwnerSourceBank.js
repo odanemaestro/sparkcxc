@@ -7,7 +7,7 @@ const idOf=paper=>`POB-P2-${paper.year}-${paper.session==="January"?"JAN":"MJ"}`
 const source=Object.freeze(Object.fromEntries(papers.map(p=>[idOf(p),p])));
 const cleanLabel=value=>String(value||"").replace(/[()]/g,"");
 export const POB_OWNER_P2_SOURCE=source;
-export function buildPobOwnerPaper2Bank(id){
+export function buildPobOwnerPaper2Bank(id,existingBank=null){
  const p=source[id];
  if(!p)return null;
  return {
@@ -21,13 +21,13 @@ export function buildPobOwnerPaper2Bank(id){
    context:q.stem||null,
    parts:q.parts.flatMap(part=>{
     const list=part.subparts||[part];
-    return list.map(child=>({
-      id:cleanLabel(part.label)+(part.subparts?"."+cleanLabel(child.label):""),
-      prompt:[part.subparts?part.question:null,child.question].filter(Boolean).join("\n"),
-      marks:child.marks,
-      modelAnswer:child.answer,
-      criteria:[],
-    }));
+    return list.map(child=>{
+      const subId=cleanLabel(part.label)+(part.subparts?"."+cleanLabel(child.label):"");
+      const authored=(existingBank?.questions||[]).find(item=>item.number===q.number);
+      const prior=(authored?.parts||authored?.items||[]).find(item=>item.id===subId);
+      const criteria=Array.isArray(prior?.criteria)&&prior.criteria.reduce((n,item)=>n+Number(item.marks||0),0)===child.marks?prior.criteria:[];
+      return {id:subId,prompt:[part.subparts?part.question:null,child.question].filter(Boolean).join("\n"),marks:child.marks,modelAnswer:child.answer,criteria};
+    });
    })
   })),
   examInstructions:p.instructions,
