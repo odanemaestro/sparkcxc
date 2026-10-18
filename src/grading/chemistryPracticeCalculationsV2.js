@@ -37,7 +37,7 @@ const heatResult=raw=>{
 const concentrationResult=raw=>{
  const answer=singleFinal(raw);
  if(answer===null)return false;
- const normalized=answer.replace(/[−–—⁻]/g,"-").replace(/\s+/g,"").toLowerCase();
+ const normalized=answer.replace(/[−–—⁻]/g,"-").replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g,ch=>String("⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(ch))).replace(/\s+/g,"").toLowerCase();
  const match=/^(\d+(?:\.\d+)?|\.\d+)(?:mol(?:dm-3|\/dm3|\/l|l-1))$/.exec(normalized);
  return !!match&&Number.isFinite(Number(match[1]))&&
   Math.abs(Number(match[1])-0.08)<=0.000001;
