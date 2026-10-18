@@ -111,6 +111,6 @@ test("unchanged historic arithmetic and unrelated prose review keep their previo
  expect(gradePobHistoricalArithmetic(id,"Q9:a.ii",
   "24000-26000=-2000 deficit; final answer:3000").marks).toBe(1);
  const other=reviewed(2,"a","Productivity is output per unit of input.");
- expect(other.subcriteriaVersion).toBeNull();
+ expect(other.subcriteriaVersion).toContain("pob-2005-definition");
  expect(other.confirmedMarks+other.unresolvedMarks).toBeLessThanOrEqual(other.availableMarks);
 });
