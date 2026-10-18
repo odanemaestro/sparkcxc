@@ -50,11 +50,12 @@ export function evaluateMathConsumerArithmeticV2({
 }={}){
  if(questionId!==SOURCE_ID||!["b1","b2","b3"].includes(partId))
   throw new TypeError("Uncalibrated Mathematics part");
- const w=normalise(studentWorking(response));
+ // Preserve written sentence boundaries between two calculation steps.
+ // "4900-4500=400. 400/4500x100" must not become decimal "400.400".
+ const w=normalise(studentWorking(response).replace(/\.\s+(?=\d)/g,";"));
  const final=studentAnswer(response,{percent:partId==="b3"});
  if(partId==="b1"){
-  const method=operationShown(w,4500,"(?:x|/)","(?:100/125|1\\.25)")
-   ||operationShown(w,4500,"/","1\\.25")
+  const method=operationShown(w,4500,"/","1\\.25")
    ||operationShown(w,4500,"x","100/125");
   return wrap(partId,method,nearly(final,3600,0.01),"correct-cost-price");
  }
