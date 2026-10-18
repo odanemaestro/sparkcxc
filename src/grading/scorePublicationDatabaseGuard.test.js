@@ -9,7 +9,9 @@ test("server saves English A / Integrated Science Paper 2 responses without cert
  expect(migration).toContain("'english-a','integrated-science'");
  expect(migration).toContain("when v_nullable_written then null else p_score");
  expect(migration).toContain("'server-unverified-written-practice'");
- expect(migration).toContain("when v_nullable_written or v_owner_pob then 'requires-review'");
+ expect(migration).toContain("when v_nullable_written or (v_row.subject_id='principles-of-business' and v_row.paper='02')");
+ expect(migration).toContain("then 'requires-review'");
+ expect(migration).toContain("score=case when v_nullable_written then null else p_score end");
 });
 test("preserve POB original Paper 2 unscored submission and source-bank guard",()=>{
  expect(migration).toContain("v_historical :=");
