@@ -188,6 +188,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
          {submitted&&<div className="pob-archive-scheme">
            {partReview&&<p className="pob-archive-part-status"><strong>{partReview.assessedMarks===null?"Written response: further rubric assessment needed":partReview.assessedMarks+" / "+partReview.availableMarks+" marks confirmed by SPARK"}</strong></p>}
            <strong>SPARK model answer</strong><p>{part.modelAnswer||"Model answer is still being authored."}</p>
+            {part.answerDiagramSvg&&<div className="pob-archive-source-diagram"><img alt={"Completed marking scheme diagram for Question "+q.number+" ("+part.id+")"} src={"data:image/svg+xml;charset=utf-8,"+encodeURIComponent(part.answerDiagramSvg)}/></div>}
            {part.criteria?.length>0&&<><strong>Marking criteria</strong><ul>{part.criteria.map((criterion,i)=><li key={i}>
               {criterion.marks} mark{criterion.marks===1?"":"s"}: {criterion.rule}
               {partReview&&<small className="pob-criterion-result">{partReview.criteria[i]?.assessedMarks===null?" · Further evidence review":" · "+(partReview.criteria[i]?.assessedMarks||0)+" mark(s) confirmed"}</small>}
