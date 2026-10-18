@@ -45,8 +45,8 @@ describe("FNH student examination navigation",()=>{
     expect(within(y2005).getByText(/supplied scan ends at Question 53/)).toBeInTheDocument();
     expect(within(y2004).queryByRole("button",{name:/Start examination/})).not.toBeInTheDocument();
     expect(within(y2005).queryByRole("button",{name:/Start examination/})).not.toBeInTheDocument();
-    expect(within(y2004).getByRole("button",{name:/Review source questions \(unscored\)/})).toBeInTheDocument();
-    expect(within(y2005).getByRole("button",{name:/Review source questions \(unscored\)/})).toBeInTheDocument();
+    expect(within(y2004).getByRole("button",{name:/Practise questions and review score/})).toBeInTheDocument();
+    expect(within(y2005).getByRole("button",{name:/Practise questions and review score/})).toBeInTheDocument();
   });
   test("historical archive enables individually source-checked Paper 2 archives",()=>{
     render(<FnhPracticeHub userId="fnh-test-student" onBack={jest.fn()}/>);

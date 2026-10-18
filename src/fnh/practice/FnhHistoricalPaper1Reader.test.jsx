@@ -6,7 +6,7 @@ import FnhPaper1HistoricalDiagram from "./FnhPaper1HistoricalDiagram";
 import {fnhHistoricalPaper1Reader,FNH_P1_RENDERABLE_DIAGRAM_IDS} from "../data/fnhHistoricalPaper1ReleaseGate";
 import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalSimulatorReady} from "../data/fnhPastPaperInventory";
 
-describe("FNH historical Paper 01 unscored review safeguards",()=>{
+describe("FNH historical Paper 01 provisional scoring safeguards",()=>{
  beforeEach(()=>{
   localStorage.clear();
   Object.defineProperty(window,"scrollTo",{value:jest.fn(),configurable:true});
@@ -57,17 +57,17 @@ describe("FNH historical Paper 01 unscored review safeguards",()=>{
   expect(paper.questions).toHaveLength(60);
   expect(paper.questions.map(q=>q.number)).toEqual(Array.from({length:60},(_,i)=>i+1));
  });
- test("unscored choices persist locally and never show answers or grades",()=>{
+ test("choices persist and provisional keys appear only after submission",()=>{
   const onBack=jest.fn();
   const view=render(<FnhHistoricalPaper1Reader sourceId="FNH-P1-2026-MJ" userId="student-1" onBack={onBack}/>);
-  expect(screen.getByText("2026 Paper 1: Question review")).toBeInTheDocument();
-  expect(screen.getByText("Practice mode")).toBeInTheDocument();
-  expect(screen.getByText(/Your choices are saved on this device/)).toBeInTheDocument();
+  expect(screen.getByText("2026 Paper 1: Practice examination")).toBeInTheDocument();
+  expect(screen.getByText(/questions eligible for practice scoring/)).toBeInTheDocument();
+  expect(screen.getByText(/provisional SPARK answer comparison/)).toBeInTheDocument();
   const first=screen.getByRole("radio",{name:"mental"});
   fireEvent.click(first);
   expect(first).toBeChecked();
   expect(screen.getByText("1 selections saved")).toBeInTheDocument();
-  expect(screen.queryByText(/Correct answer:/)).not.toBeInTheDocument();
+  expect(screen.queryByText(/SPARK suggested answer:/)).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole("button",{name:/Next question/}));
   expect(screen.getByText("Original Question 2 of 60")).toBeInTheDocument();
   view.unmount();
@@ -85,12 +85,23 @@ describe("FNH historical Paper 01 unscored review safeguards",()=>{
   fireEvent.click(screen.getByRole("button",{name:"Past papers"}));
   expect(screen.getByText("Historical Paper 1 sources")).toBeInTheDocument();
   const card=screen.getByRole("heading",{name:"2026 Paper 1"}).closest("article");
-  fireEvent.click(within(card).getByRole("button",{name:/Review source questions/}));
-  expect(screen.getByText("2026 Paper 1: Question review")).toBeInTheDocument();
+  fireEvent.click(within(card).getByRole("button",{name:/Practise questions and review score/}));
+  expect(screen.getByText("2026 Paper 1: Practice examination")).toBeInTheDocument();
   expect(screen.queryByRole("button",{name:"Start examination"})).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole("button",{name:/Back to Paper 1 sources/}));
   expect(screen.getByText("Historical Paper 1 sources")).toBeInTheDocument();
   expect(screen.getByRole("button",{name:"Past papers"})).toHaveAttribute("aria-pressed","true");
   expect(screen.queryByRole("heading",{name:"2021 Paper 1"})).not.toBeInTheDocument();
  });
+});
+
+test("FNH historical provisional score excludes unanswered or unresolved keys",()=>{
+ render(<FnhHistoricalPaper1Reader sourceId="FNH-P1-2026-MJ" userId="practice-score" onBack={jest.fn()}/>);
+ fireEvent.click(screen.getByRole("radio",{name:"mental"}));
+ fireEvent.click(screen.getByRole("button",{name:"Submit and review provisional score"}));
+  expect(screen.getByText(/Practice result: 1/)).toBeInTheDocument();
+ expect(screen.getByText(/SPARK suggested answer: A/)).toBeInTheDocument();
+ expect(screen.getAllByRole("radio").every(input=>input.matches(":disabled"))).toBe(true);
+ fireEvent.click(screen.getByRole("button",{name:"Start another attempt"}));
+ expect(screen.queryByText(/SPARK suggested answer:/)).not.toBeInTheDocument();
 });
