@@ -1,7 +1,7 @@
 import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React,{useEffect,useMemo,useState} from "react";
-import {fnhHistoricalPaper1Reader} from "../data/fnhHistoricalPaper1ReleaseGate";
+import {fnhHistoricalPaper1Reader,fnhHistoricalPaper1PracticeKeys} from "../data/fnhHistoricalPaper1ReleaseGate";
 import FnhPaper1HistoricalDiagram from "./FnhPaper1HistoricalDiagram";
 import "./fnhHistoricalPaper1Reader.css";
 
@@ -19,12 +19,17 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
  const source=useMemo(()=>fnhHistoricalPaper1Reader(sourceId),[sourceId]);
  const [selected,setSelected]=useState(()=>readSaved(sourceId,userId));
  const [position,setPosition]=useState(0);
+ const [submitted,setSubmitted]=useState(false);
+ const keys=useMemo(()=>fnhHistoricalPaper1PracticeKeys(sourceId),[sourceId]);
  const questions=source?.questions||[];
  const question=questions[position];
  const answered=questions.filter(q=>CHOICES.includes(selected[q.number])).length;
+ const eligible=questions.filter(q=>keys[q.number]);
+ const correct=eligible.filter(q=>selected[q.number]===keys[q.number].answer).length;
  useEffect(()=>{
   setSelected(readSaved(sourceId,userId));
   setPosition(0);
+  setSubmitted(false);
  },[sourceId,userId]);
  useEffect(()=>{
   try{localStorage.setItem(storageKey(sourceId,userId),JSON.stringify(selected));}catch{}
@@ -56,13 +61,13 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
   </div>
   <header className="fnh-exam-card fnh-source-reader-header">
    <small>{source.qualification.toUpperCase()} · {source.paperTitle.toUpperCase()}</small>
-   <h1>{source.year} Paper 1: Question review</h1>
-   <p>Practise the questions at your own pace. Your choices are saved on this device. This paper does not currently provide scored results.</p>
+   <h1>{source.year} Paper 1: Practice examination</h1>
+   <p>Practise the original questions and submit for a provisional SPARK answer comparison. These are proposed answer keys, not authenticated CXC marks. Questions without a usable key are excluded.</p>
    
    <div className="fnh-source-reader-statline">
     <span>{questions.length} questions available to review</span>
     <span>{answered} selections saved</span>
-    <span>Practice mode</span>
+    <span>{submitted?"Provisional result: "+correct+" / "+eligible.length:eligible.length+" questions eligible for practice scoring"}</span>
    </div>
    {(source.excludedNumbers.length>0||source.missingSourceQuestions.length>0)&&
     <div className="fnh-source-reader-note" role="note">
@@ -79,7 +84,8 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
     <h2 id="fnh-source-question-title" className="fnh-source-reader-stem">{question.stem}</h2>
     {question.diagramId&&<FnhPaper1HistoricalDiagram type={question.diagramId}/>}
     {question.sourceContext&&<p className="fnh-source-reader-context">{question.sourceContext}</p>}
-    <fieldset className="fnh-source-reader-options">
+    {submitted&&<div className="fnh-source-reader-note" role="status"><strong>{keys[question.number]?"SPARK suggested answer: "+keys[question.number].answer+". "+question.options[CHOICES.indexOf(keys[question.number].answer)]:"Answer key under review; excluded from score."}</strong>{keys[question.number]?.explanation&&<p>{keys[question.number].explanation}</p>}</div>}
+    <fieldset className="fnh-source-reader-options" disabled={submitted}>
      <legend>Choose your answer</legend>
      {question.options.map((option,index)=>{
       const letter=CHOICES[index];
@@ -94,15 +100,13 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
     <div className="fnh-source-reader-navigation">
      <button type="button" className="fnh-outline" disabled={position===0}
       onClick={()=>setPosition(n=>Math.max(0,n-1))}><BackArrowIcon/> Previous</button>
-     <button type="button" className="fnh-outline" disabled={!selected[question.number]} onClick={clear}>
+     <button type="button" className="fnh-outline" disabled={submitted||!selected[question.number]} onClick={clear}>
       Clear choice
      </button>
      <button type="button" className="fnh-primary" disabled={position>=questions.length-1}
       onClick={()=>setPosition(n=>Math.min(questions.length-1,n+1))}>Next question <ForwardArrowIcon/></button>
     </div>
-    <p className="fnh-source-reader-footnote">
-     This paper is for question practice only. Selections do not affect your scores or progress report.
-    </p>
+    <p className="fnh-source-reader-footnote">Provisional practice scores are not official CXC results and do not affect verified progress reports.</p>
    </section>
    <aside className="fnh-exam-card fnh-source-reader-navigator" aria-label="Question navigation">
     <div className="fnh-source-reader-nav-head"><h2>Questions</h2>
@@ -117,6 +121,7 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
       onClick={()=>setPosition(i)}>{q.number}</button>)}
     </div>
     <p>Outlined: selected. Filled: current question.</p>
+    {submitted?<div className="fnh-source-reader-note" role="status"><strong>Practice result: {correct} / {eligible.length}</strong><p>{eligible.length===0?"No questions currently have usable proposed keys.":Math.round(100*correct/eligible.length)+"% of questions with usable SPARK keys. "+(questions.length-eligible.length)+" questions excluded from provisional grading."}</p><button type="button" className="fnh-primary" onClick={()=>{setSubmitted(false);setSelected({});setPosition(0)}}>Start another attempt</button></div>:<button type="button" className="fnh-primary" disabled={!answered||!eligible.length} onClick={()=>{setSubmitted(true);setPosition(0)}}>Submit and review provisional score</button>}
    </aside>
   </div>}
  </div></main>;
