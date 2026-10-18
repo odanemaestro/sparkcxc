@@ -19,8 +19,8 @@ describe.each(sources)("Mathematics source Q2 factorisation",entry=>{
    expect(part.marks).toBe(2);
    expect(part.requiredForm).toBe("factorised");
   }
-  expect(q.parts.find(p=>p.id==="b1").answer).toBe(entry.factor.replace(/\s/g," ").replace(/\\s/g," "));
-  expect(q.parts.find(p=>p.id==="b2").answer).toBe(entry.quadratic);
+  expect(q.parts.find(p=>p.id==="b1").answer.replace(/\s+/g,"")).toBe(entry.factor);
+  expect(q.parts.find(p=>p.id==="b2").answer.replace(/\s+/g,"")).toBe(entry.quadratic);
  });
  test("common-factor extraction and completed difference of squares yield two advisory marks",()=>{
   const r=evaluate("b1",{working:entry.original+" = "+entry.partial,answer:entry.factor});
@@ -56,7 +56,7 @@ describe.each(sources)("Mathematics source Q2 factorisation",entry=>{
   expect(r.criteria[1].candidateMarks).toBeNull();
  });
  test("incorrect sign cannot receive a full-answer candidate",()=>{
-  const bad=entry.quadratic.replace("-","+",);
+  const bad=entry.quadratic.replace("-","+");
   const r=evaluate("b2",{answer:bad});
   expect(r.criteria[1].candidateMarks).toBeNull();
  });
