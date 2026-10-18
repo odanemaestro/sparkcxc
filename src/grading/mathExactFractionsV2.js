@@ -17,7 +17,7 @@ function exactIntegerFraction(raw){
  return {num,den,lowest:gcd(num,den)===1};
 }
 const normalize=s=>typeof s==="string"?s.replace(/[−–—]/g,"-")
- .replace(/[÷]/g,"/").replace(/×/g,"*").replace(/\s+/g,""):"";
+ .replace(/[÷]/g,"/").replace(/×/g,"*").replace(/\r?\n/g,";").replace(/[ \t]+/g,""):"";
 const vote=(id,ok,reason)=>({id,maxMarks:1,candidateMarks:ok?1:null,
  status:ok?"candidate-correct":"unresolved",
  reason:ok?reason:"insufficient-source-evidence"});
