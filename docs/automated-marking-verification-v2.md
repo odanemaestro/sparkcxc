@@ -79,3 +79,12 @@ Run the full test suite and build before merge.
 - Private function authorization permits direct trusted PostgreSQL sessions and service-role JWTs, not anonymous or authenticated student roles.
 - A running backend with database credentials, atomic enqueue path, grading rubric registry, response loader, and live worker is still missing.
 - No database migration deployed or verified in production. Do not merge without staging role/RLS/lease tests.
+
+## Batch 4 continuation: submission queue and authoritative rubric lookup
+- Migration `20261018193000_marking_v2_rubric_registry_enqueue.sql` adds a private, operator-managed rubric registry and idempotent `enqueue_marking_job_v2` procedure.
+- Enqueue accepts only a server-saved submitted Paper 02 attempt with a matching active rubric. Duplicate enqueue returns the existing job ID.
+- `gradingSubmissionRepositoryV2.js` loads submitted response snapshots and private rubric criteria from PostgreSQL using parameterized queries.
+- Five tests cover enqueue, lookup, missing rubrics, invalid criteria and invalid attempt identifiers.
+- Schema migration and tests are NOT executed or deployed. No authenticated frontend receives permissions to enqueue jobs or read private rubrics.
+- The registry is currently empty. It needs validated subject rubrics, approved versions, content constraints, and staging role/RLS checks before enabling real grading.
+- The job processor still lacks a deployed runtime and end-to-end server integration. No trigger, worker deployment or score publication was enabled.
