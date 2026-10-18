@@ -64,7 +64,7 @@ export function buildTrustedAssessment(attempt,authority={}){
       throw new Error("historical_attempt_identity_mismatch");
     const pack=buildPobArchiveExaminerPack({
       paperId,selectedQuestions:attempt.metadata?.selected_questions,
-      responses
+      responses,ownerSource
     });
     return {...pack,deterministicScore:0,baselineScore:0,unassessedMarks:0};
   }
