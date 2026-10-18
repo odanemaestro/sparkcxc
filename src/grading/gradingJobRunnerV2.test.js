@@ -6,13 +6,13 @@ const fixture=()=>({
 });
 test("completed local marks stay provisional without server attestation",async()=>{
  const store=fixture();
- const grader=jest.fn(async()=>({reconciliation:{confirmedMarks:5,unresolvedMarks:0}}));
+ const grader=jest.fn(async()=>({reconciliation:{confirmedMarks:5,unresolvedMarks:0,maxMarks:5,parts:[{id:"a"}]}}));
  const result=await processGradingJob({store,grader,jobId:job.id});
  expect(result.status).toBe("provisional");
  expect(store.commit.mock.calls[0][2].status).toBe("provisional");
 });
 test("unresolved marks remain provisional even with server attestation",async()=>{
- const r=classifyGradingResult({serverAttested:true,reconciliation:{confirmedMarks:2,unresolvedMarks:3}});
+ const r=classifyGradingResult({serverAttested:true,reconciliation:{confirmedMarks:2,unresolvedMarks:3,maxMarks:5,parts:[{id:"a"}]}});
  expect(r.status).toBe("provisional");
 });
 test("job lease required and no claim is a no-op",async()=>{
@@ -40,7 +40,7 @@ test("commit failure never retries a superseded lease or claims success",async()
  const store=fixture();
  store.commit.mockRejectedValue(new Error("Grading lease expired or superseded"));
  await expect(processGradingJob({store,grader:async()=>({
-  reconciliation:{confirmedMarks:1,unresolvedMarks:0}
+  reconciliation:{confirmedMarks:1,unresolvedMarks:0,maxMarks:1,parts:[{id:"a"}]}
  }),jobId:job.id})).rejects.toThrow("lease expired");
  expect(store.retry).not.toHaveBeenCalled();
 });
@@ -49,4 +49,12 @@ test("failed grader result commits failure, never publishes",async()=>{
  const result=await processGradingJob({store,grader:async()=>({invalid:true}),jobId:job.id});
  expect(result.status).toBe("failed");
  expect(store.commit.mock.calls[0][2]).toMatchObject({status:"failed",result:null});
+});
+
+test("rejects negative, overflowing, or missing provisional totals",()=>{
+ for(const reconciliation of [
+  {confirmedMarks:-1,unresolvedMarks:2,maxMarks:2,parts:[{id:"a"}]},
+  {confirmedMarks:5,unresolvedMarks:3,maxMarks:7,parts:[{id:"a"}]},
+  {confirmedMarks:0,unresolvedMarks:0,maxMarks:5,parts:[]}
+ ])expect(classifyGradingResult({reconciliation}).status).toBe("failed");
 });
