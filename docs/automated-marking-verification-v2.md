@@ -157,3 +157,8 @@ Run the full test suite and build before merge.
 - The test uses a stateful **mock database**, not a PostgreSQL server; it does not prove SQL migration correctness, RLS, or live worker startup.
 - It deliberately asserts that provisional results have zero confirmed marks in the fixture and does not write to `spark_exam_attempts.score`.
 - Before production: apply migrations to an isolated staging database, run real role/lease contention and SQL tests, validate persisted response snapshot schema and hashes, populate calibrated rubrics, then implement server-owned final publication.
+
+## Source-calibrated Physics Q1(a) advisory checker
+- Added `physicsReciprocalTableV2.js` for SPARK Physics practice 1 Q1(a) based on the real table, 1 method mark and accuracy allocations 2+2+1.
+- Supports the source-accepted one-decimal approximations and unscaled cm^-3 inverse-volume values for the three blank cells; missing/incorrect responses remain unresolved rather than being auto-denied.
+- This narrow checker is advisory and **is not wired into live marking**; numeric proximity alone does not independently confirm a full script. Five tests added, new CI pending.
