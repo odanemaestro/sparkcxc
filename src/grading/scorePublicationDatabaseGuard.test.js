@@ -5,7 +5,7 @@ const migration=fs.readFileSync(path.join(process.cwd(),"supabase","migrations",
  "20261018170500_paper2_final_score_publication_guard.sql"),"utf8");
 
 test("server saves English A / Integrated Science Paper 2 responses without certifying browser scores",()=>{
- expect(migration).toContain("v_nullable_written:=v_row.paper='02'");
+ expect(migration).toMatch(/v_nullable_written\s*:=\s*v_row\.paper='02'/);
  expect(migration).toContain("'english-a','integrated-science'");
  expect(migration).toContain("when v_nullable_written then null else p_score");
  expect(migration).toContain("'server-unverified-written-practice'");
