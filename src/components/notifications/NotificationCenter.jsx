@@ -8,6 +8,7 @@ import { getNotificationRoute } from "./notificationRouting";
 import PushNotificationSettings from "./PushNotificationSettings";
 
 const TYPE_META = {
+  new_course_added: { icon: "✦", tone: "teal", label: "New course" },
   booking_created: { icon: "📅", tone: "teal", label: "Booking request" },
   booking_confirmed: { icon: "✓", tone: "green", label: "Booking confirmed" },
   booking_declined: { icon: "×", tone: "red", label: "Booking declined" },
