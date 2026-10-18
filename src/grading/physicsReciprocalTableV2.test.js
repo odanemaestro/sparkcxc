@@ -25,3 +25,16 @@ test("partial and incorrect entries cannot become false zero marks",()=>{
  expect(r.suggestedMarks).toBe(2);
  expect(r.unresolvedMarks).toBe(4);
 });
+
+test("nearby incorrect values are not accepted under rounding allowance",()=>{
+ const r=evaluatePhysicsReciprocalTable({response:{table:{"1:2":"8.38","3:2":"5.04","5:2":"3.38"}}});
+ expect(r.suggestedMarks).toBe(0);
+ expect(r.unresolvedMarks).toBe(6);
+});
+test("Physics exam response key preserves actual table coordinates",()=>{
+ const p=physics.questions[0].parts[0];
+ const blanks=p.table.rows.flatMap((row,rowIndex)=>row.flatMap((cell,colIndex)=>cell===""?[rowIndex+":"+colIndex]:[]));
+ expect(blanks).toEqual(["1:2","3:2","5:2"]);
+ const result=evaluatePhysicsReciprocalTable({response:{table:Object.fromEntries(blanks.map(k=>[k,"5.0"]))}});
+ expect(result.criteria.slice(1).map(c=>c.key)).toEqual(blanks);
+});
