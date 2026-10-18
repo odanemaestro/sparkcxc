@@ -60,7 +60,7 @@ test("historical Paper 2 allows written answers and shows actual authored rubric
  fireEvent.change(entry,{target:{value:"A registered company follows national company law."}});
  fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
  expect(screen.getAllByText(/SPARK model answer/).length).toBeGreaterThan(0);
- expect(screen.getByText(/This sitting currently offers SPARK model answers and rubrics/)).toBeTruthy();
+ expect(screen.getByText(/Question wording and worked solutions come from your uploaded Paper 2 transcription/)).toBeTruthy();
 });
 test("January 2026 archive route goes to the already implemented live pilot exam",()=>{
  const open=jest.fn();
@@ -71,39 +71,23 @@ test("January 2026 archive route goes to the already implemented live pilot exam
  expect(open).toHaveBeenCalledTimes(1);
 });
 
-test("older Paper 2 accepts valid option selections and requests server-only provisional examiner scoring",async()=>{
+test("older source transcription supports optional questions without enabling uncalibrated AI scoring",()=>{
  const old1=process.env.REACT_APP_SERVER_MARKING;
  const old2=process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING;
  process.env.REACT_APP_SERVER_MARKING="true";
  process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING="true";
  try{
-  const rpc=jest.fn(async(name)=>{
-   if(name==="spark_start_exam_attempt")return {data:[{attempt_id:"historical-written-attempt"}],error:null};
-   if(name==="spark_submit_exam_attempt")return {data:[{attempt_id:"historical-written-attempt"}],error:null};
-   if(name==="spark_enqueue_marking")return {data:{id:"historical-job",status:"queued"},error:null};
-   throw Error("Unexpected RPC "+name);
-  });
+  const rpc=jest.fn();
   render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}
-    userId="historical-writer" supabase={{rpc}}/>);
+   userId="historical-writer" supabase={{rpc}}/>);
   fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2005"}});
   fireEvent.click(screen.getByRole("button",{name:/2005 May\/June.*Paper 2.*Written answers and mark schemes/}));
-  expect(screen.getByText(/Question 4 or 5/)).toBeInTheDocument();
   fireEvent.change(screen.getByLabelText("Question 4 or 5"),{target:{value:"5"}});
   fireEvent.change(screen.getAllByRole("textbox")[0],{target:{value:"A lawful organisation must be registered."}});
   fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
-  fireEvent.click(screen.getByRole("button",{name:"Request detailed AI practice marking"}));
-  await waitFor(()=>expect(rpc).toHaveBeenCalledWith("spark_start_exam_attempt",
-    expect.objectContaining({p_bank_version:"pob-archive-v1-pob-p2-2005-mj",
-       p_metadata:expect.objectContaining({
-        paper_id:"POB-P2-2005-MJ",selected_questions:[1,2,3,5,6,8]
-       })})));
-  await waitFor(()=>expect(rpc).toHaveBeenCalledWith("spark_submit_exam_attempt",
-    expect.objectContaining({p_score:null,p_max_score:100,
-      p_response_snapshot:expect.objectContaining({
-       "POB-P2-2005-MJ:Q1:a":"A lawful organisation must be registered."
-      })})));
-  await waitFor(()=>expect(rpc).toHaveBeenCalledWith("spark_enqueue_marking",
-    {p_attempt_id:"historical-written-attempt"}));
+  expect(screen.queryByRole("button",{name:"Request detailed AI practice marking"})).not.toBeInTheDocument();
+  expect(screen.getAllByText(/SPARK model answer/).length).toBeGreaterThan(0);
+  expect(rpc.mock.calls.filter(([name])=>name==="spark_start_exam_attempt"||name==="spark_submit_exam_attempt")).toHaveLength(0);
  }finally{
   if(old1===undefined)delete process.env.REACT_APP_SERVER_MARKING;
   else process.env.REACT_APP_SERVER_MARKING=old1;
@@ -170,4 +154,15 @@ test("approved owner supplied SVGs appear on historical Paper 1 questions",()=>{
  expect(diagram).toBeInTheDocument();
  expect(diagram.getAttribute("src")).toMatch(/^data:image\/svg\+xml/);
  expect(diagram).toHaveAttribute("alt","Diagram for question 10");
+});
+
+test("owner supplied 2015 historical Paper 2 shows real written prompts and worked answers after submission",()=>{
+ render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2015"}});
+ fireEvent.click(screen.getByRole("button",{name:/2015 May\/June.*Paper 2.*Written answers/}));
+ expect(screen.getAllByText(/Define EACH of the following business concepts:/).length).toBeGreaterThan(0);
+ expect(screen.getByText(/Owner-supplied numbered questions and detailed worked answers/)).toBeInTheDocument();
+ fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
+ expect(screen.getByText(/Profit is the amount by which a business/)).toBeInTheDocument();
+ expect(screen.queryByRole("button",{name:/Request detailed AI practice marking/})).not.toBeInTheDocument();
 });
