@@ -69,7 +69,7 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistori
           <p>Read and practise the original questions from this source. No marks are awarded until the answer-key review is complete.</p>
           {source.id==="FNH-P1-2004-MJ"&&<p>Questions 46–47: possible choices found in other examination years, but the original scan does not show their options.</p>}
           {source.id==="FNH-P1-2005-MJ"&&<p>The supplied scan ends at Question 53; Questions 54–60 are missing.</p>}
-          <button type="button" className="fnh-outline" onClick={()=>onReviewHistorical(source.id)}>Review source questions (unscored) <FnhNavArrow/></button>
+          <button type="button" className="fnh-outline" onClick={()=>onReviewHistorical(source.id)}>Practise questions and review score <FnhNavArrow/></button>
         </>:<p>Question and marking checks pending</p>}
       </article>)}</div>
     </>}
