@@ -25,6 +25,9 @@ export function auditPobOwnerPaper2Calibration(record){
    if(ids.has(id))issues.push(id+":duplicate");
    ids.add(id);
    if(!p.prompt?.trim()||!p.modelAnswer?.trim())issues.push(id+":text_or_answer_missing");
+   // A text transcription cannot by itself authenticate a printed source figure.
+   if(/\\b(?:figure|diagram|graph|chart|table)\\s*(?:\\d+|below|above|provided)\\b/i.test([q.context,p.prompt].filter(Boolean).join(" ")))
+    issues.push(id+":original_visual_needs_qa");
    if(!Array.isArray(p.criteria)||p.criteria.length===0)issues.push(id+":rubric_absent_or_mark_mismatch");
    if(p.criteria?.some(c=>!c.rule?.trim()||!Number.isInteger(c.marks)||c.marks<=0))
     issues.push(id+":invalid_criterion");
