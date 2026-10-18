@@ -343,9 +343,15 @@ function impliedDepends(criteria, c) {
  */
 function readValue(response, part) {
   const text = fieldText(response, "answer");
-  const values = numbersIn(text);
+  // A guess between distinct numerical alternatives has no trustworthy
+  // source value for error-carried-forward marking.
+  if (/\b(?:or|either)\b/i.test(text) && numbersIn(text).length > 1) return null;
+  const labelled = [...text.matchAll(/\b(?:final\s+answer|answer|ans)\s*(?:is\s+|[:=]\s*)([^\n;]+)/gi)];
+  if (labelled.length > 1) return null;
+  const source = labelled.length ? labelled[0][1] : text;
+  const values = numbersIn(source);
   if (values.length && Number.isFinite(values[0])) return values[0];
-  const r = check(text, { type: "numeric", value: 0, tolerance: Infinity });
+  const r = check(source, { type: "numeric", value: 0, tolerance: Infinity });
   return r.got;
 }
 
