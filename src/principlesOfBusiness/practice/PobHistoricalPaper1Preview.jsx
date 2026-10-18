@@ -1,4 +1,5 @@
 import React,{useEffect,useMemo,useState} from "react";
+import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {buildPobHistoricalP1Exam} from "../data/pobHistoricalPaper1Batch1Exam";
 
 const CHOICES=["A","B","C","D"];
@@ -7,13 +8,14 @@ const read=paperId=>{try{return JSON.parse(localStorage.getItem(key(paperId))||"
 const attemptKey=paperId=>key(paperId)+":attempt";
 const readAttempt=paperId=>{try{const saved=JSON.parse(localStorage.getItem(attemptKey(paperId))||"null");return saved&&Number.isFinite(saved.deadline)&&saved.deadline>0?saved:null}catch{return null}};
 
-export default function PobHistoricalPaper1Preview({record}){
+export default function PobHistoricalPaper1Preview({record,userId,supabase}){
  const paper=useMemo(()=>buildPobHistoricalP1Exam(record),[record]);
  const questions=paper.questions;
  const ready=questions.length===60&&questions.every(q=>q.options.length===4);
  const [initialAttempt]=useState(()=>readAttempt(record.id));
  const [started,setStarted]=useState(()=>Boolean(initialAttempt));
  const [index,setIndex]=useState(0);
+ const recorded=React.useRef(new Set());
  const [responses,setResponses]=useState(()=>read(record.id));
  const [review,setReview]=useState(()=>Boolean(initialAttempt?.review||initialAttempt?.deadline<=Date.now()));
  const [deadline,setDeadline]=useState(()=>initialAttempt?.deadline||0);
@@ -33,6 +35,11 @@ export default function PobHistoricalPaper1Preview({record}){
  const clock=seconds=>String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
  const graded=questions.filter(q=>q.scoringEligible);
  const score=graded.filter(q=>responses[q.number]===q.answer).length;
+ useEffect(()=>{
+  if(!review||!deadline||!userId||!supabase?.rpc||recorded.current.has(deadline))return;
+  recorded.current.add(deadline);
+  recordSubjectActivity({supabase,activity:{subjectId:"principles-of-business",activityKey:"exam:pob-historical-paper1:"+record.id+":"+deadline,activityType:"exam",title:"Principles of Business: "+record.label,completed:true,score:null,maxScore:null,percent:null,metadata:{paper:"01",source:"historical-cxc-archive",paper_id:record.id,provisional_score:score,provisional_max:graded.length,excluded_questions:paper.excluded,grading_status:"provisional"}}}).then(result=>{if(result?.error||result?.skipped)recorded.current.delete(deadline)}).catch(()=>recorded.current.delete(deadline));
+ },[review,deadline,userId,supabase,record.id,record.label,score,graded.length,paper.excluded]);
  return <section className="pob-archive-exam pob-source-paper" aria-label="Source-backed historical Paper 1 question practice">
    {!started?<><h3>{record.source.year} {record.source.sitting==="JAN"?"January":"May/June"} · Paper 1 examination</h3>
      <p>All 60 question texts and four options from the supplied transcription are presented in printed order. The exam uses SPARK’s timed navigator, saved answers and end-of-paper review. Original diagram artwork and some source phrasing still require checking.</p>

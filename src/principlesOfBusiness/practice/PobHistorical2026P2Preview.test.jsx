@@ -30,7 +30,8 @@ describe("POB January 2026 historical exam end-to-end preview",()=>{
   fireEvent.click(screen.getByRole("button",{name:"Submit responses"}));
   await waitFor(()=>expect(screen.getByText(/32 responses submitted/)).toBeTruthy());
   expect(screen.getByText(/No score has been invented for free-text responses/)).toBeTruthy();
-  expect(rpc).not.toHaveBeenCalled();
+  expect(rpc).toHaveBeenCalledWith("spark_record_subject_progress",expect.objectContaining({p_subject_id:"principles-of-business",p_activity_type:"exam",p_score:null}));
+  expect(rpc.mock.calls.filter(([name])=>/server_exam_attempt|grade_exam/i.test(name))).toHaveLength(0);
  });
  test("historical preview stores answers without requesting an authenticated marking attempt",()=>{
   const rpc=jest.fn();
