@@ -60,3 +60,13 @@ Run the full test suite and build before merge.
 - This batch does NOT yet contain a concrete PostgreSQL queue adapter, Edge Function, server proof verification, deployed migration, or production integration.
 - Six regression tests added but not yet executed. CI and integration tests are required.
 - Follow current Supabase Edge Function resource limits and process long written scripts in bounded jobs.
+
+## Batch 4 continuation: private queue schema (not deployed)
+- Migration: `20261018190000_marking_v2_private_job_queue.sql`.
+- Private schema and RLS on grading jobs. No grants for student-facing roles.
+- Unique attempt/rubric key prevents duplicate queued jobs.
+- Transactional claim with expiry, lease-token fencing, bounded attempts and bounded result payload.
+- Finish function accepts only retry, provisional or failed. No final score or publication SQL is present.
+- No automatic enqueue trigger yet. The worker storage adapter and server-only execution still need implementation.
+- Migration is committed only to the feature branch and has **not** been applied to production.
+- Before rollout: run SQL migration in staging, inspect privilege grants and function owners, check retry races and expired lease behaviour, exercise service JWT authorization, and complete server-side submission validation.
