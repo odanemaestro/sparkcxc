@@ -195,7 +195,7 @@ export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,
   <div className="pob-exam-nav"><button type="button" onClick={record?()=>setSelected(null):onBack}>← {record?"All historical papers":"Practice home"}</button><span>PRINCIPLES OF BUSINESS · HISTORICAL ARCHIVE</span></div>
   <header className="pob-exam-card pob-exam-intro"><span className="pob-exam-kicker">CSEC PRINCIPLES OF BUSINESS</span>
    <h1>{record?record.label:"Historical past papers"}</h1>
-   <p>{record?"Original source identity preserved. SPARK-produced answer guidance is provided for practice.":"Browse all 46 supplied historical source papers. Eleven Paper 1 sittings now contain 60 written stems and A–D options, with diagrams or disputed keys clearly flagged. Others remain reference material rather than misleading empty simulations."}</p>
+   <p>{record?"Original source identity preserved. SPARK-produced answer guidance is provided for practice.":"Browse all 46 supplied historical source papers. Nineteen Paper 1 sittings now contain 60 written stems and A–D options, with diagrams or disputed keys clearly flagged. The incomplete 2018 Paper 1 stays reference-only because original questions 53–57 are missing."}</p>
   </header>
   {record?<><div className="pob-archive-source"><strong>{record.source.filename}</strong><span>{record.source.pages} source pages · {record.source.year}</span>
    {record.source.reclassifiedFromPaper1&&<p>This original is Paper 2 although the supplied filename says Paper 1.</p>}

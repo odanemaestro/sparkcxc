@@ -37,10 +37,10 @@ test("January 2023 P1 is a real timed 60-item original source exam, not an answe
  fireEvent.click(screen.getByRole("button",{name:"Submit and review"}));
  expect(screen.getByText(/Provisional answer comparison/)).toBeInTheDocument();
 });
-test("undigitised historical Paper 1 never presents anonymous A-D slots as a finished simulation",()=>{
+test("incomplete 2018 historical Paper 1 never presents anonymous A-D slots as a finished simulation",()=>{
  render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
- fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2015"}});
- fireEvent.click(screen.getByRole("button",{name:/2015 May\/June.*Paper 1.*Answer-key reference/}));
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2018"}});
+ fireEvent.click(screen.getByRole("button",{name:/2018 May\/June.*Paper 1.*Answer-key reference/}));
  expect(screen.getByText(/Paper 1 · Source-text incomplete/)).toBeInTheDocument();
  expect(screen.getByText(/An answer key alone is not a simulated examination/)).toBeInTheDocument();
  expect(screen.getByText(/Use optional answer sheet with your own original paper/)).toBeInTheDocument();
@@ -158,4 +158,16 @@ test("Paper 1 timed attempt survives remount without granting a fresh timer",()=
  expect(JSON.parse(window.localStorage.getItem("spark:pob:source-questions:POB-P1-2002-MJ:attempt")).review).toBe(true);
  fireEvent.click(screen.getByRole("button",{name:"Try again"}));
  expect(window.localStorage.getItem("spark:pob:source-questions:POB-P1-2002-MJ:attempt")).toBeNull();
+});
+
+test("approved owner supplied SVGs appear on historical Paper 1 questions",()=>{
+ const {container}=render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2015"}});
+ fireEvent.click(screen.getByRole("button",{name:/2015 May\/June.*Paper 1.*60-question text practice/}));
+ fireEvent.click(screen.getByRole("button",{name:"Start 60-question Paper 1"}));
+ fireEvent.click(screen.getByRole("button",{name:"10"}));
+ const diagram=container.querySelector(".pob-source-diagram img");
+ expect(diagram).toBeInTheDocument();
+ expect(diagram.getAttribute("src")).toMatch(/^data:image\/svg\+xml/);
+ expect(diagram).toHaveAttribute("alt","Diagram for question 10");
 });

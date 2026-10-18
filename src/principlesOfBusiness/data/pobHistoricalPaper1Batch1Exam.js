@@ -4,6 +4,15 @@
 import {POB_BATCH1_P1_BY_ID} from "./pobHistoricalPaper1Batch1Source";
 import {POB_HIST_2023_JAN_FULL_60,verifyPobHistorical2023FullPaper} from "./pobHistorical2023JanP1Full";
 
+import batch2_2015_MJ from "./pobHistoricalP1OwnerBatch2_2015_MJ";
+import batch2_2016_MJ from "./pobHistoricalP1OwnerBatch2_2016_MJ";
+import batch2_2017_MJ from "./pobHistoricalP1OwnerBatch2_2017_MJ";
+import batch2_2020_JAN from "./pobHistoricalP1OwnerBatch2_2020_JAN";
+import batch2_2020_MJ from "./pobHistoricalP1OwnerBatch2_2020_MJ";
+import batch2_2021_MJ from "./pobHistoricalP1OwnerBatch2_2021_MJ";
+import batch2_2022_JAN from "./pobHistoricalP1OwnerBatch2_2022_JAN";
+import batch2_2024_MJ from "./pobHistoricalP1OwnerBatch2_2024_MJ";
+const POB_BATCH2_P1_BY_ID=Object.freeze(Object.fromEntries([batch2_2015_MJ,batch2_2016_MJ,batch2_2017_MJ,batch2_2020_JAN,batch2_2020_MJ,batch2_2021_MJ,batch2_2022_JAN,batch2_2024_MJ].map(p=>[p.id,p])));
 const LETTERS=["A","B","C","D"];
 const bankRows=bank=>[...(bank.questions||bank.entries||bank.proposedEntries||[])];
 const choice=row=>row?.proposedOption||row?.answer||row?.correctOption||row?.correctAnswer||null;
@@ -12,7 +21,7 @@ const academicConcern=(row,bank)=>Boolean(
  row?.uncertainty||row?.issue||bank.answerReviewNotes?.[row?.number]||
  /disputed|missing|uncertain|source-question-missing/i.test(String(row?.status||row?.academicStatus||""))
 );
-export const getPobHistoricalP1Source=id=>POB_BATCH1_P1_BY_ID[id]||
+export const getPobHistoricalP1Source=id=>POB_BATCH1_P1_BY_ID[id]||POB_BATCH2_P1_BY_ID[id]||
  (id==="POB-P1-2023-JAN"?POB_HIST_2023_JAN_FULL_60:null);
 
 export function buildPobHistoricalP1Exam(record){
