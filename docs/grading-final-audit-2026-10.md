@@ -19,6 +19,12 @@ The final gate resides in `src/grading/finalExamReleaseAudit.js`. Regression cov
 
 The Paper 2 scoring interface differs between subjects (for example, `score` vs. `confirmedMarks`). The final audit consumes explicitly reconciled evidence, instead of guessing unprovided status fields and silently announcing a final score. Integrating this release gate into every possible publishing path is a separate deployment concern; this batch's tests prove only the paths and fixtures exercised.
 
+## Verified Paper 1 source-bank findings
+
+The final CI run inspected all **1,678** raw Paper 1 source records. It found **one invalid answer key**, `CXC-2009-MJ-Q48`; no empty answer options, duplicate answer options, or duplicate source IDs were detected in this archive. The source record is **not** automatically corrected because the original source answer must be checked. The generated scored 60-question examination passes the stronger option and answer-key validations; the invalid record is ineligible for generation.
+
+The Paper 1 bank's source-quality backlog therefore remains **1 record**, separate from scored examination readiness. Verify `CXC-2009-MJ-Q48` against its actual source paper before setting an answer key. Do not guess or silently substitute one.
+
 ## What remains after this cycle
 
 Further cases should be **defect-driven** rather than another unbounded series of implementation batches. Unresolved valid synonyms, incomplete historical source verification, image/drawing evidence and nuanced essay assessment can still require rubric-specific updates. Reports and dashboards must preserve these caveats; do not claim universal examiner-equivalent marking without independently verified reference cases.
