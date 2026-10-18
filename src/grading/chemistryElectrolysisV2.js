@@ -27,9 +27,11 @@ function finalLine(input){
  let line=declarations.length?declarations[0][1]:
   text.split(/[\n;]/).map(s=>s.trim()).filter(Boolean).at(-1)??"";
  if(/\b(?:or|versus|either)\b/i.test(line))return null;
- line=line.replace(/^\s*(?:charge|q|mass|m)\s*=\s*/i,"")
-  .replace(/^\s*=\s*/,"").trim();
- return line;
+ line=line.replace(/^\s*(?:charge|q|mass|m)\s*=\s*/i,"").trim();
+ // A normal Chemistry textarea contains worked equations: Q=It=...=2880 C
+ // or mass=...=0.946 g. The last equality is the declared result.
+ if(line.includes("="))line=line.slice(line.lastIndexOf("=")+1);
+ return line.replace(/^\s*=\s*/,"").trim();
 }
 const finalNumber=(raw,unit)=>{
  const line=finalLine(raw);
@@ -89,7 +91,8 @@ export function evaluateChemistryElectrolysisCopperMass({
  const text=compact(response),source=candidateCharges(previousChargeResponse);
  const electronChains=extractChain(response,"96500");
  const eChain=electronChains.find(x=>
-  close(x.numerator,source.charge,0.001)&&consistent(x.result,x.numerator/96500));
+  (close(x.numerator,2880,0.001)||close(x.numerator,source.charge,0.001))
+  &&consistent(x.result,x.numerator/96500));
  const acceptedElectrons=eChain?.result??null;
  const copperChains=extractChain(response,"2");
  const cuChain=copperChains.find(x=>
@@ -105,7 +108,8 @@ export function evaluateChemistryElectrolysisCopperMass({
  const direct=actual!==null&&reference.some(n=>close(actual,n,0.00049));
  // Follow-through is candidate evidence ONLY if the earlier response
  // clearly shows a charge and the chain reuses it consistently.
- const followThrough=source.followThrough&&!!eChain&&!!cuChain&&methodMass&&
+ const followThrough=source.followThrough&&!!eChain&&
+  close(eChain.numerator,source.charge,0.001)&&!!cuChain&&methodMass&&
   roundedCopperMass(source.charge).some(expected=>close(actual,expected,0.0015));
  return result(questionId+":b:ii",[
   candidate("C1-electron-moles",!!eChain,"charge-over-faraday-constant"),
