@@ -182,3 +182,18 @@ export function fnhHistoricalPaper1Reader(sourceId){
   scored:false,verifiedKeys:false
  });
 }
+
+// Provisional practice keys are separate from the official examination release gate.
+// Only source-checked, renderable questions with an A-D proposal can receive
+// practice comparison credit. Never label these CXC-verified results.
+export function fnhHistoricalPaper1PracticeKeys(sourceId){
+ const source=FNH_SUPPLIED_ARCHIVE.find(x=>x.id===sourceId&&x.paper===1);
+ if(!source||source.sourceIdentityVerified===false||source.sourceYearVerified===false)return Object.freeze({});
+ const renderable=new Set((fnhHistoricalPaper1Reader(sourceId)?.questions||[]).map(q=>q.number));
+ const rows=transcriptionRecords[source.year]||[];
+ return Object.freeze(Object.fromEntries(rows.filter(q=>
+   renderable.has(q.number)&&/^[ABCD]$/.test(String(q.proposedAnswer||"")) &&
+   !/requires-independent-key-review|disputed|uncertain|missing/i.test(String(q.keyReviewStatus||"")) &&
+   q?.keyDispute!==true && q?.answerConflict!==true
+ ).map(q=>[q.number,{answer:q.proposedAnswer,explanation:q.explanation||""}])));
+}
