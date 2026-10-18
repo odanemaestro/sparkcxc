@@ -66,7 +66,7 @@ test("historical totals and normal-scoring fallback remain intact",()=>{
  const result=gradeFnhWrittenPaper([q18],answers);
  expect(result.maxMarks).toBe(16);
  expect(result.confirmedMarks).toBe(4);
- expect(result.assessedMarks).toBeNull();
+ expect(result.assessedMarks).toBe(4);
  expect(result.unresolvedMarks).toBe(0);
  const standard=score(FNH_HISTORICAL_P2_2005.questions[0].items.find(p=>p.id==="d"),
    "increased thirst; frequent urination");
