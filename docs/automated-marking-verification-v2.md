@@ -96,3 +96,11 @@ Run the full test suite and build before merge.
 - This is a server-side library, not a deployed Edge Function, runtime scheduler or automatically invoked submission hook.
 - No grading migrations were applied. No production publication path was modified.
 - Before activation: provide server runtime credentials securely, test with a staging DB, populate approved rubric criteria, reconcile response schema/IDs and run the project test/build suite.
+
+## Batch 5 start: constrained objective marking candidates
+- `objectiveMarkingV2.js` evaluates explicitly configured one-mark exact values and numeric answers with numeric tolerance.
+- Outputs are **advisory**, not trusted or independently corroborated, and never publish marks.
+- Nonmatching prose, absent answers, units within numeric strings, and extended essays remain unresolved.
+- `shadowPaper2WorkerV2.js` now observes the count of candidate objective decisions; reconciliation still receives no trusted automatic marks.
+- Four dedicated objective regression tests added. Not executed in this session.
+- Next: canonical schema mapping of actual question part IDs, trustworthy independent server calculation checks, rubric quality review, and staging runtime execution.
