@@ -83,7 +83,7 @@ export function gradePobHistoricalArithmetic(paperId,partKey,response){
  const s=String(response||"").toLowerCase().replace(/,/g,"").replace(/\s+(?=\d{3}\b)/g,"");
  const compact=s.replace(/\s/g,"");
  const number=n=>new RegExp("(?<![0-9])"+n+"(?![0-9])").test(compact);
- const negative2000=/-2000\b/.test(compact)||(/\bdeficit\b/.test(s)&&number("2000"));
+ const negative2000=/-2000(?![0-9])/.test(compact)||(/\bdeficit\b/.test(s)&&number("2000"));
  if(partKey==="Q9:a.ii"){
   const method=number("24000")&&number("26000")&&
    (/[-−]/.test(s)||/subtract|less|minus|difference/.test(s));
@@ -94,7 +94,7 @@ export function gradePobHistoricalArithmetic(paperId,partKey,response){
   const visible=negative2000;
   const invisible=number("5000")||(number("20000")&&number("15000")&&/[-−]/.test(s));
   const balance=(number("3000")&&(/surplus/.test(s)||/\+3000\b/.test(compact)))||
-   (/current.account/.test(s)&&number("3000")&&!negative2000);
+   (/current[ -]?account/.test(s)&&number("3000")&&!negative2000);
   return {maximum:3,marks:Number(visible)+Number(invisible)+Number(balance),
    criteria:[Number(visible),Number(invisible),Number(balance)],exact:true};
  }
