@@ -3,7 +3,7 @@
  * Alternate phrasings are explicit teaching-domain equivalents rather than
  * general semantic guesses. Unmatched evidence remains unresolved.
  */
-export const FNH_P2_RUBRIC_CALIBRATION_VERSION="fnh-p2-source-calibration-v1";
+export const FNH_P2_RUBRIC_CALIBRATION_VERSION="fnh-p2-source-calibration-v2";
 
 const canonicalWords={
   foods:"food",drinks:"drink",beverages:"drink",eating:"eat",consumed:"consume",
@@ -44,12 +44,19 @@ const stop=new Set("a an the and or of at in on for to by from with is are was w
 // facts in historical and original source banks. They are never universal
 // stand-alone evidence for unrelated model points.
 const preciseAlternatives=[
+  // These acronyms are valid named organisations in the actual 2018
+  // community-nutrition question. Do not require students to write full names.
+  {source:/Caribbean Public Health Agency\s*\(CARPHA\)/i,accept:/\b(?:CARPHA|Caribbean Public Health Agency)\b/i},
+  {source:/Caribbean Food and Nutrition Institute\s*\(CFNI\)/i,accept:/\b(?:CFNI|Caribbean Food and Nutrition Institute)\b/i},
+  {source:/Ministry of Health and Wellness|public-health nutrition departments/i,
+    accept:/\b(?:Ministry of Health(?: and Wellness)?|MOHW|public.health nutrition department)\b/i},
+  {source:/partners such as PAHO or UNICEF/i,accept:/\b(?:PAHO|UNICEF|Pan American Health Organization)\b/i},
   {source:/increased thirst|polydipsia/i,accept:/\b(?:very thirsty|increased thirst|excessive thirst|polydipsia)\b/i},
   {source:/frequent urination|polyuria/i,accept:/\b(?:frequent urination|passing urine often|urinating frequently|polyuria)\b/i},
   {source:/unusual tiredness|fatigue/i,accept:/\b(?:tiredness|fatigue|extreme tiredness|always tired)\b/i},
   {source:/blurred vision/i,accept:/\b(?:blurred vision|blurry sight|blurred eyesight)\b/i},
   {source:/iron.deficiency an[ae]mia/i,accept:/\b(?:iron deficiency|iron.deficiency an[ae]mia|low iron|lack of iron)\b/i},
-  {source:/constipation|bowel movement/i,accept:/\b(?:constipation|regular bowel movements?|prevent constipation|softer stools?)\b/i},
+  {source:/constipation|bowel movement/i,accept:/\b(?:(?:prevent|prevents|preventing|reduce|reduces|relieve|relieves|avoid|avoids|ease|eases)\s+(?:\w+\s+){0,3}constipation|constipation\s+(?:prevention|relief)|regular\s+bowel\s+movements?|soft(?:er)?\s+stools?)\b/i},
   {source:/lower (?:ldl )?cholesterol/i,accept:/\b(?:reduce|lower|decrease)\s+(?:(?:bad|ldl)\s+)?cholesterol\b/i},
   {source:/liver contains dietary iron/i,accept:/\b(?:liver|organ meat).{0,42}\b(?:iron|hemoglobin|haemoglobin)\b/i},
   {source:/vitamin c.*absorp|absorp.*vitamin c/i,accept:/\bvitamin\s*c\b.{0,65}\b(?:iron|absorb|absorption)\b/i},
