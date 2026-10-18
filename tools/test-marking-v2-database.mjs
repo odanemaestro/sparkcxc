@@ -39,6 +39,20 @@ try{
  await assert.rejects(db.query("select spark_grading_private.enqueue_marking_job_v2($1)",[attempt]),/permission denied/);
  await db.exec("reset role");
  const claim=()=>db.query("select * from spark_grading_private.claim_marking_job_v2($1)",[first]);
+ // Confirm the same submitted snapshot and active rubric used by the worker's read query.
+ const loaded=(await db.query(`select a.id,a.subject_id,a.paper,a.rubric_version,
+   a.response_snapshot,a.response_snapshot_hash,
+   a.metadata->>'paper_id' as paper_id,r.criteria
+   from public.spark_exam_attempts a
+   join spark_grading_private.rubrics_v2 r
+     on r.subject_id=a.subject_id and r.rubric_version=a.rubric_version
+     and r.paper_id=a.metadata->>'paper_id' and r.active=true
+   where a.id=$1::uuid and a.status='submitted' and a.paper='02'
+     and a.rubric_version=$2::text`,[attempt,"rubric-fixture-v1"])).rows;
+ assert.equal(loaded.length,1,"a submitted attempt must load one authoritative rubric");
+ assert.deepEqual(loaded[0].response_snapshot,{q1:"water evaporates"});
+ assert.equal(loaded[0].criteria[0].maxMarks,2);
+ assert.equal(loaded[0].paper_id,"fixture-paper");
  const firstLease=(await claim()).rows[0];
  assert.equal(firstLease.attempt_id,attempt);
  assert.equal((await claim()).rows.length,0,"active lease must not double-claim");
