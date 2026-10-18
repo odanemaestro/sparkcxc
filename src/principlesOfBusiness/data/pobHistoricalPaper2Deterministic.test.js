@@ -10,8 +10,8 @@ const bank=id=>buildPobOwnerPaper2Bank(id,record(id).bank);
 const review=(id,responses={},selected=null)=>reviewPobHistoricalPaper2(responses,bank(id),selected||defaultPobArchiveSelection(bank(id)));
 const part=(result,question,key)=>result.questions.find(q=>q.number===question).parts.find(p=>p.part===key);
 
-test("four source-specific visual tasks use exactly their original rubric marks",()=>{
- expect(Object.keys(POB_P2_VISUAL_TASKS)).toHaveLength(4);
+test("six source-specific visual tasks use exactly their original rubric marks",()=>{
+ expect(Object.keys(POB_P2_VISUAL_TASKS)).toHaveLength(6);
  for(const [id,task] of Object.entries(POB_P2_VISUAL_TASKS)){
   const [paper,partKey]=id.split(":Q");
   const key="Q"+partKey;
@@ -94,4 +94,19 @@ test("all 20 historical papers remain 100-mark evidence-based without an AI prov
   expect(scored.assessedMarks).toBe(0);
   expect(scored.unresolvedMarks).toBe(0);
  }
+});
+
+test("2006 organisational source figure: direct span and correct reporting channel earn itemised marks",()=>{
+ const id="POB-P2-2006-MJ";
+ const span={kind:"org-span",fields:{count:"2",left:"Sales Supervisor North",right:"Sales Supervisor South"}};
+ const path={kind:"command-path",fields:{step1:"Managing Director",step2:"Marketing Manager",step3:"Sales Supervisor South",step4:"Sales Clerk"}};
+ expect(gradePobP2VisualTask(id,"Q4:c.ii",span).marks).toBe(2);
+ expect(gradePobP2VisualTask(id,"Q4:d.ii",path).marks).toBe(4);
+ const result=review(id,{"Q4:c.ii":span,"Q4:d.ii":path});
+ expect(part(result,4,"c.ii").assessedMarks).toBe(2);
+ expect(part(result,4,"d.ii").assessedMarks).toBe(4);
+ const missing={...path,fields:{...path.fields,step4:"Consumer"}};
+ expect(gradePobP2VisualTask(id,"Q4:d.ii",missing).marks).toBe(3);
+ const mistaken={...span,fields:{...span.fields,count:"8",right:"Sales Clerk"}};
+ expect(gradePobP2VisualTask(id,"Q4:c.ii",mistaken).marks).toBe(0);
 });
