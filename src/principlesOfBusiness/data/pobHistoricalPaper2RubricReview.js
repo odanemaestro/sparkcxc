@@ -7,7 +7,7 @@ import {gradePobHistoricalArithmetic,matchPobWrittenEvidence} from "./pobHistori
 // incorrect. AI is NOT part of this marking function.
 const normalize=text=>String(text??"").toLowerCase().replace(/[’‘]/g,"'")
  .replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");
-export const POB_HISTORICAL_RUBRIC_REVIEW_VERSION="pob-historical-p2-rubric-review-v2";
+export const POB_HISTORICAL_RUBRIC_REVIEW_VERSION="pob-historical-p2-rubric-review-v3";
 
 export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[]){
  if(!paper||!Array.isArray(paper.questions))throw new Error("historical_paper_missing");
@@ -38,17 +38,26 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
    else if(sameAsGuide){assessed=criteria.map(c=>c.marks);status="verified-model-match";}
    else if(arithmetic){assessed=criteria.map((c,i)=>arithmetic.criteria[i]?c.marks:0);status="calculation-verified";}
    else if(evidenced){
-    assessed=criteria.map((c,i)=>evidenced.confirmed.some(hit=>hit.criterion===i)?c.marks:null);
-    status=assessed.every(n=>n!==null)?"criterion-verified":"requires-rubric-assessment";
+    // Matching one response clause establishes at most one mark. Where
+    // the source criterion is worth several marks, its remaining marks need
+    // independently evidenced subcriteria. Do not invent full credit.
+    assessed=criteria.map((c,i)=>evidenced.confirmed.some(hit=>hit.criterion===i)
+      ?Math.min(1,c.marks):null);
+    status=assessed.every((n,i)=>n!==null&&n===criteria[i].marks)
+      ?"criterion-verified":"requires-rubric-assessment";
    }else{assessed=criteria.map(()=>null);status=visualTask?"diagram-input-required":"requires-rubric-assessment";}
    // Invalid or missing source criteria cannot become a final grade.
    if(!valid&&!blank){assessed=criteria.map(()=>null);status="requires-rubric-assessment";}
    confirmed=assessed.reduce((n,m)=>n+(m||0),0);
-   const unresolved=assessed.reduce((n,m,i)=>n+(m===null?criteria[i]?.marks||0:0),0);
-   const assessedMarks=assessed.every(n=>n!==null)&&valid?confirmed:null;
+   // Invalid or missing criteria still account for the full possible mark.
+   // Weighted, partially evidenced criteria also leave their balance pending.
+   const unresolved=blank?0:valid
+     ?Math.max(0,maxMarks-confirmed):maxMarks;
+   const assessedMarks=valid&&unresolved===0&&assessed.every(n=>n!==null)?confirmed
+     :blank&&valid?0:null;
    return {id,question:question.number,part:part.id,availableMarks:maxMarks,
     confirmedMarks:confirmed,unresolvedMarks:unresolved,assessedMarks,
-    status,
+    rubricComplete:valid,status,
     criteria:criteria.map((criterion,index)=>({
      id:id+":criterion-"+(index+1),rule:criterion.rule,availableMarks:criterion.marks,
      assessedMarks:assessed[index],alternatives:criterion.alternatives||[],
@@ -57,11 +66,12 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
   });
   return {number:question.number,availableMarks:Number(question.marks||question.maxMarks||0),
    confirmedMarks:parts.reduce((n,p)=>n+p.confirmedMarks,0),
+   unresolvedMarks:parts.reduce((n,p)=>n+p.unresolvedMarks,0),
    assessedMarks:parts.every(p=>p.assessedMarks!==null)?parts.reduce((n,p)=>n+p.assessedMarks,0):null,
    parts};
  });
  const parts=questions.flatMap(q=>q.parts);
- const fullyAssessed=parts.every(p=>p.assessedMarks!==null);
+ const fullyAssessed=parts.every(p=>p.assessedMarks!==null&&p.unresolvedMarks===0);
  const maximum=questions.reduce((n,q)=>n+q.availableMarks,0);
  const confirmedMarks=parts.reduce((n,p)=>n+p.confirmedMarks,0);
  const unresolvedMarks=parts.reduce((n,p)=>n+p.unresolvedMarks,0);
@@ -70,5 +80,6 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
   assessedMarks:fullyAssessed?confirmedMarks:null,fullyAssessed,
   answeredParts:parts.filter(p=>p.status!=="unanswered").length,
   totalParts:parts.length,unresolvedParts:parts.filter(p=>p.assessedMarks===null).length,
+  rubricIncompleteParts:parts.filter(p=>!p.rubricComplete).length,
   questions};
 }
