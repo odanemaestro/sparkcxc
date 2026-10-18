@@ -192,7 +192,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
       {gradingError&&<p role="status">{gradingError}</p>}
       {serverAttemptId&&<ServerMarkingReview supabase={supabase} attemptId={serverAttemptId} autoStart/>}
     </div>}
-   <small>{ownerBank?"Question wording and worked solutions come from your uploaded Paper 2 transcription. They are not official CXC keys.  ${ownerPilotReady?"This sitting has a source-aligned rubric for provisional practice assessment.":"Numerical marking remains disabled until its detailed rubric is reconciled."}":scoreEnabled?"This sitting is a pilot assessment using internally authored criteria, not an official CXC grade.":"This sitting currently offers SPARK model answers and rubrics. Online numerical marking is unavailable until the archive pilot is deployed."}</small>
+   <small>{ownerBank?<>Question wording and worked solutions come from your uploaded Paper 2 transcription. They are not official CXC keys. {ownerPilotReady?"This sitting has a source-aligned rubric for provisional practice assessment.":"Numerical marking remains disabled until its detailed rubric is reconciled."}</>:scoreEnabled?"This sitting is a pilot assessment using internally authored criteria, not an official CXC grade.":"This sitting currently offers SPARK model answers and rubrics. Online numerical marking is unavailable until the archive pilot is deployed."}</small>
   </>:<p>No question-level marking guidance is available in this archive entry.</p>}
  </section>;
 }
