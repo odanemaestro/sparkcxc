@@ -13,7 +13,7 @@ const SOURCES=Object.freeze({
 });
 const str=value=>typeof value==="string"?value:"";
 const simple=s=>str(s).toLowerCase().replace(/[−–—]/g,"-")
- .replace(/[×*]/g,"x").replace(/Δ/g,"d").replace(/\s+/g,"")
+ .replace(/[×*]/g,"x").replace(/[Δδ]/g,"d").replace(/\s+/g,"")
  .replace(/[⁻]/g,"-");
 function singleFinal(answer){
  const text=str(answer).trim();
