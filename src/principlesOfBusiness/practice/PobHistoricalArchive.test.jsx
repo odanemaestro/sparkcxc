@@ -294,3 +294,25 @@ test("organisation chart supports reporting links and saved structured answers",
  fireEvent.click(screen.getByRole("button",{name:/2014 May\/June.*Paper 2.*Written answers and mark schemes/}));
  expect(screen.getByLabelText("Top position")).toHaveValue("Manager");
 });
+
+
+test("Paper 2 distribution chain supports touch-style label placement and correction without AI",()=>{
+ const {container}=render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
+ fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2019"}});
+ fireEvent.click(screen.getByRole("button",{name:/2019 January.*Paper 2.*Written answers and mark schemes/}));
+ const editor=container.querySelector(".pob-visual-editor");
+ const bank=editor.querySelector(".pob-visual-bank");
+ fireEvent.click(within(bank).getByRole("button",{name:"Producer"}));
+ fireEvent.click(within(editor).getByRole("button",{name:"Place label in Box 1"}));
+ fireEvent.click(within(bank).getByRole("button",{name:"Retailer"}));
+ fireEvent.click(within(editor).getByRole("button",{name:"Place label in Box 2"}));
+ fireEvent.click(within(editor).getByRole("button",{name:"Remove Box 2"}));
+ fireEvent.click(within(bank).getByRole("button",{name:"Wholesaler"}));
+ fireEvent.click(within(editor).getByRole("button",{name:"Place label in Box 2"}));
+ fireEvent.click(within(bank).getByRole("button",{name:"Retailer"}));
+ fireEvent.click(within(editor).getByRole("button",{name:"Place label in Box 3"}));
+ fireEvent.click(within(bank).getByRole("button",{name:"Consumer"}));
+ fireEvent.click(within(editor).getByRole("button",{name:"Place label in Box 4"}));
+ fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
+ expect(screen.getByText("4 / 4 marks confirmed by SPARK")).toBeInTheDocument();
+});
