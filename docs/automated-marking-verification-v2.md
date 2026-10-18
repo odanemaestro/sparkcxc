@@ -139,3 +139,9 @@ Run the full test suite and build before merge.
 - Five regression tests added, not executed. These adapters grant no marking authority.
 - POB source structure still needs a verified inspection before an adapter is written. Do not guess response keys or exam structure.
 - All V2 adapters remain disconnected from live publication and require real-bank fixtures and validation.
+
+## POB manifest-gated staging adapter
+- `pobPaper2ManifestAdapterV2.js` requires an explicit source-reviewed manifest of question-part IDs, response keys, rubric version and mark ceilings.
+- Rejects duplicate IDs, duplicate response keys and inconsistent paper totals. It does not infer the historical paper's structure or publish marks.
+- Five regression tests added, not yet executed.
+- Real POB bank manifest population and source-response key inspection remain pending. No source matching or live grading integration has been claimed.
