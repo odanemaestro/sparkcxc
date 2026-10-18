@@ -14,14 +14,14 @@ function harness({missingRubric=false,expiredLease=false}={}){
   if(sql.includes("claim_marking_job_v2")){
    if(state.status!=="queued"&&state.status!=="retry")return {rows:[]};
    state.status="running";state.attempts++;
-   return {rows:[{job_id:jobId,attempt_id:attemptId,rubric_version:"v1",
+   return {rows:[{job_id:jobId,attempt_id:attemptId,rubric_version:"rubric-v1",
      attempts:state.attempts,lease_token:leaseId}]};
   }
   if(sql.includes("from public.spark_exam_attempts")){
    state.reads++;
    if(missingRubric)return {rows:[]};
    return {rows:[{id:attemptId,subject_id:"chemistry",paper_id:"practice-a",
-     rubric_version:"v1",response_snapshot:{q1:"evaporation"},
+     rubric_version:"rubric-v1",response_snapshot:{q1:"evaporation"},
      response_snapshot_hash:"stored-hash",
      criteria:[{id:"q1",maxMarks:2,acceptedPhrases:["evaporation"]}]}]};
   }
