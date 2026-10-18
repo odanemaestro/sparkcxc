@@ -1278,10 +1278,13 @@ export function activityPayloadFromInformationTechnologyEvent(event = {}) {
       activityType: "exam",
       title: event.paperTitle || `Information Technology ${paperType === "paper1" ? "Paper 1" : "Paper 2"}`,
       completed: true,
-      score: Number.isFinite(Number(event.score)) ? Number(event.score) : null,
+      score: event.score!==null&&typeof event.score==="number"&&Number.isFinite(event.score) ? event.score : null,
       maxScore: Number.isFinite(maxScore) && maxScore > 0 ? maxScore : null,
-      percent: Number.isFinite(Number(event.percent)) ? Number(event.percent) : null,
+      percent: event.percent!==null&&typeof event.percent==="number"&&Number.isFinite(event.percent) ? event.percent : null,
       metadata: {
+        ...(paperType==="paper2"?(event.paperReleaseMetadata||{}):{}),
+        confirmed_marks:event.confirmedMarks??null,
+        paper:paperType==="paper2"?"02":"01",
         source: "information_technology_practice",
         event_type: type,
         paper_type: paperType,
@@ -1319,11 +1322,11 @@ function informationTechnologyBackfillRows(paper1Results = [], paper2Results = [
     if (!result || typeof result !== "object") return;
     const paperId = String(result.paperId || result.paperTitle || "practice").trim();
     const key = `${paperType}:${paperId}`;
-    const score = Number(result.score);
-    const explicitPercent = Number(result.percent);
-    const percent = Number.isFinite(explicitPercent)
+    const score = result.score!==null&&result.score!==undefined?Number(result.score):null;
+    const explicitPercent = result.percent!==null&&result.percent!==undefined?Number(result.percent):null;
+    const percent = explicitPercent!==null&&Number.isFinite(explicitPercent)
       ? explicitPercent
-      : Number.isFinite(score) && maxScore > 0
+      : score!==null&&Number.isFinite(score) && maxScore > 0
         ? Math.round(score / maxScore * 100)
         : null;
     const when = result.completedAt || result.at || null;
@@ -1335,13 +1338,16 @@ function informationTechnologyBackfillRows(paper1Results = [], paper2Results = [
       activity_type: "exam",
       title: result.paperTitle || `Information Technology ${paperType === "paper1" ? "Paper 1" : "Paper 2"}`,
       completed: true,
-      score: Number.isFinite(score) ? score : null,
+      score: score!==null&&Number.isFinite(score) ? score : null,
       max_score: maxScore,
       percent,
       best_percent: percent,
       attempt_count: 1,
       occurred_at: when,
       metadata: {
+        ...(paperType==="paper2"?(result.paperReleaseMetadata||{}):{}),
+        confirmed_marks:result.confirmedMarks??null,
+        paper:paperType==="paper2"?"02":"01",
         source: "information_technology_local_backfill",
         paper_type: paperType,
         paper_id: paperId,
