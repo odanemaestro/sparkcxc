@@ -63,9 +63,9 @@ describe.each(cases)("Math coordinate geometry source variation",fixture=>{
   const bogus=c(fixture,"b",{answer:"(500,400)"});
   expect(bogus.suggestedMarks).toBe(0);
  });
- test("source distance formula, evaluated components and 5.00 give three candidates",()=>{
+ test("source distance method and 5.00 respect the assembled mark allocation",()=>{
   const response={answer:"5.00 units",working:fixture.sqrt+"; 16+9=25"};
-  const r=c(fixture,"c",{response, ...response});
+  const r=c(fixture,"c",response);
   expect(r.criteria.map(x=>x.candidateMarks)).toEqual(revised?[1,1]:[1,1,1]);
   expect(r.publishable).toBe(false);
  });
@@ -89,7 +89,7 @@ describe.each(cases)("Math coordinate geometry source variation",fixture=>{
 });
 test("unknown question or part IDs cannot activate the geometry checker",()=>{
  expect(()=>mark({questionId:"p2-q3-v8",partId:"a",response:{answer:"reflection in x-axis"}})).toThrow();
- expect(()=>mark({questionId:"p2-q3-v1",partId:"d",response:{answer:"5.00"}})).toThrow();
+ expect(()=>mark({questionId:"p2-q3-v1",partId:"e",response:{answer:"5.00"}})).toThrow();
 });
 
 
