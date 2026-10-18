@@ -38,28 +38,27 @@ export async function processGradingJob({store,grader,jobId,maxAttempts=3}={}){
  const job=validateGradingJob(lease.job);
  if(job.id!==jobId||!validId(lease.token)||job.status!=="running")
    throw new Error("Invalid lease");
+ if(job.attempts>maxAttempts){
+  await store.commit(job.id,lease.token,{status:"failed",reason:"retry-limit-exceeded"});
+  return {status:"failed"};
+ }
+ let output;
  try{
-  if(job.attempts>maxAttempts){
-    await store.commit(job.id,lease.token,{status:"failed",reason:"retry-limit-exceeded"});
-    return {status:"failed"};
-  }
-  // The grader must independently fetch the submitted response and rubric
-  // from trusted storage. Never pass caller-owned scores or rubric decisions.
-  const output=await grader({attemptId:job.attemptId,rubricVersion:job.rubricVersion});
-  const outcome=classifyGradingResult(output);
-  await store.commit(job.id,lease.token,{
-    ...outcome,
-    // No client-provided verified score is persisted by this orchestrator.
-    result:outcome.status==="failed"?null:output.reconciliation
-  });
-  return outcome;
+  // The grader independently fetches submitted responses and server rubric.
+  output=await grader({attemptId:job.attemptId,rubricVersion:job.rubricVersion});
  }catch(error){
   const terminal=job.attempts>=maxAttempts;
-  // Avoid persisting sensitive student responses or external service errors.
   await store.retry(job.id,lease.token,{
-   status:terminal?"failed":"retry",
-   reason:"worker-execution-error"
+   status:terminal?"failed":"retry",reason:"worker-execution-error"
   });
   return {status:terminal?"failed":"retry",reason:"worker-execution-error"};
  }
+ const outcome=classifyGradingResult(output);
+ // A failed final commit is a lease/DB error, not a grading error.
+ // Never retry with a lost token or report successful persistence.
+ await store.commit(job.id,lease.token,{
+  ...outcome,
+  result:outcome.status==="failed"?null:output.reconciliation
+ });
+ return outcome;
 }
