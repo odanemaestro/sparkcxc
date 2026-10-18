@@ -31,7 +31,7 @@ begin
       'new_course_added',
       v_title,
       v_course_name || ' is now available on SPARK. Explore the lessons and practise at your own pace.',
-      'subjects',
+      'dashboard',
       'Explore course',
       null,null,null,
       jsonb_build_object('subject_id',new.id,'subject_name',v_course_name,'announcement','new-course'),
