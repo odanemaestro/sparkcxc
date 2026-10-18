@@ -79,7 +79,17 @@ export default function PobHistoricalDiagramEditor({paperId,partKey,value,onChan
     </div>)}
    </div>
   </div>
-  <details className="pob-visual-precise" open={false}><summary>Precise labels and reporting connections</summary>
+  {Object.entries(task.fields).filter(([key])=>key.endsWith("Parent")).map(([key,field])=>
+   <fieldset className="pob-visual-connection" key={key} disabled={disabled}>
+    <legend>{field.label}</legend>
+    <div className="pob-visual-connection-options">
+     {field.choices.filter(Boolean).map(choice=><button type="button" key={choice}
+      disabled={disabled} aria-pressed={at(key)===choice}
+      onClick={()=>setField(key,at(key)===choice?"":choice)}>{choice}</button>)}
+    </div>
+   </fieldset>
+  )}
+  <details className="pob-visual-precise"><summary>Precise labels and reporting connections</summary>
   <div className="pob-visual-fields">
    {Object.entries(task.fields).map(([key,field])=><label key={key}>
     <span>{field.label}</span>
