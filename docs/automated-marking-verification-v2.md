@@ -150,3 +150,10 @@ Run the full test suite and build before merge.
 - Added `paper2RealBankFixturesV2.test.js` to import the authored Physics practice 1 JSON and all IT Paper 2 JSON banks directly, then assert criteria counts and paper-level mark totals.
 - This supplements synthetic adapter tests with actual repository question structures; no new grades are published.
 - GitHub PR checks were running during this batch. Do not describe results as passed until the workflow concludes.
+
+## End-to-end grading verification (mock database)
+- `gradingPipelineEndToEndV2.test.js` exercises private enqueue -> atomic-style claim -> submission/rubric lookup -> advisory grader -> provisional persistence.
+- Additional cases guard against duplicate processing, lost lease writes, and enqueue without an active rubric.
+- The test uses a stateful **mock database**, not a PostgreSQL server; it does not prove SQL migration correctness, RLS, or live worker startup.
+- It deliberately asserts that provisional results have zero confirmed marks in the fixture and does not write to `spark_exam_attempts.score`.
+- Before production: apply migrations to an isolated staging database, run real role/lease contention and SQL tests, validate persisted response snapshot schema and hashes, populate calibrated rubrics, then implement server-owned final publication.
