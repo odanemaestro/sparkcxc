@@ -228,9 +228,11 @@ export function validatePaper1Exam(exam) {
 
 export function scorePaper1(questions, answers) {
   const rows = questions.map(q => {
-    const selected = answers[q.question_id] || "";
-    const correct = selected === q.correct_option;
-    return { question: q, selected, correct, unanswered: !selected };
+    const selected = String(answers?.[q.question_id] ?? "").trim().toUpperCase();
+    const expected = String(q.correct_option ?? "").trim().toUpperCase();
+    const validKey = ["A","B","C","D"].includes(expected);
+    const correct = validKey && selected !== "" && selected === expected;
+    return { question: q, selected, correct, unanswered: !selected, validKey };
   });
 
   const correct = rows.filter(r => r.correct).length;
@@ -255,4 +257,27 @@ export function scorePaper1(questions, answers) {
       .map(x => ({ ...x, percent: Math.round((x.correct / x.total) * 100) }))
       .sort((a, b) => a.percent - b.percent || b.total - a.total),
   };
+}
+
+
+/**
+ * An audit report rather than a destructive auto-correction. The original
+ * source question and its A-D answer mapping must stay intact.
+ */
+export function auditPaper1OptionIntegrity(questions=[]){
+  const invalidKeys=[],emptyOptions=[],duplicateOptions=[],duplicateIds=[];
+  const ids=new Set();
+  const normalize=value=>String(value??"").trim().replace(/\s+/g," ").toLowerCase();
+  for(const q of questions){
+    const id=String(q?.question_id||"");
+    if(ids.has(id))duplicateIds.push(id);
+    ids.add(id);
+    const key=String(q?.correct_option||"").trim().toUpperCase();
+    if(!["A","B","C","D"].includes(key))invalidKeys.push(id);
+    const options=["option_a","option_b","option_c","option_d"].map(field=>normalize(q?.[field]));
+    if(options.some(x=>!x))emptyOptions.push(id);
+    if(new Set(options).size<options.length)duplicateOptions.push(id);
+  }
+  return {total:questions.length,invalidKeys,emptyOptions,duplicateOptions,duplicateIds,
+    clean:![invalidKeys,emptyOptions,duplicateOptions,duplicateIds].some(rows=>rows.length)};
 }
