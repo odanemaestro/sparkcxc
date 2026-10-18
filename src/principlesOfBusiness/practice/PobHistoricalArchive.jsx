@@ -65,16 +65,6 @@ function HistoricalPaper1({record,userId,supabase}){
          </div>}
        </fieldset>;
      })}</div>
-     {submitted&&rubricReview&&<section className="pob-archive-marking-summary" aria-label="SPARK Paper 2 marking scheme results" role="status">
-      <strong>SPARK rubric review</strong>
-      <p>{rubricReview.assessedMarks!==null?"Confirmed score: "+rubricReview.assessedMarks+" / "+rubricReview.availableMarks+" marks":"Confirmed marks: "+rubricReview.confirmedMarks+" / "+rubricReview.availableMarks+". "+rubricReview.unresolvedParts+" written part(s) still require evidence-based assessment. This is not a final grade."}</p>
-      <small>Blank parts earn zero. Exact SPARK worked-answer matches can receive marks. Other valid wording stays pending rather than being automatically marked wrong. AI is optional, not the source of these decisions.</small>
-    </section>}
-    {submitted&&rubricReview&&<section className="pob-archive-marking-summary" aria-label="SPARK Paper 2 marking scheme results" role="status">
-     <strong>SPARK rubric review</strong>
-     <p>{rubricReview.assessedMarks!==null?"Confirmed score: "+rubricReview.assessedMarks+" / "+rubricReview.availableMarks+" marks":"Confirmed marks: "+rubricReview.confirmedMarks+" / "+rubricReview.availableMarks+". "+rubricReview.unresolvedParts+" written part(s) still require evidence-based assessment. This is not a final grade."}</p>
-     <small>Blank parts earn zero. Exact worked-answer matches receive authored marks. Valid alternative wording remains pending, never silently marked wrong. AI is optional.</small>
-   </section>}
    <div className="pob-archive-actions">
        {!submitted?<button type="button" className="pob-primary" onClick={()=>setSubmitted(true)}>Check answers against SPARK key</button>
        :<><strong role="status">Provisional score: {correct} / {gradable.length}</strong>
@@ -199,6 +189,11 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
        </div>
      })}
    </details>)}
+   {submitted&&rubricReview&&<section className="pob-archive-marking-summary" aria-label="SPARK Paper 2 marking scheme results" role="status">
+     <strong>SPARK rubric review</strong>
+     <p>{rubricReview.assessedMarks!==null?"Confirmed score: "+rubricReview.assessedMarks+" / "+rubricReview.availableMarks+" marks":"Confirmed marks: "+rubricReview.confirmedMarks+" / "+rubricReview.availableMarks+". "+rubricReview.unresolvedParts+" written part(s) still require evidence-based assessment. This is not a final grade."}</p>
+     <small>Blank parts receive zero. Exact SPARK worked-answer matches receive authored marks. Alternative wording stays pending rather than automatically marked wrong. AI is optional.</small>
+   </section>}
    <div className="pob-archive-actions">
      {!submitted?<button type="button" className="pob-primary" disabled={!selectionValid} onClick={()=>setSubmitted(true)}>Submit responses and view marking scheme</button>
        :<><p role="status">Your answers have been saved. SPARK's answer guidance is shown under each question.</p>
