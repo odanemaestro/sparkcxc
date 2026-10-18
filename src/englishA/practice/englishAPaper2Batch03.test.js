@@ -72,3 +72,26 @@ test("All English A Paper 2 scores preserve the 120-mark examination profile",()
    }
  });
 });
+
+
+test("An attractive report format without situation evidence cannot earn a high grade",()=>{
+ const task=paper.tasks.find(t=>t.id==="EA-P2-B-M1-E");
+ const filler=("REPORT\nTo: The Principal\nFrom: The Secretary\nDate: 18 October 2026\n"+
+  "Subject: Findings and recommendations\n\n1. Introduction\n"+
+  "The community is important to all of us and the next step needs attention.\n\n"+
+  "2. Findings\nEvery student should work hard and help the community.\n\n"+
+  "3. Recommendations\nEveryone should try harder and make a difference.\n\n").repeat(3);
+ const result=gradeEnglishAPaper2Response(task,filler);
+ expect(result.dimensions.find(d=>d.id==="understanding").score).toBe(0);
+ expect(result.dimensions.find(d=>d.id==="analysing").score).toBeLessThanOrEqual(3);
+ expect(result.dimensions.find(d=>d.id==="evaluating").score).toBeLessThanOrEqual(6);
+});
+test("A source's negative idea remains eligible for a faithful paraphrase",()=>{
+ const task={kind:"summary",module:1,wordLimit:50,stimulus:{
+  paragraphs:["Schools should not ban every phone, because teachers may use the devices for learning."]
+ }};
+ const result=gradeEnglishAPaper2Response(task,
+ "Schools should not ban all phones because teachers use them for lessons.",
+ "The purpose is to explain a balanced policy.");
+ expect(result.dimensions.find(d=>d.id==="understanding").score).toBe(1);
+});
