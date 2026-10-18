@@ -57,7 +57,7 @@ function inverseResult(answer,source){
  return equivalent(expression,"(x"+sign(-source.b)+")/"+source.a);
 }
 function roots(answer,source){
- const s=compact(answer);
+ const s=compact(normalize(answer).replace(/\s+(?:and|or)\s+/gi,","));
  const root=source.root,values=new Set();
  if(["±"+root,"+/-"+root,"x=±"+root,"x=+/-"+root].includes(s))
   return new Set([root,-root]);
