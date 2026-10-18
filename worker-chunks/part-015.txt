@@ -1,4 +1,11 @@
-otal = 0;
+|| paper.sourceSha256 !== "da79e8f4c4a794b28eb9dc4d5e4c52ffe0b9e9a9034b539a740c01abfb551544")
+    issues.push("Wrong source identity.");
+  if (!Array.isArray(paper.questions) || paper.questions.length !== 7)
+    issues.push("Expected seven offered questions.");
+  for (const q of paper.questions || []) {
+    if (nums.has(q.number)) issues.push("Repeated question.");
+    nums.add(q.number);
+    let subtotal = 0;
     const ids = /* @__PURE__ */ new Set();
     for (const p of q.parts || []) {
       parts++;
@@ -1563,10 +1570,4 @@ var declarations = Object.freeze([
   ["POB-P1-2023-JAN", pobHistorical2023JanP1AuthoredKey_exports],
   ["POB-P1-2024-MJ", pobHistorical2024MjP1AuthoredKey_exports],
   ["POB-P2-2005-MJ", pobHistorical2005MjP2AuthoredScheme_exports],
-  ["POB-P2-2006-MJ", pobHistorical2006MjP2AuthoredScheme_exports],
-  ["POB-P2-2007-MJ", pobHistorical2007MjP2AuthoredScheme_exports],
-  ["POB-P2-2008-MJ", pobHistorical2008MjP2AuthoredScheme_exports],
-  ["POB-P2-2009-MJ", pobHistorical2009MjP2AuthoredScheme_exports],
-  ["POB-P2-2010-MJ", pobHistorical2010MjP2AuthoredScheme_exports],
-  ["POB-P2-2011-MJ", pobHistorical2011MjP2AuthoredScheme_exports],
-  ["POB-P2-2012-MJ"
+  ["POB-P2-2006-M

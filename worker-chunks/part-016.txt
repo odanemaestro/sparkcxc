@@ -1,4 +1,10 @@
-, pobHistorical2012MjP2AuthoredScheme_exports],
+J", pobHistorical2006MjP2AuthoredScheme_exports],
+  ["POB-P2-2007-MJ", pobHistorical2007MjP2AuthoredScheme_exports],
+  ["POB-P2-2008-MJ", pobHistorical2008MjP2AuthoredScheme_exports],
+  ["POB-P2-2009-MJ", pobHistorical2009MjP2AuthoredScheme_exports],
+  ["POB-P2-2010-MJ", pobHistorical2010MjP2AuthoredScheme_exports],
+  ["POB-P2-2011-MJ", pobHistorical2011MjP2AuthoredScheme_exports],
+  ["POB-P2-2012-MJ", pobHistorical2012MjP2AuthoredScheme_exports],
   ["POB-P2-2013-MJ", pobHistorical2013MjP2AuthoredScheme_exports],
   ["POB-P2-2014-MJ", pobHistorical2014MjP2AuthoredScheme_exports],
   ["POB-P2-2015-MJ", pobHistorical2015MjP2AuthoredScheme_exports],
@@ -2448,7 +2454,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
               "answer": "Any THREE, 2 marks each:\n\u2022 Control: he decides how the money is used and how the business is run.\n\u2022 Higher potential returns: all the profit belongs to him, instead of a fixed rate of interest or dividends decided by others.\n\u2022 Independence and personal satisfaction from building his own business.\n\u2022 He creates a job for himself and for others.\n\u2022 He can use his own skills and ideas.\n\u2022 He builds an asset that he can later sell or pass on to his family."
             },
             {
-              "label": "(d)",
-              "question": "Discuss TWO types of investment options that are available to entrepreneurs.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 Shares (stocks): buying part ownership of public companies; the investor earns dividends and possible capital gains, but prices can fall, so the risk is higher.\n\u2022 Bonds or debentures: le
+      

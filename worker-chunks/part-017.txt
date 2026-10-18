@@ -1,4 +1,7 @@
-nding money to the government or a company in return for a fixed rate of interest; safer than shares, with a lower return.\n\u2022 Fixed deposits: money placed with a bank for a fixed period at a fixed interest rate; very safe, but the money cannot be withdrawn early without penalty.\n\u2022 Unit trusts or mutual funds: money is pooled with other investors and managed by professionals, spreading the risk over many investments.\n\u2022 Real estate: buying property to earn rent and benefit from increases in value.\n\u2022 Treasury bills: short-term government securities."
+        "label": "(d)",
+              "question": "Discuss TWO types of investment options that are available to entrepreneurs.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Shares (stocks): buying part ownership of public companies; the investor earns dividends and possible capital gains, but prices can fall, so the risk is higher.\n\u2022 Bonds or debentures: lending money to the government or a company in return for a fixed rate of interest; safer than shares, with a lower return.\n\u2022 Fixed deposits: money placed with a bank for a fixed period at a fixed interest rate; very safe, but the money cannot be withdrawn early without penalty.\n\u2022 Unit trusts or mutual funds: money is pooled with other investors and managed by professionals, spreading the risk over many investments.\n\u2022 Real estate: buying property to earn rent and benefit from increases in value.\n\u2022 Treasury bills: short-term government securities."
             }
           ]
         },
@@ -2913,12 +2916,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
           "parts": [
             {
               "label": "(a)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Define the term 'public relations'.",
-                  "marks": 2,
-                  "answer": "Public relations is the planned effort by a business to build and maintain a good image and goodwill (1) with the public, customers, the media and other stakeholders (1)."
-                },
-                {
-             
+              "subparts": 

@@ -96,23 +96,30 @@ function gradeEnglishAPaper2(paper, answers = {}, choiceId = "") {
   const allTasks = paper?.tasks || [];
   const normalTasks = allTasks.filter((task3) => !task3.choiceGroup);
   const choiceGroups = [...new Set(allTasks.map((task3) => task3.choiceGroup).filter(Boolean))];
+  const unresolvedChoices = [];
   const choiceTasks = choiceGroups.map((group) => {
     const options = allTasks.filter((task3) => task3.choiceGroup === group);
-    return options.find((task3) => task3.id === choiceId) || options[0];
+    const explicitlySelected = options.find((task3) => task3.id === choiceId);
+    if (explicitlySelected) return explicitlySelected;
+    const answered = options.filter((task3) => String(answers?.[task3.id] ?? "").trim() || String(answers?.[`${task3.id}:analysis`] ?? "").trim());
+    if (answered.length === 1) return answered[0];
+    if (answered.length > 1) unresolvedChoices.push(group);
+    return options[0];
   }).filter(Boolean);
   const tasks = [...normalTasks, ...choiceTasks];
   const rows = tasks.map((task3) => ({
     task: task3,
     ...gradeEnglishAPaper2Response(
       task3,
-      task3.choiceGroup && task3.id !== choiceId ? "" : answers[task3.id] || "",
-      task3.choiceGroup && task3.id !== choiceId ? "" : answers[`${task3.id}:analysis`] || ""
+      unresolvedChoices.includes(task3.choiceGroup) ? "" : answers[task3.id] || "",
+      unresolvedChoices.includes(task3.choiceGroup) ? "" : answers[`${task3.id}:analysis`] || ""
     )
   }));
   const score = round(rows.reduce((sum, row) => sum + row.score, 0));
   const maxScore = rows.reduce((sum, row) => sum + row.maxMarks, 0);
   return {
     rows,
+    unresolvedChoices,
     score,
     maxScore,
     percent: maxScore ? Math.round(score / maxScore * 100) : 0,
@@ -3414,5 +3421,4 @@ var POB_2005_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 5, "pdfPage": 2, "proposedOption": "C", "explanation": "Public company shares may be traded on a stock exchange if listed and otherwise eligible.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
     Object.freeze({ "number": 6, "pdfPage": 2, "proposedOption": "D", "explanation": "Multinational corporations can generate employment in their host countries.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
     Object.freeze({ "number": 7, "pdfPage": 2, "proposedOption": "A", "explanation": "A general partnership ordinarily dissolves when a partner dies unless the partnership agreement provides for continuity.", "status": "academic-dispute", "disputeType": "partnership-death-rule", "disputeEvidence": "Partnership contracts can specify continuation on a partner's death, so automatic closure is conditional.", "sourceGraphicReviewed": false }),
-    Object.freeze({ "number": 8, "pdfPage": 2, "proposedOption": "C", "explanation": "Purchasing departments procure goods, check received goods and costs; stock-keeping tasks may overlap with inventory control.", "status": "academic-dispute", "disputeType": "purchasing-and-stock-control", "disputeEvidence": "Receiving goods and inventory are jointly relevant to purchasing and stock control, so options overlap.", "sourceGraphicReviewed": false }),
-    Object.freeze({ "number": 9, "pdfPage": 3, "proposedOption": "A", "explanation": "The source organisational chart displays a line reporting hierarchy dow
+    Object.freeze({ "number": 8, "pdfPage": 2, "proposedOption": "C", "explanation": "Purchasing departments procure goods, check received goods and costs; stock-keeping tasks may overlap with inventory co

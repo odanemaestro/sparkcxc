@@ -1,4 +1,12 @@
-     "label": "(ii)",
+[
+                {
+                  "label": "(i)",
+                  "question": "Define the term 'public relations'.",
+                  "marks": 2,
+                  "answer": "Public relations is the planned effort by a business to build and maintain a good image and goodwill (1) with the public, customers, the media and other stakeholders (1)."
+                },
+                {
+                  "label": "(ii)",
                   "question": "Identify TWO types of public relations activities that are popular in the Caribbean.",
                   "marks": 2,
                   "answer": "Any TWO, 1 mark each: sponsoring sports events and teams; sponsoring Carnival, Crop Over or other cultural festivals; scholarships and school donations; community projects (clean-ups, back-to-school drives); donations after hurricanes; press releases and media events; health fairs."

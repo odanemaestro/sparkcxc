@@ -1,4 +1,5 @@
-Present": true, "status": "spark-authored-provisional", "uncertainty": null }),
+tion": "Visible trade compares only exports and imports of physical goods, not services.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
+    Object.freeze({ "number": 49, "pdfPage": 8, "proposedOption": "D", "explanation": "Loans and technical support for new local enterprises can expand production, employment and economic development.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
     Object.freeze({ "number": 50, "pdfPage": 8, "proposedOption": "B", "explanation": "Higher education and training improve workforce efficiency and productivity.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
     Object.freeze({ "number": 51, "pdfPage": 8, "proposedOption": "D", "explanation": "An import quota limits the amount of goods citizens or firms may buy from overseas.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
     Object.freeze({ "number": 52, "pdfPage": 8, "proposedOption": "C", "explanation": "Population growth alone does not prove a higher standard of living per person.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
@@ -1411,11 +1412,4 @@ var POB_2010_MJ_P2_AUTHORED_SCHEME = Object.freeze({
 function verifyPob2010MjP2AuthoredScheme(paper = POB_2010_MJ_P2_AUTHORED_SCHEME) {
   const issues = [], nums = /* @__PURE__ */ new Set();
   let marks = 0, parts = 0;
-  if (paper.id !== "POB-P2-2010-MJ" || paper.sourceSha256 !== "da79e8f4c4a794b28eb9dc4d5e4c52ffe0b9e9a9034b539a740c01abfb551544")
-    issues.push("Wrong source identity.");
-  if (!Array.isArray(paper.questions) || paper.questions.length !== 7)
-    issues.push("Expected seven offered questions.");
-  for (const q of paper.questions || []) {
-    if (nums.has(q.number)) issues.push("Repeated question.");
-    nums.add(q.number);
-    let subt
+  if (paper.id !== "POB-P2-2010-MJ" 
