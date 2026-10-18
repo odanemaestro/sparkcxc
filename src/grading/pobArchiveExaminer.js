@@ -77,6 +77,10 @@ export function buildPobArchiveExaminerPack({paperId,selectedQuestions,responses
        rubric:[{marks:criterion.marks,rule:criterion.rule,
          alternatives:part.acceptedIllustrations||criterion.alternatives||[]}],
        constraints:{historicalExaminerMarking:true,primaryResponseKey:id,
+         // Distinct listed answers require distinct supporting text, not the
+         // same phrase reused for first, second, third etc. marks.
+         requiresDistinctEvidence:/\b(?:first|second|third|fourth|fifth|sixth|distinct|different|separate)\b/i.test(criterion.rule),
+         distinctEvidenceGroup:id,
          questionNumber:q.number,criterionNumber:i+1,
          criterionCount:part.criteria.length,sourceStemFullyVerified:fullSource}
      });
