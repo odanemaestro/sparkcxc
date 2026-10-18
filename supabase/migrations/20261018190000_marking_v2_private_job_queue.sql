@@ -34,7 +34,7 @@ returns table(job_id uuid, attempt_id uuid, rubric_version text, attempts intege
 language plpgsql security definer set search_path = '' as $$
 declare v_job spark_grading_private.marking_jobs_v2%rowtype;
 begin
-  if auth.role() <> 'service_role' then raise exception 'Forbidden'; end if;
+  if (auth.jwt()->>'role') is distinct from 'service_role' then raise exception 'Forbidden'; end if;
   update spark_grading_private.marking_jobs_v2 j
   set status='running', attempts=j.attempts+1, lease_token=gen_random_uuid(),
       lease_expires_at=clock_timestamp()+interval '2 minutes',
@@ -54,7 +54,7 @@ create or replace function spark_grading_private.finish_marking_job_v2(
 language plpgsql security definer set search_path = '' as $$
 declare v_count integer;
 begin
-  if auth.role() <> 'service_role' then raise exception 'Forbidden'; end if;
+  if (auth.jwt()->>'role') is distinct from 'service_role' then raise exception 'Forbidden'; end if;
   if p_status not in ('retry','provisional','failed') then raise exception 'Invalid worker terminal status'; end if;
   if p_result is not null and (p_status<>'provisional' or jsonb_typeof(p_result)<>'object'
      or octet_length(p_result::text)>65536) then raise exception 'Invalid result'; end if;
