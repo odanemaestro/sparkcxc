@@ -51,6 +51,29 @@ try{
  assert.equal((await finish(firstLease.lease_token)).rows[0].accepted,false);
  assert.equal((await finish(secondLease.lease_token)).rows[0].accepted,true);
  assert.equal((await finish(secondLease.lease_token)).rows[0].accepted,false);
+ // Terminal jobs cannot be reclaimed, and invalid completion statuses fail closed.
+ assert.equal((await claim()).rows.length,0,"provisional jobs must not be reclaimed");
+ await assert.rejects(
+  db.query("select spark_grading_private.finish_marking_job_v2($1,$2,'verified','test',null)",[first,secondLease.lease_token]),
+  /Invalid worker terminal status/
+ );
+ // A separate queued job with exhausted attempts remains ineligible for a claim.
+ const anotherAttempt=randomUUID();
+ await db.query(`insert into public.spark_exam_attempts
+   (id,user_id,subject_id,paper,rubric_version,status,submitted_at,response_snapshot,metadata)
+   values($1,$2,'chemistry','02','rubric-fixture-v1','submitted',now(),
+   '{"q1":"evaporation"}'::jsonb,'{"paper_id":"fixture-paper"}'::jsonb)`,[anotherAttempt,user]);
+ const exhausted=(await db.query("select spark_grading_private.enqueue_marking_job_v2($1) as id",[anotherAttempt])).rows[0].id;
+ await db.query("update spark_grading_private.marking_jobs_v2 set attempts=3 where id=$1",[exhausted]);
+ assert.equal((await db.query("select * from spark_grading_private.claim_marking_job_v2($1)",[exhausted])).rows.length,0);
+ // A rubric deactivated before enqueue must not authorize work.
+ await db.exec("update spark_grading_private.rubrics_v2 set active=false");
+ const unapprovedAttempt=randomUUID();
+ await db.query(`insert into public.spark_exam_attempts
+   (id,user_id,subject_id,paper,rubric_version,status,submitted_at,response_snapshot,metadata)
+   values($1,$2,'chemistry','02','rubric-fixture-v1','submitted',now(),
+   '{"q1":"evaporation"}'::jsonb,'{"paper_id":"fixture-paper"}'::jsonb)`,[unapprovedAttempt,user]);
+ await assert.rejects(db.query("select spark_grading_private.enqueue_marking_job_v2($1)",[unapprovedAttempt]),/No active server rubric/);
  const record=(await db.query("select score from public.spark_exam_attempts where id=$1",[attempt])).rows[0];
  assert.equal(record.score,null,"shadow result must never publish score");
  console.log("V2 staging SQL integration passed: migration, enqueue, RLS, lease fencing, reclaims, provisional storage");
