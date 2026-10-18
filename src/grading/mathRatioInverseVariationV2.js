@@ -60,25 +60,14 @@ function canonicalFraction(answer,source){
 function fractionMethods(working,source){
  if(source.fraction==="54/5"){
   return [
-   containsStep(working,["15/4-3/2","15/4-6/4","15/4-3/2","9/4"]),
-   containsStep(working,["3/8-1/6","9/24-4/24","5/24"])
+   containsStep(working,["15/4-3/2","15/4-6/4"]),
+   containsStep(working,["3/8-1/6","9/24-4/24"])
   ];
  }
  return [
-  containsStep(working,["12/5+4/3","36/15+20/15","56/15"]),
-  containsStep(working,["7/10-1/6","21/30-5/30","8/15"])
+  containsStep(working,["12/5+4/3","36/15+20/15"]),
+  containsStep(working,["7/10-1/6","21/30-5/30"])
  ];
-}
-function computedFractionStep(work,source){
- const w=canon(work);
- const numerator=source.numerator,denominator=source.denominator;
- const fraction=source.fraction;
- // A complete transformation is an additional alternative source method;
- // each atomic method still requires evidence of its own component.
- return containsStep(w,[numerator+"/"+denominator,
-  numerator+"*"+denominator.split("/").reverse().join("/"),
-  numerator+"*("+denominator.split("/").reverse().join("/")+")",
-  fraction]);
 }
 function shareMethod(work,source){
  const [small,medium,large]=source.ratio;
@@ -134,10 +123,10 @@ export function evaluateMathRatioInverseVariationV2({
  const answer=responseAnswer(response),work=responseWorking(response);
  if(partId==="a"){
   const [numerator,denominator]=fractionMethods(work,source);
-  const methodFull=computedFractionStep(work,source);
+
   return pack(questionId,partId,[
-   vote("M1",numerator||methodFull,"numerator-fraction-calculation"),
-   vote("M2",denominator||methodFull,"denominator-fraction-calculation"),
+   vote("M1",numerator,"numerator-fraction-calculation"),
+   vote("M2",denominator,"denominator-fraction-calculation"),
    vote("A1",canonicalFraction(answer,source),"published-exact-fraction-answer")
   ]);
  }
