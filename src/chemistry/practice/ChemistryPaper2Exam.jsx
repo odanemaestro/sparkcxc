@@ -1,6 +1,7 @@
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React, {useCallback,useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
+import {buildAttemptProvenance} from "../../grading/attemptProvenance";
 import {BankTable,TrustedBankSvg} from "../../integratedScience/practice/IntegratedScienceQuestionRenderer";
 import ScienceGraphEditor from "../../integratedScience/practice/ScienceGraphEditor";
 import {CHEMISTRY_PAPER2_PRACTICE_SETS,CHEMISTRY_PAPER2_FORMAT} from "../data/chemistryPaper2Bank";
@@ -192,7 +193,19 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
       await recordSubjectActivity({supabase,activity:{
         subjectId:"chemistry",activityKey:`exam:${paper.id}`,activityType:"exam",title:paper.title,completed:true,
         score:result.score,maxScore:result.maxScore,percent:result.percent,
-        metadata:{source:paper.isHistorical?"chemistry_paper2_historical_draft":"chemistry_paper2_v1",paper:"02",paper_id:paper.id,historical:Boolean(paper.isHistorical),source_id:paper.sourceId||null,complete_historical_paper:Boolean(paper.isHistorical&&paper.complete),source_verified:!paper.isHistorical,timed_out:Boolean(timedOut),grader_version:CHEMISTRY_P2_GRADER_VERSION,provisional:Boolean(result.provisional||paper.isHistorical),at:new Date().toISOString()},
+        metadata:{source:paper.isHistorical?"chemistry_paper2_historical_draft":"chemistry_paper2_v1",paper:"02",paper_id:paper.id,historical:Boolean(paper.isHistorical),source_id:paper.sourceId||null,complete_historical_paper:Boolean(paper.isHistorical&&paper.complete),source_verified:!paper.isHistorical,rubric_verified:!paper.isHistorical,timed_out:Boolean(timedOut),
+          grader_version:CHEMISTRY_P2_GRADER_VERSION,provisional:Boolean(result.provisional||paper.isHistorical),
+          confirmed_marks:result.score,unresolved_marks:result.unassessedMarks,
+          spark_scoring_status:!result.provisional&&!paper.isHistorical&&result.unassessedMarks===0?"verified":"rubric_review_required",
+          assessed_marks:!result.provisional&&!paper.isHistorical&&result.unassessedMarks===0?result.score:null,
+          score_parts:result.questions.map(q=>({id:q.question.id,score:q.score,maxMarks:q.maxMarks,
+            unresolvedMarks:q.items.reduce((n,item)=>n+(item.unassessedMarks||0),0),
+            assessedMarks:q.items.every(item=>!item.provisional)&&!q.items.some(item=>item.unassessedMarks)?q.score:null,
+            provisional:q.items.some(item=>item.provisional)})),
+          attempt_provenance:buildAttemptProvenance({subjectId:"chemistry",paper:"02",mode:"timed",
+            bankVersion:"chemistry-paper2-v1",rubricVersion:"chemistry-source-rubrics-v1",
+            graderVersion:CHEMISTRY_P2_GRADER_VERSION,submittedAt:new Date().toISOString(),responses}),
+          at:new Date().toISOString()},
       }});
     }catch(error){console.warn("Could not save Chemistry Paper 02 result",error);}
   },[paper,phase,result,supabase]);

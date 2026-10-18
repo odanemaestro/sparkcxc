@@ -1,6 +1,7 @@
 import FnhNavArrow from "./FnhNavArrow";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
+import {buildAttemptProvenance} from "../../grading/attemptProvenance";
 import {FNH_PAPER2_FORMAT,fnhGetPaper2Set} from "../data/fnhPaper2Bank";
 import {fnhPartMarkingScheme,gradeFnhWrittenPart,gradeFnhWrittenPaper} from "./fnhPaper2Marking";
 import {fnhWorkedSupplement} from "../data/fnhPaper2WorkedAnswerSupplements";
@@ -87,6 +88,20 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
         provisional:!writtenGrade.fullyAssessed,spark_scoring_status:writtenGrade.fullyAssessed?"verified":"rubric_review_required",
         confirmed_marks:writtenGrade.confirmedMarks,unresolved_marks:writtenGrade.unresolvedMarks,
         rubric_version:writtenGrade.rubricVersion,
+        source_verified:!historical,rubric_verified:!historical,
+        assessed_marks:writtenGrade.assessedMarks,
+        score_parts:writtenGrade.questions.flatMap(q=>q.parts.map(p=>({
+          id:p.key,score:p.confirmedMarks,maxMarks:p.maxMarks??p.maximum,
+          unresolvedMarks:p.unresolvedMarks,assessedMarks:p.assessedMarks,
+          provisional:p.assessedMarks===null
+        }))),
+        attempt_provenance:buildAttemptProvenance({
+          subjectId:"food-nutrition-and-health",paper:"02",mode:"timed",
+          bankVersion:historical?"fnh-historical-paper2-v1":"fnh-original-paper2-v1",
+          rubricVersion:writtenGrade.rubricVersion,
+          graderVersion:"fnh-paper2-deterministic-v2",
+          submittedAt:new Date().toISOString(),responses:attempt.answers||{}
+        }),
         question_count:paper.length,total_marks:writtenGrade.maxMarks,
         duration_minutes:examMinutes,answered_parts:answered,at:new Date().toISOString()},
     }}).catch(e=>console.warn("FNH Paper 2 completion could not be saved",e));

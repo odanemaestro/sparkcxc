@@ -1,4 +1,5 @@
 import { attemptSnapshotHash } from "./attemptProvenance";
+import { preparePaper2ScorePublication } from "./scorePublication";
 
 // Server timestamps must be translated to the client's clock, not compared
 // directly with Date.now(): a student's system clock may be hours out.
@@ -45,14 +46,34 @@ export async function submitServerExamAttempt({
   supabase,attemptId,responses={},score,maxScore,metadata={},
 }={}){
   if(!supabase?.rpc || !attemptId) return {available:false};
+  // The server attempt is completed on submission even when the score is
+  // provisional. Never send a provisional Paper 2 mark as a final p_score.
+  const isPaper2=/^(?:02|2|paper[ _-]*0?2)$/i.test(String(metadata?.paper??""));
+  const publication=isPaper2?preparePaper2ScorePublication({
+    subjectId:String(metadata.subject??metadata.subjectId??""),
+    paperId:metadata.paper_id??metadata.paper??"02",
+    score,maxScore,metadata,
+    provenance:metadata.attempt_provenance??null,
+  }):null;
+  const safeScore=publication?publication.score:score;
+  // The response snapshot is already a first-class SQL argument. Duplicating
+  // full candidate essays in p_metadata can exceed the 16 KB RPC limit.
+  const safeMetadata=publication?(()=>{
+    const {attempt_provenance:identity,score_parts:items,...summary}=publication.metadata;
+    return {...summary,
+      attempt_snapshot_hash:attemptSnapshotHash(responses),
+      bank_version:identity?.bank_version||null,
+      rubric_version:identity?.rubric_version||null,
+      grader_version:identity?.grader_version||null};
+  })():metadata;
   try{
     const {data,error}=await supabase.rpc("spark_submit_exam_attempt",{
       p_attempt_id:attemptId,
       p_response_snapshot:responses,
       p_response_snapshot_hash:attemptSnapshotHash(responses),
-      p_score:score,
+      p_score:safeScore,
       p_max_score:maxScore,
-      p_metadata:metadata,
+      p_metadata:safeMetadata,
     });
     if(error) throw error;
     const row=Array.isArray(data)?data[0]:data;

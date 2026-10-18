@@ -16,6 +16,7 @@ import { ATOMIC_INTERACTIVES } from "../physics/atomic/interactives/eAtomicInter
 import { readPhysicsAtomicProgress } from "../physics/atomic/physicsAtomicProgress.mjs";
 import { readPhysicsCourseProgress } from "../physics/course/physicsCourseProgress.mjs";
 import { observeRecommendationOutcome } from "../learning/learnerIntelligencePersistence";
+import { preparePaper2SubjectActivity } from "../grading/scorePublication";
 
 export const SUBJECT_PROGRESS_VERSION = 1;
 
@@ -172,7 +173,7 @@ export function readLocalPhysicsSubjectRows(userId) {
   return rows;
 }
 
-function activityPayloadFromPhysicsEvent(event = {}) {
+export function activityPayloadFromPhysicsEvent(event = {}) {
   const section = String(event.section || event.topic || "A").slice(0, 1).toUpperCase();
   const topic = event.topic ? String(event.topic) : null;
   const type = String(event.type || "");
@@ -228,16 +229,16 @@ function activityPayloadFromPhysicsEvent(event = {}) {
     };
   }
   if (type === "physics_paper2_exam") {
-    const score = safeNumber(event.score);
+    const score = typeof event.score==="number"&&Number.isFinite(event.score)?event.score:null;
     const maxScore = safeNumber(event.maxScore, 100);
-    const percent = Number.isFinite(Number(event.percent)) ? safeNumber(event.percent) : maxScore > 0 ? Math.round(score / maxScore * 100) : 0;
+    const percent = typeof event.percent==="number"&&Number.isFinite(event.percent)?event.percent:null;
     const paperId = String(event.paperId || `paper-${event.paperNumber || "2"}`);
     const paperNumber = Number(event.paperNumber || 0);
     const paperLabel = String(event.paperLabel || (paperNumber >= 1 && paperNumber <= 26 ? String.fromCharCode(64 + paperNumber) : "")).trim();
     return {
       subjectId: "physics", activityKey: `paper2:${paperId}`, activityType: "exam", sectionId: null, topicId: null,
       title: `Physics Paper 2 Practice Paper ${paperLabel}`.trim(), completed: true, score, maxScore, percent,
-      metadata: { source: "physics", event_type: type, paper_id: paperId, paper_number: paperNumber || null, paper_label: paperLabel || null },
+      metadata: { ...(event.paperReleaseMetadata||{}), source: "physics", paper:"02", event_type: type, paper_id: paperId, paper_number: paperNumber || null, paper_label: paperLabel || null, confirmed_marks:event.confirmedMarks??null },
     };
   }
   if (type === "physics_mechanics_checkpoint" || type === "physics_section_checkpoint") {
@@ -263,6 +264,10 @@ export async function recordSubjectActivity({ supabase, activity, silent = false
   const activityType = String(activity.activityType || activity.activity_type || "").trim().toLowerCase();
   if (!subjectId || !activityKey || !activityType) return { data: null, error: null, skipped: true };
 
+  // Final Paper 2 grades are published only after the shared release audit.
+  // Incomplete results retain confirmed marks in metadata, not p_score.
+  const publishedActivity=preparePaper2SubjectActivity({...activity,
+    subjectId,activityKey,activityType});
   const result = await supabase.rpc("spark_record_subject_progress", {
     p_subject_id: subjectId,
     p_activity_key: activityKey,
@@ -271,10 +276,10 @@ export async function recordSubjectActivity({ supabase, activity, silent = false
     p_topic_id: activity.topicId ?? activity.topic_id ?? null,
     p_title: activity.title || activityKey,
     p_completed: Boolean(activity.completed),
-    p_score: activity.score ?? null,
-    p_max_score: activity.maxScore ?? activity.max_score ?? null,
-    p_percent: activity.percent ?? null,
-    p_metadata: activity.metadata || {},
+    p_score: publishedActivity.score ?? null,
+    p_max_score: publishedActivity.maxScore ?? publishedActivity.max_score ?? null,
+    p_percent: publishedActivity.percent ?? null,
+    p_metadata: publishedActivity.metadata || {},
     p_silent: Boolean(silent),
   });
 
@@ -285,9 +290,9 @@ export async function recordSubjectActivity({ supabase, activity, silent = false
       subjectId,
       activityType,
       activityKey,
-      percent: activity.percent,
+      percent: publishedActivity.percent,
       metadata:{
-        ...(activity.metadata || {}),
+        ...(publishedActivity.metadata || {}),
         topic_id:activity.topicId ?? activity.topic_id ?? null,
         section_id:activity.sectionId ?? activity.section_id ?? null,
         activity_key:activityKey,
@@ -640,7 +645,8 @@ function itPaperKind(row) {
 }
 
 function itAverage(rows = []) {
-  const values = rows.map(row => Number(row?.percent)).filter(Number.isFinite);
+  const values = rows.filter(row=>row?.percent!==null&&row?.percent!==undefined)
+    .map(row => Number(row.percent)).filter(Number.isFinite);
   return values.length ? Math.round(values.reduce((sum, value) => sum + value, 0) / values.length) : null;
 }
 
@@ -1273,10 +1279,13 @@ export function activityPayloadFromInformationTechnologyEvent(event = {}) {
       activityType: "exam",
       title: event.paperTitle || `Information Technology ${paperType === "paper1" ? "Paper 1" : "Paper 2"}`,
       completed: true,
-      score: Number.isFinite(Number(event.score)) ? Number(event.score) : null,
+      score: event.score!==null&&typeof event.score==="number"&&Number.isFinite(event.score) ? event.score : null,
       maxScore: Number.isFinite(maxScore) && maxScore > 0 ? maxScore : null,
-      percent: Number.isFinite(Number(event.percent)) ? Number(event.percent) : null,
+      percent: event.percent!==null&&typeof event.percent==="number"&&Number.isFinite(event.percent) ? event.percent : null,
       metadata: {
+        ...(paperType==="paper2"?(event.paperReleaseMetadata||{}):{}),
+        confirmed_marks:event.confirmedMarks??null,
+        paper:paperType==="paper2"?"02":"01",
         source: "information_technology_practice",
         event_type: type,
         paper_type: paperType,
@@ -1314,11 +1323,11 @@ function informationTechnologyBackfillRows(paper1Results = [], paper2Results = [
     if (!result || typeof result !== "object") return;
     const paperId = String(result.paperId || result.paperTitle || "practice").trim();
     const key = `${paperType}:${paperId}`;
-    const score = Number(result.score);
-    const explicitPercent = Number(result.percent);
-    const percent = Number.isFinite(explicitPercent)
+    const score = result.score!==null&&result.score!==undefined?Number(result.score):null;
+    const explicitPercent = result.percent!==null&&result.percent!==undefined?Number(result.percent):null;
+    const percent = explicitPercent!==null&&Number.isFinite(explicitPercent)
       ? explicitPercent
-      : Number.isFinite(score) && maxScore > 0
+      : score!==null&&Number.isFinite(score) && maxScore > 0
         ? Math.round(score / maxScore * 100)
         : null;
     const when = result.completedAt || result.at || null;
@@ -1330,13 +1339,16 @@ function informationTechnologyBackfillRows(paper1Results = [], paper2Results = [
       activity_type: "exam",
       title: result.paperTitle || `Information Technology ${paperType === "paper1" ? "Paper 1" : "Paper 2"}`,
       completed: true,
-      score: Number.isFinite(score) ? score : null,
+      score: score!==null&&Number.isFinite(score) ? score : null,
       max_score: maxScore,
       percent,
       best_percent: percent,
       attempt_count: 1,
       occurred_at: when,
       metadata: {
+        ...(paperType==="paper2"?(result.paperReleaseMetadata||{}):{}),
+        confirmed_marks:result.confirmedMarks??null,
+        paper:paperType==="paper2"?"02":"01",
         source: "information_technology_local_backfill",
         paper_type: paperType,
         paper_id: paperId,

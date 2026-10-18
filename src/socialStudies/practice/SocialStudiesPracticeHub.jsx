@@ -624,6 +624,14 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
           event_type:eventType,
           session_mode:sessionMode,
           timed_out:Boolean(timedOut),
+          // Structured and essay responses are useful practice estimates,
+          // not verified final examiner grades for an entire written paper.
+          provisional_grading:paperType==="paper2",
+          spark_scoring_status:paperType==="paper2"?"rubric_review_required":"verified",
+          confirmed_marks:paperType==="paper2"?score:null,
+          unresolved_marks:paperType==="paper2"&&typeof score==="number"&&typeof maxScore==="number"
+            ?Math.max(0,maxScore-score):0,
+          assessed_marks:paperType==="paper2"?null:score,
           attempt_provenance:paperType==="paper2" ? buildAttemptProvenance({
             subjectId:"social-studies",paper:"02",mode:sessionMode || "timed",bankVersion:"social-studies-paper2-v1",
             rubricVersion:"social-studies-criteria-v1",graderVersion:"social-studies-grader-v2",

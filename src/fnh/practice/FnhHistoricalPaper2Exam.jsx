@@ -1,6 +1,7 @@
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
+import {buildAttemptProvenance} from "../../grading/attemptProvenance";
 
 import {fnhPartMarkingScheme,gradeFnhWrittenPart,gradeFnhWrittenPaper} from "./fnhPaper2Marking";
 import FnhHistoricalDiagram from "./FnhHistoricalDiagram";
@@ -75,6 +76,19 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
         spark_scoring_status:writtenGrade.fullyAssessed?"verified":"rubric_review_required",
         confirmed_marks:writtenGrade.confirmedMarks,unresolved_marks:writtenGrade.unresolvedMarks,
         rubric_version:writtenGrade.rubricVersion,
+        source_verified:false,rubric_verified:false,
+        provisional:!writtenGrade.fullyAssessed,assessed_marks:writtenGrade.assessedMarks,
+        score_parts:writtenGrade.questions.flatMap(q=>q.parts.map(p=>({
+          id:p.key,score:p.confirmedMarks,maxMarks:p.maxMarks??p.maximum,
+          unresolvedMarks:p.unresolvedMarks,assessedMarks:p.assessedMarks,
+          provisional:p.assessedMarks===null
+        }))),
+        attempt_provenance:buildAttemptProvenance({
+          subjectId:"food-nutrition-and-health",paper:"02",mode:"timed",
+          bankVersion:"fnh-historical-paper2-v1",rubricVersion:writtenGrade.rubricVersion,
+          graderVersion:"fnh-paper2-deterministic-v2",
+          submittedAt:new Date().toISOString(),responses:attempt.answers||{}
+        }),
         at:new Date().toISOString()},
     }}).catch(error=>console.warn("Historical FNH result could not be saved",error));
   },[review,attempt.attemptId,attempt.partB,supabase,userId,writtenGrade,PAPER.id,PAPER.subjectAtExamination,PAPER.year]);

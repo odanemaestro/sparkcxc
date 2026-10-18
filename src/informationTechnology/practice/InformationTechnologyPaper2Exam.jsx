@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
+import { preparePaper2ScorePublication } from "../../grading/scorePublication";
 import bank from "./itPaper2Data.json";
 import InformationTechnologyQuestionVisual from "./InformationTechnologyQuestionVisual";
 import {
@@ -273,6 +274,25 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
         startedAt:active?.startedAt || null,submittedAt:new Date().toISOString(),responses:answers,
       }),
     };
+    // The same release gate applies to local Paper 2 result history.
+    const publication=preparePaper2ScorePublication({
+      subjectId:"information-technology",paperId:"02",
+      score:record.score,maxScore:90,percent:record.percent,
+      metadata:{paper:"02",paper_id:paper.id,source_verified:true,rubric_verified:true,
+        spark_scoring_status:"verified",assessed_marks:record.score,
+        attempt_provenance:record.attemptProvenance,
+        score_parts:Object.entries(result.parts).map(([id,part])=>({
+          id,score:part.earned,maxMarks:part.possible,
+          unresolvedMarks:0,assessedMarks:part.earned
+        }))}
+    });
+    record.confirmedMarks=result.marks;
+    record.score=publication.score;
+    record.percent=publication.percent;
+    record.paperReleaseStatus=publication.audit.releaseStatus;
+    record.paperReleaseIssues=publication.audit.issues;
+    record.unresolvedMarks=publication.metadata.unresolved_marks;
+    record.paperReleaseMetadata=publication.metadata;
     const results = readJson(RESULTS_KEY, []);
     localStorage.setItem(RESULTS_KEY, JSON.stringify([record, ...results].slice(0, 20)));
     try {
@@ -284,6 +304,8 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
         maxScore: 90,
         percent: record.percent,
         profiles: record.profiles,
+        confirmedMarks:record.confirmedMarks,
+        paperReleaseMetadata:record.paperReleaseMetadata,
         timedOut: record.timedOut,
         durationSeconds: record.durationSeconds,
         at: record.completedAt,

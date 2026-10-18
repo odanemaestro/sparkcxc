@@ -374,6 +374,13 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
       totalParts: grade.totalParts,
       score: grade.score,
       percent: grade.percent,
+      // All source criteria were evaluated by the Paper 2 deterministic marker.
+      // The publication audit independently reconciles question and paper marks.
+      gradingFinal:true,
+      unassessedMarks:0,
+      scoreParts:Object.entries(grade.perQuestion||{}).map(([id,row])=>({
+        id,score:row.score,maxMarks:row.marks,unresolvedMarks:0,assessedMarks:row.score,
+      })),
       ecfParts: grade.ecfParts || 0,
       ecfMarks: grade.ecfMarks || 0,
       timedOut: wasTimedOut,
