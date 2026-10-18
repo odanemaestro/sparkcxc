@@ -160,3 +160,27 @@ test("unknown variants, unrelated parts and historic-source impersonations rejec
   expect(()=>grade({...args,response:{answer:"3"}})).toThrow(/Unsupported/);
  }
 });
+
+
+test("perpendicular negative reciprocal accepts correctly rounded extra precision only",()=>{
+ const target="p2-q4-v7";
+ for(const answer of ["-0.333","-0.3333","-0.33333","-0.333333","-.3333"]){
+  const r=grade({questionId:target,partId:"b",response:{answer}});
+  expect(r.criteria[1].candidateMarks).toBe(1);
+  expect(r.publishable).toBe(false);
+ }
+ for(const answer of ["-0.33","-0.332","-0.3334","-0.334","-0.3335","-0.3"]){
+  const r=grade({questionId:target,partId:"b",response:{answer}});
+  expect(r.criteria[1].candidateMarks).toBeNull();
+ }
+});
+test("exact terminating reciprocal retains its source-approved decimal alternatives",()=>{
+ for(const answer of ["1/2","0.5","0.50","0.500"]){
+  const r=grade({questionId:"p2-q4-v8",partId:"b",response:{answer}});
+  expect(r.criteria[1].candidateMarks).toBe(1);
+ }
+ for(const answer of ["0.49","0.51","1/3","-1/2"]){
+  const r=grade({questionId:"p2-q4-v8",partId:"b",response:{answer}});
+  expect(r.criteria[1].candidateMarks).toBeNull();
+ }
+});
