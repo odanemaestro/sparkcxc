@@ -290,9 +290,9 @@ export async function recordSubjectActivity({ supabase, activity, silent = false
       subjectId,
       activityType,
       activityKey,
-      percent: activity.percent,
+      percent: publishedActivity.percent,
       metadata:{
-        ...(activity.metadata || {}),
+        ...(publishedActivity.metadata || {}),
         topic_id:activity.topicId ?? activity.topic_id ?? null,
         section_id:activity.sectionId ?? activity.section_id ?? null,
         activity_key:activityKey,
