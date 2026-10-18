@@ -8,7 +8,8 @@ import {
 const CAUSAL_WORDS=[
   "because","therefore","so that","so","which means","this means","as a result",
   "resulting in","leading to","leads to","helps","allows","enables","encourages",
-  "reduces","increases","improves","prevents","protects","ensures","makes it easier"
+  "reduces","increases","improves","prevents","protects","ensures","makes it easier",
+  "which can","which may","creating jobs","leading to employment"
 ];
 
 function nonBlank(value){
