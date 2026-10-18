@@ -16,6 +16,7 @@ import { ATOMIC_INTERACTIVES } from "../physics/atomic/interactives/eAtomicInter
 import { readPhysicsAtomicProgress } from "../physics/atomic/physicsAtomicProgress.mjs";
 import { readPhysicsCourseProgress } from "../physics/course/physicsCourseProgress.mjs";
 import { observeRecommendationOutcome } from "../learning/learnerIntelligencePersistence";
+import { preparePaper2SubjectActivity } from "../grading/scorePublication";
 
 export const SUBJECT_PROGRESS_VERSION = 1;
 
@@ -263,6 +264,10 @@ export async function recordSubjectActivity({ supabase, activity, silent = false
   const activityType = String(activity.activityType || activity.activity_type || "").trim().toLowerCase();
   if (!subjectId || !activityKey || !activityType) return { data: null, error: null, skipped: true };
 
+  // Final Paper 2 grades are published only after the shared release audit.
+  // Incomplete results retain confirmed marks in metadata, not p_score.
+  const publishedActivity=preparePaper2SubjectActivity({...activity,
+    subjectId,activityKey,activityType});
   const result = await supabase.rpc("spark_record_subject_progress", {
     p_subject_id: subjectId,
     p_activity_key: activityKey,
@@ -271,10 +276,10 @@ export async function recordSubjectActivity({ supabase, activity, silent = false
     p_topic_id: activity.topicId ?? activity.topic_id ?? null,
     p_title: activity.title || activityKey,
     p_completed: Boolean(activity.completed),
-    p_score: activity.score ?? null,
-    p_max_score: activity.maxScore ?? activity.max_score ?? null,
-    p_percent: activity.percent ?? null,
-    p_metadata: activity.metadata || {},
+    p_score: publishedActivity.score ?? null,
+    p_max_score: publishedActivity.maxScore ?? publishedActivity.max_score ?? null,
+    p_percent: publishedActivity.percent ?? null,
+    p_metadata: publishedActivity.metadata || {},
     p_silent: Boolean(silent),
   });
 
