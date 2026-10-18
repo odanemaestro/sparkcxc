@@ -1,0 +1,51 @@
+name: POB owner historical Paper 2 calibration
+
+# Operator-only synthetic cases. This workflow never submits a candidate exam,
+# changes a score, releases a public paper, or enables database marking.
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_provider_cost:
+        description: "Type RUN_14_CASE_CALIBRATION to authorize 14 synthetic cases"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pob-owner-paper2-calibration
+  cancel-in-progress: false
+
+jobs:
+  source-bound-calibration:
+    if: ${{ inputs.confirm_provider_cost == 'RUN_14_CASE_CALIBRATION' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Validate benchmark and 100-mark source pack without provider calls
+        run: node tools/calibrate-pob-owner-p2.mjs --plan
+      - name: Run independent two-pass semantic grading of all synthetic cases
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SPARK_MARKING_MODEL: ${{ secrets.SPARK_MARKING_MODEL }}
+        run: |
+          if [ -z "$OPENAI_API_KEY" ] || [ -z "$SPARK_MARKING_MODEL" ]; then
+            echo "Provider credentials not configured; benchmark not executed."
+            exit 2
+          fi
+          node tools/calibrate-pob-owner-p2.mjs --all
+      - name: Preserve provider observations whether comparisons pass or fail
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pob-owner-paper2-synthetic-calibration
+          path: artifacts/pob-owner-paper2-calibration.json
+          if-no-files-found: ignore
+          retention-days: 7
