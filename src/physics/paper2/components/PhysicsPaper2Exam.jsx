@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import MathText from "../../../practice/MathText";
 import Paper2ResponseInput from "../../../practice/Paper2ResponseInput";
+import PhysicsGraphWorking from "./PhysicsGraphWorking";
 import "../../../practice/practiceExam.css";
 import {
   PHYSICS_PAPER2_PAPERS,
@@ -36,6 +37,7 @@ function responseHasContent(response = {}) {
   if (Object.values(response.table || {}).some(value => String(value || "").trim())) return true;
   if ((response.graph?.points || []).length || (response.graph?.line || []).length) return true;
   if (["axisXLabel","axisYLabel","axisXMin","axisXMax","axisXStep","axisYMin","axisYMax","axisYStep"].some(key => String(response.graph?.[key] ?? "").trim())) return true;
+  if (response.graphEvidence?.kind) return true;
   return false;
 }
 
@@ -209,6 +211,12 @@ function ReviewPanel({ result, question, responses, modelResponses }) {
         </div>}
         {(part.responseType === "table" || part.responseType === "graph") && <div className="phy-p2-visual-mark-scheme"><span>Mark-scheme answer</span><MathText as="div" prose>{modelAnswer}</MathText></div>}
         {working && <div className="phy-p2-review-working"><span>Your working</span><MathText as="div" prose>{working}</MathText></div>}
+        {response.graphEvidence?.kind && <div className="phy-p2-review-working">
+          <span>Recorded graph working</span>
+          <p>{response.graphEvidence.kind === "physics-gradient-triangle-v1"
+            ? `Gradient triangle: ${response.graphEvidence.points?.length || 0} selected points`
+            : "Pressure reading: one point selected on your graph"}. This is saved practice evidence and is not yet counted by the existing marking engine.</p>
+        </div>}
         {workedSolution && <div className="phy-p2-worked-solution"><span>Worked solution</span><MathText as="div" prose>{workedSolution}</MathText></div>}
         {part.markerNote && <div className="phy-p2-marker-guidance"><span>Marker guidance</span><MathText as="div" prose>{part.markerNote}</MathText></div>}
         {rows.length > 0 && <div className="phy-p2-criteria-list"><span className="phy-p2-review-breakdown-label">Mark breakdown</span>{rows.map(row => <CriterionReview key={row.id} row={row}/>)}</div>}
@@ -490,6 +498,10 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
           const key = physicsPaper2PartKey(question.question_id, part.id);
           return <section key={key} className="phy-p2-part"><div className="phy-p2-part-head"><strong>{part.label}</strong><MathText as="div" prose>{part.prompt}</MathText><b>{part.marks} {part.marks === 1 ? "mark" : "marks"}</b></div>
             <PartResponse question={question} part={part} response={responses[key] || {}} disabled={false} onChange={value => setPartResponse(part.id, value)}/>
+            <PhysicsGraphWorking questionId={question.question_id} partId={part.id}
+              graphResponse={responses[physicsPaper2PartKey(question.question_id, "b")] || {}}
+              response={responses[key] || {}}
+              onChange={value => setPartResponse(part.id, value)}/>
           </section>;
         })}</div>
       </> : <>
