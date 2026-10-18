@@ -14,3 +14,12 @@ test("ambiguous numeric response and multi-mark essay are ignored",()=>{
  const criteria=[{id:"n",maxMarks:1,kind:"numeric",expected:12,tolerance:0},{id:"essay",maxMarks:5,kind:"exact",acceptedValues:["x"]}];
  expect(evaluateObjectiveCriteria({criteria,responses:{n:"12 cm",essay:"x"}})).toEqual([]);
 });
+
+test("numeric objective accepts equivalent units as advisory evidence",()=>{
+ const r=evaluateObjectiveCriteria({criteria:[{id:"n",maxMarks:1,kind:"numeric",expected:1.2,unit:"m",tolerance:0.0001}],responses:{n:"120 cm"}});
+ expect(r[0]).toMatchObject({decision:"award",authority:"advisory"});
+});
+test("numeric objective does not deny unrecognized dimensions",()=>{
+ const r=evaluateObjectiveCriteria({criteria:[{id:"n",maxMarks:1,kind:"numeric",expected:1.2,unit:"m",tolerance:0.01}],responses:{n:"1.2 kg"}});
+ expect(r).toEqual([]);
+});
