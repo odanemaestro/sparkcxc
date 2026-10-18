@@ -119,3 +119,30 @@ test("unsupported question IDs and invalid parts cannot enter the scoring pipeli
   {questionId:"p2-q7-v1",partId:"e"}
  ])expect(()=>mark({...args,response:{answer:"n^2"}})).toThrow(/Uncalibrated/);
 });
+
+
+describe.each(cases)("source-accepted whitespace representations",item=>{
+ test("space-separated table cells are not concatenated into a number",()=>{
+  const values=table(item).replace(/,/g," ");
+  const result=assess(item,"a",values);
+  expect(result.criteria.map(c=>c.candidateMarks)).toEqual([1,1]);
+  expect(assess(item,"a",values.replace(/\s+/g,"")).suggestedMarks).toBe(0);
+ });
+ test("source-accepted space-separated symbolic expressions remain distinct",()=>{
+  const expressionsAsSpaces=expressions(item).join(" ");
+  const r=assess(item,"b",expressionsAsSpaces);
+  expect(r.suggestedMarks).toBe(4);
+  expect(r.publishable).toBe(false);
+ });
+ test("source model labels without equals signs remain accepted",()=>{
+  const fields=expressions(item);
+  const labels=item.kind==="tiles"?["shaded","unshaded","total"]:["top","bottom","total"];
+  const labelled=fields.map((field,i)=>labels[i]+" "+field).join("; ");
+  expect(assess(item,"b",labelled).suggestedMarks).toBe(4);
+ });
+ test("incorrect whitespace-separated totals cannot be split into false method marks",()=>{
+  const terms=expressions(item);
+  const bad=[terms[0],terms[1],"n^2+99"].join(" ");
+  expect(assess(item,"b",bad).suggestedMarks).toBe(0);
+ });
+});
