@@ -35,7 +35,7 @@ const communityRoles=Object.freeze([
     identify:/\b(?:educat(?:e|es|ion)|teach(?:es|ing)?|advise|advice|couns(?:el|elling)|inform(?:ing)?|awareness|guid(?:e|ance))\b.{0,64}\b(?:famil(?:y|ies)|parents?|public|communities?|people|nutrition|diet|food|eating)\b/i,
     develop:/\b(?:balanced diets?|food safety|affordable|healthy (?:food|eating|diet|meals?)|nutrients?|food choices?|meal planning|prevent deficiencies|prevent illness)\b/i},
   {id:"programme",name:"Provide community nutrition programmes",
-    identify:/\b(?:school (?:meal|feeding)|breastfeed(?:ing)?|supplement(?:ation)?|micronutrient|fortif(?:y|ication)|food (?:support|assistance|programme)|meal programmes?)\b/i,
+    identify:/\b(?:school[ -]+(?:meal|feeding)|breastfeed(?:ing)?|supplement(?:ation)?|micronutrient|fortif(?:y|ication)|food (?:support|assistance|programme)|meal programmes?)\b/i,
     develop:/\b(?:pupils?|children|infants?|mothers?|families|iron|vitamin|deficienc(?:y|ies)|nutrients?|at.risk|hungry|malnutrition|healthy growth)\b/i},
 ]);
 
@@ -62,7 +62,7 @@ function dehydration(part,response){
   const negative=negated(text);
   const water=/\b(?:dehydrat(?:e|ion)|dry(?:ing|ies)?|remove(?:s|d|ing)?|extract(?:ion|s|ed|ing)?|evaporat(?:e|ion|es|ing)?)\b.{0,58}\b(?:water|moisture|liquid)\b|\b(?:remov(?:e|al|es|ed|ing)|reduc(?:e|es|ed|ing))\b.{0,45}\b(?:water|moisture)\b/i;
   const removal=!negative&&water.test(text)&&/\b(?:food|foods|fruit|vegetable|meat|fish|dry(?:ing|ied)?)\b/i.test(text);
-  const microbes=!negative&&/\b(?:bacteria|bacterial|microbes?|microorganisms?|mould|mold|spoilage|spoil(?:s|ing)?)\b/i.test(text)&&
+  const microbes=!negative&&/\b(?:bacteria|bacterial|microbes?|microbial|microorganisms?|mould|mold|spoilage|spoil(?:s|ing)?)\b/i.test(text)&&
     /\b(?:prevent(?:s|ing)?|slows?|limit(?:s|ing)?|reduc(?:e|es|ing)|inhibit(?:s|ing)?|stop(?:s|ping)?)\b/i.test(text);
   const criteria=[
     {id:"water-removal",rule:"Removes moisture or water from food.",marks:removal?1:0,
