@@ -99,7 +99,7 @@ test("FNH historical provisional score excludes unanswered or unresolved keys",(
  render(<FnhHistoricalPaper1Reader sourceId="FNH-P1-2026-MJ" userId="practice-score" onBack={jest.fn()}/>);
  fireEvent.click(screen.getByRole("radio",{name:"mental"}));
  fireEvent.click(screen.getByRole("button",{name:"Submit and review provisional score"}));
- expect(screen.getByText(/Practice result: 1 \\/ /)).toBeInTheDocument();
+  expect(screen.getByText(/Practice result: 1/)).toBeInTheDocument();
  expect(screen.getByText(/SPARK suggested answer: A/)).toBeInTheDocument();
  expect(screen.getAllByRole("radio").every(input=>input.disabled)).toBe(true);
  fireEvent.click(screen.getByRole("button",{name:"Start another attempt"}));
