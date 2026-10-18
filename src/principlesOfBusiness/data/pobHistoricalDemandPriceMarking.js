@@ -46,7 +46,7 @@ const options=Object.freeze({
    {id:"boycott",label:"Consumers boycott or substitute away from cheese",
     name:/\b(?:boycott|avoid(?:ing)?|switch(?:ing)?\s+(?:to|away)|substitutes?|buy(?:ing)?\s+less)\b.{0,42}\b(?:cheese|dairy|alternatives?)\b|\b(?:cheese|dairy)\b.{0,30}\b(?:boycott|substitutes?|replac(?:e|ed))\b/i,sign:"down"},
    {id:"demand-rise",label:"Consumers increase cheese demand",
-    name:/\b(?:consumers?|customers?|buyers?|households?)\b.{0,52}\b(?:demand|buy|purchas(?:e|ing)|want)\b.{0,36}\b(?:more|cheese|increas(?:e|ed|ing))\b|\b(?:higher|greater|rising|increasing)\s+demand\s+for\s+cheese\b/i,sign:"up"},
+    name:/\b(?:consumers?|customers?|buyers?|households?)\b.{0,52}\b(?:demand|buy|purchas(?:e|ing)|want)\b.{0,36}\b(?:more(?:\s+cheese)?|increas(?:e|ed|ing)\s+(?:demand|cheese))\b|\b(?:higher|greater|rising|increasing)\s+demand\s+for\s+cheese\b/i,sign:"up"},
    {id:"price-control",label:"Consumers advocate cheese price controls",
     name:/\b(?:consumer groups?|consumers?|buyers?)\b.{0,50}\b(?:lobby|petition|campaign|ask|pressure)\b.{0,45}\b(?:price controls?|price caps?|government|regulat(?:ion|e))\b|\b(?:price cap|price ceiling|government price control)\b/i,sign:"set"}
   ]
