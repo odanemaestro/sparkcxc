@@ -499,7 +499,9 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
           return <section key={key} className="phy-p2-part"><div className="phy-p2-part-head"><strong>{part.label}</strong><MathText as="div" prose>{part.prompt}</MathText><b>{part.marks} {part.marks === 1 ? "mark" : "marks"}</b></div>
             <PartResponse question={question} part={part} response={responses[key] || {}} disabled={false} onChange={value => setPartResponse(part.id, value)}/>
             <PhysicsGraphWorking questionId={question.question_id} partId={part.id}
-              graphResponse={responses[physicsPaper2PartKey(question.question_id, "b")] || {}}
+              graphPart={question.parts.find(item => item.responseType === "graph")}
+              graphResponse={responses[physicsPaper2PartKey(question.question_id,
+                question.parts.find(item => item.responseType === "graph")?.id)] || {}}
               response={responses[key] || {}}
               onChange={value => setPartResponse(part.id, value)}/>
           </section>;
