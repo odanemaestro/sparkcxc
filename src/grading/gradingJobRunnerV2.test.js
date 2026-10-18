@@ -35,3 +35,18 @@ test("invalid IDs and job state are rejected",()=>{
  expect(()=>validateGradingJob({...job,status:"published"})).toThrow();
  expect(()=>validateGradingJob({...job,id:"x"})).toThrow();
 });
+
+test("commit failure never retries a superseded lease or claims success",async()=>{
+ const store=fixture();
+ store.commit.mockRejectedValue(new Error("Grading lease expired or superseded"));
+ await expect(processGradingJob({store,grader:async()=>({
+  reconciliation:{confirmedMarks:1,unresolvedMarks:0}
+ }),jobId:job.id})).rejects.toThrow("lease expired");
+ expect(store.retry).not.toHaveBeenCalled();
+});
+test("failed grader result commits failure, never publishes",async()=>{
+ const store=fixture();
+ const result=await processGradingJob({store,grader:async()=>({invalid:true}),jobId:job.id});
+ expect(result.status).toBe("failed");
+ expect(store.commit.mock.calls[0][2]).toMatchObject({status:"failed",result:null});
+});
