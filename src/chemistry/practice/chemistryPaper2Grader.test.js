@@ -35,3 +35,18 @@ test("preserves paper score caps and identifies unresolved separately",()=>{
  expect(result.maxPossibleScore).toBe(3);
  expect(result.unassessedMarks).toBe(2);
 });
+
+
+test("extra or malformed Chemistry graph points cannot earn full plotting credit",()=>{
+ const item={marks:3,response:{type:"graph",x:"time",y:"temperature",points:[{x:0,y:0},{x:1,y:1},{x:2,y:2}]},markScheme:{points:[]}};
+ const graph=points=>JSON.stringify({version:1,kind:"line",connection:"smooth",x:{min:0,max:5,step:1},y:{min:0,max:5,step:1},series:[{name:"",points}]});
+ const base={"CHEM:0:0:xLabel":"time","CHEM:0:0:yLabel":"temperature"};
+ const good=gradeChemistryPaper2Item(question,0,0,item,{...base,"CHEM:0:0:graph":graph("0, 0\n1, 1\n2, 2")});
+ const extra=gradeChemistryPaper2Item(question,0,0,item,{...base,"CHEM:0:0:graph":graph("0, 0\n1, 1\n2, 2\n4, 4")});
+ const malformed=gradeChemistryPaper2Item(question,0,0,item,{...base,"CHEM:0:0:graph":graph("0, 0\n1, 1\n2, 2\noops")});
+ expect(good.score).toBe(3);
+ expect(extra.score).toBe(1);
+ expect(malformed.score).toBe(1);
+ expect(extra.visualEvidence.validPoints).toBe(true);
+ expect(malformed.visualEvidence.validPoints).toBe(false);
+});
