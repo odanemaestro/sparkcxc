@@ -53,3 +53,35 @@ test("pressure reading is selected from actual graph and saved independently",()
  rerender(<PhysicsGraphWorking {...props} response={result}/>);
  expect(screen.getByText(/Graph-reading point recorded/i)).toBeTruthy();
 });
+
+
+describe("source-specific graph workspace axes and response persistence",()=>{
+ const fixtures=[
+  {bank:require("../data/spark-phy-p02-practice-2.json"),end:1,slope:4.01,first:0.1,second:0.75},
+  {bank:require("../data/spark-phy-p02-practice-3.json"),end:0.6,slope:5.05,first:0.07,second:0.49},
+  {bank:require("../data/spark-phy-p02-practice-4.json"),end:100,slope:0.01,first:10,second:75}
+ ];
+ test.each(fixtures)("captures its own paper's gradient triangle without using Paper 1 axes",fixture=>{
+  const question=fixture.bank.questions[0];
+  const graphPart=question.parts.find(p=>p.responseType==="graph");
+  const gradientPart=question.parts.find(p=>p.criteria?.some(c=>c.code==="M1"&&c.marks===2));
+  const graphResponse={graph:{line:[{x:0,y:0},{x:fixture.end,y:fixture.end*fixture.slope}]}};
+  const save=jest.fn();
+  const props={questionId:question.question_id,partId:gradientPart.id,graphPart,graphResponse,onChange:save};
+  const {rerender}=render(<PhysicsGraphWorking {...props} response={{}}/>);
+  expect(screen.getByText(graphPart.grid.xLabel)).toBeTruthy();
+  expect(screen.getByText(graphPart.grid.yLabel)).toBeTruthy();
+  expect(screen.queryByRole("button",{name:"Record graph reading"})).toBeNull();
+  fireEvent.change(screen.getByRole("slider"),{target:{value:String(fixture.first)}});
+  fireEvent.click(screen.getByRole("button",{name:"Record first point"}));
+  const first=save.mock.calls.at(-1)[0];
+  rerender(<PhysicsGraphWorking {...props} response={first}/>);
+  fireEvent.change(screen.getByRole("slider"),{target:{value:String(fixture.second)}});
+  fireEvent.click(screen.getByRole("button",{name:"Record second point"}));
+  const second=save.mock.calls.at(-1)[0];
+  expect(validatePhysicsGradientTriangle({questionId:question.question_id,
+   graphResponse,response:second})).toBe(true);
+  rerender(<PhysicsGraphWorking {...props} response={second}/>);
+  expect(screen.getByText("Gradient triangle recorded.")).toBeTruthy();
+ });
+});
