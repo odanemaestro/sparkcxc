@@ -45,7 +45,9 @@ export function buildPobArchiveExaminerPack({paperId,selectedQuestions,responses
  }
  const paper=ownerSource?buildPobOwnerPaper2Bank(paperId,record.bank):record.bank;
  const fullSource=paperId==="POB-P2-2009-MJ"&&verifyPob2009SourcePrompts(paper).valid;
- if(paper.sourceSha256!==record.source.sourceSha256)throw new Error("historical_source_not_verified");
+ // The scanned source identity is authoritative for archival provenance; an owner-typed
+ // transcription is not itself an authenticated CXC booklet or answer key.
+ if(record.bank.sourceSha256!==record.source.sourceSha256)throw new Error("historical_source_not_verified");
  if(!validatePobArchiveSelection(paper,selectedQuestions))throw new Error("invalid_historical_question_selection");
  if(!responses||typeof responses!=="object"||Array.isArray(responses))throw new Error("invalid_snapshot");
  const selected=paper.questions.filter(q=>selectedQuestions.includes(q.number));
