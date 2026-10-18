@@ -189,8 +189,9 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
            {partReview&&<p className="pob-archive-part-status"><strong>{partReview.assessedMarks===null?"Written response: further rubric assessment needed":partReview.assessedMarks+" / "+partReview.availableMarks+" marks confirmed by SPARK"}</strong></p>}
            <strong>SPARK model answer</strong><p>{part.modelAnswer||"Model answer is still being authored."}</p>
            {part.criteria?.length>0&&<><strong>Marking criteria</strong><ul>{part.criteria.map((criterion,i)=><li key={i}>
-             {criterion.marks} mark{criterion.marks===1?"":"s"}: {criterion.rule}
-           </li>)}</ul></>}
+              {criterion.marks} mark{criterion.marks===1?"":"s"}: {criterion.rule}
+              {partReview&&<small className="pob-criterion-result">{partReview.criteria[i]?.assessedMarks===null?" · Further evidence review":" · "+(partReview.criteria[i]?.assessedMarks||0)+" mark(s) confirmed"}</small>}
+            </li>)}</ul></>}
            <small>Credit equivalent correct ideas and explanations. This is a SPARK-authored guide, not an official CXC marking scheme.</small>
          </div>}
        </div>
@@ -199,7 +200,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
    {submitted&&rubricReview&&<section className="pob-archive-marking-summary" aria-label="SPARK Paper 2 marking scheme results" role="status">
      <strong>SPARK rubric review</strong>
      <p>{rubricReview.assessedMarks!==null?"Confirmed score: "+rubricReview.assessedMarks+" / "+rubricReview.availableMarks+" marks":"Confirmed marks: "+rubricReview.confirmedMarks+" / "+rubricReview.availableMarks+". "+rubricReview.unresolvedParts+" written part(s) still require evidence-based assessment. This is not a final grade."}</p>
-     <small>Blank parts receive zero. Exact SPARK worked-answer matches receive authored marks. Alternative wording stays pending rather than automatically marked wrong. AI is optional.</small>
+     <small>Blank parts receive zero. SPARK confirms independently verified calculations, written claims and diagram links. Equivalent answers stay pending when evidence is insufficient, never automatically wrong. AI is optional.</small>
    </section>}
    <div className="pob-archive-actions">
      {!submitted?<button type="button" className="pob-primary" disabled={!selectionValid} onClick={()=>setSubmitted(true)}>Submit responses and view marking scheme</button>
