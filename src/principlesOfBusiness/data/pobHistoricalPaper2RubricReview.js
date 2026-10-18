@@ -51,10 +51,13 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
    confirmed=assessed.reduce((n,m)=>n+(m||0),0);
    // Invalid or missing criteria still account for the full possible mark.
    // Weighted, partially evidenced criteria also leave their balance pending.
-   const unresolved=blank?0:valid
+   // Exact arithmetic and diagram checkers explicitly resolve every
+   // criterion, including known incorrect results. Only open prose and
+   // structurally invalid rubrics keep undetermined marks pending.
+   const determined=Boolean(valid&&(visual||arithmetic||sameAsGuide));
+   const unresolved=blank||determined?0:valid
      ?Math.max(0,maxMarks-confirmed):maxMarks;
-   const assessedMarks=valid&&unresolved===0&&assessed.every(n=>n!==null)?confirmed
-     :blank&&valid?0:null;
+   const assessedMarks=valid&&unresolved===0&&assessed.every(n=>n!==null)?confirmed:null;
    return {id,question:question.number,part:part.id,availableMarks:maxMarks,
     confirmedMarks:confirmed,unresolvedMarks:unresolved,assessedMarks,
     rubricComplete:valid,status,
