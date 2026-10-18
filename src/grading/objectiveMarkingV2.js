@@ -1,3 +1,4 @@
+import {compareGradingQuantity} from "./numericQuantityV2";
 /**
  * Server-owned rubric decisions for strictly objective one-mark criteria.
  * These decisions are candidate evidence only, not independent final authority.
@@ -24,8 +25,8 @@ export function evaluateObjectiveCriteria({criteria=[],responses={},runId="objec
     awarded=accepted.has(normalize(response))?1:null; // unmatched prose may still deserve credit
   }else if(c.kind==="numeric"&&typeof c.expected==="number"&&Number.isFinite(c.expected)&&
        typeof c.tolerance==="number"&&Number.isFinite(c.tolerance)&&c.tolerance>=0){
-    const value=safeNumber(response);
-    if(value!==null)awarded=Math.abs(value-c.expected)<=c.tolerance?1:0;
+    const comparison=compareGradingQuantity({response,expected:c.expected,unit:c.unit??null,tolerance:c.tolerance});
+    if(comparison.status!=="unresolved")awarded=comparison.status==="match"?1:0;
   }
   if(awarded===null)continue;
   evidence.push({
