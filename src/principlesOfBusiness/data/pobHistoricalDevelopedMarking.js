@@ -64,7 +64,11 @@ const CONFIG=Object.freeze({
 const clauses=text=>String(text??"").split(/[;\n]+|(?<=[.!?])\s+/)
   .map(line=>line.trim()).filter(Boolean);
 const isContradiction=text=>/\b(?:does(?:\s+not|n't)|do(?:\s+not|n't)|cannot|can(?:\s+not|'t)|never|no increase|won't|will not)\b/i.test(text);
-const normalize=text=>String(text||"").toLowerCase().replace(/\s+/g," ").trim();
+// The question asks for an INCREASE. Reversed causal directions are not
+// correct explanations, even if the candidate repeats every source keyword.
+const reversedOutcome=(partKey,line)=>partKey==="Q3:b"
+ ?/\b(?:higher|rising|increased?)\s+(?:(?:feed|input|transport|production)\s+)?costs?\b|\b(?:costs?\s+(?:increase|rise|go up)|(?:supply|output|production)\s+(?:falls?|declines?|decreases?)|(?:reduce|decrease|lower)\s+(?:beef\s+)?(?:supply|production|output))\b/i.test(line)
+ :/\b(?:increas(?:e|es|ed|ing)|rais(?:e|es|ed|ing))\s+(?:errors?|mistakes?|fatigue|absenteeism|downtime)\b|\b(?:reduc(?:e|es|ed|ing)|decreas(?:e|es|ed|ing)|lower(?:s|ed|ing)?)\s+(?:skills?|efficiency|productivity|output)\b/i.test(line);
 const isLink=text=>/\b(?:to|which|so|because|thereby|therefore|result(?:ing|s)?|allow(?:s|ing)?|helps?|leading|reduces?|increases?|improves?|lowers?|causes?|making|make(?:s)?)\b/i.test(text);
 
 export function getPobDevelopedTask(paperId,partKey){
@@ -78,7 +82,7 @@ export function gradePobDevelopedPart(paperId,partKey,response){
  // At most one developed point per answer statement; a list of keywords
  // cannot borrow a reason from an unrelated line.
  for(const [index,line] of units.entries()){
-  if(isContradiction(line))continue;
+  if(isContradiction(line)||reversedOutcome(partKey,line))continue;
   for(const concept of config.concepts){
    if(used.has(concept.id)||!concept.identify.test(line))continue;
    const hasDevelopment=concept.develop.test(line)&&isLink(line);
