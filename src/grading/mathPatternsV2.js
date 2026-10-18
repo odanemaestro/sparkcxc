@@ -32,7 +32,10 @@ const finish=(questionId,partId,criteria)=>({
  unresolvedMarks:criteria.reduce((s,c)=>s+(c.candidateMarks===null?c.maxMarks:0),0)
 });
 function table(raw){
- const s=norm(raw).replace(/^\[/,"").replace(/\]$/,"");
+ // Keep spaces until the row has been tokenised. The source accepts
+ // both "4, 5, 9" and "4 5 9"; removing spaces would turn the latter
+ // into a single, incorrect number.
+ const s=str(raw).trim().replace(/[−–—]/g,"-").replace(/^\[/,"").replace(/\]$/,"");
  const segments=s.split(/[;\n,\s]+/).filter(Boolean);
  if(segments.length!==3||segments.some(v=>value(v)===null))return null;
  return segments.map(value);
@@ -41,14 +44,27 @@ function formulaFields(raw,kind){
  let s=norm(raw);
  if(!s||s.length>500||/\b(?:or|either|maybe)\b/.test(s))return null;
  const segments=s.split(/[;\n,]/).filter(Boolean);
- if(segments.length!==3)return null;
  const labels=kind==="tiles"?["shaded","unshaded","total"]:["top","bottom","total"];
- const hasLabels=segments.some(segment=>/^(?:shaded|unshaded|top|bottom|total)[:=]/.test(segment));
- if(hasLabels){
-  if(segments.some((segment,i)=>!segment.startsWith(labels[i]+"=")&&!segment.startsWith(labels[i]+":")))return null;
-  return segments.map((segment,i)=>segment.slice(labels[i].length+1));
+ if(segments.length===3){
+  const hasLabels=segments.some(segment=>labels.some(label=>segment.startsWith(label)));
+  if(hasLabels){
+   if(segments.some((segment,i)=>!segment.startsWith(labels[i])))return null;
+   return segments.map((segment,i)=>{
+    const suffix=segment.slice(labels[i].length);
+    return suffix.replace(/^[:=]/,"");
+   });
+  }
+  return segments;
  }
- return segments;
+ // The source explicitly accepts only these whitespace-separated triples.
+ // Do not heuristically split arbitrary adjacent algebraic expressions.
+ const loose=str(raw).trim().toLowerCase().replace(/[−–—]/g,"-").replace(/²/g,"^2");
+ if(kind==="tiles"){
+  const m=/^n\^2\s+4n\s+(n\^2\s*\+\s*4n|n\s*\(\s*n\s*\+\s*4\s*\))$/.exec(loose);
+  return m?["n^2","4n",m[1].replace(/\s+/g,"")]:null;
+ }
+ return /^n\s+n\s*\+\s*1\s+2n\s*\+\s*1$/.test(loose)
+  ?["n","n+1","2n+1"]:null;
 }
 const expectedExpressions=kind=>kind==="tiles"?["n^2","4n","n^2+4n"]:["n","n+1","2n+1"];
 function formulaCorrect(input,expected){
