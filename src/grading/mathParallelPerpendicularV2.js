@@ -27,8 +27,13 @@ const exact=(a,b,tolerance=1e-9)=>a!==null&&Number.isFinite(a)&&Number.isFinite(
 function slopeMatches(value,expected){
  const n=quantity(value);
  if(exact(n,expected))return true;
- // Explicitly accepted by the original source question: -0.333 or 0.500.
- return expected===-1/3&&clean(value)==="-0.333"&&Math.abs(n-expected)<0.0005;
+ // The source accepts -0.333 for -1/3. Recognise more precise,
+ // correctly rounded decimals without accepting broad near-misses.
+ if(expected===-1/3&&n!==null){
+  const decimal=/^-(?:\\d+)?\\.(\\d{3,12})$/.exec(clean(value));
+  return !!decimal&&n===Number(expected.toFixed(decimal[1].length));
+ }
+ return false;
 }
 function readSlopeIntercept(answer){
  const text=clean(answer);
