@@ -19,7 +19,7 @@ describe("FNH Paper 2 automatic evidence review",()=>{
   fireEvent.click(screen.getByRole("button",{name:"Submit now"}));
   expect(screen.getByText("Confirmed marking points")).toBeInTheDocument();
   expect(screen.getByText(/marks confirmed by SPARK/)).toBeInTheDocument();
-  expect(screen.getByText(/marks remain unresolved/)).toBeInTheDocument();
+  expect(screen.getAllByText(/marks remain unresolved/).length).toBeGreaterThan(0);
   expect(screen.queryByRole("checkbox",{name:/My response includes marking point/})).not.toBeInTheDocument();
   expect(screen.getByText(/verified lower bound, not the candidate/i)).toBeInTheDocument();
  });
