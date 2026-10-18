@@ -84,7 +84,7 @@ function repeatKey(question) {
 
 function validPaper1Options(question) {
   const options=["option_a","option_b","option_c","option_d"].map(key=>
-    String(question?.[key]??"").trim().replace(/\\s+/g," ").toLowerCase()
+    String(question?.[key]??"").trim().replace(/\s+/g," ").toLowerCase()
   );
   return options.every(Boolean)&&new Set(options).size===4;
 }
