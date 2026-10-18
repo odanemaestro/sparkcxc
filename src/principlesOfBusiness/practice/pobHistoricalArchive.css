@@ -95,3 +95,49 @@
 .pob-archive .pob-visual-preview svg{display:block;width:100%;max-width:650px;height:auto;margin-inline:auto;min-width:310px}
 .pob-archive .pob-criterion-result{display:block;margin:.25rem 0 .25rem;color:inherit;opacity:.75;font-size:.8rem}
 @media(max-width:560px){.pob-archive .pob-visual-editor{padding:.7rem}.pob-archive .pob-visual-fields{grid-template-columns:1fr}.pob-archive .pob-visual-preview svg{min-width:280px}}
+
+
+/* Source-bound diagram construction: touch targets and accessible fallback. */
+.pob-archive .pob-visual-workbench{margin:.85rem 0;padding:.85rem;border-radius:12px;background:color-mix(in srgb,currentColor 3%,transparent)}
+.pob-archive .pob-visual-workbench>strong{display:block;margin-bottom:.25rem}
+.pob-archive .pob-visual-bank{display:flex;flex-wrap:wrap;gap:.5rem;margin:.7rem 0 1rem}
+.pob-archive .pob-visual-bank button{font:inherit;font-size:.83rem;color:inherit;background:var(--card,#fff);border:1px solid color-mix(in srgb,currentColor 30%,transparent);border-radius:10px;padding:.65rem .8rem;min-height:44px;cursor:grab}
+.pob-archive .pob-visual-bank button.is-selected,.pob-archive .pob-visual-bank button[aria-pressed=true]{outline:2px solid #648bd1;outline-offset:1px}
+.pob-archive .pob-visual-slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:.75rem}
+.pob-archive .pob-visual-slot>span{font-size:.82rem;font-weight:700;display:block;margin-bottom:.3rem}
+.pob-archive .pob-visual-slot-actions{display:flex;align-items:stretch;gap:.35rem}
+.pob-archive .pob-visual-slot-actions button{font:inherit;color:inherit;background:var(--card,#fff);border:1px solid color-mix(in srgb,currentColor 24%,transparent);border-radius:9px;min-height:44px;padding:.5rem;cursor:pointer}
+.pob-archive .pob-visual-slot-actions .pob-visual-dropzone{flex:1;min-width:0;overflow-wrap:anywhere;border-style:dashed}
+.pob-archive .pob-visual-bank button:focus-visible,.pob-archive .pob-visual-slot-actions button:focus-visible{outline:3px solid #648bd1;outline-offset:2px}
+.pob-archive .pob-visual-precise{margin:.9rem 0}
+.pob-archive .pob-visual-precise summary{font-size:.88rem;font-weight:700;cursor:pointer;padding:.5rem}
+.pob-archive .pob-visual-precise[open] .pob-visual-fields{padding-top:.6rem}
+@media(max-width:560px){.pob-archive .pob-visual-bank button{font-size:.79rem}.pob-archive .pob-visual-slot-actions{flex-wrap:wrap}}
+
+
+.pob-archive .pob-visual-connection{border:1px solid color-mix(in srgb,currentColor 18%,transparent);border-radius:10px;margin:.8rem 0;padding:.65rem}
+.pob-archive .pob-visual-connection legend{font-weight:700;font-size:.84rem;padding:0 .3rem}
+.pob-archive .pob-visual-connection-options{display:flex;flex-wrap:wrap;gap:.4rem}
+.pob-archive .pob-visual-connection-options button{font:inherit;font-size:.82rem;min-height:44px;padding:.5rem .7rem;border-radius:9px;border:1px solid color-mix(in srgb,currentColor 25%,transparent);background:var(--card,#fff);color:inherit}
+.pob-archive .pob-visual-connection-options button[aria-pressed=true]{outline:2px solid #648bd1;outline-offset:1px}
+.pob-archive .pob-visual-connection-options button:focus-visible{outline:3px solid #648bd1;outline-offset:2px}
+
+
+/* Diagram editing uses stable light surfaces for readable labels in either theme. */
+.pob-archive .pob-visual-bank button,
+.pob-archive .pob-visual-slot-actions button,
+.pob-archive .pob-visual-connection-options button{background:#f3f7fd;color:#183153;border-color:#aebed3}
+.pob-archive .pob-visual-bank button[aria-pressed=true],
+.pob-archive .pob-visual-connection-options button[aria-pressed=true]{background:#dbe9fc;border-color:#31588f;color:#122b50}
+.pob-archive .pob-visual-slot-actions .pob-visual-dropzone{background:#fff;color:#172f56}
+.pob-archive .pob-visual-bank button:disabled,
+.pob-archive .pob-visual-slot-actions button:disabled,
+.pob-archive .pob-visual-connection-options button:disabled{cursor:default;opacity:.65}
+.pob-archive .pob-visual-editor,
+.pob-archive .pob-visual-workbench,
+.pob-archive .pob-visual-slot,
+.pob-archive .pob-visual-connection{min-width:0}
+.pob-archive .pob-visual-preview{max-width:100%}
+.pob-archive .pob-visual-connection-options button{overflow-wrap:anywhere}
+@media(max-width:390px){.pob-archive .pob-visual-preview{padding:.35rem}.pob-archive .pob-visual-preview svg{min-width:0}.pob-archive .pob-visual-workbench{padding:.6rem}}
+@media(prefers-reduced-motion:reduce){.pob-archive .pob-visual-bank button,.pob-archive .pob-visual-slot-actions button{transition:none}}

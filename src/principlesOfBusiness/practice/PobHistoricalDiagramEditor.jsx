@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {getPobP2VisualTask} from "../data/pobHistoricalPaper2Visual";
 
 // Keyboard-accessible diagram constructor. Its explicit nodes, links and
@@ -7,14 +7,20 @@ export default function PobHistoricalDiagramEditor({paperId,partKey,value,onChan
  const task=getPobP2VisualTask(paperId,partKey);
  if(!task)return null;
  const fields=value?.kind===task.kind&&value?.fields?value.fields:{};
+ const [selected,setSelected]=useState("");
+ const [dragged,setDragged]=useState("");
  const setField=(key,text)=>onChange({kind:task.kind,fields:{...fields,[key]:text}});
  const at=k=>fields[k]||"";
+ const slots=Object.entries(task.fields).filter(([k])=>!["count","leftParent","rightParent","middleParent","bottomParent"].includes(k));
+ const choices=[...new Set(slots.flatMap(([,f])=>f.choices.filter(Boolean)))];
+ const place=(key,choice)=>{if(!disabled&&task.fields[key]?.choices.includes(choice)){setField(key,choice);setSelected("");setDragged("");}};
+
  const span=task.kind==="org-span";
  const branch=task.kind==="org-branch"||span,chain=task.kind==="org-chain";
  const node=(x,y,w,h,label,key)=>(
   <g key={key}>
    <rect x={x} y={y} width={w} height={h} rx="9" fill="#eff5ff" stroke="#31588f" strokeWidth="1.5"/>
-   <text x={x+w/2} y={y+h/2} dominantBaseline="middle" textAnchor="middle" fontSize="12" fill="#172f56">
+   <text x={x+w/2} y={y+h/2} dominantBaseline="middle" textAnchor="middle" fontSize="12" fill="#172f56" textLength={Math.min((label||"Choose a position").length*6.4,w-16)} lengthAdjust="spacingAndGlyphs">
     {label||"Choose a position"}
    </text>
   </g>
@@ -47,7 +53,50 @@ export default function PobHistoricalDiagramEditor({paperId,partKey,value,onChan
  const pitch=520/boxes.length;
  return <div className="pob-visual-editor" aria-label={task.title}>
   <h4>{task.title}</h4>
-  <p>Choose the positions or links and connect the chart. SPARK will mark the completed structure against the original question.</p>
+  <p>Complete the original diagram. SPARK marks each correct element.</p>
+  <div className="pob-visual-workbench">
+   <strong>Choose and place labels</strong>
+   <p>Select a label, then select a diagram slot. On desktop, drag labels to slots. Use the precise controls below for connections.</p>
+   <div className="pob-visual-bank" aria-label="Diagram label bank">
+    {choices.map(choice=><button key={choice} type="button" draggable={!disabled} disabled={disabled}
+      aria-pressed={selected===choice} className={selected===choice?"is-selected":""}
+      onClick={()=>setSelected(selected===choice?"":choice)}
+      onDragStart={e=>{setDragged(choice);e.dataTransfer?.setData("text/plain",choice);}}
+      onDragEnd={()=>setDragged("")}>{choice}</button>)}
+   </div>
+   <div className="pob-visual-slots">
+    {slots.map(([key,field])=><div className="pob-visual-slot" key={key}>
+     <span>{field.label}</span>
+     <div className="pob-visual-slot-actions">
+      <button type="button" disabled={disabled} aria-label={"Place label in "+field.label}
+       onClick={()=>place(key,selected)}
+       onDragOver={e=>{if(!disabled)e.preventDefault();}}
+       onDrop={e=>{e.preventDefault();place(key,dragged||e.dataTransfer?.getData("text/plain"));}}
+       className="pob-visual-dropzone">{at(key)||"Place label here"}</button>
+      {at(key)&&<button type="button" disabled={disabled} onClick={()=>setField(key,"")}
+       aria-label={"Remove "+field.label}>Remove</button>}
+     </div>
+    </div>)}
+   </div>
+  </div>
+  {span&&<fieldset className="pob-visual-connection" disabled={disabled}>
+   <legend>Number of direct reports</legend>
+   <div className="pob-visual-connection-options">
+    {task.fields.count.choices.filter(Boolean).map(count=><button key={count} type="button"
+     aria-pressed={at("count")===count} onClick={()=>setField("count",count)}>{count}</button>)}
+   </div>
+  </fieldset>}
+  {Object.entries(task.fields).filter(([key])=>key.endsWith("Parent")).map(([key,field])=>
+   <fieldset className="pob-visual-connection" key={key} disabled={disabled}>
+    <legend>{field.label}</legend>
+    <div className="pob-visual-connection-options">
+     {field.choices.filter(Boolean).map(choice=><button type="button" key={choice}
+      disabled={disabled} aria-pressed={at(key)===choice}
+      onClick={()=>setField(key,at(key)===choice?"":choice)}>{choice}</button>)}
+    </div>
+   </fieldset>
+  )}
+  <details className="pob-visual-precise"><summary>Precise labels and reporting connections</summary>
   <div className="pob-visual-fields">
    {Object.entries(task.fields).map(([key,field])=><label key={key}>
     <span>{field.label}</span>
@@ -57,6 +106,7 @@ export default function PobHistoricalDiagramEditor({paperId,partKey,value,onChan
     </select>
    </label>)}
   </div>
+  </details>
   <div className="pob-visual-preview">
    <svg role="img" aria-label={"Your constructed "+(task.kind==="command-path"?"reporting path":distribution?"distribution chain":"organisational chart")}
     viewBox={distribution?"0 0 520 115":"0 0 520 235"} xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +118,7 @@ export default function PobHistoricalDiagramEditor({paperId,partKey,value,onChan
        <text x={index*pitch+pitch/2} y="44" fontSize="11" fill="#172f56" textAnchor="middle">
         {task.kind==="distribution-missing"&&index===0?"A":task.kind==="distribution-missing"&&index===2?"B":"Link "+(index+1)}
        </text>
-       <text x={index*pitch+pitch/2} y="63" fontSize="11" fill="#172f56" textAnchor="middle">{(value||"?").replace("Sales Supervisor","Sales Sup.")}</text>
+       <text x={index*pitch+pitch/2} y="63" fontSize="11" fill="#172f56" textAnchor="middle" textLength={Math.min((value||"?").length*5.6,pitch-20)} lengthAdjust="spacingAndGlyphs">{(value||"?").replace("Sales Supervisor","Sales Sup.")}</text>
        {index<boxes.length-1&&connector((index+1)*pitch-7,52,(index+1)*pitch+4,52,"arr"+index)}
       </g>
     )):<>{React.Children.toArray([...paths,...(labels||[])])}</>}
