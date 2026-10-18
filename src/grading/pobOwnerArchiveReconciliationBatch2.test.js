@@ -38,3 +38,16 @@ test("grouping does not bypass the separate live examiner release gate",()=>{
   selectedQuestions:defaultPobArchiveSelection(record.bank)})).toThrow("owner_calibration_not_released");
  expect(POB_OWNER_P2_GROUPED_RUBRICS["POB-P2-2014-MJ"]).toBeUndefined();
 });
+
+test("every one of the twenty owner Paper 2 banks has rubric criteria for all source parts",()=>{
+ const rows=POB_HISTORICAL_REVIEW_BANKS.filter(r=>r.paper===2)
+  .map(record=>({id:record.id,bank:buildPobOwnerPaper2Bank(record.id,record.bank)}))
+  .filter(x=>x.bank);
+ expect(rows).toHaveLength(20);
+ for(const {id,bank} of rows){
+  const parts=bank.questions.flatMap(q=>q.parts);
+  const missing=parts.filter(p=>!p.criteria.length||
+   p.criteria.reduce((n,c)=>n+c.marks,0)!==p.marks);
+  expect({id,missing:missing.map(x=>x.id)}).toEqual({id,missing:[]});
+ }
+});
