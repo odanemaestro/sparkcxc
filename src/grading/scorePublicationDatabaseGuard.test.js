@@ -12,6 +12,12 @@ test("server saves English A / Integrated Science Paper 2 responses without cert
  expect(migration).toContain("when v_nullable_written or v_owner_pob then 'requires-review'");
 });
 test("preserve POB original Paper 2 unscored submission and source-bank guard",()=>{
+ expect(migration).toContain("v_historical :=");
+ expect(migration).toContain("v_archive boolean := false");
+ expect(migration).toContain("pob_historical_jan26_canary_enabled");
+ expect(migration).toContain("pob_owner_p2_source_pilot_enabled");
+ expect(migration).toContain("Historical archive POB submission not enabled");
+ expect(migration).toContain("- 'selected_questions'");
  expect(migration).toContain("v_row.bank_version='pob-original-paper2-01'");
  expect(migration).toContain("p_score is not null");
  expect(migration).toContain("if (v_row.subject_id='principles-of-business'");
