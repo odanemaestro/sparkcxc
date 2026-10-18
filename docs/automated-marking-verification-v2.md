@@ -36,3 +36,10 @@ means potentially retaining a provisional result when evidence is insufficient.
 ## Local checks
 `npm test -- --watch=false markingReconciliationV2.test.js`
 Run the full test suite and build before merge.
+
+## Batch 2 advisory second pass
+- `markingSecondPassV2.js` scans criterion-specific responses for rubric phrase evidence and accepted alternatives.
+- Marks remain unresolved for unmatched phrases and negations; matched phrases do not become final marks.
+- Client-provided first pass decisions are not server-authenticated. A locally reconciled result remains nonpublishable.
+- Five dedicated second-pass regression tests added.
+- Next: server-owned rubric lookup, robust semantic analysis under rubric constraints, tamper-proof job execution, and official calibration.
