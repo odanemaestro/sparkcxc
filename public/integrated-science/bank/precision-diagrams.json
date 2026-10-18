@@ -1,0 +1,995 @@
+{
+  "revision": 3,
+  "description": "Precision-refined SVG artwork adapted to the existing SPARK Integrated Science practice questions. Existing question text, options, answers, data and marking schemes are unchanged. Source exam labels are adapted to the practice-bank targets.",
+  "sourceCollection": "SPARK Integrated Science precision refinement 3",
+  "modules": [
+    {
+      "module": 1,
+      "replacedSvgSlots": 13,
+      "paper1Items": 514,
+      "paper2Questions": 28,
+      "nonDiagramContentUnchanged": true,
+      "nonDiagramContentSha256": "c5cc68915a2ff7db5948d1d57010b99abd1adc01df6712bb6c693f4b059d7975"
+    },
+    {
+      "module": 2,
+      "replacedSvgSlots": 6,
+      "paper1Items": 460,
+      "paper2Questions": 28,
+      "nonDiagramContentUnchanged": true,
+      "nonDiagramContentSha256": "db73795cc665c72f1a4516e196b1e8ea81940b528f9914460c8e6df150787a24"
+    },
+    {
+      "module": 3,
+      "replacedSvgSlots": 14,
+      "paper1Items": 587,
+      "paper2Questions": 28,
+      "nonDiagramContentUnchanged": true,
+      "nonDiagramContentSha256": "224bad88076f3edecc31620e2a67802b59813382adbc6b0330c1fcef67318964"
+    }
+  ],
+  "diagrams": [
+    {
+      "module": 1,
+      "path": [
+        "sharedStimuli",
+        "M1-S-EYE",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P1-144",
+        "IS-M1-P1-145",
+        "IS-M1-P1-146"
+      ],
+      "label": "Horizontal section through the human eye",
+      "sourceFiles": [
+        "2013-p1-q14-eye.svg"
+      ],
+      "sourceSha256": {
+        "2013-p1-q14-eye.svg": "b0c8f32feea1f34aefd1225acf64bae7320edd11cf5cb05ed76195adfa24aa8c"
+      },
+      "svgSha256": "6b6122b135ae8a18ec5e33ee5657c8ec516e5d25d03347ba26d9c01380e925e3",
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "vitreous humour"
+      ],
+      "adaptation": "Removed source A–D targets; bank A cornea, B iris, C lens, D ciliary muscle, E retina and F optic nerve. Retained vitreous-humour annotation. Same geometry and map in Paper 1 and Paper 2."
+    },
+    {
+      "module": 1,
+      "path": [
+        "paper02",
+        7,
+        "parts",
+        0,
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P2-08"
+      ],
+      "label": "Horizontal section through the human eye",
+      "sourceFiles": [
+        "2013-p1-q14-eye.svg"
+      ],
+      "sourceSha256": {
+        "2013-p1-q14-eye.svg": "b0c8f32feea1f34aefd1225acf64bae7320edd11cf5cb05ed76195adfa24aa8c"
+      },
+      "svgSha256": "054289c054963b465bdedbcda912462b7b24924b2e08fffa64dd5c2051728227",
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "vitreous humour"
+      ],
+      "adaptation": "Removed source A–D targets; bank A cornea, B iris, C lens, D ciliary muscle, E retina and F optic nerve. Retained vitreous-humour annotation. Same geometry and map in Paper 1 and Paper 2."
+    },
+    {
+      "module": 1,
+      "path": [
+        "sharedStimuli",
+        "M1-S-EAR",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P1-157",
+        "IS-M1-P1-158",
+        "IS-M1-P1-159"
+      ],
+      "label": "Structure of the human ear",
+      "sourceFiles": [
+        "1999-p1-q54-mammalian-ear.svg"
+      ],
+      "sourceSha256": {
+        "1999-p1-q54-mammalian-ear.svg": "4e3264a45558d60afeb7611069b98816462512aa69e830fa98e0b61a113fd126"
+      },
+      "svgSha256": "a389a46e8f72ae669122a2499cb66df856198b87db0e6887b5a5405b1d3fe3ee",
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+      ],
+      "adaptation": "Bank A pinna, B auditory canal, C ear drum, D ossicles, E semicircular canals, F cochlea, G auditory nerve, H Eustachian tube. Removed all four source leaders before adding the eight bank targets."
+    },
+    {
+      "module": 1,
+      "path": [
+        "sharedStimuli",
+        "M1-S-FEM",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P1-068",
+        "IS-M1-P1-069",
+        "IS-M1-P1-070"
+      ],
+      "label": "Female reproductive system (front view)",
+      "sourceFiles": [
+        "2013-p2-q03-female-reproductive-system.svg"
+      ],
+      "sourceSha256": {
+        "2013-p2-q03-female-reproductive-system.svg": "5e6d8c50726f509071c0e470575a8fff563dbe760758fa9324debb83ca70caeb"
+      },
+      "svgSha256": "6dad023bada4ef120ade3a993a8dfac22256ceffc26702f290dddc2d0a8a4674",
+      "labels": [
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T"
+      ],
+      "adaptation": "Replaced X/Y/Z with bank P ovary, Q oviduct, R uterus, S cervix and T vagina. Leaders end on actual organs; ovaries remain separate from fimbriae."
+    },
+    {
+      "module": 1,
+      "path": [
+        "sharedStimuli",
+        "M1-S-FLOWER",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P1-031",
+        "IS-M1-P1-032",
+        "IS-M1-P1-033"
+      ],
+      "label": "Longitudinal section of a flower",
+      "sourceFiles": [
+        "2003-p1-q01-flower-section.svg"
+      ],
+      "sourceSha256": {
+        "2003-p1-q01-flower-section.svg": "2f2c3714838f03fb18050e83ed547dfe2948c0d2180b074a1c468a947c228a70"
+      },
+      "svgSha256": "f4dffa3ef32368fbb10a0efcd382021e5a173c337cc6224f20b67df2d674f391",
+      "labels": [
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T"
+      ],
+      "adaptation": "Bank P anther, Q stigma, R style, S ovary and T ovule. All original Roman numerals/leaders removed. Refined attached stamens and ovules retained."
+    },
+    {
+      "module": 1,
+      "path": [
+        "paper02",
+        0,
+        "parts",
+        0,
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P2-01"
+      ],
+      "label": "Longitudinal section of a flower",
+      "sourceFiles": [
+        "2003-p1-q01-flower-section.svg"
+      ],
+      "sourceSha256": {
+        "2003-p1-q01-flower-section.svg": "2f2c3714838f03fb18050e83ed547dfe2948c0d2180b074a1c468a947c228a70"
+      },
+      "svgSha256": "ba69c21d9e4c56b54c0d34f50d99cf3d2f042baf6a22a32d419d698a3b1d0074",
+      "labels": [
+        "P",
+        "Q",
+        "R",
+        "S"
+      ],
+      "adaptation": "Paper 2 map is P anther, Q stigma, R ovary and S ovule (different from Paper 1). Refined geometry reused with this distinct map; no fifth label."
+    },
+    {
+      "module": 1,
+      "path": [
+        "sharedStimuli",
+        "M1-S-ACELL",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P1-012",
+        "IS-M1-P1-013",
+        "IS-M1-P1-014"
+      ],
+      "label": "Animal cell",
+      "sourceFiles": [
+        "2014-p2-q03-animal-and-plant-cells.svg"
+      ],
+      "sourceSha256": {
+        "2014-p2-q03-animal-and-plant-cells.svg": "f31a52ec88acd0873c6a7f085cf1e896b30857f550ae72ad007aaf6b43e25da6"
+      },
+      "svgSha256": "5bbb3ba722645480b3c92856f6bc4fa37316c4ae88304d38ba86975ee5adf9f3",
+      "labels": [
+        "I",
+        "II",
+        "III",
+        "IV"
+      ],
+      "adaptation": "Isolated refined animal-cell panel without the plant panel or named source leaders. Bank I nucleus, II cytoplasm, III cell membrane, IV mitochondrion. Mitochondrial cristae retained."
+    },
+    {
+      "module": 1,
+      "path": [
+        "sharedStimuli",
+        "M1-S-PCELL",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P1-015",
+        "IS-M1-P1-016"
+      ],
+      "label": "Plant cell",
+      "sourceFiles": [
+        "2013-p1-q01-02-plant-cell.svg"
+      ],
+      "sourceSha256": {
+        "2013-p1-q01-02-plant-cell.svg": "52f8a6a2df0e5481c21561c5f806f992fc0ab8d3adadedcd204265044329306e"
+      },
+      "svgSha256": "bc44a0025fc0891ef3df009c7acff1d5d6c769b5ef7cb8f413b0cea03dc327c1",
+      "labels": [
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "cell sap"
+      ],
+      "adaptation": "Preserved refined nucleus, chloroplasts, vacuole, wall and separate membrane. Bank P wall, Q chloroplast, R vacuole, S nucleus, T cytoplasm."
+    },
+    {
+      "module": 1,
+      "path": [
+        "paper02",
+        1,
+        "parts",
+        0,
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P2-02"
+      ],
+      "label": "Plant cell",
+      "sourceFiles": [
+        "2013-p1-q01-02-plant-cell.svg"
+      ],
+      "sourceSha256": {
+        "2013-p1-q01-02-plant-cell.svg": "52f8a6a2df0e5481c21561c5f806f992fc0ab8d3adadedcd204265044329306e"
+      },
+      "svgSha256": "643d513f4ce49466ee9c6b88c6e7e50f095ab28f56d821ce7e595149455db1a2",
+      "labels": [
+        "W",
+        "X",
+        "Y",
+        "Z",
+        "cell sap"
+      ],
+      "adaptation": "Preserved refined nucleus, chloroplasts, vacuole, wall and separate membrane. Paper 2 uses W wall, X chloroplast, Y vacuole, Z nucleus; no P–T letters retained."
+    },
+    {
+      "module": 1,
+      "path": [
+        "sharedStimuli",
+        "M1-S-GERM",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P1-037",
+        "IS-M1-P1-038"
+      ],
+      "label": "Seeds in four test tubes",
+      "sourceFiles": [
+        "2013-p1-q17-germination-treatments.svg"
+      ],
+      "sourceSha256": {
+        "2013-p1-q17-germination-treatments.svg": "bf922003016672e445ce9a4ada781cf2eb3d4b6b6f097ae98b7e3a6d9c1fa4ce"
+      },
+      "svgSha256": "54a447c81fc7146f80b64003cf6c3b81ad817c47f1098c8336d0ac186b6963b6",
+      "labels": [
+        "I",
+        "25 °C",
+        "Cotton",
+        "plug",
+        "Air",
+        "Seeds",
+        "Dry cotton",
+        "wool",
+        "II",
+        "25 °C",
+        "Cotton",
+        "plug",
+        "Air",
+        "Seeds",
+        "Moist cotton",
+        "wool",
+        "III",
+        "2 °C",
+        "Cotton",
+        "plug",
+        "Air",
+        "Seeds",
+        "Moist cotton",
+        "wool",
+        "IV",
+        "25 °C",
+        "Cotton",
+        "plug",
+        "Seeds",
+        "Cotton wool",
+        "Oil film",
+        "Boiled",
+        "water"
+      ],
+      "adaptation": "Preserved source rounded tubes, separate seeds/cotton, cotton plugs and oil film over boiled water. Set I/II/III/IV temperatures to bank 25/25/2/25 °C; retained dry/moist/moist/boiled-water treatments. Equivalent material wording uses Dry cotton / wool and Moist cotton / wool instead of the previous split dry or moist / cotton wool; Boiled / water retains the same meaning. Added material leaders to plugs, seeds, air and oil, with no germination result."
+    },
+    {
+      "module": 1,
+      "path": [
+        "sharedStimuli",
+        "M1-S-FUNNEL",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P1-051",
+        "IS-M1-P1-052"
+      ],
+      "label": "Drainage through three soil samples",
+      "sourceFiles": [
+        "2013-p1-q27-soil-drainage.svg"
+      ],
+      "sourceSha256": {
+        "2013-p1-q27-soil-drainage.svg": "b5b02483df2b1e2cb63b4bbf67a1a3018c99ea616e83a2d836f8c00beacea5ab"
+      },
+      "svgSha256": "63a2540a9d763564d67064767892e71e6128ef2058ea23dc3c7a6a2a840e32fa",
+      "labels": [
+        "P",
+        "Q",
+        "R",
+        "Each funnel was given 100 cm³ of water."
+      ],
+      "adaptation": "Reused refined funnel, soil and cotton geometry, with open graduated collecting cylinders below the outlets. Bank P/Q/R collected volumes are 70/25/48 cm³; these replace source ordering I > II > III, ensuring P > R > Q. Equal additions retained. No soil names or retained-water answers added."
+    },
+    {
+      "module": 1,
+      "path": [
+        "paper02",
+        2,
+        "parts",
+        0,
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P2-03"
+      ],
+      "label": "Drainage through three soil samples",
+      "sourceFiles": [
+        "2013-p1-q27-soil-drainage.svg"
+      ],
+      "sourceSha256": {
+        "2013-p1-q27-soil-drainage.svg": "b5b02483df2b1e2cb63b4bbf67a1a3018c99ea616e83a2d836f8c00beacea5ab"
+      },
+      "svgSha256": "caf3d276127eae39361b2922d285469c200061e8248454a22780880e4d9afccc",
+      "labels": [
+        "P",
+        "Q",
+        "R",
+        "Each funnel was given 100 cm³ of water."
+      ],
+      "adaptation": "Reused refined funnel, soil and cotton geometry, with open graduated collecting cylinders below the outlets. Bank P/Q/R collected volumes are 70/25/48 cm³; these replace source ordering I > II > III, ensuring P > R > Q. Equal additions retained. No soil names or retained-water answers added."
+    },
+    {
+      "module": 1,
+      "path": [
+        "sharedStimuli",
+        "M1-S-HEART",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M1-P1-113",
+        "IS-M1-P1-114",
+        "IS-M1-P1-115",
+        "IS-M1-P1-116"
+      ],
+      "label": "Section through the human heart",
+      "sourceFiles": [
+        "2012-p2-q03-heart-section.svg"
+      ],
+      "sourceSha256": {
+        "2012-p2-q03-heart-section.svg": "095cdcd43671b6e2a11588821651e50bfe55c57db5fec7ac20b15cb2327a590d"
+      },
+      "svgSha256": "656049baaf29d887569cb81f289abd4259fb6bbcf42eb9f3b0cd2a678a96d2c6",
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K"
+      ],
+      "adaptation": "Preserved bank A right atrium, B right ventricle, C left atrium, D left ventricle, E tricuspid valve, F mitral valve, G aorta, H vena cava, I pulmonary artery, J aortic semilunar valve, K pulmonary vein. Removed source letters/answer lines. Left ventricular wall remains thicker; outflows connect to correct ventricles."
+    },
+    {
+      "module": 2,
+      "path": [
+        "sharedStimuli",
+        "M2-S-GUT",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M2-P1-060",
+        "IS-M2-P1-061",
+        "IS-M2-P1-062",
+        "IS-M2-P1-063"
+      ],
+      "label": "The human alimentary canal",
+      "sourceFiles": [
+        "2012-p2-q02-digestive-system.svg"
+      ],
+      "sourceSha256": {
+        "2012-p2-q02-digestive-system.svg": "80d2361d140624c59f166c8b39d05bf6e7fdcac95e2a9d99ec3dbbfd78e83454"
+      },
+      "svgSha256": "1e2bdbc49a6bf1528e1662b62321f946eed2356e6e0628da31bcdb227056d74d",
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "adaptation": "Refined digestive anatomy; bank labels A–G retained as oesophagus, liver, stomach, pancreas, small intestine, colon and rectum respectively. B/C/E checked against Paper 2 mark scheme and B/D/E/F against Paper 1 answers. Original source answer lines and metadata removed."
+    },
+    {
+      "module": 2,
+      "path": [
+        "paper02",
+        1,
+        "parts",
+        1,
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M2-P2-02"
+      ],
+      "label": "The human alimentary canal",
+      "sourceFiles": [
+        "2012-p2-q02-digestive-system.svg"
+      ],
+      "sourceSha256": {
+        "2012-p2-q02-digestive-system.svg": "80d2361d140624c59f166c8b39d05bf6e7fdcac95e2a9d99ec3dbbfd78e83454"
+      },
+      "svgSha256": "3a189370c0528180f03c8e913e9ba1b63558bd5a4a70b416c5c3babc16ed43d0",
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "adaptation": "Refined digestive anatomy; bank labels A–G retained as oesophagus, liver, stomach, pancreas, small intestine, colon and rectum respectively. B/C/E checked against Paper 2 mark scheme and B/D/E/F against Paper 1 answers. Original source answer lines and metadata removed."
+    },
+    {
+      "module": 2,
+      "path": [
+        "sharedStimuli",
+        "M2-S-TOOTH",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M2-P1-072",
+        "IS-M2-P1-073"
+      ],
+      "label": "Vertical section through a molar",
+      "sourceFiles": [
+        "2011-p2-q02-tooth-section.svg"
+      ],
+      "sourceSha256": {
+        "2011-p2-q02-tooth-section.svg": "c32b730290f0099b87dbaa44100783c6b9f35669fa3fa74e5af1e720cbd0babc"
+      },
+      "svgSha256": "ebf96aed36df0e14a9103e76740bcd55034ba4480da9c0329ebc1665d96782f7",
+      "labels": [
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T"
+      ],
+      "adaptation": "Refined molar crown, roots and separate tissue layers; adapted bank P enamel, Q dentine, R pulp, S gum and T root surface. P/Q/R checked against Paper 2 mark scheme and P/R against Paper 1 answers. Source A–D brackets/answer lines removed."
+    },
+    {
+      "module": 2,
+      "path": [
+        "paper02",
+        3,
+        "parts",
+        0,
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M2-P2-04"
+      ],
+      "label": "Vertical section through a molar",
+      "sourceFiles": [
+        "2011-p2-q02-tooth-section.svg"
+      ],
+      "sourceSha256": {
+        "2011-p2-q02-tooth-section.svg": "c32b730290f0099b87dbaa44100783c6b9f35669fa3fa74e5af1e720cbd0babc"
+      },
+      "svgSha256": "ebf96aed36df0e14a9103e76740bcd55034ba4480da9c0329ebc1665d96782f7",
+      "labels": [
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T"
+      ],
+      "adaptation": "Refined molar crown, roots and separate tissue layers; adapted bank P enamel, Q dentine, R pulp, S gum and T root surface. P/Q/R checked against Paper 2 mark scheme and P/R against Paper 1 answers. Source A–D brackets/answer lines removed."
+    },
+    {
+      "module": 2,
+      "path": [
+        "paper01",
+        396,
+        "stimulus",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M2-P1-177"
+      ],
+      "label": "Air movement by day",
+      "sourceFiles": [
+        "2011-p2-q03-sea-breeze.svg"
+      ],
+      "sourceSha256": {
+        "2011-p2-q03-sea-breeze.svg": "b7f307186c35265d519fd7a3d948c9b3f52def14f20e5cb0e79e59f91e7e2f0b"
+      },
+      "svgSha256": "6784d98439032347eee51675fffe7095769827ddc33d703c8cf09d2ae15dfccd",
+      "labels": [
+        "Sun",
+        "sea",
+        "land"
+      ],
+      "adaptation": "Refined terrain and closed smooth circulation contour; source land-left composition reflected to keep bank sea-left/land-right orientation, original bank daytime arrow directions and Sun retained. Source uncompleted A/B tasks removed because this bank figure supplies the circulation arrows."
+    },
+    {
+      "module": 2,
+      "path": [
+        "paper01",
+        402,
+        "stimulus",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M2-P1-367"
+      ],
+      "label": "Air movement at night",
+      "sourceFiles": [
+        "2011-p2-q03-sea-breeze.svg"
+      ],
+      "sourceSha256": {
+        "2011-p2-q03-sea-breeze.svg": "b7f307186c35265d519fd7a3d948c9b3f52def14f20e5cb0e79e59f91e7e2f0b"
+      },
+      "svgSha256": "80d3080f06f9e16d516c836d5d03bfcb938e1b7fcd85217c73db27530f2170b2",
+      "labels": [
+        "Moon",
+        "sea",
+        "land"
+      ],
+      "adaptation": "Same refined coast geometry with original bank night-time circulation directions and Moon retained. Source source-paper A/B labels removed; no added answer text."
+    },
+    {
+      "module": 3,
+      "path": [
+        "sharedStimuli",
+        "M3-S-ARM",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M3-P1-153",
+        "IS-M3-P1-154"
+      ],
+      "label": "Bones and muscles of the human arm",
+      "sourceFiles": [
+        "2012-p2-q04-arm-lever.svg"
+      ],
+      "sourceSha256": {
+        "2012-p2-q04-arm-lever.svg": "baf8c0cb626c4fd74929b2449485436a2cbd17ca3313fb03ee2706de02ac3b82"
+      },
+      "svgSha256": "b7e9aa77ae70b598fb5a8ae9cc616a4da6e521331ab6737c922796de893478d7",
+      "labels": [
+        "P",
+        "Q",
+        "R",
+        "S"
+      ],
+      "adaptation": "Reviewed skeleton and biceps contours retained; triceps added behind the humerus with distal attachment to the olecranon. Required bank target map: P=biceps, Q=triceps, R=humerus, S=radius/forearm bone. Source descriptive labels and held object removed; no identification answers in artwork metadata."
+    },
+    {
+      "module": 3,
+      "path": [
+        "paper02",
+        7,
+        "parts",
+        0,
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M3-P2-08"
+      ],
+      "label": "Bones and muscles of the human arm",
+      "sourceFiles": [
+        "2012-p2-q04-arm-lever.svg"
+      ],
+      "sourceSha256": {
+        "2012-p2-q04-arm-lever.svg": "baf8c0cb626c4fd74929b2449485436a2cbd17ca3313fb03ee2706de02ac3b82"
+      },
+      "svgSha256": "b7e9aa77ae70b598fb5a8ae9cc616a4da6e521331ab6737c922796de893478d7",
+      "labels": [
+        "P",
+        "Q",
+        "R",
+        "S"
+      ],
+      "adaptation": "Reviewed skeleton and biceps contours retained; triceps added behind the humerus with distal attachment to the olecranon. Required bank target map: P=biceps, Q=triceps, R=humerus, S=radius/forearm bone. Source descriptive labels and held object removed; no identification answers in artwork metadata."
+    },
+    {
+      "module": 3,
+      "path": [
+        "sharedStimuli",
+        "M3-S-DIST",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M3-P1-092",
+        "IS-M3-P1-093"
+      ],
+      "label": "Apparatus for distillation",
+      "sourceFiles": [
+        "1999-p1-q49-seawater-distillation.svg"
+      ],
+      "sourceSha256": {
+        "1999-p1-q49-seawater-distillation.svg": "6491d43f0b0613cfcb65f6eb29d79c70fbb403c813042ff0ec8337bb1bbe4192"
+      },
+      "svgSha256": "a137902019f608a13cc03d05a352010c3da107818aef4f802822a5bd5ad3bab1",
+      "labels": [
+        "P",
+        "Q",
+        "R",
+        "S",
+        "water out",
+        "water in",
+        "heat"
+      ],
+      "adaptation": "Reviewed uninterrupted vapour lumen and separate condenser water jacket retained. P targets distillation flask, Q thermometer, R condenser, S collected distillate. Cooling water enters at lower end and leaves upper end. Historical seawater/fresh-water text removed to preserve the bank assessment."
+    },
+    {
+      "module": 3,
+      "path": [
+        "sharedStimuli",
+        "M3-S-RUST",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M3-P1-188",
+        "IS-M3-P1-189",
+        "IS-M3-P1-190"
+      ],
+      "label": "Iron nails under different conditions",
+      "sourceFiles": [
+        "2013-p2-q02-rusting-tubes.svg"
+      ],
+      "sourceSha256": {
+        "2013-p2-q02-rusting-tubes.svg": "0890c3096a8fb6e522874882def5b96ae87b90091052dc03fb7f75c14dcad158"
+      },
+      "svgSha256": "c9362f11f99adec88ad2c072465ef792c4af7abc583df557cb96c82c7d57e5c9",
+      "labels": [
+        "A",
+        "water and air",
+        "B",
+        "boiled water",
+        "oil layer",
+        "C",
+        "dry air",
+        "drying agent",
+        "D",
+        "salt water and air"
+      ],
+      "adaptation": "Reviewed glass and nail contours adapted to four bank treatments with bank order retained: A water+air; B boiled water under oil; C dry air over drying agent; D salt water+air. Nail fully submerged below oil in B; no rust outcomes drawn. Original source three-treatment labels are not carried across."
+    },
+    {
+      "module": 3,
+      "path": [
+        "paper02",
+        4,
+        "parts",
+        0,
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M3-P2-05"
+      ],
+      "label": "Iron nails under different conditions",
+      "sourceFiles": [
+        "2013-p2-q02-rusting-tubes.svg"
+      ],
+      "sourceSha256": {
+        "2013-p2-q02-rusting-tubes.svg": "0890c3096a8fb6e522874882def5b96ae87b90091052dc03fb7f75c14dcad158"
+      },
+      "svgSha256": "c9362f11f99adec88ad2c072465ef792c4af7abc583df557cb96c82c7d57e5c9",
+      "labels": [
+        "A",
+        "water and air",
+        "B",
+        "boiled water",
+        "oil layer",
+        "C",
+        "dry air",
+        "drying agent",
+        "D",
+        "salt water and air"
+      ],
+      "adaptation": "Reviewed glass and nail contours adapted to four bank treatments with bank order retained: A water+air; B boiled water under oil; C dry air over drying agent; D salt water+air. Nail fully submerged below oil in B; no rust outcomes drawn. Original source three-treatment labels are not carried across."
+    },
+    {
+      "module": 3,
+      "path": [
+        "sharedStimuli",
+        "M3-S-SOAP",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M3-P1-072"
+      ],
+      "label": "Lather test on water samples",
+      "sourceFiles": [
+        "2012-p2-q01-lather-columns.svg"
+      ],
+      "sourceSha256": {
+        "2012-p2-q01-lather-columns.svg": "0ae74a01eddcb1ee27a73a039f42a05c7c5b954b62c1a3fa4907b476bf730b2e"
+      },
+      "svgSha256": "ffb00cf5f9f1756188d5c1e749eafa90bb23ae21b62e5aa5b6c5360bae9bc0d2",
+      "labels": [
+        "A",
+        "rain water",
+        "B",
+        "tap water",
+        "C",
+        "sea water"
+      ],
+      "adaptation": "Reviewed smooth U-tube/foam treatment adapted from six tubes to the bank three samples. Bank A rain water/B tap water/C sea water and relative foam heights 60:10:2 preserved. No numerical scale, source percentage labels or answer ordering added."
+    },
+    {
+      "module": 3,
+      "path": [
+        "sharedStimuli",
+        "M3-S-TROL",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M3-P1-141"
+      ],
+      "label": "Two trolleys before a collision",
+      "sourceFiles": [
+        "2010-p2-q06-trolley-truck-collision.svg"
+      ],
+      "sourceSha256": {
+        "2010-p2-q06-trolley-truck-collision.svg": "83cadd50471614ff6f2636f12781bd19afbf2f88f0d007c9f5b870ddedf17173"
+      },
+      "svgSha256": "f07277a16f2379628d2e0c2e8921f1f3c4b23a5863a4273277465b64a690421f",
+      "labels": [
+        "P  2 kg",
+        "Q  1 kg",
+        "3 m/s",
+        "at rest"
+      ],
+      "adaptation": "Refined trolley chassis, wheel/hub geometry and common contact baseline reused for two bank trolleys. Source truck silhouette removed. P is left, 2 kg, moving right at3m/s; Q is right,1kg,at rest, exactly as authored. No collision result drawn."
+    },
+    {
+      "module": 3,
+      "path": [
+        "sharedStimuli",
+        "M3-S-BT",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M3-P1-404"
+      ],
+      "label": "A pulley system",
+      "sourceFiles": [
+        "2014-p3-q03-pulley-system-detail.svg"
+      ],
+      "sourceSha256": {
+        "2014-p3-q03-pulley-system-detail.svg": "57b2a96838aefccdfeb83fce7d775f87f7ecdacb0e1a7231c44b2b2c6496429b"
+      },
+      "svgSha256": "24bd5dbad612e12460491b436ee87f2f4d37840c3594670b984d8b5bbf77c180",
+      "labels": [
+        "load",
+        "effort"
+      ],
+      "adaptation": "Reviewed pulley wheel and support geometry adapted to bank two-strand system. Continuous rope is anchored at top left, passes under movable wheel then over fixed wheel to downward effort. Exactly two strands support the movable block; load/effort text retained. No MA answer in image."
+    },
+    {
+      "module": 3,
+      "path": [
+        "paper01",
+        329,
+        "stimulus",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M3-P1-146"
+      ],
+      "label": "A single fixed pulley",
+      "sourceFiles": [
+        "2014-p3-q03-pulley-system-detail.svg"
+      ],
+      "sourceSha256": {
+        "2014-p3-q03-pulley-system-detail.svg": "57b2a96838aefccdfeb83fce7d775f87f7ecdacb0e1a7231c44b2b2c6496429b"
+      },
+      "svgSha256": "9eb4e4d66b04442d5dc5379f1b624992a56ea89b775dfedcd1cc9675a9d66f80",
+      "labels": [
+        "load",
+        "effort"
+      ],
+      "adaptation": "Reviewed concentric pulley/axle/support geometry adapted to single fixed wheel only. One uninterrupted rope is tangent to both sides and passes over wheel; load left and downward effort right. No movable pulley or numerical advantage added."
+    },
+    {
+      "module": 3,
+      "path": [
+        "sharedStimuli",
+        "M3-S-WC",
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M3-P1-319",
+        "IS-M3-P1-320"
+      ],
+      "label": "The water cycle",
+      "sourceFiles": [
+        "2014-p2-q01-water-cycle.svg"
+      ],
+      "sourceSha256": {
+        "2014-p2-q01-water-cycle.svg": "606593ab8e0033a3e621dd80a74cb5dbe6a7f92d1b1b914b4f02a149d23692e6"
+      },
+      "svgSha256": "efa593dc2dc7650f49952647314d692c753ac02b1113f1cabc0f6415edf46515",
+      "labels": [
+        "sea",
+        "Sun",
+        "P",
+        "Q",
+        "R",
+        "S"
+      ],
+      "adaptation": "Reviewed continuous cloud contours and water-line vocabulary adapted to authored bank layout. P upward from sea; Q cloud-to-cloud path; R downward rainfall; S runoff from land to sea. Bank letter semantics retained; source A/B/C blanks and transpiration arrows removed. No process-name answers added."
+    },
+    {
+      "module": 3,
+      "path": [
+        "paper02",
+        5,
+        "parts",
+        1,
+        "svg"
+      ],
+      "questionIds": [
+        "IS-M3-P2-06"
+      ],
+      "label": "Two hazard symbols",
+      "sourceFiles": [
+        "2012-p2-q05-flammable-symbol.svg"
+      ],
+      "sourceSha256": {
+        "2012-p2-q05-flammable-symbol.svg": "19947b25e8f02109c734a1575bdc363b009ab0cf7aa78e74ea2fe981e74cab32"
+      },
+      "svgSha256": "e25eb050363fe4fdef17a0e6ad8bb3dc968f4043996ca4549b6870ffa0c15e5a",
+      "labels": [
+        "A",
+        "B"
+      ],
+      "adaptation": "Only glyph A (flame) refined inside its existing bank diamond. A remains flammable; B remains the unchanged corrosive symbol. Bank nested sign positions, A/B text, diamond borders and hazard meanings preserved. Historical triangular border not copied."
+    },
+    {
+      "module": 3,
+      "path": [
+        "paper01",
+        451,
+        "options",
+        "B"
+      ],
+      "questionIds": [
+        "IS-M3-P1-202"
+      ],
+      "label": "flammable hazard symbol",
+      "sourceFiles": [
+        "2012-p2-q05-flammable-symbol.svg"
+      ],
+      "sourceSha256": {
+        "2012-p2-q05-flammable-symbol.svg": "19947b25e8f02109c734a1575bdc363b009ab0cf7aa78e74ea2fe981e74cab32"
+      },
+      "svgSha256": "2b99ec0a3ae4b1513dbcd51eceebae9dbd5584344441395cd4cd1935edeb7b65",
+      "labels": [],
+      "adaptation": "IS-M3-P1-202 optionB: refined flame silhouette and inner flame reused within the existing bank diamond. Original diamond border and baseline location retained. Option order, all distractor glyphs and option semantics unchanged."
+    },
+    {
+      "module": 3,
+      "path": [
+        "paper01",
+        452,
+        "options",
+        "B"
+      ],
+      "questionIds": [
+        "IS-M3-P1-203"
+      ],
+      "label": "flammable hazard symbol",
+      "sourceFiles": [
+        "2012-p2-q05-flammable-symbol.svg"
+      ],
+      "sourceSha256": {
+        "2012-p2-q05-flammable-symbol.svg": "19947b25e8f02109c734a1575bdc363b009ab0cf7aa78e74ea2fe981e74cab32"
+      },
+      "svgSha256": "2b99ec0a3ae4b1513dbcd51eceebae9dbd5584344441395cd4cd1935edeb7b65",
+      "labels": [],
+      "adaptation": "IS-M3-P1-203 optionB: refined flame silhouette and inner flame reused within the existing bank diamond. Original diamond border and baseline location retained. Option order, all distractor glyphs and option semantics unchanged."
+    },
+    {
+      "module": 3,
+      "path": [
+        "paper01",
+        459,
+        "options",
+        "A"
+      ],
+      "questionIds": [
+        "IS-M3-P1-457"
+      ],
+      "label": "flammable hazard symbol",
+      "sourceFiles": [
+        "2012-p2-q05-flammable-symbol.svg"
+      ],
+      "sourceSha256": {
+        "2012-p2-q05-flammable-symbol.svg": "19947b25e8f02109c734a1575bdc363b009ab0cf7aa78e74ea2fe981e74cab32"
+      },
+      "svgSha256": "2b99ec0a3ae4b1513dbcd51eceebae9dbd5584344441395cd4cd1935edeb7b65",
+      "labels": [],
+      "adaptation": "IS-M3-P1-457 optionA: refined flame silhouette and inner flame reused within the existing bank diamond. Original diamond border and baseline location retained. Option order, all distractor glyphs and option semantics unchanged."
+    }
+  ]
+}

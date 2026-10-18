@@ -6,11 +6,13 @@
 // ============================================================================
 
 const BANK_ROOT = `${process.env.PUBLIC_URL || ""}/integrated-science/bank`;
+// Give the refined artwork a new cache key for existing practice users.
+const BANK_ASSET_REVISION = "precision-svg-v3";
 const moduleCache = new Map();
 let indexCache = null;
 
 async function fetchJson(path) {
-  const response = await fetch(path, { cache:"force-cache" });
+  const response = await fetch(`${path}?v=${BANK_ASSET_REVISION}`, { cache:"force-cache" });
   if (!response.ok) {
     throw new Error(`Could not load Integrated Science question bank (${response.status}).`);
   }
