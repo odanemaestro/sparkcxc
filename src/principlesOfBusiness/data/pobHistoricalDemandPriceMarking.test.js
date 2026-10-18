@@ -22,7 +22,7 @@ test("calibration applies only to the May/June 2005 Q3(c) and Q3(d) 6-mark parts
  }
  expect(getPobDemandPriceTask("POB-P2-2006-MJ","Q3:c")).toBeNull();
  expect(getPobDemandPriceTask(paperId,"Q3:b")).toBeNull();
- expect(POB_HISTORICAL_RUBRIC_REVIEW_VERSION).toContain("v5");
+ expect(POB_HISTORICAL_RUBRIC_REVIEW_VERSION).toContain("v6");
 });
 test("three distinct demand-decreasing factors with linked effects receive 6 marks",()=>{
  const answer=[

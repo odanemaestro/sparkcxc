@@ -3,13 +3,18 @@
 // Illustrative points include alternatives; do not award more than part.marks.
 export function fnhPartMarkingScheme(part){
   const limit=Math.max(0,Number(part?.marks)||0);
+  const task=getFnhHistoricalStructuredTask(part);
   const points=(part?.modelPoints||[]).map((text,index)=>({
     id:String(index),text,maximum:1,
   }));
   return {
     maximum:limit,
     points,
-    rule:points.length>limit
+    rule:task==="community"
+      ?"Award up to 4 marks for TWO different community-nutrition roles. Each earns 1 mark for identification and 1 more for a relevant explanation."
+      :task==="dehydration"
+      ?"Award 1 mark for removal of water from food and 1 mark for explaining how reduced moisture limits spoilage organisms."
+      :points.length>limit
       ?`Award up to ${limit} marks for distinct valid points. The examples are alternatives, not extra compulsory points.`
       :`Award up to ${limit} marks. Each distinct correct marking point earns one mark.`,
     note:"Award marks only when the response demonstrates the point clearly. Equivalent scientifically accurate or context-appropriate answers also receive credit. Do not award duplicate points twice.",
@@ -41,12 +46,15 @@ export function fnhSelfAssessmentTotal(paper=[],selfReview={},answers=null){
 
 
 import {matchFnhCriterionEvidence,FNH_P2_RUBRIC_CALIBRATION_VERSION} from "./fnhPaper2RubricCalibration";
+import {gradeFnhHistoricalStructuredPart,getFnhHistoricalStructuredTask} from "./fnhHistoricalStructuredCriteria";
 export {FNH_P2_RUBRIC_CALIBRATION_VERSION};
 
 // Legacy self-check helpers above are preserved for historic stored attempts
 // and tests, but they do not participate in live exam scoring.
 export function gradeFnhWrittenPart(part,response){
   const maxMarks=Math.max(0,Number(part?.marks)||0);
+  const structured=gradeFnhHistoricalStructuredPart(part,response);
+  if(structured)return structured;
   const original=String(response??"");
   const accepted=[];
   let confirmed=0;

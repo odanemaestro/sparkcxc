@@ -20,6 +20,7 @@ import {FNH_PAPER2_ORIGINAL_SET_ONE} from "../data/fnhPaper2Bank";
 import {FNH_PAPER2_ORIGINAL_SET_TWO} from "../data/fnhPaper2SetTwo";
 import {gradeFnhWrittenPart,gradeFnhWrittenPaper,FNH_P2_RUBRIC_CALIBRATION_VERSION} from "./fnhPaper2Marking";
 import {matchFnhCriterionEvidence} from "./fnhPaper2RubricCalibration";
+import {getFnhHistoricalStructuredTask,FNH_STRUCTURED_CRITERIA_VERSION} from "./fnhHistoricalStructuredCriteria";
 
 const original=[FNH_PAPER2_ORIGINAL_SET_ONE,FNH_PAPER2_ORIGINAL_SET_TWO];
 const historical=[FNH_HISTORICAL_P2_2005,FNH_HISTORICAL_P2_2006,FNH_HISTORICAL_P2_2008,FNH_HISTORICAL_P2_2009,FNH_HISTORICAL_P2_2010,FNH_HISTORICAL_P2_2011,FNH_HISTORICAL_P2_2012,FNH_HISTORICAL_P2_2013,FNH_HISTORICAL_P2_2014,FNH_HISTORICAL_P2_2015,FNH_HISTORICAL_P2_2016,FNH_HISTORICAL_P2_2017,FNH_HISTORICAL_P2_2018,FNH_HISTORICAL_P2_2019,FNH_HISTORICAL_P2_2021,FNH_HISTORICAL_P2_2022,FNH_HISTORICAL_P2_2024,FNH_HISTORICAL_P2_2026];
@@ -56,7 +57,7 @@ test("source answers across all released papers have bounded, explicit provenanc
    parts++;
    const source=part.modelPoints.join("\n");
    const marked=gradeFnhWrittenPart(part,source);
-   expect(marked.rubricVersion).toBe(FNH_P2_RUBRIC_CALIBRATION_VERSION);
+   expect(marked.rubricVersion).toBe(getFnhHistoricalStructuredTask(part)?FNH_STRUCTURED_CRITERIA_VERSION:FNH_P2_RUBRIC_CALIBRATION_VERSION);
    expect(marked.confirmedMarks).toBeGreaterThanOrEqual(0);
    expect(marked.confirmedMarks).toBeLessThanOrEqual(part.marks);
    expect(marked.confirmedMarks+marked.unresolvedMarks).toBeLessThanOrEqual(part.marks);
