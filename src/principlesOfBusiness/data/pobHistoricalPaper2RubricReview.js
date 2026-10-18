@@ -63,7 +63,7 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
    // Exact arithmetic and diagram checkers explicitly resolve every
    // criterion, including known incorrect results. Only open prose and
    // structurally invalid rubrics keep undetermined marks pending.
-   const determined=Boolean(valid&&(visual||arithmetic||sameAsGuide||developed?.assessedMarks!==null));
+   const determined=Boolean(valid&&(visual||arithmetic||sameAsGuide||(developed&&developed.assessedMarks!==null)));
    const unresolved=blank||determined?0:valid
      ?Math.max(0,maxMarks-confirmed):maxMarks;
    const assessedMarks=valid&&unresolved===0&&assessed.every(n=>n!==null)?confirmed:null;
