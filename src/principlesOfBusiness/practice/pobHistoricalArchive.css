@@ -77,3 +77,9 @@
 .pob-archive .pob-archive-source-diagram{width:100%;max-width:100%;margin:.8rem 0 1rem;padding:.8rem;border:1px solid #d8e0ea;background:#fff;border-radius:12px;overflow:auto}
 .pob-archive .pob-archive-source-diagram img{display:block;max-width:100%;height:auto;margin-inline:auto}
 .pob-archive .pob-archive-visual-note{margin:1rem 0;padding:.9rem 1rem;border:1px solid color-mix(in srgb,currentColor 20%,transparent);border-radius:12px;line-height:1.6;font-size:.9rem}
+
+/* Core Paper 2 scheme results remain readable independently of optional AI. */
+.pob-archive .pob-archive-rubric-status,.pob-archive .pob-archive-marking-summary{padding:.9rem 1rem;margin:1rem 0;border-radius:12px;border:1px solid color-mix(in srgb,currentColor 17%,transparent);background:color-mix(in srgb,currentColor 3%,transparent);line-height:1.6}
+.pob-archive .pob-archive-marking-summary p{margin:.4rem 0}
+.pob-archive .pob-archive-marking-summary small{opacity:.82}
+.pob-archive .pob-archive-part-status{margin:.2rem 0 .75rem;font-size:.9rem}
