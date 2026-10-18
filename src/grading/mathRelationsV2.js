@@ -100,13 +100,13 @@ function oneToOne(raw){
   ||/\b1[- ]to[- ]1\b/.test(s)
   ||/\binjective\b/.test(s);
  const contradictory=/\b(?:two\s+(?:different|distinct)\s+inputs?\s+(?:have|give|map\s+to)\s+(?:the\s+)?same\s+output|outputs?\s+(?:are|is)\s+repeated|same\s+output\s+for\s+different\s+inputs)\b/.test(s);
- const validReason=/\b(?:different|distinct|unique)\s+(?:output|range\s+value|image|value)\b/.test(s)
+ const validReason=/\b(?:different|distinct|unique)\s+(?:outputs?|range\s+values?|images?|values?)\b/.test(s)
   ||/\b(?:different|distinct)\s+(?:inputs?|x[- ]values?).{0,55}\b(?:different|distinct|unique)\s+(?:outputs?|y[- ]values?|range\s+values?)\b/.test(s)
   ||/\bno\s+two\s+(?:different\s+)?(?:inputs?|domain\s+(?:values?|members?|elements?)|x[- ]values?).{0,65}\b(?:same\s+(?:output|image|value)|one\s+(?:output|image|value))\b/.test(s)
   ||/\b(?:non[- ]zero|not\s+zero|nonzero)\s+(?:gradient|slope)\b/.test(s)
   ||/\b(?:gradient|slope)\s+(?:is\s+)?(?:non[- ]zero|not\s+zero|nonzero)\b/.test(s)
   ||/\b(?:output|image|range\s+value)s?\s+(?:are\s+)?(?:all\s+)?(?:different|distinct|unique|not\s+repeated)\b/.test(s)
-  ||/\b(?:no\s+)?(?:repeated|duplicate)\s+(?:outputs?|values?)\b/.test(s);
+  ||/\bno\s+(?:repeated|duplicate)\s+(?:outputs?|values?)\b/.test(s);
  return {statement:affirmed&&!disputed&&!contradictory,
   reason:validReason&&!disputed&&!contradictory};
 }
@@ -142,7 +142,11 @@ export function evaluateMathRelationsV2({questionId,partId,response={}}={}){
    sourceMark("B2",check.excluded,"outside-given-finite-domain")
   ]);
  }
- const answer=oneToOne(submitted);
+ // C8's authored explanation criterion is field:"all". Working evidence
+ // can support the reason; a correct conclusion alone cannot.
+ const working=response&&typeof response==="object"&&!Array.isArray(response)
+  ?input(response.working):"";
+ const answer=oneToOne([submitted,working].filter(Boolean).join("\n"));
  return result(questionId,partId,[
   sourceMark("B1",answer.statement,"one-to-one-claim"),
   sourceMark("B2",answer.reason,"distinct-outputs-or-nonzero-gradient-reason")
