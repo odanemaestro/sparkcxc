@@ -66,6 +66,18 @@ try{
  const exhausted=(await db.query("select spark_grading_private.enqueue_marking_job_v2($1) as id",[anotherAttempt])).rows[0].id;
  await db.query("update spark_grading_private.marking_jobs_v2 set attempts=3 where id=$1",[exhausted]);
  assert.equal((await db.query("select * from spark_grading_private.claim_marking_job_v2($1)",[exhausted])).rows.length,0);
+ // Several in-flight claim requests against one job must produce one lease.
+ const raceAttempt=randomUUID();
+ await db.query(`insert into public.spark_exam_attempts
+   (id,user_id,subject_id,paper,rubric_version,status,submitted_at,response_snapshot,metadata)
+   values($1,$2,'chemistry','02','rubric-fixture-v1','submitted',now(),
+   '{"q1":"evaporation"}'::jsonb,'{"paper_id":"fixture-paper"}'::jsonb)`,[raceAttempt,user]);
+ const raceId=(await db.query("select spark_grading_private.enqueue_marking_job_v2($1) as id",[raceAttempt])).rows[0].id;
+ const raceClaims=await Promise.all(Array.from({length:8},()=>db.query(
+   "select * from spark_grading_private.claim_marking_job_v2($1)",[raceId])));
+ const acquired=raceClaims.flatMap(x=>x.rows);
+ assert.equal(acquired.length,1,"only one worker may acquire a valid lease");
+ assert.equal(new Set(acquired.map(x=>x.lease_token)).size,1);
  // A rubric deactivated before enqueue must not authorize work.
  await db.exec("update spark_grading_private.rubrics_v2 set active=false");
  const unapprovedAttempt=randomUUID();
