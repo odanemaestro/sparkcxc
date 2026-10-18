@@ -70,7 +70,15 @@ export function gradeFnhWrittenPart(part,response){
         if(used.has(i)||fnhNegated(text)!==fnhNegated(statements[i]))continue;
         const candidate=new Set(fnhKeyTerms(statements[i]));
         const hits=reference.filter(term=>candidate.has(term)).length;
-        if(hits>=Math.max(4,Math.ceil(reference.length*.85))){
+        const threshold=Math.max(4,Math.ceil(reference.length*.85));
+        const sourceNumbers=(text.match(/\b\d+(?:\.\d+)?\b/g)||[]);
+        const responseNumbers=(statements[i].match(/\b\d+(?:\.\d+)?\b/g)||[]);
+        const numbersMatch=sourceNumbers.every(n=>responseNumbers.includes(n));
+        // Conflicting assertions about the same point need adjudication.
+        const contradicted=statements.some(other=>
+          fnhNegated(other)!==fnhNegated(text)&&
+          reference.filter(term=>new Set(fnhKeyTerms(other)).has(term)).length>=threshold);
+        if(hits>=threshold&&numbersMatch&&!contradicted){
           evidence=statements[i];used.add(i);confirmed+=1;break;
         }
       }
