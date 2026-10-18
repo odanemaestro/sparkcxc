@@ -97,7 +97,10 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
  const openQuestionCount=questions.length;
  const ownerAudit=useMemo(()=>ownerBank?auditPobOwnerPaper2Calibration(record):null,[ownerBank,record]);
  const ownerPilotReady=Boolean(ownerBank&&POB_OWNER_P2_PILOT_IDS.includes(record.id)&&ownerAudit?.ready);
- const scoreEnabled=(!ownerBank||ownerPilotReady)&&process.env.REACT_APP_SERVER_MARKING==="true" &&
+ // Owner-source grading is an independent release. Keep its request button hidden
+ // until the marker worker, database switch and examiner pilot are deliberately opened.
+ const ownerPublicReleased=process.env.REACT_APP_POB_OWNER_SOURCE_MARKING==="true";
+ const scoreEnabled=(!ownerBank||(ownerPilotReady&&ownerPublicReleased))&&process.env.REACT_APP_SERVER_MARKING==="true" &&
    process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING==="true";
  const gradeWithServer=async()=>{
   if(!selectionValid||gradingBusy||serverAttemptId)return;
