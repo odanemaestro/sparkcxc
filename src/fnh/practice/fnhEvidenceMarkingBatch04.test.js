@@ -45,3 +45,16 @@ test("FNH never allows candidate-selected checkboxes to influence written grades
  expect(graded.unresolvedMarks).toBeGreaterThan(0);
  expect(graded.confirmedMarks+graded.unresolvedMarks).toBeLessThanOrEqual(graded.maxMarks);
 });
+
+
+test("FNH cannot confirm a claim contradicted elsewhere in the same response",()=>{
+ const part={marks:1,modelPoints:["Fruit provides vitamin C for healthy tissues and wound healing."]};
+ const answer="Fruit provides vitamin C for healthy tissues and wound healing. Fruit does not provide vitamin C for healthy tissues and wound healing.";
+ expect(gradeFnhWrittenPart(part,answer).confirmedMarks).toBe(0);
+ expect(gradeFnhWrittenPart(part,answer).unresolvedMarks).toBe(1);
+});
+test("FNH numerical criteria cannot accept a different value by matching nearby words",()=>{
+ const part={marks:1,modelPoints:["A safe holding temperature of 63 degrees prevents bacterial growth in food."]};
+ expect(gradeFnhWrittenPart(part,"A safe holding temperature of 23 degrees prevents bacterial growth in food.").confirmedMarks).toBe(0);
+ expect(gradeFnhWrittenPart(part,"A safe holding temperature of 63 degrees prevents bacterial growth in food.").confirmedMarks).toBe(1);
+});
