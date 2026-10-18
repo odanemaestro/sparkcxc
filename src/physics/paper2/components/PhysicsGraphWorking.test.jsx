@@ -1,3 +1,4 @@
+import {getPhysicsGraphWorkingSpec} from "../../../grading/physicsGraphWorkingSpecsV2";
 /** @jest-environment jsdom */
 import React from "react";
 import {fireEvent,render,screen} from "@testing-library/react";
@@ -64,7 +65,7 @@ describe("source-specific graph workspace axes and response persistence",()=>{
  test.each(fixtures)("captures its own paper's gradient triangle without using Paper 1 axes",fixture=>{
   const question=fixture.bank.questions[0];
   const graphPart=question.parts.find(p=>p.responseType==="graph");
-  const gradientPart=question.parts.find(p=>p.criteria?.some(c=>c.code==="M1"&&c.marks===2));
+  const gradientPart=question.parts.find(p=>p.id===getPhysicsGraphWorkingSpec(question.question_id)?.trianglePart);
   const graphResponse={graph:{line:[{x:0,y:0},{x:fixture.end,y:fixture.end*fixture.slope}]}};
   const save=jest.fn();
   const props={questionId:question.question_id,partId:gradientPart.id,graphPart,graphResponse,onChange:save};
