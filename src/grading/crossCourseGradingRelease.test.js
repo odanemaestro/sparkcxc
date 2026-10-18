@@ -135,3 +135,15 @@ test("mark reconciliation rejects impossible subject, criterion and part totals"
   expect(auditPaper2MarkBounds({subjectId:"chemistry",score:1,maxMarks:1,
     criteria:[{score:2,maxMarks:1}]}).issues).toContain("invalid-criterion-marks");
 });
+
+
+test("two authored subject tests cannot replace missing official CXC rule cases",()=>{
+ const trimmed={...calibration,
+   cases:calibration.cases.filter(row=>row.subjectId!=="physics")
+ };
+ const gate=auditCrossCourseCalibration({
+   officialReport:trimmed,sourceRegistry:calibration.sources,subjectCases:cases()
+ });
+ expect(gate.pass).toBe(false);
+ expect(gate.issues).toContain("missing-official-rule-coverage:physics");
+});
