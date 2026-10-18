@@ -1,4 +1,1606 @@
- "KC",
+    stem: "The tube labelled S carries urine to the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-KIDLS",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "bladder",
+        B: "urethra",
+        C: "kidney",
+        D: "liver"
+      },
+      answer: "A",
+      explanation: "S is the ureter.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-357",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The part labelled P, where the glomeruli are found, is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-KIDLS",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "medulla",
+        B: "pelvis",
+        C: "ureter",
+        D: "cortex"
+      },
+      answer: "D",
+      explanation: "The outer region is the cortex.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-133",
+      module: 1,
+      objective: {
+        code: "1.5.3",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "identify the methods of excretion in flowering plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The waste gas produced by leaves during photosynthesis is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "nitrogen",
+        B: "carbon dioxide",
+        C: "oxygen",
+        D: "water vapour"
+      },
+      answer: "C",
+      explanation: "Oxygen is a by-product of photosynthesis; excess oxygen diffuses out through the stomata.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-134",
+      module: 1,
+      objective: {
+        code: "1.5.3",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "identify the methods of excretion in flowering plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Some plants store waste products in their old leaves. These wastes are removed from the plant when the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "roots absorb water",
+        B: "flowers open",
+        C: "seeds germinate",
+        D: "leaves fall off"
+      },
+      answer: "D",
+      explanation: "Wastes stored in leaves or bark are got rid of when the leaves are shed or bark peels off.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-135",
+      module: 1,
+      objective: {
+        code: "1.5.3",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "identify the methods of excretion in flowering plants"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "At night, green plants excrete carbon dioxide because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "respiration continues but photosynthesis stops",
+        B: "photosynthesis is faster than respiration",
+        C: "photosynthesis continues but respiration stops",
+        D: "they absorb oxygen through the roots only"
+      },
+      answer: "A",
+      explanation: "In the dark there is no photosynthesis to use the CO\u2082 produced by respiration, so it diffuses out.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-358",
+      module: 1,
+      objective: {
+        code: "1.5.3",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "identify the methods of excretion in flowering plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Flowering plants get rid of excess water vapour MAINLY through their",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "roots",
+        B: "flowers",
+        C: "stomata",
+        D: "bark"
+      },
+      answer: "C",
+      explanation: "Water vapour diffuses out through stomata in transpiration.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-359",
+      module: 1,
+      objective: {
+        code: "1.5.3",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "identify the methods of excretion in flowering plants"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Plants do not need special excretory organs like kidneys because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "they do not respire",
+        B: "they produce few waste products and reuse some of them",
+        C: "they do not photosynthesise",
+        D: "they excrete through flowers"
+      },
+      answer: "B",
+      explanation: "Carbon dioxide and oxygen are largely reused in photosynthesis and respiration.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-480",
+      module: 1,
+      objective: {
+        code: "1.5.3",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "identify the methods of excretion in flowering plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Plants get rid of excess oxygen produced during photosynthesis through the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "roots",
+        B: "flowers",
+        C: "stomata",
+        D: "xylem"
+      },
+      answer: "C",
+      explanation: "Oxygen diffuses out of the leaves.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-481",
+      module: 1,
+      objective: {
+        code: "1.5.3",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "identify the methods of excretion in flowering plants"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Some plants store waste products such as tannins in their",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "bark",
+        B: "flowers only",
+        C: "root hairs",
+        D: "chloroplasts"
+      },
+      answer: "A",
+      explanation: "Waste is removed when the bark peels.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-482",
+      module: 1,
+      objective: {
+        code: "1.5.3",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "identify the methods of excretion in flowering plants"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In bright sunlight, the main gaseous waste given off by green leaves is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "carbon dioxide",
+        B: "oxygen",
+        C: "nitrogen",
+        D: "methane"
+      },
+      answer: "B",
+      explanation: "Photosynthesis is faster than respiration.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-136",
+      module: 1,
+      objective: {
+        code: "1.6.1",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "describe the sense organs and their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which sense organ responds to chemicals dissolved in saliva?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Eye",
+        B: "Ear",
+        C: "Nose",
+        D: "Tongue"
+      },
+      answer: "D",
+      explanation: "Taste buds on the tongue detect chemicals dissolved in saliva.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-137",
+      module: 1,
+      objective: {
+        code: "1.6.1",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "describe the sense organs and their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Receptors in the skin are sensitive to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "touch, pressure, pain and temperature",
+        B: "light and sound",
+        C: "smell only",
+        D: "balance and sound"
+      },
+      answer: "A",
+      explanation: "The skin contains receptors for touch, pressure, pain, heat and cold.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-138",
+      module: 1,
+      objective: {
+        code: "1.6.1",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "describe the sense organs and their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "When a person has a bad cold, food seems to have little taste. This is because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the tongue stops producing saliva",
+        B: "the teeth cannot chew properly",
+        C: "the sense of smell is reduced",
+        D: "the ears are blocked"
+      },
+      answer: "C",
+      explanation: "Much of the flavour of food comes from smell; a blocked nose reduces it.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-360",
+      module: 1,
+      objective: {
+        code: "1.6.1",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "describe the sense organs and their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The sense organ which detects sound is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "eye",
+        B: "ear",
+        C: "nose",
+        D: "skin"
+      },
+      answer: "B",
+      explanation: "The ear detects sound and also helps balance.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-361",
+      module: 1,
+      objective: {
+        code: "1.6.1",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "describe the sense organs and their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following correctly matches a sense organ with the stimulus it detects?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Eye - sound",
+        B: "Tongue - light",
+        C: "Ear - temperature",
+        D: "Nose - chemicals in the air"
+      },
+      answer: "D",
+      explanation: "Smell receptors in the nose detect chemicals carried in air.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-362",
+      module: 1,
+      objective: {
+        code: "1.6.1",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "describe the sense organs and their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Sense organs contain receptors which change stimuli into",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "nerve impulses",
+        B: "hormones",
+        C: "sound",
+        D: "blood"
+      },
+      answer: "A",
+      explanation: "Receptors convert stimuli into electrical impulses sent to the brain.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-483",
+      module: 1,
+      objective: {
+        code: "1.6.1",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "describe the sense organs and their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Receptors in the nose detect",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "light",
+        B: "chemicals in the air",
+        C: "sound",
+        D: "pressure"
+      },
+      answer: "B",
+      explanation: "Smell receptors are chemoreceptors.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-484",
+      module: 1,
+      objective: {
+        code: "1.6.1",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "describe the sense organs and their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Fingertips are very sensitive to touch because they",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "have no nerves",
+        B: "are covered in hair",
+        C: "have thick skin",
+        D: "have many touch receptors"
+      },
+      answer: "D",
+      explanation: "Receptor density is high in fingertips.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-485",
+      module: 1,
+      objective: {
+        code: "1.6.1",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "describe the sense organs and their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is a stimulus?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Light",
+        B: "Muscle",
+        C: "Gland",
+        D: "Nerve"
+      },
+      answer: "A",
+      explanation: "A stimulus is a change detected by a receptor.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-139",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The transparent front part of the eye which bends (refracts) most of the light entering the eye is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cornea",
+        B: "retina",
+        C: "choroid",
+        D: "sclera"
+      },
+      answer: "A",
+      explanation: "The cornea does most of the refraction; the lens makes fine adjustments.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-140",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "When a person moves from a dark room into bright sunlight, the pupils",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "become larger because the radial muscles of the iris contract",
+        B: "become smaller because the circular muscles of the iris contract",
+        C: "become larger because the ciliary muscles relax",
+        D: "become smaller because the lens becomes thicker"
+      },
+      answer: "B",
+      explanation: "In bright light the circular muscles of the iris contract, making the pupil smaller to protect the retina.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-141",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "When a person looks at a NEAR object, the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "ciliary muscles relax and the lens becomes thinner",
+        B: "suspensory ligaments become tight and the lens becomes fatter",
+        C: "ciliary muscles contract and the lens becomes fatter",
+        D: "pupil becomes larger and the lens becomes thinner"
+      },
+      answer: "C",
+      explanation: "Accommodation for near vision: ciliary muscles contract, suspensory ligaments slacken and the elastic lens becomes more convex.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-142",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The image formed on the retina is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "inverted and smaller",
+        B: "upright and smaller",
+        C: "upright and larger",
+        D: "inverted and larger"
+      },
+      answer: "A",
+      explanation: "The lens forms a real, inverted, diminished image on the retina; the brain interprets it the right way up.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-143",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The part of the retina where vision is sharpest is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "blind spot",
+        B: "choroid",
+        C: "iris",
+        D: "fovea"
+      },
+      answer: "D",
+      explanation: "The fovea (yellow spot) has the most cones.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-363",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The function of the choroid is to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "focus light",
+        B: "prevent reflection of light inside the eye and supply blood",
+        C: "control the pupil",
+        D: "carry impulses"
+      },
+      answer: "B",
+      explanation: "The dark choroid absorbs stray light and carries blood vessels.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-364",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The tough white outer coat of the eye is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cornea",
+        B: "retina",
+        C: "iris",
+        D: "sclera"
+      },
+      answer: "D",
+      explanation: "The sclera protects the eyeball.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-365",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "When a person looks at a DISTANT object, the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "ciliary muscles contract and the lens becomes thicker",
+        B: "ciliary muscles relax and the lens becomes thinner",
+        C: "pupil closes completely",
+        D: "retina moves forward"
+      },
+      answer: "B",
+      explanation: "Relaxed ciliary muscles pull the suspensory ligaments tight, flattening the lens.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-366",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The ability of the eye to change the shape of the lens to focus on near and distant objects is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "adaptation",
+        B: "refraction",
+        C: "reflection",
+        D: "accommodation"
+      },
+      answer: "D",
+      explanation: "Accommodation adjusts the focusing power of the lens.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-367",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In dim light, the pupil becomes larger in order to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "protect the retina",
+        B: "focus on near objects",
+        C: "let more light into the eye",
+        D: "reduce glare"
+      },
+      answer: "C",
+      explanation: "A wider pupil lets more light reach the retina.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-368",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The point where the optic nerve leaves the eye has no light-sensitive cells and is called the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "fovea",
+        B: "iris",
+        C: "lens",
+        D: "blind spot"
+      },
+      answer: "D",
+      explanation: "Images falling here cannot be seen.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-144",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which labelled structure contains the light-sensitive cells?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-EYE",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "A",
+        B: "B",
+        C: "E",
+        D: "F"
+      },
+      answer: "C",
+      explanation: "E is the retina, which contains rods and cones.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-145",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Structure B controls",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-EYE",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the amount of light entering the eye",
+        B: "the shape of the lens",
+        C: "the pressure inside the eye",
+        D: "the movement of the eyeball"
+      },
+      answer: "A",
+      explanation: "B is the iris, which changes the size of the pupil.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-146",
+      module: 1,
+      objective: {
+        code: "1.6.2",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian eye to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Nerve impulses are carried from the eye to the brain by the structure labelled",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-EYE",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "C",
+        B: "D",
+        C: "E",
+        D: "F"
+      },
+      answer: "D",
+      explanation: "F is the optic nerve.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-147",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A person who can see near objects clearly but NOT distant objects is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "long-sighted",
+        B: "colour blind",
+        C: "short-sighted",
+        D: "astigmatic"
+      },
+      answer: "C",
+      explanation: "Short sight (myopia): distant objects are focused in front of the retina.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-148",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Short sight can be corrected by wearing spectacles with",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "convex lenses",
+        B: "bifocal mirrors",
+        C: "tinted glass only",
+        D: "concave lenses"
+      },
+      answer: "D",
+      explanation: "A concave (diverging) lens spreads light out so it focuses further back, on the retina.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-149",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which sight defect is shown in the diagram?",
+      statements: null,
+      after: null,
+      stimulus: {
+        lead: "to the following diagram which shows light from a distant object entering an eye.",
+        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" width="420" height="220" role="img" aria-label="Ray diagram" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Ray diagram</title><rect x="0" y="0" width="420" height="220" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="250" cy="110" r="80" fill="none" stroke-width="1.5"/><ellipse cx="190" cy="110" rx="9" ry="30" fill="#fff"/><line x1="20" y1="85" x2="190" y2="85"/><line x1="190" y1="85" x2="300" y2="110"/><line x1="300" y1="110" x2="327" y2="122" stroke-dasharray="4 3"/><line x1="20" y1="135" x2="190" y2="135"/><line x1="190" y1="135" x2="300" y2="110"/><line x1="300" y1="110" x2="327" y2="98" stroke-dasharray="4 3"/><circle cx="300" cy="110" r="2.8" fill="#000" stroke-width="0.5"/><line x1="330" y1="140" x2="370" y2="170" stroke-width="0.9"/><text x="374" y="174" text-anchor="start" fill="#000" stroke="none">retina</text></g></svg>`,
+        table: null
+      },
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Long sight",
+        B: "Short sight",
+        C: "Cataract",
+        D: "Astigmatism"
+      },
+      answer: "B",
+      explanation: "The rays meet in front of the retina, which is short sight.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-150",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A cataract is a condition in which",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the lens becomes cloudy",
+        B: "the eyeball is too short",
+        C: "pressure builds up inside the eye",
+        D: "the cornea is unevenly curved"
+      },
+      answer: "A",
+      explanation: "A cataract is clouding of the lens; it is treated by replacing the lens.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-151",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Glaucoma is caused by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "a cloudy lens",
+        B: "increased fluid pressure inside the eye which damages the optic nerve",
+        C: "an unevenly curved cornea",
+        D: "lack of vitamin C"
+      },
+      answer: "B",
+      explanation: "Glaucoma is raised pressure inside the eye; untreated, it can damage the optic nerve and cause blindness.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-152",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A person with astigmatism sees blurred images because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the lens is cloudy",
+        B: "there are no cones in the retina",
+        C: "the cornea or lens is unevenly curved",
+        D: "the optic nerve is damaged"
+      },
+      answer: "C",
+      explanation: "Uneven curvature means light is not focused to a single point; cylindrical lenses correct it.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-153",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following conditions is inherited and CANNOT be corrected with spectacles?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Short sight",
+        B: "Colour blindness",
+        C: "Long sight",
+        D: "Astigmatism"
+      },
+      answer: "B",
+      explanation: "Colour blindness is inherited and caused by faulty cones; lenses cannot correct it.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-369",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Long sight (hypermetropia) is corrected using",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "concave lenses",
+        B: "plane glass",
+        C: "convex lenses",
+        D: "prisms"
+      },
+      answer: "C",
+      explanation: "A converging lens helps focus light from near objects onto the retina.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-370",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A long-sighted person cannot see near objects clearly because the image is formed",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "behind the retina",
+        B: "in front of the retina",
+        C: "on the blind spot",
+        D: "on the cornea"
+      },
+      answer: "A",
+      explanation: "The eyeball is too short or the lens too weak.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-371",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The diagram shows how a sight defect is corrected. Which of the following correctly identifies the defect and the type of lens used?",
+      statements: null,
+      after: null,
+      stimulus: {
+        lead: "to the following diagram of an eye with a lens in front of it.",
+        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" width="420" height="220" role="img" aria-label="Ray diagram" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Ray diagram</title><rect x="0" y="0" width="420" height="220" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="250" cy="110" r="80" fill="none" stroke-width="1.5"/><ellipse cx="190" cy="110" rx="9" ry="30" fill="#fff"/><path d="M112,65 Q120,110 112,155 L128,155 Q120,110 128,65 Z" fill="#fff"/><line x1="20" y1="85" x2="120" y2="85"/><line x1="120" y1="85" x2="190" y2="78"/><line x1="190" y1="78" x2="330" y2="110"/><line x1="20" y1="135" x2="120" y2="135"/><line x1="120" y1="135" x2="190" y2="142"/><line x1="190" y1="142" x2="330" y2="110"/><circle cx="330" cy="110" r="2.8" fill="#000" stroke-width="0.5"/><line x1="330" y1="140" x2="370" y2="170" stroke-width="0.9"/><text x="374" y="174" text-anchor="start" fill="#000" stroke="none">retina</text></g></svg>`,
+        table: null
+      },
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Short sight, convex lens",
+        B: "Short sight, concave lens",
+        C: "Long sight, concave lens",
+        D: "Long sight, convex lens"
+      },
+      answer: "B",
+      explanation: "A concave (diverging) lens moves the image back onto the retina.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-372",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Looking directly at the sun can damage the eye because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the intense light can burn the retina",
+        B: "the cornea becomes cloudy immediately",
+        C: "it causes short sight",
+        D: "the ear drum is damaged"
+      },
+      answer: "A",
+      explanation: "Focused sunlight can permanently damage the retina.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-373",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Cataracts are usually treated by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "wearing concave lenses",
+        B: "surgically replacing the cloudy lens",
+        C: "eye drops only",
+        D: "removing the retina"
+      },
+      answer: "B",
+      explanation: "The cloudy lens is replaced with an artificial lens.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-374",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Glaucoma should be detected early because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "untreated, it can damage the optic nerve and cause blindness",
+        B: "it makes the lens cloudy",
+        C: "it can be cured by spectacles",
+        D: "it improves eyesight"
+      },
+      answer: "A",
+      explanation: "Regular eye pressure tests can detect glaucoma early.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-486",
+      module: 1,
+      objective: {
+        code: "1.6.3",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "analyse sight defects"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Lenses in spectacles for long sight are",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "thinner in the middle",
+        B: "flat",
+        C: "thicker in the middle than at the edges",
+        D: "coloured"
+      },
+      answer: "C",
+      explanation: "Convex lenses are thicker in the middle.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-154",
+      module: 1,
+      objective: {
+        code: "1.6.4",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian ear to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following shows the correct path of sound vibrations through the ear?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Ear drum \u2192 ear canal \u2192 ear bones \u2192 cochlea",
+        B: "Ear canal \u2192 cochlea \u2192 ear bones \u2192 ear drum",
+        C: "Pinna \u2192 ear bones \u2192 ear drum \u2192 cochlea",
+        D: "Ear canal \u2192 ear drum \u2192 ear bones \u2192 cochlea"
+      },
+      answer: "D",
+      explanation: "Sound travels down the ear canal, vibrates the ear drum, is amplified by the ear bones and reaches the cochlea.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-155",
+      module: 1,
+      objective: {
+        code: "1.6.4",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian ear to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The approximate range of frequencies that the human ear can hear is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "2 Hz to 2 000 Hz",
+        B: "20 Hz to 20 000 Hz",
+        C: "200 Hz to 200 000 Hz",
+        D: "20 000 Hz to 50 000 Hz"
+      },
+      answer: "B",
+      explanation: "Humans hear from about 20 Hz to 20 000 Hz (20 kHz).",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-156",
+      module: 1,
+      objective: {
+        code: "1.6.4",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian ear to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Workers who operate jackhammers for long periods should wear ear muffs because very loud sounds",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "increase the pitch of the sound",
+        B: "cause the Eustachian tube to close",
+        C: "can permanently damage the sensory cells in the cochlea",
+        D: "make the ear drum thicker"
+      },
+      answer: "C",
+      explanation: "Prolonged exposure to loud noise damages the hair cells in the cochlea and can cause permanent hearing loss.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-375",
+      module: 1,
+      objective: {
+        code: "1.6.4",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian ear to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The pinna",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "collects sound waves and directs them into the ear canal",
+        B: "converts sound to impulses",
+        C: "controls balance",
+        D: "equalises pressure"
+      },
+      answer: "A",
+      explanation: "The outer ear flap channels sound into the ear canal.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-376",
+      module: 1,
+      objective: {
+        code: "1.6.4",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian ear to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The three small ear bones (hammer, anvil and stirrup)",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "detect balance",
+        B: "produce ear wax",
+        C: "amplify vibrations and pass them to the inner ear",
+        D: "carry impulses to the brain"
+      },
+      answer: "C",
+      explanation: "The ossicles transmit and amplify vibrations from the ear drum.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-377",
+      module: 1,
+      objective: {
+        code: "1.6.4",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian ear to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A person whose auditory nerve is damaged would",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "lose balance only",
+        B: "have painful ears when flying",
+        C: "hear sounds louder",
+        D: "be unable to hear"
+      },
+      answer: "D",
+      explanation: "Impulses from the cochlea cannot reach the brain.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-378",
+      module: 1,
+      objective: {
+        code: "1.6.4",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian ear to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A sound with a high pitch has a",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "low frequency",
+        B: "high frequency",
+        C: "large amplitude only",
+        D: "low speed"
+      },
+      answer: "B",
+      explanation: "Pitch depends on frequency.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-379",
+      module: 1,
+      objective: {
+        code: "1.6.4",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian ear to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Loudness of a sound depends on its",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "frequency",
+        B: "wavelength only",
+        C: "speed",
+        D: "amplitude"
+      },
+      answer: "D",
+      explanation: "Larger amplitude vibrations sound louder.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-380",
+      module: 1,
+      objective: {
+        code: "1.6.4",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian ear to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A person spinning round and round feels dizzy afterwards because the fluid in the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "semi-circular canals continues to move",
+        B: "cochlea stops moving",
+        C: "Eustachian tube is blocked",
+        D: "ear canal is full of wax"
+      },
+      answer: "A",
+      explanation: "Moving fluid in the semi-circular canals sends balance signals even after the body stops.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-157",
+      module: 1,
+      objective: {
+        code: "1.6.4",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian ear to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which labelled structure converts sound vibrations into nerve impulses?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-EAR",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "C",
+        B: "D",
+        C: "E",
+        D: "F"
+      },
+      answer: "D",
+      explanation: "F is the cochlea, which contains the sensory cells for hearing.",
+      topic: 6
+    },
+    {
+      id: "IS-M1-P1-158",
+      module: 1,
+      objective: {
+        code: "1.6.4",
+        topic: 6,
+        topicTitle: "Sense Organs and Coordination",
+        text: "relate the structures of the mammalian ear to their functions"
+      },
+      profile: "KC",
       difficulty: 2,
       stem: "The structures labelled E are responsible for",
       statements: null,
@@ -4677,7 +6279,7 @@
         {
           label: "(a)",
           context: "Farmer Ramdial grows pumpkins, beans and ornamental flowers on his farm. Figure 1 shows a section through one of the flowers on his farm.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 310" width="400" height="310" role="img" aria-label="Longitudinal section of a flower" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Longitudinal section of a flower</title><rect x="0" y="0" width="400" height="310" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="192" y1="300" x2="192" y2="240"/><line x1="208" y1="300" x2="208" y2="240"/><path d="M192,240 Q160,230 155,215 L245,215 Q240,230 208,240" fill="#fff"/><path d="M172,215 Q166,175 192,160 L208,160 Q234,175 228,215 Z" fill="#fff"/><ellipse cx="190" cy="178" rx="5" ry="4" fill="#fff" stroke-width="1"/><ellipse cx="210" cy="178" rx="5" ry="4" fill="#fff" stroke-width="1"/><ellipse cx="190" cy="195" rx="5" ry="4" fill="#fff" stroke-width="1"/><ellipse cx="210" cy="195" rx="5" ry="4" fill="#fff" stroke-width="1"/><line x1="196" y1="160" x2="196" y2="85"/><line x1="204" y1="160" x2="204" y2="85"/><path d="M196,85 q-10,-8 -8,-16 q6,4 12,4 q6,0 12,-4 q2,8 -8,16" fill="#fff"/><path d="M155,215 Q115,215 100,245 Q130,235 160,225" fill="#fff"/><path d="M245,215 Q285,215 300,245 Q270,235 240,225" fill="#fff"/><path d="M158,212 Q80,180 65,90 Q120,120 164,205" fill="#fff"/><path d="M242,212 Q320,180 335,90 Q280,120 236,205" fill="#fff"/><path d="M166,212 Q145,160 138,110" fill="none"/><ellipse cx="136" cy="100" rx="7" ry="13" fill="#fff" transform="rotate(-15 136 100)"/><path d="M234,212 Q255,160 262,110" fill="none"/><ellipse cx="264" cy="100" rx="7" ry="13" fill="#fff" transform="rotate(15 264 100)"/><line x1="264" y1="92" x2="330" y2="70" stroke-width="0.9"/><text x="334" y="74" text-anchor="start" fill="#000" stroke="none">P</text><line x1="206" y1="72" x2="330" y2="30" stroke-width="0.9"/><text x="334" y="34" text-anchor="start" fill="#000" stroke="none">Q</text><line x1="230" y1="200" x2="330" y2="185" stroke-width="0.9"/><text x="334" y="189" text-anchor="start" fill="#000" stroke="none">R</text><line x1="190" y1="195" x2="40" y2="180" stroke-width="0.9"/><text x="36" y="184" text-anchor="end" fill="#000" stroke="none">S</text></g></svg>`,
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="80 30 540 475" width="540" height="475" role="img" aria-label="Longitudinal section of a flower"><title>Longitudinal section of a flower</title><rect x="80" y="30" width="540" height="475" fill="white" /><g fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" font-family="Arial, Helvetica, sans-serif"><path d="M285 398 C252 391 226 345 191 328 C226 325 247 358 285 384 Z" fill="#fff" /><path d="M354 398 C388 389 416 344 451 325 C415 326 393 359 354 384 Z" fill="#fff" /><path d="M166 111 C196 82 238 67 278 76 C299 65 334 65 357 76 C401 66 451 78 486 111 C449 114 425 150 416 200 C405 263 400 323 378 363 C367 384 350 399 340 408 L337 469 H307 L303 409 C285 400 268 387 255 365 C232 327 222 267 214 210 C206 153 195 126 166 111 Z" fill="#fff" /><path d="M278 76 C286 80 292 87 296 94 M357 76 C365 80 373 86 376 94" stroke-width="1.5" /><path d="M236 157 C236 222 242 291 266 343 C279 370 291 388 306 399 L308 390 C288 371 280 354 273 337 C251 286 248 222 248 157 Z" fill="#fff" /><path d="M394 157 C394 221 388 289 366 341 C354 368 344 386 331 399 L329 390 C347 370 356 351 362 335 C382 284 382 220 382 157 Z" fill="#fff" /><path d="M242 121 C233 121 231 133 232 146 C232 158 235 168 242 168 C249 168 252 158 252 145 C252 131 249 121 242 121 Z" fill="#fff" /><path d="M388 121 C379 121 377 133 378 146 C378 158 381 168 388 168 C395 168 398 158 398 145 C398 131 395 121 388 121 Z" fill="#fff" /><path d="M241 127 C238 139 239 153 242 162 M387 127 C384 139 385 153 388 162" stroke-width="1.05" /><path d="M310 157 C301 149 296 139 301 132 C306 124 315 124 320 127 C326 123 336 127 339 134 C342 142 336 150 330 157 L330 273 C346 290 355 311 354 334 C354 359 344 378 332 385 L331 402 H309 L308 385 C294 378 285 359 285 335 C284 311 294 289 310 273 Z" fill="#fff" /><path d="M320 286 C306 286 295 309 295 335 C295 360 306 378 320 378 C334 378 344 360 344 335 C344 309 334 286 320 286 Z" fill="#fff" stroke-width="1.5" /><line x1="320" y1="292" x2="320" y2="371" stroke-width="1.15" /><path d="M320 307 Q316 310 313 309 M320 307 Q324 310 327 309" stroke-width="1.05" /><ellipse cx="308" cy="307" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><ellipse cx="332" cy="307" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><path d="M320 332 Q316 335 313 334 M320 332 Q324 335 327 334" stroke-width="1.05" /><ellipse cx="308" cy="332" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><ellipse cx="332" cy="332" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><path d="M320 356 Q316 359 313 358 M320 356 Q324 359 327 358" stroke-width="1.05" /><ellipse cx="308" cy="356" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><ellipse cx="332" cy="356" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /></g><path d="M388 141 H537" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="553" y="146" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">P</text><path d="M329 133 L537 64" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="553" y="72" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">Q</text><path d="M350 312 L537 299" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="553" y="307" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">R</text><path d="M308 332 H125" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="105" y="343" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="end" fill="#111" stroke="none" style="stroke:none;fill:#111">S</text></svg>',
           figure: "Figure 1. Section through a flower",
           table: null,
           items: [
@@ -4930,7 +6532,7 @@
         {
           label: "(a)",
           context: "Figure 2 shows a cell from a leaf.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 230" width="390" height="230" role="img" aria-label="Plant cell" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Plant cell</title><rect x="0" y="0" width="390" height="230" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="60" y="25" width="250" height="180" fill="#fff" stroke-width="1.6"/><rect x="67" y="32" width="236" height="166" fill="#fff" stroke-width="1.0"/><rect x="110" y="65" width="150" height="105" fill="#fff" rx="18" stroke-width="1.0"/><text x="185" y="122" text-anchor="middle" fill="#000" stroke="none" font-style="italic" font-size="11">cell sap</text><circle cx="88" cy="60" r="15" fill="#fff"/><circle cx="88" cy="60" r="5" fill="#fff" stroke-width="0.8"/><ellipse cx="82" cy="180" rx="9" ry="5" fill="#fff"/><circle cx="77.7" cy="179.9" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="82.1" cy="182.8" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="85.7" cy="181.7" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="84.2" cy="177.9" r="0.6" fill="#000" stroke-width="0.5"/><ellipse cx="140" cy="50" rx="9" ry="5" fill="#fff"/><circle cx="143.3" cy="47.6" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="137.2" cy="50.2" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="134.6" cy="51.3" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="134.2" cy="48.1" r="0.6" fill="#000" stroke-width="0.5"/><ellipse cx="230" cy="185" rx="9" ry="5" fill="#fff"/><circle cx="232.5" cy="183.8" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="235.3" cy="187.3" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="230.4" cy="186" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="233.2" cy="184.9" r="0.6" fill="#000" stroke-width="0.5"/><ellipse cx="285" cy="110" rx="9" ry="5" fill="#fff"/><circle cx="286" cy="109.3" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="286" cy="107.6" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="283.2" cy="112.2" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="279.6" cy="109.9" r="0.6" fill="#000" stroke-width="0.5"/><ellipse cx="290" cy="55" rx="9" ry="5" fill="#fff"/><circle cx="290.5" cy="54" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="289.9" cy="52" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="287" cy="55.5" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="285.4" cy="52.7" r="0.6" fill="#000" stroke-width="0.5"/><ellipse cx="80" cy="125" rx="9" ry="5" fill="#fff"/><circle cx="77.3" cy="125.3" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="82.5" cy="127.8" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="78.4" cy="125.2" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="78.5" cy="125.3" r="0.6" fill="#000" stroke-width="0.5"/><circle cx="213.3" cy="53.5" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="252.9" cy="58.6" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="240.2" cy="58.1" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="76.7" cy="46.6" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="287" cy="51.2" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="277.2" cy="37.8" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="177.9" cy="41.2" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="195.1" cy="49.3" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="73" cy="40.4" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="134.3" cy="57.9" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="246.1" cy="39" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="253.3" cy="38.5" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="212" cy="38.2" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="70.4" cy="56.8" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="118.2" cy="40.4" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="296" cy="56.8" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="136.5" cy="59" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="194" cy="51.9" r="0.7" fill="#000" stroke-width="0.5"/><line x1="310" y1="40" x2="350" y2="30" stroke-width="0.9"/><text x="354" y="34" text-anchor="start" fill="#000" stroke="none">W</text><line x1="290" y1="55" x2="350" y2="70" stroke-width="0.9"/><text x="354" y="74" text-anchor="start" fill="#000" stroke="none">X</text><line x1="240" y1="120" x2="350" y2="115" stroke-width="0.9"/><text x="354" y="119" text-anchor="start" fill="#000" stroke="none">Y</text><line x1="88" y1="60" x2="30" y2="40" stroke-width="0.9"/><text x="26" y="44" text-anchor="end" fill="#000" stroke="none">Z</text></g></svg>`,
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="55 5 435 370" width="522" height="444" role="img" aria-label="Plant cell"><title>Plant cell</title><rect x="55" y="5" width="435" height="370" fill="white" /><g fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M208 44C238 31 279 28 307 39C330 48 340 67 340 96L336 295C336 327 321 343 288 344L225 344C195 343 181 328 180 296L173 115C171 77 182 54 208 44Z" stroke-width="3" /><path d="M212 55C240 43 278 41 302 50C320 57 328 72 328 97L324 294C324 320 313 331 287 332L225 332C202 331 193 320 192 294L185 114C183 82 191 65 212 55Z" stroke-width="1.5" /><path d="M235 148C247 142 260 156 275 162C285 166 295 166 298 179C300 203 286 241 277 273C272 290 265 303 257 297C246 288 244 273 238 259C229 235 216 206 217 183C217 166 222 153 235 148Z" fill="white" stroke-width="1.5" /><circle cx="221" cy="104" r="19" fill="#eee" stroke-width="1.5" /><circle cx="224" cy="104" r="6" fill="#555" stroke-width=".8" /><g transform="translate(200 151) rotate(-81) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(279 75) rotate(34) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(305 116) rotate(29) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(269 135) rotate(-38) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(310 190) rotate(-57) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(306 265) rotate(-57) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(282 315) rotate(-26) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(214 295) rotate(52) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(202 249) rotate(-87) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g></g><path d="M338 179 H412" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="424" y="185" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">W</text><path d="M285 76 L412 59" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="424" y="65" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">X</text><path d="M270 235 L412 254" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="424" y="260" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">Y</text><path d="M202 104 H118" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="102" y="106" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="end" fill="#111" stroke="none" style="stroke:none;fill:#111">Z</text><text x="257" y="218" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">cell sap</text></svg>',
           figure: "Figure 2. Diagram of a leaf cell",
           table: null,
           items: [
@@ -5171,7 +6773,7 @@
         {
           label: "(a)",
           context: "A group of students collected soil from three sites, P, Q and R, in their school compound. They poured 100 cm\xB3 of water through equal masses of each soil sample using the apparatus shown in Figure 3 and recorded the volume of water which drained through in 10 minutes. Their results are shown in Table 2.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 245" width="460" height="245" role="img" aria-label="Drainage through three soil samples" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Drainage through three soil samples</title><rect x="0" y="0" width="460" height="245" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><text x="80" y="18" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">P</text><polyline points="40,30 76,85 76,110" fill="none"/><polyline points="120,30 84,85 84,110" fill="none"/><polygon points="47,34 113,34 99,48 61,48" fill="none" stroke-width="0.8"/><circle cx="71.5" cy="37.5" r="1" fill="#000" stroke-width="0.5"/><circle cx="87.2" cy="36.7" r="1" fill="#000" stroke-width="0.5"/><circle cx="81.7" cy="39.7" r="1" fill="#000" stroke-width="0.5"/><circle cx="58.8" cy="41.1" r="1" fill="#000" stroke-width="0.5"/><circle cx="57.8" cy="40.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="59.4" cy="36.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="76.4" cy="44.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="61.9" cy="38.2" r="1" fill="#000" stroke-width="0.5"/><circle cx="86.1" cy="45.5" r="1" fill="#000" stroke-width="0.5"/><circle cx="83.7" cy="40" r="1" fill="#000" stroke-width="0.5"/><circle cx="102.9" cy="36.5" r="1" fill="#000" stroke-width="0.5"/><circle cx="97.2" cy="38.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="62.9" cy="37.2" r="1" fill="#000" stroke-width="0.5"/><circle cx="70.8" cy="44.2" r="1" fill="#000" stroke-width="0.5"/><circle cx="64.7" cy="41.8" r="1" fill="#000" stroke-width="0.5"/><circle cx="86.7" cy="39.7" r="1" fill="#000" stroke-width="0.5"/><circle cx="82.3" cy="36.6" r="1" fill="#000" stroke-width="0.5"/><circle cx="58.9" cy="38.1" r="1" fill="#000" stroke-width="0.5"/><circle cx="88.7" cy="40.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="71.1" cy="41.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="77.8" cy="39" r="1" fill="#000" stroke-width="0.5"/><circle cx="94.1" cy="43" r="1" fill="#000" stroke-width="0.5"/><rect x="62" y="115" width="36" height="95" fill="none"/><line x1="62" y1="140" x2="98" y2="140" stroke-width="0.9"/><line x1="62" y1="125" x2="70" y2="125" stroke-width="0.7"/><line x1="62" y1="142" x2="70" y2="142" stroke-width="0.7"/><line x1="62" y1="159" x2="70" y2="159" stroke-width="0.7"/><line x1="62" y1="176" x2="70" y2="176" stroke-width="0.7"/><line x1="62" y1="193" x2="70" y2="193" stroke-width="0.7"/><text x="220" y="18" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">Q</text><polyline points="180,30 216,85 216,110" fill="none"/><polyline points="260,30 224,85 224,110" fill="none"/><polygon points="187,34 253,34 239,48 201,48" fill="none" stroke-width="0.8"/><circle cx="206.9" cy="45.6" r="1" fill="#000" stroke-width="0.5"/><circle cx="202.1" cy="43" r="1" fill="#000" stroke-width="0.5"/><circle cx="200.1" cy="38.5" r="1" fill="#000" stroke-width="0.5"/><circle cx="244" cy="38.1" r="1" fill="#000" stroke-width="0.5"/><circle cx="226.8" cy="40.6" r="1" fill="#000" stroke-width="0.5"/><circle cx="217.8" cy="40.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="205.2" cy="44.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="200.3" cy="38.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="197" cy="38.7" r="1" fill="#000" stroke-width="0.5"/><circle cx="215.6" cy="45" r="1" fill="#000" stroke-width="0.5"/><circle cx="214.2" cy="37.1" r="1" fill="#000" stroke-width="0.5"/><circle cx="208.4" cy="45.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="199" cy="42.2" r="1" fill="#000" stroke-width="0.5"/><circle cx="214.1" cy="42.6" r="1" fill="#000" stroke-width="0.5"/><circle cx="212.2" cy="42.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="219.9" cy="42.5" r="1" fill="#000" stroke-width="0.5"/><circle cx="239.3" cy="41.8" r="1" fill="#000" stroke-width="0.5"/><circle cx="202.8" cy="36.6" r="1" fill="#000" stroke-width="0.5"/><circle cx="241.4" cy="40.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="205.3" cy="45.5" r="1" fill="#000" stroke-width="0.5"/><circle cx="223.8" cy="43.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="238.3" cy="38.9" r="1" fill="#000" stroke-width="0.5"/><rect x="202" y="115" width="36" height="95" fill="none"/><line x1="202" y1="185" x2="238" y2="185" stroke-width="0.9"/><line x1="202" y1="125" x2="210" y2="125" stroke-width="0.7"/><line x1="202" y1="142" x2="210" y2="142" stroke-width="0.7"/><line x1="202" y1="159" x2="210" y2="159" stroke-width="0.7"/><line x1="202" y1="176" x2="210" y2="176" stroke-width="0.7"/><line x1="202" y1="193" x2="210" y2="193" stroke-width="0.7"/><text x="360" y="18" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">R</text><polyline points="320,30 356,85 356,110" fill="none"/><polyline points="400,30 364,85 364,110" fill="none"/><polygon points="327,34 393,34 379,48 341,48" fill="none" stroke-width="0.8"/><circle cx="358.2" cy="39.7" r="1" fill="#000" stroke-width="0.5"/><circle cx="342.6" cy="44.7" r="1" fill="#000" stroke-width="0.5"/><circle cx="336.3" cy="41" r="1" fill="#000" stroke-width="0.5"/><circle cx="379.1" cy="36.8" r="1" fill="#000" stroke-width="0.5"/><circle cx="362.6" cy="42.2" r="1" fill="#000" stroke-width="0.5"/><circle cx="338" cy="39.8" r="1" fill="#000" stroke-width="0.5"/><circle cx="369.8" cy="40.5" r="1" fill="#000" stroke-width="0.5"/><circle cx="370.8" cy="37.6" r="1" fill="#000" stroke-width="0.5"/><circle cx="347.4" cy="37.1" r="1" fill="#000" stroke-width="0.5"/><circle cx="360.3" cy="45.2" r="1" fill="#000" stroke-width="0.5"/><circle cx="364.3" cy="43.7" r="1" fill="#000" stroke-width="0.5"/><circle cx="354.4" cy="43.5" r="1" fill="#000" stroke-width="0.5"/><circle cx="340.9" cy="38.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="368.4" cy="43.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="356.2" cy="36.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="348.8" cy="38.1" r="1" fill="#000" stroke-width="0.5"/><circle cx="349.5" cy="44.1" r="1" fill="#000" stroke-width="0.5"/><circle cx="345.6" cy="44.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="378.2" cy="36.5" r="1" fill="#000" stroke-width="0.5"/><circle cx="354.2" cy="40.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="337.1" cy="40.2" r="1" fill="#000" stroke-width="0.5"/><circle cx="379.5" cy="37.1" r="1" fill="#000" stroke-width="0.5"/><rect x="342" y="115" width="36" height="95" fill="none"/><line x1="342" y1="162" x2="378" y2="162" stroke-width="0.9"/><line x1="342" y1="125" x2="350" y2="125" stroke-width="0.7"/><line x1="342" y1="142" x2="350" y2="142" stroke-width="0.7"/><line x1="342" y1="159" x2="350" y2="159" stroke-width="0.7"/><line x1="342" y1="176" x2="350" y2="176" stroke-width="0.7"/><line x1="342" y1="193" x2="350" y2="193" stroke-width="0.7"/><text x="250" y="235" text-anchor="middle" fill="#000" stroke="none" font-size="12">Each funnel was given 100 cm\xB3 of water.</text></g></svg>`,
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 5 720 435" width="792" height="479" role="img" aria-label="Drainage through three soil samples"><title>Drainage through three soil samples</title><rect x="30" y="5" width="720" height="435" fill="white" /><defs><marker id="is-precision-m1-paper02-2-parts-0-svg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#111" stroke="none" /></marker><pattern id="is-precision-m1-paper02-2-parts-0-svg-hatch" width="7" height="7" patternUnits="userSpaceOnUse"><path d="M0 7L7 0" stroke="#888" stroke-width=".6" /></pattern><pattern id="is-precision-m1-paper02-2-parts-0-svg-dots" width="11" height="11" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r=".8" fill="#555" /></pattern><pattern id="is-precision-m1-paper02-2-parts-0-svg-water" width="14" height="12" patternUnits="userSpaceOnUse"><path d="M2 6h5" stroke="#888" stroke-width=".7" /></pattern></defs><g fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><text x="135" y="35" font-family="Arial, Helvetica, sans-serif" font-size="22" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">P</text><path d="M97 96L129 158L129 210L141 220L141 158L173 96" /><path d="M107 116L163 116L144 153Q135 161 126 153Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-dots)" stroke-width="1.1" /><path d="M126 153Q135 147 144 153L140 164Q135 168 130 164Z" fill="white" stroke-width="1.1" /><path d="M105 240 V380 Q135 390 165 380 V240" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /><ellipse cx="135" cy="240" rx="30" ry="4" fill="white" stroke="#111" stroke-width="1.25" /><path d="M106 289.0 H164 V379 Q135 388 106 379 Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-water)" stroke="none" /><path d="M106 289.0 H164" fill="none" stroke="#111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 380.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 367.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 354.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 341.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 328.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 315.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 302.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 289.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 276.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 263.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 250.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M95 390 H175" fill="none" stroke="#111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M135 225 Q131 231 135 233 Q139 231 135 225Z" fill="none" stroke="#111" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" /><text x="380" y="35" font-family="Arial, Helvetica, sans-serif" font-size="22" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">Q</text><path d="M342 96L374 158L374 210L386 220L386 158L418 96" /><path d="M352 116L408 116L389 153Q380 161 371 153Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-dots)" stroke-width="1.1" /><path d="M371 153Q380 147 389 153L385 164Q380 168 375 164Z" fill="white" stroke-width="1.1" /><path d="M350 240 V380 Q380 390 410 380 V240" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /><ellipse cx="380" cy="240" rx="30" ry="4" fill="white" stroke="#111" stroke-width="1.25" /><path d="M351 347.5 H409 V379 Q380 388 351 379 Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-water)" stroke="none" /><path d="M351 347.5 H409" fill="none" stroke="#111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 380.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 367.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 354.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 341.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 328.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 315.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 302.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 289.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 276.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 263.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 250.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M340 390 H420" fill="none" stroke="#111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M380 225 Q376 231 380 233 Q384 231 380 225Z" fill="none" stroke="#111" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" /><text x="625" y="35" font-family="Arial, Helvetica, sans-serif" font-size="22" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">R</text><path d="M587 96L619 158L619 210L631 220L631 158L663 96" /><path d="M597 116L653 116L634 153Q625 161 616 153Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-dots)" stroke-width="1.1" /><path d="M616 153Q625 147 634 153L630 164Q625 168 620 164Z" fill="white" stroke-width="1.1" /><path d="M595 240 V380 Q625 390 655 380 V240" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /><ellipse cx="625" cy="240" rx="30" ry="4" fill="white" stroke="#111" stroke-width="1.25" /><path d="M596 317.6 H654 V379 Q625 388 596 379 Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-water)" stroke="none" /><path d="M596 317.6 H654" fill="none" stroke="#111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 380.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 367.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 354.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 341.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 328.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 315.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 302.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 289.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 276.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 263.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 250.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M585 390 H665" fill="none" stroke="#111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M625 225 Q621 231 625 233 Q629 231 625 225Z" fill="none" stroke="#111" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" /></g><text x="390" y="426" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">Each funnel was given 100 cm\xB3 of water.</text></svg>',
           figure: "Figure 3. Apparatus used to compare the drainage of soil samples",
           table: {
             title: "TABLE 2: DRAINAGE THROUGH SOIL SAMPLES",
@@ -5413,1227 +7015,3 @@
             },
             {
               label: "(iii)",
-              prompt: "Explain why soil erosion reduces food production.",
-              marks: 1,
-              objective: "1.2.7",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "The fertile topsoil containing nutrients/humus is removed, so crops grow poorly / less land is available for farming."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-04",
-      module: 1,
-      kind: "structured",
-      title: "The menstrual cycle, birth control and pre-natal care",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 7,
-        UK: 8,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 3,
-          title: "Reproduction and Growth in Animals"
-        }
-      ],
-      objectives: [
-        "1.3.3",
-        "1.3.5",
-        "1.3.6"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Figure 4 shows changes in the thickness of the lining of the uterus of a woman over a 28-day menstrual cycle.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 270" width="460" height="270" role="img" aria-label="Thickness of uterine lining" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Thickness of uterine lining</title><rect x="0" y="0" width="460" height="270" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="58" y1="14" x2="58" y2="224" stroke-width="0.35"/><line x1="71.8" y1="14" x2="71.8" y2="224" stroke-width="0.35"/><line x1="85.6" y1="14" x2="85.6" y2="224" stroke-width="0.35"/><line x1="99.4" y1="14" x2="99.4" y2="224" stroke-width="0.35"/><line x1="113.1" y1="14" x2="113.1" y2="224" stroke-width="0.35"/><line x1="126.9" y1="14" x2="126.9" y2="224" stroke-width="0.35"/><line x1="140.7" y1="14" x2="140.7" y2="224" stroke-width="0.35"/><line x1="154.5" y1="14" x2="154.5" y2="224" stroke-width="0.35"/><line x1="168.3" y1="14" x2="168.3" y2="224" stroke-width="0.35"/><line x1="182.1" y1="14" x2="182.1" y2="224" stroke-width="0.35"/><line x1="195.9" y1="14" x2="195.9" y2="224" stroke-width="0.35"/><line x1="209.6" y1="14" x2="209.6" y2="224" stroke-width="0.35"/><line x1="223.4" y1="14" x2="223.4" y2="224" stroke-width="0.35"/><line x1="237.2" y1="14" x2="237.2" y2="224" stroke-width="0.35"/><line x1="251" y1="14" x2="251" y2="224" stroke-width="0.35"/><line x1="264.8" y1="14" x2="264.8" y2="224" stroke-width="0.35"/><line x1="278.6" y1="14" x2="278.6" y2="224" stroke-width="0.35"/><line x1="292.4" y1="14" x2="292.4" y2="224" stroke-width="0.35"/><line x1="306.1" y1="14" x2="306.1" y2="224" stroke-width="0.35"/><line x1="319.9" y1="14" x2="319.9" y2="224" stroke-width="0.35"/><line x1="333.7" y1="14" x2="333.7" y2="224" stroke-width="0.35"/><line x1="347.5" y1="14" x2="347.5" y2="224" stroke-width="0.35"/><line x1="361.3" y1="14" x2="361.3" y2="224" stroke-width="0.35"/><line x1="375.1" y1="14" x2="375.1" y2="224" stroke-width="0.35"/><line x1="388.9" y1="14" x2="388.9" y2="224" stroke-width="0.35"/><line x1="402.6" y1="14" x2="402.6" y2="224" stroke-width="0.35"/><line x1="416.4" y1="14" x2="416.4" y2="224" stroke-width="0.35"/><line x1="430.2" y1="14" x2="430.2" y2="224" stroke-width="0.35"/><line x1="444" y1="14" x2="444" y2="224" stroke-width="0.35"/><line x1="58" y1="224" x2="444" y2="224" stroke-width="0.35"/><line x1="58" y1="206.5" x2="444" y2="206.5" stroke-width="0.35"/><line x1="58" y1="189" x2="444" y2="189" stroke-width="0.35"/><line x1="58" y1="171.5" x2="444" y2="171.5" stroke-width="0.35"/><line x1="58" y1="154" x2="444" y2="154" stroke-width="0.35"/><line x1="58" y1="136.5" x2="444" y2="136.5" stroke-width="0.35"/><line x1="58" y1="119" x2="444" y2="119" stroke-width="0.35"/><line x1="58" y1="101.5" x2="444" y2="101.5" stroke-width="0.35"/><line x1="58" y1="84" x2="444" y2="84" stroke-width="0.35"/><line x1="58" y1="66.5" x2="444" y2="66.5" stroke-width="0.35"/><line x1="58" y1="49" x2="444" y2="49" stroke-width="0.35"/><line x1="58" y1="31.5" x2="444" y2="31.5" stroke-width="0.35"/><line x1="58" y1="14" x2="444" y2="14" stroke-width="0.35"/><line x1="58" y1="14" x2="58" y2="224" stroke-width="0.6"/><line x1="85.6" y1="14" x2="85.6" y2="224" stroke-width="0.6"/><line x1="113.1" y1="14" x2="113.1" y2="224" stroke-width="0.6"/><line x1="140.7" y1="14" x2="140.7" y2="224" stroke-width="0.6"/><line x1="168.3" y1="14" x2="168.3" y2="224" stroke-width="0.6"/><line x1="195.9" y1="14" x2="195.9" y2="224" stroke-width="0.6"/><line x1="223.4" y1="14" x2="223.4" y2="224" stroke-width="0.6"/><line x1="251" y1="14" x2="251" y2="224" stroke-width="0.6"/><line x1="278.6" y1="14" x2="278.6" y2="224" stroke-width="0.6"/><line x1="306.1" y1="14" x2="306.1" y2="224" stroke-width="0.6"/><line x1="333.7" y1="14" x2="333.7" y2="224" stroke-width="0.6"/><line x1="361.3" y1="14" x2="361.3" y2="224" stroke-width="0.6"/><line x1="388.9" y1="14" x2="388.9" y2="224" stroke-width="0.6"/><line x1="416.4" y1="14" x2="416.4" y2="224" stroke-width="0.6"/><line x1="444" y1="14" x2="444" y2="224" stroke-width="0.6"/><line x1="58" y1="224" x2="444" y2="224" stroke-width="0.6"/><line x1="58" y1="189" x2="444" y2="189" stroke-width="0.6"/><line x1="58" y1="154" x2="444" y2="154" stroke-width="0.6"/><line x1="58" y1="119" x2="444" y2="119" stroke-width="0.6"/><line x1="58" y1="84" x2="444" y2="84" stroke-width="0.6"/><line x1="58" y1="49" x2="444" y2="49" stroke-width="0.6"/><line x1="58" y1="14" x2="444" y2="14" stroke-width="0.6"/><line x1="58" y1="224" x2="444" y2="224" stroke-width="1.4"/><line x1="58" y1="224" x2="58" y2="14" stroke-width="1.4"/><line x1="58" y1="224" x2="58" y2="228" stroke-width="1"/><text x="58" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">0</text><line x1="85.6" y1="224" x2="85.6" y2="228" stroke-width="1"/><text x="85.6" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">2</text><line x1="113.1" y1="224" x2="113.1" y2="228" stroke-width="1"/><text x="113.1" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">4</text><line x1="140.7" y1="224" x2="140.7" y2="228" stroke-width="1"/><text x="140.7" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">6</text><line x1="168.3" y1="224" x2="168.3" y2="228" stroke-width="1"/><text x="168.3" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">8</text><line x1="195.9" y1="224" x2="195.9" y2="228" stroke-width="1"/><text x="195.9" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">10</text><line x1="223.4" y1="224" x2="223.4" y2="228" stroke-width="1"/><text x="223.4" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">12</text><line x1="251" y1="224" x2="251" y2="228" stroke-width="1"/><text x="251" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">14</text><line x1="278.6" y1="224" x2="278.6" y2="228" stroke-width="1"/><text x="278.6" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">16</text><line x1="306.1" y1="224" x2="306.1" y2="228" stroke-width="1"/><text x="306.1" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">18</text><line x1="333.7" y1="224" x2="333.7" y2="228" stroke-width="1"/><text x="333.7" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">20</text><line x1="361.3" y1="224" x2="361.3" y2="228" stroke-width="1"/><text x="361.3" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">22</text><line x1="388.9" y1="224" x2="388.9" y2="228" stroke-width="1"/><text x="388.9" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">24</text><line x1="416.4" y1="224" x2="416.4" y2="228" stroke-width="1"/><text x="416.4" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">26</text><line x1="444" y1="224" x2="444" y2="228" stroke-width="1"/><text x="444" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">28</text><line x1="54" y1="224" x2="58" y2="224" stroke-width="1"/><text x="51" y="228" text-anchor="end" fill="#000" stroke="none" font-size="12">0</text><line x1="54" y1="189" x2="58" y2="189" stroke-width="1"/><text x="51" y="193" text-anchor="end" fill="#000" stroke="none" font-size="12">1</text><line x1="54" y1="154" x2="58" y2="154" stroke-width="1"/><text x="51" y="158" text-anchor="end" fill="#000" stroke="none" font-size="12">2</text><line x1="54" y1="119" x2="58" y2="119" stroke-width="1"/><text x="51" y="123" text-anchor="end" fill="#000" stroke="none" font-size="12">3</text><line x1="54" y1="84" x2="58" y2="84" stroke-width="1"/><text x="51" y="88" text-anchor="end" fill="#000" stroke="none" font-size="12">4</text><line x1="54" y1="49" x2="58" y2="49" stroke-width="1"/><text x="51" y="53" text-anchor="end" fill="#000" stroke="none" font-size="12">5</text><line x1="54" y1="14" x2="58" y2="14" stroke-width="1"/><text x="51" y="18" text-anchor="end" fill="#000" stroke="none" font-size="12">6</text><text x="251" y="260" text-anchor="middle" fill="#000" stroke="none">Day of cycle</text><text x="14" y="119" text-anchor="middle" fill="#000" stroke="none" transform="rotate(-90 14 119)">Thickness of lining/mm</text><path d="M58,49 C63,61.6 75.6,95.1 85.6,119 C95.5,142.9 105.7,169.4 113.1,182 C120.6,194.6 119.5,190.9 126.9,189 C134.4,187.1 142.1,181.6 154.5,171.5 C166.9,161.4 178.5,147.5 195.9,133 C213.2,118.5 231.1,104.9 251,91 C270.9,77.1 286.3,64.8 306.1,56 C326,47.2 341.4,44.5 361.3,42 C381.1,39.5 401.5,40.7 416.4,42 C431.3,43.3 439,47.7 444,49" fill="none" stroke-width="1.6"/></g></svg>`,
-          figure: "Figure 4. Thickness of the uterine lining during a menstrual cycle",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Using Figure 4, state the days on which menstruation occurs.",
-              marks: 1,
-              objective: "1.3.3",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Days 0/1 to 5"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Define the term 'ovulation' and state on which day it is MOST likely to occur in this cycle.",
-              marks: 2,
-              objective: "1.3.3",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Ovulation is the release of an ovum (egg) from the ovary (1)",
-                  "Day 14 (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain the role of the hormone progesterone in the menstrual cycle.",
-              marks: 2,
-              objective: "1.3.3",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Progesterone is produced after ovulation (by the corpus luteum) (1)",
-                  "it keeps the uterine lining thick/maintains it ready for implantation; when progesterone falls, the lining breaks down (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "A young couple wishes to plan their family.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Complete Table 3 by giving ONE example of EACH method of birth control.",
-              marks: 3,
-              objective: "1.3.5",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "table",
-                table: {
-                  title: "TABLE 3: METHODS OF BIRTH CONTROL",
-                  headers: [
-                    "Method",
-                    "Example"
-                  ],
-                  rows: [
-                    [
-                      "Barrier",
-                      ""
-                    ],
-                    [
-                      "Hormonal",
-                      ""
-                    ],
-                    [
-                      "Surgical",
-                      ""
-                    ]
-                  ],
-                  source: null
-                }
-              },
-              markScheme: {
-                points: [
-                  "Barrier: condom / diaphragm / cervical cap / IUD",
-                  "Hormonal: pill / injection / patch / implant",
-                  "Surgical: vasectomy / tubal ligation"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State ONE advantage and ONE disadvantage of the condom as a method of birth control.",
-              marks: 2,
-              objective: "1.3.5",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Advantage: protects against STIs / cheap / easily available / no side effects",
-                  "Disadvantage: may tear or slip off / must be used every time / may reduce sensation"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "Pre-natal care is important for the health of mother and baby.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State TWO practices which a pregnant woman should follow to ensure a healthy baby.",
-              marks: 2,
-              objective: "1.3.6",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Eat a balanced diet (with iron/folic acid)",
-                  "Avoid smoking, alcohol and drugs",
-                  "Attend regular pre-natal clinic visits",
-                  "Avoid X-rays",
-                  "Get suitable exercise and rest"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why breastfeeding is recommended for newborn babies.",
-              marks: 3,
-              objective: "1.3.6",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Breast milk contains antibodies which give the baby passive immunity (1)",
-                  "it has the correct balance of nutrients and is easily digested (1)",
-                  "it is clean/sterile, at the right temperature and free, and helps bonding (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-05",
-      module: 1,
-      kind: "practical",
-      title: "Surface area to volume ratio and transpiration",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 6,
-        UK: 7,
-        XS: 7
-      },
-      topics: [
-        {
-          topic: 4,
-          title: "Transport Systems"
-        },
-        {
-          topic: 1,
-          title: "Units of Life"
-        }
-      ],
-      objectives: [
-        "1.4.1",
-        "1.4.2"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Students cut three cubes of agar jelly containing a pink indicator. They placed the cubes in dilute acid, which turns the indicator colourless, and timed how long it took for each cube to become completely colourless. Their results are shown in Table 4.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 165" width="360" height="165" role="img" aria-label="Agar cubes of different sizes" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Agar cubes of different sizes</title><rect x="0" y="0" width="360" height="165" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="110" width="20" height="20" fill="#fff"/><polyline points="30,110 38,102 58,102 50,110" fill="none"/><polyline points="50,110 58,102 58,122 50,130" fill="none"/><text x="40" y="150" text-anchor="middle" fill="#000" stroke="none" font-size="12">1 cm</text><rect x="120" y="90" width="40" height="40" fill="#fff"/><polyline points="120,90 136,74 176,74 160,90" fill="none"/><polyline points="160,90 176,74 176,114 160,130" fill="none"/><text x="140" y="150" text-anchor="middle" fill="#000" stroke="none" font-size="12">2 cm</text><rect x="230" y="70" width="60" height="60" fill="#fff"/><polyline points="230,70 254,46 314,46 290,70" fill="none"/><polyline points="290,70 314,46 314,106 290,130" fill="none"/><text x="260" y="150" text-anchor="middle" fill="#000" stroke="none" font-size="12">3 cm</text></g></svg>`,
-          figure: "Figure 5. Agar cubes",
-          table: {
-            title: "TABLE 4: RESULTS OF AGAR CUBE EXPERIMENT",
-            headers: [
-              "Length of side/cm",
-              "Surface area/cm\xB2",
-              "Volume/cm\xB3",
-              "Surface area : volume",
-              "Time to become colourless/min"
-            ],
-            rows: [
-              [
-                "1",
-                "6",
-                "1",
-                "6 : 1",
-                "4"
-              ],
-              [
-                "2",
-                "24",
-                "8",
-                "",
-                "9"
-              ],
-              [
-                "3",
-                "",
-                "27",
-                "2 : 1",
-                "15"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "Complete Table 4 by calculating the surface area of the 3 cm cube and the surface area to volume ratio of the 2 cm cube.",
-              marks: 2,
-              objective: "1.4.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Surface area of 3 cm cube = 6 \xD7 3 \xD7 3 = 54 cm\xB2 (1)",
-                  "Ratio for 2 cm cube = 24 : 8 = 3 : 1 (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Describe the relationship between the surface area to volume ratio and the time taken for the acid to reach the centre of the cube.",
-              marks: 2,
-              objective: "1.4.1",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "As the surface area to volume ratio decreases (1)",
-                  "the time taken for the acid to diffuse to the centre increases (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Use the results of the experiment to explain why large organisms such as humans need a transport system.",
-              marks: 3,
-              objective: "1.4.1",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Large organisms have a small surface area to volume ratio (1)",
-                  "diffusion alone would be too slow to supply substances to cells deep inside the body (1)",
-                  "so a transport system (blood/circulatory system) is needed to carry oxygen and nutrients to all cells and remove wastes (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "A student wants to find out whether wind affects the rate of transpiration of a leafy shoot. She is provided with the apparatus shown in Figure 6, a small electric fan and a stopwatch.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 210" width="460" height="210" role="img" aria-label="Apparatus to measure water uptake by a leafy shoot" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Apparatus to measure water uptake by a leafy shoot</title><rect x="0" y="0" width="460" height="210" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(40,0)"><line x1="40" y1="150" x2="360" y2="150"/><line x1="40" y1="158" x2="360" y2="158"/><circle cx="300" cy="154" r="3" fill="#000"/><line x1="300" y1="150" x2="300" y2="120" stroke-width="0.9"/><text x="296" y="124" text-anchor="middle" fill="#000" stroke="none">air bubble</text><line x1="40" y1="150" x2="40" y2="130"/><line x1="48" y1="150" x2="48" y2="130"/><path d="M30,130 L58,130 L58,120 L30,120 Z" fill="#fff"/><line x1="44" y1="120" x2="44" y2="60" stroke-width="2"/><path d="M44,80 q-25,-15 -45,-5 q20,15 45,5 z" fill="#fff"/><path d="M44,95 q25,-15 45,-5 q-20,15 -45,5 z" fill="#fff"/><path d="M44,68 q25,-15 45,-5 q-20,15 -45,5 z" fill="#fff"/><line x1="54" y1="125" x2="110" y2="110" stroke-width="0.9"/><text x="114" y="114" text-anchor="start" fill="#000" stroke="none">rubber bung</text><line x1="150" y1="158" x2="150" y2="172" stroke-width="0.8"/><line x1="170" y1="158" x2="170" y2="166" stroke-width="0.8"/><line x1="190" y1="158" x2="190" y2="166" stroke-width="0.8"/><line x1="210" y1="158" x2="210" y2="166" stroke-width="0.8"/><line x1="230" y1="158" x2="230" y2="166" stroke-width="0.8"/><line x1="250" y1="158" x2="250" y2="172" stroke-width="0.8"/><line x1="270" y1="158" x2="270" y2="166" stroke-width="0.8"/><line x1="290" y1="158" x2="290" y2="166" stroke-width="0.8"/><line x1="310" y1="158" x2="310" y2="166" stroke-width="0.8"/><line x1="330" y1="158" x2="330" y2="166" stroke-width="0.8"/><line x1="350" y1="158" x2="350" y2="172" stroke-width="0.8"/><text x="250" y="188" text-anchor="middle" fill="#000" stroke="none" font-size="12">scale (mm)</text><polyline points="340,150 340,200 390,200 390,150" fill="none"/><line x1="340" y1="150" x2="335" y2="146"/><line x1="340" y1="165" x2="390" y2="165" stroke-width="0.9"/><line x1="360" y1="158" x2="360" y2="190"/></g></g></svg>`,
-          figure: "Figure 6. Apparatus for measuring water uptake by a leafy shoot",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State a suitable hypothesis for this investigation.",
-              marks: 2,
-              objective: "1.4.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "The rate of transpiration increases when the shoot is exposed to wind.",
-                  "OR: The air bubble will move a greater distance in a fixed time when the fan is switched on."
-                ],
-                guidance: "1 mark for a clearly stated hypothesis; 1 mark for a testable hypothesis",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State the manipulated variable and the responding variable in this investigation.",
-              marks: 2,
-              objective: "1.4.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Manipulated: presence/absence (or speed) of wind from the fan (1)",
-                  "Responding: distance moved by the air bubble in a fixed time / rate of water uptake (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State ONE precaution the student should take to obtain reliable results.",
-              marks: 1,
-              objective: "1.4.1",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Cut the shoot under water to prevent air entering the xylem",
-                  "Make sure the apparatus is airtight (seal joints with Vaseline)",
-                  "Keep light and temperature the same",
-                  "Repeat readings and find an average"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "Predict how the movement of the air bubble would change if the leafy shoot were covered with a clear plastic bag. Explain your answer.",
-              marks: 2,
-              objective: "1.4.1",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "The bubble would move more slowly (1)",
-                  "because the air inside the bag becomes humid, reducing the concentration gradient of water vapour, so less water evaporates from the leaves (1)"
-                ],
-                guidance: "1 mark for prediction; 1 mark for explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name the tissue in the stem which carries water from the roots to the leaves.",
-              marks: 1,
-              objective: "1.4.2",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Xylem"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO environmental factors, other than wind, which affect the rate of transpiration.",
-              marks: 2,
-              objective: "1.4.1",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Temperature",
-                  "Humidity",
-                  "Light intensity"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain why transpiration is important to a plant.",
-              marks: 3,
-              objective: "1.4.1",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "It creates a pull which draws water up the xylem from the roots (1)",
-                  "it carries dissolved mineral salts to the leaves (1)",
-                  "evaporation cools the leaves (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-06",
-      module: 1,
-      kind: "structured",
-      title: "Excretion",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 7,
-        UK: 8,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 5,
-          title: "Excretion"
-        }
-      ],
-      objectives: [
-        "1.5.2",
-        "1.5.1"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Figure 7 shows a kidney tubule (nephron).",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410 330" width="410" height="330" role="img" aria-label="A kidney tubule (nephron)" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A kidney tubule (nephron)</title><rect x="0" y="0" width="410" height="330" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M80,60 A38,38 0 1 0 118,98" fill="none" stroke-width="1.4"/><path d="M92,66 A26,26 0 1 0 112,92" fill="none" stroke-width="1.1"/><path d="M70,80 q8,-12 16,0 q8,12 16,0 q-8,-14 -16,-2 q-8,14 -16,2" fill="none" stroke-width="0.9"/><path d="M60,15 L78,62" fill="none" stroke-width="1"/><path d="M100,15 L95,62" fill="none" stroke-width="1"/><path d="M118,98 q20,10 30,-5 q10,-20 30,-10 q18,10 5,25 q-15,12 5,25 q15,8 25,-2" fill="none" stroke-width="1.4"/><path d="M213,133 L213,280 Q228,300 243,280 L243,120" fill="none" stroke-width="1.4"/><path d="M243,120 q10,-20 30,-10 q15,10 30,0 q10,-8 20,0" fill="none" stroke-width="1.4"/><path d="M323,110 L330,40 M323,110 L330,300" fill="none" stroke-width="1.4"/><line x1="340" y1="40" x2="340" y2="300" stroke-width="1.4"/><line x1="335" y1="250" x2="335" y2="295"/><polygon points="335,295 332,288.7 338,288.7" fill="#000" stroke-width="1"/><text x="340" y="318" text-anchor="middle" fill="#000" stroke="none" font-style="italic" font-size="12">urine</text><line x1="60" y1="90" x2="20" y2="150" stroke-width="0.9"/><text x="16" y="154" text-anchor="end" fill="#000" stroke="none">P</text><line x1="165" y1="95" x2="150" y2="20" stroke-width="0.9"/><text x="146" y="24" text-anchor="end" fill="#000" stroke="none">Q</text><line x1="228" y1="290" x2="150" y2="300" stroke-width="0.9"/><text x="146" y="304" text-anchor="end" fill="#000" stroke="none">R</text><line x1="340" y1="150" x2="390" y2="150" stroke-width="0.9"/><text x="394" y="154" text-anchor="start" fill="#000" stroke="none">S</text><line x1="62" y1="22" x2="20" y2="30" stroke-width="0.9"/><text x="16" y="34" text-anchor="end" fill="#000" stroke="none">T</text></g></svg>`,
-          figure: "Figure 7. Diagram of a nephron",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Identify the parts labelled P, Q and R.",
-              marks: 3,
-              objective: "1.5.2",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "P",
-                  "Q",
-                  "R"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "P - glomerulus/Bowman's capsule",
-                  "Q - first (proximal) coiled tubule",
-                  "R - loop of Henle"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Describe how urine is formed in the nephron.",
-              marks: 3,
-              objective: "1.5.2",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Blood is filtered under high pressure in the glomerulus/Bowman's capsule (ultrafiltration) (1)",
-                  "useful substances such as glucose, some salts and water are reabsorbed into the blood in the tubule (selective reabsorption) (1)",
-                  "the remaining urea, excess water and salts pass down the collecting duct as urine (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Andre drank two litres of water on a cool morning. Later that day he played football in the hot sun and drank very little.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Define the term 'excretion'.",
-              marks: 1,
-              objective: "1.5.1",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "The removal of waste products of metabolism from the body."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how antidiuretic hormone (ADH) would affect the volume of urine Andre produced while playing football in the hot sun.",
-              marks: 3,
-              objective: "1.5.2",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "He loses water by sweating so the blood becomes more concentrated (1)",
-                  "the pituitary gland releases more ADH (1)",
-                  "the collecting ducts reabsorb more water, so a small volume of concentrated urine is produced (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Distinguish between 'excretion' and 'egestion'.",
-              marks: 2,
-              objective: "1.5.1",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Excretion is the removal of metabolic wastes made by body cells, e.g. urea, CO\u2082 (1)",
-                  "egestion is the removal of undigested food (faeces) which was never part of the body cells (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Name ONE waste product excreted by the lungs and ONE excreted by the skin.",
-              marks: 2,
-              objective: "1.5.2",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Lungs: carbon dioxide / water vapour (1)",
-                  "Skin: water / salts / (small amount of) urea (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State ONE reason why a patient may need dialysis.",
-              marks: 1,
-              objective: "1.5.2",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "The kidneys have failed/stopped working and cannot remove urea and excess water/salts from the blood."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-07",
-      module: 1,
-      kind: "practical",
-      title: "Exercise and the pulse rate",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 6,
-        UK: 6,
-        XS: 8
-      },
-      topics: [
-        {
-          topic: 7,
-          title: "Health"
-        }
-      ],
-      objectives: [
-        "1.7.5",
-        "1.7.4"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Kerry-Ann measured her pulse rate at rest, then ran on the spot for 4 minutes and measured her pulse rate every minute after she stopped. Her results are shown in Table 5.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 5: PULSE RATE AFTER EXERCISE",
-            headers: [
-              "Time after exercise/min",
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6"
-            ],
-            rows: [
-              [
-                "Pulse rate/beats per minute",
-                "140",
-                "124",
-                "108",
-                "94",
-                "84",
-                "76",
-                "72"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "On the grid provided, plot a graph of pulse rate against time after exercise. You MUST label EACH axis and join the points with a smooth curve.",
-              marks: 5,
-              objective: "1.7.5",
-              profile: {
-                XS: 5
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "graph",
-                height: 320,
-                x: "Time after exercise/min",
-                y: "Pulse rate/beats per minute"
-              },
-              markScheme: {
-                points: [
-                  "Correct points plotted: (0,140) (1,124) (2,108) (3,94) (4,84) (5,76) (6,72)",
-                  "Axes labelled with units",
-                  "Suitable scale",
-                  "Smooth curve"
-                ],
-                guidance: "2 marks for correct plotting of points (all points = 2; at least half = 1); 1 mark for both axes labelled with units; 1 mark for an appropriate scale (at least 75% of the grid used); 1 mark for a smooth line/curve joining the points",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Kerry-Ann's resting pulse rate was 72 beats per minute. Using your graph, state how long it took for her pulse to return to the resting rate.",
-              marks: 1,
-              objective: "1.7.5",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "6 minutes"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain why the pulse rate was high immediately after exercise.",
-              marks: 3,
-              objective: "1.7.5",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "During exercise the muscles respire faster and need more oxygen and glucose (1)",
-                  "the heart beats faster to deliver more blood carrying oxygen and glucose to the muscles (1)",
-                  "and to remove the extra carbon dioxide / repay the oxygen debt (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Kerry-Ann's teacher suggests that students who exercise regularly have a lower resting pulse rate than students who do not exercise.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State a suitable aim for an investigation to test the teacher's suggestion.",
-              marks: 1,
-              objective: "1.7.5",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "To find out whether students who exercise regularly have a lower resting pulse rate than students who do not exercise."
-                ],
-                guidance: "1 mark for aim related to the suggestion",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO variables that should be controlled in this investigation.",
-              marks: 2,
-              objective: "1.7.5",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Age of students",
-                  "Gender",
-                  "Time of day/length of rest before measuring",
-                  "Method of taking the pulse/duration of counting",
-                  "Health of students (no illness)"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State TWO long-term effects of regular exercise on the body.",
-              marks: 2,
-              objective: "1.7.5",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Stronger heart muscle / lower resting heart rate",
-                  "Improved muscle tone",
-                  "Increased lung capacity",
-                  "Reduced body fat / helps balance energy input and output",
-                  "Lower risk of hypertension/diabetes"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name TWO non-communicable diseases whose risk is reduced by regular exercise.",
-              marks: 2,
-              objective: "1.7.4",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Diabetes (Type 2)",
-                  "Hypertension",
-                  "Heart disease",
-                  "Obesity",
-                  "Stroke"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how a diet high in salt may lead to hypertension.",
-              marks: 2,
-              objective: "1.7.4",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Excess salt causes the body to retain water, increasing blood volume (1)",
-                  "which raises the pressure of blood on the artery walls (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State ONE effect of uncontrolled hypertension on the body.",
-              marks: 2,
-              objective: "1.7.4",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Stroke",
-                  "Heart attack/heart failure",
-                  "Kidney damage",
-                  "Damage to blood vessels/eyes"
-                ],
-                guidance: "Any one effect, correctly stated with detail, 2 marks; effect only, 1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-08",
-      module: 1,
-      kind: "structured",
-      title: "The eye, sight defects and the ear",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 7,
-        UK: 8,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 6,
-          title: "Sense Organs and Coordination"
-        }
-      ],
-      objectives: [
-        "1.6.2",
-        "1.6.3",
-        "1.6.4"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Figure 8 shows a horizontal section through the human eye.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" width="440" height="300" role="img" aria-label="Horizontal section through the human eye" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Horizontal section through the human eye</title><rect x="0" y="0" width="440" height="300" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M144.0,210.2 A105,105 0 1 0 144.0,89.8" fill="none" stroke-width="1.8"/><path d="M148.9,206.8 A99,99 0 1 0 148.9,93.2" fill="none" stroke-width="0.9"/><path d="M153.0,203.9 A94,94 0 1 0 153.0,96.1" fill="none" stroke-width="1.2"/><path d="M144.0,210.2 Q70,150 144.0,89.8" fill="none" stroke-width="1.8"/><ellipse cx="168" cy="150" rx="14" ry="36" fill="#fff"/><line x1="150" y1="88" x2="150" y2="130" stroke-width="3"/><line x1="150" y1="170" x2="150" y2="212" stroke-width="3"/><polygon points="160,80 176,78 174,92 162,92" fill="#fff"/><line x1="168" y1="92" x2="168" y2="114" stroke-width="0.8"/><line x1="172" y1="92" x2="174" y2="116" stroke-width="0.8"/><polygon points="160,220 176,222 174,208 162,208" fill="#fff"/><line x1="168" y1="208" x2="168" y2="186" stroke-width="0.8"/><line x1="172" y1="208" x2="174" y2="184" stroke-width="0.8"/><line x1="333" y1="158" x2="395" y2="162"/><line x1="333" y1="180" x2="395" y2="180"/><path d="M324,138 q-6,6 0,12" fill="none" stroke-width="1"/><text x="235" y="155" text-anchor="middle" fill="#000" stroke="none" font-style="italic" font-size="11">vitreous humour</text><line x1="113" y1="120" x2="40" y2="60" stroke-width="0.9"/><text x="36" y="64" text-anchor="end" fill="#000" stroke="none">A</text><line x1="150" y1="105" x2="40" y2="30" stroke-width="0.9"/><text x="36" y="34" text-anchor="end" fill="#000" stroke="none">B</text><line x1="176" y1="170" x2="40" y2="250" stroke-width="0.9"/><text x="36" y="254" text-anchor="end" fill="#000" stroke="none">C</text><line x1="168" y1="215" x2="120" y2="285" stroke-width="0.9"/><text x="116" y="289" text-anchor="end" fill="#000" stroke="none">D</text><line x1="290" y1="80" x2="400" y2="40" stroke-width="0.9"/><text x="404" y="44" text-anchor="start" fill="#000" stroke="none">E</text><line x1="380" y1="170" x2="400" y2="200" stroke-width="0.9"/><text x="404" y="204" text-anchor="start" fill="#000" stroke="none">F</text></g></svg>`,
-          figure: "Figure 8. Section through the human eye",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Identify the parts labelled A, C and E.",
-              marks: 3,
-              objective: "1.6.2",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "A",
-                  "C",
-                  "E"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "A - cornea",
-                  "C - lens",
-                  "E - retina"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Describe how the eye adjusts to focus on a NEAR object.",
-              marks: 3,
-              objective: "1.6.2",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "The ciliary muscles contract (1)",
-                  "the suspensory ligaments slacken/become loose (1)",
-                  "the lens becomes fatter/more convex so light is bent more and focused on the retina (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Tamika cannot read the writing on the classroom board, but she can read her textbook clearly.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name Tamika's sight defect.",
-              marks: 1,
-              objective: "1.6.3",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Short sight / myopia"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how the defect named in (b) (i) can be corrected.",
-              marks: 3,
-              objective: "1.6.3",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6

@@ -1,4 +1,2561 @@
-onsAreSvg: false,
+fish",
+        C: "Breadfruit",
+        D: "Mango"
+      },
+      answer: "C",
+      explanation: "Breadfruit is a starchy staple food.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-247",
+      module: 2,
+      objective: {
+        code: "2.2.1",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the importance of food as a source of energy"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Too much salt in the diet is linked to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "night blindness",
+        B: "scurvy",
+        C: "anaemia",
+        D: "high blood pressure"
+      },
+      answer: "D",
+      explanation: "Excess sodium raises blood pressure.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-248",
+      module: 2,
+      objective: {
+        code: "2.2.1",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the importance of food as a source of energy"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Artificial sweeteners are used in some drinks MAINLY because they",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "give a sweet taste with very little energy",
+        B: "provide protein",
+        C: "preserve vitamins",
+        D: "add fibre"
+      },
+      answer: "A",
+      explanation: "They are used by diabetics and people trying to lose weight.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-249",
+      module: 2,
+      objective: {
+        code: "2.2.1",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the importance of food as a source of energy"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Marasmus in young children is caused by a lack of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "vitamin C only",
+        B: "iodine only",
+        C: "energy and protein",
+        D: "fibre"
+      },
+      answer: "C",
+      explanation: "Marasmus is severe protein-energy malnutrition, causing wasting.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-250",
+      module: 2,
+      objective: {
+        code: "2.2.1",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the importance of food as a source of energy"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In a food test, Benedict's solution was heated with a sample and turned brick-red. The sample contained",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "reducing sugar",
+        B: "starch",
+        C: "protein",
+        D: "fat"
+      },
+      answer: "A",
+      explanation: "A brick-red precipitate shows a reducing sugar such as glucose.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-251",
+      module: 2,
+      objective: {
+        code: "2.2.1",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the importance of food as a source of energy"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which reagent is used to test for protein?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Iodine solution",
+        B: "Benedict's solution",
+        C: "Ethanol",
+        D: "Biuret reagent"
+      },
+      answer: "D",
+      explanation: "Biuret turns purple with protein.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-252",
+      module: 2,
+      objective: {
+        code: "2.2.1",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the importance of food as a source of energy"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A food rubbed on brown paper leaves a translucent spot. This shows the food contains",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "starch",
+        B: "fat",
+        C: "protein",
+        D: "vitamin C"
+      },
+      answer: "B",
+      explanation: "Fat leaves a grease spot that lets light through.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-049",
+      module: 2,
+      objective: {
+        code: "2.2.1",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the importance of food as a source of energy"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which sample contains ONLY protein?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-FOODTEST",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "Q",
+        C: "R",
+        D: "S"
+      },
+      answer: "C",
+      explanation: "R gave a purple biuret result only; iodine stayed brown and Benedict's stayed blue.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-050",
+      module: 2,
+      objective: {
+        code: "2.2.1",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the importance of food as a source of energy"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which sample contains starch, reducing sugar and protein?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-FOODTEST",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "Q",
+        C: "R",
+        D: "S"
+      },
+      answer: "D",
+      explanation: "S is blue-black with iodine, orange with Benedict's and purple with biuret.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-051",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "An enzyme is a",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "type of carbohydrate",
+        B: "hormone that controls growth",
+        C: "protein that speeds up chemical reactions in living things",
+        D: "vitamin found in fruits"
+      },
+      answer: "C",
+      explanation: "Enzymes are biological catalysts made of protein; they lower activation energy.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-052",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Salivary amylase breaks down",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "protein into amino acids",
+        B: "fats into fatty acids and glycerol",
+        C: "maltose into glucose",
+        D: "starch into maltose"
+      },
+      answer: "D",
+      explanation: "Salivary amylase begins digestion of starch in the mouth.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-053",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Pepsin works in the stomach and digests",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "starch",
+        B: "fat",
+        C: "protein",
+        D: "sucrose"
+      },
+      answer: "C",
+      explanation: "Pepsin breaks down proteins into polypeptides in acidic conditions.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-054",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Bile is produced by the liver and stored in the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "pancreas",
+        B: "gall bladder",
+        C: "stomach",
+        D: "duodenum"
+      },
+      answer: "B",
+      explanation: "Bile is stored in the gall bladder and released into the duodenum.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-055",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The function of bile in digestion is to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "digest proteins",
+        B: "digest starch",
+        C: "emulsify fats",
+        D: "absorb water"
+      },
+      answer: "C",
+      explanation: "Bile breaks fat into small droplets, increasing the surface area for lipase.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-056",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Lipase breaks down fats into",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "amino acids",
+        B: "fatty acids and glycerol",
+        C: "glucose",
+        D: "maltose"
+      },
+      answer: "B",
+      explanation: "Lipase digests fats to fatty acids and glycerol.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-057",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Pepsin works best in the stomach because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the stomach contents are alkaline",
+        B: "the stomach is cold",
+        C: "there is no water in the stomach",
+        D: "the stomach contents are acidic"
+      },
+      answer: "D",
+      explanation: "Hydrochloric acid gives the stomach a low pH, which is the optimum for pepsin.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-058",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The use of absorbed food by the cells of the body is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "digestion",
+        B: "assimilation",
+        C: "absorption",
+        D: "egestion"
+      },
+      answer: "B",
+      explanation: "Assimilation is the use of absorbed nutrients to build or supply cells.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-059",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The enzyme lactase breaks down",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "starch",
+        B: "fat",
+        C: "milk sugar",
+        D: "protein"
+      },
+      answer: "C",
+      explanation: "Lactase digests lactose (milk sugar) to glucose and galactose.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-253",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Chewing food is an example of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "chemical digestion",
+        B: "absorption",
+        C: "assimilation",
+        D: "mechanical digestion"
+      },
+      answer: "D",
+      explanation: "Teeth break food into smaller pieces.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-254",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Digestion of starch begins in the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "mouth",
+        B: "stomach",
+        C: "small intestine",
+        D: "large intestine"
+      },
+      answer: "A",
+      explanation: "Salivary amylase starts starch digestion.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-255",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The stomach produces hydrochloric acid which",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "digests fat",
+        B: "kills bacteria and provides the acid pH for pepsin",
+        C: "emulsifies fat",
+        D: "absorbs water"
+      },
+      answer: "B",
+      explanation: "Acid kills microbes and activates pepsin.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-256",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Trypsin, produced by the pancreas, digests",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "starch",
+        B: "fat",
+        C: "protein",
+        D: "sucrose"
+      },
+      answer: "C",
+      explanation: "Trypsin works in the alkaline small intestine.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-257",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The end product of protein digestion is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "glucose",
+        B: "fatty acids",
+        C: "glycerol",
+        D: "amino acids"
+      },
+      answer: "D",
+      explanation: "Proteins are broken down to amino acids.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-258",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Maltase breaks down maltose into",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "amino acids",
+        B: "fatty acids",
+        C: "glucose",
+        D: "starch"
+      },
+      answer: "C",
+      explanation: "Maltose \u2192 glucose.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-259",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Rennin, found in the stomach of young mammals, acts on",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "starch",
+        B: "milk protein",
+        C: "fat",
+        D: "sugar"
+      },
+      answer: "B",
+      explanation: "Rennin clots milk protein.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-260",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Millions of villi line the small intestine in order to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "produce bile",
+        B: "store food",
+        C: "increase the surface area for absorption",
+        D: "make enzymes only"
+      },
+      answer: "C",
+      explanation: "A large surface area speeds absorption.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-261",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Egestion is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "removal of urea",
+        B: "removal of undigested food from the anus",
+        C: "absorption of water",
+        D: "breakdown of food"
+      },
+      answer: "B",
+      explanation: "Faeces are egested.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-060",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Most digested food is absorbed into the blood in the part labelled",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-GUT",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "C",
+        B: "D",
+        C: "E",
+        D: "F"
+      },
+      answer: "C",
+      explanation: "E is the small intestine, where villi absorb digested food.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-061",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which labelled organ produces bile?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-GUT",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "B",
+        B: "C",
+        C: "D",
+        D: "F"
+      },
+      answer: "A",
+      explanation: "B is the liver.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-062",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which labelled organ produces pancreatic amylase, trypsin and lipase?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-GUT",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "B",
+        B: "C",
+        C: "D",
+        D: "E"
+      },
+      answer: "C",
+      explanation: "D is the pancreas.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-063",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Water is MAINLY absorbed from undigested food in the part labelled",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-GUT",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "C",
+        B: "E",
+        C: "F",
+        D: "G"
+      },
+      answer: "C",
+      explanation: "F is the large intestine (colon), which absorbs most of the remaining water.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-064",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The optimum temperature for this enzyme is about",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-ENZ",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "10 \xB0C",
+        B: "25 \xB0C",
+        C: "37 \xB0C",
+        D: "60 \xB0C"
+      },
+      answer: "C",
+      explanation: "The peak of the curve, where activity is greatest, is at about 37 \xB0C.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-065",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The enzyme shows no activity at 60 \xB0C because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-ENZ",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the enzyme has been denatured",
+        B: "the enzyme molecules are moving too slowly",
+        C: "there is too much substrate",
+        D: "the enzyme has been used up"
+      },
+      answer: "A",
+      explanation: "High temperatures change the shape of the active site so the enzyme no longer works (it is denatured).",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-262",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Digested fats are absorbed into the structure labelled R. R is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-VIL",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "capillary",
+        B: "epithelium",
+        C: "artery",
+        D: "lacteal"
+      },
+      answer: "D",
+      explanation: "Fatty acids and glycerol enter the lacteal (lymph vessel).",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-263",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The walls of the villi are only one cell thick. This helps absorption because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-VIL",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it makes the villi stronger",
+        B: "digested food diffuses a short distance into the blood",
+        C: "it slows absorption",
+        D: "it stops water entering"
+      },
+      answer: "B",
+      explanation: "A thin surface means a short diffusion path.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-264",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Enzyme X is MOST likely",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-PH",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "trypsin in the small intestine",
+        B: "salivary amylase",
+        C: "pepsin in the stomach",
+        D: "lipase in the small intestine"
+      },
+      answer: "C",
+      explanation: "X works best at about pH 2, the acid conditions of the stomach.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-265",
+      module: 2,
+      objective: {
+        code: "2.2.2",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the process of digestion in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "At pH 8, enzyme X has no activity because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-PH",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it is denatured by the alkaline conditions",
+        B: "it has been used up",
+        C: "the temperature is too low",
+        D: "there is too much substrate"
+      },
+      answer: "A",
+      explanation: "A pH far from the optimum changes the enzyme's shape.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-066",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The dental formula of an adult human includes molars, premolars, canines and",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "fangs",
+        B: "incisors",
+        C: "carnassials",
+        D: "tusks"
+      },
+      answer: "B",
+      explanation: "Human teeth are incisors, canines, premolars and molars.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-067",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Chewing food thoroughly helps digestion because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "increases the surface area of the food for enzymes to act on",
+        B: "kills bacteria in the food",
+        C: "changes starch into protein",
+        D: "removes water from the food"
+      },
+      answer: "A",
+      explanation: "Mechanical digestion breaks food into smaller pieces with a larger surface area.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-068",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Tooth decay is caused MAINLY by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "brushing the teeth too often",
+        B: "drinking plain water",
+        C: "eating raw vegetables",
+        D: "acids made by bacteria feeding on sugar in plaque"
+      },
+      answer: "D",
+      explanation: "Bacteria in plaque ferment sugars and produce acid that dissolves enamel.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-069",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following practices would help to prevent gum disease?",
+      statements: [
+        "Brushing twice daily",
+        "Flossing between the teeth",
+        "Visiting the dentist regularly"
+      ],
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "I and II only",
+        B: "I and III only",
+        C: "II and III only",
+        D: "I, II and III"
+      },
+      answer: "D",
+      explanation: "Brushing, flossing and regular dental visits all remove plaque and detect problems early.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-266",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The canine teeth are used for",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "tearing",
+        B: "grinding",
+        C: "cutting",
+        D: "crushing"
+      },
+      answer: "A",
+      explanation: "Canines are pointed for gripping and tearing.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-267",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Premolars and molars are used for",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "biting",
+        B: "crushing and grinding",
+        C: "tearing",
+        D: "cutting"
+      },
+      answer: "B",
+      explanation: "They have broad surfaces with cusps.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-268",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "How many teeth does a full adult human set contain?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "20",
+        B: "28",
+        C: "32",
+        D: "36"
+      },
+      answer: "C",
+      explanation: "The adult dental formula gives 32 teeth, including wisdom teeth.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-269",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Fluoride is added to toothpaste because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "whitens teeth",
+        B: "kills all bacteria",
+        C: "removes plaque completely",
+        D: "strengthens tooth enamel"
+      },
+      answer: "D",
+      explanation: "Fluoride makes enamel more resistant to acid.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-270",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Flossing helps prevent gum disease by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "removing food and plaque between teeth",
+        B: "making teeth whiter",
+        C: "adding calcium",
+        D: "strengthening enamel"
+      },
+      answer: "A",
+      explanation: "Floss reaches where a brush cannot.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-271",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The part of the tooth embedded in the jaw bone is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "crown",
+        B: "root",
+        C: "enamel",
+        D: "neck"
+      },
+      answer: "B",
+      explanation: "The root holds the tooth in the socket.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-070",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which tooth is used for biting and cutting food?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-TEETH",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "W",
+        B: "X",
+        C: "Y",
+        D: "Z"
+      },
+      answer: "A",
+      explanation: "W is chisel-shaped: an incisor.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-071",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Tooth Z has a broad surface with cusps and is used for",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-TEETH",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cutting",
+        B: "grinding and crushing",
+        C: "tearing",
+        D: "biting"
+      },
+      answer: "B",
+      explanation: "Z is a molar, used for grinding food.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-072",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The hardest substance in the body is found in the part labelled",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-TOOTH",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "Q",
+        C: "R",
+        D: "S"
+      },
+      answer: "A",
+      explanation: "P is enamel, the hardest substance in the body.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-073",
+      module: 2,
+      objective: {
+        code: "2.2.3",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "relate the structure of the teeth to their function in human digestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Nerves and blood vessels are found in the part labelled",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-TOOTH",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "Q",
+        C: "R",
+        D: "T"
+      },
+      answer: "C",
+      explanation: "R is the pulp cavity.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-074",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Aerobic respiration takes place in the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "mitochondria",
+        B: "nucleus",
+        C: "ribosomes",
+        D: "cell wall"
+      },
+      answer: "A",
+      explanation: "Mitochondria are the site of aerobic respiration.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-075",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is the word equation for aerobic respiration?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Carbon dioxide + water \u2192 glucose + oxygen",
+        B: "Glucose \u2192 lactic acid + energy",
+        C: "Glucose \u2192 alcohol + carbon dioxide + energy",
+        D: "Glucose + oxygen \u2192 carbon dioxide + water + energy"
+      },
+      answer: "D",
+      explanation: "Aerobic respiration uses oxygen to release energy from glucose.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-076",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Energy released in respiration is used for all of the following EXCEPT",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "muscle contraction",
+        B: "active transport",
+        C: "photosynthesis in animals",
+        D: "keeping the body warm"
+      },
+      answer: "C",
+      explanation: "Animals do not photosynthesise; energy is used for movement, active transport, growth and heat.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-077",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following foods releases the MOST energy per gram when respired?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Glucose",
+        B: "Fat",
+        C: "Starch",
+        D: "Protein"
+      },
+      answer: "B",
+      explanation: "Fat releases about twice as much energy per gram (about 38 kJ/g) as carbohydrate or protein (about 17 kJ/g).",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-272",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Respiration is the process in which",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "food is made using light",
+        B: "air moves in and out of the lungs",
+        C: "water is lost from leaves",
+        D: "energy is released from food in living cells"
+      },
+      answer: "D",
+      explanation: "Respiration releases energy; breathing is only gas movement.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-273",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following statements about respiration is TRUE?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "It takes place only in animals",
+        B: "It occurs only in the lungs",
+        C: "It takes place in all living cells, day and night",
+        D: "It occurs only in daylight"
+      },
+      answer: "C",
+      explanation: "Every living cell respires continuously.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-274",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The balanced chemical equation for aerobic respiration is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "C\u2086H\u2081\u2082O\u2086 + 6O\u2082 \u2192 6CO\u2082 + 6H\u2082O + energy",
+        B: "6CO\u2082 + 6H\u2082O \u2192 C\u2086H\u2081\u2082O\u2086 + 6O\u2082",
+        C: "C\u2086H\u2081\u2082O\u2086 \u2192 2C\u2082H\u2085OH + 2CO\u2082",
+        D: "C\u2086H\u2081\u2082O\u2086 + O\u2082 \u2192 CO\u2082 + H\u2082O"
+      },
+      answer: "A",
+      explanation: "Glucose and oxygen give carbon dioxide, water and energy.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-275",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Bicarbonate indicator changes from red to yellow when carbon dioxide is added. A test tube containing woodlice and red bicarbonate indicator turned yellow because the woodlice",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "photosynthesised",
+        B: "absorbed carbon dioxide",
+        C: "produced oxygen",
+        D: "respired and gave off carbon dioxide"
+      },
+      answer: "D",
+      explanation: "Respiration adds CO\u2082, making the indicator more acidic.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-276",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Germinating seeds in a vacuum flask showed a rise in temperature. This shows that respiration",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "absorbs heat",
+        B: "releases heat energy",
+        C: "needs light",
+        D: "produces oxygen"
+      },
+      answer: "B",
+      explanation: "Some energy released in respiration is lost as heat.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-397",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The energy released in respiration is stored in the cell as",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "ATP",
+        B: "glucose",
+        C: "starch",
+        D: "oxygen"
+      },
+      answer: "A",
+      explanation: "ATP is the energy currency of cells.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-398",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following life processes needs energy from respiration?",
+      statements: [
+        "Muscle contraction",
+        "Active transport",
+        "Keeping the body warm"
+      ],
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "I and II only",
+        B: "I and III only",
+        C: "II and III only",
+        D: "I, II and III"
+      },
+      answer: "D",
+      explanation: "All of these use energy released by respiration.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-399",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Respiration takes place in",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "plant cells only",
+        B: "all living cells",
+        C: "lungs only",
+        D: "green leaves only"
+      },
+      answer: "B",
+      explanation: "Every living cell respires to get energy.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-400",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Seeds kept in a vacuum flask for two days caused the temperature to rise. This shows that germinating seeds",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "photosynthesise",
+        B: "absorb heat",
+        C: "take in carbon dioxide",
+        D: "release heat energy during respiration"
+      },
+      answer: "D",
+      explanation: "Some of the energy from respiration is lost as heat.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-078",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "After one day, the limewater in the tube connected to flask A turned milky. This shows that the germinating seeds",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-SEEDS",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "produced oxygen",
+        B: "absorbed carbon dioxide",
+        C: "produced water vapour",
+        D: "produced carbon dioxide"
+      },
+      answer: "D",
+      explanation: "Carbon dioxide turns limewater milky; living seeds respire and give off CO\u2082.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-079",
+      module: 2,
+      objective: {
+        code: "2.2.4",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "evaluate the importance of respiration in providing energy to organisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Flask B, containing boiled seeds, was included as a",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-SEEDS",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "variable",
+        B: "hypothesis",
+        C: "control",
+        D: "result"
+      },
+      answer: "C",
+      explanation: "The boiled (dead) seeds cannot respire, so flask B shows that living seeds caused the change.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-080",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Anaerobic respiration in yeast produces",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "ethanol, carbon dioxide and energy",
+        B: "lactic acid and energy",
+        C: "oxygen and water",
+        D: "glucose and oxygen"
+      },
+      answer: "A",
+      explanation: "Yeast ferments sugar to alcohol (ethanol) and carbon dioxide.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-081",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "During vigorous exercise, anaerobic respiration in human muscles produces",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "alcohol",
+        B: "carbon dioxide only",
+        C: "oxygen",
+        D: "lactic acid"
+      },
+      answer: "D",
+      explanation: "Muscles short of oxygen make lactic acid, which causes fatigue and cramp.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-082",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following statements about anaerobic respiration is TRUE?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "It releases less energy than aerobic respiration.",
+        B: "It releases more energy than aerobic respiration.",
+        C: "It needs oxygen.",
+        D: "It takes place only in plants."
+      },
+      answer: "A",
+      explanation: "Without oxygen glucose is only partly broken down, so much less energy is released.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-083",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Bakers use yeast in making bread. Which product of anaerobic respiration makes the dough rise?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Alcohol",
+        B: "Carbon dioxide",
+        C: "Lactic acid",
+        D: "Oxygen"
+      },
+      answer: "B",
+      explanation: "Carbon dioxide gas forms bubbles which make the dough rise; the alcohol evaporates on baking.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-084",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "After a 400 m race an athlete continues to breathe deeply for several minutes. This is to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "remove alcohol from the muscles",
+        B: "produce more lactic acid",
+        C: "repay the oxygen debt by breaking down lactic acid",
+        D: "cool the lungs"
+      },
+      answer: "C",
+      explanation: "Extra oxygen is needed to break down lactic acid built up during anaerobic respiration.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-277",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is the word equation for anaerobic respiration in human muscle?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Glucose \u2192 lactic acid + energy",
+        B: "Glucose \u2192 alcohol + carbon dioxide + energy",
+        C: "Glucose + oxygen \u2192 carbon dioxide + water + energy",
+        D: "Lactic acid \u2192 glucose"
+      },
+      answer: "A",
+      explanation: "Muscle cells produce lactic acid when short of oxygen.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-278",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Brewers make alcoholic drinks using",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "photosynthesis by algae",
+        B: "aerobic respiration by bacteria",
+        C: "anaerobic respiration by yeast",
+        D: "digestion by enzymes"
+      },
+      answer: "C",
+      explanation: "Fermentation by yeast produces ethanol.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-279",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "UK",
+      difficulty: 3,
+      stem: "Aerobic respiration releases about 2 900 kJ from one mole of glucose. Anaerobic respiration in yeast releases about 210 kJ. How many times more energy does aerobic respiration release?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "About 3 times",
+        B: "About 14 times",
+        C: "About 7 times",
+        D: "About 29 times"
+      },
+      answer: "B",
+      explanation: "2 900 \xF7 210 \u2248 14.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-401",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "After a 100 m sprint an athlete continues to breathe deeply to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "remove lactic acid (repay the oxygen debt)",
+        B: "cool the lungs",
+        C: "take in more carbon dioxide",
+        D: "produce more lactic acid"
+      },
+      answer: "A",
+      explanation: "Oxygen is needed to break down the lactic acid.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-402",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The products of anaerobic respiration in yeast are",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "lactic acid only",
+        B: "water and carbon dioxide",
+        C: "alcohol and carbon dioxide",
+        D: "oxygen and glucose"
+      },
+      answer: "C",
+      explanation: "This is fermentation.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-403",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Bread dough rises because yeast",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "produces carbon dioxide gas",
+        B: "produces oxygen",
+        C: "absorbs water",
+        D: "produces alcohol vapour only"
+      },
+      answer: "A",
+      explanation: "Gas bubbles are trapped in the dough.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-404",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Muscle cramps during vigorous exercise are caused by a build-up of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "carbon dioxide",
+        B: "lactic acid",
+        C: "glucose",
+        D: "alcohol"
+      },
+      answer: "B",
+      explanation: "Lactic acid forms when oxygen supply is insufficient.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-280",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The limewater turned milky after 20 minutes. This shows that the yeast",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-YEAST",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "produced oxygen",
+        B: "used up alcohol",
+        C: "died",
+        D: "produced carbon dioxide"
+      },
+      answer: "D",
+      explanation: "Fermentation releases CO\u2082.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-281",
+      module: 2,
+      objective: {
+        code: "2.2.5",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "distinguish between aerobic and anaerobic respiration"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The water bath was kept at 35 \xB0C because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-YEAST",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "this temperature is suitable for the yeast's enzymes",
+        B: "yeast needs light",
+        C: "it kills the yeast",
+        D: "limewater only works when warm"
+      },
+      answer: "A",
+      explanation: "Warm conditions allow yeast enzymes to work quickly.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-085",
+      module: 2,
+      objective: {
+        code: "2.2.6",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the mechanism of breathing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following occurs during inhalation?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "The diaphragm contracts and flattens.",
+        B: "The diaphragm relaxes and becomes dome-shaped.",
+        C: "The intercostal muscles relax and the ribs move down.",
+        D: "The volume of the chest cavity decreases."
+      },
+      answer: "A",
+      explanation: "During inhalation the diaphragm contracts and flattens and the ribs move up and out, increasing the chest volume.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-086",
+      module: 2,
+      objective: {
+        code: "2.2.6",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the mechanism of breathing"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Cardiopulmonary resuscitation (CPR) involves",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "giving the casualty water",
+        B: "raising the casualty's legs only",
+        C: "chest compressions and rescue breaths",
+        D: "placing the casualty in a cold bath"
+      },
+      answer: "C",
+      explanation: "CPR combines chest compressions (about 30) with rescue breaths (2) to keep blood and oxygen circulating.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-087",
+      module: 2,
+      objective: {
+        code: "2.2.6",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the mechanism of breathing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Before starting CPR on a person who has collapsed, the FIRST thing a first-aider should do is to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "check that the area is safe and whether the person responds",
+        B: "give the person something to drink",
+        C: "move the person to a car",
+        D: "give ten rescue breaths"
+      },
+      answer: "A",
+      explanation: "The first-aider checks for danger and response, calls for help, then checks breathing before starting compressions.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-282",
+      module: 2,
+      objective: {
+        code: "2.2.6",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the mechanism of breathing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "During exhalation the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "diaphragm contracts and flattens",
+        B: "ribs move up and out",
+        C: "diaphragm relaxes and domes upwards and the volume of the chest decreases",
+        D: "pressure in the lungs falls"
+      },
+      answer: "C",
+      explanation: "Smaller volume raises pressure, pushing air out.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-283",
+      module: 2,
+      objective: {
+        code: "2.2.6",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the mechanism of breathing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Exhaled air contains MORE of which of the following than inhaled air?",
+      statements: [
+        "Carbon dioxide",
+        "Water vapour",
+        "Oxygen"
+      ],
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "I and II only",
+        B: "I and III only",
+        C: "II and III only",
+        D: "I, II and III"
+      },
+      answer: "A",
+      explanation: "Exhaled air has more CO\u2082 and water vapour, and less oxygen.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-284",
+      module: 2,
+      objective: {
+        code: "2.2.6",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the mechanism of breathing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Energy is needed to breathe in because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "air is very heavy",
+        B: "oxygen must be made",
+        C: "the lungs make heat",
+        D: "muscles contract to raise the ribs and flatten the diaphragm"
+      },
+      answer: "D",
+      explanation: "Inhalation is an active process driven by muscle contraction.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-285",
+      module: 2,
+      objective: {
+        code: "2.2.6",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the mechanism of breathing"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "During CPR on an adult, chest compressions should be given at a rate of about",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "20 per minute",
+        B: "50 per minute",
+        C: "100 to 120 per minute",
+        D: "200 per minute"
+      },
+      answer: "C",
+      explanation: "Current guidelines advise 100-120 compressions per minute.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-286",
+      module: 2,
+      objective: {
+        code: "2.2.6",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the mechanism of breathing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The purpose of rescue breaths during CPR is to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "remove water",
+        B: "supply oxygen to the casualty's lungs",
+        C: "warm the casualty",
+        D: "restart digestion"
+      },
+      answer: "B",
+      explanation: "Rescue breaths put oxygen into the lungs; compressions circulate it.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-088",
+      module: 2,
+      objective: {
+        code: "2.2.6",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the mechanism of breathing"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The part labelled S represents the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-BELL",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "trachea",
+        B: "lungs",
+        C: "diaphragm",
+        D: "ribs"
+      },
+      answer: "C",
+      explanation: "The rubber sheet at the bottom represents the diaphragm.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-089",
+      module: 2,
+      objective: {
+        code: "2.2.6",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the mechanism of breathing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "When the rubber sheet is pulled down, the balloons",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-BELL",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "deflate because the pressure inside the jar increases",
+        B: "inflate because the pressure inside the jar decreases",
+        C: "deflate because the volume inside the jar decreases",
+        D: "stay the same"
+      },
+      answer: "B",
+      explanation: "Pulling the sheet down increases the volume of the jar, lowering the pressure, so air enters the balloons (inhalation).",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-090",
+      module: 2,
+      objective: {
+        code: "2.2.6",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the mechanism of breathing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which value is MOST likely to be X?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-AIR",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "0",
+        B: "16",
+        C: "21",
+        D: "78"
+      },
+      answer: "B",
+      explanation: "Some oxygen is absorbed by the blood, so exhaled air contains about 16 per cent oxygen.",
+      topic: 2
+    },
+    {
+      id: "IS-M2-P1-287",
+      module: 2,
+      objective: {
+        code: "2.2.6",
+        topic: 2,
+        topicTitle: "Energy in Life Processes",
+        text: "examine the mechanism of breathing"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The structure labelled P is supported by rings of cartilage. P is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-LUNG",
+      optionColumns: null,
+      optionsAreSvg: false,
       options: {
         A: "trachea",
         B: "bronchus",
@@ -4694,2184 +7251,4 @@ onsAreSvg: false,
       stimulus: null,
       group: null,
       optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "switch off the power at the main switch",
-        B: "pull the person away with bare hands",
-        C: "pour water on the person",
-        D: "give the person a drink"
-      },
-      answer: "A",
-      explanation: "Rescuers must not become part of the circuit.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-434",
-      module: 2,
-      objective: {
-        code: "2.4.7",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss first aid methods for treating electrical accidents"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "If the power cannot be switched off, the victim of an electric shock should be moved away from the wire using",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "a metal rod",
-        B: "a wet towel",
-        C: "bare hands",
-        D: "a dry wooden broom handle"
-      },
-      answer: "D",
-      explanation: "Dry wood is an insulator.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-435",
-      module: 2,
-      objective: {
-        code: "2.4.7",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss first aid methods for treating electrical accidents"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "An electric shock victim is not breathing and has no pulse. The first-aider should",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "give the victim water",
-        B: "call for help and begin CPR",
-        C: "leave the victim to rest",
-        D: "rub the victim's arms"
-      },
-      answer: "B",
-      explanation: "Cardiopulmonary resuscitation keeps blood and oxygen moving.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-436",
-      module: 2,
-      objective: {
-        code: "2.4.7",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss first aid methods for treating electrical accidents"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A minor electrical burn on the hand should be",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "covered with butter",
-        B: "rubbed with a towel",
-        C: "cooled under running water and covered with a clean dressing",
-        D: "burst if blisters form"
-      },
-      answer: "C",
-      explanation: "Cooling reduces tissue damage; dressing prevents infection.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-437",
-      module: 2,
-      objective: {
-        code: "2.4.7",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss first aid methods for treating electrical accidents"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "An unconscious victim who is breathing should be placed in the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "recovery position",
-        B: "standing position",
-        C: "sitting position with head back",
-        D: "position face-up with legs raised"
-      },
-      answer: "A",
-      explanation: "It keeps the airway open.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-438",
-      module: 2,
-      objective: {
-        code: "2.4.7",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss first aid methods for treating electrical accidents"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A person who has received an electric shock should be kept warm and calm and should",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "be given alcohol",
-        B: "go back to work immediately",
-        C: "be made to walk around",
-        D: "be checked by a doctor even if they seem fine"
-      },
-      answer: "D",
-      explanation: "Shock can affect the heart rhythm some time later.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-163",
-      module: 2,
-      objective: {
-        code: "2.4.8",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the hazards associated with electricity"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Kite flying near overhead power lines is dangerous because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the kite string may conduct electricity if it touches the lines",
-        B: "the wind is stronger near power lines",
-        C: "the kite will be burnt by the sun",
-        D: "birds may attack the kite"
-      },
-      answer: "A",
-      explanation: "A damp or wire-reinforced string can carry current from the line to the person.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-164",
-      module: 2,
-      objective: {
-        code: "2.4.8",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the hazards associated with electricity"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Illegal connections to electricity lines are dangerous MAINLY because they",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "reduce electricity bills",
-        B: "make appliances last longer",
-        C: "can cause electrocution and fires",
-        D: "increase the voltage in the home"
-      },
-      answer: "C",
-      explanation: "Unsafe wiring without fuses and insulation can cause shocks and fires.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-165",
-      module: 2,
-      objective: {
-        code: "2.4.8",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the hazards associated with electricity"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The back of a television should NOT be removed by an untrained person, even when it is switched off, because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the screen may fall out",
-        B: "the picture will be lost",
-        C: "it will use more electricity",
-        D: "some parts store electric charge and can give a shock"
-      },
-      answer: "D",
-      explanation: "Capacitors inside can hold a dangerous charge after the set is unplugged.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-166",
-      module: 2,
-      objective: {
-        code: "2.4.8",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the hazards associated with electricity"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following should NOT be placed in a microwave oven?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "A glass bowl",
-        B: "A metal container",
-        C: "A plate",
-        D: "A microwave-safe plastic dish"
-      },
-      answer: "B",
-      explanation: "Metal reflects microwaves and can cause sparks and fires.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-354",
-      module: 2,
-      objective: {
-        code: "2.4.8",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the hazards associated with electricity"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Picking mangoes with a long metal pole near power lines is dangerous because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the mangoes are heavy",
-        B: "the pole is too short",
-        C: "the pole may touch a line and conduct electricity to the person",
-        D: "metal attracts lightning only"
-      },
-      answer: "C",
-      explanation: "Metal conducts; contact with lines can be fatal.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-355",
-      module: 2,
-      objective: {
-        code: "2.4.8",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the hazards associated with electricity"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Using electrical appliances with wet hands is dangerous because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "water is an insulator",
-        B: "the appliance will cool down",
-        C: "the fuse will become stronger",
-        D: "water conducts electricity and increases the risk of shock"
-      },
-      answer: "D",
-      explanation: "Wet skin lowers resistance, allowing more current through the body.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-356",
-      module: 2,
-      objective: {
-        code: "2.4.8",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the hazards associated with electricity"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A computer should be connected through a surge protector to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "protect it from sudden increases in voltage",
-        B: "increase its speed",
-        C: "save paper",
-        D: "reduce its weight"
-      },
-      answer: "A",
-      explanation: "Power surges can damage electronic components.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-439",
-      module: 2,
-      objective: {
-        code: "2.4.8",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the hazards associated with electricity"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following is an electrical hazard in the home?",
-      statements: [
-        "Frayed cords",
-        "Overloaded sockets",
-        "Using appliances with wet hands"
-      ],
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "I and II only",
-        B: "I and III only",
-        C: "II and III only",
-        D: "I, II and III"
-      },
-      answer: "D",
-      explanation: "All three can cause shocks or fires.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-440",
-      module: 2,
-      objective: {
-        code: "2.4.8",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the hazards associated with electricity"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Using a hair dryer in the bathroom is dangerous because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the bathroom is too small",
-        B: "water conducts electricity and could cause a shock",
-        C: "the steam cools the dryer",
-        D: "the dryer uses too little current"
-      },
-      answer: "B",
-      explanation: "Water provides a path for current through the body.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-441",
-      module: 2,
-      objective: {
-        code: "2.4.8",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the hazards associated with electricity"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "During a thunderstorm it is safest to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "shelter under a tall tree",
-        B: "stand in an open field",
-        C: "swim in the sea",
-        D: "stay indoors away from electrical appliances"
-      },
-      answer: "D",
-      explanation: "Lightning strikes tall objects and open ground.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-442",
-      module: 2,
-      objective: {
-        code: "2.4.8",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the hazards associated with electricity"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following should NOT be done when changing a light bulb?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Leaving the switch on",
-        B: "Standing on a stable ladder",
-        C: "Letting the old bulb cool",
-        D: "Using dry hands"
-      },
-      answer: "A",
-      explanation: "The lamp holder may be live.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-167",
-      module: 2,
-      objective: {
-        code: "2.4.9",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the various methods of extinguishing fires"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which type of fire extinguisher should NOT be used on an electrical fire?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Carbon dioxide",
-        B: "Dry powder",
-        C: "Fire blanket",
-        D: "Water"
-      },
-      answer: "D",
-      explanation: "Water conducts electricity and could electrocute the user.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-168",
-      module: 2,
-      objective: {
-        code: "2.4.9",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the various methods of extinguishing fires"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Firefighters cut a wide strip of vegetation ahead of a bush fire. This controls the fire by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "removing the fuel",
-        B: "removing heat",
-        C: "removing oxygen",
-        D: "adding water"
-      },
-      answer: "A",
-      explanation: "A firebreak removes the fuel so the fire cannot spread.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-169",
-      module: 2,
-      objective: {
-        code: "2.4.9",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the various methods of extinguishing fires"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Water puts out a burning wood fire MAINLY by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "removing the oxygen",
-        B: "removing the fuel",
-        C: "cooling the fuel below its ignition temperature",
-        D: "adding carbon dioxide"
-      },
-      answer: "C",
-      explanation: "Water absorbs heat, lowering the temperature of the fuel.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-170",
-      module: 2,
-      objective: {
-        code: "2.4.9",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the various methods of extinguishing fires"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which type of extinguisher is BEST for a fire involving burning oil or gasoline?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Water",
-        B: "Foam",
-        C: "Soda-acid",
-        D: "Hose reel"
-      },
-      answer: "B",
-      explanation: "Foam forms a blanket over the burning liquid, cutting off oxygen. Water would spread the burning oil.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-357",
-      module: 2,
-      objective: {
-        code: "2.4.9",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the various methods of extinguishing fires"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A fire blanket put over a burning pan works by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "cutting off the oxygen supply",
-        B: "cooling the pan",
-        C: "removing the fuel",
-        D: "adding water"
-      },
-      answer: "A",
-      explanation: "The blanket smothers the fire.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-358",
-      module: 2,
-      objective: {
-        code: "2.4.9",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the various methods of extinguishing fires"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following fires should NOT be put out with water?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "A burning pile of paper",
-        B: "A burning cooking-oil fire",
-        C: "A burning wooden chair",
-        D: "A grass fire"
-      },
-      answer: "B",
-      explanation: "Water on burning oil causes explosive spattering and spreads the fire.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-359",
-      module: 2,
-      objective: {
-        code: "2.4.9",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the various methods of extinguishing fires"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A dry powder extinguisher is suitable for",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "most types of fire including electrical and flammable liquid fires",
-        B: "wood only",
-        C: "paper only",
-        D: "cooking only"
-      },
-      answer: "A",
-      explanation: "Dry powder is a multi-purpose extinguisher.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-360",
-      module: 2,
-      objective: {
-        code: "2.4.9",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the various methods of extinguishing fires"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Turning off the gas supply to a burning stove puts out the fire by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "removing oxygen",
-        B: "removing the fuel",
-        C: "cooling the stove",
-        D: "adding carbon dioxide"
-      },
-      answer: "B",
-      explanation: "Without fuel the fire cannot continue.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-361",
-      module: 2,
-      objective: {
-        code: "2.4.9",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the various methods of extinguishing fires"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Chemical fires in a laboratory can be caused by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "flammable liquids near a flame",
-        B: "water spills",
-        C: "cold temperatures",
-        D: "using a thermometer"
-      },
-      answer: "A",
-      explanation: "Flammable liquids such as ethanol must be kept away from flames.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-443",
-      module: 2,
-      objective: {
-        code: "2.4.9",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the various methods of extinguishing fires"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A fire involving burning cooking oil should be put out by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "pouring water on it",
-        B: "blowing on it",
-        C: "fanning it",
-        D: "covering it with a fire blanket"
-      },
-      answer: "D",
-      explanation: "Water causes the oil to splash and spread.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-444",
-      module: 2,
-      objective: {
-        code: "2.4.9",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the various methods of extinguishing fires"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A carbon dioxide extinguisher puts out a fire by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "removing fuel",
-        B: "removing oxygen",
-        C: "adding heat",
-        D: "adding fuel"
-      },
-      answer: "B",
-      explanation: "CO\u2082 blankets the fire and excludes air.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-171",
-      module: 2,
-      objective: {
-        code: "2.4.9",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "discuss the various methods of extinguishing fires"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Covering a small pan fire with a damp cloth puts out the fire by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-FIRE",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "removing oxygen",
-        B: "removing heat",
-        C: "removing fuel",
-        D: "adding fuel"
-      },
-      answer: "A",
-      explanation: "The cloth cuts off the supply of oxygen (air) to the fire.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-172",
-      module: 2,
-      objective: {
-        code: "2.4.10",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "explain the appropriate use of conventional protective gear/wear"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A welder should wear which of the following to protect the eyes?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Ear muffs",
-        B: "Rubber boots",
-        C: "Goggles or a welding mask",
-        D: "A helmet"
-      },
-      answer: "C",
-      explanation: "Welding produces bright light, UV radiation and sparks which can damage the eyes.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-173",
-      module: 2,
-      objective: {
-        code: "2.4.10",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "explain the appropriate use of conventional protective gear/wear"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "An electrician wears rubber-soled boots and rubber gloves because rubber",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "is a good conductor of electricity",
-        B: "keeps the feet warm",
-        C: "is heavy",
-        D: "is an insulator and reduces the risk of electric shock"
-      },
-      answer: "D",
-      explanation: "Rubber insulates the worker from the ground and live parts.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-174",
-      module: 2,
-      objective: {
-        code: "2.4.10",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "explain the appropriate use of conventional protective gear/wear"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Construction workers are required to wear hard hats in order to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "keep the sun off their faces",
-        B: "keep their hair clean",
-        C: "protect the head from falling objects",
-        D: "help them hear better"
-      },
-      answer: "C",
-      explanation: "Helmets protect against head injury from falling objects.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-362",
-      module: 2,
-      objective: {
-        code: "2.4.10",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "explain the appropriate use of conventional protective gear/wear"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A worker using a grinder should wear goggles in order to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "hear better",
-        B: "keep warm",
-        C: "reduce noise",
-        D: "protect the eyes from flying particles"
-      },
-      answer: "D",
-      explanation: "Grinding produces sparks and metal fragments.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-363",
-      module: 2,
-      objective: {
-        code: "2.4.10",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "explain the appropriate use of conventional protective gear/wear"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following is the MOST suitable protective wear for a person handling bleach?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "A helmet",
-        B: "Ear plugs",
-        C: "Rubber gloves",
-        D: "Sandals"
-      },
-      answer: "C",
-      explanation: "Bleach is corrosive to skin.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-364",
-      module: 2,
-      objective: {
-        code: "2.4.10",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "explain the appropriate use of conventional protective gear/wear"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following protective items should be worn by a person using a chainsaw?",
-      statements: [
-        "Goggles",
-        "Ear muffs",
-        "Gloves"
-      ],
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "I and II only",
-        B: "I and III only",
-        C: "II and III only",
-        D: "I, II and III"
-      },
-      answer: "D",
-      explanation: "Chainsaws produce flying debris and loud noise and can injure the hands.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-445",
-      module: 2,
-      objective: {
-        code: "2.4.10",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "explain the appropriate use of conventional protective gear/wear"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A welder should wear",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "sunglasses",
-        B: "a paper mask",
-        C: "a face shield with dark glass",
-        D: "ear plugs only"
-      },
-      answer: "C",
-      explanation: "The arc gives off intense UV light and sparks.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-446",
-      module: 2,
-      objective: {
-        code: "2.4.10",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "explain the appropriate use of conventional protective gear/wear"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Farmers spraying pesticides should wear",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "shorts and sandals",
-        B: "sunglasses only",
-        C: "a hard hat only",
-        D: "gloves, a mask and long sleeves"
-      },
-      answer: "D",
-      explanation: "This prevents contact with and breathing in chemicals.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-447",
-      module: 2,
-      objective: {
-        code: "2.4.10",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "explain the appropriate use of conventional protective gear/wear"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Workers operating loud machinery should use",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "goggles",
-        B: "an apron",
-        C: "ear muffs",
-        D: "rubber boots"
-      },
-      answer: "C",
-      explanation: "Loud noise can permanently damage hearing.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-448",
-      module: 2,
-      objective: {
-        code: "2.4.10",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "explain the appropriate use of conventional protective gear/wear"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "An electrician working on live wires should wear",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "metal gloves",
-        B: "rubber gloves and rubber-soled boots",
-        C: "wet gloves",
-        D: "leather sandals"
-      },
-      answer: "B",
-      explanation: "Rubber insulates the worker from earth.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-449",
-      module: 2,
-      objective: {
-        code: "2.4.10",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "explain the appropriate use of conventional protective gear/wear"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "In a school laboratory, students heating chemicals should wear",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "a hard hat",
-        B: "ear muffs",
-        C: "safety goggles",
-        D: "a dust mask only"
-      },
-      answer: "C",
-      explanation: "Goggles protect eyes from splashes.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-450",
-      module: 2,
-      objective: {
-        code: "2.4.10",
-        topic: 4,
-        topicTitle: "Electricity and Lighting",
-        text: "explain the appropriate use of conventional protective gear/wear"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Steel-toed boots are worn by factory workers to protect against",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "electric shocks",
-        B: "heavy objects falling on the feet",
-        C: "loud noise",
-        D: "chemical fumes"
-      },
-      answer: "B",
-      explanation: "The steel cap resists crushing.",
-      topic: 4
-    },
-    {
-      id: "IS-M2-P1-175",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Heat is transferred through a solid MAINLY by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "convection",
-        B: "conduction",
-        C: "radiation",
-        D: "evaporation"
-      },
-      answer: "B",
-      explanation: "In solids heat passes from particle to particle by conduction.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-176",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Heat energy from the sun reaches the earth by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "conduction",
-        B: "convection",
-        C: "insulation",
-        D: "radiation"
-      },
-      answer: "D",
-      explanation: "Radiation is the only method that can pass through the vacuum of space.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-177",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "During the day, a sea breeze blows from the sea to the land because",
-      statements: null,
-      after: null,
-      stimulus: {
-        lead: "to the following diagram which shows the movement of air at the coast during the day.",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" width="420" height="240" role="img" aria-label="Air movement by day" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Air movement by day</title><rect x="0" y="0" width="420" height="240" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20,200 L200,200 Q220,180 260,170 L400,170" fill="none" stroke-width="1.6"/><text x="110" y="225" text-anchor="middle" fill="#000" stroke="none" font-size="14">sea</text><text x="330" y="195" text-anchor="middle" fill="#000" stroke="none" font-size="14">land</text><path d="M30,210 q7,-5 14,0 q7,5 14,0" fill="none" stroke-width="0.8"/><path d="M58,210 q7,-5 14,0 q7,5 14,0" fill="none" stroke-width="0.8"/><path d="M86,210 q7,-5 14,0 q7,5 14,0" fill="none" stroke-width="0.8"/><path d="M114,210 q7,-5 14,0 q7,5 14,0" fill="none" stroke-width="0.8"/><path d="M142,210 q7,-5 14,0 q7,5 14,0" fill="none" stroke-width="0.8"/><path d="M170,210 q7,-5 14,0 q7,5 14,0" fill="none" stroke-width="0.8"/><line x1="320" y1="150" x2="320" y2="70"/><polygon points="320,70 323.4,77.3 316.6,77.3" fill="#000" stroke-width="1"/><line x1="320" y1="60" x2="110" y2="60"/><polygon points="110,60 117.3,56.6 117.3,63.4" fill="#000" stroke-width="1"/><line x1="100" y1="70" x2="100" y2="150"/><polygon points="100,150 96.6,142.7 103.4,142.7" fill="#000" stroke-width="1"/><line x1="110" y1="155" x2="300" y2="155"/><polygon points="300,155 292.7,158.4 292.7,151.6" fill="#000" stroke-width="1"/><circle cx="380" cy="30" r="14" fill="none"/><text x="380" y="70" text-anchor="middle" fill="#000" stroke="none" font-size="12">Sun</text><line x1="398" y1="30" x2="405" y2="30" stroke-width="1"/><line x1="392.7" y1="42.7" x2="397.7" y2="47.7" stroke-width="1"/><line x1="380" y1="48" x2="380" y2="55" stroke-width="1"/><line x1="367.3" y1="42.7" x2="362.3" y2="47.7" stroke-width="1"/><line x1="362" y1="30" x2="355" y2="30" stroke-width="1"/><line x1="367.3" y1="17.3" x2="362.3" y2="12.3" stroke-width="1"/><line x1="380" y1="12" x2="380" y2="5" stroke-width="1"/><line x1="392.7" y1="17.3" x2="397.7" y2="12.3" stroke-width="1"/></g></svg>`,
-        table: null
-      },
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the land heats up faster than the sea, so air above the land rises",
-        B: "the sea heats up faster than the land",
-        C: "cold air rises over the land",
-        D: "the land cools faster than the sea"
-      },
-      answer: "A",
-      explanation: "Warm air over the hot land rises and cooler air from the sea moves in to replace it.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-178",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Pots are often made of aluminium with plastic handles because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "aluminium is a poor conductor and plastic is a good conductor",
-        B: "both are good conductors",
-        C: "both are poor conductors",
-        D: "aluminium is a good conductor and plastic is a poor conductor of heat"
-      },
-      answer: "D",
-      explanation: "The pot must conduct heat to the food, but the handle must be safe to hold.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-179",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Houses in the Caribbean are often painted white or light colours because light colours",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "absorb radiant heat",
-        B: "conduct heat into the house",
-        C: "reflect radiant heat",
-        D: "cause convection currents"
-      },
-      answer: "C",
-      explanation: "Light, shiny surfaces reflect radiation, keeping the house cooler.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-180",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "An air conditioning unit is placed high on a wall because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "cool air rises",
-        B: "it is safer from children",
-        C: "radiation travels upwards",
-        D: "cool air sinks and warm air rises, setting up convection currents"
-      },
-      answer: "D",
-      explanation: "Cool air from the unit sinks and displaces warm air, which rises to the unit to be cooled.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-365",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Heat travels from one end of a metal spoon to the other by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "convection",
-        B: "conduction",
-        C: "radiation",
-        D: "evaporation"
-      },
-      answer: "B",
-      explanation: "Vibrating particles and free electrons pass on energy through the metal.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-366",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Convection can take place in",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "solids only",
-        B: "a vacuum",
-        C: "solids and liquids only",
-        D: "liquids and gases"
-      },
-      answer: "D",
-      explanation: "Convection needs particles that can flow.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-367",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A land breeze blows at night from the land to the sea because",
-      statements: null,
-      after: null,
-      stimulus: {
-        lead: "to the following diagram which shows the movement of air at the coast at night.",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" width="420" height="240" role="img" aria-label="Air movement at night" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Air movement at night</title><rect x="0" y="0" width="420" height="240" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20,200 L200,200 Q220,180 260,170 L400,170" fill="none" stroke-width="1.6"/><text x="110" y="225" text-anchor="middle" fill="#000" stroke="none" font-size="14">sea</text><text x="330" y="195" text-anchor="middle" fill="#000" stroke="none" font-size="14">land</text><path d="M30,210 q7,-5 14,0 q7,5 14,0" fill="none" stroke-width="0.8"/><path d="M58,210 q7,-5 14,0 q7,5 14,0" fill="none" stroke-width="0.8"/><path d="M86,210 q7,-5 14,0 q7,5 14,0" fill="none" stroke-width="0.8"/><path d="M114,210 q7,-5 14,0 q7,5 14,0" fill="none" stroke-width="0.8"/><path d="M142,210 q7,-5 14,0 q7,5 14,0" fill="none" stroke-width="0.8"/><path d="M170,210 q7,-5 14,0 q7,5 14,0" fill="none" stroke-width="0.8"/><line x1="100" y1="150" x2="100" y2="70"/><polygon points="100,70 103.4,77.3 96.6,77.3" fill="#000" stroke-width="1"/><line x1="110" y1="60" x2="320" y2="60"/><polygon points="320,60 312.7,63.4 312.7,56.6" fill="#000" stroke-width="1"/><line x1="330" y1="70" x2="330" y2="140"/><polygon points="330,140 326.6,132.7 333.4,132.7" fill="#000" stroke-width="1"/><line x1="320" y1="150" x2="120" y2="150"/><polygon points="120,150 127.3,146.6 127.3,153.4" fill="#000" stroke-width="1"/><path d="M370,20 a16,16 0 1 0 12,28 a12,12 0 1 1 -12,-28" fill="none" stroke-width="1.2"/><text x="378" y="70" text-anchor="middle" fill="#000" stroke="none" font-size="12">Moon</text></g></svg>`,
-        table: null
-      },
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the land cools faster than the sea, so warmer air over the sea rises",
-        B: "the land is warmer than the sea at night",
-        C: "the sea cools faster",
-        D: "the moon pulls the air"
-      },
-      answer: "A",
-      explanation: "At night the sea is warmer; air rises over it and cooler air from the land replaces it.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-368",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following surfaces is the BEST absorber of radiant heat?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Shiny silver",
-        B: "White",
-        C: "Polished aluminium",
-        D: "Dull black"
-      },
-      answer: "D",
-      explanation: "Dull, dark surfaces absorb and emit radiation best.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-369",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Copper-bottomed pots are used for cooking because copper",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "is an insulator",
-        B: "reflects heat",
-        C: "is a very good conductor of heat",
-        D: "is cheap"
-      },
-      answer: "C",
-      explanation: "Heat passes quickly and evenly to the food.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-370",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Hot air balloons rise because heated air",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "expands and becomes less dense",
-        B: "contracts and becomes denser",
-        C: "loses all its mass",
-        D: "becomes magnetic"
-      },
-      answer: "A",
-      explanation: "Less dense warm air rises (convection).",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-181",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The purple streams in the water show that heat is transferred by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-CONV",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "conduction",
-        B: "radiation",
-        C: "convection",
-        D: "evaporation"
-      },
-      answer: "C",
-      explanation: "Warm water rises and cooler water sinks, forming convection currents.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-182",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The warm water above the crystal rises because it",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-CONV",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "is denser than the cool water",
-        B: "contains more particles",
-        C: "is heavier",
-        D: "is less dense than the cool water"
-      },
-      answer: "D",
-      explanation: "Heated water expands, becomes less dense and rises.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-371",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The vacuum labelled R reduces heat loss by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-FLASK",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "radiation only",
-        B: "conduction and convection",
-        C: "evaporation only",
-        D: "reflection"
-      },
-      answer: "B",
-      explanation: "A vacuum has no particles to conduct or convect heat.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-372",
-      module: 2,
-      objective: {
-        code: "2.5.1",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "examine the application of the methods of heat transfer"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The silvered surfaces labelled Q reduce heat loss by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-FLASK",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "conduction",
-        B: "convection",
-        C: "evaporation",
-        D: "radiation"
-      },
-      answer: "D",
-      explanation: "Shiny surfaces reflect radiant heat back.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-183",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A thermostat is a device which",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "keeps the temperature of an appliance at a set value",
-        B: "measures temperature only",
-        C: "produces heat",
-        D: "converts heat to electricity"
-      },
-      answer: "A",
-      explanation: "A thermostat switches a heater on and off to maintain a chosen temperature.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-184",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "In the thermostat of an electric iron, when the iron reaches the set temperature, the bimetallic strip",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "straightens and switches the heater on",
-        B: "bends away from the contact and switches the heater off",
-        C: "melts",
-        D: "becomes a magnet"
-      },
-      answer: "B",
-      explanation: "Bending breaks the circuit; as the strip cools it straightens and closes the contacts again.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-185",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The thermostat in a gas oven controls the temperature by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "switching the light on",
-        B: "opening the oven door",
-        C: "cooling the oven with water",
-        D: "regulating the flow of gas to the burner"
-      },
-      answer: "D",
-      explanation: "The gas-oven thermostat uses an expanding rod or liquid to open and close the gas valve.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-373",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A thermostat in an air conditioner",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "measures humidity",
-        B: "cleans the air",
-        C: "switches the compressor on and off to keep a set temperature",
-        D: "changes the fan colour"
-      },
-      answer: "C",
-      explanation: "It turns cooling on when the room warms above the set temperature.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-374",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A bimetallic strip is made of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "one metal and one plastic",
-        B: "two strips of the same metal",
-        C: "rubber and copper",
-        D: "two different metals joined together"
-      },
-      answer: "D",
-      explanation: "The metals expand by different amounts when heated.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-375",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Turning the control knob of an electric iron to a higher setting",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "makes the iron lighter",
-        B: "cools the iron",
-        C: "moves the contacts so the strip must bend further before switching off",
-        D: "changes the voltage"
-      },
-      answer: "C",
-      explanation: "A higher setting means a higher temperature before the circuit breaks.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-451",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following appliances contains a thermostat?",
-      statements: [
-        "Electric iron",
-        "Refrigerator",
-        "Electric water heater"
-      ],
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "I and II only",
-        B: "I and III only",
-        C: "II and III only",
-        D: "I, II and III"
-      },
-      answer: "D",
-      explanation: "All three control temperature automatically.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-452",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "In a bimetallic strip, the two metals are chosen because they",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "have the same expansion",
-        B: "are both insulators",
-        C: "expand by different amounts when heated",
-        D: "melt at low temperatures"
-      },
-      answer: "C",
-      explanation: "Unequal expansion makes the strip bend.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-453",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "When the temperature of an electric iron rises above the set value, the thermostat",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "increases the current",
-        B: "breaks the circuit",
-        C: "closes the contacts",
-        D: "changes the voltage"
-      },
-      answer: "B",
-      explanation: "The strip bends away from the contact.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-454",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "UK",
-      difficulty: 3,
-      stem: "Turning the control knob of an iron to a higher setting moves the contact so that",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the circuit breaks sooner",
-        B: "the strip does not bend",
-        C: "current stops flowing",
-        D: "the strip must bend more before the circuit breaks"
-      },
-      answer: "D",
-      explanation: "A higher temperature is reached before switching off.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-455",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A thermostat in an oven saves energy because it",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "switches the heater off when the set temperature is reached",
-        B: "keeps the heater on all the time",
-        C: "increases the temperature",
-        D: "cools the oven"
-      },
-      answer: "A",
-      explanation: "Heater does not run continuously.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-456",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "In a refrigerator, the thermostat switches the compressor ON when",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the door is closed",
-        B: "the temperature inside rises above the set value",
-        C: "the temperature falls below the set value",
-        D: "the light is switched on"
-      },
-      answer: "B",
-      explanation: "The compressor runs to cool the inside again.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-186",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The strip bends when heated because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-BIMETAL",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "iron expands more than brass",
-        B: "both metals contract",
-        C: "brass expands more than iron",
-        D: "brass melts"
-      },
-      answer: "C",
-      explanation: "The metal that expands more (brass) ends up on the outside of the curve.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-187",
-      module: 2,
-      objective: {
-        code: "2.5.2",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "outline the use of thermostats in household appliances"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which of the following appliances uses a bimetallic strip thermostat?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-BIMETAL",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Radio",
-        B: "Electric iron",
-        C: "Torch",
-        D: "Electric fan"
-      },
-      answer: "B",
-      explanation: "Irons, kettles and some ovens use bimetallic thermostats.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-188",
-      module: 2,
-      objective: {
-        code: "2.5.3",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "compare the types of thermometers"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Temperature is a measure of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "how hot or cold an object is",
-        B: "the total heat energy in an object",
-        C: "the mass of an object",
-        D: "the rate of heat loss"
-      },
-      answer: "A",
-      explanation: "Temperature measures hotness and is measured in degrees Celsius (\xB0C) or kelvin (K).",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-189",
-      module: 2,
-      objective: {
-        code: "2.5.3",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "compare the types of thermometers"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Alcohol is used instead of mercury in thermometers for measuring very low temperatures because alcohol",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "has a higher boiling point",
-        B: "is silver in colour",
-        C: "has a lower freezing point",
-        D: "is more toxic"
-      },
-      answer: "C",
-      explanation: "Alcohol freezes at about -115 \xB0C; mercury freezes at about -39 \xB0C.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-190",
-      module: 2,
-      objective: {
-        code: "2.5.3",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "compare the types of thermometers"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following is an advantage of a digital thermometer over a mercury thermometer?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "It never needs a battery",
-        B: "It gives a quick, easy-to-read display and contains no toxic mercury",
-        C: "It can only read in Fahrenheit",
-        D: "It is made of glass"
-      },
-      answer: "B",
-      explanation: "Digital thermometers are fast, safe and easy to read.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-191",
-      module: 2,
-      objective: {
-        code: "2.5.3",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "compare the types of thermometers"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A thermometer works because the liquid inside",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "expands when heated",
-        B: "contracts when heated",
-        C: "changes colour",
-        D: "evaporates"
-      },
-      answer: "A",
-      explanation: "The liquid expands up the narrow bore as temperature rises.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-376",
-      module: 2,
-      objective: {
-        code: "2.5.3",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "compare the types of thermometers"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The SI unit of temperature is the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "joule",
-        B: "watt",
-        C: "kelvin",
-        D: "newton"
-      },
-      answer: "C",
-      explanation: "The SI unit is the kelvin; the degree Celsius is commonly used.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-377",
-      module: 2,
-      objective: {
-        code: "2.5.3",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "compare the types of thermometers"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "What temperature is shown on the thermometer?",
-      statements: null,
-      after: null,
-      stimulus: {
-        lead: "to the following diagram of part of a laboratory thermometer.",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 100" width="470" height="100" role="img" aria-label="Part of a laboratory thermometer" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Part of a laboratory thermometer</title><rect x="0" y="0" width="470" height="100" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="40" width="420" height="26" fill="#fff" rx="13"/><circle cx="42" cy="53" r="10" fill="#fff"/><line x1="70" y1="40" x2="70" y2="52" stroke-width="0.8"/><text x="70" y="86" text-anchor="middle" fill="#000" stroke="none" font-size="12">0</text><line x1="77.2" y1="40" x2="77.2" y2="46" stroke-width="0.5"/><line x1="84.4" y1="40" x2="84.4" y2="46" stroke-width="0.5"/><line x1="91.6" y1="40" x2="91.6" y2="46" stroke-width="0.5"/><line x1="98.8" y1="40" x2="98.8" y2="46" stroke-width="0.5"/><line x1="106" y1="40" x2="106" y2="49" stroke-width="0.5"/><line x1="113.2" y1="40" x2="113.2" y2="46" stroke-width="0.5"/><line x1="120.4" y1="40" x2="120.4" y2="46" stroke-width="0.5"/><line x1="127.6" y1="40" x2="127.6" y2="46" stroke-width="0.5"/><line x1="134.8" y1="40" x2="134.8" y2="46" stroke-width="0.5"/><line x1="142" y1="40" x2="142" y2="52" stroke-width="0.8"/><text x="142" y="86" text-anchor="middle" fill="#000" stroke="none" font-size="12">10</text><line x1="149.2" y1="40" x2="149.2" y2="46" stroke-width="0.5"/><line x1="156.4" y1="40" x2="156.4" y2="46" stroke-width="0.5"/><line x1="163.6" y1="40" x2="163.6" y2="46" stroke-width="0.5"/><line x1="170.8" y1="40" x2="170.8" y2="46" stroke-width="0.5"/><line x1="178" y1="40" x2="178" y2="49" stroke-width="0.5"/><line x1="185.2" y1="40" x2="185.2" y2="46" stroke-width="0.5"/><line x1="192.4" y1="40" x2="192.4" y2="46" stroke-width="0.5"/><line x1="199.6" y1="40" x2="199.6" y2="46" stroke-width="0.5"/><line x1="206.8" y1="40" x2="206.8" y2="46" stroke-width="0.5"/><line x1="214" y1="40" x2="214" y2="52" stroke-width="0.8"/><text x="214" y="86" text-anchor="middle" fill="#000" stroke="none" font-size="12">20</text><line x1="221.2" y1="40" x2="221.2" y2="46" stroke-width="0.5"/><line x1="228.4" y1="40" x2="228.4" y2="46" stroke-width="0.5"/><line x1="235.6" y1="40" x2="235.6" y2="46" stroke-width="0.5"/><line x1="242.8" y1="40" x2="242.8" y2="46" stroke-width="0.5"/><line x1="250" y1="40" x2="250" y2="49" stroke-width="0.5"/><line x1="257.2" y1="40" x2="257.2" y2="46" stroke-width="0.5"/><line x1="264.4" y1="40" x2="264.4" y2="46" stroke-width="0.5"/><line x1="271.6" y1="40" x2="271.6" y2="46" stroke-width="0.5"/><line x1="278.8" y1="40" x2="278.8" y2="46" stroke-width="0.5"/><line x1="286" y1="40" x2="286" y2="52" stroke-width="0.8"/><text x="286" y="86" text-anchor="middle" fill="#000" stroke="none" font-size="12">30</text><line x1="293.2" y1="40" x2="293.2" y2="46" stroke-width="0.5"/><line x1="300.4" y1="40" x2="300.4" y2="46" stroke-width="0.5"/><line x1="307.6" y1="40" x2="307.6" y2="46" stroke-width="0.5"/><line x1="314.8" y1="40" x2="314.8" y2="46" stroke-width="0.5"/><line x1="322" y1="40" x2="322" y2="49" stroke-width="0.5"/><line x1="329.2" y1="40" x2="329.2" y2="46" stroke-width="0.5"/><line x1="336.4" y1="40" x2="336.4" y2="46" stroke-width="0.5"/><line x1="343.6" y1="40" x2="343.6" y2="46" stroke-width="0.5"/><line x1="350.8" y1="40" x2="350.8" y2="46" stroke-width="0.5"/><line x1="358" y1="40" x2="358" y2="52" stroke-width="0.8"/><text x="358" y="86" text-anchor="middle" fill="#000" stroke="none" font-size="12">40</text><line x1="365.2" y1="40" x2="365.2" y2="46" stroke-width="0.5"/><line x1="372.4" y1="40" x2="372.4" y2="46" stroke-width="0.5"/><line x1="379.6" y1="40" x2="379.6" y2="46" stroke-width="0.5"/><line x1="386.8" y1="40" x2="386.8" y2="46" stroke-width="0.5"/><line x1="394" y1="40" x2="394" y2="49" stroke-width="0.5"/><line x1="401.2" y1="40" x2="401.2" y2="46" stroke-width="0.5"/><line x1="408.4" y1="40" x2="408.4" y2="46" stroke-width="0.5"/><line x1="415.6" y1="40" x2="415.6" y2="46" stroke-width="0.5"/><line x1="422.8" y1="40" x2="422.8" y2="46" stroke-width="0.5"/><line x1="430" y1="40" x2="430" y2="52" stroke-width="0.8"/><text x="430" y="86" text-anchor="middle" fill="#000" stroke="none" font-size="12">50</text><line x1="52" y1="57" x2="336.4" y2="57" stroke-width="3"/><text x="440" y="86" text-anchor="start" fill="#000" stroke="none" font-size="12">\xB0C</text></g></svg>`,
-        table: null
-      },
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "27 \xB0C",
-        B: "32 \xB0C",
-        C: "37 \xB0C",
-        D: "42 \xB0C"
-      },
-      answer: "C",
-      explanation: "The mercury thread ends at 37 \xB0C.",
-      topic: 5
-    },
-    {
-      id: "IS-M2-P1-378",
-      module: 2,
-      objective: {
-        code: "2.5.3",
-        topic: 5,
-        topicTitle: "Temperature Control and Ventilation",
-        text: "compare the types of thermometers"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A laboratory thermometer usually has a range of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAre
+      op

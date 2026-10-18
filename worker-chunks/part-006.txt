@@ -1,4 +1,2184 @@
-Svg: false,
+tionsAreSvg: false,
+      options: {
+        A: "switch off the power at the main switch",
+        B: "pull the person away with bare hands",
+        C: "pour water on the person",
+        D: "give the person a drink"
+      },
+      answer: "A",
+      explanation: "Rescuers must not become part of the circuit.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-434",
+      module: 2,
+      objective: {
+        code: "2.4.7",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss first aid methods for treating electrical accidents"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "If the power cannot be switched off, the victim of an electric shock should be moved away from the wire using",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "a metal rod",
+        B: "a wet towel",
+        C: "bare hands",
+        D: "a dry wooden broom handle"
+      },
+      answer: "D",
+      explanation: "Dry wood is an insulator.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-435",
+      module: 2,
+      objective: {
+        code: "2.4.7",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss first aid methods for treating electrical accidents"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "An electric shock victim is not breathing and has no pulse. The first-aider should",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "give the victim water",
+        B: "call for help and begin CPR",
+        C: "leave the victim to rest",
+        D: "rub the victim's arms"
+      },
+      answer: "B",
+      explanation: "Cardiopulmonary resuscitation keeps blood and oxygen moving.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-436",
+      module: 2,
+      objective: {
+        code: "2.4.7",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss first aid methods for treating electrical accidents"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A minor electrical burn on the hand should be",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "covered with butter",
+        B: "rubbed with a towel",
+        C: "cooled under running water and covered with a clean dressing",
+        D: "burst if blisters form"
+      },
+      answer: "C",
+      explanation: "Cooling reduces tissue damage; dressing prevents infection.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-437",
+      module: 2,
+      objective: {
+        code: "2.4.7",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss first aid methods for treating electrical accidents"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "An unconscious victim who is breathing should be placed in the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "recovery position",
+        B: "standing position",
+        C: "sitting position with head back",
+        D: "position face-up with legs raised"
+      },
+      answer: "A",
+      explanation: "It keeps the airway open.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-438",
+      module: 2,
+      objective: {
+        code: "2.4.7",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss first aid methods for treating electrical accidents"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A person who has received an electric shock should be kept warm and calm and should",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "be given alcohol",
+        B: "go back to work immediately",
+        C: "be made to walk around",
+        D: "be checked by a doctor even if they seem fine"
+      },
+      answer: "D",
+      explanation: "Shock can affect the heart rhythm some time later.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-163",
+      module: 2,
+      objective: {
+        code: "2.4.8",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the hazards associated with electricity"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Kite flying near overhead power lines is dangerous because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the kite string may conduct electricity if it touches the lines",
+        B: "the wind is stronger near power lines",
+        C: "the kite will be burnt by the sun",
+        D: "birds may attack the kite"
+      },
+      answer: "A",
+      explanation: "A damp or wire-reinforced string can carry current from the line to the person.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-164",
+      module: 2,
+      objective: {
+        code: "2.4.8",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the hazards associated with electricity"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Illegal connections to electricity lines are dangerous MAINLY because they",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "reduce electricity bills",
+        B: "make appliances last longer",
+        C: "can cause electrocution and fires",
+        D: "increase the voltage in the home"
+      },
+      answer: "C",
+      explanation: "Unsafe wiring without fuses and insulation can cause shocks and fires.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-165",
+      module: 2,
+      objective: {
+        code: "2.4.8",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the hazards associated with electricity"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The back of a television should NOT be removed by an untrained person, even when it is switched off, because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the screen may fall out",
+        B: "the picture will be lost",
+        C: "it will use more electricity",
+        D: "some parts store electric charge and can give a shock"
+      },
+      answer: "D",
+      explanation: "Capacitors inside can hold a dangerous charge after the set is unplugged.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-166",
+      module: 2,
+      objective: {
+        code: "2.4.8",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the hazards associated with electricity"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following should NOT be placed in a microwave oven?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "A glass bowl",
+        B: "A metal container",
+        C: "A plate",
+        D: "A microwave-safe plastic dish"
+      },
+      answer: "B",
+      explanation: "Metal reflects microwaves and can cause sparks and fires.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-354",
+      module: 2,
+      objective: {
+        code: "2.4.8",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the hazards associated with electricity"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Picking mangoes with a long metal pole near power lines is dangerous because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the mangoes are heavy",
+        B: "the pole is too short",
+        C: "the pole may touch a line and conduct electricity to the person",
+        D: "metal attracts lightning only"
+      },
+      answer: "C",
+      explanation: "Metal conducts; contact with lines can be fatal.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-355",
+      module: 2,
+      objective: {
+        code: "2.4.8",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the hazards associated with electricity"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Using electrical appliances with wet hands is dangerous because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "water is an insulator",
+        B: "the appliance will cool down",
+        C: "the fuse will become stronger",
+        D: "water conducts electricity and increases the risk of shock"
+      },
+      answer: "D",
+      explanation: "Wet skin lowers resistance, allowing more current through the body.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-356",
+      module: 2,
+      objective: {
+        code: "2.4.8",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the hazards associated with electricity"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A computer should be connected through a surge protector to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "protect it from sudden increases in voltage",
+        B: "increase its speed",
+        C: "save paper",
+        D: "reduce its weight"
+      },
+      answer: "A",
+      explanation: "Power surges can damage electronic components.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-439",
+      module: 2,
+      objective: {
+        code: "2.4.8",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the hazards associated with electricity"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is an electrical hazard in the home?",
+      statements: [
+        "Frayed cords",
+        "Overloaded sockets",
+        "Using appliances with wet hands"
+      ],
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "I and II only",
+        B: "I and III only",
+        C: "II and III only",
+        D: "I, II and III"
+      },
+      answer: "D",
+      explanation: "All three can cause shocks or fires.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-440",
+      module: 2,
+      objective: {
+        code: "2.4.8",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the hazards associated with electricity"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Using a hair dryer in the bathroom is dangerous because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the bathroom is too small",
+        B: "water conducts electricity and could cause a shock",
+        C: "the steam cools the dryer",
+        D: "the dryer uses too little current"
+      },
+      answer: "B",
+      explanation: "Water provides a path for current through the body.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-441",
+      module: 2,
+      objective: {
+        code: "2.4.8",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the hazards associated with electricity"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "During a thunderstorm it is safest to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "shelter under a tall tree",
+        B: "stand in an open field",
+        C: "swim in the sea",
+        D: "stay indoors away from electrical appliances"
+      },
+      answer: "D",
+      explanation: "Lightning strikes tall objects and open ground.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-442",
+      module: 2,
+      objective: {
+        code: "2.4.8",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the hazards associated with electricity"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following should NOT be done when changing a light bulb?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Leaving the switch on",
+        B: "Standing on a stable ladder",
+        C: "Letting the old bulb cool",
+        D: "Using dry hands"
+      },
+      answer: "A",
+      explanation: "The lamp holder may be live.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-167",
+      module: 2,
+      objective: {
+        code: "2.4.9",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the various methods of extinguishing fires"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which type of fire extinguisher should NOT be used on an electrical fire?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Carbon dioxide",
+        B: "Dry powder",
+        C: "Fire blanket",
+        D: "Water"
+      },
+      answer: "D",
+      explanation: "Water conducts electricity and could electrocute the user.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-168",
+      module: 2,
+      objective: {
+        code: "2.4.9",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the various methods of extinguishing fires"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Firefighters cut a wide strip of vegetation ahead of a bush fire. This controls the fire by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "removing the fuel",
+        B: "removing heat",
+        C: "removing oxygen",
+        D: "adding water"
+      },
+      answer: "A",
+      explanation: "A firebreak removes the fuel so the fire cannot spread.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-169",
+      module: 2,
+      objective: {
+        code: "2.4.9",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the various methods of extinguishing fires"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Water puts out a burning wood fire MAINLY by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "removing the oxygen",
+        B: "removing the fuel",
+        C: "cooling the fuel below its ignition temperature",
+        D: "adding carbon dioxide"
+      },
+      answer: "C",
+      explanation: "Water absorbs heat, lowering the temperature of the fuel.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-170",
+      module: 2,
+      objective: {
+        code: "2.4.9",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the various methods of extinguishing fires"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which type of extinguisher is BEST for a fire involving burning oil or gasoline?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Water",
+        B: "Foam",
+        C: "Soda-acid",
+        D: "Hose reel"
+      },
+      answer: "B",
+      explanation: "Foam forms a blanket over the burning liquid, cutting off oxygen. Water would spread the burning oil.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-357",
+      module: 2,
+      objective: {
+        code: "2.4.9",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the various methods of extinguishing fires"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A fire blanket put over a burning pan works by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cutting off the oxygen supply",
+        B: "cooling the pan",
+        C: "removing the fuel",
+        D: "adding water"
+      },
+      answer: "A",
+      explanation: "The blanket smothers the fire.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-358",
+      module: 2,
+      objective: {
+        code: "2.4.9",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the various methods of extinguishing fires"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following fires should NOT be put out with water?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "A burning pile of paper",
+        B: "A burning cooking-oil fire",
+        C: "A burning wooden chair",
+        D: "A grass fire"
+      },
+      answer: "B",
+      explanation: "Water on burning oil causes explosive spattering and spreads the fire.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-359",
+      module: 2,
+      objective: {
+        code: "2.4.9",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the various methods of extinguishing fires"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A dry powder extinguisher is suitable for",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "most types of fire including electrical and flammable liquid fires",
+        B: "wood only",
+        C: "paper only",
+        D: "cooking only"
+      },
+      answer: "A",
+      explanation: "Dry powder is a multi-purpose extinguisher.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-360",
+      module: 2,
+      objective: {
+        code: "2.4.9",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the various methods of extinguishing fires"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Turning off the gas supply to a burning stove puts out the fire by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "removing oxygen",
+        B: "removing the fuel",
+        C: "cooling the stove",
+        D: "adding carbon dioxide"
+      },
+      answer: "B",
+      explanation: "Without fuel the fire cannot continue.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-361",
+      module: 2,
+      objective: {
+        code: "2.4.9",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the various methods of extinguishing fires"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Chemical fires in a laboratory can be caused by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "flammable liquids near a flame",
+        B: "water spills",
+        C: "cold temperatures",
+        D: "using a thermometer"
+      },
+      answer: "A",
+      explanation: "Flammable liquids such as ethanol must be kept away from flames.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-443",
+      module: 2,
+      objective: {
+        code: "2.4.9",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the various methods of extinguishing fires"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A fire involving burning cooking oil should be put out by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "pouring water on it",
+        B: "blowing on it",
+        C: "fanning it",
+        D: "covering it with a fire blanket"
+      },
+      answer: "D",
+      explanation: "Water causes the oil to splash and spread.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-444",
+      module: 2,
+      objective: {
+        code: "2.4.9",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the various methods of extinguishing fires"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A carbon dioxide extinguisher puts out a fire by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "removing fuel",
+        B: "removing oxygen",
+        C: "adding heat",
+        D: "adding fuel"
+      },
+      answer: "B",
+      explanation: "CO\u2082 blankets the fire and excludes air.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-171",
+      module: 2,
+      objective: {
+        code: "2.4.9",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the various methods of extinguishing fires"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Covering a small pan fire with a damp cloth puts out the fire by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-FIRE",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "removing oxygen",
+        B: "removing heat",
+        C: "removing fuel",
+        D: "adding fuel"
+      },
+      answer: "A",
+      explanation: "The cloth cuts off the supply of oxygen (air) to the fire.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-172",
+      module: 2,
+      objective: {
+        code: "2.4.10",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "explain the appropriate use of conventional protective gear/wear"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A welder should wear which of the following to protect the eyes?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Ear muffs",
+        B: "Rubber boots",
+        C: "Goggles or a welding mask",
+        D: "A helmet"
+      },
+      answer: "C",
+      explanation: "Welding produces bright light, UV radiation and sparks which can damage the eyes.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-173",
+      module: 2,
+      objective: {
+        code: "2.4.10",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "explain the appropriate use of conventional protective gear/wear"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "An electrician wears rubber-soled boots and rubber gloves because rubber",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "is a good conductor of electricity",
+        B: "keeps the feet warm",
+        C: "is heavy",
+        D: "is an insulator and reduces the risk of electric shock"
+      },
+      answer: "D",
+      explanation: "Rubber insulates the worker from the ground and live parts.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-174",
+      module: 2,
+      objective: {
+        code: "2.4.10",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "explain the appropriate use of conventional protective gear/wear"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Construction workers are required to wear hard hats in order to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "keep the sun off their faces",
+        B: "keep their hair clean",
+        C: "protect the head from falling objects",
+        D: "help them hear better"
+      },
+      answer: "C",
+      explanation: "Helmets protect against head injury from falling objects.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-362",
+      module: 2,
+      objective: {
+        code: "2.4.10",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "explain the appropriate use of conventional protective gear/wear"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A worker using a grinder should wear goggles in order to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "hear better",
+        B: "keep warm",
+        C: "reduce noise",
+        D: "protect the eyes from flying particles"
+      },
+      answer: "D",
+      explanation: "Grinding produces sparks and metal fragments.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-363",
+      module: 2,
+      objective: {
+        code: "2.4.10",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "explain the appropriate use of conventional protective gear/wear"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is the MOST suitable protective wear for a person handling bleach?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "A helmet",
+        B: "Ear plugs",
+        C: "Rubber gloves",
+        D: "Sandals"
+      },
+      answer: "C",
+      explanation: "Bleach is corrosive to skin.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-364",
+      module: 2,
+      objective: {
+        code: "2.4.10",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "explain the appropriate use of conventional protective gear/wear"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following protective items should be worn by a person using a chainsaw?",
+      statements: [
+        "Goggles",
+        "Ear muffs",
+        "Gloves"
+      ],
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "I and II only",
+        B: "I and III only",
+        C: "II and III only",
+        D: "I, II and III"
+      },
+      answer: "D",
+      explanation: "Chainsaws produce flying debris and loud noise and can injure the hands.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-445",
+      module: 2,
+      objective: {
+        code: "2.4.10",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "explain the appropriate use of conventional protective gear/wear"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A welder should wear",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "sunglasses",
+        B: "a paper mask",
+        C: "a face shield with dark glass",
+        D: "ear plugs only"
+      },
+      answer: "C",
+      explanation: "The arc gives off intense UV light and sparks.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-446",
+      module: 2,
+      objective: {
+        code: "2.4.10",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "explain the appropriate use of conventional protective gear/wear"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Farmers spraying pesticides should wear",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "shorts and sandals",
+        B: "sunglasses only",
+        C: "a hard hat only",
+        D: "gloves, a mask and long sleeves"
+      },
+      answer: "D",
+      explanation: "This prevents contact with and breathing in chemicals.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-447",
+      module: 2,
+      objective: {
+        code: "2.4.10",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "explain the appropriate use of conventional protective gear/wear"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Workers operating loud machinery should use",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "goggles",
+        B: "an apron",
+        C: "ear muffs",
+        D: "rubber boots"
+      },
+      answer: "C",
+      explanation: "Loud noise can permanently damage hearing.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-448",
+      module: 2,
+      objective: {
+        code: "2.4.10",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "explain the appropriate use of conventional protective gear/wear"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "An electrician working on live wires should wear",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "metal gloves",
+        B: "rubber gloves and rubber-soled boots",
+        C: "wet gloves",
+        D: "leather sandals"
+      },
+      answer: "B",
+      explanation: "Rubber insulates the worker from earth.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-449",
+      module: 2,
+      objective: {
+        code: "2.4.10",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "explain the appropriate use of conventional protective gear/wear"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In a school laboratory, students heating chemicals should wear",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "a hard hat",
+        B: "ear muffs",
+        C: "safety goggles",
+        D: "a dust mask only"
+      },
+      answer: "C",
+      explanation: "Goggles protect eyes from splashes.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-450",
+      module: 2,
+      objective: {
+        code: "2.4.10",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "explain the appropriate use of conventional protective gear/wear"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Steel-toed boots are worn by factory workers to protect against",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "electric shocks",
+        B: "heavy objects falling on the feet",
+        C: "loud noise",
+        D: "chemical fumes"
+      },
+      answer: "B",
+      explanation: "The steel cap resists crushing.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-175",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Heat is transferred through a solid MAINLY by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "convection",
+        B: "conduction",
+        C: "radiation",
+        D: "evaporation"
+      },
+      answer: "B",
+      explanation: "In solids heat passes from particle to particle by conduction.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-176",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Heat energy from the sun reaches the earth by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "conduction",
+        B: "convection",
+        C: "insulation",
+        D: "radiation"
+      },
+      answer: "D",
+      explanation: "Radiation is the only method that can pass through the vacuum of space.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-177",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "During the day, a sea breeze blows from the sea to the land because",
+      statements: null,
+      after: null,
+      stimulus: {
+        lead: "to the following diagram which shows the movement of air at the coast during the day.",
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="540" height="300" role="img" aria-label="Air movement by day"><title>Air movement by day</title><rect x="-1000" y="-1000" width="3000" height="3000" fill="white" /><g fill="#161616" stroke-linecap="round" stroke-linejoin="round"><defs><marker id="is-precision-m2-paper01-396-stimulus-svg-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="black" stroke-width="1.5" /></marker><marker id="is-precision-m2-paper01-396-stimulus-svg-arrStart" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M9 1L1 5L9 9" fill="none" stroke="black" stroke-width="1.5" /></marker><pattern id="is-precision-m2-paper01-396-stimulus-svg-hatch" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M-2 2L2-2M0 9L9 0M7 11L11 7" stroke="black" stroke-width=".8" /></pattern><pattern id="is-precision-m2-paper01-396-stimulus-svg-vertical" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M4 0V8" stroke="black" stroke-width=".8" /></pattern><pattern id="is-precision-m2-paper01-396-stimulus-svg-horizontal" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 4H8" stroke="black" stroke-width=".8" /></pattern></defs><g fill="none" stroke="#161616" stroke-width="1.7" transform="translate(900 0) scale(-1 1)"><path d="M50 360C181 361 292 374 360 390V445H50Z" fill="url(#is-precision-m2-paper01-396-stimulus-svg-hatch)" stroke="#111" stroke-width="1.7" /><path d="M360 390H850V445H360Z" fill="white" stroke="#111" stroke-width="1.7" /><path d="M375 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M415 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M455 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M495 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M535 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M575 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M615 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M655 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M695 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M735 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M775 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M815 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /></g><path d="M521 107C650 66 732 109 742 199C750 255 712 283 671 298L534 341C510 348 493 351 477 353C308 372 179 343 170 246C159 142 306 113 420 108C455 106 489 117 521 107Z" fill="none" stroke="#161616" stroke-width="1.7" /><path d="M447 109L460 102L460 115Z" fill="#161616" stroke="#161616" stroke-width="0.7" /><path d="M506 349L493 345L493 357Z" fill="#161616" stroke="#161616" stroke-width="0.7" /><circle cx="815" cy="58" r="22" fill="none" stroke="#161616" stroke-width="1.5" /><path d="M844.00 58.00L854.00 58.00" fill="none" stroke="#161616" stroke-width="1.3" /><path d="M835.51 78.51L842.58 85.58" fill="none" stroke="#161616" stroke-width="1.3" /><path d="M815.00 87.00L815.00 97.00" fill="none" stroke="#161616" stroke-width="1.3" /><path d="M794.49 78.51L787.42 85.58" fill="none" stroke="#161616" stroke-width="1.3" /><path d="M786.00 58.00L776.00 58.00" fill="none" stroke="#161616" stroke-width="1.3" /><path d="M794.49 37.49L787.42 30.42" fill="none" stroke="#161616" stroke-width="1.3" /><path d="M815.00 29.00L815.00 19.00" fill="none" stroke="#161616" stroke-width="1.3" /><path d="M835.51 37.49L842.58 30.42" fill="none" stroke="#161616" stroke-width="1.3" /><text x="815" y="120" font-family="Arial,Helvetica,sans-serif" font-size="22" text-anchor="middle" fill="#161616" stroke="none" style="stroke:none;fill:#161616">Sun</text><text x="170" y="432" font-family="Arial,Helvetica,sans-serif" font-size="22" text-anchor="middle" fill="#161616" stroke="none" style="stroke:none;fill:#161616">sea</text><text x="730" y="415" font-family="Arial,Helvetica,sans-serif" font-size="22" text-anchor="middle" fill="#161616" stroke="none" style="stroke:none;fill:#161616">land</text></g></svg>',
+        table: null
+      },
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the land heats up faster than the sea, so air above the land rises",
+        B: "the sea heats up faster than the land",
+        C: "cold air rises over the land",
+        D: "the land cools faster than the sea"
+      },
+      answer: "A",
+      explanation: "Warm air over the hot land rises and cooler air from the sea moves in to replace it.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-178",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Pots are often made of aluminium with plastic handles because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "aluminium is a poor conductor and plastic is a good conductor",
+        B: "both are good conductors",
+        C: "both are poor conductors",
+        D: "aluminium is a good conductor and plastic is a poor conductor of heat"
+      },
+      answer: "D",
+      explanation: "The pot must conduct heat to the food, but the handle must be safe to hold.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-179",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Houses in the Caribbean are often painted white or light colours because light colours",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "absorb radiant heat",
+        B: "conduct heat into the house",
+        C: "reflect radiant heat",
+        D: "cause convection currents"
+      },
+      answer: "C",
+      explanation: "Light, shiny surfaces reflect radiation, keeping the house cooler.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-180",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "An air conditioning unit is placed high on a wall because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cool air rises",
+        B: "it is safer from children",
+        C: "radiation travels upwards",
+        D: "cool air sinks and warm air rises, setting up convection currents"
+      },
+      answer: "D",
+      explanation: "Cool air from the unit sinks and displaces warm air, which rises to the unit to be cooled.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-365",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Heat travels from one end of a metal spoon to the other by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "convection",
+        B: "conduction",
+        C: "radiation",
+        D: "evaporation"
+      },
+      answer: "B",
+      explanation: "Vibrating particles and free electrons pass on energy through the metal.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-366",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Convection can take place in",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "solids only",
+        B: "a vacuum",
+        C: "solids and liquids only",
+        D: "liquids and gases"
+      },
+      answer: "D",
+      explanation: "Convection needs particles that can flow.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-367",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A land breeze blows at night from the land to the sea because",
+      statements: null,
+      after: null,
+      stimulus: {
+        lead: "to the following diagram which shows the movement of air at the coast at night.",
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="540" height="300" role="img" aria-label="Air movement at night"><title>Air movement at night</title><rect x="-1000" y="-1000" width="3000" height="3000" fill="white" /><g fill="#161616" stroke-linecap="round" stroke-linejoin="round"><defs><marker id="is-precision-m2-paper01-402-stimulus-svg-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="black" stroke-width="1.5" /></marker><marker id="is-precision-m2-paper01-402-stimulus-svg-arrStart" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M9 1L1 5L9 9" fill="none" stroke="black" stroke-width="1.5" /></marker><pattern id="is-precision-m2-paper01-402-stimulus-svg-hatch" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M-2 2L2-2M0 9L9 0M7 11L11 7" stroke="black" stroke-width=".8" /></pattern><pattern id="is-precision-m2-paper01-402-stimulus-svg-vertical" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M4 0V8" stroke="black" stroke-width=".8" /></pattern><pattern id="is-precision-m2-paper01-402-stimulus-svg-horizontal" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 4H8" stroke="black" stroke-width=".8" /></pattern></defs><g fill="none" stroke="#161616" stroke-width="1.7" transform="translate(900 0) scale(-1 1)"><path d="M50 360C181 361 292 374 360 390V445H50Z" fill="url(#is-precision-m2-paper01-402-stimulus-svg-hatch)" stroke="#111" stroke-width="1.7" /><path d="M360 390H850V445H360Z" fill="white" stroke="#111" stroke-width="1.7" /><path d="M375 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M415 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M455 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M495 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M535 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M575 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M615 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M655 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M695 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M735 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M775 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /><path d="M815 390q9-5 18 0" fill="none" stroke="#111" stroke-width="1" /></g><path d="M521 107C650 66 732 109 742 199C750 255 712 283 671 298L534 341C510 348 493 351 477 353C308 372 179 343 170 246C159 142 306 113 420 108C455 106 489 117 521 107Z" fill="none" stroke="#161616" stroke-width="1.7" /><path d="M460 109L447 102L447 116Z" fill="#161616" stroke="#161616" stroke-width="0.7" /><path d="M492 351L505 344L505 357Z" fill="#161616" stroke="#161616" stroke-width="0.7" /><path d="M815 38C790 36 783 70 806 80C820 86 833 78 838 68C817 76 803 54 815 38Z" fill="white" stroke="#161616" stroke-width="1.4" /><text x="815" y="112" font-family="Arial,Helvetica,sans-serif" font-size="22" text-anchor="middle" fill="#161616" stroke="none" style="stroke:none;fill:#161616">Moon</text><text x="170" y="432" font-family="Arial,Helvetica,sans-serif" font-size="22" text-anchor="middle" fill="#161616" stroke="none" style="stroke:none;fill:#161616">sea</text><text x="730" y="415" font-family="Arial,Helvetica,sans-serif" font-size="22" text-anchor="middle" fill="#161616" stroke="none" style="stroke:none;fill:#161616">land</text></g></svg>',
+        table: null
+      },
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the land cools faster than the sea, so warmer air over the sea rises",
+        B: "the land is warmer than the sea at night",
+        C: "the sea cools faster",
+        D: "the moon pulls the air"
+      },
+      answer: "A",
+      explanation: "At night the sea is warmer; air rises over it and cooler air from the land replaces it.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-368",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following surfaces is the BEST absorber of radiant heat?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Shiny silver",
+        B: "White",
+        C: "Polished aluminium",
+        D: "Dull black"
+      },
+      answer: "D",
+      explanation: "Dull, dark surfaces absorb and emit radiation best.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-369",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Copper-bottomed pots are used for cooking because copper",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "is an insulator",
+        B: "reflects heat",
+        C: "is a very good conductor of heat",
+        D: "is cheap"
+      },
+      answer: "C",
+      explanation: "Heat passes quickly and evenly to the food.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-370",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Hot air balloons rise because heated air",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "expands and becomes less dense",
+        B: "contracts and becomes denser",
+        C: "loses all its mass",
+        D: "becomes magnetic"
+      },
+      answer: "A",
+      explanation: "Less dense warm air rises (convection).",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-181",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The purple streams in the water show that heat is transferred by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-CONV",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "conduction",
+        B: "radiation",
+        C: "convection",
+        D: "evaporation"
+      },
+      answer: "C",
+      explanation: "Warm water rises and cooler water sinks, forming convection currents.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-182",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The warm water above the crystal rises because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-CONV",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "is denser than the cool water",
+        B: "contains more particles",
+        C: "is heavier",
+        D: "is less dense than the cool water"
+      },
+      answer: "D",
+      explanation: "Heated water expands, becomes less dense and rises.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-371",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The vacuum labelled R reduces heat loss by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-FLASK",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "radiation only",
+        B: "conduction and convection",
+        C: "evaporation only",
+        D: "reflection"
+      },
+      answer: "B",
+      explanation: "A vacuum has no particles to conduct or convect heat.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-372",
+      module: 2,
+      objective: {
+        code: "2.5.1",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "examine the application of the methods of heat transfer"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The silvered surfaces labelled Q reduce heat loss by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-FLASK",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "conduction",
+        B: "convection",
+        C: "evaporation",
+        D: "radiation"
+      },
+      answer: "D",
+      explanation: "Shiny surfaces reflect radiant heat back.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-183",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A thermostat is a device which",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "keeps the temperature of an appliance at a set value",
+        B: "measures temperature only",
+        C: "produces heat",
+        D: "converts heat to electricity"
+      },
+      answer: "A",
+      explanation: "A thermostat switches a heater on and off to maintain a chosen temperature.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-184",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In the thermostat of an electric iron, when the iron reaches the set temperature, the bimetallic strip",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "straightens and switches the heater on",
+        B: "bends away from the contact and switches the heater off",
+        C: "melts",
+        D: "becomes a magnet"
+      },
+      answer: "B",
+      explanation: "Bending breaks the circuit; as the strip cools it straightens and closes the contacts again.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-185",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The thermostat in a gas oven controls the temperature by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "switching the light on",
+        B: "opening the oven door",
+        C: "cooling the oven with water",
+        D: "regulating the flow of gas to the burner"
+      },
+      answer: "D",
+      explanation: "The gas-oven thermostat uses an expanding rod or liquid to open and close the gas valve.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-373",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A thermostat in an air conditioner",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "measures humidity",
+        B: "cleans the air",
+        C: "switches the compressor on and off to keep a set temperature",
+        D: "changes the fan colour"
+      },
+      answer: "C",
+      explanation: "It turns cooling on when the room warms above the set temperature.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-374",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A bimetallic strip is made of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "one metal and one plastic",
+        B: "two strips of the same metal",
+        C: "rubber and copper",
+        D: "two different metals joined together"
+      },
+      answer: "D",
+      explanation: "The metals expand by different amounts when heated.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-375",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Turning the control knob of an electric iron to a higher setting",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "makes the iron lighter",
+        B: "cools the iron",
+        C: "moves the contacts so the strip must bend further before switching off",
+        D: "changes the voltage"
+      },
+      answer: "C",
+      explanation: "A higher setting means a higher temperature before the circuit breaks.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-451",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following appliances contains a thermostat?",
+      statements: [
+        "Electric iron",
+        "Refrigerator",
+        "Electric water heater"
+      ],
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "I and II only",
+        B: "I and III only",
+        C: "II and III only",
+        D: "I, II and III"
+      },
+      answer: "D",
+      explanation: "All three control temperature automatically.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-452",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In a bimetallic strip, the two metals are chosen because they",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "have the same expansion",
+        B: "are both insulators",
+        C: "expand by different amounts when heated",
+        D: "melt at low temperatures"
+      },
+      answer: "C",
+      explanation: "Unequal expansion makes the strip bend.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-453",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "When the temperature of an electric iron rises above the set value, the thermostat",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "increases the current",
+        B: "breaks the circuit",
+        C: "closes the contacts",
+        D: "changes the voltage"
+      },
+      answer: "B",
+      explanation: "The strip bends away from the contact.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-454",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "UK",
+      difficulty: 3,
+      stem: "Turning the control knob of an iron to a higher setting moves the contact so that",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the circuit breaks sooner",
+        B: "the strip does not bend",
+        C: "current stops flowing",
+        D: "the strip must bend more before the circuit breaks"
+      },
+      answer: "D",
+      explanation: "A higher temperature is reached before switching off.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-455",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A thermostat in an oven saves energy because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "switches the heater off when the set temperature is reached",
+        B: "keeps the heater on all the time",
+        C: "increases the temperature",
+        D: "cools the oven"
+      },
+      answer: "A",
+      explanation: "Heater does not run continuously.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-456",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In a refrigerator, the thermostat switches the compressor ON when",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the door is closed",
+        B: "the temperature inside rises above the set value",
+        C: "the temperature falls below the set value",
+        D: "the light is switched on"
+      },
+      answer: "B",
+      explanation: "The compressor runs to cool the inside again.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-186",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The strip bends when heated because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-BIMETAL",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "iron expands more than brass",
+        B: "both metals contract",
+        C: "brass expands more than iron",
+        D: "brass melts"
+      },
+      answer: "C",
+      explanation: "The metal that expands more (brass) ends up on the outside of the curve.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-187",
+      module: 2,
+      objective: {
+        code: "2.5.2",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "outline the use of thermostats in household appliances"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following appliances uses a bimetallic strip thermostat?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-BIMETAL",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Radio",
+        B: "Electric iron",
+        C: "Torch",
+        D: "Electric fan"
+      },
+      answer: "B",
+      explanation: "Irons, kettles and some ovens use bimetallic thermostats.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-188",
+      module: 2,
+      objective: {
+        code: "2.5.3",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "compare the types of thermometers"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Temperature is a measure of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "how hot or cold an object is",
+        B: "the total heat energy in an object",
+        C: "the mass of an object",
+        D: "the rate of heat loss"
+      },
+      answer: "A",
+      explanation: "Temperature measures hotness and is measured in degrees Celsius (\xB0C) or kelvin (K).",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-189",
+      module: 2,
+      objective: {
+        code: "2.5.3",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "compare the types of thermometers"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Alcohol is used instead of mercury in thermometers for measuring very low temperatures because alcohol",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "has a higher boiling point",
+        B: "is silver in colour",
+        C: "has a lower freezing point",
+        D: "is more toxic"
+      },
+      answer: "C",
+      explanation: "Alcohol freezes at about -115 \xB0C; mercury freezes at about -39 \xB0C.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-190",
+      module: 2,
+      objective: {
+        code: "2.5.3",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "compare the types of thermometers"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is an advantage of a digital thermometer over a mercury thermometer?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "It never needs a battery",
+        B: "It gives a quick, easy-to-read display and contains no toxic mercury",
+        C: "It can only read in Fahrenheit",
+        D: "It is made of glass"
+      },
+      answer: "B",
+      explanation: "Digital thermometers are fast, safe and easy to read.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-191",
+      module: 2,
+      objective: {
+        code: "2.5.3",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "compare the types of thermometers"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A thermometer works because the liquid inside",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "expands when heated",
+        B: "contracts when heated",
+        C: "changes colour",
+        D: "evaporates"
+      },
+      answer: "A",
+      explanation: "The liquid expands up the narrow bore as temperature rises.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-376",
+      module: 2,
+      objective: {
+        code: "2.5.3",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "compare the types of thermometers"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The SI unit of temperature is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "joule",
+        B: "watt",
+        C: "kelvin",
+        D: "newton"
+      },
+      answer: "C",
+      explanation: "The SI unit is the kelvin; the degree Celsius is commonly used.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-377",
+      module: 2,
+      objective: {
+        code: "2.5.3",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "compare the types of thermometers"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "What temperature is shown on the thermometer?",
+      statements: null,
+      after: null,
+      stimulus: {
+        lead: "to the following diagram of part of a laboratory thermometer.",
+        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 100" width="470" height="100" role="img" aria-label="Part of a laboratory thermometer" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Part of a laboratory thermometer</title><rect x="0" y="0" width="470" height="100" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="40" width="420" height="26" fill="#fff" rx="13"/><circle cx="42" cy="53" r="10" fill="#fff"/><line x1="70" y1="40" x2="70" y2="52" stroke-width="0.8"/><text x="70" y="86" text-anchor="middle" fill="#000" stroke="none" font-size="12">0</text><line x1="77.2" y1="40" x2="77.2" y2="46" stroke-width="0.5"/><line x1="84.4" y1="40" x2="84.4" y2="46" stroke-width="0.5"/><line x1="91.6" y1="40" x2="91.6" y2="46" stroke-width="0.5"/><line x1="98.8" y1="40" x2="98.8" y2="46" stroke-width="0.5"/><line x1="106" y1="40" x2="106" y2="49" stroke-width="0.5"/><line x1="113.2" y1="40" x2="113.2" y2="46" stroke-width="0.5"/><line x1="120.4" y1="40" x2="120.4" y2="46" stroke-width="0.5"/><line x1="127.6" y1="40" x2="127.6" y2="46" stroke-width="0.5"/><line x1="134.8" y1="40" x2="134.8" y2="46" stroke-width="0.5"/><line x1="142" y1="40" x2="142" y2="52" stroke-width="0.8"/><text x="142" y="86" text-anchor="middle" fill="#000" stroke="none" font-size="12">10</text><line x1="149.2" y1="40" x2="149.2" y2="46" stroke-width="0.5"/><line x1="156.4" y1="40" x2="156.4" y2="46" stroke-width="0.5"/><line x1="163.6" y1="40" x2="163.6" y2="46" stroke-width="0.5"/><line x1="170.8" y1="40" x2="170.8" y2="46" stroke-width="0.5"/><line x1="178" y1="40" x2="178" y2="49" stroke-width="0.5"/><line x1="185.2" y1="40" x2="185.2" y2="46" stroke-width="0.5"/><line x1="192.4" y1="40" x2="192.4" y2="46" stroke-width="0.5"/><line x1="199.6" y1="40" x2="199.6" y2="46" stroke-width="0.5"/><line x1="206.8" y1="40" x2="206.8" y2="46" stroke-width="0.5"/><line x1="214" y1="40" x2="214" y2="52" stroke-width="0.8"/><text x="214" y="86" text-anchor="middle" fill="#000" stroke="none" font-size="12">20</text><line x1="221.2" y1="40" x2="221.2" y2="46" stroke-width="0.5"/><line x1="228.4" y1="40" x2="228.4" y2="46" stroke-width="0.5"/><line x1="235.6" y1="40" x2="235.6" y2="46" stroke-width="0.5"/><line x1="242.8" y1="40" x2="242.8" y2="46" stroke-width="0.5"/><line x1="250" y1="40" x2="250" y2="49" stroke-width="0.5"/><line x1="257.2" y1="40" x2="257.2" y2="46" stroke-width="0.5"/><line x1="264.4" y1="40" x2="264.4" y2="46" stroke-width="0.5"/><line x1="271.6" y1="40" x2="271.6" y2="46" stroke-width="0.5"/><line x1="278.8" y1="40" x2="278.8" y2="46" stroke-width="0.5"/><line x1="286" y1="40" x2="286" y2="52" stroke-width="0.8"/><text x="286" y="86" text-anchor="middle" fill="#000" stroke="none" font-size="12">30</text><line x1="293.2" y1="40" x2="293.2" y2="46" stroke-width="0.5"/><line x1="300.4" y1="40" x2="300.4" y2="46" stroke-width="0.5"/><line x1="307.6" y1="40" x2="307.6" y2="46" stroke-width="0.5"/><line x1="314.8" y1="40" x2="314.8" y2="46" stroke-width="0.5"/><line x1="322" y1="40" x2="322" y2="49" stroke-width="0.5"/><line x1="329.2" y1="40" x2="329.2" y2="46" stroke-width="0.5"/><line x1="336.4" y1="40" x2="336.4" y2="46" stroke-width="0.5"/><line x1="343.6" y1="40" x2="343.6" y2="46" stroke-width="0.5"/><line x1="350.8" y1="40" x2="350.8" y2="46" stroke-width="0.5"/><line x1="358" y1="40" x2="358" y2="52" stroke-width="0.8"/><text x="358" y="86" text-anchor="middle" fill="#000" stroke="none" font-size="12">40</text><line x1="365.2" y1="40" x2="365.2" y2="46" stroke-width="0.5"/><line x1="372.4" y1="40" x2="372.4" y2="46" stroke-width="0.5"/><line x1="379.6" y1="40" x2="379.6" y2="46" stroke-width="0.5"/><line x1="386.8" y1="40" x2="386.8" y2="46" stroke-width="0.5"/><line x1="394" y1="40" x2="394" y2="49" stroke-width="0.5"/><line x1="401.2" y1="40" x2="401.2" y2="46" stroke-width="0.5"/><line x1="408.4" y1="40" x2="408.4" y2="46" stroke-width="0.5"/><line x1="415.6" y1="40" x2="415.6" y2="46" stroke-width="0.5"/><line x1="422.8" y1="40" x2="422.8" y2="46" stroke-width="0.5"/><line x1="430" y1="40" x2="430" y2="52" stroke-width="0.8"/><text x="430" y="86" text-anchor="middle" fill="#000" stroke="none" font-size="12">50</text><line x1="52" y1="57" x2="336.4" y2="57" stroke-width="3"/><text x="440" y="86" text-anchor="start" fill="#000" stroke="none" font-size="12">\xB0C</text></g></svg>`,
+        table: null
+      },
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "27 \xB0C",
+        B: "32 \xB0C",
+        C: "37 \xB0C",
+        D: "42 \xB0C"
+      },
+      answer: "C",
+      explanation: "The mercury thread ends at 37 \xB0C.",
+      topic: 5
+    },
+    {
+      id: "IS-M2-P1-378",
+      module: 2,
+      objective: {
+        code: "2.5.3",
+        topic: 5,
+        topicTitle: "Temperature Control and Ventilation",
+        text: "compare the types of thermometers"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A laboratory thermometer usually has a range of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
       options: {
         A: "-10 \xB0C to 110 \xB0C",
         B: "35 \xB0C to 42 \xB0C",
@@ -1236,7 +3416,7 @@ Svg: false,
         {
           label: "(b)",
           context: "Figure 3 shows the human alimentary canal.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 350" width="400" height="350" role="img" aria-label="The human alimentary canal" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>The human alimentary canal</title><rect x="0" y="0" width="400" height="350" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M190,20 L190,95 M200,20 L200,95" fill="none" stroke-width="1.4"/><path d="M190,95 Q180,120 205,135 Q250,150 275,120 Q290,95 265,80 Q230,70 200,95" fill="#fff" stroke-width="1.5"/><path d="M110,80 Q100,130 150,140 Q185,140 190,110 Q195,80 175,70 Q140,62 110,80 Z" fill="#fff" stroke-width="1.5"/><ellipse cx="165" cy="145" rx="9" ry="7" fill="#fff" stroke-width="1"/><path d="M205,150 q30,6 60,-4 q8,4 0,10 q-30,10 -60,4 z" fill="#fff" stroke-width="1.1"/><path d="M100,300 L100,175 Q100,160 115,160 L300,160 Q315,160 315,175 L315,290 Q315,305 300,305 L230,305" fill="none" stroke-width="1.5"/><path d="M114,300 L114,178 Q114,174 118,174 L298,174 Q301,174 301,178 L301,288 Q301,291 298,291 L230,291" fill="none" stroke-width="1.5"/><path d="M230,291 L222,340 M230,305 L236,340" fill="none" stroke-width="1.4"/><path d="M130,190 q20,-12 40,0 q20,12 40,0 q20,-12 40,0 q20,12 40,0" fill="none" stroke-width="1.1"/><path d="M130,214 q20,-12 40,0 q20,12 40,0 q20,-12 40,0 q20,12 40,0" fill="none" stroke-width="1.1"/><path d="M130,238 q20,-12 40,0 q20,12 40,0 q20,-12 40,0 q20,12 40,0" fill="none" stroke-width="1.1"/><path d="M130,262 q20,-12 40,0 q20,12 40,0 q20,-12 40,0 q20,12 40,0" fill="none" stroke-width="1.1"/><line x1="195" y1="50" x2="330" y2="40" stroke-width="0.9"/><text x="334" y="44" text-anchor="start" fill="#000" stroke="none">A</text><line x1="130" y1="100" x2="40" y2="90" stroke-width="0.9"/><text x="36" y="94" text-anchor="end" fill="#000" stroke="none">B</text><line x1="250" y1="110" x2="360" y2="110" stroke-width="0.9"/><text x="364" y="114" text-anchor="start" fill="#000" stroke="none">C</text><line x1="245" y1="155" x2="360" y2="150" stroke-width="0.9"/><text x="364" y="154" text-anchor="start" fill="#000" stroke="none">D</text><line x1="200" y1="225" x2="360" y2="215" stroke-width="0.9"/><text x="364" y="219" text-anchor="start" fill="#000" stroke="none">E</text><line x1="308" y1="250" x2="360" y2="260" stroke-width="0.9"/><text x="364" y="264" text-anchor="start" fill="#000" stroke="none">F</text><line x1="230" y1="325" x2="360" y2="320" stroke-width="0.9"/><text x="364" y="324" text-anchor="start" fill="#000" stroke="none">G</text></g></svg>`,
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="70 40 550 920" width="440" height="736" role="img" aria-label="The human alimentary canal"><title>The human alimentary canal</title><rect x="-1000" y="-1000" width="3000" height="3000" fill="white" /><g fill="#161616" stroke-linecap="round" stroke-linejoin="round"><path d="M190 941C179 906 181 868 186 823C193 762 192 715 185 662L177 567L166 405C162 361 158 333 187 316C206 305 235 305 253 291L254 256C243 252 231 247 231 236L233 220C222 217 219 213 223 208L229 202L213 199C206 197 209 189 217 182L230 161C226 147 226 127 231 111C241 78 274 61 307 64C345 66 370 92 370 131C371 158 363 183 357 207L356 267C356 288 376 298 402 302C443 309 478 320 490 343C500 361 497 385 496 407V474 M487 940C497 901 492 858 483 816C471 754 464 717 467 666L479 567 M210 383L223 511 M457 384L440 511" fill="none" stroke="#161616" stroke-width="1.6" /><path d="M226 183C243 169 270 170 285 184C299 197 302 211 301 229 M229 198C243 185 268 188 282 201C294 213 290 224 288 236" fill="none" stroke="#161616" stroke-width="1.75" /><path d="M232 201C246 195 261 201 272 211C266 218 251 214 247 208L233 207" fill="white" stroke="#161616" stroke-width="1.3" /><path d="M288 235C285 274 286 317 286 351 M301 231C301 275 299 316 300 351" fill="none" stroke="#161616" stroke-width="1.8" /><path d="M273 230V292 M282 230V292" fill="none" stroke="#161616" stroke-width="1.25" /><path d="M273 236Q277 238 282 236" fill="none" stroke="#161616" stroke-width="0.85" /><path d="M273 242Q277 244 282 242" fill="none" stroke="#161616" stroke-width="0.85" /><path d="M273 248Q277 250 282 248" fill="none" stroke="#161616" stroke-width="0.85" /><path d="M273 254Q277 256 282 254" fill="none" stroke="#161616" stroke-width="0.85" /><path d="M273 260Q277 262 282 260" fill="none" stroke="#161616" stroke-width="0.85" /><path d="M273 266Q277 268 282 266" fill="none" stroke="#161616" stroke-width="0.85" /><path d="M273 272Q277 274 282 272" fill="none" stroke="#161616" stroke-width="0.85" /><path d="M273 278Q277 280 282 278" fill="none" stroke="#161616" stroke-width="0.85" /><path d="M273 284Q277 286 282 284" fill="none" stroke="#161616" stroke-width="0.85" /><path d="M273 290Q277 292 282 290" fill="none" stroke="#161616" stroke-width="0.85" /><path d="M300 351C300 372 307 388 320 376C336 355 355 343 374 353C402 370 412 411 393 441C375 469 341 476 310 456C294 447 290 437 277 444L268 431C289 414 303 425 306 422C310 412 297 404 292 391C286 375 286 363 286 351" fill="white" stroke="#161616" stroke-width="1.95" /><path d="M361 366C393 384 394 416 376 438 M350 376C379 390 383 416 365 444 M339 389C362 403 363 428 347 446" fill="none" stroke="#161616" stroke-width="0.9" /><path d="M273 437C253 440 247 456 251 477C254 497 269 508 286 500C302 493 316 497 315 512C314 531 305 534 327 532C356 529 390 520 408 538C425 555 397 572 373 562C350 550 322 550 295 556C266 561 251 579 271 592C288 605 316 591 339 593C367 596 397 589 408 612C419 635 384 644 358 633C335 620 306 620 283 635C260 649 270 669 294 669C323 669 344 650 372 664C398 678 390 702 366 701C340 701 319 681 294 695C273 707 285 729 307 730C329 731 346 715 365 730C384 746 354 762 329 751C302 739 276 747 251 751C238 753 230 746 220 737" fill="none" stroke="#161616" stroke-width="16" style="stroke:#161616" /><path d="M273 437C253 440 247 456 251 477C254 497 269 508 286 500C302 493 316 497 315 512C314 531 305 534 327 532C356 529 390 520 408 538C425 555 397 572 373 562C350 550 322 550 295 556C266 561 251 579 271 592C288 605 316 591 339 593C367 596 397 589 408 612C419 635 384 644 358 633C335 620 306 620 283 635C260 649 270 669 294 669C323 669 344 650 372 664C398 678 390 702 366 701C340 701 319 681 294 695C273 707 285 729 307 730C329 731 346 715 365 730C384 746 354 762 329 751C302 739 276 747 251 751C238 753 230 746 220 737" fill="none" stroke="#161616" stroke-width="12" style="stroke:white" /><path d="M270 467C272 459 279 458 284 461C288 452 295 451 301 455C308 446 315 449 321 453C328 448 333 451 338 455C347 449 353 452 358 457C366 452 373 456 378 462C389 458 397 462 402 467C388 477 373 481 355 480C346 486 336 482 328 484C316 490 305 483 295 486C283 487 274 481 270 477Z" fill="#f5f5f5" stroke="#161616" stroke-width="1.6" /><path d="M281 467C307 469 337 469 385 468 M290 460Q299 469 292 481 M309 456Q318 469 313 483 M333 455Q341 470 336 481 M357 458Q363 468 357 478 M379 462Q383 467 377 476" fill="none" stroke="#161616" stroke-width="0.75" /><path d="M199 361C232 349 276 351 324 366C318 383 306 397 293 410C266 432 231 447 198 447C183 438 184 411 188 389C190 374 192 365 199 361Z" fill="#eaeaea" stroke="#161616" stroke-width="1.85" /><path d="M269 366C263 383 259 400 255 419" fill="none" stroke="#161616" stroke-width="0.85" /><path d="M249 423C245 432 242 446 248 451C255 456 262 448 260 439L258 421" fill="white" stroke="#161616" stroke-width="1.4" /><path d="M253 425L260 415M258 437C266 441 273 447 273 458" fill="none" stroke="#161616" stroke-width="1" /><path d="M215 739C206 709 211 678 212 649L213 555C212 530 217 510 237 510C263 511 276 521 302 516C332 509 356 512 383 505C402 501 423 498 433 519C446 548 440 584 440 613L439 702C440 730 426 748 405 749C378 750 367 765 349 781C333 796 324 810 326 841" fill="none" stroke="#161616" stroke-width="31" /><path d="M215 739C206 709 211 678 212 649L213 555C212 530 217 510 237 510C263 511 276 521 302 516C332 509 356 512 383 505C402 501 423 498 433 519C446 548 440 584 440 613L439 702C440 730 426 748 405 749C378 750 367 765 349 781C333 796 324 810 326 841" fill="none" stroke="#161616" stroke-width="27" style="stroke:white" /><rect x="305" y="841" width="44" height="25" fill="white" /><path d="M310.5 834V849 M341.5 834V849" fill="none" stroke="#161616" stroke-width="1.9" /><path d="M204 750C200 762 201 774 193 780C187 784 183 781 185 778C191 772 190 764 192 755" fill="none" stroke="#161616" stroke-width="1.6" /><path d="M225 737C229 739 231 742 234 745L228 754C222 750 218 745 216 741Z" fill="white" stroke="#161616" stroke-width="0" /><path d="M232 741C227 739 223 736 220 733 M228 752C223 750 220 746 216 745" fill="none" stroke="#161616" stroke-width="1.6" /><defs><mask id="is-precision-m2-paper02-1-parts-1-svg-colon-fold-mask" maskUnits="userSpaceOnUse" x="170" y="475" width="310" height="390"><path d="M215 739C206 709 211 678 212 649L213 555C212 530 217 510 237 510C263 511 276 521 302 516C332 509 356 512 383 505C402 501 423 498 433 519C446 548 440 584 440 613L439 702C440 730 426 748 405 749C378 750 367 765 349 781C333 796 324 810 326 841" fill="none" stroke="white" stroke-width="27" stroke-linecap="round" stroke-linejoin="round" /></mask></defs><g mask="url(#is-precision-m2-paper02-1-parts-1-svg-colon-fold-mask)"><path d="M198 552C207 559 218 559 227 552" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M198 580C207 587 218 587 227 580" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M198 608C207 615 218 615 227 608" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M198 637C207 644 218 644 227 637" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M198 667C207 674 218 674 227 667" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M198 696C207 703 218 703 227 696" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M425 545C435 552 444 552 454 545" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M425 575C435 582 444 582 454 575" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M425 605C435 612 444 612 454 605" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M425 635C435 642 444 642 454 635" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M425 665C435 672 444 672 454 665" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M425 695C435 702 444 702 454 695" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M246 499C253 506 253 520 246 527" fill="none" stroke="#161616" stroke-width="0.95" /><path d="M274 505C281 512 281 526 274 533" fill="none" stroke="#161616" stroke-width="0.95" /><path d="M303 502C310 509 310 523 303 530" fill="none" stroke="#161616" stroke-width="0.95" /><path d="M332 499C339 506 339 520 332 527" fill="none" stroke="#161616" stroke-width="0.95" /><path d="M361 496C368 503 368 517 361 524" fill="none" stroke="#161616" stroke-width="0.95" /><path d="M391 490C398 497 398 511 391 518" fill="none" stroke="#161616" stroke-width="0.95" /><path d="M406 735C412 744 412 753 406 763 M381 749C386 758 384 767 377 773 M357 769C363 776 363 785 356 794" fill="none" stroke="#161616" stroke-width="0.95" /></g><path d="M294 315H555" fill="none" stroke="#161616" stroke-width="1.1" /><text x="573" y="322" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="start" fill="#161616" stroke="none" style="stroke:none;fill:#161616">A</text><path d="M235 400H130" fill="none" stroke="#161616" stroke-width="1.1" /><text x="112" y="407" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="end" fill="#161616" stroke="none" style="stroke:none;fill:#161616">B</text><path d="M374 399H555" fill="none" stroke="#161616" stroke-width="1.1" /><text x="573" y="406" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="start" fill="#161616" stroke="none" style="stroke:none;fill:#161616">C</text><path d="M342 471H555" fill="none" stroke="#161616" stroke-width="1.1" /><text x="573" y="478" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="start" fill="#161616" stroke="none" style="stroke:none;fill:#161616">D</text><path d="M360 633H555" fill="none" stroke="#161616" stroke-width="1.1" /><text x="573" y="640" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="start" fill="#161616" stroke="none" style="stroke:none;fill:#161616">E</text><path d="M440 695H555" fill="none" stroke="#161616" stroke-width="1.1" /><text x="573" y="702" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="start" fill="#161616" stroke="none" style="stroke:none;fill:#161616">F</text><path d="M326 815H555" fill="none" stroke="#161616" stroke-width="1.1" /><text x="573" y="822" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="start" fill="#161616" stroke="none" style="stroke:none;fill:#161616">G</text></g></svg>',
           figure: "Figure 3. The human alimentary canal",
           table: null,
           items: [
@@ -1649,7 +3829,7 @@ Svg: false,
         {
           label: "(a)",
           context: "Figure 4 shows a vertical section through a human molar.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 275" width="330" height="275" role="img" aria-label="Vertical section through a molar" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Vertical section through a molar</title><rect x="0" y="0" width="330" height="275" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M100,60 Q110,30 140,40 Q160,55 180,40 Q210,30 220,60 L215,140 L200,250 Q195,265 185,250 L170,160 L160,160 L145,250 Q135,265 125,250 L110,140 Z" fill="#fff" stroke-width="1.6"/><path d="M112,70 Q120,48 142,55 Q160,68 178,55 Q200,48 208,70 L204,138 L192,240 L178,155 L152,155 L138,240 L118,138 Z" fill="none" stroke-width="1"/><path d="M135,80 Q160,95 185,80 L182,140 L175,215 L168,160 L152,160 L145,215 L138,140 Z" fill="none" stroke-width="1"/><line x1="100" y1="130" x2="70" y2="130" stroke-width="1"/><line x1="220" y1="130" x2="250" y2="130" stroke-width="1"/><path d="M70,130 Q90,135 108,128 M250,130 Q230,135 212,128" fill="none" stroke-width="1.2"/><rect stroke-width="0" x="70" y="150" width="45" height="60" fill="none"/><line x1="70" y1="157" x2="77" y2="150" stroke-width="0.6"/><line x1="70" y1="164" x2="84" y2="150" stroke-width="0.6"/><line x1="70" y1="171" x2="91" y2="150" stroke-width="0.6"/><line x1="70" y1="178" x2="98" y2="150" stroke-width="0.6"/><line x1="70" y1="185" x2="105" y2="150" stroke-width="0.6"/><line x1="70" y1="192" x2="112" y2="150" stroke-width="0.6"/><line x1="70" y1="199" x2="115" y2="154" stroke-width="0.6"/><line x1="70" y1="206" x2="115" y2="161" stroke-width="0.6"/><line x1="73" y1="210" x2="115" y2="168" stroke-width="0.6"/><line x1="80" y1="210" x2="115" y2="175" stroke-width="0.6"/><line x1="87" y1="210" x2="115" y2="182" stroke-width="0.6"/><line x1="94" y1="210" x2="115" y2="189" stroke-width="0.6"/><line x1="101" y1="210" x2="115" y2="196" stroke-width="0.6"/><line x1="108" y1="210" x2="115" y2="203" stroke-width="0.6"/><line x1="120" y1="50" x2="40" y2="30" stroke-width="0.9"/><text x="36" y="34" text-anchor="end" fill="#000" stroke="none">P</text><line x1="203" y1="100" x2="290" y2="80" stroke-width="0.9"/><text x="294" y="84" text-anchor="start" fill="#000" stroke="none">Q</text><line x1="160" y1="110" x2="290" y2="120" stroke-width="0.9"/><text x="294" y="124" text-anchor="start" fill="#000" stroke="none">R</text><line x1="240" y1="132" x2="290" y2="160" stroke-width="0.9"/><text x="294" y="164" text-anchor="start" fill="#000" stroke="none">S</text><line x1="196" y1="220" x2="290" y2="230" stroke-width="0.9"/><text x="294" y="234" text-anchor="start" fill="#000" stroke="none">T</text></g></svg>`,
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 60 580 620" width="464" height="496" role="img" aria-label="Vertical section through a molar"><title>Vertical section through a molar</title><rect x="-1000" y="-1000" width="3000" height="3000" fill="white" /><g fill="#161616" stroke-linecap="round" stroke-linejoin="round"><path d="M304 262C301 226 285 190 288 143C290 106 314 84 346 100C368 111 389 120 410 115C433 101 458 82 485 95C532 121 506 181 494 220C484 261 488 297 495 336C503 407 504 497 473 572C459 609 450 628 443 626C435 608 440 586 440 558C441 499 423 450 407 422C392 410 381 430 373 453C356 493 344 548 333 599C328 621 320 639 309 638C295 619 286 587 280 549C269 491 271 436 284 381C297 332 311 306 304 262Z" fill="#f1f1f1" stroke="#161616" stroke-width="2.35" /><path d="M304 262C301 226 285 190 288 143C290 106 314 84 346 100C368 111 389 120 410 115C433 101 458 82 485 95C532 121 506 181 494 220C491 232 488 247 488 261L474 258C478 242 482 226 486 210C496 179 506 145 483 127C462 111 442 126 419 139C397 151 373 141 349 128C327 115 311 126 307 148C301 184 313 222 317 260Z" fill="white" stroke="#161616" stroke-width="1.6" /><path d="M317 260C325 303 307 345 297 387C284 441 281 493 291 548C297 584 305 610 314 625 M474 258C469 300 482 337 484 380C489 447 485 513 464 568C456 590 449 608 446 616" fill="none" stroke="#161616" stroke-width="1.0" /><path d="M233 283C253 257 284 253 306 271 M238 332C258 326 261 294 306 289 M488 269C514 253 544 257 563 281 M488 289C525 287 535 324 556 329" fill="none" stroke="#161616" stroke-width="1.6" /><path d="M345 169C359 176 377 190 395 185C418 178 436 160 448 171C458 209 459 251 448 278C433 309 434 369 449 425C465 481 461 542 449 611L443 620C444 579 448 538 444 496C438 445 420 404 403 399C381 400 359 448 341 499C326 543 319 592 314 630L307 632C312 572 324 514 331 474C344 422 348 371 348 330C350 299 337 271 336 240C333 210 336 187 345 169Z" fill="white" stroke="#161616" stroke-width="1.65" /><path d="M307 660C312 615 319 563 334 514C346 474 358 435 378 405C398 377 400 340 397 308C395 278 389 252 382 226 M451 650C445 617 451 563 450 526C449 471 431 432 414 412C402 397 401 367 401 341" fill="none" stroke="#161616" stroke-width="0.9" /><path d="M382 226C368 216 353 208 347 188 M382 226C396 215 419 207 438 188 M395 286C408 279 421 264 433 240 M397 308C382 301 369 286 362 269" fill="none" stroke="#161616" stroke-width="0.85" /><path d="M316 164C325 163 331 166 337 173" fill="none" stroke="#161616" stroke-width="0.65" /><path d="M316 188C324 187 330 190 335 195" fill="none" stroke="#161616" stroke-width="0.65" /><path d="M322 223C327 221 331 222 335 224" fill="none" stroke="#161616" stroke-width="0.65" /><path d="M460 175C470 167 477 159 484 153" fill="none" stroke="#161616" stroke-width="0.65" /><path d="M459 201C467 198 477 188 486 184" fill="none" stroke="#161616" stroke-width="0.65" /><path d="M454 228C463 230 471 225 479 216" fill="none" stroke="#161616" stroke-width="0.65" /><path d="M303 435L339 450" fill="none" stroke="#161616" stroke-width="0.65" /><path d="M298 468L331 481" fill="none" stroke="#161616" stroke-width="0.65" /><path d="M297 502L323 514" fill="none" stroke="#161616" stroke-width="0.65" /><path d="M476 421L447 434" fill="none" stroke="#161616" stroke-width="0.65" /><path d="M479 458L452 468" fill="none" stroke="#161616" stroke-width="0.65" /><path d="M476 495L451 502" fill="none" stroke="#161616" stroke-width="0.65" /><path d="M180 122H321" fill="none" stroke="#161616" stroke-width="1.1" /><text x="162" y="129" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="end" fill="#161616" stroke="none" style="stroke:none;fill:#161616">P</text><path d="M180 205H327" fill="none" stroke="#161616" stroke-width="1.1" /><text x="162" y="212" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="end" fill="#161616" stroke="none" style="stroke:none;fill:#161616">Q</text><path d="M420 300H620" fill="none" stroke="#161616" stroke-width="1.1" /><text x="638" y="307" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="start" fill="#161616" stroke="none" style="stroke:none;fill:#161616">R</text><path d="M540 263H620" fill="none" stroke="#161616" stroke-width="1.1" /><text x="638" y="270" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="start" fill="#161616" stroke="none" style="stroke:none;fill:#161616">S</text><path d="M485 495H620" fill="none" stroke="#161616" stroke-width="1.1" /><text x="638" y="502" font-family="Arial,Helvetica,sans-serif" font-size="23" text-anchor="start" fill="#161616" stroke="none" style="stroke:none;fill:#161616">T</text></g></svg>',
           figure: "Figure 4. Section through a molar",
           table: null,
           items: [
@@ -3603,2289 +5783,4 @@ Svg: false,
                 points: [
                   "Chemical energy (1) \u2192 heat and light energy (1)"
                 ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State the law of conservation of energy.",
-              marks: 3,
-              objective: "2.1.2",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Energy cannot be created (1)",
-                  "or destroyed (1)",
-                  "but can be changed from one form to another (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-12",
-      module: 2,
-      kind: "structured",
-      title: "Electrical safety, fires and first aid",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 3,
-        UK: 12,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 4,
-          title: "Electricity and Lighting"
-        }
-      ],
-      objectives: [
-        "2.4.8",
-        "2.4.9",
-        "2.4.7",
-        "2.4.10"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Marlon's neighbour made an illegal connection from the overhead power line to his house. During a storm, sparks were seen and a fire started in the neighbour's kitchen.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State TWO dangers of illegal electrical connections.",
-              marks: 2,
-              objective: "2.4.8",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Electrocution of the person connecting or passers-by",
-                  "Fires caused by overheating/unsafe wiring",
-                  "Damage to appliances from power surges",
-                  "Power outages for the community"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Name the THREE elements needed for a fire to burn.",
-              marks: 3,
-              objective: "2.4.9",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Heat",
-                  "Fuel",
-                  "Oxygen"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain why water should NOT be used to put out the fire started by the electrical fault.",
-              marks: 2,
-              objective: "2.4.9",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Water conducts electricity (1)",
-                  "so the person using it could be electrocuted / the fire could spread (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "Name a suitable type of fire extinguisher for an electrical fire and explain how it puts out the fire.",
-              marks: 2,
-              objective: "2.4.9",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Carbon dioxide (or dry powder) extinguisher (1)",
-                  "it smothers the fire, cutting off the oxygen supply (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Marlon's neighbour received an electric shock and collapsed.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Describe the steps Marlon should take to help his neighbour safely.",
-              marks: 4,
-              objective: "2.4.7",
-              profile: {
-                UK: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 8
-              },
-              markScheme: {
-                points: [
-                  "Switch off the power at the mains / do not touch the casualty until the power is off (1)",
-                  "If the power cannot be switched off, push the casualty away using a dry wooden object while standing on dry insulating material (1)",
-                  "Call for emergency help (1)",
-                  "Check breathing; if not breathing begin CPR (chest compressions and rescue breaths) / treat burns with cool water (1)"
-                ],
-                guidance: "1 mark each for any four correct steps in a logical order",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State ONE item of protective gear an electrician should wear and explain its purpose.",
-              marks: 2,
-              objective: "2.4.10",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Rubber gloves / rubber-soled boots (1) - insulate the worker from electric current (1)",
-                  "Goggles (1) - protect eyes from sparks (1)",
-                  "Helmet (1) - protect head from falling objects (1)"
-                ],
-                guidance: "1 mark for item; 1 mark for purpose",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-13",
-      module: 2,
-      kind: "practical",
-      title: "Food tests on local foods",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 2,
-        UK: 9,
-        XS: 9
-      },
-      topics: [
-        {
-          topic: 2,
-          title: "Energy in Life Processes"
-        }
-      ],
-      objectives: [
-        "2.2.1"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Students carried out food tests on four local foods. Their observations are shown in Table 1.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 1: RESULTS OF FOOD TESTS",
-            headers: [
-              "Food",
-              "Iodine test",
-              "Benedict's test (heated)",
-              "Biuret test",
-              "Paper test"
-            ],
-            rows: [
-              [
-                "Green banana",
-                "blue-black",
-                "blue",
-                "blue",
-                "no spot"
-              ],
-              [
-                "Ripe mango",
-                "brown",
-                "brick-red",
-                "blue",
-                "no spot"
-              ],
-              [
-                "Ackee",
-                "brown",
-                "blue",
-                "purple",
-                "translucent spot"
-              ],
-              [
-                "Red peas",
-                "blue-black",
-                "blue",
-                "purple",
-                "no spot"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "Using the results in Table 1, state the nutrients present in EACH food.",
-              marks: 4,
-              objective: "2.2.1",
-              profile: {
-                UK: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 8
-              },
-              markScheme: {
-                points: [
-                  "Green banana - starch",
-                  "Ripe mango - reducing sugar",
-                  "Ackee - protein and fat",
-                  "Red peas - starch and protein"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Suggest why ripe mango contains reducing sugar while green banana contains starch.",
-              marks: 2,
-              objective: "2.2.1",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "During ripening starch is converted to sugars (by enzymes) (1)",
-                  "so ripe fruits taste sweet while unripe fruits are starchy (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Describe how the Benedict's test is carried out.",
-              marks: 3,
-              objective: "2.2.1",
-              profile: {
-                XS: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Crush/mix the food with a little water in a test tube (1)",
-                  "add an equal volume of Benedict's solution (1)",
-                  "heat in a boiling water bath for a few minutes and observe the colour (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "State ONE safety precaution for the Benedict's test.",
-              marks: 1,
-              objective: "2.2.1",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Use a water bath instead of heating directly",
-                  "Point the test tube away from people",
-                  "Wear goggles"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Construct a table to show ONE food rich in EACH of the following and ONE function of the nutrient: carbohydrate, protein, fat.",
-              marks: 5,
-              objective: "2.2.1",
-              profile: {
-                XS: 5
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "drawing",
-                height: 200
-              },
-              markScheme: {
-                points: [
-                  "Title (1)",
-                  "Enclosed table with suitable headings (1)",
-                  "Carbohydrate e.g. rice/yam - supplies energy (1)",
-                  "Protein e.g. fish/peas - growth and repair (1)",
-                  "Fat e.g. butter/ackee - stores energy/insulation (1)"
-                ],
-                guidance: "Award as shown",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why the diet of a 16-year-old athlete should differ from that of a 70-year-old retiree.",
-              marks: 3,
-              objective: "2.2.1",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "The athlete is growing and very active (1)",
-                  "so needs more energy (carbohydrates) and more protein for muscle growth and repair (1)",
-                  "the retiree is less active, so needs fewer kilojoules to avoid obesity but enough calcium/vitamins (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name ONE deficiency disease and the nutrient whose lack causes it.",
-              marks: 2,
-              objective: "2.2.1",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Scurvy - vitamin C",
-                  "Rickets - vitamin D/calcium",
-                  "Anaemia - iron/vitamin B\u2081\u2082",
-                  "Goitre - iodine",
-                  "Kwashiorkor - protein",
-                  "Night blindness - vitamin A"
-                ],
-                guidance: "1 mark for disease; 1 mark for matching nutrient",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-14",
-      module: 2,
-      kind: "structured",
-      title: "Breathing and gaseous exchange",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 5,
-        UK: 10,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 2,
-          title: "Energy in Life Processes"
-        }
-      ],
-      objectives: [
-        "2.2.6",
-        "2.2.7"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Figure 1 shows the human breathing system.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410 295" width="410" height="295" role="img" aria-label="The human breathing system" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>The human breathing system</title><rect x="0" y="0" width="410" height="295" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="195" y1="20" x2="195" y2="110"/><line x1="215" y1="20" x2="215" y2="110"/><path d="M195,28 q10,-4 20,0" fill="none" stroke-width="0.6"/><path d="M195,40 q10,-4 20,0" fill="none" stroke-width="0.6"/><path d="M195,52 q10,-4 20,0" fill="none" stroke-width="0.6"/><path d="M195,64 q10,-4 20,0" fill="none" stroke-width="0.6"/><path d="M195,76 q10,-4 20,0" fill="none" stroke-width="0.6"/><path d="M195,88 q10,-4 20,0" fill="none" stroke-width="0.6"/><path d="M195,100 q10,-4 20,0" fill="none" stroke-width="0.6"/><path d="M195,110 L150,150 M215,110 L260,150 M203,118 L165,155 M207,118 L245,155" fill="none" stroke-width="1.4"/><path d="M160,60 Q70,70 60,200 Q60,250 110,255 Q170,258 185,215 L185,120 Z" fill="none" stroke-width="1.6"/><path d="M250,60 Q340,70 350,200 Q350,250 300,255 Q240,258 225,215 L225,120 Z" fill="none" stroke-width="1.6"/><path d="M150,150 l-20,20 M150,150 l5,25 M130,170 l-15,10 M130,170 l-5,20" fill="none" stroke-width="0.9"/><path d="M260,150 l20,20 M260,150 l-5,25 M280,170 l15,10 M280,170 l5,20" fill="none" stroke-width="0.9"/><path d="M40,280 Q205,215 370,280" fill="none" stroke-width="2.2"/><line x1="215" y1="50" x2="300" y2="30" stroke-width="0.9"/><text x="304" y="34" text-anchor="start" fill="#000" stroke="none">P</text><line x1="250" y1="140" x2="380" y2="110" stroke-width="0.9"/><text x="384" y="114" text-anchor="start" fill="#000" stroke="none">Q</text><line x1="320" y1="200" x2="380" y2="190" stroke-width="0.9"/><text x="384" y="194" text-anchor="start" fill="#000" stroke="none">R</text><line x1="330" y1="268" x2="385" y2="265" stroke-width="0.9"/><text x="389" y="269" text-anchor="start" fill="#000" stroke="none">S</text></g></svg>`,
-          figure: "Figure 1. The breathing system",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Identify the parts labelled P, Q and S.",
-              marks: 3,
-              objective: "2.2.6",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "P",
-                  "Q",
-                  "S"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "P - trachea",
-                  "Q - bronchus",
-                  "S - diaphragm"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Describe the changes in the chest which cause air to enter the lungs.",
-              marks: 3,
-              objective: "2.2.6",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "The diaphragm contracts and flattens and the intercostal muscles contract, moving the ribs up and out (1)",
-                  "the volume of the chest cavity increases (1)",
-                  "so the pressure inside the lungs falls below atmospheric pressure and air rushes in (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State TWO features of the alveoli which make them efficient for gaseous exchange.",
-              marks: 2,
-              objective: "2.2.7",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Very large surface area",
-                  "Walls one cell thick/thin",
-                  "Moist lining",
-                  "Rich blood supply (network of capillaries)"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why the composition of exhaled air differs from that of inhaled air.",
-              marks: 2,
-              objective: "2.2.7",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Oxygen diffuses from the alveoli into the blood for respiration, so exhaled air has less oxygen (1)",
-                  "carbon dioxide and water vapour from respiration diffuse into the alveoli, so exhaled air has more of them (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "A man collapses at a cricket match and is not breathing.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Outline the steps a trained first-aider should take when giving cardiopulmonary resuscitation (CPR).",
-              marks: 4,
-              objective: "2.2.6",
-              profile: {
-                UK: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 8
-              },
-              markScheme: {
-                points: [
-                  "Check for danger and response, then call for emergency help/AED (1)",
-                  "Open the airway by tilting the head back and lifting the chin; check breathing (1)",
-                  "Give 30 chest compressions in the centre of the chest, about 5-6 cm deep, at 100-120 per minute (1)",
-                  "Give 2 rescue breaths and continue 30:2 until help arrives or the casualty breathes (1)"
-                ],
-                guidance: "1 mark each for any four steps in order",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why CPR can keep a casualty alive until medical help arrives.",
-              marks: 1,
-              objective: "2.2.6",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "It keeps oxygenated blood flowing to the brain and other organs."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-15",
-      module: 2,
-      kind: "practical",
-      title: "Voltage, current and resistance",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 4,
-        UK: 7,
-        XS: 9
-      },
-      topics: [
-        {
-          topic: 4,
-          title: "Electricity and Lighting"
-        }
-      ],
-      objectives: [
-        "2.4.2"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "A student connected a resistor in series with an ammeter and a variable power supply. A voltmeter was connected across the resistor. The results are shown in Table 2.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 2: VOLTAGE AND CURRENT FOR A RESISTOR",
-            headers: [
-              "Voltage/V",
-              "0",
-              "2",
-              "4",
-              "6",
-              "8",
-              "10"
-            ],
-            rows: [
-              [
-                "Current/A",
-                "0",
-                "0.4",
-                "0.8",
-                "1.2",
-                "1.6",
-                "2.0"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "Draw a circuit diagram of the apparatus the student used.",
-              marks: 3,
-              objective: "2.4.2",
-              profile: {
-                XS: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "drawing",
-                height: 220
-              },
-              markScheme: {
-                points: [
-                  "Supply, resistor and ammeter in series (1)",
-                  "Voltmeter in parallel across the resistor (1)",
-                  "Correct symbols, lines drawn with a ruler (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "On the grid provided, plot a graph of current against voltage and draw the line of best fit.",
-              marks: 5,
-              objective: "2.4.2",
-              profile: {
-                XS: 5
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "graph",
-                height: 320,
-                x: "Voltage/V",
-                y: "Current/A"
-              },
-              markScheme: {
-                points: [
-                  "All six points correctly plotted",
-                  "Axes labelled with units",
-                  "Suitable scale",
-                  "Straight line through the origin"
-                ],
-                guidance: "2 marks for correct plotting of points (all points = 2; at least half = 1); 1 mark for both axes labelled with units; 1 mark for an appropriate scale (at least 75% of the grid used); 1 mark for a smooth line/curve joining the points",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Describe the relationship between voltage and current shown by your graph.",
-              marks: 1,
-              objective: "2.4.2",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Current is directly proportional to voltage (straight line through the origin)."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "Calculate the resistance of the resistor. Show your working.",
-              marks: 2,
-              objective: "2.4.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 110
-              },
-              markScheme: {
-                points: [
-                  "R = V \xF7 I = 10 \xF7 2.0 (1)",
-                  "= 5 \u03A9 (1)"
-                ],
-                guidance: "1 mark for correct substitution/working; 1 mark for correct answer with unit",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Calculate the power used by the resistor when the voltage is 8 V.",
-              marks: 2,
-              objective: "2.4.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 110
-              },
-              markScheme: {
-                points: [
-                  "P = IV = 1.6 \xD7 8 (1)",
-                  "= 12.8 W (1)"
-                ],
-                guidance: "1 mark for correct substitution/working; 1 mark for correct answer with unit",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State ONE precaution the student should take to obtain accurate readings.",
-              marks: 1,
-              objective: "2.4.2",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Switch off between readings so the resistor does not heat up",
-                  "Read meters at eye level",
-                  "Check meters read zero before starting",
-                  "Repeat readings and average"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State the units of electrical power and electrical resistance.",
-              marks: 2,
-              objective: "2.4.2",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Power - watt (W) (1)",
-                  "Resistance - ohm (\u03A9) (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Distinguish between a series circuit and a parallel circuit.",
-              marks: 2,
-              objective: "2.4.2",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "In a series circuit components are connected one after another in a single path, so the same current flows through each (1)",
-                  "in a parallel circuit components are on separate branches, each connected across the supply (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why Christmas lights wired in series all go out when one bulb fails.",
-              marks: 2,
-              objective: "2.4.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "There is only one path for the current (1)",
-                  "so a broken filament breaks the whole circuit and no current flows (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-16",
-      module: 2,
-      kind: "structured",
-      title: "Lighting and energy conservation",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 1,
-        UK: 14,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 4,
-          title: "Electricity and Lighting"
-        }
-      ],
-      objectives: [
-        "2.4.3",
-        "2.4.5",
-        "2.4.6",
-        "2.4.4",
-        "2.4.8"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Table 3 compares three types of light bulb that give the same brightness.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 3: COMPARISON OF LIGHT BULBS",
-            headers: [
-              "Type of bulb",
-              "Power/W",
-              "Lifetime/hours",
-              "Cost of bulb/$"
-            ],
-            rows: [
-              [
-                "Filament",
-                "60",
-                "1 000",
-                "2.00"
-              ],
-              [
-                "Compact fluorescent (CFL)",
-                "14",
-                "8 000",
-                "8.00"
-              ],
-              [
-                "LED",
-                "9",
-                "25 000",
-                "10.00"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "Calculate the energy used by the filament bulb over its lifetime, in kWh.",
-              marks: 2,
-              objective: "2.4.3",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 110
-              },
-              markScheme: {
-                points: [
-                  "0.06 kW \xD7 1 000 h (1)",
-                  "= 60 kWh (1)"
-                ],
-                guidance: "1 mark for correct substitution/working; 1 mark for correct answer with unit",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Calculate the energy used by the LED bulb in 1 000 hours and hence the energy saved compared with the filament bulb.",
-              marks: 2,
-              objective: "2.4.5",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 120
-              },
-              markScheme: {
-                points: [
-                  "LED: 0.009 \xD7 1 000 = 9 kWh (1)",
-                  "Saving = 60 - 9 = 51 kWh (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Although the LED bulb costs more to buy, explain why it is the most economical choice.",
-              marks: 3,
-              objective: "2.4.6",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "It uses much less power, so running costs are lower (1)",
-                  "it lasts 25 times longer, so fewer replacements are bought (1)",
-                  "over its lifetime the savings on electricity far exceed the higher purchase price (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State TWO ways, other than changing bulbs, in which a family can conserve electrical energy.",
-              marks: 2,
-              objective: "2.4.5",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Switch off lights and appliances when not in use",
-                  "Unplug chargers/standby appliances",
-                  "Use natural light/ventilation",
-                  "Use occupancy sensors/timers",
-                  "Repair faulty appliances"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Compare a fluorescent tube and a filament lamp in terms of shadow formation and similarity to daylight.",
-              marks: 2,
-              objective: "2.4.6",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "A fluorescent tube is an extended source and gives soft shadows, while a filament lamp is nearly a point source and gives sharp shadows (1)",
-                  "fluorescent (daylight) tubes give light closer to daylight; filament light is yellowish (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why an overloaded extension cord may cause a fire.",
-              marks: 3,
-              objective: "2.4.4",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Many appliances together draw a large current (1)",
-                  "the large current heats the wires (1)",
-                  "the insulation can melt/burn and set nearby materials on fire (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State ONE hazard of flying kites near overhead power lines.",
-              marks: 1,
-              objective: "2.4.8",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "The string may touch the lines and conduct electricity, causing electrocution."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-17",
-      module: 2,
-      kind: "practical",
-      title: "Conduction in metals",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 0,
-        UK: 13,
-        XS: 7
-      },
-      topics: [
-        {
-          topic: 5,
-          title: "Temperature Control and Ventilation"
-        }
-      ],
-      objectives: [
-        "2.5.1"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Rods of equal length and thickness made of four different materials were fixed to a metal box of hot water. A drawing pin was stuck with wax to the far end of each rod. The time taken for each pin to fall was recorded. The results are shown in Table 4.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 4: TIME FOR PINS TO FALL",
-            headers: [
-              "Material",
-              "Time for pin to fall/s"
-            ],
-            rows: [
-              [
-                "Copper",
-                "45"
-              ],
-              [
-                "Aluminium",
-                "70"
-              ],
-              [
-                "Iron",
-                "150"
-              ],
-              [
-                "Glass",
-                "pin did not fall"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "On the grid provided, draw a bar chart of the times for copper, aluminium and iron.",
-              marks: 4,
-              objective: "2.5.1",
-              profile: {
-                XS: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "graph",
-                height: 300,
-                x: "Material",
-                y: "Time/s"
-              },
-              markScheme: {
-                points: [
-                  "Three bars of correct height",
-                  "Axes labelled (Material; Time for pin to fall/s)",
-                  "Bars of equal width and equally spaced",
-                  "Suitable scale"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Arrange the materials in order from the BEST to the WORST conductor of heat.",
-              marks: 1,
-              objective: "2.5.1",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Copper, aluminium, iron, glass"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain how heat is conducted along a metal rod.",
-              marks: 3,
-              objective: "2.5.1",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Particles at the hot end gain energy and vibrate faster (1)",
-                  "they pass energy to neighbouring particles by collisions (1)",
-                  "free electrons in metals move and carry energy quickly along the rod (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "State TWO variables which were kept constant in this experiment.",
-              marks: 2,
-              objective: "2.5.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Length of rods",
-                  "Thickness of rods",
-                  "Temperature of water",
-                  "Amount of wax",
-                  "Size of pins"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(v)",
-              prompt: "Suggest ONE source of error.",
-              marks: 1,
-              objective: "2.5.1",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Different amounts of wax on each pin",
-                  "Reaction time in using the stopwatch",
-                  "Water cooling during the experiment"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Figure 2 shows a vacuum flask.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 290" width="320" height="290" role="img" aria-label="Section through a vacuum flask" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Section through a vacuum flask</title><rect x="0" y="0" width="320" height="290" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="90" y="30" width="140" height="250" fill="#fff" rx="14" stroke-width="1.6"/><path d="M110,70 L110,240 Q160,275 210,240 L210,70" fill="none" stroke-width="1.3"/><path d="M122,70 L122,232 Q160,260 198,232 L198,70" fill="none" stroke-width="1.3"/><rect x="128" y="40" width="64" height="40" fill="#fff" rx="4"/><rect x="128" y="40" width="64" height="40" fill="none"/><line x1="128" y1="46" x2="134" y2="40" stroke-width="0.6"/><line x1="128" y1="52" x2="140" y2="40" stroke-width="0.6"/><line x1="128" y1="58" x2="146" y2="40" stroke-width="0.6"/><line x1="128" y1="64" x2="152" y2="40" stroke-width="0.6"/><line x1="128" y1="70" x2="158" y2="40" stroke-width="0.6"/><line x1="128" y1="76" x2="164" y2="40" stroke-width="0.6"/><line x1="130" y1="80" x2="170" y2="40" stroke-width="0.6"/><line x1="136" y1="80" x2="176" y2="40" stroke-width="0.6"/><line x1="142" y1="80" x2="182" y2="40" stroke-width="0.6"/><line x1="148" y1="80" x2="188" y2="40" stroke-width="0.6"/><line x1="154" y1="80" x2="192" y2="42" stroke-width="0.6"/><line x1="160" y1="80" x2="192" y2="48" stroke-width="0.6"/><line x1="166" y1="80" x2="192" y2="54" stroke-width="0.6"/><line x1="172" y1="80" x2="192" y2="60" stroke-width="0.6"/><line x1="178" y1="80" x2="192" y2="66" stroke-width="0.6"/><line x1="184" y1="80" x2="192" y2="72" stroke-width="0.6"/><line x1="190" y1="80" x2="192" y2="78" stroke-width="0.6"/><line x1="192" y1="55" x2="280" y2="40" stroke-width="0.9"/><text x="284" y="44" text-anchor="start" fill="#000" stroke="none">P</text><line x1="198" y1="150" x2="280" y2="120" stroke-width="0.9"/><text x="284" y="124" text-anchor="start" fill="#000" stroke="none">Q</text><line x1="204" y1="180" x2="280" y2="180" stroke-width="0.9"/><text x="284" y="184" text-anchor="start" fill="#000" stroke="none">R</text><line x1="230" y1="240" x2="280" y2="250" stroke-width="0.9"/><text x="284" y="254" text-anchor="start" fill="#000" stroke="none">S</text></g></svg>`,
-          figure: "Figure 2. Vacuum flask",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain how EACH of the following reduces heat loss from hot tea in the flask: the vacuum; the silvered surfaces; the stopper.",
-              marks: 6,
-              objective: "2.5.1",
-              profile: {
-                UK: 6
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 12
-              },
-              markScheme: {
-                points: [
-                  "Vacuum: there are no particles, so heat cannot be lost by conduction (1) or convection (1)",
-                  "Silvered surfaces: reflect radiant heat (1) back into the flask (1)",
-                  "Stopper: prevents convection currents/evaporation (1) and is made of a poor conductor (1)"
-                ],
-                guidance: "2 marks each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why a metal spoon left in hot soup feels hotter than a wooden spoon.",
-              marks: 3,
-              objective: "2.5.1",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Metal is a good conductor of heat, wood is a poor conductor (insulator) (1)",
-                  "heat is conducted quickly up the metal spoon to the handle (1)",
-                  "and from the metal to the hand, so it feels hotter (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-18",
-      module: 2,
-      kind: "structured",
-      title: "Energy flow in ecosystems",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 5,
-        UK: 10,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 1,
-          title: "Conservation of Energy"
-        }
-      ],
-      objectives: [
-        "2.1.4"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Figure 3 shows a food web on a Caribbean farm.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 340" width="470" height="340" role="img" aria-label="A food web" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A food web</title><rect x="0" y="0" width="470" height="340" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="222" y1="301" x2="315.7" y2="260"/><polygon points="315.7,260 311.1,265.3 308.7,259.8" fill="#000" stroke-width="1"/><line x1="190" y1="301" x2="190" y2="260"/><polygon points="190,260 193,266.3 187,266.3" fill="#000" stroke-width="1"/><line x1="318" y1="301" x2="224.3" y2="260"/><polygon points="224.3,260 231.3,259.8 228.9,265.3" fill="#000" stroke-width="1"/><line x1="350" y1="301" x2="350" y2="260"/><polygon points="350,260 353,266.3 347,266.3" fill="#000" stroke-width="1"/><line x1="175.1" y1="231" x2="126" y2="185"/><polygon points="126,185 132.7,187.2 128.6,191.5" fill="#000" stroke-width="1"/><line x1="305.2" y1="231" x2="143" y2="180.3"/><polygon points="143,180.3 149.9,179.4 148.2,185" fill="#000" stroke-width="1"/><line x1="206.8" y1="231" x2="352" y2="110"/><polygon points="352,110 349,116.3 345.2,111.8" fill="#000" stroke-width="1"/><line x1="351.9" y1="231" x2="368" y2="110"/><polygon points="368,110 370.1,116.7 364.2,115.9" fill="#000" stroke-width="1"/><line x1="110" y1="156" x2="110" y2="110"/><polygon points="110,110 113,116.3 107,116.3" fill="#000" stroke-width="1"/><line x1="136" y1="81" x2="212.1" y2="40"/><polygon points="212.1,40 208,45.6 205.2,40.4" fill="#000" stroke-width="1"/><line x1="344" y1="81" x2="267.9" y2="40"/><polygon points="267.9,40 274.8,40.4 272,45.6" fill="#000" stroke-width="1"/><rect x="210" y="13" width="60" height="24" fill="#fff" rx="3"/><text x="240" y="30" text-anchor="middle" fill="#000" stroke="none">Hawk</text><rect x="80" y="83" width="60" height="24" fill="#fff" rx="3"/><text x="110" y="100" text-anchor="middle" fill="#000" stroke="none">Snake</text><rect x="340" y="83" width="60" height="24" fill="#fff" rx="3"/><text x="370" y="100" text-anchor="middle" fill="#000" stroke="none">Bird</text><rect x="80" y="158" width="60" height="24" fill="#fff" rx="3"/><text x="110" y="175" text-anchor="middle" fill="#000" stroke="none">Frog</text><rect x="138" y="233" width="104" height="24" fill="#fff" rx="3"/><text x="190" y="250" text-anchor="middle" fill="#000" stroke="none">Caterpillar</text><rect x="298" y="233" width="104" height="24" fill="#fff" rx="3"/><text x="350" y="250" text-anchor="middle" fill="#000" stroke="none">Grasshopper</text><rect x="160" y="303" width="60" height="24" fill="#fff" rx="3"/><text x="190" y="320" text-anchor="middle" fill="#000" stroke="none">Grass</text><rect x="314" y="303" width="72" height="24" fill="#fff" rx="3"/><text x="350" y="320" text-anchor="middle" fill="#000" stroke="none">Cabbage</text></g></svg>`,
-          figure: "Figure 3. A food web",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "From Figure 3, name ONE producer, ONE herbivore and ONE carnivore.",
-              marks: 3,
-              objective: "2.1.4",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Producer: grass/cabbage (1)",
-                  "Herbivore: caterpillar/grasshopper (1)",
-                  "Carnivore: frog/snake/bird/hawk (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Write a food chain from the web which has FIVE organisms.",
-              marks: 1,
-              objective: "2.1.4",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Grass/cabbage \u2192 caterpillar/grasshopper \u2192 frog \u2192 snake \u2192 hawk"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "The farmer sprays insecticide which kills most caterpillars and grasshoppers. Predict and explain the effect on the population of hawks.",
-              marks: 3,
-              objective: "2.1.4",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "The hawk population would decrease (1)",
-                  "because the frogs and birds that feed on the insects would have less food and decrease (1)",
-                  "so the hawks would have fewer snakes and birds to eat (the insecticide may also build up in the food chain) (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Define the term 'trophic level'.",
-              marks: 1,
-              objective: "2.1.4",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "The feeding position of an organism in a food chain."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why a pyramid of energy is always wider at the base than at the top.",
-              marks: 3,
-              objective: "2.1.4",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Producers trap the most energy from the sun (1)",
-                  "energy is lost at each level through respiration (heat), movement, excretion and uneaten parts (1)",
-                  "so less energy is available to each higher trophic level (about 10% passes on) (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State the role of decomposers in an ecosystem.",
-              marks: 2,
-              objective: "2.1.4",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "They break down dead organisms and waste (1)",
-                  "releasing nutrients back into the soil for plants to use (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Distinguish between a population and a community.",
-              marks: 2,
-              objective: "2.1.4",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "A population is all the organisms of one species in an area (1)",
-                  "a community is all the populations of different species living in an area (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-19",
-      module: 2,
-      kind: "practical",
-      title: "Fermentation by yeast",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 4,
-        UK: 8,
-        XS: 8
-      },
-      topics: [
-        {
-          topic: 2,
-          title: "Energy in Life Processes"
-        }
-      ],
-      objectives: [
-        "2.2.5",
-        "2.2.4"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Students investigated the effect of temperature on fermentation by yeast. They set up the apparatus shown in Figure 4 at different temperatures and counted the number of bubbles given off in one minute. The results are shown in Table 5.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 285" width="360" height="285" role="img" aria-label="Fermentation by yeast" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Fermentation by yeast</title><rect x="0" y="0" width="360" height="285" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M60,50 L60,183.0 A17.0,17.0 0 0 0 94,183.0 L94,50" fill="none"/><line x1="60" y1="90" x2="94" y2="90" stroke-width="0.9"/><circle cx="70.2" cy="153.5" r="1" fill="#000" stroke-width="0.5"/><circle cx="73.6" cy="158.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="80.3" cy="115.2" r="1" fill="#000" stroke-width="0.5"/><circle cx="64.3" cy="177" r="1" fill="#000" stroke-width="0.5"/><circle cx="70.7" cy="128.7" r="1" fill="#000" stroke-width="0.5"/><circle cx="89.9" cy="147.6" r="1" fill="#000" stroke-width="0.5"/><circle cx="85.7" cy="148.1" r="1" fill="#000" stroke-width="0.5"/><circle cx="80.6" cy="122" r="1" fill="#000" stroke-width="0.5"/><circle cx="80.5" cy="179.4" r="1" fill="#000" stroke-width="0.5"/><circle cx="77.6" cy="169.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="81.5" cy="115.1" r="1" fill="#000" stroke-width="0.5"/><circle cx="83.7" cy="157.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="71.8" cy="112.5" r="1" fill="#000" stroke-width="0.5"/><circle cx="86.5" cy="147.8" r="1" fill="#000" stroke-width="0.5"/><circle cx="82.7" cy="180.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="82.6" cy="183.7" r="1" fill="#000" stroke-width="0.5"/><circle cx="74.3" cy="174.1" r="1" fill="#000" stroke-width="0.5"/><circle cx="75.6" cy="184.8" r="1" fill="#000" stroke-width="0.5"/><circle cx="86.9" cy="117.8" r="1" fill="#000" stroke-width="0.5"/><circle cx="67.5" cy="127.4" r="1" fill="#000" stroke-width="0.5"/><circle cx="89.1" cy="144.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="80.3" cy="134.1" r="1" fill="#000" stroke-width="0.5"/><circle cx="77.2" cy="140.9" r="1" fill="#000" stroke-width="0.5"/><circle cx="73.1" cy="156.8" r="1" fill="#000" stroke-width="0.5"/><circle cx="79.2" cy="182.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="81.7" cy="184.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="86.3" cy="189.3" r="1" fill="#000" stroke-width="0.5"/><circle cx="81.5" cy="123" r="1" fill="#000" stroke-width="0.5"/><circle cx="86.4" cy="187.2" r="1" fill="#000" stroke-width="0.5"/><circle cx="87.5" cy="155.5" r="1" fill="#000" stroke-width="0.5"/><rect x="58" y="42" width="38" height="12" fill="#fff" stroke-width="1"/><path d="M77,42 L77,25 L200,25 L200,110" fill="none" stroke-width="1.2"/><path d="M186,80 L186,175.0 A15.0,15.0 0 0 0 216,175.0 L216,80" fill="none"/><line x1="186" y1="110" x2="216" y2="110" stroke-width="0.9"/><circle cx="200" cy="130" r="3" fill="none"/><circle cx="200" cy="150" r="3" fill="none"/><circle cx="200" cy="170" r="3" fill="none"/><line x1="216" y1="160" x2="250" y2="170" stroke-width="0.9"/><text x="254" y="174" text-anchor="start" fill="#000" stroke="none">limewater</text><polyline points="30,80 30,225 140,225 140,80" fill="none"/><line x1="30" y1="80" x2="25" y2="76"/><line x1="30" y1="115" x2="140" y2="115" stroke-width="0.9"/><line x1="138" y1="210" x2="165" y2="250" stroke-width="0.9"/><text x="169" y="254" text-anchor="start" fill="#000" stroke="none">water bath at 35 \xB0C</text><line x1="72" y1="180" x2="40" y2="272" stroke-width="0.9"/><text x="44" y="276" text-anchor="start" fill="#000" stroke="none">yeast and sugar solution</text></g></svg>`,
-          figure: "Figure 4. Apparatus to investigate fermentation",
-          table: {
-            title: "TABLE 5: BUBBLES PRODUCED BY YEAST",
-            headers: [
-              "Temperature/\xB0C",
-              "10",
-              "20",
-              "30",
-              "40",
-              "50",
-              "60"
-            ],
-            rows: [
-              [
-                "Number of bubbles per minute",
-                "2",
-                "8",
-                "18",
-                "26",
-                "12",
-                "0"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "On the grid provided, plot a graph of number of bubbles per minute against temperature.",
-              marks: 5,
-              objective: "2.2.5",
-              profile: {
-                XS: 5
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "graph",
-                height: 320,
-                x: "Temperature/\xB0C",
-                y: "Bubbles per minute"
-              },
-              markScheme: {
-                points: [
-                  "All six points plotted",
-                  "Axes labelled with units",
-                  "Suitable scale",
-                  "Smooth curve"
-                ],
-                guidance: "2 marks for correct plotting of points (all points = 2; at least half = 1); 1 mark for both axes labelled with units; 1 mark for an appropriate scale (at least 75% of the grid used); 1 mark for a smooth line/curve joining the points",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Use your graph to estimate the optimum temperature for fermentation.",
-              marks: 1,
-              objective: "2.2.5",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "About 40 \xB0C (accept 38-42 \xB0C)."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain why no bubbles were produced at 60 \xB0C.",
-              marks: 2,
-              objective: "2.2.5",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "The high temperature denatured the yeast's enzymes / killed the yeast (1)",
-                  "so respiration/fermentation stopped and no carbon dioxide was produced (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "Name the gas given off and describe a test to identify it.",
-              marks: 2,
-              objective: "2.2.5",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Carbon dioxide (1)",
-                  "Bubble it through limewater, which turns milky (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(v)",
-              prompt: "Suggest ONE improvement to the method of measuring the gas produced.",
-              marks: 1,
-              objective: "2.2.5",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Collect the gas in a gas syringe/measuring cylinder over water to measure volume, because bubbles vary in size."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Write the word equation for anaerobic respiration in yeast.",
-              marks: 2,
-              objective: "2.2.5",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Glucose \u2192 ethanol (alcohol) + carbon dioxide + energy"
-                ],
-                guidance: "1 mark for ethanol + carbon dioxide; 1 mark for complete equation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how the products of anaerobic respiration by yeast are used in bakeries and breweries.",
-              marks: 3,
-              objective: "2.2.5",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "In bakeries, the carbon dioxide produced forms bubbles which make the dough rise (1)",
-                  "the alcohol evaporates during baking (1)",
-                  "in breweries the ethanol is the useful product in drinks such as beer and wine (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State TWO differences between aerobic and anaerobic respiration.",
-              marks: 2,
-              objective: "2.2.5",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Aerobic needs oxygen; anaerobic does not",
-                  "Aerobic releases much more energy",
-                  "Aerobic produces CO\u2082 and water; anaerobic produces lactic acid or ethanol and CO\u2082",
-                  "Aerobic occurs in mitochondria; anaerobic in cytoplasm"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State the site of aerobic respiration in a cell.",
-              marks: 2,
-              objective: "2.2.4",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Mitochondria (1) in the cytoplasm of all living cells (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-20",
-      module: 2,
-      kind: "structured",
-      title: "Keeping homes cool and safe",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 6,
-        UK: 9,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 5,
-          title: "Temperature Control and Ventilation"
-        },
-        {
-          topic: 4,
-          title: "Electricity and Lighting"
-        }
-      ],
-      objectives: [
-        "2.5.5",
-        "2.5.1",
-        "2.5.4",
-        "2.5.2",
-        "2.4.9",
-        "2.4.10"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "The Brown family is building a new house in Jamaica and wants it to stay cool without using too much electricity.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Suggest TWO features of the house which would promote natural ventilation.",
-              marks: 2,
-              objective: "2.5.5",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Windows on opposite walls (cross-ventilation)",
-                  "Louvre windows",
-                  "High ceilings with vents near the roof",
-                  "Open verandahs/wide doors"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why the roof should be painted white or a light colour.",
-              marks: 2,
-              objective: "2.5.1",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Light colours reflect radiant heat from the sun (1)",
-                  "so less heat is absorbed and the house stays cooler (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain why a ceiling fan makes people feel cooler.",
-              marks: 2,
-              objective: "2.5.4",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Moving air speeds up the evaporation of sweat from the skin (1)",
-                  "evaporation takes latent heat from the body (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "The family installs an air conditioner with a thermostat. Explain how the thermostat saves energy.",
-              marks: 3,
-              objective: "2.5.2",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "The thermostat senses the room temperature (1)",
-                  "it switches the compressor off when the set temperature is reached (1)",
-                  "and on again only when the room warms up, so the unit does not run all the time (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO benefits of proper ventilation in a home.",
-              marks: 2,
-              objective: "2.5.5",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Supplies fresh oxygen",
-                  "Removes carbon dioxide/stale air",
-                  "Removes moisture, reducing mould",
-                  "Removes heat",
-                  "Removes fumes/smoke"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name the THREE methods of extinguishing a fire and give ONE example of EACH.",
-              marks: 3,
-              objective: "2.4.9",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Removing heat - spraying water on burning wood (1)",
-                  "Removing oxygen - fire blanket/CO\u2082 extinguisher/foam (1)",
-                  "Removing fuel - turning off gas supply/cutting a firebreak (1)"
-                ],
-                guidance: "1 mark each (method with example)",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State ONE item of protective wear the builders should use and explain its purpose.",
-              marks: 1,
-              objective: "2.4.10",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Hard hat - protects the head from falling objects (accept goggles, gloves, boots with suitable purpose)."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-21",
-      module: 2,
-      kind: "practical",
-      title: "Light intensity and photosynthesis",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 2,
-        UK: 8,
-        XS: 10
-      },
-      topics: [
-        {
-          topic: 1,
-          title: "Conservation of Energy"
-        }
-      ],
-      objectives: [
-        "2.1.3"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "A student placed a lamp at different distances from a piece of pondweed in water, as shown in Figure 1, and counted the bubbles of gas given off in one minute. The results are shown in Table 1.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250" role="img" aria-label="Bubbles of gas given off by pondweed" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Bubbles of gas given off by pondweed</title><rect x="0" y="0" width="400" height="250" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="120,60 120,230 300,230 300,60" fill="none"/><line x1="120" y1="60" x2="115" y2="56"/><line x1="120" y1="80" x2="300" y2="80" stroke-width="0.9"/><polyline points="155,170 206,210 206,210" fill="none"/><polyline points="265,170 214,210 214,210" fill="none"/><polyline points="155,170 265,170" fill="none"/><path d="M196,40 L196,136.0 A14.0,14.0 0 0 0 224,136.0 L224,40" fill="none"/><line x1="196" y1="55" x2="224" y2="55" stroke-width="0.8"/><circle cx="210" cy="120" r="3" fill="none"/><circle cx="206" cy="100" r="3" fill="none"/><circle cx="213" cy="80" r="3" fill="none"/><circle cx="209" cy="140" r="3" fill="none"/><circle cx="211" cy="160" r="3" fill="none"/><path d="M190,225 q-20,-20 -10,-50 M200,225 q10,-25 0,-50 M215,225 q25,-20 15,-50 M230,225 q20,-15 25,-40" fill="none" stroke-width="1.2"/><line x1="248" y1="195" x2="330" y2="205" stroke-width="0.9"/><text x="334" y="209" text-anchor="start" fill="#000" stroke="none">pondweed</text><line x1="224" y1="90" x2="330" y2="90" stroke-width="0.9"/><text x="334" y="94" text-anchor="start" fill="#000" stroke="none">gas</text><line x1="40" y1="110" x2="110" y2="110"/><polygon points="110,110 102.7,113.4 102.7,106.6" fill="#000" stroke-width="1"/><text x="40" y="100" text-anchor="start" fill="#000" stroke="none">light</text></g></svg>`,
-          figure: "Figure 1. Apparatus used",
-          table: {
-            title: "TABLE 1: BUBBLES PRODUCED BY PONDWEED",
-            headers: [
-              "Distance of lamp/cm",
-              "10",
-              "20",
-              "30",
-              "40",
-              "50"
-            ],
-            rows: [
-              [
-                "Bubbles per minute",
-                "48",
-                "30",
-                "18",
-                "10",
-                "6"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "On the grid provided, plot a graph of bubbles per minute against distance of the lamp.",
-              marks: 5,
-              objective: "2.1.3",
-              profile: {
-                XS: 5
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "graph",
-                height: 320,
-                x: "Distance of lamp/cm",
-                y: "Bubbles per minute"
-              },
-              markScheme: {
-                points: [
-                  "Points (10,48) (20,30) (30,18) (40,10) (50,6) plotted",
-                  "Axes labelled with units",
-                  "Suitable scale",
-                  "Smooth curve"
-                ],
-                guidance: "2 marks for correct plotting of points (all points = 2; at least half = 1); 1 mark for both axes labelled with units; 1 mark for an appropriate scale (at least 75% of the grid used); 1 mark for a smooth line/curve joining the points",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Describe the relationship shown by your graph.",
-              marks: 2,
-              objective: "2.1.3",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "As the distance of the lamp increases, the number of bubbles decreases (1)",
-                  "the decrease is rapid at first and then slows (not a straight line) (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain the effect of moving the lamp further away on the rate of photosynthesis.",
-              marks:
+                guidanc

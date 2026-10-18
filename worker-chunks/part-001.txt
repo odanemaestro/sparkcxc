@@ -1,4 +1,1581 @@
-" y2="224" stroke-width="0.6"/><line x1="255.7" y1="14" x2="255.7" y2="224" stroke-width="0.6"/><line x1="305.1" y1="14" x2="305.1" y2="224" stroke-width="0.6"/><line x1="354.6" y1="14" x2="354.6" y2="224" stroke-width="0.6"/><line x1="404" y1="14" x2="404" y2="224" stroke-width="0.6"/><line x1="58" y1="224" x2="404" y2="224" stroke-width="0.6"/><line x1="58" y1="182" x2="404" y2="182" stroke-width="0.6"/><line x1="58" y1="140" x2="404" y2="140" stroke-width="0.6"/><line x1="58" y1="98" x2="404" y2="98" stroke-width="0.6"/><line x1="58" y1="56" x2="404" y2="56" stroke-width="0.6"/><line x1="58" y1="14" x2="404" y2="14" stroke-width="0.6"/><line x1="58" y1="224" x2="404" y2="224" stroke-width="1.4"/><line x1="58" y1="224" x2="58" y2="14" stroke-width="1.4"/><line x1="58" y1="224" x2="58" y2="228" stroke-width="1"/><text x="58" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">0</text><line x1="107.4" y1="224" x2="107.4" y2="228" stroke-width="1"/><text x="107.4" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">1</text><line x1="156.9" y1="224" x2="156.9" y2="228" stroke-width="1"/><text x="156.9" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">2</text><line x1="206.3" y1="224" x2="206.3" y2="228" stroke-width="1"/><text x="206.3" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">3</text><line x1="255.7" y1="224" x2="255.7" y2="228" stroke-width="1"/><text x="255.7" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">4</text><line x1="305.1" y1="224" x2="305.1" y2="228" stroke-width="1"/><text x="305.1" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">5</text><line x1="354.6" y1="224" x2="354.6" y2="228" stroke-width="1"/><text x="354.6" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">6</text><line x1="404" y1="224" x2="404" y2="228" stroke-width="1"/><text x="404" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">7</text><line x1="54" y1="224" x2="58" y2="224" stroke-width="1"/><text x="51" y="228" text-anchor="end" fill="#000" stroke="none" font-size="12">0</text><line x1="54" y1="182" x2="58" y2="182" stroke-width="1"/><text x="51" y="186" text-anchor="end" fill="#000" stroke="none" font-size="12">10</text><line x1="54" y1="140" x2="58" y2="140" stroke-width="1"/><text x="51" y="144" text-anchor="end" fill="#000" stroke="none" font-size="12">20</text><line x1="54" y1="98" x2="58" y2="98" stroke-width="1"/><text x="51" y="102" text-anchor="end" fill="#000" stroke="none" font-size="12">30</text><line x1="54" y1="56" x2="58" y2="56" stroke-width="1"/><text x="51" y="60" text-anchor="end" fill="#000" stroke="none" font-size="12">40</text><line x1="54" y1="14" x2="58" y2="14" stroke-width="1"/><text x="51" y="18" text-anchor="end" fill="#000" stroke="none" font-size="12">50</text><text x="231" y="260" text-anchor="middle" fill="#000" stroke="none">Time/weeks</text><text x="14" y="119" text-anchor="middle" fill="#000" stroke="none" transform="rotate(-90 14 119)">Height/cm</text><polyline points="58,224 107.4,215.6 156.9,198.8 206.3,165.2 255.7,131.6 305.1,98 354.6,64.4" fill="none" stroke-width="1.6"/><circle cx="58" cy="224" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="107.4" cy="215.6" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="156.9" cy="198.8" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="206.3" cy="165.2" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="255.7" cy="131.6" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="305.1" cy="98" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="354.6" cy="64.4" r="2.6" fill="#000" stroke-width="0.5"/></g></svg>`,
+     text: "examine animal and plant cells"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following structures are found in plant cells but NOT in animal cells?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Cell wall and chloroplasts",
+        B: "Nucleus and cell membrane",
+        C: "Cytoplasm and mitochondria",
+        D: "Ribosomes and cell membrane"
+      },
+      answer: "A",
+      explanation: "Cell walls, chloroplasts and a large permanent vacuole are features of plant cells only.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-011",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Proteins are made in the cell by the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "vacuoles",
+        B: "ribosomes",
+        C: "cell wall",
+        D: "chloroplasts"
+      },
+      answer: "B",
+      explanation: "Ribosomes are the sites of protein synthesis.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-238",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which cell structure contains chlorophyll?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Nucleus",
+        B: "Vacuole",
+        C: "Mitochondrion",
+        D: "Chloroplast"
+      },
+      answer: "D",
+      explanation: "Chloroplasts contain chlorophyll which absorbs light for photosynthesis.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-239",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The jelly-like substance in which the chemical reactions of the cell take place is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cytoplasm",
+        B: "cell wall",
+        C: "vacuole",
+        D: "nucleus"
+      },
+      answer: "A",
+      explanation: "Most chemical reactions of the cell take place in the cytoplasm.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-240",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A cell was observed to have a nucleus, cytoplasm, cell membrane and many mitochondria, but no cell wall. The cell is MOST likely from",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "a leaf",
+        B: "a root",
+        C: "muscle tissue",
+        D: "an onion bulb"
+      },
+      answer: "C",
+      explanation: "No cell wall means an animal cell; many mitochondria suggest an active cell such as muscle.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-241",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Root hair cells do NOT contain chloroplasts because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "they do not need energy",
+        B: "they have no cytoplasm",
+        C: "they are dead cells",
+        D: "they are underground and receive no light"
+      },
+      answer: "D",
+      explanation: "Chloroplasts would be of no use where there is no light for photosynthesis.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-242",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is the function of the vacuole in a plant cell?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "It stores cell sap and keeps the cell firm",
+        B: "It makes proteins",
+        C: "It releases energy",
+        D: "It controls cell division"
+      },
+      answer: "A",
+      explanation: "The large permanent vacuole holds cell sap and helps keep the cell turgid.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-243",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The instrument used to observe cells from a prepared slide is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "telescope",
+        B: "light microscope",
+        C: "hand lens only",
+        D: "stethoscope"
+      },
+      answer: "B",
+      explanation: "Cells are too small to see without a microscope.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-244",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is found in BOTH plant and animal cells?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Cell wall",
+        B: "Chloroplast",
+        C: "Mitochondrion",
+        D: "Large permanent vacuole"
+      },
+      answer: "C",
+      explanation: "Both types of cell respire aerobically and contain mitochondria.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-453",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A student observed cells from an onion bulb under a microscope. Which structure would she NOT see?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Cell wall",
+        B: "Nucleus",
+        C: "Cytoplasm",
+        D: "Chloroplast"
+      },
+      answer: "D",
+      explanation: "Onion bulb cells are underground storage cells with no chloroplasts.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-454",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Mitochondria are found in large numbers in",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "dead cells",
+        B: "muscle cells",
+        C: "red blood cells",
+        D: "cell walls"
+      },
+      answer: "B",
+      explanation: "Active cells need lots of energy from respiration.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-012",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which part of the cell controls the activities of the cell and contains the genetic information?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-ACELL",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "I",
+        B: "II",
+        C: "III",
+        D: "IV"
+      },
+      answer: "A",
+      explanation: "I labels the nucleus, which contains chromosomes (genetic information) and controls the cell.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-013",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "In which structure is energy released during aerobic respiration?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-ACELL",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "I",
+        B: "II",
+        C: "III",
+        D: "IV"
+      },
+      answer: "D",
+      explanation: "IV labels a mitochondrion, the site of aerobic respiration.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-014",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The structure labelled III",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-ACELL",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "makes food for the cell",
+        B: "gives the cell a fixed shape",
+        C: "controls what enters and leaves the cell",
+        D: "stores cell sap"
+      },
+      answer: "C",
+      explanation: "III is the cell membrane, which controls the movement of substances into and out of the cell.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-015",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The structure labelled Q is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-PCELL",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "nucleus",
+        B: "chloroplast",
+        C: "vacuole",
+        D: "cell wall"
+      },
+      answer: "B",
+      explanation: "Q points to one of the small oval bodies in the cytoplasm: a chloroplast.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-016",
+      module: 1,
+      objective: {
+        code: "1.1.2",
+        topic: 1,
+        topicTitle: "Units of Life",
+        text: "examine animal and plant cells"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which labelled structure is made of cellulose and gives the plant cell a fixed shape?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-PCELL",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "R",
+        C: "S",
+        D: "T"
+      },
+      answer: "A",
+      explanation: "P is the cell wall, made of cellulose.",
+      topic: 1
+    },
+    {
+      id: "IS-M1-P1-017",
+      module: 1,
+      objective: {
+        code: "1.2.1",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "distinguish between asexual and sexual reproduction"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is a feature of asexual reproduction?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Two parents are needed.",
+        B: "Offspring are identical to the parent.",
+        C: "Gametes fuse to form a zygote.",
+        D: "There is great variety among the offspring."
+      },
+      answer: "B",
+      explanation: "Asexual reproduction involves one parent and mitosis, so the offspring are genetically identical (clones).",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-018",
+      module: 1,
+      objective: {
+        code: "1.2.1",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "distinguish between asexual and sexual reproduction"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The type of cell division which produces gametes is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "meiosis",
+        B: "mitosis",
+        C: "budding",
+        D: "binary fission"
+      },
+      answer: "A",
+      explanation: "Meiosis halves the chromosome number to produce gametes; mitosis produces identical body cells.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-019",
+      module: 1,
+      objective: {
+        code: "1.2.1",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "distinguish between asexual and sexual reproduction"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A disadvantage of asexual reproduction in crops is that",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "many plants are produced quickly",
+        B: "the plants mature faster",
+        C: "a disease can wipe out the whole crop",
+        D: "good qualities of the parent are kept"
+      },
+      answer: "C",
+      explanation: "All the offspring are identical, so a disease that attacks one plant can attack them all; there is no variation.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-020",
+      module: 1,
+      objective: {
+        code: "1.2.1",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "distinguish between asexual and sexual reproduction"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is an advantage of sexual reproduction?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Only one parent is needed.",
+        B: "Large numbers of offspring are produced quickly.",
+        C: "Offspring are exactly like the parent.",
+        D: "Offspring show variation and may adapt to change."
+      },
+      answer: "D",
+      explanation: "Fusion of gametes from two parents produces variation, which helps a species adapt to changing conditions.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-245",
+      module: 1,
+      objective: {
+        code: "1.2.1",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "distinguish between asexual and sexual reproduction"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Sexual reproduction involves the fusion of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "two body cells",
+        B: "two gametes",
+        C: "two nuclei from the same cell",
+        D: "a spore and a gamete"
+      },
+      answer: "B",
+      explanation: "Male and female gametes fuse at fertilisation to form a zygote.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-246",
+      module: 1,
+      objective: {
+        code: "1.2.1",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "distinguish between asexual and sexual reproduction"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Mitosis produces cells which are",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "gametes with half the chromosomes",
+        B: "always different from the parent",
+        C: "only found in flowers",
+        D: "genetically identical to the parent cell"
+      },
+      answer: "D",
+      explanation: "Mitosis is used for growth, repair and asexual reproduction.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-247",
+      module: 1,
+      objective: {
+        code: "1.2.1",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "distinguish between asexual and sexual reproduction"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A farmer prefers to grow pineapples from suckers rather than from seeds because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the plants show more variation",
+        B: "suckers produce more seeds",
+        C: "the new plants have the same good qualities as the parent",
+        D: "seeds cannot grow in the Caribbean"
+      },
+      answer: "C",
+      explanation: "Vegetative propagation produces offspring identical to the parent.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-248",
+      module: 1,
+      objective: {
+        code: "1.2.1",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "distinguish between asexual and sexual reproduction"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is a DISADVANTAGE of sexual reproduction?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Two parents are usually needed and it takes longer.",
+        B: "It produces variation.",
+        C: "Offspring can adapt to new conditions.",
+        D: "Seeds can be dispersed far away."
+      },
+      answer: "A",
+      explanation: "Finding a mate or pollinator and forming seeds takes time and energy.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-455",
+      module: 1,
+      objective: {
+        code: "1.2.1",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "distinguish between asexual and sexual reproduction"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Asexual reproduction involves the type of cell division called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "meiosis",
+        B: "mitosis",
+        C: "fertilisation",
+        D: "pollination"
+      },
+      answer: "B",
+      explanation: "Mitosis produces genetically identical cells.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-456",
+      module: 1,
+      objective: {
+        code: "1.2.1",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "distinguish between asexual and sexual reproduction"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following statements is TRUE for sexual reproduction in plants?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Only one parent is ever involved.",
+        B: "Offspring are always identical.",
+        C: "Gametes are produced by meiosis.",
+        D: "No seeds are formed."
+      },
+      answer: "C",
+      explanation: "Meiosis halves the chromosome number to form gametes.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-457",
+      module: 1,
+      objective: {
+        code: "1.2.1",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "distinguish between asexual and sexual reproduction"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A disease-resistant variety of banana could be produced MOST easily by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "taking cuttings from a diseased plant",
+        B: "sexual reproduction and selection",
+        C: "tissue culture of a diseased plant",
+        D: "grafting diseased shoots"
+      },
+      answer: "B",
+      explanation: "Variation from sexual reproduction provides new traits to select from.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-458",
+      module: 1,
+      objective: {
+        code: "1.2.1",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "distinguish between asexual and sexual reproduction"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is an ADVANTAGE of asexual reproduction to a farmer?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "There is a lot of variation.",
+        B: "Plants can adapt quickly to new diseases.",
+        C: "Two parents are needed.",
+        D: "Crops with the desired qualities are reproduced exactly."
+      },
+      answer: "D",
+      explanation: "Clones keep the qualities of the parent.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-021",
+      module: 1,
+      objective: {
+        code: "1.2.2",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine various methods of asexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is an example of a corm?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Onion",
+        B: "Dasheen",
+        C: "Ginger",
+        D: "Strawberry"
+      },
+      answer: "B",
+      explanation: "Dasheen (eddoe) is a corm. Onion is a bulb, ginger is a rhizome and strawberry reproduces by runners.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-022",
+      module: 1,
+      objective: {
+        code: "1.2.2",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine various methods of asexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Ginger and canna lily reproduce by means of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "rhizomes",
+        B: "bulbs",
+        C: "corms",
+        D: "runners"
+      },
+      answer: "A",
+      explanation: "Ginger grows from rhizomes, underground horizontal stems.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-023",
+      module: 1,
+      objective: {
+        code: "1.2.2",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine various methods of asexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A horizontal stem which grows along the surface of the soil and produces new plants at its nodes is called a",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "bulb",
+        B: "corm",
+        C: "runner",
+        D: "rhizome"
+      },
+      answer: "C",
+      explanation: "Runners (stolons), as in strawberry and some grasses, grow along the soil surface.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-024",
+      module: 1,
+      objective: {
+        code: "1.2.2",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine various methods of asexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which method of artificial propagation involves joining the shoot of one plant onto the rooted stem of another plant?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Grafting",
+        B: "Cutting",
+        C: "Layering",
+        D: "Tissue culture"
+      },
+      answer: "A",
+      explanation: "In grafting a scion (shoot) is joined to a rootstock.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-025",
+      module: 1,
+      objective: {
+        code: "1.2.2",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine various methods of asexual reproduction in plants"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A farmer wants to produce thousands of identical, disease-free banana plantlets from a few cells of one parent plant. Which method should he use?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Budding",
+        B: "Cuttings",
+        C: "Grafting",
+        D: "Tissue culture"
+      },
+      answer: "D",
+      explanation: "Tissue culture grows many identical plantlets from small pieces of tissue under sterile conditions.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-026",
+      module: 1,
+      objective: {
+        code: "1.2.2",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine various methods of asexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following plants is COMMONLY propagated from stem cuttings?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Mango",
+        B: "Sugar cane",
+        C: "Onion",
+        D: "Dasheen"
+      },
+      answer: "B",
+      explanation: "Sugar cane is planted from stem cuttings (setts). Mango is usually grafted, onion grows from bulbs and dasheen from corms.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-249",
+      module: 1,
+      objective: {
+        code: "1.2.2",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine various methods of asexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "An onion reproduces asexually by means of a",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "corm",
+        B: "rhizome",
+        C: "runner",
+        D: "bulb"
+      },
+      answer: "D",
+      explanation: "The onion bulb has fleshy leaves storing food around a short stem.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-250",
+      module: 1,
+      objective: {
+        code: "1.2.2",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine various methods of asexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is an ARTIFICIAL method of vegetative propagation?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Runners",
+        B: "Corms",
+        C: "Budding",
+        D: "Rhizomes"
+      },
+      answer: "C",
+      explanation: "Budding is done by people; runners, corms and rhizomes are natural.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-251",
+      module: 1,
+      objective: {
+        code: "1.2.2",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine various methods of asexual reproduction in plants"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Budding is often used to propagate citrus trees because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "produces new varieties",
+        B: "does not need a rootstock",
+        C: "produces seeds quickly",
+        D: "combines a strong rootstock with a variety that produces good fruit"
+      },
+      answer: "D",
+      explanation: "A bud of the desired variety is inserted into a hardy rootstock.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-252",
+      module: 1,
+      objective: {
+        code: "1.2.2",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine various methods of asexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Producing a genetically identical copy of an organism is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cloning",
+        B: "pollination",
+        C: "fertilisation",
+        D: "germination"
+      },
+      answer: "A",
+      explanation: "Cloning produces genetically identical organisms; tissue culture is one method.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-253",
+      module: 1,
+      objective: {
+        code: "1.2.2",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine various methods of asexual reproduction in plants"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Perennating organs such as corms and bulbs help plants to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "attract insects",
+        B: "make seeds",
+        C: "carry out photosynthesis underground",
+        D: "survive unfavourable conditions such as a dry season"
+      },
+      answer: "D",
+      explanation: "They store food so the plant can survive and regrow when conditions improve.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-027",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is a feature of wind-pollinated flowers?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Large brightly coloured petals",
+        B: "Sticky, spiky pollen grains",
+        C: "Nectaries and a strong scent",
+        D: "Feathery stigmas hanging outside the flower"
+      },
+      answer: "D",
+      explanation: "Wind-pollinated flowers have feathery stigmas and anthers hanging outside, small dull petals and light, smooth pollen.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-028",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The transfer of pollen from the anther of one flower to the stigma of a flower on a DIFFERENT plant of the same kind is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "fertilisation",
+        B: "self-pollination",
+        C: "cross-pollination",
+        D: "vegetative propagation"
+      },
+      answer: "C",
+      explanation: "Cross-pollination is between different plants of the same species; it increases variation.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-029",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "After fertilisation, the ovary of a flower develops into the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "fruit",
+        B: "seed",
+        C: "embryo",
+        D: "seed coat"
+      },
+      answer: "A",
+      explanation: "The ovary becomes the fruit and the ovules become the seeds.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-030",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following sequences represents the correct order of events in sexual reproduction in flowering plants?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Fertilisation, pollination, seed formation, germination",
+        B: "Pollination, fertilisation, seed formation, germination",
+        C: "Pollination, germination, fertilisation, seed formation",
+        D: "Germination, pollination, seed formation, fertilisation"
+      },
+      answer: "B",
+      explanation: "Pollen must reach the stigma (pollination) before gametes fuse (fertilisation); seeds then form and later germinate.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-254",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The male part of a flower is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "stamen",
+        B: "carpel",
+        C: "sepal",
+        D: "petal"
+      },
+      answer: "A",
+      explanation: "The stamen is made up of the anther and filament.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-255",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The female part of a flower, made up of the stigma, style and ovary, is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "stamen",
+        B: "carpel",
+        C: "receptacle",
+        D: "calyx"
+      },
+      answer: "B",
+      explanation: "The carpel (pistil) is the female part.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-256",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The function of the sepals is to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "attract insects",
+        B: "produce pollen",
+        C: "protect the flower when it is a bud",
+        D: "receive pollen"
+      },
+      answer: "C",
+      explanation: "Sepals enclose and protect the developing flower bud.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-257",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Cross-pollination is an advantage to a plant species because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "produces identical offspring",
+        B: "increases variation among the offspring",
+        C: "needs no pollinators",
+        D: "always produces more seeds"
+      },
+      answer: "B",
+      explanation: "Genetic material from two plants combines, increasing variation.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-258",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is a feature of insect-pollinated flowers?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Small green petals",
+        B: "Light, smooth pollen produced in large amounts",
+        C: "Scent and nectar",
+        D: "Feathery stigmas outside the flower"
+      },
+      answer: "C",
+      explanation: "Scent, nectar and bright petals attract insects.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-259",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "After fertilisation, the ovule develops into the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "fruit",
+        B: "seed",
+        C: "petal",
+        D: "stigma"
+      },
+      answer: "B",
+      explanation: "The ovule becomes the seed; the ovary wall becomes the fruit.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-031",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Pollen grains are produced in the structure labelled",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-FLOWER",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "Q",
+        C: "S",
+        D: "T"
+      },
+      answer: "A",
+      explanation: "P is the anther, where pollen grains are made.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-032",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which labelled structure develops into a seed after fertilisation?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-FLOWER",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "Q",
+        C: "S",
+        D: "T"
+      },
+      answer: "D",
+      explanation: "T is an ovule; after fertilisation the ovule becomes the seed (the ovary becomes the fruit).",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-033",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "During pollination, pollen grains are transferred to the structure labelled",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-FLOWER",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "Q",
+        C: "R",
+        D: "S"
+      },
+      answer: "B",
+      explanation: "Q is the stigma, which receives pollen.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-260",
+      module: 1,
+      objective: {
+        code: "1.2.3",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "examine the process of sexual reproduction in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The structure labelled Q stores food for the embryo. Q is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-SEED",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cotyledon",
+        B: "testa",
+        C: "plumule",
+        D: "radicle"
+      },
+      answer: "A",
+      explanation: "Cotyledons are the seed leaves that store food.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-261",
+      module: 1,
+      objective: {
+        code: "1.2.4",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "analyse growth patterns in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which labelled structure grows into the first root of the seedling?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-SEED",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "Q",
+        C: "R",
+        D: "S"
+      },
+      answer: "D",
+      explanation: "S is the radicle.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-262",
+      module: 1,
+      objective: {
+        code: "1.2.4",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "analyse growth patterns in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The structure labelled R develops into the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-SEED",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "root",
+        B: "shoot",
+        C: "seed coat",
+        D: "cotyledon"
+      },
+      answer: "B",
+      explanation: "R is the plumule, the embryonic shoot.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-034",
+      module: 1,
+      objective: {
+        code: "1.2.4",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "analyse growth patterns in plants"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following conditions is NOT needed for the germination of most seeds?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Water",
+        B: "Oxygen",
+        C: "Light",
+        D: "A suitable temperature"
+      },
+      answer: "C",
+      explanation: "Germination needs water, oxygen and a suitable temperature. Light is not needed because the seedling uses stored food.",
+      topic: 2
+    },
+    {
+      id: "IS-M1-P1-035",
+      module: 1,
+      objective: {
+        code: "1.2.4",
+        topic: 2,
+        topicTitle: "Reproduction and Growth in Plants",
+        text: "analyse growth patterns in plants"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "If the plant continues to grow at the same rate, what is its MOST likely height at Week 7?",
+      statements: null,
+      after: null,
+      stimulus: {
+        lead: "to the following graph which shows the growth of a corn plant.",
+        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 270" width="420" height="270" role="img" aria-label="Growth of a corn plant" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Growth of a corn plant</title><rect x="0" y="0" width="420" height="270" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="58" y1="14" x2="58" y2="224" stroke-width="0.35"/><line x1="82.7" y1="14" x2="82.7" y2="224" stroke-width="0.35"/><line x1="107.4" y1="14" x2="107.4" y2="224" stroke-width="0.35"/><line x1="132.1" y1="14" x2="132.1" y2="224" stroke-width="0.35"/><line x1="156.9" y1="14" x2="156.9" y2="224" stroke-width="0.35"/><line x1="181.6" y1="14" x2="181.6" y2="224" stroke-width="0.35"/><line x1="206.3" y1="14" x2="206.3" y2="224" stroke-width="0.35"/><line x1="231" y1="14" x2="231" y2="224" stroke-width="0.35"/><line x1="255.7" y1="14" x2="255.7" y2="224" stroke-width="0.35"/><line x1="280.4" y1="14" x2="280.4" y2="224" stroke-width="0.35"/><line x1="305.1" y1="14" x2="305.1" y2="224" stroke-width="0.35"/><line x1="329.9" y1="14" x2="329.9" y2="224" stroke-width="0.35"/><line x1="354.6" y1="14" x2="354.6" y2="224" stroke-width="0.35"/><line x1="379.3" y1="14" x2="379.3" y2="224" stroke-width="0.35"/><line x1="404" y1="14" x2="404" y2="224" stroke-width="0.35"/><line x1="58" y1="224" x2="404" y2="224" stroke-width="0.35"/><line x1="58" y1="203" x2="404" y2="203" stroke-width="0.35"/><line x1="58" y1="182" x2="404" y2="182" stroke-width="0.35"/><line x1="58" y1="161" x2="404" y2="161" stroke-width="0.35"/><line x1="58" y1="140" x2="404" y2="140" stroke-width="0.35"/><line x1="58" y1="119" x2="404" y2="119" stroke-width="0.35"/><line x1="58" y1="98" x2="404" y2="98" stroke-width="0.35"/><line x1="58" y1="77" x2="404" y2="77" stroke-width="0.35"/><line x1="58" y1="56" x2="404" y2="56" stroke-width="0.35"/><line x1="58" y1="35" x2="404" y2="35" stroke-width="0.35"/><line x1="58" y1="14" x2="404" y2="14" stroke-width="0.35"/><line x1="58" y1="14" x2="58" y2="224" stroke-width="0.6"/><line x1="107.4" y1="14" x2="107.4" y2="224" stroke-width="0.6"/><line x1="156.9" y1="14" x2="156.9" y2="224" stroke-width="0.6"/><line x1="206.3" y1="14" x2="206.3" y2="224" stroke-width="0.6"/><line x1="255.7" y1="14" x2="255.7" y2="224" stroke-width="0.6"/><line x1="305.1" y1="14" x2="305.1" y2="224" stroke-width="0.6"/><line x1="354.6" y1="14" x2="354.6" y2="224" stroke-width="0.6"/><line x1="404" y1="14" x2="404" y2="224" stroke-width="0.6"/><line x1="58" y1="224" x2="404" y2="224" stroke-width="0.6"/><line x1="58" y1="182" x2="404" y2="182" stroke-width="0.6"/><line x1="58" y1="140" x2="404" y2="140" stroke-width="0.6"/><line x1="58" y1="98" x2="404" y2="98" stroke-width="0.6"/><line x1="58" y1="56" x2="404" y2="56" stroke-width="0.6"/><line x1="58" y1="14" x2="404" y2="14" stroke-width="0.6"/><line x1="58" y1="224" x2="404" y2="224" stroke-width="1.4"/><line x1="58" y1="224" x2="58" y2="14" stroke-width="1.4"/><line x1="58" y1="224" x2="58" y2="228" stroke-width="1"/><text x="58" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">0</text><line x1="107.4" y1="224" x2="107.4" y2="228" stroke-width="1"/><text x="107.4" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">1</text><line x1="156.9" y1="224" x2="156.9" y2="228" stroke-width="1"/><text x="156.9" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">2</text><line x1="206.3" y1="224" x2="206.3" y2="228" stroke-width="1"/><text x="206.3" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">3</text><line x1="255.7" y1="224" x2="255.7" y2="228" stroke-width="1"/><text x="255.7" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">4</text><line x1="305.1" y1="224" x2="305.1" y2="228" stroke-width="1"/><text x="305.1" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">5</text><line x1="354.6" y1="224" x2="354.6" y2="228" stroke-width="1"/><text x="354.6" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">6</text><line x1="404" y1="224" x2="404" y2="228" stroke-width="1"/><text x="404" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">7</text><line x1="54" y1="224" x2="58" y2="224" stroke-width="1"/><text x="51" y="228" text-anchor="end" fill="#000" stroke="none" font-size="12">0</text><line x1="54" y1="182" x2="58" y2="182" stroke-width="1"/><text x="51" y="186" text-anchor="end" fill="#000" stroke="none" font-size="12">10</text><line x1="54" y1="140" x2="58" y2="140" stroke-width="1"/><text x="51" y="144" text-anchor="end" fill="#000" stroke="none" font-size="12">20</text><line x1="54" y1="98" x2="58" y2="98" stroke-width="1"/><text x="51" y="102" text-anchor="end" fill="#000" stroke="none" font-size="12">30</text><line x1="54" y1="56" x2="58" y2="56" stroke-width="1"/><text x="51" y="60" text-anchor="end" fill="#000" stroke="none" font-size="12">40</text><line x1="54" y1="14" x2="58" y2="14" stroke-width="1"/><text x="51" y="18" text-anchor="end" fill="#000" stroke="none" font-size="12">50</text><text x="231" y="260" text-anchor="middle" fill="#000" stroke="none">Time/weeks</text><text x="14" y="119" text-anchor="middle" fill="#000" stroke="none" transform="rotate(-90 14 119)">Height/cm</text><polyline points="58,224 107.4,215.6 156.9,198.8 206.3,165.2 255.7,131.6 305.1,98 354.6,64.4" fill="none" stroke-width="1.6"/><circle cx="58" cy="224" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="107.4" cy="215.6" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="156.9" cy="198.8" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="206.3" cy="165.2" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="255.7" cy="131.6" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="305.1" cy="98" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="354.6" cy="64.4" r="2.6" fill="#000" stroke-width="0.5"/></g></svg>`,
         table: null
       },
       group: null,
@@ -5941,1606 +7518,4 @@
       },
       profile: "KC",
       difficulty: 2,
-      stem: "The tube labelled S carries urine to the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M1-S-KIDLS",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "bladder",
-        B: "urethra",
-        C: "kidney",
-        D: "liver"
-      },
-      answer: "A",
-      explanation: "S is the ureter.",
-      topic: 5
-    },
-    {
-      id: "IS-M1-P1-357",
-      module: 1,
-      objective: {
-        code: "1.5.2",
-        topic: 5,
-        topicTitle: "Excretion",
-        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The part labelled P, where the glomeruli are found, is the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M1-S-KIDLS",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "medulla",
-        B: "pelvis",
-        C: "ureter",
-        D: "cortex"
-      },
-      answer: "D",
-      explanation: "The outer region is the cortex.",
-      topic: 5
-    },
-    {
-      id: "IS-M1-P1-133",
-      module: 1,
-      objective: {
-        code: "1.5.3",
-        topic: 5,
-        topicTitle: "Excretion",
-        text: "identify the methods of excretion in flowering plants"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The waste gas produced by leaves during photosynthesis is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "nitrogen",
-        B: "carbon dioxide",
-        C: "oxygen",
-        D: "water vapour"
-      },
-      answer: "C",
-      explanation: "Oxygen is a by-product of photosynthesis; excess oxygen diffuses out through the stomata.",
-      topic: 5
-    },
-    {
-      id: "IS-M1-P1-134",
-      module: 1,
-      objective: {
-        code: "1.5.3",
-        topic: 5,
-        topicTitle: "Excretion",
-        text: "identify the methods of excretion in flowering plants"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Some plants store waste products in their old leaves. These wastes are removed from the plant when the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "roots absorb water",
-        B: "flowers open",
-        C: "seeds germinate",
-        D: "leaves fall off"
-      },
-      answer: "D",
-      explanation: "Wastes stored in leaves or bark are got rid of when the leaves are shed or bark peels off.",
-      topic: 5
-    },
-    {
-      id: "IS-M1-P1-135",
-      module: 1,
-      objective: {
-        code: "1.5.3",
-        topic: 5,
-        topicTitle: "Excretion",
-        text: "identify the methods of excretion in flowering plants"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "At night, green plants excrete carbon dioxide because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "respiration continues but photosynthesis stops",
-        B: "photosynthesis is faster than respiration",
-        C: "photosynthesis continues but respiration stops",
-        D: "they absorb oxygen through the roots only"
-      },
-      answer: "A",
-      explanation: "In the dark there is no photosynthesis to use the CO\u2082 produced by respiration, so it diffuses out.",
-      topic: 5
-    },
-    {
-      id: "IS-M1-P1-358",
-      module: 1,
-      objective: {
-        code: "1.5.3",
-        topic: 5,
-        topicTitle: "Excretion",
-        text: "identify the methods of excretion in flowering plants"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Flowering plants get rid of excess water vapour MAINLY through their",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "roots",
-        B: "flowers",
-        C: "stomata",
-        D: "bark"
-      },
-      answer: "C",
-      explanation: "Water vapour diffuses out through stomata in transpiration.",
-      topic: 5
-    },
-    {
-      id: "IS-M1-P1-359",
-      module: 1,
-      objective: {
-        code: "1.5.3",
-        topic: 5,
-        topicTitle: "Excretion",
-        text: "identify the methods of excretion in flowering plants"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Plants do not need special excretory organs like kidneys because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "they do not respire",
-        B: "they produce few waste products and reuse some of them",
-        C: "they do not photosynthesise",
-        D: "they excrete through flowers"
-      },
-      answer: "B",
-      explanation: "Carbon dioxide and oxygen are largely reused in photosynthesis and respiration.",
-      topic: 5
-    },
-    {
-      id: "IS-M1-P1-480",
-      module: 1,
-      objective: {
-        code: "1.5.3",
-        topic: 5,
-        topicTitle: "Excretion",
-        text: "identify the methods of excretion in flowering plants"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Plants get rid of excess oxygen produced during photosynthesis through the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "roots",
-        B: "flowers",
-        C: "stomata",
-        D: "xylem"
-      },
-      answer: "C",
-      explanation: "Oxygen diffuses out of the leaves.",
-      topic: 5
-    },
-    {
-      id: "IS-M1-P1-481",
-      module: 1,
-      objective: {
-        code: "1.5.3",
-        topic: 5,
-        topicTitle: "Excretion",
-        text: "identify the methods of excretion in flowering plants"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Some plants store waste products such as tannins in their",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "bark",
-        B: "flowers only",
-        C: "root hairs",
-        D: "chloroplasts"
-      },
-      answer: "A",
-      explanation: "Waste is removed when the bark peels.",
-      topic: 5
-    },
-    {
-      id: "IS-M1-P1-482",
-      module: 1,
-      objective: {
-        code: "1.5.3",
-        topic: 5,
-        topicTitle: "Excretion",
-        text: "identify the methods of excretion in flowering plants"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "In bright sunlight, the main gaseous waste given off by green leaves is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "carbon dioxide",
-        B: "oxygen",
-        C: "nitrogen",
-        D: "methane"
-      },
-      answer: "B",
-      explanation: "Photosynthesis is faster than respiration.",
-      topic: 5
-    },
-    {
-      id: "IS-M1-P1-136",
-      module: 1,
-      objective: {
-        code: "1.6.1",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "describe the sense organs and their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which sense organ responds to chemicals dissolved in saliva?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Eye",
-        B: "Ear",
-        C: "Nose",
-        D: "Tongue"
-      },
-      answer: "D",
-      explanation: "Taste buds on the tongue detect chemicals dissolved in saliva.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-137",
-      module: 1,
-      objective: {
-        code: "1.6.1",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "describe the sense organs and their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Receptors in the skin are sensitive to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "touch, pressure, pain and temperature",
-        B: "light and sound",
-        C: "smell only",
-        D: "balance and sound"
-      },
-      answer: "A",
-      explanation: "The skin contains receptors for touch, pressure, pain, heat and cold.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-138",
-      module: 1,
-      objective: {
-        code: "1.6.1",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "describe the sense organs and their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "When a person has a bad cold, food seems to have little taste. This is because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the tongue stops producing saliva",
-        B: "the teeth cannot chew properly",
-        C: "the sense of smell is reduced",
-        D: "the ears are blocked"
-      },
-      answer: "C",
-      explanation: "Much of the flavour of food comes from smell; a blocked nose reduces it.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-360",
-      module: 1,
-      objective: {
-        code: "1.6.1",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "describe the sense organs and their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The sense organ which detects sound is the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "eye",
-        B: "ear",
-        C: "nose",
-        D: "skin"
-      },
-      answer: "B",
-      explanation: "The ear detects sound and also helps balance.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-361",
-      module: 1,
-      objective: {
-        code: "1.6.1",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "describe the sense organs and their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following correctly matches a sense organ with the stimulus it detects?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Eye - sound",
-        B: "Tongue - light",
-        C: "Ear - temperature",
-        D: "Nose - chemicals in the air"
-      },
-      answer: "D",
-      explanation: "Smell receptors in the nose detect chemicals carried in air.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-362",
-      module: 1,
-      objective: {
-        code: "1.6.1",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "describe the sense organs and their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Sense organs contain receptors which change stimuli into",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "nerve impulses",
-        B: "hormones",
-        C: "sound",
-        D: "blood"
-      },
-      answer: "A",
-      explanation: "Receptors convert stimuli into electrical impulses sent to the brain.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-483",
-      module: 1,
-      objective: {
-        code: "1.6.1",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "describe the sense organs and their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Receptors in the nose detect",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "light",
-        B: "chemicals in the air",
-        C: "sound",
-        D: "pressure"
-      },
-      answer: "B",
-      explanation: "Smell receptors are chemoreceptors.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-484",
-      module: 1,
-      objective: {
-        code: "1.6.1",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "describe the sense organs and their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Fingertips are very sensitive to touch because they",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "have no nerves",
-        B: "are covered in hair",
-        C: "have thick skin",
-        D: "have many touch receptors"
-      },
-      answer: "D",
-      explanation: "Receptor density is high in fingertips.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-485",
-      module: 1,
-      objective: {
-        code: "1.6.1",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "describe the sense organs and their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which of the following is a stimulus?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Light",
-        B: "Muscle",
-        C: "Gland",
-        D: "Nerve"
-      },
-      answer: "A",
-      explanation: "A stimulus is a change detected by a receptor.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-139",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The transparent front part of the eye which bends (refracts) most of the light entering the eye is the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "cornea",
-        B: "retina",
-        C: "choroid",
-        D: "sclera"
-      },
-      answer: "A",
-      explanation: "The cornea does most of the refraction; the lens makes fine adjustments.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-140",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "When a person moves from a dark room into bright sunlight, the pupils",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "become larger because the radial muscles of the iris contract",
-        B: "become smaller because the circular muscles of the iris contract",
-        C: "become larger because the ciliary muscles relax",
-        D: "become smaller because the lens becomes thicker"
-      },
-      answer: "B",
-      explanation: "In bright light the circular muscles of the iris contract, making the pupil smaller to protect the retina.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-141",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "When a person looks at a NEAR object, the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "ciliary muscles relax and the lens becomes thinner",
-        B: "suspensory ligaments become tight and the lens becomes fatter",
-        C: "ciliary muscles contract and the lens becomes fatter",
-        D: "pupil becomes larger and the lens becomes thinner"
-      },
-      answer: "C",
-      explanation: "Accommodation for near vision: ciliary muscles contract, suspensory ligaments slacken and the elastic lens becomes more convex.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-142",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The image formed on the retina is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "inverted and smaller",
-        B: "upright and smaller",
-        C: "upright and larger",
-        D: "inverted and larger"
-      },
-      answer: "A",
-      explanation: "The lens forms a real, inverted, diminished image on the retina; the brain interprets it the right way up.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-143",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The part of the retina where vision is sharpest is the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "blind spot",
-        B: "choroid",
-        C: "iris",
-        D: "fovea"
-      },
-      answer: "D",
-      explanation: "The fovea (yellow spot) has the most cones.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-363",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The function of the choroid is to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "focus light",
-        B: "prevent reflection of light inside the eye and supply blood",
-        C: "control the pupil",
-        D: "carry impulses"
-      },
-      answer: "B",
-      explanation: "The dark choroid absorbs stray light and carries blood vessels.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-364",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The tough white outer coat of the eye is the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "cornea",
-        B: "retina",
-        C: "iris",
-        D: "sclera"
-      },
-      answer: "D",
-      explanation: "The sclera protects the eyeball.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-365",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "When a person looks at a DISTANT object, the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "ciliary muscles contract and the lens becomes thicker",
-        B: "ciliary muscles relax and the lens becomes thinner",
-        C: "pupil closes completely",
-        D: "retina moves forward"
-      },
-      answer: "B",
-      explanation: "Relaxed ciliary muscles pull the suspensory ligaments tight, flattening the lens.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-366",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The ability of the eye to change the shape of the lens to focus on near and distant objects is called",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "adaptation",
-        B: "refraction",
-        C: "reflection",
-        D: "accommodation"
-      },
-      answer: "D",
-      explanation: "Accommodation adjusts the focusing power of the lens.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-367",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "In dim light, the pupil becomes larger in order to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "protect the retina",
-        B: "focus on near objects",
-        C: "let more light into the eye",
-        D: "reduce glare"
-      },
-      answer: "C",
-      explanation: "A wider pupil lets more light reach the retina.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-368",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The point where the optic nerve leaves the eye has no light-sensitive cells and is called the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "fovea",
-        B: "iris",
-        C: "lens",
-        D: "blind spot"
-      },
-      answer: "D",
-      explanation: "Images falling here cannot be seen.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-144",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which labelled structure contains the light-sensitive cells?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M1-S-EYE",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "A",
-        B: "B",
-        C: "E",
-        D: "F"
-      },
-      answer: "C",
-      explanation: "E is the retina, which contains rods and cones.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-145",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Structure B controls",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M1-S-EYE",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the amount of light entering the eye",
-        B: "the shape of the lens",
-        C: "the pressure inside the eye",
-        D: "the movement of the eyeball"
-      },
-      answer: "A",
-      explanation: "B is the iris, which changes the size of the pupil.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-146",
-      module: 1,
-      objective: {
-        code: "1.6.2",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian eye to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Nerve impulses are carried from the eye to the brain by the structure labelled",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M1-S-EYE",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "C",
-        B: "D",
-        C: "E",
-        D: "F"
-      },
-      answer: "D",
-      explanation: "F is the optic nerve.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-147",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A person who can see near objects clearly but NOT distant objects is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "long-sighted",
-        B: "colour blind",
-        C: "short-sighted",
-        D: "astigmatic"
-      },
-      answer: "C",
-      explanation: "Short sight (myopia): distant objects are focused in front of the retina.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-148",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Short sight can be corrected by wearing spectacles with",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "convex lenses",
-        B: "bifocal mirrors",
-        C: "tinted glass only",
-        D: "concave lenses"
-      },
-      answer: "D",
-      explanation: "A concave (diverging) lens spreads light out so it focuses further back, on the retina.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-149",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which sight defect is shown in the diagram?",
-      statements: null,
-      after: null,
-      stimulus: {
-        lead: "to the following diagram which shows light from a distant object entering an eye.",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" width="420" height="220" role="img" aria-label="Ray diagram" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Ray diagram</title><rect x="0" y="0" width="420" height="220" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="250" cy="110" r="80" fill="none" stroke-width="1.5"/><ellipse cx="190" cy="110" rx="9" ry="30" fill="#fff"/><line x1="20" y1="85" x2="190" y2="85"/><line x1="190" y1="85" x2="300" y2="110"/><line x1="300" y1="110" x2="327" y2="122" stroke-dasharray="4 3"/><line x1="20" y1="135" x2="190" y2="135"/><line x1="190" y1="135" x2="300" y2="110"/><line x1="300" y1="110" x2="327" y2="98" stroke-dasharray="4 3"/><circle cx="300" cy="110" r="2.8" fill="#000" stroke-width="0.5"/><line x1="330" y1="140" x2="370" y2="170" stroke-width="0.9"/><text x="374" y="174" text-anchor="start" fill="#000" stroke="none">retina</text></g></svg>`,
-        table: null
-      },
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Long sight",
-        B: "Short sight",
-        C: "Cataract",
-        D: "Astigmatism"
-      },
-      answer: "B",
-      explanation: "The rays meet in front of the retina, which is short sight.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-150",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A cataract is a condition in which",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the lens becomes cloudy",
-        B: "the eyeball is too short",
-        C: "pressure builds up inside the eye",
-        D: "the cornea is unevenly curved"
-      },
-      answer: "A",
-      explanation: "A cataract is clouding of the lens; it is treated by replacing the lens.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-151",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Glaucoma is caused by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "a cloudy lens",
-        B: "increased fluid pressure inside the eye which damages the optic nerve",
-        C: "an unevenly curved cornea",
-        D: "lack of vitamin C"
-      },
-      answer: "B",
-      explanation: "Glaucoma is raised pressure inside the eye; untreated, it can damage the optic nerve and cause blindness.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-152",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A person with astigmatism sees blurred images because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the lens is cloudy",
-        B: "there are no cones in the retina",
-        C: "the cornea or lens is unevenly curved",
-        D: "the optic nerve is damaged"
-      },
-      answer: "C",
-      explanation: "Uneven curvature means light is not focused to a single point; cylindrical lenses correct it.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-153",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following conditions is inherited and CANNOT be corrected with spectacles?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Short sight",
-        B: "Colour blindness",
-        C: "Long sight",
-        D: "Astigmatism"
-      },
-      answer: "B",
-      explanation: "Colour blindness is inherited and caused by faulty cones; lenses cannot correct it.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-369",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Long sight (hypermetropia) is corrected using",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "concave lenses",
-        B: "plane glass",
-        C: "convex lenses",
-        D: "prisms"
-      },
-      answer: "C",
-      explanation: "A converging lens helps focus light from near objects onto the retina.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-370",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A long-sighted person cannot see near objects clearly because the image is formed",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "behind the retina",
-        B: "in front of the retina",
-        C: "on the blind spot",
-        D: "on the cornea"
-      },
-      answer: "A",
-      explanation: "The eyeball is too short or the lens too weak.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-371",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The diagram shows how a sight defect is corrected. Which of the following correctly identifies the defect and the type of lens used?",
-      statements: null,
-      after: null,
-      stimulus: {
-        lead: "to the following diagram of an eye with a lens in front of it.",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" width="420" height="220" role="img" aria-label="Ray diagram" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Ray diagram</title><rect x="0" y="0" width="420" height="220" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="250" cy="110" r="80" fill="none" stroke-width="1.5"/><ellipse cx="190" cy="110" rx="9" ry="30" fill="#fff"/><path d="M112,65 Q120,110 112,155 L128,155 Q120,110 128,65 Z" fill="#fff"/><line x1="20" y1="85" x2="120" y2="85"/><line x1="120" y1="85" x2="190" y2="78"/><line x1="190" y1="78" x2="330" y2="110"/><line x1="20" y1="135" x2="120" y2="135"/><line x1="120" y1="135" x2="190" y2="142"/><line x1="190" y1="142" x2="330" y2="110"/><circle cx="330" cy="110" r="2.8" fill="#000" stroke-width="0.5"/><line x1="330" y1="140" x2="370" y2="170" stroke-width="0.9"/><text x="374" y="174" text-anchor="start" fill="#000" stroke="none">retina</text></g></svg>`,
-        table: null
-      },
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Short sight, convex lens",
-        B: "Short sight, concave lens",
-        C: "Long sight, concave lens",
-        D: "Long sight, convex lens"
-      },
-      answer: "B",
-      explanation: "A concave (diverging) lens moves the image back onto the retina.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-372",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Looking directly at the sun can damage the eye because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the intense light can burn the retina",
-        B: "the cornea becomes cloudy immediately",
-        C: "it causes short sight",
-        D: "the ear drum is damaged"
-      },
-      answer: "A",
-      explanation: "Focused sunlight can permanently damage the retina.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-373",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Cataracts are usually treated by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "wearing concave lenses",
-        B: "surgically replacing the cloudy lens",
-        C: "eye drops only",
-        D: "removing the retina"
-      },
-      answer: "B",
-      explanation: "The cloudy lens is replaced with an artificial lens.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-374",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Glaucoma should be detected early because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "untreated, it can damage the optic nerve and cause blindness",
-        B: "it makes the lens cloudy",
-        C: "it can be cured by spectacles",
-        D: "it improves eyesight"
-      },
-      answer: "A",
-      explanation: "Regular eye pressure tests can detect glaucoma early.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-486",
-      module: 1,
-      objective: {
-        code: "1.6.3",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "analyse sight defects"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Lenses in spectacles for long sight are",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "thinner in the middle",
-        B: "flat",
-        C: "thicker in the middle than at the edges",
-        D: "coloured"
-      },
-      answer: "C",
-      explanation: "Convex lenses are thicker in the middle.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-154",
-      module: 1,
-      objective: {
-        code: "1.6.4",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian ear to their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following shows the correct path of sound vibrations through the ear?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Ear drum \u2192 ear canal \u2192 ear bones \u2192 cochlea",
-        B: "Ear canal \u2192 cochlea \u2192 ear bones \u2192 ear drum",
-        C: "Pinna \u2192 ear bones \u2192 ear drum \u2192 cochlea",
-        D: "Ear canal \u2192 ear drum \u2192 ear bones \u2192 cochlea"
-      },
-      answer: "D",
-      explanation: "Sound travels down the ear canal, vibrates the ear drum, is amplified by the ear bones and reaches the cochlea.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-155",
-      module: 1,
-      objective: {
-        code: "1.6.4",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian ear to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The approximate range of frequencies that the human ear can hear is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "2 Hz to 2 000 Hz",
-        B: "20 Hz to 20 000 Hz",
-        C: "200 Hz to 200 000 Hz",
-        D: "20 000 Hz to 50 000 Hz"
-      },
-      answer: "B",
-      explanation: "Humans hear from about 20 Hz to 20 000 Hz (20 kHz).",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-156",
-      module: 1,
-      objective: {
-        code: "1.6.4",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian ear to their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Workers who operate jackhammers for long periods should wear ear muffs because very loud sounds",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "increase the pitch of the sound",
-        B: "cause the Eustachian tube to close",
-        C: "can permanently damage the sensory cells in the cochlea",
-        D: "make the ear drum thicker"
-      },
-      answer: "C",
-      explanation: "Prolonged exposure to loud noise damages the hair cells in the cochlea and can cause permanent hearing loss.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-375",
-      module: 1,
-      objective: {
-        code: "1.6.4",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian ear to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The pinna",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "collects sound waves and directs them into the ear canal",
-        B: "converts sound to impulses",
-        C: "controls balance",
-        D: "equalises pressure"
-      },
-      answer: "A",
-      explanation: "The outer ear flap channels sound into the ear canal.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-376",
-      module: 1,
-      objective: {
-        code: "1.6.4",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian ear to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The three small ear bones (hammer, anvil and stirrup)",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "detect balance",
-        B: "produce ear wax",
-        C: "amplify vibrations and pass them to the inner ear",
-        D: "carry impulses to the brain"
-      },
-      answer: "C",
-      explanation: "The ossicles transmit and amplify vibrations from the ear drum.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-377",
-      module: 1,
-      objective: {
-        code: "1.6.4",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian ear to their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A person whose auditory nerve is damaged would",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "lose balance only",
-        B: "have painful ears when flying",
-        C: "hear sounds louder",
-        D: "be unable to hear"
-      },
-      answer: "D",
-      explanation: "Impulses from the cochlea cannot reach the brain.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-378",
-      module: 1,
-      objective: {
-        code: "1.6.4",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian ear to their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A sound with a high pitch has a",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "low frequency",
-        B: "high frequency",
-        C: "large amplitude only",
-        D: "low speed"
-      },
-      answer: "B",
-      explanation: "Pitch depends on frequency.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-379",
-      module: 1,
-      objective: {
-        code: "1.6.4",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian ear to their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Loudness of a sound depends on its",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "frequency",
-        B: "wavelength only",
-        C: "speed",
-        D: "amplitude"
-      },
-      answer: "D",
-      explanation: "Larger amplitude vibrations sound louder.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-380",
-      module: 1,
-      objective: {
-        code: "1.6.4",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian ear to their functions"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A person spinning round and round feels dizzy afterwards because the fluid in the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "semi-circular canals continues to move",
-        B: "cochlea stops moving",
-        C: "Eustachian tube is blocked",
-        D: "ear canal is full of wax"
-      },
-      answer: "A",
-      explanation: "Moving fluid in the semi-circular canals sends balance signals even after the body stops.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-157",
-      module: 1,
-      objective: {
-        code: "1.6.4",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian ear to their functions"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which labelled structure converts sound vibrations into nerve impulses?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M1-S-EAR",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "C",
-        B: "D",
-        C: "E",
-        D: "F"
-      },
-      answer: "D",
-      explanation: "F is the cochlea, which contains the sensory cells for hearing.",
-      topic: 6
-    },
-    {
-      id: "IS-M1-P1-158",
-      module: 1,
-      objective: {
-        code: "1.6.4",
-        topic: 6,
-        topicTitle: "Sense Organs and Coordination",
-        text: "relate the structures of the mammalian ear to their functions"
-      },
-      profile:
+  

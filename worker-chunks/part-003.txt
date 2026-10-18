@@ -1,3 +1,1228 @@
+
+              prompt: "Explain why soil erosion reduces food production.",
+              marks: 1,
+              objective: "1.2.7",
+              profile: {
+                UK: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "The fertile topsoil containing nutrients/humus is removed, so crops grow poorly / less land is available for farming."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-04",
+      module: 1,
+      kind: "structured",
+      title: "The menstrual cycle, birth control and pre-natal care",
+      totalMarks: 15,
+      profileMarks: {
+        KC: 7,
+        UK: 8,
+        XS: 0
+      },
+      topics: [
+        {
+          topic: 3,
+          title: "Reproduction and Growth in Animals"
+        }
+      ],
+      objectives: [
+        "1.3.3",
+        "1.3.5",
+        "1.3.6"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Figure 4 shows changes in the thickness of the lining of the uterus of a woman over a 28-day menstrual cycle.",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 270" width="460" height="270" role="img" aria-label="Thickness of uterine lining" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Thickness of uterine lining</title><rect x="0" y="0" width="460" height="270" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="58" y1="14" x2="58" y2="224" stroke-width="0.35"/><line x1="71.8" y1="14" x2="71.8" y2="224" stroke-width="0.35"/><line x1="85.6" y1="14" x2="85.6" y2="224" stroke-width="0.35"/><line x1="99.4" y1="14" x2="99.4" y2="224" stroke-width="0.35"/><line x1="113.1" y1="14" x2="113.1" y2="224" stroke-width="0.35"/><line x1="126.9" y1="14" x2="126.9" y2="224" stroke-width="0.35"/><line x1="140.7" y1="14" x2="140.7" y2="224" stroke-width="0.35"/><line x1="154.5" y1="14" x2="154.5" y2="224" stroke-width="0.35"/><line x1="168.3" y1="14" x2="168.3" y2="224" stroke-width="0.35"/><line x1="182.1" y1="14" x2="182.1" y2="224" stroke-width="0.35"/><line x1="195.9" y1="14" x2="195.9" y2="224" stroke-width="0.35"/><line x1="209.6" y1="14" x2="209.6" y2="224" stroke-width="0.35"/><line x1="223.4" y1="14" x2="223.4" y2="224" stroke-width="0.35"/><line x1="237.2" y1="14" x2="237.2" y2="224" stroke-width="0.35"/><line x1="251" y1="14" x2="251" y2="224" stroke-width="0.35"/><line x1="264.8" y1="14" x2="264.8" y2="224" stroke-width="0.35"/><line x1="278.6" y1="14" x2="278.6" y2="224" stroke-width="0.35"/><line x1="292.4" y1="14" x2="292.4" y2="224" stroke-width="0.35"/><line x1="306.1" y1="14" x2="306.1" y2="224" stroke-width="0.35"/><line x1="319.9" y1="14" x2="319.9" y2="224" stroke-width="0.35"/><line x1="333.7" y1="14" x2="333.7" y2="224" stroke-width="0.35"/><line x1="347.5" y1="14" x2="347.5" y2="224" stroke-width="0.35"/><line x1="361.3" y1="14" x2="361.3" y2="224" stroke-width="0.35"/><line x1="375.1" y1="14" x2="375.1" y2="224" stroke-width="0.35"/><line x1="388.9" y1="14" x2="388.9" y2="224" stroke-width="0.35"/><line x1="402.6" y1="14" x2="402.6" y2="224" stroke-width="0.35"/><line x1="416.4" y1="14" x2="416.4" y2="224" stroke-width="0.35"/><line x1="430.2" y1="14" x2="430.2" y2="224" stroke-width="0.35"/><line x1="444" y1="14" x2="444" y2="224" stroke-width="0.35"/><line x1="58" y1="224" x2="444" y2="224" stroke-width="0.35"/><line x1="58" y1="206.5" x2="444" y2="206.5" stroke-width="0.35"/><line x1="58" y1="189" x2="444" y2="189" stroke-width="0.35"/><line x1="58" y1="171.5" x2="444" y2="171.5" stroke-width="0.35"/><line x1="58" y1="154" x2="444" y2="154" stroke-width="0.35"/><line x1="58" y1="136.5" x2="444" y2="136.5" stroke-width="0.35"/><line x1="58" y1="119" x2="444" y2="119" stroke-width="0.35"/><line x1="58" y1="101.5" x2="444" y2="101.5" stroke-width="0.35"/><line x1="58" y1="84" x2="444" y2="84" stroke-width="0.35"/><line x1="58" y1="66.5" x2="444" y2="66.5" stroke-width="0.35"/><line x1="58" y1="49" x2="444" y2="49" stroke-width="0.35"/><line x1="58" y1="31.5" x2="444" y2="31.5" stroke-width="0.35"/><line x1="58" y1="14" x2="444" y2="14" stroke-width="0.35"/><line x1="58" y1="14" x2="58" y2="224" stroke-width="0.6"/><line x1="85.6" y1="14" x2="85.6" y2="224" stroke-width="0.6"/><line x1="113.1" y1="14" x2="113.1" y2="224" stroke-width="0.6"/><line x1="140.7" y1="14" x2="140.7" y2="224" stroke-width="0.6"/><line x1="168.3" y1="14" x2="168.3" y2="224" stroke-width="0.6"/><line x1="195.9" y1="14" x2="195.9" y2="224" stroke-width="0.6"/><line x1="223.4" y1="14" x2="223.4" y2="224" stroke-width="0.6"/><line x1="251" y1="14" x2="251" y2="224" stroke-width="0.6"/><line x1="278.6" y1="14" x2="278.6" y2="224" stroke-width="0.6"/><line x1="306.1" y1="14" x2="306.1" y2="224" stroke-width="0.6"/><line x1="333.7" y1="14" x2="333.7" y2="224" stroke-width="0.6"/><line x1="361.3" y1="14" x2="361.3" y2="224" stroke-width="0.6"/><line x1="388.9" y1="14" x2="388.9" y2="224" stroke-width="0.6"/><line x1="416.4" y1="14" x2="416.4" y2="224" stroke-width="0.6"/><line x1="444" y1="14" x2="444" y2="224" stroke-width="0.6"/><line x1="58" y1="224" x2="444" y2="224" stroke-width="0.6"/><line x1="58" y1="189" x2="444" y2="189" stroke-width="0.6"/><line x1="58" y1="154" x2="444" y2="154" stroke-width="0.6"/><line x1="58" y1="119" x2="444" y2="119" stroke-width="0.6"/><line x1="58" y1="84" x2="444" y2="84" stroke-width="0.6"/><line x1="58" y1="49" x2="444" y2="49" stroke-width="0.6"/><line x1="58" y1="14" x2="444" y2="14" stroke-width="0.6"/><line x1="58" y1="224" x2="444" y2="224" stroke-width="1.4"/><line x1="58" y1="224" x2="58" y2="14" stroke-width="1.4"/><line x1="58" y1="224" x2="58" y2="228" stroke-width="1"/><text x="58" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">0</text><line x1="85.6" y1="224" x2="85.6" y2="228" stroke-width="1"/><text x="85.6" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">2</text><line x1="113.1" y1="224" x2="113.1" y2="228" stroke-width="1"/><text x="113.1" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">4</text><line x1="140.7" y1="224" x2="140.7" y2="228" stroke-width="1"/><text x="140.7" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">6</text><line x1="168.3" y1="224" x2="168.3" y2="228" stroke-width="1"/><text x="168.3" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">8</text><line x1="195.9" y1="224" x2="195.9" y2="228" stroke-width="1"/><text x="195.9" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">10</text><line x1="223.4" y1="224" x2="223.4" y2="228" stroke-width="1"/><text x="223.4" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">12</text><line x1="251" y1="224" x2="251" y2="228" stroke-width="1"/><text x="251" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">14</text><line x1="278.6" y1="224" x2="278.6" y2="228" stroke-width="1"/><text x="278.6" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">16</text><line x1="306.1" y1="224" x2="306.1" y2="228" stroke-width="1"/><text x="306.1" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">18</text><line x1="333.7" y1="224" x2="333.7" y2="228" stroke-width="1"/><text x="333.7" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">20</text><line x1="361.3" y1="224" x2="361.3" y2="228" stroke-width="1"/><text x="361.3" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">22</text><line x1="388.9" y1="224" x2="388.9" y2="228" stroke-width="1"/><text x="388.9" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">24</text><line x1="416.4" y1="224" x2="416.4" y2="228" stroke-width="1"/><text x="416.4" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">26</text><line x1="444" y1="224" x2="444" y2="228" stroke-width="1"/><text x="444" y="241" text-anchor="middle" fill="#000" stroke="none" font-size="12">28</text><line x1="54" y1="224" x2="58" y2="224" stroke-width="1"/><text x="51" y="228" text-anchor="end" fill="#000" stroke="none" font-size="12">0</text><line x1="54" y1="189" x2="58" y2="189" stroke-width="1"/><text x="51" y="193" text-anchor="end" fill="#000" stroke="none" font-size="12">1</text><line x1="54" y1="154" x2="58" y2="154" stroke-width="1"/><text x="51" y="158" text-anchor="end" fill="#000" stroke="none" font-size="12">2</text><line x1="54" y1="119" x2="58" y2="119" stroke-width="1"/><text x="51" y="123" text-anchor="end" fill="#000" stroke="none" font-size="12">3</text><line x1="54" y1="84" x2="58" y2="84" stroke-width="1"/><text x="51" y="88" text-anchor="end" fill="#000" stroke="none" font-size="12">4</text><line x1="54" y1="49" x2="58" y2="49" stroke-width="1"/><text x="51" y="53" text-anchor="end" fill="#000" stroke="none" font-size="12">5</text><line x1="54" y1="14" x2="58" y2="14" stroke-width="1"/><text x="51" y="18" text-anchor="end" fill="#000" stroke="none" font-size="12">6</text><text x="251" y="260" text-anchor="middle" fill="#000" stroke="none">Day of cycle</text><text x="14" y="119" text-anchor="middle" fill="#000" stroke="none" transform="rotate(-90 14 119)">Thickness of lining/mm</text><path d="M58,49 C63,61.6 75.6,95.1 85.6,119 C95.5,142.9 105.7,169.4 113.1,182 C120.6,194.6 119.5,190.9 126.9,189 C134.4,187.1 142.1,181.6 154.5,171.5 C166.9,161.4 178.5,147.5 195.9,133 C213.2,118.5 231.1,104.9 251,91 C270.9,77.1 286.3,64.8 306.1,56 C326,47.2 341.4,44.5 361.3,42 C381.1,39.5 401.5,40.7 416.4,42 C431.3,43.3 439,47.7 444,49" fill="none" stroke-width="1.6"/></g></svg>`,
+          figure: "Figure 4. Thickness of the uterine lining during a menstrual cycle",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Using Figure 4, state the days on which menstruation occurs.",
+              marks: 1,
+              objective: "1.3.3",
+              profile: {
+                UK: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Days 0/1 to 5"
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Define the term 'ovulation' and state on which day it is MOST likely to occur in this cycle.",
+              marks: 2,
+              objective: "1.3.3",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Ovulation is the release of an ovum (egg) from the ovary (1)",
+                  "Day 14 (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Explain the role of the hormone progesterone in the menstrual cycle.",
+              marks: 2,
+              objective: "1.3.3",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Progesterone is produced after ovulation (by the corpus luteum) (1)",
+                  "it keeps the uterine lining thick/maintains it ready for implantation; when progesterone falls, the lining breaks down (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "A young couple wishes to plan their family.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Complete Table 3 by giving ONE example of EACH method of birth control.",
+              marks: 3,
+              objective: "1.3.5",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "table",
+                table: {
+                  title: "TABLE 3: METHODS OF BIRTH CONTROL",
+                  headers: [
+                    "Method",
+                    "Example"
+                  ],
+                  rows: [
+                    [
+                      "Barrier",
+                      ""
+                    ],
+                    [
+                      "Hormonal",
+                      ""
+                    ],
+                    [
+                      "Surgical",
+                      ""
+                    ]
+                  ],
+                  source: null
+                }
+              },
+              markScheme: {
+                points: [
+                  "Barrier: condom / diaphragm / cervical cap / IUD",
+                  "Hormonal: pill / injection / patch / implant",
+                  "Surgical: vasectomy / tubal ligation"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State ONE advantage and ONE disadvantage of the condom as a method of birth control.",
+              marks: 2,
+              objective: "1.3.5",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Advantage: protects against STIs / cheap / easily available / no side effects",
+                  "Disadvantage: may tear or slip off / must be used every time / may reduce sensation"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "Pre-natal care is important for the health of mother and baby.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "State TWO practices which a pregnant woman should follow to ensure a healthy baby.",
+              marks: 2,
+              objective: "1.3.6",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Eat a balanced diet (with iron/folic acid)",
+                  "Avoid smoking, alcohol and drugs",
+                  "Attend regular pre-natal clinic visits",
+                  "Avoid X-rays",
+                  "Get suitable exercise and rest"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain why breastfeeding is recommended for newborn babies.",
+              marks: 3,
+              objective: "1.3.6",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "Breast milk contains antibodies which give the baby passive immunity (1)",
+                  "it has the correct balance of nutrients and is easily digested (1)",
+                  "it is clean/sterile, at the right temperature and free, and helps bonding (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-05",
+      module: 1,
+      kind: "practical",
+      title: "Surface area to volume ratio and transpiration",
+      totalMarks: 20,
+      profileMarks: {
+        KC: 6,
+        UK: 7,
+        XS: 7
+      },
+      topics: [
+        {
+          topic: 4,
+          title: "Transport Systems"
+        },
+        {
+          topic: 1,
+          title: "Units of Life"
+        }
+      ],
+      objectives: [
+        "1.4.1",
+        "1.4.2"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Students cut three cubes of agar jelly containing a pink indicator. They placed the cubes in dilute acid, which turns the indicator colourless, and timed how long it took for each cube to become completely colourless. Their results are shown in Table 4.",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 165" width="360" height="165" role="img" aria-label="Agar cubes of different sizes" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Agar cubes of different sizes</title><rect x="0" y="0" width="360" height="165" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="110" width="20" height="20" fill="#fff"/><polyline points="30,110 38,102 58,102 50,110" fill="none"/><polyline points="50,110 58,102 58,122 50,130" fill="none"/><text x="40" y="150" text-anchor="middle" fill="#000" stroke="none" font-size="12">1 cm</text><rect x="120" y="90" width="40" height="40" fill="#fff"/><polyline points="120,90 136,74 176,74 160,90" fill="none"/><polyline points="160,90 176,74 176,114 160,130" fill="none"/><text x="140" y="150" text-anchor="middle" fill="#000" stroke="none" font-size="12">2 cm</text><rect x="230" y="70" width="60" height="60" fill="#fff"/><polyline points="230,70 254,46 314,46 290,70" fill="none"/><polyline points="290,70 314,46 314,106 290,130" fill="none"/><text x="260" y="150" text-anchor="middle" fill="#000" stroke="none" font-size="12">3 cm</text></g></svg>`,
+          figure: "Figure 5. Agar cubes",
+          table: {
+            title: "TABLE 4: RESULTS OF AGAR CUBE EXPERIMENT",
+            headers: [
+              "Length of side/cm",
+              "Surface area/cm\xB2",
+              "Volume/cm\xB3",
+              "Surface area : volume",
+              "Time to become colourless/min"
+            ],
+            rows: [
+              [
+                "1",
+                "6",
+                "1",
+                "6 : 1",
+                "4"
+              ],
+              [
+                "2",
+                "24",
+                "8",
+                "",
+                "9"
+              ],
+              [
+                "3",
+                "",
+                "27",
+                "2 : 1",
+                "15"
+              ]
+            ],
+            source: null
+          },
+          items: [
+            {
+              label: "(i)",
+              prompt: "Complete Table 4 by calculating the surface area of the 3 cm cube and the surface area to volume ratio of the 2 cm cube.",
+              marks: 2,
+              objective: "1.4.1",
+              profile: {
+                XS: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Surface area of 3 cm cube = 6 \xD7 3 \xD7 3 = 54 cm\xB2 (1)",
+                  "Ratio for 2 cm cube = 24 : 8 = 3 : 1 (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Describe the relationship between the surface area to volume ratio and the time taken for the acid to reach the centre of the cube.",
+              marks: 2,
+              objective: "1.4.1",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "As the surface area to volume ratio decreases (1)",
+                  "the time taken for the acid to diffuse to the centre increases (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Use the results of the experiment to explain why large organisms such as humans need a transport system.",
+              marks: 3,
+              objective: "1.4.1",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "Large organisms have a small surface area to volume ratio (1)",
+                  "diffusion alone would be too slow to supply substances to cells deep inside the body (1)",
+                  "so a transport system (blood/circulatory system) is needed to carry oxygen and nutrients to all cells and remove wastes (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "A student wants to find out whether wind affects the rate of transpiration of a leafy shoot. She is provided with the apparatus shown in Figure 6, a small electric fan and a stopwatch.",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 210" width="460" height="210" role="img" aria-label="Apparatus to measure water uptake by a leafy shoot" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Apparatus to measure water uptake by a leafy shoot</title><rect x="0" y="0" width="460" height="210" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(40,0)"><line x1="40" y1="150" x2="360" y2="150"/><line x1="40" y1="158" x2="360" y2="158"/><circle cx="300" cy="154" r="3" fill="#000"/><line x1="300" y1="150" x2="300" y2="120" stroke-width="0.9"/><text x="296" y="124" text-anchor="middle" fill="#000" stroke="none">air bubble</text><line x1="40" y1="150" x2="40" y2="130"/><line x1="48" y1="150" x2="48" y2="130"/><path d="M30,130 L58,130 L58,120 L30,120 Z" fill="#fff"/><line x1="44" y1="120" x2="44" y2="60" stroke-width="2"/><path d="M44,80 q-25,-15 -45,-5 q20,15 45,5 z" fill="#fff"/><path d="M44,95 q25,-15 45,-5 q-20,15 -45,5 z" fill="#fff"/><path d="M44,68 q25,-15 45,-5 q-20,15 -45,5 z" fill="#fff"/><line x1="54" y1="125" x2="110" y2="110" stroke-width="0.9"/><text x="114" y="114" text-anchor="start" fill="#000" stroke="none">rubber bung</text><line x1="150" y1="158" x2="150" y2="172" stroke-width="0.8"/><line x1="170" y1="158" x2="170" y2="166" stroke-width="0.8"/><line x1="190" y1="158" x2="190" y2="166" stroke-width="0.8"/><line x1="210" y1="158" x2="210" y2="166" stroke-width="0.8"/><line x1="230" y1="158" x2="230" y2="166" stroke-width="0.8"/><line x1="250" y1="158" x2="250" y2="172" stroke-width="0.8"/><line x1="270" y1="158" x2="270" y2="166" stroke-width="0.8"/><line x1="290" y1="158" x2="290" y2="166" stroke-width="0.8"/><line x1="310" y1="158" x2="310" y2="166" stroke-width="0.8"/><line x1="330" y1="158" x2="330" y2="166" stroke-width="0.8"/><line x1="350" y1="158" x2="350" y2="172" stroke-width="0.8"/><text x="250" y="188" text-anchor="middle" fill="#000" stroke="none" font-size="12">scale (mm)</text><polyline points="340,150 340,200 390,200 390,150" fill="none"/><line x1="340" y1="150" x2="335" y2="146"/><line x1="340" y1="165" x2="390" y2="165" stroke-width="0.9"/><line x1="360" y1="158" x2="360" y2="190"/></g></g></svg>`,
+          figure: "Figure 6. Apparatus for measuring water uptake by a leafy shoot",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "State a suitable hypothesis for this investigation.",
+              marks: 2,
+              objective: "1.4.1",
+              profile: {
+                XS: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "The rate of transpiration increases when the shoot is exposed to wind.",
+                  "OR: The air bubble will move a greater distance in a fixed time when the fan is switched on."
+                ],
+                guidance: "1 mark for a clearly stated hypothesis; 1 mark for a testable hypothesis",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State the manipulated variable and the responding variable in this investigation.",
+              marks: 2,
+              objective: "1.4.1",
+              profile: {
+                XS: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Manipulated: presence/absence (or speed) of wind from the fan (1)",
+                  "Responding: distance moved by the air bubble in a fixed time / rate of water uptake (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State ONE precaution the student should take to obtain reliable results.",
+              marks: 1,
+              objective: "1.4.1",
+              profile: {
+                XS: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Cut the shoot under water to prevent air entering the xylem",
+                  "Make sure the apparatus is airtight (seal joints with Vaseline)",
+                  "Keep light and temperature the same",
+                  "Repeat readings and find an average"
+                ],
+                guidance: "Any one, 1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iv)",
+              prompt: "Predict how the movement of the air bubble would change if the leafy shoot were covered with a clear plastic bag. Explain your answer.",
+              marks: 2,
+              objective: "1.4.1",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "The bubble would move more slowly (1)",
+                  "because the air inside the bag becomes humid, reducing the concentration gradient of water vapour, so less water evaporates from the leaves (1)"
+                ],
+                guidance: "1 mark for prediction; 1 mark for explanation",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Name the tissue in the stem which carries water from the roots to the leaves.",
+              marks: 1,
+              objective: "1.4.2",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Xylem"
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State TWO environmental factors, other than wind, which affect the rate of transpiration.",
+              marks: 2,
+              objective: "1.4.1",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Temperature",
+                  "Humidity",
+                  "Light intensity"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Explain why transpiration is important to a plant.",
+              marks: 3,
+              objective: "1.4.1",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "It creates a pull which draws water up the xylem from the roots (1)",
+                  "it carries dissolved mineral salts to the leaves (1)",
+                  "evaporation cools the leaves (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-06",
+      module: 1,
+      kind: "structured",
+      title: "Excretion",
+      totalMarks: 15,
+      profileMarks: {
+        KC: 7,
+        UK: 8,
+        XS: 0
+      },
+      topics: [
+        {
+          topic: 5,
+          title: "Excretion"
+        }
+      ],
+      objectives: [
+        "1.5.2",
+        "1.5.1"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Figure 7 shows a kidney tubule (nephron).",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410 330" width="410" height="330" role="img" aria-label="A kidney tubule (nephron)" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A kidney tubule (nephron)</title><rect x="0" y="0" width="410" height="330" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M80,60 A38,38 0 1 0 118,98" fill="none" stroke-width="1.4"/><path d="M92,66 A26,26 0 1 0 112,92" fill="none" stroke-width="1.1"/><path d="M70,80 q8,-12 16,0 q8,12 16,0 q-8,-14 -16,-2 q-8,14 -16,2" fill="none" stroke-width="0.9"/><path d="M60,15 L78,62" fill="none" stroke-width="1"/><path d="M100,15 L95,62" fill="none" stroke-width="1"/><path d="M118,98 q20,10 30,-5 q10,-20 30,-10 q18,10 5,25 q-15,12 5,25 q15,8 25,-2" fill="none" stroke-width="1.4"/><path d="M213,133 L213,280 Q228,300 243,280 L243,120" fill="none" stroke-width="1.4"/><path d="M243,120 q10,-20 30,-10 q15,10 30,0 q10,-8 20,0" fill="none" stroke-width="1.4"/><path d="M323,110 L330,40 M323,110 L330,300" fill="none" stroke-width="1.4"/><line x1="340" y1="40" x2="340" y2="300" stroke-width="1.4"/><line x1="335" y1="250" x2="335" y2="295"/><polygon points="335,295 332,288.7 338,288.7" fill="#000" stroke-width="1"/><text x="340" y="318" text-anchor="middle" fill="#000" stroke="none" font-style="italic" font-size="12">urine</text><line x1="60" y1="90" x2="20" y2="150" stroke-width="0.9"/><text x="16" y="154" text-anchor="end" fill="#000" stroke="none">P</text><line x1="165" y1="95" x2="150" y2="20" stroke-width="0.9"/><text x="146" y="24" text-anchor="end" fill="#000" stroke="none">Q</text><line x1="228" y1="290" x2="150" y2="300" stroke-width="0.9"/><text x="146" y="304" text-anchor="end" fill="#000" stroke="none">R</text><line x1="340" y1="150" x2="390" y2="150" stroke-width="0.9"/><text x="394" y="154" text-anchor="start" fill="#000" stroke="none">S</text><line x1="62" y1="22" x2="20" y2="30" stroke-width="0.9"/><text x="16" y="34" text-anchor="end" fill="#000" stroke="none">T</text></g></svg>`,
+          figure: "Figure 7. Diagram of a nephron",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Identify the parts labelled P, Q and R.",
+              marks: 3,
+              objective: "1.5.2",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "labels",
+                keys: [
+                  "P",
+                  "Q",
+                  "R"
+                ]
+              },
+              markScheme: {
+                points: [
+                  "P - glomerulus/Bowman's capsule",
+                  "Q - first (proximal) coiled tubule",
+                  "R - loop of Henle"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Describe how urine is formed in the nephron.",
+              marks: 3,
+              objective: "1.5.2",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "Blood is filtered under high pressure in the glomerulus/Bowman's capsule (ultrafiltration) (1)",
+                  "useful substances such as glucose, some salts and water are reabsorbed into the blood in the tubule (selective reabsorption) (1)",
+                  "the remaining urea, excess water and salts pass down the collecting duct as urine (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "Andre drank two litres of water on a cool morning. Later that day he played football in the hot sun and drank very little.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Define the term 'excretion'.",
+              marks: 1,
+              objective: "1.5.1",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "The removal of waste products of metabolism from the body."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain how antidiuretic hormone (ADH) would affect the volume of urine Andre produced while playing football in the hot sun.",
+              marks: 3,
+              objective: "1.5.2",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "He loses water by sweating so the blood becomes more concentrated (1)",
+                  "the pituitary gland releases more ADH (1)",
+                  "the collecting ducts reabsorb more water, so a small volume of concentrated urine is produced (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Distinguish between 'excretion' and 'egestion'.",
+              marks: 2,
+              objective: "1.5.1",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Excretion is the removal of metabolic wastes made by body cells, e.g. urea, CO\u2082 (1)",
+                  "egestion is the removal of undigested food (faeces) which was never part of the body cells (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Name ONE waste product excreted by the lungs and ONE excreted by the skin.",
+              marks: 2,
+              objective: "1.5.2",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Lungs: carbon dioxide / water vapour (1)",
+                  "Skin: water / salts / (small amount of) urea (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State ONE reason why a patient may need dialysis.",
+              marks: 1,
+              objective: "1.5.2",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "The kidneys have failed/stopped working and cannot remove urea and excess water/salts from the blood."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-07",
+      module: 1,
+      kind: "practical",
+      title: "Exercise and the pulse rate",
+      totalMarks: 20,
+      profileMarks: {
+        KC: 6,
+        UK: 6,
+        XS: 8
+      },
+      topics: [
+        {
+          topic: 7,
+          title: "Health"
+        }
+      ],
+      objectives: [
+        "1.7.5",
+        "1.7.4"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Kerry-Ann measured her pulse rate at rest, then ran on the spot for 4 minutes and measured her pulse rate every minute after she stopped. Her results are shown in Table 5.",
+          svg: null,
+          figure: null,
+          table: {
+            title: "TABLE 5: PULSE RATE AFTER EXERCISE",
+            headers: [
+              "Time after exercise/min",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ],
+            rows: [
+              [
+                "Pulse rate/beats per minute",
+                "140",
+                "124",
+                "108",
+                "94",
+                "84",
+                "76",
+                "72"
+              ]
+            ],
+            source: null
+          },
+          items: [
+            {
+              label: "(i)",
+              prompt: "On the grid provided, plot a graph of pulse rate against time after exercise. You MUST label EACH axis and join the points with a smooth curve.",
+              marks: 5,
+              objective: "1.7.5",
+              profile: {
+                XS: 5
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "graph",
+                height: 320,
+                x: "Time after exercise/min",
+                y: "Pulse rate/beats per minute"
+              },
+              markScheme: {
+                points: [
+                  "Correct points plotted: (0,140) (1,124) (2,108) (3,94) (4,84) (5,76) (6,72)",
+                  "Axes labelled with units",
+                  "Suitable scale",
+                  "Smooth curve"
+                ],
+                guidance: "2 marks for correct plotting of points (all points = 2; at least half = 1); 1 mark for both axes labelled with units; 1 mark for an appropriate scale (at least 75% of the grid used); 1 mark for a smooth line/curve joining the points",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Kerry-Ann's resting pulse rate was 72 beats per minute. Using your graph, state how long it took for her pulse to return to the resting rate.",
+              marks: 1,
+              objective: "1.7.5",
+              profile: {
+                UK: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "6 minutes"
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Explain why the pulse rate was high immediately after exercise.",
+              marks: 3,
+              objective: "1.7.5",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "During exercise the muscles respire faster and need more oxygen and glucose (1)",
+                  "the heart beats faster to deliver more blood carrying oxygen and glucose to the muscles (1)",
+                  "and to remove the extra carbon dioxide / repay the oxygen debt (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "Kerry-Ann's teacher suggests that students who exercise regularly have a lower resting pulse rate than students who do not exercise.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "State a suitable aim for an investigation to test the teacher's suggestion.",
+              marks: 1,
+              objective: "1.7.5",
+              profile: {
+                XS: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "To find out whether students who exercise regularly have a lower resting pulse rate than students who do not exercise."
+                ],
+                guidance: "1 mark for aim related to the suggestion",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State TWO variables that should be controlled in this investigation.",
+              marks: 2,
+              objective: "1.7.5",
+              profile: {
+                XS: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Age of students",
+                  "Gender",
+                  "Time of day/length of rest before measuring",
+                  "Method of taking the pulse/duration of counting",
+                  "Health of students (no illness)"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State TWO long-term effects of regular exercise on the body.",
+              marks: 2,
+              objective: "1.7.5",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Stronger heart muscle / lower resting heart rate",
+                  "Improved muscle tone",
+                  "Increased lung capacity",
+                  "Reduced body fat / helps balance energy input and output",
+                  "Lower risk of hypertension/diabetes"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Name TWO non-communicable diseases whose risk is reduced by regular exercise.",
+              marks: 2,
+              objective: "1.7.4",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Diabetes (Type 2)",
+                  "Hypertension",
+                  "Heart disease",
+                  "Obesity",
+                  "Stroke"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain how a diet high in salt may lead to hypertension.",
+              marks: 2,
+              objective: "1.7.4",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Excess salt causes the body to retain water, increasing blood volume (1)",
+                  "which raises the pressure of blood on the artery walls (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State ONE effect of uncontrolled hypertension on the body.",
+              marks: 2,
+              objective: "1.7.4",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Stroke",
+                  "Heart attack/heart failure",
+                  "Kidney damage",
+                  "Damage to blood vessels/eyes"
+                ],
+                guidance: "Any one effect, correctly stated with detail, 2 marks; effect only, 1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-08",
+      module: 1,
+      kind: "structured",
+      title: "The eye, sight defects and the ear",
+      totalMarks: 15,
+      profileMarks: {
+        KC: 7,
+        UK: 8,
+        XS: 0
+      },
+      topics: [
+        {
+          topic: 6,
+          title: "Sense Organs and Coordination"
+        }
+      ],
+      objectives: [
+        "1.6.2",
+        "1.6.3",
+        "1.6.4"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Figure 8 shows a horizontal section through the human eye.",
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -10 930 630" width="744" height="504" role="img" aria-label="Horizontal section through the human eye"><title>Horizontal section through the human eye</title><rect x="0" y="-10" width="930" height="630" fill="white" /><g id="is-precision-m1-paper02-7-parts-0-svg-eye-anatomy" fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round"><path d="M235 177 C278 92 365 70 452 80 C556 89 638 160 659 246 C668 278 670 308 666 337 C664 357 685 367 704 374 L762 397 M762 444 L701 419 C681 413 666 406 653 417 C608 478 535 519 454 522 C359 527 284 484 235 423 M235 423 C204 374 151 358 151 300 C151 242 204 226 235 177" stroke-width="2.15" /><path d="M242 190 C286 109 369 87 452 94 C548 104 625 172 646 251 C656 283 657 315 652 341 C648 360 663 377 685 386 L762 416 M762 430 L691 405 C674 399 657 394 641 409 C597 469 526 504 453 508 C361 513 289 472 242 410 M242 410 C211 373 158 354 158 300 C158 246 211 227 242 190" stroke-width="1.75" /><path d="M270 187 C308 119 374 95 452 102 C542 112 617 179 638 255 C648 285 649 316 644 342 C643 348 644 353 647 359 M649 399 C643 398 638 401 633 407 C589 463 522 496 453 500 C366 505 298 466 270 413 M647 359 C646 361 644 363 642 364 M649 399 C648 397 645 394 643 394" stroke-width="1.5" /><path d="M279 190 C315 131 378 103 452 109 C537 119 609 185 631 258 C641 289 642 317 637 343 C635 350 637 357 642 364 M643 394 C637 395 633 400 626 409 C581 456 519 489 453 493 C371 498 307 461 279 410" stroke-width="1.5" /><g id="is-precision-m1-paper02-7-parts-0-svg-retinal-section-detail" stroke-width=".8"><path d="M280.07 170.91 L288.55 175.90" /><path d="M291.26 156.61 L299.18 163.10" /><path d="M303.50 144.05 L310.81 151.61" /><path d="M316.74 133.19 L323.41 141.44" /><path d="M330.93 123.98 L336.91 132.61" /><path d="M346.00 116.38 L351.25 125.13" /><path d="M361.91 110.34 L366.39 118.99" /><path d="M378.59 105.81 L382.26 114.22" /><path d="M396.00 102.77 L398.81 110.83" /><path d="M414.07 101.14 L415.99 108.82" /><path d="M432.76 100.90 L433.74 108.21" /><path d="M474.16 105.66 L472.96 112.64" /><path d="M495.57 111.53 L493.25 118.44" /><path d="M516.08 119.44 L512.73 126.23" /><path d="M535.56 129.22 L531.30 135.85" /><path d="M553.87 140.72 L548.80 147.12" /><path d="M570.88 153.75 L565.13 159.88" /><path d="M586.45 168.16 L580.13 173.94" /><path d="M600.44 183.78 L593.70 189.15" /><path d="M612.73 200.44 L605.70 205.33" /><path d="M623.18 217.97 L616.00 222.31" /><path d="M631.65 236.22 L624.48 239.92" /><path d="M642.26 270.06 L635.26 273.25" /><path d="M645.11 285.11 L638.11 288.04" /><path d="M646.63 300.00 L639.63 302.38" /><path d="M646.89 314.56 L639.89 316.30" /><path d="M645.99 328.61 L638.99 329.83" /><path d="M621.53 420.52 L614.40 420.45" /><path d="M609.18 433.06 L602.14 431.26" /><path d="M596.02 444.59 L589.27 441.39" /><path d="M582.11 455.11 L575.81 450.78" /><path d="M567.54 464.59 L561.84 459.37" /><path d="M552.38 473.00 L547.38 467.13" /><path d="M536.69 480.33 L532.48 473.98" /><path d="M520.56 486.56 L517.19 479.89" /><path d="M504.05 491.66 L501.55 484.80" /><path d="M487.24 495.61 L485.61 488.65" /><path d="M470.20 498.40 L469.41 491.40" /><path d="M431.66 500.35 L432.89 493.39" /><path d="M411.18 498.97 L413.58 492.13" /><path d="M391.64 495.97 L395.16 489.31" /><path d="M373.11 491.44 L377.67 485.04" /><path d="M355.66 485.50 L361.18 479.40" /><path d="M339.38 478.25 L345.75 472.50" /><path d="M324.31 469.79 L331.45 464.43" /><path d="M310.56 460.22 L318.33 455.30" /><path d="M298.17 449.66 L306.47 445.19" /><path d="M287.24 438.19 L295.92 434.20" /><path d="M277.82 425.94 L286.74 422.44" /></g><g id="is-precision-m1-paper02-7-parts-0-svg-optic-nerve-fibres" stroke-width="1.05"><path d="M642 364 C650 377 665 384 684 393 L762 424" /><path d="M646 372 C656 382 669 390 687 397 L762 427" /><path d="M648 381 C660 390 673 396 691 403 L762 430" /><path d="M643 394 C655 389 670 399 688 406 L762 435" /></g><path d="M242 190 C252 183 261 184 270 187 L279 190 C279 195 284 198 288 201 C292 204 290 209 286 210 C282 212 279 207 276 208 C273 211 270 207 267 208 C262 211 258 207 254 209 L251 204 Z" id="is-precision-m1-paper02-7-parts-0-svg-ciliary-body-superior" fill="#f1f1f1" stroke-width="1.65" /><g transform="translate(0 600) scale(1 -1)"><path d="M242 190 C252 183 261 184 270 187 L279 190 C279 195 284 198 288 201 C292 204 290 209 286 210 C282 212 279 207 276 208 C273 211 270 207 267 208 C262 211 258 207 254 209 L251 204 Z" id="is-precision-m1-paper02-7-parts-0-svg-ciliary-body-inferior" fill="#f1f1f1" stroke-width="1.65" /></g><g id="is-precision-m1-paper02-7-parts-0-svg-zonular-fibres" stroke-width="1.05"><path d="M272 207 C271 214 272 223 274 230" /><path d="M280 208 C280 214 279 222 279 230" /><path d="M287 208 C289 215 292 223 295 230" /><g transform="translate(0 600) scale(1 -1)"><path d="M272 207 C271 214 272 223 274 230" /><path d="M280 208 C280 214 279 222 279 230" /><path d="M287 208 C289 215 292 223 295 230" /></g></g><path d="M251 204 C246 222 242 246 244 266 C245 271 250 272 253 267 C254 250 255 228 262 209 C258 209 254 208 251 204 Z" id="is-precision-m1-paper02-7-parts-0-svg-iris-superior" fill="white" stroke-width="1.7" /><g transform="translate(0 600) scale(1 -1)"><path d="M251 204 C246 222 242 246 244 266 C245 271 250 272 253 267 C254 250 255 228 262 209 C258 209 254 208 251 204 Z" id="is-precision-m1-paper02-7-parts-0-svg-iris-inferior" fill="white" stroke-width="1.7" /></g><path d="M279 218 C266 218 255 255 255 300 C255 345 266 382 279 382 C297 382 319 346 319 300 C319 254 297 218 279 218 Z" id="is-precision-m1-paper02-7-parts-0-svg-lens-capsule" fill="white" stroke-width="1.9" /></g><path d="M157 268 L93 220" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="70" y="228" font-family="Arial, Helvetica, sans-serif" font-size="25" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">A</text><path d="M249 245 L94 113" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="70" y="121" font-family="Arial, Helvetica, sans-serif" font-size="25" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">B</text><path d="M280 300 H95" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="70" y="306" font-family="Arial, Helvetica, sans-serif" font-size="25" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">C</text><path d="M259 401 L128 527" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="100" y="535" font-family="Arial, Helvetica, sans-serif" font-size="25" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">D</text><path d="M605 201 L802 132" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="825" y="140" font-family="Arial, Helvetica, sans-serif" font-size="25" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">E</text><path d="M733 424 L803 497" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="825" y="505" font-family="Arial, Helvetica, sans-serif" font-size="25" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">F</text><text x="450" y="324" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">vitreous humour</text></svg>',
+          figure: "Figure 8. Section through the human eye",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Identify the parts labelled A, C and E.",
+              marks: 3,
+              objective: "1.6.2",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "labels",
+                keys: [
+                  "A",
+                  "C",
+                  "E"
+                ]
+              },
+              markScheme: {
+                points: [
+                  "A - cornea",
+                  "C - lens",
+                  "E - retina"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Describe how the eye adjusts to focus on a NEAR object.",
+              marks: 3,
+              objective: "1.6.2",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "The ciliary muscles contract (1)",
+                  "the suspensory ligaments slacken/become loose (1)",
+                  "the lens becomes fatter/more convex so light is bent more and focused on the retina (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "Tamika cannot read the writing on the classroom board, but she can read her textbook clearly.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Name Tamika's sight defect.",
+              marks: 1,
+              objective: "1.6.3",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Short sight / myopia"
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain how the defect named in (b) (i) can be corrected.",
+              marks: 3,
+              objective: "1.6.3",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
               },
               markScheme: {
                 points: [
@@ -4386,1009 +5611,4 @@
         {
           label: "(c)",
           context: "Figure 4 shows a soil profile.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 245" width="360" height="245" role="img" aria-label="Soil profile" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Soil profile</title><rect x="0" y="0" width="360" height="245" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="90" y="20" width="170" height="210" fill="none"/><path d="M90,55 q40,-6 85,0 q45,6 85,0" fill="none" stroke-width="1"/><path d="M90,115 q40,-6 85,0 q45,6 85,0" fill="none" stroke-width="1"/><path d="M90,175 q40,-6 85,0 q45,6 85,0" fill="none" stroke-width="1"/><circle cx="116.5" cy="46.2" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="217.2" cy="31.4" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="174.3" cy="36.2" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="199.3" cy="44.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="110" cy="25.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="228.7" cy="35.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="217" cy="25.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="166.3" cy="43" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="131.6" cy="48.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="239.2" cy="25.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="99.1" cy="38.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="245.3" cy="34.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="129.7" cy="35.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="99.6" cy="30.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="165.1" cy="37.4" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="132.3" cy="30.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="130" cy="36.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="141.4" cy="25.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="229" cy="38.9" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="197.8" cy="29.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="253.8" cy="46.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="114.3" cy="33.3" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="210.4" cy="42.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="244.8" cy="35.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="227.8" cy="41.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="143.5" cy="39.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="236.2" cy="46.2" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="175.8" cy="39.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="100.5" cy="31.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="222.6" cy="35.4" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="122.7" cy="38.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="207.5" cy="41.9" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="155" cy="36" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="176.3" cy="44.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="178.4" cy="34.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="173.4" cy="25.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="102" cy="42.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="252.3" cy="39.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="158" cy="29.3" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="175.4" cy="49.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="218.3" cy="38.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="232.6" cy="30.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="177.2" cy="48.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="187.4" cy="36.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="138.1" cy="38.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="248.1" cy="25.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="220.4" cy="45.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="236.8" cy="43.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="224.5" cy="38" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="184.8" cy="35.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="104" cy="46.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="186.2" cy="30" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="175.8" cy="37.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="152.1" cy="33.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="181.2" cy="40.6" r="1.1" fill="#000" stroke-width="0.5"/><path d="M105,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M132,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M159,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M186,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M213,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M240,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><circle cx="248" cy="104.7" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="104" cy="65.8" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="228.7" cy="95.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="202.2" cy="75.9" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="192" cy="89.3" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="188" cy="69.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="163.9" cy="79.7" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="210.7" cy="106.8" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="246.9" cy="86.5" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="166.2" cy="74.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="100.7" cy="63.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="169.4" cy="76.3" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="155.8" cy="102.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="179.1" cy="87.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="132.8" cy="63.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="147" cy="68.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="176.6" cy="106.9" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="202.9" cy="70.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="238" cy="97.9" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="212.5" cy="102.8" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="217.1" cy="97.5" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="151.6" cy="106.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="248.9" cy="69.3" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="215.6" cy="94.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="168.8" cy="85.9" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="173.4" cy="103.6" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="175.1" cy="99.4" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="151.6" cy="101.7" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="239" cy="82.7" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="185.8" cy="103.4" r="0.8" fill="#000" stroke-width="0.5"/><path d="M110,140 l6.0,-10 l10,3.0 l4.0,8.0 l-8.0,5.0 z" fill="#fff" stroke-width="1"/><path d="M156,150 l8.4,-14 l14,4.2 l5.6000000000000005,11.200000000000001 l-11.200000000000001,7.0 z" fill="#fff" stroke-width="1"/><path d="M216,135 l5.3999999999999995,-9 l9,2.6999999999999997 l3.6,7.2 l-7.2,4.5 z" fill="#fff" stroke-width="1"/><path d="M144,165 l3.5999999999999996,-6 l6,1.7999999999999998 l2.4000000000000004,4.800000000000001 l-4.800000000000001,3.0 z" fill="#fff" stroke-width="1"/><path d="M227,160 l4.8,-8 l8,2.4 l3.2,6.4 l-6.4,4.0 z" fill="#fff" stroke-width="1"/><rect x="90" y="180" width="170" height="50" fill="none"/><line x1="90" y1="188" x2="98" y2="180" stroke-width="0.6"/><line x1="90" y1="196" x2="106" y2="180" stroke-width="0.6"/><line x1="90" y1="204" x2="114" y2="180" stroke-width="0.6"/><line x1="90" y1="212" x2="122" y2="180" stroke-width="0.6"/><line x1="90" y1="220" x2="130" y2="180" stroke-width="0.6"/><line x1="90" y1="228" x2="138" y2="180" stroke-width="0.6"/><line x1="96" y1="230" x2="146" y2="180" stroke-width="0.6"/><line x1="104" y1="230" x2="154" y2="180" stroke-width="0.6"/><line x1="112" y1="230" x2="162" y2="180" stroke-width="0.6"/><line x1="120" y1="230" x2="170" y2="180" stroke-width="0.6"/><line x1="128" y1="230" x2="178" y2="180" stroke-width="0.6"/><line x1="136" y1="230" x2="186" y2="180" stroke-width="0.6"/><line x1="144" y1="230" x2="194" y2="180" stroke-width="0.6"/><line x1="152" y1="230" x2="202" y2="180" stroke-width="0.6"/><line x1="160" y1="230" x2="210" y2="180" stroke-width="0.6"/><line x1="168" y1="230" x2="218" y2="180" stroke-width="0.6"/><line x1="176" y1="230" x2="226" y2="180" stroke-width="0.6"/><line x1="184" y1="230" x2="234" y2="180" stroke-width="0.6"/><line x1="192" y1="230" x2="242" y2="180" stroke-width="0.6"/><line x1="200" y1="230" x2="250" y2="180" stroke-width="0.6"/><line x1="208" y1="230" x2="258" y2="180" stroke-width="0.6"/><line x1="216" y1="230" x2="260" y2="186" stroke-width="0.6"/><line x1="224" y1="230" x2="260" y2="194" stroke-width="0.6"/><line x1="232" y1="230" x2="260" y2="202" stroke-width="0.6"/><line x1="240" y1="230" x2="260" y2="210" stroke-width="0.6"/><line x1="248" y1="230" x2="260" y2="218" stroke-width="0.6"/><line x1="256" y1="230" x2="260" y2="226" stroke-width="0.6"/><line x1="260" y1="38" x2="300" y2="38" stroke-width="0.9"/><text x="304" y="42" text-anchor="start" fill="#000" stroke="none">W</text><line x1="260" y1="88" x2="300" y2="88" stroke-width="0.9"/><text x="304" y="92" text-anchor="start" fill="#000" stroke="none">X</text><line x1="260" y1="145" x2="300" y2="145" stroke-width="0.9"/><text x="304" y="149" text-anchor="start" fill="#000" stroke="none">Y</text><line x1="260" y1="205" x2="300" y2="205" stroke-width="0.9"/><text x="304" y="209" text-anchor="start" fill="#000" stroke="none">Z</text></g></svg>`,
-          figure: "Figure 4. A soil profile",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name the layers labelled W and Z.",
-              marks: 2,
-              objective: "1.2.6",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "W",
-                  "Z"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "W - topsoil (1)",
-                  "Z - bedrock/parent rock (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain the role of nitrogen-fixing bacteria in soil fertility.",
-              marks: 2,
-              objective: "1.2.6",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "They convert nitrogen gas from the air into nitrogen compounds (ammonium/nitrates) (1)",
-                  "which plants use to make proteins (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State ONE way in which decomposers improve soil fertility.",
-              marks: 2,
-              objective: "1.2.6",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "They break down dead plants and animals (1) and release minerals/nutrients into the soil and form humus (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-26",
-      module: 1,
-      kind: "structured",
-      title: "Diabetes and blood glucose",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 3,
-        UK: 12,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 6,
-          title: "Sense Organs and Coordination"
-        },
-        {
-          topic: 7,
-          title: "Health"
-        }
-      ],
-      objectives: [
-        "1.6.6",
-        "1.7.4"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Two people, A and B, each drank a solution containing 75 g of glucose after fasting. Their blood glucose levels were measured for 3 hours. The results are shown in Figure 5.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 280" width="460" height="280" role="img" aria-label="Blood glucose after a glucose drink" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Blood glucose after a glucose drink</title><rect x="0" y="0" width="460" height="280" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="58" y1="14" x2="58" y2="234" stroke-width="0.35"/><line x1="90.2" y1="14" x2="90.2" y2="234" stroke-width="0.35"/><line x1="122.3" y1="14" x2="122.3" y2="234" stroke-width="0.35"/><line x1="154.5" y1="14" x2="154.5" y2="234" stroke-width="0.35"/><line x1="186.7" y1="14" x2="186.7" y2="234" stroke-width="0.35"/><line x1="218.8" y1="14" x2="218.8" y2="234" stroke-width="0.35"/><line x1="251" y1="14" x2="251" y2="234" stroke-width="0.35"/><line x1="283.2" y1="14" x2="283.2" y2="234" stroke-width="0.35"/><line x1="315.3" y1="14" x2="315.3" y2="234" stroke-width="0.35"/><line x1="347.5" y1="14" x2="347.5" y2="234" stroke-width="0.35"/><line x1="379.7" y1="14" x2="379.7" y2="234" stroke-width="0.35"/><line x1="411.8" y1="14" x2="411.8" y2="234" stroke-width="0.35"/><line x1="444" y1="14" x2="444" y2="234" stroke-width="0.35"/><line x1="58" y1="234" x2="444" y2="234" stroke-width="0.35"/><line x1="58" y1="218.3" x2="444" y2="218.3" stroke-width="0.35"/><line x1="58" y1="202.6" x2="444" y2="202.6" stroke-width="0.35"/><line x1="58" y1="186.9" x2="444" y2="186.9" stroke-width="0.35"/><line x1="58" y1="171.1" x2="444" y2="171.1" stroke-width="0.35"/><line x1="58" y1="155.4" x2="444" y2="155.4" stroke-width="0.35"/><line x1="58" y1="139.7" x2="444" y2="139.7" stroke-width="0.35"/><line x1="58" y1="124" x2="444" y2="124" stroke-width="0.35"/><line x1="58" y1="108.3" x2="444" y2="108.3" stroke-width="0.35"/><line x1="58" y1="92.6" x2="444" y2="92.6" stroke-width="0.35"/><line x1="58" y1="76.9" x2="444" y2="76.9" stroke-width="0.35"/><line x1="58" y1="61.1" x2="444" y2="61.1" stroke-width="0.35"/><line x1="58" y1="45.4" x2="444" y2="45.4" stroke-width="0.35"/><line x1="58" y1="29.7" x2="444" y2="29.7" stroke-width="0.35"/><line x1="58" y1="14" x2="444" y2="14" stroke-width="0.35"/><line x1="58" y1="14" x2="58" y2="234" stroke-width="0.6"/><line x1="122.3" y1="14" x2="122.3" y2="234" stroke-width="0.6"/><line x1="186.7" y1="14" x2="186.7" y2="234" stroke-width="0.6"/><line x1="251" y1="14" x2="251" y2="234" stroke-width="0.6"/><line x1="315.3" y1="14" x2="315.3" y2="234" stroke-width="0.6"/><line x1="379.7" y1="14" x2="379.7" y2="234" stroke-width="0.6"/><line x1="444" y1="14" x2="444" y2="234" stroke-width="0.6"/><line x1="58" y1="234" x2="444" y2="234" stroke-width="0.6"/><line x1="58" y1="202.6" x2="444" y2="202.6" stroke-width="0.6"/><line x1="58" y1="171.1" x2="444" y2="171.1" stroke-width="0.6"/><line x1="58" y1="139.7" x2="444" y2="139.7" stroke-width="0.6"/><line x1="58" y1="108.3" x2="444" y2="108.3" stroke-width="0.6"/><line x1="58" y1="76.9" x2="444" y2="76.9" stroke-width="0.6"/><line x1="58" y1="45.4" x2="444" y2="45.4" stroke-width="0.6"/><line x1="58" y1="14" x2="444" y2="14" stroke-width="0.6"/><line x1="58" y1="234" x2="444" y2="234" stroke-width="1.4"/><line x1="58" y1="234" x2="58" y2="14" stroke-width="1.4"/><line x1="58" y1="234" x2="58" y2="238" stroke-width="1"/><text x="58" y="251" text-anchor="middle" fill="#000" stroke="none" font-size="12">0</text><line x1="122.3" y1="234" x2="122.3" y2="238" stroke-width="1"/><text x="122.3" y="251" text-anchor="middle" fill="#000" stroke="none" font-size="12">30</text><line x1="186.7" y1="234" x2="186.7" y2="238" stroke-width="1"/><text x="186.7" y="251" text-anchor="middle" fill="#000" stroke="none" font-size="12">60</text><line x1="251" y1="234" x2="251" y2="238" stroke-width="1"/><text x="251" y="251" text-anchor="middle" fill="#000" stroke="none" font-size="12">90</text><line x1="315.3" y1="234" x2="315.3" y2="238" stroke-width="1"/><text x="315.3" y="251" text-anchor="middle" fill="#000" stroke="none" font-size="12">120</text><line x1="379.7" y1="234" x2="379.7" y2="238" stroke-width="1"/><text x="379.7" y="251" text-anchor="middle" fill="#000" stroke="none" font-size="12">150</text><line x1="444" y1="234" x2="444" y2="238" stroke-width="1"/><text x="444" y="251" text-anchor="middle" fill="#000" stroke="none" font-size="12">180</text><line x1="54" y1="234" x2="58" y2="234" stroke-width="1"/><text x="51" y="238" text-anchor="end" fill="#000" stroke="none" font-size="12">0</text><line x1="54" y1="202.6" x2="58" y2="202.6" stroke-width="1"/><text x="51" y="206.6" text-anchor="end" fill="#000" stroke="none" font-size="12">2</text><line x1="54" y1="171.1" x2="58" y2="171.1" stroke-width="1"/><text x="51" y="175.1" text-anchor="end" fill="#000" stroke="none" font-size="12">4</text><line x1="54" y1="139.7" x2="58" y2="139.7" stroke-width="1"/><text x="51" y="143.7" text-anchor="end" fill="#000" stroke="none" font-size="12">6</text><line x1="54" y1="108.3" x2="58" y2="108.3" stroke-width="1"/><text x="51" y="112.3" text-anchor="end" fill="#000" stroke="none" font-size="12">8</text><line x1="54" y1="76.9" x2="58" y2="76.9" stroke-width="1"/><text x="51" y="80.9" text-anchor="end" fill="#000" stroke="none" font-size="12">10</text><line x1="54" y1="45.4" x2="58" y2="45.4" stroke-width="1"/><text x="51" y="49.4" text-anchor="end" fill="#000" stroke="none" font-size="12">12</text><line x1="54" y1="14" x2="58" y2="14" stroke-width="1"/><text x="51" y="18" text-anchor="end" fill="#000" stroke="none" font-size="12">14</text><text x="251" y="270" text-anchor="middle" fill="#000" stroke="none">Time after glucose drink/minutes</text><text x="14" y="124" text-anchor="middle" fill="#000" stroke="none" transform="rotate(-90 14 124)">Blood glucose/mmol per litre</text><path d="M58,155.4 C69.6,148.4 99.2,120.4 122.3,116.1 C145.5,111.9 163.5,126.2 186.7,131.9 C209.8,137.5 227.8,143.3 251,147.6 C274.2,151.8 292.2,154 315.3,155.4 C338.5,156.8 356.5,155.4 379.7,155.4 C402.8,155.4 432.4,155.4 444,155.4" fill="none" stroke-width="1.6"/><circle cx="58" cy="155.4" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="122.3" cy="116.1" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="186.7" cy="131.9" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="251" cy="147.6" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="315.3" cy="155.4" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="379.7" cy="155.4" r="2.6" fill="#000" stroke-width="0.5"/><circle cx="444" cy="155.4" r="2.6" fill="#000" stroke-width="0.5"/><path d="M58,108.3 C69.6,99.8 99.2,73.9 122.3,61.1 C145.5,48.4 163.5,41.8 186.7,37.6 C209.8,33.3 227.8,36.2 251,37.6 C274.2,39 292.2,41.2 315.3,45.4 C338.5,49.7 356.5,55.5 379.7,61.1 C402.8,66.8 432.4,74 444,76.9" fill="none" stroke-width="1.6" stroke-dasharray="6 4"/><line x1="54" y1="104.3" x2="62" y2="112.3" stroke-width="1.2"/><line x1="54" y1="112.3" x2="62" y2="104.3" stroke-width="1.2"/><line x1="118.3" y1="57.1" x2="126.3" y2="65.1" stroke-width="1.2"/><line x1="118.3" y1="65.1" x2="126.3" y2="57.1" stroke-width="1.2"/><line x1="182.7" y1="33.6" x2="190.7" y2="41.6" stroke-width="1.2"/><line x1="182.7" y1="41.6" x2="190.7" y2="33.6" stroke-width="1.2"/><line x1="247" y1="33.6" x2="255" y2="41.6" stroke-width="1.2"/><line x1="247" y1="41.6" x2="255" y2="33.6" stroke-width="1.2"/><line x1="311.3" y1="41.4" x2="319.3" y2="49.4" stroke-width="1.2"/><line x1="311.3" y1="49.4" x2="319.3" y2="41.4" stroke-width="1.2"/><line x1="375.7" y1="57.1" x2="383.7" y2="65.1" stroke-width="1.2"/><line x1="375.7" y1="65.1" x2="383.7" y2="57.1" stroke-width="1.2"/><line x1="440" y1="72.9" x2="448" y2="80.9" stroke-width="1.2"/><line x1="440" y1="80.9" x2="448" y2="72.9" stroke-width="1.2"/><text x="379.7" y="171.4" text-anchor="middle" fill="#000" stroke="none" font-size="12">Person A</text><text x="379.7" y="51.1" text-anchor="middle" fill="#000" stroke="none" font-size="12">Person B</text></g></svg>`,
-          figure: "Figure 5. Blood glucose after a glucose drink",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State the blood glucose level of Person A after 30 minutes and after 120 minutes.",
-              marks: 2,
-              objective: "1.6.6",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "30 min: 7.5 mmol per litre (1)",
-                  "120 min: 5.0 mmol per litre (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Which person is MOST likely to have diabetes? Give TWO reasons from the graph.",
-              marks: 3,
-              objective: "1.7.4",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Person B (1)",
-                  "B's fasting glucose level is higher (8 compared with 5) (1)",
-                  "B's level rises higher and stays high, not returning to normal after 3 hours (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain how the level of blood glucose returned to normal in Person A.",
-              marks: 3,
-              objective: "1.6.6",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "The rise in blood glucose was detected by the pancreas (1)",
-                  "the pancreas released insulin into the blood (1)",
-                  "insulin caused glucose to be taken up by cells/stored as glycogen in the liver, lowering blood glucose (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State TWO ways in which a person with Type 2 diabetes can help to control the condition.",
-              marks: 2,
-              objective: "1.7.4",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Eat a balanced diet low in sugar and refined carbohydrates",
-                  "Exercise regularly",
-                  "Lose excess weight",
-                  "Take prescribed medication",
-                  "Monitor blood glucose"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO long-term effects of uncontrolled diabetes.",
-              marks: 2,
-              objective: "1.7.4",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Blindness/eye damage",
-                  "Kidney failure",
-                  "Nerve damage",
-                  "Poor wound healing/amputation",
-                  "Heart disease/stroke"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Distinguish between the way the nervous system and the endocrine system send messages.",
-              marks: 2,
-              objective: "1.6.6",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "The nervous system sends electrical impulses along neurones, which are fast and short-lived (1)",
-                  "the endocrine system sends hormones in the blood, which act more slowly but last longer (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Name the hormone produced by the adrenal glands.",
-              marks: 1,
-              objective: "1.6.6",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Adrenaline"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-27",
-      module: 1,
-      kind: "practical",
-      title: "Drawing a flower",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 3,
-        UK: 8,
-        XS: 9
-      },
-      topics: [
-        {
-          topic: 2,
-          title: "Reproduction and Growth in Plants"
-        }
-      ],
-      objectives: [
-        "1.2.3",
-        "1.2.1"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Figure 6 shows a half-flower (longitudinal section) of a hibiscus-type flower. The actual height of the flower from the base of the receptacle to the top of the petals is 60 mm.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 310" width="400" height="310" role="img" aria-label="Longitudinal section of a flower" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Longitudinal section of a flower</title><rect x="0" y="0" width="400" height="310" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="192" y1="300" x2="192" y2="240"/><line x1="208" y1="300" x2="208" y2="240"/><path d="M192,240 Q160,230 155,215 L245,215 Q240,230 208,240" fill="#fff"/><path d="M172,215 Q166,175 192,160 L208,160 Q234,175 228,215 Z" fill="#fff"/><ellipse cx="190" cy="178" rx="5" ry="4" fill="#fff" stroke-width="1"/><ellipse cx="210" cy="178" rx="5" ry="4" fill="#fff" stroke-width="1"/><ellipse cx="190" cy="195" rx="5" ry="4" fill="#fff" stroke-width="1"/><ellipse cx="210" cy="195" rx="5" ry="4" fill="#fff" stroke-width="1"/><line x1="196" y1="160" x2="196" y2="85"/><line x1="204" y1="160" x2="204" y2="85"/><path d="M196,85 q-10,-8 -8,-16 q6,4 12,4 q6,0 12,-4 q2,8 -8,16" fill="#fff"/><path d="M155,215 Q115,215 100,245 Q130,235 160,225" fill="#fff"/><path d="M245,215 Q285,215 300,245 Q270,235 240,225" fill="#fff"/><path d="M158,212 Q80,180 65,90 Q120,120 164,205" fill="#fff"/><path d="M242,212 Q320,180 335,90 Q280,120 236,205" fill="#fff"/><path d="M166,212 Q145,160 138,110" fill="none"/><ellipse cx="136" cy="100" rx="7" ry="13" fill="#fff" transform="rotate(-15 136 100)"/><path d="M234,212 Q255,160 262,110" fill="none"/><ellipse cx="264" cy="100" rx="7" ry="13" fill="#fff" transform="rotate(15 264 100)"/></g></svg>`,
-          figure: "Figure 6. Longitudinal section of a flower",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Make a large, labelled drawing of the flower shown in Figure 6. Label SIX parts.",
-              marks: 6,
-              objective: "1.2.3",
-              profile: {
-                XS: 6
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "drawing",
-                height: 320
-              },
-              markScheme: {
-                points: [
-                  "Clean continuous lines, no shading (1)",
-                  "Large drawing (1)",
-                  "All main parts included in correct proportion (1)",
-                  "Any six correct labels: petal, sepal, anther, filament, stigma, style, ovary, ovule, receptacle (2 marks for six, 1 mark for three to five)",
-                  "Ruled label lines that do not cross (1)"
-                ],
-                guidance: "Award as shown",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Measure the height of your drawing and calculate its magnification. Show your working.",
-              marks: 2,
-              objective: "1.2.3",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 110
-              },
-              markScheme: {
-                points: [
-                  "Magnification = height of drawing \xF7 actual height, e.g. 120 mm \xF7 60 mm (1)",
-                  "= \xD7 2 (1)"
-                ],
-                guidance: "1 mark for working; 1 mark for correct magnification with \xD7",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Write a suitable title for your drawing.",
-              marks: 1,
-              objective: "1.2.3",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "e.g. 'Longitudinal section (L.S.) of a flower'"
-                ],
-                guidance: "1 mark (must name the specimen and the view)",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State the function of EACH of the following: stigma; ovary; petal.",
-              marks: 3,
-              objective: "1.2.3",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Stigma - receives pollen (1)",
-                  "Ovary - contains ovules / develops into the fruit (1)",
-                  "Petal - attracts insects for pollination (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Describe what happens from the time a pollen grain lands on the stigma until fertilisation.",
-              marks: 3,
-              objective: "1.2.3",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "The pollen grain grows a pollen tube down through the style (1)",
-                  "the tube enters the ovule through the micropyle (1)",
-                  "the male nucleus fuses with the female nucleus (egg cell) to form a zygote (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State TWO differences between insect-pollinated and wind-pollinated flowers.",
-              marks: 2,
-              objective: "1.2.3",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Insect: large bright petals; wind: small dull petals",
-                  "Insect: scent and nectar; wind: none",
-                  "Insect: sticky/spiky pollen; wind: light, smooth pollen in large amounts",
-                  "Insect: stigma inside the flower; wind: feathery stigma hanging outside"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Suggest ONE advantage of cross-pollination to a plant species.",
-              marks: 3,
-              objective: "1.2.1",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "It brings together genetic material from two different plants (1)",
-                  "increasing variation in the offspring (1)",
-                  "so the species is more likely to adapt to changes such as new diseases or climate (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-28",
-      module: 1,
-      kind: "structured",
-      title: "Transport and defence",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 6,
-        UK: 9,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 4,
-          title: "Transport Systems"
-        },
-        {
-          topic: 7,
-          title: "Health"
-        }
-      ],
-      objectives: [
-        "1.4.2",
-        "1.7.3",
-        "1.4.3"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Figure 7 shows three types of blood cell.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200" role="img" aria-label="Blood cells" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Blood cells</title><rect x="0" y="0" width="400" height="200" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="70" cy="70" r="32" fill="#fff"/><circle cx="70" cy="70" r="14" fill="none" stroke-width="0.8" stroke-dasharray="3 3"/><path d="M40,140 q30,-18 60,0 q-30,18 -60,0 z" fill="#fff"/><path d="M52,140 q18,6 36,0" fill="none" stroke-width="0.8"/><text x="70" y="185" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">X</text><circle cx="200" cy="90" r="42" fill="#fff"/><circle cx="181.5" cy="62.2" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="192.7" cy="65.8" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="169.7" cy="83.1" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="229.3" cy="111" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="218.6" cy="70.5" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="202.6" cy="74.4" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="177.1" cy="62.4" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="180" cy="119.9" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="223" cy="111.5" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="221" cy="68.5" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="186.7" cy="98.9" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="216.2" cy="114.8" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="226.6" cy="61.1" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="207.4" cy="102" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="200.4" cy="67.4" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="198.2" cy="61.3" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="230.4" cy="115.6" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="203.3" cy="76" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="228.6" cy="95.1" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="226.8" cy="114.4" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="200.6" cy="84" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="206.9" cy="85.2" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="176.3" cy="76.4" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="221.9" cy="58" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="168.2" cy="98.8" r="0.7" fill="#000" stroke-width="0.5"/><path d="M178,80 q8,-14 18,-2 q10,-14 18,2 q12,4 4,16 q-10,10 -18,-2 q-12,10 -18,-4 q-10,-6 -4,-10 z" fill="#fff"/><text x="200" y="185" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">Y</text><circle cx="330" cy="90" r="30" fill="#fff"/><circle cx="330" cy="90" r="24" fill="#fff"/><circle cx="337" cy="97.7" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="329.6" cy="84.3" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="318" cy="93.9" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="329.3" cy="96.2" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="327" cy="96.5" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="324.5" cy="97.2" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="335.5" cy="87.9" r="0.7" fill="#000" stroke-width="0.5"/><circle cx="330.9" cy="94.4" r="0.7" fill="#000" stroke-width="0.5"/><text x="330" y="185" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">Z</text></g></svg>`,
-          figure: "Figure 7. Blood cells",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name cells X, Y and Z.",
-              marks: 3,
-              objective: "1.4.2",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "X",
-                  "Y",
-                  "Z"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "X - red blood cell",
-                  "Y - phagocyte",
-                  "Z - lymphocyte"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how cells Y and Z work together to protect the body from infection.",
-              marks: 3,
-              objective: "1.7.3",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Y (phagocytes) engulf and digest pathogens (1)",
-                  "Z (lymphocytes) produce antibodies specific to the antigens on the pathogen (1)",
-                  "antibodies clump/mark pathogens, making it easier for phagocytes to destroy them; memory cells remain (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Compare the xylem and the phloem in terms of what they carry and the direction of movement.",
-              marks: 3,
-              objective: "1.4.2",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Xylem carries water and mineral salts (1)",
-                  "phloem carries dissolved food/sugars (1)",
-                  "xylem transport is upwards only, from roots to leaves; phloem transport is up and down to all parts (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why a ring of bark removed from a tree trunk (ringing) may eventually kill the tree.",
-              marks: 2,
-              objective: "1.4.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "The phloem is just under the bark and is removed (1)",
-                  "so sugars made in the leaves cannot reach the roots, which starve and die (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name the blood vessel which carries blood from the left ventricle to the body.",
-              marks: 1,
-              objective: "1.4.2",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Aorta"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO differences between arteries and veins.",
-              marks: 2,
-              objective: "1.4.2",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Arteries carry blood away from the heart; veins carry blood to the heart",
-                  "Arteries have thick muscular walls; veins have thin walls",
-                  "Veins have valves; arteries do not (except at the heart)",
-                  "Blood in arteries is at high pressure; in veins low pressure"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain why a person with blood group O is called a universal donor.",
-              marks: 1,
-              objective: "1.4.3",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Group O red cells have no A or B antigens, so they are not agglutinated by the recipient's antibodies."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ]
-};
-
-// public/integrated-science/bank/is_module2.json
-var is_module2_default = {
-  schema: "spark.content.v1",
-  subject: "CSEC Integrated Science",
-  subjectCode: "IS",
-  version: "1.2.0",
-  module: 2,
-  moduleTitle: "Energy",
-  topics: [
-    {
-      topic: 1,
-      title: "Conservation of Energy",
-      objectives: [
-        {
-          code: "2.1.1",
-          text: "explain the concept of energy"
-        },
-        {
-          code: "2.1.2",
-          text: "discuss the inter-conversion and conservation of mass energy"
-        },
-        {
-          code: "2.1.3",
-          text: "examine the role of photosynthesis in the conversion of energy"
-        },
-        {
-          code: "2.1.4",
-          text: "analyse the transfer of energy in the environment"
-        }
-      ]
-    },
-    {
-      topic: 2,
-      title: "Energy in Life Processes",
-      objectives: [
-        {
-          code: "2.2.1",
-          text: "examine the importance of food as a source of energy"
-        },
-        {
-          code: "2.2.2",
-          text: "examine the process of digestion in humans"
-        },
-        {
-          code: "2.2.3",
-          text: "relate the structure of the teeth to their function in human digestion"
-        },
-        {
-          code: "2.2.4",
-          text: "evaluate the importance of respiration in providing energy to organisms"
-        },
-        {
-          code: "2.2.5",
-          text: "distinguish between aerobic and anaerobic respiration"
-        },
-        {
-          code: "2.2.6",
-          text: "examine the mechanism of breathing"
-        },
-        {
-          code: "2.2.7",
-          text: "explain the importance of gaseous exchange in organisms"
-        },
-        {
-          code: "2.2.8",
-          text: "explain the effects of smoking on the gaseous exchange process"
-        }
-      ]
-    },
-    {
-      topic: 3,
-      title: "Fossil Fuels and Alternative Sources of Energy",
-      objectives: [
-        {
-          code: "2.3.1",
-          text: "examine the use of fossil fuels"
-        },
-        {
-          code: "2.3.2",
-          text: "appraise the extent to which alternative sources of energy can be used in the Caribbean"
-        }
-      ]
-    },
-    {
-      topic: 4,
-      title: "Electricity and Lighting",
-      objectives: [
-        {
-          code: "2.4.1",
-          text: "examine the use of conductors of electricity"
-        },
-        {
-          code: "2.4.2",
-          text: "examine the flow of electricity in circuits"
-        },
-        {
-          code: "2.4.3",
-          text: "assess the consumption of electricity in the home"
-        },
-        {
-          code: "2.4.4",
-          text: "discuss the safety features of electrical devices"
-        },
-        {
-          code: "2.4.5",
-          text: "discuss energy conservation measures"
-        },
-        {
-          code: "2.4.6",
-          text: "compare artificial sources of light"
-        },
-        {
-          code: "2.4.7",
-          text: "discuss first aid methods for treating electrical accidents"
-        },
-        {
-          code: "2.4.8",
-          text: "discuss the hazards associated with electricity"
-        },
-        {
-          code: "2.4.9",
-          text: "discuss the various methods of extinguishing fires"
-        },
-        {
-          code: "2.4.10",
-          text: "explain the appropriate use of conventional protective gear/wear"
-        }
-      ]
-    },
-    {
-      topic: 5,
-      title: "Temperature Control and Ventilation",
-      objectives: [
-        {
-          code: "2.5.1",
-          text: "examine the application of the methods of heat transfer"
-        },
-        {
-          code: "2.5.2",
-          text: "outline the use of thermostats in household appliances"
-        },
-        {
-          code: "2.5.3",
-          text: "compare the types of thermometers"
-        },
-        {
-          code: "2.5.4",
-          text: "explain temperature regulation in humans"
-        },
-        {
-          code: "2.5.5",
-          text: "explain the need for proper ventilation"
-        }
-      ]
-    }
-  ],
-  sharedStimuli: {
-    "M2-S-AIR": {
-      id: "M2-S-AIR",
-      lead: "to the following table which shows the composition of inhaled and exhaled air.",
-      svg: null,
-      table: {
-        title: null,
-        headers: [
-          "Gas",
-          "Inhaled air/%",
-          "Exhaled air/%"
-        ],
-        rows: [
-          [
-            "Nitrogen",
-            "78",
-            "78"
-          ],
-          [
-            "Oxygen",
-            "21",
-            "X"
-          ],
-          [
-            "Carbon dioxide",
-            "0.04",
-            "4"
-          ]
-        ],
-        source: null
-      },
-      text: null
-    },
-    "M2-S-ALV": {
-      id: "M2-S-ALV",
-      lead: "to the following diagram of an alveolus and a blood capillary.",
-      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 270" width="420" height="270" role="img" aria-label="An alveolus and a blood capillary" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>An alveolus and a blood capillary</title><rect x="0" y="0" width="420" height="270" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M90,40 L90,90 Q40,110 50,170 Q70,230 150,220 Q220,210 215,150 Q210,100 150,90 L150,40" fill="#fff" stroke-width="1.5"/><path d="M60,200 Q130,250 230,190 L250,200 Q140,270 45,210 Z" fill="#fff" stroke-width="1.2"/><ellipse cx="90" cy="225" rx="7" ry="4" fill="#fff" stroke-width="0.9"/><ellipse cx="130" cy="232" rx="7" ry="4" fill="#fff" stroke-width="0.9"/><ellipse cx="180" cy="222" rx="7" ry="4" fill="#fff" stroke-width="0.9"/><line x1="130" y1="160" x2="140" y2="215"/><polygon points="140,215 136,209.3 141.8,208.2" fill="#000" stroke-width="1"/><text x="145" y="190" text-anchor="start" fill="#000" stroke="none" font-size="12">O\u2082</text><line x1="185" y1="210" x2="170" y2="160"/><polygon points="170,160 174.7,165.2 169,166.9" fill="#000" stroke-width="1"/><text x="188" y="180" text-anchor="start" fill="#000" stroke="none" font-size="12">CO\u2082</text><line x1="120" y1="70" x2="120" y2="110"/><polygon points="120,110 117,103.7 123,103.7" fill="#000" stroke-width="1"/><polygon points="120,70 123,76.3 117,76.3" fill="#000" stroke-width="1"/><text x="125" y="70" text-anchor="start" fill="#000" stroke="none" font-size="12">air</text><line x1="210" y1="140" x2="290" y2="120" stroke-width="0.9"/><text x="294" y="124" text-anchor="start" fill="#000" stroke="none">alveolus wall</text><line x1="240" y1="198" x2="290" y2="215" stroke-width="0.9"/><text x="294" y="219" text-anchor="start" fill="#000" stroke="none">capillary</text><line x1="130" y1="232" x2="290" y2="250" stroke-width="0.9"/><text x="294" y="254" text-anchor="start" fill="#000" stroke="none">red blood cell</text></g></svg>`,
-      table: null,
-      text: null
-    },
-    "M2-S-BELL": {
-      id: "M2-S-BELL",
-      lead: "to the following diagram of a bell jar model of the chest.",
-      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 290" width="360" height="290" role="img" aria-label="Bell jar model of the chest" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Bell jar model of the chest</title><rect x="0" y="0" width="360" height="290" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M110,60 Q110,40 150,40 L230,40 Q270,40 270,60 L290,220 L90,220 Z" fill="#fff" stroke-width="1.5"/><line x1="190" y1="20" x2="190" y2="70"/><line x1="180" y1="18" x2="200" y2="18" stroke-width="2"/><line x1="190" y1="70" x2="160" y2="95"/><line x1="190" y1="70" x2="220" y2="95"/><ellipse cx="150" cy="125" rx="25" ry="32" fill="#fff"/><ellipse cx="230" cy="125" rx="25" ry="32" fill="#fff"/><path d="M90,220 Q190,250 290,220" fill="none" stroke-width="1.6"/><line x1="190" y1="235" x2="190" y2="270"/><rect x="178" y="270" width="24" height="10" fill="#fff" stroke-width="1"/><line x1="190" y1="30" x2="320" y2="30" stroke-width="0.9"/><text x="324" y="34" text-anchor="start" fill="#000" stroke="none">P</text><line x1="245" y1="125" x2="320" y2="110" stroke-width="0.9"/><text x="324" y="114" text-anchor="start" fill="#000" stroke="none">Q</text><line x1="280" y1="160" x2="320" y2="170" stroke-width="0.9"/><text x="324" y="174" text-anchor="start" fill="#000" stroke="none">R</text><line x1="250" y1="232" x2="320" y2="235" stroke-width="0.9"/><text x="324" y="239" text-anchor="start" fill="#000" stroke="none">S</text></g></svg>`,
-      table: null,
-      text: null
-    },
-    "M2-S-BILL3": {
-      id: "M2-S-BILL3",
-      lead: "to the following table which shows appliances used in a home in one day.",
-      svg: null,
-      table: {
-        title: null,
-        headers: [
-          "Appliance",
-          "Power/kW",
-          "Time used/hours"
-        ],
-        rows: [
-          [
-            "Refrigerator",
-            "0.2",
-            "24"
-          ],
-          [
-            "Electric kettle",
-            "2.0",
-            "0.5"
-          ],
-          [
-            "Television",
-            "0.1",
-            "5"
-          ],
-          [
-            "Air conditioner",
-            "1.5",
-            "8"
-          ]
-        ],
-        source: null
-      },
-      text: null
-    },
-    "M2-S-BIMETAL": {
-      id: "M2-S-BIMETAL",
-      lead: "to the following diagram which shows a bimetallic strip before and after heating.",
-      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 265" width="380" height="265" role="img" aria-label="A bimetallic strip" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A bimetallic strip</title><rect x="0" y="0" width="380" height="265" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="60" width="300" height="10" fill="#fff"/><rect x="40" y="70" width="300" height="10" fill="#fff"/><text x="190" y="55" text-anchor="middle" fill="#000" stroke="none" font-size="12">brass</text><text x="190" y="96" text-anchor="middle" fill="#000" stroke="none" font-size="12">iron</text><rect x="20" y="50" width="20" height="40" fill="none"/><line x1="20" y1="55" x2="25" y2="50" stroke-width="0.6"/><line x1="20" y1="60" x2="30" y2="50" stroke-width="0.6"/><line x1="20" y1="65" x2="35" y2="50" stroke-width="0.6"/><line x1="20" y1="70" x2="40" y2="50" stroke-width="0.6"/><line x1="20" y1="75" x2="40" y2="55" stroke-width="0.6"/><line x1="20" y1="80" x2="40" y2="60" stroke-width="0.6"/><line x1="20" y1="85" x2="40" y2="65" stroke-width="0.6"/><line x1="20" y1="90" x2="40" y2="70" stroke-width="0.6"/><line x1="25" y1="90" x2="40" y2="75" stroke-width="0.6"/><line x1="30" y1="90" x2="40" y2="80" stroke-width="0.6"/><line x1="35" y1="90" x2="40" y2="85" stroke-width="0.6"/><text x="190" y="130" text-anchor="middle" fill="#000" stroke="none" font-style="italic" font-size="12">cold (straight)</text><path d="M40,170 Q200,175 330,230" fill="none" stroke-linecap="butt" stroke-width="10"/><path d="M40,170 Q200,175 330,230" fill="none" stroke="#fff" stroke-linecap="butt" stroke-width="7.4"/><path d="M40,170 Q200,175 330,230" fill="none" stroke-width="0.8"/><rect x="20" y="150" width="20" height="40" fill="none"/><line x1="20" y1="155" x2="25" y2="150" stroke-width="0.6"/><line x1="20" y1="160" x2="30" y2="150" stroke-width="0.6"/><line x1="20" y1="165" x2="35" y2="150" stroke-width="0.6"/><line x1="20" y1="170" x2="40" y2="150" stroke-width="0.6"/><line x1="20" y1="175" x2="40" y2="155" stroke-width="0.6"/><line x1="20" y1="180" x2="40" y2="160" stroke-width="0.6"/><line x1="20" y1="185" x2="40" y2="165" stroke-width="0.6"/><line x1="20" y1="190" x2="40" y2="170" stroke-width="0.6"/><line x1="25" y1="190" x2="40" y2="175" stroke-width="0.6"/><line x1="30" y1="190" x2="40" y2="180" stroke-width="0.6"/><line x1="35" y1="190" x2="40" y2="185" stroke-width="0.6"/><text x="190" y="250" text-anchor="middle" fill="#000" stroke="none" font-style="italic" font-size="12">hot (bent)</text></g></svg>`,
-      table: null,
-      text: null
-    },
-    "M2-S-CLIN": {
-      id: "M2-S-CLIN",
-      lead: "to the following diagram of a clinical thermometer.",
-      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 110" width="440" height="110" role="img" aria-label="A clinical thermometer" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A clinical thermometer</title><rect x="0" y="0" width="440" height="110" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="30" width="380" height="30" fill="#fff" rx="15"/><circle cx="52" cy="45" r="9" fill="#fff"/><line x1="61" y1="45" x2="110" y2="45" stroke-width="2"/><line x1="110" y1="43" x2="118" y2="45" stroke-width="1"/><line x1="118" y1="45" x2="250" y2="45" stroke-width="1.4"/><line x1="140" y1="30" x2="140" y2="38" stroke-width="1"/><text x="140" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">35</text><line x1="143.6" y1="30" x2="143.6" y2="34" stroke-width="0.5"/><line x1="147.2" y1="30" x2="147.2" y2="34" stroke-width="0.5"/><line x1="150.8" y1="30" x2="150.8" y2="34" stroke-width="0.5"/><line x1="154.4" y1="30" x2="154.4" y2="34" stroke-width="0.5"/><line x1="158" y1="30" x2="158" y2="36" stroke-width="0.5"/><line x1="161.6" y1="30" x2="161.6" y2="34" stroke-width="0.5"/><line x1="165.2" y1="30" x2="165.2" y2="34" stroke-width="0.5"/><line x1="168.8" y1="30" x2="168.8" y2="34" stroke-width="0.5"/><line x1="172.4" y1="30" x2="172.4" y2="34" stroke-width="0.5"/><line x1="176" y1="30" x2="176" y2="38" stroke-width="1"/><text x="176" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">36</text><line x1="179.6" y1="30" x2="179.6" y2="34" stroke-width="0.5"/><line x1="183.2" y1="30" x2="183.2" y2="34" stroke-width="0.5"/><line x1="186.8" y1="30" x2="186.8" y2="34" stroke-width="0.5"/><line x1="190.4" y1="30" x2="190.4" y2="34" stroke-width="0.5"/><line x1="194" y1="30" x2="194" y2="36" stroke-width="0.5"/><line x1="197.6" y1="30" x2="197.6" y2="34" stroke-width="0.5"/><line x1="201.2" y1="30" x2="201.2" y2="34" stroke-width="0.5"/><line x1="204.8" y1="30" x2="204.8" y2="34" stroke-width="0.5"/><line x1="208.4" y1="30" x2="208.4" y2="34" stroke-width="0.5"/><line x1="212" y1="30" x2="212" y2="38" stroke-width="1"/><text x="212" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">37</text><line x1="215.6" y1="30" x2="215.6" y2="34" stroke-width="0.5"/><line x1="219.2" y1="30" x2="219.2" y2="34" stroke-width="0.5"/><line x1="222.8" y1="30" x2="222.8" y2="34" stroke-width="0.5"/><line x1="226.4" y1="30" x2="226.4" y2="34" stroke-width="0.5"/><line x1="230" y1="30" x2="230" y2="36" stroke-width="0.5"/><line x1="233.6" y1="30" x2="233.6" y2="34" stroke-width="0.5"/><line x1="237.2" y1="30" x2="237.2" y2="34" stroke-width="0.5"/><line x1="240.8" y1="30" x2="240.8" y2="34" stroke-width="0.5"/><line x1="244.4" y1="30" x2="244.4" y2="34" stroke-width="0.5"/><line x1="248" y1="30" x2="248" y2="38" stroke-width="1"/><text x="248" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">38</text><line x1="251.6" y1="30" x2="251.6" y2="34" stroke-width="0.5"/><line x1="255.2" y1="30" x2="255.2" y2="34" stroke-width="0.5"/><line x1="258.8" y1="30" x2="258.8" y2="34" stroke-width="0.5"/><line x1="262.4" y1="30" x2="262.4" y2="34" stroke-width="0.5"/><line x1="266" y1="30" x2="266" y2="36" stroke-width="0.5"/><line x1="269.6" y1="30" x2="269.6" y2="34" stroke-width="0.5"/><line x1="273.2" y1="30" x2="273.2" y2="34" stroke-width="0.5"/><line x1="276.8" y1="30" x2="276.8" y2="34" stroke-width="0.5"/><line x1="280.4" y1="30" x2="280.4" y2="34" stroke-width="0.5"/><line x1="284" y1="30" x2="284" y2="38" stroke-width="1"/><text x="284" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">39</text><line x1="287.6" y1="30" x2="287.6" y2="34" stroke-width="0.5"/><line x1="291.2" y1="30" x2="291.2" y2="34" stroke-width="0.5"/><line x1="294.8" y1="30" x2="294.8" y2="34" stroke-width="0.5"/><line x1="298.4" y1="30" x2="298.4" y2="34" stroke-width="0.5"/><line x1="302" y1="30" x2="302" y2="36" stroke-width="0.5"/><line x1="305.6" y1="30" x2="305.6" y2="34" stroke-width="0.5"/><line x1="309.2" y1="30" x2="309.2" y2="34" stroke-width="0.5"/><line x1="312.8" y1="30" x2="312.8" y2="34" stroke-width="0.5"/><line x1="316.4" y1="30" x2="316.4" y2="34" stroke-width="0.5"/><line x1="320" y1="30" x2="320" y2="38" stroke-width="1"/><text x="320" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">40</text><line x1="323.6" y1="30" x2="323.6" y2="34" stroke-width="0.5"/><line x1="327.2" y1="30" x2="327.2" y2="34" stroke-width="0.5"/><line x1="330.8" y1="30" x2="330.8" y2="34" stroke-width="0.5"/><line x1="334.4" y1="30" x2="334.4" y2="34" stroke-width="0.5"/><line x1="338" y1="30" x2="338" y2="36" stroke-width="0.5"/><line x1="341.6" y1="30" x2="341.6" y2="34" stroke-width="0.5"/><line x1="345.2" y1="30" x2="345.2" y2="34" stroke-width="0.5"/><line x1="348.8" y1="30" x2="348.8" y2="34" stroke-width="0.5"/><line x1="352.4" y1="30" x2="352.4" y2="34" stroke-width="0.5"/><line x1="356" y1="30" x2="356" y2="38" stroke-width="1"/><text x="356" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">41</text><line x1="359.6" y1="30" x2="359.6" y2="34" stroke-width="0.5"/><line x1="363.2" y1="30" x2="363.2" y2="34" stroke-width="0.5"/><line x1="366.8" y1="30" x2="366.8" y2="34" stroke-width="0.5"/><line x1="370.4" y1="30" x2="370.4" y2="34" stroke-width="0.5"/><line x1="374" y1="30" x2="374" y2="36" stroke-width="0.5"/><line x1="377.6" y1="30" x2="377.6" y2="34" stroke-width="0.5"/><line x1="381.2" y1="30" x2="381.2" y2="34" stroke-width="0.5"/><line x1="384.8" y1="30" x2="384.8" y2="34" stroke-width="0.5"/><line x1="388.4" y1="30" x2="388.4" y2="34" stroke-width="0.5"/><line x1="392" y1="30" x2="392" y2="38" stroke-width="1"/><text x="392" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">42</text><line x1="114" y1="44" x2="114" y2="100" stroke-width="0.9"/><text x="110" y="104" text-anchor="middle" fill="#000" stroke="none">constriction</text><text x="400" y="95" text-anchor="end" fill="#000" stroke="none" font-size="12">\xB0C</text></g></svg>`,
-      table: null,
-      text: null
-    },
-    "M2-S-CONV": {
-      id: "M2-S-CONV",
-      lead: "to the following diagram.",
-      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340" role="img" aria-label="Heating water containing a crystal of potassium manganate(VII)" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Heating water containing a crystal of potassium manganate(VII)</title><rect x="0" y="0" width="400" height="340" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline poi
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 245" width="360" height="245" role="img" aria-label="Soil profile" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Soil profile</title><rect x="0" y="0" width="360" height="245" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="90" y="20" width="170" height="210" fill="none"/><path d="M90,55 q40,-6 85,0 q45,6 85,0" fill="none" stroke-width="1"/><path d="M90,115 q40,-6 85,0 q45,6 85,0" fill="none" stroke-width="1"/><path d="M90,175 q40,-6 85,0 q45,6 85,0" fill="none" stroke-width="1"/><circle cx="116.5" cy="46.2" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="217.2" cy="31.4" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="174.3" cy="36.2" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="199.3" cy="44.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="110" cy="25.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="228.7" cy="35.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="217" cy="25.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="166.3" cy="43" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="131.6" cy="48.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="239.2" cy="25.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="99.1" cy="38.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="245.3" cy="34.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="129.7" cy="35.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="99.6" cy="30.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="165.1" cy="37.4" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="132.3" cy="30.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="130" cy="36.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="141.4" cy="25.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="229" cy="38.9" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="197.8" cy="29.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="253.8" cy="46.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="114.3" cy="33.3" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="210.4" cy="42.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="244.8" cy="35.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="227.8" cy="41.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="143.5" cy="39.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="236.2" cy="46.2" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="175.8" cy="39.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="100.5" cy="31.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="222.6" cy="35.4" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="122.7" cy="38.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="207.5" cy="41.9" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="155" cy="36" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="176.3" cy="44.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="178.4" cy="34.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="173.4" cy="25.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="102" cy="42.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="252.3" cy="39.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="158" cy="29.3" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="175.4" cy="49.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="218.3" cy="38.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="232.6" cy="30.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="177.2" cy="48.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="187.4" cy="36.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="138.1" cy="38.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="248.1" cy="25.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="220.4" cy="45.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="236.8" cy="43.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="224.5" cy="38" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="184.8" cy="35.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="104" cy="46.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="186.2" cy="30" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="175.8" cy="37.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="152.1" cy="33.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="181.2" cy="40.6" r="1.1" fill="#000" stroke-width="0.5"/><path d="M105,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M132,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M159,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M1
