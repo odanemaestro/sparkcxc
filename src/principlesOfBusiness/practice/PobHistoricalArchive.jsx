@@ -165,9 +165,9 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
            onChange={e=>setAnswers(prev=>({...prev,[id]:e.target.value}))}/>
          {submitted&&<div className="pob-archive-scheme">
            <strong>SPARK model answer</strong><p>{part.modelAnswer||"Model answer is still being authored."}</p>
-           <strong>Marking criteria</strong><ul>{(part.criteria||[]).map((criterion,i)=><li key={i}>
+           {part.criteria?.length>0&&<><strong>Marking criteria</strong><ul>{part.criteria.map((criterion,i)=><li key={i}>
              {criterion.marks} mark{criterion.marks===1?"":"s"}: {criterion.rule}
-           </li>)}</ul>
+           </li>)}</ul></>}
            <small>Credit equivalent correct ideas and explanations. This is a SPARK-authored guide, not an official CXC marking scheme.</small>
          </div>}
        </div>
