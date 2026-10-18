@@ -90,7 +90,9 @@ test("three distinct producer/consumer cheese price influences earn six marks",(
 test("advertising, monopoly and price-control explanations accept independently justified marks",()=>{
  expect(scored("Q3:d","Producers advertise cheese, increasing demand and raising its price.").confirmedMarks).toBe(2);
  expect(scored("Q3:d","A monopoly fixes cheese prices.").confirmedMarks).toBe(2);
- expect(scored("Q3:d","Consumers lobby government because they want price controls on cheese.").confirmedMarks).toBe(2);
+ const controls=scored("Q3:d","Consumers lobby government because they want price controls on cheese.");
+ expect(controls.confirmedMarks).toBe(2);
+ expect(controls.concepts[0].conceptId).toBe("price-control");
 });
 test("backwards cheese economic directions receive no causal explanation credit",()=>{
  const cut=scored("Q3:d","Producers cut cheese supply so its price falls.");
