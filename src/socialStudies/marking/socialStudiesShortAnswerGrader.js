@@ -8,7 +8,8 @@ import {
 const CAUSAL_WORDS=[
   "because","therefore","so that","so","which means","this means","as a result",
   "resulting in","leading to","leads to","helps","allows","enables","encourages",
-  "reduces","increases","improves","prevents","protects","ensures","makes it easier"
+  "reduces","increases","improves","prevents","protects","ensures","makes it easier",
+  "which can","which may","creating jobs","leading to employment"
 ];
 
 function nonBlank(value){
@@ -21,7 +22,8 @@ function evidenceLabel(point){
 
 function hasDevelopmentLanguage(value){
   const text=normalizeSocialStudiesText(value);
-  return CAUSAL_WORDS.some(word=>text.includes(word));
+  return CAUSAL_WORDS.some(phrase=>text.split(" ").join(" ").includes(phrase) &&
+    new RegExp("(^|\\s)"+phrase+"(?=\\s|$)","i").test(text));
 }
 
 function pointMatches(value,point){
@@ -52,7 +54,8 @@ function candidateWindows(value){
   for(let i=0;i<segments.length-1;i+=1){
     windows.push(segments[i]+" "+segments[i+1]);
   }
-  windows.push(String(value ?? ""));
+  // Separate or adjacent statements can show development, but unrelated
+  // paragraphs must not be treated as one invented claim.
   return windows;
 }
 
