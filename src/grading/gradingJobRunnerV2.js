@@ -15,9 +15,13 @@ export function validateGradingJob(job){
  return job;
 }
 export function classifyGradingResult(result){
- if(!result||typeof result!=="object"||!result.reconciliation||
-    !Number.isFinite(result.reconciliation.unresolvedMarks)||
-    !Number.isFinite(result.reconciliation.confirmedMarks))
+ const rec=result?.reconciliation;
+ if(!rec||typeof rec!=="object"||
+    !Number.isFinite(rec.unresolvedMarks)||rec.unresolvedMarks<0||
+    !Number.isFinite(rec.confirmedMarks)||rec.confirmedMarks<0||
+    !Number.isFinite(rec.maxMarks)||rec.maxMarks<=0||
+    rec.confirmedMarks+rec.unresolvedMarks>rec.maxMarks+1e-8||
+    !Array.isArray(rec.parts)||rec.parts.length===0)
    return {status:"failed",reason:"invalid-grader-output"};
  if(result.reconciliation.unresolvedMarks>0)
    return {status:"provisional",reason:"unresolved-criteria"};
