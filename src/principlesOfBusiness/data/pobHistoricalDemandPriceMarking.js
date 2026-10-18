@@ -29,7 +29,7 @@ const options=Object.freeze({
    {id:"publicity",label:"Adverse publicity or fewer advertisements",
     name:/\b(?:bad publicity|negative publicity|health scare|food safety scare|adverse publicity|reduc(?:ed|ing)|less|fewer|cut(?:s|ting)?)\s+(?:advertis(?:ing|ements?)|marketing|promotion|publicity)\b|\b(?:bad publicity|negative publicity|health scare|food safety scare)\b/i},
    {id:"buyers",label:"Fewer customers or reduced population",
-    name:/\b(?:fewer|less|fall(?:ing)?|declin(?:e|ing)|decreas(?:ed|ing)|reduc(?:ed|ing))\s+(?:people|customers|buyers|tourists|population)\b|\b(?:population|tourism|tourist numbers?)\s+(?:falls?|declines?|drops?|decreases?)\b/i}
+    name:/\b(?:fall(?:ing)?|declin(?:e|ing)|decreas(?:ed|ing)|smaller|reduc(?:ed|ing))\s+(?:population|tourist numbers?|number of (?:buyers|customers|tourists))\b|\b(?:fewer|less)\s+(?:tourists|potential customers|residents)\b|\b(?:population|tourist numbers?|number of buyers?)\s+(?:falls?|declines?|drops?|decreases?)\b/i}
   ]
  },
  "Q3:d":{
@@ -58,12 +58,12 @@ const sentences=value=>String(value??"").split(/[;\n]+|(?<=[.!?])\s+/)
 const negated=value=>/\b(?:not|never|cannot|can't|doesn't|don't|won't|will not|no longer)\b/i.test(value);
 const linkage=value=>/\b(?:so|because|which|therefore|thereby|leading|caus(?:e|es|ing)|result(?:s|ing)?|mak(?:e|es|ing)|allow(?:s|ing)?|push(?:es|ing)?|driv(?:e|es|ing)|encourag(?:e|es|ing)|reduce(?:s|d)?|decrease(?:s|d)?|increas(?:e|es|ed)|rise|rises|falls?|drops?|lowers?|rais(?:e|es))\b/i.test(value);
 const iceCreamContext=/\b(?:ice.?cream|demand|sales|purchases?|buy(?:ing)?|consum(?:e|ption))\b/i;
-const demandDown=/(?:\b(?:demand|sales|purchases?|buying|consumption)\s+(?:for\s+(?:ice.?cream)\s+)?(?:falls?|decreas(?:e|es|ed)|drops?|declines?|reduc(?:e|es|ed))\b|\b(?:lower|less|reduc(?:e|es|ed)|decreas(?:e|es|ed)|fall(?:ing)?)\s+(?:(?:demand|sales|purchases?)\s+(?:for\s+)?)?(?:ice.?cream|demand|sales|purchases?)\b|\b(?:buy|purchase|eat|consume)\s+(?:less|fewer)\s+ice.?cream\b|\b(?:switch|move|turn)\s+(?:to|away\s+from)\s+(?:frozen\s+)?(?:yogh?urt|popsicles?|snow\s*cones?|substitutes?)\b)/i;
+const demandDown=/(?:\b(?:demand|sales|purchases?|buying|consumption)\s+(?:for\s+(?:ice.?cream)\s+)?(?:falls?|decreas(?:e|es|ed)|drops?|declines?|reduc(?:e|es|ed))\b|\b(?:lower|less|reduc(?:e|es|ed)|decreas(?:e|es|ed)|fall(?:ing)?)\s+(?:(?:demand|sales|purchases?)\s+(?:for\s+)?)?(?:ice.?cream|demand|sales|purchases?)\b|\b(?:buy|purchase|eat|consume)\s+(?:less|fewer)\s+ice.?cream\b|\b(?:switch|move|turn)\s+(?:to|away\s+from)\s+(?:frozen\s+)?(?:yogh?urt|popsicles?|snow\s*cones?|substitutes?)\b|\bswitch\s+to\s+(?:it|them)\s+(?:instead of|rather than)\s+ice.?cream\b)/i;
 const demandUp=/\b(?:demand|sales|purchases?|buying)\s+(?:for\s+ice.?cream\s+)?(?:rises?|increas(?:e|es|ed)|grows?|go(?:es)? up)\b|\b(?:more|increas(?:e|ed|ing)?)\s+(?:ice.?cream\s+)?(?:demand|sales|purchases?)\b|\bbuy\s+more\s+ice.?cream\b/i;
 const cheeseContext=/\b(?:cheese|its price|market price|price|supply|demand)\b/i;
-const priceUp=/\b(?:prices?|cost\s+to\s+consumers?)\s+(?:(?:of|for)\s+cheese\s+)?(?:rise|rises|increase|increases|go(?:es)? up|higher)\b|\b(?:raise|higher|increased?|rising|more expensive|push(?:es)? up|drive(?:s)? up)\s+(?:(?:the|cheese|market)\s+)?(?:prices?|cheese price)\b/i;
+const priceUp=/\b(?:prices?|cost\s+to\s+consumers?)\s+(?:(?:of|for)\s+cheese\s+)?(?:rise|rises|increase|increases|go(?:es)? up|higher)\b|\b(?:rais(?:e|es|ed|ing)|higher|increased?|rising|more expensive|push(?:es)? up|drive(?:s)? up)\s+(?:(?:its|the|cheese|market)\s+)?(?:prices?|cheese price)\b/i;
 const priceDown=/\b(?:prices?|cost\s+to\s+consumers?)\s+(?:(?:of|for)\s+cheese\s+)?(?:fall|falls|drop|drops|decrease|decreases|go(?:es)? down|lower)\b|\b(?:lower|cheaper|reduc(?:e|es|ed)|decreas(?:e|es|ed)|falling|dropping|push(?:es)? down|drive(?:s)? down)\s+(?:(?:the|cheese|market)\s+)?(?:prices?|cheese price)\b/i;
-const priceSet=/\b(?:set|fix|control|cap|regulate|limit|agree(?:ing)? on)\s+(?:(?:the|cheese|market)\s+)?prices?\b|\bprice\s+(?:fixing|controls?|ceiling|cap|agreement)\b/i;
+const priceSet=/\b(?:set|sets|fix|fixes|fixed|fixing|control|controls|cap|regulate|limit|agree(?:ing)? on)\s+(?:(?:its|the|cheese|market)\s+)?prices?\b|\bprice\s+(?:fixing|controls?|ceiling|cap|agreement)\b/i;
 
 function assessClause(task,concept,line){
  if(negated(line)||concept.wrong?.test(line))return null;
@@ -77,7 +77,8 @@ function assessClause(task,concept,line){
  }else{
    const rise=priceUp.test(line),fall=priceDown.test(line),set=priceSet.test(line);
    const contradictory=rise&&fall;
-   explained=!contradictory&&cheeseContext.test(line)&&linkage(line)&&
+   explained=!contradictory&&cheeseContext.test(line)&&
+     (linkage(line)||(concept.sign==="set"&&set))&&
      (concept.sign==="up"?rise&&!fall:concept.sign==="down"?fall&&!rise:set&&!rise&&!fall);
  }
  return {marks:explained?2:1,identified:true,explained};
