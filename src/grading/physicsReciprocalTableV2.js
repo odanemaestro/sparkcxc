@@ -17,13 +17,20 @@ const parse=value=>{
 export function evaluatePhysicsReciprocalTable({response,working=""}={}){
  const cells=response?.table;
  const validCells=cells&&typeof cells==="object"&&!Array.isArray(cells);
- const breakdown=expected.map(({key,volume,scaled,marks})=>{
+ const breakdown=expected.map(({key,volume,marks})=>{
   const value=validCells?parse(cells[key]):null;
-  const tol=0.055; // Source specifically allows one-decimal rounding.
-  const match=value!==null&&(
-   Math.abs(value-scaled)<=tol ||
-   Math.abs(value-1/volume)<=0.00055
-  );
+  // Award candidate credit only for a value correctly rounded to its
+  // submitted precision. A broad tolerance accepts wrong near-miss answers.
+  const raw=validCells?cells[key]:null;
+  const input=typeof raw==="number"?String(raw):typeof raw==="string"?raw.trim():"";
+  const places=(input.split(".")[1]||"").length;
+  const scaledExact=100/volume;
+  const inverseExact=1/volume;
+  const minInversePlaces=Number.isInteger(inverseExact*100)?2:3;
+  const rounded=(number)=>Number(number.toFixed(places));
+  const scaledMatch=places>=(Number.isInteger(scaledExact)?0:1)&&value===rounded(scaledExact);
+  const inverseMatch=places>=minInversePlaces&&value===rounded(inverseExact);
+  const match=value!==null&&places<=12&&(scaledMatch||inverseMatch);
   return {key,maxMarks:marks,candidateMarks:match?marks:null,
    status:match?"candidate-correct":"unresolved"};
  });
