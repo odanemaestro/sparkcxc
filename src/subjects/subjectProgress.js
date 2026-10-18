@@ -229,16 +229,16 @@ function activityPayloadFromPhysicsEvent(event = {}) {
     };
   }
   if (type === "physics_paper2_exam") {
-    const score = safeNumber(event.score);
+    const score = typeof event.score==="number"&&Number.isFinite(event.score)?event.score:null;
     const maxScore = safeNumber(event.maxScore, 100);
-    const percent = Number.isFinite(Number(event.percent)) ? safeNumber(event.percent) : maxScore > 0 ? Math.round(score / maxScore * 100) : 0;
+    const percent = typeof event.percent==="number"&&Number.isFinite(event.percent)?event.percent:null;
     const paperId = String(event.paperId || `paper-${event.paperNumber || "2"}`);
     const paperNumber = Number(event.paperNumber || 0);
     const paperLabel = String(event.paperLabel || (paperNumber >= 1 && paperNumber <= 26 ? String.fromCharCode(64 + paperNumber) : "")).trim();
     return {
       subjectId: "physics", activityKey: `paper2:${paperId}`, activityType: "exam", sectionId: null, topicId: null,
       title: `Physics Paper 2 Practice Paper ${paperLabel}`.trim(), completed: true, score, maxScore, percent,
-      metadata: { source: "physics", event_type: type, paper_id: paperId, paper_number: paperNumber || null, paper_label: paperLabel || null },
+      metadata: { ...(event.paperReleaseMetadata||{}), source: "physics", paper:"02", event_type: type, paper_id: paperId, paper_number: paperNumber || null, paper_label: paperLabel || null, confirmed_marks:event.confirmedMarks??null },
     };
   }
   if (type === "physics_mechanics_checkpoint" || type === "physics_section_checkpoint") {
