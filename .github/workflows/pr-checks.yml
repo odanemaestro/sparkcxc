@@ -53,6 +53,9 @@ jobs:
       - name: Verify V2 private grading migrations in isolated PostgreSQL
         run: node tools/test-marking-v2-database.mjs
 
+      - name: Verify complete V2 activation, worker leases and score boundaries
+        run: node tools/test-marking-v2-release-gates.mjs
+
       - name: Upload verified server marking bundle
         uses: actions/upload-artifact@v4
         with:
