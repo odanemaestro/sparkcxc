@@ -69,6 +69,13 @@ const measure=(r,target,precision=null)=>{
  if(precision===0)return !/\d\.\d/.test(s);
  return true;
 };
+const bearingResult=(r,result)=>{
+ const ans=field(r,"answer").trim().toLowerCase();
+ if(!nonambiguous(ans))return false;
+ // CSEC compass bearings are written with three figures (including 017, 093).
+ const m=/^(?:bearing\s*(?:of\s*r\s*from\s*p)?\s*(?:is|=|:)?\s*)?(\d{3})\s*(?:°|degrees?)?$/.exec(ans);
+ return !!m&&Number(m[1])===result;
+};
 const includesResult=(r,result)=>{
  const s=field(r,"answer").toLowerCase();
  if(!s||!nonambiguous(s))return false;
@@ -116,7 +123,7 @@ function circleBearing(s,p,r){
   workContains(r,"tan-1("+s.secondLeg+"/"+s.firstLeg+")")||
   workContains(r,"tan^(-1)("+s.secondLeg+"/"+s.firstLeg+")"),
   "bearing-offset-from-right-triangle"),
-  vote("A1",measure(r,s.bearing,0),"bearing-nearest-degree")];
+  vote("A1",bearingResult(r,s.bearing),"three-figure-bearing-nearest-degree")];
  throw new TypeError("Uncalibrated Q9 circle bearing part");
 }
 function cosine(s,p,r){
@@ -175,11 +182,16 @@ function navigation(s,p,r){
    workContains(r,s.leg1+"^2+"+s.leg2+"^2")||
    workContains(r,"sqrt("+s.rNorth+"^2+"+s.rEast+"^2)");
  }else if(p==="d"){
-  formula=workContains(r,"atan2("+s.rEast+","+s.rNorth+")")||
-   workContains(r,"arctan2("+s.rEast+","+s.rNorth+")");
+  formula=[
+   "atan2("+s.rEast+","+s.rNorth+")",
+   "arctan2("+s.rEast+","+s.rNorth+")",
+   "atan("+s.rEast+"/"+s.rNorth+")",
+   "tan-1("+s.rEast+"/"+s.rNorth+")",
+   "tan("+s.rEast+"/"+s.rNorth+")"
+  ].some(x=>workContains(r,x));
  }else throw new TypeError("Uncalibrated Q9 navigation part");
  const precision=p==="d"?0:1;
- const result=measure(r,expected,precision);
+ const result=p==="d"?bearingResult(r,expected):measure(r,expected,precision);
  return [vote("M1",formula,"source-direction-or-component-calculation"),
   missing("M-extra"),vote("A1",result,"correctly-rounded-directional-result")];
 }
