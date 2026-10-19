@@ -9,7 +9,7 @@ describe.each(Object.keys(SOURCES))("Mathematics Q1 Batch 1 completeness %s",id=
   expect(bank.marks).toBe(9);
   expect(bank.parts.map(p=>p.id).sort()).toEqual(Object.keys(SOURCES[id]).sort());
   for(const part of bank.parts){
-   expect(Number(part.answer)).toBe(Number(SOURCES[id][part.id]));
+   expect(String(part.answer)).toBe(String(SOURCES[id][part.id]));
    const empty=evaluate({questionId:id,partId:part.id});
    expect(empty.criteria.reduce((n,c)=>n+c.maxMarks,0)).toBe(part.marks);
    expect(empty.suggestedMarks).toBe(0);
@@ -21,7 +21,7 @@ describe.each(Object.keys(SOURCES))("Mathematics Q1 Batch 1 completeness %s",id=
  test("correct source results earn only evidence for final accuracy",()=>{
   for(const part of bank.parts){
    const r=evaluate({questionId:id,partId:part.id,response:{answer:part.answer}});
-   expect(r.criteria.map(c=>c.candidateMarks)).toEqual([null,1]);
+   expect(r.criteria.map(c=>c.candidateMarks)).toEqual(part.marks===1?[1]:[null,1]);
    expect(r.unresolvedMarks).toBe(part.marks-1);
    expect(r.publishable).toBe(false);
   }
