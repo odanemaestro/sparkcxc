@@ -1,5 +1,12 @@
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 import {auditMathOriginalPapersV2 as audit, auditMathAdvisoryCandidateV2 as auditVote} from "./mathPaper2Batch8AuditV2";
+import {evaluateMathExactFractionsV2} from "./mathExactFractionsV2";
+import {evaluateMathConsumerArithmeticV2} from "./mathConsumerArithmeticV2";
+import {evaluateMathRatioInverseVariationV2} from "./mathRatioInverseVariationV2";
+import {evaluateMathIndicesRectangleV2} from "./mathIndicesRectangleV2";
+import {evaluateMathFactorisationV2} from "./mathFactorisationV2";
+import {evaluateMathSimultaneousV2} from "./mathSimultaneousV2";
+import {evaluateMathCoordinateGeometryV2} from "./mathCoordinateGeometryV2";
 import {evaluateMathQ1RemainingV2} from "./mathQ1RemainingV2";
 import {evaluateMathQ2RemainingV2} from "./mathQ2RemainingV2";
 import {evaluateMathEnlargementV2} from "./mathEnlargementV2";
@@ -24,10 +31,13 @@ const originals=PAPER2_QUESTION_BANK.filter(q=>/^p2-q(?:10|[1-9])-v(?:10|[1-9])$
 const version=id=>Number(id.split("-v")[1]);
 const choose=q=>{
  const n=q.question_number,v=version(q.question_id);
- if(n===1)return v>=2&&v<=8?evaluateMathQ1RemainingV2:null;
- if(n===2)return v>=4&&v<=8?evaluateMathQ2RemainingV2:null;
- if(n===3)return v>=4&&v<=6?evaluateMathEnlargementV2:
-  v>=7&&v<=8?evaluateMathRotationV2:v>=9?evaluateMathConstructionV2:null;
+ if(n===1)return v===1?(q.parts[0].id==="a"?evaluateMathExactFractionsV2:evaluateMathConsumerArithmeticV2):
+  v<=8?evaluateMathQ1RemainingV2:evaluateMathRatioInverseVariationV2;
+ if(n===2)return v<=3?evaluateMathIndicesRectangleV2:
+  v<=8?evaluateMathQ2RemainingV2:evaluateMathSimultaneousV2;
+ if(n===3)return v<=3?evaluateMathCoordinateGeometryV2:
+  v<=6?evaluateMathEnlargementV2:v<=8?evaluateMathRotationV2:
+  evaluateMathConstructionV2;
  if(n===4)return v<=3?evaluateMathFunctionsV2:
   v<=6?evaluateMathCoordinateLinesV2:
   v<=8?evaluateMathParallelPerpendicularV2:evaluateMathRelationsV2;
@@ -74,10 +84,15 @@ test("Batch 8 validates original source answers and mark ceilings, not examiner 
   expect(q.parts.reduce((n,p)=>n+p.marks,0)).toBe(q.marks);
  }
 });
-describe.each(originals.filter(choose))("Batch 8 V2 mark accounting %s",q=>{
- const grader=choose(q);
+describe.each(originals)("Batch 8 V2 mark accounting %s",q=>{
+ const selected=choose(q);
  test("blank and published worked-answer candidates cannot escape advisory status",()=>{
   for(const p of q.parts){
+   const grader=q.question_number===1&&version(q.question_id)===1
+    ?(p.id==="a"?evaluateMathExactFractionsV2:evaluateMathConsumerArithmeticV2)
+    :q.question_number===2&&version(q.question_id)<=3
+    ?(["b1","b2"].includes(p.id)?evaluateMathFactorisationV2:evaluateMathIndicesRectangleV2)
+    :selected;
    for(const response of [{answer:""},{answer:p.answer}]){
     const result=grader({questionId:q.question_id,partId:p.id,response});
     const audited=auditVote(result,{
