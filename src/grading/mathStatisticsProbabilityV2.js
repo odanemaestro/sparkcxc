@@ -91,7 +91,11 @@ function evidencedPieReason(questionId,partId,response){
  const angle=questionId==="p2-q5-v6"
   ?/\b135\b/.test(evidence):/\b150\b/.test(evidence);
  return category&&angle&&/\b(?:largest|greatest|biggest|most)\b/.test(evidence)
-  &&!/\b(?:or|either)\b/.test(evidence);
+  &&!/\b(?:or|either|not|isn't|wasn't)\b/.test(evidence)
+  // A reason that calls another category the largest must not earn B1.
+  &&(questionId==="p2-q5-v6"
+   ?!/\b(?:bus|train|walk)\b/.test(evidence)
+   :!/\b(?:cricket|netball|athletics)\b/.test(evidence));
 }
 
 function criterion(id,maxMarks,ok,reason){
