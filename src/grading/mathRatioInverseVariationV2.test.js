@@ -5,8 +5,8 @@ import {
 } from "./mathRatioInverseVariationV2";
 
 const fixtures=[
- {id:"p2-q1-v9",total:5040,ratios:[2,3,4],parts:9,unit:560,
-  largest:2240,smallest:1120,difference:1120,workers:8,days:15,
+ {id:"p2-q1-v9",total:6000,ratios:[2,3,5],parts:10,unit:600,
+  largest:3000,smallest:1200,difference:1800,workers:8,days:15,
   newWorkers:12,newDays:10,numStep:"15/4-3/2=9/4",
   denStep:"3/8-1/6=5/24",final:"54/5",differentLargest:2200},
  {id:"p2-q1-v10",total:7200,ratios:[3,4,5],parts:12,unit:600,
@@ -14,6 +14,8 @@ const fixtures=[
   newWorkers:10,newDays:12,numStep:"12/5+4/3=56/15",
   denStep:"7/10-1/6=8/15",final:"7",differentLargest:2900}
 ];
+// Source values match the assembled learner-facing bank after C11 content corrections.
+// Do not calibrate against the uncorrected V2 template text.
 const check=(f,partId,answer="",working="",previousResponses={})=>examine({
  questionId:f.id,partId,response:{answer,working},previousResponses
 });
