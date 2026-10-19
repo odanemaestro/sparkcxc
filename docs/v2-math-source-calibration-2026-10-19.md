@@ -33,3 +33,26 @@ The original-v1 question now contains 13 detailed criteria-bearing parts out of 
 5. Release only approved paper versions through the production queue, with canary checks for final score publication and rollback support.
 
 **Release status:** private worker live and protected; student-facing authoritative V2 scores are not active. The existing student grader is preserved.
+
+
+## Continued batches, original-v1 Questions 2, 4, 5 and 6
+
+Verified against the saved SPARK original-v1 question parts and versioned model solutions, then registered on the production database as **drafts only**:
+
+| Question | New source parts | New source marks | Main evidence |
+| --- | ---: | ---: | --- |
+| 2, algebra and rectangle | 5 | 9 | Indices, fully factorised expressions, perimeter, paired length/width |
+| 4, functions | 2 | 3 | f(4), paired roots of g(x)=13 |
+| 5, statistics | 4 | 9 | Modal class, weighted mean, three cumulative-frequency entries, simplified probability |
+| 6, cylinder and filling time | 4 | 9 | Area, volume, curved surface area, time=volume/rate, valid ECF |
+| **Total added** | **15** | **30** | Correct method/accuracy allotments; uncertain methods remain unresolved |
+
+**CI evidence:** [SPARK PR checks #2452](https://github.com/odanemaestro/sparkcxc/actions/runs/39317377788) and [#2455](https://github.com/odanemaestro/sparkcxc/actions/runs/39318092272) passed. A test-count issue exposed by the assembled Question 4's extra reasoning part was corrected before #2452 passed. The new tests confirm wrong algebra earns no credit, correct perimeter/function values earn bounded marks, cumulative-frequency free-text answers are not falsely treated as verified table artefacts, and a correct cylinder filling-time calculation receives ECF marks from an earlier wrong volume.
+
+**Production SQL migrations applied:**
+- `20261019225500_marking_v2_math_original_v1_q2_q4_q5_drafts.sql`
+- `20261019233000_marking_v2_math_original_v1_q6_cylinder_drafts.sql`
+
+**Current production count:** 261/640 Mathematics parts with detailed draft source criteria, 379 without; original-v1 has 28/45 source parts detailed. The 67 registered paper versions have **zero fingerprint mismatches**, **zero verified or active rubrics**, **zero recorded criterion approvals** and **zero V2 marking jobs**.
+
+This is ongoing internal source-calibration work, not final independent approval or activation. Existing live grading remains untouched. The private authenticated worker v9 continues processing its scheduled empty-queue health calls.
