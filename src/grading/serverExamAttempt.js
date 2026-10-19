@@ -83,3 +83,16 @@ export async function submitServerExamAttempt({
     return {available:false,error};
   }
 }
+
+/** Read only the signed-in student's own V2 paper outcome from the server. */
+export async function readServerExamV2Result({supabase,attemptId}={}){
+ if(!supabase?.rpc || !attemptId)return {available:false};
+ try{
+  const {data,error}=await supabase.rpc("spark_v2_exam_result",{p_attempt_id:attemptId});
+  if(error)throw error;
+  if(!data||typeof data!=="object"||Array.isArray(data))return {available:false};
+  return {available:true,...data};
+ }catch(error){
+  return {available:false,error};
+ }
+}
