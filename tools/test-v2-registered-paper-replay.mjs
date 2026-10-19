@@ -38,7 +38,8 @@ const migrations=[
 "20261020002500_marking_v2_math_inverse_matrix_accuracy_draft.sql",
 "20261020005000_marking_v2_math_original_v2_q3_q6_drafts.sql",
 "20261020010500_marking_v2_math_original_v2_q7_q8_drafts.sql",
-"20261020011500_marking_v2_math_original_v2_q9_q10_drafts.sql"
+"20261020011500_marking_v2_math_original_v2_q9_q10_drafts.sql",
+"20261020014500_marking_v2_math_p2h_p2j_visual_source_drafts.sql"
 ];
 const db=new PGlite();
 try{
@@ -588,6 +589,45 @@ try{
   console.error('Original-v2 Q7-Q10 source replay failed:',String(error?.message||error));
   throw new Error('Original-v2 Q7-Q10 source replay failed: '+String(error?.message||error));
  }
+
+ // Q4 constructions, Q5 cumulative-frequency tables/curves and Q7
+ // labelled figure entries must remain unresolved until visual evidence is
+ // checked against the SOURCE, even for text that happens to look correct.
+ for(const paperId of ['p2h','p2j']){
+  const partRows=(await db.query(`select criteria from spark_grading_private.rubrics_v2
+  where subject_id='mathematics' and paper_id=$1 and
+   active=false and verification_status='draft'`,[paperId])).rows[0].criteria;
+  assert.equal(partRows.length,41);
+  assert.equal(partRows.reduce((sum,c)=>sum+c.maxMarks,0),100);
+  assert(partRows.every(c=>Array.isArray(c.sourceMarking?.criteria)&&
+   c.sourceMarking.criteria.length>0));
+  const focus=partRows.filter(c=>
+   c.id===paperId+'-q4::a1'||c.id===paperId+'-q4::a2'||
+   c.id===paperId+'-q5::a'||c.id===paperId+'-q5::b'||
+   c.id===paperId+'-q7::a');
+  assert.equal(focus.length,5);
+  assert.equal(focus.reduce((sum,c)=>sum+c.maxMarks,0),13);
+  const responses=Object.fromEntries(focus.map(c=>[c.id,{
+   answer:c.sourceMarking.answer,working:c.sourceMarking.solution
+  }]));
+  const evaluation=evaluateExistingSubjectPaper2V2({
+   subjectId:'mathematics',paperId,criteria:partRows,responses
+  });
+  assert.equal(evaluation.maxMarks,100);
+  assert.equal(evaluation.examinedParts,41);
+  for(const c of focus){
+   const outcome=evaluation.rows.find(r=>r.criterionId===c.id);
+   assert.equal(outcome.suggestedMarks,0,
+     'Text-only '+c.id+' cannot earn a visual/artifact mark');
+   assert.equal(outcome.resolved,false,
+     'Unverified construction/graph/table must remain provisional');
+  }
+  assert.equal(evaluation.canPublishFinalScore,false);
+ }
+ console.log('Mathematics Practice H/J visual-only source calibration',
+ JSON.stringify({papers:['p2h','p2j'],partsAdded:10,marksAdded:26,
+ sourcePaperParts:41,marksPerPaper:100,visualMarksPublished:0}));
+
  const defects=[],counts={};
  let totalCriteria=0;
  const sourceAudit=[];
@@ -620,7 +660,7 @@ try{
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
- assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:321});
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:311});
 
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
  console.log("Independent source-structure QA",JSON.stringify({
