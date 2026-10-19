@@ -23,7 +23,7 @@ test("a V2 rubric requires independent reviews matching its source criterion has
  expect(gate).toContain("Verified V2 rubric is immutable");
  expect(gate).toContain("revoke all on spark_grading_private.rubric_criterion_reviews_v2");
 });
-test("shadow worker never publishes a final grade",()=>{
- expect(worker).toContain("canPublishFinalScore:false");
+test("V2 worker delegates final publication to the private server gate",()=>{
+ expect(worker).toContain("spark_v2_complete_subject_job");
  expect(worker).not.toMatch(/update\s+public\.spark_exam_attempts/i);
 });
