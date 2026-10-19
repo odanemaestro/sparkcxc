@@ -118,8 +118,10 @@ function physics(rows,responses){
   const resolved=blank(response) ||
    (!manualGraph&&source.criteria?.length>0&&
     source.criteria.every(c=>c.check&&c.check.type==="value"));
+  // An objectively blank graph is resolved as zero. Nonblank drawings
+  // still require graph artefact evaluation before any marks are confirmed.
   return cap(row,manualGraph?0:grade,
-   manualGraph?"physics-graph-requires-artifact-verification":"existing-physics-rubric-checks",
+   manualGraph&&!blank(response)?"physics-graph-requires-artifact-verification":"existing-physics-rubric-checks",
    resolved);
  });
 }
