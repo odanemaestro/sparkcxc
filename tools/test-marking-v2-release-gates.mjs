@@ -126,6 +126,25 @@ try{
    $1::uuid,$2::uuid,1,'[]'::jsonb) as result`,
   [job,claimed.leaseToken])).rows[0].result;
  assert.equal(replay,false);
+ // Expired lease cannot commit provisional credit, even with valid data.
+ const expiredAttempt=randomUUID();
+ await db.query(`insert into public.spark_exam_attempts
+ (id,user_id,subject_id,paper,rubric_version,status,submitted_at,response_snapshot,metadata)
+ values($1,$2,'mathematics','02','isolated-fixture-v1','submitted',now(),
+ '{"test-q1":{"answer":"42"}}'::jsonb,'{"paper_id":"isolated-paper"}'::jsonb)`,
+ [expiredAttempt,userId]);
+ const expiredJob=(await db.query(
+  "select spark_grading_private.enqueue_marking_job_v2($1) job_id",
+  [expiredAttempt])).rows[0].job_id;
+ const expiredClaim=(await db.query(
+  "select public.spark_v2_claim_next_shadow_job() as data")).rows[0].data;
+ assert.equal(expiredClaim.jobId,expiredJob);
+ await db.query(`update spark_grading_private.marking_jobs_v2
+  set lease_expires_at=now()-interval '2 seconds' where id=$1`,[expiredJob]);
+ const fenced=(await db.query(`select public.spark_v2_finish_shadow_job_with_advisory(
+   $1::uuid,$2::uuid,1,'[]'::jsonb) result`,
+   [expiredJob,expiredClaim.leaseToken])).rows[0].result;
+ assert.equal(fenced,false,"expired lease must reject scoring write");
  const persisted=(await db.query(`select a.score,a.max_score,j.status,j.result
  from public.spark_exam_attempts a join spark_grading_private.marking_jobs_v2 j on j.attempt_id=a.id
  where a.id=$1`,[attemptId])).rows[0];
