@@ -6,8 +6,8 @@ export const MATH_Q2_REMAINING_SOURCES_V2=Object.freeze({
  "p2-q2-v4":{a:["(x - 7)/((x + 2)(x - 1))",3],b:["r = sqrt(3V/(πh))",3],c:["-37",3]},
  "p2-q2-v5":{a:["(x - 15)/((x + 1)(x - 3))",3],b:["r = sqrt(3V/(πh))",3],c:["-25",3]},
  "p2-q2-v6":{a:["(3x - 16)/((x + 3)(x - 2))",3],b:["r = sqrt(3V/(πh))",3],c:["-21",3]},
- "p2-q2-v7":{a:["-1x^2 + 13x - 6",3],b:["(10b - 15)(0.4a + 1)",2],c1:["x < 7",2],c2:["6",2]},
- "p2-q2-v8":{a:["-1x^2 + 5x - 9",3],b:["(4b - 6)(1.5a + 1)",2],c1:["x < 7",2],c2:["6",2]}
+ "p2-q2-v7":{a:["-x^2 + 13x - 6",3],b:["(2b - 3)(2a + 5)",2],c1:["x < 7",2],c2:["6",2]},
+ "p2-q2-v8":{a:["-x^2 + 5x - 9",3],b:["(2b - 3)(3a + 2)",2],c1:["x < 7",2],c2:["6",2]}
 });
 const string=x=>typeof x==="string"?x:typeof x==="number"&&Number.isFinite(x)?String(x):"";
 const compact=x=>string(x).trim().toLowerCase().replace(/[−–—]/g,"-")
