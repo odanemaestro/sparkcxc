@@ -461,21 +461,21 @@ try{
  });
  assert.equal(invalidFraction.rows.find(x=>x.criterionId==='p2-q5-v2::d').suggestedMarks,0,
   'Unreduced probability fraction cannot earn accuracy');
- const cylinder=gradeV2(6,{
+ const v2Cylinder=gradeV2(6,{
   'p2-q6-v2::a':{answer:'154',working:'22/7 * 7^2 =154'},
   'p2-q6-v2::b':{answer:'2310',working:'154*15=2310'},
   'p2-q6-v2::c':{answer:'660',working:'2*22/7*7*15=660'},
   'p2-q6-v2::d':{answer:'110',working:'2310/21=110'}
  });
- assert.equal(cylinder.maxMarks,9);
- assert(cylinder.suggestedMarks>0&&cylinder.suggestedMarks<9);
- assert.equal(cylinder.canPublishFinalScore,false);
- const cylinderWrong=gradeV2(6,{
+ assert.equal(v2Cylinder.maxMarks,9);
+ assert(v2Cylinder.suggestedMarks>0&&v2Cylinder.suggestedMarks<9);
+ assert.equal(v2Cylinder.canPublishFinalScore,false);
+ const v2CylinderWrong=gradeV2(6,{
   'p2-q6-v2::a':{answer:'150'},
   'p2-q6-v2::b':{answer:'2250',working:'150 * 15 =2250'}
  });
- assert.equal(cylinderWrong.rows.find(x=>x.criterionId==='p2-q6-v2::b').suggestedMarks,2,
-  'Valid cylinder ECF gets M2+A1 while M1 remains manual');
+ assert.equal(v2CylinderWrong.rows.find(x=>x.criterionId==='p2-q6-v2::b').suggestedMarks,2,
+  'Valid v2Cylinder ECF gets M2+A1 while M1 remains manual');
  const fillWrong=gradeV2(6,{
   'p2-q6-v2::b':{answer:'2205'},
   'p2-q6-v2::d':{answer:'105',working:'2205/21=105'}
@@ -487,7 +487,7 @@ try{
   geometryAccuracy:geometry.rows.find(x=>x.criterionId==='p2-q3-v2::c').suggestedMarks,
   inverseAndFunctionResults:functionAnswers.suggestedMarks,
   structuredTableProvisional:true,
-  cylinderECF:cylinderWrong.rows.find(x=>x.criterionId==='p2-q6-v2::b').suggestedMarks
+  cylinderECF:v2CylinderWrong.rows.find(x=>x.criterionId==='p2-q6-v2::b').suggestedMarks
  }));
 
  const defects=[],counts={};
