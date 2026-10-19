@@ -71,7 +71,7 @@ test("source-specific working can propose method credit independently of final a
   ["p2-q5-v7","a","48","360-(150+90+72)=48"]
  ];
  for(const [questionId,partId,answer,working] of examples){
-  const w=working.replaceAll("(","").replaceAll(")","");
+  const w=working;
   const result=grade({questionId,partId,response:{answer,working:w}});
   expect(result.suggestedMarks).toBe(2);
   expect(result.publishable).toBe(false);
