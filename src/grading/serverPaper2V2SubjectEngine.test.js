@@ -94,3 +94,44 @@ test("all subject examiners fail closed for duplicate or inflated source criteri
  expect(()=>example("other","paper",[row("x",1,{})])).toThrow();
  expect(()=>example("english-a","paper",[row("not-a-real-task",100,{})])).toThrow();
 });
+
+
+test("English A irrelevant short responses receive no speculative V2 credit",()=>{
+ const paper=buildEnglishAPaper2(englishAPaper2Sets[0].id);
+ const task=paper.tasks.find(x=>!x.choiceGroup&&x.kind!=="summary");
+ expect(task).toBeTruthy();
+ const id=task.id;
+ const result=example("english-a",paper.id,[row(id,task.rubric.marks,{
+  kind:task.kind,rubric:task.rubric})],{
+  [id]:"ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY"
+ });
+ expect(result.suggestedMarks).toBe(0);
+ expect(result.unresolvedMarks).toBe(task.rubric.marks);
+ expect(result.canPublishFinalScore).toBe(false);
+});
+test("Physics manual graph marks require verified graph artefacts",()=>{
+ const found=physics1.questions.flatMap(q=>(q.parts||[]).map(p=>({q,p})))
+  .find(({p})=>p.responseType==="graph"&&p.criteria?.some(c=>c.manual===true));
+ expect(found).toBeTruthy();
+ const id=found.q.question_id+"::"+found.p.id;
+ const result=example("physics",physics1.paper_id,[
+  row(id,found.p.marks,found.p)
+ ],{[id]:"ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY"});
+ expect(result.suggestedMarks).toBe(0);
+ expect(result.unresolvedMarks).toBe(found.p.marks);
+ expect(result.canPublishFinalScore).toBe(false);
+});
+test("Social Studies B/C essays route their registered content and organisation",()=>{
+ for(const letter of ["b","c"]){
+  const id="ss-p2-"+letter+"-q5";
+  const criteria=[
+   row(id+"::content",18,{component:"content"}),
+   row(id+"::organisation",4,{component:"organisation"})
+  ];
+  const result=example("social-studies","ss-p2-original-"+letter.toUpperCase(),
+   criteria,{[id]:"ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY"});
+  expect(result.maxMarks).toBe(22);
+  expect(result.examinedParts).toBe(2);
+  expect(result.canPublishFinalScore).toBe(false);
+ }
+});
