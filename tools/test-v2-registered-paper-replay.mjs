@@ -32,7 +32,8 @@ const migrations=[
 "20261019214000_marking_v2_math_original_v1_q1_draft_calibration.sql",
 "20261019222000_marking_v2_math_p2f_rich_artifact_drafts.sql",
 "20261019225500_marking_v2_math_original_v1_q2_q4_q5_drafts.sql",
-"20261019233000_marking_v2_math_original_v1_q6_cylinder_drafts.sql"
+"20261019233000_marking_v2_math_original_v1_q6_cylinder_drafts.sql",
+"20261019234500_marking_v2_math_original_v1_q3_q7_q10_drafts.sql"
 ];
 const db=new PGlite();
 try{
@@ -224,6 +225,79 @@ try{
   remainingUnresolved:cylinderModel.unresolvedMarks
  }));
 
+
+ // Completing the source draft allocations is not enough for student grades.
+ // Test the real assembled question identities, their mark ceilings,
+ // equivalent answers and unsafe inversions of typed mathematical responses.
+ const fullyDrafted=(await db.query(`SELECT criteria FROM spark_grading_private.rubrics_v2
+  WHERE subject_id='mathematics' AND paper_id='original-v1'
+    AND active=false AND verification_status='draft'`)).rows[0].criteria;
+ assert.equal(fullyDrafted.length,45);
+ assert.equal(fullyDrafted.reduce((n,c)=>n+c.maxMarks,0),100);
+ assert(fullyDrafted.every(c=>Array.isArray(c.sourceMarking?.criteria)
+  && c.sourceMarking.criteria.length>0),
+  'Original-v1 must have 45 populated source criteria before calibration replay');
+ const srcQ=n=>fullyDrafted.filter(c=>c.id.startsWith('p2-q'+n+'-v1::'));
+ for(const [question,parts,marks] of [[3,4,9],[7,4,10],[8,5,12],[9,5,12],[10,5,12]]){
+  const source=srcQ(question);
+  assert.equal(source.length,parts,'Assembled question part count: '+question);
+  assert.equal(source.reduce((sum,c)=>sum+c.maxMarks,0),marks,
+   'Assembled question marks: '+question);
+  const blankPaper=evaluateExistingSubjectPaper2V2({
+   subjectId:'mathematics',paperId:'original-v1',
+   criteria:source,responses:{}
+  });
+  assert.equal(blankPaper.suggestedMarks,0);
+  assert.equal(blankPaper.examinedParts,parts);
+  assert.equal(blankPaper.maxMarks,marks);
+ }
+ const gradeNew=(question,responses)=>evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v1',
+  criteria:srcQ(question),responses
+ });
+ const q7Wrong=gradeNew(7,{'p2-q7-v1::c':{answer:'-15'}});
+ assert.equal(q7Wrong.rows.find(r=>r.criterionId==='p2-q7-v1::c').suggestedMarks,0,
+  'Reject the negative root as an invalid design number');
+ const q7Right=gradeNew(7,{'p2-q7-v1::c':{answer:'11',working:'(n+15)(n-11)=0'}});
+ assert(q7Right.rows.find(r=>r.criterionId==='p2-q7-v1::c').suggestedMarks>0);
+ assert.equal(q7Right.canPublishFinalScore,false);
+ const q8Wrong=gradeNew(8,{'p2-q8-v1::d':{answer:'(20,0)'}});
+ assert.equal(q8Wrong.rows.find(r=>r.criterionId==='p2-q8-v1::d').suggestedMarks,0,
+  'Coordinate order matters on the y-axis intercept');
+ const q8Right=gradeNew(8,{'p2-q8-v1::d':{answer:'(0,20)',working:'f(0)=20'}});
+ assert(q8Right.rows.find(r=>r.criterionId==='p2-q8-v1::d').suggestedMarks>0);
+ assert.equal(q8Right.canPublishFinalScore,false);
+ const q9Wrong=gradeNew(9,{'p2-q9-v1::b3':{answer:'193'}});
+ assert.equal(q9Wrong.rows.find(r=>r.criterionId==='p2-q9-v1::b3').suggestedMarks,0,
+  'Bearing 193 is not the correct 093');
+ const q9Right=gradeNew(9,{'p2-q9-v1::b3':{
+  answer:'093',working:'tan(QPR)=120/90 = 53.13; 40+53.13=93.13'
+ }});
+ assert(q9Right.rows.find(r=>r.criterionId==='p2-q9-v1::b3').suggestedMarks>0);
+ assert.equal(q9Right.canPublishFinalScore,false);
+ const q10Wrong=gradeNew(10,{'p2-q10-v1::d':{answer:'3, 2'}});
+ assert.equal(q10Wrong.rows.find(r=>r.criterionId==='p2-q10-v1::d').suggestedMarks,0,
+  'Swapped matrix-solution x/y values must not earn marks');
+ const q10Right=gradeNew(10,{'p2-q10-v1::d':{
+  answer:'2, 3',working:'M inverse times [13,17] = [2,3]'
+ }});
+ assert(q10Right.rows.find(r=>r.criterionId==='p2-q10-v1::d').suggestedMarks>0);
+ assert.equal(q10Right.canPublishFinalScore,false);
+ const q3Wrong=gradeNew(3,{'p2-q3-v1::a':{answer:'a translation by (0, -2)'}});
+ assert.equal(q3Wrong.rows.find(r=>r.criterionId==='p2-q3-v1::a').suggestedMarks,0);
+ const q3Right=gradeNew(3,{'p2-q3-v1::a':{
+  answer:'reflection in the x-axis (y=0)'
+ }});
+ assert.equal(q3Right.rows.find(r=>r.criterionId==='p2-q3-v1::a').resolved,false);
+ console.log('Original-v1 Q3/Q7-Q10 draft evidence checks',JSON.stringify({
+  sourceParts:fullyDrafted.length,marks:100,
+  correctDesign:q7Right.suggestedMarks,
+  correctCoordinate:q8Right.suggestedMarks,
+  correctBearing:q9Right.suggestedMarks,
+  correctMatrixSolution:q10Right.suggestedMarks,
+  finalMarkPublication:false
+ }));
+
  const defects=[],counts={};
  let totalCriteria=0;
  const sourceAudit=[];
@@ -256,7 +330,7 @@ try{
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
- assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:379});
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:362});
 
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
  console.log("Independent source-structure QA",JSON.stringify({
