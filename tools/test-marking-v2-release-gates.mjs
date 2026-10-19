@@ -27,7 +27,9 @@ const migrations=[
  "20261019180000_marking_v2_live_attempt_routing.sql",
  "20261019183000_marking_v2_atomic_score_publication.sql",
  "20261019190000_marking_v2_verified_digest_guard.sql",
- "20261019191000_marking_v2_decimal_score_hotfix.sql"
+ "20261019191000_marking_v2_decimal_score_hotfix.sql",
+ "20261019194500_marking_v2_allow_ungraded_submission.sql",
+ "20261019195000_marking_v2_own_exam_result_rpc.sql"
 ];
 async function reject(sql,params=[],pattern=/approval|attestation|permission|Forbidden|lease|rubric/i){
  await assert.rejects(db.query(sql,params),pattern);
