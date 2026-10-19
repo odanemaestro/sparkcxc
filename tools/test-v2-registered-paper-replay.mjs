@@ -35,7 +35,8 @@ const migrations=[
 "20261019233000_marking_v2_math_original_v1_q6_cylinder_drafts.sql",
 "20261019234500_marking_v2_math_original_v1_q3_q7_q10_drafts.sql",
 "20261020001000_marking_v2_math_original_v2_q1_q2_source_drafts.sql",
-"20261020002500_marking_v2_math_inverse_matrix_accuracy_draft.sql"
+"20261020002500_marking_v2_math_inverse_matrix_accuracy_draft.sql",
+"20261020005000_marking_v2_math_original_v2_q3_q6_drafts.sql"
 ];
 const db=new PGlite();
 try{
@@ -380,6 +381,115 @@ try{
  assert.equal(correctInverse.resolved,false,
   'Two inverse construction method marks must remain under review');
 
+
+ // Complete source-bound Maths original-v2 Q3 through Q6. Typed diagrams,
+ // multi-coordinate responses and table-cell allocations remain unresolved
+ // instead of producing unverified final marks.
+ const v2Full=(await db.query(`select criteria from spark_grading_private.rubrics_v2
+  where subject_id='mathematics' and paper_id='original-v2'
+  and verification_status='draft' and active=false`)).rows[0].criteria;
+ const sourceV2=n=>v2Full.filter(c=>c.id.startsWith('p2-q'+n+'-v2::'));
+ for(const [question,partCount] of [[3,3],[4,4],[5,4],[6,4]]){
+  const partRows=sourceV2(question);
+  assert.equal(partRows.length,partCount);
+  assert.equal(partRows.reduce((n,c)=>n+c.maxMarks,0),9);
+  assert(partRows.every(c=>Array.isArray(c.sourceMarking?.criteria)
+   && c.sourceMarking.criteria.length>0),
+   'Every new original-v2 rubric part needs reviewed structural allocation');
+  const blank=evaluateExistingSubjectPaper2V2({
+   subjectId:'mathematics',paperId:'original-v2',
+   criteria:partRows,responses:{}
+  });
+  assert.equal(blank.maxMarks,9);
+  assert.equal(blank.suggestedMarks,0);
+ }
+ const gradeV2=(question,responses)=>evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v2',
+  criteria:sourceV2(question),responses
+ });
+ const geometry=gradeV2(3,{
+  'p2-q3-v2::a':{answer:'reflection in the y-axis x=0'},
+  'p2-q3-v2::b':{answer:'A (5,-5), B (9,-5), C (5,-2)'},
+  'p2-q3-v2::c':{answer:'5.00',working:'4^2 + 3^2 =25; sqrt(25)=5'}
+ });
+ assert.equal(geometry.rows.find(x=>x.criterionId==='p2-q3-v2::a').suggestedMarks,0,
+  'Words cannot independently verify all three geometry transformation marks');
+ assert.equal(geometry.rows.find(x=>x.criterionId==='p2-q3-v2::b').suggestedMarks,0,
+  'Coordinate triples require positional verification before awarding marks');
+ assert.equal(geometry.rows.find(x=>x.criterionId==='p2-q3-v2::c').suggestedMarks,1,
+  'Correct length with 2 decimal places gets accuracy but no manual method inference');
+ assert.equal(geometry.canPublishFinalScore,false);
+ const badPrecision=gradeV2(3,{
+  'p2-q3-v2::c':{answer:'5'}
+ });
+ assert.equal(badPrecision.rows.find(x=>x.criterionId==='p2-q3-v2::c').suggestedMarks,0,
+  'Do not award requested 2dp precision mark for whole-number answer');
+ const functionAnswers=gradeV2(4,{
+  'p2-q4-v2::a1':{answer:'13'},
+  'p2-q4-v2::a2':{answer:'25',working:'g(3)=10; f(10)=25'},
+  'p2-q4-v2::b':{answer:'(x+5)/3'},
+  'p2-q4-v2::c':{answer:'-5 and 5',working:'x^2 =25'}
+ });
+ assert.equal(functionAnswers.rows.find(x=>x.criterionId==='p2-q4-v2::a1').suggestedMarks,1);
+ assert.equal(functionAnswers.rows.find(x=>x.criterionId==='p2-q4-v2::a2').suggestedMarks,2,
+  'Composite function M1 and A1 are verified, inner M2 remains manual');
+ assert.equal(functionAnswers.rows.find(x=>x.criterionId==='p2-q4-v2::b').suggestedMarks,1);
+ assert.equal(functionAnswers.rows.find(x=>x.criterionId==='p2-q4-v2::c').suggestedMarks,1);
+ assert.equal(functionAnswers.canPublishFinalScore,false);
+ const invalidFunction=gradeV2(4,{
+  'p2-q4-v2::a2':{answer:'30',working:'f(3) * g(3)=4*10=40'},
+  'p2-q4-v2::c':{answer:'5'}
+ });
+ assert.equal(invalidFunction.rows.find(x=>x.criterionId==='p2-q4-v2::a2').suggestedMarks,1,
+  'Correct g(3) is M1 only; incorrect composition and final cannot score');
+ assert.equal(invalidFunction.rows.find(x=>x.criterionId==='p2-q4-v2::c').suggestedMarks,0,
+  'Single root is incomplete when both roots are required');
+ const statistics=gradeV2(5,{
+  'p2-q5-v2::a':{answer:'11-15'},
+  'p2-q5-v2::b':{answer:'13',working:'fx total 520, n=40'},
+  'p2-q5-v2::c':{cells:{c2:14,c3:26,c4:35,c5:40}},
+  'p2-q5-v2::d':{answer:'7/20',working:'14/40=7/20'}
+ });
+ assert.equal(statistics.rows.find(x=>x.criterionId==='p2-q5-v2::a').suggestedMarks,1);
+ assert.equal(statistics.rows.find(x=>x.criterionId==='p2-q5-v2::b').suggestedMarks,1);
+ assert.equal(statistics.rows.find(x=>x.criterionId==='p2-q5-v2::c').suggestedMarks,0);
+ assert.equal(statistics.rows.find(x=>x.criterionId==='p2-q5-v2::c').resolved,false);
+ assert.equal(statistics.rows.find(x=>x.criterionId==='p2-q5-v2::d').suggestedMarks,1);
+ assert.equal(statistics.canPublishFinalScore,false);
+ const invalidFraction=gradeV2(5,{
+  'p2-q5-v2::d':{answer:'14/40'}
+ });
+ assert.equal(invalidFraction.rows.find(x=>x.criterionId==='p2-q5-v2::d').suggestedMarks,0,
+  'Unreduced probability fraction cannot earn accuracy');
+ const cylinder=gradeV2(6,{
+  'p2-q6-v2::a':{answer:'154',working:'22/7 * 7^2 =154'},
+  'p2-q6-v2::b':{answer:'2310',working:'154*15=2310'},
+  'p2-q6-v2::c':{answer:'660',working:'2*22/7*7*15=660'},
+  'p2-q6-v2::d':{answer:'110',working:'2310/21=110'}
+ });
+ assert.equal(cylinder.maxMarks,9);
+ assert(cylinder.suggestedMarks>0&&cylinder.suggestedMarks<9);
+ assert.equal(cylinder.canPublishFinalScore,false);
+ const cylinderWrong=gradeV2(6,{
+  'p2-q6-v2::a':{answer:'150'},
+  'p2-q6-v2::b':{answer:'2250',working:'150 * 15 =2250'}
+ });
+ assert.equal(cylinderWrong.rows.find(x=>x.criterionId==='p2-q6-v2::b').suggestedMarks,2,
+  'Valid cylinder ECF gets M2+A1 while M1 remains manual');
+ const fillWrong=gradeV2(6,{
+  'p2-q6-v2::b':{answer:'2205'},
+  'p2-q6-v2::d':{answer:'105',working:'2205/21=105'}
+ });
+ assert.equal(fillWrong.rows.find(x=>x.criterionId==='p2-q6-v2::d').suggestedMarks,2,
+  'Valid filling-time ECF preserves both marks from earlier wrong volume');
+ console.log('Math original-v2 Q3-Q6 source calibration replay',JSON.stringify({
+  questions:4,parts:15,marks:36,
+  geometryAccuracy:geometry.rows.find(x=>x.criterionId==='p2-q3-v2::c').suggestedMarks,
+  inverseAndFunctionResults:functionAnswers.suggestedMarks,
+  structuredTableProvisional:true,
+  cylinderECF:cylinderWrong.rows.find(x=>x.criterionId==='p2-q6-v2::b').suggestedMarks
+ }));
+
  const defects=[],counts={};
  let totalCriteria=0;
  const sourceAudit=[];
@@ -412,7 +522,7 @@ try{
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
- assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:353});
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:338});
 
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
  console.log("Independent source-structure QA",JSON.stringify({
