@@ -73,6 +73,6 @@ test("isolated full-paper shadow replay does not publish scores",()=>{
  expect(report.confirmedMarks).toBe(0);
  expect(report.unresolvedMarks).toBe(100);
  expect(report.canPublishFinalScore).toBe(false);
- expect(shadow).toContain("spark_v2_finish_shadow_subject_job");
+ expect(shadow).toContain("spark_v2_complete_subject_job");
  expect(shadow).not.toContain("spark_finish_marking");
 });
