@@ -166,10 +166,15 @@ function english(rows,responses){
   const task=known.get(row.id);
   if(!task||task.rubric?.marks!==row.maxMarks)
    throw new Error("English A task source mismatch "+row.id);
-  const result=gradeEnglishAPaper2Response(task,text(read(responses,row.id)),
-   text(read(responses,row.id+":analysis")));
-  return cap(row,result.score,"existing-english-a-analytic-rubric",
-    blank(read(responses,row.id)));
+  const answer=read(responses,row.id);
+  const analysis=read(responses,row.id+":analysis");
+  const result=gradeEnglishAPaper2Response(task,text(answer),text(analysis));
+  // A short, off-topic, or low-confidence response is not independently
+  // verified evidence. Keep uncertain content unresolved, not a final zero.
+  const unsupported=(result.diagnostics?.wordCount??0)<20 ||
+    result.confidence==="low";
+  return cap(row,unsupported?0:result.score,"existing-english-a-analytic-rubric",
+    blank(answer)&&blank(analysis));
  });
 }
 function fnh(rows,responses){
