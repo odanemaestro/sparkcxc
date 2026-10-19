@@ -35,11 +35,24 @@ export function preparePaper2ScorePublication({
  const pending=firstNumber(unresolvedMarks,original.unresolved_marks,original.unassessed_marks,0);
  // A grader declaring its result provisional means every unverified point must
  // remain outside the final result, even where its pending breakdown is absent.
- const sourceProvisional=provisional===undefined?
+ const scoreParts=parts??original.score_parts??[];
+ // A caller cannot override review-only Mathematics V2 evidence with
+ // provisional:false or a forged "verified" status. This is an additional
+ // guard, not a replacement for server rubric/provenance verification.
+ const advisoryMetadata=original.authority==="advisory"||
+   original.marking_authority==="advisory"||
+   original.rubricAllocation==="proposed-from-worked-solution"||
+   original.rubric_allocation==="proposed-from-worked-solution"||
+   original.scorePublicationAllowed===false||
+   original.markTotalsIncludeFollowThrough===false;
+ const advisoryParts=Array.isArray(scoreParts)&&scoreParts.some(part=>
+   part?.authority==="advisory"||part?.publishable===false||
+   part?.scorePublicationAllowed===false);
+ const sourceProvisional=advisoryMetadata||advisoryParts||(provisional===undefined?
    Boolean(original.provisional||original.provisional_grading||
      original.spark_scoring_status==="rubric_review_required"||
      original.review_recommended):
-   Boolean(provisional);
+   Boolean(provisional));
  const effectivePending=sourceProvisional&&pending===0&&finite(total)&&finite(sourceScore)
    ?Math.max(0,total-sourceScore):pending;
  const intendedFinal=assessedMarks!==undefined?assessedMarks:
@@ -49,7 +62,7 @@ export function preparePaper2ScorePublication({
  const audit=auditPaper2FinalRelease({
    subjectId,paperId:reportedPaperId,score:sourceScore,maxMarks:total,
    unresolvedMarks:effectivePending,assessedMarks:intendedFinal,
-   provisional:sourceProvisional,parts:parts??original.score_parts??[],
+   provisional:sourceProvisional,parts:scoreParts,
    provenance:currentProvenance,
    historical:Boolean(original.historical||/historical/i.test(String(original.source??""))),
    sourceVerified:original.source_verified===true,
