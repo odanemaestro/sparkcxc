@@ -45,3 +45,34 @@ test("source identity is mandatory",()=>{
  expect(()=>evaluate({questionId:"p2-q1-v9",partId:"a",response:"54/5"})).toThrow(/Uncalibrated/);
  expect(()=>evaluate({questionId:"p2-q1-v2",partId:"missing"})).toThrow(/Uncalibrated/);
 });
+
+test("Q1 R2 hire purchase explanation recognises genuinely equivalent reasons",()=>{
+ const id="p2-q1-v3",partId="c";
+ const valid=[
+  "The hire purchase price is larger than the cash price, so the same difference is a smaller fraction of it",
+  "The difference stays the same. Since the hire purchase price is greater than the cash price, it gives a lower percentage.",
+  "The same increase is a smaller percentage of the higher hire purchase price than of the cash price.",
+  "A larger hire purchase price is the base instead of the cash price, so the unchanged difference becomes a smaller fraction."
+ ];
+ for(const answer of valid){
+  const r=evaluate({questionId:id,partId,response:{answer}});
+  expect(r.suggestedMarks).toBe(1);
+  expect(r.criteria[0].candidateMarks).toBe(1);
+  expect(r.publishable).toBe(false);
+ }
+});
+test("Q1 R2 rejects reversed, vague and contradictory hire purchase explanations",()=>{
+ for(const answer of [
+  "It is just a smaller percentage",
+  "The cash price is greater than the hire purchase price, so the percentage is lower",
+  "The hire purchase price is larger than the cash price so the percentage is higher",
+  "The hire purchase price is larger than the cash price, but the same difference remains the same percentage",
+  "The same difference as a fraction of the lower cash price is smaller",
+  "The larger hire purchase price and cash price are both used but I am not sure",
+  "Because the hire purchase price is larger or smaller than the cash price"
+ ]){
+  const r=evaluate({questionId:"p2-q1-v3",partId:"c",response:{answer}});
+  expect(r.suggestedMarks).toBe(0);
+  expect(r.publishable).toBe(false);
+ }
+});
