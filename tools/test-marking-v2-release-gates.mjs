@@ -241,5 +241,69 @@ try{
  assert.equal(pending.v2_rubric_version,"isolated-fixture-v1");
  assert.equal(pending.status,"queued");
  await db.query("select set_config('test.user_id','',false)");
+
+ // A separate, SYNTHETIC Physics GRAPH fixture proves the production RPC
+ // accepts unresolved graph evidence but will never convert an unverified
+ // plot, axes, or line into confirmed final marks.
+ const graphCriteria=[{id:"fixture-graph::a",sourcePartId:"fixture-graph::a",
+  maxMarks:7,kind:"graph",sourceMarking:{
+   responseType:"graph",answer:"A straight line through origin",
+   criteria:[
+    {code:"B1",marks:1,manual:true},
+    {code:"B2",marks:1,manual:true},
+    {code:"B3",marks:3,manual:true},
+    {code:"B4",marks:2,manual:true}
+   ]
+  }}];
+ await db.query(`insert into spark_grading_private.rubrics_v2
+ (subject_id,rubric_version,paper_id,criteria,active,verification_status)
+ values('physics','isolated-graph-fixture-v1','fixture-graph-paper',$1::jsonb,false,'draft')`,
+ [JSON.stringify(graphCriteria)]);
+ await db.exec(`insert into spark_grading_private.rubric_criterion_reviews_v2
+ (subject_id,rubric_version,paper_id,criterion_id,criterion_sha256,verified_by,verified_at,review_note)
+ select 'physics','isolated-graph-fixture-v1','fixture-graph-paper',c->>'id',
+ encode(sha256(convert_to(c::text,'UTF8')),'hex'),
+ 'isolated-fixture-reviewer',now(),'Synthetic graph criterion solely for regression tests'
+ from spark_grading_private.rubrics_v2 r,
+ lateral jsonb_array_elements(r.criteria)c
+ where r.paper_id='fixture-graph-paper'`);
+ await db.exec(`update spark_grading_private.rubrics_v2 set
+ expected_total_marks=7,verification_status='verified',active=true,
+ source_sha256=encode(sha256(convert_to(criteria::text,'UTF8')),'hex'),
+ verified_by='isolated-fixture-approver',verified_at=now()+interval '1 second'
+ where subject_id='physics' and paper_id='fixture-graph-paper'`);
+ const graphAttempt=randomUUID();
+ await db.query(`insert into public.spark_exam_attempts
+ (id,user_id,subject_id,paper,rubric_version,status,submitted_at,response_snapshot,metadata)
+ values($1,$2,'physics','02','source-test','submitted',now(),
+ '{"fixture-graph::a":{"answer":"graph artifact pending"}}'::jsonb,
+ '{"paper_id":"fixture-graph-paper"}'::jsonb)`,[graphAttempt,userId]);
+ const graphJob=(await db.query(`select id from spark_grading_private.marking_jobs_v2 where attempt_id=$1`,
+ [graphAttempt])).rows[0].id;
+ const graphLease=(await db.query("select public.spark_v2_claim_next_shadow_job() as data")).rows[0].data;
+ assert.equal(graphLease.jobId,graphJob);
+ const graphRow=(marks,resolved)=>JSON.stringify([{
+  criterionId:"fixture-graph::a",suggestedMarks:marks,maxMarks:7,
+  method:"physics-graph-requires-artifact-verification",resolved
+ }]);
+ await reject(`select public.spark_v2_complete_subject_job(
+ $1::uuid,$2::uuid,$3::jsonb,$4::text)`,[
+  graphJob,graphLease.leaseToken,graphRow(3,false),"a".repeat(64)
+ ],/Unverified Physics graph/);
+ await reject(`select public.spark_v2_complete_subject_job(
+ $1::uuid,$2::uuid,$3::jsonb,$4::text)`,[
+  graphJob,graphLease.leaseToken,graphRow(0,true),"a".repeat(64)
+ ],/Unverified Physics graph/);
+ const graphCompletion=(await db.query(`select public.spark_v2_complete_subject_job(
+ $1::uuid,$2::uuid,$3::jsonb,$4::text) AS outcome`,[
+  graphJob,graphLease.leaseToken,graphRow(0,false),"a".repeat(64)
+ ])).rows[0].outcome;
+ assert.equal(graphCompletion.status,"provisional");
+ assert.equal(graphCompletion.score,null);
+ assert.equal(Number(graphCompletion.unresolvedMarks),7);
+ const graphSaved=(await db.query("select score,max_score from public.spark_exam_attempts where id=$1",
+ [graphAttempt])).rows[0];
+ assert.equal(graphSaved.score,null,"unverified graph must not publish a score");
+
  console.log("V2 release gates passed: 67 sources, 9 subjects, Math criteria, independent fixture review, RLS, lease fencing, provisional-only score storage");
 }finally{await db.close();}
