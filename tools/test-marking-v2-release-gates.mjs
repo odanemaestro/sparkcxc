@@ -42,7 +42,8 @@ const migrations=[
 "20261020002500_marking_v2_math_inverse_matrix_accuracy_draft.sql",
 "20261020005000_marking_v2_math_original_v2_q3_q6_drafts.sql",
 "20261020010500_marking_v2_math_original_v2_q7_q8_drafts.sql",
-"20261020011500_marking_v2_math_original_v2_q9_q10_drafts.sql"
+"20261020011500_marking_v2_math_original_v2_q9_q10_drafts.sql",
+"20261020014500_marking_v2_math_p2h_p2j_visual_source_drafts.sql"
 ];
 async function reject(sql,params=[],pattern=/approval|attestation|permission|Forbidden|lease|rubric|checksum/i){
  await assert.rejects(db.query(sql,params),pattern);
@@ -79,7 +80,7 @@ try{
    count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
  assert.deepEqual(realReviewQueue,{
-   items:2118,reviewed:0,graph:4,math_missing:321
+   items:2118,reviewed:0,graph:4,math_missing:311
  });
 
  const counts=(await db.query(`select subject_id,count(*)::integer n from
@@ -94,7 +95,23 @@ try{
    lateral jsonb_array_elements(r.criteria) c
    where r.subject_id='mathematics'`)).rows[0];
  assert.equal(audited.empty_math,0);
- assert.equal(audited.detailed_math,319);
+ assert.equal(audited.detailed_math,329);
+ for(const paperId of ['p2h','p2j']){
+  const p=(await db.query(`select criteria from spark_grading_private.rubrics_v2
+   where subject_id='mathematics' and paper_id=$1`,[paperId])).rows[0].criteria;
+  assert.equal(p.length,41);
+  assert.equal(p.reduce((sum,c)=>sum+c.maxMarks,0),100);
+  assert(p.every(c=>Array.isArray(c.sourceMarking?.criteria)
+   && c.sourceMarking.criteria.length>0));
+  const visual=p.filter(c=>c.id.startsWith(paperId+'-q4::a')
+    || c.id===paperId+'-q5::a' || c.id===paperId+'-q5::b'
+    || c.id===paperId+'-q7::a');
+  assert.equal(visual.length,5);
+  assert.equal(visual.reduce((sum,c)=>sum+c.maxMarks,0),13);
+  assert(visual.every(c=>c.sourceMarking.criteria.every(m=>
+    m.check?.type==='manual-verification'&&m.marks>0)));
+ }
+
  const nextPaper=(await db.query(`SELECT
   count(*)::integer AS parts,
   count(*) filter(where jsonb_typeof(c->'sourceMarking'->'criteria')='array'
