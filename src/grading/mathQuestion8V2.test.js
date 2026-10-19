@@ -194,3 +194,32 @@ test("Q8 advisory fixtures are pinned to the corrected assembled learner-facing 
   }
  }
 });
+
+describe.each([
+ ["p2-q8-v8","3.89","-0.39"],
+ ["p2-q8-v9","0.18","-1.85"],
+ ["p2-q8-v10","0.64","-3.14"]
+])("Q8 two-root answer evidence %s",(questionId,first,second)=>{
+ test("one correctly rounded root is credited without falsely crediting the other",()=>{
+  const firstOnly=grade({questionId,partId:"a",response:{answer:first+", 999.99"}});
+  expect(firstOnly.criteria.slice(-2).map(c=>c.candidateMarks)).toEqual([1,null]);
+  expect(firstOnly.suggestedMarks).toBe(1);
+  const secondOnly=grade({questionId,partId:"a",response:{answer:"999.99, "+second}});
+  expect(secondOnly.criteria.slice(-2).map(c=>c.candidateMarks)).toEqual([null,1]);
+  expect(secondOnly.suggestedMarks).toBe(1);
+  const reverse=grade({questionId,partId:"a",response:{answer:"x="+second+" and x="+first}});
+  expect(reverse.criteria.slice(-2).map(c=>c.candidateMarks)).toEqual([1,1]);
+  expect(reverse.publishable).toBe(false);
+ });
+ test("extra guesses, duplicate roots and wrong decimal precision earn no A marks",()=>{
+  for(const answer of [
+   first+","+second+",999.99",first+","+first,first+" or "+second,
+   String(Number(first))+","+String(Number(second)),first+", incorrect",
+   first+" and "+first
+  ]){
+   const result=grade({questionId,partId:"a",response:{answer}});
+   expect(result.criteria.slice(-2).every(c=>c.candidateMarks===null)).toBe(true);
+   expect(result.publishable).toBe(false);
+  }
+ });
+});
