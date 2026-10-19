@@ -27,8 +27,8 @@ function exactFraction(raw){
  if(gcd(numerator,d)!==1n)return null;
  return {numerator,denominator:d};
 }
-function correct(raw,expected,part){
- if(part==="c")return string(raw).trim().toLowerCase().replace(/\s+/g," ")===string(expected).trim().toLowerCase().replace(/\s+/g," ");
+function correct(raw,expected,part,questionId){
+ if(part==="c"&&questionId==="p2-q1-v3")return string(raw).trim().toLowerCase().replace(/\s+/g," ")===string(expected).trim().toLowerCase().replace(/\s+/g," ");
  if(part==="a"){
   const got=exactFraction(raw),target=exactFraction(expected);
   return !!got&&!!target&&got.numerator*target.denominator===target.numerator*got.denominator;
@@ -43,7 +43,7 @@ export function evaluateMathQ1RemainingV2({questionId,partId,response={}}={}){
  const source=MATH_Q1_REMAINING_SOURCES_V2[questionId];
  if(!source||!Object.hasOwn(source,partId))throw new TypeError("Uncalibrated Mathematics Q1 source");
  const total=partId==="a"?3:questionId==="p2-q1-v3"&&["b3","c"].includes(partId)?1:2;
- const final=correct(extract(response),source[partId],partId);
+ const final=correct(extract(response),source[partId],partId,questionId);
  const criteria=[
   ...(total>1?[{id:"M-unverified",maxMarks:total-1,candidateMarks:null,status:"unresolved",
    reason:"source-has-no-authorised-atomic-method-allocation"}]:[]),
