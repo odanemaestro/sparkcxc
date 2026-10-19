@@ -36,7 +36,9 @@ const migrations=[
 "20261019234500_marking_v2_math_original_v1_q3_q7_q10_drafts.sql",
 "20261020001000_marking_v2_math_original_v2_q1_q2_source_drafts.sql",
 "20261020002500_marking_v2_math_inverse_matrix_accuracy_draft.sql",
-"20261020005000_marking_v2_math_original_v2_q3_q6_drafts.sql"
+"20261020005000_marking_v2_math_original_v2_q3_q6_drafts.sql",
+"20261020010500_marking_v2_math_original_v2_q7_q8_drafts.sql",
+"20261020011500_marking_v2_math_original_v2_q9_q10_drafts.sql"
 ];
 const db=new PGlite();
 try{
@@ -490,6 +492,96 @@ try{
   cylinderECF:v2CylinderWrong.rows.find(x=>x.criterionId==='p2-q6-v2::b').suggestedMarks
  }));
 
+
+ // Source-specific original-v2 Q7-Q10: all remaining parts must agree with
+ // the real 42-part paper and preserve the existing Q9(b)(i) mark scheme.
+ const mathV2=(await db.query(`select criteria from spark_grading_private.rubrics_v2
+ where subject_id='mathematics' and paper_id='original-v2' and
+ verification_status='draft' and active=false`)).rows[0].criteria;
+ assert.equal(mathV2.length,42);
+ assert.equal(mathV2.reduce((sum,c)=>sum+c.maxMarks,0),100);
+ assert(mathV2.every(c=>Array.isArray(c.sourceMarking?.criteria)
+   && c.sourceMarking.criteria.length>0));
+ const remaining=n=>mathV2.filter(c=>c.id.startsWith('p2-q'+n+'-v2::'));
+ for(const [q,n,marks] of [[7,4,10],[8,5,12],[9,5,12],[10,4,12]]){
+  const rows=remaining(q);
+  assert.equal(rows.length,n);
+  assert.equal(rows.reduce((sum,c)=>sum+c.maxMarks,0),marks);
+  const blank=evaluateExistingSubjectPaper2V2({
+    subjectId:'mathematics',paperId:'original-v2',criteria:rows,responses:{}
+  });
+  assert.equal(blank.maxMarks,marks);
+  assert.equal(blank.suggestedMarks,0);
+ }
+ const preservedBearing=remaining(9).find(c=>c.id==='p2-q9-v2::b1');
+ assert.equal(preservedBearing.sourceMarking.criteria.length,3);
+ assert.equal(preservedBearing.sourceMarking.criteria[0].check.type,'reachesValue');
+ const gradeRest=(number,responses)=>evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v2',
+  criteria:remaining(number),responses
+ });
+ const q7Structured=gradeRest(7,{
+  'p2-q7-v2::a':{answer:'16, 16, 32'},
+  'p2-q7-v2::b':{answer:'n^2, 4n, n^2+4n'},
+  'p2-q7-v2::c':{answer:'8',working:'n^2+4n=96'},
+  'p2-q7-v2::d':{answer:'60',working:'n=15, 4n=60'}
+ });
+ assert.equal(q7Structured.rows.find(x=>x.criterionId==='p2-q7-v2::a').suggestedMarks,0,
+  'Unverified table cell positions cannot earn final marks');
+ assert.equal(q7Structured.rows.find(x=>x.criterionId==='p2-q7-v2::b').suggestedMarks,0,
+  'Unverified labelled tile expressions cannot earn marks');
+ assert.equal(q7Structured.rows.find(x=>x.criterionId==='p2-q7-v2::c').suggestedMarks,1);
+ assert.equal(q7Structured.rows.find(x=>x.criterionId==='p2-q7-v2::d').suggestedMarks,1);
+ assert.equal(q7Structured.canPublishFinalScore,false);
+ const badDesign=gradeRest(7,{'p2-q7-v2::c':{answer:'-12'}});
+ assert.equal(badDesign.rows.find(x=>x.criterionId==='p2-q7-v2::c').suggestedMarks,0);
+ const q8=gradeRest(8,{
+  'p2-q8-v2::a':{answer:'2x^2+12x+23'},
+  'p2-q8-v2::b1':{answer:'5'},
+  'p2-q8-v2::b2':{answer:'-3'},
+  'p2-q8-v2::c':{answer:'x=-3'},
+  'p2-q8-v2::d':{answer:'(0,23)'}
+ });
+ assert.equal(q8.rows.find(x=>x.criterionId==='p2-q8-v2::a').suggestedMarks,0,
+  'Expanded algebra does not demonstrate completing the square');
+ assert.equal(q8.rows.find(x=>x.criterionId==='p2-q8-v2::c').suggestedMarks,1);
+ assert.equal(q8.rows.find(x=>x.criterionId==='p2-q8-v2::d').suggestedMarks,1);
+ assert.equal(q8.canPublishFinalScore,false);
+ const swappedIntercept=gradeRest(8,{'p2-q8-v2::d':{answer:'(23,0)'}});
+ assert.equal(swappedIntercept.rows.find(x=>x.criterionId==='p2-q8-v2::d').suggestedMarks,0);
+ const q9=gradeRest(9,{
+  'p2-q9-v2::a1':{answer:'64'},
+  'p2-q9-v2::a2':{answer:'26'},
+  'p2-q9-v2::b2':{answer:'100'},
+  'p2-q9-v2::b3':{answer:'108'}
+ });
+ assert.equal(q9.rows.find(x=>x.criterionId==='p2-q9-v2::a1').suggestedMarks,1);
+ assert.equal(q9.rows.find(x=>x.criterionId==='p2-q9-v2::b3').suggestedMarks,1);
+ assert.equal(q9.canPublishFinalScore,false);
+ const invalidBearing=gradeRest(9,{'p2-q9-v2::b3':{answer:'208'}});
+ assert.equal(invalidBearing.rows.find(x=>x.criterionId==='p2-q9-v2::b3').suggestedMarks,0);
+ const q10=gradeRest(10,{
+  'p2-q10-v2::a':{answer:'[[3,-1],[2,16]]'},
+  'p2-q10-v2::b':{answer:'10'},
+  'p2-q10-v2::c':{answer:'(1/10)[[4,-1],[-2,3]]'},
+  'p2-q10-v2::d':{answer:'2, 5'}
+ });
+ for(const id of ['a','b','c']){
+  assert.equal(q10.rows.find(x=>x.criterionId==='p2-q10-v2::'+id).suggestedMarks,1);
+ }
+ assert.equal(q10.rows.find(x=>x.criterionId==='p2-q10-v2::d').suggestedMarks,2);
+ assert.equal(q10.canPublishFinalScore,false);
+ const wrongMatrix=gradeRest(10,{'p2-q10-v2::a':{answer:'[[3,2],[-1,16]]'}});
+ assert.equal(wrongMatrix.rows.find(x=>x.criterionId==='p2-q10-v2::a').suggestedMarks,0);
+ const wrongInverse=gradeRest(10,{'p2-q10-v2::c':{answer:'(1/11)[[4,-1],[-2,3]]'}});
+ assert.equal(wrongInverse.rows.find(x=>x.criterionId==='p2-q10-v2::c').suggestedMarks,0);
+ const reversedXY=gradeRest(10,{'p2-q10-v2::d':{answer:'5, 2'}});
+ assert.equal(reversedXY.rows.find(x=>x.criterionId==='p2-q10-v2::d').suggestedMarks,0);
+ console.log('Mathematics original-v2 Q7-Q10 verification',JSON.stringify({
+  parts:18,marks:46,completePaperParts:42,completePaperMarks:100,
+  retainedQ9Bearing:true,structuredAnswersUnresolved:true,finalPublication:false
+ }));
+
  const defects=[],counts={};
  let totalCriteria=0;
  const sourceAudit=[];
@@ -522,7 +614,7 @@ try{
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
- assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:338});
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:321});
 
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
  console.log("Independent source-structure QA",JSON.stringify({
