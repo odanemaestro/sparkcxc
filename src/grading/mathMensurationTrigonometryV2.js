@@ -21,8 +21,8 @@ const PRISMS = Object.freeze({
  "p2-q6-v8":{base:12,height:5,length:25,edge:13,area:30,volume:750,surface:810}
 });
 const TOWERS = Object.freeze({
- "p2-q6-v9":{distance:48,angle:34,farDistance:68,height:32.4,slant:57.9,farAngle:25},
- "p2-q6-v10":{distance:35,angle:42,farDistance:50,height:31.5,slant:47.1,farAngle:32}
+ "p2-q6-v9":{distance:48,angle:34,farDistance:68,height:32.4,rawHeight:32.38,slant:57.9,farAngle:25},
+ "p2-q6-v10":{distance:35,angle:42,farDistance:50,height:31.5,rawHeight:31.51,slant:47.1,farAngle:32}
 });
 export const MATH_Q6_SOURCES_V2=Object.freeze({
  ...Object.fromEntries(Object.entries(CYLINDERS).map(([id,s])=>[id,Object.freeze({
@@ -115,8 +115,10 @@ function methodPatterns(source,partId){
   if(partId==="a")return [d+"*tan"+a,d+"*tan("+a+")"];
   if(partId==="b")return [d+"/cos"+a,d+"/cos("+a+")"];
   if(partId==="c")return [
-   "atan("+String(Math.round(s.height*100)/100)+"/"+z+")",
-   "arctan("+String(Math.round(s.height*100)/100)+"/"+z+")"
+   "atan("+s.rawHeight+"/"+z+")",
+   "arctan("+s.rawHeight+"/"+z+")",
+   "tan-1("+s.rawHeight+"/"+z+")",
+   "atan("+s.height+"/"+z+")"
   ];
  }
  return [];
