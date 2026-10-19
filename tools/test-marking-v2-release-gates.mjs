@@ -113,6 +113,20 @@ try{
  const priorQ9=finalSource.find(c=>c.id==='p2-q9-v2::b1');
  assert.equal(priorQ9.sourceMarking.criteria.length,3);
  assert.equal(priorQ9.sourceMarking.criteria[0].check.type,'reachesValue');
+ const visualRules=(await db.query(`select
+ count(*)::integer as total,
+ count(*) filter(where jsonb_typeof(m->'check') is distinct from 'object'
+   or nullif(m->'check'->>'type','') is null)::integer as malformed,
+ count(*) filter(where m->'check'->>'type'='manual-verification')::integer as manual
+ from spark_grading_private.rubrics_v2 r
+ cross join lateral jsonb_array_elements(r.criteria)c
+ cross join lateral jsonb_array_elements(c->'sourceMarking'->'criteria')m
+ where r.subject_id='mathematics' and r.paper_id='original-v2'
+ and (c->>'id' like 'p2-q7-v2::%' or c->>'id' like 'p2-q8-v2::%')`)).rows[0];
+ assert(visualRules.total>=20,'Q7/Q8 source requires real criterion detail');
+ assert.equal(visualRules.malformed,0,'Every source check must have a typed object');
+ assert(visualRules.manual>0,'Visual/table evidence must remain manual until verified');
+
 
  const q3Through6=(await db.query(`SELECT
   COUNT(*)::integer AS parts,
