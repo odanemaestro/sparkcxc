@@ -276,3 +276,26 @@ test("unreviewed nonblank evidence cannot authorize final grading across subject
  expect(fnhResult.canPublishFinalScore).toBe(false);
  expect(fnhResult.unresolvedMarks).toBe(2);
 });
+
+test("Math provisional logic rejects prose-only proofs and preserves blank-part zeros",()=>{
+ const q=PAPER2_QUESTION_BANK.find(x=>x.question_id==="p2-q4-v1");
+ expect(q).toBeTruthy();
+ const criteria=q.parts.map(p=>row(q.question_id+"::"+p.id,p.marks,{
+  answer:p.answer,
+  criteria:p.id==="a1"?[{
+   code:"B1",kind:"B",marks:p.marks,field:"answer",
+   check:{type:"prose",tokens:["correct"],quorum:0.1}
+  }]:p.criteria??null
+ }));
+ const nonblank=q.question_id+"::a1";
+ const r=example("mathematics","original-v1",criteria,{
+  [nonblank]:{answer:"correct"}
+ });
+ expect(r.rows.find(x=>x.criterionId===nonblank)?.resolved).toBe(false);
+ expect(r.canPublishFinalScore).toBe(false);
+ for(const part of q.parts.filter(x=>x.id!=="a1")){
+  const outcome=r.rows.find(x=>x.criterionId===q.question_id+"::"+part.id);
+  expect(outcome.suggestedMarks).toBe(0);
+  expect(outcome.resolved).toBe(true);
+ }
+});
