@@ -191,6 +191,18 @@ try{
  assert.equal(Number(finalScore.score),2);
  assert.equal(Number(finalScore.max_score),2);
  assert.equal(finalScore.authority,"server-v2-deterministic");
+ // Candidate result endpoint is row-owner filtered, even for a valid attempt ID.
+ await db.query("select set_config('test.user_id',$1,false)",[userId]);
+ const own=(await db.query("select public.spark_v2_exam_result($1) result",[finalAttempt])).rows[0].result;
+ assert.equal(own.status,"verified");
+ assert.equal(Number(own.score),2);
+ const stranger=randomUUID();
+ await db.query("insert into auth.users(id) values($1)",[stranger]);
+ await db.query("select set_config('test.user_id',$1,false)",[stranger]);
+ const otherStudent=(await db.query("select public.spark_v2_exam_result($1) result",[finalAttempt])).rows[0].result;
+ assert.equal(otherStudent,null,"one student must never inspect another student's marks");
+ await db.query("select set_config('test.user_id','',false)");
+
  assert.equal((await db.query(`select public.spark_v2_complete_subject_job(
  $1::uuid,$2::uuid,$3::jsonb,$4::text) as outcome`,[
  finalJob,finalClaim.leaseToken,
