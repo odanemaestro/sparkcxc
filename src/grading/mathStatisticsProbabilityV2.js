@@ -65,9 +65,9 @@ function evidencedMethod(questionId,partId,response){
  const raw=response&&typeof response==="object"&&!Array.isArray(response)
   ?asText(response.working):"";
  const w=raw.toLowerCase().replace(/[×∗]/g,"*").replace(/[−–—]/g,"-")
-  .replace(/÷/g,"/").replace(/\\s+/g,"");
- if(!w||/\\b(?:or|either)\\b/i.test(raw))return false;
- return patterns.some(expr=>w.split(/[;=\\n]/).includes(expr));
+  .replace(/÷/g,"/").replace(/\s+/g,"");
+ if(!w||/\b(?:or|either)\b/i.test(raw))return false;
+ return patterns.some(expr=>w.split(/[;=\n]/).includes(expr));
 }
 
 function criterion(id,maxMarks,ok,reason){
