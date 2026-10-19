@@ -208,5 +208,26 @@ try{
  finalJob,finalClaim.leaseToken,
  JSON.stringify([{criterionId:"test-q1",maxMarks:2,suggestedMarks:0,method:"existing-mathematics-MAB-ECF",resolved:true}]),
  "c".repeat(64)])).rows[0].outcome.status,"stale-lease");
+ // Save a pending written exam with no client grade, then pin its server
+ // rubric and queue a worker job automatically on submission.
+ const pendingAttempt=randomUUID();
+ await db.query(`insert into public.spark_exam_attempts
+ (id,user_id,subject_id,paper,session_mode,rubric_version,status,metadata)
+ values($1,$2,'mathematics','02','practice','legacy-v1','in_progress',
+ '{"paper_id":"isolated-paper"}'::jsonb)`,[pendingAttempt,userId]);
+ await db.query("select set_config('test.user_id',$1,false)",[userId]);
+ const submitted=(await db.query(`select * from public.spark_submit_exam_attempt(
+ $1::uuid,'{"test-q1":{"answer":"42"}}'::jsonb,null,null,2,'{}'::jsonb)`,[
+ pendingAttempt])).rows[0];
+ assert.equal(submitted.attempt_id,pendingAttempt);
+ const pending=(await db.query(`select a.score,a.v2_paper_id,a.v2_rubric_version,
+ j.status from public.spark_exam_attempts a
+ join spark_grading_private.marking_jobs_v2 j on j.attempt_id=a.id where a.id=$1`,
+ [pendingAttempt])).rows[0];
+ assert.equal(pending.score,null);
+ assert.equal(pending.v2_paper_id,"isolated-paper");
+ assert.equal(pending.v2_rubric_version,"isolated-fixture-v1");
+ assert.equal(pending.status,"queued");
+ await db.query("select set_config('test.user_id','',false)");
  console.log("V2 release gates passed: 67 sources, 9 subjects, Math criteria, independent fixture review, RLS, lease fencing, provisional-only score storage");
 }finally{await db.close();}
