@@ -178,3 +178,31 @@ test("Q10 area statements cannot double-credit an unstated determinant",()=>{
   expect(complete.publishable).toBe(false);
  }
 });
+
+test("Q10 accepts exact rational scales without letting ambiguous answers through",()=>{
+ for(const answer of ["5/2","10/4","k = 5 / 2"]){
+  const r=check("p2-q10-v4","b",answer);
+  expect(r.criteria.at(-1).candidateMarks).toBe(1);
+  expect(r.publishable).toBe(false);
+ }
+ expect(check("p2-q10-v5","b","6/2").suggestedMarks).toBe(1);
+ for(const answer of ["5/2 or 3","5/0","1/0","5/3","5/2 and 3"]){
+  expect(check("p2-q10-v4","b",answer).suggestedMarks).toBe(0);
+ }
+});
+test("Q10 vector component differences may be written in distributed half form",()=>{
+ for(const id of ["p2-q10-v6","p2-q10-v7"]){
+  for(const equivalent of [
+   "b/2 - a/2","(1/2)b-(1/2)a","0.5b-0.5a",
+   "1/2*b-1/2*a"
+  ]){
+   const r=check(id,"b",equivalent);
+   expect(r.criteria.at(-1).candidateMarks).toBe(1);
+   expect(r.unresolvedMarks).toBe(2);
+   expect(r.publishable).toBe(false);
+  }
+  for(const wrong of ["a/2-b/2","(1/2)(a-b)","b/2+a/2"]){
+   expect(check(id,"b",wrong).suggestedMarks).toBe(0);
+  }
+ }
+});
