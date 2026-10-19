@@ -84,7 +84,9 @@ function vectorExpression(input,kind){
   .replace(/^(?:ab|mn)=/,"").replace(/\s/g,"");
  if(kind==="ab")return ["b-a","-a+b","(-a)+b"].includes(v);
  return ["(1/2)(b-a)","1/2(b-a)","(b-a)/2","0.5(b-a)",
-  "1/2*(b-a)","0.5*(b-a)","(b-a)*0.5","(b-a)*1/2"].includes(v);
+  "1/2*(b-a)","0.5*(b-a)","(b-a)*0.5","(b-a)*1/2",
+  "(1/2)b-(1/2)a","1/2b-1/2a","0.5b-0.5a",
+  "b/2-a/2","(b/2)-(a/2)","1/2*b-1/2*a"].includes(v);
 }
 function worked(response,expression){
  const w=norm(field(response,"working")).replace(/\r/g,"");
@@ -151,9 +153,19 @@ function transformCriteria(s,p,r){
    "rotate-coordinate"),
   unresolved("M-extra"),vote("A1",same(coordinate(answer),s.rotated),
    "anticlockwise-rotation-image")];
- if(p==="b")return [vote("M1",worked(r,s.given[0]+"*k="+s.image[0]),
+ if(p==="b"){
+  // The student-facing bank explicitly accepts 5/2 for the 2.5 scale
+  // factor. Exact rational equivalents are legitimate, never competing
+  // answers or methods inferred from text.
+  const rational=/^\\s*(?:k\\s*=\\s*)?([+-]?\\d+)\\s*\\/\\s*(\\d+)\\s*$/i.exec(answer);
+  const ratio=rational&&Number(rational[2])!==0?
+   Number(rational[1])/Number(rational[2]):null;
+  const scale=accurateNumber(answer,s.k)||(ratio!==null&&
+   Number.isFinite(ratio)&&Math.abs(ratio-s.k)<1e-9);
+  return [vote("M1",worked(r,s.given[0]+"*k="+s.image[0]),
    "enlargement-scale-equation"),unresolved("M-extra"),
-   vote("A1",accurateNumber(answer,s.k),"source-enlargement-factor")];
+   vote("A1",scale,"source-enlargement-factor")];
+ }
  if(p==="c")return [vote("M1",worked(r,"t*r")||worked(r,"tr"),
    "correct-transform-composition-order"),unresolved("M-extra"),
    vote("A1",same(flatMatrix(answer),s.combined),"combined-matrix")];
