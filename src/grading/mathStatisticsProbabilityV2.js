@@ -53,6 +53,23 @@ function accuracy(input,expected,part,version){
  const tolerance=[4,5].includes(version)&&["c","d"].includes(part)?0.051:0.011;
  return a!==null&&b!==null&&Math.abs(a-b)<=tolerance;
 }
+const Q5_METHODS=Object.freeze({
+ "p2-q5-v6":{a:["360-(105+135+75)"],b:["105/360*240"]},
+ "p2-q5-v7":{a:["360-(150+90+72)"],b:["90/360*180"]},
+ "p2-q5-v8":{c:["5/12*4/11"],d:["5/12*3/11"]},
+ "p2-q5-v9":{c:["4/15*3/14"],d:["4/15*6/14"]}
+});
+function evidencedMethod(questionId,partId,response){
+ const patterns=Q5_METHODS[questionId]?.[partId];
+ if(!patterns)return false;
+ const raw=response&&typeof response==="object"&&!Array.isArray(response)
+  ?asText(response.working):"";
+ const w=raw.toLowerCase().replace(/[×∗]/g,"*").replace(/[−–—]/g,"-")
+  .replace(/÷/g,"/").replace(/\\s+/g,"");
+ if(!w||/\\b(?:or|either)\\b/i.test(raw))return false;
+ return patterns.some(expr=>w.split(/[;=\\n]/).includes(expr));
+}
+
 function criterion(id,maxMarks,ok,reason){
  return {id,maxMarks,candidateMarks:ok?maxMarks:null,
   status:ok?"candidate-correct":"unresolved",
@@ -65,13 +82,16 @@ export function evaluateMathQ5V2({questionId,partId,response={}}={}){
  const [expected,marks]=source[partId],version=Number(questionId.split("-v")[1]);
  const final=accuracy(answer(response),expected,partId,version);
  const isGraph=expected==="graph";
+ const method=marks>1&&!isGraph&&evidencedMethod(questionId,partId,response);
  const criteria=[
-  ...(marks>1?[criterion(isGraph?"G-unverified":"M-unverified",marks-1,false,
-   "missing-verified-method-or-graph-evidence")]:[]),
+  ...(marks>2?[criterion(isGraph?"G-unverified":"M-unverified",marks-2,false,
+   "remaining-unverified-method-or-graph-evidence")]:[]),
+  ...(marks>1?[criterion(isGraph?"G-method-unverified":"M1",1,method,
+   "source-specific-substitution-evidence")]:[]),
   criterion(isGraph?"G-final-unverified":"A1",1,!isGraph&&final,"source-supported-final-evidence")
  ];
  return {sourcePart:questionId+"::"+partId,authority:"advisory",publishable:false,
   rubricAllocation:"proposed-from-worked-solution",criteria,
-  suggestedMarks:final&&!isGraph?1:0,
-  unresolvedMarks:marks-(final&&!isGraph?1:0)};
+  suggestedMarks:(final&&!isGraph?1:0)+(method?1:0),
+  unresolvedMarks:marks-(final&&!isGraph?1:0)-(method?1:0)};
 }
