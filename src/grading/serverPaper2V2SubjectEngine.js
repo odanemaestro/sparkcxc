@@ -101,7 +101,7 @@ function mathematics(rows,responses){
     if(total!==row.maxMarks || codes.size!==stored.length ||
        stored.some(c=>!c||typeof c.code!=="string"||!c.code||
         !c.check || typeof c.check.type!=="string" ||
-        !Number.isSafeInteger(c.marks)||c.marks<=0))
+        !Number.isSafeInteger(c.marks)||c.marks<0))
      throw new Error("Invalid registered Mathematics mark allocation "+row.id);
    }
    return {row,part:{...part,criteria:detailed?stored:part.criteria},detailed,
