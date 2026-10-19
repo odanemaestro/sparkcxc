@@ -7,7 +7,10 @@ const sources=[
   split:"2x^2+8x-3x-12",group:"2x(x+4)-3(x+4)",expanded:"2x^2+5x-12"},
  {id:"p2-q2-v2",factor:"3(m-7n)(m+7n)",swapped:"3(m+7n)(m-7n)",
   partial:"3(m^2-49n^2)",original:"3m^2-147n^2",quadratic:"(3x-2)(x+3)",
-  split:"3x^2+9x-2x-6",group:"3x(x+3)-2(x+3)",expanded:"3x^2+7x-6"}
+  split:"3x^2+9x-2x-6",group:"3x(x+3)-2(x+3)",expanded:"3x^2+7x-6"},
+ {id:"p2-q2-v3",factor:"5(m-3n)(m+3n)",swapped:"5(m+3n)(m-3n)",
+  partial:"5(m^2-9n^2)",original:"5m^2-45n^2",quadratic:"(5x-7)(x+2)",
+  split:"5x^2+10x-7x-14",group:"5x(x+2)-7(x+2)",expanded:"5x^2+3x-14"}
 ];
 describe.each(sources)("Mathematics source Q2 factorisation",entry=>{
  const evaluate=(partId,response)=>mark({questionId:entry.id,partId,response});
