@@ -25,11 +25,12 @@ const number=x=>{
  const n=Number(s);return Number.isFinite(n)&&n<=1e8?n:null;
 };
 const gcd=(a,b)=>b===0n?a:gcd(b,a%b);
-function fraction(s){
+function fraction(s,requireSimplest=true){
  const m=/^\s*(\d+)\s*\/\s*(\d+)\s*$/.exec(clean(s));
  if(!m)return null;
  const n=BigInt(m[1]),d=BigInt(m[2]);
- return d>0n&&d<=100000000n&&n<=100000000n&&n<=d&&gcd(n,d)===1n?[n,d]:null;
+ return d>0n&&d<=100000000n&&n<=100000000n&&n<=d
+  &&(!requireSimplest||gcd(n,d)===1n)?[n,d]:null;
 }
 function accuracy(input,expected,part,version){
  const s=clean(input);
@@ -50,7 +51,11 @@ function accuracy(input,expected,part,version){
    (s.startsWith(expected.toLowerCase()+" because ") && !/\b(?:or|either)\b/i.test(s));
  }
  if(expected.includes("/")){
-  const a=fraction(s),b=fraction(expected);
+  // The source explicitly demands lowest terms for Q5 d v1-v7/v10 and
+  // Q5 a v8-v9. Other probability prompts accept equivalent fractions.
+  const simplest=(part==="a"&&[8,9].includes(version))||
+   (part==="d"&&![8,9].includes(version));
+  const a=fraction(s,simplest),b=fraction(expected);
   return !!a&&!!b&&a[0]*b[1]===b[0]*a[1];
  }
  const a=number(s),b=number(expected);
