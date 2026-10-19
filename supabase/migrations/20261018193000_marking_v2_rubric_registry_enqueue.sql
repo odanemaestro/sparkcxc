@@ -22,7 +22,10 @@ returns uuid language plpgsql security definer set search_path='' as $$
 declare v_attempt public.spark_exam_attempts%rowtype;
 declare v_job_id uuid;
 begin
- if session_user not in ('postgres','service_role') then raise exception 'Forbidden'; end if;
+ if session_user not in ('postgres','service_role')
+   and (auth.jwt()->>'role') is distinct from 'service_role' then
+   raise exception 'Forbidden';
+ end if;
  select * into v_attempt from public.spark_exam_attempts
  where id=p_attempt_id and status='submitted' and paper='02';
  if not found then raise exception 'Submitted Paper 2 required'; end if;
