@@ -5,7 +5,7 @@
  */
 export const MATH_Q1_REMAINING_SOURCES_V2=Object.freeze({
  "p2-q1-v2":{a:"9/5",b1:"4500",b2:"6075",b3:"12.5"},
- "p2-q1-v3":{a:"46/3",b1:"900",b2:"4200",b3:"16.67"},
+ "p2-q1-v3":{a:"46/3",b1:"900",b2:"4200",b3:"16.67",c:"The hire purchase price is larger than the cash price, so the same difference is a smaller fraction of it"},
  "p2-q1-v4":{a:"10",b1:"960",b2:"5220",b3:"8.75"},
  "p2-q1-v5":{a:"32/5",b1:"252",b2:"1212",c:"5520"},
  "p2-q1-v6":{a:"41/5",b1:"576",b2:"1696",c:"9125"},
@@ -28,6 +28,7 @@ function exactFraction(raw){
  return {numerator,denominator:d};
 }
 function correct(raw,expected,part){
+ if(part==="c")return string(raw).trim().toLowerCase().replace(/\s+/g," ")===string(expected).trim().toLowerCase().replace(/\s+/g," ");
  if(part==="a"){
   const got=exactFraction(raw),target=exactFraction(expected);
   return !!got&&!!target&&got.numerator*target.denominator===target.numerator*got.denominator;
@@ -41,11 +42,11 @@ function correct(raw,expected,part){
 export function evaluateMathQ1RemainingV2({questionId,partId,response={}}={}){
  const source=MATH_Q1_REMAINING_SOURCES_V2[questionId];
  if(!source||!Object.hasOwn(source,partId))throw new TypeError("Uncalibrated Mathematics Q1 source");
- const total=partId==="a"?3:2;
+ const total=partId==="a"?3:questionId==="p2-q1-v3"&&["b3","c"].includes(partId)?1:2;
  const final=correct(extract(response),source[partId],partId);
  const criteria=[
-  {id:"M-unverified",maxMarks:total-1,candidateMarks:null,status:"unresolved",
-   reason:"source-has-no-authorised-atomic-method-allocation"},
+  ...(total>1?[{id:"M-unverified",maxMarks:total-1,candidateMarks:null,status:"unresolved",
+   reason:"source-has-no-authorised-atomic-method-allocation"}]:[]),
   {id:"A1",maxMarks:1,candidateMarks:final?1:null,
    status:final?"candidate-correct":"unresolved",
    reason:final?"exact-source-final-answer":"insufficient-source-evidence"}
