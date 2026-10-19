@@ -19,7 +19,9 @@ const migrations=[
 "20261019150000_marking_v2_physics_it_source_detail_bridge.sql",
 "20261019153000_marking_v2_math_eight_missing_criteria.sql",
 "20261019173000_marking_v2_subject_grader_evidence.sql",
-"20261019174000_marking_v2_subject_evidence_method_fix.sql"
+"20261019174000_marking_v2_subject_evidence_method_fix.sql",
+"20261019180000_marking_v2_live_attempt_routing.sql",
+"20261019183000_marking_v2_atomic_score_publication.sql"
 ];
 const db=new PGlite();
 try{
@@ -48,8 +50,9 @@ try{
    assert.equal(r.examinedParts,paper.criteria.length);
    assert.equal(r.maxMarks,expected);
    assert(r.suggestedMarks>=0&&r.suggestedMarks<=expected);
-   assert.equal(r.canPublishFinalScore,false);
-   assert.equal(r.unresolvedMarks,expected);
+   assert.equal(r.canPublishFinalScore,r.unresolvedMarks===0);
+   assert(r.unresolvedMarks>=0&&r.unresolvedMarks<=expected);
+   assert(r.rows.every(row=>typeof row.resolved==="boolean"));
   }catch(error){defects.push({subject:paper.subject_id,paper:paper.paper_id,error:String(error?.message||error)});}
  }
  console.log("Source-bank replay",JSON.stringify({examined:papers.length,subjectCounts:counts,defects},null,2));
