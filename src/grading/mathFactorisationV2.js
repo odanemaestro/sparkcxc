@@ -1,7 +1,7 @@
 /**
  * Mathematics Paper 2 Q2, authored SPARK source factorisation calibration.
  *
- * Only the two explicitly mapped SPARK originals are supported. All checks
+ * Only explicitly mapped SPARK originals (Q2-v1/v2/v3) are supported. All checks
  * are advisory: source scheme gives 2 marks per part but does not contain an
  * authored M/A breakdown. One candidate method and one accuracy mark are
  * calibration proposals, never a final grade or a denial of other methods.
@@ -16,6 +16,10 @@ const SOURCES=Object.freeze({
  "p2-q2-v2":Object.freeze({
   b1:Object.freeze({original:"3m^2-147n^2",partial:"3(m^2-49n^2)",answer:"3(m-7n)(m+7n)"}),
   b2:Object.freeze({original:"3x^2+7x-6",partial:"3x^2+9x-2x-6",group:"3x(x+3)-2(x+3)",answer:"(3x-2)(x+3)",split:/9\s*x\s*-\s*2\s*x/i})
+ }),
+ "p2-q2-v3":Object.freeze({
+  b1:Object.freeze({original:"5m^2-45n^2",partial:"5(m^2-9n^2)",answer:"5(m-3n)(m+3n)"}),
+  b2:Object.freeze({original:"5x^2+3x-14",partial:"5x^2+10x-7x-14",group:"5x(x+2)-7(x+2)",answer:"(5x-7)(x+2)",split:/10\s*x\s*-\s*7\s*x/i})
  })
 });
 const clean=s=>typeof s==="string"?s.replace(/[−–—]/g,"-").replace(/[²]/g,"^2").trim():"";
@@ -33,11 +37,13 @@ export function evaluateMathFactorisationV2({questionId,partId,response={}}={}){
  const answer=clean(typeof response==="string"?response:response?.answer);
  const working=clean(response&&typeof response==="object"?response.working:"");
  const allSteps=terms(working);
+ const common=source.partial.match(/^\d+/)?.[0];
+ const extracted=new RegExp("^\\s*"+common+"\\s*\\(");
  const partial=partId==="b1"
-  ?allSteps.some(s=>/^\s*[34]\s*\(/.test(s)&&/m\s*\^2/.test(s)&&/n\s*\^2/.test(s)&&equivalent(s,source.partial))
+  ?allSteps.some(s=>extracted.test(s)&&/m\s*\^2/.test(s)&&/n\s*\^2/.test(s)&&equivalent(s,source.partial))
   :allSteps.some(s=>(source.split.test(s.replace(/\s+/g,""))||s.replace(/\s+/g,"")===source.group)&&equivalent(s,source.original));
  const inAnswer=partId==="b1"
-  ?/^\s*[34]\s*\(/.test(answer)&&/m\s*\^2/.test(answer)&&equivalent(answer,source.partial)
+  ?extracted.test(answer)&&/m\s*\^2/.test(answer)&&equivalent(answer,source.partial)
   :(source.split.test(answer.replace(/\s+/g,""))||answer.replace(/\s+/g,"")===source.group)
    &&equivalent(answer,source.original);
  const method=partial||!!inAnswer;
