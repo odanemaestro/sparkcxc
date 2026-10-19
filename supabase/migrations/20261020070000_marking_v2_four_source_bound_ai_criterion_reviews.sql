@@ -42,7 +42,7 @@ begin
      or detail->'depends'<>'[]'::jsonb)
    then raise exception 'Unsupported dependent Mathematics check: %',candidate->>'id'; end if;
   note:='AI-assisted SPARK V2 criterion review, not human attestation; source-derived one-mark accuracy independently inspected. '
-   || candidate->>'review'
+   || (candidate->>'review')
    || ' Regression evidence: src/grading/v2CriterionReviewPilot.test.js, source-target positive and negative cases. '
    || 'Final paper attestation, unresolved method review, and live score publication explicitly NOT authorized.';
   insert into spark_grading_private.rubric_criterion_reviews_v2(
