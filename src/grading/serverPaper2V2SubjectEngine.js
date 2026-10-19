@@ -66,27 +66,49 @@ function mathematics(rows,responses){
  for(const [id,parts] of grouped){
   const original=PAPER2_QUESTION_BANK.find(q=>q.question_id===id);
   if(!original)throw new Error("Unknown Mathematics source question: "+id);
-  const selected=parts.map(p=>{
-   const part=original.parts.find(x=>x.id===p.fields[1]);
-   if(!part||part.marks!==p.row.maxMarks)throw new Error("Mathematics source ceiling mismatch");
-   // Enforce the registered source identity while preserving ECF, working and
-   // typed-paper source rules from the existing live examiner.
-   return {row:p.row,part};
-  });
-  if(selected.length!==original.parts.length)
+  // Validate the complete question rather than trusting the order of rows in
+  // the worker job. The grader must use the very criteria that a private
+  // reviewer will hash and approve, not a newer automatically derived bank.
+  const registered=new Map(parts.map(p=>[p.fields[1],p.row]));
+  if(registered.size!==parts.length||registered.size!==original.parts.length)
    throw new Error("Incomplete registered Mathematics question "+id);
+  const selected=original.parts.map(part=>{
+   const row=registered.get(part.id);
+   if(!row||part.marks!==row.maxMarks)
+    throw new Error("Mathematics source ceiling mismatch "+id+"::"+part.id);
+   const source=sourceMarking(row);
+   const stored=source.criteria;
+   if(stored!=null&&!Array.isArray(stored))
+    throw new Error("Invalid registered Mathematics criteria "+row.id);
+   const detailed=Array.isArray(stored)&&stored.length>0;
+   if(detailed){
+    const total=stored.reduce((sum,c)=>sum+Number(c?.marks||0),0);
+    const codes=new Set(stored.map(c=>c?.code));
+    if(total!==row.maxMarks || codes.size!==stored.length ||
+       stored.some(c=>!c||typeof c.code!=="string"||!c.code||
+        !c.check || typeof c.check.type!=="string" ||
+        !Number.isSafeInteger(c.marks)||c.marks<=0))
+     throw new Error("Invalid registered Mathematics mark allocation "+row.id);
+   }
+   return {row,part:{...part,criteria:detailed?stored:part.criteria},detailed,
+    definitive:detailed && stored.every(c=>c.provisional!==true &&
+       c.check.type!=="manual-verification" &&
+       c.check.type!=="proposed-from-worked-solution")};
+  });
   const responsesForQuestion=Object.fromEntries(selected.map(p=>[
     p.part.id,read(responses,p.row.id,id)===responses[id]&&object(responses[id])
       ?responses[id][p.part.id]:read(responses,p.row.id)
   ]));
-  const examination=markQuestion(responsesForQuestion,original);
-  if(examination.parts.length!==selected.length)throw new Error("Incomplete Mathematics marker");
+  const examination=markQuestion(responsesForQuestion,{
+   ...original,parts:selected.map(p=>p.part)
+  });
+  if(examination.parts.length!==selected.length)
+   throw new Error("Incomplete Mathematics marker");
   out.push(...byResult(selected.map(p=>p.row),examination.parts.map(x=>x.marks),
    "existing-mathematics-MAB-ECF",
    selected.map((p,i)=>blank(responsesForQuestion[p.part.id]) ||
-    (p.part.criteria?.length>0 &&
-     p.part.criteria.every(c=>c.check&&c.check.type!=="manual-verification") &&
-     !examination.parts[i]?.criteria?.some(c=>c.reviewRequired||c.unresolved)))));
+    (p.definitive && !examination.parts[i]?.criteria?.some(
+     c=>c.reviewRequired||c.unresolved)))));
  }
  return out;
 }
