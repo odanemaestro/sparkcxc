@@ -112,3 +112,37 @@ The updated compiled examiner bundle is deployed in the private Supabase `mark-p
 **Verified production status:** Mathematics detailed source coverage **287/640** parts, **353** remaining. Original-v2 is **10/42** parts detailed; original-v1 retains **45/45**. Source hashes across **67** registered papers match; **zero** criterion approvals, verified/active V2 rubrics, or V2 worker jobs exist. Original-v1 currently retains **49 mark weights** in manual evidence criteria, after converting the single inverse accuracy mark to safe deterministic checking.
 
 **Not a student-facing grading release:** all source versions remain inactive drafts. A matching source hash, a correct known-answer test, or a generated provisional suggestion is not a substitute for real source-by-source calibration and distinct internal reviewer approval. Continue with original-v2 Q3 and remaining papers, alternative answer review, and verified graphical/tabular artefacts.
+
+
+## Full Mathematics original-v2 draft allocation, CI #2483
+
+**Completed and independently rechecked:** the original-v2 42-part, 100-mark **draft source rubric** now has detailed criterion arrays for every part. This milestone covers the remaining original-v2 Q7/Q8 (9 parts, 22 marks) and Q9/Q10 (8 parts, 21 marks).
+
+The two applied guarded production migrations are:
+- `20261020010500_marking_v2_math_original_v2_q7_q8_drafts.sql`
+- `20261020011500_marking_v2_math_original_v2_q9_q10_drafts.sql`
+
+Both require a matching original-v2 source digest, inactive draft status and no existing approval. Q9(b)(i)'s existing three-step bearing rubric was deliberately **preserved**, not rewritten. The second migration validates 42 complete parts and a 100-mark total before making its draft-only update.
+
+**Quality/test findings:** Initial [CI #2480](https://github.com/odanemaestro/sparkcxc/actions/runs/39329142608) caught a malformed source checker; [CI #2481](https://github.com/odanemaestro/sparkcxc/actions/runs/39329578392) pinpointed six Q7 visual/table checks stored as plain strings instead of typed manual-verification objects. The six checks were corrected and explicit typed-check assertions added. Full [CI #2483 passed](https://github.com/odanemaestro/sparkcxc/actions/runs/39330109553), including integration migrations, nine-subject examiner replay, web build and adversarial cases.
+
+The source replay checks: correct/wrong quadratic, circle and bearings, negative design numbers, swapped coordinate positions, malformed and equivalent matrix entries/inverses, variable-order errors and unverified labelled tiles. Across all 67 registered paper versions the deliberately unrelated adversarial responses produced **zero positive credit candidates**. A model-answer replay for this original-v2 paper reported **46 provisional suggested marks and 80 unresolved mark weight**. These are overlapping diagnostics, not an additive or final grade.
+
+**Observed production ledger after applying migrations:**
+
+| Measurement | Actual |
+| --- | ---: |
+| Mathematics original-v1 detailed parts | 45 of 45 |
+| Mathematics original-v2 detailed parts | 42 of 42 |
+| Mathematics Practice F detailed parts | 42 of 42 |
+| All Mathematics detailed parts | 319 of 640 |
+| Other Mathematics parts awaiting source detail | 321 |
+| Original-v2 mark total | 100 |
+| Original-v2 authored mark-criterion entries | 99 |
+| Original-v2 manual-verification criterion marks | 54 |
+| Registered V2 paper versions | 67 |
+| Source fingerprints mismatched | 0 |
+| Active/verified V2 paper rubrics | 0 |
+| Genuine criterion reviews or V2 queue jobs | 0 |
+
+**Limitations and next action:** A complete source allocation does **not** establish that every valid written, drawing, table or step-by-step alternative receives fair final marks. The remaining 54 manual-evidence marks on original-v2 need supported answer-artifact verification or source-specific examiner rules. Genuine internal criterion approval must be recorded separately before authoritative student scoring. None of these two migrations changes the student-facing score route or the JWT-protected worker v10. For efficient next coverage, the nearest incomplete Mathematics papers are Practice H and Practice J (five missing parts each), followed by Practice E/G/I (six each).
