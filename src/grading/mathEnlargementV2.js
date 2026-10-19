@@ -32,7 +32,10 @@ const packet=(questionId,partId,criteria)=>({
  unresolvedMarks:criteria.reduce((sum,c)=>sum+(c.candidateMarks===null?c.maxMarks:0),0)
 });
 function transformation(text,source){
- const s=norm(text).replace(/\s+/g," ");
+ // Descriptive transformations depend on word boundaries. Do not use
+ // compact arithmetic normalisation here; it erases those boundaries.
+ const s=asText(text).trim().toLowerCase().replace(/[−–—]/g,"-")
+  .replace(/\s+/g," ");
  const enlargement=/\benlarg(?:ement|ed|e)\b/.test(s);
  const contrary=/\b(?:reflection|reflected|rotation|rotated|translation|translated)\b/.test(s);
  const centers=[/\b(?:centre|center)\b\s*(?:(?:at|is|the|of)\s*){0,2}(?:the\s+)?origin\b/,
