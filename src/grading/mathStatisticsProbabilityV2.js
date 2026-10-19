@@ -70,8 +70,18 @@ const Q5_METHODS=Object.freeze({
  "p2-q5-v9":{a:["4/15"],b:["10/15"],c:["4/15*3/14"],d:["4/15*6/14"]},
  "p2-q5-v10":{b:["510/30"],c:["3+3"],d:["21/30"]}
 });
-function evidencedMethod(questionId,partId,response){
- const patterns=Q5_METHODS[questionId]?.[partId];
+// Two independent method candidates are possible for the grouped mean:
+// an evidenced midpoint-frequency sum and an evidenced division by N.
+// Other proposed three-mark splits remain unresolved.
+const Q5_EXTRA_METHODS=Object.freeze({
+ "p2-q5-v1":{b:["4*3+8*8+12*13+16*18"]},
+ "p2-q5-v2":{b:["5*3+9*8+12*13+9*18+5*23"]},
+ "p2-q5-v3":{b:["3*3+6*8+16*13+6*18+3*23"]},
+ "p2-q5-v10":{b:["3*3+3*8+3*13+9*18+12*23"]}
+});
+
+function evidencedMethod(questionId,partId,response,methods=Q5_METHODS){
+ const patterns=methods[questionId]?.[partId];
  if(!patterns)return false;
  const raw=response&&typeof response==="object"&&!Array.isArray(response)
   ?asText(response.working):"";
@@ -82,20 +92,16 @@ function evidencedMethod(questionId,partId,response){
 }
 function evidencedPieReason(questionId,partId,response){
  if(partId!=="c"||!["p2-q5-v6","p2-q5-v7"].includes(questionId))return false;
+ const category=questionId==="p2-q5-v6"?"car":"football";
+ const degrees=questionId==="p2-q5-v6"?"135":"150";
  const a=answer(response);
  const w=response&&typeof response==="object"&&!Array.isArray(response)
   ?asText(response.working):"";
- const evidence=(a+" "+w).toLowerCase();
- const category=questionId==="p2-q5-v6"
-  ?/\bcar\b/.test(evidence):/\bfootball\b/.test(evidence);
- const angle=questionId==="p2-q5-v6"
-  ?/\b135\b/.test(evidence):/\b150\b/.test(evidence);
- return category&&angle&&/\b(?:largest|greatest|biggest|most)\b/.test(evidence)
-  &&!/\b(?:or|either|not|isn't|wasn't)\b/.test(evidence)
-  // A reason that calls another category the largest must not earn B1.
-  &&(questionId==="p2-q5-v6"
-   ?!/\b(?:bus|train|walk)\b/.test(evidence)
-   :!/\b(?:cricket|netball|athletics)\b/.test(evidence));
+ const evidence=clean(a+" "+w).replace(/°/g,"");
+ return new RegExp("\\b"+category+"\\b").test(evidence)
+  &&new RegExp("\\b"+degrees+"(?:\\s*degrees?)?\\b").test(evidence)
+  &&/\b(?:largest|greatest|biggest|most)\b/.test(evidence)
+  &&!/\b(?:or|either)\b/.test(evidence);
 }
 
 function criterion(id,maxMarks,ok,reason){
@@ -117,15 +123,17 @@ export function evaluateMathQ5V2({questionId,partId,response={}}={}){
   evidencedMethod(questionId,partId,response)||
   evidencedPieReason(questionId,partId,response)
  );
+ const extra=marks>2&&!graphDependent&&
+  evidencedMethod(questionId,partId,response,Q5_EXTRA_METHODS);
  const criteria=[
-  ...(marks>2?[criterion(isGraph?"G-unverified":"M-unverified",marks-2,false,
-   "remaining-unverified-method-or-graph-evidence")]:[]),
+  ...(marks>2?[criterion(isGraph?"G-unverified":"M2",1,extra,
+   "source-specific-midpoint-frequency-calculation-evidence")]:[]),
   ...(marks>1?[criterion(isGraph?"G-method-unverified":"M1",1,method,
    "source-specific-substitution-evidence")]:[]),
-  criterion(isGraph?"G-final-unverified":"A1",1,!isGraph&&final,"source-supported-final-evidence")
+  criterion(isGraph?"G-final-unverified":"A1",1,!graphDependent&&final,"source-supported-final-evidence")
  ];
  return {sourcePart:questionId+"::"+partId,authority:"advisory",publishable:false,
   rubricAllocation:"proposed-from-worked-solution",criteria,
-  suggestedMarks:(final&&!isGraph?1:0)+(method?1:0),
-  unresolvedMarks:marks-(final&&!isGraph?1:0)-(method?1:0)};
+  suggestedMarks:(final?1:0)+(method?1:0)+(extra?1:0),
+  unresolvedMarks:marks-(final?1:0)-(method?1:0)-(extra?1:0)};
 }
