@@ -103,8 +103,8 @@ function mathematics(rows,responses){
    // changed; it does not prove the payload still matches the corrected
    // assembled question bank used by students. Reject source-answer drift.
    if(source.answer!=null && part.answer!=null &&
-      String(source.answer).trim().replace(/\\s+/g," ").toLowerCase() !==
-      String(part.answer).trim().replace(/\\s+/g," ").toLowerCase())
+      String(source.answer).trim().replace(/\s+/g," ").toLowerCase() !==
+      String(part.answer).trim().replace(/\s+/g," ").toLowerCase())
     throw new Error("Mathematics registered answer differs from assembled source: "+row.id);
    const stored=source.criteria;
    if(stored!=null&&!Array.isArray(stored))
