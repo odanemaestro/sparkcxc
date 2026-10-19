@@ -52,7 +52,7 @@ export function evaluateMathFactorisationV2({questionId,partId,response={}}={}){
  const finalOk=!!answer&&isFullyFactorised(answer)&&equivalent(answer,source.answer);
  const criteria=[voted("M1",method,"source-supported-intermediate-factorisation"),
   voted("A1",finalOk,"fully-factorised-equivalent-product")];
- return {sourcePart:questionId+"::"+partId,authority:"advisory",publishable:false,
+ return {sourcePart:questionId+"::"+partId,authority:"advisory",publishable:false,rubricAllocation:"proposed-from-worked-solution",
   criteria,suggestedMarks:criteria.reduce((s,c)=>s+(c.candidateMarks??0),0),
   unresolvedMarks:criteria.reduce((s,c)=>s+(c.candidateMarks===null?1:0),0)};
 }
