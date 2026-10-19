@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: spark-pr-${{ github.event.pull_request.number }}
@@ -73,6 +73,24 @@ jobs:
             supabase/functions/_shared/server-marker-v2.sha256
           if-no-files-found: error
           retention-days: 7
+
+      - name: Publish checked V2 marker bundle for private Edge deployment
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TEMP_DIR="$(mktemp -d)"
+          mkdir -p "$TEMP_DIR/bundled"
+          cp supabase/functions/_shared/server-marker-v2.mjs "$TEMP_DIR/bundled/server-marker-v2.mjs"
+          cp supabase/functions/_shared/server-marker-v2.sha256 "$TEMP_DIR/bundled/server-marker-v2.sha256"
+          git -C "$TEMP_DIR" init -q
+          git -C "$TEMP_DIR" config user.name "github-actions[bot]"
+          git -C "$TEMP_DIR" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C "$TEMP_DIR" add bundled
+          git -C "$TEMP_DIR" commit -qm "Compiled V2 examiner bundle from ${GITHUB_SHA}"
+          git -C "$TEMP_DIR" remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git -C "$TEMP_DIR" push origin HEAD:"refs/heads/artifacts/v2-marker-${GITHUB_SHA}"
 
       - name: Build SPARK
         run: npm run build
