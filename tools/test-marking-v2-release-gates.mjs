@@ -39,7 +39,8 @@ const migrations=[
 "20261019233000_marking_v2_math_original_v1_q6_cylinder_drafts.sql",
 "20261019234500_marking_v2_math_original_v1_q3_q7_q10_drafts.sql",
 "20261020001000_marking_v2_math_original_v2_q1_q2_source_drafts.sql",
-"20261020002500_marking_v2_math_inverse_matrix_accuracy_draft.sql"
+"20261020002500_marking_v2_math_inverse_matrix_accuracy_draft.sql",
+"20261020005000_marking_v2_math_original_v2_q3_q6_drafts.sql"
 ];
 async function reject(sql,params=[],pattern=/approval|attestation|permission|Forbidden|lease|rubric|checksum/i){
  await assert.rejects(db.query(sql,params),pattern);
@@ -76,7 +77,7 @@ try{
    count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
  assert.deepEqual(realReviewQueue,{
-   items:2118,reviewed:0,graph:4,math_missing:353
+   items:2118,reviewed:0,graph:4,math_missing:338
  });
 
  const counts=(await db.query(`select subject_id,count(*)::integer n from
@@ -91,7 +92,7 @@ try{
    lateral jsonb_array_elements(r.criteria) c
    where r.subject_id='mathematics'`)).rows[0];
  assert.equal(audited.empty_math,0);
- assert.equal(audited.detailed_math,287);
+ assert.equal(audited.detailed_math,302);
  const nextPaper=(await db.query(`SELECT
   count(*)::integer AS parts,
   count(*) filter(where jsonb_typeof(c->'sourceMarking'->'criteria')='array'
@@ -100,7 +101,18 @@ try{
   FROM spark_grading_private.rubrics_v2 r,
   lateral jsonb_array_elements(r.criteria)c
   WHERE r.subject_id='mathematics' AND r.paper_id='original-v2'`)).rows[0];
- assert.deepEqual(nextPaper,{parts:42,detailed:10,marks:100});
+ assert.deepEqual(nextPaper,{parts:42,detailed:25,marks:100});
+ const q3Through6=(await db.query(`SELECT
+  COUNT(*)::integer AS parts,
+  COUNT(*) FILTER (WHERE jsonb_typeof(c->'sourceMarking'->'criteria')='array'
+   AND jsonb_array_length(c->'sourceMarking'->'criteria')>0)::integer AS detailed,
+  SUM((c->>'maxMarks')::integer)::integer AS marks
+  FROM spark_grading_private.rubrics_v2 r,
+  LATERAL jsonb_array_elements(r.criteria)c
+  WHERE r.subject_id='mathematics' AND r.paper_id='original-v2'
+   AND (c->>'id' LIKE 'p2-q3-v2::%' OR c->>'id' LIKE 'p2-q4-v2::%'
+    OR c->>'id' LIKE 'p2-q5-v2::%' OR c->>'id' LIKE 'p2-q6-v2::%')`)).rows[0];
+ assert.deepEqual(q3Through6,{parts:15,detailed:15,marks:36});
  // Complete source-structure coverage does not imply that every examiner
  // method has been source-approved for automatic score publication.
  const completeV1=(await db.query(`select
