@@ -60,13 +60,21 @@ const emptyEvidence=(value,depth=0)=>{
 };
 const sourceMarking=c=>object(c.sourceMarking)?c.sourceMarking:{};
 
+// Only directly checkable mathematical values and symbolic identities belong
+// to the authoritative V2 evidence allowlist. Text, concept, method, graph,
+// table and heuristic checkers are useful advisory evidence, not proof that an
+// independently reviewed M/A/B mark is safely resolved.
+const authoritativeMathTypes=new Set([
+ "numeric","equation","inequality","expression","fraction","coordinate",
+ "set","ordered","matrix"
+]);
 const automatableMathCheck=(spec,depth=0)=>{
  if(!object(spec)||depth>6||typeof spec.type!=="string"||
     !Object.hasOwn(CHECKERS,spec.type))return false;
  if(spec.type==="anyOf"||spec.type==="allOf")
   return Array.isArray(spec.options)&&spec.options.length>0&&
    spec.options.every(option=>automatableMathCheck(option,depth+1));
- return true;
+ return authoritativeMathTypes.has(spec.type);
 };
 const automatableMathCriterion=c=>c?.provisional!==true &&
  c?.reviewRequired!==true && c?.unresolved!==true &&
@@ -128,7 +136,10 @@ function mathematics(rows,responses){
   });
   if(examination.parts.length!==selected.length)
    throw new Error("Incomplete Mathematics marker");
-  out.push(...byResult(selected.map(p=>p.row),examination.parts.map(x=>x.marks),
+  out.push(...byResult(selected.map(p=>p.row),
+   examination.parts.map((x,i)=>
+    // Follow-through from another part never earns marks on an empty part.
+    blank(responsesForQuestion[selected[i].part.id])?0:x.marks),
    "existing-mathematics-MAB-ECF",
    selected.map((p,i)=>blank(responsesForQuestion[p.part.id]) ||
     (p.definitive && !examination.parts[i]?.criteria?.some(
