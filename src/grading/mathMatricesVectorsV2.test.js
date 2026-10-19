@@ -146,7 +146,7 @@ describe.each(["p2-q10-v8","p2-q10-v9","p2-q10-v10"])("source vectors and line d
   expect(paper.parts.find(p=>p.id==="b").answer).toBe(value);
   expect(check(id,"b",value).suggestedMarks).toBe(1);
   expect(check(id,"b",String(s.magnitude)).suggestedMarks)
-   .toBe(value===String(s.magnitude)?0:0);
+   .toBe(value===String(s.magnitude)?1:0);
   expect(check(id,"b","99.99").suggestedMarks).toBe(0);
  });
  test("nonparallel answer and mathematical justification must be separate",()=>{
@@ -161,5 +161,20 @@ test("all other question and part identities fail closed",()=>{
  for(const [id,part] of [["p2-q10-v11","a"],["p2-q9-v1","a"],
   ["p2-q10-v2","b2"],["p2-q10-v5","e"],["p2-q10-v8","b2"]]){
   expect(()=>grade({questionId:id,partId:part})).toThrow(/Uncalibrated/);
+ }
+});
+
+test("Q10 area statements cannot double-credit an unstated determinant",()=>{
+ for(const id of ["p2-q10-v4","p2-q10-v5"]){
+  const factor=SOURCES[id].areaFactor;
+  const areaOnly=check(id,"d","areas are multiplied by "+factor);
+  expect(areaOnly.criteria.map(c=>c.candidateMarks)).toEqual([null,null,1]);
+  const determinantOnly=check(id,"d","determinant = "+factor);
+  expect(determinantOnly.criteria.map(c=>c.candidateMarks)).toEqual([null,1,null]);
+  const complete=check(id,"d","determinant = "+factor+"; areas are multiplied by "+factor);
+  expect(complete.criteria.map(c=>c.candidateMarks)).toEqual([null,1,1]);
+  const mistaken=check(id,"d","determinant = 0; areas are multiplied by "+factor);
+  expect(mistaken.criteria.map(c=>c.candidateMarks)).toEqual([null,null,1]);
+  expect(complete.publishable).toBe(false);
  }
 });
