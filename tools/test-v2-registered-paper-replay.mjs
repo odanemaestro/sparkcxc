@@ -92,6 +92,54 @@ try{
    assert(r.rows.every(row=>typeof row.resolved==="boolean"));
   }catch(error){defects.push({subject:paper.subject_id,paper:paper.paper_id,error:String(error?.message||error)});}
  }
+
+ // Adversarial replay: source-bank consistency is not grading accuracy.
+ const adversarial=[],modelReplay=[];
+ for(const paper of papers){
+  const bogus=Object.fromEntries(paper.criteria.map(c=>[
+   c.id,"ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY"
+  ]));
+  try{
+   const result=evaluateExistingSubjectPaper2V2({
+    subjectId:paper.subject_id,paperId:paper.paper_id,
+    criteria:paper.criteria,responses:bogus
+   });
+   adversarial.push({subject:paper.subject_id,paper:paper.paper_id,
+     suggestedMarks:result.suggestedMarks,unresolvedMarks:result.unresolvedMarks,
+     authority:result.authority});
+  }catch(error){
+   defects.push({subject:paper.subject_id,paper:paper.paper_id,
+    scenario:"adversarial",error:String(error?.message||error)});
+  }
+  const canonical=Object.fromEntries(paper.criteria
+   .filter(c=>typeof c.sourceMarking?.answer==="string" && c.sourceMarking.answer.trim())
+   .map(c=>[c.id,{
+    answer:c.sourceMarking.answer,
+    working:typeof c.sourceMarking.solution==="string"?c.sourceMarking.solution:""
+   }]));
+  if(Object.keys(canonical).length){
+   try{
+    const result=evaluateExistingSubjectPaper2V2({
+     subjectId:paper.subject_id,paperId:paper.paper_id,
+     criteria:paper.criteria,responses:canonical
+    });
+    modelReplay.push({subject:paper.subject_id,paper:paper.paper_id,
+     sourceAnswers:Object.keys(canonical).length,
+     suggestedMarks:result.suggestedMarks,unresolvedMarks:result.unresolvedMarks});
+   }catch(error){
+    defects.push({subject:paper.subject_id,paper:paper.paper_id,
+     scenario:"model-answer",error:String(error?.message||error)});
+   }
+  }
+ }
+ console.log("V2 adversarial and model-answer diagnostics",JSON.stringify({
+   adversarialPapers:adversarial.length,
+   falseCreditCandidates:adversarial.filter(r=>r.suggestedMarks>0),
+   modelAnswerPapers:modelReplay.length,
+   modelAnswerReplay:modelReplay,
+   caution:"Adversarial pass and canonical answer marks are not rubric approval."
+ },null,2));
+
  console.log("Source-bank replay",JSON.stringify({examined:papers.length,subjectCounts:counts,defects},null,2));
  assert.deepEqual(defects,[],"Every registered paper requires a working subject scorer, without silent fallback");
 }finally{await db.close();}
