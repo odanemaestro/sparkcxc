@@ -31,7 +31,8 @@ const migrations=[
 "20261019212000_marking_v2_internal_calibration_queue.sql",
 "20261019214000_marking_v2_math_original_v1_q1_draft_calibration.sql",
 "20261019222000_marking_v2_math_p2f_rich_artifact_drafts.sql",
-"20261019225500_marking_v2_math_original_v1_q2_q4_q5_drafts.sql"
+"20261019225500_marking_v2_math_original_v1_q2_q4_q5_drafts.sql",
+"20261019233000_marking_v2_math_original_v1_q6_cylinder_drafts.sql"
 ];
 const db=new PGlite();
 try{
@@ -179,6 +180,50 @@ try{
   structuredTableUnresolved:table.rows.find(r=>r.criterionId==='p2-q5-v1::c').resolved===false
  }));
 
+
+ // Cylinder method and accuracy: correct result, wrong result and valid ECF
+ // from an earlier incorrect volume. These are draft evidence only.
+ const cylinder=sourceQuestion(6);
+ assert.equal(cylinder.length,4);
+ assert(cylinder.every(c=>Array.isArray(c.sourceMarking.criteria)
+  && c.sourceMarking.criteria.length>0));
+ assert.equal(cylinder.reduce((sum,c)=>sum+c.maxMarks,0),9);
+ const cylinderWrong=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v1',criteria:cylinder,
+  responses:{'p2-q6-v1::d':{answer:'15'}}
+ });
+ assert.equal(cylinderWrong.rows.find(r=>r.criterionId==='p2-q6-v1::d').suggestedMarks,0);
+ const cylinderECF=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v1',criteria:cylinder,
+  responses:{
+   'p2-q6-v1::b':{answer:'160'},
+   'p2-q6-v1::d':{answer:'29.09',working:'160 / 5.5 = 29.09'}
+  }
+ });
+ const carriedTime=cylinderECF.rows.find(r=>r.criterionId==='p2-q6-v1::d');
+ assert.equal(carriedTime.suggestedMarks,2,
+  'Water filling time must get both marks for valid ECF from an earlier volume');
+ assert.equal(cylinderECF.canPublishFinalScore,false,
+  'Real source graph/method verification is still required');
+ const cylinderModel=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v1',criteria:cylinder,
+  responses:{
+   'p2-q6-v1::a':{answer:'38.5',working:'(22/7)*3.5^2 = 38.5'},
+   'p2-q6-v1::b':{answer:'154',working:'38.5*4 = 154'},
+   'p2-q6-v1::c':{answer:'88',working:'2*(22/7)*3.5*4 = 88'},
+   'p2-q6-v1::d':{answer:'28',working:'154/5.5 = 28'}
+  }
+ });
+ assert.equal(cylinderModel.maxMarks,9);
+ assert(cylinderModel.suggestedMarks>=7 &&
+  cylinderModel.suggestedMarks<=9,'Canonical cylinder model must receive expected bounded marks');
+ assert.equal(cylinderModel.canPublishFinalScore,false);
+ console.log('Mathematics original-v1 Q6 draft',JSON.stringify({
+  validECF:carriedTime.suggestedMarks,
+  canonicalSuggestions:cylinderModel.suggestedMarks,
+  remainingUnresolved:cylinderModel.unresolvedMarks
+ }));
+
  const defects=[],counts={};
  let totalCriteria=0;
  const sourceAudit=[];
@@ -211,7 +256,7 @@ try{
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
- assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:383});
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:379});
 
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
  console.log("Independent source-structure QA",JSON.stringify({
