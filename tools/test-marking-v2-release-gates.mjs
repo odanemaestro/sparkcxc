@@ -101,6 +101,11 @@ try{
   source_sha256=repeat('b',64),verified_by='isolated-approver',
   verified_at=now()+interval '1 second'
  where paper_id='isolated-paper'`);
+ // Simulate a canonical post-approval submission; legacy V1 version stays intact.
+ await db.query("update public.spark_exam_attempts set status='in_progress' where id=$1",[attemptId]);
+ await db.query("update public.spark_exam_attempts set status='submitted' where id=$1",[attemptId]);
+ const pinned=(await db.query("select v2_paper_id,v2_rubric_version from public.spark_exam_attempts where id=$1",[attemptId])).rows[0];
+ assert.deepEqual(pinned,{v2_paper_id:"isolated-paper",v2_rubric_version:"isolated-fixture-v1"});
  const job=(await db.query(
   "select spark_grading_private.enqueue_marking_job_v2($1) job_id",
  [attemptId])).rows[0].job_id;
@@ -158,5 +163,34 @@ try{
   unresolvedMarks:persisted.result.unresolvedMarks,finalScore:persisted.result.finalScore,
   canPublishFinalScore:persisted.result.canPublishFinalScore,suggestedMarks:persisted.result.suggestedMarks},
   {confirmedMarks:0,unresolvedMarks:2,finalScore:null,canPublishFinalScore:false,suggestedMarks:2});
+ // A fresh independently approved fixture resolves every part and publishes
+ // only through the private DB function. Unverified real papers remain drafts.
+ const finalAttempt=randomUUID();
+ await db.query(`insert into public.spark_exam_attempts
+ (id,user_id,subject_id,paper,rubric_version,status,submitted_at,response_snapshot,metadata)
+ values($1,$2,'mathematics','02','legacy-paper-v1','submitted',now(),
+ '{"test-q1":{"answer":"42"}}'::jsonb,'{"paper_id":"isolated-paper"}'::jsonb)`,
+ [finalAttempt,userId]);
+ const finalJob=(await db.query("select id from spark_grading_private.marking_jobs_v2 where attempt_id=$1",
+ [finalAttempt])).rows[0].id;
+ const finalClaim=(await db.query("select public.spark_v2_claim_next_shadow_job() as data")).rows[0].data;
+ assert.equal(finalClaim.jobId,finalJob);
+ const confirmed=(await db.query(`select public.spark_v2_complete_subject_job(
+ $1::uuid,$2::uuid,$3::jsonb,$4::text) as outcome`,[
+ finalJob,finalClaim.leaseToken,
+ JSON.stringify([{criterionId:"test-q1",maxMarks:2,suggestedMarks:2,method:"existing-mathematics-MAB-ECF",resolved:true}]),
+ "c".repeat(64)
+ ])).rows[0].outcome;
+ assert.equal(confirmed.status,"verified");
+ assert.equal(confirmed.score,2);
+ const finalScore=(await db.query("select score,max_score,metadata->>'score_authority' authority from public.spark_exam_attempts where id=$1",[finalAttempt])).rows[0];
+ assert.equal(Number(finalScore.score),2);
+ assert.equal(Number(finalScore.max_score),2);
+ assert.equal(finalScore.authority,"server-v2-deterministic");
+ assert.equal((await db.query(`select public.spark_v2_complete_subject_job(
+ $1::uuid,$2::uuid,$3::jsonb,$4::text) as outcome`,[
+ finalJob,finalClaim.leaseToken,
+ JSON.stringify([{criterionId:"test-q1",maxMarks:2,suggestedMarks:0,method:"existing-mathematics-MAB-ECF",resolved:true}]),
+ "c".repeat(64)])).rows[0].outcome.status,"stale-lease");
  console.log("V2 release gates passed: 67 sources, 9 subjects, Math criteria, independent fixture review, RLS, lease fencing, provisional-only score storage");
 }finally{await db.close();}
