@@ -82,15 +82,15 @@ function evidencedMethod(questionId,partId,response){
 }
 function evidencedPieReason(questionId,partId,response){
  if(partId!=="c"||!["p2-q5-v6","p2-q5-v7"].includes(questionId))return false;
- const category=questionId==="p2-q5-v6"?"car":"football";
- const degrees=questionId==="p2-q5-v6"?"135":"150";
  const a=answer(response);
  const w=response&&typeof response==="object"&&!Array.isArray(response)
   ?asText(response.working):"";
  const evidence=(a+" "+w).toLowerCase();
- return new RegExp("\b"+category+"\b").test(evidence)
-  &&new RegExp("\b"+degrees+"\\s*(?:°|degrees?)?\b").test(evidence)
-  &&/\b(?:largest|greatest|biggest|most)\b/.test(evidence)
+ const category=questionId==="p2-q5-v6"
+  ?/\bcar\b/.test(evidence):/\bfootball\b/.test(evidence);
+ const angle=questionId==="p2-q5-v6"
+  ?/\b135\b/.test(evidence):/\b150\b/.test(evidence);
+ return category&&angle&&/\b(?:largest|greatest|biggest|most)\b/.test(evidence)
   &&!/\b(?:or|either)\b/.test(evidence);
 }
 
