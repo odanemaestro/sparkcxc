@@ -34,7 +34,8 @@ const migrations=[
 "20261019225500_marking_v2_math_original_v1_q2_q4_q5_drafts.sql",
 "20261019233000_marking_v2_math_original_v1_q6_cylinder_drafts.sql",
 "20261019234500_marking_v2_math_original_v1_q3_q7_q10_drafts.sql",
-"20261020001000_marking_v2_math_original_v2_q1_q2_source_drafts.sql"
+"20261020001000_marking_v2_math_original_v2_q1_q2_source_drafts.sql",
+"20261020002500_marking_v2_math_inverse_matrix_accuracy_draft.sql"
 ];
 const db=new PGlite();
 try{
@@ -354,6 +355,26 @@ try{
   carriedForward: changedCost.rows.find(r=>r.criterionId==='p2-q1-v2::b2').suggestedMarks,
   factoriseCorrect:factorise.rows.find(r=>r.criterionId==='p2-q2-v2::b1').suggestedMarks
  }));
+
+
+ // The mathematical inverse accepts scalar notation and equivalent rational
+ // entries; swapped positions or incorrect denominators earn no B1 mark.
+ // Both M marks remain unresolved pending genuine method evidence.
+ const inverseSource=fullyDrafted.filter(c=>c.id.startsWith('p2-q10-v1::'));
+ const inverseGrade=answer=>evaluateExistingSubjectPaper2V2({
+   subjectId:'mathematics',paperId:'original-v1',
+   criteria:inverseSource,responses:{'p2-q10-v1::c':{answer}}
+ }).rows.find(x=>x.criterionId==='p2-q10-v1::c');
+ const correctInverse=inverseGrade('(1/7)[[5,-3],[-1,2]]');
+ const equivalentInverse=inverseGrade('[[5/7,-3/7],[-1/7,2/7]]');
+ const incorrectInverse=inverseGrade('(1/8)[[5,-3],[-1,2]]');
+ const swappedInverse=inverseGrade('(1/7)[[5,-3],[2,-1]]');
+ assert.equal(correctInverse.suggestedMarks,1);
+ assert.equal(equivalentInverse.suggestedMarks,1);
+ assert.equal(incorrectInverse.suggestedMarks,0);
+ assert.equal(swappedInverse.suggestedMarks,0);
+ assert.equal(correctInverse.resolved,false,
+  'Two inverse construction method marks must remain under review');
 
  const defects=[],counts={};
  let totalCriteria=0;
