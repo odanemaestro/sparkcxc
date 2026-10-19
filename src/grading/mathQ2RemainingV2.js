@@ -12,12 +12,37 @@ export const MATH_Q2_REMAINING_SOURCES_V2=Object.freeze({
 const string=x=>typeof x==="string"?x:typeof x==="number"&&Number.isFinite(x)?String(x):"";
 const compact=x=>string(x).trim().toLowerCase().replace(/[−–—]/g,"-")
  .replace(/×/g,"*").replace(/π/g,"pi").replace(/\s+/g,"");
+// Algebraically verified source variants. Do not allow arbitrary expression
+// rewriting: this whitelist preserves numerator, denominator, and factorisation
+// requirements from each assembled student-facing question.
+export const MATH_Q2_ALTERNATIVES_V2=Object.freeze({
+ "p2-q2-v4":{a:["(x-7)/((x-1)(x+2))","(x-7)/(x^2+x-2)"],
+  b:["sqrt(3v/(pih))"]},
+ "p2-q2-v5":{a:["(x-15)/((x-3)(x+1))","(x-15)/(x^2-2x-3)"],
+  b:["sqrt(3v/(pih))"]},
+ "p2-q2-v6":{a:["(3x-16)/((x-2)(x+3))","(3x-16)/(x^2+x-6)"],
+  b:["sqrt(3v/(pih))"]},
+ "p2-q2-v7":{a:["-1x^2+13x-6","13x-x^2-6"],
+  b:["(2a+5)(2b-3)","(2b-3)(5+2a)"],c1:["7>x"]},
+ "p2-q2-v8":{a:["-1x^2+5x-9","5x-x^2-9"],
+  b:["(3a+2)(2b-3)","(2b-3)(2+3a)"],c1:["7>x"]}
+});
+function accurateSourceAnswer(questionId,partId,value,expected){
+ const got=compact(value);
+ if(!got)return false;
+ const options=[expected,...(MATH_Q2_ALTERNATIVES_V2[questionId]?.[partId]??[])];
+ // Values for isolated numerical parts are numbers, not symbolic factors.
+ if(["c","c2"].includes(partId)&&/^[-+]?\d+(?:\.\d+)?$/.test(got))
+  return Number(got)===Number(expected);
+ return options.some(x=>got===compact(x));
+}
+
 export function evaluateMathQ2RemainingV2({questionId,partId,response={}}={}){
  const source=MATH_Q2_REMAINING_SOURCES_V2[questionId];
  if(!source||!Object.hasOwn(source,partId))throw new TypeError("Uncalibrated Mathematics Q2 source");
  const [expected,marks]=source[partId];
  const value=response&&typeof response==="object"&&!Array.isArray(response)?response.answer:response;
- const got=compact(value),correct=got.length>0&&got===compact(expected);
+ const correct=accurateSourceAnswer(questionId,partId,value,expected);
  const criteria=[
   {id:"M-unverified",maxMarks:marks-1,candidateMarks:null,status:"unresolved",
    reason:"method-evidence-requires-verified-atomic-rubric"},
