@@ -19,7 +19,7 @@ const approx=(x,y)=>x!==null&&Math.abs(x-y)<=0.011;
 const vote=(id,maxMarks,yes,reason)=>({id,maxMarks,candidateMarks:yes?maxMarks:null,
  status:yes?"candidate-correct":"unresolved",reason:yes?reason:"insufficient-source-evidence"});
 const result=(questionId,partId,criteria)=>({
- sourcePart:questionId+"::"+partId,authority:"advisory",publishable:false,
+ sourcePart:questionId+"::"+partId,authority:"advisory",publishable:false,rubricAllocation:"proposed-from-worked-solution",
  criteria,suggestedMarks:criteria.reduce((s,c)=>s+(c.candidateMarks??0),0),
  unresolvedMarks:criteria.reduce((s,c)=>s+(c.candidateMarks===null?c.maxMarks:0),0)});
 function eqEquivalent(raw,expected){
