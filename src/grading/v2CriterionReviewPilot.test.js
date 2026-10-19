@@ -1,5 +1,7 @@
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 import {check} from "../practice/cxcMarking/checkers";
+import {physicsValueCheck} from "../physics/paper2/physicsPaper2Marking";
+import physics4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
 
 /**
  * Criterion-level evidence for the initial SPARK V2 automated QA review.
@@ -57,4 +59,32 @@ describe("V2 first source-bound criterion approval evidence",()=>{
   }
   expect(check("",entry.sourceCheck).ok).toBe(false);
  });
+});
+
+describe("V2 Physics B/A1 unit-bound source evidence",()=>{
+ for(const entry of [
+  {partId:"di",number:8,unit:"N",model:"8.0 N",correct:["8 N","8.0 N"],
+   wrong:["8 J","9 N","2 N"]},
+  {partId:"dii",number:2,unit:"N",model:"2.0 N",correct:["2 N","2.0 N"],
+   wrong:["2 J","8 N","3 N"]}
+ ]){
+  test("practice-4 question 2 part "+entry.partId+" requires correct quantity and units",()=>{
+   const question=physics4.questions.find(q=>q.question_id==="phy-p2-4-q2");
+   expect(question).toBeDefined();
+   const part=question.parts.find(p=>p.id===entry.partId);
+   expect(part).toBeDefined();
+   expect(part.marks).toBe(1);
+   expect(part.answer).toBe(entry.model);
+   const criterion=part.criteria[0];
+   expect(criterion.code).toBe("A1");
+   expect(criterion.check).toEqual({
+    type:"value",unit:entry.unit,value:entry.number,tolerance:0.02
+   });
+   for(const sample of entry.correct)
+    expect(physicsValueCheck(sample,criterion.check)).toBe(true);
+   for(const sample of entry.wrong)
+    expect(physicsValueCheck(sample,criterion.check)).toBe(false);
+   expect(physicsValueCheck("",criterion.check)).toBe(false);
+  });
+ }
 });
