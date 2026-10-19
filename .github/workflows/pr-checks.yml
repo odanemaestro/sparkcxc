@@ -50,6 +50,9 @@ jobs:
       - name: Verify marking database and build worker
         run: npm run test:marking-db && npm run build:marker
 
+      - name: Verify private V2 worker service authentication
+        run: node --test tools/test-v2-worker-auth.mjs
+
       - name: Verify V2 private grading migrations in isolated PostgreSQL
         run: node tools/test-marking-v2-database.mjs
 
