@@ -139,7 +139,12 @@ function matrixCriteria(s,p,r){
   const assigned=/^\s*x\s*=\s*([+-]?\d+)\s*[,;]\s*y\s*=\s*([+-]?\d+)\s*$/i.exec(answer);
   const pair=assigned?[Number(assigned[1]),Number(assigned[2])]:coordinateAnswer;
   const method=worked(r,"1/"+s.det+"*("+s.inverse[0]+"*"+s.rhs[0]+"+"+s.inverse[1]+"*"+s.rhs[1]+")");
-  const rhs=worked(r,"("+s.rhs.join(",")+")");
+  // The right-hand vector is already given in the question. Merely
+  // copying it is not evidence of using the matrix method.
+  const setup="("+s.rhs.join(",")+")";
+  const rhs=worked(r,"m(x,y)="+setup)||
+   worked(r,"m*(x,y)="+setup)||
+   worked(r,"(x,y)=m^-1*"+setup);
   return [vote("M1",rhs,"source-matrix-system-rhs"),
    vote("M2",method,"source-inverse-substitution"),
    vote("A1",!!pair&&pair[0]===s.solution[0],"solution-x"),
