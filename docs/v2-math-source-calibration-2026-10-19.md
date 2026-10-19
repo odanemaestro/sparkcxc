@@ -84,3 +84,31 @@ Applied production migration: `20261019234500_marking_v2_math_original_v1_q3_q7_
 - **Zero** verified papers, real criterion reviews, active V2 papers or V2 grading jobs.
 
 This milestone is a fully allocated **draft** of SPARK's *original practice* Mathematics Paper 2 version 1, not proof that every legitimate student answer or drawing is graded reliably. Genuine source-specific alternative-answer, typed-artefact and method verification is still needed before authoritatively publishing V2 scores. It is also not the complete historical Mathematics Paper 2 archive.
+
+
+## Original-v2 Q1/Q2 and verified-answer accuracy hardening
+
+The CI-verified draft calibration of Mathematics original Paper 2 version 2 is now registered in production. It adds **9 source parts worth 18 marks** in two questions:
+
+- **Q1 (4 parts, 9 marks):** exact fraction calculations, reverse 20% markup, 35% profit, and percentage change. Method/accuracy and source-bound error-carried-forward rules are explicit. The requested fraction in lowest terms accepts `9/5` and `1 4/5` but **not** the decimal `1.8` or unreduced `18/10`.
+- **Q2 (5 parts, 9 marks):** index laws, two fully factorised expressions, rectangle perimeter, and labelled width/length. Ambiguous paired dimensions remain unresolved pending positional evidence.
+
+The source-registered inverse matrix `M⁻¹=(1/7)[[5,-3],[-1,2]]` on original-v1 Q10(c) now has a strictly positional matrix accuracy rule. Both `(1/7)[[5,-3],[-1,2]]` and `[[5/7,-3/7],[-1/7,2/7]]` earn the same provisional **B1** accuracy mark. Changing the scalar or reversing entries earns zero. The two inverse method marks **M1/M2 remain manual**.
+
+### Critical grading-engine behaviour fixed
+
+The previous shared marker convention, *a correct answer implies the method*, was leaking into the V2 provisional scorer even when specific criteria were deliberately `manual-verification`. The **private V2 path now disables inferred method credit** for unresolved/manual and fallback criteria while preserving genuinely deterministic equivalent answers and ECF. The existing live student grader remains unchanged.
+
+CI discovered and fixed mismatched expectations in the source replay as this stricter policy was introduced; **[CI #2471 passed](https://github.com/odanemaestro/sparkcxc/actions/runs/39325104538)**. It includes the full regression suite, source-replay and database release guards, nine-subject bundle, and SPARK build.
+
+The full **67-paper** unrelated-response replay finished with **zero false-credit paper candidates** for the tested nonsense responses. Model-answer diagnostic replays were **51 provisional suggested marks / 74 unresolved mark weight** for original-v1 and **96 suggested / 84 unresolved** for original-v2. These two metrics are not additive; neither is a verified final grade.
+
+The following guarded inactive-draft migrations were applied to production after CI:
+- `20261020001000_marking_v2_math_original_v2_q1_q2_source_drafts.sql`
+- `20261020002500_marking_v2_math_inverse_matrix_accuracy_draft.sql`
+
+The updated compiled examiner bundle is deployed in the private Supabase `mark-paper2-v2-shadow` **version 10**, with `verify_jwt=true`. Its bundle SHA-256 is `d288e4e68a1e63cc71058d84978f6b6bbe5cacd9f874869e85b231ecbeb8f73e`. Production canaries returned **HTTP 200** with a service-role JWT and **HTTP 401** without authentication.
+
+**Verified production status:** Mathematics detailed source coverage **287/640** parts, **353** remaining. Original-v2 is **10/42** parts detailed; original-v1 retains **45/45**. Source hashes across **67** registered papers match; **zero** criterion approvals, verified/active V2 rubrics, or V2 worker jobs exist. Original-v1 currently retains **49 mark weights** in manual evidence criteria, after converting the single inverse accuracy mark to safe deterministic checking.
+
+**Not a student-facing grading release:** all source versions remain inactive drafts. A matching source hash, a correct known-answer test, or a generated provisional suggestion is not a substitute for real source-by-source calibration and distinct internal reviewer approval. Continue with original-v2 Q3 and remaining papers, alternative answer review, and verified graphical/tabular artefacts.
