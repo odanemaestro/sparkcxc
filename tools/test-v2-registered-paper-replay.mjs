@@ -46,6 +46,60 @@ try{
  const papers=(await db.query(`select subject_id,paper_id,criteria
  from spark_grading_private.rubrics_v2 order by subject_id,paper_id`)).rows;
  assert.equal(papers.length,67);
+
+ // Real authored SPARK Mathematics Q1 source calibration, not certification.
+ const v1=(await db.query(`select criteria from spark_grading_private.rubrics_v2
+  where subject_id='mathematics' and paper_id='original-v1'
+  and verification_status='draft' and active=false`)).rows[0].criteria;
+ const originalQuestion1=v1.filter(c=>c.id.startsWith('p2-q1-v1::'));
+ assert.equal(originalQuestion1.length,4);
+ assert(originalQuestion1.every(c=>Array.isArray(c.sourceMarking?.criteria)
+  && c.sourceMarking.criteria.length>0));
+ const fakeAnswer={
+  'p2-q1-v1::b1':{answer:'3400'}
+ };
+ const mistaken=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v1',
+  criteria:originalQuestion1,responses:fakeAnswer
+ });
+ const mistakenCost=mistaken.rows.find(x=>x.criterionId==='p2-q1-v1::b1');
+ assert.equal(mistakenCost.suggestedMarks,0,
+  'Wrong cost price without method evidence must receive no credit');
+ const partial=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v1',
+  criteria:originalQuestion1,
+  responses:{'p2-q1-v1::b1':{answer:'3400',working:'4500 / 1.25 = 3400'}}
+ });
+ const partialCost=partial.rows.find(x=>x.criterionId==='p2-q1-v1::b1');
+ assert.equal(partialCost.suggestedMarks,1,
+  'Valid cost-price method retains M1 if the candidate miscalculates');
+ const carried=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v1',
+  criteria:originalQuestion1,
+  responses:{
+   'p2-q1-v1::b1':{answer:'3500'},
+   'p2-q1-v1::b2':{answer:'4900',working:'3500 x 1.4 = 4900'}
+  }
+ });
+ const followThrough=carried.rows.find(x=>x.criterionId==='p2-q1-v1::b2');
+ assert.equal(followThrough.suggestedMarks,2,
+  'Valid 40% profit on a wrong earlier cost must receive ECF credit');
+ const fraction=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v1',
+  criteria:originalQuestion1,
+  responses:{'p2-q1-v1::a':{answer:'14/2',working:''}}
+ });
+ assert.equal(fraction.rows.find(x=>x.criterionId==='p2-q1-v1::a').suggestedMarks,0,
+  'Equivalent but non-lowest-terms fraction must not earn final accuracy');
+ assert.equal(fraction.canPublishFinalScore,false,
+  'Manual fraction method cannot bypass registered review');
+ console.log('Math original-v1 Q1 calibrated test cases',JSON.stringify({
+   wrongNoMethod:mistakenCost.suggestedMarks,
+   partialMethod:partialCost.suggestedMarks,
+   ecfFollowThrough:followThrough.suggestedMarks,
+   nonLowestTerms:fraction.rows.find(x=>x.criterionId==='p2-q1-v1::a').suggestedMarks
+ }));
+
  const defects=[],counts={};
  let totalCriteria=0;
  const sourceAudit=[];
