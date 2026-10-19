@@ -261,3 +261,18 @@ test("exact lowest-terms fraction cannot be replaced by a decimal or unreduced v
  expect(check("18/10",exact).ok).toBe(false);
  expect(check("9/6",exact).ok).toBe(false);
 });
+
+test("unreviewed nonblank evidence cannot authorize final grading across subjects",()=>{
+ const physicsPart=physics1.questions[0].parts[0];
+ const physicsId=physics1.questions[0].question_id+"::"+physicsPart.id;
+ const physicsResult=example("physics",physics1.paper_id,
+  [row(physicsId,physicsPart.marks,physicsPart)],{[physicsId]:"answer"});
+ expect(physicsResult.canPublishFinalScore).toBe(false);
+ expect(physicsResult.unresolvedMarks).toBe(physicsPart.marks);
+ const id="FNH-SPARK-P2-ORIGINAL-01-Q1::a";
+ const fnhResult=example("food-nutrition-and-health","practice-01",
+  [row(id,2,{modelPoints:["Diet means usual foods and drinks consumed.","Diet provides energy and nutrients."]})],
+  {[id]:"Diet refers to usual foods and drinks consumed."});
+ expect(fnhResult.canPublishFinalScore).toBe(false);
+ expect(fnhResult.unresolvedMarks).toBe(2);
+});
