@@ -21,7 +21,8 @@ const migrations=[
 "20261019173000_marking_v2_subject_grader_evidence.sql",
 "20261019174000_marking_v2_subject_evidence_method_fix.sql",
 "20261019180000_marking_v2_live_attempt_routing.sql",
-"20261019183000_marking_v2_atomic_score_publication.sql"
+"20261019183000_marking_v2_atomic_score_publication.sql",
+ "20261019190000_marking_v2_verified_digest_guard.sql"
 ];
 const db=new PGlite();
 try{
