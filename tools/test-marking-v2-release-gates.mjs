@@ -25,7 +25,8 @@ const migrations=[
  "20261019173000_marking_v2_subject_grader_evidence.sql",
  "20261019174000_marking_v2_subject_evidence_method_fix.sql",
  "20261019180000_marking_v2_live_attempt_routing.sql",
- "20261019183000_marking_v2_atomic_score_publication.sql"
+ "20261019183000_marking_v2_atomic_score_publication.sql",
+ "20261019190000_marking_v2_verified_digest_guard.sql"
 ];
 async function reject(sql,params=[],pattern=/approval|attestation|permission|Forbidden|lease|rubric/i){
  await assert.rejects(db.query(sql,params),pattern);
@@ -98,7 +99,7 @@ try{
  where r.paper_id='isolated-paper'`);
  await db.exec(`update spark_grading_private.rubrics_v2 set
   expected_total_marks=2,verification_status='verified',active=true,
-  source_sha256=repeat('b',64),verified_by='isolated-approver',
+  source_sha256=encode(sha256(convert_to(criteria::text,'UTF8')),'hex'),verified_by='isolated-approver',
   verified_at=now()+interval '1 second'
  where paper_id='isolated-paper'`);
  // Simulate a canonical post-approval submission; legacy V1 version stays intact.
