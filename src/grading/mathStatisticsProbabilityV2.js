@@ -91,7 +91,8 @@ function evidencedMethod(questionId,partId,response,methods=Q5_METHODS){
  const raw=response&&typeof response==="object"&&!Array.isArray(response)
   ?asText(response.working):"";
  const w=raw.toLowerCase().replace(/[×∗]/g,"*").replace(/[−–—]/g,"-")
-  .replace(/÷/g,"/").replace(/\((\d+\/\d+)\)/g,"$1").replace(/\s+/g,"");
+  .replace(/÷/g,"/").replace(/\((\d+\/\d+)\)/g,"$1")
+  .replace(/[ \t\r]+/g,"").replace(/\n+/g,";");
  if(!w||/\b(?:or|either)\b/i.test(raw))return false;
  return patterns.some(expr=>w.split(/[;=\n]/).includes(expr));
 }
