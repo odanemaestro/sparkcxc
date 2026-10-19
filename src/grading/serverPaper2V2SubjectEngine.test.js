@@ -189,6 +189,7 @@ test("Mathematics registered manual criteria require further evidence review",()
  });
  const part=evaluation.rows.find(r=>r.criterionId==="p2-q1-v1::b1");
  expect(part.resolved).toBe(false);
+ expect(part.suggestedMarks).toBe(1);
  expect(evaluation.canPublishFinalScore).toBe(false);
 });
 test("Mathematics rejects mismatched source mark sums rather than using the bank",()=>{
