@@ -202,3 +202,30 @@ test("Mathematics rejects mismatched source mark sums rather than using the bank
   "p2-q1-v1::b1":{answer:"3600"}
  })).toThrow(/source|allocation/i);
 });
+
+
+test("Mathematics nested manual and unknown source checks never authorise final scores",()=>{
+ const q=PAPER2_QUESTION_BANK.find(q=>q.question_id==="p2-q1-v1");
+ for(const invalid of [
+  {type:"anyOf",options:[
+   {type:"numeric",value:3600},
+   {type:"manual-verification",evidence:"Check working manually"}
+  ]},
+  {type:"completely-unrecognised-marking-rule",value:3600},
+  {type:"allOf",options:[]}
+ ]){
+  const rows=q.parts.map(p=>row(q.question_id+"::"+p.id,p.marks,{
+   answer:p.answer,criteria:p.id==="b1"?[
+    {code:"B1",kind:"B",marks:1,field:"answer",check:invalid},
+    {code:"B2",kind:"B",marks:1,field:"answer",
+     check:{type:"numeric",value:3600}}
+   ]:null
+  }));
+  const result=example("mathematics","original-v1",rows,{
+   "p2-q1-v1::b1":{answer:"3600"}
+  });
+  const part=result.rows.find(x=>x.criterionId==="p2-q1-v1::b1");
+  expect(part.resolved).toBe(false);
+  expect(result.canPublishFinalScore).toBe(false);
+ }
+});
