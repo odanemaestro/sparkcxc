@@ -26,6 +26,13 @@ describe.each(["p2-q3-v9","p2-q3-v10"])("Mathematics construction calibration %s
   expect(result("b",String(source.side+1)).suggestedMarks).toBe(0);
   expect(result("b",source.side+" or "+(source.side+1)).suggestedMarks).toBe(0);
  });
+ test("incorrect included angle never earns substitution evidence",()=>{
+  const incorrect=source.angle===90
+   ? "area=1/2*base*height;1/2*9*5*sin60="+source.area
+   : "area=1/2*base*height;1/2*8*6="+source.area;
+  const marks=result("c",String(source.area),incorrect).criteria.map(c=>c.candidateMarks);
+  expect(marks).toEqual([1,null,1]);
+ });
  test("source-grounded triangle area recognises separate evidenced marks",()=>{
   const work=source.angle===90
    ? "area=1/2*base*height;1/2*9*5="+source.area
