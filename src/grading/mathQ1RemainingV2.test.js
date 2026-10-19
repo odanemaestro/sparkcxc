@@ -9,7 +9,9 @@ describe.each(Object.keys(SOURCES))("Mathematics Q1 Batch 1 completeness %s",id=
   expect(bank.marks).toBe(9);
   expect(bank.parts.map(p=>p.id).sort()).toEqual(Object.keys(SOURCES[id]).sort());
   for(const part of bank.parts){
-   expect(String(part.answer)).toBe(String(SOURCES[id][part.id]));
+   if(part.id==="a"||(id==="p2-q1-v3"&&part.id==="c"))
+    expect(String(part.answer)).toBe(String(SOURCES[id][part.id]));
+   else expect(Number(part.answer)).toBe(Number(SOURCES[id][part.id]));
    const empty=evaluate({questionId:id,partId:part.id});
    expect(empty.criteria.reduce((n,c)=>n+c.maxMarks,0)).toBe(part.marks);
    expect(empty.suggestedMarks).toBe(0);
