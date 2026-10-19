@@ -43,6 +43,37 @@ try{
  from spark_grading_private.rubrics_v2 order by subject_id,paper_id`)).rows;
  assert.equal(papers.length,67);
  const defects=[],counts={};
+ let totalCriteria=0;
+ const sourceAudit=[];
+ for(const paper of papers){
+  const seen=new Set();
+  let sourceMarks=0;
+  const issues=[];
+  for(const c of paper.criteria){
+   totalCriteria++;
+   if(typeof c.id!=="string"||!c.id.trim()||seen.has(c.id)||
+      c.sourcePartId!==c.id)issues.push("source-part-identity");
+   seen.add(c.id);
+   if(!Number.isInteger(c.maxMarks)||c.maxMarks<=0)
+     issues.push("invalid-mark-allocation");
+   sourceMarks+=Number(c.maxMarks)||0;
+   if(!c.sourceMarking||typeof c.sourceMarking!=="object"||
+      Array.isArray(c.sourceMarking))issues.push("missing-source-marking");
+   if(Array.isArray(c.sourceMarking?.criteria)){
+    const totals=c.sourceMarking.criteria.reduce((n,x)=>n+Number(x.marks||0),0);
+    if(totals!==c.maxMarks)issues.push("subcriterion-mark-total");
+   }
+  }
+  if(sourceMarks!==paper.criteria.reduce((n,c)=>n+Number(c.maxMarks||0),0))
+    issues.push("paper-mark-total");
+  if(issues.length)sourceAudit.push({subject:paper.subject_id,paper:paper.paper_id,issues:[...new Set(issues)]});
+ }
+ assert.equal(totalCriteria,2217,"Registered criteria count must not silently drift");
+ assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
+ console.log("Independent source-structure QA",JSON.stringify({
+  papers:papers.length,criteria:totalCriteria,sourceAuditDefects:sourceAudit.length,
+  evidenceLevel:"structural-only; does not certify written-answer correctness"
+ }));
  for(const paper of papers){
   counts[paper.subject_id]=(counts[paper.subject_id]||0)+1;
   try{
