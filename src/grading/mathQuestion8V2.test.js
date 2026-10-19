@@ -157,3 +157,40 @@ test("all source and part identities fail closed",()=>{
    .toThrow(/Uncalibrated/);
  }
 });
+
+
+test("Q8 advisory fixtures are pinned to the corrected assembled learner-facing answers",()=>{
+ const cleaned=x=>String(x).replace(/\s+/g,"").toLowerCase();
+ for(const id of ids){
+  const source=SOURCES[id],paper=PAPER2_QUESTION_BANK.find(q=>q.question_id===id);
+  const part=p=>paper.parts.find(x=>x.id===p);
+  if(source.kind==="vertex"){
+   expect(cleaned(part("a").answer)).toBe(cleaned(source.vertex));
+   expect(Number(part("b1").answer)).toBe(source.k);
+   expect(Number(part("b2").answer)).toBe(source.h);
+   expect(cleaned(part("c").answer)).toBe("x="+source.h);
+   expect(cleaned(part("d").answer)).toBe("(0,"+source.yIntercept+")");
+  }else if(source.kind==="graph"){
+   expect(part("a").answer.split(",").map(Number)).toEqual(source.entries);
+   expect(cleaned(part("c").answer)).toBe("("+source.minimum.join(",")+")");
+   expect(part("d").prompt.toLowerCase()).toContain("use your graph");
+   expect(part("e").prompt.toLowerCase()).toContain("drawing a suitable straight line");
+  }else if(source.kind==="linear"){
+   expect(cleaned(part("a").answer).replace(/≤/g,"<=").replace(/≥/g,">="))
+    .toBe(source.inequalities.join(";"));
+   for(const xy of source.vertices){
+    expect(cleaned(part("b").answer)).toContain("("+xy.join(",")+")");
+   }
+   expect(cleaned(part("c").answer)).toBe(
+    "p="+source.profit[0]+"x+"+source.profit[1]+"y");
+   expect(part("d").answer).toContain(String(source.max));
+  }else{
+   for(const root of source.roots)expect(part("a").answer).toContain(root.toFixed(2));
+   expect(cleaned(part("b1").answer)).toBe(cleaned(source.equation));
+   for(const xy of source.points){
+    expect(cleaned(part("b2").answer)).toContain("("+xy.join(",")+")");
+   }
+   expect(part("b1").requireWorking).toBe(true);
+  }
+ }
+});
