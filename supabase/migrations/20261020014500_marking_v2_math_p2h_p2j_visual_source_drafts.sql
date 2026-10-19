@@ -1,0 +1,51 @@
+-- Source-bound inactive rubric additions to Mathematics Practice H and J.
+-- All ten parts require verified drawing, table, or plotted response artifacts.
+BEGIN;
+DO $visual_review$
+DECLARE s jsonb:='{"p2h-q4::a1":[{"code":"B1","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Equal-radius arcs from A and B","check":{"type":"manual-verification","evidence":"Check paired arcs with compass radius over 3.5 cm, intersecting on both sides of AB"}},{"code":"B2","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Perpendicular bisector through midpoint M","check":{"type":"manual-verification","evidence":"Check ruled line joins arc intersections, bisects AB and makes a right angle"}},{"code":"B3","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Compass construction arcs retained","check":{"type":"manual-verification","evidence":"Inspect real arc strokes; a protractor-only line earns no construction mark"}}],"p2h-q4::a2":[{"code":"B1","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Bisect angle TMB by compass","check":{"type":"manual-verification","evidence":"Check M-centred arc and matching arcs from side intersections; protractor alone not sufficient"}}],"p2h-q5::a":[{"code":"B1","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Correct first two missing cumulative frequencies","check":{"type":"manual-verification","evidence":"Check correct mass-boundary cells: 20, 40"}},{"code":"B2","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Correct last two missing cumulative frequencies","check":{"type":"manual-verification","evidence":"Check correct mass-boundary cells: 52, 60"}}],"p2h-q5::b":[{"code":"B1","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Correct plotted cumulative-frequency points","check":{"type":"manual-verification","evidence":"Validate actual plotted coordinates [[10,6],[20,20],[30,40]]"}},{"code":"B2","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Correct remaining plotted points and graph scales","check":{"type":"manual-verification","evidence":"Validate [[40,52],[50,60]] and axis labels/scales"}},{"code":"B3","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Smooth cumulative-frequency curve","check":{"type":"manual-verification","evidence":"Check actual curve artefact joins ordered points appropriately"}}],"p2h-q7::a":[{"code":"B1","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"vertical and total sticks table entry 1","check":{"type":"manual-verification","evidence":"Check expected 5 in its labelled Figure 4 cell"}},{"code":"B2","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"vertical and total sticks table entry 2","check":{"type":"manual-verification","evidence":"Check expected 13 in its labelled Figure 4 cell"}},{"code":"B3","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"vertical and total sticks table entry 3","check":{"type":"manual-verification","evidence":"Check expected 11 in its labelled Figure 10 cell"}},{"code":"B4","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"vertical and total sticks table entry 4","check":{"type":"manual-verification","evidence":"Check expected 31 in its labelled Figure 10 cell"}}],"p2j-q4::a1":[{"code":"B1","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Equal-radius arcs from A and B","check":{"type":"manual-verification","evidence":"Check paired arcs with compass radius over 5 cm, intersecting on both sides of AB"}},{"code":"B2","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Perpendicular bisector through midpoint M","check":{"type":"manual-verification","evidence":"Check ruled line joins arc intersections, bisects AB and makes a right angle"}},{"code":"B3","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Compass construction arcs retained","check":{"type":"manual-verification","evidence":"Inspect real arc strokes; a protractor-only line earns no construction mark"}}],"p2j-q4::a2":[{"code":"B1","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Bisect angle TMB by compass","check":{"type":"manual-verification","evidence":"Check M-centred arc and matching arcs from side intersections; protractor alone not sufficient"}}],"p2j-q5::a":[{"code":"B1","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Correct first two missing cumulative frequencies","check":{"type":"manual-verification","evidence":"Check correct mass-boundary cells: 17, 33"}},{"code":"B2","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Correct last two missing cumulative frequencies","check":{"type":"manual-verification","evidence":"Check correct mass-boundary cells: 43, 50"}}],"p2j-q5::b":[{"code":"B1","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Correct plotted cumulative-frequency points","check":{"type":"manual-verification","evidence":"Validate actual plotted coordinates [[15,5],[20,17],[25,33]]"}},{"code":"B2","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Correct remaining plotted points and graph scales","check":{"type":"manual-verification","evidence":"Validate [[30,43],[35,50]] and axis labels/scales"}},{"code":"B3","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"Smooth cumulative-frequency curve","check":{"type":"manual-verification","evidence":"Check actual curve artefact joins ordered points appropriately"}}],"p2j-q7::a":[{"code":"B1","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"area and perimeter table entry 1","check":{"type":"manual-verification","evidence":"Check expected 12 in its labelled Figure 4 cell"}},{"code":"B2","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"area and perimeter table entry 2","check":{"type":"manual-verification","evidence":"Check expected 14 in its labelled Figure 4 cell"}},{"code":"B3","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"area and perimeter table entry 3","check":{"type":"manual-verification","evidence":"Check expected 30 in its labelled Figure 10 cell"}},{"code":"B4","kind":"B","marks":1,"field":"all","depends":[],"profile":"visual-source","description":"area and perimeter table entry 4","check":{"type":"manual-verification","evidence":"Check expected 26 in its labelled Figure 10 cell"}}]}'::jsonb; ans jsonb:='{"p2h-q4::a1":"the perpendicular bisector of AB through M, with the construction arcs shown","p2h-q4::a2":"the bisector of angle TMB drawn from M, with the arc at M and the two equal arcs from where it cuts MT and MB shown","p2h-q5::a":"20, 40, 52, 60","p2h-q5::b":"the points (10, 6), (20, 20), (30, 40), (40, 52), (50, 60) joined by a smooth curve","p2h-q7::a":"5, 13, 11, 31","p2j-q4::a1":"the perpendicular bisector of AB through M, with the construction arcs shown","p2j-q4::a2":"the bisector of angle TMB drawn from M, with the arc at M and the two equal arcs from where it cuts MT and MB shown","p2j-q5::a":"17, 33, 43, 50","p2j-q5::b":"the points (15, 5), (20, 17), (25, 33), (30, 43), (35, 50) joined by a smooth curve","p2j-q7::a":"12, 14, 30, 26"}'::jsonb;
+ paper text; r spark_grading_private.rubrics_v2%rowtype;
+ revised jsonb; found_count int; wrong_count int;
+BEGIN
+ FOREACH paper IN ARRAY ARRAY['p2h','p2j'] LOOP
+  SELECT * INTO r FROM spark_grading_private.rubrics_v2
+  WHERE subject_id='mathematics' AND paper_id=paper
+    AND rubric_version='source-scheme-draft-v2' FOR UPDATE;
+  IF NOT FOUND OR r.active OR r.verification_status<>'draft'
+   OR r.verified_by IS NOT NULL OR r.verified_at IS NOT NULL
+   OR r.source_sha256 IS DISTINCT FROM
+      encode(sha256(convert_to(r.criteria::text,'UTF8')),'hex')
+  THEN RAISE EXCEPTION 'Practice H/J source or approval changed: %',paper; END IF;
+  IF jsonb_array_length(r.criteria)<>41 THEN
+   RAISE EXCEPTION 'Practice H/J paper part count changed: %',paper; END IF;
+  SELECT count(*),count(*) FILTER(WHERE
+   c->>'id' IS DISTINCT FROM c->>'sourcePartId'
+   OR c->'sourceMarking'->>'answer' IS DISTINCT FROM ans->>(c->>'id')
+   OR jsonb_typeof(c->'sourceMarking'->'criteria') IS DISTINCT FROM 'null'
+   OR (c->>'maxMarks')::int IS DISTINCT FROM
+     (SELECT sum((m->>'marks')::int) FROM jsonb_array_elements(s->(c->>'id'))m)
+  ) INTO found_count,wrong_count
+  FROM jsonb_array_elements(r.criteria)c
+  WHERE c->>'id' LIKE paper||'-%' AND s ? (c->>'id');
+  IF found_count<>5 OR wrong_count<>0 THEN
+   RAISE EXCEPTION 'Practice H/J source mismatch: %, % of 5, % bad',
+     paper,found_count,wrong_count; END IF;
+  SELECT jsonb_agg(CASE WHEN s ? (c.value->>'id')
+   THEN jsonb_set(c.value,'{sourceMarking,criteria}',s->(c.value->>'id'))
+   ELSE c.value END ORDER BY c.ordinal) INTO revised
+   FROM jsonb_array_elements(r.criteria) WITH ORDINALITY c(value,ordinal);
+  IF jsonb_array_length(revised)<>41 OR
+   (SELECT count(*) FROM jsonb_array_elements(revised)c
+    WHERE jsonb_typeof(c->'sourceMarking'->'criteria')='array'
+     AND jsonb_array_length(c->'sourceMarking'->'criteria')>0)<>41
+   OR (SELECT sum((c->>'maxMarks')::integer)
+      FROM jsonb_array_elements(revised)c)<>100
+  THEN RAISE EXCEPTION 'Practice H/J full source draft invalid: %',paper; END IF;
+  UPDATE spark_grading_private.rubrics_v2 SET criteria=revised,
+   source_sha256=encode(sha256(convert_to(revised::text,'UTF8')),'hex')
+   WHERE subject_id='mathematics' AND paper_id=paper
+    AND rubric_version='source-scheme-draft-v2'
+    AND active=false AND verification_status='draft';
+  IF NOT FOUND THEN RAISE EXCEPTION 'Practice H/J update rejected: %',paper; END IF;
+ END LOOP;
+END $visual_review$;
+COMMIT;
