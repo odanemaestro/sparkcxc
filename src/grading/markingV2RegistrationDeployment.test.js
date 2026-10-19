@@ -37,7 +37,7 @@ test("attestation gate never considers unreviewed source rubrics active",()=>{
 });
 test("shadow worker is separated from live examiner score publication",()=>{
  expect(worker).toContain("spark_v2_claim_next_shadow_job");
- expect(worker).toContain("spark_v2_finish_shadow_job");
+ expect(worker).toContain("spark_v2_finish_shadow_subject_job");
  expect(worker).toContain('canPublishFinalScore:false');
  expect(worker).toContain("SUPABASE_SERVICE_ROLE_KEY");
  expect(worker).not.toContain("spark_finish_marking");
