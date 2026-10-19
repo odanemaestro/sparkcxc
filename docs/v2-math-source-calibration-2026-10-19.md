@@ -56,3 +56,31 @@ Verified against the saved SPARK original-v1 question parts and versioned model 
 **Current production count:** 261/640 Mathematics parts with detailed draft source criteria, 379 without; original-v1 has 28/45 source parts detailed. The 67 registered paper versions have **zero fingerprint mismatches**, **zero verified or active rubrics**, **zero recorded criterion approvals** and **zero V2 marking jobs**.
 
 This is ongoing internal source-calibration work, not final independent approval or activation. Existing live grading remains untouched. The private authenticated worker v9 continues processing its scheduled empty-queue health calls.
+
+
+## Full original-v1 source allocation milestone: Q3 and Q7–Q10
+
+The private source registry now includes all **45 of 45 parts** of Mathematics original Paper 2 version 1, totalling **100 marks**. The previously missing 17 parts worth 44 marks were assigned source-specific draft criteria:
+
+| Question | New parts | Marks | Source evidence |
+| --- | ---: | ---: | --- |
+| Q3(a) | 1 | 3 | Correctly identifies a reflection and its mirror line, y = 0 |
+| Q7 | 4 | 10 | Correct shaded/unshaded tile counts, nth-term expressions, algebraic equation, design number and unshaded count |
+| Q8 | 5 | 12 | Completing the square, minimum, turning point, symmetry axis and ordered y-intercept |
+| Q9 | 4 | 9 | Central/inscribed-angle theorem, isosceles radii, Pythagoras and three-figure bearing |
+| Q10 | 3 | 10 | Ordered matrix product, inverse matrix and ordered simultaneous-equation solution |
+| **Total** | **17** | **44** | Registered draft marking structures, not grading approvals |
+
+The original 45-part paper contains two previously detailed Q9/Q10 reasoning/determinant parts, which were preserved unchanged. New criteria retain actual student-response identities and source hashes.
+
+**Passing CI:** [SPARK PR checks #2458](https://github.com/odanemaestro/sparkcxc/actions/runs/39321261132) verified the complete 45-part / 100-mark structure, empty responses, swapped coordinate and matrix-solution values, invalid negative design numbers and wrong bearings. The complete 67-paper adversarial suite again found **zero positive awards** for deliberately irrelevant answers.
+
+The model-answer replay for original-v1 now reports **75 suggested marks and 74 unresolved marks**. Those measurements are independent dimensions: suggested marks are not validated final credit, and unresolved marks are the maximum mark weight awaiting authoritative evidence, rather than marks that should be added to suggestions. This demonstrates why a complete structural scheme alone is **not** a release-ready automated examiner.
+
+Applied production migration: `20261019234500_marking_v2_math_original_v1_q3_q7_q10_drafts.sql`. It refuses changed source hashes, approved papers, mismatched official source answers or unexpected part counts. Its production database audit confirmed:
+- **278 / 640** Mathematics source parts have detailed arrays, **362** still lack them.
+- Original-v1 has **45 / 45** source parts and the correct **100-mark ceiling**.
+- All **67** draft paper hashes agree with their registered criterion content.
+- **Zero** verified papers, real criterion reviews, active V2 papers or V2 grading jobs.
+
+This milestone is a fully allocated **draft** of SPARK's *original practice* Mathematics Paper 2 version 1, not proof that every legitimate student answer or drawing is graded reliably. Genuine source-specific alternative-answer, typed-artefact and method verification is still needed before authoritatively publishing V2 scores. It is also not the complete historical Mathematics Paper 2 archive.
