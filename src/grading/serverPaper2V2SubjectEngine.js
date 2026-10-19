@@ -32,10 +32,10 @@ const blank=x=>x==null||typeof x==="string"&&!x.trim()||
 const read=(responses,id,alternative)=>Object.hasOwn(responses,id)?responses[id]:
  alternative!==undefined&&Object.hasOwn(responses,alternative)?responses[alternative]:null;
 const text=x=>typeof x==="string"?x:object(x)?String(x.answer??""):String(x??"");
-const cap=(row,raw,method)=>{
+const cap=(row,raw,method,resolved=false)=>{
  const marks=Number(raw);
  if(!valid(marks)||marks>row.maxMarks+1e-8)throw new Error("Source examiner mark mismatch");
- return {criterionId:row.id,suggestedMarks:marks,maxMarks:row.maxMarks,method};
+ return {criterionId:row.id,suggestedMarks:marks,maxMarks:row.maxMarks,method,resolved:Boolean(resolved)};
 };
 const group=(criteria,separator)=> {
  const groups=new Map();
@@ -48,7 +48,8 @@ const group=(criteria,separator)=> {
  return groups;
 };
 const sourceMarking=c=>object(c.sourceMarking)?c.sourceMarking:{};
-const byResult=(rows,values,method)=>rows.map((row,i)=>cap(row,values[i]??0,method));
+const byResult=(rows,values,method,resolved=[])=>rows.map((row,i)=>
+ cap(row,values[i]??0,method,resolved[i]===true));
 
 function mathematics(rows,responses){
  const grouped=group(rows,"::"),out=[];
@@ -71,7 +72,11 @@ function mathematics(rows,responses){
   const examination=markQuestion(responsesForQuestion,original);
   if(examination.parts.length!==selected.length)throw new Error("Incomplete Mathematics marker");
   out.push(...byResult(selected.map(p=>p.row),examination.parts.map(x=>x.marks),
-   "existing-mathematics-MAB-ECF"));
+   "existing-mathematics-MAB-ECF",
+   selected.map((p,i)=>blank(responsesForQuestion[p.part.id]) ||
+    (p.part.criteria?.length>0 &&
+     p.part.criteria.every(c=>c.check&&c.check.type!=="manual-verification") &&
+     !examination.parts[i]?.criteria?.some(c=>c.reviewRequired||c.unresolved)))));
  }
  return out;
 }
@@ -92,7 +97,11 @@ function physics(rows,responses){
   const [qid,pid]=row.id.split("::");
   const grade=examination.criteria.filter(x=>x.question.question_id===qid&&x.part.id===pid)
    .reduce((n,x)=>n+x.earned,0);
-  return cap(row,grade,"existing-physics-rubric-checks");
+  const source=sourceMarking(row);
+  const response=read(responses,row.id);
+  const resolved=blank(response) ||
+   (source.criteria?.length>0&&source.criteria.every(c=>c.check&&c.check.type==="value"));
+  return cap(row,grade,"existing-physics-rubric-checks",resolved);
  });
 }
 function it(rows,responses){
@@ -106,7 +115,9 @@ function it(rows,responses){
    responseType:src.responseType||"prose",profile:src.profile||"Theory",
    markScheme:src.markScheme};
   const grade=gradeInformationTechnologyPart({number},part,read(responses,row.id));
-  return cap(row,grade.earned,"existing-IT-specific-rules");
+  return cap(row,grade.earned,"existing-IT-specific-rules",
+    blank(read(responses,row.id)) ||
+    (grade.earned===row.maxMarks&&Array.isArray(grade.criteria)&&grade.criteria.length>0));
  });
 }
 function science(rows,responses,subject){
@@ -128,7 +139,9 @@ function science(rows,responses,subject){
     ?gradeChemistryPaper2Item({id:qid},pi,ii,item,responseMap)
     :gradeIntegratedSciencePaper2Item({id:qid},pi,ii,item,responseMap);
    out.push(cap(row,examiner.score,subject==="chemistry"
-    ?"existing-chemistry-evidence":"existing-integrated-science-evidence"));
+    ?"existing-chemistry-evidence":"existing-integrated-science-evidence",
+    blank(value) || (examiner.provisional===false &&
+      Number(examiner.unassessedMarks||0)===0 && examiner.confidence!=="low")));
   }
  }
  return out;
@@ -145,7 +158,8 @@ function english(rows,responses){
    throw new Error("English A task source mismatch "+row.id);
   const result=gradeEnglishAPaper2Response(task,text(read(responses,row.id)),
    text(read(responses,row.id+":analysis")));
-  return cap(row,result.score,"existing-english-a-analytic-rubric");
+  return cap(row,result.score,"existing-english-a-analytic-rubric",
+    blank(read(responses,row.id)));
  });
 }
 function fnh(rows,responses){
@@ -154,8 +168,9 @@ function fnh(rows,responses){
   if(!Array.isArray(src.modelPoints))throw new Error("FNH model points missing");
   const p={id:row.id.split("::").at(-1),marks:row.maxMarks,...src};
   const answer=text(read(responses,row.id));
-  return cap(row,gradeFnhWrittenPart(p,answer).confirmedMarks,
-   "existing-FNH-criterion-evidence");
+  const graded=gradeFnhWrittenPart(p,answer);
+  return cap(row,graded.confirmedMarks,
+   "existing-FNH-criterion-evidence",graded.unresolvedMarks===0);
  });
 }
 function pob(rows,responses,paperId){
@@ -175,7 +190,8 @@ function pob(rows,responses,paperId){
   const outcome=parts.get("Q"+m[1]+":"+m[2]);
   if(!outcome||outcome.availableMarks!==row.maxMarks)
     throw new Error("POB source part mismatch");
-  return cap(row,outcome.confirmedMarks,"existing-POB-subcriterion-evidence");
+  return cap(row,outcome.confirmedMarks,"existing-POB-subcriterion-evidence",
+    outcome.unresolvedMarks===0);
  });
 }
 function social(rows,responses){
@@ -183,7 +199,8 @@ function social(rows,responses){
   const sm=sourceMarking(row),raw=text(read(responses,row.id));
   if(sm.marking){
    const result=gradeSocialStudiesShortAnswer(raw,sm.marking);
-   return cap(row,result.marks,"existing-social-studies-concepts");
+   return cap(row,result.marks,"existing-social-studies-concepts",
+    blank(raw)||(result.marks===row.maxMarks&&result.reviewRequired!==true));
   }
   const isEssay=sm.type==="essay"||sm.kind==="essay"||row.id.startsWith("ss-p2-q5")||
     row.id.startsWith("ss-p2-q6")||row.id.startsWith("ss-p2-q7");
@@ -202,9 +219,9 @@ function social(rows,responses){
    if(result.status==="unavailable"||!finite(suggested)||
       !Number.isFinite(expected)||expected!==row.maxMarks)
     throw new Error("Unmapped social studies essay");
-   return cap(row,suggested,"existing-social-studies-essay");
+   return cap(row,suggested,"existing-social-studies-essay",blank(answer));
   }
-  if(blank(raw))return cap(row,0,"existing-social-studies-blank");
+  if(blank(raw))return cap(row,0,"existing-social-studies-blank",true);
   throw new Error("Unmapped social studies source mark "+row.id);
  });
 }
@@ -237,10 +254,12 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
  const suggestedMarks=rows.reduce((n,r)=>n+r.suggestedMarks,0);
  if(!valid(suggestedMarks)||suggestedMarks>maxMarks)
   throw new Error("Subject examiner mark total mismatch");
+ const unresolvedMarks=rows.reduce((n,r)=>n+(r.resolved?0:r.maxMarks),0);
+ const verified=unresolvedMarks===0;
  return {
   subjectId,paperId,examinedParts:rows.length,maxMarks,
-  rows,authority:"existing-practice-examiner-advisory",
-  suggestedMarks,confirmedMarks:0,unresolvedMarks:maxMarks,
-  canPublishFinalScore:false
+  rows,authority:verified?"server-v2-deterministic":"server-v2-provisional",
+  suggestedMarks,confirmedMarks:verified?suggestedMarks:null,unresolvedMarks,
+  canPublishFinalScore:verified
  };
 }
