@@ -29,7 +29,8 @@ const migrations=[
 "20261019202500_marking_v2_draft_source_fingerprints.sql",
 "20261019211000_marking_v2_physics_graph_provisional_method.sql",
 "20261019212000_marking_v2_internal_calibration_queue.sql",
-"20261019214000_marking_v2_math_original_v1_q1_draft_calibration.sql"
+"20261019214000_marking_v2_math_original_v1_q1_draft_calibration.sql",
+"20261019222000_marking_v2_math_p2f_rich_artifact_drafts.sql"
 ];
 const db=new PGlite();
 try{
@@ -100,6 +101,34 @@ try{
    nonLowestTerms:fraction.rows.find(x=>x.criterionId==='p2-q1-v1::a').suggestedMarks
  }));
 
+
+ // P2-F original workspace schemes are drawn from the real source pad and
+ // table/graph cell allocations. Until V2 consumes verified drawing
+ // artefacts, nonblank work cannot receive automatic final graph marks.
+ const p2f=(await db.query(`select criteria from spark_grading_private.rubrics_v2
+  where subject_id='mathematics' and paper_id='p2f'`)).rows[0].criteria;
+ assert.equal(p2f.length,42);
+ assert(p2f.every(c=>Array.isArray(c.sourceMarking?.criteria)
+   && c.sourceMarking.criteria.length>0),
+   'Practice F must have complete registered source allocations');
+ const p2fRich=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'p2f',criteria:p2f,
+  responses:{
+   'p2f-q4::a1':{arcs:[{from:'A',radius:5}],segments:[{from:'M',to:'X'}]},
+   'p2f-q5::a':{cells:{c1:15,c2:33,c3:42,c4:50}},
+   'p2f-q5::b':{points:[[10,4],[20,15],[30,33],[40,42],[50,50]]},
+   'p2f-q7::a':{cells:{q4:16,r4:20,q10:100,r10:44}}
+  }
+ });
+ assert.equal(p2fRich.examinedParts,42);
+ assert.equal(p2fRich.maxMarks,100);
+ for(const id of ['p2f-q4::a1','p2f-q5::a','p2f-q5::b','p2f-q7::a']){
+  const part=p2fRich.rows.find(x=>x.criterionId===id);
+  assert.equal(part.suggestedMarks,0,'Unknown drawing/table artefact cannot earn automatic credit');
+  assert.equal(part.resolved,false,'Visual or structured artefact requires verified evaluator');
+ }
+ assert.equal(p2fRich.canPublishFinalScore,false);
+
  const defects=[],counts={};
  let totalCriteria=0;
  const sourceAudit=[];
@@ -132,7 +161,7 @@ try{
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
- assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:399});
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:394});
 
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
  console.log("Independent source-structure QA",JSON.stringify({
