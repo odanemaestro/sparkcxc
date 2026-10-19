@@ -27,8 +27,26 @@ function exactFraction(raw){
  if(gcd(numerator,d)!==1n)return null;
  return {numerator,denominator:d};
 }
+// R2 is a one-mark explanation, not an exact-string transcription task.
+// Require the same fixed difference, a larger hire-purchase base, and a
+// consequent smaller percentage. Ambiguous or contradictory explanations
+// remain unresolved for rubric reconciliation.
+function hirePurchaseReason(raw){
+ const t=string(raw).trim().toLowerCase().replace(/[−–—]/g,"-")
+  .replace(/\s+/g," ");
+ if(!t||/\b(?:not|isn't|isnt|never|either|or|maybe|perhaps)\b/.test(t))
+  return false;
+ const largerHire=/(?:hire[\s-]*purchase\s+(?:price|total)\s+(?:is|was|would be|will be)\s+(?:the\s+)?(?:larger|higher|greater|bigger)|(?:larger|higher|greater|bigger)\s+hire[\s-]*purchase\s+(?:price|total))/.test(t);
+ const cash=/\bcash\s+price\b/.test(t);
+ const fixed=/\b(?:same|fixed|unchanged|constant)\b/.test(t)
+  &&/\b(?:difference|amount|increase)\b/.test(t);
+ const smaller=/\b(?:smaller|lower|less)\b/.test(t)
+  &&/\b(?:percent(?:age)?|fraction|ratio)\b/.test(t);
+ return largerHire&&cash&&fixed&&smaller;
+}
+
 function correct(raw,expected,part,questionId){
- if(part==="c"&&questionId==="p2-q1-v3")return string(raw).trim().toLowerCase().replace(/\s+/g," ")===string(expected).trim().toLowerCase().replace(/\s+/g," ");
+ if(part==="c"&&questionId==="p2-q1-v3")return hirePurchaseReason(raw);
  if(part==="a"){
   const got=exactFraction(raw),target=exactFraction(expected);
   return !!got&&!!target&&got.numerator*target.denominator===target.numerator*got.denominator;
