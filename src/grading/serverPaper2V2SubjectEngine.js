@@ -212,8 +212,14 @@ function social(rows,responses){
    return cap(row,result.marks,"existing-social-studies-concepts",
     blank(raw)||(result.marks===row.maxMarks&&result.reviewRequired!==true));
   }
-  const isEssay=sm.type==="essay"||sm.kind==="essay"||row.id.startsWith("ss-p2-q5")||
-    row.id.startsWith("ss-p2-q6")||row.id.startsWith("ss-p2-q7");
+  // Papers B and C use ss-p2-b-q5 / ss-p2-c-q5 source identities.
+  // Require the registered source essay component, never guess from an
+  // unrelated question number or allow essay processing on short answers.
+  const [sourceQuestionId,componentId]=row.id.split("::");
+  const isEssay=(componentId==="content"||componentId==="organisation"||
+    componentId==="organization") &&
+    sm.component===componentId &&
+    /^ss-p2-(?:[a-z]-)?q[5-7]$/.test(sourceQuestionId);
   if(isEssay){
    // Social Studies essays store their content and organisation marks as
    // separate source criteria, rather than one 22-mark criterion.
