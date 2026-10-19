@@ -146,3 +146,22 @@ The source replay checks: correct/wrong quadratic, circle and bearings, negative
 | Genuine criterion reviews or V2 queue jobs | 0 |
 
 **Limitations and next action:** A complete source allocation does **not** establish that every valid written, drawing, table or step-by-step alternative receives fair final marks. The remaining 54 manual-evidence marks on original-v2 need supported answer-artifact verification or source-specific examiner rules. Genuine internal criterion approval must be recorded separately before authoritative student scoring. None of these two migrations changes the student-facing score route or the JWT-protected worker v10. For efficient next coverage, the nearest incomplete Mathematics papers are Practice H and Practice J (five missing parts each), followed by Practice E/G/I (six each).
+
+
+## Practice H and Practice J visual-source completion
+
+The next five missing source parts on each Mathematics practice paper were calibrated as **inactive draft marking structures**, with explicit evidence requirements instead of permissive free-text marking. Both papers are now structurally complete.
+
+| Practice paper | Newly authored parts | Newly allocated source marks | Total detailed |
+| --- | ---: | ---: | ---: |
+| H (p2h) | 5 | 13 | 41/41; 100 marks |
+| J (p2j) | 5 | 13 | 41/41; 100 marks |
+| **Combined** | **10** | **26** | Two structurally complete paper versions |
+
+The missing parts cover perpendicular bisector and angle-bisector construction arcs (Q4), cumulative-frequency table cells and graphical plots (Q5), and correctly labelled pattern tables (Q7). All new checks use `manual-verification` with source-specific expected values and correct marks. No typed graph, drawing, or positional table response is awarded automatic marks without further evidence assessment.
+
+Applied production migration: `20261020014500_marking_v2_math_p2h_p2j_visual_source_drafts.sql`. It requires unchanged full source hashes, exactly 41 parts / 100 marks, five blank criterion arrays per paper, and inactive/unverified status before updating. It records **no approval**. [CI #2487 passed](https://github.com/odanemaestro/sparkcxc/actions/runs/39331311225) with all 67 adversarial paper replays yielding zero positive credit candidates for the tested nonsense submissions.
+
+**Production audit after application:** 329/640 Mathematics parts have detailed source arrays, leaving 311. Five Mathematics practice paper versions are now fully allocated (original-v1, original-v2, p2f, p2h, p2j). All 67 paper sources retain correct SHA-256 content fingerprints. There are still **zero** active/verified private V2 rubrics and **zero** real criterion reviews. The private authenticated V2 worker remains at version 10, unchanged by these data-only draft migrations.
+
+**Next coverage target:** Practice E, G and I each have six parts without source-specific arrays. This structural milestone is separate from the more important criterion-evidence calibration and actual internal signoff required to safely publish automatic grades.
