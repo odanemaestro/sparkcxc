@@ -299,3 +299,14 @@ test("Math provisional logic rejects prose-only proofs and preserves blank-part 
   expect(outcome.resolved).toBe(true);
  }
 });
+
+test("stale Mathematics server answer is rejected before grading",()=>{
+ const q=PAPER2_QUESTION_BANK.find(x=>x.question_id==="p2-q1-v9");
+ expect(q).toBeTruthy();
+ const criteria=q.parts.map(p=>row(q.question_id+"::"+p.id,p.marks,{
+  answer:p.id==="b1"?"2240.00":p.answer,
+  criteria:p.criteria??null
+ }));
+ expect(()=>example("mathematics","original-v9",criteria,{}))
+  .toThrow(/registered answer differs from assembled source/);
+});
