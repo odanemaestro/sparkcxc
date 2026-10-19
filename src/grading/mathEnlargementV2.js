@@ -54,8 +54,8 @@ function transformation(text,source){
   factor:statedFactor&&!contrary&&!contradictory};
 }
 function partBWorking(text,source){
- const w=norm(text);
- const lines=w.split(/[;\n=]/).filter(Boolean);
+ const w=norm(text).replace(/\n/g,";");
+ const lines=w.split(/[;=]/).filter(Boolean);
  const formula=lines.some(x=>/^(?:area|a)?(?:=|:)?(?:1\/2|0\.5)\*?(?:base|b)\*?(?:height|h)$/.test(x))
   ||/area=(?:1\/2|0\.5)\*?(?:base|b)\*?(?:height|h)/.test(w);
  const args=[
@@ -70,7 +70,7 @@ function partBWorking(text,source){
  return {formula,substitution};
 }
 function areaScaling(text,source,previous){
- const w=norm(text),steps=w.split(/[;\n=]/).filter(Boolean);
+ const w=norm(text).replace(/\n/g,";"),steps=w.split(/[;=]/).filter(Boolean);
  const k=source.scale,square=k*k;
  const kSquared=steps.some(x=>[
   k+"^2",k+"*"+k,k+"^2*"+source.area,k+"^2("+source.area+")",
