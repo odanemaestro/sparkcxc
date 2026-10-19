@@ -161,7 +161,7 @@ function transformCriteria(s,p,r){
   // Distinguish a stated determinant from the same number repeated only
   // in an area-scaling sentence. Each is a separate proposed criterion.
   const first=answer.split(/[;,]/)[0].trim();
-  const direct=/^(?:(?:det|determinant)(?:\\s*(?:is|=|:))?\\s*)?([+]?(?:\\d+(?:\\.\\d+)?|\\.\\d+))$/i.exec(first);
+  const direct=/^(?:(?:det|determinant)(?:\s*(?:is|=|:))?\s*)?([+]?(?:\d+(?:\.\d+)?|\.\d+))$/i.exec(first);
   const factor=!!direct&&Number(direct[1])===s.areaFactor&&!ambiguous(answer);
   const reason=!ambiguous(t)&&/\b(?:area|areas)\b/.test(t)&&
    /\b(?:multipli(?:ed|es|er)|factor|scal(?:ed|e))\b/.test(t)&&
