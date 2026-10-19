@@ -193,7 +193,7 @@ function social(rows,responses){
     throw new Error("Unmapped social studies essay");
    return cap(row,result.marks,"existing-social-studies-essay");
   }
-  if(blank(raw))return cap(row,0,"blank-response");
+  if(blank(raw))return cap(row,0,"existing-social-studies-blank");
   throw new Error("Unmapped social studies source mark "+row.id);
  });
 }
