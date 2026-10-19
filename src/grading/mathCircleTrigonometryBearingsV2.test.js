@@ -145,7 +145,7 @@ describe.each([
   expect(check(id,"a",String(north.toFixed(2))).suggestedMarks).toBe(0);
  });
  test("combined route distance can be obtained by the 90 degree resultant",()=>{
-  const full=check(id,"c",distance.toFixed(1),"sqrt("+l1+"^2+"+l2+"^2+")="+distance);
+  const full=check(id,"c",distance.toFixed(1),"sqrt("+l1+"^2+"+l2+"^2)="+distance);
   expect(full.criteria.map(x=>x.candidateMarks)).toEqual([1,null,1]);
   expect(check(id,"c",distance.toFixed(1)).suggestedMarks).toBe(1);
   const another=ids.find(x=>x!==id&&x.includes("-v8"))||"p2-q9-v8";
