@@ -30,7 +30,8 @@ describe.each(Object.keys(SOURCES))("Mathematics Q1 Batch 1 completeness %s",id=
  });
  test("unsupported alternatives and wrong values never earn accuracy",()=>{
   for(const part of bank.parts){
-   for(const a of ["", "not sure", part.answer+" or 999", "-"+part.answer, "Infinity"]){
+   const contradicted=id==="p2-q1-v3"&&part.id==="c"?"Not "+part.answer:"-"+part.answer;
+   for(const a of ["", "not sure", part.answer+" or 999", contradicted, "Infinity"]){
     expect(evaluate({questionId:id,partId:part.id,response:a}).suggestedMarks).toBe(0);
    }
   }
@@ -75,4 +76,11 @@ test("Q1 R2 rejects reversed, vague and contradictory hire purchase explanations
   expect(r.suggestedMarks).toBe(0);
   expect(r.publishable).toBe(false);
  }
+});
+
+test("Q1 R2 explanation formatting can use a natural bullet without changing meaning",()=>{
+ const explanation="The hire purchase price is larger than the cash price, so the same difference is a smaller fraction of it";
+ const r=evaluate({questionId:"p2-q1-v3",partId:"c",response:"- "+explanation});
+ expect(r.suggestedMarks).toBe(1);
+ expect(r.publishable).toBe(false);
 });
