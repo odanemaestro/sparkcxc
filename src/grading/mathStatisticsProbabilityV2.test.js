@@ -165,3 +165,65 @@ test("probability evidence recognises genuinely equivalent bracketed calculation
  }});
  expect(r.suggestedMarks).toBe(2);
 });
+
+
+test("the four grouped means recognise distinct calculation and division evidence",()=>{
+ const cases=[
+  ["p2-q5-v1","4*3+8*8+12*13+16*18",520,40,13],
+  ["p2-q5-v2","5*3+9*8+12*13+9*18+5*23",520,40,13],
+  ["p2-q5-v3","3*3+6*8+16*13+6*18+3*23",442,34,13],
+  ["p2-q5-v10","3*3+3*8+3*13+9*18+12*23",510,30,17]
+ ];
+ for(const [questionId,midpointProducts,totalFrequency,frequency,mean] of cases){
+  const work=midpointProducts+"="+totalFrequency+"\n"+totalFrequency+"/"+frequency+"="+mean;
+  const complete=grade({questionId,partId:"b",response:{answer:String(mean),working:work}});
+  expect(complete.criteria.map(c=>c.candidateMarks)).toEqual([1,1,1]);
+  expect(complete.unresolvedMarks).toBe(0);
+  expect(complete.publishable).toBe(false);
+  const noWork=grade({questionId,partId:"b",response:{answer:String(mean)}});
+  expect(noWork.criteria.map(c=>c.candidateMarks)).toEqual([null,null,1]);
+  const onlyProducts=grade({questionId,partId:"b",response:{answer:"incorrect",working:midpointProducts+"="+totalFrequency}});
+  expect(onlyProducts.criteria.map(c=>c.candidateMarks)).toEqual([1,null,null]);
+  const onlyDivision=grade({questionId,partId:"b",response:{answer:"incorrect",working:totalFrequency+"/"+frequency+"="+mean}});
+  expect(onlyDivision.criteria.map(c=>c.candidateMarks)).toEqual([null,1,null]);
+ }
+});
+test("wrong source calculations never acquire grouped-mean method credit",()=>{
+ const wrong=grade({questionId:"p2-q5-v3",partId:"b",response:{
+  answer:"13",working:"4*3+8*8+12*13+16*18=520;520/40=13"
+ }});
+ expect(wrong.criteria.map(c=>c.candidateMarks)).toEqual([null,null,1]);
+});
+test("a correct pie-category answer with a valid largest-sector explanation earns two advisory candidates",()=>{
+ const cases=[
+  ["p2-q5-v6","Car","135"],
+  ["p2-q5-v7","Football","150"]
+ ];
+ for(const [questionId,category,angle] of cases){
+  const complete=grade({questionId,partId:"c",response:{
+   answer:category+" because its "+angle+" degree sector is the largest",
+   working:category+" "+angle+" degrees is the largest sector"
+  }});
+  expect(complete.criteria.map(c=>c.candidateMarks)).toEqual([1,1]);
+  expect(complete.publishable).toBe(false);
+  const bare=grade({questionId,partId:"c",response:category});
+  expect(bare.criteria.map(c=>c.candidateMarks)).toEqual([null,1]);
+  const ambiguous=grade({questionId,partId:"c",response:{
+   answer:category+" or another",
+   working:category+" "+angle+" degrees is largest"
+  }});
+  expect(ambiguous.suggestedMarks).toBe(0);
+ }
+});
+test("graph-dependent numeric recalls remain unresolved without graph proof",()=>{
+ for(const questionId of ["p2-q5-v4","p2-q5-v5"]){
+  const paper=PAPER2_QUESTION_BANK.find(q=>q.question_id===questionId);
+  for(const partId of ["b","c","d"]){
+   const source=paper.parts.find(p=>p.id===partId);
+   const result=grade({questionId,partId,response:{answer:source.answer,working:"I used my graph"}});
+   expect(result.suggestedMarks).toBe(0);
+   expect(result.unresolvedMarks).toBe(source.marks);
+   expect(result.publishable).toBe(false);
+  }
+ }
+});
