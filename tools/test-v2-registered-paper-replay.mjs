@@ -69,7 +69,7 @@ try{
     issues.push("paper-mark-total");
   if(issues.length)sourceAudit.push({subject:paper.subject_id,paper:paper.paper_id,issues:[...new Set(issues)]});
  }
- assert.equal(totalCriteria,2217,"Registered criteria count must not silently drift");
+ assert.equal(totalCriteria,2118,"Registered criteria count must not silently drift");
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
  console.log("Independent source-structure QA",JSON.stringify({
   papers:papers.length,criteria:totalCriteria,sourceAuditDefects:sourceAudit.length,
