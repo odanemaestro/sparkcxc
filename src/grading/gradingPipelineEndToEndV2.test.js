@@ -7,7 +7,7 @@ const leaseId="33333333-3333-4333-8333-333333333333";
 function harness({missingRubric=false,expiredLease=false}={}){
  const state={status:"queued",attempts:0,commits:[],reads:0};
  const db={query:jest.fn(async(sql,params)=>{
-  if(sql.includes("enqueue_marking_job_v2")){
+  if(sql.includes("enqueue_submitted_exam_v2")){
    if(missingRubric)throw Error("No active server rubric");
    return {rows:[{job_id:jobId}]};
   }
