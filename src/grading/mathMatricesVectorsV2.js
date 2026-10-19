@@ -157,7 +157,7 @@ function transformCriteria(s,p,r){
   // The student-facing bank explicitly accepts 5/2 for the 2.5 scale
   // factor. Exact rational equivalents are legitimate, never competing
   // answers or methods inferred from text.
-  const rational=/^\\s*(?:k\\s*=\\s*)?([+-]?\\d+)\\s*\\/\\s*(\\d+)\\s*$/i.exec(answer);
+  const rational=/^\s*(?:k\s*=\s*)?([+-]?\d+)\s*\/\s*(\d+)\s*$/i.exec(answer);
   const ratio=rational&&Number(rational[2])!==0?
    Number(rational[1])/Number(rational[2]):null;
   const scale=accurateNumber(answer,s.k)||(ratio!==null&&
