@@ -50,7 +50,7 @@ begin
     coalesce(v_row->>'criterionId','')='' or
     coalesce(v_row->>'suggestedMarks','')!~ '^[0-9]+$' or
     coalesce(v_row->>'maxMarks','')!~ '^[1-9][0-9]*$' or
-    coalesce(v_row->>'method','')!~ '^existing-[a-z0-9-]{3,80}$' then
+    coalesce(v_row->>'method','')!~ '^existing-[A-Za-z0-9-]{3,80}$' then
    raise exception 'Invalid detailed examiner evidence';
   end if;
   v_identity:=v_row->>'criterionId';
@@ -73,7 +73,7 @@ begin
     or (v_subject='integrated-science' and v_row->>'method'<>'existing-integrated-science-evidence')
     or (v_subject='principles-of-business' and v_row->>'method'<>'existing-POB-subcriterion-evidence')
     or (v_subject='social-studies' and v_row->>'method' not in
-      ('existing-social-studies-concepts','existing-social-studies-essay','blank-response')) then
+      ('existing-social-studies-concepts','existing-social-studies-essay','existing-social-studies-blank')) then
    raise exception 'Examiner method not registered for source subject';
   end if;
   v_sum:=v_sum+v_mark;
