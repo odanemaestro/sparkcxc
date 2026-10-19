@@ -31,7 +31,7 @@ const migrations=[
  "20261019194500_marking_v2_allow_ungraded_submission.sql",
  "20261019195000_marking_v2_own_exam_result_rpc.sql"
 ];
-async function reject(sql,params=[],pattern=/approval|attestation|permission|Forbidden|lease|rubric/i){
+async function reject(sql,params=[],pattern=/approval|attestation|permission|Forbidden|lease|rubric|checksum/i){
  await assert.rejects(db.query(sql,params),pattern);
 }
 try{
