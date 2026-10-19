@@ -58,7 +58,7 @@ describe.each(cases)("Math Q2 source index laws and rectangle measurements",f=>{
  test("wrong coefficient, unsimplified unit exponent and ambiguity reject monomial",()=>{
   for(const raw of [
    "99"+f.monomial,f.monomial+" or 7",f.monomial+" +1",
-   f.monomial.replace(/x(?:\^(\d+))?/,(_,p)=>"x^"+(p||1)),
+   f.monomial+"*x^0",
    ""
   ]){
    expect(check(f,"a",raw).criteria[1].candidateMarks).toBeNull();
