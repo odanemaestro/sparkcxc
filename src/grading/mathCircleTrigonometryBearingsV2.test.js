@@ -163,3 +163,58 @@ test("unrecognised Q9 source or part identifiers always fail closed",()=>{
    ["p2-q9-v3","b1"],["p2-q9-v6","b2"],["p2-q9-v10","e"]])
   expect(()=>grade({questionId:id,partId:p})).toThrow(/Uncalibrated/);
 });
+
+test("Q9 authored calibration agrees with every assembled student-facing answer",()=>{
+ for(const id of ids){
+  const model=PAPER2_QUESTION_BANK.find(x=>x.question_id===id),source=SOURCES[id];
+  for(const p of model.parts){
+   const n=Number((p.answer.match(/\d+(?:\.\d+)?/)||[])[0]);
+   if(source.kind==="circle-bearing"){
+    const expected={a1:source.inscribed,a2:source.baseAngle,b1:90,
+     b2:source.distance,b3:source.bearing}[p.id];
+    expect(n).toBe(expected);
+    if(p.id==="a1")expect(p.answer.toLowerCase()).toContain("centre");
+    if(p.id==="b1")expect(p.requireWorking).toBe(true);
+   }else if(source.kind==="cosine"){
+    expect(Number(p.answer)).toBe({a:source.km,b:source.atK,c:source.area}[p.id]);
+   }else if(source.kind==="tangent"){
+    if(p.id==="d"){
+     expect(p.answer.toLowerCase()).toContain("point of contact");
+    }else{
+     expect(n).toBe({a:source.tangent,b:source.angleT,c:source.angleA}[p.id]);
+     if(p.id!=="b")expect(p.answer.toLowerCase()).toContain("alternate segment");
+    }
+   }else{
+    expect(Number(p.answer)).toBe({a:Math.abs(source.qNorth),
+     b:Math.abs(source.qEast),c:source.distance,d:source.bearing}[p.id]);
+   }
+  }
+ }
+});
+test("Q9 bearings require conventional three-figure answers",()=>{
+ for(const [id,part,correct,invalid] of [
+  ["p2-q9-v1","b3","093","93"],
+  ["p2-q9-v2","b3","108","108.0"],
+  ["p2-q9-v8","d","157","157.0"],
+  ["p2-q9-v9","d","017","17"],
+  ["p2-q9-v10","d","211","211.1"]
+ ]){
+  expect(check(id,part,correct).suggestedMarks).toBe(1);
+  expect(check(id,part,invalid).suggestedMarks).toBe(0);
+  expect(check(id,part,correct+"°").suggestedMarks).toBe(1);
+ }
+});
+test.each([
+ ["p2-q9-v8","157","39.28/-91.96"],
+ ["p2-q9-v9","017","24.7/79.47"],
+ ["p2-q9-v10","211","-52.94/-88.3"]
+])("Q9 correct quadrant-aware ratio is distinct from final bearing %s",
+ (id,correct,ratio)=>{
+  const s=SOURCES[id];
+  const working="atan("+s.rEast+"/"+s.rNorth+")="+correct;
+  const r=check(id,"d",correct,working);
+  expect(r.criteria.map(x=>x.candidateMarks)).toEqual([1,null,1]);
+  expect(r.publishable).toBe(false);
+  expect(check(id,"d","wrong",working).suggestedMarks).toBe(1);
+  expect(check(id,"d",correct,"atan2(999,999)").suggestedMarks).toBe(1);
+ });
