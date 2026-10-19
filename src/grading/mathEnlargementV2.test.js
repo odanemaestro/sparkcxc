@@ -79,6 +79,13 @@ describe.each(examples)("Mathematics P2 source Q3 enlargement",spec=>{
   const wrong=spec.scale*spec.area;
   expect(evaluate(spec,"c",String(wrong),spec.scale+"*3="+wrong).criteria[2].candidateMarks).toBeNull();
  });
+ test("multiline area working preserves independently evidenced calculation steps",()=>{
+  const b=evaluate(spec,"b",String(spec.area),"area=1/2*base*height\\n1/2*"+spec.base+"*"+spec.height+"="+spec.area);
+  expect(b.criteria.map(c=>c.candidateMarks)).toEqual([1,1,1]);
+  const c=evaluate(spec,"c",String(spec.imageArea),spec.scale+"^2\\n"+(spec.scale**2)+"*"+spec.area+"="+spec.imageArea);
+  expect(c.criteria.map(c=>c.candidateMarks)).toEqual([1,1,1]);
+  expect(c.publishable).toBe(false);
+ });
  test("a final answer alone cannot justify scaling methods",()=>{
   const r=evaluate(spec,"c",String(spec.imageArea));
   expect(r.criteria.map(c=>c.candidateMarks)).toEqual([null,null,1]);
