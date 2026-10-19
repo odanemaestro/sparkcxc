@@ -14,7 +14,7 @@ export const MATH_Q8_SOURCES_V2=Object.freeze({
   expansion:"2(x^2+6x)+23",square:"(x+3)^2-9"},
  "p2-q8-v3":{kind:"vertex",marks:{a:4,b1:2,b2:2,c:2,d:2},
   coefficient:1,h:4,k:-7,yIntercept:9,vertex:"(x-4)^2-7",
-  expansion:"x^2-8x+9",square:"(x-4)^2-16"},
+  expansion:null,square:"(x-4)^2-16"},
  "p2-q8-v4":{kind:"graph",marks:{a:3,b:3,c:2,d:2,e:2},
   entries:[0,-4,5],minimum:[1,-4],roots:[-1,3],line:2,lineRoots:[-1.4,3.4]},
  "p2-q8-v5":{kind:"graph",marks:{a:3,b:3,c:2,d:2,e:2},
@@ -114,7 +114,7 @@ function vertexCriteria(source,partId,response){
  if(partId==="a"){
   const final=norm(a)===norm(source.vertex)||
    norm(a)==="f(x)="+norm(source.vertex);
-  return [vote("M1",step(response,source.expansion),"factor-from-quadratic"),
+  return [vote("M1",!!source.expansion&&step(response,source.expansion),"factor-from-quadratic"),
    vote("M2",step(response,source.square),"complete-square-identity"),
    unresolved("M3"),
    vote("A1",final,"published-completed-square-form")];
@@ -169,10 +169,15 @@ function linearCriteria(source,partId,response){
    norm(a)===expr||norm(a)==="p="+expr,"source-profit-objective")];
  }
  if(partId==="d"){
-  const input=norm(a),correctMoney=new RegExp("(^|[^\\d])"+source.max+"(?:$|[^\\d])").test(input);
+  const input=norm(a);
+  const correctMoney=new RegExp("(?:^|[^\\d])"+source.max+"(?:$|[^\\d])").test(input);
   const win=source.optimal,coordinates=coordinatePairs(a);
-  const correctCounts=(new RegExp("\\b"+win[0]+"(?:shirts|tables)\\b").test(input)&&
-   new RegExp("\\b"+win[1]+"(?:pairs?oftrousers|trousers|chairs)\\b").test(input))||
+  const label=source.profit[0]===50
+   ?/(?:^|[^\d])24\s*shirts?\b/i:/(?:^|[^\d])6\s*tables?\b/i;
+  const second=source.profit[0]===50
+   ?/(?:^|[^\d])4\s*(?:pairs?\s*of\s*)?trousers\b/i
+   :/(?:^|[^\d])27\s*chairs?\b/i;
+  const correctCounts=(label.test(a)&&second.test(a))||
    (coordinates?.length===1&&samePair(coordinates[0],win));
   const vertexWork=step(response,
    source.profit[0]+"*"+win[0]+"+"+source.profit[1]+"*"+win[1]);
