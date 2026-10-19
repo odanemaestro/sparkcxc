@@ -158,6 +158,9 @@ try{
    $1::uuid,$2::uuid,1,'[]'::jsonb) result`,
    [expiredJob,expiredClaim.leaseToken])).rows[0].result;
  assert.equal(fenced,false,"expired lease must reject scoring write");
+ // Isolate expired-lease fixture before next synthetic claim, which tests
+ // verified publication rather than reclamation ordering.
+ await db.query("update spark_grading_private.marking_jobs_v2 set status='failed',lease_token=null,lease_expires_at=null where id=$1",[expiredJob]);
  const persisted=(await db.query(`select a.score,a.max_score,j.status,j.result
  from public.spark_exam_attempts a join spark_grading_private.marking_jobs_v2 j on j.attempt_id=a.id
  where a.id=$1`,[attemptId])).rows[0];
