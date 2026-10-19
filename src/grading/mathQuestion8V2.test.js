@@ -214,7 +214,7 @@ describe.each([
  test("extra guesses, duplicate roots and wrong decimal precision earn no A marks",()=>{
   for(const answer of [
    first+","+second+",999.99",first+","+first,first+" or "+second,
-   String(Number(first))+","+String(Number(second)),first+", incorrect",
+   first+"0,"+second+"0",first+", incorrect",
    first+" and "+first
   ]){
    const result=grade({questionId,partId:"a",response:{answer}});
