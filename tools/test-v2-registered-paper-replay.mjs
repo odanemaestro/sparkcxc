@@ -493,6 +493,7 @@ try{
  }));
 
 
+ try {
  // Source-specific original-v2 Q7-Q10: all remaining parts must agree with
  // the real 42-part paper and preserve the existing Q9(b)(i) mark scheme.
  const mathV2=(await db.query(`select criteria from spark_grading_private.rubrics_v2
@@ -582,6 +583,11 @@ try{
   retainedQ9Bearing:true,structuredAnswersUnresolved:true,finalPublication:false
  }));
 
+
+ } catch(error) {
+  console.error('Original-v2 Q7-Q10 source replay failed:',String(error?.message||error));
+  throw new Error('Original-v2 Q7-Q10 source replay failed: '+String(error?.message||error));
+ }
  const defects=[],counts={};
  let totalCriteria=0;
  const sourceAudit=[];
