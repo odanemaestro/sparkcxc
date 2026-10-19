@@ -49,7 +49,8 @@ try{
    const expected=paper.criteria.reduce((n,c)=>n+c.maxMarks,0);
    assert.equal(r.examinedParts,paper.criteria.length);
    assert.equal(r.maxMarks,expected);
-   assert(r.suggestedMarks>=0&&r.suggestedMarks<=expected);
+   assert.equal(r.suggestedMarks,0,"A blank submission cannot earn any marks");
+   assert(r.suggestedMarks<=expected);
    assert.equal(r.canPublishFinalScore,r.unresolvedMarks===0);
    assert(r.unresolvedMarks>=0&&r.unresolvedMarks<=expected);
    assert(r.rows.every(row=>typeof row.resolved==="boolean"));
