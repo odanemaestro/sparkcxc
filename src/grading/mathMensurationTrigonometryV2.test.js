@@ -107,3 +107,34 @@ test("wrong variant method and unsupported identities never create a candidate",
  for(const [id,p] of [["p2-q6-v11","a"],["p2-q6-v1","e"],["p2-q5-v1","a"]])
   expect(()=>grade({questionId:id,partId:p})).toThrow(/Uncalibrated/);
 });
+
+
+test.each([
+ ["p2-q6-v9","25","atan(32.38/68)=25"],
+ ["p2-q6-v10","32","atan(31.51/50)=32"]
+])("source-appropriate inverse-tangent workings are separate from rounded answers for %s",
+ (questionId,answer,working)=>{
+  const result=grade({questionId,partId:"c",response:{answer,working}});
+  expect(result.criteria.map(c=>c.candidateMarks)).toEqual([null,1,1]);
+  expect(result.suggestedMarks).toBe(2);
+  expect(result.unresolvedMarks).toBe(1);
+  expect(result.publishable).toBe(false);
+  const sourceMismatched=grade({questionId,partId:"c",response:{
+   answer:"incorrect",
+   working:questionId==="p2-q6-v9"?"atan(31.51/50)":"atan(32.38/68)"
+  }});
+  expect(sourceMismatched.suggestedMarks).toBe(0);
+ });
+test("Q6 correct substitutions do not invent extra three-mark allocations",()=>{
+ for(const [id,partId,answer,working] of [
+  ["p2-q6-v2","b","2310","154*15=2310"],
+  ["p2-q6-v5","b","154","90/360*22/7*14^2=154"],
+  ["p2-q6-v8","d","810","2*30+(12+5+13)*25=810"],
+  ["p2-q6-v9","b","57.9","48/cos34=57.9"]
+ ]){
+  const r=grade({questionId:id,partId,response:{answer,working}});
+  expect(r.suggestedMarks+r.unresolvedMarks).toBe(3);
+  expect(r.unresolvedMarks).toBe(1);
+  expect(r.rubricAllocation).toBe("proposed-from-worked-solution");
+ }
+});
