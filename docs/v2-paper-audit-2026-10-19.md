@@ -40,7 +40,7 @@ These are *registered source/paper combinations*, not evidence that every availa
 - **Physics:** 135 parts carry source criterion arrays, but manual graph evidence must be interpreted from actual plotted artefacts, including axes, scale, points and lines. Check equivalent numeric methods and carried-forward errors.
 - **Chemistry, IT, FNH, Integrated Science, POB, Social Studies:** registered source structures contain subject-specific schemes, but real-paper alternatives, negative and contradictory submissions, written evidence thresholds, drawings, calculations and optional-question rules still need detailed checking. The current registry is not the entire historical archive.
 - **English A:** essay, summary, persuasion, composition and choice-rule marking are not fully deterministic. Do not convert low-confidence heuristic scores into authoritative final grades.
-- **Paper assembly:** resolve the FNH 96-mark and Integrated Science 105-mark registered source totals, plus English A 120-mark combinations, against the actual versioned learner paper before attesting.
+- **Paper assembly:** FNH Paper 02 is **96 marks**, comprising six compulsory 16-mark questions under the CXC Food, Nutrition and Health syllabus (source: https://ascothigh.edu.jm/uploads/dcentre/Syllabus/9780230482005.pdf). Integrated Science Paper 02 is **105 marks** (35 marks for each of three modules) under the revised syllabus (source: https://www.cxc.org/wp-content/uploads/2018/11/CSEC-Integrated-Science-Syllabus_EffectiveforExamsfrom2027.pdf). These two totals are **not defects**. English A's 120-mark staged source combination requires exact learner question-choice mapping. The revised 2025 CXC specimen makes Q1, Q2, Q3, Q6 and Q7 mandatory, with **either Q4 or Q5**, never both (source: https://www.cxc.org/wp-content/uploads/2018/11/CSEC-English-Syllabus-Revised-2025.pdf). Verify the active source edition for each learner before paper approval.
 
 ## Conditions for live authoritative V2 score publication
 
@@ -51,3 +51,24 @@ These are *registered source/paper combinations*, not evidence that every availa
 5. Enable only approved paper versions behind a controlled rollout, retain the existing live grader as fallback, monitor false positives, and retain rollback support.
 
 **Never activate unreviewed rubrics simply to meet a launch date.** SPARK is designed to do its grading internally; this requirement does not call for external teachers or examiners.
+
+
+## Internal calibration batch 2, 19 October
+
+- GitHub Actions **#2436 passed** (https://github.com/odanemaestro/sparkcxc/actions/runs/39309119416), including isolated database release-gate tests and synthetic Physics graph provisional/forged-mark rejection.
+- Deployed private `mark-paper2-v2-shadow` **version 8** using checked examiner bundle SHA-256 `33a23e82c9e3c1f34f9b2930e51bb4f00a04f2ef073243c595fbbb585d7c402d`. Edge JWT signature verification remains **enabled**.
+- Applied SQL migrations `marking_v2_physics_graph_provisional_method` and `marking_v2_internal_calibration_queue`. The score publication RPC now recognises the exact unresolved-graph evidence method **only for a source-marked manual Physics graph**, with zero marks and `resolved=false`. Forged positive marks or resolved graph evidence are rejected.
+- The private, source-hash-bound `spark_grading_private.v2_calibration_queue` contains **2,118 criterion rows**, **0 recorded reviews**, **4 graph-artefact criteria** and **403 Mathematics parts missing detailed allocation arrays**. `anon` and `authenticated` have no SELECT permission; `service_role` has SELECT permission.
+- No rubric or student score was approved or activated. Only genuine criterion calibration evidence and a separate actual internal release approval may advance an individual paper to authoritative scoring.
+
+Example operator-only status query:
+
+```sql
+SELECT subject_id, review_focus, COUNT(*) AS pending
+FROM spark_grading_private.v2_calibration_queue
+WHERE NOT source_matched_review
+GROUP BY subject_id,review_focus
+ORDER BY subject_id,review_focus;
+```
+
+This is an audit and release-preparation milestone, not the completed V2 grading replacement.
