@@ -165,3 +165,14 @@ Applied production migration: `20261020014500_marking_v2_math_p2h_p2j_visual_sou
 **Production audit after application:** 329/640 Mathematics parts have detailed source arrays, leaving 311. Five Mathematics practice paper versions are now fully allocated (original-v1, original-v2, p2f, p2h, p2j). All 67 paper sources retain correct SHA-256 content fingerprints. There are still **zero** active/verified private V2 rubrics and **zero** real criterion reviews. The private authenticated V2 worker remains at version 10, unchanged by these data-only draft migrations.
 
 **Next coverage target:** Practice E, G and I each have six parts without source-specific arrays. This structural milestone is separate from the more important criterion-evidence calibration and actual internal signoff required to safely publish automatic grades.
+
+
+## Practice E, G and I source-evidence draft batch
+
+Committed migration `20261020020000_marking_v2_math_p2e_p2g_p2i_source_drafts.sql` with six previously missing parts on each of Mathematics Practice E/G/I (18 parts / 54 mark weights in total). These draft-only criteria apply to exact plotted coordinate locations (Q3), source-specific compass constructions (Q4), labelled statistical table cells (Q5), dot pattern cell values and nth-term rules (Q7), quadratic table values (Q8a) and quadratic graphs (Q8b).
+
+The checks explicitly require position-specific and graphical evidence as `manual-verification`; **they are not automatic mark awards**. This batch preserves the existing deterministic rules on all other parts. Every update refuses source-answer drift, changed SHA-256 source criteria, previously approved/active paper versions, unexpected part counts, missing parts, per-part mark mismatches, incomplete detailed arrays and non-100-mark totals.
+
+**Expected coverage after deploying the migration:** Mathematics 347/640 detailed parts (54.2%), 293 still undetailed; eight structurally complete source versions (original v1, original v2, Practice E/F/G/H/I/J). Each practice paper retains a 100-mark ceiling. These figures are derived from the authored migration and require confirmation by the private production database; **the migration has not been applied to production in this continuation**.
+
+The branch does not switch existing student grades, approve rubric criteria or release V2 scores. Genuine alternative-answer and visual artifact verification, internal source criteria reviews, and release tests remain required.
