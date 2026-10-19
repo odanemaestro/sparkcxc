@@ -35,12 +35,12 @@ export function evaluateMathConstructionV2({questionId,partId,response={}}={}){
   const halves=[`1/2*${base}*${height}`,`0.5*${base}*${height}`,
    `1/2*${height}*${base}`,`0.5*${height}*${base}`];
   const correctSine=source.angle===90
-   ? !/sin\\(?60\\)?/.test(compact)
-   : /sin\\(?60(?:°|deg)?\\)?/.test(compact);
+   ? !/sin\(?60\)?/.test(compact)
+   : /sin\(?60(?:°|deg)?\)?/.test(compact);
   // For 60 degrees, the perpendicular height is not QR itself.
   // A bare 1/2 * PQ * QR multiplication cannot evidence the area method.
   const substitution=halves.some(v=>compact.includes(v))
-   &&correctSine&&(source.angle===90||/sin\\(?60(?:°|deg)?\\)?/.test(compact));
+   &&correctSine&&(source.angle===90||/sin\(?60(?:°|deg)?\)?/.test(compact));
   const formula=/1\/2\*?(?:base|b)\*?(?:height|h)|0\.5\*?(?:base|b)\*?(?:height|h)/.test(compact)
    ||/1\/2\*?(?:pq|8|9)\*?(?:qr|6|5)\*?sin/.test(compact);
   criteria=[vote("M1",formula,"triangle-area-formula"),
