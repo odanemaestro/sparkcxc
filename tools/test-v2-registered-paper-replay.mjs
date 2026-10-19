@@ -39,7 +39,11 @@ const migrations=[
 "20261020005000_marking_v2_math_original_v2_q3_q6_drafts.sql",
 "20261020010500_marking_v2_math_original_v2_q7_q8_drafts.sql",
 "20261020011500_marking_v2_math_original_v2_q9_q10_drafts.sql",
-"20261020014500_marking_v2_math_p2h_p2j_visual_source_drafts.sql"
+"20261020014500_marking_v2_math_p2h_p2j_visual_source_drafts.sql",
+"20261020020000_marking_v2_math_p2e_p2g_p2i_source_drafts.sql",
+"20261020030000_marking_v2_math_original_v3_v5_source_drafts.sql",
+"20261020040000_marking_v2_math_original_v6_v8_source_drafts.sql",
+"20261020050000_marking_v2_math_original_v9_v10_source_drafts.sql"
 ];
 const db=new PGlite();
 try{
@@ -655,12 +659,27 @@ try{
   if(issues.length)sourceAudit.push({subject:paper.subject_id,paper:paper.paper_id,issues:[...new Set(issues)]});
  }
  assert.equal(totalCriteria,2118,"Registered criteria count must not silently drift");
+ // CI must replay the full private staging schema, not silently audit an old
+ // subset of migrations after production Mathematics reached 640/640 parts.
+ const mathPaperRows=papers.filter(p=>p.subject_id==='mathematics');
+ assert.equal(mathPaperRows.length,16);
+ assert.equal(mathPaperRows.reduce((n,p)=>n+p.criteria.length,0),640);
+ for(const paper of mathPaperRows){
+  assert(paper.criteria.every(c=>Array.isArray(c.sourceMarking?.criteria)
+    && c.sourceMarking.criteria.length>0),
+    'Every registered Mathematics source part must have detailed draft criteria');
+  for(const part of paper.criteria)
+   assert.equal(part.sourceMarking.criteria.reduce((n,c)=>n+c.marks,0),
+    part.maxMarks,'Per-part M/A/B allocation drift: '+part.id);
+ }
+
  const pendingReviews=(await db.query(`select count(*)::integer AS total,
   count(*) filter(where source_matched_review)::integer AS reviewed,
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
- assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:311});
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:0},
+  'Replay must include all three final Mathematics calibration batches');
 
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
  console.log("Independent source-structure QA",JSON.stringify({
