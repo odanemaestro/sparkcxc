@@ -333,6 +333,29 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
  // A heuristic prose grader must never award introduction/format marks to a
  // blank script, even if its baseline scales are non-zero.
  if(emptyEvidence(responses))rows=rows.map(r=>({...r,suggestedMarks:0,resolved:true}));
+ // A legacy grader's resolved flag is not equivalent to approved source evidence.
+ // Published V2 credit requires every relevant check to be independently
+ // machine-verifiable. Manual review, untyped prose and unsupported graphics
+ // remain provisional across all nine subjects.
+ const manualOrUnknown=row=>{
+  const scheme=row?.sourceMarking;
+  if(!scheme||typeof scheme!=="object")return true;
+  const checks=scheme.criteria;
+  if(Array.isArray(checks)&&checks.length>0)
+   return checks.some(c=>c?.manual===true||c?.reviewRequired===true||
+     !c?.check||!automatableMathCheck(c.check));
+  return true;
+ };
+ const sourceById=new Map(criteria.map(c=>[c.id,c]));
+ if(!emptyEvidence(responses))rows=rows.map(r=>{
+  const source=sourceById.get(r.criterionId);
+  if(!source)throw new Error("Unregistered V2 evidence identity");
+  // Mathematics has the explicit checker registry needed to evaluate
+  // criterion-level authority. Other subjects retain advisory suggestions
+  // pending source-specific verified-evidence adapters.
+  const unverified=subjectId!=="mathematics" || manualOrUnknown(source);
+  return unverified?{...r,resolved:false}:r;
+ });
  const suggestedMarks=rows.reduce((n,r)=>n+r.suggestedMarks,0);
  if(!valid(suggestedMarks)||suggestedMarks>maxMarks)
   throw new Error("Subject examiner mark total mismatch");
