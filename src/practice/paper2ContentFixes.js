@@ -511,6 +511,25 @@ export const PAPER2_CONTENT_FIXES = [
   })),
 
   // -------------------------------------------------------------------------
+  // Q5V5-IQR. The displayed quartiles are rounded separately, so directly
+  // subtracting 44.9 - 24.3 gives 20.6, not the published 20.7.
+  // Interpolate before rounding the final interquartile range.
+  // -------------------------------------------------------------------------
+  {
+    id: "Q5V5-IQR", question: "p2-q5-v5", part: "d",
+    defect: "rounded quartile figures were subtracted inconsistently in the worked solution",
+    why: "unrounded ogive interpolation gives Q1=24.25 and Q3=44.944..., with IQR=20.694... ≈ 20.7",
+    patch: {
+      solution: "Find the 20th and 60th values on the cumulative-frequency curve. "
+        + "Using linear interpolation between the plotted class-boundary points gives "
+        + "Q1 = 20.5 + (20 - 14)/(30 - 14) × 10 = 24.25 and "
+        + "Q3 = 40.5 + (60 - 52)/(70 - 52) × 10 ≈ 44.944. "
+        + "Calculate the range before rounding: 44.944 - 24.25 ≈ 20.694, "
+        + "so the estimated interquartile range is 20.7 marks. "
+        + "A graph reading can vary slightly with the drawing."
+    }
+  },
+  // -------------------------------------------------------------------------
   // C13. A solution that states the same fraction twice.
   // -------------------------------------------------------------------------
   {
