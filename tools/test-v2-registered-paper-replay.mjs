@@ -27,7 +27,8 @@ const migrations=[
  "20261019194500_marking_v2_allow_ungraded_submission.sql",
  "20261019195000_marking_v2_own_exam_result_rpc.sql",
 "20261019202500_marking_v2_draft_source_fingerprints.sql",
-"20261019211000_marking_v2_physics_graph_provisional_method.sql"
+"20261019211000_marking_v2_physics_graph_provisional_method.sql",
+"20261019212000_marking_v2_internal_calibration_queue.sql"
 ];
 const db=new PGlite();
 try{
@@ -71,6 +72,13 @@ try{
   if(issues.length)sourceAudit.push({subject:paper.subject_id,paper:paper.paper_id,issues:[...new Set(issues)]});
  }
  assert.equal(totalCriteria,2118,"Registered criteria count must not silently drift");
+ const pendingReviews=(await db.query(`select count(*)::integer AS total,
+  count(*) filter(where source_matched_review)::integer AS reviewed,
+  count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
+  count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
+  from spark_grading_private.v2_calibration_queue`)).rows[0];
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:403});
+
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
  console.log("Independent source-structure QA",JSON.stringify({
   papers:papers.length,criteria:totalCriteria,sourceAuditDefects:sourceAudit.length,
