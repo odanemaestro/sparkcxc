@@ -92,16 +92,20 @@ function evidencedMethod(questionId,partId,response,methods=Q5_METHODS){
 }
 function evidencedPieReason(questionId,partId,response){
  if(partId!=="c"||!["p2-q5-v6","p2-q5-v7"].includes(questionId))return false;
- const category=questionId==="p2-q5-v6"?"car":"football";
- const degrees=questionId==="p2-q5-v6"?"135":"150";
  const a=answer(response);
  const w=response&&typeof response==="object"&&!Array.isArray(response)
   ?asText(response.working):"";
- const evidence=clean(a+" "+w).replace(/°/g,"");
- return new RegExp("\\b"+category+"\\b").test(evidence)
-  &&new RegExp("\\b"+degrees+"(?:\\s*degrees?)?\\b").test(evidence)
-  &&/\b(?:largest|greatest|biggest|most)\b/.test(evidence)
-  &&!/\b(?:or|either)\b/.test(evidence);
+ const evidence=(a+" "+w).toLowerCase();
+ const category=questionId==="p2-q5-v6"
+  ?/\bcar\b/.test(evidence):/\bfootball\b/.test(evidence);
+ const angle=questionId==="p2-q5-v6"
+  ?/\b135\b/.test(evidence):/\b150\b/.test(evidence);
+ return category&&angle&&/\b(?:largest|greatest|biggest|most)\b/.test(evidence)
+  &&!/\b(?:or|either|not|isn't|wasn't)\b/.test(evidence)
+  // Avoid awarding an unsupported reason that names a different winner.
+  &&(questionId==="p2-q5-v6"
+   ?!/\b(?:bus|train|walk)\b/.test(evidence)
+   :!/\b(?:cricket|netball|athletics)\b/.test(evidence));
 }
 
 function criterion(id,maxMarks,ok,reason){
