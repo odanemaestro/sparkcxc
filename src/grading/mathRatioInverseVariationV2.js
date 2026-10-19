@@ -5,8 +5,8 @@
  * M/A criteria: every split here is a proposal, never a publishable grade.
  */
 export const MATH_RATIO_VARIATION_SOURCES_V2=Object.freeze({
- "p2-q1-v9":Object.freeze({ratio:[2,3,5],total:6000,parts:10,unit:600,
-  largest:3000,smallest:1200,difference:1800,
+ "p2-q1-v9":Object.freeze({ratio:[2,3,4],total:5040,parts:9,unit:560,
+  largest:2240,smallest:1120,difference:1120,
   workers:8,days:15,newWorkers:12,newDays:10,
   numerator:"9/4",denominator:"5/24",fraction:"54/5"}),
  "p2-q1-v10":Object.freeze({ratio:[3,4,5],total:7200,parts:12,unit:600,
