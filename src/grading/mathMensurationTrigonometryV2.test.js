@@ -92,9 +92,9 @@ test("Q6 nearest-degree and one-decimal requirements do not grant incorrect prec
                ["p2-q6-v10","31.5","31.51","32"]];
  for(const [id,height,unrounded,angle] of towers){
   expect(grade({questionId:id,partId:"a",response:height}).suggestedMarks).toBe(1);
-  // Mathematical working with an unrounded intermediate is acceptable,
-  // but the final one-decimal response must meet the requested precision.
-  expect(grade({questionId:id,partId:"a",response:unrounded}).suggestedMarks).toBe(1);
+  // Unrounded intermediates are useful working, not a rounded final answer.
+  expect(grade({questionId:id,partId:"a",response:unrounded}).suggestedMarks).toBe(0);
+  expect(grade({questionId:id,partId:"a",response:{answer:height+" m"}}).suggestedMarks).toBe(1);
   expect(grade({questionId:id,partId:"c",response:angle}).suggestedMarks).toBe(1);
   expect(grade({questionId:id,partId:"c",response:angle+".5"}).suggestedMarks).toBe(0);
  }
@@ -137,4 +137,14 @@ test("Q6 correct substitutions do not invent extra three-mark allocations",()=>{
   expect(r.unresolvedMarks).toBe(1);
   expect(r.rubricAllocation).toBe("proposed-from-worked-solution");
  }
+});
+
+test("Q6 final trigonometric answer precision follows the student-facing instructions",()=>{
+ expect(grade({questionId:"p2-q6-v9",partId:"b",response:"57.9 m"}).suggestedMarks).toBe(1);
+ expect(grade({questionId:"p2-q6-v9",partId:"b",response:"57.90"}).suggestedMarks).toBe(0);
+ expect(grade({questionId:"p2-q6-v9",partId:"b",response:"57.92"}).suggestedMarks).toBe(0);
+ expect(grade({questionId:"p2-q6-v9",partId:"c",response:"25 degrees"}).suggestedMarks).toBe(1);
+ expect(grade({questionId:"p2-q6-v9",partId:"c",response:"25.0"}).suggestedMarks).toBe(0);
+ expect(grade({questionId:"p2-q6-v10",partId:"a",response:"31.5"}).suggestedMarks).toBe(1);
+ expect(grade({questionId:"p2-q6-v10",partId:"a",response:"31.51"}).suggestedMarks).toBe(0);
 });
