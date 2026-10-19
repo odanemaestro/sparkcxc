@@ -35,17 +35,28 @@ export function mapSocialStudiesPaper2({questions=[],responses:answers={}}={}){
  return finish(criteria,responses);
 }
 export function mapMathematicsPaper2({questions=[],answers={}}={}){
- if(!Array.isArray(questions)||!answers||typeof answers!=="object"||Array.isArray(answers))throw new TypeError("Invalid Mathematics input");
- const criteria=[],responses={};
+ if(!Array.isArray(questions)||!answers||typeof answers!=="object"||Array.isArray(answers))
+  throw new TypeError("Invalid Mathematics input");
+ const criteria=[],responses={},seenQuestions=new Set();
  for(const q of questions){
-  if(!good(q?.question_id)||!Array.isArray(q.parts)||!q.parts.length)throw new TypeError("Invalid Mathematics question");
+  if(!good(q?.question_id)||seenQuestions.has(q.question_id)||
+   !Array.isArray(q.parts)||!q.parts.length)
+   throw new TypeError("Invalid or duplicate Mathematics question");
+  seenQuestions.add(q.question_id);
   const partAnswers=answers[q.question_id];
+  let partTotal=0;
   for(const p of q.parts){
-   if(!good(p?.id)||!valid(p?.marks))throw new TypeError("Invalid Mathematics part");
+   if(!good(p?.id)||!Number.isSafeInteger(p?.marks)||p.marks<=0)
+    throw new TypeError("Invalid Mathematics part");
    const id=q.question_id+"::"+p.id;
-   criteria.push({id,maxMarks:p.marks,acceptedPhrases:[],kind:"structured",sourcePartId:id,sourceFormat:"mathematics"});
-   responses[id]=partAnswers&&typeof partAnswers==="object"&&!Array.isArray(partAnswers)&&Object.hasOwn(partAnswers,p.id)?partAnswers[p.id]:null;
+   criteria.push({id,maxMarks:p.marks,acceptedPhrases:[],kind:"structured",
+    sourcePartId:id,sourceFormat:"mathematics"});
+   responses[id]=partAnswers&&typeof partAnswers==="object"&&!Array.isArray(partAnswers)
+    &&Object.hasOwn(partAnswers,p.id)?partAnswers[p.id]:null;
+   partTotal+=p.marks;
   }
+  if(q.marks!==undefined&&(!Number.isSafeInteger(q.marks)||q.marks!==partTotal))
+   throw new TypeError("Mathematics question mark total mismatch");
  }
  return finish(criteria,responses);
 }
