@@ -206,3 +206,17 @@ test("Q10 vector component differences may be written in distributed half form",
   }
  }
 });
+
+test("Q10 matrix-system setup requires more than copying the RHS from the prompt",()=>{
+ for(const id of ["p2-q10-v1","p2-q10-v2","p2-q10-v3"]){
+  const source=SOURCES[id],rhs="("+source.rhs.join(",")+")";
+  const answer="x="+source.solution[0]+", y="+source.solution[1];
+  const copied=check(id,"d",answer,rhs);
+  expect(copied.criteria[0].candidateMarks).toBeNull();
+  expect(copied.suggestedMarks).toBe(2);
+  const setUp=check(id,"d",answer,"M(x,y)="+rhs);
+  expect(setUp.criteria[0].candidateMarks).toBe(1);
+  expect(setUp.suggestedMarks).toBe(3);
+  expect(setUp.publishable).toBe(false);
+ }
+});
