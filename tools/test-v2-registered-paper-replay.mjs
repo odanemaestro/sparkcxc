@@ -28,7 +28,8 @@ const migrations=[
  "20261019195000_marking_v2_own_exam_result_rpc.sql",
 "20261019202500_marking_v2_draft_source_fingerprints.sql",
 "20261019211000_marking_v2_physics_graph_provisional_method.sql",
-"20261019212000_marking_v2_internal_calibration_queue.sql"
+"20261019212000_marking_v2_internal_calibration_queue.sql",
+"20261019214000_marking_v2_math_original_v1_q1_draft_calibration.sql"
 ];
 const db=new PGlite();
 try{
@@ -77,7 +78,7 @@ try{
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
- assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:403});
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:399});
 
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
  console.log("Independent source-structure QA",JSON.stringify({
