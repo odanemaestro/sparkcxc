@@ -1,5 +1,6 @@
 import {evaluateExistingSubjectPaper2V2 as examine} from "./serverPaper2V2SubjectEngine";
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
+import {check,checkMatrix} from "../practice/cxcMarking/checkers";
 import physics1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
 import itData from "../informationTechnology/practice/itPaper2Data.json";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
@@ -228,4 +229,34 @@ test("Mathematics nested manual and unknown source checks never authorise final 
   expect(part.resolved).toBe(false);
   expect(result.canPublishFinalScore).toBe(false);
  }
+});
+
+
+test("matrix scalar-times-inverse accepts equivalent rational entries, not unrelated numbers",()=>{
+ const inverse={value:[[5/7,-3/7],[-1/7,2/7]],tolerance:1e-8};
+ for(const answer of [
+  "(1/7)[[5,-3],[-1,2]]",
+  "M^-1 = (1/7)[[5,-3],[-1,2]]",
+  "[[5/7,-3/7],[-1/7,2/7]]",
+  "5/7,-3/7,-1/7,2/7"
+ ]) expect(checkMatrix(answer,inverse).ok).toBe(true);
+ for(const wrong of [
+  "(1/8)[[5,-3],[-1,2]]",
+  "(1/7)[[5,-3],[-2,1]]",
+  "(1/7)[[5,-3],[-1,2]] OR [[1,0],[0,1]]",
+  "The correct answer has entries 5, -3, -1 and 2.",
+  "[[5,-3],[-1,2]]"
+ ]) expect(checkMatrix(wrong,inverse).ok).toBe(false);
+ const product={value:[[8,4],[4,9]]};
+ expect(checkMatrix("[[8,4],[4,9]]",product).ok).toBe(true);
+ expect(checkMatrix("8,4,4,9",product).ok).toBe(true);
+ expect(checkMatrix("8,4,9,4",product).ok).toBe(false);
+});
+test("exact lowest-terms fraction cannot be replaced by a decimal or unreduced value",()=>{
+ const exact={type:"fraction",value:9/5,requireFraction:true,simplified:true};
+ expect(check("9/5",exact).ok).toBe(true);
+ expect(check("1 4/5",exact).ok).toBe(true);
+ expect(check("1.8",exact).ok).toBe(false);
+ expect(check("18/10",exact).ok).toBe(false);
+ expect(check("9/6",exact).ok).toBe(false);
 });
