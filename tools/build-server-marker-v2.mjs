@@ -16,5 +16,7 @@ await build({
 });
 const file=fs.readFileSync(outfile);
 const checksum=createHash("sha256").update(file).digest("hex");
-fs.writeFileSync("supabase/functions/_shared/server-marker-v2.sha256",checksum+"\n");
+fs.writeFileSync("supabase/functions/_shared/server-marker-v2.sha256",checksum+"\\n");
+fs.writeFileSync("supabase/functions/_shared/server-marker-v2-checksum.mjs",
+ "export const BUNDLE_SHA256="+JSON.stringify(checksum)+";\\n");
 console.log("Built private nine-subject V2 marker",file.length,"bytes",checksum.slice(0,16));
