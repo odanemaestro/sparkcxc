@@ -56,6 +56,12 @@ jobs:
       - name: Verify complete V2 activation, worker leases and score boundaries
         run: node tools/test-marking-v2-release-gates.mjs
 
+      - name: Bundle nine-subject deterministic server V2 examiner
+        run: |
+          npm run build:marker:v2
+          node --check supabase/functions/_shared/server-marker-v2.mjs
+          node --input-type=module -e "import('./supabase/functions/_shared/server-marker-v2.mjs').then(x => { if(typeof x.evaluateExistingSubjectPaper2V2 !== 'function') process.exit(1) })"
+
       - name: Upload verified server marking bundle
         uses: actions/upload-artifact@v4
         with:
@@ -63,6 +69,8 @@ jobs:
           path: |
             supabase/functions/_shared/server-marker.mjs
             supabase/functions/_shared/server-marker.sha256
+            supabase/functions/_shared/server-marker-v2.mjs
+            supabase/functions/_shared/server-marker-v2.sha256
           if-no-files-found: error
           retention-days: 7
 
