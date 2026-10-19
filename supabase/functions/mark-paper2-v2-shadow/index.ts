@@ -1,3 +1,4 @@
+import { evaluateV2ShadowDiagnostics } from "./evaluator.js";
 import { createClient } from "npm:@supabase/supabase-js@2.57.0";
 
 /**
@@ -45,12 +46,14 @@ Deno.serve(async(req:Request)=>{
  }
  if(!Number.isSafeInteger(total)||total<=0||total>1000)
   return Response.json({status:"invalid-server-ceiling",processed:0},{status:500});
- // All criteria remain unresolved until independently reconciled.
- const {data:accepted,error:finishError}=await client.rpc("spark_v2_finish_shadow_job",{
-  p_job_id:fields.jobId,p_lease_token:fields.leaseToken,p_reviewed_items:criteria.length
+ const diagnostics=evaluateV2ShadowDiagnostics({criteria,responses});
+ if(diagnostics.maxMarks!==total)throw new Error("Rubric total mismatch");
+ // Candidate evidence is advisory and never counts as confirmed credit.
+ const {data:accepted,error:finishError}=await client.rpc("spark_v2_finish_shadow_job_with_advisory",{
+  p_job_id:fields.jobId,p_lease_token:fields.leaseToken,p_reviewed_items:criteria.length,p_candidates:diagnostics.candidates
  });
  if(finishError||accepted!==true)
   return Response.json({status:"lease-lost",processed:0},{status:409});
  return Response.json({status:"provisional",processed:1,
-  confirmedMarks:0,unresolvedMarks:total,canPublishFinalScore:false});
+  confirmedMarks:0,unresolvedMarks:total,candidateParts:diagnostics.candidateParts,candidateMarks:diagnostics.candidateMarks,canPublishFinalScore:false});
 });
