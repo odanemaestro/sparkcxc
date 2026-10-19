@@ -34,8 +34,11 @@ describe.each(originalIds)("Q6 assembled paper V2 source audit %s",id=>{
  });
  test("unrelated and competing answers fail closed",()=>{
   for(const part of q.parts){
-   for(const answer of ["wrong","",part.answer+" or incorrect",
-    "-"+part.answer,"NaN","Infinity"]){
+   const wrongAnswers=id==="p2-q6-v4"&&part.id==="d"
+    ?["wrong","",part.answer+" or incorrect","not four times",
+      "twice as large because radius doubles","NaN","Infinity"]
+    :["wrong","",part.answer+" or incorrect","-"+part.answer,"NaN","Infinity"];
+   for(const answer of wrongAnswers){
     expect(grade({questionId:id,partId:part.id,response:{answer}}).suggestedMarks).toBe(0);
    }
   }
