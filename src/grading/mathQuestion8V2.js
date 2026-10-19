@@ -91,15 +91,21 @@ function unorderedPairs(input,expected){
   new Set(pairs.map(coordString)).size===pairs.length&&
   expected.every(e=>pairs.some(p=>samePair(p,e)));
 }
-function rootsPair(input,expected,precision=2){
- const source=asText(input).replace(/[−–—]/g,"-").replace(/\bx\s*=\s*/gi,"")
-  .replace(/\b(?:and|or)\b/gi,",");
- if(/\bor\b/i.test(asText(input)))return false;
- const parts=source.split(/[;,]/).map(s=>s.trim()).filter(Boolean);
- if(parts.length!==expected.length)return false;
- const nums=parts.map(number);
- return nums.every(x=>x!==null)&&nums.every((x,i)=>parts[i].match(/\.\d+$/)?.[0].length===precision+1)
-  &&expected.every(e=>nums.some(n=>near(n,e,0.0001)));
+function rootAccuracy(input,expected,precision=2){
+ // Accept two explicit, separately rounded roots. Distinct source roots
+ // have independent A1 candidates: one incorrect root must not erase
+ // evidence for the other. Reject duplicated roots or extra guesses.
+ const source=asText(input).trim().replace(/[−–—]/g,"-")
+  .replace(/\bx\s*=\s*/gi,"").replace(/\band\b/gi,",");
+ if(/\b(?:or|either|maybe)\b/i.test(input))
+  return expected.map(()=>false);
+ const parts=source.split(/[;,]/).map(s=>s.trim());
+ if(parts.length!==expected.length||parts.some(s=>!new RegExp(
+  "^[+-]?(?:\\d+)\\.\\d{"+precision+"}$").test(s)))
+  return expected.map(()=>false);
+ const values=parts.map(Number);
+ if(new Set(values).size!==values.length)return expected.map(()=>false);
+ return expected.map(e=>values.some(n=>near(n,e,0.0001)));
 }
 function equationsList(answer,source){
  const raw=asText(answer).replace(/[≤≥]/g,x=>x==="≤"?"<=":">=")
@@ -190,8 +196,7 @@ function linearCriteria(source,partId,response){
 function intersectionCriteria(source,partId,response){
  const a=field(response,"answer");
  if(partId==="a"){
-  const correct=rootsPair(a,source.roots);
-  const each=correct?source.roots.map(()=>true):[false,false];
+  const each=rootAccuracy(a,source.roots);
   return [unresolved("M1"),unresolved("M2"),
    vote("M3",step(response,"sqrt("+source.discriminant+")"),
     "correct-quadratic-discriminant-root"),
