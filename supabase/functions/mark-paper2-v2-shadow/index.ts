@@ -1,4 +1,4 @@
-import { evaluateV2ShadowDiagnostics } from "./evaluator.js";
+import { evaluateExistingSubjectPaper2V2 } from "./server-marker-v2.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2.57.0";
 
 /**
@@ -46,14 +46,29 @@ Deno.serve(async(req:Request)=>{
  }
  if(!Number.isSafeInteger(total)||total<=0||total>1000)
   return Response.json({status:"invalid-server-ceiling",processed:0},{status:500});
- const diagnostics=evaluateV2ShadowDiagnostics({criteria,responses});
- if(diagnostics.maxMarks!==total)throw new Error("Rubric total mismatch");
- // Candidate evidence is advisory and never counts as confirmed credit.
- const {data:accepted,error:finishError}=await client.rpc("spark_v2_finish_shadow_job_with_advisory",{
-  p_job_id:fields.jobId,p_lease_token:fields.leaseToken,p_reviewed_items:criteria.length,p_candidates:diagnostics.candidates
- });
+ // The bundle uses the same subject-specific deterministic graders as SPARK.
+ // Registered rubric and submitted responses come only from the private queue.
+ let examination;
+ try {
+  examination=evaluateExistingSubjectPaper2V2({
+   subjectId:fields.subjectId,paperId:fields.paperId,criteria,responses
+  });
+ } catch {
+  // Never turn a scoring exception into a zero, and never expose script text.
+  return Response.json({status:"examiner-review-required",processed:0},{status:503});
+ }
+ if(examination.maxMarks!==total || examination.examinedParts!==criteria.length)
+  return Response.json({status:"source-reconciliation-error",processed:0},{status:503});
+ // A locally completed practice estimate is not an independently verified grade.
+ const {data:accepted,error:finishError}=await client.rpc(
+  "spark_v2_finish_shadow_subject_job",{
+   p_job_id:fields.jobId,p_lease_token:fields.leaseToken,
+   p_reviewed_items:examination.examinedParts,p_rows:examination.rows
+  });
  if(finishError||accepted!==true)
   return Response.json({status:"lease-lost",processed:0},{status:409});
  return Response.json({status:"provisional",processed:1,
-  confirmedMarks:0,unresolvedMarks:total,candidateParts:diagnostics.candidateParts,candidateMarks:diagnostics.candidateMarks,canPublishFinalScore:false});
+  examinedParts:examination.examinedParts,
+  suggestedMarks:examination.suggestedMarks,
+  confirmedMarks:0,unresolvedMarks:total,canPublishFinalScore:false});
 });
