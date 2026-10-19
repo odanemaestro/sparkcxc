@@ -109,9 +109,18 @@ function physics(rows,responses){
    .reduce((n,x)=>n+x.earned,0);
   const source=sourceMarking(row);
   const response=read(responses,row.id);
+  // Plotting, axes, scales and drawn best-fit lines require authenticated
+  // graph artefact evaluation. A text answer cannot earn a graph mark.
+  // Existing source 'manual' graph criteria are NOT independent proof, so
+  // leave these marks unresolved rather than publish unverified credit.
+  const manualGraph=source.responseType==="graph" &&
+    source.criteria?.some(criterion=>criterion.manual===true);
   const resolved=blank(response) ||
-   (source.criteria?.length>0&&source.criteria.every(c=>c.check&&c.check.type==="value"));
-  return cap(row,grade,"existing-physics-rubric-checks",resolved);
+   (!manualGraph&&source.criteria?.length>0&&
+    source.criteria.every(c=>c.check&&c.check.type==="value"));
+  return cap(row,manualGraph?0:grade,
+   manualGraph?"physics-graph-requires-artifact-verification":"existing-physics-rubric-checks",
+   resolved);
  });
 }
 function it(rows,responses){
