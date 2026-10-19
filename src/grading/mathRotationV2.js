@@ -27,7 +27,7 @@ const report=(questionId,partId,criteria)=>({
  suggestedMarks:criteria.reduce((v,c)=>v+(c.candidateMarks??0),0),
  unresolvedMarks:criteria.reduce((v,c)=>v+(c.candidateMarks===null?c.maxMarks:0),0)
 });
-const pair=String.raw`\\(\\s*([+-]?\\d+(?:\\.\\d+)?)\\s*,\\s*([+-]?\\d+(?:\\.\\d+)?)\\s*\\)`;
+const pair=String.raw`\(\s*([+-]?\d+(?:\.\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?)\s*\)`;
 function parsePoint(raw){
  const m=new RegExp("^\\s*"+pair+"\\s*$").exec(text(raw));
  if(!m)return null;
