@@ -37,7 +37,7 @@ function wrap(partId,method,accuracy,accuracyReason){
  const criteria=[evidence("M1",method,"method-from-source-equation"),
   evidence("A1",accuracy,accuracyReason)];
  return {sourcePart:SOURCE_ID+"::"+partId,authority:"advisory",
-  publishable:false,criteria,
+  publishable:false,rubricAllocation:"proposed-from-worked-solution",criteria,
   suggestedMarks:criteria.reduce((s,c)=>s+(c.candidateMarks??0),0),
   unresolvedMarks:criteria.reduce((s,c)=>s+(c.candidateMarks===null?1:0),0)};
 }
