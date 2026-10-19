@@ -55,8 +55,8 @@ const number=x=>{
  return Number.isFinite(value)&&value>=0&&value<=1e9?value:null;
 };
 function exactStep(response,expressions){
- const text=norm(work(response));
- if(!text||/\b(?:or|either)\b/.test(work(response)))return false;
+ const text=norm(work(response)).replace(/\(22\/7\)/g,"22/7");
+ if(!text||/\b(?:or|either)\b/i.test(work(response)))return false;
  const tokens=text.split(/[;=\n]/).filter(Boolean);
  return expressions.some(pattern=>tokens.includes(norm(pattern)));
 }
