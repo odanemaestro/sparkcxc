@@ -78,7 +78,7 @@ test("Social Studies concept list passes through original criterion logic",()=>{
  expect(r.canPublishFinalScore).toBe(false);
 });
 test("POB entire original paper preserves source ceiling and part identities",()=>{
- const rows=POB_PAPER2_ORIGINAL_01.questions.flatMap(q=>q.parts.map(p=>
+ const rows=POB_PAPER2_ORIGINAL_01.questions.flatMap(q=>q.items.map(p=>
   row("POB-SPARK-P2-ORIGINAL-01-Q"+q.number+"::"+p.id,p.marks,{
    criteria:p.criteria,modelAnswer:p.modelAnswer
   })));
