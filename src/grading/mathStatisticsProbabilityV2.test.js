@@ -237,3 +237,17 @@ test("Q5 v5 worked IQR keeps full precision until final rounding",()=>{
  expect(part.solution).toContain("20.694");
  expect(part.solution).not.toContain("44.9 - 24.3 = 20.7");
 });
+
+
+test("duplicating a final probability in working is not a second method",()=>{
+ const cases=[["p2-q5-v3","d","9/34","(34-25)/34"],
+  ["p2-q5-v8","a","5/12","5/(5+3+4)"],
+  ["p2-q5-v9","a","4/15","4/(4+6+5)"]];
+ for(const [questionId,partId,correct,method] of cases){
+  const copied=grade({questionId,partId,response:{answer:correct,working:correct}});
+  expect(copied.criteria.map(c=>c.candidateMarks)).toEqual([null,1]);
+  const explained=grade({questionId,partId,response:{answer:correct,working:method}});
+  expect(explained.criteria.map(c=>c.candidateMarks)).toEqual([1,1]);
+  expect(explained.publishable).toBe(false);
+ }
+});
