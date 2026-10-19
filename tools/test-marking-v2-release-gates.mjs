@@ -38,7 +38,8 @@ const migrations=[
 "20261019225500_marking_v2_math_original_v1_q2_q4_q5_drafts.sql",
 "20261019233000_marking_v2_math_original_v1_q6_cylinder_drafts.sql",
 "20261019234500_marking_v2_math_original_v1_q3_q7_q10_drafts.sql",
-"20261020001000_marking_v2_math_original_v2_q1_q2_source_drafts.sql"
+"20261020001000_marking_v2_math_original_v2_q1_q2_source_drafts.sql",
+"20261020002500_marking_v2_math_inverse_matrix_accuracy_draft.sql"
 ];
 async function reject(sql,params=[],pattern=/approval|attestation|permission|Forbidden|lease|rubric|checksum/i){
  await assert.rejects(db.query(sql,params),pattern);
@@ -111,6 +112,15 @@ try{
  lateral jsonb_array_elements(r.criteria)c
  where r.subject_id='mathematics' and r.paper_id='original-v1'`)).rows[0];
  assert.deepEqual(completeV1,{parts:45,detailed:45,max_marks:100});
+ const inverseCriterion=(await db.query(`SELECT c->'sourceMarking'->'criteria' AS rules
+ FROM spark_grading_private.rubrics_v2 r,
+ lateral jsonb_array_elements(r.criteria)c
+ WHERE r.subject_id='mathematics' AND r.paper_id='original-v1'
+ AND c->>'id'='p2-q10-v1::c'`)).rows[0].rules;
+ assert.equal(inverseCriterion.length,3);
+ assert.equal(inverseCriterion.find(x=>x.code==='B1')?.check?.type,'matrix');
+ assert.equal(inverseCriterion.filter(x=>x.check.type==='manual-verification').length,2,
+  'Inverse M marks cannot silently become automatic approval');
  const practiceF=(await db.query(`select count(*)::integer AS parts,
  count(*) filter(where jsonb_typeof(c->'sourceMarking'->'criteria')='array'
  and jsonb_array_length(c->'sourceMarking'->'criteria')>0)::integer as detailed
