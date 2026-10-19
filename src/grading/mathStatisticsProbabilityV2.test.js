@@ -227,3 +227,13 @@ test("graph-dependent numeric recalls remain unresolved without graph proof",()=
   }
  }
 });
+
+test("Q5 v5 worked IQR keeps full precision until final rounding",()=>{
+ const q=PAPER2_QUESTION_BANK.find(q=>q.question_id==="p2-q5-v5");
+ const part=q.parts.find(p=>p.id==="d");
+ expect(part.answer).toBe("20.7");
+ expect(part.solution).toContain("24.25");
+ expect(part.solution).toContain("44.944");
+ expect(part.solution).toContain("20.694");
+ expect(part.solution).not.toContain("44.9 - 24.3 = 20.7");
+});
