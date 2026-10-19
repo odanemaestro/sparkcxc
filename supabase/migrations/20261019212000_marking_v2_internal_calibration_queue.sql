@@ -17,8 +17,9 @@ select
    when r.subject_id='english-a'
      then 'extended-writing-evidence'
    when r.subject_id='mathematics' and
-    (jsonb_typeof(c.item->'sourceMarking'->'criteria') is distinct from 'array'
-     or jsonb_array_length(coalesce(c.item->'sourceMarking'->'criteria','[]'::jsonb))=0)
+    (case when jsonb_typeof(c.item->'sourceMarking'->'criteria')='array'
+     then jsonb_array_length(c.item->'sourceMarking'->'criteria')
+     else 0 end)=0
      then 'missing-detailed-math-allocation'
    when r.subject_id='social-studies' and
     c.item->'sourceMarking'->>'component' in ('content','organisation','organization')
