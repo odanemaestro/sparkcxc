@@ -7,6 +7,7 @@
  */
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
+import {CHECKERS} from "../practice/cxcMarking/checkers";
 import {markPhysicsPaper2} from "../physics/paper2/physicsPaper2Marking";
 import {gradeInformationTechnologyPart} from "../informationTechnology/practice/itPaper2Marking";
 import {gradeChemistryPaper2Item} from "../chemistry/practice/chemistryPaper2Grader";
@@ -58,6 +59,19 @@ const emptyEvidence=(value,depth=0)=>{
  return false;
 };
 const sourceMarking=c=>object(c.sourceMarking)?c.sourceMarking:{};
+
+const automatableMathCheck=(spec,depth=0)=>{
+ if(!object(spec)||depth>6||typeof spec.type!=="string"||
+    !Object.hasOwn(CHECKERS,spec.type))return false;
+ if(spec.type==="anyOf"||spec.type==="allOf")
+  return Array.isArray(spec.options)&&spec.options.length>0&&
+   spec.options.every(option=>automatableMathCheck(option,depth+1));
+ return true;
+};
+const automatableMathCriterion=c=>c?.provisional!==true &&
+ c?.reviewRequired!==true && c?.unresolved!==true &&
+ automatableMathCheck(c?.check);
+
 const byResult=(rows,values,method,resolved=[])=>rows.map((row,i)=>
  cap(row,values[i]??0,method,resolved[i]===true));
 
@@ -91,9 +105,7 @@ function mathematics(rows,responses){
      throw new Error("Invalid registered Mathematics mark allocation "+row.id);
    }
    return {row,part:{...part,criteria:detailed?stored:part.criteria},detailed,
-    definitive:detailed && stored.every(c=>c.provisional!==true &&
-       c.check.type!=="manual-verification" &&
-       c.check.type!=="proposed-from-worked-solution")};
+    definitive:detailed && stored.every(automatableMathCriterion)};
   });
   const responsesForQuestion=Object.fromEntries(selected.map(p=>[
     p.part.id,read(responses,p.row.id,id)===responses[id]&&object(responses[id])
