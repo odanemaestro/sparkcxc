@@ -337,7 +337,8 @@ try{
  });
  assert.equal(changedCost.rows.find(r=>r.criterionId==='p2-q1-v2::b2').suggestedMarks,2,
   'Valid ECF on incorrect prior cost should still earn Q1 method + accuracy');
- assert.equal(changedCost.canPublishFinalScore,false);
+ assert.equal(changedCost.rows.find(r=>r.criterionId==='p2-q1-v2::b2').resolved,true,
+  'Deterministic ECF may be resolved mathematically; private rubric approval still gates publication');
  const factorise=evaluateExistingSubjectPaper2V2({
   subjectId:'mathematics',paperId:'original-v2',criteria:v2Q(2),
   responses:{
