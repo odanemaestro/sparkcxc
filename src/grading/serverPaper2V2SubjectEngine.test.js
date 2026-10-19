@@ -135,3 +135,70 @@ test("Social Studies B/C essays route their registered content and organisation"
   expect(result.canPublishFinalScore).toBe(false);
  }
 });
+
+
+test("Mathematics V2 grades the registered criteria, never a different bank fallback",()=>{
+ const q=PAPER2_QUESTION_BANK.find(q=>q.question_id==="p2-q1-v1");
+ const selected=q.parts.map(p=>row(q.question_id+"::"+p.id,p.marks,{
+  answer:p.answer,criteria:p.id==="b1"?[
+   {code:"B1",kind:"B",marks:1,field:"answer",depends:[],
+    check:{type:"numeric",value:1234,tolerance:0.001}},
+   {code:"B2",kind:"B",marks:1,field:"answer",depends:[],
+    check:{type:"numeric",value:1234,tolerance:0.001}}
+  ]:null
+ }));
+ const genuineBankAnswer=example("mathematics","original-v1",selected,{
+  "p2-q1-v1::b1":{answer:"3600"}
+ });
+ const b1=genuineBankAnswer.rows.find(r=>r.criterionId==="p2-q1-v1::b1");
+ expect(b1.suggestedMarks).toBe(0);
+ expect(b1.resolved).toBe(true);
+ const registeredAnswer=example("mathematics","original-v1",selected,{
+  "p2-q1-v1::b1":{answer:"1234"}
+ });
+ const override=registeredAnswer.rows.find(r=>r.criterionId==="p2-q1-v1::b1");
+ expect(override.suggestedMarks).toBe(2);
+ expect(override.resolved).toBe(true);
+});
+test("Mathematics draft fallback marks never become final on a nonblank response",()=>{
+ const q=PAPER2_QUESTION_BANK.find(q=>q.question_id==="p2-q1-v1");
+ const criteria=q.parts.map(p=>row(q.question_id+"::"+p.id,p.marks,{
+  answer:p.answer,criteria:null
+ }));
+ const evaluation=example("mathematics","original-v1",criteria,{
+  "p2-q1-v1::a":{answer:"7",working:q.parts[0].solution}
+ });
+ const part=evaluation.rows.find(r=>r.criterionId==="p2-q1-v1::a");
+ expect(part.resolved).toBe(false);
+ expect(evaluation.canPublishFinalScore).toBe(false);
+ expect(evaluation.unresolvedMarks).toBeGreaterThanOrEqual(3);
+});
+test("Mathematics registered manual criteria require further evidence review",()=>{
+ const q=PAPER2_QUESTION_BANK.find(q=>q.question_id==="p2-q1-v1");
+ const criteria=q.parts.map(p=>row(q.question_id+"::"+p.id,p.marks,{
+  answer:p.answer,criteria:p.id==="b1"?[
+   {code:"M1",kind:"M",marks:1,field:"working",depends:[],
+    check:{type:"manual-verification",evidence:"Confirm correct method"}},
+   {code:"A1",kind:"A",marks:1,field:"answer",depends:["M1"],
+    check:{type:"numeric",value:3600,tolerance:0.01}}
+  ]:null
+ }));
+ const evaluation=example("mathematics","original-v1",criteria,{
+  "p2-q1-v1::b1":{answer:"3600",working:"4500 / 1.25"}
+ });
+ const part=evaluation.rows.find(r=>r.criterionId==="p2-q1-v1::b1");
+ expect(part.resolved).toBe(false);
+ expect(evaluation.canPublishFinalScore).toBe(false);
+});
+test("Mathematics rejects mismatched source mark sums rather than using the bank",()=>{
+ const q=PAPER2_QUESTION_BANK.find(q=>q.question_id==="p2-q1-v1");
+ const criteria=q.parts.map(p=>row(q.question_id+"::"+p.id,p.marks,{
+  answer:p.answer,criteria:p.id==="b1"?[
+   {code:"B1",kind:"B",marks:1,field:"answer",
+    check:{type:"numeric",value:3600}}
+  ]:null
+ }));
+ expect(()=>example("mathematics","original-v1",criteria,{
+  "p2-q1-v1::b1":{answer:"3600"}
+ })).toThrow(/source|allocation/i);
+});
