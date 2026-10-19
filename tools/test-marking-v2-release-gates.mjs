@@ -40,7 +40,9 @@ const migrations=[
 "20261019234500_marking_v2_math_original_v1_q3_q7_q10_drafts.sql",
 "20261020001000_marking_v2_math_original_v2_q1_q2_source_drafts.sql",
 "20261020002500_marking_v2_math_inverse_matrix_accuracy_draft.sql",
-"20261020005000_marking_v2_math_original_v2_q3_q6_drafts.sql"
+"20261020005000_marking_v2_math_original_v2_q3_q6_drafts.sql",
+"20261020010500_marking_v2_math_original_v2_q7_q8_drafts.sql",
+"20261020011500_marking_v2_math_original_v2_q9_q10_drafts.sql"
 ];
 async function reject(sql,params=[],pattern=/approval|attestation|permission|Forbidden|lease|rubric|checksum/i){
  await assert.rejects(db.query(sql,params),pattern);
@@ -77,7 +79,7 @@ try{
    count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
  assert.deepEqual(realReviewQueue,{
-   items:2118,reviewed:0,graph:4,math_missing:338
+   items:2118,reviewed:0,graph:4,math_missing:321
  });
 
  const counts=(await db.query(`select subject_id,count(*)::integer n from
@@ -92,7 +94,7 @@ try{
    lateral jsonb_array_elements(r.criteria) c
    where r.subject_id='mathematics'`)).rows[0];
  assert.equal(audited.empty_math,0);
- assert.equal(audited.detailed_math,302);
+ assert.equal(audited.detailed_math,319);
  const nextPaper=(await db.query(`SELECT
   count(*)::integer AS parts,
   count(*) filter(where jsonb_typeof(c->'sourceMarking'->'criteria')='array'
@@ -101,7 +103,17 @@ try{
   FROM spark_grading_private.rubrics_v2 r,
   lateral jsonb_array_elements(r.criteria)c
   WHERE r.subject_id='mathematics' AND r.paper_id='original-v2'`)).rows[0];
- assert.deepEqual(nextPaper,{parts:42,detailed:25,marks:100});
+ assert.deepEqual(nextPaper,{parts:42,detailed:42,marks:100});
+ const finalSource=(await db.query(`select criteria from spark_grading_private.rubrics_v2
+  where subject_id='mathematics' and paper_id='original-v2'`)).rows[0].criteria;
+ assert.equal(finalSource.length,42);
+ assert.equal(finalSource.reduce((n,c)=>n+c.maxMarks,0),100);
+ assert(finalSource.every(c=>Array.isArray(c.sourceMarking.criteria)&&
+   c.sourceMarking.criteria.length>0));
+ const priorQ9=finalSource.find(c=>c.id==='p2-q9-v2::b1');
+ assert.equal(priorQ9.sourceMarking.criteria.length,3);
+ assert.equal(priorQ9.sourceMarking.criteria[0].check.type,'reachesValue');
+
  const q3Through6=(await db.query(`SELECT
   COUNT(*)::integer AS parts,
   COUNT(*) FILTER (WHERE jsonb_typeof(c->'sourceMarking'->'criteria')='array'
