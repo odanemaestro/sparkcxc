@@ -67,3 +67,34 @@ paper maximum, and classroom marking model have been verified.
 The registration-readiness migration and service-role reporting view are live.
 No paper rubrics have been activated, no V2 source reviews have been fabricated,
 and existing student-facing scoring remains unchanged.
+
+## Source-bound criterion review pilot completed
+
+The first four AI-assisted criterion reviews were added by
+`20261020070000_marking_v2_four_source_bound_ai_criterion_reviews.sql` on the
+feature branch, then applied successfully to the private production database.
+[CI #2519](https://github.com/odanemaestro/sparkcxc/actions/runs/39343829972)
+passed after the complete registered-paper replay.
+
+Reviewed source identities:
+
+- Mathematics original-v1 `p2-q4-v1::a1`: `f(4)=15`.
+- Mathematics original-v2 `p2-q4-v2::a1`: `f(6)=13`.
+- Physics Practice 4 `phy-p2-4-q2::di`: `8 N`.
+- Physics Practice 4 `phy-p2-4-q2::dii`: `2 N`.
+
+The stored reviewer name explicitly describes GPT-6 as **nonhuman AI
+criterion QA**; no human signature or second attester is claimed. The
+criterion source hashes were recomputed and verified after deployment.
+Production totals now show **4 matching AI review records of 2,118 parts,
+2,114 pending**, zero active paper rubrics and zero verified paper rubrics.
+An attempted paper-wide activation with just the partial source reviews
+was explicitly rejected by the production approval trigger.
+
+Two other reviewed perimeter-expression candidates remain unapproved:
+the existing checker accepts algebraically equivalent but not necessarily
+simplified forms when the question says "in simplest form". This must
+be corrected and retested before recording criterion-level approval.
+Additional prose, graphical, table and dependent-method criteria still
+require authentic evidence-based calibration. These four reviews by
+themselves do not enable V2 final-score publication.
