@@ -413,14 +413,69 @@ export function checkOrdered(raw, spec) {
   return { ok, why: ok ? "correct" : "not the required values", got };
 }
 
+/**
+ * Read a numeric matrix, including the conventional scalar-times-matrix form
+ * of an inverse: (1/7)[[5,-3],[-1,2]]. Every matrix entry is interpreted
+ * positionally. A loose search for numbers in prose is not sufficient:
+ * wrong row order or an unrelated factor must NEVER obtain matrix credit.
+ */
+function readMatrix(raw, expectedRows, expectedCols) {
+  let s=String(raw??"").trim();
+  if(!s)return null;
+  // The answer may have an explicit lhs such as M^-1 = ...
+  s=s.replace(/^[A-Za-z](?:\s*\^\s*\(?\s*-?1\s*\)?)?\s*=\s*/, "").trim();
+  let scalar=1;
+  if(s.startsWith("[")===false){
+    const prefix=/^\s*(?:\(\s*([+-]?\d+(?:\.\d+)?(?:\s*\/\s*[+-]?\d+(?:\.\d+)?)?)\s*\)|([+-]?\d+(?:\.\d+)?(?:\s*\/\s*[+-]?\d+(?:\.\d+)?)?))\s*(?:[×*]\s*)?(?=\[\s*\[)/.exec(s);
+    if(!prefix)return null;
+    scalar=value(prefix[1]??prefix[2]);
+    if(scalar===null)return null;
+    s=s.slice(prefix[0].length).trim();
+  }
+  // Accept exactly [ [row entries], [row entries] ], no trailing guesses.
+  const outer=/^\[\s*((?:\[[^\[\]]*\]\s*,?\s*)+)\]$/.exec(s);
+  if(!outer)return null;
+  const rows=[...outer[1].matchAll(/\[([^\[\]]*)\]/g)].map(x=>x[1]);
+  if(rows.length!==expectedRows)return null;
+  if(outer[1].replace(/\[[^\[\]]*\]/g,"").replace(/[\s,]/g,"")!=="")return null;
+  const values=[];
+  for(const row of rows){
+    const items=row.split(",").map(x=>x.trim());
+    if(items.length!==expectedCols)return null;
+    for(const item of items){
+      if(!/^[+-]?\d+(?:\.\d+)?(?:\s*\/\s*[+-]?\d+(?:\.\d+)?)?$/.test(item))return null;
+      const n=value(item);
+      if(n===null||!Number.isFinite(n))return null;
+      values.push(n*scalar);
+    }
+  }
+  return values;
+}
 export function checkMatrix(raw, spec) {
-  const got = numberList(raw);
-  const want = spec.value.flat().map(Number);
-  const tol = toleranceFor(spec);
-  const scale = spec.scalar ? value(String(spec.scalar)) : 1;
-  const ok = got.length === want.length
-    && want.every((w, i) => near(got[i] * (got.length === want.length ? 1 : scale), w, tol));
-  return { ok, why: ok ? "correct" : "not the required matrix", got };
+  const target=spec?.value;
+  if(!Array.isArray(target)||!target.length||
+     !Array.isArray(target[0])||!target[0].length||
+     !target.every(row=>Array.isArray(row)&&row.length===target[0].length))
+    return {ok:false,why:"the mark scheme has no valid matrix",got:null};
+  const want=target.flat().map(Number);
+  if(!want.every(Number.isFinite))
+    return {ok:false,why:"the mark scheme has invalid entries",got:null};
+  const text=String(raw??"").trim();
+  let got=readMatrix(text,target.length,target[0].length);
+  // The SPARK original bank also explicitly accepts a plain row-major list.
+  // Do not allow arbitrary prose, extra answers, or a mismatched entry count.
+  if(!got && /^[+-]?[\d\s,;./+-]+$/.test(text) && !text.includes("[")){
+    const parts=text.split(/[,;]+/).map(x=>x.trim());
+    if(parts.length===want.length &&
+       parts.every(x=>/^[+-]?\d+(?:\.\d+)?(?:\s*\/\s*[+-]?\d+(?:\.\d+)?)?$/.test(x))){
+      got=parts.map(x=>value(x));
+      if(got.some(x=>x===null||!Number.isFinite(x)))got=null;
+    }
+  }
+  const tol=toleranceFor(spec);
+  const ok=Array.isArray(got)&&got.length===want.length&&
+    want.every((w,i)=>near(got[i],w,tol));
+  return {ok,why:ok?"correct":"not the required matrix",got};
 }
 
 // ---------------------------------------------------------------------------
