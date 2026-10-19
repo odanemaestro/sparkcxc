@@ -188,10 +188,21 @@ function social(rows,responses){
   const isEssay=sm.type==="essay"||sm.kind==="essay"||row.id.startsWith("ss-p2-q5")||
     row.id.startsWith("ss-p2-q6")||row.id.startsWith("ss-p2-q7");
   if(isEssay){
-   const result=gradeSocialStudiesEssay(raw,row.id);
-   if(result.status==="unavailable"||result.maxMarks!==row.maxMarks)
+   // Social Studies essays store their content and organisation marks as
+   // separate source criteria, rather than one 22-mark criterion.
+   const [essayId,component]=row.id.split("::");
+   const answer=text(read(responses,essayId,row.id));
+   const result=gradeSocialStudiesEssay(answer,essayId);
+   const suggested=component==="content"?result.contentMarks:
+     (component==="organisation"||component==="organization")?
+       result.organizationMarks:result.marks;
+   const expected=component==="content"?result.maxMarks-result.organization?.maxMarks:
+     (component==="organisation"||component==="organization")?
+       result.organization?.maxMarks:result.maxMarks;
+   if(result.status==="unavailable"||!finite(suggested)||
+      !Number.isFinite(expected)||expected!==row.maxMarks)
     throw new Error("Unmapped social studies essay");
-   return cap(row,result.marks,"existing-social-studies-essay");
+   return cap(row,suggested,"existing-social-studies-essay");
   }
   if(blank(raw))return cap(row,0,"existing-social-studies-blank");
   throw new Error("Unmapped social studies source mark "+row.id);
