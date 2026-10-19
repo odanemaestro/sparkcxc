@@ -142,6 +142,8 @@ try{
    modelAnswerReplay:modelReplay,
    caution:"Adversarial pass and canonical answer marks are not rubric approval."
  },null,2));
+ assert.deepEqual(adversarial.filter(r=>r.suggestedMarks>0),[],
+  "Unrelated nonblank text earned V2 marking credit; source-specific correction required");
 
  console.log("Source-bank replay",JSON.stringify({examined:papers.length,subjectCounts:counts,defects},null,2));
  assert.deepEqual(defects,[],"Every registered paper requires a working subject scorer, without silent fallback");
