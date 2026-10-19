@@ -47,6 +47,16 @@ const group=(criteria,separator)=> {
  }
  return groups;
 };
+const emptyEvidence=(value,depth=0)=>{
+ if(depth>10)return false;
+ if(value==null)return true;
+ if(typeof value==="string")return !value.trim();
+ if(typeof value==="boolean")return value===false;
+ if(typeof value==="number")return false;
+ if(Array.isArray(value))return value.every(x=>emptyEvidence(x,depth+1));
+ if(object(value))return Object.values(value).every(x=>emptyEvidence(x,depth+1));
+ return false;
+};
 const sourceMarking=c=>object(c.sourceMarking)?c.sourceMarking:{};
 const byResult=(rows,values,method,resolved=[])=>rows.map((row,i)=>
  cap(row,values[i]??0,method,resolved[i]===true));
@@ -251,6 +261,10 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
  }
  if(rows.length!==criteria.length||rows.reduce((n,r)=>n+r.maxMarks,0)!==maxMarks)
   throw new Error("Subject examiner criterion coverage mismatch");
+ // No substantive response on the paper is an objectively resolved zero.
+ // A heuristic prose grader must never award introduction/format marks to a
+ // blank script, even if its baseline scales are non-zero.
+ if(emptyEvidence(responses))rows=rows.map(r=>({...r,suggestedMarks:0,resolved:true}));
  const suggestedMarks=rows.reduce((n,r)=>n+r.suggestedMarks,0);
  if(!valid(suggestedMarks)||suggestedMarks>maxMarks)
   throw new Error("Subject examiner mark total mismatch");
