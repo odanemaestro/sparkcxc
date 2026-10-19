@@ -106,7 +106,10 @@ try{
    });
    adversarial.push({subject:paper.subject_id,paper:paper.paper_id,
      suggestedMarks:result.suggestedMarks,unresolvedMarks:result.unresolvedMarks,
-     authority:result.authority});
+     authority:result.authority,
+     creditedParts:result.rows.filter(row=>row.suggestedMarks>0).map(row=>({
+      criterionId:row.criterionId,marks:row.suggestedMarks,method:row.method
+     }))});
   }catch(error){
    defects.push({subject:paper.subject_id,paper:paper.paper_id,
     scenario:"adversarial",error:String(error?.message||error)});
