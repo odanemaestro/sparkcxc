@@ -155,7 +155,12 @@ export function evaluateMathQ6V2({questionId,partId,response={}}={}){
   const expected=source.answers[partId];
   const tol=source.kind==="tower"
    ?(partId==="c"?0.001:0.051):0.011;
-  const correct=value!==null&&Math.abs(value-expected)<=tol;
+  // For the tower questions the final answer must be rounded as requested.
+  // Close unrounded numerical intermediates must not masquerade as A1.
+  const rendered=norm(ans(response)).replace(/(?:m|degrees?|°)$/,"");
+  const displayedPrecision=source.kind!=="tower"||
+   (partId==="c"?/^\d+$/.test(rendered):/^\d+\.\d$/.test(rendered));
+  const correct=displayedPrecision&&value!==null&&Math.abs(value-expected)<=tol;
   const method=exactStep(response,methodPatterns(source,partId));
   criteria=[
    ...(marks>2?[unresolved("M-extra",marks-2,
