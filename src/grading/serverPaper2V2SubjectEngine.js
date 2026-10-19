@@ -104,8 +104,20 @@ function mathematics(rows,responses){
         !Number.isSafeInteger(c.marks)||c.marks<0))
      throw new Error("Invalid registered Mathematics mark allocation "+row.id);
    }
-   return {row,part:{...part,criteria:detailed?stored:part.criteria},detailed,
-    definitive:detailed && stored.every(automatableMathCriterion)};
+   const allAutomatable=detailed&&stored.every(automatableMathCriterion);
+   // The shared existing grader awards correct-answer-implied method marks on
+   // ordinary numerical tasks. That convention cannot verify a criterion
+   // explicitly marked for manual checking or drafted from a fallback.
+   // V2 must suppress that *inference* while still evaluating the independent
+   // accuracy marks and valid ECF normally.
+   const partMarkingPolicy={
+    ...part.markingPolicy,
+    correctAnswerImpliesMethod:allAutomatable &&
+     part.markingPolicy?.correctAnswerImpliesMethod!==false
+   };
+   return {row,part:{...part,criteria:detailed?stored:part.criteria,
+      markingPolicy:partMarkingPolicy},detailed,
+    definitive:allAutomatable};
   });
   const responsesForQuestion=Object.fromEntries(selected.map(p=>[
     p.part.id,read(responses,p.row.id,id)===responses[id]&&object(responses[id])
