@@ -43,7 +43,8 @@ const migrations=[
 "20261020020000_marking_v2_math_p2e_p2g_p2i_source_drafts.sql",
 "20261020030000_marking_v2_math_original_v3_v5_source_drafts.sql",
 "20261020040000_marking_v2_math_original_v6_v8_source_drafts.sql",
-"20261020050000_marking_v2_math_original_v9_v10_source_drafts.sql"
+"20261020050000_marking_v2_math_original_v9_v10_source_drafts.sql",
+"20261020060000_marking_v2_nine_subject_source_total_readiness.sql"
 ];
 const db=new PGlite();
 try{
@@ -659,6 +660,30 @@ try{
   if(issues.length)sourceAudit.push({subject:paper.subject_id,paper:paper.paper_id,issues:[...new Set(issues)]});
  }
  assert.equal(totalCriteria,2118,"Registered criteria count must not silently drift");
+ const readiness=(await db.query(`select subject_id,paper_id,source_parts,
+   expected_total_marks,source_total_marks,source_hash_matches,
+   source_matched_reviews,pending_criterion_reviews,explicit_manual_checks
+   from spark_grading_private.rubric_approval_readiness_v2`)).rows;
+ assert.equal(readiness.length,67,
+   'Independent approval view must track all registered V2 papers');
+ assert.equal(readiness.reduce((n,r)=>n+Number(r.source_parts),0),2118);
+ for(const paper of readiness){
+  assert.equal(paper.expected_total_marks,paper.source_total_marks,
+   'Source-registered paper total mismatch: '+paper.paper_id);
+  assert.equal(paper.source_hash_matches,true);
+  assert.equal(Number(paper.source_matched_reviews),0);
+  assert.equal(Number(paper.pending_criterion_reviews),paper.source_parts,
+   'An unapproved paper must preserve every independent review requirement');
+ }
+ await assert.rejects(
+  db.query(`update spark_grading_private.rubrics_v2
+   set verification_status='verified',active=true,
+   verified_by='test_not_a_review',verified_at=now()
+   where subject_id='mathematics' and paper_id='original-v1'`),
+  /Missing independent criterion-level approvals/,
+  'No fixture should approve a paper without criterion-by-criterion evidence'
+ );
+
  // CI must replay the full private staging schema, not silently audit an old
  // subset of migrations after production Mathematics reached 640/640 parts.
  const mathPaperRows=papers.filter(p=>p.subject_id==='mathematics');
