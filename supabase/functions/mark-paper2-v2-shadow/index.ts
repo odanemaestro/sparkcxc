@@ -1,6 +1,7 @@
 import { evaluateExistingSubjectPaper2V2 } from "./server-marker-v2.mjs";
 import { BUNDLE_SHA256 } from "./server-marker-v2-checksum.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2.57.0";
+import { serviceRoleJwtFromRequest } from "./worker-auth.mjs";
 
 /**
  * Server-only V2 shadow-worker entrypoint.
@@ -9,21 +10,16 @@ import { createClient } from "npm:@supabase/supabase-js@2.57.0";
  * Publishes a grade only if every registered criterion is resolved by
  * the source examiner and the private database independently validates it.
  */
-const tokenEquals=(a:string,b:string)=>{
- if(!a||!b||a.length!==b.length)return false;
- let diff=0;
- for(let i=0;i<a.length;i++)diff|=a.charCodeAt(i)^b.charCodeAt(i);
- return diff===0;
-};
 Deno.serve(async(req:Request)=>{
  if(req.method!=="POST")return new Response("Method not allowed",{status:405});
- const key=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")||"";
  const endpoint=Deno.env.get("SUPABASE_URL")||"";
- const incoming=(req.headers.get("authorization")||"").replace(/^Bearer\s+/i,"");
- // Edge Function deployment must keep verify_jwt enabled, too.
- if(!key||!endpoint||!tokenEquals(incoming,key))
-  return new Response("Unauthorized",{status:401});
- const client=createClient(endpoint,key,{
+ // The Supabase gateway MUST verify JWT signatures (verify_jwt=true).
+ // Restrict signed tokens further to service_role and this exact project.
+ const incoming=serviceRoleJwtFromRequest(req.headers.get("authorization"),endpoint);
+ if(!incoming)return new Response("Unauthorized",{status:401});
+ // Avoid comparing against a separately provisioned, potentially stale
+ // SUPABASE_SERVICE_ROLE_KEY. Use the gateway-verified caller for RPC calls.
+ const client=createClient(endpoint,incoming,{
   auth:{persistSession:false,autoRefreshToken:false}
  });
  const {data:job,error:claimError}=await client.rpc("spark_v2_claim_next_shadow_job");
