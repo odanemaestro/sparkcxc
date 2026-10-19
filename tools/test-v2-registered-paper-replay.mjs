@@ -33,7 +33,8 @@ const migrations=[
 "20261019222000_marking_v2_math_p2f_rich_artifact_drafts.sql",
 "20261019225500_marking_v2_math_original_v1_q2_q4_q5_drafts.sql",
 "20261019233000_marking_v2_math_original_v1_q6_cylinder_drafts.sql",
-"20261019234500_marking_v2_math_original_v1_q3_q7_q10_drafts.sql"
+"20261019234500_marking_v2_math_original_v1_q3_q7_q10_drafts.sql",
+"20261020001000_marking_v2_math_original_v2_q1_q2_source_drafts.sql"
 ];
 const db=new PGlite();
 try{
@@ -298,6 +299,62 @@ try{
   finalMarkPublication:false
  }));
 
+
+ // Verify the original-v2 source, not the automatically derived question bank.
+ // Exact lowest-terms fractions must not accept decimal equivalents.
+ const v2Source=(await db.query(`select criteria from spark_grading_private.rubrics_v2
+  where subject_id='mathematics' and paper_id='original-v2'
+  and active=false and verification_status='draft'`)).rows[0].criteria;
+ const v2Q=n=>v2Source.filter(c=>c.id.startsWith('p2-q'+n+'-v2::'));
+ assert.equal(v2Source.length,42);
+ for(const number of [1,2]){
+  assert.equal(v2Q(number).length,number===1?4:5);
+  assert(v2Q(number).every(c=>Array.isArray(c.sourceMarking?.criteria)
+     && c.sourceMarking.criteria.length>0));
+  assert.equal(v2Q(number).reduce((n,c)=>n+c.maxMarks,0),9);
+ }
+ const fractionGrade=answer=>evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v2',criteria:v2Q(1),
+  responses:{'p2-q1-v2::a':{answer}}
+ }).rows.find(r=>r.criterionId==='p2-q1-v2::a');
+ assert.equal(fractionGrade('1.8').suggestedMarks,0,
+  'An exact fraction cannot be replaced with decimal 1.8');
+ assert.equal(fractionGrade('18/10').suggestedMarks,0,
+  'An unreduced fraction cannot earn exact accuracy');
+ assert.equal(fractionGrade('9/5').suggestedMarks,1,
+  'Lowest-terms fraction must earn accuracy even while methods remain unresolved');
+ assert.equal(fractionGrade('1 4/5').suggestedMarks,1,
+  'Equivalent lowest-terms mixed number is a legitimate fraction');
+ const changedCost=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v2',criteria:v2Q(1),
+  responses:{
+   'p2-q1-v2::b1':{answer:'4000'},
+   'p2-q1-v2::b2':{answer:'5400',working:'4000 * 1.35 = 5400'}
+  }
+ });
+ assert.equal(changedCost.rows.find(r=>r.criterionId==='p2-q1-v2::b2').suggestedMarks,2,
+  'Valid ECF on incorrect prior cost should still earn Q1 method + accuracy');
+ assert.equal(changedCost.canPublishFinalScore,false);
+ const factorise=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v2',criteria:v2Q(2),
+  responses:{
+   'p2-q2-v2::b1':{answer:'3(m-7n)(m+7n)'},
+   'p2-q2-v2::b2':{answer:'3x^2+7x-6'},
+   'p2-q2-v2::c2':{answer:'width 6 cm, length 17 cm'}
+  }
+ });
+ assert.equal(factorise.rows.find(r=>r.criterionId==='p2-q2-v2::b1').suggestedMarks,1);
+ assert.equal(factorise.rows.find(r=>r.criterionId==='p2-q2-v2::b2').suggestedMarks,0);
+ assert.equal(factorise.rows.find(r=>r.criterionId==='p2-q2-v2::c2').resolved,false,
+  'Paired width and length must preserve source roles');
+ assert.equal(factorise.canPublishFinalScore,false);
+ console.log('Mathematics original-v2 Q1/Q2 source response checks',JSON.stringify({
+  exactFraction: fractionGrade('9/5').suggestedMarks,
+  decimalRejected: fractionGrade('1.8').suggestedMarks,
+  carriedForward: changedCost.rows.find(r=>r.criterionId==='p2-q1-v2::b2').suggestedMarks,
+  factoriseCorrect:factorise.rows.find(r=>r.criterionId==='p2-q2-v2::b1').suggestedMarks
+ }));
+
  const defects=[],counts={};
  let totalCriteria=0;
  const sourceAudit=[];
@@ -330,7 +387,7 @@ try{
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
- assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:362});
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:353});
 
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
  console.log("Independent source-structure QA",JSON.stringify({
