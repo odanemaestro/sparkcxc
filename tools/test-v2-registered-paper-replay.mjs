@@ -228,8 +228,8 @@ try{
  assert.equal(cylinderModel.maxMarks,9);
  assert.equal(cylinderModel.suggestedMarks,5,
   'Canonical cylinder answer earns five machine-verifiable marks; four manual method marks are not inferred');
- assert.equal(cylinderModel.unresolvedMarks,7,
-  'Even a fully worked canonical cylinder response retains manual verification obligations');
+ assert.equal(cylinderModel.unresolvedMarks,9,
+  'Strict V2 evidence review must leave all nine cylinder mark weights unresolved until manually verifiable methods are supported');
  assert.equal(cylinderModel.canPublishFinalScore,false);
  console.log('Mathematics original-v1 Q6 draft',JSON.stringify({
   validECF:carriedTime.suggestedMarks,
