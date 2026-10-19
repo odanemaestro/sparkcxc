@@ -176,3 +176,8 @@ The checks explicitly require position-specific and graphical evidence as `manua
 **Expected coverage after deploying the migration:** Mathematics 347/640 detailed parts (54.2%), 293 still undetailed; eight structurally complete source versions (original v1, original v2, Practice E/F/G/H/I/J). Each practice paper retains a 100-mark ceiling. These figures are derived from the authored migration and require confirmation by the private production database; **the migration has not been applied to production in this continuation**.
 
 The branch does not switch existing student grades, approve rubric criteria or release V2 scores. Genuine alternative-answer and visual artifact verification, internal source criteria reviews, and release tests remain required.
+
+
+### Production deployment confirmation: Practice E/G/I
+
+After successful [CI #2490](https://github.com/odanemaestro/sparkcxc/actions/runs/39332932964), applied `marking_v2_math_p2e_p2g_p2i_source_drafts` to the connected SPARK production Supabase database. Post-deployment SQL confirms Practice E 42/42 parts (100 marks), Practice G 42/42 (100 marks), Practice I 40/40 (100 marks); overall Mathematics 347/640 detailed parts (54.2%), 293 remaining. The 67 registered rubrics have zero source fingerprint mismatches, zero verified rubrics, and zero active rubrics. These criteria are inactive drafts, not authorized final grading. No student-facing scoring switch was performed.
