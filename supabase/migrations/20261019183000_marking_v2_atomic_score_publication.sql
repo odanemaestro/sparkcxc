@@ -61,7 +61,7 @@ begin
   if jsonb_typeof(v_row)<>'object'
     or (select count(*) from jsonb_object_keys(v_row))<>5
     or coalesce(v_row->>'criterionId','')=''
-    or coalesce(v_row->>'suggestedMarks','')!~ '^[0-9]+(\\.[0-9]{1,3})?$'
+    or coalesce(v_row->>'suggestedMarks','')!~ '^[0-9]+([.][0-9]{1,3})?$'
     or coalesce(v_row->>'maxMarks','')!~ '^[1-9][0-9]*$'
     or jsonb_typeof(v_row->'resolved') is distinct from 'boolean'
     or coalesce(v_row->>'method','')!~ '^existing-[A-Za-z0-9-]{3,80}$' then
