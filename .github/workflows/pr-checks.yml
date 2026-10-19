@@ -60,6 +60,7 @@ jobs:
         run: |
           npm run build:marker:v2
           node --check supabase/functions/_shared/server-marker-v2.mjs
+          node tools/test-v2-registered-paper-replay.mjs
           node --input-type=module -e "import('./supabase/functions/_shared/server-marker-v2.mjs').then(x => { if(typeof x.evaluateExistingSubjectPaper2V2 !== 'function') process.exit(1) })"
 
       - name: Upload verified server marking bundle
