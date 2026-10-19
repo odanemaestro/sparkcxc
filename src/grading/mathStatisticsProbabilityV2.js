@@ -47,7 +47,7 @@ function accuracy(input,expected,part,version){
   // A candidate may state the correct category and then explain why.
   // Reject competing choices instead of using a loose substring match.
   return s===expected.toLowerCase() ||
-   (s.startsWith(expected.toLowerCase()+" because ") && !/\\b(?:or|either)\\b/i.test(s));
+   (s.startsWith(expected.toLowerCase()+" because ") && !/\b(?:or|either)\b/i.test(s));
  }
  if(expected.includes("/")){
   const a=fraction(s),b=fraction(expected);
@@ -88,8 +88,8 @@ function evidencedPieReason(questionId,partId,response){
  const w=response&&typeof response==="object"&&!Array.isArray(response)
   ?asText(response.working):"";
  const evidence=(a+" "+w).toLowerCase();
- return new RegExp("\\b"+category+"\\b").test(evidence)
-  &&new RegExp("\\b"+degrees+"\\s*(?:°|degrees?)?\\b").test(evidence)
+ return new RegExp("\b"+category+"\b").test(evidence)
+  &&new RegExp("\b"+degrees+"\\s*(?:°|degrees?)?\b").test(evidence)
   &&/\b(?:largest|greatest|biggest|most)\b/.test(evidence)
   &&!/\b(?:or|either)\b/.test(evidence);
 }
