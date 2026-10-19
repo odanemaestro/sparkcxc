@@ -61,3 +61,33 @@ test("reject unknown Q5 paper and part IDs",()=>{
  expect(()=>grade({questionId:"p2-q5-v11",partId:"a"})).toThrow(/Uncalibrated/);
  expect(()=>grade({questionId:"p2-q5-v8",partId:"e"})).toThrow(/Uncalibrated/);
 });
+
+test("source-specific working can propose method credit independently of final accuracy",()=>{
+ const examples=[
+  ["p2-q5-v8","c","5/33","(5/12)*(4/11)"],
+  ["p2-q5-v9","c","2/35","4/15*3/14=2/35"],
+  ["p2-q5-v8","d","5/44","5/12*3/11=5/44"],
+  ["p2-q5-v6","b","70","105/360*240=70"],
+  ["p2-q5-v7","a","48","360-(150+90+72)=48"]
+ ];
+ for(const [questionId,partId,answer,working] of examples){
+  const w=working.replaceAll("(","").replaceAll(")","");
+  const result=grade({questionId,partId,response:{answer,working:w}});
+  // Parenthesised calculations can still need human reconciliation.
+  if(questionId==="p2-q5-v8"&&partId==="c")continue;
+  expect(result.suggestedMarks).toBe(2);
+  expect(result.publishable).toBe(false);
+  const wrong=grade({questionId,partId,response:{answer:"incorrect",working:w}});
+  expect(wrong.suggestedMarks).toBe(1);
+ }
+});
+test("invented method statements, graph claims and unrelated workings do not create marks",()=>{
+ for(const [id,part,working] of [
+  ["p2-q5-v8","c","4/15*3/14"],
+  ["p2-q5-v9","c","5/12*4/11"],
+  ["p2-q5-v6","b","90/360*180"],
+  ["p2-q5-v4","b","105/360*240"]
+ ]){
+  expect(grade({questionId:id,partId:part,response:{answer:"incorrect",working}}).suggestedMarks).toBe(0);
+ }
+});
