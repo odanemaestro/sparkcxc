@@ -355,8 +355,8 @@ try{
    'p2-q2-v2::c2':{answer:'width 6 cm, length 17 cm'}
   }
  });
- assert.equal(factorise.rows.find(r=>r.criterionId==='p2-q2-v2::b1').suggestedMarks,2,
-  'A fully correct factorisation may imply its deterministic method mark');
+ assert.equal(factorise.rows.find(r=>r.criterionId==='p2-q2-v2::b1').suggestedMarks,1,
+  'Correct factorised expression earns its accuracy mark; unsupported method inference stays provisional');
  assert.equal(factorise.rows.find(r=>r.criterionId==='p2-q2-v2::b2').suggestedMarks,0);
  assert.equal(factorise.rows.find(r=>r.criterionId==='p2-q2-v2::c2').resolved,false,
   'Paired width and length must preserve source roles');
