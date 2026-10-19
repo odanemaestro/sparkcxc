@@ -372,6 +372,13 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
   // criterion-level authority. Other subjects retain advisory suggestions
   // pending source-specific verified-evidence adapters.
   const unverified=subjectId!=="mathematics" || manualOrUnknown(source);
+  if(subjectId==="mathematics" && r.resolved && r.suggestedMarks===0){
+   const [questionId,partId]=r.criterionId.split("::");
+   const questionAnswer=responses[questionId];
+   const actual=Object.hasOwn(responses,r.criterionId)?responses[r.criterionId]:
+    object(questionAnswer)?questionAnswer[partId]:questionAnswer;
+   if(blank(actual))return r; // Missing part earns an objectively verified zero.
+  }
   return unverified?{...r,resolved:false}:r;
  });
  const suggestedMarks=rows.reduce((n,r)=>n+r.suggestedMarks,0);
