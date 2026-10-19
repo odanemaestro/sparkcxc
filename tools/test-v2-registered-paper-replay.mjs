@@ -136,7 +136,7 @@ try{
  const updatedMath=(await db.query(`select criteria from spark_grading_private.rubrics_v2
   where subject_id='mathematics' and paper_id='original-v1'`)).rows[0].criteria;
  const sourceQuestion=(n)=>updatedMath.filter(c=>c.id.startsWith('p2-q'+n+'-v1::'));
- for(const [number,total,parts] of [[2,9,5],[4,9,4],[5,9,4]]){
+ for(const [number,total,parts] of [[2,9,5],[4,9,5],[5,9,4]]){
   const source=sourceQuestion(number);
   assert.equal(source.length,parts);
   const grade=evaluateExistingSubjectPaper2V2({
