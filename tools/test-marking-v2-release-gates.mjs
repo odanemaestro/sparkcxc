@@ -33,7 +33,8 @@ const migrations=[
  "20261019202500_marking_v2_draft_source_fingerprints.sql",
 "20261019211000_marking_v2_physics_graph_provisional_method.sql",
 "20261019212000_marking_v2_internal_calibration_queue.sql",
-"20261019214000_marking_v2_math_original_v1_q1_draft_calibration.sql"
+"20261019214000_marking_v2_math_original_v1_q1_draft_calibration.sql",
+"20261019222000_marking_v2_math_p2f_rich_artifact_drafts.sql"
 ];
 async function reject(sql,params=[],pattern=/approval|attestation|permission|Forbidden|lease|rubric|checksum/i){
  await assert.rejects(db.query(sql,params),pattern);
@@ -70,7 +71,7 @@ try{
    count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
  assert.deepEqual(realReviewQueue,{
-   items:2118,reviewed:0,graph:4,math_missing:399
+   items:2118,reviewed:0,graph:4,math_missing:394
  });
 
  const counts=(await db.query(`select subject_id,count(*)::integer n from
@@ -85,7 +86,15 @@ try{
    lateral jsonb_array_elements(r.criteria) c
    where r.subject_id='mathematics'`)).rows[0];
  assert.equal(audited.empty_math,0);
- assert.equal(audited.detailed_math,241);
+ assert.equal(audited.detailed_math,246);
+ const practiceF=(await db.query(`select count(*)::integer AS parts,
+ count(*) filter(where jsonb_typeof(c->'sourceMarking'->'criteria')='array'
+ and jsonb_array_length(c->'sourceMarking'->'criteria')>0)::integer as detailed
+ from spark_grading_private.rubrics_v2 r,
+ lateral jsonb_array_elements(r.criteria)c
+ where r.subject_id='mathematics' and r.paper_id='p2f'`)).rows[0];
+ assert.deepEqual(practiceF,{parts:42,detailed:42});
+
  // An unreviewed REAL paper cannot be promoted using fabricated flags alone.
  await reject(`update spark_grading_private.rubrics_v2
    set active=true,verification_status='verified',
