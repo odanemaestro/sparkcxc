@@ -23,3 +23,27 @@ test("duplicate and invalid part marks are rejected",()=>{
  expect(()=>mapMathematicsPaper2({questions:[{question_id:"m1",parts:[{id:"a",marks:1},{id:"a",marks:2}]}]})).toThrow();
  expect(()=>mapSocialStudiesPaper2({questions:[{id:"q1",type:"structured",parts:[{marks:0}]}]})).toThrow();
 });
+
+test("Mathematics adapter rejects duplicate question IDs before marking",()=>{
+ const same={question_id:"p2-q1-v1",marks:3,parts:[{id:"a",marks:3}]};
+ expect(()=>mapMathematicsPaper2({questions:[same,same]})).toThrow(/duplicate/);
+});
+test("Mathematics adapter rejects fractional marks and incorrect source totals",()=>{
+ for(const questions of [
+  [{question_id:"p2-q1-v1",marks:3,parts:[{id:"a",marks:2}]}],
+  [{question_id:"p2-q1-v1",marks:3,parts:[{id:"a",marks:1.5},{id:"b",marks:1.5}]}],
+  [{question_id:"p2-q1-v1",marks:3,parts:[{id:"a",marks:0},{id:"b",marks:3}]}],
+  [{question_id:"p2-q1-v1",marks:3,parts:[{id:"a",marks:4}]}]
+ ])expect(()=>mapMathematicsPaper2({questions})).toThrow();
+});
+test("Mathematics adapter preserves nested response evidence and exact source ceiling",()=>{
+ const original={question_id:"p2-q7-v5",marks:10,
+  parts:[{id:"a",marks:2},{id:"b",marks:4},{id:"c",marks:2},{id:"d",marks:2}]};
+ const response={answer:"7",working:"formula from source"};
+ const converted=mapMathematicsPaper2({questions:[original],
+  answers:{"p2-q7-v5":{b:response}}});
+ expect(converted.criteria.reduce((s,c)=>s+c.maxMarks,0)).toBe(10);
+ expect(converted.responses["p2-q7-v5::b"]).toEqual(response);
+ expect(converted.responses["p2-q7-v5::a"]).toBeNull();
+ expect(converted.criteria.every(c=>c.acceptedPhrases.length===0)).toBe(true);
+});
