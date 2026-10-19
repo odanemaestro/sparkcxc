@@ -253,6 +253,11 @@ try{
  assert.equal(pending.status,"queued");
  await db.query("select set_config('test.user_id','',false)");
 
+ // Isolate the pending Mathematics queue fixture so this next claim
+ // selects the graph test attempt, not an older unrelated synthetic job.
+ await db.query("update spark_grading_private.marking_jobs_v2 set status='failed' where attempt_id=$1",
+  [pendingAttempt]);
+
  // A separate, SYNTHETIC Physics GRAPH fixture proves the production RPC
  // accepts unresolved graph evidence but will never convert an unverified
  // plot, axes, or line into confirmed final marks.
