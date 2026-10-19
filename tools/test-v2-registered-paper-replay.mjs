@@ -218,8 +218,10 @@ try{
   }
  });
  assert.equal(cylinderModel.maxMarks,9);
- assert(cylinderModel.suggestedMarks>=7 &&
-  cylinderModel.suggestedMarks<=9,'Canonical cylinder model must receive expected bounded marks');
+ assert.equal(cylinderModel.suggestedMarks,5,
+  'Canonical cylinder answer earns five machine-verifiable marks; four manual method marks are not inferred');
+ assert.equal(cylinderModel.unresolvedMarks,7,
+  'Even a fully worked canonical cylinder response retains manual verification obligations');
  assert.equal(cylinderModel.canPublishFinalScore,false);
  console.log('Mathematics original-v1 Q6 draft',JSON.stringify({
   validECF:carriedTime.suggestedMarks,
