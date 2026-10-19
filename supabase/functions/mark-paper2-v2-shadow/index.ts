@@ -1,11 +1,13 @@
 import { evaluateExistingSubjectPaper2V2 } from "./server-marker-v2.mjs";
+import { BUNDLE_SHA256 } from "./server-marker-v2-checksum.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2.57.0";
 
 /**
  * Server-only V2 shadow-worker entrypoint.
  * No browser submission, rubric text or scores accepted as input.
  * It handles at most one server-verified paper per invocation.
- * Never writes to spark_exam_attempts or publishes a grade.
+ * Publishes a grade only if every registered criterion is resolved by
+ * the source examiner and the private database independently validates it.
  */
 const tokenEquals=(a:string,b:string)=>{
  if(!a||!b||a.length!==b.length)return false;
@@ -59,16 +61,16 @@ Deno.serve(async(req:Request)=>{
  }
  if(examination.maxMarks!==total || examination.examinedParts!==criteria.length)
   return Response.json({status:"source-reconciliation-error",processed:0},{status:503});
- // A locally completed practice estimate is not an independently verified grade.
- const {data:accepted,error:finishError}=await client.rpc(
-  "spark_v2_finish_shadow_subject_job",{
+ const {data:completed,error:finishError}=await client.rpc(
+  "spark_v2_complete_subject_job",{
    p_job_id:fields.jobId,p_lease_token:fields.leaseToken,
-   p_reviewed_items:examination.examinedParts,p_rows:examination.rows
+   p_rows:examination.rows,p_bundle_sha256:BUNDLE_SHA256
   });
- if(finishError||accepted!==true)
+ if(finishError||!completed||completed.status==="stale-lease")
   return Response.json({status:"lease-lost",processed:0},{status:409});
- return Response.json({status:"provisional",processed:1,
+ return Response.json({status:completed.status,processed:1,
   examinedParts:examination.examinedParts,
-  suggestedMarks:examination.suggestedMarks,
-  confirmedMarks:0,unresolvedMarks:total,canPublishFinalScore:false});
+  score:completed.score,maxMarks:completed.maxMarks,
+  unresolvedMarks:completed.unresolvedMarks,
+  canPublishFinalScore:completed.status==="verified"});
 });
