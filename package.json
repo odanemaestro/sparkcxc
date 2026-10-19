@@ -18,7 +18,8 @@
     "audit:physics-resources": "node tools/physics-resources/validate-content.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "build:marker": "node tools/build-server-marker.mjs",
-    "test:marking-db": "node tools/test-marking-database.mjs"
+    "test:marking-db": "node tools/test-marking-database.mjs",
+    "build:marker:v2": "node tools/build-server-marker-v2.mjs"
   },
   "browserslist": {
     "production": [
