@@ -30,7 +30,8 @@ const migrations=[
 "20261019211000_marking_v2_physics_graph_provisional_method.sql",
 "20261019212000_marking_v2_internal_calibration_queue.sql",
 "20261019214000_marking_v2_math_original_v1_q1_draft_calibration.sql",
-"20261019222000_marking_v2_math_p2f_rich_artifact_drafts.sql"
+"20261019222000_marking_v2_math_p2f_rich_artifact_drafts.sql",
+"20261019225500_marking_v2_math_original_v1_q2_q4_q5_drafts.sql"
 ];
 const db=new PGlite();
 try{
@@ -129,6 +130,55 @@ try{
  }
  assert.equal(p2fRich.canPublishFinalScore,false);
 
+
+ // Replay genuine original-v1 Q2, Q4 and Q5 calibrated source identities.
+ // These tests validate methods and bounds, NOT independent scheme approval.
+ const updatedMath=(await db.query(`select criteria from spark_grading_private.rubrics_v2
+  where subject_id='mathematics' and paper_id='original-v1'`)).rows[0].criteria;
+ const sourceQuestion=(n)=>updatedMath.filter(c=>c.id.startsWith('p2-q'+n+'-v1::'));
+ for(const [number,total,parts] of [[2,9,5],[4,9,4],[5,9,4]]){
+  const source=sourceQuestion(number);
+  assert.equal(source.length,parts);
+  const grade=evaluateExistingSubjectPaper2V2({
+   subjectId:'mathematics',paperId:'original-v1',
+   criteria:source,responses:{}
+  });
+  assert.equal(grade.maxMarks,total);
+  assert.equal(grade.suggestedMarks,0);
+  assert(source.every(c=>Array.isArray(c.sourceMarking.criteria)&&
+   c.sourceMarking.criteria.length>0));
+ }
+ const algebraWrong=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v1',criteria:sourceQuestion(2),
+  responses:{'p2-q2-v1::a':{answer:'2xy^4'}}
+ });
+ assert.equal(algebraWrong.rows.find(r=>r.criterionId==='p2-q2-v1::a').suggestedMarks,0);
+ const perimeter=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v1',criteria:sourceQuestion(2),
+  responses:{'p2-q2-v1::c1':{answer:'8w+8'},
+   'p2-q2-v1::c2':{answer:'width 4.5 cm, length 17.5 cm'}}
+ });
+ assert.equal(perimeter.rows.find(r=>r.criterionId==='p2-q2-v1::c1').suggestedMarks,1);
+ assert.equal(perimeter.rows.find(r=>r.criterionId==='p2-q2-v1::c2').resolved,false);
+ assert.equal(perimeter.canPublishFinalScore,false);
+ const functions=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v1',criteria:sourceQuestion(4),
+  responses:{'p2-q4-v1::a1':{answer:'15'}}
+ });
+ assert.equal(functions.rows.find(r=>r.criterionId==='p2-q4-v1::a1').suggestedMarks,1);
+ const table=evaluateExistingSubjectPaper2V2({
+  subjectId:'mathematics',paperId:'original-v1',criteria:sourceQuestion(5),
+  responses:{'p2-q5-v1::c':{answer:'4, 12, 24, 40'}}
+ });
+ assert.equal(table.rows.find(r=>r.criterionId==='p2-q5-v1::c').resolved,false);
+ assert.equal(table.canPublishFinalScore,false);
+ console.log("Mathematics original-v1 Q2/Q4/Q5",JSON.stringify({
+  wrongAlgebra:algebraWrong.suggestedMarks,
+  expressionMarks:perimeter.rows.find(r=>r.criterionId==='p2-q2-v1::c1').suggestedMarks,
+  functionsValue:functions.rows.find(r=>r.criterionId==='p2-q4-v1::a1').suggestedMarks,
+  structuredTableUnresolved:table.rows.find(r=>r.criterionId==='p2-q5-v1::c').resolved===false
+ }));
+
  const defects=[],counts={};
  let totalCriteria=0;
  const sourceAudit=[];
@@ -161,7 +211,7 @@ try{
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
- assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:394});
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:0,graph:4,math_missing:383});
 
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
  console.log("Independent source-structure QA",JSON.stringify({
