@@ -161,3 +161,57 @@ test("the recommendation outcome records completion without converting provision
   activityKey:"paper2:practice",percent:86});
  expect(supabase.rpc.mock.calls[1][1].p_percent).toBe(86);
 });
+
+test("advisory Maths V2 metadata cannot be relabelled verified through provisional false",()=>{
+ for(const override of [
+  {authority:"advisory"},
+  {marking_authority:"advisory"},
+  {rubricAllocation:"proposed-from-worked-solution"},
+  {rubric_allocation:"proposed-from-worked-solution"},
+  {scorePublicationAllowed:false},
+  {markTotalsIncludeFollowThrough:false}
+ ]){
+  const result=preparePaper2ScorePublication({
+   subjectId:"chemistry",paperId:"02",score:7,maxScore:10,percent:70,
+   metadata:{...details,...override,spark_scoring_status:"verified",
+    provisional:false,assessed_marks:7},
+   provisional:false,unresolvedMarks:0,assessedMarks:7
+  });
+  expect(result.canPublishFinalScore).toBe(false);
+  expect(result.score).toBeNull();
+  expect(result.percent).toBeNull();
+  expect(result.metadata.assessed_marks).toBeNull();
+  expect(result.metadata.provisional).toBe(true);
+  expect(result.metadata.spark_scoring_status).toBe("rubric_review_required");
+ }
+});
+test("untrusted advisory part cannot publish even alongside apparently verified paper metadata",()=>{
+ for(const partOverride of [
+  {authority:"advisory"},
+  {publishable:false},
+  {scorePublicationAllowed:false}
+ ]){
+  const partRows=details.score_parts.map((p,i)=>
+   i===0?{...p,...partOverride}:p);
+  const result=preparePaper2ScorePublication({
+   subjectId:"chemistry",paperId:"02",score:7,maxScore:10,
+   metadata:{...details,score_parts:partRows,
+    spark_scoring_status:"verified"},
+   provisional:false,unresolvedMarks:0,assessedMarks:7
+  });
+  expect(result.canPublishFinalScore).toBe(false);
+  expect(result.score).toBeNull();
+  expect(result.metadata.provisional).toBe(true);
+  expect(result.audit.issues).toContain("unresolved-written-credit");
+ }
+});
+test("approved independent Paper 2 evidence still publishes normally",()=>{
+ const confirmed=preparePaper2ScorePublication({
+  subjectId:"chemistry",paperId:"02",score:7,maxScore:10,
+  metadata:{...details,authority:"trusted-rule"},
+  provisional:false,unresolvedMarks:0,assessedMarks:7
+ });
+ expect(confirmed.canPublishFinalScore).toBe(true);
+ expect(confirmed.score).toBe(7);
+ expect(confirmed.metadata.provisional).toBe(false);
+});
