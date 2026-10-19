@@ -43,7 +43,12 @@ function accuracy(input,expected,part,version){
   return components.length===expected.split(",").length
    &&components.every((v,i)=>number(v)===Number(expected.split(",")[i]));
  }
- if(part==="c"&&[6,7].includes(version))return s===expected.toLowerCase();
+ if(part==="c"&&[6,7].includes(version)){
+  // A candidate may state the correct category and then explain why.
+  // Reject competing choices instead of using a loose substring match.
+  return s===expected.toLowerCase() ||
+   (s.startsWith(expected.toLowerCase()+" because ") && !/\\b(?:or|either)\\b/i.test(s));
+ }
  if(expected.includes("/")){
   const a=fraction(s),b=fraction(expected);
   return !!a&&!!b&&a[0]*b[1]===b[0]*a[1];
@@ -54,10 +59,16 @@ function accuracy(input,expected,part,version){
  return a!==null&&b!==null&&Math.abs(a-b)<=tolerance;
 }
 const Q5_METHODS=Object.freeze({
- "p2-q5-v6":{a:["360-(105+135+75)"],b:["105/360*240"]},
- "p2-q5-v7":{a:["360-(150+90+72)"],b:["90/360*180"]},
- "p2-q5-v8":{c:["5/12*4/11"],d:["5/12*3/11"]},
- "p2-q5-v9":{c:["4/15*3/14"],d:["4/15*6/14"]}
+ "p2-q5-v1":{b:["520/40"],c:["4+8"],d:["16/40"]},
+ "p2-q5-v2":{b:["520/40"],c:["5+9"],d:["14/40"]},
+ "p2-q5-v3":{b:["442/34"],c:["3+6"],d:["9/34"]},
+ "p2-q5-v4":{a:["5+13"]},
+ "p2-q5-v5":{a:["4+10"]},
+ "p2-q5-v6":{a:["360-(105+135+75)"],b:["105/360*240"],d:["30/240","45/360"]},
+ "p2-q5-v7":{a:["360-(150+90+72)"],b:["90/360*180"],d:["24/180","48/360"]},
+ "p2-q5-v8":{a:["5/12"],b:["8/12"],c:["5/12*4/11"],d:["5/12*3/11"]},
+ "p2-q5-v9":{a:["4/15"],b:["10/15"],c:["4/15*3/14"],d:["4/15*6/14"]},
+ "p2-q5-v10":{b:["510/30"],c:["3+3"],d:["21/30"]}
 });
 function evidencedMethod(questionId,partId,response){
  const patterns=Q5_METHODS[questionId]?.[partId];
@@ -65,9 +76,22 @@ function evidencedMethod(questionId,partId,response){
  const raw=response&&typeof response==="object"&&!Array.isArray(response)
   ?asText(response.working):"";
  const w=raw.toLowerCase().replace(/[×∗]/g,"*").replace(/[−–—]/g,"-")
-  .replace(/÷/g,"/").replace(/\s+/g,"");
+  .replace(/÷/g,"/").replace(/\((\d+\/\d+)\)/g,"$1").replace(/\s+/g,"");
  if(!w||/\b(?:or|either)\b/i.test(raw))return false;
  return patterns.some(expr=>w.split(/[;=\n]/).includes(expr));
+}
+function evidencedPieReason(questionId,partId,response){
+ if(partId!=="c"||!["p2-q5-v6","p2-q5-v7"].includes(questionId))return false;
+ const category=questionId==="p2-q5-v6"?"car":"football";
+ const degrees=questionId==="p2-q5-v6"?"135":"150";
+ const a=answer(response);
+ const w=response&&typeof response==="object"&&!Array.isArray(response)
+  ?asText(response.working):"";
+ const evidence=(a+" "+w).toLowerCase();
+ return new RegExp("\\b"+category+"\\b").test(evidence)
+  &&new RegExp("\\b"+degrees+"\\s*(?:°|degrees?)?\\b").test(evidence)
+  &&/\b(?:largest|greatest|biggest|most)\b/.test(evidence)
+  &&!/\b(?:or|either)\b/.test(evidence);
 }
 
 function criterion(id,maxMarks,ok,reason){
@@ -80,9 +104,15 @@ export function evaluateMathQ5V2({questionId,partId,response={}}={}){
  if(!source||!Object.hasOwn(source,partId))
   throw new TypeError("Uncalibrated Mathematics Question 5 source");
  const [expected,marks]=source[partId],version=Number(questionId.split("-v")[1]);
- const final=accuracy(answer(response),expected,partId,version);
  const isGraph=expected==="graph";
- const method=marks>1&&!isGraph&&evidencedMethod(questionId,partId,response);
+ const graphDependent=[4,5].includes(version)&&["b","c","d"].includes(partId);
+ // The median and IQR must be read from a graph. Matching a memorised source
+ // number is not enough to establish even provisional graph-reading accuracy.
+ const final=!graphDependent&&accuracy(answer(response),expected,partId,version);
+ const method=marks>1&&!graphDependent&&(
+  evidencedMethod(questionId,partId,response)||
+  evidencedPieReason(questionId,partId,response)
+ );
  const criteria=[
   ...(marks>2?[criterion(isGraph?"G-unverified":"M-unverified",marks-2,false,
    "remaining-unverified-method-or-graph-evidence")]:[]),
