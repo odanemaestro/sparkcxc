@@ -31,7 +31,8 @@ const migrations=[
  "20261019194500_marking_v2_allow_ungraded_submission.sql",
  "20261019195000_marking_v2_own_exam_result_rpc.sql",
  "20261019202500_marking_v2_draft_source_fingerprints.sql",
-"20261019211000_marking_v2_physics_graph_provisional_method.sql"
+"20261019211000_marking_v2_physics_graph_provisional_method.sql",
+"20261019212000_marking_v2_internal_calibration_queue.sql"
 ];
 async function reject(sql,params=[],pattern=/approval|attestation|permission|Forbidden|lease|rubric|checksum/i){
  await assert.rejects(db.query(sql,params),pattern);
@@ -61,6 +62,16 @@ try{
     encode(sha256(convert_to(criteria::text,'UTF8')),'hex'))::integer as mismatched
   from spark_grading_private.rubrics_v2`)).rows[0];
  assert.deepEqual(sourceFingerprints,{fingerprinted:67,mismatched:0});
+ const realReviewQueue=(await db.query(`select
+   count(*)::integer AS items,
+   count(*) filter(where source_matched_review)::integer AS reviewed,
+   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
+   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
+  from spark_grading_private.v2_calibration_queue`)).rows[0];
+ assert.deepEqual(realReviewQueue,{
+   items:2118,reviewed:0,graph:4,math_missing:403
+ });
+
  const counts=(await db.query(`select subject_id,count(*)::integer n from
    spark_grading_private.rubrics_v2 group by subject_id`)).rows;
  assert.equal(counts.length,9);
