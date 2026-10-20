@@ -221,3 +221,32 @@ CI now replays Batch 003 in whole-paper context, checking blank and unrelated
 responses earn no marks, in addition to the prior cohorts and complete
 source-fingerprint checks. This is bounded examiner calibration, not an
 approval of written methods, alternative explanations or graphical work.
+
+## Batch 004: production deployment and written-evidence improvement
+
+The private migration `20261020130000_marking_v2_fourth_300_criterion_calibration_queue.sql`
+passed a production rollback dry-run and was applied after
+[CI #2548](https://github.com/odanemaestro/sparkcxc/actions/runs/39352656105)
+passed. The fourth cohort contributes 300 **new** parts: Mathematics 100,
+Integrated Science 90, IT 40, Chemistry 35, Physics 15, English A 10,
+FNH 5 and Social Studies 5. POB's source parts were already covered.
+
+The CI replay now tests four separate 300-part cohorts in their actual
+full-paper context, including blank and unrelated answers, and checks for
+source-fingerprint drift. Production SQL confirms 1,200 selected source
+parts, **1,200 matching source fingerprints, zero duplicate identities**.
+
+The shared `scienceWrittenEvidence` matcher was improved to distinguish
+contrasts introduced by *although*, *yet* and *nevertheless*. New positive
+and adversarial tests check that irrelevant negative statements do not
+suppress valid evidence, while contradictory claims do not earn credit.
+The original isolated regression failed due to the test stub not matching
+the graders' existing singular/plural word matching; corrected fixture
+tests passed in CI #2548.
+
+Batch 004 registered **zero new paper/criterion approvals**: the newly
+selected 300 parts are marked as requiring source-specific evidence.
+The system still has 12 nonhuman AI-reviewed parts out of 2,118,
+2,106 parts pending real review, and zero verified/active rubrics.
+This is calibration infrastructure coverage, not automatic examination
+accuracy certification or student-facing V2 rollout.
