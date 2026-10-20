@@ -1221,7 +1221,7 @@ try{
   assert.equal(paper.expected_total_marks,paper.source_total_marks,
    'Source-registered paper total mismatch: '+paper.paper_id);
   assert.equal(paper.source_hash_matches,true);
-  const expectedReviews=({
+  const expectedReviews=(({
    'mathematics::original-v1':3,
    'mathematics::original-v2':2,
    'mathematics::original-v3':1,
@@ -1232,7 +1232,7 @@ try{
    'physics::spark-phy-p02-practice-4':2
   })[paper.subject_id+'::'+paper.paper_id] ||
    (paper.subject_id==='information-technology' ?
-    (['P2-B','P2-E','P2-H'].includes(paper.paper_id)?5:2):0)
+    (['P2-B','P2-E','P2-H'].includes(paper.paper_id)?5:2):0))
     + (paper.subject_id==='mathematics' && [
       'original-v1','original-v2','original-v3','original-v10',
       'p2e','p2g','p2i'].includes(paper.paper_id)?1:0);
