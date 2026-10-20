@@ -1081,8 +1081,10 @@ try{
  // distinct from the completed 2,118-part source-registration inventory.
  // Test actual private V2 subject graders with source-specific positive and
  // explicitly negated answers. Diagnostic positives never constitute review.
- const unapproved=(await db.query(`SELECT r.subject_id,r.paper_id,
-   c->>'id' AS criterion_id,(c->>'maxMarks')::int AS max_marks
+ const unapproved=(await db.query(`SELECT r.subject_id,r.paper_id,r.rubric_version,
+   r.source_sha256 AS paper_source_sha256,
+   c->>'id' AS criterion_id,(c->>'maxMarks')::int AS max_marks,
+   encode(sha256(convert_to(c::text,'UTF8')),'hex') AS criterion_sha256
  FROM spark_grading_private.rubrics_v2 r
  CROSS JOIN LATERAL jsonb_array_elements(r.criteria) c
  WHERE NOT EXISTS(SELECT 1 FROM spark_grading_private.rubric_criterion_reviews_v2 v
@@ -1260,7 +1262,9 @@ try{
     "adversarial-smoke-pass-awaits-alternative-partial-credit-review";
    batch1Checks.push({
     subject_id:item.subject_id,paper_id:item.paper_id,criterion_id:id,
-    max_marks:item.max_marks,source_criterion_sha256:null,
+    max_marks:item.max_marks,source_criterion_sha256:item.criterion_sha256,
+    source_paper_sha256:item.paper_source_sha256,
+    rubric_version:item.rubric_version,
     has_authored_canonical_point:hasModel,
     blank_marks:recorded.suggestedMarks,
     unrelated_marks:noise.suggestedMarks,
