@@ -247,6 +247,15 @@ try{
  WHERE first.batch_id='v2-bulk-calibration-001'
  AND second.batch_id='v2-bulk-calibration-002'`)).rows[0].n;
  assert.equal(overlap,0,'Second batch must not recycle first batch source parts');
+ const stale=(await db.query(`SELECT count(*)::int n
+ FROM spark_grading_private.v2_calibration_batch_items b
+ JOIN spark_grading_private.v2_calibration_queue q
+ ON b.subject_id=q.subject_id AND b.paper_id=q.paper_id
+ AND b.rubric_version=q.rubric_version AND b.criterion_id=q.criterion_id
+ WHERE b.criterion_sha256<>q.criterion_sha256
+    OR b.source_sha256<>q.paper_source_sha256`)).rows[0].n;
+ assert.equal(stale,0,'Every cohort fingerprint must match corrected source rubrics');
+
 
  // Real authored SPARK Mathematics Q1 source calibration, not certification.
  const v1=(await db.query(`select criteria from spark_grading_private.rubrics_v2
