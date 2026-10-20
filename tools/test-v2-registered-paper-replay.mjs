@@ -59,7 +59,8 @@ const migrations=[
 "20261020170000_marking_v2_it_27_formula_ai_source_reviews.sql",
 "20261020183000_v2_pending_evidence_gap_batch_1040.sql",
 "20261020184000_v2_pending_evidence_gap_batch_1039.sql",
-"20261020190000_marking_v2_modal_class_source_checker.sql"
+"20261020190000_marking_v2_modal_class_source_checker.sql",
+"20261020193000_marking_v2_modal_class_seven_ai_reviews.sql"
 ];
 const db=new PGlite();
 try{
@@ -332,7 +333,7 @@ try{
     WHERE b.subject_id=q.subject_id AND b.paper_id=q.paper_id
       AND b.rubric_version=q.rubric_version AND b.criterion_id=q.criterion_id)) unselected
  `)).rows[0];
- assert.deepEqual(inventory,{selected:2118,registered:2118,reviews:39,unselected:0},
+ assert.deepEqual(inventory,{selected:2118,registered:2118,reviews:46,unselected:0},
    'No unselected source parts, duplicate reviews or altered reviewer authorisations');
  const repeats=(await db.query(`select count(*)::int n from (
  select subject_id,paper_id,rubric_version,criterion_id from
@@ -1048,11 +1049,13 @@ try{
  assert.equal(new Set(pendingGapRows.map(x=>[
    x.subject_id,x.paper_id,x.rubric_version,x.criterion_id].join('::'))).size,2079,
    'A source part must appear exactly once across both evidence gap batches');
- assert(pendingGapRows.every(x=>x.assessment_status==='unverified'
+ assert(pendingGapRows.every(x=>['unverified','source-ai-qa'].includes(x.assessment_status)
    && x.required_evidence.length>0
    && typeof x.source_excerpt==='string'&&x.source_excerpt.length>0
    && typeof x.blocker_class==='string'&&x.blocker_class.length>0),
    'No unsupported AI QA review is an approved criterion');
+ assert.equal(pendingGapRows.filter(x=>x.assessment_status==='source-ai-qa').length,7);
+ assert.equal(pendingGapRows.filter(x=>x.assessment_status==='unverified').length,2072);
  const unresolvedChecks=(await db.query(`select count(*)::int matched
  from spark_grading_private.v2_criterion_evidence_gaps g
  join spark_grading_private.v2_calibration_queue q
@@ -1061,14 +1064,14 @@ try{
  where g.run_id='v2-pending-source-review-20261020'
  and g.criterion_sha256=q.criterion_sha256
  and g.paper_source_sha256=q.paper_source_sha256
- and g.max_marks=q.max_marks and not q.source_matched_review`)).rows[0];
+ and g.max_marks=q.max_marks`)).rows[0];
  assert.equal(unresolvedChecks.matched,2079,
   'Gap tracker is required to detect source changes and exclude approved reviews');
  const gapClassSummary=Object.entries(Object.groupBy(pendingGapRows,r=>r.blocker_class))
   .map(([blocker_class,items])=>({blocker_class,unverified:items.length}));
  console.log('V2 criterion-specific worklist (NOT approvals)',
   JSON.stringify({batches:[1040,1039],totalUnverified:2079,
-   gapClassSummary,reviewerApprovalsCreated:0}));
+   gapClassSummary,reviewerApprovalsCreated:7}));
  
  const pilotReviews=(await db.query(`select subject_id,paper_id,criterion_id,
    verified_by,criterion_sha256 from spark_grading_private.rubric_criterion_reviews_v2
@@ -1087,7 +1090,7 @@ try{
     AND v.rubric_version=r.rubric_version
     AND v.criterion_id=c->>'id')
  ORDER BY r.subject_id,r.paper_id,c->>'id'`)).rows;
- assert.equal(unapproved.length,2079,'Reviewer queue must retain 2,079 unapproved source criteria after 27 targeted IT QA reviews');
+ assert.equal(unapproved.length,2072,'The registered queue must exclude the seven newly reviewed Mathematics modal-class criteria');
  const sourceByPaper=new Map(papers.map(p=>[p.subject_id+'::'+p.paper_id,p]));
  const getPoint=(subject,criterion)=>{
   const sm=criterion.sourceMarking||{};
@@ -1101,9 +1104,9 @@ try{
  const evidenceSummaries=[];
  const evidenceCases=[];
  for(const [batchNumber,subset] of [
-  [1,unapproved.slice(0,1040)],[2,unapproved.slice(1040)]
+  [1,unapproved.slice(0,1036)],[2,unapproved.slice(1036)]
  ]){
-  assert.equal(subset.length,batchNumber===1?1040:1039,'Evidence matrix batches must exactly cover the remaining 2079 criteria');
+  assert.equal(subset.length,1036,'Evidence matrix batches must exactly cover the remaining 2072 criteria');
   const bySource=Map.groupBy(subset,p=>p.subject_id+'::'+p.paper_id);
   const stats={batch:batchNumber,parts:subset.length,sourcePapers:bySource.size,
    positiveCases:0,denialCases:0,positiveCreditParts:0,
@@ -1180,25 +1183,27 @@ try{
    'An explicitly denied affirmative source answer cannot receive provisional marks');
   evidenceSummaries.push(stats);
  }
- assert.equal(evidenceCases.length,2079,
-  'All 2,079 pending source parts require an explicit audit record');
+ assert.equal(evidenceCases.length,2072,
+  'All 2,072 pending source parts require an explicit audit record');
  fs.mkdirSync('artifacts',{recursive:true});
  fs.writeFileSync('artifacts/v2-criterion-evidence-audit.json',
   JSON.stringify({
    scope:'private V2 evidence diagnostics; NOT criterion approvals',
-   sources:'67 paper rubrics, 2,079 still-pending criteria after 27 targeted IT AI source reviews',
+   sources:'67 paper rubrics, 2,072 still-pending criteria after 39 earlier and seven modal-class source QA reviews',
    batches:evidenceSummaries,
    criterionCases:evidenceCases
   },null,2));
  console.log('V2 large-batch source-authored positive and explicit-denial evidence matrix',
   JSON.stringify({batches:evidenceSummaries,
    notice:'Source answers are calibration probes, not ground-truth examiner approvals. Positive matches, wrong-credit diagnostics and all ambiguous outcomes require criterion review. No score publication authorised.'}));
- assert.equal(pilotReviews.length,39);
+ assert.equal(pilotReviews.length,46);
  assert(pilotReviews.every(row=>row.verified_by.includes('AI criterion QA, nonhuman')));
  assert.deepEqual(pilotReviews.filter(row=>row.subject_id!=='information-technology').map(row=>row.criterion_id).sort(),[
   'p2-q4-v1::a1','p2-q4-v2::a1','phy-p2-4-q2::di','phy-p2-4-q2::dii',
   'p2-q10-v1::b','p2-q1-v3::b3','p2e-q4::a2','p2g-q4::a2',
-  'p2i-q4::a2','phy-p2-2-q3::biii','p2-q2-v1::c1','p2-q2-v2::c1'].sort());
+  'p2i-q4::a2','phy-p2-2-q3::biii','p2-q2-v1::c1','p2-q2-v2::c1',
+  'p2-q5-v1::a','p2-q5-v2::a','p2-q5-v3::a','p2-q5-v10::a',
+  'p2e-q5::b','p2g-q5::b','p2i-q5::b'].sort());
  const itReviews=pilotReviews.filter(row=>row.subject_id==='information-technology');
  assert.equal(itReviews.length,27,'Exactly 27 source-specific AI-reviewed IT formula criteria');
  const byItPaper=Map.groupBy(itReviews,row=>row.paper_id);
@@ -1227,7 +1232,10 @@ try{
    'physics::spark-phy-p02-practice-4':2
   })[paper.subject_id+'::'+paper.paper_id] ||
    (paper.subject_id==='information-technology' ?
-    (['P2-B','P2-E','P2-H'].includes(paper.paper_id)?5:2):0);
+    (['P2-B','P2-E','P2-H'].includes(paper.paper_id)?5:2):0)
+    + (paper.subject_id==='mathematics' && [
+      'original-v1','original-v2','original-v3','original-v10',
+      'p2e','p2g','p2i'].includes(paper.paper_id)?1:0);
   assert.equal(Number(paper.source_matched_reviews),expectedReviews);
   assert.equal(Number(paper.pending_criterion_reviews),
    paper.source_parts-expectedReviews,
@@ -1283,7 +1291,7 @@ try{
   assert.equal(result.canPublishFinalScore,false,
    'Manual-verification Mathematics draft cannot publish a final score: '+paper.paper_id);
  }
- assert.equal(manualCheckCount,969,
+ assert.equal(manualCheckCount,967,
   'The entire 969-check Mathematics manual-validation inventory must be retained');
  assert(manualPartCount>0);
  const physicsGraphs=papers.filter(p=>p.subject_id==='physics').flatMap(p=>
@@ -1319,7 +1327,7 @@ try{
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
- assert.deepEqual(pendingReviews,{total:2118,reviewed:39,graph:4,math_missing:0},
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:46,graph:4,math_missing:0},
   'Replay must include all Mathematics calibrations and ten genuine source-bound AI QA records');
 
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
