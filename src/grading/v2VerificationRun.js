@@ -7,6 +7,7 @@
  * policy, are recorded as "blocked" with the precise reason, never approved.
  */
 import {verifyCriterion,VERIFIER_VERSION} from "./v2CriterionVerifier";
+import {verifyPaper} from "./v2PaperVerification";
 import {informationTechnologyFixtures} from "./v2Fixtures/informationTechnology";
 import {informationTechnologyPaper2RuleFor} from "../informationTechnology/practice/itPaper2Marking";
 import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json";
@@ -61,6 +62,7 @@ export function runV2Verification(papers,provenance){
     verifiedSourceAnswer:set.sourceAnswer,
     acceptedAlternatives:set.alternatives,
     kind:set.kind,
+    allOrNothing:set.allOrNothing===true,
     testResults:result.byClass,
     failures:result.failures,
     missingClasses:result.missingClasses,
@@ -72,4 +74,26 @@ export function runV2Verification(papers,provenance){
   }
  }
  return records;
+}
+
+/**
+ * End-to-end verification for every paper whose criteria all verified.
+ * Papers with any unverified criterion are reported, never verified.
+ */
+export function runV2PaperVerification(papers,records,provenance){
+ const out=[];
+ for(const p of papers){
+  const mine=records.filter(r=>r.subjectId===p.subject_id&&r.paperId===p.paper_id&&r.rubricVersion===p.rubric_version);
+  const unverified=mine.filter(r=>r.outcome!=="verified").map(r=>r.criterionId);
+  const base={subjectId:p.subject_id,paperId:p.paper_id,rubricVersion:p.rubric_version,
+   sourceSha256:p.source_sha256,expectedTotalMarks:p.expected_total_marks,
+   criteria:p.criteria.length,verifiedCriteria:mine.length-unverified.length,provenance};
+  if(unverified.length){out.push({...base,outcome:"blocked",unverifiedCriteria:unverified});continue;}
+  const result=verifyPaper({subjectId:p.subject_id,paperId:p.paper_id,criteria:p.criteria},
+   new Map(mine.map(r=>[r.criterionId,r.cases])));
+  out.push({...base,outcome:result.passed?"verified":"failed",scenarios:result.scenarios,
+   missingFullFixtures:result.missingFullFixtures,
+   verificationMethod:VERIFIER_VERSION+" paper end-to-end scenario replay"});
+ }
+ return out;
 }

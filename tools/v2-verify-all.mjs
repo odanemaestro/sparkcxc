@@ -24,7 +24,7 @@ const runner=".v2-verify-runner.mjs";
 await build({absWorkingDir:process.cwd(),entryPoints:["src/grading/v2VerificationRun.js"],
  bundle:true,format:"esm",platform:"neutral",target:"es2022",outfile:runner,
  logLevel:"error",loader:{".js":"jsx"}});
-const {runV2Verification}=await import("../"+runner);
+const {runV2Verification,runV2PaperVerification}=await import("../"+runner);
 fs.rmSync(runner);
 
 // Provenance: the deployed examiner bundle and the fixture sources.
@@ -54,8 +54,36 @@ for(const r of records){
  for(const m of r.missingClasses||[])summary.failureReasons["missing:"+m]=(summary.failureReasons["missing:"+m]||0)+1;
  for(const m of r.uncommittedClasses||[])summary.failureReasons["uncommitted:"+m]=(summary.failureReasons["uncommitted:"+m]||0)+1;
 }
+// Every record carries the digest of its own content (excluding the digest).
+for(const r of records)r.evidenceSha256=sha256(JSON.stringify({...r,evidenceSha256:undefined}));
+const paperRecords=runV2PaperVerification(papers,records,provenance);
+for(const p of paperRecords)p.evidenceSha256=sha256(JSON.stringify({...p,evidenceSha256:undefined}));
+summary.papers={total:paperRecords.length,verified:paperRecords.filter(p=>p.outcome==="verified").length,
+ failed:paperRecords.filter(p=>p.outcome==="failed").map(p=>({paper:p.subjectId+"/"+p.paperId,
+  failing:p.scenarios.filter(s=>!s.passed).map(s=>s.name+": "+s.failures.slice(0,3).join("; "))})),
+ blocked:paperRecords.filter(p=>p.outcome==="blocked").length};
+
+// Rehearse registration and release against the migrated in-memory registry.
+// The database triggers re-validate every record; any rejection is reported.
+const rehearsal={criteriaInserted:0,criteriaRejected:[],papersInserted:0,papersRejected:[],released:[],releaseRejected:[]};
+await db.exec("set test.jwt_role='service_role'");
+for(const r of records.filter(r=>r.outcome==="verified")){
+ try{await db.query("select spark_grading_private.register_criterion_verifications_v2($1::jsonb)",[JSON.stringify([r])]);rehearsal.criteriaInserted++;}
+ catch(e){rehearsal.criteriaRejected.push(r.paperId+"/"+r.criterionId+": "+e.message);}
+}
+for(const p of paperRecords.filter(p=>p.outcome==="verified")){
+ try{await db.query("select spark_grading_private.register_paper_verification_v2($1::jsonb)",[JSON.stringify(p)]);rehearsal.papersInserted++;}
+ catch(e){rehearsal.papersRejected.push(p.paperId+": "+e.message);continue;}
+ try{await db.query("select spark_grading_private.release_verified_rubric_v2($1,$2,$3)",[p.subjectId,p.paperId,p.rubricVersion]);rehearsal.released.push(p.subjectId+"/"+p.paperId);}
+ catch(e){rehearsal.releaseRejected.push(p.paperId+": "+e.message);}
+}
+summary.rehearsal={...rehearsal,criteriaRejected:rehearsal.criteriaRejected.slice(0,20),
+ criteriaRejectedCount:rehearsal.criteriaRejected.length};
+
 summary.seconds=Math.round((Date.now()-started)/1000);
 fs.writeFileSync(out+"/evidence.json",JSON.stringify(records,null,1));
+fs.writeFileSync(out+"/papers.json",JSON.stringify(paperRecords,null,1));
 fs.writeFileSync(out+"/summary.json",JSON.stringify(summary,null,1));
 console.table(summary.bySubject);
-console.log(JSON.stringify({byOutcome:summary.byOutcome,failureReasons:summary.failureReasons,blockers:summary.blockers},null,1));
+console.log(JSON.stringify({byOutcome:summary.byOutcome,failureReasons:summary.failureReasons,blockers:summary.blockers,
+ papers:summary.papers,rehearsal:{...summary.rehearsal,released:summary.rehearsal.released.length}},null,1));
