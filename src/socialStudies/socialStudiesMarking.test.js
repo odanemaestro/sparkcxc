@@ -530,3 +530,22 @@ test("Practice hub exposes the Social Studies short-answer examiner", () => {
   expect(examiner).toContain("Mark my response");
   expect(examiner).toContain("gradeSocialStudiesShortAnswer");
 });
+
+
+test("explicitly false Social Studies source claims cannot earn valid-concept marks",()=>{
+ const rule={type:"list",maxMarks:1,maxPoints:1,marksPerPoint:1,
+   points:[{id:"support",concepts:["family_economic_support"]}]};
+ const positive="The family provides economic support for children.";
+ expect(gradeSocialStudiesShortAnswer(positive,rule).marks).toBe(1);
+ for(const falseClaim of [
+  "It is false that the family provides economic support for children.",
+  "It is incorrect to say the family provides economic support for children.",
+  "The family doesn't provide economic support for children.",
+  "The family doesn’t provide economic support for children.",
+  "The family is unable to provide economic support for children.",
+  "The family fails to provide economic support for children."
+ ]){
+  expect(mentionsSocialStudiesConcept(falseClaim,"family_economic_support")).toBe(false);
+  expect(gradeSocialStudiesShortAnswer(falseClaim,rule).marks).toBe(0);
+ }
+});
