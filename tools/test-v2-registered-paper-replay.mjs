@@ -47,7 +47,8 @@ const migrations=[
 "20261020060000_marking_v2_nine_subject_source_total_readiness.sql",
 "20261020070000_marking_v2_four_source_bound_ai_criterion_reviews.sql",
 "20261020080000_marking_v2_first_300_criterion_calibration_queue.sql",
-"20261020090000_marking_v2_six_math_physics_source_ai_reviews.sql"
+"20261020090000_marking_v2_six_math_physics_source_ai_reviews.sql",
+"20261020100000_marking_v2_second_300_criterion_calibration_queue.sql"
 ];
 const db=new PGlite();
 try{
@@ -148,6 +149,102 @@ try{
    diagnosticExamples:candidateCases.slice(0,25),
    accuracyCaveat:'Blank and unrelated adversarial tests do not prove equivalence, method, written or graph marking accuracy. This cohort is not 300 approvals.'}));
 
+
+ { // Second independent 300-source batch, no recycled criterion IDs.
+ const bulk=(await db.query(`SELECT batch_id,subject_id,paper_id,rubric_version,
+   criterion_id,criterion_sha256,source_sha256,max_marks,evidence_class
+   FROM spark_grading_private.v2_calibration_batch_items
+   WHERE batch_id='v2-bulk-calibration-002'
+   ORDER BY subject_id,paper_id,criterion_id`)).rows;
+ assert.equal(bulk.length,300,'The first calibration cohort must contain exactly 300 parts');
+ const batchQuotas={
+  'mathematics':100,'integrated-science':60,'chemistry':30,
+  'information-technology':30,'physics':20,'english-a':15,
+  'social-studies':15,'food-nutrition-and-health':15,
+  'principles-of-business':15
+ };
+ for(const [subject,quota] of Object.entries(batchQuotas))
+  assert.equal(bulk.filter(x=>x.subject_id===subject).length,quota,
+   'Missing subject cohort coverage: '+subject);
+ const paperMap=new Map(papers.map(p=>[p.subject_id+'::'+p.paper_id,p]));
+ let checked=0;
+ const candidateCases=[],replayFailures=[];
+ const byPaper=new Map();
+ for(const item of bulk){
+  const key=item.subject_id+'::'+item.paper_id;
+  if(!byPaper.has(key))byPaper.set(key,[]);
+  byPaper.get(key).push(item);
+ }
+ for(const [key,items] of byPaper){
+  const paper=paperMap.get(key);
+  assert(paper,'Missing source-bound cohort paper '+key);
+  const args={subjectId:items[0].subject_id,paperId:items[0].paper_id,
+   criteria:paper.criteria};
+  const unrelated=Object.fromEntries(items.map(item=>[
+   item.criterion_id,'ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY'
+  ]));
+  const canonical=Object.fromEntries(items.filter(item=>
+   item.evidence_class==='direct-check-candidate'
+  ).map(item=>{
+   const criterion=paper.criteria.find(c=>c.id===item.criterion_id);
+   return [item.criterion_id,{
+    answer:criterion?.sourceMarking?.answer??'',
+    working:criterion?.sourceMarking?.solution??''
+   }];
+  }));
+  try{
+   const empty=evaluateExistingSubjectPaper2V2({...args,responses:{}});
+   const invalid=evaluateExistingSubjectPaper2V2({...args,responses:unrelated});
+   const candidate=Object.keys(canonical).length
+    ?evaluateExistingSubjectPaper2V2({...args,responses:canonical}):null;
+   const rowById=result=>new Map(result.rows.map(row=>[row.criterionId,row]));
+   const emptyRows=rowById(empty),invalidRows=rowById(invalid);
+   const candidateRows=candidate?rowById(candidate):null;
+   assert.equal(empty.examinedParts,paper.criteria.length);
+   assert.equal(invalid.examinedParts,paper.criteria.length);
+   for(const item of items){
+    const criterion=paper.criteria.find(c=>c.id===item.criterion_id);
+    assert(criterion,'Missing cohort part '+item.criterion_id);
+    assert.equal(criterion.maxMarks,item.max_marks);
+    assert.equal(emptyRows.get(item.criterion_id)?.suggestedMarks,0,
+     'Blank source part earned V2 credit: '+item.criterion_id);
+    assert.equal(invalidRows.get(item.criterion_id)?.suggestedMarks,0,
+     'Unrelated text earned V2 credit: '+item.criterion_id);
+    if(item.evidence_class==='direct-check-candidate'){
+     const mark=candidateRows?.get(item.criterion_id);
+     candidateCases.push({subject:item.subject_id,id:item.criterion_id,
+      suggestedMarks:mark?.suggestedMarks??0,resolved:mark?.resolved??false});
+    }
+    checked++;
+   }
+  }catch(error){
+   replayFailures.push({paper:key,error:String(error?.message||error)});
+  }
+ }
+ console.log('Large-batch paper-context replay',JSON.stringify({
+   papers:byPaper.size,checked,replayFailures,
+   candidateDiagnostics:candidateCases.slice(0,25)
+ }));
+ assert.deepEqual(replayFailures,[],
+  'Cross-subject 300-criterion paper-context replay must not throw');
+ assert.equal(checked,300);
+ console.log('Nine-subject 300-criterion source-bound adversarial cohort',
+  JSON.stringify({checked,subjectCounts:batchQuotas,
+   directCandidates:bulk.filter(x=>x.evidence_class==='direct-check-candidate').length,
+   diagnosticExamples:candidateCases.slice(0,25),
+   accuracyCaveat:'Blank and unrelated adversarial tests do not prove equivalence, method, written or graph marking accuracy. This cohort is not 300 approvals.'}));
+
+
+
+ }
+ const overlap=(await db.query(`SELECT count(*)::int AS n FROM
+ spark_grading_private.v2_calibration_batch_items first
+ JOIN spark_grading_private.v2_calibration_batch_items second
+ ON first.subject_id=second.subject_id AND first.paper_id=second.paper_id
+ AND first.rubric_version=second.rubric_version AND first.criterion_id=second.criterion_id
+ WHERE first.batch_id='v2-bulk-calibration-001'
+ AND second.batch_id='v2-bulk-calibration-002'`)).rows[0].n;
+ assert.equal(overlap,0,'Second batch must not recycle first batch source parts');
 
  // Real authored SPARK Mathematics Q1 source calibration, not certification.
  const v1=(await db.query(`select criteria from spark_grading_private.rubrics_v2
