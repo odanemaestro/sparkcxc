@@ -1,10 +1,10 @@
 {
  "provenance": {
-  "bundleSha256": "0e305426aae0e8f38e6294846b2ad65f10ac73219417332825705622303e12a0",
-  "fixtureSha256": "6c21066129a63690d4cdd6f1b0e05ecd5acf0dc85ccd3c3c0785ea23b001c376",
-  "gitCommit": "b55bbaf942d34ea5241287b68e8c52d181312371",
+  "bundleSha256": "a443b3f77d906ed0ca40e004fb52a62b2f4accf6f4a3cf81dfccf897d2d5f7cf",
+  "fixtureSha256": "1c2cb05df83467d4eb53313f65924503c2399961b1e28cc155207f1b8fafde2f",
+  "gitCommit": "20139752cc76b19dcf40fd698332996740e09375",
   "workingTreeDirty": false,
-  "ranAt": "2026-10-20T14:00:22.369Z"
+  "ranAt": "2026-10-20T21:44:12.943Z"
  },
  "criteria": 2118,
  "bySubject": {
@@ -46,9 +46,9 @@
   },
   "physics": {
    "criteria": 135,
-   "verified": 0,
-   "failed": 0,
-   "blocked": 135
+   "verified": 57,
+   "failed": 70,
+   "blocked": 8
   },
   "principles-of-business": {
    "criteria": 25,
@@ -64,28 +64,29 @@
   }
  },
  "byOutcome": {
-  "verified": 1281,
-  "blocked": 697,
-  "failed": 140
+  "verified": 1338,
+  "blocked": 570,
+  "failed": 210
  },
  "failureReasons": {
-  "missing:partial": 41,
-  "full:required-resolution-missing": 15,
-  "uncommitted:partial": 84,
-  "uncommitted:equivalent": 15,
-  "uncommitted:incorrect": 40,
+  "missing:partial": 84,
+  "full:required-resolution-missing": 25,
+  "uncommitted:partial": 109,
+  "uncommitted:equivalent": 16,
+  "uncommitted:incorrect": 58,
   "incorrect:resolved-wrong-mark": 13,
   "missing:incorrect": 12,
   "missing:competing": 12,
   "equivalent:resolved-wrong-mark": 9
  },
  "blockers": {
-  "subject-resolution-policy-not-yet-verified": 292,
+  "subject-resolution-policy-not-yet-verified": 157,
   "free-hand-drawing-requires-visual-judgement": 11,
   "scheme-points-below-maximum": 5,
   "label-scheme-without-key-answers": 1,
   "calculation-without-authored-specification": 1,
-  "manual-verification-criterion": 387
+  "manual-verification-criterion": 387,
+  "table-without-curated-fixtures": 8
  },
  "papers": {
   "total": 67,
@@ -94,7 +95,7 @@
   "blocked": 44
  },
  "rehearsal": {
-  "criteriaInserted": 1281,
+  "criteriaInserted": 1338,
   "criteriaRejected": [],
   "papersInserted": 23,
   "papersRejected": [],
@@ -126,5 +127,5 @@
   "releaseRejected": [],
   "criteriaRejectedCount": 0
  },
- "seconds": 50
+ "seconds": 63
 }
