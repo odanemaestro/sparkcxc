@@ -1016,6 +1016,28 @@
   text-align:left;
 }
 
+/* Keep the five section study decks aligned with the dashboard decks. Only
+   the prose blocks share a left edge; labels, hints and diagrams stay centred. */
+.pm-flashcard-panel .pm-flashcard-polished{
+  align-items:stretch;
+  text-align:left;
+}
+.pm-flashcard-panel .pm-flashcard-polished > .spark-math-prose{
+  width:min(100%,800px);
+  max-width:800px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+.pm-flashcard-panel .pm-flashcard-polished > small,
+.pm-flashcard-panel .pm-flashcard-polished > p:not(.spark-math-prose),
+.pm-flashcard-panel .pm-flashcard-polished > .pm-flashcard-hint{
+  align-self:center;
+  text-align:center;
+}
+
 /* SPARK PHYSICS FLASHCARD SHARED THEME V1
    Physics flashcards use the same SPARK appearance tokens as Mathematics and
    Information Technology. This is intentionally scoped to the dashboard

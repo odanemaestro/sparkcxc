@@ -104,6 +104,7 @@ import {
   loadLearnerRecommendationHistory,
   loadRecommendationEffectiveness,
   loadLearningStrategyAssignments,
+  recordLearnerRecommendation,
 } from "./learning/learnerIntelligencePersistence";
 import { friendlyErrorMessage } from "./lib/errorMessages";
 import { computeStudyStreak } from "./lib/studyStreak";
@@ -3541,7 +3542,7 @@ function ProfilePhotoEditor({
   );
 }
 
-function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorApp, tutorAppLoaded = true, onProfileUpdated, subjects = SPARK_SUBJECTS, onOpenSubject }) {
+export function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorApp, tutorAppLoaded = true, onProfileUpdated, subjects = SPARK_SUBJECTS, onOpenSubject }) {
   // profile.role is only set once, at signup - it's never flipped to "tutor"
   // when someone who signed up as a student later applies and gets approved.
   // Falling back to an approved tutor-application status keeps this accurate
@@ -3627,6 +3628,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [studentFlashcardReviewEvents, setStudentFlashcardReviewEvents] = useState([]);
   const [studentGoal, setStudentGoal] = useState(null);
   const [studentRecommendationHistory, setStudentRecommendationHistory] = useState([]);
+  const studentNextStepStartRef = useRef(false);
+  const studentNextStepLifetimeRef = useRef(null);
   const [studentRecommendationEffectiveness, setStudentRecommendationEffectiveness] = useState([]);
   const [studentLearningStrategyAssignments, setStudentLearningStrategyAssignments] = useState({});
   const [studentStudyCircle, setStudentStudyCircle] = useState({ active: false });
@@ -3665,7 +3668,17 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   });
   const totalTopics = SYLLABUS_SECTIONS.reduce((a, s) => a + s.topics.length, 0);
 
+  useEffect(() => {
+    studentNextStepLifetimeRef.current = {};
+    studentNextStepStartRef.current = false;
+    return () => {
+      studentNextStepLifetimeRef.current = null;
+      studentNextStepStartRef.current = false;
+    };
+  }, [user?.id]);
+
   const setDashboardSection = useCallback((section, options = {}) => {
+    studentNextStepStartRef.current = false;
     if (!dashboardRoleResolved) {
       setSec(section);
       return;
@@ -3684,6 +3697,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   }, [dashboardRoleResolved, normalizeDashboardSection]);
 
   const setFlashcardSubjectRoute = useCallback((subjectId, options = {}) => {
+    studentNextStepStartRef.current = false;
     const next = normalizeFlashcardSubjectId(subjectId);
     setSec("flashcards");
     setFlashcardSubject(next);
@@ -3763,6 +3777,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     if (!dashboardRoleResolved) return undefined;
     const syncDashboardSectionFromUrl = () => {
       if (viewFromBrowserHash() !== "dashboard") return;
+      studentNextStepStartRef.current = false;
       const requested = dashboardSectionFromBrowserHash();
       const normalized = normalizeDashboardSection(requested);
       setSec(normalized);
@@ -4493,13 +4508,31 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   };
 
   const startStudentNextStep = () => {
-    if (!studentNextStep) return;
+    if (!studentNextStep || studentNextStepStartRef.current) return;
     if (studentNextStep.kind === "choose") {
       setDashboardSection("subjects");
       return;
     }
     if (studentNextStep.kind === "recommendation" && studentNextStep.recommendation) {
-      openNextBestActionTarget(studentNextStep.recommendation,{setView,setDashboardSection,setFlashcardSubjectRoute});
+      // Record the clicked snapshot in the background so a slow request cannot
+      // delay the activity or send the student back after navigating elsewhere.
+      const recommendation = studentNextStep.recommendation;
+      const lifetime = studentNextStepLifetimeRef.current;
+      studentNextStepStartRef.current = true;
+      recordLearnerRecommendation({
+        supabase,
+        intelligence:{ ...studentNextStep.intelligence, recommendation },
+      }).then(result => {
+        if (result?.error) console.warn("Could not record SPARK recommendation", result.error);
+        if (lifetime && studentNextStepLifetimeRef.current === lifetime && result?.historyRow) {
+          setStudentRecommendationHistory(current => [result.historyRow, ...current].slice(0, 200));
+        }
+      }).catch(error => {
+        console.warn("Could not record SPARK recommendation", error);
+      });
+      if (!openNextBestActionTarget(recommendation,{setView,setDashboardSection,setFlashcardSubjectRoute})) {
+        studentNextStepStartRef.current = false;
+      }
       return;
     }
     if (studentNextStep.subject) openSubject(studentNextStep.subject);
