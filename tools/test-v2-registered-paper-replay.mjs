@@ -48,7 +48,9 @@ const migrations=[
 "20261020070000_marking_v2_four_source_bound_ai_criterion_reviews.sql",
 "20261020080000_marking_v2_first_300_criterion_calibration_queue.sql",
 "20261020090000_marking_v2_six_math_physics_source_ai_reviews.sql",
-"20261020100000_marking_v2_second_300_criterion_calibration_queue.sql"
+"20261020100000_marking_v2_second_300_criterion_calibration_queue.sql",
+"20261020103000_marking_v2_math_simplest_linear_source_checks.sql",
+"20261020110000_marking_v2_math_simplest_linear_ai_reviews.sql"
 ];
 const db=new PGlite();
 try{
@@ -847,12 +849,12 @@ try{
  const pilotReviews=(await db.query(`select subject_id,paper_id,criterion_id,
    verified_by,criterion_sha256 from spark_grading_private.rubric_criterion_reviews_v2
    order by subject_id,paper_id,criterion_id`)).rows;
- assert.equal(pilotReviews.length,10);
+ assert.equal(pilotReviews.length,12);
  assert(pilotReviews.every(row=>row.verified_by.includes('AI criterion QA, nonhuman')));
  assert.deepEqual(pilotReviews.map(row=>row.criterion_id).sort(),[
   'p2-q4-v1::a1','p2-q4-v2::a1','phy-p2-4-q2::di','phy-p2-4-q2::dii',
   'p2-q10-v1::b','p2-q1-v3::b3','p2e-q4::a2','p2g-q4::a2',
-  'p2i-q4::a2','phy-p2-2-q3::biii'].sort());
+  'p2i-q4::a2','phy-p2-2-q3::biii','p2-q2-v1::c1','p2-q2-v2::c1'].sort());
  const readiness=(await db.query(`select subject_id,paper_id,source_parts,
    expected_total_marks,source_total_marks,source_hash_matches,
    source_matched_reviews,pending_criterion_reviews,explicit_manual_checks
@@ -865,8 +867,8 @@ try{
    'Source-registered paper total mismatch: '+paper.paper_id);
   assert.equal(paper.source_hash_matches,true);
   const expectedReviews=({
-   'mathematics::original-v1':2,
-   'mathematics::original-v2':1,
+   'mathematics::original-v1':3,
+   'mathematics::original-v2':2,
    'mathematics::original-v3':1,
    'mathematics::p2e':1,
    'mathematics::p2g':1,
@@ -907,7 +909,7 @@ try{
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
   count(*) filter(where review_focus='missing-detailed-math-allocation')::integer AS math_missing
   from spark_grading_private.v2_calibration_queue`)).rows[0];
- assert.deepEqual(pendingReviews,{total:2118,reviewed:10,graph:4,math_missing:0},
+ assert.deepEqual(pendingReviews,{total:2118,reviewed:12,graph:4,math_missing:0},
   'Replay must include all Mathematics calibrations and ten genuine source-bound AI QA records');
 
  assert.deepEqual(sourceAudit,[],"Internal source identity, bounds or scheme checks failed");
