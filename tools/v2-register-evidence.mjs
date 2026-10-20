@@ -19,8 +19,12 @@ const dir=arg("--dir")||"artifacts/v2-verification";
 const subject=arg("--subject");
 const doRelease=process.argv.includes("--release");
 const evidence=JSON.parse(fs.readFileSync(dir+"/evidence.json","utf8"));
+// Every paper with at least one verified criterion: its verified criteria are
+// registered (approved); only papers that passed end-to-end verification
+// also record paper evidence and, with --release, are activated.
 const papers=JSON.parse(fs.readFileSync(dir+"/papers.json","utf8"))
- .filter(p=>p.outcome==="verified"&&(!subject||p.subjectId===subject));
+ .filter(p=>!subject||p.subjectId===subject)
+ .filter(p=>evidence.some(r=>r.subjectId===p.subjectId&&r.paperId===p.paperId&&r.outcome==="verified"));
 const tmp=".v2work/register";fs.mkdirSync(tmp,{recursive:true});
 const quote=json=>{const tag="ev"+randomBytes(6).toString("hex");return `$${tag}$${json}$${tag}$`;};
 const lit=s=>"'"+String(s).replace(/'/g,"''")+"'";
@@ -28,10 +32,11 @@ const results=[];
 for(const p of papers){
  const mine=evidence.filter(r=>r.subjectId===p.subjectId&&r.paperId===p.paperId&&
   r.rubricVersion===p.rubricVersion&&r.outcome==="verified");
+ const paperVerified=p.outcome==="verified";
  const sql=`begin;
 select spark_grading_private.register_criterion_verifications_v2(${quote(JSON.stringify(mine))}::jsonb);
-select spark_grading_private.register_paper_verification_v2(${quote(JSON.stringify(p))}::jsonb);
-${doRelease?`select spark_grading_private.release_verified_rubric_v2(${lit(p.subjectId)},${lit(p.paperId)},${lit(p.rubricVersion)});`:""}
+${paperVerified?`select spark_grading_private.register_paper_verification_v2(${quote(JSON.stringify(p))}::jsonb);`:""}
+${paperVerified&&doRelease?`select spark_grading_private.release_verified_rubric_v2(${lit(p.subjectId)},${lit(p.paperId)},${lit(p.rubricVersion)});`:""}
 commit;
 select r.subject_id,r.paper_id,r.verified_criteria,r.criteria,r.paper_verified,
  g.verification_status,g.active from spark_grading_private.rubric_release_status_v2 r
