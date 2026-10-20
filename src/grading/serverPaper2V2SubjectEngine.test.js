@@ -537,7 +537,7 @@ test("every source-reviewed IT spreadsheet formula resolves correct and incorrec
 test("production IT P2-F accepts valid website reliability and developed algorithm and error explanations",()=>{
  const p=itData.papers.find(p=>p.id==="P2-F");
  expect(p).toBeTruthy();
- const parts=["2-b","4-b","4-e"].map(key=>{
+ const parts=["2-b","4-b","4-c","4-e"].map(key=>{
   const [q,partId]=key.split("-");
   const part=p.questions.find(x=>x.number===Number(q)).parts.find(x=>x.id===partId);
   return row(key,part.marks,{
@@ -548,20 +548,22 @@ test("production IT P2-F accepts valid website reliability and developed algorit
  const answers={
   "2-b":"Accuracy: Check whether the information is correct and supported by reliable sources. Currency: Check when the information was published or updated to ensure it is up to date.",
   "4-b":"Finite: An algorithm must have a limited number of steps and eventually stop. Unambiguous: Every instruction must be clear and precise so that it can be followed without confusion. An algorithm must be finite because a program that never stops may continue running indefinitely, wasting computer resources and failing to produce its intended result.",
+  "4-c":{pseudocode:"START\nINPUT average\nINPUT attendance\nINPUT service\nSCORE ← (average + attendance + service) / 3\nIF SCORE >= 85 THEN\nDISPLAY ACCEPT\nELSE\nDISPLAY REVIEW\nENDIF\nSTOP"},
   "4-e":"A syntax error occurs when a programmer breaks the rules of a programming language, such as forgetting a required bracket. It may prevent the program from running. A logic error causes incorrect results even though the program runs. A syntax error breaks language rules; a logic error runs but gives an incorrect result."
  };
  const result=example("information-technology",p.id,parts,answers);
- for(const [id,marks] of [["2-b",2],["4-b",4],["4-e",3]]){
+ for(const [id,marks] of [["2-b",2],["4-b",4],["4-c",8],["4-e",3]]){
   const grade=result.rows.find(x=>x.criterionId===id);
   expect(grade.suggestedMarks).toBe(marks);
   expect(grade.resolved).toBe(true);
  }
- expect(result.confirmedMarks).toBe(9);
+ expect(result.confirmedMarks).toBe(17);
  expect(result.canPublishFinalScore).toBe(true);
  for(const [id,answer] of [
   ["2-b","Accuracy is not important; the website can be current."],
   ["4-b","An algorithm is finite and precise. Finite means an algorithm should never end because it should run forever."],
-  ["4-e","Syntax errors break language rules. Logic errors run, but cannot give incorrect results."]
+  ["4-e","Syntax errors break language rules. Logic errors run, but cannot give incorrect results."],
+  ["4-c",{pseudocode:"INPUT average, attendance, service\nSCORE = (average + attendance + service) / 2\nIF SCORE >= 85 THEN\nDISPLAY ACCEPT\nELSE\nDISPLAY REVIEW\nENDIF"}]
  ]){
   const checked=example("information-technology",p.id,parts,{[id]:answer});
   const grade=checked.rows.find(x=>x.criterionId===id);
