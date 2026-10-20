@@ -2,12 +2,13 @@ import {englishAPaper2Sets,buildEnglishAPaper2} from "../data/englishAPaper2Bank
 import {gradeEnglishAPaper2Response} from "./englishAPaper2Grader";
 import {evaluateExistingSubjectPaper2V2} from "../../grading/serverPaper2V2SubjectEngine";
 
-test("all 72 English A tasks retain source ceilings and no unwarranted V2 authority",()=>{
- expect(englishAPaper2Sets).toHaveLength(12);
+test("all 42 authored English A tasks across 72 registered choice-paper entries retain source ceilings and no unwarranted V2 authority",()=>{
+ expect(englishAPaper2Sets).toHaveLength(6);
  let reviewed=0;
  for(const pack of englishAPaper2Sets){
   const paper=buildEnglishAPaper2(pack.id);
-  expect(paper.tasks).toHaveLength(6);
+  expect(paper.tasks).toHaveLength(7);
+  expect(paper.requiredTaskIds).toHaveLength(6);
   for(const task of paper.tasks){
    reviewed++;
    const part={id:task.id,sourcePartId:task.id,maxMarks:task.rubric.marks,
@@ -37,5 +38,5 @@ test("all 72 English A tasks retain source ceilings and no unwarranted V2 author
    expect(sourceEstimate.score).toBeLessThanOrEqual(task.rubric.marks);
   }
  }
- expect(reviewed).toBe(72);
+ expect(reviewed).toBe(42);
 });
