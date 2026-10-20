@@ -56,7 +56,9 @@ const migrations=[
 "20261020140000_marking_v2_fifth_300_criterion_calibration_queue.sql",
 "20261020150000_marking_v2_sixth_300_criterion_calibration_queue.sql",
 "20261020160000_marking_v2_final_318_criterion_calibration_queue.sql",
-"20261020170000_marking_v2_it_27_formula_ai_source_reviews.sql"
+"20261020170000_marking_v2_it_27_formula_ai_source_reviews.sql",
+"20261020183000_v2_pending_evidence_gap_batch_1040.sql",
+"20261020184000_v2_pending_evidence_gap_batch_1039.sql"
 ];
 const db=new PGlite();
 try{
@@ -1029,6 +1031,44 @@ try{
   if(issues.length)sourceAudit.push({subject:paper.subject_id,paper:paper.paper_id,issues:[...new Set(issues)]});
  }
  assert.equal(totalCriteria,2118,"Registered criteria count must not silently drift");
+ // Two large source-bound evidence-gap batches are a review WORKLIST,
+ // not 2,079 fabricated approvals. They must match the currently unapproved
+ // per-paper criterion identities and source hashes, including after all
+ // 2026-10-20 calibration migrations have been applied.
+ const pendingGapRows=(await db.query(`select g.batch_id,g.subject_id,g.paper_id,
+ g.rubric_version,g.criterion_id,g.criterion_sha256,g.paper_source_sha256,
+ g.max_marks,g.blocker_class,g.required_evidence,g.source_excerpt,g.assessment_status
+ from spark_grading_private.v2_criterion_evidence_gaps g
+ where g.run_id='v2-pending-source-review-20261020'
+ order by g.batch_id,g.subject_id,g.paper_id,g.criterion_id`)).rows;
+ assert.equal(pendingGapRows.length,2079,'Every still-unreviewed part must have an explicit source QA gap');
+ assert.equal(pendingGapRows.filter(row=>row.batch_id==='001').length,1040);
+ assert.equal(pendingGapRows.filter(row=>row.batch_id==='002').length,1039);
+ assert.equal(new Set(pendingGapRows.map(x=>[
+   x.subject_id,x.paper_id,x.rubric_version,x.criterion_id].join('::'))).size,2079,
+   'A source part must appear exactly once across both evidence gap batches');
+ assert(pendingGapRows.every(x=>x.assessment_status==='unverified'
+   && x.required_evidence.length>0
+   && typeof x.source_excerpt==='string'&&x.source_excerpt.length>0
+   && typeof x.blocker_class==='string'&&x.blocker_class.length>0),
+   'No unsupported AI QA review is an approved criterion');
+ const unresolvedChecks=(await db.query(`select count(*)::int matched
+ from spark_grading_private.v2_criterion_evidence_gaps g
+ join spark_grading_private.v2_calibration_queue q
+ on g.subject_id=q.subject_id and g.paper_id=q.paper_id
+ and g.rubric_version=q.rubric_version and g.criterion_id=q.criterion_id
+ where g.run_id='v2-pending-source-review-20261020'
+ and g.criterion_sha256=q.criterion_sha256
+ and g.paper_source_sha256=q.paper_source_sha256
+ and g.max_marks=q.max_marks and not q.source_matched_review`)).rows[0];
+ assert.equal(unresolvedChecks.matched,2079,
+  'Gap tracker is required to detect source changes and exclude approved reviews');
+ const gapClassSummary=Object.entries(Object.groupBy(pendingGapRows,r=>r.blocker_class))
+  .map(([blocker_class,items])=>({blocker_class,unverified:items.length}));
+ console.log('V2 criterion-specific worklist (NOT approvals)',
+  JSON.stringify({batches:[1040,1039],totalUnverified:2079,
+   gapClassSummary,reviewerApprovalsCreated:0}));
+ 
  const pilotReviews=(await db.query(`select subject_id,paper_id,criterion_id,
    verified_by,criterion_sha256 from spark_grading_private.rubric_criterion_reviews_v2
    order by subject_id,paper_id,criterion_id`)).rows;
