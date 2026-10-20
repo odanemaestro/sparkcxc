@@ -5,6 +5,7 @@ import physics1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
 import physics2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
 import physics3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
 import physics4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
+import {modelResponsesForPhysicsPaper2} from "../physics/paper2/physicsPaper2Marking";
 import itData from "../informationTechnology/practice/itPaper2Data.json";
 import {modelResponsesForInformationTechnologyPaper2} from "../informationTechnology/practice/itPaper2Marking";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
@@ -412,4 +413,37 @@ test.each([physics1,physics2,physics3,physics4])("private V2 does not convert %s
   expect(result.canPublishFinalScore).toBe(false);
   expect(result.rows[0].method).toBe("physics-graph-requires-artifact-verification");
  }
+});
+
+test("four Physics Paper 2 sources replay all 135 parts with actual structured model answers",()=>{
+ const papers=[physics1,physics2,physics3,physics4];
+ expect(papers.reduce((sum,p)=>sum+p.questions.reduce((n,q)=>n+q.parts.length,0),0)).toBe(135);
+ let creditedParts=0,manualGraphs=0;
+ for(const paper of papers){
+  const criteria=paper.questions.flatMap(q=>q.parts.map(p=>
+   row(q.question_id+"::"+p.id,p.marks,p)));
+  const models=modelResponsesForPhysicsPaper2(paper);
+  const examined=example("physics",paper.paper_id,criteria,models);
+  expect(examined.examinedParts).toBe(criteria.length);
+  expect(examined.suggestedMarks).toBeGreaterThanOrEqual(0);
+  expect(examined.suggestedMarks).toBeLessThanOrEqual(examined.maxMarks);
+  expect(examined.canPublishFinalScore).toBe(false);
+  creditedParts+=examined.rows.filter(r=>r.suggestedMarks>0).length;
+  const negative=example("physics",paper.paper_id,criteria,Object.fromEntries(
+   criteria.map(c=>[c.id,{answer:"ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY"}])));
+  expect(negative.suggestedMarks).toBe(0);
+  for(const row of examined.rows){
+   const source=paper.questions.flatMap(q=>q.parts.map(p=>({
+    id:q.question_id+"::"+p.id,part:p
+   }))).find(x=>x.id===row.criterionId)?.part;
+   if(source?.responseType==="graph"&&source.criteria?.some(c=>c.manual===true)){
+    manualGraphs++;
+    expect(row.suggestedMarks).toBe(0);
+    expect(row.resolved).toBe(false);
+   }
+  }
+ }
+ expect(manualGraphs).toBe(4);
+ expect(creditedParts).toBeGreaterThan(0);
+ console.log("Physics private V2 structured source replay",{sourceParts:135,creditedParts,manualGraphs});
 });
