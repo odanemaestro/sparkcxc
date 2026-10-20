@@ -107,7 +107,10 @@ export function mentionsSocialStudiesPhrase(value,phrase){
       !["un","non","dis"].some(prefix=>token===prefix+wanted) && editDistance(token,wanted,tolerance)<=tolerance);
   };
   const clauses=String(value || "").split(/[.;\n]+|\b(?:so(?: that)?|because|therefore|which|but|however)\b/i).map(canonical).filter(matches);
-  const negated=clause=>/\b(?:not|never|cannot|isn't|doesn't|don't)\b/.test(clause);
+  // Reject an explicitly denied model concept even if its positive keywords
+  // remain in the answer. A model phrase that itself contains negation still
+  // matches the same-polarity response; those cases require source review.
+  const negated=clause=>/\b(?:not|never|no|cannot|can't|couldn't|won't|isn'?t|doesn'?t|don'?t|didn'?t|without|fails?\s+to|unable\s+to|false\s+that|incorrect\s+to\s+say|is\s+false)\b/.test(clause);
   if(!negated(wanted) && clauses.some(negated))return false;
   return clauses.some(clause=>negated(wanted)||!negated(clause));
 }
