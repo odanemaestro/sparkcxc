@@ -24,7 +24,7 @@
 .spark-generic-flashcard.revealed{background:linear-gradient(145deg,var(--spark-surface-navy,#102746),var(--spark-navy,#17375e));color:#fff;border-color:transparent}
 .spark-generic-flashcard-topic{display:inline-flex;margin-bottom:22px;padding:6px 10px;border-radius:999px;background:color-mix(in srgb,var(--spark-teal) 12%,transparent);color:var(--spark-teal-dark);font-size:9px;font-weight:850;letter-spacing:.055em;text-transform:uppercase}
 .spark-generic-flashcard.revealed .spark-generic-flashcard-topic{background:rgba(255,255,255,.12);color:#bfeadd}
-.spark-generic-flashcard-copy{max-width:780px;font-family:'Crimson Pro',Georgia,serif;font-size:clamp(21px,3vw,31px);line-height:1.38}
+.spark-generic-flashcard-copy{width:min(100%,780px);max-width:780px;min-width:0;font-family:'Crimson Pro',Georgia,serif;font-size:clamp(21px,3vw,31px);line-height:1.38;text-align:left;overflow-wrap:break-word;word-break:normal}
 .spark-generic-flashcard.revealed .spark-generic-flashcard-copy{font-family:'Atkinson Hyperlegible','Inter',sans-serif;font-size:clamp(16px,2vw,20px);line-height:1.65}
 .spark-generic-flashcard-hint{margin-top:24px;font-size:10px;font-weight:750;opacity:.66}
 .spark-generic-flashcard-nav{display:flex;justify-content:space-between;gap:10px}

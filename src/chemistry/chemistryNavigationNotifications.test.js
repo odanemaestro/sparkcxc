@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-const read=pathFromRoot=>fs.readFileSync(path.resolve(__dirname,"..","..",pathFromRoot),"utf8");
+const read=pathFromRoot=>fs.readFileSync(path.resolve(__dirname,"..","..",pathFromRoot),"utf8").replace(/\r\n/g,"\n");
 
 describe("Chemistry page reset and notification parity",()=>{
   test("practice hub resets the scroll position on route and Paper 2 set changes",()=>{

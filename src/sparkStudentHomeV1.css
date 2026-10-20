@@ -82,13 +82,11 @@ html[data-theme="dark"] .spark-student-home{
 .ssh-aside{grid-template-columns:1fr}
 
 @media(min-width:1280px){
-  .ssh-top{
-    grid-template-columns:minmax(0,1.6fr) minmax(320px,.88fr);
-    align-items:stretch;
-  }
+  .ssh-top,
+  .ssh-main{grid-template-columns:minmax(0,1fr) minmax(300px,340px)}
+  .ssh-top{align-items:stretch}
   .ssh-top>.ssh-hero,
   .ssh-top>.ssh-spotlight{height:100%}
-  .ssh-main{grid-template-columns:minmax(0,1fr) minmax(300px,340px)}
 }
 
 /* Buttons */
@@ -280,6 +278,7 @@ html[data-theme="dark"] .ssh-spotlight{border-color:#4f431d;background:#241f12}
   font-weight:850;
   line-height:1.2;
 }
+.ssh-spotlight-name>span:first-child{min-width:0;max-width:100%;overflow-wrap:anywhere}
 .ssh-you-chip{padding:3px 7px;border-radius:999px;background:var(--ssh-accent-soft);color:var(--ssh-accent-ink);font-size:9.5px}
 .ssh-spotlight-meta{margin:5px 0 0;color:var(--ssh-muted);font-size:11.5px;line-height:1.4}
 .ssh-leader-stats{
@@ -439,6 +438,7 @@ html[data-theme="dark"] .ssh-spotlight-privacy:hover{background:rgba(255,255,255
   font-weight:850;
 }
 .ssh-subject-head{grid-column:2/4;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.ssh-subject-heading{min-width:0}
 .ssh-subject-heading h3{margin:0;color:var(--ssh-ink);font-size:14px;line-height:1.3}
 .ssh-status{margin:3px 0 0;display:flex;align-items:center;gap:5px;flex-wrap:wrap;color:var(--ssh-muted);font-size:10.5px}
 .ssh-status-dot{width:6px;height:6px;border-radius:50%;background:var(--ssh-muted)}
@@ -446,7 +446,7 @@ html[data-theme="dark"] .ssh-spotlight-privacy:hover{background:rgba(255,255,255
 .ssh-status.is-track .ssh-status-dot{background:var(--ssh-accent)}
 .ssh-status.is-pending .ssh-status-dot{background:var(--ssh-reward-icon)}
 .ssh-status-detail{color:var(--ssh-muted)}
-.ssh-subject-percent{margin:0;display:flex;align-items:baseline;gap:4px;white-space:nowrap}
+.ssh-subject-percent{margin:0;display:flex;flex-shrink:0;align-items:baseline;gap:4px;white-space:nowrap}
 .ssh-subject-percent strong{color:var(--ssh-ink);font-size:18px}
 .ssh-subject-percent span{color:var(--ssh-muted);font-size:9.5px}
 .ssh-subject-body{grid-column:2/4;display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.8fr);gap:16px}
@@ -765,6 +765,7 @@ html[data-theme="dark"] .spark-weekly-leaders-modal{
   .ssh-next-actions{display:grid;grid-template-columns:1fr}
   .ssh-next-actions .ssh-btn{width:100%}
   .ssh-glance{margin:0 -18px;flex-direction:column}
+  .ssh-glance-item{flex:0 1 auto}
   .ssh-glance-item + .ssh-glance-item{border-left:0;border-top:1px solid var(--ssh-line)}
   .ssh-glance-button,.ssh-glance-static{padding:13px 18px}
   .ssh-subjects{padding:20px 18px 5px}

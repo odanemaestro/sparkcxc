@@ -140,11 +140,11 @@ test("historical source verification remains separate from deterministic mark ac
  }));
  expect(verified.canPublishFinalScore).toBe(true);
 });
-test("nine-subject release report flags any unverified course and duplicates",()=>{
+test("all-subject release report flags any unverified course and duplicates",()=>{
  const audits=PAPER2_GRADING_SUBJECTS.map(id=>auditPaper2FinalRelease(sample(id,"release-final")));
  const verified=auditFinalExamReleaseSet(audits);
  expect(verified.complete).toBe(true);
- expect(verified.verified).toBe(9);
+ expect(verified.verified).toBe(PAPER2_GRADING_SUBJECTS.length);
  const oneUnresolved=auditPaper2FinalRelease(sample("chemistry","release-final",{
    unresolvedMarks:1,assessedMarks:null,provisional:true
  }));

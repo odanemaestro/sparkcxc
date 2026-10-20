@@ -1,6 +1,7 @@
 import { chemistryLocalStructure } from "../chemistry/data/chemistryCourse";
 import {fnhLocalStructure} from "../fnh/data/fnhCourse";
 import {pobLocalStructure} from "../principlesOfBusiness/data/pobCourse";
+import {poaLocalStructure} from "../principlesOfAccounts/data/poaCourse";
 import {SOCIAL_STUDIES_COURSE} from "../socialStudies/data/socialStudiesCourse";
 // ============================================================================
 // SPARK Generic Subject Learner Shell V2
@@ -139,6 +140,7 @@ function structureFromRpc(data) {
 
 export async function loadGenericSubjectStructure({ supabase, subjectId } = {}) {
   const id = cleanId(subjectId);
+  if (id === "principles-of-accounts") return {data:poaLocalStructure(),error:null,source:"local-poa"};
   if (id === "social-studies") {
     return {data:socialStudiesLocalStructure(),error:null,source:"local-social-studies"};
   }

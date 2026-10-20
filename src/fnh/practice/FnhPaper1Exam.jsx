@@ -14,10 +14,12 @@ const goTop=()=>{try{window.scrollTo?.({top:0,left:0,behavior:"instant"});}catch
 const makeNew=paperId=>({paperId,attemptId:`${Date.now()}-${Math.random().toString(36).slice(2)}`,
   phase:"instructions",answers:{},flags:{},index:0,deadline:null,submittedAt:null});
 
-export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1,historicalSourceId=null}){
-  const chosenSet=fnhGetPaper1Set(setNumber);
+export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1,historicalSourceId=null,practiceConfig=null}){
+  const chosenSet=practiceConfig||fnhGetPaper1Set(setNumber);
+  const subjectId=practiceConfig?.subjectId||"food-nutrition-and-health";
+  const subjectName=practiceConfig?.subjectName||"Food, Nutrition and Health";
   const historical=historicalSourceId?fnhHistoricalPaper1Reader(historicalSourceId):null;
-  const paperId=historicalSourceId||`FNH-SPARK-P1-ORIGINAL-0${chosenSet.number}`;
+  const paperId=historicalSourceId||practiceConfig?.paperId||`FNH-SPARK-P1-ORIGINAL-0${chosenSet.number}`;
   const questions=historical?historical.questions.map(q=>({...q,id:`${historicalSourceId}:${q.number}`})):chosenSet.questions;
   const scored=!historicalSourceId;
   const total=questions.length;
@@ -58,12 +60,12 @@ export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1,histor
     if(!scored||!review||!userId||!supabase?.rpc||reported.current.has(attempt.attemptId))return;
     reported.current.add(attempt.attemptId);
     recordSubjectActivity({supabase,activity:{
-      subjectId:"food-nutrition-and-health",activityKey:`exam:fnh-paper1:${paperId}:${attempt.attemptId}`,
-      activityType:"exam",title:`Food, Nutrition and Health Paper 01 · ${chosenSet.label}`,
+      subjectId,activityKey:`exam:${subjectId}:paper1:${paperId}:${attempt.attemptId}`,
+      activityType:"exam",title:`${subjectName} Paper 01 · ${chosenSet.label}`,
       completed:true,score,maxScore:questions.length,percent:Math.round(100*score/questions.length),
-      metadata:{source:"fnh_paper1_original_v1",paper:"01",paper_id:paperId,
+      metadata:{source:practiceConfig?.source||"fnh_paper1_original_v1",paper:"01",paper_id:paperId,
         question_count:60,duration_minutes:90,source_verified:true,historical:false,
-        profile_knowledge:30,profile_use_of_knowledge:30,at:new Date().toISOString()},
+        ...(practiceConfig?{}:{profile_knowledge:30,profile_use_of_knowledge:30}),at:new Date().toISOString()},
     }}).catch(error=>console.warn("FNH Paper 1 progress could not be saved",error));
   },[scored,review,attempt.attemptId,questions.length,score,supabase,userId,paperId,chosenSet.label]);
   const begin=()=>{
@@ -79,7 +81,7 @@ export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1,histor
     <div className="fnh-exam-container">
       <div className="fnh-exam-top">
         <button type="button" className="fnh-outline" onClick={()=>exam?setModal("exit"):onBack?.()}><FnhNavArrow direction="left"/> {exam?"Exit examination":"Back to paper selection"}</button>
-        <span>CSEC FOOD, NUTRITION AND HEALTH · PAPER 01</span>
+        <span>CSEC {subjectName.toUpperCase()} · PAPER 01</span>
       </div>
       {attempt.phase==="instructions"?<section className="fnh-exam-card fnh-instructions">
         <small>{historical?`${historical.year} MAY/JUNE PAST PAPER`:`ORIGINAL PRACTICE SET ${chosenSet.number}`}</small>
@@ -100,7 +102,7 @@ export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1,histor
         <button type="button" className="fnh-primary" onClick={begin}>Start examination</button>
       </section>:<div className="fnh-session">
         <header className="fnh-exam-card fnh-session-heading">
-          <div><small>{review?"SUBMITTED · ANSWER REVIEW":"PAPER 01 · LIVE PRACTICE"}</small><h1>Food, Nutrition and Health</h1><p>{review?(scored?`Your result: ${score} / ${total}`:`Completed · ${answered} of ${total} answered`):`Question ${index+1} of ${total} · Answered ${answered}/${total} · Flagged ${flagged}`}</p></div>
+          <div><small>{review?"SUBMITTED · ANSWER REVIEW":"PAPER 01 · LIVE PRACTICE"}</small><h1>{subjectName}</h1><p>{review?(scored?`Your result: ${score} / ${total}`:`Completed · ${answered} of ${total} answered`):`Question ${index+1} of ${total} · Answered ${answered}/${total} · Flagged ${flagged}`}</p></div>
           <div className="fnh-timer" role="timer" aria-live="off"><span>{review?"Completed":"Time remaining"}</span><strong>{review?(scored?`${Math.round(score/total*100)}%`:"Finished"):time(clock)}</strong></div>
         </header>
         <div className="fnh-exam-layout">

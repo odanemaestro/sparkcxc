@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - main
+      - feat/automated-marking-verification-v2
 
 permissions:
   contents: write
@@ -46,6 +47,9 @@ jobs:
 
       - name: Verify historical POB canary controls in isolated PostgreSQL
         run: node tools/test-pob-historical-queue.mjs
+
+      - name: Verify Accounts course seed and draft V2 rubric
+        run: node tools/test-poa-migration.mjs
 
       - name: Verify marking database and build worker
         run: npm run test:marking-db && npm run build:marker

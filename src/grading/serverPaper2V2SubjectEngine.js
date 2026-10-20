@@ -6,6 +6,7 @@
  * a reason to publish a final score. See rubric activation and lease gates.
  */
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
+import {evaluatePoaSourceV2} from "../principlesOfAccounts/poaMarkingV2";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
 import {CHECKERS} from "../practice/cxcMarking/checkers";
 import {markPhysicsPaper2} from "../physics/paper2/physicsPaper2Marking";
@@ -23,7 +24,7 @@ import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Orig
 
 const subjectIds=new Set([
  "mathematics","physics","information-technology","chemistry","english-a",
- "food-nutrition-and-health","integrated-science","social-studies","principles-of-business"
+ "food-nutrition-and-health","integrated-science","social-studies","principles-of-business","principles-of-accounts"
 ]);
 const finite=n=>typeof n==="number"&&Number.isFinite(n);
 const object=x=>x&&typeof x==="object"&&!Array.isArray(x);
@@ -387,6 +388,7 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
   case "food-nutrition-and-health":rows=fnh(criteria,responses);break;
   case "integrated-science":rows=science(criteria,responses,subjectId);break;
   case "principles-of-business":rows=pob(criteria,responses,paperId);break;
+  case "principles-of-accounts":rows=evaluatePoaSourceV2({paperId,criteria,responses});break;
   case "social-studies":rows=social(criteria,responses);break;
   default:throw new TypeError("Unknown SPARK subject");
  }

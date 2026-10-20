@@ -104,6 +104,7 @@ import {
   loadLearnerRecommendationHistory,
   loadRecommendationEffectiveness,
   loadLearningStrategyAssignments,
+  recordLearnerRecommendation,
 } from "./learning/learnerIntelligencePersistence";
 import { friendlyErrorMessage } from "./lib/errorMessages";
 import { computeStudyStreak } from "./lib/studyStreak";
@@ -190,6 +191,7 @@ const VIEW_ROUTE_PATHS = Object.freeze({
   "practice-english-a": "/practice/english-a",
   "practice-chemistry": "/practice/chemistry",
   "practice-food-nutrition-and-health":"/practice/food-nutrition-and-health",
+  "practice-principles-of-accounts":"/practice/principles-of-accounts",
   "practice-principles-of-business":"/practice/principles-of-business",
   // SPARK_PHYSICS_SECTION_A_RC1_ROUTES
   physics: "/study/physics",
@@ -224,6 +226,7 @@ const ROUTE_PATH_VIEWS = Object.freeze({
   "/practice/english-a": "practice-english-a",
   "/practice/chemistry": "practice-chemistry",
   "/practice/food-nutrition-and-health":"practice-food-nutrition-and-health",
+  "/practice/principles-of-accounts":"practice-principles-of-accounts",
   "/practice/principles-of-business":"practice-principles-of-business",
   "/study/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
@@ -292,6 +295,7 @@ function viewFromBrowserHash() {
   if (normalizedPath === "/practice/english-a" || normalizedPath.startsWith("/practice/english-a/")) return "practice-english-a";
   if (normalizedPath === "/practice/chemistry" || normalizedPath.startsWith("/practice/chemistry/")) return "practice-chemistry";
   if (normalizedPath === "/practice/food-nutrition-and-health" || normalizedPath.startsWith("/practice/food-nutrition-and-health/")) return "practice-food-nutrition-and-health";
+  if (normalizedPath === "/practice/principles-of-accounts" || normalizedPath.startsWith("/practice/principles-of-accounts/")) return "practice-principles-of-accounts";
   if (normalizedPath === "/practice/principles-of-business" || normalizedPath.startsWith("/practice/principles-of-business/")) return "practice-principles-of-business";
   return ROUTE_PATH_VIEWS[normalizedPath] || "home";
 }
@@ -3541,7 +3545,7 @@ function ProfilePhotoEditor({
   );
 }
 
-function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorApp, tutorAppLoaded = true, onProfileUpdated, subjects = SPARK_SUBJECTS, onOpenSubject }) {
+export function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorApp, tutorAppLoaded = true, onProfileUpdated, subjects = SPARK_SUBJECTS, onOpenSubject }) {
   // profile.role is only set once, at signup - it's never flipped to "tutor"
   // when someone who signed up as a student later applies and gets approved.
   // Falling back to an approved tutor-application status keeps this accurate
@@ -3627,6 +3631,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [studentFlashcardReviewEvents, setStudentFlashcardReviewEvents] = useState([]);
   const [studentGoal, setStudentGoal] = useState(null);
   const [studentRecommendationHistory, setStudentRecommendationHistory] = useState([]);
+  const studentNextStepStartRef = useRef(false);
+  const studentNextStepLifetimeRef = useRef(null);
   const [studentRecommendationEffectiveness, setStudentRecommendationEffectiveness] = useState([]);
   const [studentLearningStrategyAssignments, setStudentLearningStrategyAssignments] = useState({});
   const [studentStudyCircle, setStudentStudyCircle] = useState({ active: false });
@@ -3665,7 +3671,17 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   });
   const totalTopics = SYLLABUS_SECTIONS.reduce((a, s) => a + s.topics.length, 0);
 
+  useEffect(() => {
+    studentNextStepLifetimeRef.current = {};
+    studentNextStepStartRef.current = false;
+    return () => {
+      studentNextStepLifetimeRef.current = null;
+      studentNextStepStartRef.current = false;
+    };
+  }, [user?.id]);
+
   const setDashboardSection = useCallback((section, options = {}) => {
+    studentNextStepStartRef.current = false;
     if (!dashboardRoleResolved) {
       setSec(section);
       return;
@@ -3684,6 +3700,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   }, [dashboardRoleResolved, normalizeDashboardSection]);
 
   const setFlashcardSubjectRoute = useCallback((subjectId, options = {}) => {
+    studentNextStepStartRef.current = false;
     const next = normalizeFlashcardSubjectId(subjectId);
     setSec("flashcards");
     setFlashcardSubject(next);
@@ -3763,6 +3780,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     if (!dashboardRoleResolved) return undefined;
     const syncDashboardSectionFromUrl = () => {
       if (viewFromBrowserHash() !== "dashboard") return;
+      studentNextStepStartRef.current = false;
       const requested = dashboardSectionFromBrowserHash();
       const normalized = normalizeDashboardSection(requested);
       setSec(normalized);
@@ -4493,13 +4511,31 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   };
 
   const startStudentNextStep = () => {
-    if (!studentNextStep) return;
+    if (!studentNextStep || studentNextStepStartRef.current) return;
     if (studentNextStep.kind === "choose") {
       setDashboardSection("subjects");
       return;
     }
     if (studentNextStep.kind === "recommendation" && studentNextStep.recommendation) {
-      openNextBestActionTarget(studentNextStep.recommendation,{setView,setDashboardSection,setFlashcardSubjectRoute});
+      // Record the clicked snapshot in the background so a slow request cannot
+      // delay the activity or send the student back after navigating elsewhere.
+      const recommendation = studentNextStep.recommendation;
+      const lifetime = studentNextStepLifetimeRef.current;
+      studentNextStepStartRef.current = true;
+      recordLearnerRecommendation({
+        supabase,
+        intelligence:{ ...studentNextStep.intelligence, recommendation },
+      }).then(result => {
+        if (result?.error) console.warn("Could not record SPARK recommendation", result.error);
+        if (lifetime && studentNextStepLifetimeRef.current === lifetime && result?.historyRow) {
+          setStudentRecommendationHistory(current => [result.historyRow, ...current].slice(0, 200));
+        }
+      }).catch(error => {
+        console.warn("Could not record SPARK recommendation", error);
+      });
+      if (!openNextBestActionTarget(recommendation,{setView,setDashboardSection,setFlashcardSubjectRoute})) {
+        studentNextStepStartRef.current = false;
+      }
       return;
     }
     if (studentNextStep.subject) openSubject(studentNextStep.subject);
@@ -7809,7 +7845,7 @@ if (loading || authenticatedRolePending) {
           CSEC Physics study is available from a student account.
         </div>
       )}
-      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies" || view === "practice-english-a" || view === "practice-chemistry" || view === "practice-food-nutrition-and-health" || view === "practice-principles-of-business") && session && profile?.role === "student" && (
+      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies" || view === "practice-english-a" || view === "practice-chemistry" || view === "practice-food-nutrition-and-health" || view === "practice-principles-of-business" || view === "practice-principles-of-accounts") && session && profile?.role === "student" && (
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Loading your practice subjects" />
           : (view === "practice-math" && !appHasMathematics)
@@ -7841,7 +7877,7 @@ if (loading || authenticatedRolePending) {
                       physicsEnabled={PHYSICS_SECTION_A_ENABLED}
                       enrolledSubjectIds={POB_DEV_PREVIEW ? [...appSubjectEnrollmentIds,"principles-of-business"] : appSubjectEnrollmentIds}
                       subjects={POB_DEV_PREVIEW ? [...runtimeSparkSubjects,{...getSparkSubject(SPARK_SUBJECTS,"principles-of-business"),enabled:true,status:"live"}] : runtimeSparkSubjects}
-                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : view === "practice-english-a" ? "english-a" : view === "practice-chemistry" ? "chemistry" : view === "practice-food-nutrition-and-health" ? "food-nutrition-and-health" : view === "practice-principles-of-business" ? "principles-of-business" : null}
+                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : view === "practice-english-a" ? "english-a" : view === "practice-chemistry" ? "chemistry" : view === "practice-food-nutrition-and-health" ? "food-nutrition-and-health" : view === "practice-principles-of-business" ? "principles-of-business" : view === "practice-principles-of-accounts" ? "principles-of-accounts" : null}
                       onSubjectActivity={event => {
                         recordSparkSubjectActivity({ supabase, event }).then(result => {
                           if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {

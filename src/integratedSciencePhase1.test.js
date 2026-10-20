@@ -48,7 +48,8 @@ describe("SPARK CSEC Integrated Science Phase 1", () => {
   test("generic lessons render syllabus objectives and save diagram progress", () => {
     expect(view).toContain("What you should be able to do");
     expect(view).toContain("InteractiveLabelDiagram");
-    expect(view).toContain('activityType:"diagram"');
+    expect(view).toContain('activityType:type');
+    expect(view).toContain('activityType==="lab"?"lab":"diagram"');
     expect(view).toContain('source:"generic_subject_interactive_diagram"');
   });
 

@@ -23,6 +23,8 @@ import FnhObjectivePractice from "../fnh/components/FnhObjectivePractice";
 import FnhStudyPractice from "../fnh/components/FnhStudyPractice";
 import FnhDecisionLab from "../fnh/components/FnhDecisionLab";
 import PobLearningTools from "../principlesOfBusiness/components/PobLearningTools.jsx";
+import AccountingWorkspace from "../principlesOfAccounts/components/AccountingWorkspace.jsx";
+import AccountingVisualGuide from "../principlesOfAccounts/components/AccountingVisualGuide.jsx";
 import PobReferenceMedia from "../principlesOfBusiness/components/PobReferenceMedia.jsx";
 import {pobMediaForTopic} from "../principlesOfBusiness/data/pobReferenceMedia";
 import FnhReferenceMedia from "../fnh/components/FnhReferenceMedia";
@@ -150,6 +152,7 @@ function isTopicUnlocked(structure, topicId, completedIds = new Set()) {
 
 export function GenericLessonContent({
   subjectId,
+  userId,
   topic,
   editorial=false,
   completedActivityKeys = new Set(),
@@ -287,6 +290,11 @@ export function GenericLessonContent({
       {hasChemistryVisuals && <ChemistryReferenceDiagrams topicId={topic.id}/>}
       {pobHasVisuals&&<PobReferenceMedia topic={topic}/>}
       {isPob&&<div id="pob-lesson-tools"><PobLearningTools topic={topic} onActivityComplete={onActivityComplete}/></div>}
+      {subjectId==="principles-of-accounts"&&<>
+        <AccountingVisualGuide section={topic?.metadata?.syllabus?.section}/>
+        <details><summary>Check your understanding</summary><p>{lesson.check?.question}</p><details><summary>Show explanation</summary><p>{lesson.check?.answer}</p></details></details>
+        <details className="poa-lesson-tools"><summary>Open the accounting workspace</summary><AccountingWorkspace key={userId||'guest'} userId={userId} topic={topic} onActivityComplete={onActivityComplete}/></details>
+      </>}
       {models.map(model => (
         subjectId === "integrated-science"
           ? <div className="spark-integrated-science-model" key={model.id || model.type}><IntegratedScienceModel model={model} /></div>
@@ -622,6 +630,7 @@ export default function GenericSubjectStudyView({
 
   const recordInteractiveComplete = useCallback(async ({
     activityId,
+    activityType,
     title,
     score,
     total,
@@ -629,7 +638,8 @@ export default function GenericSubjectStudyView({
     topicId,
     sectionId,
   }) => {
-    const activityKey = `diagram:${activityId}`;
+    const type=subjectId==="principles-of-accounts"&&activityType==="lab"?"lab":"diagram";
+    const activityKey = `${type}:${activityId}`;
     if (!activityId || completedActivityKeys.has(activityKey)) return;
 
     try {
@@ -638,7 +648,7 @@ export default function GenericSubjectStudyView({
         activity:{
           subjectId,
           activityKey,
-          activityType:"diagram",
+          activityType:type,
           sectionId:sectionId || activeSection?.id || null,
           topicId:topicId || activeTopic?.id || null,
           title:title || "Interactive diagram",
@@ -985,6 +995,7 @@ export default function GenericSubjectStudyView({
 
                   <GenericLessonContent
                     subjectId={subjectId}
+                    userId={userId}
                     topic={activeTopic}
                     completedActivityKeys={completedActivityKeys}
                     editorial={subjectId!=="food-nutrition-and-health"}

@@ -10,6 +10,7 @@ import {formulaMatches} from "../informationTechnology/practice/itPaper2Marking"
 import {gradeSocialStudiesShortAnswer} from "../socialStudies/marking/socialStudiesShortAnswerGrader";
 import {gradeFnhWrittenPart,FNH_P2_RUBRIC_CALIBRATION_VERSION} from "../fnh/practice/fnhPaper2Marking";
 import {gradePobHistoricalArithmetic} from "../principlesOfBusiness/data/pobHistoricalPaper2Evidence";
+import {reviewPoaPaper2V2} from "../principlesOfAccounts/poaMarkingV2";
 
 const calibration=runCxcOfficialCalibration();
 const part=(marks,points)=>({marks,markScheme:{points}});
@@ -35,6 +36,7 @@ const fnh=(answer)=>gradeFnhWrittenPart(fnhPart,answer).confirmedMarks;
 const pob=(answer)=>gradePobHistoricalArithmetic("POB-P2-2005-MJ","Q9:a.ii",answer).marks;
 
 const fixtures=[
+  ["principles-of-accounts",answer=>reviewPoaPaper2V2({'POA-Q1::1':{answer}}).candidateMarks,1,"116000","115000","poa-original-criteria-v1"],
   ["chemistry",chem,1, "Ions move through solution.","Ions never move through solution.",CHEMISTRY_P2_GRADER_VERSION],
   ["integrated-science",sci,1,"Heat increases evaporation.","Heat does not increase evaporation.",INTEGRATED_SCIENCE_P2_GRADER_VERSION],
   ["english-a",eng,1,
@@ -65,10 +67,10 @@ function cases(){
   ]);
 }
 
-test("all nine named Paper 2 subjects have positive and negative scorer fixtures",()=>{
+test("every registered Paper 2 subject has positive and negative scorer fixtures",()=>{
   const rows=cases();
-  expect(PAPER2_GRADING_SUBJECTS).toHaveLength(9);
-  expect(rows).toHaveLength(18);
+  expect(new Set(fixtures.map(f=>f[0]))).toEqual(new Set(PAPER2_GRADING_SUBJECTS));
+  expect(rows).toHaveLength(PAPER2_GRADING_SUBJECTS.length*2);
   for(const row of rows){
     expect({caseId:row.caseId,observed:row.observedMark}).toEqual({
       caseId:row.caseId,observed:row.expectedMark

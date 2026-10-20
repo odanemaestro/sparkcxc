@@ -10,6 +10,11 @@ import {PAPER2_GRADING_SUBJECTS} from "./crossCourseGradingRelease";
 export const PAPER2_V2_SOURCE_INVENTORY_VERSION="paper2-all-subjects-source-inventory-v1";
 
 export const PAPER2_V2_SOURCE_INVENTORY=Object.freeze([
+ {subjectId:"principles-of-accounts",
+  source:"src/principlesOfAccounts/data/poaPaper2.js",
+  marker:"src/principlesOfAccounts/poaMarkingV2.js",
+  adapter:"mapPoaPaper2V2",
+  scheme:"question.checkpoints / sourceMarking.criteria"},
  {subjectId:"chemistry",
   source:"src/chemistry/data/chemistryPaper2Bank.js",
   marker:"src/chemistry/practice/chemistryPaper2Grader.js",

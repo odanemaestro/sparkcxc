@@ -1,0 +1,850 @@
+[
+  {
+    "code": "S1.1",
+    "section": 1,
+    "number": 1,
+    "title": "explain the concept and purposes of Accounting",
+    "practical": false,
+    "sourcePage": 7
+  },
+  {
+    "code": "S1.2",
+    "section": 1,
+    "number": 2,
+    "title": "identify the users of accounting information",
+    "practical": false,
+    "sourcePage": 7
+  },
+  {
+    "code": "S1.3",
+    "section": 1,
+    "number": 3,
+    "title": "describe traditional and emerging careers in the field of Accounting",
+    "practical": false,
+    "sourcePage": 7
+  },
+  {
+    "code": "S1.4",
+    "section": 1,
+    "number": 4,
+    "title": "discuss ethical issues in the field of Accounting.",
+    "practical": false,
+    "sourcePage": 7
+  },
+  {
+    "code": "S2.1",
+    "section": 2,
+    "number": 1,
+    "title": "outline the concepts and conventions that guide the accounting process",
+    "practical": false,
+    "sourcePage": 9
+  },
+  {
+    "code": "S2.2",
+    "section": 2,
+    "number": 2,
+    "title": "describe the accounting cycle",
+    "practical": false,
+    "sourcePage": 9
+  },
+  {
+    "code": "S2.3",
+    "section": 2,
+    "number": 3,
+    "title": "appraise the accounting features of various types of business organisations",
+    "practical": false,
+    "sourcePage": 9
+  },
+  {
+    "code": "S2.4",
+    "section": 2,
+    "number": 4,
+    "title": "identify the main financial statements prepared by various business organisations;",
+    "practical": false,
+    "sourcePage": 9
+  },
+  {
+    "code": "S2.5",
+    "section": 2,
+    "number": 5,
+    "title": "assess the role and impact of technology on the accounting process",
+    "practical": false,
+    "sourcePage": 10
+  },
+  {
+    "code": "S2.6",
+    "section": 2,
+    "number": 6,
+    "title": "explain the concept of a Balance Sheet and the balance sheet equation",
+    "practical": false,
+    "sourcePage": 10
+  },
+  {
+    "code": "S2.7",
+    "section": 2,
+    "number": 7,
+    "title": "identify the components of a Balance Sheet",
+    "practical": false,
+    "sourcePage": 10
+  },
+  {
+    "code": "S2.8",
+    "section": 2,
+    "number": 8,
+    "title": "give examples of different types of assets and liabilities",
+    "practical": false,
+    "sourcePage": 10
+  },
+  {
+    "code": "S2.9",
+    "section": 2,
+    "number": 9,
+    "title": "construct Balance Sheets",
+    "practical": true,
+    "sourcePage": 10
+  },
+  {
+    "code": "S2.10",
+    "section": 2,
+    "number": 10,
+    "title": "determine which items in a Balance Sheet will change as a result of various transactions.",
+    "practical": false,
+    "sourcePage": 10
+  },
+  {
+    "code": "S3.1",
+    "section": 3,
+    "number": 1,
+    "title": "explain the uses of books of original entry",
+    "practical": false,
+    "sourcePage": 12
+  },
+  {
+    "code": "S3.2",
+    "section": 3,
+    "number": 2,
+    "title": "distinguish between cash and credit transactions",
+    "practical": false,
+    "sourcePage": 12
+  },
+  {
+    "code": "S3.3",
+    "section": 3,
+    "number": 3,
+    "title": "identify source documents related to books of original entry;",
+    "practical": false,
+    "sourcePage": 12
+  },
+  {
+    "code": "S3.4",
+    "section": 3,
+    "number": 4,
+    "title": "prepare source documents for use in transaction descriptions",
+    "practical": true,
+    "sourcePage": 13
+  },
+  {
+    "code": "S3.5",
+    "section": 3,
+    "number": 5,
+    "title": "translate source documents into transaction descriptions",
+    "practical": true,
+    "sourcePage": 13
+  },
+  {
+    "code": "S3.6",
+    "section": 3,
+    "number": 6,
+    "title": "use source documents to make entries into books of original entry",
+    "practical": true,
+    "sourcePage": 13
+  },
+  {
+    "code": "S3.7",
+    "section": 3,
+    "number": 7,
+    "title": "distinguish between trade and cash discounts",
+    "practical": false,
+    "sourcePage": 13
+  },
+  {
+    "code": "S3.8",
+    "section": 3,
+    "number": 8,
+    "title": "distinguish between discounts allowed and discounts received",
+    "practical": false,
+    "sourcePage": 13
+  },
+  {
+    "code": "S3.9",
+    "section": 3,
+    "number": 9,
+    "title": "balance cash books",
+    "practical": true,
+    "sourcePage": 13
+  },
+  {
+    "code": "S3.10",
+    "section": 3,
+    "number": 10,
+    "title": "interpret the balances of the cash books",
+    "practical": false,
+    "sourcePage": 13
+  },
+  {
+    "code": "S3.11",
+    "section": 3,
+    "number": 11,
+    "title": "indicate treatment of totals from books of original entry.",
+    "practical": true,
+    "sourcePage": 13
+  },
+  {
+    "code": "S4.1",
+    "section": 4,
+    "number": 1,
+    "title": "describe the different classes of accounts",
+    "practical": false,
+    "sourcePage": 15
+  },
+  {
+    "code": "S4.2",
+    "section": 4,
+    "number": 2,
+    "title": "identify the different types of ledgers",
+    "practical": false,
+    "sourcePage": 15
+  },
+  {
+    "code": "S4.3",
+    "section": 4,
+    "number": 3,
+    "title": "explain the significance of debit and credit in each class of account",
+    "practical": false,
+    "sourcePage": 15
+  },
+  {
+    "code": "S4.4",
+    "section": 4,
+    "number": 4,
+    "title": "draw up simple account formats, neatly and accurately",
+    "practical": true,
+    "sourcePage": 15
+  },
+  {
+    "code": "S4.5",
+    "section": 4,
+    "number": 5,
+    "title": "post from books of original entry to the general ledger and the subsidiary ledgers",
+    "practical": true,
+    "sourcePage": 15
+  },
+  {
+    "code": "S4.6",
+    "section": 4,
+    "number": 6,
+    "title": "balance and close accounts",
+    "practical": true,
+    "sourcePage": 15
+  },
+  {
+    "code": "S4.7",
+    "section": 4,
+    "number": 7,
+    "title": "interpret entries and balances",
+    "practical": false,
+    "sourcePage": 15
+  },
+  {
+    "code": "S4.8",
+    "section": 4,
+    "number": 8,
+    "title": "use the balances brought down to construct the trial balance",
+    "practical": true,
+    "sourcePage": 15
+  },
+  {
+    "code": "S4.9",
+    "section": 4,
+    "number": 9,
+    "title": "outline the uses and limitations of the trial balance.",
+    "practical": false,
+    "sourcePage": 15
+  },
+  {
+    "code": "S5.1",
+    "section": 5,
+    "number": 1,
+    "title": "explain the purpose of preparing financial statements",
+    "practical": false,
+    "sourcePage": 17
+  },
+  {
+    "code": "S5.2",
+    "section": 5,
+    "number": 2,
+    "title": "identify the components of the Financial Statements",
+    "practical": false,
+    "sourcePage": 17
+  },
+  {
+    "code": "S5.3",
+    "section": 5,
+    "number": 3,
+    "title": "draw up the income statement for sole traders to determine gross profit or loss and net profit or loss",
+    "practical": true,
+    "sourcePage": 17
+  },
+  {
+    "code": "S5.4",
+    "section": 5,
+    "number": 4,
+    "title": "prepare classified balance sheet in vertical style",
+    "practical": true,
+    "sourcePage": 17
+  },
+  {
+    "code": "S5.5",
+    "section": 5,
+    "number": 5,
+    "title": "explain the significance of the working capital for the operation of a business",
+    "practical": false,
+    "sourcePage": 17
+  },
+  {
+    "code": "S5.6",
+    "section": 5,
+    "number": 6,
+    "title": "use ratios to determine the performance (profitability) of the business",
+    "practical": true,
+    "sourcePage": 17
+  },
+  {
+    "code": "S5.7",
+    "section": 5,
+    "number": 7,
+    "title": "calculate ratios to demonstrate the financial position of a business",
+    "practical": true,
+    "sourcePage": 17
+  },
+  {
+    "code": "S5.8",
+    "section": 5,
+    "number": 8,
+    "title": "show the effect of net profit or loss on capital",
+    "practical": true,
+    "sourcePage": 17
+  },
+  {
+    "code": "S5.9",
+    "section": 5,
+    "number": 9,
+    "title": "make recommendations about a business based on ratio analysis.",
+    "practical": false,
+    "sourcePage": 17
+  },
+  {
+    "code": "S6.1",
+    "section": 6,
+    "number": 1,
+    "title": "explain accounting concepts that underpin the need for adjustments",
+    "practical": false,
+    "sourcePage": 19
+  },
+  {
+    "code": "S6.2",
+    "section": 6,
+    "number": 2,
+    "title": "explain why adjustments are made to financial statements",
+    "practical": false,
+    "sourcePage": 19
+  },
+  {
+    "code": "S6.3",
+    "section": 6,
+    "number": 3,
+    "title": "prepare journal entries and ledger accounts to reflect adjustments and the treatment in the balance sheet",
+    "practical": false,
+    "sourcePage": 19
+  },
+  {
+    "code": "S6.4",
+    "section": 6,
+    "number": 4,
+    "title": "explain the reasons for bad debts",
+    "practical": false,
+    "sourcePage": 19
+  },
+  {
+    "code": "S6.5",
+    "section": 6,
+    "number": 5,
+    "title": "prepare journal entries and ledger accounts to write off bad debts and create provision for doubtful debts",
+    "practical": true,
+    "sourcePage": 19
+  },
+  {
+    "code": "S6.6",
+    "section": 6,
+    "number": 6,
+    "title": "indicate the treatment of bad and doubtful debts in the Income Statement and Balance Sheet",
+    "practical": false,
+    "sourcePage": 19
+  },
+  {
+    "code": "S6.7",
+    "section": 6,
+    "number": 7,
+    "title": "discuss the nature of depreciation",
+    "practical": false,
+    "sourcePage": 19
+  },
+  {
+    "code": "S6.8",
+    "section": 6,
+    "number": 8,
+    "title": "calculate annual depreciation expenses using straight line method and reducing balance method;",
+    "practical": true,
+    "sourcePage": 19
+  },
+  {
+    "code": "S6.9",
+    "section": 6,
+    "number": 9,
+    "title": "prepare journal entries and ledger accounts for provision for depreciation",
+    "practical": true,
+    "sourcePage": 20
+  },
+  {
+    "code": "S6.10",
+    "section": 6,
+    "number": 10,
+    "title": "distinguish between capital expenditure and revenue expenditures",
+    "practical": false,
+    "sourcePage": 20
+  },
+  {
+    "code": "S6.11",
+    "section": 6,
+    "number": 11,
+    "title": "determine the amount of expenses or revenues to be transferred to the Income Statement",
+    "practical": false,
+    "sourcePage": 20
+  },
+  {
+    "code": "S6.12",
+    "section": 6,
+    "number": 12,
+    "title": "prepare income statements to reflect adjusting entries",
+    "practical": true,
+    "sourcePage": 20
+  },
+  {
+    "code": "S6.13",
+    "section": 6,
+    "number": 13,
+    "title": "prepare Financial Statements after adjustments",
+    "practical": true,
+    "sourcePage": 20
+  },
+  {
+    "code": "S7.1",
+    "section": 7,
+    "number": 1,
+    "title": "explain the uses of control systems in the accounting process",
+    "practical": false,
+    "sourcePage": 21
+  },
+  {
+    "code": "S7.2",
+    "section": 7,
+    "number": 2,
+    "title": "outline the THREE most commonly used control systems in the accounting process",
+    "practical": false,
+    "sourcePage": 21
+  },
+  {
+    "code": "S7.3",
+    "section": 7,
+    "number": 3,
+    "title": "distinguish between those errors which affect and those which do not affect the trial balance",
+    "practical": false,
+    "sourcePage": 21
+  },
+  {
+    "code": "S7.4",
+    "section": 7,
+    "number": 4,
+    "title": "prepare journal entries for the correction of errors",
+    "practical": true,
+    "sourcePage": 21
+  },
+  {
+    "code": "S7.5",
+    "section": 7,
+    "number": 5,
+    "title": "explain the need for suspense account",
+    "practical": false,
+    "sourcePage": 21
+  },
+  {
+    "code": "S7.6",
+    "section": 7,
+    "number": 6,
+    "title": "construct a suspense account",
+    "practical": true,
+    "sourcePage": 21
+  },
+  {
+    "code": "S7.7",
+    "section": 7,
+    "number": 7,
+    "title": "construct a statement of revised profit after the correction of errors",
+    "practical": true,
+    "sourcePage": 21
+  },
+  {
+    "code": "S7.8",
+    "section": 7,
+    "number": 8,
+    "title": "explain the purposes of control accounts and how they are prepared",
+    "practical": false,
+    "sourcePage": 21
+  },
+  {
+    "code": "S7.9",
+    "section": 7,
+    "number": 9,
+    "title": "identify the sources of information for entries made in control accounts",
+    "practical": false,
+    "sourcePage": 21
+  },
+  {
+    "code": "S7.10",
+    "section": 7,
+    "number": 10,
+    "title": "construct sales and purchases ledger control accounts",
+    "practical": true,
+    "sourcePage": 21
+  },
+  {
+    "code": "S7.11",
+    "section": 7,
+    "number": 11,
+    "title": "explain the significance of the balances on control accounts;",
+    "practical": false,
+    "sourcePage": 21
+  },
+  {
+    "code": "S7.12",
+    "section": 7,
+    "number": 12,
+    "title": "identify items that will result in differences between cash book and bank statement balances",
+    "practical": false,
+    "sourcePage": 22
+  },
+  {
+    "code": "S7.13",
+    "section": 7,
+    "number": 13,
+    "title": "construct a bank reconciliation statement using the adjusted cash book balance",
+    "practical": true,
+    "sourcePage": 22
+  },
+  {
+    "code": "S8.1",
+    "section": 8,
+    "number": 1,
+    "title": "define a partnership business",
+    "practical": false,
+    "sourcePage": 23
+  },
+  {
+    "code": "S8.2",
+    "section": 8,
+    "number": 2,
+    "title": "state the features of a partnership",
+    "practical": false,
+    "sourcePage": 23
+  },
+  {
+    "code": "S8.3",
+    "section": 8,
+    "number": 3,
+    "title": "give reasons for establishing partnerships",
+    "practical": false,
+    "sourcePage": 23
+  },
+  {
+    "code": "S8.4",
+    "section": 8,
+    "number": 4,
+    "title": "outline the essential components of a partnership agreement",
+    "practical": false,
+    "sourcePage": 23
+  },
+  {
+    "code": "S8.5",
+    "section": 8,
+    "number": 5,
+    "title": "prepare journal entries and ledger accounts to record the capital of partnership",
+    "practical": true,
+    "sourcePage": 23
+  },
+  {
+    "code": "S8.6",
+    "section": 8,
+    "number": 6,
+    "title": "use various methods to share profit/loss among partners",
+    "practical": true,
+    "sourcePage": 23
+  },
+  {
+    "code": "S8.7",
+    "section": 8,
+    "number": 7,
+    "title": "prepare appropriation account of partnerships",
+    "practical": true,
+    "sourcePage": 23
+  },
+  {
+    "code": "S8.8",
+    "section": 8,
+    "number": 8,
+    "title": "prepare current account of partners",
+    "practical": true,
+    "sourcePage": 23
+  },
+  {
+    "code": "S8.9",
+    "section": 8,
+    "number": 9,
+    "title": "explain the significance of the brought down balances on partners\u2019 current accounts",
+    "practical": false,
+    "sourcePage": 23
+  },
+  {
+    "code": "S8.10",
+    "section": 8,
+    "number": 10,
+    "title": "prepare balance sheet of partnerships.",
+    "practical": true,
+    "sourcePage": 23
+  },
+  {
+    "code": "S9.1",
+    "section": 9,
+    "number": 1,
+    "title": "identify the essential features of limited liability companies, co- operatives and non-profit organisations",
+    "practical": false,
+    "sourcePage": 25
+  },
+  {
+    "code": "S9.2",
+    "section": 9,
+    "number": 2,
+    "title": "identify the types of limited liability companies, co-operatives and non- profit organisations",
+    "practical": false,
+    "sourcePage": 25
+  },
+  {
+    "code": "S9.3",
+    "section": 9,
+    "number": 3,
+    "title": "outline the advantages and disadvantages of a limited liability company",
+    "practical": false,
+    "sourcePage": 25
+  },
+  {
+    "code": "S9.4",
+    "section": 9,
+    "number": 4,
+    "title": "describe the various methods of raising capital available to limited liability companies and co- operatives",
+    "practical": false,
+    "sourcePage": 25
+  },
+  {
+    "code": "S9.5",
+    "section": 9,
+    "number": 5,
+    "title": "identify the various types of shares and the rights of the owners of each type of share",
+    "practical": false,
+    "sourcePage": 25
+  },
+  {
+    "code": "S9.6",
+    "section": 9,
+    "number": 6,
+    "title": "prepare journal entries to record the issue of shares and debentures",
+    "practical": true,
+    "sourcePage": 25
+  },
+  {
+    "code": "S9.7",
+    "section": 9,
+    "number": 7,
+    "title": "calculate dividend payments for various types of shares",
+    "practical": true,
+    "sourcePage": 25
+  },
+  {
+    "code": "S9.8",
+    "section": 9,
+    "number": 8,
+    "title": "appropriate profits between dividends and reserves;",
+    "practical": true,
+    "sourcePage": 25
+  },
+  {
+    "code": "S9.9",
+    "section": 9,
+    "number": 9,
+    "title": "prepare the final accounts of limited liability companies and co-operatives",
+    "practical": true,
+    "sourcePage": 26
+  },
+  {
+    "code": "S9.10",
+    "section": 9,
+    "number": 10,
+    "title": "analyse performance and position using ratios",
+    "practical": true,
+    "sourcePage": 26
+  },
+  {
+    "code": "S9.11",
+    "section": 9,
+    "number": 11,
+    "title": "prepare receipts and payment accounts for non-profit organisations",
+    "practical": true,
+    "sourcePage": 26
+  },
+  {
+    "code": "S10.1",
+    "section": 10,
+    "number": 1,
+    "title": "distinguish between direct and indirect costs",
+    "practical": false,
+    "sourcePage": 27
+  },
+  {
+    "code": "S10.2",
+    "section": 10,
+    "number": 2,
+    "title": "prepare manufacturing accounts",
+    "practical": true,
+    "sourcePage": 27
+  },
+  {
+    "code": "S10.3",
+    "section": 10,
+    "number": 3,
+    "title": "calculate unit cost of items produced",
+    "practical": true,
+    "sourcePage": 27
+  },
+  {
+    "code": "S10.4",
+    "section": 10,
+    "number": 4,
+    "title": "prepare final accounts for a manufacturing concern",
+    "practical": true,
+    "sourcePage": 27
+  },
+  {
+    "code": "S10.5",
+    "section": 10,
+    "number": 5,
+    "title": "apply basic costing principles",
+    "practical": true,
+    "sourcePage": 27
+  },
+  {
+    "code": "S10.6",
+    "section": 10,
+    "number": 6,
+    "title": "list methods of inventory valuation",
+    "practical": false,
+    "sourcePage": 27
+  },
+  {
+    "code": "S10.7",
+    "section": 10,
+    "number": 7,
+    "title": "calculate the value of closing inventory using either FIFO or LIFO; AVCO.",
+    "practical": true,
+    "sourcePage": 27
+  },
+  {
+    "code": "S11.1",
+    "section": 11,
+    "number": 1,
+    "title": "list methods of payment",
+    "practical": false,
+    "sourcePage": 29
+  },
+  {
+    "code": "S11.2",
+    "section": 11,
+    "number": 2,
+    "title": "identify basic source documents of the payroll",
+    "practical": false,
+    "sourcePage": 29
+  },
+  {
+    "code": "S11.3",
+    "section": 11,
+    "number": 3,
+    "title": "prepare spreadsheet to arrive at net pay amounts after deductions",
+    "practical": true,
+    "sourcePage": 29
+  },
+  {
+    "code": "S11.4",
+    "section": 11,
+    "number": 4,
+    "title": "identify main accounting software used for payroll",
+    "practical": false,
+    "sourcePage": 29
+  },
+  {
+    "code": "S11.5",
+    "section": 11,
+    "number": 5,
+    "title": "distinguish between voluntary and statutory deductions",
+    "practical": false,
+    "sourcePage": 29
+  },
+  {
+    "code": "S11.6",
+    "section": 11,
+    "number": 6,
+    "title": "calculate employees\u2019 earnings",
+    "practical": true,
+    "sourcePage": 29
+  },
+  {
+    "code": "S11.7",
+    "section": 11,
+    "number": 7,
+    "title": "prepare cash flow projections within a six-month period;",
+    "practical": true,
+    "sourcePage": 29
+  },
+  {
+    "code": "S11.8",
+    "section": 11,
+    "number": 8,
+    "title": "prepare sales and production budgets for a three-month period",
+    "practical": true,
+    "sourcePage": 30
+  },
+  {
+    "code": "S11.9",
+    "section": 11,
+    "number": 9,
+    "title": "use accounting knowledge and skills to prepare a simple business plan",
+    "practical": true,
+    "sourcePage": 30
+  }
+]

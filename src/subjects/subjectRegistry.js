@@ -8,6 +8,7 @@ export const SPARK_SUBJECT_IDS = Object.freeze({
   CHEMISTRY: "chemistry",
   FOOD_NUTRITION_AND_HEALTH: "food-nutrition-and-health",
   PRINCIPLES_OF_BUSINESS: "principles-of-business",
+  PRINCIPLES_OF_ACCOUNTS: "principles-of-accounts",
 });
 
 const BASE_SUBJECTS = Object.freeze({
@@ -233,6 +234,14 @@ const BASE_SUBJECTS = Object.freeze({
       adaptive:false,structured:true,labs:true,sba:true
     }),
   }),
+  principlesOfAccounts: Object.freeze({
+    id:"principles-of-accounts",name:"CSEC Principles of Accounts",shortName:"Principles of Accounts",
+    qualification:"CSEC",mark:"PA",description:"Learn accounting with worked examples, a connected ledger and cash book, revision and examination practice.",
+    enabled:false,status:"draft",sortOrder:49,implementation:"generic",studyView:"study",
+    routes:Object.freeze({study:"/study/principles-of-accounts",practice:"/practice/principles-of-accounts",flashcards:"/dashboard/flashcards/principles-of-accounts",progress:"/dashboard/progress"}),
+    capabilities:Object.freeze({study:true,practice:true,flashcards:true,progress:true,paper1:true,paper2:true,adaptive:false,structured:true,labs:true,sba:true}),
+    stats:Object.freeze({sections:11,topics:33,objectives:106,flashcards:66}),
+  }),
   informationTechnology: Object.freeze({
     id: "information-technology",
     name: "CSEC Information Technology",
@@ -364,7 +373,7 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       flashcards:Number(principlesOfBusiness.flashcards||119)
     }
   };
-  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, integratedScienceSubject, socialStudiesSubject, chemistrySubject, foodNutritionAndHealthSubject, pobSubject, englishASubject]);
+  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, integratedScienceSubject, socialStudiesSubject, chemistrySubject, foodNutritionAndHealthSubject, pobSubject, BASE_SUBJECTS.principlesOfAccounts, englishASubject]);
 }
 
 export function enabledSparkSubjects(subjects) {
