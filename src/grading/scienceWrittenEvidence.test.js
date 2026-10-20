@@ -56,3 +56,19 @@ test("source-authored negative facts retain their required polarity",()=>{
  expect(check("Water is unable to cross the barrier.","water is unable to cross the barrier").matched).toBe(true);
  expect(check("Water crosses the barrier.","water is unable to cross the barrier").matched).toBe(false);
 });
+
+test("rejects false-that and incorrect-to-say denials despite matching key science terms",()=>{
+ for(const sentence of [
+  "It is false that oxygen moves into blood.",
+  "It is incorrect to say oxygen moves into blood.",
+  "Oxygen moves into blood is false."
+ ]){
+  const result=check(sentence,"oxygen moves into blood");
+  expect(result.matched).toBe(false);
+  expect(result.contradicted).toBe(true);
+ }
+});
+test("explicitly negative science references still receive matching negative claims",()=>{
+ expect(check("It is false that light travels through opaque wood.",
+  "it is false that light travels through opaque wood").matched).toBe(true);
+});
