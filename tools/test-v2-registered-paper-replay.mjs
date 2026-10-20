@@ -77,6 +77,46 @@ try{
  const papers=(await db.query(`select subject_id,paper_id,criteria
  from spark_grading_private.rubrics_v2 order by subject_id,paper_id`)).rows;
  assert.equal(papers.length,67);
+
+ // Nine identical source-bound two-mark IT routing prompts form one
+ // independently reproducible grading family, not nine guessed answers.
+ const routerPapers=papers.filter(x=>x.subject_id==="information-technology");
+ assert.equal(routerPapers.length,9);
+ const routerCases=[
+  ["router; connects different networks",2],
+  ["a router forwards data between networks",2],
+  ["routing device routes packets across networks",2],
+  ["router",1],["connects different networks",1],
+  ["router cannot connect different networks",1],
+  ["router does not forward data between networks",1],
+  ["router connects computers within one LAN",1],
+  ["switch",0],["a router or switch",0],
+  ["not a router",0],["unrelated answer",0],["",0]
+ ];
+ for(const paper of routerPapers){
+  const source=paper.criteria.find(c=>c.id==="1-b");
+  assert(source && source.maxMarks===2);
+  assert.equal(source.sourcePartId,"1-b");
+  assert.equal(source.sourceMarking?.prompt,
+   "Identify the MOST important hardware device used to connect the local networks to other networks.");
+  assert.deepEqual(source.sourceMarking.markScheme,[
+   "Router. 1 mark.",
+   "Role/function correctly stated as connecting or forwarding data between networks. 1 mark."
+  ]);
+  for(const [answer,expected] of routerCases){
+   const result=evaluateExistingSubjectPaper2V2({
+    subjectId:"information-technology",paperId:paper.paper_id,
+    criteria:[source],responses:{"1-b":answer}
+   });
+   assert.equal(result.rows.length,1);
+   assert.equal(result.rows[0].suggestedMarks,expected,
+    paper.paper_id+" IT router source answer "+JSON.stringify(answer));
+   assert.equal(result.rows[0].maxMarks,2);
+  }
+ }
+ console.log("Nine IT router source criteria passed",routerPapers.length*routerCases.length,
+  "source-bound full, partial, incorrect and contradiction checks");
+
  // The large review batch is source-anchored triage, not automatic approval.
  const bulk=(await db.query(`SELECT batch_id,subject_id,paper_id,rubric_version,
    criterion_id,criterion_sha256,source_sha256,max_marks,evidence_class
