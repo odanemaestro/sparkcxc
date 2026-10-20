@@ -82,42 +82,65 @@ try{
    'Missing subject cohort coverage: '+subject);
  const paperMap=new Map(papers.map(p=>[p.subject_id+'::'+p.paper_id,p]));
  let checked=0;
- const candidateCases=[];
+ const candidateCases=[],replayFailures=[];
+ const byPaper=new Map();
  for(const item of bulk){
-  const paper=paperMap.get(item.subject_id+'::'+item.paper_id);
-  assert(paper,'Missing source-bound cohort paper');
-  const criterion=paper.criteria.find(x=>x.id===item.criterion_id);
-  assert(criterion,'Missing cohort source part '+item.criterion_id);
-  assert.equal(criterion.maxMarks,item.max_marks);
-  // Test each selected part independently. A blank or unrelated submission
-  // must not earn credit, even when the remaining paper is not supplied.
-  const args={subjectId:item.subject_id,paperId:item.paper_id,
-   criteria:[criterion]};
-  const blankResult=evaluateExistingSubjectPaper2V2({...args,responses:{}});
-  const unrelatedResult=evaluateExistingSubjectPaper2V2({
-   ...args,responses:{[item.criterion_id]:'ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY'}
-  });
-  assert.equal(blankResult.examinedParts,1);
-  assert.equal(unrelatedResult.examinedParts,1);
-  assert.equal(blankResult.suggestedMarks,0,
-   'Blank candidate earned unsupported V2 credit: '+item.criterion_id);
-  assert.equal(unrelatedResult.suggestedMarks,0,
-   'Unrelated candidate earned unsupported V2 credit: '+item.criterion_id);
-  // Even the source-canonical response is only a diagnostic for unapproved
-  // rubric versions, not a synthetic review/signature.
-  if(item.evidence_class==='direct-check-candidate'){
-   const ans=criterion.sourceMarking?.answer;
-   if(typeof ans==='string' && ans.trim()){
-    const answer=evaluateExistingSubjectPaper2V2({
-     ...args,responses:{[item.criterion_id]:{answer:ans,
-      working:criterion.sourceMarking?.solution??''}}
-    });
-    candidateCases.push({subject:item.subject_id,id:item.criterion_id,
-      suggestedMarks:answer.suggestedMarks,resolved:answer.rows[0]?.resolved});
-   }
-  }
-  checked++;
+  const key=item.subject_id+'::'+item.paper_id;
+  if(!byPaper.has(key))byPaper.set(key,[]);
+  byPaper.get(key).push(item);
  }
+ for(const [key,items] of byPaper){
+  const paper=paperMap.get(key);
+  assert(paper,'Missing source-bound cohort paper '+key);
+  const args={subjectId:items[0].subject_id,paperId:items[0].paper_id,
+   criteria:paper.criteria};
+  const unrelated=Object.fromEntries(items.map(item=>[
+   item.criterion_id,'ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY'
+  ]));
+  const canonical=Object.fromEntries(items.filter(item=>
+   item.evidence_class==='direct-check-candidate'
+  ).map(item=>{
+   const criterion=paper.criteria.find(c=>c.id===item.criterion_id);
+   return [item.criterion_id,{
+    answer:criterion?.sourceMarking?.answer??'',
+    working:criterion?.sourceMarking?.solution??''
+   }];
+  }));
+  try{
+   const empty=evaluateExistingSubjectPaper2V2({...args,responses:{}});
+   const invalid=evaluateExistingSubjectPaper2V2({...args,responses:unrelated});
+   const candidate=Object.keys(canonical).length
+    ?evaluateExistingSubjectPaper2V2({...args,responses:canonical}):null;
+   const rowById=result=>new Map(result.rows.map(row=>[row.criterionId,row]));
+   const emptyRows=rowById(empty),invalidRows=rowById(invalid);
+   const candidateRows=candidate?rowById(candidate):null;
+   assert.equal(empty.examinedParts,paper.criteria.length);
+   assert.equal(invalid.examinedParts,paper.criteria.length);
+   for(const item of items){
+    const criterion=paper.criteria.find(c=>c.id===item.criterion_id);
+    assert(criterion,'Missing cohort part '+item.criterion_id);
+    assert.equal(criterion.maxMarks,item.max_marks);
+    assert.equal(emptyRows.get(item.criterion_id)?.suggestedMarks,0,
+     'Blank source part earned V2 credit: '+item.criterion_id);
+    assert.equal(invalidRows.get(item.criterion_id)?.suggestedMarks,0,
+     'Unrelated text earned V2 credit: '+item.criterion_id);
+    if(item.evidence_class==='direct-check-candidate'){
+     const mark=candidateRows?.get(item.criterion_id);
+     candidateCases.push({subject:item.subject_id,id:item.criterion_id,
+      suggestedMarks:mark?.suggestedMarks??0,resolved:mark?.resolved??false});
+    }
+    checked++;
+   }
+  }catch(error){
+   replayFailures.push({paper:key,error:String(error?.message||error)});
+  }
+ }
+ console.log('Large-batch paper-context replay',JSON.stringify({
+   papers:byPaper.size,checked,replayFailures,
+   candidateDiagnostics:candidateCases.slice(0,25)
+ }));
+ assert.deepEqual(replayFailures,[],
+  'Cross-subject 300-criterion paper-context replay must not throw');
  assert.equal(checked,300);
  console.log('Nine-subject 300-criterion source-bound adversarial cohort',
   JSON.stringify({checked,subjectCounts:batchQuotas,
