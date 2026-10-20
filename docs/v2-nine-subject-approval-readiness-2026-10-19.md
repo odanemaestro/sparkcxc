@@ -199,3 +199,25 @@ Batch 002 represents validation workflow coverage, **not 300 automatic
 grading approvals**. Final V2 score publication remains disabled pending
 real evidence-grade evaluators, complete per-paper criterion reviews and
 distinct final rubric attestations.
+
+## Batch 003: third 300-part calibration cohort
+
+After [CI #2541](https://github.com/odanemaestro/sparkcxc/actions/runs/39351421037) passed, applied
+`20261020120000_marking_v2_third_300_criterion_calibration_queue.sql`
+to private production Supabase. Batch 003 covers 300 **new** criteria:
+Mathematics 100, Integrated Science 75, Chemistry 30, IT 30, Physics 30,
+English A 10, Social Studies 10 and FNH 15. POB's 25 registered parts were
+already selected in the first two cohorts.
+
+Production post-deployment audit: **three batches of 300**, 900 distinct
+criterion IDs with **900/900 current source fingerprint matches and zero
+duplicates**. All 300 Batch 003 criteria require source-specific evidence;
+**zero new criterion reviews** were granted by triage alone. The entire V2
+registry still has **12/2,118** AI-assisted source-matched reviews,
+**2,106 pending**, and **zero** active or verified paper-level rubrics.
+Existing live student grading remains unchanged.
+
+CI now replays Batch 003 in whole-paper context, checking blank and unrelated
+responses earn no marks, in addition to the prior cohorts and complete
+source-fingerprint checks. This is bounded examiner calibration, not an
+approval of written methods, alternative explanations or graphical work.
