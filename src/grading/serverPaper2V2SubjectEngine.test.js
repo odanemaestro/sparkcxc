@@ -447,3 +447,28 @@ test("four Physics Paper 2 sources replay all 135 parts with actual structured m
  expect(creditedParts).toBeGreaterThan(0);
  console.log("Physics private V2 structured source replay",{sourceParts:135,creditedParts,manualGraphs});
 });
+
+test("POB affirmative model-answer denials never gain provisional or authoritative V2 credit",()=>{
+ const paper=POB_PAPER2_ORIGINAL_01;
+ const rows=paper.questions.flatMap(q=>q.items.map(p=>
+  row("POB-SPARK-P2-ORIGINAL-01-Q"+q.number+"::"+p.id,
+   p.marks,{criteria:p.criteria,modelAnswer:p.modelAnswer})));
+ expect(rows).toHaveLength(25);
+ const first=rows.find(x=>x.id==="POB-SPARK-P2-ORIGINAL-01-Q1::a");
+ expect(first).toBeTruthy();
+ const positive=example("principles-of-business",paper.id,rows,{
+  [first.id]:first.sourceMarking.modelAnswer
+ });
+ expect(positive.rows.find(x=>x.criterionId===first.id)?.suggestedMarks).toBe(first.maxMarks);
+ for(const text of [
+  "It is false that "+first.sourceMarking.modelAnswer,
+  "It is incorrect to say "+first.sourceMarking.modelAnswer
+ ]){
+  const checked=example("principles-of-business",paper.id,rows,{[first.id]:text});
+  const grade=checked.rows.find(x=>x.criterionId===first.id);
+  expect(grade.suggestedMarks).toBe(0);
+  expect(grade.resolved).toBe(false);
+  expect(grade.method).toBe("source-answer-explicit-denial");
+  expect(checked.canPublishFinalScore).toBe(false);
+ }
+});
