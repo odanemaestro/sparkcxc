@@ -70,7 +70,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: spark-v2-criterion-evidence-${{ github.sha }}
-          path: artifacts/v2-criterion-evidence-audit.json
+          path: |
+            artifacts/v2-criterion-evidence-audit.json
+            artifacts/v2-criterion-qa-batch1-1036.json
           if-no-files-found: error
           retention-days: 14
 
