@@ -6,10 +6,12 @@ import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import "./informationTechnologyPractice.css";
 import { useInformationTechnologyPracticeRoute } from "../../routing/sparkRoutingV270";
 import { syncInformationTechnologyLocalProgress } from "../../subjects/subjectProgress";
+import { readServerExamV2Result } from "../../grading/serverExamAttempt";
+import { verifiedV2Display } from "../../grading/verifiedV2Display";
 
 const P1_ACTIVE_KEYS = ["spark-it-paper1-active-v3", "spark-it-paper1-active-v2", "spark-it-paper1-active-v1"];
 const P1_RESULTS = "spark-it-paper1-results-v1";
-const P2_ACTIVE_KEYS = ["spark-it-paper2-active-v2", "spark-it-paper2-active-v1"];
+const P2_ACTIVE_KEYS = ["spark-it-paper2-active-v3", "spark-it-paper2-active-v2", "spark-it-paper2-active-v1"];
 const P2_RESULTS = "spark-it-paper2-results-v1";
 
 function readJson(key, fallback) {
@@ -32,12 +34,26 @@ function readFirst(keys) {
 export default function InformationTechnologyPracticeHub({ onBack, supabase, userId, onActivity }) {
   const [mode, setMode] = useInformationTechnologyPracticeRoute(true);
   const [fresh, setFresh] = useState(false);
+  const [verifiedLatest, setVerifiedLatest] = useState(null);
+  const [scoreRefresh, setScoreRefresh] = useState(0);
   const snapshot = useMemo(() => ({
     p1Active: readFirst(P1_ACTIVE_KEYS),
     p1Latest: readJson(P1_RESULTS, [])[0],
     p2Active: readFirst(P2_ACTIVE_KEYS),
     p2Latest: readJson(P2_RESULTS, [])[0],
   }), [mode]);
+
+  const latestAttemptId=snapshot.p2Latest?.serverAttemptId || null;
+  const finalLatest=verifiedV2Display(verifiedLatest,latestAttemptId);
+  useEffect(()=>{
+    let cancelled=false;
+    setVerifiedLatest(null);
+    if(!supabase?.rpc||!latestAttemptId)return undefined;
+    readServerExamV2Result({supabase,attemptId:latestAttemptId}).then(next=>{
+      if(!cancelled&&next.available)setVerifiedLatest(next);
+    });
+    return()=>{cancelled=true;};
+  },[supabase,latestAttemptId,scoreRefresh,mode]);
 
   useEffect(() => {
     if (!supabase || !userId) return;
@@ -116,7 +132,13 @@ export default function InformationTechnologyPracticeHub({ onBack, supabase, use
       {(snapshot.p1Latest || snapshot.p2Latest) && (
         <section className="it-practice-results">
           {snapshot.p1Latest && <div><span>Latest Paper 1</span><strong>{snapshot.p1Latest.score}/60</strong><small>{snapshot.p1Latest.percent}%</small></div>}
-          {snapshot.p2Latest && <div><span>Latest Paper 2</span><strong>{snapshot.p2Latest.score}/90</strong><small>{snapshot.p2Latest.percent}%</small></div>}
+          {snapshot.p2Latest && <div>
+            <span>Latest Paper 2 {finalLatest ? "· Server verified" : "· Practice estimate"}</span>
+            <strong>{finalLatest ? finalLatest.score : snapshot.p2Latest.score}/90</strong>
+            <small>{finalLatest ? finalLatest.percent : snapshot.p2Latest.percent}%</small>
+            {latestAttemptId && <button className="it-practice-secondary" type="button"
+              onClick={()=>setScoreRefresh(value=>value+1)}>Refresh verified score</button>}
+          </div>}
         </section>
       )}
     </main>
