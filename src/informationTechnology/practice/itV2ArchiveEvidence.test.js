@@ -80,3 +80,28 @@ test("pseudocode parser does not accept assignment strings inside narration",()=
  expect(pseudocodeBranchEvidence("// IF SCORE >= 80 THEN\n// DISPLAY ACCEPT\n// ELSE\n// DISPLAY REVIEW").hasElse).toBe(false);
  expect(executablePseudocode("/* SCORE = a + b + c */").trim()).toBe("");
 });
+
+test("IT source-bound formula marks: all 27 canonical, equivalent and incorrect submissions",()=>{
+ const specs={
+  "formula-d2-total":["=B2*C2","=C2*B2","=B2+C2"],
+  "formula-revenue":["=B2*C2","=C2*B2","=B2+C2"],
+  "sum-d4":["=SUM(D2:D3)","=D3+D2","=SUM(D2:D4)"],
+  "sum-revenue":["=SUM(D2:D3)","=D3+D2","=SUM(D3:D4)"],
+  "formula-tax":["=D2*$F$2","=$F$2*D2","=D2*F2"]
+ };
+ let count=0;
+ for(const p of data.papers)for(const q of p.questions)for(const part of q.parts){
+  const rule=informationTechnologyPaper2RuleFor(q,part);
+  if(!specs[rule])continue;
+  count++;
+  const [correct,equivalent,wrong]=specs[rule];
+  expect(part.markScheme[0].toUpperCase()).toContain(correct.toUpperCase());
+  const grade=answer=>gradeInformationTechnologyPart(q,part,{answer}).earned;
+  expect(grade(correct)).toBe(part.marks);
+  expect(grade(equivalent)).toBe(part.marks);
+  for(const answer of [wrong,"Answer: "+correct,"ZXQJ VMPQ", ""]){
+    expect(grade(answer)).toBe(0);
+  }
+ }
+ expect(count).toBe(27);
+});
