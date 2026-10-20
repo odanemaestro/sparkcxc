@@ -152,3 +152,50 @@ and written reasoning or essay rubrics for English A, Social Studies, FNH
 and POB. These remain in the review-required category until tested
 evidence validators are implemented. Approved notes do not bypass separate
 paper-level attestation.
+
+## Batch 002: 300 more distinct parts, source-bound algebra fix
+
+Batch 002 has been deployed to SPARK's private production Supabase database,
+with 300 source criteria not repeated from Batch 001:
+
+| Subject | Batch 002 |
+|---|---:|
+| Mathematics | 100 |
+| Integrated Science | 60 |
+| Chemistry | 30 |
+| Information Technology | 30 |
+| Physics | 20 |
+| English A | 15 |
+| Social Studies | 15 |
+| Food, Nutrition and Health | 15 |
+| Principles of Business | 15 |
+| **Total** | **300** |
+
+Commits/migrations:
+
+- `20261020100000_marking_v2_second_300_criterion_calibration_queue.sql`
+- `20261020103000_marking_v2_math_simplest_linear_source_checks.sql`
+- `20261020110000_marking_v2_math_simplest_linear_ai_reviews.sql`
+- `src/practice/cxcMarking/checkers.js` now supports the opt-in
+  `requireSimplifiedLinear` check. The corrected original v1/v2 rectangle
+  perimeter criteria reject unsimplified equivalents like `2(4w+4)`
+  and `4w+4w+8` while accepting correctly simplified expressions in
+  either term order.
+
+The isolated CI [#2534](https://github.com/odanemaestro/sparkcxc/actions/runs/39350306369)
+passed before the three guarded migrations were applied. Each migration was
+also tested against production with rollback before persistent deployment.
+
+Post-deployment SQL confirms 300 source fingerprint matches in Batch 001,
+300 in Batch 002, and no overlapping source identities. The two corrected
+source-bound one-mark B1 criteria now have additional clearly attributed
+nonhuman AI QA records. **12/2,118** criterion reviews are recorded,
+**2,106** remain, and **zero** rubric versions are fully verified/active.
+The other 300 Batch 002 items are in `source-specific-evidence-required`
+triage. None qualified as whole-part deterministic auto-approval without
+additional source-specific evidence.
+
+Batch 002 represents validation workflow coverage, **not 300 automatic
+grading approvals**. Final V2 score publication remains disabled pending
+real evidence-grade evaluators, complete per-paper criterion reviews and
+distinct final rubric attestations.
