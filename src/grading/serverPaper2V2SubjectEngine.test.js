@@ -310,3 +310,33 @@ test("stale Mathematics server answer is rejected before grading",()=>{
  expect(()=>example("mathematics","original-v9",criteria,{}))
   .toThrow(/registered answer differs from assembled source/);
 });
+
+test.each([
+ ["chemistry","CHEM-P2-PRACTICE-1","CHEM-G1-Q1::(a)::(i)",1,
+  {points:["Time taken for the cross to disappear / reaction time."]},
+  "Time taken for the cross to disappear / reaction time."],
+ ["integrated-science","is-fixed-source-pair-01","IS-M1-P2-01::(a)::(ii)",1,
+  {requiredResponseType:"lines",
+   markScheme:{points:["Produces pollen grains (male gametes)."]}},
+  "Produces pollen grains (male gametes)."],
+ ["food-nutrition-and-health","practice-01","FNH-SPARK-P2-ORIGINAL-01-Q1::a",1,
+  {modelPoints:["Diet means the usual foods and drinks consumed by a person."]},
+  "Diet means the usual foods and drinks consumed by a person."]
+])("source-canonical denial never receives a mark or verified approval (%s)",(
+ subject,paper,id,marks,marking,point)=>{
+ const criteria=[row(id,marks,marking)];
+ const positive=example(subject,paper,criteria,{[id]:point});
+ const denied=example(subject,paper,criteria,{
+  [id]:"It is false that "+point
+ });
+ const contrary=example(subject,paper,criteria,{
+  [id]:"It is incorrect to say "+point
+ });
+ expect(positive.suggestedMarks).toBeGreaterThanOrEqual(0);
+ for(const outcome of [denied,contrary]){
+  expect(outcome.suggestedMarks).toBe(0);
+  expect(outcome.unresolvedMarks).toBe(marks);
+  expect(outcome.canPublishFinalScore).toBe(false);
+  expect(outcome.rows[0].method).toBe("source-answer-explicit-denial");
+ }
+});
