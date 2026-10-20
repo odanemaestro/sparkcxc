@@ -1,10 +1,10 @@
 {
  "provenance": {
-  "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+  "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
   "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-  "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+  "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
   "workingTreeDirty": false,
-  "ranAt": "2026-10-20T13:12:56.905Z"
+  "ranAt": "2026-10-20T13:32:17.650Z"
  },
  "criteria": 2118,
  "bySubject": {

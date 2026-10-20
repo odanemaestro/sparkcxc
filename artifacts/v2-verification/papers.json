@@ -8,11 +8,11 @@
   "criteria": 40,
   "verifiedCriteria": 40,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -109,7 +109,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "f5a17781ed7ee2508de601099a66dfdbc98edb27efe20412b139d89a7d2b61bf"
+  "evidenceSha256": "73792538dd52199b945963a2bcef365b7005811f97f4579b3cb5b57363f457e0"
  },
  {
   "subjectId": "chemistry",
@@ -120,11 +120,11 @@
   "criteria": 40,
   "verifiedCriteria": 40,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -221,7 +221,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "13482159ae90782ebe422b0654d865c7b3670ca473f03fe24811f8d91960c7e6"
+  "evidenceSha256": "7539d1a3a4751ce2b1be685163cb3eee428d16569b0ead44f66c9ad2dea26a36"
  },
  {
   "subjectId": "chemistry",
@@ -232,11 +232,11 @@
   "criteria": 40,
   "verifiedCriteria": 40,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -333,7 +333,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "2d63de543760a33f2cb1b1359cd4786a6a5542fd0221fba5994a15ec4202497a"
+  "evidenceSha256": "6288f94c6f3295dae5ffecbabfb79ec6396ccd7c537e08cbcfebbcbca4775aac"
  },
  {
   "subjectId": "chemistry",
@@ -344,11 +344,11 @@
   "criteria": 40,
   "verifiedCriteria": 40,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -445,7 +445,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "28a6cba4501ac3a680274a1d1c3846a389a2ec5163c4dfa88639077acaac64ad"
+  "evidenceSha256": "e7b1c3ba1be06a79b41bcfa4efa9ff7e4d7c0dab11bbcd1c8bef8d5b2c42624a"
  },
  {
   "subjectId": "chemistry",
@@ -456,11 +456,11 @@
   "criteria": 40,
   "verifiedCriteria": 40,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -557,7 +557,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "5be56b9dd9607bfd0b6fef27e8bacabf6932386beeb90cd0b9dfd05b8a9bb9d5"
+  "evidenceSha256": "8e860a6b1f694c6bec8ee593702353cce111d72ef28aa18b87eb9d5ef66c4f4b"
  },
  {
   "subjectId": "chemistry",
@@ -568,11 +568,11 @@
   "criteria": 41,
   "verifiedCriteria": 41,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -669,7 +669,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "c37350f012464a9662f20eab6e526e987f47c54f040d5199886247c73f12ffa0"
+  "evidenceSha256": "661c2bf0004f93a28eabc923c8b398dbdea7026eb3a647a97263f5e6ca67c7f8"
  },
  {
   "subjectId": "english-a",
@@ -680,11 +680,11 @@
   "criteria": 6,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -695,7 +695,7 @@
    "EA-P2-A-M3-S",
    "EA-P2-A-M3-E"
   ],
-  "evidenceSha256": "20fb4bf980055177594f48f1bcdbf344e13eaf998402932485290a0aac71098e"
+  "evidenceSha256": "c66b0e4a92d0bf710ddd10ff45fb6d2275df858642d303142217ed35155fbe6c"
  },
  {
   "subjectId": "english-a",
@@ -706,11 +706,11 @@
   "criteria": 6,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -721,7 +721,7 @@
    "EA-P2-A-M3-S",
    "EA-P2-A-M3-E"
   ],
-  "evidenceSha256": "2b8ae8169d8bfd1ddcb1b0645de2a5c3b95551e37c60f86cceb93e4a34ef08a3"
+  "evidenceSha256": "89be0b582bf328081dc0aff933dc852294ee3ef9b14147ba94f3b78277a2b69c"
  },
  {
   "subjectId": "english-a",
@@ -732,11 +732,11 @@
   "criteria": 6,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -747,7 +747,7 @@
    "EA-P2-B-M3-S",
    "EA-P2-B-M3-E"
   ],
-  "evidenceSha256": "2dd815e7aa30eb2cdca654c2b4b252946713612b339444020223866b90cf3b0f"
+  "evidenceSha256": "fff6e15d01da58c8e82aad3ab866d5a252ec5a67cd0552c42a648d72c03c9929"
  },
  {
   "subjectId": "english-a",
@@ -758,11 +758,11 @@
   "criteria": 6,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -773,7 +773,7 @@
    "EA-P2-B-M3-S",
    "EA-P2-B-M3-E"
   ],
-  "evidenceSha256": "fc40eee0034b0e43c75dd5b15469cab1ae0d8b105e53a3743281273fb826563b"
+  "evidenceSha256": "b9d63e1d97f9cab8f289ea89e98141b0d9e7e5faa81e484da9e33e7bd62a5fea"
  },
  {
   "subjectId": "english-a",
@@ -784,11 +784,11 @@
   "criteria": 6,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -799,7 +799,7 @@
    "EA-P2-C-M3-S",
    "EA-P2-C-M3-E"
   ],
-  "evidenceSha256": "f7f88c2ccc749c9494130b5a57c45255137409a944979dc529f791d14a52c359"
+  "evidenceSha256": "6c371c4740da6ac5a395d1a2f8f790c56e12ce244624d28a1c3df1cbc1694726"
  },
  {
   "subjectId": "english-a",
@@ -810,11 +810,11 @@
   "criteria": 6,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -825,7 +825,7 @@
    "EA-P2-C-M3-S",
    "EA-P2-C-M3-E"
   ],
-  "evidenceSha256": "7229153a90b08a435ab0fc6ed051f7d47ca1c52e3f2547242928f29bba596a27"
+  "evidenceSha256": "3472b78066ce2475fba0c4cba283c75094d4693976c6d39554798057491497ed"
  },
  {
   "subjectId": "english-a",
@@ -836,11 +836,11 @@
   "criteria": 6,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -851,7 +851,7 @@
    "EA-P2-D-M3-S",
    "EA-P2-D-M3-E"
   ],
-  "evidenceSha256": "24ce02d1b4ff9cef764a4020bb973759c3cc8a2e19134f54b1325e1d7dec9d18"
+  "evidenceSha256": "49f18f26910ab37134cd6e320d0abc0eb8bc4dcdb5df28e54355a071092f7551"
  },
  {
   "subjectId": "english-a",
@@ -862,11 +862,11 @@
   "criteria": 6,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -877,7 +877,7 @@
    "EA-P2-D-M3-S",
    "EA-P2-D-M3-E"
   ],
-  "evidenceSha256": "297aa82de7de71de69faa3854a55cfb69f8a775a4b060e0035ce9724dd275592"
+  "evidenceSha256": "d1e06b117f55dc021a390b28da557ad883a2e85d57c8053ad3a5c487c62760c9"
  },
  {
   "subjectId": "english-a",
@@ -888,11 +888,11 @@
   "criteria": 6,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -903,7 +903,7 @@
    "EA-P2-E-M3-S",
    "EA-P2-E-M3-E"
   ],
-  "evidenceSha256": "215ca713a3e762062b2cc41b304121b017be46f3a0d9b7bb4d2fd93182c7f2e7"
+  "evidenceSha256": "f0ee52c4b0bb8269aa454dc885eb02228942fec0f448c541fce5daffb5f3f66d"
  },
  {
   "subjectId": "english-a",
@@ -914,11 +914,11 @@
   "criteria": 6,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -929,7 +929,7 @@
    "EA-P2-E-M3-S",
    "EA-P2-E-M3-E"
   ],
-  "evidenceSha256": "b356d759f2146977b727ccfa0bcf69a4c958b70028f6aed0b021aec94756aeab"
+  "evidenceSha256": "ec78adff01b25ec2fabb99273e7edd2debdd9d41b161bfa1859a9072fac4180a"
  },
  {
   "subjectId": "english-a",
@@ -940,11 +940,11 @@
   "criteria": 6,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -955,7 +955,7 @@
    "EA-P2-F-M3-S",
    "EA-P2-F-M3-E"
   ],
-  "evidenceSha256": "ce2d390a610a92f251b04513f81891432e4d304f549d250b4786e19a9ae1338c"
+  "evidenceSha256": "45f94f4fcac8aa121eaa2aec709c0006f06ed180fc374f468ee1a70cd7c02c6a"
  },
  {
   "subjectId": "english-a",
@@ -966,11 +966,11 @@
   "criteria": 6,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -981,7 +981,7 @@
    "EA-P2-F-M3-S",
    "EA-P2-F-M3-E"
   ],
-  "evidenceSha256": "fe621dad10748e7042aa462bb66f380873350eb6710f71526e6f8fc2297bd1e5"
+  "evidenceSha256": "7fa913207e40a779a07a4e9035580492df423cc67961804fec41311c793d972e"
  },
  {
   "subjectId": "food-nutrition-and-health",
@@ -992,11 +992,11 @@
   "criteria": 24,
   "verifiedCriteria": 24,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -1093,7 +1093,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "afe120a5a6c49a9ebb19b0bbadbf28528023a427f9306c765df64f3ec27221c2"
+  "evidenceSha256": "f8864ac833ae6ccfcae92bdb0e4a1f9e516b05734513bb0908b799c5f609163b"
  },
  {
   "subjectId": "food-nutrition-and-health",
@@ -1104,11 +1104,11 @@
   "criteria": 24,
   "verifiedCriteria": 24,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -1205,7 +1205,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "1c896b24c5262f2607010d6cc30f82d7ca877cc4d43f5a197508c7f583f60c7d"
+  "evidenceSha256": "0d5b89d85a10e2f68ad03ebd371feff5b252b5e650a8cd6750923e1a500bdf0d"
  },
  {
   "subjectId": "information-technology",
@@ -1216,11 +1216,11 @@
   "criteria": 28,
   "verifiedCriteria": 28,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -1317,7 +1317,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "5b9cbd0f094f4f6f2576600f37ed01aade9ccec7744d7233cf1917ab52c144e4"
+  "evidenceSha256": "82e96e0b1f84f148c334fd31269d4545919b2338a3d047e1504b5d7a7b15197a"
  },
  {
   "subjectId": "information-technology",
@@ -1328,11 +1328,11 @@
   "criteria": 28,
   "verifiedCriteria": 28,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -1429,7 +1429,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "ed2b727b2439e4fabf8021c13ad063bf3044e2ca07c6b024bd752a5769c675cf"
+  "evidenceSha256": "318f97e2223469dc85108918752a35cabe248bcaf1e1e29b1cdca597e8764469"
  },
  {
   "subjectId": "information-technology",
@@ -1440,11 +1440,11 @@
   "criteria": 28,
   "verifiedCriteria": 28,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -1541,7 +1541,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "06eb4353362ee02a61f685dfe4c2a3640d3143855b008e271481c490ad98a065"
+  "evidenceSha256": "4f6301c36396296f131888d30747bd60a38252abc33c98ffdbe4e5c6a91bddeb"
  },
  {
   "subjectId": "information-technology",
@@ -1552,11 +1552,11 @@
   "criteria": 28,
   "verifiedCriteria": 28,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -1653,7 +1653,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "8ddd0cb4c24f9efde63f3aa3d090623407de6059875748e06bc05bdad8984659"
+  "evidenceSha256": "258a5e49cf40c3884c262f148ca87404f8518a37b26a0d10c97205cec1208bcd"
  },
  {
   "subjectId": "information-technology",
@@ -1664,11 +1664,11 @@
   "criteria": 28,
   "verifiedCriteria": 28,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -1765,7 +1765,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "5b1c0f369d153fa41c20f4a08026e7a6dc7190be83d5218904a4f7622a034658"
+  "evidenceSha256": "b4f3e77bee35368b573a3cba7c8c2e3051e4f9072fd4c98cffa2124f94ce1cbf"
  },
  {
   "subjectId": "information-technology",
@@ -1776,11 +1776,11 @@
   "criteria": 28,
   "verifiedCriteria": 28,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -1877,7 +1877,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "ddee49d71a4a145505aff844c1ad1076f6d8e376c5b802d2a62e4a37ac12aee7"
+  "evidenceSha256": "b6010e4c28875d46e66042bc2149b230148b5e6f49b48b5e515b59122fbc79f8"
  },
  {
   "subjectId": "information-technology",
@@ -1888,11 +1888,11 @@
   "criteria": 28,
   "verifiedCriteria": 28,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -1989,7 +1989,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "4db431159137d89b801b0c72fc9edcfe3202a221e92f73c4e6578f41351876e8"
+  "evidenceSha256": "07a9e96bf4e820dbfdeb23f2947b7328c39ce1ec3a54d79a4b0cdbdd583083e4"
  },
  {
   "subjectId": "information-technology",
@@ -2000,11 +2000,11 @@
   "criteria": 28,
   "verifiedCriteria": 28,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -2101,7 +2101,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "6f81d5104bef28812f690665de0b56acaa8e6d32e21add6f46f28f95a4805b77"
+  "evidenceSha256": "f153d5a927e25959fc0374de486bdbcdb5f92e4e35781772c4a3ae59b4da543a"
  },
  {
   "subjectId": "information-technology",
@@ -2112,11 +2112,11 @@
   "criteria": 28,
   "verifiedCriteria": 28,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -2213,7 +2213,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "eff8a3220044d13650734b50d624f2b1628bfb670313c2aec0637c7335c69b26"
+  "evidenceSha256": "15bdac712a30321f4ac4180b325def95c6fb66d2f2639001d25a644f129be911"
  },
  {
   "subjectId": "integrated-science",
@@ -2224,11 +2224,11 @@
   "criteria": 49,
   "verifiedCriteria": 49,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -2325,7 +2325,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "63f003258c4d97a35e8cd9fcaf7d645419ee79820e5a4fb3735e2ec2d264c184"
+  "evidenceSha256": "d61f02e75d4a35788890e95d1585dd21bbbbc2c8b974d3a21e171fcad68110be"
  },
  {
   "subjectId": "integrated-science",
@@ -2336,11 +2336,11 @@
   "criteria": 46,
   "verifiedCriteria": 46,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -2437,7 +2437,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "014de8fb2cb9be2c7ba2bfcccdfb29ea5bd45e1a1f6559f3fd359c6953201596"
+  "evidenceSha256": "d6070f4e49187786ef3534a6bde9f27a456c9a16e6cd6a7b8dbd23f354f29912"
  },
  {
   "subjectId": "integrated-science",
@@ -2448,18 +2448,18 @@
   "criteria": 48,
   "verifiedCriteria": 46,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
    "IS-M2-P2-05::(a)::(iii)",
    "IS-M3-P2-05::(a)::(i)"
   ],
-  "evidenceSha256": "2f2856a48e3b432518085dc3746a0c925ead46856482a4fa2f8e1784572435d0"
+  "evidenceSha256": "05698175683cbf77ee909dbd5749529fa5dcd9ac8d3b9dd22b95c9d7b06840e9"
  },
  {
   "subjectId": "integrated-science",
@@ -2470,11 +2470,11 @@
   "criteria": 48,
   "verifiedCriteria": 43,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -2484,7 +2484,7 @@
    "IS-M2-P2-07::(a)::(iii)",
    "IS-M2-P2-08::(b)::(i)"
   ],
-  "evidenceSha256": "2a10f9527a128d6957f7642e21d2228bad99ccff268adb05f4581a82e96363e9"
+  "evidenceSha256": "b862d442892c1ea6b6c754c091c187443ec0dfbcad508cf7e855194404bfc791"
  },
  {
   "subjectId": "integrated-science",
@@ -2495,11 +2495,11 @@
   "criteria": 45,
   "verifiedCriteria": 41,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -2508,7 +2508,7 @@
    "IS-M2-P2-09::(a)::(i)",
    "IS-M2-P2-09::(b)::(ii)"
   ],
-  "evidenceSha256": "acc3db7383518128b051148a1ce97b9c049fd4e7db0b5800a80ba874832917e1"
+  "evidenceSha256": "519c9d249ffee3b15f4933deba6b9d6b65dddf69f1ecba69191f9022b30f02e6"
  },
  {
   "subjectId": "integrated-science",
@@ -2519,18 +2519,18 @@
   "criteria": 48,
   "verifiedCriteria": 46,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
    "IS-M3-P2-11::(a)::(ii)",
    "IS-M3-P2-11::(c)::(i)"
   ],
-  "evidenceSha256": "57edc321ece4f8bfad989cba5d41cf41072cc7873cebe33310eae8ac0a53ad89"
+  "evidenceSha256": "1635c2e7e97ecf45d45abdea044cde5735bcee1ea30f6a33f0ed951718c64f97"
  },
  {
   "subjectId": "integrated-science",
@@ -2541,11 +2541,11 @@
   "criteria": 43,
   "verifiedCriteria": 37,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -2556,7 +2556,7 @@
    "IS-M3-P2-13::(a)::(i)",
    "IS-M3-P2-13::(b)::(i)"
   ],
-  "evidenceSha256": "c171af729e0bdaf6092a7602a30bc532e12c2f35bca654253c834de1a3be2fa0"
+  "evidenceSha256": "c5cef689f809e012e9b475761a51f66a1b4e60e56e5c9844cc1c4a4bc8f6287a"
  },
  {
   "subjectId": "integrated-science",
@@ -2567,11 +2567,11 @@
   "criteria": 46,
   "verifiedCriteria": 43,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -2579,7 +2579,7 @@
    "IS-M2-P2-15::(a)::(i)",
    "IS-M3-P2-15::(a)::(i)"
   ],
-  "evidenceSha256": "c4da80bd5eb567a784b7361c7b1b9e9c81f101e50f2e9eeb7ecf8ef67449b1bf"
+  "evidenceSha256": "db9983c2161a43dae2db0c596808ffe56b4c5a97101def21916a654fd2ce2072"
  },
  {
   "subjectId": "integrated-science",
@@ -2590,11 +2590,11 @@
   "criteria": 45,
   "verifiedCriteria": 45,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -2691,7 +2691,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "fcb425baa8fd54ece5b3b66f3d45e276188570cc12805f1736c67b74e1cb2a73"
+  "evidenceSha256": "1a0550d907b91686603e4d89bce8da60b2da7772be5e11f5ce882323120e9c0d"
  },
  {
   "subjectId": "integrated-science",
@@ -2702,11 +2702,11 @@
   "criteria": 46,
   "verifiedCriteria": 46,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -2803,7 +2803,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "f4d15d52f9b412a57ceb2baf84d478d679d9e95926260c7691819d017ff7c5e0"
+  "evidenceSha256": "15038f5ccf61a8fdeddc2c2c11c173428b13c904988a14ad6ad7ef344d279d22"
  },
  {
   "subjectId": "integrated-science",
@@ -2814,11 +2814,11 @@
   "criteria": 44,
   "verifiedCriteria": 40,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -2827,7 +2827,7 @@
    "IS-M3-P2-21::(a)::(i)",
    "IS-M3-P2-22::(a)::(iii)"
   ],
-  "evidenceSha256": "8b5952f812bc44c24f483a29c73c2f16c538a9ee0c64390c0c41cfef0ec1db1d"
+  "evidenceSha256": "7003fbc322ecdc2beae85076d993725147d2adc9b60f940def74331a28fec2d5"
  },
  {
   "subjectId": "integrated-science",
@@ -2838,11 +2838,11 @@
   "criteria": 48,
   "verifiedCriteria": 48,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -2939,7 +2939,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "71230eb3a7bd270e1e66e0f0d050348990b8a7dd6b06483759a645109213a37e"
+  "evidenceSha256": "321fd7f2253ae685c39a9542236c1f598e9acf377d5d05e8025cb5d2339823fc"
  },
  {
   "subjectId": "integrated-science",
@@ -2950,18 +2950,18 @@
   "criteria": 44,
   "verifiedCriteria": 42,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
    "IS-M2-P2-25::(b)::(i)",
    "IS-M3-P2-25::(b)::(i)"
   ],
-  "evidenceSha256": "333bd795679b4dc2df9e09de929a693d9d8dd3cbe0f17e963897b64306dd5c94"
+  "evidenceSha256": "a5287677cfe6c0393694329907df2fbe34d096da128b3dfa3a908cb687cd26a9"
  },
  {
   "subjectId": "integrated-science",
@@ -2972,18 +2972,18 @@
   "criteria": 45,
   "verifiedCriteria": 43,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
    "IS-M1-P2-27::(a)::(i)",
    "IS-M1-P2-27::(a)::(ii)"
   ],
-  "evidenceSha256": "57fa7e24abd408b450c6ebc371bab80a329ec375abb86c44cc614b47a2762cd4"
+  "evidenceSha256": "0906724487293d027a801e3863ababde445d689d7cdc01e6dd388351b4c47d2f"
  },
  {
   "subjectId": "mathematics",
@@ -2994,11 +2994,11 @@
   "criteria": 45,
   "verifiedCriteria": 9,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3039,7 +3039,7 @@
    "p2-q10-v1::c",
    "p2-q10-v1::d"
   ],
-  "evidenceSha256": "6ba3542ce72c45deb69c973b1bd8f9c7d5f3d3e339247b5d059277e47f6b4ce7"
+  "evidenceSha256": "a95334831b6ae8fe9a6bc04f8cf3cf9876c4332298d4f05cc9f8c44bac5fd380"
  },
  {
   "subjectId": "mathematics",
@@ -3050,11 +3050,11 @@
   "criteria": 37,
   "verifiedCriteria": 2,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3094,7 +3094,7 @@
    "p2-q10-v10::c",
    "p2-q10-v10::d"
   ],
-  "evidenceSha256": "edb72f3626b7aa094a47545457ed15bb0d83eb7ce7e75ed824926a774c62539c"
+  "evidenceSha256": "007266faa4f19fc509a0bdf000b88b4ae21f21d0f093ad68dc1ef92ef2d393c4"
  },
  {
   "subjectId": "mathematics",
@@ -3105,11 +3105,11 @@
   "criteria": 42,
   "verifiedCriteria": 8,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3148,7 +3148,7 @@
    "p2-q10-v2::c",
    "p2-q10-v2::d"
   ],
-  "evidenceSha256": "dd3b3ba8171681d1869895470fd690fb041492264abd867bf9558d4cf47784e2"
+  "evidenceSha256": "8f3b91de068185458c52aed2115f04ddf72bc0c6ec0c38748f67fd29a4d8d111"
  },
  {
   "subjectId": "mathematics",
@@ -3159,11 +3159,11 @@
   "criteria": 41,
   "verifiedCriteria": 2,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3207,7 +3207,7 @@
    "p2-q10-v3::c",
    "p2-q10-v3::d"
   ],
-  "evidenceSha256": "f2642361fa2737ec9f5b8339623892b020717989e1fa9db71c091ffae0761ead"
+  "evidenceSha256": "1394ccc5b3b37dea27d2188f1c5061936969118a80c121301548272e7493a28b"
  },
  {
   "subjectId": "mathematics",
@@ -3218,11 +3218,11 @@
   "criteria": 38,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3265,7 +3265,7 @@
    "p2-q10-v4::c",
    "p2-q10-v4::d"
   ],
-  "evidenceSha256": "8a787465002a13ba73b43d11d596c7ec06ae5ca57888815c6c491d90af122da8"
+  "evidenceSha256": "4b89a8160418f245c82d3a762b840e94e4ba4d2adafb9cd3aecf69f1d658cf9a"
  },
  {
   "subjectId": "mathematics",
@@ -3276,11 +3276,11 @@
   "criteria": 37,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3322,7 +3322,7 @@
    "p2-q10-v5::c",
    "p2-q10-v5::d"
   ],
-  "evidenceSha256": "284b195d9c0c0d4b7c4ce4d6b5d7be2e21e0a2f9024cf398386a23361dd2168a"
+  "evidenceSha256": "3ea2cf58ea42c8d2753b3f9a58ec8d319f30635f75f9f97c1baa1d02e1fd13fe"
  },
  {
   "subjectId": "mathematics",
@@ -3333,11 +3333,11 @@
   "criteria": 37,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3379,7 +3379,7 @@
    "p2-q10-v6::c",
    "p2-q10-v6::d"
   ],
-  "evidenceSha256": "b4de794e00e04bbbb60c95cbc189ad44607b30466d313db39131cc1da1e735b6"
+  "evidenceSha256": "c38e91a26250f632e8a45db80e53520752993565de70a6f2164c446f8d093dfd"
  },
  {
   "subjectId": "mathematics",
@@ -3390,11 +3390,11 @@
   "criteria": 39,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3438,7 +3438,7 @@
    "p2-q10-v7::c",
    "p2-q10-v7::d"
   ],
-  "evidenceSha256": "a4e3535f4d6746b19fd3c68c04636acc4b839de3871096df37da482f7ec6763e"
+  "evidenceSha256": "942a1e179b36c1d24a04ac9ab30090fa0a24bdd1d71f607fbf1540650a5cf066"
  },
  {
   "subjectId": "mathematics",
@@ -3449,11 +3449,11 @@
   "criteria": 39,
   "verifiedCriteria": 1,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3496,7 +3496,7 @@
    "p2-q10-v8::c",
    "p2-q10-v8::d"
   ],
-  "evidenceSha256": "70a2e09c5b65d635d990132d333acc693a1d23a3726ac0a3433636d4d2ec43be"
+  "evidenceSha256": "3d74b66d0fb7596dfe07b690e6bb884aa82a4ed12aca03ede496c82900c605bd"
  },
  {
   "subjectId": "mathematics",
@@ -3507,11 +3507,11 @@
   "criteria": 37,
   "verifiedCriteria": 1,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3552,7 +3552,7 @@
    "p2-q10-v9::c",
    "p2-q10-v9::d"
   ],
-  "evidenceSha256": "0dfd824cde38564f3ad7c74ff918fc73d744f8f99488cf7ca9215e021b6f2ec6"
+  "evidenceSha256": "10c94f440be009d9808bbb0cb722c2701103ab429ec8f9df1902322aa54762da"
  },
  {
   "subjectId": "mathematics",
@@ -3563,11 +3563,11 @@
   "criteria": 42,
   "verifiedCriteria": 17,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3597,7 +3597,7 @@
    "p2e-q10::b",
    "p2e-q10::c"
   ],
-  "evidenceSha256": "ebe31973b1f1a067de1398bb4fe10a9fc047e6fc447de596ce4c80b76217d766"
+  "evidenceSha256": "66d209bce4a496abb3bc9daf41791ae68da17ac8a5a652e859cbbba9c3258b22"
  },
  {
   "subjectId": "mathematics",
@@ -3608,11 +3608,11 @@
   "criteria": 42,
   "verifiedCriteria": 14,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3645,7 +3645,7 @@
    "p2f-q10::b",
    "p2f-q10::c"
   ],
-  "evidenceSha256": "4cbcff434ffd6196d6262086797b531afc1534fbc15d3c44b159183a50d864cb"
+  "evidenceSha256": "bd98bd200f517bc9868d773ee6183a6e49f085edbc959b852135217950346d3d"
  },
  {
   "subjectId": "mathematics",
@@ -3656,11 +3656,11 @@
   "criteria": 42,
   "verifiedCriteria": 17,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3690,7 +3690,7 @@
    "p2g-q10::b",
    "p2g-q10::c"
   ],
-  "evidenceSha256": "027b0a965ead6cc1b97972215a7230ea33e4358077d2d3208b1f463580e6fd91"
+  "evidenceSha256": "5fb9604d9dcb793998ff49c4cb3b5e88d92cb211b3b10f26248f03ebdbe4057b"
  },
  {
   "subjectId": "mathematics",
@@ -3701,11 +3701,11 @@
   "criteria": 41,
   "verifiedCriteria": 12,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3739,7 +3739,7 @@
    "p2h-q10::b",
    "p2h-q10::c"
   ],
-  "evidenceSha256": "2718b11a33228af5c0217c15d117455a967fbb5c5f3140fb22363e365ffec0fe"
+  "evidenceSha256": "9f63bf080e710b15bb6eae3d1ef98d7ba524f7fc6d5eafa32bfc10aa8db45c7a"
  },
  {
   "subjectId": "mathematics",
@@ -3750,11 +3750,11 @@
   "criteria": 40,
   "verifiedCriteria": 17,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3782,7 +3782,7 @@
    "p2i-q10::b",
    "p2i-q10::c"
   ],
-  "evidenceSha256": "eaffd9c5fb710b1d9f7e99bf9eda3e8a71a35c244daf4c393c2288a744751b9e"
+  "evidenceSha256": "11d792b196f1566e17afbe4d7ec0d07695a732594655c10fa7d7724be2c79b82"
  },
  {
   "subjectId": "mathematics",
@@ -3793,11 +3793,11 @@
   "criteria": 41,
   "verifiedCriteria": 14,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3829,7 +3829,7 @@
    "p2j-q10::b",
    "p2j-q10::c"
   ],
-  "evidenceSha256": "1f9bb029f730b2c4ca05d523519bbd94ca0c327f9f82f82fc932f08e83caec93"
+  "evidenceSha256": "c979495f6beacfcc52e14ebabb0fea17d8e72bc5ba95db0b513efa4bdfac98cd"
  },
  {
   "subjectId": "physics",
@@ -3840,11 +3840,11 @@
   "criteria": 37,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3886,7 +3886,7 @@
    "phy-p2-1-q6::c",
    "phy-p2-1-q6::d"
   ],
-  "evidenceSha256": "381061b97fba4592ac670bdbac6be44e72c20351ea946a9024701b6bbddf54db"
+  "evidenceSha256": "29a91bf7a4979f233f224048ace18381739d6a6661380c272d069179d0d44f10"
  },
  {
   "subjectId": "physics",
@@ -3897,11 +3897,11 @@
   "criteria": 33,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3939,7 +3939,7 @@
    "phy-p2-2-q6::c",
    "phy-p2-2-q6::d"
   ],
-  "evidenceSha256": "ddb03b3f183adbad6704d5f793c3bfdffa6e6e1d9a9ad5ac142f67e0f6df1c58"
+  "evidenceSha256": "f01ce1375a3056eebb572642f8df519237550e09bbf290e850ce12a001c3ef1a"
  },
  {
   "subjectId": "physics",
@@ -3950,11 +3950,11 @@
   "criteria": 31,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -3990,7 +3990,7 @@
    "phy-p2-3-q6::d",
    "phy-p2-3-q6::e"
   ],
-  "evidenceSha256": "b1cc3de07f7e13f1b77eb9009076a05e612cc9f8ec10b767adb39e902d75792a"
+  "evidenceSha256": "258c31bba2e856f9e4880626874c4a02579bfac1ad85dd50b717ea4af41dd457"
  },
  {
   "subjectId": "physics",
@@ -4001,11 +4001,11 @@
   "criteria": 34,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -4044,7 +4044,7 @@
    "phy-p2-4-q6::d",
    "phy-p2-4-q6::e"
   ],
-  "evidenceSha256": "cc7738838ed64fe896abee118076d36e4b354bcc23cfa72a32e70561c89d8f77"
+  "evidenceSha256": "b5c9e93be33582c33c028164a7dc24a9252525acee45bd594e381d272adf806a"
  },
  {
   "subjectId": "principles-of-business",
@@ -4055,11 +4055,11 @@
   "criteria": 25,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -4089,7 +4089,7 @@
    "POB-SPARK-P2-ORIGINAL-01-Q5::d",
    "POB-SPARK-P2-ORIGINAL-01-Q5::e"
   ],
-  "evidenceSha256": "c91b0486055541d69c5b6164ab96fceb1da2e36d1060bf228b55e4ec31a339fa"
+  "evidenceSha256": "33f73314ee4e79160cf2a3a3353703bbd9e860f5b2dd9933fa60a914b7ec6e37"
  },
  {
   "subjectId": "social-studies",
@@ -4100,11 +4100,11 @@
   "criteria": 20,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -4129,7 +4129,7 @@
    "ss-p2-q6::content",
    "ss-p2-q6::organisation"
   ],
-  "evidenceSha256": "9efc6381ceeb97cd81035157d61ead5f14ba342f004f2a11f3d59d4ebacaa825"
+  "evidenceSha256": "369e759355fc832684c5a8b8ca13e4fe9528267412313b15e716d502b847fb59"
  },
  {
   "subjectId": "social-studies",
@@ -4140,11 +4140,11 @@
   "criteria": 20,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -4169,7 +4169,7 @@
    "ss-p2-b-q6::content",
    "ss-p2-b-q6::organisation"
   ],
-  "evidenceSha256": "d03e0c8d18721e9831b84fd501e8b3cfec8fa2ac810860ff305c804258824397"
+  "evidenceSha256": "b21806b171358608f273a2f7d80d83c12c69e984fe962369bdd2d1e2efd0db7c"
  },
  {
   "subjectId": "social-studies",
@@ -4180,11 +4180,11 @@
   "criteria": 20,
   "verifiedCriteria": 0,
   "provenance": {
-   "bundleSha256": "eae18d24dcecb5d1dc01e3ba51539bbabb930dad5dd6b90b311ed6e91e04b4d5",
+   "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
    "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-   "gitCommit": "b9039ad137c5a1d7f066d68f7aa4b968e30ef2b5",
+   "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-20T13:12:56.905Z"
+   "ranAt": "2026-10-20T13:32:17.650Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -4209,6 +4209,6 @@
    "ss-p2-c-q6::content",
    "ss-p2-c-q6::organisation"
   ],
-  "evidenceSha256": "0ea38118e1b716dbaf2bd11d0433157ea3a9102a306b059e9bcb99c8f3c2e0d5"
+  "evidenceSha256": "8c332abc8e5aa6c16b8f15bb6b0aa3c1f690edb41f92ac19ca9c085efa3ed9ec"
  }
 ]
