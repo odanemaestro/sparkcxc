@@ -15,9 +15,9 @@ export const V2_CRITERION_PILOT = [
  {
   paperId:"original-v1",questionId:"p2-q2-v1",partId:"c1",
   answer:"8w + 8",promptContains:"PERIMETER",
-  sourceCheck:{type:"expression",value:"8w+8"},
-  correct:["8w+8","2(4w+4)","8 + 8w"],
-  wrong:["8w+4","6w+8","8w-8"]
+  sourceCheck:{type:"expression",value:"8w+8",requireSimplifiedLinear:true},
+  correct:["8w+8","8 + 8w"],
+  wrong:["8w+4","6w+8","8w-8","2(4w+4)","4w+4w+8"]
  },
  {
   paperId:"original-v1",questionId:"p2-q4-v1",partId:"a1",
@@ -29,9 +29,9 @@ export const V2_CRITERION_PILOT = [
  {
   paperId:"original-v2",questionId:"p2-q2-v2",partId:"c1",
   answer:"6w + 10",promptContains:"PERIMETER",
-  sourceCheck:{type:"expression",value:"6w+10"},
-  correct:["6w + 10","2(3w+5)","10+6w"],
-  wrong:["6w+5","4w+10","8w+10"]
+  sourceCheck:{type:"expression",value:"6w+10",requireSimplifiedLinear:true},
+  correct:["6w + 10","10+6w"],
+  wrong:["6w+5","4w+10","8w+10","2(3w+5)","3w+3w+10"]
  },
  {
   paperId:"original-v2",questionId:"p2-q4-v2",partId:"a1",
