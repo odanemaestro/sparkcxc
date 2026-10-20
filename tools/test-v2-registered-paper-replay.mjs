@@ -58,7 +58,8 @@ const migrations=[
 "20261020160000_marking_v2_final_318_criterion_calibration_queue.sql",
 "20261020170000_marking_v2_it_27_formula_ai_source_reviews.sql",
 "20261020183000_v2_pending_evidence_gap_batch_1040.sql",
-"20261020184000_v2_pending_evidence_gap_batch_1039.sql"
+"20261020184000_v2_pending_evidence_gap_batch_1039.sql",
+"20261020190000_marking_v2_modal_class_source_checker.sql"
 ];
 const db=new PGlite();
 try{
