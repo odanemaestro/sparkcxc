@@ -497,3 +497,47 @@ publication authority is fabricated: production still has 12 AI-assisted
 source reviews and 2,106 parts pending source-specific sign-off. All 67
 paper rubrics remain inactive. The present changes remain on draft PR #124;
 they have not been deployed to the live V2 worker or merged into main.
+
+## Individual source QA approvals: 27 exact IT spreadsheet criteria
+
+Following [CI #2592](https://github.com/odanemaestro/sparkcxc/actions/runs/39363554479)
+and a successful production transaction rollback dry-run, private production
+Supabase migration
+`20261020170000_marking_v2_it_27_formula_ai_source_reviews.sql`
+was deployed. It records **27 genuinely source-specific nonhuman AI QA
+criterion reviews**, not human independent reviews and not whole-paper
+rubric approval.
+
+- 9 original D2 total-cost `=B2*C2` formula criteria
+- 9 original D4 `=SUM(D2:D3)` function criteria
+- 3 revenue formulas
+- 3 tax formulas requiring an absolute `$F$2` rate reference
+- 3 total-revenue SUM functions
+
+The `itV2ArchiveEvidence.test.js` source-identity review confirms every
+part against its exact original mark allocation and scheme; canonical
+answers and legitimate commutative equivalents earn the same marks;
+incorrect reference cells, malformed formula text, narrated answers,
+blank and unrelated responses do not. The migration rejects altered
+source hashes, any additional/unexpected selection, preexisting reviews,
+or any attempted paper-level activation. Each inserted note identifies
+its specific source paper, criterion, rule and test file.
+
+**Production post-migration:** 2,118 source criteria registered, 39 AI
+criterion reviews (27 IT, 9 Mathematics, 3 Physics) with **39/39 current
+criterion SHA-256 matches**, 2,079 pending, and **zero** active/verified
+paper rubrics out of 67.
+
+The remaining nine apparently direct-score unreviewed Mathematics
+criteria were individually audited and **not approved**: six are geometric
+construction/measurement parts requiring an authenticated original
+drawing, and three modal-class questions currently use a set-valued
+checker that is not an adequate validator of an ordered class interval.
+Their evaluation must be corrected and positively/adversarially tested
+before criterion-level evidence approval.
+
+The remaining 2,079 are not suitable for wholesale attestation. They
+require source-specific evidence about acceptable alternative answers,
+partial credit, calculations, method/ECF, written explanations, visual
+artifacts, code practicals and essay quality. Hash identity and one
+model-answer score are prerequisites, not proof of accuracy.
