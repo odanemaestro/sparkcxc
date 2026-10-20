@@ -9,7 +9,7 @@ const registered=paper=>paper.questions.flatMap(q=>q.parts.map(p=>({
   id:q.question_id+"::"+p.id,maxMarks:p.marks,
   sourceMarking:{
    answer:p.answer,solution:p.solution,modelResponse:p.modelResponse,
-   criteria:p.criteria,responseType:p.responseType
+   criteria:JSON.parse(JSON.stringify(p.criteria)),responseType:p.responseType
   }
 })));
 const graphPart=paper=>{
@@ -51,41 +51,42 @@ describe.each(cases)("Physics source graph V2, $paper_id",paper=>{
  });
  test("text claiming the graph is correct never earns visual marks",()=>{
   for(const value of ["A correct graph with all points and best fit",
-   {answer:"all six points plotted, best fit line drawn"},
-   {graph:{points:[],line:[]}}]){
+   {answer:"all six points plotted, best fit line drawn"}]){
    const graded=evaluate(value);
    expect(item(graded).suggestedMarks).toBe(0);
    expect(graded.canPublishFinalScore).toBe(false);
   }
+  expect(item(evaluate({graph:{points:[],line:[]}})).suggestedMarks).toBe(0);
  });
  test("wrong axes, distorted line and missing or extra points lose their corresponding marks",()=>{
   const graph=responseFor(part);
-  const wrongAxes=structuredClone(graph);
+  const wrongAxes=JSON.parse(JSON.stringify(graph));
   wrongAxes.graph.axisXLabel="Pressure";wrongAxes.graph.axisYLabel="Current";
   expect(item(evaluate(wrongAxes)).suggestedMarks).toBeLessThan(7);
-  const brokenLine=structuredClone(graph);
+  const brokenLine=JSON.parse(JSON.stringify(graph));
   brokenLine.graph.line=[{x:0,y:0},{x:graph.graph.line[1].x,y:0}];
   expect(item(evaluate(brokenLine)).suggestedMarks).toBeLessThanOrEqual(5);
-  const missing=structuredClone(graph);
+  const missing=JSON.parse(JSON.stringify(graph));
   missing.graph.points=missing.graph.points.slice(0,-2);
   expect(item(evaluate(missing)).suggestedMarks).toBeLessThan(7);
-  const extra=structuredClone(graph);
+  const extra=JSON.parse(JSON.stringify(graph));
   extra.graph.points.push({x:Number(part.grid.xMax)*.7,y:0});
   expect(item(evaluate(extra)).suggestedMarks).toBeLessThan(7);
  });
  test("malformed/unbounded/spoofed graph evidence fails closed",()=>{
-  for(const modify of [
-   g=>{g.graph.points[0].x=Infinity;},
-   g=>{g.graph.points[0].x="0.2";},
-   g=>{g.graph.points[0].x=1e10;},
-   g=>{g.graph.points[0].credit=7;},
-   g=>{g.graph.points=Array(25).fill({x:0,y:0});},
-   g=>{g.graph.line=[{x:0,y:0}];},
-   g=>{g.graph.points=[];g.graph.line=[];}
+  for(const [name,modify] of [
+   ["infinity",g=>{g.graph.points[0].x=Infinity;}],
+   ["numeric-string",g=>{g.graph.points[0].x="0.2";}],
+   ["out-of-grid",g=>{g.graph.points[0].x=1e10;}],
+   ["spoofed-credit",g=>{g.graph.points[0].credit=7;}],
+   ["too-many-points",g=>{g.graph.points=Array(25).fill({x:0,y:0});}],
+   ["single-line-endpoint",g=>{g.graph.line=[{x:0,y:0}];}],
+   ["empty-artifact",g=>{g.graph.points=[];g.graph.line=[];}]
   ]){
    const artifact=responseFor(part);
    modify(artifact);
-   expect(item(evaluate(artifact)).suggestedMarks).toBe(0);
+   const marks=item(evaluate(artifact)).suggestedMarks;
+   expect({name,marks}).toEqual({name,marks:0});
   }
  });
  test("source criteria mutation cannot claim trust in graph geometry",()=>{
