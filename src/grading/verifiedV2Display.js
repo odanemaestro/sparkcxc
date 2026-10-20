@@ -14,3 +14,25 @@ export function verifiedV2Display(result, attemptId) {
       maxMarks<=0 || score<0 || score>maxMarks) return null;
   return {score,maxMarks,percent:Math.round(score/maxMarks*100)};
 }
+
+/** Only show server criterion marks when the complete verified paper reconciles. */
+export function verifiedV2Parts(result,attemptId){
+  const verified=verifiedV2Display(result,attemptId);
+  if(!verified||!Array.isArray(result.criterionResults))return null;
+  const marks=new Map();
+  let earned=0,maximum=0;
+  for(const part of result.criterionResults){
+    const id=part?.criterionId;
+    const value=Number(part?.suggestedMarks);
+    const ceiling=Number(part?.maxMarks);
+    if(typeof id!=="string"||!id||marks.has(id)||
+      part?.resolved!==true||part.suggestedMarks==null||part.maxMarks==null||
+      !Number.isFinite(value)||!Number.isFinite(ceiling)||
+      ceiling<=0||value<0||value>ceiling)return null;
+    marks.set(id,value);
+    earned+=value;maximum+=ceiling;
+  }
+  if(!marks.size||Math.abs(earned-verified.score)>1e-7||
+    Math.abs(maximum-verified.maxMarks)>1e-7)return null;
+  return marks;
+}
