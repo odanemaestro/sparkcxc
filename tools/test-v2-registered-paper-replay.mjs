@@ -284,6 +284,22 @@ try{
     'Unrelated response awarded marks: '+part.criterion_id);
   }
  }
+ const groups4=Map.groupBy(batch4,x=>x.subject_id+'::'+x.paper_id);
+ for(const [key,items] of groups4){
+  const paper=papers.find(x=>x.subject_id+'::'+x.paper_id===key);
+  assert(paper,'Missing Batch 004 source '+key);
+  const unrelated=Object.fromEntries(items.map(x=>[x.criterion_id,
+   'ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY']));
+  const blank=evaluateExistingSubjectPaper2V2({subjectId:paper.subject_id,
+    paperId:paper.paper_id,criteria:paper.criteria,responses:{}});
+  const wrong=evaluateExistingSubjectPaper2V2({subjectId:paper.subject_id,
+    paperId:paper.paper_id,criteria:paper.criteria,responses:unrelated});
+  for(const part of items){
+   assert.equal(blank.rows.find(r=>r.criterionId===part.criterion_id)?.suggestedMarks,0);
+   assert.equal(wrong.rows.find(r=>r.criterionId===part.criterion_id)?.suggestedMarks,0,
+    'Unrelated response awarded marks: '+part.criterion_id);
+  }
+ }
 
  const overlap=(await db.query(`SELECT count(*)::int AS n FROM
  spark_grading_private.v2_calibration_batch_items first
