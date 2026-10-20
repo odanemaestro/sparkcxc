@@ -86,7 +86,10 @@ describe.each(cases)("Physics source graph V2, $paper_id",paper=>{
    const artifact=responseFor(part);
    modify(artifact);
    const marks=item(evaluate(artifact)).suggestedMarks;
-   expect({name,marks}).toEqual({name,marks:0});
+   // A malformed line forfeits B4 (2 marks), not legitimate separate
+   // axis/scales/points B1+B2+B3 (5 marks).
+   const expected=name==="single-line-endpoint"?5:0;
+   expect({name,marks}).toEqual({name,marks:expected});
   }
  });
  test("source criteria mutation cannot claim trust in graph geometry",()=>{
