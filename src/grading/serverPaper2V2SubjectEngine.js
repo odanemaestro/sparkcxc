@@ -9,7 +9,7 @@ import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
 import {CHECKERS} from "../practice/cxcMarking/checkers";
 import {markPhysicsPaper2} from "../physics/paper2/physicsPaper2Marking";
-import {gradeInformationTechnologyPart} from "../informationTechnology/practice/itPaper2Marking";
+import {gradeInformationTechnologyPart,informationTechnologyPaper2RuleFor} from "../informationTechnology/practice/itPaper2Marking";
 import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json";
 import {gradeChemistryPaper2Item} from "../chemistry/practice/chemistryPaper2Grader";
 import {gradeEnglishAPaper2Response} from "../englishA/practice/englishAPaper2Grader";
@@ -234,8 +234,19 @@ function it(rows,responses,paperId){
   // the matching, source-checked original, never from student input.
   const grade=gradeInformationTechnologyPart(question,expected,
     read(responses,row.id));
+  // These five exact spreadsheet rule families have source-matched,
+  // per-criterion AI evidence reviews and regression tests across all nine
+  // authored IT papers. Wrong formulas can be authoritatively scored zero,
+  // including malformed or blank answers; other IT response types stay
+  // provisional until their own source-specific evidence is verified.
+  const verifiedFormulaRules=new Set([
+   "formula-d2-total","formula-revenue","sum-d4",
+   "sum-revenue","formula-tax"
+  ]);
+  const strictFormula=verifiedFormulaRules.has(
+   informationTechnologyPaper2RuleFor(question,expected));
   return cap(row,grade.earned,"existing-IT-specific-rules",
-    blank(read(responses,row.id)) ||
+    strictFormula || blank(read(responses,row.id)) ||
     (grade.earned===row.maxMarks&&Array.isArray(grade.criteria)&&
      grade.criteria.length>0));
  });
@@ -416,7 +427,16 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
   // Mathematics has the explicit checker registry needed to evaluate
   // criterion-level authority. Other subjects retain advisory suggestions
   // pending source-specific verified-evidence adapters.
-  const unverified=subjectId!=="mathematics" || manualOrUnknown(source);
+  // The strict IT spreadsheet checks are the only non-Mathematics
+  // deterministic whole-part exception at this stage. Source identity,
+  // marks, prompt, schema and published check rules have already been
+  // validated by it(); all other cross-course suggestions fail closed.
+  const verifiedITFormula=subjectId==="information-technology" &&
+    r.resolved && r.method==="existing-IT-specific-rules" &&
+    source?.sourceMarking?.responseType==="formula";
+  const unverified=subjectId==="mathematics"
+    ?manualOrUnknown(source)
+    :!verifiedITFormula;
   if(subjectId==="mathematics" && r.resolved && r.suggestedMarks===0){
    const [questionId,partId]=r.criterionId.split("::");
    const questionAnswer=responses[questionId];
