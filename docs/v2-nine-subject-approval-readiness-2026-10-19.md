@@ -313,3 +313,54 @@ credit based on repeated correct keywords. Regression fixtures also
 preserve correct handling of source-authored negative facts. The fix
 has passed the nine-subject CI regression suite and stays on the V2
 feature branch until a separate approved rollout.
+
+## Batch 007: Final source-calibration inventory completed (318 parts)
+
+The final, guarded private migration
+`20261020160000_marking_v2_final_318_criterion_calibration_queue.sql`
+was deployed after a production rollback dry-run and passing
+[CI #2559](https://github.com/odanemaestro/sparkcxc/actions/runs/39355157876).
+
+The final batch registers all remaining 318 source parts, including four
+with already recorded, source-matched AI-assisted reviews. The four were
+retained unchanged and were **not** duplicated as new sign-offs.
+
+| Subject | Final batch |
+|---|---:|
+| Integrated Science | 160 |
+| Chemistry | 56 |
+| Mathematics | 45 |
+| Information Technology | 42 |
+| Physics | 10 |
+| English A | 3 |
+| Social Studies | 2 |
+| **Total** | **318** |
+
+Production audit results after the migration:
+
+- **2,118/2,118** source criteria selected across seven batches
+  (300 + 300 + 300 + 300 + 300 + 300 + 318).
+- **2,118/2,118** current source criterion and paper fingerprints matched.
+- **0** duplicate source criterion identities; **0** unselected registered parts.
+- **12** already registered AI-assisted source criterion reviews
+  (all source matched); **2,106** criterion reviews remain outstanding.
+- **0** verified or active V2 paper rubrics. Live authoritative score
+  publication remains blocked and the deployed private worker is not
+  replaced by the feature-branch version.
+
+**This completes the calibration *inventory*, not substantive examiner
+verification.** The final 318 batch and the earlier six batches are
+source-bound triage and negative-response replay coverage. Neither proving
+that a source hash matches nor rejecting one unrelated answer provides
+sufficient evidence for automatic partial credit, graphs, code, working,
+essays or ambiguous alternatives. Actual criterion approvals must be
+earned through source-specific accuracy fixtures, method/ECF/graph
+validators where needed, and separate genuine final rubric attestation
+before controlled live rollout.
+
+Next phase: implement and calibrate criterion evidence evaluators by
+subject and mark type; produce positive, negative, equivalent, ambiguous
+and partially correct answer matrices for all 2,106 unresolved parts;
+record honest, source-bound reviews; then verify worker publication,
+attempt isolation and rollback under approved criteria. Avoid claiming
+that completing the seven batches authorizes live V2 grading.
