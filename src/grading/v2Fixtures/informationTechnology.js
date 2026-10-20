@@ -80,6 +80,8 @@ const RULES={
   F("full",A("authenticity; currency"),2),
   F("equivalent",A("Whether the author is a credible source, and whether the information is up to date."),2),
   F("equivalent",A("relevance and bias"),2),
+  {cls:"equivalent",response:A("Accuracy: Check that information is correct and supported by reliable sources. Currency: Check that information is up to date."),expect:2,mustResolve:true,note:"real production Paper 2 alternative to source authority"},
+  F("partial",A("accuracy"),1),
   F("partial",A("currency"),1),
   F("incorrect",A("how colourful the website is; how many pictures it has"),0),
  ],
@@ -144,6 +146,7 @@ const RULES={
  "algorithm-characteristics":()=>[
   F("full",A("finite, so the algorithm must eventually terminate; unambiguous, so every step is clear"),4),
   F("equivalent",A("It must be precise and it must be finite, which means it stops after a finite number of steps."),4),
+  {cls:"equivalent",response:A("Finite: An algorithm must have a limited number of steps and eventually stop. Unambiguous: Every instruction must be clear and precise so that it can be followed without confusion. An algorithm must be finite because a program that never stops may continue running indefinitely, wasting computer resources and failing to produce its intended result."),expect:4,mustResolve:true,note:"negative example is not denial of finite requirement"},
   F("partial",A("finite; precise"),2,"two characteristics, no explanation"),
   F("partial",A("finite"),1),
   F("incorrect",A("It must be written in Python; it must be long."),0),
@@ -158,6 +161,7 @@ const RULES={
  "syntax-logic":()=>[
   F("full",A("A syntax error breaks the rules of the programming language. A logic error allows the program to run but produces the wrong result."),3),
   F("equivalent",A("A syntax error is a statement that violates the language rules so the program will not translate; a logic error means the program still runs but gives an incorrect result."),3),
+  {cls:"equivalent",response:A("A syntax error occurs when a programmer breaks the rules of a programming language, such as forgetting a required bracket. It may prevent the program from running. A logic error causes incorrect results even though the program runs. A syntax error breaks language rules; a logic error runs but gives an incorrect result."),expect:3,mustResolve:true,note:"fully developed distinction"},
   F("partial",A("A syntax error breaks the rules of the language."),{min:1,max:2}),
   F("incorrect",A("A syntax error is a hardware fault and a logic error is a virus."),0),
   F("contradiction",A("A syntax error breaks the language rules. A logic error does not let the program run."),{min:0,max:2}),
