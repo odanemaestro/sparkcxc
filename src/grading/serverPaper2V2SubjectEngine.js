@@ -407,6 +407,15 @@ const itExactRules=new Set([
 const itFormulaRules=new Set(["formula-d2-total","formula-revenue","sum-d4","sum-revenue","formula-tax"]);
 function itResolved({rule,grade,response,part,maxMarks}){
  const answer=informationTechnologyResponseText(response);
+ // Specific denied source claims cannot become authoritative simply because
+ // a positive concept keyword appears elsewhere in a long response.
+ if(rule==="reliability" && (
+   /\baccuracy\s+(?:is|was|are)\s+not\s+(?:important|necessary|relevant|a\s+factor)\b/i.test(answer)||
+   /\b(?:website|information|source)\s+(?:need\s+not|does\s+not\s+have\s+to)\s+be\s+accurate\b/i.test(answer)))return false;
+ if(rule==="algorithm-characteristics" &&
+   /\b(?:algorithm|its\s+steps|instructions?)\b.{0,55}\b(?:must|should|will|can)\s+(?:not|never)\s+(?:end|stop|terminate|finish)\b/i.test(answer))return false;
+ if(rule==="syntax-logic" &&
+   /\blogic\s+errors?\b.{0,90}\b(?:cannot|can't|does\s+not|do\s+not|never)\s+(?:produce|give|cause)\s+(?:an?\s+)?(?:incorrect|wrong)\s+(?:result|output|answer)/i.test(answer))return false;
  if(itExactRules.has(rule)){
   // A correct formula typed without its leading "=" is a judgement call an
   // examiner makes; abstain rather than publish either outcome.
