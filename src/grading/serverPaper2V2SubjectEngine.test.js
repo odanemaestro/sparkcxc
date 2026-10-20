@@ -472,3 +472,40 @@ test("POB affirmative model-answer denials never gain provisional or authoritati
   expect(checked.canPublishFinalScore).toBe(false);
  }
 });
+
+test("every source-reviewed IT spreadsheet formula resolves correct and incorrect evidence while other paper marks remain provisional",()=>{
+ const formulaAnswers={
+  "2-f":["=B2*C2","=B2+C2"],
+  "2-g":["=SUM(D2:D3)","=SUM(D2:D4)"],
+  "3-a":["=B2*C2","=B2+C2"],
+  "3-b":["=D2*$F$2","=D2*F2"],
+  "3-c":["=SUM(D2:D3)","=SUM(D3:D4)"]
+ };
+ let reviewed=0;
+ for(const paper of itData.papers){
+  const criteria=paper.questions.flatMap(question=>question.parts.map(part=>
+   row(question.number+"-"+part.id,part.marks,{
+    prompt:part.prompt,markScheme:part.markScheme,
+    profile:part.profile,responseType:part.responseType
+   })));
+  for(const question of paper.questions)for(const part of question.parts){
+   const key=question.number+"-"+part.id;
+   if(part.responseType!=="formula"||!formulaAnswers[key])continue;
+   reviewed++;
+   const [right,wrong]=formulaAnswers[key];
+   for(const [answer,expected] of [[right,part.marks],[wrong,0]]){
+    const output=example("information-technology",paper.id,criteria,{
+     [key]:{answer}
+    });
+    const graded=output.rows.find(x=>x.criterionId===key);
+    expect(graded.method).toBe("existing-IT-specific-rules");
+    expect(graded.suggestedMarks).toBe(expected);
+    expect(graded.resolved).toBe(true);
+    expect(output.unresolvedMarks).toBeGreaterThan(0);
+    expect(output.canPublishFinalScore).toBe(false);
+    expect(output.confirmedMarks).toBe(null);
+   }
+  }
+ }
+ expect(reviewed).toBe(27);
+});
