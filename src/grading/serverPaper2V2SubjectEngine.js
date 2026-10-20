@@ -10,6 +10,7 @@ import {markQuestion} from "../practice/cxcMarking/markScheme";
 import {CHECKERS} from "../practice/cxcMarking/checkers";
 import {markPhysicsPaper2} from "../physics/paper2/physicsPaper2Marking";
 import {gradeInformationTechnologyPart} from "../informationTechnology/practice/itPaper2Marking";
+import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json";
 import {gradeChemistryPaper2Item} from "../chemistry/practice/chemistryPaper2Grader";
 import {gradeEnglishAPaper2Response} from "../englishA/practice/englishAPaper2Grader";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
@@ -209,20 +210,33 @@ function physics(rows,responses){
    resolved);
  });
 }
-function it(rows,responses){
+function it(rows,responses,paperId){
+ const canonical=itPaper2Archive.papers.find(p=>p.id===paperId);
+ if(!canonical)throw new Error("Unknown registered IT source paper: "+paperId);
+ const sourceParts=new Map(canonical.questions.flatMap(question=>
+  question.parts.map(part=>[question.number+"-"+part.id,{question,part}])));
  return rows.map(row=>{
-  const m=/^(\d+)-(.+)$/.exec(row.id);
-  if(!m)throw new Error("Invalid IT source ID");
+  const pair=sourceParts.get(row.id);
+  if(!pair)throw new Error("Unregistered IT source criterion: "+row.id);
   const src=sourceMarking(row);
-  if(!Array.isArray(src.markScheme))throw new Error("Missing IT source scheme");
-  const number=Number(m[1]);
-  const part={id:m[2],marks:row.maxMarks,prompt:src.prompt||"",
-   responseType:src.responseType||"prose",profile:src.profile||"Theory",
-   markScheme:src.markScheme};
-  const grade=gradeInformationTechnologyPart({number},part,read(responses,row.id));
+  const {question,part:expected}=pair;
+  if(!Array.isArray(src.markScheme)||
+     src.markScheme.length!==expected.markScheme.length ||
+     src.markScheme.some((item,i)=>item!==expected.markScheme[i]) ||
+     src.prompt!==expected.prompt ||
+     row.maxMarks!==expected.marks ||
+     (src.responseType||"prose")!==(expected.responseType||"prose") ||
+     (src.profile||"Theory")!==(expected.profile||"Theory"))
+   throw new Error("Registered IT source drift: "+row.id);
+  // The registry stores the source's visible prompt, marks and scheme, but
+  // not its responseSpec or question visual. Rehydrate those strictly from
+  // the matching, source-checked original, never from student input.
+  const grade=gradeInformationTechnologyPart(question,expected,
+    read(responses,row.id));
   return cap(row,grade.earned,"existing-IT-specific-rules",
     blank(read(responses,row.id)) ||
-    (grade.earned===row.maxMarks&&Array.isArray(grade.criteria)&&grade.criteria.length>0));
+    (grade.earned===row.maxMarks&&Array.isArray(grade.criteria)&&
+     grade.criteria.length>0));
  });
 }
 function science(rows,responses,subject){
@@ -362,7 +376,7 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
  switch(subjectId){
   case "mathematics":rows=mathematics(criteria,responses);break;
   case "physics":rows=physics(criteria,responses);break;
-  case "information-technology":rows=it(criteria,responses);break;
+  case "information-technology":rows=it(criteria,responses,paperId);break;
   case "chemistry":rows=science(criteria,responses,subjectId);break;
   case "english-a":rows=english(criteria,responses);break;
   case "food-nutrition-and-health":rows=fnh(criteria,responses);break;
