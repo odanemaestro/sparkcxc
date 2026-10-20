@@ -447,7 +447,7 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
  let rows;
  switch(subjectId){
   case "mathematics":rows=mathematics(criteria,responses);break;
-  case "physics":rows=physics(criteria,responses);break;
+  case "physics":rows=physics(criteria,responses,paperId);break;
   case "information-technology":rows=it(criteria,responses,paperId);break;
   case "chemistry":rows=science(criteria,responses,subjectId);break;
   case "english-a":rows=english(criteria,responses);break;
