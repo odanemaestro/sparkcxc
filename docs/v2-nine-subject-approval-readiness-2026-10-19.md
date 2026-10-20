@@ -250,3 +250,36 @@ The system still has 12 nonhuman AI-reviewed parts out of 2,118,
 2,106 parts pending real review, and zero verified/active rubrics.
 This is calibration infrastructure coverage, not automatic examination
 accuracy certification or student-facing V2 rollout.
+
+## Batch 005: fifth 300-part cohort deployed with science negation QA
+
+Following [CI #2552](https://github.com/odanemaestro/sparkcxc/actions/runs/39353329663),
+applied `20261020140000_marking_v2_fifth_300_criterion_calibration_queue.sql`
+to the private production Supabase project. Its transaction was dry-run with
+rollback before deployment.
+
+Batch 005 introduces 300 *new* source parts: Mathematics 100, Integrated
+Science 85, Information Technology 45, Chemistry 25, Physics 20, English A
+12, Social Studies 10, and FNH 3. POB's 25 registered source parts had already
+been included in earlier batches.
+
+The complete private audit now confirms **five cohorts of 300 each: 1,500
+source parts, 1,500 matching source fingerprints, zero duplicate source
+identities**. The CI replay checks all five cohorts against actual
+full-paper contexts and rejects blank and unrelated answers for selected
+parts.
+
+The shared Chemistry/Integrated Science `scienceWrittenEvidence` polarity
+checker was hardened for *fails to*, *unable to* and negative contractions
+with typographic apostrophes. Positive and negative source-evidence fixtures
+were added. This reduces keyword-only false credit for explicitly denied
+scientific claims. It is not broad semantic or independent examiner
+certification, and the grading-code improvement remains on the V2 feature
+branch rather than merged into the existing live grader.
+
+Batch 005 includes zero whole-part direct-check candidates under the
+conservative source criterion classifier and registers **no additional
+criterion reviews**. The total remains 12 source-bound nonhuman AI QA
+reviews of 2,118 registered parts, with 2,106 still pending and zero
+verified/active V2 paper rubrics. Adding a part to a calibration cohort
+must never be construed as approving its marking scheme.
