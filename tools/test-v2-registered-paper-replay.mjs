@@ -1057,6 +1057,7 @@ try{
   return typeof first==='string'?first.trim():'';
  };
  const evidenceSummaries=[];
+ const evidenceCases=[];
  for(const [batchNumber,subset] of [
   [1,unapproved.slice(0,1053)],[2,unapproved.slice(1053)]
  ]){
@@ -1095,29 +1096,48 @@ try{
    const positive=Object.keys(sourceResponses).length?evaluate(sourceResponses):null;
    const denial=Object.keys(denials).length?evaluate(denials):null;
    for(const item of items){
+    const evidenceCase={subject:item.subject_id,paper:item.paper_id,
+     criterionId:item.criterion_id,maxMarks:item.max_marks,
+     hasCanonicalExample:false,positiveSuggestedMarks:null,
+     hasExplicitDenialProbe:false,denialSuggestedMarks:null,
+     denialSourceIsUnambiguous:false,status:'needs-source-specific-verification'};
     if(!stats.bySubject[item.subject_id])stats.bySubject[item.subject_id]={
       criteria:0,positive:0,denial:0,credited:0,denialCredit:0};
     const domain=stats.bySubject[item.subject_id];domain.criteria++;
     if(Object.hasOwn(sourceResponses,item.criterion_id)){
-     domain.positive++;
+     domain.positive++;evidenceCase.hasCanonicalExample=true;
      const suggestion=positive.rows.find(x=>x.criterionId===item.criterion_id);
      assert(suggestion&&suggestion.suggestedMarks>=0&&suggestion.suggestedMarks<=item.max_marks);
+     evidenceCase.positiveSuggestedMarks=suggestion.suggestedMarks;
      if(suggestion.suggestedMarks>0){stats.positiveCreditParts++;domain.credited++;}
     }
     if(Object.hasOwn(denials,item.criterion_id)){
-     domain.denial++;
+     domain.denial++;evidenceCase.hasExplicitDenialProbe=true;
+     evidenceCase.denialSourceIsUnambiguous=applicable.get(item.criterion_id)===true;
      const suggestion=denial.rows.find(x=>x.criterionId===item.criterion_id);
      assert(suggestion&&suggestion.suggestedMarks>=0&&suggestion.suggestedMarks<=item.max_marks);
+     evidenceCase.denialSuggestedMarks=suggestion.suggestedMarks;
      if(suggestion.suggestedMarks>0){
       stats.explicitDenialCreditParts++;domain.denialCredit++;
       // Keep the false-positive counter visible without falsely approving
       // source points whose nuance has not yet been independently assessed.
      }
     }
+    evidenceCases.push(evidenceCase);
    }
   }
   evidenceSummaries.push(stats);
  }
+ assert.equal(evidenceCases.length,2106,
+  'All 2,106 unreviewed parts require an explicit audit record');
+ fs.mkdirSync('artifacts',{recursive:true});
+ fs.writeFileSync('artifacts/v2-criterion-evidence-audit.json',
+  JSON.stringify({
+   scope:'private V2 evidence diagnostics; NOT criterion approvals',
+   sources:'67 paper rubrics, 2,106 pending criteria',
+   batches:evidenceSummaries,
+   criterionCases:evidenceCases
+  },null,2));
  console.log('V2 large-batch source-authored positive and explicit-denial evidence matrix',
   JSON.stringify({batches:evidenceSummaries,
    notice:'Source answers are calibration probes, not ground-truth examiner approvals. Positive matches, wrong-credit diagnostics and all ambiguous outcomes require criterion review. No score publication authorised.'}));
