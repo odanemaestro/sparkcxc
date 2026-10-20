@@ -1203,6 +1203,64 @@ try{
     part.maxMarks,'Per-part M/A/B allocation drift: '+part.id);
  }
 
+
+ // All archived Mathematics method/graphical draft checks must remain
+ // explicitly unverified, even when the model's final answer is provided.
+ let manualCheckCount=0,manualPartCount=0;
+ for(const paper of mathPaperRows){
+  const cases=paper.criteria.filter(p=>p.sourceMarking?.criteria?.some(c=>
+   c?.check?.type==='manual-verification'));
+  manualPartCount+=cases.length;
+  manualCheckCount+=paper.criteria.flatMap(p=>p.sourceMarking?.criteria||[])
+   .filter(c=>c?.check?.type==='manual-verification').length;
+  const responses=Object.fromEntries(paper.criteria.map(p=>[
+   p.id,{answer:String(p.sourceMarking?.answer??""),
+    working:String(p.sourceMarking?.solution??"")}
+  ]));
+  const result=evaluateExistingSubjectPaper2V2({
+   subjectId:paper.subject_id,paperId:paper.paper_id,
+   criteria:paper.criteria,responses
+  });
+  for(const part of cases){
+   const found=result.rows.find(row=>row.criterionId===part.id);
+   assert(found,'Missing calibrated math source part '+part.id);
+   assert.equal(found.resolved,false,
+    'Unapproved Mathematics method-check implied authority: '+part.id);
+  }
+  assert.equal(result.canPublishFinalScore,false,
+   'Manual-verification Mathematics draft cannot publish a final score: '+paper.paper_id);
+ }
+ assert.equal(manualCheckCount,969,
+  'The entire 969-check Mathematics manual-validation inventory must be retained');
+ assert(manualPartCount>0);
+ const physicsGraphs=papers.filter(p=>p.subject_id==='physics').flatMap(p=>
+  p.criteria.filter(c=>c.sourceMarking?.responseType==='graph' &&
+   c.sourceMarking?.criteria?.some(x=>x.manual===true))
+   .map(c=>({paper:p,criterion:c})));
+ assert.equal(physicsGraphs.length,4);
+ for(const {paper,criterion} of physicsGraphs){
+  for(const probe of [
+    'all six points plotted with a perfect straight best-fit line',
+    {answer:'correct graph',points:[[0,0],[1,1]],xAxis:'time',yAxis:'distance'}
+  ]){
+   const result=evaluateExistingSubjectPaper2V2({
+    subjectId:'physics',paperId:paper.paper_id,criteria:paper.criteria,
+    responses:{[criterion.id]:probe}
+   });
+   const row=result.rows.find(r=>r.criterionId===criterion.id);
+   assert(row);
+   assert.equal(row.suggestedMarks,0,
+    'Unverified graphical description earned automatic V2 credit');
+   assert.equal(row.resolved,false);
+   assert.equal(result.canPublishFinalScore,false);
+  }
+ }
+ console.log('Nine-subject evidence completeness: Mathematics and Physics',JSON.stringify({
+  mathematicsPapers:mathPaperRows.length,sourceParts:640,
+  unverifiedManualSubchecks:manualCheckCount,manualAffectedParts:manualPartCount,
+  physicsManualGraphParts:physicsGraphs.length,
+  rule:'Unverified method/construction and unauthenticated graph marks remain non-authoritative'
+ }));
  const pendingReviews=(await db.query(`select count(*)::integer AS total,
   count(*) filter(where source_matched_review)::integer AS reviewed,
   count(*) filter(where review_focus='manual-graph-artifact')::integer AS graph,
