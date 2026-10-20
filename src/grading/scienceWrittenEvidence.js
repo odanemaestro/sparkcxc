@@ -4,7 +4,7 @@
 const NEGATION=/\b(?:not|no|never|cannot|can't|without|doesn'?t|isn'?t|don'?t|neither|nor)\b/i;
 
 export function scienceResponseClauses(value){
-  return String(value??"").split(/(?:[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)|\s+\b(?:however|whereas|but)\b\s+)/i)
+  return String(value??"").split(/(?:[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)|\s+\b(?:however|whereas|but|although|yet|nevertheless)\b\s+)/i)
     .map(part=>part.trim()).filter(Boolean);
 }
 
