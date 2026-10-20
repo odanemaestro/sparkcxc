@@ -8,6 +8,8 @@ import {fnhWorkedSupplement} from "../data/fnhPaper2WorkedAnswerSupplements";
 import FnhHistoricalDiagram from "./FnhHistoricalDiagram";
 import FnhFoodLabelDesigner from "./FnhFoodLabelDesigner";
 import "./fnhPractice.css";
+import {startServerExamAttempt,submitServerExamAttempt} from "../../grading/serverExamAttempt";
+import V2VerifiedScore from "../../grading/V2VerifiedScore";
 
 
 const SECONDS=FNH_PAPER2_FORMAT.minutes*60;
@@ -106,8 +108,31 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
         duration_minutes:examMinutes,answered_parts:answered,at:new Date().toISOString()},
     }}).catch(e=>console.warn("FNH Paper 2 completion could not be saved",e));
   },[review,userId,supabase,attempt.attemptId,answered,paperId,examLabel,examMinutes,historical,historicalPaper?.year,paper,writtenGrade]);
-  const start=()=>{setAttempt({...make(paperId),phase:"exam",deadline:Date.now()+durationSeconds*1000});setRemaining(durationSeconds);setModal("");};
-  const submit=()=>{update({phase:"review",submittedAt:Date.now()});setModal("");};
+  // Original practice sets are registered for server marking as practice-0N.
+  const v2PaperId=historical?null:`practice-${String(selected.number).padStart(2,"0")}`;
+  const start=()=>{
+    const fresh={...make(paperId),phase:"exam",deadline:Date.now()+durationSeconds*1000,serverAttemptId:null};
+    setAttempt(fresh);setRemaining(durationSeconds);setModal("");
+    if(v2PaperId)startServerExamAttempt({supabase,subjectId:"food-nutrition-and-health",paper:"02",mode:"timed",
+      durationSeconds,bankVersion:"fnh-original-paper2-v1",rubricVersion:"fnh-p2-source-calibration-v2",
+      graderVersion:"fnh-paper2-deterministic-v2",metadata:{paper:"02",paper_id:v2PaperId}})
+      .then(server=>{if(server?.available&&server.attempt_id)
+        setAttempt(old=>old.attemptId===fresh.attemptId?{...old,serverAttemptId:server.attempt_id}:old);});
+  };
+  const submit=()=>{
+    update({phase:"review",submittedAt:Date.now()});setModal("");
+    if(attempt.serverAttemptId){
+      // Unscored, per criterion: the server marks and publishes the result.
+      const responses={};
+      for(const q of paper)for(const item of q.items){
+        const text=attempt.answers[`${q.id}:${item.id}`];
+        if(String(text||"").trim())responses[`${q.id}::${item.id}`]=text;
+      }
+      submitServerExamAttempt({supabase,attemptId:attempt.serverAttemptId,responses,score:null,
+        maxScore:writtenGrade.maxMarks,metadata:{subject:"food-nutrition-and-health",paper:"02",paper_id:v2PaperId,
+          spark_scoring_status:"rubric_review_required"}});
+    }
+  };
   return <main className="fnh-exam fnh-p2"><div className="fnh-exam-container">
     <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={()=>exam?setModal("exit"):onBack?.()}><FnhNavArrow direction="left"/> {exam?"Exit examination":"Back to paper selection"}</button><span>CSEC FOOD, NUTRITION AND HEALTH · PAPER 02{historical?` · ${historicalPaper.year} MAY/JUNE`:""}</span></div>
     {attempt.phase==="instructions"?<section className="fnh-exam-card fnh-instructions">
@@ -127,6 +152,7 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
       <button type="button" className="fnh-primary" onClick={start}>Start examination</button>
     </section>:<div className="fnh-session">
       <header className="fnh-exam-card fnh-session-heading"><div><small>{review?"ANSWER REVIEW · OPEN RESPONSE":"PAPER 02 · LIVE PRACTICE"}</small><h1>Food, Nutrition and Health</h1><p>{review?"SPARK has checked identifiable marking points in your written work. Unresolved marks remain subject to the source rubric.":`Question ${index+1} of 6 · ${answered}/${totalParts} parts answered`}</p></div><div className="fnh-timer"><span>{review?"Confirmed marking points":"Time remaining"}</span><strong>{review?`${writtenGrade.confirmedMarks}/${writtenGrade.maxMarks}`:clock(remaining)}</strong></div></header>
+      {review&&<V2VerifiedScore supabase={supabase} attemptId={attempt.serverAttemptId} estimate={writtenGrade.confirmedMarks} maxMarks={writtenGrade.maxMarks}/>}
       <div className="fnh-exam-layout">
         <section className="fnh-exam-card fnh-question">
           <div className="fnh-question-head"><h2>Question {question.number}: {question.title}</h2><span className="fnh-p2-marks">16 marks</span></div>

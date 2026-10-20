@@ -497,3 +497,88 @@ publication authority is fabricated: production still has 12 AI-assisted
 source reviews and 2,106 parts pending source-specific sign-off. All 67
 paper rubrics remain inactive. The present changes remain on draft PR #124;
 they have not been deployed to the live V2 worker or merged into main.
+
+## Individual source QA approvals: 27 exact IT spreadsheet criteria
+
+Following [CI #2592](https://github.com/odanemaestro/sparkcxc/actions/runs/39363554479)
+and a successful production transaction rollback dry-run, private production
+Supabase migration
+`20261020170000_marking_v2_it_27_formula_ai_source_reviews.sql`
+was deployed. It records **27 genuinely source-specific nonhuman AI QA
+criterion reviews**, not human independent reviews and not whole-paper
+rubric approval.
+
+- 9 original D2 total-cost `=B2*C2` formula criteria
+- 9 original D4 `=SUM(D2:D3)` function criteria
+- 3 revenue formulas
+- 3 tax formulas requiring an absolute `$F$2` rate reference
+- 3 total-revenue SUM functions
+
+The `itV2ArchiveEvidence.test.js` source-identity review confirms every
+part against its exact original mark allocation and scheme; canonical
+answers and legitimate commutative equivalents earn the same marks;
+incorrect reference cells, malformed formula text, narrated answers,
+blank and unrelated responses do not. The migration rejects altered
+source hashes, any additional/unexpected selection, preexisting reviews,
+or any attempted paper-level activation. Each inserted note identifies
+its specific source paper, criterion, rule and test file.
+
+**Production post-migration:** 2,118 source criteria registered, 39 AI
+criterion reviews (27 IT, 9 Mathematics, 3 Physics) with **39/39 current
+criterion SHA-256 matches**, 2,079 pending, and **zero** active/verified
+paper rubrics out of 67.
+
+The remaining nine apparently direct-score unreviewed Mathematics
+criteria were individually audited and **not approved**: six are geometric
+construction/measurement parts requiring an authenticated original
+drawing, and three modal-class questions currently use a set-valued
+checker that is not an adequate validator of an ordered class interval.
+Their evaluation must be corrected and positively/adversarially tested
+before criterion-level evidence approval.
+
+The remaining 2,079 are not suitable for wholesale attestation. They
+require source-specific evidence about acceptable alternative answers,
+partial credit, calculations, method/ECF, written explanations, visual
+artifacts, code practicals and essay quality. Hash identity and one
+model-answer score are prerequisites, not proof of accuracy.
+
+## Production worker release audit: 20 October 2026
+
+**Deployed:** The private, JWT-verified Supabase Edge Function
+`mark-paper2-v2-shadow` was updated to **version 11**, using the
+CI-compiled nine-subject examiner artifact from the successful
+[PR-check run #2594](https://github.com/odanemaestro/sparkcxc/actions/runs/39363942697).
+The source checkout for that compilation was synthetic merge commit
+`6cca6ff7429c1285f436c4c29b74cbcb0a364be0`, containing the draft PR
+plus current main. The bundled server marker's SHA-256 is
+`2515df50fd7f853ba88a6d623d21f33ba6e1a7b7c03c2f9c11f1947303868334`.
+The worker retains `verify_jwt=true` and project-bound service-role
+authentication. A scheduled post-deployment POST to function version 11
+was confirmed through production Edge logs at 03:40:03 UTC with HTTP 200.
+The existing per-two-minute worker cron is enabled.
+
+**Release boundaries independently checked:** 67 private rubric versions,
+zero active or verified; 39 source-hash-matched AI-assisted criterion
+reviews; zero queued/processed V2 marking jobs; zero attempts with
+`grader_version='spark-paper2-v2'`. The existing live student scorer and
+its published scores have not been replaced.
+
+**Validated next-step examiner changes, not deployed:** commits
+`e14a1f499fc159b0036ba3d1bafe6281a469846f` and
+`b573eaf920a84cdadbe553b87f584cfab9f3b030` make the 27
+individually reviewed, source-locked IT spreadsheet formula criteria
+deterministically resolved (including genuine incorrect formula = zero),
+while all other IT criteria and unfinished papers remain provisional.
+The full [CI #2596](https://github.com/odanemaestro/sparkcxc/actions/runs/39365846556)
+passed. An attempted update to worker version 12 was blocked by the
+deployment tool's safety checks before any production change. The tested
+new bundle must not be reported as deployed.
+
+**Outstanding release blocker:** Reliable source-specific evaluation
+and evidence for the other 2,079 criterion reviews. Neither source
+fingerprints nor an existing legacy grade constitute that verification.
+Do not automatically approve paper rubrics, forge reviewer signatures,
+or publish unchecked V2 final scores simply to reach a release date.
+The next production promotion must include a successful checked-bundle
+deployment, authenticated end-to-end submission test, and successful
+atomic score publication through approved paper criteria.

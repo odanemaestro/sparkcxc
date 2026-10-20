@@ -17,9 +17,9 @@ await db.exec(sql);
 const counts = await db.query(
   `select (select count(*)::int from public.spark_subject_sections) sections,(select count(*)::int from public.spark_subject_topics) topics,(select count(*)::int from spark_grading_private.rubrics_v2) rubrics`,
 );
-assert.deepEqual(counts.rows[0], { sections: 11, topics: 33, rubrics: 1 });
+assert.deepEqual(counts.rows[0], { sections: 11, topics: 33, rubrics: 2 });
 const rubric = (
-  await db.query(`select * from spark_grading_private.rubrics_v2`)
+  await db.query(`select * from spark_grading_private.rubrics_v2 where paper_id='POA-ORIGINAL-02-01'`)
 ).rows[0];
 assert.equal(rubric.criteria.length, 100);
 assert.equal(
@@ -28,6 +28,12 @@ assert.equal(
 );
 assert.equal(rubric.active, false);
 assert.equal(rubric.verification_status, "draft");
+const specimen = (await db.query(`select * from spark_grading_private.rubrics_v2 where paper_id='poa-specimen-2-2017'`)).rows[0];
+assert.equal(specimen.criteria.length, 22);
+assert.equal(specimen.criteria.reduce((n, c) => n + c.maxMarks, 0), 100);
+assert.equal(specimen.active, false);
+assert.equal(specimen.verification_status, "draft");
+assert.equal(specimen.criteria.filter((c) => c.sourceMarking.part.finalScoreUnresolved).reduce((n, c) => n + c.maxMarks, 0), 7);
 const accounts = (
   await db.query(
     `select enabled,status,stats from public.spark_subjects where id='principles-of-accounts'`,

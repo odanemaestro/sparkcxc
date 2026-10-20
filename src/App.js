@@ -7643,6 +7643,7 @@ const handleLogout = async () => {
   const appHasChemistry = appStudentEnrolledSubjectIds.has("chemistry");
   const appHasFoodNutritionAndHealth=appStudentEnrolledSubjectIds.has("food-nutrition-and-health");
   const appHasPrinciplesOfBusiness=appStudentEnrolledSubjectIds.has("principles-of-business") || POB_DEV_PREVIEW;
+  const appHasPrinciplesOfAccounts=appStudentEnrolledSubjectIds.has("principles-of-accounts");
   const appGenericStudySubjectId = view === "generic-study"
     ? genericStudySubjectFromBrowserHash()
     : null;
@@ -7866,6 +7867,8 @@ if (loading || authenticatedRolePending) {
                 ? <SubjectEnrollmentRequiredView subjectName="Food, Nutrition and Health" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : (view === "practice-principles-of-business" && !appHasPrinciplesOfBusiness)
                 ? <SubjectEnrollmentRequiredView subjectName="Principles of Business" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
+              : (view === "practice-principles-of-accounts" && !appHasPrinciplesOfAccounts)
+                ? <SubjectEnrollmentRequiredView subjectName="Principles of Accounts" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : appStudentEnrolledSubjects.length === 0
                 ? <SubjectEnrollmentRequiredView onManageSubjects={openMySubjects} onBack={() => setView("dashboard")}/>
                 : (

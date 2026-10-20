@@ -19,6 +19,9 @@ import {
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import manifest from "../../../public/principles-of-accounts/manifest.json";
 import AccountingWorkspace from "../components/AccountingWorkspace";
+import PoaHistoricalExam from "./PoaHistoricalExam";
+import { getPoaHistoricalPaper, getPoaPaperSource, POA_SPECIMEN_PAPERS } from "../data/poaHistoricalPapers";
+import { hasCompletePoaText } from "../data/poaPrintedPapers";
 import "./poaPractice.css";
 const CONFIG = Object.freeze({
   number: 1,
@@ -29,8 +32,6 @@ const CONFIG = Object.freeze({
   paperId: "POA-ORIGINAL-01-01",
   questions: POA_PAPER1.map((q) => ({ ...q, answer: "ABCD"[q.answerIndex] })),
 });
-const sourceUrl = (source) =>
-  `${String(process.env.PUBLIC_URL || "/sparkcxc").replace(/\/$/, "")}/principles-of-accounts/sources/${encodeURIComponent(source.filename)}`;
 const freshAttempt = () => ({
   phase: "instructions",
   id: crypto.randomUUID(),
@@ -67,6 +68,7 @@ function Paper2Exam({ userId, supabase, onBack }) {
     [busy, setBusy] = useState(false),
     [receipt, setReceipt] = useState(""),
     [confirm, setConfirm] = useState(false),
+    [exitConfirm, setExitConfirm] = useState(false),
     [serverResult, setServerResult] = useState(null);
   const submitting = useRef(false);
   const question = POA_PAPER2[attempt.index];
@@ -191,9 +193,10 @@ function Paper2Exam({ userId, supabase, onBack }) {
   }, [attempt.index, attempt.phase]);
   return (
     <main className="poa-practice">
-      <button className="poa-back" type="button" onClick={onBack}>
-        <BackArrowIcon /> Save and return to Accounts practice
+      <button className="poa-back" type="button" onClick={() => attempt.phase === "exam" ? setExitConfirm(true) : onBack()}>
+        <BackArrowIcon /> {attempt.phase === "exam" ? "Exit examination" : "Back to Accounts practice"}
       </button>
+      {exitConfirm && <section aria-label="Exit examination"><h2>Save and exit?</h2><p>Your answers will be saved. The timer will keep running while you’re away.</p><div className="poa-actions"><button type="button" onClick={onBack}>Save and exit</button><button type="button" className="secondary" onClick={() => setExitConfirm(false)}>Keep working</button></div></section>}
       <header>
         <span className="poa-eyebrow">SPARK original · Paper 02</span>
         <h1>Principles of Accounts</h1>
@@ -443,81 +446,6 @@ function Paper2Exam({ userId, supabase, onBack }) {
     </main>
   );
 }
-function HistoricalReader({ source, userId, onBack }) {
-  const key = `spark-poa-source-work-v1:${userId || "guest"}:${source.id}`;
-  const [writing, setWriting] = useState(() => {
-      try {
-        return localStorage.getItem(key) || "";
-      } catch {
-        return "";
-      }
-    }),
-    [error, setError] = useState("");
-  useEffect(() => {
-    try {
-      localStorage.setItem(key, writing);
-    } catch {
-      setError("Could not save your notebook. Copy your work before leaving.");
-    }
-  }, [key, writing]);
-  return (
-    <main className="poa-practice">
-      <button type="button" className="poa-back" onClick={onBack}>
-        <BackArrowIcon /> Back to past papers
-      </button>
-      <header>
-        <span className="poa-eyebrow">
-          Historical CXC source · exact supplied PDF
-        </span>
-        <h1>
-          {source.year} {source.sitting === "JAN" ? "January" : "May/June"} ·
-          Paper 0{source.paper}
-        </h1>
-        <p>
-          Follow this sitting's printed instructions, time and question choices.
-          Historical formats can differ from the current syllabus.
-        </p>
-      </header>
-      <p>
-        Use the original paper and write your answers below or in the accounting
-        workspace. Automatic grading is not yet available for this historical
-        paper. Your notes and accounting records remain available for practice.
-      </p>
-      <a
-        className="poa-source-link"
-        href={sourceUrl(source)}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Open original PDF in a full-size tab
-      </a>
-      <object
-        className="poa-source-viewer"
-        data={sourceUrl(source)}
-        type="application/pdf"
-        aria-label={`${source.year} Paper ${source.paper} original examination`}
-      >
-        <p>
-          Your browser cannot embed this PDF.{" "}
-          <a href={sourceUrl(source)} target="_blank" rel="noreferrer">
-            Open the original paper
-          </a>
-          .
-        </p>
-      </object>
-      <label>
-        Answer notebook · saved on this device
-        <textarea
-          rows="12"
-          value={writing}
-          onChange={(e) => setWriting(e.target.value)}
-        />
-      </label>
-      <p role="alert">{error}</p>
-      <AccountingWorkspace key={userId} userId={userId} />
-    </main>
-  );
-}
 export default function PoaPracticeHub({ userId, supabase, onBack }) {
   const [mode, setMode] = useState("home"),
     [source, setSource] = useState(null),
@@ -543,9 +471,11 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
     );
   if (source)
     return (
-      <HistoricalReader
+      <PoaHistoricalExam
         key={source.id + userId}
         source={source}
+        paper={getPoaHistoricalPaper(source.id)}
+        supabase={supabase}
         userId={userId}
         onBack={() => setSource(null)}
       />
@@ -553,7 +483,7 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
   const sources = manifest
     .filter(
       (s) =>
-        s.paper && !s.duplicateOf && (paper === "all" || s.paper === paper),
+        s.paper && !s.duplicateOf && hasCompletePoaText(getPoaHistoricalPaper(s.id)) && (paper === "all" || s.paper === paper),
     )
     .sort((a, b) => b.year - a.year || a.paper.localeCompare(b.paper));
   return (
@@ -565,16 +495,15 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
         <span className="poa-eyebrow">CSEC · Principles of Accounts</span>
         <h1>Put your accounting skills to work</h1>
         <p>
-          Practise the complete accounting cycle, sit original examination
-          papers or work directly from the supplied historical sources.
+          Choose a practice paper or open the accounting tools.
         </p>
       </header>
       <div className="poa-practice-choices">
         <section>
           <h2>Paper 1</h2>
           <p>
-            60 original multiple-choice questions, 90 minutes, explanations and
-            question-by-question review.
+            Original practice: 60 multiple-choice questions in 90 minutes.
+            Review your answers and explanations when you finish.
           </p>
           <button type="button" onClick={() => setMode("paper1")}>
             Open Paper 1 <ForwardArrowIcon />
@@ -583,22 +512,22 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
         <section>
           <h2>Paper 2</h2>
           <p>
-            Five original compulsory questions, 3 hours, 100 individually
-            markable checkpoints and worked practice feedback.
+            Original practice: five questions in 3 hours.
+            Show your working, then review the worked answers.
           </p>
           <button type="button" onClick={() => setMode("paper2")}>
             Open Paper 2 <ForwardArrowIcon />
           </button>
         </section>
       </div>
+      {POA_SPECIMEN_PAPERS.some(hasCompletePoaText) && <section>
+        <h2>Syllabus specimen papers</h2>
+        <p>Try the syllabus specimen papers, then review your answers and worked solutions.</p>
+        <div className="poa-actions">{POA_SPECIMEN_PAPERS.filter(hasCompletePoaText).map((specimen) => <button key={specimen.id} type="button" className="secondary" onClick={() => setSource(getPoaPaperSource(specimen))}>Open specimen Paper {specimen.paper}</button>)}</div>
+      </section>}
       <section>
         <h2>Historical past papers</h2>
-        <p>
-          51 supplied paper files contain 50 distinct PDFs. The May/June 2020
-          Paper 2 file duplicates the confirmed January 2020 paper; the genuine
-          May/June 2020 paper is missing. Original layouts, tables, diagrams and printed
-          instructions are preserved in the source PDFs.
-        </p>
+        <p>Choose a paper to practise. You can save your answers and come back to them later.</p>
         <label>
           Filter paper
           <select value={paper} onChange={(e) => setPaper(e.target.value)}>
@@ -615,20 +544,20 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
                   {s.year} · {s.sitting === "JAN" ? "January" : "May/June"} ·
                   Paper 0{s.paper}
                 </strong>
-                <small>{s.pages} pages · source PDF and answer notebook</small>
+                <small>{s.paper === "1" ? "Multiple choice" : "Structured questions"}</small>
               </span>
               <button
                 type="button"
                 className="secondary"
                 onClick={() => setSource(s)}
               >
-                Open source <ForwardArrowIcon />
+                Open past paper <ForwardArrowIcon />
               </button>
             </li>
           ))}
         </ul>
       </section>
-      <AccountingWorkspace key={userId || "guest"} userId={userId} />
+      <details className="poa-lesson-tools"><summary>Accounting tools</summary><AccountingWorkspace key={userId || "guest"} userId={userId} /></details>
     </main>
   );
 }

@@ -62,12 +62,20 @@ function formulaNormal(value) {
     .replace(/^=/, "=");
 }
 
+const CELL="\\$?[A-Z]+\\$?\\d+";
 function expandSimpleSumRange(formula) {
-  const value=formulaNormal(formula);
+  let value=formulaNormal(formula);
+  // =(B2*C2) is the same formula as =B2*C2.
+  const wrapped=value.match(/^=\(([^()]*)\)$/);
+  if(wrapped) value="="+wrapped[1];
+  // =PRODUCT(B2,C2) and =SUM(D2,D3) list their operands explicitly.
+  const listed=value.match(new RegExp(`^=(PRODUCT|SUM)\\((${CELL}(?:,${CELL})+)\\)$`));
+  if(listed) return "="+listed[2].split(",").join(listed[1]==="PRODUCT"?"*":"+");
   const match=value.match(/^=SUM\(([A-Z]+)(\d+):([A-Z]+)(\d+)\)$/);
   if(!match || match[1]!==match[3]) return value;
-  const start=Number(match[2]),end=Number(match[4]);
-  if(!Number.isInteger(start)||!Number.isInteger(end)||end<start||end-start>20) return value;
+  // A range may be written in either direction: D3:D2 covers D2 and D3.
+  const start=Math.min(Number(match[2]),Number(match[4])),end=Math.max(Number(match[2]),Number(match[4]));
+  if(!Number.isInteger(start)||!Number.isInteger(end)||end-start>20) return value;
   return "="+Array.from({length:end-start+1},(_,index)=>`${match[1]}${start+index}`).join("+");
 }
 
@@ -150,9 +158,23 @@ function databaseKeyFromVisual(question, role) {
   return tables[1]?.fields?.find(([, type]) => String(type).toUpperCase() === "FK")?.[0] || "";
 }
 
-function exactTerm(answer, expected, marks, description = expected) {
-  const ok = normaliseITAnswer(answer).replace(/[^a-z0-9]/g, "") === normaliseITAnswer(expected).replace(/[^a-z0-9]/g, "");
+const compactName = value => normaliseITAnswer(value).replace(/[^a-z0-9]/g, "");
+/**
+ * The expected field name, stated once, with no competing field named.
+ * "ShelterID", "Shelter ID", "shelter_id" and "The ShelterID field" are the
+ * same answer; "ShelterID or Name" is two answers.
+ */
+function exactTerm(answer, expected, marks, description = expected, competitors = []) {
+  const words = normaliseITAnswer(answer).split(/[^a-z0-9]+/).filter(Boolean)
+    .filter(w => !/^(?:the|field|is|should|be|primary|foreign|key|it|a|an|called|named|in|of|table)$/.test(w));
+  const joined = words.join("");
+  const target = compactName(expected);
+  const others = competitors.map(compactName).filter(name => name && name !== target);
+  const ok = Boolean(target) && joined === target && !others.some(name => joined.includes(name));
   return [criterion("A1", marks, description, ok ? marks : 0, ok ? "Correct term." : `Expected ${expected}.`)];
+}
+function databaseFieldNames(question) {
+  return (question?.visual?.tables || []).flatMap(table => (table.fields || []).map(([name]) => name));
 }
 
 function inferPseudocode(prompt) {
@@ -180,12 +202,35 @@ export function pseudocodeSumIsEquivalent(text, vars = []) {
   // A second assignment can overwrite the first, even if the first was
   // exactly correct. A final score based on the first is not verified.
   if(assignments.length!==1||!vars.length)return false;
-  const expression=normaliseITAnswer(assignments[0][1]).replace(/\s+/g,"");
+  let expression=normaliseITAnswer(assignments[0][1]).replace(/\s+/g,"");
+  // SCORE = (a + b + c) is the same sum as SCORE = a + b + c.
+  while(/^\([^()]*\)$/.test(expression))expression=expression.slice(1,-1);
   if(/[^a-z0-9_+]/.test(expression))return false;
   const terms=expression.split("+");
   const expected=vars.map(v=>normaliseITAnswer(v).replace(/[^a-z0-9_]/g,"")).sort();
   return terms.length===expected.length&&
     terms.sort().every((term,index)=>term===expected[index]);
+}
+
+/**
+ * Some source questions require a score formed from all three inputs but do
+ * NOT prescribe a sum. Their mean is a valid language-neutral calculation.
+ * Parse the whole SCORE assignment, never keyword-match variable names.
+ */
+export function pseudocodeMeanIsEquivalent(text,vars=[]){
+ const lines=executablePseudocode(text).split(/\n|;/);
+ const assignments=lines.map(line=>
+  line.match(/^\s*(?:(?:set|let)\s+)?score\s*(?:<-|←|:=|=)\s*([^\n;]+?)\s*$/i))
+  .filter(Boolean);
+ if(assignments.length!==1||vars.length!==3)return false;
+ let expression=normaliseITAnswer(assignments[0][1]).replace(/\s+/g,"");
+ while(expression.startsWith("((")&&expression.endsWith("))"))
+  expression=expression.slice(1,-1);
+ const match=expression.match(/^\(([a-z0-9_+]+)\)\/(?:3|3\.0+)$/);
+ if(!match)return false;
+ const actual=match[1].split("+").sort();
+ const expected=vars.map(v=>normaliseITAnswer(v).replace(/[^a-z0-9_]/g,"")).sort();
+ return actual.length===3&&actual.every((v,i)=>v===expected[i]);
 }
 
 export function pseudocodeBranchEvidence(text) {
@@ -222,7 +267,7 @@ function gradePseudocode(part, response) {
   const inputLines=(text.match(/\b(?:read|input|accept|get|enter)\b[^\n;]*/gi)||[]).join(" ");
   const inputNames=normaliseITAnswer(inputLines).split(/[^a-z0-9_]+/);
   const varsFound = vars.filter(v => inputNames.includes(normaliseITAnswer(v))).length;
-  const validScoreCalculation = pseudocodeSumIsEquivalent(text,vars);
+  const validScoreCalculation = pseudocodeSumIsEquivalent(text,vars)||pseudocodeMeanIsEquivalent(text,vars);
   const condition=(text.match(/\b(?:if|when)\s+([^\n]*?)(?:\bthen\b|\n|$)/i)?.[1] || "").trim();
   const thresholdText=String(threshold).replace(/\./g,"\\.");
   const hasCondition = Number.isFinite(threshold)
@@ -233,7 +278,7 @@ function gradePseudocode(part, response) {
     criterion("P1", 2, "Reads all three input values", hasInputVerb && varsFound === 3 ? 2 : varsFound >= 2 ? 1 : 0,
       hasInputVerb && varsFound === 3 ? "All required inputs are read." : "All three named inputs must be read."),
     criterion("P2", 2, "Calculates SCORE using all three values", validScoreCalculation ? 2 : 0,
-      validScoreCalculation ? "SCORE is calculated by adding the three required inputs." : "SCORE must be calculated as the sum of the three named inputs."),
+      validScoreCalculation ? "SCORE correctly uses all three source inputs." : "Use all three input variables in a verified SCORE calculation."),
     criterion("P3", 1, "Uses the correct threshold condition", hasCondition ? 1 : 0,
       hasCondition ? "Correct threshold condition found." : `The condition should compare SCORE with ${threshold}.`),
     criterion("P4", 1, "Displays ACCEPT on the true branch", branches.trueAccept ? 1 : 0,
@@ -336,12 +381,31 @@ export function gradeInformationTechnologyPart(question, part, response) {
     case "machine-characteristics":
       criteria = scoreMachineCharacteristics(part.prompt, answer, part.marks);
       break;
-    case "router":
-      criteria = [
-        criterion("A1", 1, "Identifies a router", conceptPresent(answer, "router") ? 1 : 0, conceptPresent(answer, "router") ? "Router identified." : "Router was not identified."),
-        criterion("A2", 1, "States that it connects/forwards between networks", conceptPresent(answer, "connect_networks") ? 1 : 0, conceptPresent(answer, "connect_networks") ? "Router function established." : "The function of connecting different networks is required."),
+    case "router": {
+      // This exact two-mark source question is shared by Papers A-I.
+      // Broad phrase matching wrongly credited "not a router" and "router
+      // cannot link networks". Keep the B1 identity and B2 function
+      // independent, with explicit contradictory evidence scored as zero.
+      const normal=String(answer||"").toLowerCase()
+        .replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();
+      const identity=/\b(?:router|routing device)\b/.test(normal);
+      // The Internet and a WAN are themselves other networks: "links the
+      // local networks to the internet" states the routing function.
+      const otherNetwork="(?:(?:different|separate|other|multiple)\\s+networks|another\\s+network|the\\s+internet|internet|a\\s+wan|wans?|wide\\s+area\\s+networks?)";
+      const functionEvidence=new RegExp(`(?:\\b(?:connects?|connecting|links?|linking|joins?)\\b.{0,55}\\b${otherNetwork}\\b|\\b(?:connects?|links?)\\b.{0,55}\\bnetworks?\\s+(?:together|to\\s+${otherNetwork})\\b|\\b(?:forwards?|routes?|sends?)\\b.{0,55}\\b(?:data|packets?|traffic)\\b.{0,35}\\b(?:between|across|among)\\s+(?:the\\s+)?(?:lan\\s+and\\s+)?(?:networks|${otherNetwork})\\b|\\b(?:forwards?|routes?)\\b.{0,40}\\b(?:between|across)\\s+networks\\b|\\bfrom\\s+one\\s+network\\s+to\\s+another\\b)`).test(normal);
+      const identityDenied=/\b(?:not|never|isn't|is\s+not|cannot|can't)\s+(?:a\s+)?(?:router|routing\s+device)\b|\b(?:router|routing\s+device)\b.{0,22}\b(?:not|never|cannot|can't|isn't)\s+(?:the\s+)?(?:device|hardware|answer)\b/.test(normal);
+      const functionDenied=/\b(?:not|never|cannot|can't|doesn't|does\s+not)\s+(?:\w+\s+){0,4}(?:connect|link|route|forward)\b|\b(?:router|routing\s+device)\b.{0,30}\b(?:cannot|can't|doesn't|does\s+not|never)\s+(?:connect|link|route|forward)\b/.test(normal);
+      const competing=/\b(?:router|routing device)\s+or\s+(?:a\s+)?(?:switch|hub|modem|bridge)\b|\b(?:switch|hub|modem|bridge)\s+or\s+(?:a\s+)?(?:router|routing device)\b/.test(normal);
+      const identified=identity&&!identityDenied&&!competing;
+      const functionOk=functionEvidence&&!functionDenied&&!competing;
+      criteria=[
+        criterion("A1",1,"Identifies router as device",identified?1:0,
+          identified?"Router correctly identified.":"Identify a router without a competing device."),
+        criterion("A2",1,"Links/forwards between networks",functionOk?1:0,
+          functionOk?"Correct inter-network routing function.":"State how the device connects or forwards between networks."),
       ];
       break;
+    }
     case "intranet-extranet": {
       const a = conceptPresent(answer, "intranet") && conceptPresent(answer, "intranet_private");
       const b = conceptPresent(answer, "extranet") && conceptPresent(answer, "extranet_external");
@@ -386,10 +450,14 @@ export function gradeInformationTechnologyPart(question, part, response) {
       break;
     }
     case "reliability":
-      criteria=conceptCriteria(answer,["authenticity","currency","relevance","bias"],2,2,"Reliability criterion");
+      criteria=conceptCriteria(answer,["authenticity","accuracy","currency","relevance","bias"],2,2,"Reliability criterion");
       break;
     case "software-examples": {
+      // Two different named operating systems (Windows and Linux) are two
+      // valid system-software examples.
+      const namedSystems=new Set((normaliseITAnswer(answer).match(/\b(?:windows|linux|macos|mac\s*os|android|ios|unix|ubuntu)\b/g)||[]).map(x=>x.replace(/\s+/g,"")));
       const systems=conceptsPresent(answer,["operating_system","utility"]);
+      if(namedSystems.size>=2&&!systems.includes("utility")) systems.splice(0,systems.length,...namedSystems);
       const app=conceptPresent(answer,"application");
       criteria=[
         criterion("A1",1,"First system-software example",systems.length>=1?1:0,systems.length>=1?"Valid system-software example found.":"A system-software example is required."),
@@ -432,14 +500,23 @@ export function gradeInformationTechnologyPart(question, part, response) {
       ];
       break;
     }
-    case "trace-table":
+    case "trace-table": {
+      // Aligned to the source scheme: test data; values recorded step by
+      // step; decision/control flow followed; actual compared with expected
+      // or logic errors identified. Mentioning a "dry run" alone is the
+      // question's own wording, not a marking point.
+      const testData=conceptPresent(answer,"test_data");
+      const values=conceptPresent(answer,"trace_values");
+      const flow=/\b(?:pass(?:es)?|iterations?|loops?|conditions?|branch(?:es)?|decisions?|paths?|control\s+flow|which\s+way)\b/i.test(answer);
+      const compare=conceptPresent(answer,"find_errors")||/\bexpected\s+(?:result|output|value)/i.test(answer);
       criteria=[
-        criterion("A1",1,"Describes a dry run/step-through",conceptPresent(answer,"trace_step")?1:0,conceptPresent(answer,"trace_step")?"Dry-run process established.":"Describe stepping through the algorithm."),
-        criterion("A2",1,"Records changing variable values",conceptPresent(answer,"trace_values")?1:0,conceptPresent(answer,"trace_values")?"Variable values mentioned.":"Mention recording/changing variable values."),
-        criterion("A3",1,"Follows iterations/passes or control flow",/\b(pass|iteration|step|loop|condition|branch)\b/i.test(answer)?1:0,/\b(pass|iteration|step|loop|condition|branch)\b/i.test(answer)?"Control flow mentioned.":"Show how the trace follows passes/steps."),
-        criterion("A4",1,"Uses the trace to verify logic/find errors",conceptPresent(answer,"find_errors")?1:0,conceptPresent(answer,"find_errors")?"Testing purpose established.":"Explain that the trace helps verify logic or find errors."),
+        criterion("A1",1,"Uses selected test data",testData?1:0,testData?"Test data selected.":"Choose suitable test data to trace."),
+        criterion("A2",1,"Records changing variable values step by step",values?1:0,values?"Variable values recorded.":"Record the changing variable values."),
+        criterion("A3",1,"Follows decisions/control flow",flow?1:0,flow?"Control flow followed.":"Follow each decision or loop."),
+        criterion("A4",1,"Compares actual with expected or identifies logic errors",compare?1:0,compare?"Testing purpose established.":"Compare the result with the expected result to find logic errors."),
       ];
       break;
+    }
     case "syntax-logic": {
       const syntax=conceptPresent(answer,"syntax")&&conceptPresent(answer,"syntax_rules");
       const logic=conceptPresent(answer,"logic")&&conceptPresent(answer,"logic_wrong_result");
@@ -472,8 +549,10 @@ export function gradeInformationTechnologyPart(question, part, response) {
     case "database-types": {
       const r=asResponse(response);
       const date=responseField(r,"Date")||answer, amount=responseField(r,"Amount")||answer;
-      const dateOk=conceptPresent(date,"date_time");
-      const amountOk=conceptPresent(amount,"currency_type")||conceptPresent(amount,"number_type");
+      // A field given two data types, one of them unsuitable, is a competing answer.
+      const unsuitable=value=>/\b(?:text|memo|string|boolean|yes\s*\/\s*no|autonumber|ole|hyperlink)\b/i.test(value);
+      const dateOk=conceptPresent(date,"date_time")&&!unsuitable(date);
+      const amountOk=(conceptPresent(amount,"currency_type")||conceptPresent(amount,"number_type"))&&!unsuitable(amount);
       criteria=[
         criterion("A1",2,"Date uses Date/Time",dateOk?2:0,dateOk?"Suitable Date data type.":"Date should use Date/Time."),
         criterion("A2",2,"Amount uses Currency or numeric type",amountOk?2:0,amountOk?"Suitable Amount data type.":"Amount should use Currency or a suitable numeric type."),
@@ -529,9 +608,13 @@ export function gradeInformationTechnologyPart(question, part, response) {
       break;
     }
     case "linked-worksheets": {
+      // The scheme gives up to 2 marks for automatic updating and up to 2 for
+      // avoiding re-entry/duplication and errors.
       const update=conceptPresent(answer,"linked_update"), reentry=conceptPresent(answer,"reduce_reentry");
-      const full=update||reentry;
-      criteria=[criterion("A1",4,"Explains a valid benefit of linking worksheets",full?4:0,full?"Valid linked-worksheet benefit explained.":"Explain that linked values update with source data or that linking reduces re-entry/duplication and errors.")];
+      criteria=[
+        criterion("A1",2,"Linked values update when source data changes",update?2:0,update?"Automatic update explained.":"Explain that linked values update when the source changes."),
+        criterion("A2",2,"Avoids re-entry/duplication and errors",reentry?2:0,reentry?"Reduced re-entry explained.":"Explain that linking avoids retyping, duplication and errors."),
+      ];
       break;
     }
     case "website-planning":
@@ -576,16 +659,22 @@ export function gradeInformationTechnologyPart(question, part, response) {
       break;
     case "database-primary-field": {
       const expected=databaseKeyFromVisual(question,"primary");
-      criteria=exactTerm(answer,expected,part.marks,`Primary key: ${expected}`);
+      criteria=exactTerm(answer,expected,part.marks,`Primary key: ${expected}`,databaseFieldNames(question));
       break;
     }
     case "database-foreign-field": {
       const expected=databaseKeyFromVisual(question,"foreign");
-      criteria=exactTerm(answer,expected,part.marks,`Foreign key: ${expected}`);
+      criteria=exactTerm(answer,expected,part.marks,`Foreign key: ${expected}`,databaseFieldNames(question));
       break;
     }
     case "database-relationship": {
-      const rel=conceptPresent(answer,"one_to_many"), explain=conceptPresent(answer,"one_parent_many_children");
+      // Naming two different relationship types is two competing answers.
+      const named=["one_to_many"].concat(
+        /\bone[\s-]*(?:to|-)[\s-]*one\b|\b1\s*:\s*1\b/i.test(answer)?["one_to_one"]:[],
+        /\bmany[\s-]*(?:to|-)[\s-]*many\b|\bm\s*:\s*n\b|\bm\s*:\s*m\b/i.test(answer)?["many_to_many"]:[],
+        /\bmany[\s-]*(?:to|-)[\s-]*one\b/i.test(answer)?["many_to_one"]:[]);
+      const competing=named.length>1;
+      const rel=!competing&&conceptPresent(answer,"one_to_many"), explain=!competing&&conceptPresent(answer,"one_parent_many_children");
       criteria=[
         criterion("A1",2,"Identifies one-to-many relationship",rel?2:0,rel?"Relationship identified.":"The relationship is one-to-many."),
         criterion("A2",1,"Explains one parent can link to several child records",explain?1:0,explain?"Relationship interpreted.":"Explain that one parent record can link to several child records."),
@@ -650,7 +739,7 @@ function modelAnswerForRule(question,part,rule) {
     "formula-d2-total":"=B2*C2",
     "sum-d4":"=SUM(D2:D3)",
     "algorithm-characteristics":"finite, so the algorithm must eventually terminate; unambiguous, so every step is clear",
-    "trace-table":"Use a dry run to step through each pass of the algorithm, record the changing variable values and check the logic to identify errors.",
+    "trace-table":"Choose selected test data, step through each pass of the algorithm recording the changing variable values, follow each decision, and compare the actual result with the expected result to identify logic errors.",
     "syntax-logic":"A syntax error breaks the rules of the programming language. A logic error allows the program to run but produces the wrong result.",
     documentation:"meaningful variable names; useful comments; indentation",
     query:"Parish='Kingston' AND Status='Active'",

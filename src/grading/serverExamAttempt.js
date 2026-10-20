@@ -96,3 +96,19 @@ export async function readServerExamV2Result({supabase,attemptId}={}){
   return {available:false,error};
  }
 }
+
+/**
+ * Whether a Paper 2 is released for V2 server marking. Any failure answers
+ * false, so the attempt keeps the existing client-scored submission.
+ */
+export async function isV2PaperReleased({supabase,subjectId,paperId}={}){
+ if(!supabase?.rpc || !subjectId || !paperId)return false;
+ try{
+  const {data,error}=await supabase.rpc("spark_v2_paper_released",{p_subject_id:subjectId,p_paper_id:paperId});
+  if(error)throw error;
+  return data===true;
+ }catch(error){
+  console.warn("V2 paper release status unavailable",error);
+  return false;
+ }
+}

@@ -1,5 +1,6 @@
 import objectives from "./poaObjectives.json";
 import { POA_LESSONS } from "./poaLessons";
+import { POA_LESSON_RECAPS } from "./poaLessonRecaps";
 export const POA_SUBJECT_ID = "principles-of-accounts";
 export const POA_SYLLABUS = "CXC 10/G/SYLL 17";
 export const POA_SYLLABUS_URL =
@@ -62,8 +63,8 @@ export const POA_TOPICS = Object.freeze(
               { title: "Worked example", paragraphs: [example] },
               { title: "Common mistake", paragraphs: [mistake] },
             ],
-            keyPoints: [answer, mistake],
-            summary: `Check your understanding: ${question}`,
+            keyPoints: POA_LESSON_RECAPS[i][1],
+            summary: POA_LESSON_RECAPS[i][0],
             check: { question, answer },
             flashcards: [
               { front: question, back: answer },

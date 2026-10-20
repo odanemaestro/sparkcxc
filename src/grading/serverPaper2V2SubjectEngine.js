@@ -10,18 +10,35 @@ import {evaluatePoaSourceV2} from "../principlesOfAccounts/poaMarkingV2";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
 import {CHECKERS} from "../practice/cxcMarking/checkers";
 import {markPhysicsPaper2} from "../physics/paper2/physicsPaper2Marking";
-import {gradeInformationTechnologyPart} from "../informationTechnology/practice/itPaper2Marking";
+import physicsPaper1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
+import physicsPaper2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
+import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
+import physicsPaper4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
+import {gradeInformationTechnologyPart,informationTechnologyPaper2RuleFor,informationTechnologyResponseText} from "../informationTechnology/practice/itPaper2Marking";
+import {IT_CANONICAL_CONCEPTS,phrasePresent,conceptPresent} from "../informationTechnology/practice/itPaper2Canonical";
+import {certainWrittenMark,keyTerms,cleanSourcePoint} from "./v2WrittenEvidenceGate";
+import {scienceResponseClauses} from "./scienceWrittenEvidence";
 import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json";
-import {gradeChemistryPaper2Item} from "../chemistry/practice/chemistryPaper2Grader";
+import {gradeChemistryPaper2Item,chemistryPointIsNumeric,chemistryPointMarks,chemistryFinalNumericEvidence,
+ chemistryEquationPoint,chemistryEstimatePoint,wordEquationPoint,scienceMarkedPoints} from "../chemistry/practice/chemistryPaper2Grader";
+import {CHEMISTRY_PAPER2_PRACTICE_SETS} from "../chemistry/data/chemistryPaper2Bank";
+import {readScienceGraph,graphPoints} from "../integratedScience/practice/scienceGraphModel";
 import {gradeEnglishAPaper2Response} from "../englishA/practice/englishAPaper2Grader";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
-import {gradeFnhWrittenPart} from "../fnh/practice/fnhPaper2Marking";
-import {gradeIntegratedSciencePaper2Item} from "../integratedScience/practice/integratedSciencePaper2Grader";
+import {gradeFnhWrittenPart,fnhDistinctPairs} from "../fnh/practice/fnhPaper2Marking";
+import {gradeIntegratedSciencePaper2Item,integratedSciencePoints,integratedScienceLineItem,
+ integratedScienceGraphInText} from "../integratedScience/practice/integratedSciencePaper2Grader";
+import INTEGRATED_SCIENCE_PAPER2_SPECS from "../integratedScience/data/integratedSciencePaper2Specs.json";
 import {gradeSocialStudiesShortAnswer} from "../socialStudies/marking/socialStudiesShortAnswerGrader";
 import {gradeSocialStudiesEssay} from "../socialStudies/marking/socialStudiesEssayGrader";
 import {reviewPobHistoricalPaper2} from "../principlesOfBusiness/data/pobHistoricalPaper2RubricReview";
 import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
 
+// Subjects whose adapters compute criterion certainty themselves. A subject
+// joins this set only once its resolution policy is covered by the
+// criterion verification matrix (src/grading/v2CriterionVerifier.js).
+const resolutionPolicySubjects=new Set(["information-technology","mathematics","chemistry","food-nutrition-and-health",
+ "integrated-science"]);
 const subjectIds=new Set([
  "mathematics","physics","information-technology","chemistry","english-a",
  "food-nutrition-and-health","integrated-science","social-studies","principles-of-business","principles-of-accounts"
@@ -70,16 +87,29 @@ const sourceDenialKey=value=>String(value??"").trim().toLowerCase()
 const directlyDeniesSourcePoint=(raw,source)=>{
  const response=sourceDenialKey(text(raw));
  const intro=/^(?:it is false that|it is incorrect to say)\s+/;
- if(!intro.test(response))return false;
  const denied=response.replace(intro,"");
  const points=Array.isArray(source?.points)?source.points:
   Array.isArray(source?.markScheme?.points)?source.markScheme.points:
   Array.isArray(source?.modelPoints)?source.modelPoints:
   typeof source?.modelAnswer==="string"?[source.modelAnswer]:[];
  const substantiveNegation=/\b(?:not|no|never|cannot|without|fails?\s+to|unable\s+to|false)\b/;
- return points.some(point=>typeof point==="string" &&
-  !substantiveNegation.test(sourceDenialKey(point)) &&
-  denied===sourceDenialKey(point));
+ // A canonical source statement followed by its exact explicit denial is
+ // contradictory evidence. Withhold its marks instead of rewarding the
+ // matching keywords. Normalisation is limited to punctuation/newlines,
+ // so a generic 'not' in otherwise legitimate working does not trigger.
+ const statementKey=value=>sourceDenialKey(value)
+  .replace(/\\n/g," ").replace(/[.!?]+/g," ")
+  .replace(/\s+/g," ").trim();
+ const compound=statementKey(text(raw));
+ return points.some(point=>{
+  if(typeof point!=="string"||
+     substantiveNegation.test(sourceDenialKey(point)))return false;
+  if(intro.test(response) && denied===sourceDenialKey(point))
+   return true;
+  const original=statementKey(point);
+  return ["it is false that","it is incorrect to say"].some(prefix=>
+   compound===original+" "+prefix+" "+original);
+ });
 };
 
 
@@ -89,7 +119,7 @@ const directlyDeniesSourcePoint=(raw,source)=>{
 // independently reviewed M/A/B mark is safely resolved.
 const authoritativeMathTypes=new Set([
  "numeric","equation","inequality","expression","fraction","coordinate",
- "set","ordered","matrix"
+ "set","classInterval","ordered","matrix"
 ]);
 const automatableMathCheck=(spec,depth=0)=>{
  if(!object(spec)||depth>6||typeof spec.type!=="string"||
@@ -143,14 +173,13 @@ function mathematics(rows,responses){
      throw new Error("Invalid registered Mathematics mark allocation "+row.id);
    }
    const allAutomatable=detailed&&stored.every(automatableMathCriterion);
-   // The shared existing grader awards correct-answer-implied method marks on
-   // ordinary numerical tasks. That convention cannot verify a criterion
-   // explicitly marked for manual checking or drafted from a fallback.
-   // V2 must suppress that *inference* while still evaluating the independent
-   // accuracy marks and valid ECF normally.
+   // The shared grader awards correct-answer-implied method marks on ordinary
+   // numerical tasks (CXC convention, unless the question demands working).
+   // Only a fully automatable scheme may rely on it: a criterion marked for
+   // manual checking or drafted from a fallback cannot.
    const partMarkingPolicy={
     ...part.markingPolicy,
-    correctAnswerImpliesMethod:allAutomatable &&
+    correctAnswerImpliesMethod:allAutomatable && part.requireWorking!==true &&
      part.markingPolicy?.correctAnswerImpliesMethod!==false
    };
    return {row,part:{...part,criteria:detailed?stored:part.criteria,
@@ -172,44 +201,175 @@ function mathematics(rows,responses){
     blank(responsesForQuestion[selected[i].part.id])?0:x.marks),
    "existing-mathematics-MAB-ECF",
    selected.map((p,i)=>blank(responsesForQuestion[p.part.id]) ||
-    (p.definitive && !examination.parts[i]?.criteria?.some(
-     c=>c.reviewRequired||c.unresolved)))));
+    mathPartCertain(examination.parts[i],p.part.criteria,responsesForQuestion[p.part.id],
+     p.part.markingPolicy,sourceMarking(p.row)))));
  }
  return out;
 }
-function physics(rows,responses){
+
+// Checks whose outcome is decided by mathematics, not by wording: a value,
+// expression, equation, point or set either is or is not present.
+const mathStrongEvidence=new Set([
+ "numeric","equation","inequality","expression","fraction","coordinate","set",
+ "classInterval","ordered","matrix","sparkAnswer","reachesValue","containsValue",
+ "contains","containsLiteral",
+ "containsEquivalentExpression","containsInequality","labelledValue","containsPoint",
+ "calculation","algebraTransition"
+]);
+// An empty composite check is unknown, never vacuously "all strong".
+const checkTypes=check=>!object(check)?["?"]:
+ (check.type==="anyOf"||check.type==="allOf")
+  ?(Array.isArray(check.options)&&check.options.length?check.options.flatMap(checkTypes):["?"])
+  :[check.type];
+const strongMathCheck=check=>checkTypes(check).every(t=>mathStrongEvidence.has(t));
+const workingOf=response=>object(response)?String(response.working??""):"";
+/**
+ * A Mathematics part is certain when every mark decision is:
+ *  - an awarded mark backed by a mathematical check, or implied by a correct
+ *    final answer under the CXC convention;
+ *  - a withheld answer-line accuracy mark judged by a mathematical check;
+ *  - a withheld method mark when no working was shown at all.
+ * A withheld method mark beside written working may reflect a valid
+ * alternative method, so the part abstains. Wording-based checks (prose,
+ * keyword "method", concept matches) and manual checks never certify.
+ */
+const answerOf=response=>object(response)?String(response.answer??""):String(response??"");
+// "A or B" offering two different answers, when the source answer is not
+// itself a pair of alternatives ("x = -20 or x = 19").
+function competingMathAnswer(response,sourceAnswer){
+ const text=answerOf(response);
+ if(/\b(?:or|either)\b/i.test(String(sourceAnswer??"")))return false;
+ const pieces=text.split(/\s+(?:or|either|\/)\s+/i).map(x=>x.trim()).filter(Boolean);
+ return pieces.length>1&&new Set(pieces.map(x=>x.replace(/\s+/g,"").toLowerCase())).size>1;
+}
+function mathPartCertain(result,specs,response,policy={},source={}){
+ if(!result||!Array.isArray(result.criteria)||!Array.isArray(specs))return false;
+ const byCode=new Map(specs.map(s=>[s.code,s]));
+ const noWorking=!workingOf(response).trim();
+ const kindOf=(line,spec)=>String(spec?.kind||line.kind||"").toUpperCase();
+ // Credit carried forward from a wrong earlier value is not covered by the
+ // criterion verification evidence: it stays provisional.
+ if(result.criteria.some(line=>line.awarded&&line.ecf))return false;
+ // Competing answers earn no accuracy mark (CXC). If a checker nonetheless
+ // credited one, abstain; a checker that already withheld credit is certain.
+ if(competingMathAnswer(response,source.answer)&&result.criteria.some(line=>
+   line.awarded&&["A","B"].includes(kindOf(line,byCode.get(line.code)))))return false;
+ // A certain, correct final answer implies every method mark (CXC). Where the
+ // question demands working, the working must be present for the awarded
+ // method marks to stand on the correct answer.
+ const accuracy=result.criteria.filter(line=>["A","B"].includes(kindOf(line,byCode.get(line.code))));
+ const answerCertainlyRight=accuracy.length>0&&
+  accuracy.every(line=>line.awarded&&strongMathCheck(byCode.get(line.code)?.check))&&
+  (policy.correctAnswerImpliesMethod===true||!noWorking);
+ // Written reasoning (prose / written statements) earns certain full credit
+ // only when the written-evidence gate finds the source statement, with no
+ // contradiction or keyword list. Partial written credit abstains.
+ const fullMarks=result.marks===result.of;
+ const writtenCertain=fullMarks&&certainWrittenMark({suggestedMarks:1,maxMarks:1,
+  response:answerOf(response)+"\n"+workingOf(response),points:[String(source.answer??"")]}).resolved;
+ return result.criteria.every(line=>{
+  const spec=byCode.get(line.code);
+  if(!spec?.check||spec.check.type==="manual-verification"||spec.provisional===true)return false;
+  if(line.impliedByAnswer)return true;
+  if(answerCertainlyRight&&kindOf(line,spec)==="M"&&line.awarded)return true;
+  const strong=strongMathCheck(spec.check);
+  const written=writtenMathCheck(spec.check);
+  // Unknown or unsupported check types never certify anything.
+  if(!strong&&!written&&!checkTypes(spec.check).every(t=>mathWeakEvidence.has(t)))return false;
+  if(line.awarded)return strong||(written&&writtenCertain);
+  const kind=kindOf(line,spec);
+  if((kind==="A"||kind==="B")&&(spec.field||"answer")==="answer")return strong;
+  return noWorking;
+ });
+}
+const mathWrittenEvidence=new Set(["prose","written","reasonConcept"]);
+const mathWeakEvidence=new Set(["method"]);
+const writtenMathCheck=check=>checkTypes(check).every(t=>mathWrittenEvidence.has(t));
+const physicsSourcePapers=new Map([
+ physicsPaper1,physicsPaper2,physicsPaper3,physicsPaper4
+].map(p=>[p.paper_id,p]));
+const graphPoint=(x,grid)=>object(x)&&
+ finite(x.x)&&finite(x.y)&&
+ x.x>=Number(grid.xMin)-1e-9&&x.x<=Number(grid.xMax)+1e-9&&
+ x.y>=Number(grid.yMin)-1e-9&&x.y<=Number(grid.yMax)+1e-9;
+/**
+ * Source-owned graph geometry, never an inferred line from the student's prose.
+ * Reject ill-formed points, coordinates outside the original grid, extra
+ * unknown fields posing as points and implausibly large drawings. The graph
+ * still needs independent source/rubric review before any FINAL V2 grade.
+ */
+function submittedSourceGraph(response,original){
+ const g=object(response)&&object(response.graph)?response.graph:null;
+ const grid=original?.grid;
+ if(!g||!grid||!Array.isArray(g.points)||
+    g.points.length>24||!Array.isArray(g.line)||g.line.length>2||
+    g.points.length===0&&g.line.length===0)return false;
+ if(!g.points.every(pt=>graphPoint(pt,grid))||
+    !g.line.every(pt=>graphPoint(pt,grid)))return false;
+ const all=[...g.points,...g.line];
+ if(all.some(pt=>Object.keys(pt).some(k=>!["x","y"].includes(k))))return false;
+ return true;
+}
+const graphSourceMatches=(registered,original)=>
+ registered?.responseType==="graph"&&original?.responseType==="graph"&&
+ registered.answer===original.answer&&
+ Array.isArray(registered.criteria)&&registered.criteria.length===4&&
+ registered.criteria.every((c,i)=>{
+  const expected=original.criteria?.[i];
+  return c.code===expected?.code&&c.kind===expected?.kind&&
+   c.marks===expected?.marks&&c.manual===expected?.manual&&
+   c.description===expected?.description;
+ });
+function physics(rows,responses,paperId){
+ const original=physicsSourcePapers.get(paperId);
+ if(!original)throw new Error("Unknown registered Physics source paper: "+paperId);
+ const originalParts=new Map(original.questions.flatMap(q=>
+  q.parts.map(part=>[q.question_id+"::"+part.id,part])));
  const grouped=group(rows,"::"),questions=new Map();
  for(const [id,parts] of grouped){
   questions.set(id,{question_id:id,parts:parts.map(({row,fields})=>{
    const src=sourceMarking(row);
    if(!Array.isArray(src.criteria)||src.criteria.reduce((n,c)=>n+Number(c.marks||0),0)!==row.maxMarks)
      throw new Error("Incomplete Physics marking source "+row.id);
+   const originalPart=originalParts.get(row.id);
+   if(!originalPart||originalPart.marks!==row.maxMarks)
+     throw new Error("Unknown Physics source part "+row.id);
+   if(src.responseType==="graph"){
+    if(!graphSourceMatches(src,originalPart))
+     throw new Error("Source drift in registered Physics graph "+row.id);
+    // Grid coordinates and line geometry are only available in the
+    // original authored paper. Do not read expected points from the student.
+    return {...src,grid:originalPart.grid,graph:originalPart.graph,
+     id:fields[1],marks:row.maxMarks};
+   }
    return {...src,id:fields[1],marks:row.maxMarks};
   })});
  }
- const paper={paper_id:"server-v2",questions:[...questions.values()],
+ const paper={paper_id:paperId,questions:[...questions.values()],
   marks:rows.reduce((n,r)=>n+r.maxMarks,0)};
  const examination=markPhysicsPaper2(paper,responses);
  return rows.map(row=>{
-  const [qid,pid]=row.id.split("::");
-  const grade=examination.criteria.filter(x=>x.question.question_id===qid&&x.part.id===pid)
+  const grade=examination.criteria.filter(x=>
+   x.question.question_id+"::"+x.part.id===row.id)
    .reduce((n,x)=>n+x.earned,0);
   const source=sourceMarking(row);
   const response=read(responses,row.id);
-  // Plotting, axes, scales and drawn best-fit lines require authenticated
-  // graph artefact evaluation. A text answer cannot earn a graph mark.
-  // Existing source 'manual' graph criteria are NOT independent proof, so
-  // leave these marks unresolved rather than publish unverified credit.
-  const manualGraph=source.responseType==="graph" &&
+  const manualGraph=source.responseType==="graph"&&
     source.criteria?.some(criterion=>criterion.manual===true);
-  const resolved=blank(response) ||
-   (!manualGraph&&source.criteria?.length>0&&
-    source.criteria.every(c=>c.check&&c.check.type==="value"));
-  // An objectively blank graph is resolved as zero. Nonblank drawings
-  // still require graph artefact evaluation before any marks are confirmed.
-  return cap(row,manualGraph?0:grade,
-   manualGraph&&!blank(response)?"physics-graph-requires-artifact-verification":"existing-physics-rubric-checks",
-   resolved);
+  if(manualGraph){
+   const originalPart=originalParts.get(row.id);
+   const typed=submittedSourceGraph(response,originalPart);
+   // Coordinates/axes/points/line are real structured diagnostics, unlike
+   // the former permanently-zero graph stub. Do not claim entire-paper
+   // resolution or paper approval from these provisional visual marks.
+   return cap(row,typed?grade:0,
+    typed?"source-graph-typed-advisory":"physics-graph-requires-artifact-verification",
+    blank(response));
+  }
+  const resolved=blank(response)||
+    (source.criteria?.length>0&&
+     source.criteria.every(c=>c.check&&c.check.type==="value"));
+  return cap(row,grade,"existing-physics-rubric-checks",resolved);
  });
 }
 function it(rows,responses,paperId){
@@ -233,43 +393,289 @@ function it(rows,responses,paperId){
   // The registry stores the source's visible prompt, marks and scheme, but
   // not its responseSpec or question visual. Rehydrate those strictly from
   // the matching, source-checked original, never from student input.
-  const grade=gradeInformationTechnologyPart(question,expected,
-    read(responses,row.id));
+  const response=read(responses,row.id);
+  const grade=gradeInformationTechnologyPart(question,expected,response);
+  const rule=informationTechnologyPaper2RuleFor(question,expected);
   return cap(row,grade.earned,"existing-IT-specific-rules",
-    blank(read(responses,row.id)) ||
-    (grade.earned===row.maxMarks&&Array.isArray(grade.criteria)&&
-     grade.criteria.length>0));
+   blank(response)||itResolved({rule,grade,response,part:expected,maxMarks:row.maxMarks}));
  });
 }
-function science(rows,responses,subject){
- const grouped=group(rows,"::"),out=[];
- for(const [qid,parts] of grouped){
-  const labels=[...new Set(parts.map(p=>p.fields[1]))];
-  for(const p of parts){
-   const row=p.row,sm=sourceMarking(row),pi=labels.indexOf(p.fields[1]);
-   const items=parts.filter(x=>x.fields[1]===p.fields[1]);
-   const ii=items.indexOf(p);
-   const base=qid+":"+pi+":"+ii;
-   const responseMap={...responses};
-   const value=read(responses,row.id,base);
-   if(directlyDeniesSourcePoint(value,sm)){
-    out.push(cap(row,0,"source-answer-explicit-denial",false));
-    continue;
-   }
-   if(value!==null)responseMap[base]=value;
-   const item=subject==="chemistry"
-    ?{marks:row.maxMarks,markScheme:sm,response:{type:sm.requiredResponseType||"lines"}}
-    :{marks:row.maxMarks,markScheme:sm.markScheme||{},response:{type:sm.requiredResponseType||"lines"}};
-   const examiner=subject==="chemistry"
-    ?gradeChemistryPaper2Item({id:qid},pi,ii,item,responseMap)
-    :gradeIntegratedSciencePaper2Item({id:qid},pi,ii,item,responseMap);
-   out.push(cap(row,examiner.score,subject==="chemistry"
-    ?"existing-chemistry-evidence":"existing-integrated-science-evidence",
-    blank(value) || (examiner.provisional===false &&
-      Number(examiner.unassessedMarks||0)===0 && examiner.confidence!=="low")));
-  }
+// Rules decided by exact structural equivalence rather than wording.
+const itExactRules=new Set([
+ "formula-d2-total","formula-revenue","sum-d4","sum-revenue","formula-tax",
+ "query","database-primary-field","database-foreign-field","database-types"
+]);
+const itFormulaRules=new Set(["formula-d2-total","formula-revenue","sum-d4","sum-revenue","formula-tax"]);
+function itResolved({rule,grade,response,part,maxMarks}){
+ const answer=informationTechnologyResponseText(response);
+ // Specific denied source claims cannot become authoritative simply because
+ // a positive concept keyword appears elsewhere in a long response.
+ if(rule==="reliability" && (
+   /\baccuracy\s+(?:is|was|are)\s+not\s+(?:important|necessary|relevant|a\s+factor)\b/i.test(answer)||
+   /\b(?:website|information|source)\s+(?:need\s+not|does\s+not\s+have\s+to)\s+be\s+accurate\b/i.test(answer)))return false;
+ if(rule==="algorithm-characteristics" &&
+   /\b(?:algorithm|its\s+steps|instructions?)\b.{0,55}\b(?:must|should|will|can)\s+(?:not|never)\s+(?:end|stop|terminate|finish)\b/i.test(answer))return false;
+ if(rule==="syntax-logic" &&
+   /\blogic\s+errors?\b.{0,90}\b(?:cannot|can't|does\s+not|do\s+not|never)\s+(?:produce|give|cause)\s+(?:an?\s+)?(?:incorrect|wrong)\s+(?:result|output|answer)/i.test(answer))return false;
+ if(itExactRules.has(rule)){
+  // A correct formula typed without its leading "=" is a judgement call an
+  // examiner makes; abstain rather than publish either outcome.
+  if(itFormulaRules.has(rule)&&grade.earned===0&&
+     !/^\s*=/.test(answer)&&/^[\s$A-Za-z0-9*+(),:]+$/.test(answer)&&
+     gradeInformationTechnologyPart({},part,{answer:"="+answer.trim()}).earned>0)return false;
+  return true;
  }
+ if(rule==="pseudocode"||rule==="ipo"){
+  // An alternative SCORE expression that parses as an assignment but is not
+  // among the source-verified forms is a possible valid method. Do not
+  // publish an incorrect two-mark deduction just because other lines parse.
+  if(rule==="pseudocode"&&grade.criteria?.some(c=>c.code==="P2"&&c.earned===0)
+    &&/\bscore\s*(?:<-|←|:=|=)\s*[^\n;]+/i.test(answer))return false;
+  return grade.earned===maxMarks||grade.earned===0&&!/\b(?:if|score|input|read|output|display)\b/i.test(answer)
+   ||structuredItResolved(rule,grade,answer);
+ }
+ const accounted=[part.prompt,...itRecognisedPhrases(answer)];
+ const creditedPoints=(grade.criteria||[]).filter(c=>c.earned>0).length;
+ const gate=certainWrittenMark({suggestedMarks:grade.earned,maxMarks,response:answer,
+  points:part.markScheme,accounted,pointEvidence:"grader",creditedPoints});
+ if(gate.resolved)return true;
+ // The broad source descriptions for these two questions contain negative
+ // examples ("cannot run", "incorrect result") and candidate explanations
+ // may likewise give a counterexample ("a program that never stops").
+ // Do not treat a correctly explained negative consequence as a denial of
+ // the positive characteristic. Require independently identifiable, complete
+ // source points and explicitly refuse incompatible claims; unlike merely
+ // bypassing the gate this is limited to full-mark, structured evidence.
+ if(grade.earned===maxMarks && (rule==="algorithm-characteristics"||rule==="syntax-logic"))
+  return itCompleteExplanationCertain(rule,grade,answer);
+ return false;
+}
+// Auditable source-specific fallback for full, developed IT explanations.
+// Never certifies partial, contradictory, telegraphic or ambiguous responses.
+function itCompleteExplanationCertain(rule,grade,answer){
+ if(!(grade.criteria||[]).length || !grade.criteria.every(c=>c.marks>0&&c.earned===c.marks))
+  return false;
+ const text=String(answer||"").replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();
+ if(text.split(/\s+/).length<14)return false;
+ if(rule==="algorithm-characteristics"){
+  // "finite"/"terminates" are the SAME characteristic, not two marks.
+  const finite=conceptPresent(text,"finite")||conceptPresent(text,"terminates");
+  const different=["precise","unambiguous","clear_flow"].filter(c=>conceptPresent(text,c));
+  if(Number(finite)+different.length<2 ||
+     !/\b(?:because|means|ensures?|so\s+that|therefore|allows?|since|which\s+means)\b/i.test(text))return false;
+  // Denying that the proposed algorithm should terminate, be clear, or be
+  // precise is not cured by mentioning the right words elsewhere.
+  if(/\b(?:algorithm|its\s+steps|instructions?)\b.{0,55}\b(?:is|are|must|should|will|can|does)\s+(?:not|never)\s+(?:be\s+)?(?:finite|precise|clear|unambiguous|end|stop|terminate|finish)\b/i.test(text)||
+     /\b(?:algorithm|its\s+steps|instructions?)\b.{0,55}\b(?:must|should|will)\s+never\s+(?:end|stop|terminate|finish)\b/i.test(text))return false;
+  // A negative example such as "a program that never stops wastes time" is
+  // legitimate support for finiteness, not a negation of that requirement.
+  return true;
+ }
+ if(rule==="syntax-logic"){
+  const correctSyntax=/\bsyntax\s+errors?\b.{0,170}\b(?:break|breaks|broken|violate|violates|rules?|grammar|invalid|incorrect\s+syntax)\b/i.test(text);
+  const correctLogic=/\blogic\s+errors?\b.{0,170}\b(?:incorrect|wrong)\s+(?:results?|outputs?|answers?|values?)\b/i.test(text)||
+   /\blogic\s+errors?\b.{0,170}\b(?:runs?|executes?)\b.{0,90}\b(?:incorrect|wrong)\b/i.test(text);
+  if(!correctSyntax||!correctLogic)return false;
+  if(/\bsyntax\s+errors?\b.{0,65}\b(?:does\s+not|do\s+not|never|cannot|can't)\s+(?:break|violate)\b/i.test(text)||
+     /\blogic\s+errors?\b.{0,90}\b(?:does\s+not|do\s+not|never|cannot|can't)\s+(?:produce|give|cause|result\s+in)\s+(?:an?\s+)?(?:incorrect|wrong)\b/i.test(text)||
+     /\blogic\s+errors?\b.{0,55}\b(?:must|should|will)\s+not\s+(?:run|execute)\b/i.test(text))return false;
+  return true;
+ }
+ return false;
+}
+// Partial pseudocode credit is certain only when the program parses into the
+// expected input / assignment / decision structure, so a missed mark reflects
+// a definite defect rather than unfamiliar syntax.
+const PSEUDOCODE_LINE=[
+ /^(?:input|read|get|enter|accept)\b/i,
+ /^(?:set\s+|let\s+)?score\s*(?:<-|←|:=|=)/i,
+ /^(?:if|when)\b/i,/^(?:else|otherwise)\b/i,/^(?:end\s*if|endif)\b/i,
+ /^(?:display|print|output|write|show)\b/i,/^(?:start|stop|begin|end)$/i
+];
+function structuredItResolved(rule,grade,answer){
+ if(rule==="ipo")return true;
+ const lines=answer.split(/\n/).map(x=>x.trim()).filter(Boolean);
+ return lines.length>0&&lines.every(line=>PSEUDOCODE_LINE.some(p=>p.test(line)));
+}
+function itRecognisedPhrases(answer){
+ const out=[];
+ for(const phrases of Object.values(IT_CANONICAL_CONCEPTS))
+  for(const phrase of phrases)if(phrasePresent(answer,phrase))out.push(phrase);
  return out;
+}
+// Chemistry items are rehydrated from the source bank by id, so the examiner
+// sees the item's real response type (calculation, table, graph) and answer
+// keys, never anything supplied by the student.
+const chemistrySourceItems=new Map(CHEMISTRY_PAPER2_PRACTICE_SETS.flatMap(paper=>
+ paper.questions.flatMap(q=>q.parts.flatMap((part,pi)=>part.items.map((item,ii)=>
+  [paper.id+"|"+q.id+"::"+part.label+"::"+item.label,{question:q,pi,ii,item}])))));
+const sameScheme=(a,b)=>JSON.stringify(a?.points??null)===JSON.stringify(b?.points??null)&&
+ (a?.guidance??null)===(b?.guidance??null)&&
+ JSON.stringify(a?.alternatives??null)===JSON.stringify(b?.alternatives??null);
+// Structured answers (graph, table cells, axis labels) arrive as one object
+// under the criterion id; the grader reads them as "<base>:<field>".
+function spreadStructured(responseMap,base,value){
+ if(!object(value))return;
+ for(const [k,v] of Object.entries(value))if(k!=="answer")responseMap[base+":"+k]=v;
+ responseMap[base]=String(value.answer??"");
+}
+/**
+ * The student's own graph in the same question, read at the x-value the
+ * estimate item asks about ("at 55 °C", "after 30 minutes"), by linear
+ * interpolation between their plotted points. Null when they drew no usable
+ * graph or the x-value lies outside it.
+ */
+function ownGraphReading(src,responses,paperId){
+ const x=Number((String(src.item.prompt||"").match(/[-+]?\d+(?:\.\d+)?/)||[])[0]);
+ if(!Number.isFinite(x))return null;
+ for(const [pi,part] of src.question.parts.entries())for(const [ii,item] of part.items.entries()){
+  if(item.response?.type!=="graph")continue;
+  const id=src.question.id+"::"+part.label+"::"+item.label;
+  if(!chemistrySourceItems.has(paperId+"|"+id))continue;
+  const graph=readScienceGraph(object(responses[id])?responses[id].graph:null);
+  const points=(graph?.series||[]).flatMap(s=>graphPoints(s.points,"line").filter(Boolean))
+   .sort((a,b)=>a.x-b.x);
+  if(points.length<2)return null;
+  for(let k=1;k<points.length;k++){
+   const a=points[k-1],b=points[k];
+   if(x>=a.x&&x<=b.x&&b.x>a.x){
+    const ys=points.map(p=>p.y);
+    return {y:a.y+(b.y-a.y)*(x-a.x)/(b.x-a.x),
+     tolerance:Math.max(1e-9,(Math.max(...ys)-Math.min(...ys))*0.03)};
+   }
+  }
+  return null;
+ }
+ return null;
+}
+/**
+ * Certainty for point-marked science answers (Chemistry and Integrated
+ * Science written items). Equations are parsed structurally; values,
+ * labelled quantities, ratios and arithmetic steps are decided exactly; only
+ * worded points need the written-evidence gate. A denial or a negated value
+ * makes exactly decided points uncertain, as do competing final values.
+ */
+function sciencePointsCertain({examiner,item,points,text,maxMarks}){
+ if(wordEquationPoint(item))return examiner.wordEquation?.parsed===true&&!examiner.wordEquation?.competing;
+ if(chemistryEquationPoint(item))return examiner.equation?.parsed===true&&!examiner.equation?.competing;
+ // An estimate inside its source range is certain; outside it, certain only
+ // where the scheme allows no follow-through from the student's own graph.
+ const estimate=chemistryEstimatePoint(item);
+ if(estimate)return examiner.provisional===false;
+ // Formula points such as "Q = It" carry no key words: decided exactly.
+ const exact=p=>chemistryPointIsNumeric(p)||keyTerms(cleanSourcePoint(p)).length===0;
+ const worded=points.filter(p=>!exact(p));
+ const denied=scienceResponseClauses(text).some(c=>
+  /^\s*it\s+is\s+(?:false|incorrect|not\s+true|untrue)\b/i.test(c)||/\b(?:not|never|isn'?t|cannot)\b[^.;\n]*\d/i.test(c));
+ if(points.length>worded.length&&(denied||chemistryFinalNumericEvidence(text).ambiguous))return false;
+ // A choice letter ("Q" from "P, Q or R") is certain only when no other
+ // option is written and nothing is denied: "R. Q is wrong" is not "Q".
+ const letters=points.filter(exact).map(p=>cleanSourcePoint(p).trim()).filter(p=>/^[A-Z]$/.test(p));
+ if(letters.some(l=>new RegExp("\\b"+l+"\\b","i").test(text))){
+  const options=new Set(String(item?.prompt||"").match(/\b[A-Z]\b/g)||[]);
+  const others=[...options].filter(o=>!letters.includes(o)&&!/^[AI]$/.test(o));
+  if(others.some(o=>new RegExp("\\b"+o+"\\b","i").test(text)))return false;
+  if(/\b(?:not|never|no|wrong|incorrect|false|isn'?t|cannot|neither|nor)\b/i.test(text))return false;
+ }
+ if(!worded.length)return true;
+ const numericMarks=(examiner.criteria||[]).filter((c,i)=>exact(points[i])).reduce((n,c)=>n+c.marks,0);
+ const numericMax=points.filter(exact).reduce((n,p)=>n+chemistryPointMarks(p),0);
+ return certainWrittenMark({suggestedMarks:examiner.score-numericMarks,
+  maxMarks:Math.max(0,maxMarks-numericMax),response:text,points:worded}).resolved;
+}
+function chemistry(rows,responses,paperId){
+ return rows.map(row=>{
+  const src=chemistrySourceItems.get(paperId+"|"+row.id);
+  if(!src)throw new Error("Unknown Chemistry source item "+row.id);
+  const sm=sourceMarking(row);
+  if(!sameScheme(sm,src.item.markScheme)||src.item.marks!==row.maxMarks)
+   throw new Error("Registered Chemistry source drift: "+row.id);
+  const base=src.question.id+":"+src.pi+":"+src.ii;
+  const value=read(responses,row.id);
+  const responseMap={};
+  if(object(value))spreadStructured(responseMap,base,value);
+  else if(value!==null)responseMap[base]=String(value);
+  const type=src.item.response?.type||"lines";
+  if((type==="lines"||type==="calculation")&&directlyDeniesSourcePoint(value,sm))
+   return cap(row,0,"existing-chemistry-evidence",false);
+  const examiner=gradeChemistryPaper2Item(src.question,src.pi,src.ii,src.item,responseMap);
+  const text=String(responseMap[base]??"");
+  let resolved;
+  if(blank(value))resolved=true;
+  else if(Number(examiner.unassessedMarks||0)>0)resolved=false;
+  else if(type==="lines"||type==="calculation"){
+   // Values, labelled quantities and arithmetic steps are decided exactly;
+   // only worded points need the written-evidence gate. Competing final
+   // values ("0.05 or 0.5") are never certain.
+   const points=scienceMarkedPoints(src.item);
+   // Graph-reading estimates: inside the source range is certain credit.
+   // Outside it, the scheme allows follow-through from the student's own
+   // graph: read their plotted line at the requested x-value.
+   const estimate=chemistryEstimatePoint(src.item);
+   if(estimate){
+    if(examiner.provisional===false)return cap(row,examiner.score,"existing-chemistry-evidence",true);
+    const own=ownGraphReading(src,responses,paperId);
+    const value=chemistryFinalNumericEvidence(text);
+    if(own===null||value.ambiguous||value.values.length===0)
+     return cap(row,0,"existing-chemistry-evidence",own===null&&!value.ambiguous);
+    const consistent=Math.abs(value.values[0]-own.y)<=own.tolerance;
+    return cap(row,consistent?row.maxMarks:0,"existing-chemistry-evidence",true);
+   }
+   resolved=sciencePointsCertain({examiner,item:src.item,points,text,maxMarks:row.maxMarks});
+  }
+  else resolved=examiner.provisional===false&&examiner.confidence!=="low";
+  return cap(row,examiner.score,"existing-chemistry-evidence",resolved);
+ });
+}
+// Integrated Science items, rehydrated from the source bank extract by id.
+function integratedScienceSource(criterionId){
+ const [qid,partLabel,itemLabel]=criterionId.split("::");
+ const question=INTEGRATED_SCIENCE_PAPER2_SPECS[qid];
+ if(!question)return null;
+ const pi=question.parts.findIndex(p=>p.label===partLabel);
+ const ii=pi<0?-1:question.parts[pi].items.findIndex(i=>i.label===itemLabel);
+ if(ii<0)return null;
+ return {question:{id:qid,parts:question.parts},pi,ii,item:question.parts[pi].items[ii]};
+}
+const IS_DENIAL=/^\s*it\s+is\s+(?:false|incorrect|not\s+true|untrue)\b|\b(?:not|never|isn'?t)\b/i;
+function integratedScience(rows,responses){
+ return rows.map(row=>{
+  const src=integratedScienceSource(row.id);
+  if(!src)throw new Error("Unknown Integrated Science source item "+row.id);
+  const sm=sourceMarking(row);
+  if(!sameScheme(sm.markScheme,src.item.markScheme)||src.item.marks!==row.maxMarks||
+     (sm.requiredResponseType||"lines")!==(src.item.response?.type||"lines"))
+   throw new Error("Registered Integrated Science source drift: "+row.id);
+  const base=src.question.id+":"+src.pi+":"+src.ii;
+  const value=read(responses,row.id);
+  const responseMap={};
+  if(object(value))spreadStructured(responseMap,base,value);
+  else if(value!==null)responseMap[base]=String(value);
+  const type=src.item.response?.type||"lines";
+  if(type==="lines"&&directlyDeniesSourcePoint(value,sm.markScheme||sm))
+   return cap(row,0,"existing-integrated-science-evidence",false);
+  const examiner=gradeIntegratedSciencePaper2Item(src.question,src.pi,src.ii,src.item,responseMap);
+  const text=Object.values(object(value)?value:{answer:value}).filter(v=>typeof v==="string").join("\n");
+  let resolved;
+  if(blank(value))resolved=true;
+  else if(type==="drawing"||integratedScienceGraphInText(src.item))resolved=false;
+  else if(Number(examiner.unassessedMarks||0)>0)resolved=false;
+  // Two names offered for one label ("anther or stigma") is a competing answer.
+  else if(type==="labels")resolved=!IS_DENIAL.test(text)&&!/\b(?:or|either)\b/i.test(text);
+  else if(type==="calculation")
+   resolved=(examiner.criteria||[]).length>0&&!IS_DENIAL.test(text)&&!/\b(?:or|either)\b/i.test(text);
+  else if(type==="table")
+   resolved=(examiner.criteria||[]).every(c=>c.label)&&!/\bor\b/i.test(text)&&!IS_DENIAL.test(text);
+  else if(type==="graph")
+   resolved=examiner.visualEvidence?.structured===true&&Number(examiner.unassessedMarks||0)===0;
+  // Labelled values counted against the scheme guidance: certain unless a
+  // reading is ambiguous, a value is offered with an alternative or denied.
+  else if(examiner.valueList)
+   resolved=!examiner.valueList.ambiguous&&!/\bor\b/i.test(text)&&!IS_DENIAL.test(text);
+  else resolved=sciencePointsCertain({examiner,item:integratedScienceLineItem(src.item),
+   points:scienceMarkedPoints(integratedScienceLineItem(src.item)),text,maxMarks:row.maxMarks});
+  return cap(row,examiner.score,"existing-integrated-science-evidence",resolved);
+ });
 }
 function english(rows,responses){
  const known=new Map();
@@ -299,10 +705,18 @@ function fnh(rows,responses){
   const p={id:row.id.split("::").at(-1),marks:row.maxMarks,...src};
   const answer=text(read(responses,row.id));
   if(directlyDeniesSourcePoint(answer,src))
-   return cap(row,0,"source-answer-explicit-denial",false);
+   return cap(row,0,"existing-FNH-criterion-evidence",false);
   const graded=gradeFnhWrittenPart(p,answer);
-  return cap(row,graded.confirmedMarks,
-   "existing-FNH-criterion-evidence",graded.unresolvedMarks===0);
+  // Distinct food-nutrient pairs are matched by name, deterministically;
+  // only a denial or negation makes them uncertain.
+  if(fnhDistinctPairs(p,answer))
+   return cap(row,graded.confirmedMarks,"existing-FNH-criterion-evidence",
+    blank(answer)||!/\b(?:not|never|no|isn'?t|doesn'?t|false|incorrect)\b/i.test(answer));
+  // Certain when the written-evidence gate agrees with the grader: full
+  // credit backed by source points, or remaining points clearly absent.
+  const resolved=blank(answer)||certainWrittenMark({suggestedMarks:graded.confirmedMarks,
+   maxMarks:row.maxMarks,response:answer,points:src.modelPoints}).resolved;
+  return cap(row,graded.confirmedMarks,"existing-FNH-criterion-evidence",resolved);
  });
 }
 function pob(rows,responses,paperId){
@@ -325,8 +739,7 @@ function pob(rows,responses,paperId){
   const source=sourceMarking(row);
   const raw=read(responses,row.id,"Q"+m[1]+":"+m[2]);
   const denied=directlyDeniesSourcePoint(raw,source);
-  return cap(row,denied?0:outcome.confirmedMarks,
-    denied?"source-answer-explicit-denial":"existing-POB-subcriterion-evidence",
+  return cap(row,denied?0:outcome.confirmedMarks,"existing-POB-subcriterion-evidence",
     !denied && outcome.unresolvedMarks===0);
  });
 }
@@ -381,12 +794,12 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
  let rows;
  switch(subjectId){
   case "mathematics":rows=mathematics(criteria,responses);break;
-  case "physics":rows=physics(criteria,responses);break;
+  case "physics":rows=physics(criteria,responses,paperId);break;
   case "information-technology":rows=it(criteria,responses,paperId);break;
-  case "chemistry":rows=science(criteria,responses,subjectId);break;
+  case "chemistry":rows=chemistry(criteria,responses,paperId);break;
   case "english-a":rows=english(criteria,responses);break;
   case "food-nutrition-and-health":rows=fnh(criteria,responses);break;
-  case "integrated-science":rows=science(criteria,responses,subjectId);break;
+  case "integrated-science":rows=integratedScience(criteria,responses);break;
   case "principles-of-business":rows=pob(criteria,responses,paperId);break;
   case "principles-of-accounts":rows=evaluatePoaSourceV2({paperId,criteria,responses});break;
   case "social-studies":rows=social(criteria,responses);break;
@@ -416,9 +829,10 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
   const source=sourceById.get(r.criterionId);
   if(!source)throw new Error("Unregistered V2 evidence identity");
   // Mathematics has the explicit checker registry needed to evaluate
-  // criterion-level authority. Other subjects retain advisory suggestions
-  // pending source-specific verified-evidence adapters.
-  const unverified=subjectId!=="mathematics" || manualOrUnknown(source);
+  // criterion-level authority. Subjects listed in resolutionPolicySubjects
+  // decide certainty in their own adapters (exact rules plus the written
+  // evidence gate). Every other subject fails closed: advisory only.
+  const unverified=!resolutionPolicySubjects.has(subjectId);
   if(subjectId==="mathematics" && r.resolved && r.suggestedMarks===0){
    const [questionId,partId]=r.criterionId.split("::");
    const questionAnswer=responses[questionId];

@@ -1,25 +1,9 @@
 import { POA_PAPER2_ID, poaPaper2Criteria } from "./data/poaPaper2";
 import { evaluateObjectiveCriteria } from "../grading/objectiveMarkingV2";
 import { reconcileMarkingCriteria } from "../grading/markingReconciliationV2";
-// Accept a complete monetary response, never search prose for an expected number.
-export function parseAccountingNumber(value) {
-  if (typeof value === "number") return Number.isFinite(value) ? value : null;
-  if (typeof value !== "string" || value.length > 100) return null;
-  let text = value.trim(),
-    negative = false;
-  if (/^\([^()]+\)$/.test(text)) {
-    negative = true;
-    text = text.slice(1, -1).trim();
-  }
-  text = text.replace(/^(?:J\$|US\$|EC\$|TT\$|BDS\$|\$)\s*/i, "");
-  if (
-    !/^[+-]?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(text) ||
-    (negative && /^[+-]/.test(text))
-  )
-    return null;
-  const result = Number(text.replaceAll(",", "")) * (negative ? -1 : 1);
-  return Number.isFinite(result) ? result : null;
-}
+import { evaluatePoaSpecimenSourceV2 } from "./poaSpecimenMarkingV2";
+import { parseAccountingNumber } from "./accountingNumber";
+export { parseAccountingNumber } from "./accountingNumber";
 export function mapPoaPaper2V2(responses = {}) {
   if (!responses || typeof responses !== "object" || Array.isArray(responses))
     throw new TypeError("Invalid Accounts responses");
@@ -65,6 +49,7 @@ export function reviewPoaPaper2V2(responses = {}) {
 }
 // Called by the existing private V2 worker with its server-owned registry.
 export function evaluatePoaSourceV2({ paperId, criteria, responses }) {
+  if (paperId === "poa-specimen-2-2017") return evaluatePoaSpecimenSourceV2({ paperId, criteria, responses });
   if (paperId !== POA_PAPER2_ID) throw new Error("Unknown Accounts V2 paper");
   const canonical = poaPaper2Criteria();
   if (!Array.isArray(criteria) || criteria.length !== canonical.length)

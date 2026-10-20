@@ -4,7 +4,7 @@ import path from "node:path";
 const bundled = await build({
   stdin: {
     contents:
-      'export * from "./src/principlesOfAccounts/data/poaCourse.js";export * from "./src/principlesOfAccounts/data/poaPaper2.js";',
+      'export * from "./src/principlesOfAccounts/data/poaCourse.js";export * from "./src/principlesOfAccounts/data/poaPaper2.js";export * from "./src/principlesOfAccounts/poaSpecimenMarkingV2.js";',
     resolveDir: process.cwd(),
   },
   bundle: true,
@@ -87,7 +87,8 @@ for (const section of data.POA_SECTIONS)
   sql += `insert into public.spark_subject_sections(subject_id,section_id,title,description,sort_order,enabled,metadata) values (${[subject, section.id, section.title, section.description, section.sortOrder, true, section.metadata].map(value).join(",")}) on conflict(subject_id,section_id) do update set title=excluded.title,description=excluded.description,sort_order=excluded.sort_order,metadata=excluded.metadata,updated_at=now();\n`;
 for (const topic of data.POA_TOPICS)
   sql += `insert into public.spark_subject_topics(subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata) values (${[subject, topic.id, topic.sectionId, topic.title, topic.description, topic.sortOrder, true, topic.metadata].map(value).join(",")}) on conflict(subject_id,topic_id) do update set title=excluded.title,description=excluded.description,section_id=excluded.section_id,sort_order=excluded.sort_order,metadata=excluded.metadata,updated_at=now();\n`;
-sql += `insert into spark_grading_private.rubrics_v2(subject_id,rubric_version,paper_id,criteria,active,verification_status,expected_total_marks) values (${quote(subject)},${quote(data.POA_PAPER2_RUBRIC_VERSION)},${quote(data.POA_PAPER2_ID)},${json(data.poaPaper2Criteria())},false,'draft',100) on conflict(subject_id,rubric_version,paper_id) do nothing;\ncommit;\n`;
+sql += `insert into spark_grading_private.rubrics_v2(subject_id,rubric_version,paper_id,criteria,active,verification_status,expected_total_marks) values (${quote(subject)},${quote(data.POA_PAPER2_RUBRIC_VERSION)},${quote(data.POA_PAPER2_ID)},${json(data.poaPaper2Criteria())},false,'draft',100) on conflict(subject_id,rubric_version,paper_id) do nothing;\n`;
+sql += `insert into spark_grading_private.rubrics_v2(subject_id,rubric_version,paper_id,criteria,active,verification_status,expected_total_marks) values (${quote(subject)},${quote(data.POA_SPECIMEN_PAPER2_RUBRIC_VERSION)},'poa-specimen-2-2017',${json(data.poaSpecimenPaper2Criteria())},false,'draft',100) on conflict(subject_id,rubric_version,paper_id) do nothing;\ncommit;\n`;
 fs.writeFileSync(
   "supabase/migrations/20261021090000_principles_of_accounts_course_draft.sql",
   sql,

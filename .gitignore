@@ -42,3 +42,8 @@ supabase/functions/_shared/server-marker-v2-checksum.mjs
 
 # Local POB semantic calibration evidence (do not commit provider outputs)
 /pob-jan2026-calibration-results.json
+
+# V2 worker bundle: built by tools/build-server-marker-v2.mjs, copied only during deploy
+supabase/functions/_shared/server-marker-v2*
+supabase/functions/mark-paper2-v2-shadow/server-marker-v2*.mjs
+.v2-verify-runner.mjs

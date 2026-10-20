@@ -1,6 +1,8 @@
 import { markScienceCalculation, SCIENCE_TABLES } from "./scienceStructuredMarking";
 import { gradeScienceGraph } from "./scienceGraphMarking";
 import { matchScienceWrittenEvidence } from "../../grading/scienceWrittenEvidence";
+import { sciencePointMarks, scienceSubPoints } from "../../grading/sciencePointMarks";
+import { gradeSciencePointLines } from "../../chemistry/practice/chemistryPaper2Grader";
 // SPARK Integrated Science Paper 02 automatic practice grader.
 // This is an evidence-based estimate, not an examiner certification.
 
@@ -55,6 +57,7 @@ function tokenPresent(candidate, token){
 
 function stripMarkingNoise(point){
   return String(point || "")
+    .replace(/\(\s*\d(?:\s*\+\s*\d)*(?:\s+[a-z ]+)?\s*\)/gi,"")
     .replace(/\([^)]*\b(?:1|2|3|4|5)\s*\)/gi,"")
     .replace(/^\s*(?:OR|Accept:)\s*/i,"")
     .replace(/\s*\(Accept:[\s\S]*$/i,"")
@@ -98,19 +101,111 @@ function calculationResult(questionId,partIndex,itemIndex,item,responses){
   return markScienceCalculation(base,item,responses[base] || "");
 }
 
+// Examiner notes ("1 mark for agent; 1 mark each for any two reasons") and
+// "Accept:" lines explain the scheme; they are not separate answer points.
+const allocationNote=point=>/^\s*\(?accept\b/i.test(point)||/^\s*\d\s*marks?\s+(?:for|each)\b/i.test(point);
+
+export function integratedSciencePoints(item){
+  return (item?.markScheme?.points || []).filter(point=>!allocationNote(point)).flatMap(scienceSubPoints);
+}
+/**
+ * A graph or bar chart whose scheme marks plotting, axes, scale or
+ * construction, but whose bank item only offers a text answer box: the
+ * marked work cannot be produced in the response, so it is never certain.
+ */
+export function integratedScienceGraphInText(item){
+  if((item?.response?.type||"lines")!=="lines")return false;
+  return /\b(?:points?\s+(?:correctly\s+)?plotted|correct(?:ly)?\s+plotted|axes\s+labelled|suitable\s+scale|bars?\s+of\s+(?:equal|correct)|smooth\s+curve|line\s+of\s+best\s+fit)\b/i
+    .test((item?.markScheme?.points||[]).join(" "));
+}
+
+/** The item as marked: answer points only, without Accept lines or notes. */
+export function integratedScienceLineItem(item){
+  return {...item,markScheme:{...(item?.markScheme||{}),
+    points:(item?.markScheme?.points||[]).filter(point=>!allocationNote(point))}};
+}
+
+const COUNT_WORDS={two:2,three:3,four:4,five:5,six:6};
+/**
+ * One scheme point listing labelled values ("Black 18, Dark green 11, White
+ * 4, Shiny silver 2") marked by how many are correct ("2 marks for all four
+ * correct; 1 mark for two or three correct"). Returns null for any other item.
+ */
+export function integratedScienceValueList(item){
+  const points=(item?.markScheme?.points||[]).filter(point=>!allocationNote(point));
+  if(points.length!==1)return null;
+  const g=String(item?.markScheme?.guidance||"").match(
+    /^\s*(\d)\s*marks?\s+for\s+all\s+(\w+)(?:\s+correct)?\s*;\s*(\d)\s*marks?\s+for\s+(\w+)\s+or\s+(\w+)(?:\s+correct)?\s*\.?\s*$/i);
+  if(!g)return null;
+  const entries=points[0].split(/,\s*/).map(s=>s.trim().match(/^([A-Za-z][A-Za-z ]*?)\s+(-?\d+(?:\.\d+)?)(?:\s*([A-Za-z°%]{1,3}))?$/));
+  if(entries.length<2||entries.some(e=>!e))return null;
+  const all=COUNT_WORDS[g[2].toLowerCase()],lower=COUNT_WORDS[g[4].toLowerCase()],upper=COUNT_WORDS[g[5].toLowerCase()];
+  if(all!==entries.length||!lower||!upper||lower>upper||upper>=all||Number(g[1])!==Number(item.marks))return null;
+  const labels=entries.map(e=>e[1].toLowerCase());
+  if(new Set(labels).size!==labels.length||labels.some(a=>labels.some(b=>a!==b&&b.includes(a))))return null;
+  return {entries:entries.map(e=>({label:e[1],value:Number(e[2]),unit:e[3]||""})),
+    full:Number(g[1]),part:Number(g[3]),lower,upper};
+}
+/**
+ * Each label's value is the number written after it, before the next label.
+ * Working beside a value ("46 - 28 = 18") or a label given twice with
+ * different values leaves the reading ambiguous, so it is marked provisional.
+ */
+function valueListResult(base,item,list,response){
+  const text=String(response||"");
+  const found=[];
+  for(const entry of list.entries){
+    // A one-letter label ("A") is matched as a capital only, never the
+    // article "a" or the C of "°C".
+    const single=entry.label.length===1;
+    const re=new RegExp("(?<![A-Za-z°])"+entry.label.replace(/\s+/g,"\\s+")+"(?![A-Za-z])",single?"g":"gi");
+    for(const m of text.matchAll(re))found.push({entry,at:m.index,end:m.index+m[0].length});
+  }
+  found.sort((a,b)=>a.at-b.at);
+  const readings=new Map();
+  // A value written before any label ("1.2 g for A") or a label without a
+  // value cannot be attributed with certainty.
+  let ambiguous=/\d/.test(text.slice(0,found.length?found[0].at:text.length));
+  found.forEach((f,i)=>{
+    const windowText=text.slice(f.end,i+1<found.length?found[i+1].at:text.length);
+    const values=[...windowText.matchAll(/-?\d+(?:\.\d+)?/g)].map(m=>Number(m[0]));
+    if(!values.length){ambiguous=true;return;}
+    if(values.length>1)ambiguous=true;
+    const value=values[values.length-1];
+    const prior=readings.get(f.entry.label);
+    if(prior!==undefined&&prior!==value)ambiguous=true;
+    readings.set(f.entry.label,value);
+  });
+  const correct=list.entries.filter(e=>Math.abs((readings.get(e.label)??NaN)-e.value)<1e-9).length;
+  const score=correct===list.entries.length?list.full:(correct>=list.lower&&correct<=list.upper?list.part:0);
+  return {score,maxMarks:list.full,unassessedMarks:0,provisional:ambiguous,confidence:ambiguous?"low":"high",
+    criteria:[{label:list.entries.map(e=>`${e.label} ${e.value}`).join(", "),marks:score,maxMarks:list.full}],
+    valueList:{correct,total:list.entries.length,ambiguous}};
+}
+
+// Written answers use the shared science point grader (worded points,
+// labelled values, ratios, arithmetic steps, equations).
 function lineResult(questionId,partIndex,itemIndex,item,responses){
   const base=`${questionId}:${partIndex}:${itemIndex}`;
+  const list=integratedScienceValueList(item);
+  if(list)return valueListResult(base,item,list,responses[base]);
+  return gradeSciencePointLines(base,integratedScienceLineItem(item),responses[base]||"");
+}
+
+function legacyLineResult(questionId,partIndex,itemIndex,item,responses){
+  const base=`${questionId}:${partIndex}:${itemIndex}`;
   const response=responses[base] || "";
-  const rawPoints=(item.markScheme?.points || []).filter(point=>!/^\s*\(?accept\b/i.test(point));
+  const rawPoints=integratedSciencePoints(item);
   const maxMarks=Number(item.marks || 0);
   const criteria=[];
   const usedEvidence=new Set();
 
   rawPoints.forEach((point,index)=>{
+    const value=sciencePointMarks(point);
     const alternatives=pointAlternatives(point);
     const matched=alternatives.find(alt=>evidenceMatch(response,alt));
     if(!matched) {
-      criteria.push({id:`${base}:p${index+1}`,label:stripMarkingNoise(point),marks:0,maxMarks:1,earned:false,evidence:""});
+      criteria.push({id:`${base}:p${index+1}`,label:stripMarkingNoise(point),marks:0,maxMarks:value,earned:false,evidence:""});
       return;
     }
     const signature=tokens(matched).filter(token=>tokenPresent(response,token)).sort().join("|");
@@ -119,7 +214,7 @@ function lineResult(questionId,partIndex,itemIndex,item,responses){
     criteria.push({
       id:`${base}:p${index+1}`,
       label:stripMarkingNoise(point),
-      marks:duplicate?0:1,maxMarks:1,earned:!duplicate,evidence:matched,
+      marks:duplicate?0:value,maxMarks:value,earned:!duplicate,evidence:matched,
     });
   });
 
@@ -128,8 +223,9 @@ function lineResult(questionId,partIndex,itemIndex,item,responses){
 
   // A single generic point cannot establish every independently awarded mark.
   // Retain confirmed credit and expose missing detailed criteria explicitly.
+  const available=rawPoints.reduce((sum,point)=>sum+sciencePointMarks(point),0);
   const unassessedMarks=String(response||"").trim()
-    ?Math.max(0,maxMarks-Math.min(maxMarks,rawPoints.length)):0;
+    ?Math.max(0,maxMarks-Math.min(maxMarks,available)):0;
   return {score,maxMarks,criteria,confidence:"medium",provisional:true,
     unassessedMarks,
     ...(unassessedMarks?{reason:"Additional marks require separately verified marking criteria."}:{})};

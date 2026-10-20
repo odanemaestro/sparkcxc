@@ -1,0 +1,130 @@
+{
+ "provenance": {
+  "bundleSha256": "0e305426aae0e8f38e6294846b2ad65f10ac73219417332825705622303e12a0",
+  "fixtureSha256": "6c21066129a63690d4cdd6f1b0e05ecd5acf0dc85ccd3c3c0785ea23b001c376",
+  "gitCommit": "b55bbaf942d34ea5241287b68e8c52d181312371",
+  "workingTreeDirty": false,
+  "ranAt": "2026-10-20T14:00:22.369Z"
+ },
+ "criteria": 2118,
+ "bySubject": {
+  "chemistry": {
+   "criteria": 241,
+   "verified": 241,
+   "failed": 0,
+   "blocked": 0
+  },
+  "english-a": {
+   "criteria": 72,
+   "verified": 0,
+   "failed": 0,
+   "blocked": 72
+  },
+  "food-nutrition-and-health": {
+   "criteria": 48,
+   "verified": 48,
+   "failed": 0,
+   "blocked": 0
+  },
+  "information-technology": {
+   "criteria": 252,
+   "verified": 252,
+   "failed": 0,
+   "blocked": 0
+  },
+  "integrated-science": {
+   "criteria": 645,
+   "verified": 626,
+   "failed": 1,
+   "blocked": 18
+  },
+  "mathematics": {
+   "criteria": 640,
+   "verified": 114,
+   "failed": 139,
+   "blocked": 387
+  },
+  "physics": {
+   "criteria": 135,
+   "verified": 0,
+   "failed": 0,
+   "blocked": 135
+  },
+  "principles-of-business": {
+   "criteria": 25,
+   "verified": 0,
+   "failed": 0,
+   "blocked": 25
+  },
+  "social-studies": {
+   "criteria": 60,
+   "verified": 0,
+   "failed": 0,
+   "blocked": 60
+  }
+ },
+ "byOutcome": {
+  "verified": 1281,
+  "blocked": 697,
+  "failed": 140
+ },
+ "failureReasons": {
+  "missing:partial": 41,
+  "full:required-resolution-missing": 15,
+  "uncommitted:partial": 84,
+  "uncommitted:equivalent": 15,
+  "uncommitted:incorrect": 40,
+  "incorrect:resolved-wrong-mark": 13,
+  "missing:incorrect": 12,
+  "missing:competing": 12,
+  "equivalent:resolved-wrong-mark": 9
+ },
+ "blockers": {
+  "subject-resolution-policy-not-yet-verified": 292,
+  "free-hand-drawing-requires-visual-judgement": 11,
+  "scheme-points-below-maximum": 5,
+  "label-scheme-without-key-answers": 1,
+  "calculation-without-authored-specification": 1,
+  "manual-verification-criterion": 387
+ },
+ "papers": {
+  "total": 67,
+  "verified": 23,
+  "failed": [],
+  "blocked": 44
+ },
+ "rehearsal": {
+  "criteriaInserted": 1281,
+  "criteriaRejected": [],
+  "papersInserted": 23,
+  "papersRejected": [],
+  "released": [
+   "chemistry/CHEM-P2-PRACTICE-1",
+   "chemistry/CHEM-P2-PRACTICE-2",
+   "chemistry/CHEM-P2-PRACTICE-3",
+   "chemistry/CHEM-P2-PRACTICE-4",
+   "chemistry/CHEM-P2-PRACTICE-5",
+   "chemistry/CHEM-P2-PRACTICE-6",
+   "food-nutrition-and-health/practice-01",
+   "food-nutrition-and-health/practice-02",
+   "information-technology/P2-A",
+   "information-technology/P2-B",
+   "information-technology/P2-C",
+   "information-technology/P2-D",
+   "information-technology/P2-E",
+   "information-technology/P2-F",
+   "information-technology/P2-G",
+   "information-technology/P2-H",
+   "information-technology/P2-I",
+   "integrated-science/is-fixed-source-pair-01",
+   "integrated-science/is-fixed-source-pair-02",
+   "integrated-science/is-fixed-source-pair-05",
+   "integrated-science/is-fixed-source-pair-09",
+   "integrated-science/is-fixed-source-pair-10",
+   "integrated-science/is-fixed-source-pair-12"
+  ],
+  "releaseRejected": [],
+  "criteriaRejectedCount": 0
+ },
+ "seconds": 50
+}

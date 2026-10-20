@@ -49,7 +49,7 @@ export default function InformationTechnologyPracticeHub({ onBack, supabase, use
   }, [supabase, userId]);
 
   if (mode === "paper1") return <InformationTechnologyPaper1Exam startFresh={fresh} onActivity={onActivity} onExit={() => setMode("home")}/>;
-  if (mode === "paper2") return <InformationTechnologyPaper2Exam startFresh={fresh} onActivity={onActivity} onExit={() => setMode("home")}/>;
+  if (mode === "paper2") return <InformationTechnologyPaper2Exam supabase={supabase} startFresh={fresh} onActivity={onActivity} onExit={() => setMode("home")}/>;
   if (mode === "sba") return <InformationTechnologySbaCentre userId={userId} onActivity={onActivity} onBack={() => setMode("home")}/>;
 
   return (

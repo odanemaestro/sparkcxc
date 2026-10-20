@@ -6,6 +6,9 @@ import {BankTable,TrustedBankSvg} from "../../integratedScience/practice/Integra
 import ScienceGraphEditor from "../../integratedScience/practice/ScienceGraphEditor";
 import {CHEMISTRY_PAPER2_PRACTICE_SETS,CHEMISTRY_PAPER2_FORMAT} from "../data/chemistryPaper2Bank";
 import {gradeChemistryPaper2,CHEMISTRY_P2_GRADER_VERSION} from "./chemistryPaper2Grader";
+import {startServerExamAttempt,submitServerExamAttempt} from "../../grading/serverExamAttempt";
+import {v2ScienceResponses} from "../../grading/v2SubmissionResponses";
+import V2VerifiedScore from "../../grading/V2VerifiedScore";
 import "./chemistryPractice.css";
 import "../../integratedScience/practice/integratedScienceExam.css";
 
@@ -179,16 +182,25 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
   const [remaining,setRemaining]=useState(endsAt?Math.max(0,Math.round((endsAt-Date.now())/1000)):duration);
   const [confirmSubmit,setConfirmSubmit]=useState(false);
   const [confirmExit,setConfirmExit]=useState(false);
+  const [serverAttemptId,setServerAttemptId]=useState(initial?.serverAttemptId||null);
   const result=useMemo(()=>gradeChemistryPaper2(paper,responses),[paper,responses]);
   const submitted=phase==="review";
 
   useEffect(()=>{
-    localStorage.setItem(storageKey(userId,paper.id),JSON.stringify({phase,responses,current,endsAt,paperId:paper.id}));
-  },[phase,responses,current,endsAt,paper.id,userId]);
+    localStorage.setItem(storageKey(userId,paper.id),JSON.stringify({phase,responses,current,endsAt,paperId:paper.id,serverAttemptId}));
+  },[phase,responses,current,endsAt,paper.id,userId,serverAttemptId]);
 
   const submit=useCallback(async({timedOut=false}={})=>{
     if(phase!=="exam")return;
     setPhase("review");setConfirmSubmit(false);goTop();
+    if(serverAttemptId){
+      // The browser sends no score: SPARK's server marks the saved script
+      // against the registered rubric and publishes the only final result.
+      submitServerExamAttempt({supabase,attemptId:serverAttemptId,
+        responses:v2ScienceResponses(paper.questions,responses),score:null,maxScore:result.maxScore,
+        metadata:{subject:"chemistry",paper:"02",paper_id:paper.id,client_timed_out:Boolean(timedOut),
+          spark_scoring_status:"rubric_review_required"}});
+    }
     try{
       await recordSubjectActivity({supabase,activity:{
         subjectId:"chemistry",activityKey:`exam:${paper.id}`,activityType:"exam",title:paper.title,completed:true,
@@ -208,7 +220,7 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
           at:new Date().toISOString()},
       }});
     }catch(error){console.warn("Could not save Chemistry Paper 02 result",error);}
-  },[paper,phase,result,supabase]);
+  },[paper,phase,result,supabase,responses,serverAttemptId]);
 
   useEffect(()=>{
     if(phase!=="exam"||!endsAt)return undefined;
@@ -222,9 +234,17 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
   function begin(){
     const deadline=Date.now()+duration*1000;
     setEndsAt(deadline);setRemaining(duration);setPhase("exam");goTop();
+    setServerAttemptId(null);
+    // Original SPARK practice papers are registered for server marking;
+    // historical drafts are not, and keep their local estimate only.
+    if(!paper.isHistorical)startServerExamAttempt({supabase,subjectId:"chemistry",paper:"02",mode:"timed",
+      durationSeconds:duration,bankVersion:"chemistry-paper2-v1",rubricVersion:"chemistry-source-rubrics-v1",
+      graderVersion:CHEMISTRY_P2_GRADER_VERSION,metadata:{paper:"02",paper_id:paper.id}})
+      .then(server=>{if(server?.available&&server.attempt_id)setServerAttemptId(server.attempt_id);});
   }
   function restart(){
-    localStorage.removeItem(storageKey(userId,paper.id));setResponses({});setCurrent(0);setEndsAt(null);setRemaining(duration);setPhase("instructions");goTop();
+    localStorage.removeItem(storageKey(userId,paper.id));setResponses({});setCurrent(0);setEndsAt(null);setRemaining(duration);
+    setServerAttemptId(null);setPhase("instructions");goTop();
   }
   function update(key,value){if(!submitted)setResponses(prev=>({...prev,[key]:value}));}
 
@@ -251,6 +271,7 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
     </header>
 
     {submitted&&<section className="is-p2-review-note"><strong>Your Chemistry answer review</strong><p>Estimated score: <b>{result.score}/{result.maxScore}</b> ({result.percent}%). Your response and the correct answer appear below each item. Written, graph and drawing marks remain estimates where examiner judgement is needed.</p>{result.unassessedMarks>0&&<p><b>{result.unassessedMarks} marks still need visual or examiner judgement.</b> These are not automatically treated as incorrect.</p>}</section>}
+    {submitted&&<V2VerifiedScore supabase={supabase} attemptId={serverAttemptId} estimate={result.score} maxMarks={result.maxScore}/>}
 
     {paper.isHistorical&&<p className="chem-p2-source-notice" role="status">Historical source transcription and model answers are provisional. Check disputed diagrams, measurements and response values against the original paper.</p>}
     <nav className="is-p2-question-nav" aria-label="Chemistry Paper 02 questions">{paper.questions.map((row,i)=><button key={row.id} type="button" className={i===current?"active":""} onClick={()=>{setCurrent(i);goTop();}}><span>Q{row.originalQuestionNumber||i+1}</span><small>{submitted?`${result.questions[i]?.score||0}/${row.totalMarks}`:`${row.totalMarks} marks`}</small></button>)}</nav>

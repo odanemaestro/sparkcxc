@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
 import { preparePaper2ScorePublication } from "../../grading/scorePublication";
+import { startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
+import V2VerifiedScore from "../../grading/V2VerifiedScore";
 import bank from "./itPaper2Data.json";
 import InformationTechnologyQuestionVisual from "./InformationTechnologyQuestionVisual";
 import {
@@ -146,7 +148,11 @@ function PartResponseEditor({ part, value, onChange }) {
   return <textarea value={response.answer || ""} onChange={event => update({ answer: event.target.value })} placeholder="Enter your answer here"/>;
 }
 
-export default function InformationTechnologyPaper2Exam({ onExit, startFresh = false, onActivity }) {
+const IT_BANK_VERSION = "it-paper2-v1";
+const IT_RUBRIC_VERSION = "it-authored-rules-v1";
+const IT_GRADER_VERSION = "it-paper2-marker-v2";
+
+export default function InformationTechnologyPaper2Exam({ supabase, onExit, startFresh = false, onActivity }) {
   const [phase, setPhase] = useState("instructions");
   const [active, setActive] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -192,7 +198,7 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
     LEGACY_KEYS.forEach(key => localStorage.removeItem(key));
   }
 
-  function start() {
+  async function start() {
     clearActive();
     const selected = choosePaper();
     const next = {
@@ -202,8 +208,24 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
       flags: {},
       questionIndex: 0,
       phase: "exam",
+      serverAttemptId: null,
     };
     persist(next);
+    // A server attempt lets SPARK mark and verify the script on submission.
+    // Without one (offline, signed out) the paper still works as practice.
+    startServerExamAttempt({
+      supabase, subjectId: "information-technology", paper: "02", mode: "timed",
+      durationSeconds: DURATION, bankVersion: IT_BANK_VERSION, rubricVersion: IT_RUBRIC_VERSION,
+      graderVersion: IT_GRADER_VERSION, metadata: { paper: "02", paper_id: selected.id },
+    }).then(server => {
+      if (!server?.available || !server.attempt_id) return;
+      setActive(current => {
+        if (!current || current.paperId !== selected.id || current.startedAt !== next.startedAt) return current;
+        const withServer = { ...current, serverAttemptId: server.attempt_id };
+        localStorage.setItem(ACTIVE_KEY, JSON.stringify(withServer));
+        return withServer;
+      });
+    });
     setAnswers({});
     setFlags({});
     setGrading(null);
@@ -247,6 +269,22 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
     const result = markInformationTechnologyPaper2(paper, answers);
     setGrading(result);
     persist({ ...active, answers, flags, questionIndex: 0, phase: "review", timedOut });
+    if (active?.serverAttemptId) {
+      // The browser never sends a score: SPARK's server marks the saved
+      // script and publishes the only authoritative result.
+      submitServerExamAttempt({
+        supabase, attemptId: active.serverAttemptId, responses: answers, score: null, maxScore: 90,
+        metadata: {
+          subject: "information-technology", paper: "02", paper_id: paper.id,
+          client_timed_out: Boolean(timedOut), spark_scoring_status: "rubric_review_required",
+          attempt_provenance: buildAttemptProvenance({
+            subjectId: "information-technology", paper: "02", mode: "timed", bankVersion: IT_BANK_VERSION,
+            rubricVersion: IT_RUBRIC_VERSION, graderVersion: IT_GRADER_VERSION,
+            startedAt: active?.startedAt || null, submittedAt: new Date().toISOString(), responses: answers,
+          }),
+        },
+      });
+    }
     setQuestionIndex(0);
     setPhase("marking");
     goTop();
@@ -267,6 +305,7 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
       profiles: result.profiles,
       grading: result,
       timedOut: Boolean(active?.timedOut),
+      serverAttemptId: active?.serverAttemptId || null,
       durationSeconds: DURATION - remaining,
       attemptProvenance:buildAttemptProvenance({
         subjectId:"information-technology",paper:"02",mode:"timed",bankVersion:"it-paper2-v1",
@@ -375,9 +414,10 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
     return (
       <main className="it-exam">
         <section className="it-result-hero">
-          <div className="it-practice-eyebrow">{paper.title} complete</div>
+          <div className="it-practice-eyebrow">{paper.title} complete{active?.serverAttemptId ? " · practice estimate" : ""}</div>
           <h1>{result.marks}/90</h1>
           <p>{Math.round((result.marks / 90) * 100)}%</p>
+          <V2VerifiedScore supabase={supabase} attemptId={active?.serverAttemptId} estimate={result.marks} maxMarks={90}/>
           <div className="it-profile-results">
             <div><span>Theory</span><strong>{result.profiles.Theory}/35</strong></div>
             <div><span>Productivity Tools</span><strong>{result.profiles["Productivity Tools"]}/30</strong></div>
@@ -399,6 +439,7 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
           <div><strong>SPARK marking review</strong><span>{paper.title} · Marked point-by-point against the authored scheme</span></div>
           <div className="it-mark-total">{result.marks}/90</div>
         </header>
+        <V2VerifiedScore supabase={supabase} attemptId={active?.serverAttemptId} estimate={result.marks} maxMarks={90}/>
         <div className="it-mark-profile-strip">
           <span>Theory {result.profiles.Theory}/35</span>
           <span>Productivity Tools {result.profiles["Productivity Tools"]}/30</span>

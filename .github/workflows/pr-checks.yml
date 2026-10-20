@@ -70,11 +70,26 @@ jobs:
           node tools/test-v2-registered-paper-replay.mjs
           node --input-type=module -e "import('./supabase/functions/_shared/server-marker-v2.mjs').then(x => { if(typeof x.evaluateExistingSubjectPaper2V2 !== 'function') process.exit(1) })"
 
+      - name: Reverify all 252 IT criteria and nine paper-level submissions
+        run: |
+          node tools/v2-verify-all.mjs --subject information-technology --out artifacts/v2-it-production-retest
+          node --input-type=module -e 'import fs from "node:fs"; const x=JSON.parse(fs.readFileSync("artifacts/v2-it-production-retest/summary.json","utf8")); const it=x.bySubject["information-technology"]; if(it?.criteria!==252 || it.verified!==252 || x.papers?.verified!==9 || x.rehearsal?.criteriaRejected?.length || x.rehearsal?.papersRejected?.length) {console.error("IT release source QA incomplete",JSON.stringify({it,papers:x.papers,rehearsal:x.rehearsal}));process.exit(1)} console.log("IT source-verification and paper-release matrix clean: 252 criteria, 9 papers")'
+
+      - name: Upload current IT production-regression evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: spark-v2-it-retest-${{ github.sha }}
+          path: artifacts/v2-it-production-retest/
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Upload private V2 criterion evidence QA report
         uses: actions/upload-artifact@v4
         with:
           name: spark-v2-criterion-evidence-${{ github.sha }}
-          path: artifacts/v2-criterion-evidence-audit.json
+          path: |
+            artifacts/v2-criterion-evidence-audit.json
+            artifacts/v2-criterion-qa-all-2063.json
           if-no-files-found: error
           retention-days: 14
 

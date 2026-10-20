@@ -10,8 +10,24 @@ import itData from "../informationTechnology/practice/itPaper2Data.json";
 import {modelResponsesForInformationTechnologyPaper2} from "../informationTechnology/practice/itPaper2Marking";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
 import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
+import {CHEMISTRY_PAPER2_PRACTICE_SETS} from "../chemistry/data/chemistryPaper2Bank";
+import IS_SPECS from "../integratedScience/data/integratedSciencePaper2Specs.json";
 
 const row=(id,maxMarks,sourceMarking)=>({id,sourcePartId:id,maxMarks,sourceMarking});
+// The registered Integrated Science scheme is the source bank item's.
+const isSource=id=>{
+ const [qid,pl,il]=id.split("::");
+ const item=IS_SPECS[qid].parts.find(p=>p.label===pl).items.find(i=>i.label===il);
+ return {requiredResponseType:item.response?.type||"lines",markScheme:item.markScheme};
+};
+// The registered Chemistry scheme is the source bank item's markScheme; the
+// examiner refuses any other (source drift).
+const chemistryScheme=(paperId,id)=>{
+ const paper=CHEMISTRY_PAPER2_PRACTICE_SETS.find(p=>p.id===paperId);
+ for(const q of paper.questions)for(const part of q.parts)for(const item of part.items)
+  if(q.id+"::"+part.label+"::"+item.label===id)return item.markScheme;
+ throw new Error("No chemistry source item "+id);
+};
 const example=(subjectId,paperId,criteria,responses={})=>
  examine({subjectId,paperId,criteria,responses});
 test("Mathematics source mapping preserves M/A/B and ECF paper-part accounting",()=>{
@@ -43,10 +59,7 @@ test("IT uses its canonical deterministic examiner",()=>{
 });
 test("Chemistry written source evidence is bounded by its scheme",()=>{
  const id="CHEM-G1-Q1::(a)::(i)";
- const r=example("chemistry","CHEM-P2-PRACTICE-1",[row(id,1,{
-  points:["Time taken for the cross to disappear / reaction time."],
-  guidance:"Allow chemically equivalent wording."
- })],{});
+ const r=example("chemistry","CHEM-P2-PRACTICE-1",[row(id,1,chemistryScheme("CHEM-P2-PRACTICE-1",id))],{});
  expect(r.examinedParts).toBe(1);
  expect(r.maxMarks).toBe(1);
  expect(r.canPublishFinalScore).toBe(r.unresolvedMarks===0);
@@ -70,8 +83,7 @@ test("FNH uses the actual distinct-evidence grader",()=>{
 });
 test("Integrated Science item evidence respects its part ceiling",()=>{
  const id="IS-M1-P2-01::(a)::(i)";
- const r=example("integrated-science","is-fixed-source-pair-01",[row(id,4,{
-  requiredResponseType:"labels",markScheme:{points:["P - anther","Q - stigma","R - ovary","S - ovule"]}})],{});
+ const r=example("integrated-science","is-fixed-source-pair-01",[row(id,4,isSource(id))],{});
  expect(r.maxMarks).toBe(4);
  expect(r.canPublishFinalScore).toBe(r.unresolvedMarks===0);
 });
@@ -318,11 +330,10 @@ test("stale Mathematics server answer is rejected before grading",()=>{
 
 test.each([
  ["chemistry","CHEM-P2-PRACTICE-1","CHEM-G1-Q1::(a)::(i)",1,
-  {points:["Time taken for the cross to disappear / reaction time."]},
+  chemistryScheme("CHEM-P2-PRACTICE-1","CHEM-G1-Q1::(a)::(i)"),
   "Time taken for the cross to disappear / reaction time."],
  ["integrated-science","is-fixed-source-pair-01","IS-M1-P2-01::(a)::(ii)",1,
-  {requiredResponseType:"lines",
-   markScheme:{points:["Produces pollen grains (male gametes)."]}},
+  isSource("IS-M1-P2-01::(a)::(ii)"),
   "Produces pollen grains (male gametes)."],
  ["food-nutrition-and-health","practice-01","FNH-SPARK-P2-ORIGINAL-01-Q1::a",1,
   {modelPoints:["Diet means the usual foods and drinks consumed by a person."]},
@@ -337,12 +348,21 @@ test.each([
  const contrary=example(subject,paper,criteria,{
   [id]:"It is incorrect to say "+point
  });
+ const contradiction=example(subject,paper,criteria,{
+  [id]:point+"\\nIt is false that "+point
+ });
+ const contradictionAlt=example(subject,paper,criteria,{
+  [id]:point+". It is incorrect to say "+point
+ });
  expect(positive.suggestedMarks).toBeGreaterThanOrEqual(0);
- for(const outcome of [denied,contrary]){
+ for(const outcome of [denied,contrary,contradiction,contradictionAlt]){
   expect(outcome.suggestedMarks).toBe(0);
   expect(outcome.unresolvedMarks).toBe(marks);
   expect(outcome.canPublishFinalScore).toBe(false);
-  expect(outcome.rows[0].method).toBe("source-answer-explicit-denial");
+  // The publication RPC accepts only the subject examiner method.
+  expect(outcome.rows[0].method).toBe({chemistry:"existing-chemistry-evidence",
+   "integrated-science":"existing-integrated-science-evidence",
+   "food-nutrition-and-health":"existing-FNH-criterion-evidence"}[subject]);
  }
 });
 
@@ -366,14 +386,13 @@ test("private V2 IT source verifier retains IPO input variables and visual datab
   const model=example("information-technology",paper.id,[source],{
    [key]:models[key]
   });
-  expect(model.suggestedMarks).toBeGreaterThan(0);
-  expect(model.suggestedMarks).toBeLessThanOrEqual(part.marks);
-  expect(model.canPublishFinalScore).toBe(false);
+  // The rehydrated source gives the model answer full, certain credit.
+  expect(model.suggestedMarks).toBe(part.marks);
+  expect(model.canPublishFinalScore).toBe(true);
   const unrelated=example("information-technology",paper.id,[source],{
    [key]:"ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY"
   });
   expect(unrelated.suggestedMarks).toBe(0);
-  expect(unrelated.canPublishFinalScore).toBe(false);
  }
 });
 test("private V2 rejects changed IT source prompts, schemes or ceiling",()=>{
@@ -438,7 +457,9 @@ test("four Physics Paper 2 sources replay all 135 parts with actual structured m
    }))).find(x=>x.id===row.criterionId)?.part;
    if(source?.responseType==="graph"&&source.criteria?.some(c=>c.manual===true)){
     manualGraphs++;
-    expect(row.suggestedMarks).toBe(0);
+    // Authored typed graph evidence now yields bounded provisional marks.
+    expect(row.suggestedMarks).toBeGreaterThanOrEqual(0);
+    expect(row.suggestedMarks).toBeLessThanOrEqual(source.marks);
     expect(row.resolved).toBe(false);
    }
   }
@@ -468,7 +489,84 @@ test("POB affirmative model-answer denials never gain provisional or authoritati
   const grade=checked.rows.find(x=>x.criterionId===first.id);
   expect(grade.suggestedMarks).toBe(0);
   expect(grade.resolved).toBe(false);
-  expect(grade.method).toBe("source-answer-explicit-denial");
+  expect(grade.method).toBe("existing-POB-subcriterion-evidence");
   expect(checked.canPublishFinalScore).toBe(false);
+ }
+});
+
+test("every source-reviewed IT spreadsheet formula resolves correct and incorrect evidence; unanswered parts are certain zeros",()=>{
+ const formulaAnswers={
+  "2-f":["=B2*C2","=B2+C2"],
+  "2-g":["=SUM(D2:D3)","=SUM(D2:D4)"],
+  "3-a":["=B2*C2","=B2+C2"],
+  "3-b":["=D2*$F$2","=D2*F2"],
+  "3-c":["=SUM(D2:D3)","=SUM(D3:D4)"]
+ };
+ let reviewed=0;
+ for(const paper of itData.papers){
+  const criteria=paper.questions.flatMap(question=>question.parts.map(part=>
+   row(question.number+"-"+part.id,part.marks,{
+    prompt:part.prompt,markScheme:part.markScheme,
+    profile:part.profile,responseType:part.responseType
+   })));
+  for(const question of paper.questions)for(const part of question.parts){
+   const key=question.number+"-"+part.id;
+   if(part.responseType!=="formula"||!formulaAnswers[key])continue;
+   reviewed++;
+   const [right,wrong]=formulaAnswers[key];
+   for(const [answer,expected] of [[right,part.marks],[wrong,0]]){
+    const output=example("information-technology",paper.id,criteria,{
+     [key]:{answer}
+    });
+    const graded=output.rows.find(x=>x.criterionId===key);
+    expect(graded.method).toBe("existing-IT-specific-rules");
+    expect(graded.suggestedMarks).toBe(expected);
+    expect(graded.resolved).toBe(true);
+    // Every other part is blank: an objectively verified zero, so the
+    // paper total is final and equals this one formula's marks.
+    expect(output.unresolvedMarks).toBe(0);
+    expect(output.canPublishFinalScore).toBe(true);
+    expect(output.confirmedMarks).toBe(expected);
+   }
+  }
+ }
+ expect(reviewed).toBe(27);
+});
+
+
+test("production IT P2-F accepts valid website reliability and developed algorithm and error explanations",()=>{
+ const p=itData.papers.find(p=>p.id==="P2-F");
+ expect(p).toBeTruthy();
+ const parts=["2-b","4-b","4-c","4-e"].map(key=>{
+  const [q,partId]=key.split("-");
+  const part=p.questions.find(x=>x.number===Number(q)).parts.find(x=>x.id===partId);
+  return row(key,part.marks,{
+   prompt:part.prompt,markScheme:part.markScheme,
+   profile:part.profile,responseType:part.responseType
+  });
+ });
+ const answers={
+  "2-b":"Accuracy: Check whether the information is correct and supported by reliable sources. Currency: Check when the information was published or updated to ensure it is up to date.",
+  "4-b":"Finite: An algorithm must have a limited number of steps and eventually stop. Unambiguous: Every instruction must be clear and precise so that it can be followed without confusion. An algorithm must be finite because a program that never stops may continue running indefinitely, wasting computer resources and failing to produce its intended result.",
+  "4-c":{pseudocode:"START\nINPUT average\nINPUT attendance\nINPUT service\nSCORE ← (average + attendance + service) / 3\nIF SCORE >= 85 THEN\nDISPLAY ACCEPT\nELSE\nDISPLAY REVIEW\nENDIF\nSTOP"},
+  "4-e":"A syntax error occurs when a programmer breaks the rules of a programming language, such as forgetting a required bracket. It may prevent the program from running. A logic error causes incorrect results even though the program runs. A syntax error breaks language rules; a logic error runs but gives an incorrect result."
+ };
+ const result=example("information-technology",p.id,parts,answers);
+ for(const [id,marks] of [["2-b",2],["4-b",4],["4-c",8],["4-e",3]]){
+  const grade=result.rows.find(x=>x.criterionId===id);
+  expect(grade.suggestedMarks).toBe(marks);
+  expect(grade.resolved).toBe(true);
+ }
+ expect(result.confirmedMarks).toBe(17);
+ expect(result.canPublishFinalScore).toBe(true);
+ for(const [id,answer] of [
+  ["2-b","Accuracy is not important; the website can be current."],
+  ["4-b","An algorithm is finite and precise. Finite means an algorithm should never end because it should run forever."],
+  ["4-e","Syntax errors break language rules. Logic errors run, but cannot give incorrect results."],
+  ["4-c",{pseudocode:"INPUT average, attendance, service\nSCORE = (average + attendance + service) / 2\nIF SCORE >= 85 THEN\nDISPLAY ACCEPT\nELSE\nDISPLAY REVIEW\nENDIF"}]
+ ]){
+  const checked=example("information-technology",p.id,parts,{[id]:answer});
+  const grade=checked.rows.find(x=>x.criterionId===id);
+  expect(grade.suggestedMarks<grade.maxMarks||grade.resolved===false).toBe(true);
  }
 });

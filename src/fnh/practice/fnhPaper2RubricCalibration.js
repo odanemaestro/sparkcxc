@@ -72,7 +72,9 @@ const preciseAlternatives=[
 
 const negation=/\b(?:not|never|no|cannot|can't|couldn't|won't|doesn'?t|don'?t|isn'?t|didn'?t|without|lack of|absence of|fails?\s+to|unable\s+to|false\s+that|is\s+false|incorrect\s+to\s+say)\b/i;
 const isNegative=value=>negation.test(String(value??"").replace(/[’‘]/g,"'"));
-const split=value=>String(value??"").split(/[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)/)
+// A full stop ends a sentence unless it is a decimal point; after a number
+// ("... J$2,500. Use ...") it still ends one when a capital letter follows.
+const split=value=>String(value??"").split(/[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)|(?<=\d)\.\s+(?=[A-Z])/)
   .map(v=>v.trim()).filter(Boolean);
 const words=value=>String(value??"").toLowerCase().replace(/[’‘]/g,"'")
   .match(/[a-z]+|\d+(?:\.\d+)?/g)||[];
@@ -81,26 +83,89 @@ const keyTerms=value=>[...new Set(words(value).filter(w=>w.length>2&&!stop.has(w
 const isInstruction=value=>/^\s*(?:award|give|accept|credit|any\s+(?:two|three|four)|up\s+to|one\s+mark|do not award|the source.year)\b/i.test(value);
 const numbers=value=>String(value??"").match(/(?<!\w)[+-]?\d+(?:\.\d+)?(?!\w)/g)||[];
 
+/**
+ * The faithful forms of one model point:
+ *  - as written;
+ *  - with illustrative examples ("such as ...", "e.g. ...", "for example ...")
+ *    made optional: they show acceptable answers, they are not all required;
+ *  - "Label: a, b, c or d" as the label with any ONE listed item
+ *    ("Iron: red meat, fish ... or dark leafy greens" -> "Iron red meat").
+ */
+export function fnhReferenceForms(reference){
+  const forms=[reference];
+  const withoutExamples=reference
+    .replace(/,?\s*\b(?:such as|e\.g\.|for example|including|like)\b[^;.]*?(?=(?:\s+and\s+[a-z]+\s)|[;.]|$)/gi,"")
+    .replace(/\s{2,}/g," ").trim();
+  if(withoutExamples&&withoutExamples!==reference)forms.push(withoutExamples);
+  // "cooked/ready-to-eat foods" offers either word, not both.
+  const slash=reference.match(/(?<![\d/])\b([A-Za-z][A-Za-z-]*)(?:\/[A-Za-z][A-Za-z-]*)+\b(?![\d/])/);
+  if(slash)for(const option of slash[0].split("/"))forms.push(reference.replace(slash[0],option));
+  const labelled=reference.match(/^([^:;]{2,40}):\s*(.+?)\.?$/);
+  if(labelled&&/,|\bor\b/.test(labelled[2]))
+    for(const option of labelled[2].split(/,\s*|\s+or\s+/).map(x=>x.trim()).filter(Boolean))
+      forms.push(labelled[1]+" "+option);
+  return forms;
+}
+// Responses are compared clause by clause and as whole sentences, so a model
+// point that itself joins two ideas with ";" can still be stated in full.
+const sentences=value=>String(value??"").split(/[\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)|(?<=\d)\.\s+(?=[A-Z])/)
+  .map(v=>v.trim()).filter(Boolean);
+
 export function matchFnhCriterionEvidence(model,answer,{usedEvidence=[]}={}){
   const reference=String(model||"").trim();
   const source=keyTerms(reference);
+  // An instruction-style point that lists its acceptable content ("Give two
+  // ... justifications, such as protein, fibre, vitamins or safe chilling")
+  // is satisfied by any one of those examples.
+  const examples=isInstruction(reference)?reference.match(/\bsuch as\b(.+?)\.?$/i):null;
+  if(examples){
+    const options=examples[1].split(/,\s*|\s+or\s+/).map(x=>keyTerms(x)).filter(t=>t.length);
+    // A requested justification or explanation needs more than the example
+    // word: "a protein source" names protein but justifies nothing.
+    const reasoned=/justif|explain|reason/i.test(reference);
+    const cue=/\b(?:because|for|so|so that|helps?|supports?|to|prevents?|reduces?|keeps?|which)\b/i;
+    const statement=split(answer).find(s=>!isNegative(s)&&(!reasoned||cue.test(s))&&
+      options.some(t=>t.every(term=>keyTerms(s).includes(term))));
+    if(statement&&!usedEvidence.some(hit=>hit.signature===source.join("|")))
+      return {confirmed:true,evidence:statement,sourceIndex:split(answer).indexOf(statement),
+        evidenceKey:source.join("|"),terms:source};
+    return {confirmed:false,evidence:"",reason:"alternative-or-unsupported"};
+  }
   if(isInstruction(reference)||source.length<1)return {confirmed:false,evidence:"",reason:"unverifiable-model-point"};
-  const statements=split(answer);
+  const clauses=split(answer);
+  const statements=[...clauses,...sentences(answer).filter(s=>!clauses.includes(s))];
   const aliases=preciseAlternatives.filter(entry=>entry.source.test(reference));
   const expectedNumbers=numbers(reference);
+  const forms=fnhReferenceForms(reference).map(text=>({text,terms:keyTerms(text)}))
+    .filter(f=>f.terms.length>0);
+  // A short point ("Appearance and presentation", "Refrigeration or freezing")
+  // must be stated in full; "or" offers either side.
+  const shortForms=source.length<3?reference.replace(/\.$/,"").split(/\s+or\s+|\s*\/\s*/i)
+    .map(text=>keyTerms(text)).filter(t=>t.length>0):[];
   let found=null;
   for(let i=0;i<statements.length;i++){
     const statement=statements[i];
     const value=keyTerms(statement);
-    const overlap=source.filter(term=>value.includes(term)).length;
-    const threshold=Math.max(3,Math.ceil(source.length*.8));
+    const formOk=forms.some((f,k)=>{
+      const overlap=f.terms.filter(term=>value.includes(term)).length;
+      // A label + one item form ("Iron red meat") must be stated in full.
+      const threshold=k>1&&f.terms.length<3?f.terms.length:Math.max(Math.min(3,f.terms.length),Math.ceil(f.terms.length*.8));
+      return (f.terms.length>=3||k>1)&&overlap>=threshold;
+    })||shortForms.some(terms=>terms.every(term=>value.includes(term)));
     const alternative=aliases.some(alt=>alt.accept.test(statement));
     const numberOk=expectedNumbers.every(n=>numbers(statement).includes(n));
     const negativeOk=isNegative(reference)===isNegative(statement);
-    const support=alternative||source.length>=3&&overlap>=threshold;
+    const support=alternative||formOk;
     if(!support||!numberOk||!negativeOk)continue;
-    // A later contradiction cannot earn an extra positive mark.
-    const contradicted=statements.some(other=>
+    const threshold=Math.max(3,Math.ceil(source.length*.8));
+    // A later contradiction cannot earn an extra positive mark. An explicit
+    // denial ("It is false that ...") of the point, or of either half of a
+    // point joined by ";", contradicts it whatever its own polarity.
+    const halves=reference.split(/;\s*/).map(h=>keyTerms(h)).filter(t=>t.length>=2);
+    const denies=other=>/^\s*it\s+is\s+(?:false|incorrect|not\s+true|untrue)\s+(?:that|to\s+say)\b/i.test(other)&&
+      !/^\s*it\s+is\s+(?:false|incorrect)/i.test(reference)&&
+      [source,...halves].some(t=>t.filter(term=>keyTerms(other).includes(term)).length>=Math.max(Math.min(3,t.length),Math.ceil(t.length*.75)));
+    const contradicted=statements.some(other=>denies(other)||
       isNegative(other)!==isNegative(reference) &&
       (aliases.some(alt=>alt.accept.test(other))||
       source.filter(term=>keyTerms(other).includes(term)).length>=threshold));

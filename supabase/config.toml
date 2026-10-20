@@ -3,3 +3,7 @@ verify_jwt = false
 
 [functions.mark-paper2]
 verify_jwt = false
+
+[functions.mark-paper2-v2-shadow]
+# Private service-role worker: the gateway MUST verify the JWT signature.
+verify_jwt = true

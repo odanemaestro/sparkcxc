@@ -117,3 +117,18 @@ test("an expired saved attempt automatically submits the saved answers once", as
   );
   expect(startServerExamAttempt).not.toHaveBeenCalled();
 });
+
+test("Paper 2 can save and exit without submitting the attempt", async () => {
+  render(<PoaPracticeHub userId="student-a" supabase={{ rpc: jest.fn() }}/>);
+  fireEvent.click(screen.getByRole("button", { name: "Open Paper 2", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Start Paper 2", exact: true }));
+  await screen.findByLabelText(/^Net sales/);
+  fireEvent.change(screen.getByLabelText(/^Net sales/), { target: { value: "116000" } });
+  fireEvent.click(screen.getByRole("button", { name: "Exit examination", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Save and exit", exact: true }));
+  expect(screen.getByRole("button", { name: "Open Paper 2", exact: true })).toBeInTheDocument();
+  expect(submitServerExamAttempt).not.toHaveBeenCalled();
+  fireEvent.click(screen.getByRole("button", { name: "Open Paper 2", exact: true }));
+  expect(screen.getByLabelText(/^Net sales/)).toHaveValue("116000");
+  expect(screen.queryByText(/missing|duplicate/i)).not.toBeInTheDocument();
+});

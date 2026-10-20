@@ -49,7 +49,7 @@ BEGIN
    || 'Authoritative evaluator uses strict formula/cell equality, accepts documented commutative '
    || 'operands and equivalent D2+D3 sum, and rejects wrong references, blank, off-topic and '
    || 'narrated answers. Adversarial source-specific matrix: '
-   || 'src/informationTechnology/practice/itV2ArchiveEvidence.test.js (CI #2586). '
+   || 'src/informationTechnology/practice/itV2ArchiveEvidence.test.js (run in the verified V2 CI workflow). '
    || 'Nonhuman evidence QA only. Not independent human attestation; not paper approval.',
    paper_id,criterion_id,rule)
  FROM _it_source_formulas WHERE rule IS NOT NULL;
