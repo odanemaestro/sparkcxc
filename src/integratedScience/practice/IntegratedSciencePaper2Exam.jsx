@@ -9,13 +9,27 @@ import { BankTable, TrustedBankSvg } from "./IntegratedScienceQuestionRenderer";
 import IntegratedScienceText from "../components/IntegratedScienceText";
 import { gradeIntegratedSciencePaper2, INTEGRATED_SCIENCE_P2_GRADER_VERSION } from "./integratedSciencePaper2Grader";
 import ScienceGraphEditor from "./ScienceGraphEditor";
+import { v2ScienceResponses } from "../../grading/v2SubmissionResponses";
+import V2VerifiedScore from "../../grading/V2VerifiedScore";
 import {
+  buildIntegratedScienceFixedPaper2,
+  INTEGRATED_SCIENCE_FIXED_PAPER_COUNT,
   buildIntegratedSciencePaper2,
   formatIntegratedScienceExamTime,
   INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS,
   readIntegratedScienceExamState,
   saveIntegratedScienceExamState,
 } from "./integratedScienceExamModel";
+
+// The next fixed paper in this browser's rotation (1..14).
+const FIXED_ROTATION_KEY="spark-is-paper2-fixed-rotation-v1";
+function nextFixedPaperNumber(){
+  let last=0;
+  try{last=Number(localStorage.getItem(FIXED_ROTATION_KEY))||0;}catch{}
+  const next=(last%INTEGRATED_SCIENCE_FIXED_PAPER_COUNT)+1;
+  try{localStorage.setItem(FIXED_ROTATION_KEY,String(next));}catch{}
+  return next;
+}
 
 function goTop() {
   window.scrollTo?.({top:0,behavior:"smooth"});
@@ -423,9 +437,16 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
     try {
       if(active?.serverAttemptId){
+        // A fixed registered paper is submitted per criterion and unscored:
+        // the server marks it and publishes the only final result. A
+        // generated paper keeps the earlier unregistered submission.
+        const registered=Boolean(active.paperId);
         await submitServerExamAttempt({
-          supabase,attemptId:active.serverAttemptId,responses,score:result.score,maxScore:result.maxScore,
+          supabase,attemptId:active.serverAttemptId,
+          responses:registered?v2ScienceResponses(paper,responses):responses,
+          score:registered?null:result.score,maxScore:result.maxScore,
           metadata:{subject:"integrated-science",paper:"02",client_timed_out:Boolean(timedOut),
+            ...(registered?{paper_id:active.paperId}:{}),
             provisional:Boolean(result.provisional),unresolved_marks:result.unassessedMarks,
             confirmed_marks:result.score,assessed_marks:!result.provisional&&!result.unassessedMarks?result.score:null,
             spark_scoring_status:!result.provisional&&!result.unassessedMarks?"verified":"rubric_review_required",
@@ -537,9 +558,13 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
   }
 
   function createPaper() {
-    const generated = buildIntegratedSciencePaper2(modules);
+    // Rotate through the fixed papers registered for server marking, so the
+    // submitted script can be marked and verified by SPARK's server.
+    const fixed = buildIntegratedScienceFixedPaper2(modules, nextFixedPaperNumber());
+    const generated = fixed ? fixed.questions : buildIntegratedSciencePaper2(modules);
     const next = {
       phase:"instructions",
+      paperId:fixed ? fixed.paperId : null,
       questionIds:generated.map(question => question.id),
       currentIndex:0,
       responses:{},
@@ -564,7 +589,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
       durationSeconds:INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS,
       bankVersion:"integrated-science-v1.2.0",rubricVersion:"item-mark-schemes-v1",
       graderVersion:INTEGRATED_SCIENCE_P2_GRADER_VERSION,
-      metadata:{question_ids:active?.questionIds || []},
+      metadata:{question_ids:active?.questionIds || [],...(active?.paperId?{paper_id:active.paperId}:{})},
     });
     const serverDeadline=server?.available ? localExamDeadline(server) : null;
     const serverStarted=server?.available && server.started_at ? server.started_at : new Date(now).toISOString();
@@ -716,7 +741,9 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
           </section>
         )}
 
-        {review && <ServerMarkingReview supabase={supabase} attemptId={active?.serverAttemptId}/>}
+        {review && active?.paperId && <V2VerifiedScore supabase={supabase} attemptId={active?.serverAttemptId}
+        estimate={result?.score ?? null} maxMarks={result?.maxScore ?? 105}/>}
+      {review && <ServerMarkingReview supabase={supabase} attemptId={active?.serverAttemptId}/>}
         <nav className="is-p2-question-nav" aria-label="Paper 02 questions">
           {paper.map((item,index) => (
             <button

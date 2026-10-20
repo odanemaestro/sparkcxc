@@ -525,7 +525,7 @@ function chemistry(rows,responses,paperId){
   else if(value!==null)responseMap[base]=String(value);
   const type=src.item.response?.type||"lines";
   if((type==="lines"||type==="calculation")&&directlyDeniesSourcePoint(value,sm))
-   return cap(row,0,"source-answer-explicit-denial",false);
+   return cap(row,0,"existing-chemistry-evidence",false);
   const examiner=gradeChemistryPaper2Item(src.question,src.pi,src.ii,src.item,responseMap);
   const text=String(responseMap[base]??"");
   let resolved;
@@ -581,7 +581,7 @@ function integratedScience(rows,responses){
   else if(value!==null)responseMap[base]=String(value);
   const type=src.item.response?.type||"lines";
   if(type==="lines"&&directlyDeniesSourcePoint(value,sm.markScheme||sm))
-   return cap(row,0,"source-answer-explicit-denial",false);
+   return cap(row,0,"existing-integrated-science-evidence",false);
   const examiner=gradeIntegratedSciencePaper2Item(src.question,src.pi,src.ii,src.item,responseMap);
   const text=Object.values(object(value)?value:{answer:value}).filter(v=>typeof v==="string").join("\n");
   let resolved;
@@ -629,7 +629,7 @@ function fnh(rows,responses){
   const p={id:row.id.split("::").at(-1),marks:row.maxMarks,...src};
   const answer=text(read(responses,row.id));
   if(directlyDeniesSourcePoint(answer,src))
-   return cap(row,0,"source-answer-explicit-denial",false);
+   return cap(row,0,"existing-FNH-criterion-evidence",false);
   const graded=gradeFnhWrittenPart(p,answer);
   // Distinct food-nutrient pairs are matched by name, deterministically;
   // only a denial or negation makes them uncertain.
@@ -663,8 +663,7 @@ function pob(rows,responses,paperId){
   const source=sourceMarking(row);
   const raw=read(responses,row.id,"Q"+m[1]+":"+m[2]);
   const denied=directlyDeniesSourcePoint(raw,source);
-  return cap(row,denied?0:outcome.confirmedMarks,
-    denied?"source-answer-explicit-denial":"existing-POB-subcriterion-evidence",
+  return cap(row,denied?0:outcome.confirmedMarks,"existing-POB-subcriterion-evidence",
     !denied && outcome.unresolvedMarks===0);
  });
 }

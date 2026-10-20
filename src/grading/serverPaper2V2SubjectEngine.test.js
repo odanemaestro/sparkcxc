@@ -359,7 +359,10 @@ test.each([
   expect(outcome.suggestedMarks).toBe(0);
   expect(outcome.unresolvedMarks).toBe(marks);
   expect(outcome.canPublishFinalScore).toBe(false);
-  expect(outcome.rows[0].method).toBe("source-answer-explicit-denial");
+  // The publication RPC accepts only the subject examiner method.
+  expect(outcome.rows[0].method).toBe({chemistry:"existing-chemistry-evidence",
+   "integrated-science":"existing-integrated-science-evidence",
+   "food-nutrition-and-health":"existing-FNH-criterion-evidence"}[subject]);
  }
 });
 
@@ -486,7 +489,7 @@ test("POB affirmative model-answer denials never gain provisional or authoritati
   const grade=checked.rows.find(x=>x.criterionId===first.id);
   expect(grade.suggestedMarks).toBe(0);
   expect(grade.resolved).toBe(false);
-  expect(grade.method).toBe("source-answer-explicit-denial");
+  expect(grade.method).toBe("existing-POB-subcriterion-evidence");
   expect(checked.canPublishFinalScore).toBe(false);
  }
 });

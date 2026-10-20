@@ -33,6 +33,34 @@ export function buildIntegratedSciencePaper1(modules, random = Math.random) {
   }));
 }
 
+export const INTEGRATED_SCIENCE_FIXED_PAPER_COUNT = 14;
+
+/**
+ * One of the 14 fixed Paper 02s registered for server marking: pair k uses
+ * questions IS-Mm-P2-(2k-1) and IS-Mm-P2-(2k) from each module m, in the same
+ * order and structure as a generated paper (practical 20 + structured 15 per
+ * module, six questions, 105 marks). Returns null if the bank does not form
+ * that paper, so the caller can fall back to a generated one.
+ */
+export function buildIntegratedScienceFixedPaper2(modules, pairNumber) {
+  const k = Number(pairNumber);
+  if (!Number.isInteger(k) || k < 1 || k > INTEGRATED_SCIENCE_FIXED_PAPER_COUNT) return null;
+  const byId = new Map((modules || []).flatMap(m => m?.paper02 || []).map(q => [q.id, q]));
+  const selected = [];
+  for (const module of [1,2,3]) {
+    const pair = [2*k-1, 2*k].map(n => byId.get(`IS-M${module}-P2-${String(n).padStart(2,"0")}`));
+    if (pair.some(q => !q)) return null;
+    const practical = pair.find(q => q.kind === "practical" && Number(q.totalMarks) === 20);
+    const structured = pair.find(q => q.kind === "structured" && Number(q.totalMarks) === 15);
+    if (!practical || !structured) return null;
+    selected.push(practical, structured);
+  }
+  return {
+    paperId:`is-fixed-source-pair-${String(k).padStart(2,"0")}`,
+    questions:selected.map((question, index) => ({...question, examPosition:index + 1})),
+  };
+}
+
 export function buildIntegratedSciencePaper2(modules, random = Math.random) {
   const selected = [];
 

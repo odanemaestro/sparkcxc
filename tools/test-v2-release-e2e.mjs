@@ -15,12 +15,15 @@ import {openRegistry} from "./v2-registry.mjs";
  * and unresolved criteria never publish an unsupported or duplicate score.
  */
 const dir=process.argv[2]||"artifacts/v2-verification";
+const flag=name=>{const i=process.argv.indexOf(name);return i>0?process.argv[i+1]:null;};
 const evidence=JSON.parse(fs.readFileSync(dir+"/evidence.json","utf8"));
 const papers=JSON.parse(fs.readFileSync(dir+"/papers.json","utf8"));
 const {evaluateExistingSubjectPaper2V2}=await import("../supabase/functions/_shared/server-marker-v2.mjs");
 const {BUNDLE_SHA256}=await import("../supabase/functions/_shared/server-marker-v2-checksum.mjs");
 
-const SUBJECT="information-technology",PAPER="P2-A";
+const SUBJECT=flag("--subject")||"information-technology",PAPER=flag("--paper")||"P2-A";
+// Timed Paper 2 durations the database owns (English A and Integrated Science).
+const DURATION={"english-a":9900,"integrated-science":9000}[SUBJECT]??7200;
 const paperRecord=papers.find(p=>p.subjectId===SUBJECT&&p.paperId===PAPER&&p.outcome==="verified");
 assert(paperRecord,"verified paper evidence for "+PAPER+" is required");
 const mine=evidence.filter(r=>r.subjectId===SUBJECT&&r.paperId===PAPER);
@@ -54,8 +57,8 @@ try{
  const historic=randomUUID();
  await db.query(`insert into public.spark_exam_attempts(id,user_id,subject_id,paper,status,submitted_at,
    response_snapshot,score,max_score,metadata) values($1,$2,$3,'02','submitted',now()-interval '30 days',
-   '{"1-a":"old answer"}'::jsonb,41,90,'{"paper_id":"P2-A","score_authority":"client-practice-estimate"}'::jsonb)`,
-   [historic,students[0],SUBJECT]);
+   '{"1-a":"old answer"}'::jsonb,41,90,$4::jsonb)`,
+   [historic,students[0],SUBJECT,JSON.stringify({paper_id:PAPER,score_authority:"client-practice-estimate"})]);
 
  // 2. A paper cannot be verified, activated or released without evidence.
  await assert.rejects(release(),/Missing evidence-backed criterion verifications/);
@@ -96,10 +99,10 @@ try{
   (r.cases.find(c=>c.cls==="contradiction"&&!c.resolved)??r.cases.find(c=>c.cls==="full")).response]));
  const submit=async(student,responses)=>{
   await asStudent(student);
-  const started=await one(`select * from public.spark_start_exam_attempt($1,'02','timed',7200,
-    'it-paper2-v1','it-paper2-rubric-v1','it-paper2-grader-v1',$2::jsonb)`,[SUBJECT,JSON.stringify({paper_id:PAPER,paper:"02"})]);
-  await one(`select * from public.spark_submit_exam_attempt($1,$2::jsonb,'hash',null,90,'{}'::jsonb)`,
-   [started.attempt_id,JSON.stringify(responses)]);
+  const started=await one(`select * from public.spark_start_exam_attempt($1,'02','timed',$3,
+    'v2-e2e-bank','v2-e2e-rubric','v2-e2e-grader',$2::jsonb)`,[SUBJECT,JSON.stringify({paper_id:PAPER,paper:"02"}),DURATION]);
+  await one(`select * from public.spark_submit_exam_attempt($1,$2::jsonb,'hash',null,$3,'{}'::jsonb)`,
+   [started.attempt_id,JSON.stringify(responses),rubric.expected_total_marks]);
   await asService();
   return started.attempt_id;
  };
@@ -130,7 +133,7 @@ try{
  assert.equal(await work(),null);
  // Re-submitting the same attempt creates no second job.
  await asStudent(students[0]);
- await one(`select * from public.spark_submit_exam_attempt($1,$2::jsonb,'hash',null,90,'{}'::jsonb)`,[attemptFull,JSON.stringify(fullAnswers)]);
+ await one(`select * from public.spark_submit_exam_attempt($1,$2::jsonb,'hash',null,$3,'{}'::jsonb)`,[attemptFull,JSON.stringify(fullAnswers),90]);
  await asService();
  assert.equal((await one("select count(*)::int n from spark_grading_private.marking_jobs_v2 where attempt_id=$1",[attemptFull])).n,1);
  // The student reads their own verified result; another student cannot.
