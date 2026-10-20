@@ -1031,6 +1031,96 @@ try{
  const pilotReviews=(await db.query(`select subject_id,paper_id,criterion_id,
    verified_by,criterion_sha256 from spark_grading_private.rubric_criterion_reviews_v2
    order by subject_id,paper_id,criterion_id`)).rows;
+
+ // Evidence-verification phase: two LARGE groups of 1,053 unapproved parts,
+ // distinct from the completed 2,118-part source-registration inventory.
+ // Test actual private V2 subject graders with source-specific positive and
+ // explicitly negated answers. Diagnostic positives never constitute review.
+ const unapproved=(await db.query(`SELECT r.subject_id,r.paper_id,
+   c->>'id' AS criterion_id,(c->>'maxMarks')::int AS max_marks
+ FROM spark_grading_private.rubrics_v2 r
+ CROSS JOIN LATERAL jsonb_array_elements(r.criteria) c
+ WHERE NOT EXISTS(SELECT 1 FROM spark_grading_private.rubric_criterion_reviews_v2 v
+   WHERE v.subject_id=r.subject_id AND v.paper_id=r.paper_id
+    AND v.rubric_version=r.rubric_version
+    AND v.criterion_id=c->>'id')
+ ORDER BY r.subject_id,r.paper_id,c->>'id'`)).rows;
+ assert.equal(unapproved.length,2106,'Reviewer queue must include 2,106 unapproved source criteria');
+ const sourceByPaper=new Map(papers.map(p=>[p.subject_id+'::'+p.paper_id,p]));
+ const getPoint=(subject,criterion)=>{
+  const sm=criterion.sourceMarking||{};
+  const first=subject==='chemistry'?sm.points?.[0]:
+   subject==='integrated-science'?sm.markScheme?.points?.[0]:
+   subject==='food-nutrition-and-health'?sm.modelPoints?.[0]:
+   subject==='principles-of-business'?sm.modelAnswer:
+   subject==='mathematics'||subject==='physics'?sm.answer:null;
+  return typeof first==='string'?first.trim():'';
+ };
+ const evidenceSummaries=[];
+ for(const [batchNumber,subset] of [
+  [1,unapproved.slice(0,1053)],[2,unapproved.slice(1053)]
+ ]){
+  assert.equal(subset.length,1053,'Evidence matrix batch must cover 1,053 unique unapproved criteria');
+  const bySource=Map.groupBy(subset,p=>p.subject_id+'::'+p.paper_id);
+  const stats={batch:batchNumber,parts:subset.length,sourcePapers:bySource.size,
+   positiveCases:0,denialCases:0,positiveCreditParts:0,
+   explicitDenialCreditParts:0,ambiguousCases:0,
+   bySubject:{}};
+  for(const [key,items] of bySource){
+   const paper=sourceByPaper.get(key);
+   assert(paper,'Missing evidence-verification paper '+key);
+   const sourceResponses={},denials={},applicable=new Map();
+   for(const item of items){
+    const source=paper.criteria.find(c=>c.id===item.criterion_id);
+    assert(source && source.maxMarks===item.max_marks);
+    const point=getPoint(item.subject_id,source);
+    if(!point)continue; // No source-authored exemplar is not a failure or a synthetic answer.
+    sourceResponses[item.criterion_id]=point;
+    stats.positiveCases++;
+    if(['chemistry','integrated-science','food-nutrition-and-health'].includes(item.subject_id)){
+     denials[item.criterion_id]='It is false that '+point;
+     const clean=point.replace(/\\([^)]*\\)/g,'');
+     // Qualifying source references, including legitimate negative facts,
+     // need human interpretation; do not declare these a wrong answer.
+     const unambiguous=!/\\b(?:not|no|never|without|cannot|fail|false|incorrect|unable)\\b/i.test(clean)
+       && !/\\b(?:graph|diagram|draw|plot|construction)\\b/i.test(clean);
+     applicable.set(item.criterion_id,unambiguous);
+     stats.denialCases++;
+    }
+   }
+   const evaluate=res=>evaluateExistingSubjectPaper2V2({
+    subjectId:paper.subject_id,paperId:paper.paper_id,
+    criteria:paper.criteria,responses:res
+   });
+   const positive=Object.keys(sourceResponses).length?evaluate(sourceResponses):null;
+   const denial=Object.keys(denials).length?evaluate(denials):null;
+   for(const item of items){
+    if(!stats.bySubject[item.subject_id])stats.bySubject[item.subject_id]={
+      criteria:0,positive:0,denial:0,credited:0,denialCredit:0};
+    const domain=stats.bySubject[item.subject_id];domain.criteria++;
+    if(Object.hasOwn(sourceResponses,item.criterion_id)){
+     domain.positive++;
+     const suggestion=positive.rows.find(x=>x.criterionId===item.criterion_id);
+     assert(suggestion&&suggestion.suggestedMarks>=0&&suggestion.suggestedMarks<=item.max_marks);
+     if(suggestion.suggestedMarks>0){stats.positiveCreditParts++;domain.credited++;}
+    }
+    if(Object.hasOwn(denials,item.criterion_id)){
+     domain.denial++;
+     const suggestion=denial.rows.find(x=>x.criterionId===item.criterion_id);
+     assert(suggestion&&suggestion.suggestedMarks>=0&&suggestion.suggestedMarks<=item.max_marks);
+     if(suggestion.suggestedMarks>0){
+      stats.explicitDenialCreditParts++;domain.denialCredit++;
+      // Keep the false-positive counter visible without falsely approving
+      // source points whose nuance has not yet been independently assessed.
+     }
+    }
+   }
+  }
+  evidenceSummaries.push(stats);
+ }
+ console.log('V2 large-batch source-authored positive and explicit-denial evidence matrix',
+  JSON.stringify({batches:evidenceSummaries,
+   notice:'Source answers are calibration probes, not ground-truth examiner approvals. Positive matches, wrong-credit diagnostics and all ambiguous outcomes require criterion review. No score publication authorised.'}));
  assert.equal(pilotReviews.length,12);
  assert(pilotReviews.every(row=>row.verified_by.includes('AI criterion QA, nonhuman')));
  assert.deepEqual(pilotReviews.map(row=>row.criterion_id).sort(),[
