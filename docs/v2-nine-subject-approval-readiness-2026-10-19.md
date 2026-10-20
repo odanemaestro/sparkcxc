@@ -98,3 +98,57 @@ be corrected and retested before recording criterion-level approval.
 Additional prose, graphical, table and dependent-method criteria still
 require authentic evidence-based calibration. These four reviews by
 themselves do not enable V2 final-score publication.
+
+## Batch 001: 300-part calibration and six additional AI source reviews
+
+On October 19, 2026, committed and applied these two guarded private
+migrations after [CI #2526](https://github.com/odanemaestro/sparkcxc/actions/runs/39347113739)
+passed the complete registered-source replay:
+
+- `20261020080000_marking_v2_first_300_criterion_calibration_queue.sql`
+- `20261020090000_marking_v2_six_math_physics_source_ai_reviews.sql`
+
+The first migration creates a private, RLS-protected, source-digest-locked
+**300-part cohort**; it does *not* imply that these 300 items have passed
+full examiner review. Source/blank/unrelated-response replay passed in
+**full-paper context**, including all nine subjects. Subject quotas:
+Mathematics 100, Integrated Science 65, Chemistry 30, IT 30, Physics 25,
+English A 15, Social Studies 15, FNH 10, and POB 10.
+
+The cohort contains **17 direct-check candidates** and **283 requiring
+source-specific evidence**. Direct-check eligibility is a structural
+classification, *not* a rubric approval. Detailed sources, partial-credit
+dependencies, invalid negatives, graph evidence and strict form instructions
+must each be checked before promotion.
+
+The second migration registers **six additional criterion-specific,
+explicitly nonhuman AI QA reviews** supported by positive/negative tests
+(`src/grading/v2BulkSourceBoundCriterion.test.js`):
+
+- Mathematics original-v1 `p2-q10-v1::b` (determinant 7)
+- Mathematics original-v3 `p2-q1-v3::b3` (hire purchase 16.67%)
+- Mathematics p2e `p2e-q4::a2` (perimeter 22)
+- Mathematics p2g `p2g-q4::a2` (midpoint 4)
+- Mathematics p2i `p2i-q4::a2` (supplementary angle 120°)
+- Physics practice-2 `phy-p2-2-q3::biii` (energy 254000 J)
+
+Production follow-up SQL verified all **300** cohort records matched their
+source SHA-256 fingerprints; exactly **6** cohort parts now have matched
+reviews. Across the entire V2 registry, **10 of 2118** parts have source-bound
+AI reviews and **2108 remain unapproved**.
+
+A separate post-deployment attempt to promote original-v1 to active/verified
+without all its independent criterion reviews was rejected by the database
+trigger. **Zero paper versions are verified or active** and existing
+student-facing grading is unchanged. This is *not* 300 final examiner approvals.
+
+### Why many require stronger evidence
+
+The private registry contains extensive source-based marking schemes, but
+many criteria cannot be certified by answer-string similarity alone:
+Mathematics M/ECF marks and drawing artifacts, Physics graph/table marks,
+Chemistry and Integrated Science equivalent explanations, IT code evidence,
+and written reasoning or essay rubrics for English A, Social Studies, FNH
+and POB. These remain in the review-required category until tested
+evidence validators are implemented. Approved notes do not bypass separate
+paper-level attestation.
