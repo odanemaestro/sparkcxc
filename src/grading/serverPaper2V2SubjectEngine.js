@@ -9,6 +9,10 @@ import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
 import {CHECKERS} from "../practice/cxcMarking/checkers";
 import {markPhysicsPaper2} from "../physics/paper2/physicsPaper2Marking";
+import physicsPaper1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
+import physicsPaper2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
+import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
+import physicsPaper4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
 import {gradeInformationTechnologyPart,informationTechnologyPaper2RuleFor} from "../informationTechnology/practice/itPaper2Marking";
 import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json";
 import {gradeChemistryPaper2Item} from "../chemistry/practice/chemistryPaper2Grader";
@@ -176,39 +180,91 @@ function mathematics(rows,responses){
  }
  return out;
 }
-function physics(rows,responses){
+const physicsSourcePapers=new Map([
+ physicsPaper1,physicsPaper2,physicsPaper3,physicsPaper4
+].map(p=>[p.paper_id,p]));
+const graphPoint=(x,grid)=>object(x)&&
+ finite(x.x)&&finite(x.y)&&
+ x.x>=Number(grid.xMin)-1e-9&&x.x<=Number(grid.xMax)+1e-9&&
+ x.y>=Number(grid.yMin)-1e-9&&x.y<=Number(grid.yMax)+1e-9;
+/**
+ * Source-owned graph geometry, never an inferred line from the student's prose.
+ * Reject ill-formed points, coordinates outside the original grid, extra
+ * unknown fields posing as points and implausibly large drawings. The graph
+ * still needs independent source/rubric review before any FINAL V2 grade.
+ */
+function submittedSourceGraph(response,original){
+ const g=object(response)&&object(response.graph)?response.graph:null;
+ const grid=original?.grid;
+ if(!g||!grid||!Array.isArray(g.points)||
+    g.points.length>24||!Array.isArray(g.line)||g.line.length>2||
+    g.points.length===0&&g.line.length===0)return false;
+ if(!g.points.every(pt=>graphPoint(pt,grid))||
+    !g.line.every(pt=>graphPoint(pt,grid)))return false;
+ const all=[...g.points,...g.line];
+ if(all.some(pt=>Object.keys(pt).some(k=>!["x","y"].includes(k))))return false;
+ return true;
+}
+const graphSourceMatches=(registered,original)=>
+ registered?.responseType==="graph"&&original?.responseType==="graph"&&
+ registered.answer===original.answer&&
+ Array.isArray(registered.criteria)&&registered.criteria.length===4&&
+ registered.criteria.every((c,i)=>{
+  const expected=original.criteria?.[i];
+  return c.code===expected?.code&&c.kind===expected?.kind&&
+   c.marks===expected?.marks&&c.manual===expected?.manual&&
+   c.description===expected?.description;
+ });
+function physics(rows,responses,paperId){
+ const original=physicsSourcePapers.get(paperId);
+ if(!original)throw new Error("Unknown registered Physics source paper: "+paperId);
+ const originalParts=new Map(original.questions.flatMap(q=>
+  q.parts.map(part=>[q.question_id+"::"+part.id,part])));
  const grouped=group(rows,"::"),questions=new Map();
  for(const [id,parts] of grouped){
   questions.set(id,{question_id:id,parts:parts.map(({row,fields})=>{
    const src=sourceMarking(row);
    if(!Array.isArray(src.criteria)||src.criteria.reduce((n,c)=>n+Number(c.marks||0),0)!==row.maxMarks)
      throw new Error("Incomplete Physics marking source "+row.id);
+   const originalPart=originalParts.get(row.id);
+   if(!originalPart||originalPart.marks!==row.maxMarks)
+     throw new Error("Unknown Physics source part "+row.id);
+   if(src.responseType==="graph"){
+    if(!graphSourceMatches(src,originalPart))
+     throw new Error("Source drift in registered Physics graph "+row.id);
+    // Grid coordinates and line geometry are only available in the
+    // original authored paper. Do not read expected points from the student.
+    return {...src,grid:originalPart.grid,graph:originalPart.graph,
+     id:fields[1],marks:row.maxMarks};
+   }
    return {...src,id:fields[1],marks:row.maxMarks};
   })});
  }
- const paper={paper_id:"server-v2",questions:[...questions.values()],
+ const paper={paper_id:paperId,questions:[...questions.values()],
   marks:rows.reduce((n,r)=>n+r.maxMarks,0)};
  const examination=markPhysicsPaper2(paper,responses);
  return rows.map(row=>{
-  const [qid,pid]=row.id.split("::");
-  const grade=examination.criteria.filter(x=>x.question.question_id===qid&&x.part.id===pid)
+  const grade=examination.criteria.filter(x=>
+   x.question.question_id+"::"+x.part.id===row.id)
    .reduce((n,x)=>n+x.earned,0);
   const source=sourceMarking(row);
   const response=read(responses,row.id);
-  // Plotting, axes, scales and drawn best-fit lines require authenticated
-  // graph artefact evaluation. A text answer cannot earn a graph mark.
-  // Existing source 'manual' graph criteria are NOT independent proof, so
-  // leave these marks unresolved rather than publish unverified credit.
-  const manualGraph=source.responseType==="graph" &&
+  const manualGraph=source.responseType==="graph"&&
     source.criteria?.some(criterion=>criterion.manual===true);
-  const resolved=blank(response) ||
-   (!manualGraph&&source.criteria?.length>0&&
-    source.criteria.every(c=>c.check&&c.check.type==="value"));
-  // An objectively blank graph is resolved as zero. Nonblank drawings
-  // still require graph artefact evaluation before any marks are confirmed.
-  return cap(row,manualGraph?0:grade,
-   manualGraph&&!blank(response)?"physics-graph-requires-artifact-verification":"existing-physics-rubric-checks",
-   resolved);
+  if(manualGraph){
+   const originalPart=originalParts.get(row.id);
+   const typed=submittedSourceGraph(response,originalPart);
+   // Coordinates/axes/points/line are real structured diagnostics, unlike
+   // the former permanently-zero graph stub. Do not claim entire-paper
+   // resolution or paper approval from these provisional visual marks.
+   return cap(row,typed?grade:0,
+    typed?"source-graph-typed-advisory":"physics-graph-requires-artifact-verification",
+    blank(response));
+  }
+  const resolved=blank(response)||
+    (source.criteria?.length>0&&
+     source.criteria.every(c=>c.check&&c.check.type==="value"));
+  return cap(row,grade,"existing-physics-rubric-checks",resolved);
  });
 }
 function it(rows,responses,paperId){
