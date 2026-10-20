@@ -70,7 +70,8 @@ const preciseAlternatives=[
   {source:/financial|household income|available money/i,accept:/\b(?:budget|income|affordability|household money|family income|cost)\b/i},
 ];
 
-const negation=/\b(?:not|never|no|cannot|can't|doesn't|don't|isn't|without|lack of|absence of)\b/i;
+const negation=/\b(?:not|never|no|cannot|can't|couldn't|won't|doesn'?t|don'?t|isn'?t|didn'?t|without|lack of|absence of|fails?\s+to|unable\s+to|false\s+that|is\s+false|incorrect\s+to\s+say)\b/i;
+const isNegative=value=>negation.test(String(value??"").replace(/[’‘]/g,"'"));
 const split=value=>String(value??"").split(/[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)/)
   .map(v=>v.trim()).filter(Boolean);
 const words=value=>String(value??"").toLowerCase().replace(/[’‘]/g,"'")
@@ -95,12 +96,12 @@ export function matchFnhCriterionEvidence(model,answer,{usedEvidence=[]}={}){
     const threshold=Math.max(3,Math.ceil(source.length*.8));
     const alternative=aliases.some(alt=>alt.accept.test(statement));
     const numberOk=expectedNumbers.every(n=>numbers(statement).includes(n));
-    const negativeOk=negation.test(reference)===negation.test(statement);
+    const negativeOk=isNegative(reference)===isNegative(statement);
     const support=alternative||source.length>=3&&overlap>=threshold;
     if(!support||!numberOk||!negativeOk)continue;
     // A later contradiction cannot earn an extra positive mark.
     const contradicted=statements.some(other=>
-      negation.test(other)!==negation.test(reference) &&
+      isNegative(other)!==isNegative(reference) &&
       (aliases.some(alt=>alt.accept.test(other))||
       source.filter(term=>keyTerms(other).includes(term)).length>=threshold));
     if(contradicted)continue;
