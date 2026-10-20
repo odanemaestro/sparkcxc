@@ -11,8 +11,15 @@ import {modelResponsesForInformationTechnologyPaper2} from "../informationTechno
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
 import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
 import {CHEMISTRY_PAPER2_PRACTICE_SETS} from "../chemistry/data/chemistryPaper2Bank";
+import IS_SPECS from "../integratedScience/data/integratedSciencePaper2Specs.json";
 
 const row=(id,maxMarks,sourceMarking)=>({id,sourcePartId:id,maxMarks,sourceMarking});
+// The registered Integrated Science scheme is the source bank item's.
+const isSource=id=>{
+ const [qid,pl,il]=id.split("::");
+ const item=IS_SPECS[qid].parts.find(p=>p.label===pl).items.find(i=>i.label===il);
+ return {requiredResponseType:item.response?.type||"lines",markScheme:item.markScheme};
+};
 // The registered Chemistry scheme is the source bank item's markScheme; the
 // examiner refuses any other (source drift).
 const chemistryScheme=(paperId,id)=>{
@@ -76,8 +83,7 @@ test("FNH uses the actual distinct-evidence grader",()=>{
 });
 test("Integrated Science item evidence respects its part ceiling",()=>{
  const id="IS-M1-P2-01::(a)::(i)";
- const r=example("integrated-science","is-fixed-source-pair-01",[row(id,4,{
-  requiredResponseType:"labels",markScheme:{points:["P - anther","Q - stigma","R - ovary","S - ovule"]}})],{});
+ const r=example("integrated-science","is-fixed-source-pair-01",[row(id,4,isSource(id))],{});
  expect(r.maxMarks).toBe(4);
  expect(r.canPublishFinalScore).toBe(r.unresolvedMarks===0);
 });
@@ -327,8 +333,7 @@ test.each([
   chemistryScheme("CHEM-P2-PRACTICE-1","CHEM-G1-Q1::(a)::(i)"),
   "Time taken for the cross to disappear / reaction time."],
  ["integrated-science","is-fixed-source-pair-01","IS-M1-P2-01::(a)::(ii)",1,
-  {requiredResponseType:"lines",
-   markScheme:{points:["Produces pollen grains (male gametes)."]}},
+  isSource("IS-M1-P2-01::(a)::(ii)"),
   "Produces pollen grains (male gametes)."],
  ["food-nutrition-and-health","practice-01","FNH-SPARK-P2-ORIGINAL-01-Q1::a",1,
   {modelPoints:["Diet means the usual foods and drinks consumed by a person."]},

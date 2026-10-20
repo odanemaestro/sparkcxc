@@ -143,6 +143,23 @@ function tableFixtures(item,maxMarks){
  *               on-topic but wrong answers
  * @param curated extra fixtures for this criterion
  */
+/** Word equations: one mark for the reactants, one for the products. */
+function wordEquationFixtures(maxMarks,equation){
+ const [left,right]=equation.split(/\s*→\s*/);
+ const plain=s=>s.replace(/\s*\([^)]*\)/g,"");
+ const swapped=`${plain(right)} → ${plain(left)}`;
+ const wrongProducts=`${plain(left)} → ${plain(right).split(/\s+\+\s+/).map((x,i)=>i===0?"salt":x).join(" + ")}`;
+ return {kind:"structured",allOrNothing:false,sourceAnswer:{answer:equation},alternatives:[],fixtures:[
+  F("full",{answer:equation},maxMarks),
+  F("equivalent",{answer:plain(equation).replace("→","->")},maxMarks,"ASCII arrow, no bracketed synonyms"),
+  F("partial",{answer:wrongProducts},1,"reactants right, a product wrong"),
+  F("incorrect",{answer:swapped},0,"reactants and products reversed"),
+  F("competing",{answer:equation+"\n"+swapped},0),
+  F("blank",{answer:""},0),F("irrelevant",{answer:"I caught the bus to town on Tuesday."},0),
+  F("ceiling",{answer:equation+" "+equation},{min:0,max:maxMarks}),
+ ]};
+}
+
 /**
  * "About 89-92 g ... (2)" estimate items read from a graph in the same
  * question, with credit for values consistent with the student's own graph.
@@ -204,15 +221,24 @@ export function scienceFixtures({item,maxMarks,others=[],curated=[],criterionId,
  // they are not separate answer points.
  const raw=(item.markScheme?.points||[]).filter(Boolean).filter(p=>!/^\s*\d\s*marks?\s+(?:for|reactants)/i.test(p));
  if(raw.length===1&&/→/.test(raw[0])&&maxMarks>=2){
-  const set=equationFixtures(item,maxMarks,cleanSourcePoint(raw[0]));
+  const eq=cleanSourcePoint(raw[0]).replace(/\s*\((?:[a-z][a-z ,]*)\)\s*$/i,"").trim();
+  // Word equations name substances in words ("glucose + oxygen").
+  const word=/[a-z]{3,}/.test(eq.split("→")[0].replace(/\([^)]*\)/g,""));
+  const set=word?wordEquationFixtures(maxMarks,eq):equationFixtures(item,maxMarks,eq);
   return {...set,fixtures:[...set.fixtures,...curated]};
  }
  // Examiner instructions are not answer content. An instruction that lists
  // acceptable content ("Give two justifications, such as protein, fibre...")
  // is answered with one of its examples, justified.
  const instruction=p=>/^\s*(?:award|give|accept|credit|any\s+(?:two|three|four)|up\s+to|do not award)\b/i.test(cleanSourcePoint(p));
- const points=raw.flatMap(subPoints).filter(p=>!/^\s*\(?accept\b/i.test(p)&&!/earns credit\.?$/i.test(p))
+ let points=raw.flatMap(subPoints).filter(p=>!/^\s*\(?accept\b/i.test(p)&&!/earns credit\.?$/i.test(p))
   .filter(p=>!instruction(p)||/\bsuch as\b/i.test(p));
+ // A compound point ("A, so B") under-allocated by its scheme carries one
+ // mark per claim.
+ if(points.reduce((n,p)=>n+pointMarks(p),0)<maxMarks){
+  const split=points.flatMap(p=>/\(\s*\d/.test(p)?[p]:p.split(/,\s+so\s+|;\s+(?=[a-z])/i).map(x=>x.trim()).filter(Boolean));
+  if(split.length>points.length&&split.reduce((n,p)=>n+pointMarks(p),0)<=maxMarks)points=split;
+ }
  const answers=points.map(p=>{
   if(!instruction(p))return pointAnswer(p);
   const example=cleanSourcePoint(p).match(/\bsuch as\s+([^,.;]+?)(?:,|\s+or\s+|\.|$)/i)?.[1]?.trim();
@@ -232,17 +258,22 @@ export function scienceFixtures({item,maxMarks,others=[],curated=[],criterionId,
  }
  // Only a fully reversed answer is a wrong answer: every point must have its
  // key claim reversed or its values changed, or some marks remain earned.
- const reversed=answers.map(a=>antonymSwap(a)??perturbNumbers(a));
+ // A changed number only makes a point wrong when the number is the point
+ // ("37 °C"); a worded point needs its claim reversed.
+ const numericOnly=a=>/\d/.test(a)&&!/[a-z]{4,}/i.test(a.replace(/\b(?:mol|dm|cm|kg|mg|min|day|days|kwh|ohm|per|mass)\b/gi,""));
+ const reversed=answers.map(a=>antonymSwap(a)??(numericOnly(a)?perturbNumbers(a):null));
  if(reversed.every(Boolean))
   fixtures.push(F("incorrect",{answer:reversed.join(". ")+"."},0,"every source statement reversed"));
  const offTopic=others.find(o=>o&&!answers.some(a=>o.toLowerCase().includes(a.toLowerCase().slice(0,12))));
  if(offTopic)fixtures.push(F("incorrect",{answer:offTopic},0,"answer to a different question on this paper"));
  fixtures.push(
+  // Denying the first point removes its credit, unless the point is a list
+  // of examples ("e.g. a; b; c"), where the other examples remain valid.
   F("contradiction",{answer:full+"\nIt is false that "+answers[0].charAt(0).toLowerCase()+answers[0].slice(1)+"."},
-   {min:0,max:Math.max(0,maxMarks-Math.min(maxMarks,pointMarks(points[0])))}),
+   {min:0,max:/^\s*(?:e\.g|for example)/i.test(points[0])?maxMarks:Math.max(0,maxMarks-Math.min(maxMarks,pointMarks(points[0])))}),
   F("keyword-list",{answer:[...new Set(full.toLowerCase().replace(/[^a-z0-9 ]/g," ").split(/\s+/).filter(w=>w.length>3))].join(" ")},{min:0,max:maxMarks}),
   F("blank",{answer:""},0),
-  F("irrelevant",{answer:"The weather was sunny on Sunday afternoon."},0),
+  F("irrelevant",{answer:"I caught the bus to town on Tuesday."},0),
   F("ceiling",{answer:full+"\n"+full},{min:0,max:maxMarks}),
   ...curated);
  // One statement carrying every mark ("Warm an ammonium salt with a strong

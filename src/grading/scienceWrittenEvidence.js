@@ -39,13 +39,14 @@ export function matchScienceWrittenEvidence(response,reference,{tokens,tokenPres
   const minimum=strict?terms.length:terms.length<=3?terms.length:Math.ceil(terms.length*.75);
   // A reference that itself contains "but"/"however" must be compared with
   // whole sentences, not with the halves of a split response clause.
-  const joined=/\b(?:however|whereas|but|although|yet|nevertheless)\b/i.test(reference);
+  const joined=/\b(?:however|whereas|but|although|yet|nevertheless)\b|;/i.test(reference);
   const clauses=[...scienceResponseClauses(response),
-    ...(joined?String(response??"").split(/[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)/).map(s=>s.trim()).filter(Boolean):[])];
+    ...(joined?String(response??"").split(/\n+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)|(?<=\d)\.\s+(?=[A-Z])/).map(s=>s.trim()).filter(Boolean):[])];
   // Values in a reference are exact requirements: "2 mol e⁻" is not "4 mol e⁻".
   // Read from the raw text: tokenizers drop single-digit numbers.
   const required=[...String(reference).matchAll(/(?<![\d.])\d+(?:\.\d+)?(?![\d.])/g)].map(m=>m[0]);
-  const stated=(clause,n)=>new RegExp(`(?<![\\d.])${n.replace(".","\\.")}(?![\\d.]|\\.\\d)`).test(String(clause));
+  // "Day 14." states 14: a full stop continues a number only before a digit.
+  const stated=(clause,n)=>new RegExp(`(?<![\\d.])${n.replace(".","\\.")}(?!\\d|\\.\\d)`).test(String(clause));
   const hits=clause=>contrastedTerms(clause,reference)||!required.every(n=>stated(clause,n))
     ?0:terms.filter(term=>tokenPresent(clause,term)).length;
   // Opposite claims containing the same core facts make the response ambiguous.
@@ -55,7 +56,10 @@ export function matchScienceWrittenEvidence(response,reference,{tokens,tokenPres
   const denial=clause=>/^\s*(?:it\s+is\s+(?:false|incorrect|not\s+true|untrue)\s+(?:that|to\s+say)|it'?s\s+not\s+true\s+that)\b/i.test(normalisePolarity(clause));
   // When the reference is itself a denial, a matching denial agrees with it.
   const referenceDenies=denial(reference);
-  const contradicted=clauses.some(clause=>
+  // A conditional clause ("If the power cannot be switched off, ...") states
+  // a circumstance, not a denial of the point.
+  const conditional=clause=>/^\s*(?:if|unless|when|whenever|in\s+case)\b/i.test(clause);
+  const contradicted=clauses.some(clause=>!conditional(clause)&&
     ((denial(clause)&&!referenceDenies)||hasNegation(clause)!==negativeReference) && hits(clause)>=minimum);
   if(contradicted)return {matched:false,evidence:"",contradicted:true};
   const evidence=clauses.find(clause=>

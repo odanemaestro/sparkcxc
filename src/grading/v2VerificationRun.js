@@ -19,6 +19,10 @@ import {CHEMISTRY_PAPER2_PRACTICE_SETS} from "../chemistry/data/chemistryPaper2B
 import {CURATED_CHEMISTRY} from "./v2Fixtures/chemistryCurated";
 import {CURATED_FNH} from "./v2Fixtures/fnhCurated";
 import {fnhPointValue,fnhDistinctPairs} from "../fnh/practice/fnhPaper2Marking";
+import INTEGRATED_SCIENCE_PAPER2_SPECS from "../integratedScience/data/integratedSciencePaper2Specs.json";
+import {integratedScienceStructuredFixtures} from "./v2Fixtures/integratedScience";
+import {integratedScienceGraphInText} from "../integratedScience/practice/integratedSciencePaper2Grader";
+import {CURATED_IS} from "./v2Fixtures/integratedScienceCurated";
 
 // Criteria of every paper in the current run, for on-topic wrong answers.
 const papersById=new Map();
@@ -98,6 +102,28 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
    curated:CURATED_FNH[criterion.id]||[],criterionId:criterion.id});
   if(set.blocked)return set;
   return {...set,ruleId:"fnh:"+(sm.profile||"written")+":x"+value};
+ }
+ if(subjectId==="integrated-science"){
+  const [qid,partLabel,itemLabel]=criterion.id.split("::");
+  const question=INTEGRATED_SCIENCE_PAPER2_SPECS[qid];
+  const pi=question?question.parts.findIndex(p=>p.label===partLabel):-1;
+  const ii=pi<0?-1:question.parts[pi].items.findIndex(i=>i.label===itemLabel);
+  if(ii<0)return {blocked:"criterion-not-found-in-source-bank"};
+  const item=question.parts[pi].items[ii];
+  const type=item.response?.type||"lines";
+  if(integratedScienceGraphInText(item))return {blocked:"graph-question-without-graph-response-input"};
+  const structured=integratedScienceStructuredFixtures({base:qid+":"+pi+":"+ii,item,maxMarks:criterion.maxMarks});
+  if(structured){
+   if(structured.blocked)return structured;
+   return {...structured,sourceAnswer:structured.fixtures[0].response,alternatives:[],
+    fixtures:[...structured.fixtures,...(CURATED_IS[criterion.id]||[])],ruleId:"is:"+type};
+  }
+  const others=(papersById.get(subjectId+"|"+paperId)||[]).filter(c=>c.id!==criterion.id)
+   .map(c=>(c.sourceMarking?.markScheme?.points||[]).map(pointAnswer).join(". ")).filter(Boolean);
+  const set=scienceFixtures({item,maxMarks:criterion.maxMarks,others,criterionId:criterion.id,
+   curated:CURATED_IS[criterion.id]||[]});
+  if(set.blocked)return set;
+  return {...set,ruleId:"is:lines"};
  }
  return {blocked:"subject-resolution-policy-not-yet-verified"};
 }

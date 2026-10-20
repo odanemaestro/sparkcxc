@@ -46,6 +46,10 @@ const negated=value=>NEGATION.test(String(value).replace(/[’‘]/g,"'"));
 /** Strip examiner annotations: "(1)", "1 mark.", "1–2 marks", "Accept:". */
 export function cleanSourcePoint(point){
  return String(point??"")
+  .replace(/\s*\((?:accept|allow)\b[^)]*\)/gi," ")
+  .replace(/\s*\((?:e\.g\.?|for example)[^)]*\)/gi," ")
+  .replace(/(?<=\S),?\s+(?:e\.g\.?|for example)\s.*$/i,"")
+  .replace(/\(\s*\d(?:\s*\+\s*\d)*(?:\s+[a-z ]+)?\s*\)/gi," ")
   .replace(/\(\s*\d+\s*(?:marks?)?\s*\)/gi," ")
   .replace(/\b(?:up\s+to\s+)?\d+(?:\s*[–-]\s*\d+)?\s*marks?\b\.?/gi," ")
   .replace(/^\s*(?:or|accept:?)\s+/i,"")
@@ -57,7 +61,15 @@ export function cleanSourcePoint(point){
  * a slash inside a phrase ("raw facts/values") offers word alternatives.
  */
 export function pointAlternatives(point){
- const whole=cleanSourcePoint(point).split(/\s+(?:OR|or)\s+|\s+\/\s+|;\s*or\s+/)
+ // "e.g. a; b; c" lists examples, any one of which is the point.
+ const examples=cleanSourcePoint(point).match(/^\s*(?:e\.g\.?|for example)\s*,?\s*(.+)$/i);
+ // Upper-case OR / spaced slash separate whole answers; a lower-case "or"
+ // between two words offers word alternatives within one statement.
+ const whole=(examples?examples[1].split(/\s*;\s*/):cleanSourcePoint(point).split(/\s+OR\s+|\s+\/\s+|;\s*or\s+/))
+  .flatMap(v=>{
+   const pair=v.match(/\b([A-Za-z-]+)\s+or\s+([A-Za-z-]+)\b/);
+   return pair?[v.replace(pair[0],pair[1]),v.replace(pair[0],pair[2])]:[v];
+  })
   .map(x=>x.trim()).filter(Boolean);
  const out=[];
  for(const alt of whole){
@@ -100,7 +112,10 @@ function classifyAlternative(baseClauses,alt,synonyms,spent=new Set(),sentences=
   if(hit.length>=minimum){
    // An explicit denial contradicts whatever it restates, even a negative
    // statement; otherwise a locally negated required term contradicts it.
-   if(DENIAL.test(text)&&!DENIAL.test(alt)||!sourceNegative&&locallyNegated(words,new Set(hit)))
+   // A conditional clause ("If the power cannot be switched off") is a
+   // circumstance, not a denial.
+   const conditional=/^\s*(?:if|unless|when|whenever|in\s+case)\b/i.test(text);
+   if(!conditional&&(DENIAL.test(text)&&!DENIAL.test(alt)||!sourceNegative&&locallyNegated(words,new Set(hit))))
     return {state:"contradict",hits:hit.length,terms:terms.length};
    state="match";clause=index;
   }else if(hit.length>=nearAt&&state!=="match"&&!spent.has(index))state="near";

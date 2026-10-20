@@ -15,6 +15,14 @@ const SYN={
   precipitate:["ppt"],
   electrons:["electron"],ions:["ion"],
   mol:["mole","moles"],moles:["mol","mole"],
+  // Shared with Integrated Science, which marks written points with this grader.
+  microorganisms:["microbes","germs","bacteria"],microorganism:["microbe","germ","bacterium"],
+  insect:["insects","bee","bees"],insects:["insect","bee","bees"],
+  chloroplast:["chloroplasts"],chloroplasts:["chloroplast"],
+  nitrate:["nitrates","nitrogen compounds"],nitrates:["nitrate","nitrogen compounds"],
+  gravity:["gravitational","gravitation"],gravitational:["gravity","gravitation"],
+  dilute:["diluted","low concentration"],concentrated:["high concentration","stronger solution"],
+  permeable:["selectively permeable","semi permeable","semipermeable"],
 };
 
 function clean(value){
@@ -40,6 +48,12 @@ function tokenPresent(text,token){
 }
 function strip(point){
   return String(point||"")
+    // Inline acceptance notes ("(accept goggles, gloves ...)") widen the
+    // point; they are not text the candidate must write. Nor are examples
+    // inside a point ("..., e.g. amino acids to make proteins").
+    .replace(/\s*\((?:accept|allow)\b[^)]*\)/gi,"")
+    .replace(/\s*\((?:e\.g\.?|for example)[^)]*\)/gi,"")
+    .replace(/(?<=\S),?\s+(?:e\.g\.?|for example)\s.*$/i,"")
     .replace(/\(\s*\d(?:\s*\+\s*\d)*(?:\s+[a-z ]+)?\s*\)/gi,"")
     .replace(/\([^)]*\b(?:1|2|3|4|5|6)\s*\)/gi,"")
     .replace(/^\s*(?:OR|Accept:)\s*/i,"")
@@ -53,7 +67,19 @@ function strip(point){
  * "g/mol", "4.90/98") are not alternatives.
  */
 function alternatives(point){
-  const whole=strip(point).split(/\s+(?:OR|or)\s+|\s+\/\s+/).map(v=>v.trim()).filter(Boolean);
+  // "e.g. salt - high blood pressure; MSG - headaches; ..." lists examples:
+  // any one of them is the point.
+  const examples=strip(point).match(/^\s*(?:e\.g\.?|for example)\s*,?\s*(.+)$/i);
+  // Upper-case OR and a spaced slash separate whole answers. A lower-case
+  // "or" between two words offers word alternatives inside one statement:
+  // "does not blur or absorb the light" = "does not blur the light" or "does
+  // not absorb the light", never a bare fragment "absorb the light".
+  const whole=(examples?examples[1].split(/\s*;\s*/):strip(point).split(/\s+OR\s+|\s+\/\s+/))
+    .flatMap(v=>{
+      const pair=v.match(/\b([A-Za-z-]+)\s+or\s+([A-Za-z-]+)\b/);
+      return pair?[v.replace(pair[0],pair[1]),v.replace(pair[0],pair[2])]:[v];
+    })
+    .map(v=>v.trim()).filter(Boolean);
   const out=[];
   for(const alt of whole){
     const slash=alt.match(/(?<![\d/])\b([A-Za-z][A-Za-z-]*)(?:\/[A-Za-z][A-Za-z-]*)+\b(?![\d/])/);
@@ -69,7 +95,10 @@ function textMatch(response,reference){
   if(!tokens(reference).filter(t=>!/^(mark|marks|one|two|three|four|five|six|any)$/.test(t)).some(t=>/[a-z]{2}/.test(t)&&!/\d/.test(t)))
     return compact(response).includes(compact(reference));
   return matchScienceWrittenEvidence(response,reference,{
-    tokens:value=>tokens(value).filter(t=>!/^(mark|marks|one|two|three|four|five|six|any)$/.test(t)),
+    // "a form of energy", "a type of", "a kind of" are filler: "Heat is
+    // energy" states "Heat is a form of energy".
+    tokens:value=>tokens(String(value).replace(/\b(?:form|type|kind)\s+of\s+/gi,""))
+      .filter(t=>!/^(mark|marks|one|two|three|four|five|six|any)$/.test(t)),
     tokenPresent
   }).matched;
 }
@@ -188,7 +217,8 @@ function parseSide(text){
   return species.every(Boolean)?species:null;
 }
 export function parseChemicalEquation(value){
-  const sides=equationText(value).split(" → ");
+  // Conditions after the equation ("(light, chlorophyll)") are not species.
+  const sides=equationText(value).replace(/\s*\((?:[a-z][a-z ,]*)\)\s*\.?\s*$/i,"").split(" → ");
   if(sides.length!==2)return null;
   const left=parseSide(sides[0]),right=parseSide(sides[1]);
   return left&&right&&left.length&&right.length?{left,right}:null;
@@ -256,20 +286,98 @@ function ratioShown(response,ratio){
 export function chemistryPointIsNumeric(point){
   return Boolean(ratioPoint(point))||Boolean(expressionStep(point))||numericExpected(point).length>0;
 }
+/**
+ * The step is shown when the operands appear together in one written
+ * arithmetic expression ("2.0 × 2", "4.90/98"), or when its value is stated
+ * as a result ("= 0.0500", "0.0500 mol") rather than merely occurring among
+ * other numbers (a coordinate list, a date, a reading).
+ */
 function expressionShown(response,step){
-  const segments=clean(response).split(/[;\n]|(?<=[a-z])\s+(?=[a-z])/);
+  const text=String(response??"").replace(/(\d),(?=\d{3}\b)/g,"$1");
   const near=(a,b)=>Math.abs(a-b)<=Math.max(1e-9,Math.abs(b)*0.005);
-  if(segments.some(seg=>{const got=numbers(seg);return step.operands.every(o=>got.some(g=>near(g,o)));}))return true;
-  return step.value!==null&&numbers(response).some(g=>near(g,step.value));
+  const expressions=[...text.matchAll(/[-+]?\d+(?:\.\d+)?(?:\s*[×x*\/÷+\-−]\s*\(?\s*[-+]?\d+(?:\.\d+)?\s*\)?)+/g)]
+    .map(m=>numbers(m[0].replace(/[×x*\/÷+()]/g," ")));
+  if(expressions.some(got=>step.operands.every(o=>got.some(g=>near(g,o)))))return true;
+  if(step.value===null)return false;
+  const results=[...text.matchAll(/=\s*\$?\s*([-+]?\d+(?:\.\d+)?)/g)].map(m=>Number(m[1]));
+  return results.some(v=>near(v,step.value));
+}
+
+/**
+ * The marked points of a written science item. Sub-points marked inside one
+ * scheme point are separated; where the scheme allocates more marks than its
+ * points carry, a compound point ("A, so B", "A; B") is read as one mark per
+ * claim, as an examiner reads a two-mark hypothesis or explanation.
+ */
+export function scienceMarkedPoints(item){
+  let points=(item?.markScheme?.points||[]).filter(Boolean).flatMap(chemistrySubPoints);
+  const marks=Number(item?.marks||0);
+  const total=list=>list.reduce((n,p)=>n+chemistryPointMarks(p),0);
+  if(total(points)<marks){
+    const split=points.flatMap(p=>/\(\s*\d/.test(p)?[p]:
+      String(p).split(/,\s+so\s+|;\s+(?=[a-z])/i).map(x=>x.trim()).filter(Boolean));
+    if(split.length>points.length&&total(split)<=marks)points=split;
+  }
+  return points;
+}
+
+/**
+ * Point-by-point marking of a written science item against its scheme:
+ * worded points, labelled values, ratios, arithmetic steps, equations and
+ * graph-reading estimates. Shared by Chemistry and Integrated Science.
+ */
+export function gradeSciencePointLines(base,item,response){
+  return lineResult(base,item,response);
 }
 
 /** A single-point item whose answer is a chemical equation. */
 // A scheme line that only explains the allocation ("1 mark for correct
 // species; 1 mark for balanced charge"), not a separate marking point.
 const allocationNote=point=>/^\s*\d\s*marks?\s+(?:for|reactants)/i.test(String(point||""));
+// Reaction conditions written after an equation ("(light, chlorophyll)").
+const withoutConditions=text=>String(text).replace(/\s*\((?:[a-z][a-z ,]*)\)\s*$/i,"").trim();
 export function chemistryEquationPoint(item){
   const points=(item?.markScheme?.points||[]).filter(Boolean).filter(p=>!allocationNote(p));
-  return points.length===1&&/→|⟶|⇌/.test(points[0])&&parseChemicalEquation(strip(points[0]))?strip(points[0]):null;
+  if(points.length!==1||!/→|⟶|⇌/.test(points[0]))return null;
+  const text=withoutConditions(strip(points[0]));
+  return parseChemicalEquation(text)?text:null;
+}
+
+// ---------------------------------------------------------------------------
+// word equations
+// ---------------------------------------------------------------------------
+/**
+ * "Glucose + oxygen → carbon dioxide + water + energy". Each species may name
+ * an accepted synonym in brackets ("ethanol (alcohol)"); "energy" is
+ * conventional and optional. One mark for the reactants, one for the products.
+ */
+function wordSpecies(side){
+  return String(side).split(/\s+\+\s+|\s+and\s+/).map(s=>s.trim().toLowerCase()).filter(Boolean)
+    .filter(s=>!/^(?:\d+\s*)?energy$|^(?:heat|light)\s+energy$/.test(s))
+    .map(s=>{
+      const names=[s.replace(/\s*\([^)]*\)\s*/g," ").trim(),...[...s.matchAll(/\(([^)]+)\)/g)].map(m=>m[1].trim())];
+      return names.map(n=>n.replace(/\s+/g," ").replace(/\b(?:the|some)\s+/g,"")).filter(Boolean);
+    });
+}
+export function wordEquationPoint(item){
+  const points=(item?.markScheme?.points||[]).filter(Boolean).filter(p=>!allocationNote(p));
+  if(points.length!==1||Number(item?.marks)<2)return null;
+  const text=withoutConditions(strip(points[0]));
+  const sides=text.split(/\s*(?:→|⟶|->)\s*/);
+  if(sides.length!==2||parseChemicalEquation(text)||!/[a-z]{3}/i.test(sides[0]))return null;
+  const left=wordSpecies(sides[0]),right=wordSpecies(sides[1]);
+  return left.length&&right.length?{left,right}:null;
+}
+export function markWordEquation(response,spec){
+  const lines=String(response??"").split(/\n|;/).filter(l=>/→|⟶|->|=|gives|produces/i.test(l));
+  if(lines.length!==1)return {parsed:lines.length===0?false:true,left:false,right:false,competing:lines.length>1};
+  const [l,r]=lines[0].split(/\s*(?:→|⟶|->|=|\bgives\b|\bproduces\b)\s*/i);
+  const side=(written,want)=>{
+    const got=wordSpecies(written||"").map(n=>n[0]);
+    const named=want.every(names=>got.some(g=>names.some(n=>g===n||g===n+"s"||g+"s"===n)));
+    return named&&got.length===want.length;
+  };
+  return {parsed:true,left:side(l,spec.left),right:side(r,spec.right)};
 }
 /**
  * "About 89-92 g per 100 g water (2)" / "Approximately 0.19 g (2)", usually
@@ -304,6 +412,18 @@ function lineResult(base,item,response){
       criteria:[{id:`${base}:estimate`,label:`Value between ${estimate.low} and ${estimate.high}`,
         marks:inRange?maxMarks:0,maxMarks,earned:inRange,evidence:response}]};
   }
+  const words=wordEquationPoint(item);
+  if(words){
+    const maxMarks=Math.max(0,Number(item.marks||0));
+    const r=markWordEquation(response,words);
+    const score=Math.min(maxMarks,(r.left?1:0)+(r.right?Math.max(1,maxMarks-1):0));
+    return {score,maxMarks,unassessedMarks:0,wordEquation:r,
+      confidence:r.parsed?"high":"low",provisional:!r.parsed&&String(response||"").trim()!=="",
+      criteria:[
+        {id:`${base}:reactants`,label:"Reactants named correctly",marks:r.left?1:0,maxMarks:1,earned:r.left,evidence:response},
+        {id:`${base}:products`,label:"Products named correctly",marks:r.right?Math.max(1,maxMarks-1):0,maxMarks:Math.max(1,maxMarks-1),earned:r.right,evidence:response},
+      ]};
+  }
   const equation=chemistryEquationPoint(item);
   if(equation){
     const maxMarks=Math.max(0,Number(item.marks||0));
@@ -318,14 +438,17 @@ function lineResult(base,item,response){
           marks:r.balanced?balanceMarks:0,maxMarks:balanceMarks,earned:r.balanced,evidence:response}]:[]),
       ]};
   }
-  const points=(item.markScheme?.points||[]).filter(Boolean).flatMap(chemistrySubPoints);
+  const points=scienceMarkedPoints(item);
   const maxMarks=Math.max(0,Number(item.marks||0));
   const seen=new Set();
   const criteria=points.map((point,index)=>{
-    const ratio=ratioPoint(point);
-    const step=ratio?null:expressionStep(point);
+    // "e.g. 1.0 N × 40 cm = 40 N cm" illustrates an acceptable answer: it is
+    // matched as an example, not as a required calculation.
+    const example=/^\s*(?:e\.g\.?|for example)\b/i.test(String(point));
+    const ratio=example?null:ratioPoint(point);
+    const step=ratio||example?null:expressionStep(point);
     const refs=step||ratio?[strip(point)]:alternatives(point);
-    const expectedNums=step||ratio?[]:numericExpected(point);
+    const expectedNums=step||ratio||example?[]:numericExpected(point);
     const numeric=expectedNums.length>0;
     const selected=refs.find(ref=>ratio
       ?ratioShown(response,ratio)
