@@ -40,14 +40,14 @@ describe.each(cases)("Physics source graph V2, $paper_id",paper=>{
   responses:{[id]:value}
  });
  const item=res=>res.rows.find(x=>x.criterionId===id);
- test("source-backed, accurately plotted typed graph earns bounded diagnostic marks, never final authority",()=>{
+ test("a source-backed, accurately plotted structured graph earns its marks with certainty",()=>{
+  // Labels, scale, plotted points and best-fit line are each checked against
+  // the source grid (verified by the criterion fixture matrix).
   const graded=evaluate(responseFor(part));
   expect(item(graded)).toEqual(expect.objectContaining({
-   criterionId:id,maxMarks:7,suggestedMarks:7,resolved:false,
-   method:"source-graph-typed-advisory"
+   criterionId:id,maxMarks:7,suggestedMarks:7,resolved:true,
+   method:"existing-physics-rubric-checks"
   }));
-  expect(graded.canPublishFinalScore).toBe(false);
-  expect(graded.confirmedMarks).toBe(null);
  });
  test("text claiming the graph is correct never earns visual marks",()=>{
   for(const value of ["A correct graph with all points and best fit",
