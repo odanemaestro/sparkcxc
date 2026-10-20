@@ -1,4 +1,196 @@
-J", pobHistorical2006MjP2AuthoredScheme_exports],
+ceptedIllustrations]])));
+var POB_2024_JAN_P2_SPARK_MARKING = Object.freeze({
+  id: "POB-P2-2024-JAN",
+  subject: "principles-of-business",
+  paper: 2,
+  sourceFilename: "CSEC_Principles_of_Business_P2_2024_JAN.pdf",
+  sourceSha256: "1bab67360b3d83e7c22c39ccb24318dd2320b156d6347f75980cba0c8d4968f3",
+  rubricProvenance: "spark-authored-not-CXC-official",
+  sourceType: "two-page-typed-transcription",
+  officialCxcMarkingSchemeSupplied: false,
+  completeDraftRubric: true,
+  semanticAssessmentCalibrated: false,
+  liveScoringApproved: false,
+  timeLimitMinutes: 120,
+  maximumMarks: 100,
+  questions: Object.freeze(POB_HISTORICAL_P2_2024_JAN_DRAFT.questions.map((q) => Object.freeze({
+    number: q.number,
+    marks: q.marks,
+    parts: Object.freeze(q.parts.map((p) => {
+      const s = RULES[q.number + ":" + p.id];
+      if (!s) throw new Error("Missing academic rubric for " + q.number + ":" + p.id);
+      const [criteria, modelAnswer, acceptedIllustrations] = s;
+      return Object.freeze({
+        id: p.id,
+        prompt: p.prompt,
+        marks: p.marks,
+        modelAnswer,
+        acceptedIllustrations: Object.freeze(acceptedIllustrations),
+        criteria: Object.freeze(criteria.map((rule) => Object.freeze({
+          marks: 1,
+          rule,
+          sourceSchemeVerified: false,
+          authoredBySpark: true
+        })))
+      });
+    }))
+  })))
+});
+function verifyPob2024JanP2AuthoredRubric(paper = POB_2024_JAN_P2_SPARK_MARKING) {
+  const errors = [];
+  if (paper.id !== "POB-P2-2024-JAN" || paper.sourceSha256 !== "1bab67360b3d83e7c22c39ccb24318dd2320b156d6347f75980cba0c8d4968f3")
+    errors.push("Incorrect source ID or original PDF fingerprint.");
+  if (!Array.isArray(paper.questions) || paper.questions.length !== 5)
+    errors.push("Exactly five source questions required.");
+  let total = 0;
+  let parts = 0;
+  for (const q of paper.questions || []) {
+    if (q.marks !== 20) errors.push("Incorrect 20-mark question " + q.number);
+    let marks = 0;
+    for (const part2 of q.parts || []) {
+      parts++;
+      marks += part2.marks;
+      if (!part2.prompt || !part2.modelAnswer || part2.modelAnswer.length < 15) errors.push("Incomplete answer for " + q.number + ":" + part2.id);
+      if (!Array.isArray(part2.criteria) || part2.criteria.reduce((n, c) => n + c.marks, 0) !== part2.marks)
+        errors.push("Rubric mark mismatch at " + q.number + ":" + part2.id);
+      if (part2.criteria?.some((c) => !c.rule || c.sourceSchemeVerified !== false))
+        errors.push("Invalid provenance at " + q.number + ":" + part2.id);
+    }
+    if (marks !== 20) errors.push("Question total is not 20 for " + q.number);
+    total += marks;
+  }
+  if (total !== 100 || parts !== 28) errors.push("Expected 28 parts worth 100 marks.");
+  if (paper.officialCxcMarkingSchemeSupplied !== false || paper.liveScoringApproved !== false)
+    errors.push("Cannot mislabel draft rubric as CXC official or live.");
+  return { valid: errors.length === 0, errors, parts, marks: total };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2024MjP2AuthoredScheme.js
+var pobHistorical2024MjP2AuthoredScheme_exports = {};
+__export(pobHistorical2024MjP2AuthoredScheme_exports, {
+  POB_2024_MJ_P2_AUTHORED_SCHEME: () => POB_2024_MJ_P2_AUTHORED_SCHEME,
+  verifyPob2024MjP2AuthoredScheme: () => verifyPob2024MjP2AuthoredScheme
+});
+var POINTS7 = Object.freeze([
+  [1, "a", "Planning sets objectives, organising allocates people/resources, directing or leading guides staff, and controlling compares performance to targets and corrects deviations.", ["1:Planning", "1:Organising", "1:Directing or leading", "1:Controlling"]],
+  [1, "b.i", "The business must provide safe working conditions and pay employees fairly and on time under applicable labour law.", ["1:First legal or ethical responsibility to workers", "1:Second distinct responsibility"]],
+  [1, "b.ii", "Management should supply safe properly described goods and deal honestly with customer complaints or returns.", ["1:First genuine responsibility to consumers", "1:Second distinct responsibility"]],
+  [1, "b.iii", "The firm must comply with applicable licensing, taxation and relevant health or safety reporting rules.", ["1:First genuine business responsibility to government", "1:Second different responsibility"]],
+  [1, "c", "Useful management-staff guidelines include mutual respect, fair and consistent treatment, clear grievance procedures and staff recognition or opportunities for development.", ["1:First distinct management-staff relations guideline", "1:Second distinct guideline", "1:Third distinct guideline", "1:Fourth distinct guideline"]],
+  [1, "d", "Managers can hold two-way team meetings with time for questions and follow-up, which resolves misunderstandings. A confidential suggestion or employee-feedback system with prompt written responses creates a dependable path for concerns and builds trust.", ["3:First specific communication approach with implementation and positive effect", "3:Second different approach developed with benefit"]],
+  [2, "a.i", "A contract is a legally enforceable agreement formed between parties with the elements required by law.", ["1:Identifies agreement between parties", "1:Explains legal enforceability"]],
+  [2, "a.ii", "The scenario illustrates the importance of mutual assent: a definite offer must be accepted on the same terms before an agreement is complete.", ["1:Correct simple-contract characteristic relating to matching offer and acceptance"]],
+  [2, "a.iii", "A simple contract generally needs consideration from each party and intention to form legally binding relations; parties must also have capacity and a lawful purpose.", ["2:First genuine contract requirement with accurate meaning", "2:Second different characteristic explained"]],
+  [2, "b.i", "No. Josh has no clear accepted final agreement with Paul on the revised deejay fee.", ["1:Correct no binding agreement conclusion"]],
+  [2, "b.ii", "Paul initially suggested $6,000. Josh's request for $6,500 was a counteroffer rather than unconditional acceptance; Paul only promised to reply about the fee but did not confirm it. Without agreement on those payment terms Josh is unlikely to prove a contract for the performance.", ["1:Identifies $6,000 initial offer", "1:Explains $6,500 counteroffer and no identical acceptance", "1:Applies absent final assent to unsuccessful breach claim"]],
+  [2, "c", "A specialty contract is made in a legally required formal manner, traditionally by deed under seal; it is evidenced by proper written execution and may bind without ordinary consideration under the jurisdiction's deed law.", ["1:Formal instrument or deed", "1:Writing and legally required execution or seal", "1:Distinct feature such as enforceability without ordinary consideration, subject to local law"]],
+  [2, "d", "Performance ends obligations after both parties deliver what they agreed, such as paying for completed catering. Mutual agreement can release both parties, such as written cancellation of a booking. Frustration may also discharge an impossible contract after an unforeseen event without fault.", ["3:First recognised discharge mechanism with legal explanation and apt example", "3:Second distinct discharge method with explanation and example"]],
+  [3, "a", "Production factors include land, labour, capital and entrepreneurship; any two distinct factors earn credit.", ["1:First recognised factor of production", "1:Second different factor"]],
+  [3, "b.i", "Bauxite is an important Caribbean natural resource used as a raw material in mining and processing.", ["1:Names real Caribbean natural resource"]],
+  [3, "b.ii", "Bauxite supports mining and alumina refining or aluminium-related manufacturing.", ["1:Suitable industry tied to named resource"]],
+  [3, "c.i", "A soca performer providing live concerts and performances abroad supplies a tertiary/service product at the export production level.", ["1:Correct tertiary service production type", "1:Correct export level for foreign performances"]],
+  [3, "c.ii", "A fishing cooperative extracting fish is primary production; supply to domestic supermarkets and restaurants is domestic consumption production.", ["1:Correct primary production type", "1:Correct domestic consumption level"]],
+  [3, "c.iii", "A uniform-maker cutting and sewing cloth creates secondary/manufactured output; uniforms solely for children and other relatives are subsistence or own-family consumption production.", ["1:Correct secondary manufacturing production type", "1:Correct subsistence/family consumption level"]],
+  [3, "d", "Production is the total quantity of goods/services produced, whereas productivity is output per unit of labour or another input. Total factory output could grow 15 percent while productivity falls 10 percent if input use rises faster than output.", ["2:Accurately defines absolute production/output", "2:Defines per-input productivity and explains output-up/efficiency-down difference"]],
+  [3, "e", "Relevant resort employees can improve productivity through training in booking, cleaning and customer service that reduces mistakes. Better equipment and reliable digital check-in software also reduce time per room or guest; fair incentives can improve attendance and effort.", ["3:First distinct productivity factor and credible mechanism at resort", "3:Second different factor with concrete resort impact"]],
+  [4, "a.i", "A market is the arrangement where buyers and sellers interact to exchange goods or services and establish prices.", ["1:Buyers and sellers interact", "1:Exchange or pricing purpose"]],
+  [4, "a.ii", "Marketing is the coordinated research, product, pricing, promotion and distribution activities used to satisfy customer needs profitably.", ["1:Identifies product/customer-facing commercial activities", "1:Connects to identifying/satisfying customer needs"]],
+  [4, "b", "The conventional marketing mix consists of product, price, place and promotion.", ["1:Product", "1:Price", "1:Place or distribution", "1:Promotion"]],
+  [4, "c.i", "Branding gives products a unique recognisable identity, such as the name or logo of a Caribbean food business; it distinguishes a firm's product from rival goods.", ["1:Correct distinctive business/product identity concept", "1:Explains differentiation or buyer recognition", "1:Provides a suitable distinct brand example"]],
+  [4, "c.ii", "Sales promotion uses time-limited incentives to encourage buying; for example, a coupon that gives shoppers a discount on a hand sanitiser purchase.", ["1:Correct short-term incentive definition", "1:Explains purchase encouragement", "1:Provides relevant promotional example"]],
+  [4, "d", "As concern about COVID-19 declines, consumers may buy less hand sanitiser because perceived health risk and personal habits change. New competitors, substitutes or cheaper products could also draw demand away from Pat's brand, lowering sales at her existing prices.", ["3:First plausible behavioural demand influence applied to Pat and fall in sales", "3:Second distinct consumer-choice factor developed"]],
+  [5, "a.i", "Banks and other finance providers use ICT for ATMs, mobile banking, electronic fund transfers and real-time transaction/account updates.", ["1:ATM/electronic cash access", "1:Mobile or internet banking", "1:Electronic funds transfer and payment settlement", "1:Electronic transactions/account record systems"]],
+  [5, "a.ii", "Examples of business software include spreadsheet software and accounting packages used to record and analyse transactions.", ["1:First specific appropriate business software category or named program", "1:Second distinct category/program"]],
+  [5, "b", "E-business uses networks and digital systems for a broad range of operations, including supply management, internal planning and customer service; e-commerce is its narrower buying-and-selling component conducted electronically through websites or apps.", ["2:Correctly explains broad electronic business operations", "2:Contrasts narrower electronic buying/selling transactions"]],
+  [5, "c", "ICT can speed customer communication, advertise to wider online markets, automate stock records and produce more accurate financial reports, improving planning and response.", ["1:First distinct credible business improvement from ICT", "1:Second different improvement", "1:Third distinct improvement", "1:Fourth different improvement"]],
+  [5, "d", "Collecting or sharing customers' personal details without informed permission violates confidentiality and can invite unwanted profiling. Weak security or misuse of stored identity/payment data can cause breaches and identity theft, harming customers and business trust.", ["3:First privacy violation with a developed effect on consumers", "3:Second distinct privacy risk and actual consequence"]]
+]);
+var POB_2024_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
+  year: 2024,
+  sitting: "MJ",
+  sourcePages: 16,
+  sourceSha256: "c70368e4d1beff0eeece2495db1ff2a657a4e9d3efdca74e8b6bbf7a5119d0f2",
+  parts: POINTS7
+});
+var verifyPob2024MjP2AuthoredScheme = (paper = POB_2024_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
+
+// src/principlesOfBusiness/data/pobHistorical2025JanP2AuthoredScheme.js
+var pobHistorical2025JanP2AuthoredScheme_exports = {};
+__export(pobHistorical2025JanP2AuthoredScheme_exports, {
+  POB_2025_JAN_P2_AUTHORED_SCHEME: () => POB_2025_JAN_P2_AUTHORED_SCHEME,
+  verifyPob2025JanP2AuthoredScheme: () => verifyPob2025JanP2AuthoredScheme
+});
+var PARTS6 = Object.freeze([
+  [1, "a", "A correct Good Care Beauty Salon chart has manager Rachel Coore on top; accounting clerk Maxine Stamp directly assisting her; Nails Supervisor Julian Jones leading the Nails Department; and Hair Supervisor Kayleigh Scott leading the Hair Department.", ["1:Correctly enters Accounting Clerk Maxine Stamp in assistant position", "1:Correctly enters Nails Supervisor Julian Jones above Nails Department", "1:Correctly enters Hair Supervisor Kayleigh Scott above Hair Department"]],
+  [1, "b.i", "Rachel Coore directly supervises three reporting staff positions: Maxine Stamp, Julian Jones and Kayleigh Scott; the five nail technicians and seven stylists report to their department supervisors.", ["1:Correct direct span of control is three"]],
+  [1, "b.ii", "Potential conflict may arise from unfair work schedules or workloads, and perceived favouritism or disagreement over promotions and wages.", ["1:First credible manager-worker disagreement source", "1:Second distinct source"]],
+  [1, "c.i", "Mediation uses an impartial third person to facilitate communication and voluntary agreement in the workplace dispute, without imposing a decision.", ["1:Neutral mediator facilitates discussion", "1:Parties pursue voluntary solution rather than binding award"]],
+  [1, "c.ii", "Arbitration asks a mutually recognised third party or tribunal to decide a workplace dispute following submissions; the award can be binding by agreement or law.", ["1:Neutral dispute decision-maker", "1:Decision or award, potentially binding"]],
+  [1, "d", "A good leader is honest, communicates clearly, treats employees fairly and listens or consults before making informed decisions.", ["1:First genuine good-leader quality", "1:Second distinct quality", "1:Third distinct quality", "1:Fourth distinct quality"]],
+  [1, "e", "Democratic leaders consult workers, improving decision quality by drawing on technicians' salon experience. Participation also builds trust, morale and commitment to agreed decisions, reducing resentment compared with unilateral authoritarian leadership.", ["3:First distinct democratic leadership benefit with credible salon mechanism", "3:Second developed different benefit"]],
+  [2, "a.i", "An entrepreneur identifies business opportunities, assembles productive resources and bears the calculated risk of starting and running a venture.", ["1:Identifies business opportunity/venture creator", "1:Organises resources or takes business risk"]],
+  [2, "a.ii", "Typical entrepreneurial characteristics include initiative, perseverance, creativity and willingness to take calculated risks.", ["1:First genuine entrepreneur characteristic", "1:Second distinct characteristic"]],
+  [2, "b.i", "Conceptualising involves developing a feasible business idea and identifying the need or market opportunity it could meet.", ["1:Generating a business concept/opportunity", "1:Explains concept development into proposal or solution"]],
+  [2, "b.ii", "Bearing risk requires entrepreneur to invest resources and accept the possibility that losses or failure may occur while seeking returns.", ["1:Recognises financial/operational uncertainty", "1:Shows accepting consequences and calculated risk"]],
+  [2, "b.iii", "Accessing resources means obtaining people, premises, equipment, stock and finance needed to turn a business concept into actual operations.", ["1:Identifies production inputs/finance needed", "1:Explains obtaining or coordinating resources"]],
+  [2, "c", "Entrepreneurship creates local jobs and household income, supporting demand and tax receipts. It also introduces new goods and services, raising national output and reducing reliance on selected imports.", ["2:First distinct Caribbean entrepreneurship growth role with effect", "2:Second different developed role"]],
+  [2, "d", "Karim can comply with restaurant public-health licensing and food-safety inspections by installing handwashing stations, refrigerating chicken safely and training staff on hygiene, reducing foodborne illness. He can also obey waste and grease disposal rules by storing used cooking oil for approved collection rather than dumping it in drains, preventing pollution.", ["3:First distinct applicable restaurant regulation/policy, precise compliance step and environmental/health benefit", "3:Second different regulation/policy explained with compliance steps and purpose"]],
+  [3, "a.i", "Cottage industries typically use small premises or home workshops, low levels of starting capital and a limited number of workers often from the family.", ["1:First cottage-industry feature", "1:Second different feature", "1:Third distinct feature"]],
+  [3, "a.ii", "Small craft workshops may produce woven baskets, pottery and locally made garments or provide tailoring services.", ["1:First legitimate cottage product or service", "1:Second different cottage output", "1:Third distinct product/service"]],
+  [3, "b.i", "A small enterprise often benefits from close personal customer relationships and flexible decisions, allowing quick response to changing demand.", ["1:First valid small-enterprise advantage", "1:Second different advantage"]],
+  [3, "b.ii", "Small enterprises can struggle with limited capital and scale, and may be vulnerable to high input costs or competition from larger firms.", ["1:First genuine small-business disadvantage", "1:Second distinct disadvantage"]],
+  [3, "c.i", "Jerome could expand internally by building a larger production line or adding machinery and employees to his existing fruit juice firm.", ["1:One clear instance of growth within the existing business"]],
+  [3, "c.ii", "Jerome could grow externally by merging with or acquiring another fruit juice company or supplier, using another business's assets and market to expand.", ["1:One viable merger or acquisition route"]],
+  [3, "c.iii", "As Jerome's firm grows, specialised units such as production, finance and HR may require more reporting levels, delegation and formal coordination; this shifts his simple owner-managed structure toward a departmental hierarchy.", ["1:Identifies increased size/specialisation", "1:Explains reporting, departmentalisation or added management", "1:Connects new structure to effective coordination"]],
+  [3, "d.i", "Linkage industries are businesses connected when one supplies materials or services to another or processes/distributes another firm's output.", ["1:Identifies connected interdependent firms/sectors", "1:Explains input/output flows between them"]],
+  [3, "d.ii", "Backward linkage: Jerome's juice business buys local fruits, bottles and packaging from upstream suppliers, creating orders and farm jobs. Forward linkage: it sells bottled juices to supermarkets, cafes or hotels that distribute them to consumers.", ["1:Correctly names backward or forward linkage", "1:Applies it to Jerome's juice manufacturing business", "1:Explains economic/input-output interaction and result"]],
+  [4, "a", "Methods of retailing include supermarkets, convenience/corner stores, vending machines and online selling or mail order.", ["1:First genuine method", "1:Second distinct method", "1:Third distinct method", "1:Fourth distinct method"]],
+  [4, "b.i", "Hire purchase allows a buyer to obtain and use an item while paying for it in instalments; the seller or finance provider generally retains legal title until the agreed final payment, depending on law and contract.", ["1:Buyer obtains item with instalments", "1:Explains title or ongoing payment terms"]],
+  [4, "b.ii", "Consignment means a supplier leaves goods with a retailer/agent to sell on the supplier's behalf; ownership stays with consignor until sale and agent remits proceeds less agreed commission.", ["1:Identifies goods sent for sale on another party's behalf", "1:Explains ownership/commission/return of unsold stock"]],
+  [4, "b.iii", "Layaway reserves selected goods while the buyer pays over time; the buyer generally takes delivery after full payment, unlike ordinary hire purchase.", ["1:Goods reserved and paid gradually", "1:Goods delivered after complete payment"]],
+  [4, "c", "Consumer bodies educate shoppers about rights, investigate complaints, facilitate redress and advocate stronger product-safety and fair-trade rules.", ["1:First genuine consumer body function", "1:Second distinct function", "1:Third different function", "1:Fourth different function"]],
+  [4, "d.i", "Poor service at Venus Communications may cause customers to switch mobile providers and share negative reviews, reducing recurring subscription sales and profitability.", ["1:Recognises lost customers or damaged reputation", "1:Explains dissatisfaction/word of mouth mechanism", "1:Links to reduced revenue or growth"]],
+  [4, "d.ii", "Online live chat can resolve billing or coverage issues promptly; customer surveys reveal recurring complaints. Management should review those responses, train staff and change service processes so complaints are resolved faster and customer loyalty improves.", ["1:Uses surveys or chat to gather direct customer issues", "1:Explains analysing/acting on feedback", "1:Shows better response quality or customer retention"]],
+  [5, "a", "Business technology is the use of tools, machines and digital methods to perform business operations and improve productivity, coordination or service.", ["1:Identifies technology and digital/mechanical tools", "1:Explains real purpose in commercial operations"]],
+  [5, "b", "Living standards or quality of life depend on real disposable income, quality/access of healthcare, education/literacy and safe housing or clean water.", ["1:First genuine welfare/standard of living factor", "1:Second distinct factor", "1:Third different factor", "1:Fourth distinct factor"]],
+  [5, "c.i", "Gross domestic product is the total value of final goods and services produced inside a nation's borders during a particular accounting period.", ["1:Total final national-border domestic output", "1:States accounting period or domestic location"]],
+  [5, "c.ii", "Gross national product measures final productive output attributable to a nation's residents, including net primary income earned from abroad, rather than output solely within its borders.", ["1:Resident/nationally attributable output concept", "1:Explains foreign factor-income adjustment or distinction from GDP"]],
+  [5, "d", "Government can invest in transport and reliable electricity to reduce factory delays and business input costs, increasing output. It can also provide productive enterprise finance or tax incentives to stimulate investment in machinery, agriculture and manufacturing without relying on education interventions.", ["2:First practical noneducation production-increase policy and mechanism", "2:Second distinct policy and production effect"]],
+  [5, "e", "Funding vocational skills and numeracy programmes helps employees adopt efficient equipment and reduce workplace errors, raising output per hour. Education also builds entrepreneurship and scientific or technical capabilities, enabling new firms, innovation and higher-value production in Caribbean industries.", ["3:First education-to-production pathway with full causal explanation", "3:Second different developed pathway"]]
+]);
+var POB_2025_JAN_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
+  year: 2025,
+  sitting: "JAN",
+  sourcePages: 20,
+  sourceSha256: "3bf50ed41965c7f84efa8b321d235c38a5425b45216ed528ca7d6a1bf6f571cf",
+  parts: PARTS6
+});
+var verifyPob2025JanP2AuthoredScheme = (paper = POB_2025_JAN_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
+
+// src/principlesOfBusiness/data/pobHistoricalArchiveRegistry.js
+var declarations = Object.freeze([
+  ["POB-P1-2002-MJ", pobHistorical2002MjP1AuthoredKey_exports],
+  ["POB-P1-2003-MJ", pobHistorical2003MjP1AuthoredKey_exports],
+  ["POB-P1-2004-MJ", pobHistorical2004MjP1AuthoredKey_exports],
+  ["POB-P1-2005-MJ", pobHistorical2005MjP1AuthoredKey_exports],
+  ["POB-P1-2006-MJ", pobHistorical2006MjP1AuthoredKey_exports],
+  ["POB-P1-2007-MJ", pobHistorical2007MjP1AuthoredKey_exports],
+  ["POB-P1-2008-MJ", pobHistorical2008MjP1AuthoredKey_exports],
+  ["POB-P1-2011-MJ", pobHistorical2011MjP1AuthoredKey_exports],
+  ["POB-P1-2012-MJ", pobHistorical2012MjP1AuthoredKey_exports],
+  ["POB-P1-2014-MJ", pobHistorical2014MjP1AuthoredKey_exports],
+  ["POB-P1-2015-MJ", pobHistorical2015MjP1AuthoredKey_exports],
+  ["POB-P1-2016-MJ", pobHistorical2016MjP1AuthoredKey_exports],
+  ["POB-P1-2017-MJ", pobHistorical2017MjP1AuthoredKey_exports],
+  ["POB-P1-2018-MJ", pobHistorical2018MjP1AuthoredKey_exports],
+  ["POB-P1-2020-JAN", pobHistorical2020JanP1AuthoredKey_exports],
+  ["POB-P1-2020-MJ", pobHistorical2020MjP1AuthoredKey_exports],
+  ["POB-P1-2021-MJ", pobHistorical2021MjP1AuthoredKey_exports],
+  ["POB-P1-2022-JAN", pobHistorical2022JanP1AuthoredKey_exports],
+  ["POB-P1-2023-JAN", pobHistorical2023JanP1AuthoredKey_exports],
+  ["POB-P1-2024-MJ", pobHistorical2024MjP1AuthoredKey_exports],
+  ["POB-P2-2005-MJ", pobHistorical2005MjP2AuthoredScheme_exports],
+  ["POB-P2-2006-MJ", pobHistorical2006MjP2AuthoredScheme_exports],
   ["POB-P2-2007-MJ", pobHistorical2007MjP2AuthoredScheme_exports],
   ["POB-P2-2008-MJ", pobHistorical2008MjP2AuthoredScheme_exports],
   ["POB-P2-2009-MJ", pobHistorical2009MjP2AuthoredScheme_exports],
@@ -2164,294 +2356,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
                   "label": "(ii)",
                   "question": "Explain how EACH of the TWO types of credit methods identified in (a) (i) works.",
                   "marks": 6,
-                  "answer": "3 marks each, matched to (a)(i), for example:\n\u2022 Loan: the bank lends a fixed sum for a stated purpose. The borrower usually provides collateral and repays the amount with interest in regular instalments over an agreed period.\n\u2022 Overdraft: the bank allows a current account holder to withdraw more than the balance in the account, up to an agreed limit. Interest is charged daily only on the amount overdrawn, and the overdraft can be withdrawn by the bank.\n\u2022 Credit card: the bank issues a card with a credit limit. The holder buys goods and services now, receives a monthly statement, and pays interest on any balance not paid in full by the due date.\n\u2022 Mortgage: a long-term loan to buy property, with the property itself used as security; it is repaid over many years."
-                }
-              ]
-            },
-            {
-              "label": "(b)",
-              "question": "State TWO reasons why business documents are important in international trade.",
-              "marks": 2,
-              "answer": "Any TWO, 1 mark each:\n\u2022 They provide evidence and a record of the transaction.\n\u2022 They are needed to clear goods through customs.\n\u2022 Some show ownership of the goods (for example the bill of lading).\n\u2022 They state the terms (prices, quantities, delivery) and help avoid disputes.\n\u2022 They are needed to obtain payment (letters of credit) and to make insurance claims."
-            },
-            {
-              "label": "(c)",
-              "question": "Distinguish between the terms 'credit note' and 'debit note'.",
-              "marks": 4,
-              "answer": "2 marks each:\n\u2022 Credit note: sent by the seller to the buyer to REDUCE the amount the buyer owes, for example when goods are returned or damaged or the buyer was overcharged.\n\u2022 Debit note: sent by the seller to the buyer to INCREASE the amount the buyer owes, for example when the buyer was undercharged or a charge (such as carriage) was left off the invoice."
-            },
-            {
-              "label": "(d)",
-              "question": "Discuss TWO reasons why a supplier may use a 'pro forma invoice'.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 To request payment in advance: when dealing with a new customer or one whose creditworthiness is unknown, the supplier sends a pro forma invoice and dispatches the goods only after payment is received.\n\u2022 As a quotation: it shows the buyer exactly what the goods will cost (price, discounts, delivery charges) before the order is confirmed.\n\u2022 When goods are sent on approval or on a sale-or-return basis.\n\u2022 For international trade: the importer needs it to apply for an import licence, foreign exchange or a letter of credit, and it may be used for customs valuation."
-            }
-          ]
-        },
-        {
-          "number": 6,
-          "section": "Section III",
-          "section_instructions": "Answer EITHER Question 6 OR Question 7. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Explain what is meant by the statement 'government is a regulator of business', giving TWO examples to support your explanation.",
-              "marks": 5,
-              "answer": "Explanation (3 marks): the government makes and enforces laws and rules that control how businesses are set up and how they operate, in order to protect consumers, workers and the environment and to make sure that competition is fair.\nAny TWO examples, 1 mark each:\n\u2022 Requiring businesses to register and obtain licences\n\u2022 Health and safety inspections\n\u2022 Price controls\n\u2022 Minimum wage laws\n\u2022 Product standards set by the Bureau of Standards\n\u2022 Environmental and zoning laws"
-            },
-            {
-              "label": "(b)",
-              "question": "State THREE purposes of taxation. For EACH of the purposes stated, explain how the government in your country uses the taxes collected.",
-              "marks": 9,
-              "answer": "Any THREE, 3 marks each (1 for the purpose, 2 for how the taxes are used):\n\u2022 To raise revenue for government spending: used to pay public servants and to build and run roads, schools and hospitals.\n\u2022 To redistribute income: higher earners pay more income tax, and the money is used for social welfare such as pensions, public assistance and school feeding programmes for the poor.\n\u2022 To discourage harmful consumption: high excise duties on tobacco and alcohol reduce consumption, and the revenue helps fund health care and anti-drug programmes.\n\u2022 To protect local industries: import duties make imports dearer, and the revenue can be used to support local producers.\n\u2022 To manage the economy (fiscal policy): taxes are raised to reduce spending and inflation, or lowered to encourage growth."
-            },
-            {
-              "label": "(c)",
-              "question": "Discuss EACH of the following consumer protection legislations showing how EACH benefits consumers.\n(i) Food and drug standards\n(ii) Hire purchase laws",
-              "marks": 6,
-              "answer": "3 marks each:\n(i) Food and drug standards: these laws set standards for how food and medicines are prepared, stored, labelled (ingredients, expiry dates) and sold, and inspectors check premises. Consumers are protected from unsafe, contaminated or fake products and can make informed choices.\n(ii) Hire purchase laws: the agreement must be in writing and state the cash price, the hire purchase price, the deposit, the instalments and the interest, and the buyer must receive a copy. Once a stated part of the price (for example one-third) has been paid, the seller cannot repossess the goods without a court order. Consumers are protected from hidden charges, exploitation and unfair repossession."
-            }
-          ]
-        },
-        {
-          "number": 7,
-          "section": "Section III",
-          "section_instructions": "Answer EITHER Question 6 OR Question 7. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Explain how the national income of a country is measured using EACH of the following methods:\n(i) Income\n(ii) Expenditure\n(iii) Output",
-              "marks": 6,
-              "answer": "2 marks each:\n(i) Income method: add up all the incomes earned by the factors of production in the year: wages and salaries, rent, interest and profits. Transfer payments such as pensions are left out to avoid double counting.\n(ii) Expenditure method: add up total spending on final goods and services: consumption + investment + government spending + (exports \u2212 imports).\n(iii) Output method: add up the value added by every sector of the economy (agriculture, manufacturing, services), or the value of final goods and services only, to avoid counting the same item twice."
-            },
-            {
-              "label": "(b)",
-              "question": "Explain ONE function of EACH of the following organizations:\n(i) Caribbean Development Bank\n(ii) World Bank\n(iii) International Monetary Fund",
-              "marks": 6,
-              "answer": "2 marks each:\n(i) Caribbean Development Bank: provides low-interest loans and technical assistance to member countries for development projects such as roads, schools, water and housing.\n(ii) World Bank: provides long-term loans and grants to developing countries for development projects (infrastructure, education, health) and poverty reduction.\n(iii) International Monetary Fund: provides short-term loans to countries with balance of payments problems, promotes exchange rate stability and gives policy advice."
-            },
-            {
-              "label": "(c)",
-              "question": "Explain what is meant by CSME.",
-              "marks": 2,
-              "answer": "CSME is the CARICOM Single Market and Economy (1): an arrangement among CARICOM member states to form one economic space in which goods, services, capital and skilled people move freely, with harmonised economic policies and a common external tariff (1)."
-            },
-            {
-              "label": "(d)",
-              "question": "Discuss TWO ways in which the CSME can assist in the economic development of Caribbean countries.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 A larger market: producers can sell across the region, gaining economies of scale, increasing production and creating jobs.\n\u2022 Free movement of skilled labour fills skill shortages and gives workers wider opportunities.\n\u2022 Free movement of capital allows investment to flow to where it is most productive.\n\u2022 More competition makes firms more efficient, lowering prices and improving quality.\n\u2022 Harmonised policies create stability that attracts foreign investors.\n\u2022 The region can negotiate trade agreements as a group, with stronger bargaining power."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "paper": "Paper 2 (Structured Response)",
-      "year": "2012",
-      "session": "May/June",
-      "duration": "2 hours",
-      "instructions": "1. Answer the THREE questions in Section I, ONE in Section II and ONE in Section III as indicated.\n2. All answers must be written in the booklet provided.\n3. Begin EACH question on a separate page.\n4. Keep ALL parts of EACH answer together.\n5. EACH question is worth 20 marks.",
-      "total_questions": 7,
-      "questions": [
-        {
-          "number": 1,
-          "section": "Section I",
-          "section_instructions": "Answer the THREE questions in this section.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Identify THREE features of a small business.",
-                  "marks": 3,
-                  "answer": "Any THREE, 1 mark each:\n\u2022 Few employees\n\u2022 Small amount of capital\n\u2022 Managed by the owner\n\u2022 Serves a local market\n\u2022 Small share of the market\n\u2022 Usually a sole trader or partnership\n\u2022 Simple organizational structure\n\u2022 Low sales turnover"
-                },
-                {
-                  "label": "(ii)",
-                  "question": "State THREE reasons why small businesses are important to a community.",
-                  "marks": 3,
-                  "answer": "Any THREE, 1 mark each:\n\u2022 They create jobs for residents.\n\u2022 They provide goods and services conveniently close to home.\n\u2022 They give personal service.\n\u2022 They support community activities.\n\u2022 They develop local entrepreneurs.\n\u2022 They make use of local resources."
-                }
-              ]
-            },
-            {
-              "label": "(b)",
-              "question": "Explain the effect of growth on EACH of the following:\n(i) Scale of production\n(ii) Potential for export",
-              "marks": 4,
-              "answer": "2 marks each:\n(i) Scale of production: as the business grows it produces on a larger scale (mass production) and enjoys economies of scale, so its cost per unit falls; if it grows too large it may face diseconomies of scale.\n(ii) Potential for export: larger output and lower unit costs make the products more competitive, and production beyond local demand can be sold overseas; the business can also handle large export orders and meet international standards."
-            },
-            {
-              "label": "(c)",
-              "question": "A fashion designer would like to introduce Computer Aided Design (CAD) into her fashion designing business. Outline TWO benefits that she will enjoy from using CAD in her business.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Designs can be created and changed quickly on screen, saving time.\n\u2022 Patterns and measurements are accurate, reducing wasted fabric.\n\u2022 She can view a design in 3-D and in different colours and fabrics before making it.\n\u2022 Designs can be stored, retrieved and reused easily.\n\u2022 Designs can be shared electronically with clients and manufacturers.\n\u2022 She can produce more designs and serve more customers."
-            },
-            {
-              "label": "(d)",
-              "question": "Discuss TWO disadvantages of using technology in a small business.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 High cost: buying, installing and maintaining equipment and software puts a strain on the small capital of the business.\n\u2022 Training: the owner must train staff or hire skilled workers, which costs time and money.\n\u2022 Breakdowns and power cuts can stop work completely, and repairs may be expensive.\n\u2022 Technology becomes outdated quickly and must be replaced.\n\u2022 Workers may lose their jobs when machines take over their tasks.\n\u2022 Risk of hacking, viruses and loss of data."
-            }
-          ]
-        },
-        {
-          "number": 2,
-          "section": "Section I",
-          "section_instructions": "Answer the THREE questions in this section.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Outline TWO responsibilities of the management of a business to EACH of the following:\n(i) Society\n(ii) Employees\n(iii) Customers",
-              "marks": 6,
-              "answer": "1 mark for each responsibility (any TWO per group):\n(i) Society: protect the environment (proper waste disposal, reduce pollution); support community projects (corporate social responsibility); obey the law and pay taxes; provide employment; act ethically.\n(ii) Employees: pay fair wages and benefits; provide safe working conditions; provide training and development; treat workers fairly without discrimination; give job security; communicate openly.\n(iii) Customers: provide good-quality, safe products at fair prices; give honest information and advertising; provide good customer and after-sales service; deal with complaints promptly."
-            },
-            {
-              "label": "(b)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "State FOUR ways in which managers can encourage teamwork within an organization.",
-                  "marks": 4,
-                  "answer": "Any FOUR, 1 mark each:\n\u2022 Set common goals for the team\n\u2022 Organise team-building activities and retreats\n\u2022 Reward team performance (for example team bonuses)\n\u2022 Involve workers in decision making\n\u2022 Hold regular team meetings and keep communication open\n\u2022 Assign group projects\n\u2022 Train staff in working together\n\u2022 Recognise each member's contribution\n\u2022 Create a friendly working environment"
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Describe TWO characteristics that would make a Prime Minister or President a good leader.",
-                  "marks": 4,
-                  "answer": "Any TWO, 2 marks each:\n\u2022 Vision: has a clear plan for the country's future and can explain it.\n\u2022 Integrity: honest and trustworthy, so citizens have confidence in the government.\n\u2022 Good communication: explains policies clearly and listens to citizens.\n\u2022 Decisiveness: makes difficult decisions in time.\n\u2022 Empathy: shows concern for the welfare of all citizens.\n\u2022 Ability to inspire and unite people.\n\u2022 Fairness and competence."
-                }
-              ]
-            },
-            {
-              "label": "(c)",
-              "question": "The manager of DXC Ltd wants to promote Steve, a junior employee, to a key position in the organization. There are several employees who are senior to Steve and are interested in the same position. Discuss TWO strategies which the management of DXC Ltd can employ to reduce conflict that may arise from this promotion.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 Use a fair and open promotion process: advertise the post internally, set clear criteria (qualifications, performance, skills), interview all applicants and explain why Steve was chosen, so the decision is seen as based on merit.\n\u2022 Communicate with the staff: hold a meeting or meet individually with the senior employees to explain the decision and listen to their concerns.\n\u2022 Offer career development to the others: training, mentoring and a clear path to future promotions, so they do not feel overlooked.\n\u2022 Use the grievance procedure and involve the trade union if staff feel they were treated unfairly.\n\u2022 Recognise the senior employees in other ways (for example new responsibilities or rewards) and use team-building to help everyone accept Steve in his new role."
-            }
-          ]
-        },
-        {
-          "number": 3,
-          "section": "Section I",
-          "section_instructions": "Answer the THREE questions in this section.",
-          "stem": "Maggie recently bought books, shoes and clothes from an online company.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Define the term 'e-commerce'.",
-              "marks": 2,
-              "answer": "E-commerce is the buying and selling of goods and services over the internet or other electronic networks (1), including payment made electronically (1)."
-            },
-            {
-              "label": "(b)",
-              "question": "State TWO advantages and TWO disadvantages of 'e-commerce'.",
-              "marks": 4,
-              "answer": "1 mark each.\nAdvantages (any TWO): shop 24 hours a day from home; wider choice of goods; easy to compare prices; often lower prices; sellers can reach customers worldwide.\nDisadvantages (any TWO): goods cannot be inspected before buying; risk of fraud and hacking; delivery delays, shipping costs and customs duties; returning goods is difficult; requires internet access and a credit or debit card."
-            },
-            {
-              "label": "(c)",
-              "question": "Outline TWO reasons why firms offer trade discounts.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 To encourage customers to buy in bulk.\n\u2022 To allow wholesalers and retailers to make a profit when they resell at the recommended retail price.\n\u2022 To attract and keep trade customers (build loyalty).\n\u2022 To compete with other suppliers.\n\u2022 To clear old stock."
-            },
-            {
-              "label": "(d)",
-              "question": "Maggie plans to buy a refrigerator from a local store.",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Discuss any TWO of the following 'terms of sale' options that are available to her:\na) Hire purchase\nb) Lay away plan\nc) Credit sale\nd) Credit card",
-                  "marks": 6,
-                  "answer": "Any TWO, 3 marks each:\na) Hire purchase: Maggie pays a deposit, takes the refrigerator home and pays the balance plus interest in instalments. She does not own it until the last instalment is paid, and the store may repossess it if she fails to pay (subject to hire purchase law). The total cost is higher than the cash price.\nb) Lay away plan: Maggie pays a deposit and makes regular payments while the store keeps the refrigerator for her. She collects it only when it is fully paid for. There is usually no interest, but she cannot use it until it is paid off.\nc) Credit sale: Maggie takes the refrigerator and becomes the owner immediately, paying for it in instalments. The store cannot repossess it; if she does not pay, it can only sue her for the debt.\nd) Credit card: Maggie pays with her card, the card company pays the store, and she repays the card company. She owns the refrigerator immediately, but interest is charged if she does not pay the full balance by the due date."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Given that Maggie buys the refrigerator and it stops working after one month. Advise her of TWO actions which she may take to get compensation from the store.",
-                  "marks": 4,
-                  "answer": "Any TWO, 2 marks each:\n\u2022 Return the refrigerator to the store with her receipt and ask for a repair, replacement or refund under the warranty (guarantee).\n\u2022 Make a formal written complaint to the store manager.\n\u2022 Report the matter to the Consumer Affairs Commission or other consumer protection agency.\n\u2022 Take legal action, for example in the Small Claims Court.\n\u2022 Contact the manufacturer under the manufacturer's warranty."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "number": 4,
-          "section": "Section II",
-          "section_instructions": "Answer EITHER Question 4 or Question 5. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "State THREE reasons for establishing a business.",
-                  "marks": 3,
-                  "answer": "Any THREE, 1 mark each: to earn a profit; to be one's own boss; to meet a need in the community; to use one's skills and talents; to create employment for oneself and family; for personal satisfaction."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Identify THREE sources of capital used in financing a business.",
-                  "marks": 3,
-                  "answer": "Any THREE, 1 mark each: personal savings; loans from banks or credit unions; family and friends; partners or shareholders; government grants or development bank loans; venture capital; trade credit; hire purchase; retained profits."
-                }
-              ]
-            },
-            {
-              "label": "(b)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Define the term 'collateral' and give TWO examples of collateral that may be used in a business transaction.",
-                  "marks": 4,
-                  "answer": "Collateral is an asset that a borrower pledges to a lender as security for a loan, which the lender can take and sell if the loan is not repaid (2).\nAny TWO examples, 1 mark each: land or buildings, a fixed deposit, an insurance policy with a cash value, shares or bonds, motor vehicles, equipment, stock."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Outline TWO reasons why collateral is important to a borrower.",
-                  "marks": 4,
-                  "answer": "Any TWO, 2 marks each:\n\u2022 It improves the borrower's chances of getting the loan.\n\u2022 The borrower may be able to get a lower interest rate or a larger loan.\n\u2022 A borrower with little credit history can still obtain credit.\n\u2022 The borrower may be given a longer repayment period."
-                }
-              ]
-            },
-            {
-              "label": "(c)",
-              "question": "Discuss the importance of EACH of the following elements of a business plan:\n(i) Executive summary\n(ii) Financial projections",
-              "marks": 6,
-              "answer": "3 marks each:\n(i) Executive summary: gives a brief overview of the whole plan (the business, its product, its market and the finance needed). It is the first part lenders and investors read, so it must capture their interest and help them decide quickly whether to read further and support the business.\n(ii) Financial projections: estimates of sales, costs, profit and cash flow (and the break-even point) for the coming years. They show whether the business is likely to be profitable and able to repay loans, help the owner plan how much money is needed and when, and are used later to monitor performance."
-            }
-          ]
-        },
-        {
-          "number": 5,
-          "section": "Section II",
-          "section_instructions": "Answer EITHER Question 4 or Question 5. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "State TWO roles of commercial banks.",
-              "marks": 2,
-              "answer": "Any TWO, 1 mark each: accepting deposits; lending money; providing ways to make payments (cheques, cards, transfers); foreign exchange; safekeeping of valuables; financial advice."
-            },
-            {
-              "label": "(b)",
-              "question": "Outline the differences between EACH of the following pairs of business terms:\n(i) Money market and capital market\n(ii) Crossed cheques and open cheques\n(iii) Bull market and bear market",
-              "marks": 6,
-              "answer": "2 marks each:\n(i) The money market deals in short-term borrowing and lending (less than one year), for example treasury bills and inter-bank loans. The capital market deals in long-term funds (more than one year), for example shares, bonds, debentures and mortgages, as on the stock exchange.\n(ii) A crossed cheque has two parallel lines drawn across its face and cannot be cashed over the counter; it must be paid into a bank account, which makes it safer. An open cheque is not crossed and can be cashed over the counter by the payee.\n(iii) A bull market is a period when share prices are rising and investors are optimistic and buying. A bear market is a period when share prices are falling and investors are pessimistic and selling."
-            },
-            {
-              "label": "(c)",
-              "question": "Describe THREE benefits that an entrepreneur may enjoy from starting his own business as opposed to purchasing investments.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Control: he decides how the money is used and how the business is run.\n\u2022 Higher potential returns: all the profit belongs to him, instead of a fixed rate of interest or dividends decided by others.\n\u2022 Independence and personal satisfaction from building his own business.\n\u2022 He creates a job for himself and for others.\n\u2022 He can use his own skills and ideas.\n\u2022 He builds an asset that he can later sell or pass on to his family."
-            },
-            {
-      
+                  "answer": "3 marks each, matched to (a)(i), for example:\n\u2022 Loan: the bank lends a fixed sum for a stated purpose. The borrower usually provides collateral and repays the amount with interest in regular instalments over an agreed period.\n\u2022 Overdraft: the bank allows a current account holder to withdraw m

@@ -1,4 +1,4 @@
-peners = (low.match(/\b(?:some will say|some may say|some may argue|some people argue|others say|critics may argue|however|although|admittedly|on the other hand)\b/g) || []).length;
+rOpeners = (low.match(/\b(?:some will say|some may say|some may argue|some people argue|others say|critics may argue|however|although|admittedly|on the other hand)\b/g) || []).length;
   const rebuttals = (low.match(/\b(?:i disagree|but|however|yet|that concern|this concern|in response|the answer is|does not|do not)\b/g) || []).length;
   const supportSignals = (low.match(/\b(?:because|for example|for instance|such as|think of|consider|according to|survey|data|evidence|cost|benefit|help|helps|allow|allows|give|gives|provide|provides|means|therefore|so that|as a result|in an emergency)\b/g) || []).length;
   const stance = /\b(?:i believe|i think|i support|i oppose|i stand firmly|in favour|in favor|against|should|should not|must|must not|in my view|my position)\b/.test(low);
@@ -291,7 +291,7 @@ function value(raw) {
 
 // src/integratedScience/practice/scienceStructuredMarking.js
 var method = (expression) => ({ kind: "method", expression });
-var answer = (number, unit = "", alternatives = []) => ({ kind: "answer", number, unit, alternatives });
+var answer = (number, unit = "", alternatives2 = []) => ({ kind: "answer", number, unit, alternatives: alternatives2 });
 var SCIENCE_CALCULATIONS = {
   "IS-M1-P2-17:0:1": [method("(86-12)/86*100"), { ...answer(86, "%"), tolerance: 0.05 }],
   "IS-M1-P2-19:0:0": [method("(18+15+14+12+11)/5"), answer(14, "cm")],
@@ -1636,22 +1636,480 @@ function gradeConstructedGraph(base, item2, responses, graph, rubric, axisMatche
 }
 
 // src/grading/scienceWrittenEvidence.js
-var NEGATION = /\b(?:not|no|never|cannot|can't|without|doesn'?t|isn'?t|don'?t|neither|nor)\b/i;
+var NEGATION = /\b(?:not|no|never|cannot|can't|couldn't|won't|without|doesn'?t|isn'?t|don'?t|didn'?t|neither|nor|fails?\s+to|unable\s+to|false\s+that|is\s+false\b|incorrect\s+to\s+say)\b/i;
+var normalisePolarity = (value2) => String(value2 ?? "").replace(/[’‘]/g, "'");
 function scienceResponseClauses(value2) {
-  return String(value2 ?? "").split(/(?:[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)|\s+\b(?:however|whereas|but)\b\s+)/i).map((part2) => part2.trim()).filter(Boolean);
+  return String(value2 ?? "").split(/(?:[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)|(?<=\d)\.\s+(?=[A-Z])|\s+\b(?:however|whereas|but|although|yet|nevertheless)\b\s+)/i).map((part2) => part2.trim()).filter(Boolean);
 }
-function matchScienceWrittenEvidence(response, reference, { tokens: tokens2, tokenPresent: tokenPresent2, strict = false }) {
-  const terms = [...new Set(tokens2(reference))];
+var CONTRASTS = [
+  ["soluble", "insoluble"],
+  ["more", "less"],
+  ["increase", "decrease"],
+  ["increases", "decreases"],
+  ["increased", "decreased"],
+  ["increasing", "decreasing"],
+  ["higher", "lower"],
+  ["high", "low"],
+  ["faster", "slower"],
+  ["fast", "slow"],
+  ["gain", "lose"],
+  ["gains", "loses"],
+  ["gained", "lost"],
+  ["oxidised", "reduced"],
+  ["oxidized", "reduced"],
+  ["oxidation", "reduction"],
+  ["exothermic", "endothermic"],
+  ["acidic", "alkaline"],
+  ["acidic", "basic"],
+  ["positive", "negative"],
+  ["anode", "cathode"],
+  ["conductor", "insulator"],
+  ["saturated", "unsaturated"],
+  ["reactive", "unreactive"],
+  ["strong", "weak"],
+  ["concentrated", "dilute"],
+  ["larger", "smaller"],
+  ["large", "small"],
+  ["rises", "falls"],
+  ["rise", "fall"],
+  ["expand", "contract"],
+  ["expands", "contracts"],
+  ["ionic", "covalent"],
+  ["absorbs", "releases"],
+  ["absorbed", "released"],
+  ["heated", "cooled"],
+  ["denser", "lighter"],
+  ["above", "below"],
+  ["metal", "non-metal"],
+  ["metallic", "non-metallic"],
+  ["polar", "non-polar"],
+  ["permeable", "impermeable"],
+  ["aerobic", "anaerobic"],
+  ["renewable", "non-renewable"],
+  ["visible", "invisible"],
+  ["able", "unable"]
+];
+var words = (value2) => normalisePolarity(value2).toLowerCase().split(/[^a-z-]+/).filter(Boolean);
+function contrastedTerms(clause, reference) {
+  const said = new Set(words(clause)), wanted = new Set(words(reference));
+  return CONTRASTS.some(([a, b]) => wanted.has(a) && !said.has(a) && said.has(b) || wanted.has(b) && !said.has(b) && said.has(a));
+}
+function matchScienceWrittenEvidence(response, reference, { tokens: tokens3, tokenPresent: tokenPresent3, strict = false }) {
+  const terms = [...new Set(tokens3(reference))];
   if (!terms.length) return { matched: false, evidence: "", contradicted: false };
-  const hasNegation = (value2) => NEGATION.test(String(value2 || ""));
+  const hasNegation = (value2) => NEGATION.test(normalisePolarity(value2));
   const negativeReference = hasNegation(reference);
   const minimum = strict ? terms.length : terms.length <= 3 ? terms.length : Math.ceil(terms.length * 0.75);
-  const clauses = scienceResponseClauses(response);
-  const hits = (clause) => terms.filter((term) => tokenPresent2(clause, term)).length;
-  const contradicted = clauses.some((clause) => hasNegation(clause) !== negativeReference && hits(clause) >= minimum);
+  const joined = /\b(?:however|whereas|but|although|yet|nevertheless)\b|;/i.test(reference);
+  const clauses = [
+    ...scienceResponseClauses(response),
+    ...joined ? String(response ?? "").split(/\n+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)|(?<=\d)\.\s+(?=[A-Z])/).map((s) => s.trim()).filter(Boolean) : []
+  ];
+  const required = [...String(reference).matchAll(/(?<![\d.])\d+(?:\.\d+)?(?![\d.])/g)].map((m) => m[0]);
+  const stated = (clause, n) => new RegExp(`(?<![\\d.])${n.replace(".", "\\.")}(?!\\d|\\.\\d)`).test(String(clause));
+  const hits = (clause) => contrastedTerms(clause, reference) || !required.every((n) => stated(clause, n)) ? 0 : terms.filter((term) => tokenPresent3(clause, term)).length;
+  const denial = (clause) => /^\s*(?:it\s+is\s+(?:false|incorrect|not\s+true|untrue)\s+(?:that|to\s+say)|it'?s\s+not\s+true\s+that)\b/i.test(normalisePolarity(clause));
+  const referenceDenies = denial(reference);
+  const conditional = (clause) => /^\s*(?:if|unless|when|whenever|in\s+case)\b/i.test(clause);
+  const contradicted = clauses.some((clause) => !conditional(clause) && (denial(clause) && !referenceDenies || hasNegation(clause) !== negativeReference) && hits(clause) >= minimum);
   if (contradicted) return { matched: false, evidence: "", contradicted: true };
   const evidence = clauses.find((clause) => hasNegation(clause) === negativeReference && hits(clause) >= minimum);
   return { matched: Boolean(evidence), evidence: evidence || "", contradicted: false };
+}
+
+// src/chemistry/practice/chemistryPaper2Grader.js
+var STOP = new Set("a an and are as at be because been by for from has have in into is it of on or that the their then this to was were when which with".split(" "));
+var SYN = {
+  oxidised: ["oxidized", "oxidation"],
+  oxidized: ["oxidised", "oxidation"],
+  sulphate: ["sulfate"],
+  sulfate: ["sulphate"],
+  sulphuric: ["sulfuric"],
+  sulfuric: ["sulphuric"],
+  colourless: ["colorless"],
+  colorless: ["colourless"],
+  aluminium: ["aluminum"],
+  aluminum: ["aluminium"],
+  precipitate: ["ppt"],
+  electrons: ["electron"],
+  ions: ["ion"],
+  mol: ["mole", "moles"],
+  moles: ["mol", "mole"],
+  // Shared with Integrated Science, which marks written points with this grader.
+  microorganisms: ["microbes", "germs", "bacteria"],
+  microorganism: ["microbe", "germ", "bacterium"],
+  insect: ["insects", "bee", "bees"],
+  insects: ["insect", "bee", "bees"],
+  chloroplast: ["chloroplasts"],
+  chloroplasts: ["chloroplast"],
+  nitrate: ["nitrates", "nitrogen compounds"],
+  nitrates: ["nitrate", "nitrogen compounds"],
+  gravity: ["gravitational", "gravitation"],
+  gravitational: ["gravity", "gravitation"],
+  dilute: ["diluted", "low concentration"],
+  concentrated: ["high concentration", "stronger solution"],
+  permeable: ["selectively permeable", "semi permeable", "semipermeable"]
+};
+function clean2(value2) {
+  return String(value2 ?? "").toLowerCase().replace(/[–—−⁻₋]/g, "-").replace(/[×∗]/g, "*").replace(/÷/g, "/").replace(/[₀-₉]/g, (ch) => String("\u2080\u2081\u2082\u2083\u2084\u2085\u2086\u2087\u2088\u2089".indexOf(ch))).replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, (ch) => String("\u2070\xB9\xB2\xB3\u2074\u2075\u2076\u2077\u2078\u2079".indexOf(ch))).replace(/⁺/g, "+").replace(/(?<!\d)\.|\.(?!\d)/g, " ").replace(/[^a-z0-9.+/%°=^*()\-]+/g, " ").replace(/\s+/g, " ").trim();
+}
+var stem2 = (t) => t.replace(/(ing|ed|es|s)$/, "");
+function tokens(value2) {
+  return clean2(value2).split(" ").filter((t) => t && t.length > 1 && !STOP.has(t));
+}
+function tokenPresent(text, token) {
+  const c = clean2(text), t = clean2(token);
+  if ((" " + c + " ").includes(" " + t + " ")) return true;
+  if ((SYN[t] || []).some((v) => (" " + c + " ").includes(" " + clean2(v) + " "))) return true;
+  const wanted = stem2(t);
+  return tokens(c).some((v) => stem2(v) === wanted || v === t.replace(/s$/, "") || t === v.replace(/s$/, ""));
+}
+function strip(point) {
+  return String(point || "").replace(/\s*\((?:accept|allow)\b[^)]*\)/gi, "").replace(/\s*\((?:e\.g\.?|for example)[^)]*\)/gi, "").replace(/(?<=\S),?\s+(?:e\.g\.?|for example)\s.*$/i, "").replace(/\(\s*\d(?:\s*\+\s*\d)*(?:\s+[a-z ]+)?\s*\)/gi, "").replace(/\([^)]*\b(?:1|2|3|4|5|6)\s*\)/gi, "").replace(/^\s*(?:OR|Accept:)\s*/i, "").trim();
+}
+function alternatives(point) {
+  const examples = strip(point).match(/^\s*(?:e\.g\.?|for example)\s*,?\s*(.+)$/i);
+  const whole = (examples ? examples[1].split(/\s*;\s*/) : strip(point).split(/\s+OR\s+|\s+\/\s+/)).flatMap((v) => {
+    const pair = v.match(/\b([A-Za-z-]+)\s+or\s+([A-Za-z-]+)\b/);
+    return pair ? [v.replace(pair[0], pair[1]), v.replace(pair[0], pair[2])] : [v];
+  }).map((v) => v.trim()).filter(Boolean);
+  const out = [];
+  for (const alt of whole) {
+    const slash = alt.match(/(?<![\d/])\b([A-Za-z][A-Za-z-]*)(?:\/[A-Za-z][A-Za-z-]*)+\b(?![\d/])/);
+    if (!slash || /^(?:mol|dm|cm|g|s|min|kg|m)\b/i.test(slash[0].split("/")[1])) out.push(alt);
+    else for (const option of slash[0].split("/")) out.push(alt.replace(slash[0], option));
+  }
+  return out.filter(Boolean);
+}
+var compact = (value2) => clean2(value2).replace(/\s+/g, "");
+function symbolPresent(response, reference) {
+  const ref = compact(reference);
+  if (!ref) return false;
+  const body = [...ref].map((ch) => ch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("\\s*");
+  const before = /^[0-9.]/.test(ref) ? "(?<![a-z0-9.])" : "(?<![a-z])";
+  return new RegExp(before + body + "(?![a-z0-9])").test(clean2(response));
+}
+var pointTokens = (value2) => tokens(String(value2).replace(/\b(?:form|type|kind)\s+of\s+/gi, "")).filter((t) => !/^(mark|marks|one|two|three|four|five|six|any)$/.test(t));
+function textMatch(response, reference, siblings = []) {
+  if (!tokens(reference).filter((t) => !/^(mark|marks|one|two|three|four|five|six|any)$/.test(t)).some((t) => /[a-z]{2}/.test(t) && !/\d/.test(t)))
+    return symbolPresent(response, reference);
+  const found2 = matchScienceWrittenEvidence(response, reference, { tokens: pointTokens, tokenPresent });
+  if (!found2.matched) return false;
+  const distinctive = [...new Set(pointTokens(reference))].filter((t) => !siblings.some((other) => tokenPresent(other, t)));
+  return distinctive.filter((t) => tokenPresent(found2.evidence, t)).length >= Math.ceil(distinctive.length / 2);
+}
+function numbers(value2) {
+  return [...String(value2 || "").matchAll(/[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:\s*[x×*]\s*10\s*\^?\s*[+-]?\d+)?/gi)].map((m) => Number(m[0].replace(/[x×*]\s*10\s*\^?\s*/i, "e").replace(/\s+/g, ""))).filter(Number.isFinite);
+}
+function numericExpected(point) {
+  const whole = strip(point);
+  const p = /[=:]/.test(whole) ? whole.split(/[=:]/).pop() : whole;
+  if (/\b(?:question|figure|diagram|marks?|steps?|examples?)\b/i.test(p) || /\b(?:[A-Z][a-z]?\d+[A-Z][A-Za-z\d]*|[A-Z]{2}\d+)\b/.test(p)) return [];
+  if (/[a-z]{3,}/i.test(p.replace(/\b(?:mol|dm|cm|kg|mg|g|s|min|kj|j|pa|kpa|°c|k|ml|l|per|water|solution)\b/gi, ""))) return [];
+  const values = numbers(p);
+  const bareNumeric = /^\s*[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:\s*(?:%|°c|g|kg|mg|mol|mmol|ml|l|cm\^?[23]?|dm\^?[23]?|s|k|pa|j|kj))?\s*$/i.test(p);
+  const namedQuantity = /\b(?:mass|moles?|volume|concentration|temperature|pressure|time|rate|ph|density|percentage|titre|yield|value|answer)\b/i.test(p);
+  return values.length === 1 && (bareNumeric || namedQuantity || /[=:]/.test(whole)) ? values : [];
+}
+function chemistryFinalNumericEvidence(response) {
+  const source2 = String(response ?? "");
+  const declarations2 = [...source2.matchAll(/\b(?:final\s+answer|answer|ans)\s*(?:is\s+|[:=]\s*)([^\n;]+)/gi)];
+  if (declarations2.length > 1) return { values: [], ambiguous: true, declared: true };
+  const selected = declarations2.length ? declarations2[0][1] : source2;
+  if (/[-+]?(?:\d+(?:\.\d*)?|\.\d+)\s+(?:or|versus|vs\.?)\s+[-+]?(?:\d+(?:\.\d*)?|\.\d+)/i.test(selected))
+    return { values: [], ambiguous: true, declared: Boolean(declarations2.length) };
+  const values = numbers(selected);
+  return {
+    values,
+    ambiguous: Boolean(declarations2.length) && values.length !== 1,
+    declared: Boolean(declarations2.length)
+  };
+}
+function pointLabel(reference) {
+  const m = strip(reference).match(/^(.*[a-z][^=:]*?)\s*[=:]\s*[^=:]+$/i);
+  return m ? clean2(m[1]) : "";
+}
+function labelledValues(response, label) {
+  const words2 = label.split(" ").filter((w) => /[a-z]/.test(w));
+  const segments = String(response ?? "").split(/[;,\n]|(?<!\d)\.(?!\d)/).map(clean2).filter(Boolean);
+  return segments.flatMap((segment) => {
+    let at = segment.indexOf(label), from = at >= 0 ? at + label.length : -1;
+    if (from < 0 && words2.length && words2.every((w) => segment.split(" ").some((t) => t === w || t.startsWith(w + "=")))) {
+      const last = words2[words2.length - 1];
+      from = segment.indexOf(last) + last.length;
+    }
+    if (from < 0) return [];
+    const rest = segment.slice(from);
+    const next = rest.slice(1).search(/[a-z]{2,}[a-z0-9() ]*=/);
+    return numbers(next >= 0 ? rest.slice(0, next + 1) : rest);
+  });
+}
+function numericMatch(response, expected, reference) {
+  const label = pointLabel(reference);
+  const evidence = chemistryFinalNumericEvidence(response);
+  const got = label ? labelledValues(response, label) : evidence.ambiguous ? [] : evidence.values;
+  const printed = strip(reference).match(/[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:\s*[x×*]\s*10\s*\^?\s*[+-]?\d+)?/i)?.[0] || "";
+  const mantissa = printed.split(/\s*[x×*]\s*10/i)[0];
+  const decimals = (mantissa.split(".")[1] || "").length;
+  const exponent = Number(printed.match(/\s*[x×*]\s*10\s*\^?\s*([+-]?\d+)/i)?.[1] || 0);
+  const tolerance = Math.max(1e-12, 0.5 * 10 ** (exponent - decimals) + 1e-12);
+  return got.some((a) => expected.some((b) => Math.abs(a - b) <= tolerance));
+}
+function chemistryPointMarks(point) {
+  const annotations = [...String(point || "").matchAll(/\(\s*(\d(?:\s*\+\s*\d)*)(?:\s+[a-z ]+)?\s*\)/gi)];
+  if (!annotations.length) return 1;
+  return annotations.reduce((sum, m) => sum + m[1].split("+").reduce((n, v) => n + Number(v), 0), 0);
+}
+function chemistrySubPoints(point) {
+  const text = String(point || "");
+  const parts = [...text.matchAll(/((?:[^()]|\((?!\s*\d\s*\))[^()]*\))*?)\(\s*(\d)\s*\)/g)].map((m) => [m[1], Number(m[2])]);
+  if (parts.length < 2) return [text];
+  return parts.map(([body, marks]) => body.replace(/^\s*(?:and\/or|and|or|,|;)\s*/i, "").trim() + ` (${marks})`);
+}
+var SUB = "\u2080\u2081\u2082\u2083\u2084\u2085\u2086\u2087\u2088\u2089";
+var SUP = "\u2070\xB9\xB2\xB3\u2074\u2075\u2076\u2077\u2078\u2079";
+function equationText(value2) {
+  return String(value2 ?? "").replace(/[₀-₉]/g, (ch) => String(SUB.indexOf(ch))).replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]+[⁺⁻]|[⁺⁻]/g, (ch) => "^" + ch.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, (d) => String(SUP.indexOf(d))).replace("\u207A", "+").replace("\u207B", "-")).replace(/\^(\d*)([+-])/g, "^$1$2").replace(/\s*(?:→|⟶|⇌|-+>|=+>|=)\s*/g, " \u2192 ").replace(/^[^→]*?\b(?:equation|answer)\b[^:→]*:\s*/i, "");
+}
+function parseSpecies(raw) {
+  const electron = String(raw).trim().match(/^(\d+)?\s*e\s*\^?\s*-$/);
+  if (electron) return { coefficient: Number(electron[1] || 1), formula: "e-", state: null };
+  const m = String(raw).trim().match(/^(\d+)?\s*([A-Z][A-Za-z0-9()]*?(?:\^\d*[+-])?)\s*(?:\((s|l|g|aq)\))?$/);
+  return m ? { coefficient: Number(m[1] || 1), formula: m[2], state: m[3] || null } : null;
+}
+function parseSide(text) {
+  const pieces = String(text).split(/(?<!\^\d*)\s*\+\s*(?![^(]*\))/).map((s) => s.trim()).filter(Boolean);
+  const species = pieces.map(parseSpecies);
+  return species.every(Boolean) ? species : null;
+}
+function parseChemicalEquation(value2) {
+  const sides = equationText(value2).replace(/\s*\((?:[a-z][a-z ,]*)\)\s*\.?\s*$/i, "").split(" \u2192 ");
+  if (sides.length !== 2) return null;
+  const left = parseSide(sides[0]), right = parseSide(sides[1]);
+  return left && right && left.length && right.length ? { left, right } : null;
+}
+var sameMultiset = (a, b) => a.length === b.length && [...a].sort().join("|") === [...b].sort().join("|");
+function markChemicalEquation(response, expectedText, { marks = 2, stateSymbols = false } = {}) {
+  const expected = parseChemicalEquation(expectedText);
+  if (!expected) return null;
+  const lines = String(response ?? "").split(/\n|;/).map(parseChemicalEquation).filter(Boolean);
+  if (lines.length > 1) return { formulae: false, balanced: false, score: 0, parsed: true, competing: true };
+  const got = lines[0];
+  if (!got) return { formulae: false, balanced: false, score: 0, parsed: false };
+  const formulae = sameMultiset(got.left.map((s) => s.formula), expected.left.map((s) => s.formula)) && sameMultiset(got.right.map((s) => s.formula), expected.right.map((s) => s.formula));
+  let balanced = false;
+  if (formulae) {
+    const all = (s) => [...s.left.map((x) => ["L", x]), ...s.right.map((x) => ["R", x])];
+    const key = ([side, x]) => side + x.formula;
+    const want = new Map(all(expected).map((e) => [key(e), e[1]]));
+    const pairs = all(got).map((e) => [e[1], want.get(key(e))]);
+    const ratio = pairs[0][0].coefficient / pairs[0][1].coefficient;
+    balanced = pairs.every(([g, w]) => Math.abs(g.coefficient / w.coefficient - ratio) < 1e-9) && (!stateSymbols || pairs.every(([g, w]) => g.state === w.state));
+  }
+  const score = Math.min(marks, (formulae ? 1 : 0) + (balanced ? Math.max(1, marks - 1) : 0));
+  return { formulae, balanced, score, parsed: true };
+}
+function expressionStep(point) {
+  const pieces = strip(point).split(/[=:]/).map((x) => x.trim()).filter(Boolean);
+  const arithmetic = (x) => /^[\d.\s+\-×x*/÷()]+$/.test(x) && numbers(x.replace(/[×x*/÷+()]/g, " ")).length >= 2;
+  const rhs = pieces.find(arithmetic);
+  if (!rhs) return null;
+  const operands2 = numbers(rhs.replace(/[×x*/÷+()]/g, " "));
+  let value2 = null;
+  const stated = pieces.slice(pieces.indexOf(rhs) + 1).map((x) => numbers(x)).find((v) => v.length === 1);
+  if (stated) value2 = stated[0];
+  else try {
+    value2 = Function(`"use strict";return (${rhs.replace(/[×x]/g, "*").replace(/÷/g, "/")})`)();
+  } catch {
+    value2 = null;
+  }
+  return { operands: operands2, value: Number.isFinite(value2) ? value2 : null };
+}
+function ratioPoint(point) {
+  const m = strip(point).match(/=\s*(\d+(?:\.\d+)?)\s*:\s*(\d+(?:\.\d+)?)\s*$/);
+  return m ? { a: Number(m[1]), b: Number(m[2]) } : null;
+}
+function ratioShown(response, ratio) {
+  const stated = [...String(response ?? "").matchAll(/(?<![\d.])(\d+(?:\.\d+)?)\s*:\s*(\d+(?:\.\d+)?)(?!\d|\.\d)/g)].map((m) => [Number(m[1]), Number(m[2])]).filter(([a, b]) => a > 0 && b > 0);
+  const distinct = new Set(stated.map(([a, b]) => (a / b).toFixed(9)));
+  return distinct.size === 1 && Math.abs(stated[0][0] * ratio.b - stated[0][1] * ratio.a) < 1e-9;
+}
+function expressionShown(response, step) {
+  const text = String(response ?? "").replace(/(\d),(?=\d{3}\b)/g, "$1");
+  const near = (a, b) => Math.abs(a - b) <= Math.max(1e-9, Math.abs(b) * 5e-3);
+  const expressions = [...text.matchAll(/[-+]?\d+(?:\.\d+)?(?:\s*[×x*\/÷+\-−]\s*\(?\s*[-+]?\d+(?:\.\d+)?\s*\)?)+/g)].map((m) => numbers(m[0].replace(/[×x*\/÷+()]/g, " ")));
+  if (expressions.some((got) => step.operands.every((o) => got.some((g) => near(g, o))))) return true;
+  if (step.value === null) return false;
+  const results = [...text.matchAll(/=\s*\$?\s*([-+]?\d+(?:\.\d+)?)/g)].map((m) => Number(m[1]));
+  return results.some((v) => near(v, step.value));
+}
+function scienceMarkedPoints(item2) {
+  let points = (item2?.markScheme?.points || []).filter(Boolean).flatMap(chemistrySubPoints);
+  const marks = Number(item2?.marks || 0);
+  const total = (list) => list.reduce((n, p) => n + chemistryPointMarks(p), 0);
+  if (total(points) < marks) {
+    const split = points.flatMap((p) => /\(\s*\d/.test(p) ? [p] : String(p).split(/,\s+so\s+|;\s+(?=[a-z])/i).map((x) => x.trim()).filter(Boolean));
+    if (split.length > points.length && total(split) <= marks) points = split;
+  }
+  return points;
+}
+function gradeSciencePointLines(base, item2, response) {
+  return lineResult(base, item2, response);
+}
+var allocationNote = (point) => /^\s*\d\s*marks?\s+(?:for|reactants)/i.test(String(point || ""));
+var withoutConditions = (text) => String(text).replace(/\s*\((?:[a-z][a-z ,]*)\)\s*$/i, "").trim();
+function chemistryEquationPoint(item2) {
+  const points = (item2?.markScheme?.points || []).filter(Boolean).filter((p) => !allocationNote(p));
+  if (points.length !== 1 || !/→|⟶|⇌/.test(points[0])) return null;
+  const text = withoutConditions(strip(points[0]));
+  return parseChemicalEquation(text) ? text : null;
+}
+function wordSpecies(side) {
+  return String(side).split(/\s+\+\s+|\s+and\s+/).map((s) => s.trim().toLowerCase()).filter(Boolean).filter((s) => !/^(?:\d+\s*)?energy$|^(?:heat|light)\s+energy$/.test(s)).map((s) => {
+    const names = [s.replace(/\s*\([^)]*\)\s*/g, " ").trim(), ...[...s.matchAll(/\(([^)]+)\)/g)].map((m) => m[1].trim())];
+    return names.map((n) => n.replace(/\s+/g, " ").replace(/\b(?:the|some)\s+/g, "")).filter(Boolean);
+  });
+}
+function wordEquationPoint(item2) {
+  const points = (item2?.markScheme?.points || []).filter(Boolean).filter((p) => !allocationNote(p));
+  if (points.length !== 1 || Number(item2?.marks) < 2) return null;
+  const text = withoutConditions(strip(points[0]));
+  const sides = text.split(/\s*(?:→|⟶|->)\s*/);
+  if (sides.length !== 2 || parseChemicalEquation(text) || !/[a-z]{3}/i.test(sides[0])) return null;
+  const left = wordSpecies(sides[0]), right = wordSpecies(sides[1]);
+  return left.length && right.length ? { left, right } : null;
+}
+function markWordEquation(response, spec) {
+  const lines = String(response ?? "").split(/\n|;/).filter((l2) => /→|⟶|->|=|gives|produces/i.test(l2));
+  if (lines.length !== 1) return { parsed: lines.length === 0 ? false : true, left: false, right: false, competing: lines.length > 1 };
+  const [l, r] = lines[0].split(/\s*(?:→|⟶|->|=|\bgives\b|\bproduces\b)\s*/i);
+  const side = (written, want) => {
+    const got = wordSpecies(written || "").map((n) => n[0]);
+    const named = want.every((names) => got.some((g) => names.some((n) => g === n || g === n + "s" || g + "s" === n)));
+    return named && got.length === want.length;
+  };
+  return { parsed: true, left: side(l, spec.left), right: side(r, spec.right) };
+}
+function chemistryEstimatePoint(item2) {
+  const points = (item2?.markScheme?.points || []).filter(Boolean);
+  const head = strip(points[0] || "");
+  const m = head.match(/^(?:about|approximately|approx\.?|roughly)\s+([\d.]+)(?:\s*[-–]\s*([\d.]+))?/i);
+  if (!m) return null;
+  const a = Number(m[1]), b = m[2] ? Number(m[2]) : null;
+  const decimals = (m[1].split(".")[1] || "").length;
+  const pad = b === null ? Math.max(0.5 * 10 ** -decimals, Math.abs(a) * 0.05) : 0;
+  return {
+    low: b === null ? a - pad : Math.min(a, b),
+    high: b === null ? a + pad : Math.max(a, b),
+    followThrough: points.some((p) => /consistent with/i.test(p))
+  };
+}
+function lineResult(base, item2, response) {
+  const estimate = chemistryEstimatePoint(item2);
+  if (estimate) {
+    const maxMarks2 = Math.max(0, Number(item2.marks || 0));
+    const evidence = chemistryFinalNumericEvidence(response);
+    const inRange = !evidence.ambiguous && evidence.values.length > 0 && evidence.values[0] >= estimate.low - 1e-9 && evidence.values[0] <= estimate.high + 1e-9;
+    const answered = String(response || "").trim() !== "";
+    return {
+      score: inRange ? maxMarks2 : 0,
+      maxMarks: maxMarks2,
+      unassessedMarks: 0,
+      estimate,
+      confidence: inRange || !answered ? "high" : "low",
+      provisional: answered && !inRange && estimate.followThrough,
+      criteria: [{
+        id: `${base}:estimate`,
+        label: `Value between ${estimate.low} and ${estimate.high}`,
+        marks: inRange ? maxMarks2 : 0,
+        maxMarks: maxMarks2,
+        earned: inRange,
+        evidence: response
+      }]
+    };
+  }
+  const words2 = wordEquationPoint(item2);
+  if (words2) {
+    const maxMarks2 = Math.max(0, Number(item2.marks || 0));
+    const r = markWordEquation(response, words2);
+    const score2 = Math.min(maxMarks2, (r.left ? 1 : 0) + (r.right ? Math.max(1, maxMarks2 - 1) : 0));
+    return {
+      score: score2,
+      maxMarks: maxMarks2,
+      unassessedMarks: 0,
+      wordEquation: r,
+      confidence: r.parsed ? "high" : "low",
+      provisional: !r.parsed && String(response || "").trim() !== "",
+      criteria: [
+        { id: `${base}:reactants`, label: "Reactants named correctly", marks: r.left ? 1 : 0, maxMarks: 1, earned: r.left, evidence: response },
+        { id: `${base}:products`, label: "Products named correctly", marks: r.right ? Math.max(1, maxMarks2 - 1) : 0, maxMarks: Math.max(1, maxMarks2 - 1), earned: r.right, evidence: response }
+      ]
+    };
+  }
+  const equation = chemistryEquationPoint(item2);
+  if (equation) {
+    const maxMarks2 = Math.max(0, Number(item2.marks || 0));
+    const r = markChemicalEquation(response, equation, {
+      marks: maxMarks2,
+      stateSymbols: /state symbols/i.test(item2.prompt || "")
+    });
+    const balanceMarks = Math.max(0, maxMarks2 - 1);
+    return {
+      score: r.score,
+      maxMarks: maxMarks2,
+      confidence: r.parsed ? "high" : "low",
+      provisional: !r.parsed && String(response || "").trim() !== "",
+      unassessedMarks: 0,
+      equation: r,
+      criteria: [
+        { id: `${base}:formulae`, label: "Correct formulae of all reactants and products", marks: r.formulae ? 1 : 0, maxMarks: 1, earned: r.formulae, evidence: response },
+        ...balanceMarks ? [{
+          id: `${base}:balanced`,
+          label: "Correctly balanced" + (/state symbols/i.test(item2.prompt || "") ? " with state symbols" : ""),
+          marks: r.balanced ? balanceMarks : 0,
+          maxMarks: balanceMarks,
+          earned: r.balanced,
+          evidence: response
+        }] : []
+      ]
+    };
+  }
+  const points = scienceMarkedPoints(item2);
+  const maxMarks = Math.max(0, Number(item2.marks || 0));
+  const seen = /* @__PURE__ */ new Set();
+  const criteria = points.map((point, index) => {
+    const example = /^\s*(?:e\.g\.?|for example)\b/i.test(String(point));
+    const ratio = example ? null : ratioPoint(point);
+    const step = ratio || example ? null : expressionStep(point);
+    const refs = step || ratio ? [strip(point)] : alternatives(point);
+    const expectedNums = step || ratio || example ? [] : numericExpected(point);
+    const numeric = expectedNums.length > 0;
+    const selected = refs.find((ref) => ratio ? ratioShown(response, ratio) : step ? expressionShown(response, step) : numeric ? numericMatch(response, expectedNums, point) : textMatch(response, ref, points.filter((_, i) => i !== index).map(strip)));
+    const signature = selected ? clean2(strip(point)) : "";
+    const earned = Boolean(selected) && !seen.has(signature);
+    if (earned) seen.add(signature);
+    const value2 = chemistryPointMarks(point);
+    return {
+      id: `${base}:p${index + 1}`,
+      label: strip(point),
+      marks: earned ? value2 : 0,
+      maxMarks: value2,
+      earned,
+      evidence: earned ? response : ""
+    };
+  });
+  const score = Math.min(maxMarks, criteria.reduce((sum, row) => sum + row.marks, 0));
+  const available = points.reduce((sum, point) => sum + chemistryPointMarks(point), 0);
+  const unresolved = String(response || "").trim() ? Math.max(0, maxMarks - Math.min(maxMarks, available)) : 0;
+  return {
+    score,
+    maxMarks,
+    criteria,
+    confidence: "medium",
+    provisional: true,
+    unassessedMarks: unresolved,
+    ...unresolved ? { reason: "Additional marks need separate verified marking criteria." } : {}
+  };
 }
 
 // src/integratedScience/practice/integratedSciencePaper2Grader.js
@@ -1672,35 +2130,29 @@ var SYNONYMS = Object.freeze({
   concentrated: ["high concentration", "stronger solution"],
   permeable: ["selectively permeable", "semi permeable", "semipermeable"]
 });
-function clean2(value2) {
+function clean3(value2) {
   return String(value2 ?? "").toLowerCase().replace(/[–—−]/g, "-").replace(/(?<!\d)\.|\.(?!\d)/g, " ").replace(/\//g, " ").replace(/[^a-z0-9.+/%°-]+/g, " ").replace(/\s+/g, " ").trim();
 }
-function tokens(value2) {
-  return clean2(value2).split(" ").filter((token) => token && !STOPWORDS2.has(token) && token.length > 1);
+function tokens2(value2) {
+  return clean3(value2).split(" ").filter((token) => token && !STOPWORDS2.has(token) && token.length > 1);
 }
-function stem2(token) {
+function stem3(token) {
   return token.replace(/(ing|ed|es|s)$/, "");
 }
-function tokenPresent(candidate, token) {
-  const c = clean2(candidate);
-  const t = clean2(token);
+function tokenPresent2(candidate, token) {
+  const c = clean3(candidate);
+  const t = clean3(token);
   if (!t) return false;
   if ((" " + c + " ").includes(" " + t + " ")) return true;
   const variants = SYNONYMS[t] || [];
-  if (variants.some((item2) => (" " + c + " ").includes(" " + clean2(item2) + " "))) return true;
-  const wanted = stem2(t);
-  return tokens(c).some((item2) => stem2(item2) === wanted || item2 === t.replace(/s$/, "") || t === item2.replace(/s$/, ""));
-}
-function stripMarkingNoise(point) {
-  return String(point || "").replace(/\([^)]*\b(?:1|2|3|4|5)\s*\)/gi, "").replace(/^\s*(?:OR|Accept:)\s*/i, "").replace(/\s*\(Accept:[\s\S]*$/i, "").trim();
-}
-function pointAlternatives(point) {
-  return stripMarkingNoise(point).split(/\s+(?:OR|\/|;\s*or\s+)\s+/i).map((item2) => item2.trim()).filter(Boolean);
+  if (variants.some((item2) => (" " + c + " ").includes(" " + clean3(item2) + " "))) return true;
+  const wanted = stem3(t);
+  return tokens2(c).some((item2) => stem3(item2) === wanted || item2 === t.replace(/s$/, "") || t === item2.replace(/s$/, ""));
 }
 function evidenceMatch(response, reference, strict = false) {
   return matchScienceWrittenEvidence(response, reference, {
-    tokens: (value2) => tokens(String(value2).replace(/\b(?:form|type|kind)\s+of\s+/gi, "")).filter((token) => !/^(mark|marks|one|two|three|four|any)$/.test(token)),
-    tokenPresent,
+    tokens: (value2) => tokens2(String(value2).replace(/\b(?:form|type|kind)\s+of\s+/gi, "")).filter((token) => !/^(mark|marks|one|two|three|four|any)$/.test(token)),
+    tokenPresent: tokenPresent2,
     strict
   }).matched;
 }
@@ -1724,44 +2176,76 @@ function calculationResult(questionId, partIndex, itemIndex, item2, responses) {
   const base = `${questionId}:${partIndex}:${itemIndex}`;
   return markScienceCalculation(base, item2, responses[base] || "");
 }
-function lineResult(questionId, partIndex, itemIndex, item2, responses) {
-  const base = `${questionId}:${partIndex}:${itemIndex}`;
-  const response = responses[base] || "";
-  const rawPoints = (item2.markScheme?.points || []).filter((point) => !/^\s*\(?accept\b/i.test(point));
-  const maxMarks = Number(item2.marks || 0);
-  const criteria = [];
-  const usedEvidence = /* @__PURE__ */ new Set();
-  rawPoints.forEach((point, index) => {
-    const alternatives = pointAlternatives(point);
-    const matched = alternatives.find((alt) => evidenceMatch(response, alt));
-    if (!matched) {
-      criteria.push({ id: `${base}:p${index + 1}`, label: stripMarkingNoise(point), marks: 0, maxMarks: 1, earned: false, evidence: "" });
+var allocationNote2 = (point) => /^\s*\(?accept\b/i.test(point) || /^\s*\d\s*marks?\s+(?:for|each)\b/i.test(point);
+function integratedScienceLineItem(item2) {
+  return { ...item2, markScheme: {
+    ...item2?.markScheme || {},
+    points: (item2?.markScheme?.points || []).filter((point) => !allocationNote2(point))
+  } };
+}
+var COUNT_WORDS = { two: 2, three: 3, four: 4, five: 5, six: 6 };
+function integratedScienceValueList(item2) {
+  const points = (item2?.markScheme?.points || []).filter((point) => !allocationNote2(point));
+  if (points.length !== 1) return null;
+  const g = String(item2?.markScheme?.guidance || "").match(
+    /^\s*(\d)\s*marks?\s+for\s+all\s+(\w+)(?:\s+correct)?\s*;\s*(\d)\s*marks?\s+for\s+(\w+)\s+or\s+(\w+)(?:\s+correct)?\s*\.?\s*$/i
+  );
+  if (!g) return null;
+  const entries = points[0].split(/,\s*/).map((s) => s.trim().match(/^([A-Za-z][A-Za-z ]*?)\s+(-?\d+(?:\.\d+)?)(?:\s*([A-Za-z°%]{1,3}))?$/));
+  if (entries.length < 2 || entries.some((e) => !e)) return null;
+  const all = COUNT_WORDS[g[2].toLowerCase()], lower = COUNT_WORDS[g[4].toLowerCase()], upper = COUNT_WORDS[g[5].toLowerCase()];
+  if (all !== entries.length || !lower || !upper || lower > upper || upper >= all || Number(g[1]) !== Number(item2.marks)) return null;
+  const labels = entries.map((e) => e[1].toLowerCase());
+  if (new Set(labels).size !== labels.length || labels.some((a) => labels.some((b) => a !== b && b.includes(a)))) return null;
+  return {
+    entries: entries.map((e) => ({ label: e[1], value: Number(e[2]), unit: e[3] || "" })),
+    full: Number(g[1]),
+    part: Number(g[3]),
+    lower,
+    upper
+  };
+}
+function valueListResult(base, item2, list, response) {
+  const text = String(response || "");
+  const found2 = [];
+  for (const entry of list.entries) {
+    const single = entry.label.length === 1;
+    const re = new RegExp("(?<![A-Za-z\xB0])" + entry.label.replace(/\s+/g, "\\s+") + "(?![A-Za-z])", single ? "g" : "gi");
+    for (const m of text.matchAll(re)) found2.push({ entry, at: m.index, end: m.index + m[0].length });
+  }
+  found2.sort((a, b) => a.at - b.at);
+  const readings = /* @__PURE__ */ new Map();
+  let ambiguous = /\d/.test(text.slice(0, found2.length ? found2[0].at : text.length));
+  found2.forEach((f, i) => {
+    const windowText = text.slice(f.end, i + 1 < found2.length ? found2[i + 1].at : text.length);
+    const values = [...windowText.matchAll(/-?\d+(?:\.\d+)?/g)].map((m) => Number(m[0]));
+    if (!values.length) {
+      ambiguous = true;
       return;
     }
-    const signature = tokens(matched).filter((token) => tokenPresent(response, token)).sort().join("|");
-    const duplicate = signature && usedEvidence.has(signature);
-    if (signature) usedEvidence.add(signature);
-    criteria.push({
-      id: `${base}:p${index + 1}`,
-      label: stripMarkingNoise(point),
-      marks: duplicate ? 0 : 1,
-      maxMarks: 1,
-      earned: !duplicate,
-      evidence: matched
-    });
+    if (values.length > 1) ambiguous = true;
+    const value2 = values[values.length - 1];
+    const prior = readings.get(f.entry.label);
+    if (prior !== void 0 && prior !== value2) ambiguous = true;
+    readings.set(f.entry.label, value2);
   });
-  let score = criteria.reduce((sum, row) => sum + row.marks, 0);
-  score = Math.min(maxMarks, score);
-  const unassessedMarks = String(response || "").trim() ? Math.max(0, maxMarks - Math.min(maxMarks, rawPoints.length)) : 0;
+  const correct = list.entries.filter((e) => Math.abs((readings.get(e.label) ?? NaN) - e.value) < 1e-9).length;
+  const score = correct === list.entries.length ? list.full : correct >= list.lower && correct <= list.upper ? list.part : 0;
   return {
     score,
-    maxMarks,
-    criteria,
-    confidence: "medium",
-    provisional: true,
-    unassessedMarks,
-    ...unassessedMarks ? { reason: "Additional marks require separately verified marking criteria." } : {}
+    maxMarks: list.full,
+    unassessedMarks: 0,
+    provisional: ambiguous,
+    confidence: ambiguous ? "low" : "high",
+    criteria: [{ label: list.entries.map((e) => `${e.label} ${e.value}`).join(", "), marks: score, maxMarks: list.full }],
+    valueList: { correct, total: list.entries.length, ambiguous }
   };
+}
+function lineResult2(questionId, partIndex, itemIndex, item2, responses) {
+  const base = `${questionId}:${partIndex}:${itemIndex}`;
+  const list = integratedScienceValueList(item2);
+  if (list) return valueListResult(base, item2, list, responses[base]);
+  return gradeSciencePointLines(base, integratedScienceLineItem(item2), responses[base] || "");
 }
 function tableResult(questionId, partIndex, itemIndex, item2, responses) {
   const base = `${questionId}:${partIndex}:${itemIndex}`;
@@ -1809,9 +2293,9 @@ function graphPointMatches(student, target, expected) {
 }
 function labelMatches(value2, expected) {
   if (!String(value2 || "").trim()) return false;
-  const expectedTokens = tokens(expected);
+  const expectedTokens = tokens2(expected);
   if (!expectedTokens.length) return true;
-  const hits = expectedTokens.filter((token) => tokenPresent(value2, token)).length;
+  const hits = expectedTokens.filter((token) => tokenPresent2(value2, token)).length;
   return hits >= Math.max(1, Math.ceil(expectedTokens.length * 0.6));
 }
 function graphScaleAssessment(base, responses, expected) {
@@ -1880,7 +2364,7 @@ function graphResult(questionId, partIndex, itemIndex, item2, responses) {
   let fallback = null;
   if (remainingMarks > 0) {
     const notes = [responses[base] || "", responses[`${base}:key`] || ""].filter(Boolean).join(" ");
-    fallback = lineResult(questionId, partIndex, itemIndex, { ...item2, marks: remainingMarks, response: { type: "lines" } }, { [base]: notes });
+    fallback = lineResult2(questionId, partIndex, itemIndex, { ...item2, marks: remainingMarks, response: { type: "lines" } }, { [base]: notes });
     score = Math.min(maxMarks, score + fallback.score);
     criteria.push(...fallback.criteria.map((row) => ({ ...row, id: `${row.id}:support` })));
   }
@@ -1905,7 +2389,7 @@ function drawingResult(questionId, partIndex, itemIndex, item2, responses) {
   } catch {
   }
   const detailedStrokes = strokes.filter((stroke) => Array.isArray(stroke) && stroke.length >= 2);
-  const written = lineResult(questionId, partIndex, itemIndex, { ...item2, response: { type: "lines" } }, responses);
+  const written = lineResult2(questionId, partIndex, itemIndex, { ...item2, response: { type: "lines" } }, responses);
   const hasDrawing = detailedStrokes.length > 0;
   const score = hasDrawing ? written.score : Math.min(written.score, Math.max(0, written.maxMarks - 1));
   return {
@@ -1927,7 +2411,7 @@ function gradeIntegratedSciencePaper2Item(question2, partIndex, itemIndex, item2
   if (type === "table") return tableResult(question2.id, partIndex, itemIndex, item2, responses);
   if (type === "graph") return gradeScienceGraph(question2, partIndex, itemIndex, item2, responses, (a, b) => evidenceMatch(a, b, true));
   if (type === "drawing") return visualResult(question2.id, partIndex, itemIndex, item2, responses);
-  return lineResult(question2.id, partIndex, itemIndex, item2, responses);
+  return lineResult2(question2.id, partIndex, itemIndex, item2, responses);
 }
 function gradeIntegratedSciencePaper2(paper = [], responses = {}) {
   const questions = (paper || []).map((question2) => {
@@ -1971,7 +2455,7 @@ var part = (id, prompt, marks, criteria, modelAnswer, profile = "application") =
   id,
   prompt,
   marks,
-  criteria: criteria.map(([marks2, rule, alternatives = []]) => ({ marks: marks2, rule, alternatives })),
+  criteria: criteria.map(([marks2, rule, alternatives2 = []]) => ({ marks: marks2, rule, alternatives: alternatives2 })),
   modelAnswer,
   profile
 });
@@ -2659,12 +3143,12 @@ function buildPob2026JanHistoricalCalibrationPack({
   if (!verifyPob2026JanHistoricalPaper(source2).valid)
     throw new Error("historical_source_not_verified");
   const permitted = new Set(source2.questions.flatMap((q) => q.items.map((p) => q.id + ":" + p.id)));
-  const items = [], clean3 = {};
+  const items = [], clean4 = {};
   for (const q of source2.questions) for (const part2 of q.items) {
     const id = q.id + ":" + part2.id;
     const answer2 = readResponse(responses, id);
     if (!answer2) continue;
-    clean3[id] = answer2;
+    clean4[id] = answer2;
     const companions = relationships[q.number + ":" + part2.id] || [];
     const responseKeys = [id];
     for (const ref of companions) {
@@ -2672,7 +3156,7 @@ function buildPob2026JanHistoricalCalibrationPack({
       if (permitted.has(companionId)) {
         const companion = readResponse(responses, companionId);
         if (companion) {
-          clean3[companionId] = companion;
+          clean4[companionId] = companion;
           responseKeys.push(companionId);
         }
       }
@@ -2706,7 +3190,7 @@ function buildPob2026JanHistoricalCalibrationPack({
     benchmarkOnly: true,
     productionEligible: false,
     items,
-    responses: clean3,
+    responses: clean4,
     deterministicScore: 0,
     maxMarks: 100,
     unassessedMarks: 0,
@@ -2938,7 +3422,7 @@ function checkPobCalculation(partKey, response) {
   if (!target) return null;
   const answer2 = String(response || "").trim();
   if (!answer2) return { status: "unanswered", message: "No calculation entered.", working: target.working };
-  const numbers = [...answer2.matchAll(NUMERIC_TOKEN)].map((match) => Number(match[0].replace(/,/g, "")));
+  const numbers2 = [...answer2.matchAll(NUMERIC_TOKEN)].map((match) => Number(match[0].replace(/,/g, "")));
   const equals2 = (a, b) => Number.isFinite(a) && Math.abs(a - b) < 1e-8;
   const labelled = [...answer2.matchAll(/(?:final answer|answer is|answer:|therefore|thus)\s*(?:is\s*)?(?:J\$|\$)?\s*([\d,]+(?:\.\d+)?)/gi)];
   const labelledValue = labelled.length ? Number(labelled[labelled.length - 1][1].replace(/,/g, "")) : null;
@@ -2951,7 +3435,7 @@ function checkPobCalculation(partKey, response) {
   if (stated !== null && equals2(stated, target.value)) {
     return { status: "result-found", message: "Expected numerical result found. Your method, explanation and units still require assessment.", working: target.working };
   }
-  if (numbers.length === 1 && equals2(numbers[0], target.value)) {
+  if (numbers2.length === 1 && equals2(numbers2[0], target.value)) {
     return { status: "result-found", message: "Expected numerical result found. Your method, explanation and units still require assessment.", working: target.working };
   }
   return { status: "review-needed", message: "A clear matching final result was not identified. Label your final answer and check the working.", working: target.working };
@@ -3276,149 +3760,4 @@ function verifyPob2003MjP1AuthoredKey(key = POB_2003_MJ_P1_AUTHORED_KEY) {
   if (disputes.join(",") !== "1,19,36,44,52,60")
     issues.push("Disputed answers must remain visible and unresolved.");
   if (key.liveScoringApproved !== false || key.originalCxcKeySupplied !== false)
-    issues.push("Academic proposal cannot be published as CXC-official/live-scored.");
-  return { valid: issues.length === 0, issues, disputes: disputes.length, disputedNumbers: disputes };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2004MjP1AuthoredKey.js
-var pobHistorical2004MjP1AuthoredKey_exports = {};
-__export(pobHistorical2004MjP1AuthoredKey_exports, {
-  POB_2004_MJ_P1_AUTHORED_KEY: () => POB_2004_MJ_P1_AUTHORED_KEY,
-  verifyPob2004MjP1AuthoredKey: () => verifyPob2004MjP1AuthoredKey
-});
-var POB_2004_MJ_P1_AUTHORED_KEY = Object.freeze({
-  id: "POB-P1-2004-MJ",
-  paper: 1,
-  year: 2004,
-  sitting: "MJ",
-  sourceFilename: "CSEC_Principles_of_Business_P1_2004_MJ.pdf",
-  sourceSha256: "01ebac983e9c49a3525db4cb5bfab7e84af10ea20d4f38caa0c6ef7dafe13e54",
-  sourcePageCount: 8,
-  questionCount: 60,
-  origin: "SPARK-independent-subject-explanations",
-  publishedCxcAnswerKeyAvailable: false,
-  fullQuestionOptionVisualComparisonPassed: false,
-  benchmarkCalibrationPassed: false,
-  liveScoringApproved: false,
-  entries: Object.freeze([
-    Object.freeze({ "number": 1, "pdfPage": 1, "proposedOption": "B", "explanation": "Early people could satisfy their needs by applying their own initiative to available natural resources.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
-    Object.freeze({ "number": 2, "pdfPage": 1, "proposedOption": "C", "explanation": "Money is useful as a medium of exchange, measure of value and store of value; indivisibility is not a desired function.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
-    Object.freeze({ "number": 3, "pdfPage": 1, "proposedOption": "B", "explanation": "Producing goods, providing employment and workforce education are business functions; maximum sales is an objective rather than a universal function.", "status": "needs-syllabus-adjudication", "disputeCategory": "business-functions-versus-sales", "disputeRationale": "The text confuses universally necessary functions with possible objectives; B follows the training/social-function reading.", "visualQuestionReviewed": true }),
-    Object.freeze({ "number": 4, "pdfPage": 1, "proposedOption": "B", "explanation": "A mixed economy includes private and government economic activity and is typical of the Commonwealth Caribbean.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
-    Object.freeze({ "number": 5, "pdfPage": 1, "proposedOption": "B", "explanation": "Barter requires matching wants between traders because goods are exchanged directly without money.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
-    Object.freeze({ "number": 6, "pdfPage": 1, "proposedOption": "A", "explanation": "A private enterprise primarily seeks profit for its owners, even where it also provides jobs.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
-    Object.freeze({ "number": 7, "pdfPage": 1, "proposedOption": "A", "explanation": "A bakery owned and controlled by one person who receives its profits is a sole-trader business.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
-    Object.freeze({ "number": 8, "pdfPage": 1, "proposedOption": "C", "explanation": "Suggestion boxes collect workers' practical suggestions for improving their workplace.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
-    Object.freeze({ "number": 9, "pdfPage": 1, "proposedOption": "B", "explanation": "Receiving, evaluating quality, costing and maintaining records of purchased items are associated with procurement, though inventory control is shared with storekeepers.", "status": "needs-syllabus-adjudication", "disputeCategory": "purchasing-vs-stock-control", "disputeRationale": "The duties combine receiving, quality checking and inventory; both purchasing and stock control may overlap.", "visualQuestionReviewed": true }),
-    Object.freeze({ "number": 10, "pdfPage": 2, "proposedOption": "B", "explanation": "MIS is the standard abbreviation for Management Information Systems.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 11, "pdfPage": 2, "proposedOption": "B", "explanation": "Selling goods at reasonable prices is an obligation to customers, not principally to employees.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 12, "pdfPage": 2, "proposedOption": "D", "explanation": "Sponsoring a school sports team supports community welfare, an example of social responsibility.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 13, "pdfPage": 2, "proposedOption": "B", "explanation": "A laissez-faire leader allows subordinates wide autonomy to plan and decide their own work.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 14, "pdfPage": 2, "proposedOption": "A", "explanation": "Employee participation in decision-making can improve motivation and workplace morale.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 15, "pdfPage": 2, "proposedOption": "C", "explanation": "Trade unions seek to protect workers' rights and interests, including fair treatment.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 16, "pdfPage": 2, "proposedOption": "D", "explanation": "Communication of an offer and acceptance are central to contract formation; the offered option describes acceptance, although option A also states a generally necessary fact.", "status": "needs-syllabus-adjudication", "disputeCategory": "communicated-offer-and-acceptance", "disputeRationale": "Both communication of an offer and acceptance are elements of a valid contract; wording asks a single essential feature.", "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 17, "pdfPage": 3, "proposedOption": "D", "explanation": "Asking what price someone would accept and being told a price is normally an enquiry for information, not necessarily a binding offer.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 18, "pdfPage": 3, "proposedOption": "C", "explanation": "The prospective buyer's proposal of $12,000 instead of the seller's $15,000 asking price is a counteroffer.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 19, "pdfPage": 3, "proposedOption": "D", "explanation": "Working capital finances regular day-to-day business operations.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 20, "pdfPage": 3, "proposedOption": "D", "explanation": "Loss of qualified workers through emigration may reduce production in the origin economy.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 21, "pdfPage": 3, "proposedOption": "D", "explanation": "A delivery lorry is a business fixed asset used over time, not stock held for resale or private household property.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 22, "pdfPage": 3, "proposedOption": "B", "explanation": "Banking and tourism are service industries, unlike agriculture, mining and manufacturing.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 23, "pdfPage": 3, "proposedOption": "C", "explanation": "Primary production obtains natural raw materials for use in later processes.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 24, "pdfPage": 3, "proposedOption": "B", "explanation": "Farming and mining are primary production; manufacturing and services belong to other sectors.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 25, "pdfPage": 3, "proposedOption": "A", "explanation": "Agriculture obtains crops from land and is categorised as primary or extractive production.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 26, "pdfPage": 4, "proposedOption": "C", "explanation": "Whaling was not a normal large-scale productive activity in the contemporary Caribbean compared with packaging, mining and construction.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 27, "pdfPage": 4, "proposedOption": "B", "explanation": "Hand production of leather sandals can take place in a small workshop as cottage manufacturing.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 28, "pdfPage": 4, "proposedOption": "A", "explanation": "An industrial linkage exists when one industry's outputs are used as another industry's inputs.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 29, "pdfPage": 4, "proposedOption": "D", "explanation": "Mass production creates standardised goods in large quantities.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 30, "pdfPage": 4, "proposedOption": "A", "explanation": "A shareholder in an incorporated company ordinarily has limited liability, unlike a sole trader or general partner.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 31, "pdfPage": 4, "proposedOption": "D", "explanation": "Capital-intensive production makes extensive use of machinery relative to labour.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 32, "pdfPage": 4, "proposedOption": "B", "explanation": "A bill of lading identifies goods, shipment particulars and the carrier or ship involved.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 33, "pdfPage": 4, "proposedOption": "B", "explanation": "Hire purchase credit costs $784 minus the $700 cash price, or $84.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 34, "pdfPage": 4, "proposedOption": "D", "explanation": "Hire purchase is mainly a means for customers to buy durable goods on retail credit.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 35, "pdfPage": 4, "proposedOption": "B", "explanation": "Wholesalers stand between producers and retailers, buying and breaking up bulk orders.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 36, "pdfPage": 5, "proposedOption": "A", "explanation": "Transporting goods to storage facilities is more properly a distribution or wholesale logistical role than an ordinary retail selling function.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 37, "pdfPage": 5, "proposedOption": "C", "explanation": "A charter party is the contract for hire of a ship or specified cargo-carrying space.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 38, "pdfPage": 5, "proposedOption": "D", "explanation": "A post-dated cheque specifies a future date rather than being immediately due on its writing date.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 39, "pdfPage": 5, "proposedOption": "C", "explanation": "The cheque is drawn for $170 in figures but describes only seventy dollars in words, creating an amount discrepancy.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
-    Object.freeze({ "number": 40, "pdfPage": 6, "proposedOption": "D", "explanation": "A telegraphic money order or electronic funds transmission was designed for relatively fast distant payments in this examination era.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 41, "pdfPage": 6, "proposedOption": "A", "explanation": "A current bank account ordinarily permits cheque payments.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 42, "pdfPage": 6, "proposedOption": "A", "explanation": "Currency issuance, including banknotes, is a major central-bank responsibility.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 43, "pdfPage": 6, "proposedOption": "D", "explanation": "A spouse's exclusively owned property cannot be pledged by the borrower without ownership consent and acceptable security arrangements.", "status": "needs-syllabus-adjudication", "disputeCategory": "spouse-property-collateral", "disputeRationale": "A previously mortgaged home may also be unusable without consent, while spouse-owned property requires legal permission; cannot infer absolute ineligibility from absence of insurance.", "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 44, "pdfPage": 6, "proposedOption": "B", "explanation": "National insurance contributions are compulsory for qualifying employees under applicable social insurance law.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 45, "pdfPage": 6, "proposedOption": "A", "explanation": "Wage and salary deductions for taxation are income tax.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 46, "pdfPage": 6, "proposedOption": "B", "explanation": "Income tax is directly charged on individuals or businesses rather than charged through consumer purchases.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 47, "pdfPage": 6, "proposedOption": "A", "explanation": "Money purchasing power helps individuals meet their basic material needs, although public services are also important.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 48, "pdfPage": 6, "proposedOption": "B", "explanation": "Lower demand alongside increased supply generally leads to a lower market-clearing price.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 49, "pdfPage": 6, "proposedOption": "D", "explanation": "When potatoes are scarce but demand is high, purchasers compete for limited supply and the market price rises.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 50, "pdfPage": 7, "proposedOption": "B", "explanation": "The sole owner can ordinarily make decisions directly without navigating a board or co-owner approval chain.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 51, "pdfPage": 7, "proposedOption": "D", "explanation": "Tariffs, quotas and currency devaluation can potentially restrain imports or improve export competitiveness; revaluation normally makes imports cheaper.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 52, "pdfPage": 7, "proposedOption": "A", "explanation": "Competition affects an article's price through the interaction of market demand and supply.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 53, "pdfPage": 7, "proposedOption": "B", "explanation": "Increased imports of consumer goods do not automatically build domestic productive capacity.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 54, "pdfPage": 7, "proposedOption": "C", "explanation": "Import restrictions are barriers to international trade, not a benefit arising from it.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 55, "pdfPage": 7, "proposedOption": "A", "explanation": "A favourable balance of merchandise trade occurs when exports exceed imports.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 56, "pdfPage": 7, "proposedOption": "B", "explanation": "An import licence authorises the introduction of specified goods according to the issuing authority's rules.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 57, "pdfPage": 7, "proposedOption": "D", "explanation": "Greater exports earn foreign exchange and can help external payments; restrictions on domestic credit can also reduce import demand.", "status": "needs-syllabus-adjudication", "disputeCategory": "external-balance-remedies", "disputeRationale": "Both raising exports and restricting domestic credit can help correct an adverse balance of payments; original item may not be unique.", "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 58, "pdfPage": 7, "proposedOption": "C", "explanation": "The printed options show Bahamas, Haiti and Suriname, whose CARICOM participation and full-membership status varied by the examined historical date; do not grade without verifying the era.", "status": "needs-syllabus-adjudication", "disputeCategory": "historical-caricom-full-membership", "disputeRationale": "Membership and suspension dates for Haiti and the status of Bahamas/Suriname require checking the original 2004 sitting. The suggested grouping may be unsound.", "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 59, "pdfPage": 8, "proposedOption": "B", "explanation": "A mixed economy is typical in the Commonwealth Caribbean, combining private firms and public services.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
-    Object.freeze({ "number": 60, "pdfPage": 8, "proposedOption": "B", "explanation": "A nationalised industry is owned or controlled by government.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false })
-  ])
-});
-function verifyPob2004MjP1AuthoredKey(key = POB_2004_MJ_P1_AUTHORED_KEY) {
-  const issues = [], numbers = /* @__PURE__ */ new Set(), disputed = [];
-  const src = POB_SUPPLIED_ARCHIVE.find((p) => p.id === key?.id);
-  if (!src || src.id !== "POB-P1-2004-MJ" || key.sourceSha256 !== src.sourceSha256 || key.sourceFilename !== src.filename)
-    issues.push("Original source PDF or trusted SHA-256 not matched.");
-  if (!Array.isArray(key?.entries) || key.entries.length !== 60)
-    return { valid: false, issues: [...issues, "Exactly 60 source questions required."], disputes: 0 };
-  for (const item2 of key.entries) {
-    if (!Number.isInteger(item2.number) || item2.number < 1 || item2.number > 60 || numbers.has(item2.number))
-      issues.push("Repeated or invalid number " + item2.number);
-    numbers.add(item2.number);
-    if (!["A", "B", "C", "D"].includes(item2.proposedOption) || item2.explanation?.length < 35)
-      issues.push("Missing option or rationale for Q" + item2.number);
-    if (!Number.isInteger(item2.pdfPage) || item2.pdfPage < 1 || item2.pdfPage > 8)
-      issues.push("Source PDF page outside range Q" + item2.number);
-    if (item2.status === "needs-syllabus-adjudication") {
-      disputed.push(item2.number);
-      if (!item2.disputeCategory || !item2.disputeRationale)
-        issues.push("Missing evidence of dispute at Q" + item2.number);
-    } else if (item2.status !== "spark-authored-provisional")
-      issues.push("Answer improperly certified Q" + item2.number);
-  }
-  if (numbers.size !== 60) issues.push("Required original questions missing.");
-  if (disputed.join(",") !== "3,9,16,43,57,58")
-    issues.push("Mandatory ambiguity holds removed.");
-  if (key.liveScoringApproved !== false || key.publishedCxcAnswerKeyAvailable !== false)
-    issues.push("Authored answers must never impersonate CXC official key or live release.");
-  return { valid: issues.length === 0, issues, disputes: disputed.length, disputedNumbers: disputed };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2005MjP1AuthoredKey.js
-var pobHistorical2005MjP1AuthoredKey_exports = {};
-__export(pobHistorical2005MjP1AuthoredKey_exports, {
-  POB_2005_MJ_P1_AUTHORED_KEY: () => POB_2005_MJ_P1_AUTHORED_KEY,
-  verifyPob2005MjP1AuthoredKey: () => verifyPob2005MjP1AuthoredKey
-});
-var POB_2005_MJ_P1_AUTHORED_KEY = Object.freeze({
-  id: "POB-P1-2005-MJ",
-  paper: 1,
-  year: 2005,
-  sitting: "MJ",
-  sourceFilename: "CSEC_Principles_of_Business_P1_2005_MJ.pdf",
-  sourceSha256: "9556b7657b5e0476cf7df58f5889df044b97b93449a06c5e02c5939250ef7f88",
-  questionCount: 60,
-  durationMinutes: 75,
-  markingOrigin: "SPARK internally derived from user-supplied PDF",
-  publishedCxcKeySupplied: false,
-  fullImageOptionQAComplete: false,
-  calibrationBenchmarksComplete: false,
-  liveScoringApproved: false,
-  questions: Object.freeze([
-    Object.freeze({ "number": 1, "pdfPage": 2, "proposedOption": "D", "explanation": "Barter can be restricted by the need for matching wants, difficulties dividing goods and deciding exchange ratios.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
-    Object.freeze({ "number": 2, "pdfPage": 2, "proposedOption": "B", "explanation": "Producing goods, creating jobs and educating workers are business activities; maximising sales is an objective rather than a universally required function.", "status": "academic-dispute", "disputeType": "business-functions", "disputeEvidence": "Offering training may be classed as business function while maximisation of sales may be classed as objective; syllabus-era wording matters.", "sourceGraphicReviewed": false }),
-    Object.freeze({ "number": 3, "pdfPage": 2, "proposedOption": "D", "explanation": "Subsidised meals are fringe benefits provided to employees in addition to regular wages.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
-    Object.freeze({ "number": 4, "pdfPage": 2, "proposedOption": "A", "explanation": "Profit-making is a principal objective of private enterprise.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
-    Object.freeze({ "number": 5, "pdfPage": 2, "proposedOption": "C", "explanation": "Public company shares may be traded on a stock exchange if listed and otherwise eligible.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
-    Object.freeze({ "number": 6, "pdfPage": 2, "proposedOption": "D", "explanation": "Multinational corporations can generate employment in their host countries.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
-    Object.freeze({ "number": 7, "pdfPage": 2, "proposedOption": "A", "explanation": "A general partnership ordinarily dissolves when a partner dies unless the partnership agreement provides for continuity.", "status": "academic-dispute", "disputeType": "partnership-death-rule", "disputeEvidence": "Partnership contracts can specify continuation on a partner's death, so automatic closure is conditional.", "sourceGraphicReviewed": false }),
-    Object.freeze({ "number": 8, "pdfPage": 2, "proposedOption": "C", "explanation": "Purchasing departments procure goods, check received goods and costs; stock-keeping tasks may overlap with inventory co
+    issues.push("Academic proposal cannot

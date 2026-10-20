@@ -1,4 +1,149 @@
-ntrol.", "status": "academic-dispute", "disputeType": "purchasing-and-stock-control", "disputeEvidence": "Receiving goods and inventory are jointly relevant to purchasing and stock control, so options overlap.", "sourceGraphicReviewed": false }),
+ be published as CXC-official/live-scored.");
+  return { valid: issues.length === 0, issues, disputes: disputes.length, disputedNumbers: disputes };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2004MjP1AuthoredKey.js
+var pobHistorical2004MjP1AuthoredKey_exports = {};
+__export(pobHistorical2004MjP1AuthoredKey_exports, {
+  POB_2004_MJ_P1_AUTHORED_KEY: () => POB_2004_MJ_P1_AUTHORED_KEY,
+  verifyPob2004MjP1AuthoredKey: () => verifyPob2004MjP1AuthoredKey
+});
+var POB_2004_MJ_P1_AUTHORED_KEY = Object.freeze({
+  id: "POB-P1-2004-MJ",
+  paper: 1,
+  year: 2004,
+  sitting: "MJ",
+  sourceFilename: "CSEC_Principles_of_Business_P1_2004_MJ.pdf",
+  sourceSha256: "01ebac983e9c49a3525db4cb5bfab7e84af10ea20d4f38caa0c6ef7dafe13e54",
+  sourcePageCount: 8,
+  questionCount: 60,
+  origin: "SPARK-independent-subject-explanations",
+  publishedCxcAnswerKeyAvailable: false,
+  fullQuestionOptionVisualComparisonPassed: false,
+  benchmarkCalibrationPassed: false,
+  liveScoringApproved: false,
+  entries: Object.freeze([
+    Object.freeze({ "number": 1, "pdfPage": 1, "proposedOption": "B", "explanation": "Early people could satisfy their needs by applying their own initiative to available natural resources.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
+    Object.freeze({ "number": 2, "pdfPage": 1, "proposedOption": "C", "explanation": "Money is useful as a medium of exchange, measure of value and store of value; indivisibility is not a desired function.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
+    Object.freeze({ "number": 3, "pdfPage": 1, "proposedOption": "B", "explanation": "Producing goods, providing employment and workforce education are business functions; maximum sales is an objective rather than a universal function.", "status": "needs-syllabus-adjudication", "disputeCategory": "business-functions-versus-sales", "disputeRationale": "The text confuses universally necessary functions with possible objectives; B follows the training/social-function reading.", "visualQuestionReviewed": true }),
+    Object.freeze({ "number": 4, "pdfPage": 1, "proposedOption": "B", "explanation": "A mixed economy includes private and government economic activity and is typical of the Commonwealth Caribbean.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
+    Object.freeze({ "number": 5, "pdfPage": 1, "proposedOption": "B", "explanation": "Barter requires matching wants between traders because goods are exchanged directly without money.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
+    Object.freeze({ "number": 6, "pdfPage": 1, "proposedOption": "A", "explanation": "A private enterprise primarily seeks profit for its owners, even where it also provides jobs.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
+    Object.freeze({ "number": 7, "pdfPage": 1, "proposedOption": "A", "explanation": "A bakery owned and controlled by one person who receives its profits is a sole-trader business.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
+    Object.freeze({ "number": 8, "pdfPage": 1, "proposedOption": "C", "explanation": "Suggestion boxes collect workers' practical suggestions for improving their workplace.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
+    Object.freeze({ "number": 9, "pdfPage": 1, "proposedOption": "B", "explanation": "Receiving, evaluating quality, costing and maintaining records of purchased items are associated with procurement, though inventory control is shared with storekeepers.", "status": "needs-syllabus-adjudication", "disputeCategory": "purchasing-vs-stock-control", "disputeRationale": "The duties combine receiving, quality checking and inventory; both purchasing and stock control may overlap.", "visualQuestionReviewed": true }),
+    Object.freeze({ "number": 10, "pdfPage": 2, "proposedOption": "B", "explanation": "MIS is the standard abbreviation for Management Information Systems.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 11, "pdfPage": 2, "proposedOption": "B", "explanation": "Selling goods at reasonable prices is an obligation to customers, not principally to employees.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 12, "pdfPage": 2, "proposedOption": "D", "explanation": "Sponsoring a school sports team supports community welfare, an example of social responsibility.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 13, "pdfPage": 2, "proposedOption": "B", "explanation": "A laissez-faire leader allows subordinates wide autonomy to plan and decide their own work.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 14, "pdfPage": 2, "proposedOption": "A", "explanation": "Employee participation in decision-making can improve motivation and workplace morale.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 15, "pdfPage": 2, "proposedOption": "C", "explanation": "Trade unions seek to protect workers' rights and interests, including fair treatment.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 16, "pdfPage": 2, "proposedOption": "D", "explanation": "Communication of an offer and acceptance are central to contract formation; the offered option describes acceptance, although option A also states a generally necessary fact.", "status": "needs-syllabus-adjudication", "disputeCategory": "communicated-offer-and-acceptance", "disputeRationale": "Both communication of an offer and acceptance are elements of a valid contract; wording asks a single essential feature.", "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 17, "pdfPage": 3, "proposedOption": "D", "explanation": "Asking what price someone would accept and being told a price is normally an enquiry for information, not necessarily a binding offer.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 18, "pdfPage": 3, "proposedOption": "C", "explanation": "The prospective buyer's proposal of $12,000 instead of the seller's $15,000 asking price is a counteroffer.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 19, "pdfPage": 3, "proposedOption": "D", "explanation": "Working capital finances regular day-to-day business operations.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 20, "pdfPage": 3, "proposedOption": "D", "explanation": "Loss of qualified workers through emigration may reduce production in the origin economy.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 21, "pdfPage": 3, "proposedOption": "D", "explanation": "A delivery lorry is a business fixed asset used over time, not stock held for resale or private household property.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 22, "pdfPage": 3, "proposedOption": "B", "explanation": "Banking and tourism are service industries, unlike agriculture, mining and manufacturing.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 23, "pdfPage": 3, "proposedOption": "C", "explanation": "Primary production obtains natural raw materials for use in later processes.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 24, "pdfPage": 3, "proposedOption": "B", "explanation": "Farming and mining are primary production; manufacturing and services belong to other sectors.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 25, "pdfPage": 3, "proposedOption": "A", "explanation": "Agriculture obtains crops from land and is categorised as primary or extractive production.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 26, "pdfPage": 4, "proposedOption": "C", "explanation": "Whaling was not a normal large-scale productive activity in the contemporary Caribbean compared with packaging, mining and construction.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 27, "pdfPage": 4, "proposedOption": "B", "explanation": "Hand production of leather sandals can take place in a small workshop as cottage manufacturing.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 28, "pdfPage": 4, "proposedOption": "A", "explanation": "An industrial linkage exists when one industry's outputs are used as another industry's inputs.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 29, "pdfPage": 4, "proposedOption": "D", "explanation": "Mass production creates standardised goods in large quantities.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 30, "pdfPage": 4, "proposedOption": "A", "explanation": "A shareholder in an incorporated company ordinarily has limited liability, unlike a sole trader or general partner.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 31, "pdfPage": 4, "proposedOption": "D", "explanation": "Capital-intensive production makes extensive use of machinery relative to labour.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 32, "pdfPage": 4, "proposedOption": "B", "explanation": "A bill of lading identifies goods, shipment particulars and the carrier or ship involved.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 33, "pdfPage": 4, "proposedOption": "B", "explanation": "Hire purchase credit costs $784 minus the $700 cash price, or $84.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 34, "pdfPage": 4, "proposedOption": "D", "explanation": "Hire purchase is mainly a means for customers to buy durable goods on retail credit.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 35, "pdfPage": 4, "proposedOption": "B", "explanation": "Wholesalers stand between producers and retailers, buying and breaking up bulk orders.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 36, "pdfPage": 5, "proposedOption": "A", "explanation": "Transporting goods to storage facilities is more properly a distribution or wholesale logistical role than an ordinary retail selling function.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 37, "pdfPage": 5, "proposedOption": "C", "explanation": "A charter party is the contract for hire of a ship or specified cargo-carrying space.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 38, "pdfPage": 5, "proposedOption": "D", "explanation": "A post-dated cheque specifies a future date rather than being immediately due on its writing date.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 39, "pdfPage": 5, "proposedOption": "C", "explanation": "The cheque is drawn for $170 in figures but describes only seventy dollars in words, creating an amount discrepancy.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": true }),
+    Object.freeze({ "number": 40, "pdfPage": 6, "proposedOption": "D", "explanation": "A telegraphic money order or electronic funds transmission was designed for relatively fast distant payments in this examination era.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 41, "pdfPage": 6, "proposedOption": "A", "explanation": "A current bank account ordinarily permits cheque payments.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 42, "pdfPage": 6, "proposedOption": "A", "explanation": "Currency issuance, including banknotes, is a major central-bank responsibility.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 43, "pdfPage": 6, "proposedOption": "D", "explanation": "A spouse's exclusively owned property cannot be pledged by the borrower without ownership consent and acceptable security arrangements.", "status": "needs-syllabus-adjudication", "disputeCategory": "spouse-property-collateral", "disputeRationale": "A previously mortgaged home may also be unusable without consent, while spouse-owned property requires legal permission; cannot infer absolute ineligibility from absence of insurance.", "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 44, "pdfPage": 6, "proposedOption": "B", "explanation": "National insurance contributions are compulsory for qualifying employees under applicable social insurance law.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 45, "pdfPage": 6, "proposedOption": "A", "explanation": "Wage and salary deductions for taxation are income tax.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 46, "pdfPage": 6, "proposedOption": "B", "explanation": "Income tax is directly charged on individuals or businesses rather than charged through consumer purchases.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 47, "pdfPage": 6, "proposedOption": "A", "explanation": "Money purchasing power helps individuals meet their basic material needs, although public services are also important.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 48, "pdfPage": 6, "proposedOption": "B", "explanation": "Lower demand alongside increased supply generally leads to a lower market-clearing price.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 49, "pdfPage": 6, "proposedOption": "D", "explanation": "When potatoes are scarce but demand is high, purchasers compete for limited supply and the market price rises.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 50, "pdfPage": 7, "proposedOption": "B", "explanation": "The sole owner can ordinarily make decisions directly without navigating a board or co-owner approval chain.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 51, "pdfPage": 7, "proposedOption": "D", "explanation": "Tariffs, quotas and currency devaluation can potentially restrain imports or improve export competitiveness; revaluation normally makes imports cheaper.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 52, "pdfPage": 7, "proposedOption": "A", "explanation": "Competition affects an article's price through the interaction of market demand and supply.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 53, "pdfPage": 7, "proposedOption": "B", "explanation": "Increased imports of consumer goods do not automatically build domestic productive capacity.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 54, "pdfPage": 7, "proposedOption": "C", "explanation": "Import restrictions are barriers to international trade, not a benefit arising from it.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 55, "pdfPage": 7, "proposedOption": "A", "explanation": "A favourable balance of merchandise trade occurs when exports exceed imports.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 56, "pdfPage": 7, "proposedOption": "B", "explanation": "An import licence authorises the introduction of specified goods according to the issuing authority's rules.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 57, "pdfPage": 7, "proposedOption": "D", "explanation": "Greater exports earn foreign exchange and can help external payments; restrictions on domestic credit can also reduce import demand.", "status": "needs-syllabus-adjudication", "disputeCategory": "external-balance-remedies", "disputeRationale": "Both raising exports and restricting domestic credit can help correct an adverse balance of payments; original item may not be unique.", "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 58, "pdfPage": 7, "proposedOption": "C", "explanation": "The printed options show Bahamas, Haiti and Suriname, whose CARICOM participation and full-membership status varied by the examined historical date; do not grade without verifying the era.", "status": "needs-syllabus-adjudication", "disputeCategory": "historical-caricom-full-membership", "disputeRationale": "Membership and suspension dates for Haiti and the status of Bahamas/Suriname require checking the original 2004 sitting. The suggested grouping may be unsound.", "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 59, "pdfPage": 8, "proposedOption": "B", "explanation": "A mixed economy is typical in the Commonwealth Caribbean, combining private firms and public services.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false }),
+    Object.freeze({ "number": 60, "pdfPage": 8, "proposedOption": "B", "explanation": "A nationalised industry is owned or controlled by government.", "status": "spark-authored-provisional", "disputeCategory": null, "disputeRationale": null, "visualQuestionReviewed": false })
+  ])
+});
+function verifyPob2004MjP1AuthoredKey(key = POB_2004_MJ_P1_AUTHORED_KEY) {
+  const issues = [], numbers2 = /* @__PURE__ */ new Set(), disputed = [];
+  const src = POB_SUPPLIED_ARCHIVE.find((p) => p.id === key?.id);
+  if (!src || src.id !== "POB-P1-2004-MJ" || key.sourceSha256 !== src.sourceSha256 || key.sourceFilename !== src.filename)
+    issues.push("Original source PDF or trusted SHA-256 not matched.");
+  if (!Array.isArray(key?.entries) || key.entries.length !== 60)
+    return { valid: false, issues: [...issues, "Exactly 60 source questions required."], disputes: 0 };
+  for (const item2 of key.entries) {
+    if (!Number.isInteger(item2.number) || item2.number < 1 || item2.number > 60 || numbers2.has(item2.number))
+      issues.push("Repeated or invalid number " + item2.number);
+    numbers2.add(item2.number);
+    if (!["A", "B", "C", "D"].includes(item2.proposedOption) || item2.explanation?.length < 35)
+      issues.push("Missing option or rationale for Q" + item2.number);
+    if (!Number.isInteger(item2.pdfPage) || item2.pdfPage < 1 || item2.pdfPage > 8)
+      issues.push("Source PDF page outside range Q" + item2.number);
+    if (item2.status === "needs-syllabus-adjudication") {
+      disputed.push(item2.number);
+      if (!item2.disputeCategory || !item2.disputeRationale)
+        issues.push("Missing evidence of dispute at Q" + item2.number);
+    } else if (item2.status !== "spark-authored-provisional")
+      issues.push("Answer improperly certified Q" + item2.number);
+  }
+  if (numbers2.size !== 60) issues.push("Required original questions missing.");
+  if (disputed.join(",") !== "3,9,16,43,57,58")
+    issues.push("Mandatory ambiguity holds removed.");
+  if (key.liveScoringApproved !== false || key.publishedCxcAnswerKeyAvailable !== false)
+    issues.push("Authored answers must never impersonate CXC official key or live release.");
+  return { valid: issues.length === 0, issues, disputes: disputed.length, disputedNumbers: disputed };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2005MjP1AuthoredKey.js
+var pobHistorical2005MjP1AuthoredKey_exports = {};
+__export(pobHistorical2005MjP1AuthoredKey_exports, {
+  POB_2005_MJ_P1_AUTHORED_KEY: () => POB_2005_MJ_P1_AUTHORED_KEY,
+  verifyPob2005MjP1AuthoredKey: () => verifyPob2005MjP1AuthoredKey
+});
+var POB_2005_MJ_P1_AUTHORED_KEY = Object.freeze({
+  id: "POB-P1-2005-MJ",
+  paper: 1,
+  year: 2005,
+  sitting: "MJ",
+  sourceFilename: "CSEC_Principles_of_Business_P1_2005_MJ.pdf",
+  sourceSha256: "9556b7657b5e0476cf7df58f5889df044b97b93449a06c5e02c5939250ef7f88",
+  questionCount: 60,
+  durationMinutes: 75,
+  markingOrigin: "SPARK internally derived from user-supplied PDF",
+  publishedCxcKeySupplied: false,
+  fullImageOptionQAComplete: false,
+  calibrationBenchmarksComplete: false,
+  liveScoringApproved: false,
+  questions: Object.freeze([
+    Object.freeze({ "number": 1, "pdfPage": 2, "proposedOption": "D", "explanation": "Barter can be restricted by the need for matching wants, difficulties dividing goods and deciding exchange ratios.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
+    Object.freeze({ "number": 2, "pdfPage": 2, "proposedOption": "B", "explanation": "Producing goods, creating jobs and educating workers are business activities; maximising sales is an objective rather than a universally required function.", "status": "academic-dispute", "disputeType": "business-functions", "disputeEvidence": "Offering training may be classed as business function while maximisation of sales may be classed as objective; syllabus-era wording matters.", "sourceGraphicReviewed": false }),
+    Object.freeze({ "number": 3, "pdfPage": 2, "proposedOption": "D", "explanation": "Subsidised meals are fringe benefits provided to employees in addition to regular wages.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
+    Object.freeze({ "number": 4, "pdfPage": 2, "proposedOption": "A", "explanation": "Profit-making is a principal objective of private enterprise.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
+    Object.freeze({ "number": 5, "pdfPage": 2, "proposedOption": "C", "explanation": "Public company shares may be traded on a stock exchange if listed and otherwise eligible.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
+    Object.freeze({ "number": 6, "pdfPage": 2, "proposedOption": "D", "explanation": "Multinational corporations can generate employment in their host countries.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
+    Object.freeze({ "number": 7, "pdfPage": 2, "proposedOption": "A", "explanation": "A general partnership ordinarily dissolves when a partner dies unless the partnership agreement provides for continuity.", "status": "academic-dispute", "disputeType": "partnership-death-rule", "disputeEvidence": "Partnership contracts can specify continuation on a partner's death, so automatic closure is conditional.", "sourceGraphicReviewed": false }),
+    Object.freeze({ "number": 8, "pdfPage": 2, "proposedOption": "C", "explanation": "Purchasing departments procure goods, check received goods and costs; stock-keeping tasks may overlap with inventory control.", "status": "academic-dispute", "disputeType": "purchasing-and-stock-control", "disputeEvidence": "Receiving goods and inventory are jointly relevant to purchasing and stock control, so options overlap.", "sourceGraphicReviewed": false }),
     Object.freeze({ "number": 9, "pdfPage": 3, "proposedOption": "A", "explanation": "The source organisational chart displays a line reporting hierarchy down from the board to functional managers.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": true }),
     Object.freeze({ "number": 10, "pdfPage": 3, "proposedOption": "B", "explanation": "Sponsoring school cricket is a social responsibility or community-support activity.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
     Object.freeze({ "number": 11, "pdfPage": 3, "proposedOption": "B", "explanation": "A laissez-faire leader leaves substantial day-to-day decisions to subordinates.", "status": "spark-authored-provisional", "disputeType": null, "disputeEvidence": null, "sourceGraphicReviewed": false }),
@@ -396,16 +541,16 @@ var POB_2008_MJ_P1_AUTHORED_KEY = Object.freeze({
   ])
 });
 function verifyPob2008MjP1AuthoredKey(key = POB_2008_MJ_P1_AUTHORED_KEY) {
-  const issues = [], numbers = /* @__PURE__ */ new Set(), disputes = [];
+  const issues = [], numbers2 = /* @__PURE__ */ new Set(), disputes = [];
   const source2 = POB_SUPPLIED_ARCHIVE.find((p) => p.id === "POB-P1-2008-MJ");
   if (!source2 || key?.id !== source2.id || key.sourceSha256 !== source2.sourceSha256)
     issues.push("May/June 2008 trusted source mismatch.");
   if (!Array.isArray(key?.entries) || key.entries.length !== 60)
     return { valid: false, issues: [...issues, "Missing 60 answers."], disputes };
   for (const row of key.entries) {
-    if (!Number.isInteger(row.number) || row.number < 1 || row.number > 60 || numbers.has(row.number))
+    if (!Number.isInteger(row.number) || row.number < 1 || row.number > 60 || numbers2.has(row.number))
       issues.push("Duplicate or invalid question number.");
-    numbers.add(row.number);
+    numbers2.add(row.number);
     if (row.proposedOption !== null && !["A", "B", "C", "D"].includes(row.proposedOption))
       issues.push("Unrecognised answer letter.");
     if (typeof row.explanation !== "string" || row.explanation.length < 32)
@@ -419,7 +564,7 @@ function verifyPob2008MjP1AuthoredKey(key = POB_2008_MJ_P1_AUTHORED_KEY) {
     } else if (row.status !== "spark-internal-provisional" || row.proposedOption === null)
       issues.push("Prematurely promoted answer Q" + row.number);
   }
-  if (numbers.size !== 60 || disputes.join(",") !== "2,10,12,16,17,29,39,43,50,53,54,56,57")
+  if (numbers2.size !== 60 || disputes.join(",") !== "2,10,12,16,17,29,39,43,50,53,54,56,57")
     issues.push("Uncovered question or disputed item.");
   if (key.liveScoringApproved !== false || key.officialCxcKeySupplied !== false)
     issues.push("Unverified key falsely declared live or official.");
@@ -624,16 +769,16 @@ var POB_2012_MJ_P1_AUTHORED_KEY = Object.freeze({
   ])
 });
 function auditPob2012MjP1AuthorKey(key = POB_2012_MJ_P1_AUTHORED_KEY) {
-  const issues = [], numbers = /* @__PURE__ */ new Set(), disputes = [];
+  const issues = [], numbers2 = /* @__PURE__ */ new Set(), disputes = [];
   const source2 = POB_SUPPLIED_ARCHIVE.find((p) => p.id === "POB-P1-2012-MJ");
   if (!source2 || key?.id !== source2.id || key.sourceSha256 !== source2.sourceSha256)
     issues.push("Missing 2012 trusted source or PDF fingerprint differs.");
   if (!Array.isArray(key?.entries) || key.entries.length !== 60)
     return { valid: false, issues: [...issues, "Must have all sixty item drafts."], disputes };
   for (const item2 of key.entries) {
-    if (!Number.isInteger(item2.number) || numbers.has(item2.number) || item2.number < 1 || item2.number > 60)
+    if (!Number.isInteger(item2.number) || numbers2.has(item2.number) || item2.number < 1 || item2.number > 60)
       issues.push("Invalid/duplicated question number " + item2.number);
-    numbers.add(item2.number);
+    numbers2.add(item2.number);
     if (item2.proposedOption !== null && !["A", "B", "C", "D"].includes(item2.proposedOption))
       issues.push("Bad proposed letter " + item2.number);
     if (typeof item2.explanation !== "string" || item2.explanation.length < 32)
@@ -647,7 +792,7 @@ function auditPob2012MjP1AuthorKey(key = POB_2012_MJ_P1_AUTHORED_KEY) {
     } else if (item2.status !== "spark-internal-provisional" || item2.proposedOption === null)
       issues.push("Improper unmarked disputed question " + item2.number);
   }
-  if (numbers.size !== 60) issues.push("Missing MCQ slots.");
+  if (numbers2.size !== 60) issues.push("Missing MCQ slots.");
   if (disputes.join(",") !== "16,27,41,45,55") issues.push("Expected ambiguity evidence absent.");
   if (key.liveScoringApproved !== false || key.originalAnswerSheetSupplied !== false)
     issues.push("Unverified key must not be described as official or released.");
@@ -1052,144 +1197,4 @@ var POB_2017_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 21, "pdfPage": 5, "proposedOption": "D", "explanation": "Human resources refers to human workers and their productive capabilities.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 22, "pdfPage": 5, "proposedOption": "C", "explanation": "Working capital funds recurring expenses and day-to-day operations.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 23, "pdfPage": 5, "proposedOption": "D", "explanation": "Food processing transforms agricultural products and is a manufacturing activity.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 24, "pdfPage": 5, "proposedOption": "A", "explanation": "Mechanisation tends to displace some routine or unskilled manual work.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 25, "pdfPage": 6, "proposedOption": "D", "explanation": "Industrial linkages arise when the output of one firm or industry supplies another.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 26, "pdfPage": 6, "proposedOption": "C", "explanation": "A home-based craft operation is a typical small cottage enterprise.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 27, "pdfPage": 6, "proposedOption": "A", "explanation": "Employing many people but little machinery is labour-intensive production.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 28, "pdfPage": 6, "proposedOption": "C", "explanation": "A perfect market has numerous producers and consumers.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 29, "pdfPage": 6, "proposedOption": "D", "explanation": "A loss leader is priced unusually low to attract customers into the store.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 30, "pdfPage": 6, "proposedOption": "C", "explanation": "Market equilibrium occurs where buyers' desired quantity equals sellers' desired quantity at prevailing prices.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 31, "pdfPage": 6, "proposedOption": "A", "explanation": "Publicity can secure unpaid editorial or news coverage, unlike paid advertising.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 32, "pdfPage": 6, "proposedOption": "C", "explanation": "A sole electricity provider is a monopoly.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 33, "pdfPage": 7, "proposedOption": "C", "explanation": "A brand identifies the producer's goods.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 34, "pdfPage": 7, "proposedOption": "B", "explanation": "Free sampling is a promotional sales incentive.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 35, "pdfPage": 7, "proposedOption": "C", "explanation": "A standing order transfers fixed payments at regular intervals.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 36, "pdfPage": 7, "proposedOption": "D", "explanation": "Company shareholders may receive declared dividends.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 37, "pdfPage": 7, "proposedOption": "C", "explanation": "Investment adds to the nation's stock of capital goods.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 38, "pdfPage": 7, "proposedOption": "D", "explanation": "Commercial banks accept deposits from members of the public.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 39, "pdfPage": 7, "proposedOption": "A", "explanation": "Issuing currency is a major central bank function.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 40, "pdfPage": 7, "proposedOption": "B", "explanation": "Financial shares bring both risk and potential rewards or benefits.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 41, "pdfPage": 7, "proposedOption": "A", "explanation": "Lower business taxes can stimulate investment and trading.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 42, "pdfPage": 7, "proposedOption": "D", "explanation": "A price control places a government limit on selling prices.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 43, "pdfPage": 8, "proposedOption": "B", "explanation": "Improvement in living standards is a practical indicator of economic policy success.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 44, "pdfPage": 8, "proposedOption": "A", "explanation": "Income tax is paid directly on personal or business income.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 45, "pdfPage": 8, "proposedOption": "B", "explanation": "Proportional taxation charges the same rate at different income levels.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 46, "pdfPage": 8, "proposedOption": "C", "explanation": "Chambers of commerce help producers obtain markets and business connections.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 47, "pdfPage": 8, "proposedOption": "C", "explanation": "PAYE and National Insurance arrangements can operate in the tax and social-security framework that redistributes income.", "status": "needs-adjudication", "dispute": "redistribution-vs-social-insurance-contribution", "alternatives": ["C"], "note": "PAYE and National Insurance are intended in the source, but NI's actuarial/insurance role means redistributive classification requires a documented national-context review." }),
-    Object.freeze({ "number": 48, "pdfPage": 8, "proposedOption": "A", "explanation": "A favourable goods-trade balance results when exports exceed imports.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 49, "pdfPage": 8, "proposedOption": "D", "explanation": "Growing imports of consumer goods without corresponding production or exports is not in itself a development strategy.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 50, "pdfPage": 8, "proposedOption": "B", "explanation": "Education raises workforce skill, efficiency and productive capacity.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 51, "pdfPage": 9, "proposedOption": "D", "explanation": "An import quota restricts the quantity bought from foreign suppliers.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 52, "pdfPage": 9, "proposedOption": "D", "explanation": "Export licences allow government to regulate goods leaving the country.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 53, "pdfPage": 9, "proposedOption": "B", "explanation": "International trade is the exchange of goods and services across national borders.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 54, "pdfPage": 9, "proposedOption": "C", "explanation": "Import restrictions are barriers rather than an inherent benefit of international trade.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 55, "pdfPage": 9, "proposedOption": "D", "explanation": "Economic dualism describes simultaneous technologically advanced and less advanced productive sectors.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 56, "pdfPage": 9, "proposedOption": "C", "explanation": "CARICOM fosters regional trade and common services, but generic member collaboration is also an arguable statement of purpose.", "status": "needs-adjudication", "dispute": "multiple-defensible-purposes", "alternatives": ["A", "C"], "note": "CARICOM seeks both member collaboration and common markets/services; the word interregional is imprecise." }),
-    Object.freeze({ "number": 57, "pdfPage": 9, "proposedOption": "A", "explanation": "Inflation is a sustained increase in the general price level.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 58, "pdfPage": 9, "proposedOption": "B", "explanation": "Sole proprietorships often struggle most to secure extra expansion capital.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 59, "pdfPage": 10, "proposedOption": "C", "explanation": "Industrialisation normally promotes jobs, so greater unemployment is the option that is not a benefit.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 60, "pdfPage": 10, "proposedOption": "A", "explanation": "The WTO oversees rules and dispute processes involving international trade agreements.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null })
-  ])
-});
-function verifyPob2017MjP1AuthoredKey(key = POB_2017_MJ_P1_AUTHORED_KEY) {
-  const problems = [], seen = /* @__PURE__ */ new Set(), disputes = [];
-  const source2 = POB_SUPPLIED_ARCHIVE.find((p) => p.id === key?.id);
-  if (!source2 || source2.id !== "POB-P1-2017-MJ" || source2.sourceSha256 !== key.sourceSha256)
-    problems.push("Changed or unknown 2017 exam PDF.");
-  if (!Array.isArray(key?.entries) || key.entries.length !== 60)
-    return { valid: false, problems: [...problems, "Complete 60-question key required."], disputes: [] };
-  for (const row of key.entries) {
-    if (!Number.isInteger(row.number) || row.number < 1 || row.number > 60 || seen.has(row.number))
-      problems.push("Duplicate/invalid question number " + row.number);
-    seen.add(row.number);
-    if (!["A", "B", "C", "D"].includes(row.proposedOption) || row.explanation?.length < 32)
-      problems.push("Invalid explanation or letter for Q" + row.number);
-    if (!Number.isInteger(row.pdfPage) || row.pdfPage < 2 || row.pdfPage > 10)
-      problems.push("Invalid PDF page for Q" + row.number);
-    if (row.status === "needs-adjudication") {
-      disputes.push(row.number);
-      if (!row.dispute || !row.note || !Array.isArray(row.alternatives))
-        problems.push("Missing dispute evidence Q" + row.number);
-    } else if (row.status !== "spark-internal-provisional")
-      problems.push("Unexpected unverified release status Q" + row.number);
-  }
-  if (seen.size !== 60) problems.push("60 unique question numbers needed.");
-  if (disputes.join(",") !== "47,56") problems.push("Historical ambiguity tracking incomplete.");
-  if (key.liveScoringApproved !== false || key.officialCxcKeySupplied !== false)
-    problems.push("SPARK-authored key must not be misrepresented as official or released.");
-  return { valid: problems.length === 0, problems, disputes };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2018MjP1AuthoredKey.js
-var pobHistorical2018MjP1AuthoredKey_exports = {};
-__export(pobHistorical2018MjP1AuthoredKey_exports, {
-  POB_2018_MJ_P1_AUTHORED_KEY: () => POB_2018_MJ_P1_AUTHORED_KEY,
-  verifyPob2018MjP1AuthoredKey: () => verifyPob2018MjP1AuthoredKey
-});
-var POB_2018_MJ_P1_AUTHORED_KEY = Object.freeze({
-  id: "POB-P1-2018-MJ",
-  paper: 1,
-  year: 2018,
-  sitting: "MJ",
-  sourceFilename: "CSEC_Principles_of_Business_P1_2018_MJ.pdf",
-  sourceSha256: "f3211d8598d621674f9156b235fd934d4ba3814d098824f8c9c169edc7ffb586",
-  sourcePages: 9,
-  sourceTestCode: "01240010",
-  paperQuestionCount: 60,
-  sourceQuestionsRecovered: 55,
-  missingSourceQuestionNumbers: Object.freeze([53, 54, 55, 56, 57]),
-  scannedPagesReviewed: Object.freeze([1, 2, 3, 4, 5, 6, 7, 8, 9]),
-  authorshipOrigin: "SPARK-internally-derived-not-CXC-published-key",
-  officialCxcAnswerKeyAvailable: false,
-  sourceQuestionBankComplete: false,
-  liveScoringApproved: false,
-  markingCalibrationComplete: false,
-  questions: Object.freeze([
-    Object.freeze({ "number": 1, "pdfPage": 2, "proposedOption": "A", "explanation": "Labour is the physical and mental effort or capabilities of people used to carry out production tasks.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 2, "pdfPage": 2, "proposedOption": "D", "explanation": "Money remittances transfer funds rather than serving as negotiable trade instruments such as bills of exchange.", "sourceQuestionPresent": true, "status": "academic-dispute", "uncertainty": "Money remittances may be classified as payment/transfer instruments by some textbooks, so compare the exact syllabus vocabulary." }),
-    Object.freeze({ "number": 3, "pdfPage": 2, "proposedOption": "B", "explanation": "The board of directors has responsibility for setting company policy and supervising its implementation.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 4, "pdfPage": 2, "proposedOption": "A", "explanation": "A centrally planned economy directs production and typically places citizen welfare as a stated goal; little government involvement does not apply.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 5, "pdfPage": 2, "proposedOption": "C", "explanation": "Under a command economy, the government makes central decisions about resources, output and allocation.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 6, "pdfPage": 2, "proposedOption": "C", "explanation": "Suggestion boxes invite workers' ideas on improving their own workplaces.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 7, "pdfPage": 2, "proposedOption": "B", "explanation": "A leader who holds staff meetings and considers worker suggestions employs a democratic or participative style.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 8, "pdfPage": 3, "proposedOption": "A", "explanation": "The original organisational chart depicts a line of authority from directors through management to departments.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 9, "pdfPage": 3, "proposedOption": "D", "explanation": "Inspiring staff, delegating appropriate responsibilities and making informed decisions are all qualities of a good leader.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 10, "pdfPage": 3, "proposedOption": "B", "explanation": "Marketing departments use customer response and sales information to improve product offerings and decisions.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 11, "pdfPage": 4, "proposedOption": "A", "explanation": "Providing private accommodation is not a core management function in the way coordination, delegation and control of funds are.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 12, "pdfPage": 4, "proposedOption": "A", "explanation": "An executive summary is the condensed account of the principal elements of a business plan.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 13, "pdfPage": 4, "proposedOption": "C", "explanation": "National Insurance contributions are a statutory compliance issue for entrepreneurs.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 14, "pdfPage": 4, "proposedOption": "B", "explanation": "A business facing stronger competition may prioritise market share rather than immediate profit maximisation.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 15, "pdfPage": 4, "proposedOption": "D", "explanation": "Lawful, fair retrenchment of inefficient workers is not inherently an unethical business practice, unlike tax evasion or deceptive advertising.", "sourceQuestionPresent": true, "status": "academic-dispute", "uncertainty": "Retraining and fair legal process matter: simply labelling retrenchment ethical would be misleading." }),
-    Object.freeze({ "number": 16, "pdfPage": 4, "proposedOption": "B", "explanation": "Existing company records and government census data are secondary data, whereas interviewing former employees provides new primary information.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 17, "pdfPage": 4, "proposedOption": "C", "explanation": "Material misrepresentation can undermine real consent and make a contract voidable under applicable law.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 18, "pdfPage": 4, "proposedOption": "A", "explanation": "Breach of its terms can discharge or terminate a contract and give rise to contractual remedies.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 19, "pdfPage": 4, "proposedOption": "D", "explanation": "A purchase order expresses a buyer's formal order or offer to buy specified goods.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 20, "pdfPage": 4, "proposedOption": "A", "explanation": "An open cheque may generally be presented for cash at the bank, subject to normal security controls.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 21, "pdfPage": 5, "proposedOption": "D", "explanation": "Human resources are people and their available productive skills, knowledge and labour.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 22, "pdfPage": 5, "proposedOption": "D", "explanation": "Leaving Jamaica to settle in another country is external migration.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 23, "pdfPage": 5, "proposedOption": "B", "explanation": "From Trinidad's point of view, someone leaving permanently to Barbados is an emigrant.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 24, "pdfPage": 5, "proposedOption": "C", "explanation": "Plant and machinery are fixed productive capital, unlike cash and inventories used up in operations.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 25, "pdfPage": 5, "proposedOption": "D", "explanation": "Productivity compares the level of output to the inputs used, typically output divided by input.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 26, "pdfPage": 5, "proposedOption": "A", "explanation": "Employing many workers and relatively little machinery makes sugar-cane production labour-intensive.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 27, "pdfPage": 5, "proposedOption": "A", "explanation": "A motor car is manufactured; gold, lumber and unprocessed resources are associated with extraction.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 28, "pdfPage": 5, "proposedOption": "B", "explanation": "A market exists wherever buyers and sellers interact and agree exchange prices, even without a physical trading place.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 29, "pdfPage": 6, "proposedOption": "A", "explanation": "Trade discounts commonly reward bulk purchases or large orders.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 30, "pdfPage": 6, "proposedOption": "D", "explanation": "Competitive advertising compares a seller's offering with a rival's named or described product.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 31, "pdfPage": 6, "proposedOption": "D", "explanation": "Moving products to storage depots is chiefly a distribution/logistics function rather than a retailer's central selling duty.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 32, "pdfPage": 6, "proposedOption": "A", "explanation": "Free newspaper or media editorial coverage of a business is publicity, rather than paid advertising.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 33, "pdfPage": 6, "proposedOption": "C", "explanation": "The market-clearing or equilibrium price occurs where quantity demanded equals quantity supplied.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 34, "pdfPage": 6, "proposedOption": "C", "explanation": "A perfect market has many small producers and consumers and few barriers to entry.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 35, "pdfPage": 6, "proposedOption": "B", "explanation": "Investments in shares involve possible gains or benefits alongside financial risks.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 36, "pdfPage": 6, "proposedOption": "A", "explanation": "A shareholder may receive dividends when the issuing company declares them.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 37, "pdfPage": 7, "proposedOption": "C", "explanation": "Standing orders instruct banks to pay fixed recurring bills at agreed intervals.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 38, "pdfPage": 7, "proposedOption": "D", "explanation": "Safety deposit services provide secure storage for documents and valuables, not merely cash dispensers.", "sourceQuestionPresent": true, "status": "academic-dispute", "uncertainty": "Bank safety deposit facilities are a distinct secure storage product; ensure accepted historical label." }),
-    Object.freeze({ "number": 39, "pdfPage": 7, "proposedOption": "B", "explanation": "Shares in a public company, unlike ordinary partnerships and private company stakes, may be listed and traded on an exchange.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 40, "pdfPage": 7, "proposedOption": "D", "explanation": "Debenture holders are owed contractual interest whether or not the company records a profit, subject to its legal ability to pay.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 41, "pdfPage": 7, "proposedOption": "B", "explanation": "Business subsidies can lower production costs and allow firms to charge lower prices.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 42, "pdfPage": 7, "proposedOption": "D", "explanation": "A progressive tax takes an increasing proportion of income at higher income levels; source graph IV slopes upward.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 43, "pdfPage": 7, "proposedOption": "C", "explanation": "A regressive tax takes a smaller share of income as income increases; the original graph III slopes downwards.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 44, "pdfPage": 8, "proposedOption": "C", "explanation": "Removing taxes on low incomes immediately increases low-income households' disposable earnings and material living standards.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 45, "pdfPage": 8, "proposedOption": "D", "explanation": "Government price control is a legal ceiling or other limit on the selling price of goods or services.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 46, "pdfPage": 8, "proposedOption": "C", "explanation": "Price stability benefits society as a whole, covering consumers, workers and firms.", "sourceQuestionPresent": true, "status": "academic-dispute", "uncertainty": "Society includes all the listed groups; users might reasonably say price stability especially protects fixed-income consumers." }),
-    Object.freeze({ "number": 47, "pdfPage": 8, "proposedOption": "A", "explanation": "Excise duty is levied on specified goods produced within a country.", "sourceQuestionPresent": true, "status": "spark-authored-provisional", "uncertainty": null }),
-    Object.freeze({ "number": 48, "pdfPage": 8, "proposedOption": "B", "explana
+    Object.freeze({ "number": 24, "pdfPage": 5, "proposedOption": "A", "explanation": "Mechanisation tends to displace some routine or unskilled ma

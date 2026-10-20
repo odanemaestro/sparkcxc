@@ -1,4 +1,314 @@
-[
+ample furniture, clothing, buildings or machine parts) on a computer, viewing them in 3-D before they are made, which saves time and materials."
+            },
+            {
+              "label": "(c)",
+              "question": "Outline THREE ways in which the use of automatic teller machines (ATMs) or automated banking machines (ABMs) could assist a business.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Cash can be withdrawn at any time, including after banking hours and on weekends.\n\u2022 Deposits can be made at any time, so the business does not keep large sums of cash on its premises (reducing the risk of theft).\n\u2022 Saves time: staff do not need to stand in line at the bank.\n\u2022 Balances can be checked and bills paid quickly.\n\u2022 An ATM placed on or near the business's premises brings customers who have cash to spend."
+            },
+            {
+              "label": "(d)",
+              "question": "Outline TWO ways in which electronic commerce (e-commerce) can improve the performance of a business.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Reaches more customers, locally and overseas, increasing sales.\n\u2022 Open 24 hours a day.\n\u2022 Lower costs (less need for physical stores and staff).\n\u2022 Faster processing of orders and payments.\n\u2022 Collects information on customers' buying habits for marketing."
+            },
+            {
+              "label": "(e)",
+              "question": "Explain TWO ways in which businesses can demonstrate the ethical use of ICT in the conduct of their operations.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Protecting customer data: keep personal and financial information secure and confidential and do not sell or misuse it.\n\u2022 Using only licensed software and respecting copyright: do not pirate software, music or images.\n\u2022 Honest online advertising: no misleading claims, fake reviews or spam e-mails.\n\u2022 Responsible monitoring of employees: tell staff about any monitoring of e-mail or internet use and respect their privacy.\n\u2022 Safe disposal of old equipment (e-waste) and wiping data before disposal.\n\u2022 Not using ICT to commit fraud or to hack competitors."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paper": "Paper 2 (Structured Response)",
+      "year": "2021",
+      "session": "May/June",
+      "duration": "2 hours",
+      "instructions": "1. This paper consists of FIVE questions. Answer ALL questions.\n2. Write your answers in the spaces provided in this answer booklet.\n3. Do NOT write in the margins.\n4. You are advised to take some time to read through the paper and plan your answers.",
+      "total_questions": 5,
+      "questions": [
+        {
+          "number": 1,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "List FOUR instruments of exchange.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each: cash (notes and coins), cheques, debit cards, credit cards, money orders, bank drafts, bills of exchange, promissory notes, standing orders, electronic funds transfer (online/mobile payments), postal orders, traveller's cheques."
+            },
+            {
+              "label": "(b)",
+              "question": "Outline TWO ways in which money facilitates trade in the modern economy.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Medium of exchange: money is generally accepted, so it removes the need for a double coincidence of wants that barter requires.\n\u2022 Measure (unit) of value: prices of all goods can be expressed in money, making it easy to compare values and keep accounts.\n\u2022 Store of value: money can be saved and used later.\n\u2022 Standard of deferred payment: it allows goods to be bought on credit and paid for later.\n\u2022 Money is divisible, so goods of any value can be bought."
+            },
+            {
+              "label": "(c)",
+              "question": "State TWO characteristics of EACH of the following types of businesses.\n(i) Sole proprietorships (sole traders)\n(ii) Public limited companies\n(iii) Cooperatives",
+              "marks": 6,
+              "answer": "1 mark each characteristic (any TWO per type):\n(i) Sole proprietorship: owned by one person; unlimited liability; owner keeps all profits; owner makes all decisions; small capital; easy to set up; not a separate legal entity.\n(ii) Public limited company: owned by shareholders (at least two, no maximum); shares sold to the public on the stock exchange; limited liability; separate legal entity with continuity; managed by a board of directors; must publish its accounts.\n(iii) Cooperative: owned and controlled by its members; one member, one vote; profits shared among members (often according to their dealings with the co-operative); open and voluntary membership; aims to serve members' needs; limited liability."
+            },
+            {
+              "label": "(d)",
+              "question": "Explain THREE ways in which businesses in a free market economy operate when compared to businesses in a planned economy.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Ownership: businesses in a free market are owned by private individuals and firms; in a planned economy they are owned by the state.\n\u2022 Decisions: free market businesses decide for themselves what, how and how much to produce, guided by consumer demand; in a planned economy a central planning authority makes these decisions.\n\u2022 Prices: in a free market prices are set by demand and supply; in a planned economy the government fixes prices.\n\u2022 Motive: free market businesses aim to make a profit; state enterprises in a planned economy aim at meeting social needs and planned targets.\n\u2022 Competition: free market businesses compete for customers, which encourages efficiency and innovation; in a planned economy there is little competition."
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Identify FOUR potential sources of conflict within the workplace.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each: disputes over pay and benefits; poor working conditions; poor communication; personality clashes; unfair treatment or favouritism; unclear roles; competition for resources or promotion; changes in work methods or technology; job insecurity (retrenchment); poor leadership."
+            },
+            {
+              "label": "(b)",
+              "question": "List FOUR actions that employees may take to gain the upper hand during periods of conflict.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each: strike; go slow; work to rule; sit-in; sick-out; overtime ban; picketing; boycott; demonstrations or protests."
+            },
+            {
+              "label": "(c)",
+              "question": "Describe EACH of the following strategies that may be used in the resolution of conflict in the workplace.\n(i) Grievance procedure\n(ii) Mediation\n(iii) Arbitration",
+              "marks": 6,
+              "answer": "2 marks each:\n(i) Grievance procedure: an agreed, step-by-step process through which an employee's complaint is raised first with the supervisor and then, if not settled, with higher levels of management and the union, so that it is dealt with fairly and in good time.\n(ii) Mediation: a neutral third party (mediator) helps the two sides talk and suggests possible solutions, but the parties themselves decide whether to agree; the decision is not binding.\n(iii) Arbitration: both sides present their case to an independent arbitrator (or tribunal), who makes a decision that the parties have agreed to accept and that is usually binding."
+            },
+            {
+              "label": "(d)",
+              "question": "Explain TWO strategies that may be adopted by management to build good relationships between management and staff in the workplace.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Open communication: regular meetings, an open door policy and newsletters keep staff informed and allow them to raise concerns, which builds trust.\n\u2022 Involving staff in decision making: consulting workers on matters that affect them makes them feel valued and more committed.\n\u2022 Recognition and rewards: praising good work, bonuses and 'employee of the month' awards raise morale.\n\u2022 Fair treatment and good working conditions: fair pay and a safe workplace reduce grievances.\n\u2022 Team-building activities and staff social events: build friendships and understanding between managers and staff.\n\u2022 Training and career development: shows management cares about staff."
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Distinguish between the 'subsistence level of production' and the 'domestic level of production'.",
+              "marks": 4,
+              "answer": "2 marks each:\n\u2022 Subsistence level: goods are produced only for the producer's own or family's use, with no surplus for sale.\n\u2022 Domestic level: goods and services are produced for sale within the country (the home market), beyond the producer's own needs."
+            },
+            {
+              "label": "(b)",
+              "question": "List THREE characteristics of cottage industries.",
+              "marks": 3,
+              "answer": "Any THREE, 1 mark each: carried out in the home; uses family labour; small scale; little capital; simple tools; uses local raw materials; handmade products; flexible working hours."
+            },
+            {
+              "label": "(c)",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "State THREE functions of small businesses in rural communities.",
+                  "marks": 3,
+                  "answer": "Any THREE, 1 mark each: provide jobs for residents; supply goods and services locally so people do not have to travel to town; buy farmers' produce; keep money circulating in the community; provide training and develop skills; support community activities."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "State TWO advantages and TWO disadvantages of small businesses.",
+                  "marks": 4,
+                  "answer": "1 mark each.\nAdvantages (any TWO): personal service; flexibility; quick decisions; little capital needed; close owner\u2013employee relations; easy to manage.\nDisadvantages (any TWO): limited capital; difficulty borrowing; unlimited liability (for sole traders and partnerships); cannot benefit from economies of scale; limited management skills; higher prices; vulnerable to competition from large firms."
+                }
+              ]
+            },
+            {
+              "label": "(d)",
+              "question": "The owner of a small manufacturing business is considering expanding her firm. Explain TWO possible effects the firm's growth may have on the internal operations of the business.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Organizational structure: new departments and more levels of management are added, and the owner must delegate authority to managers.\n\u2022 Communication: with more staff and levels, communication becomes more formal and slower, and there is more risk of misunderstanding.\n\u2022 Lower unit costs: buying in bulk and using bigger machines (economies of scale) reduces the cost per unit.\n\u2022 Need for more capital and better financial control, and more staff to recruit and train.\n\u2022 Production methods change: more mechanisation and division of labour.\n\u2022 Possible diseconomies of scale, such as poor co-ordination and lower morale."
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Define EACH of the following forms of technology used in business.\n(i) E-commerce\n(ii) Global positioning system (GPS)",
+              "marks": 4,
+              "answer": "2 marks each:\n(i) E-commerce: buying and selling goods and services over the internet, including electronic payment.\n(ii) GPS: a satellite-based navigation system that shows the exact location of a person, vehicle or object; businesses use it to track deliveries and vehicles and plan routes."
+            },
+            {
+              "label": "(b)",
+              "question": "List FOUR activities involved in supply chain operations.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each: sourcing and purchasing raw materials; production or manufacturing; warehousing and storage; inventory (stock) control; transportation; distribution to wholesalers and retailers; order processing; packaging; delivery to customers; handling returns."
+            },
+            {
+              "label": "(c)",
+              "question": "Outline THREE advantages of supply chain operations to a firm.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Lower costs through efficient purchasing, storage and transport.\n\u2022 Goods reach customers on time, improving customer satisfaction.\n\u2022 Better stock control: less overstocking or running out of stock.\n\u2022 Less waste and spoilage.\n\u2022 Better co-ordination with suppliers and distributors.\n\u2022 Greater competitiveness and profitability."
+            },
+            {
+              "label": "(d)",
+              "question": "Explain TWO ways in which logistics could improve the competitiveness of a business.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Faster delivery: efficient transport and route planning (using GPS) get goods to customers quickly, so the business can serve customers better than competitors.\n\u2022 Lower costs: well-planned storage, transport and stock control cut costs, allowing lower prices.\n\u2022 Reliability: customers receive the right goods in good condition at the right time, building loyalty.\n\u2022 Wider markets: good logistics allows the business to supply customers in distant places and overseas.\n\u2022 Better information: tracking systems let the business inform customers about their orders."
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "List FOUR social services which are provided by a government for the citizens of its country.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each: education, health care, social welfare (public assistance), public housing, pensions and national insurance, public transport, water and sanitation, garbage collection, school feeding, police and fire services."
+            },
+            {
+              "label": "(b)",
+              "question": "Outline TWO responsibilities of a government to its citizens.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Maintain law and order and protect citizens (police, defence force, courts).\n\u2022 Provide social services such as education and health care.\n\u2022 Provide infrastructure (roads, water, electricity).\n\u2022 Protect consumers and the environment.\n\u2022 Manage the economy to create jobs and control inflation.\n\u2022 Protect citizens' rights and freedoms."
+            },
+            {
+              "label": "(c)",
+              "question": "Describe THREE ways in which governments may assist in the development of the local business sector.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Tax incentives such as tax holidays and duty-free imports of machinery and raw materials.\n\u2022 Low-interest loans and grants through development banks and small business agencies.\n\u2022 Infrastructure: roads, ports, reliable electricity, internet and industrial estates.\n\u2022 Training and education programmes that produce skilled workers.\n\u2022 Protection from foreign competition through tariffs and quotas.\n\u2022 Export promotion and 'buy local' campaigns.\n\u2022 Simpler procedures for registering and licensing businesses."
+            },
+            {
+              "label": "(d)",
+              "question": "Education could be considered one of the great growth industries of developing economies. Explain TWO ways in which education could contribute to economic growth in the Caribbean region.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Higher productivity: educated and trained workers produce more and better-quality goods and services, increasing output.\n\u2022 Attracts investment: a skilled workforce attracts foreign companies, for example in ICT, financial services and tourism.\n\u2022 Entrepreneurship and innovation: education gives people the knowledge to start businesses and develop new products.\n\u2022 Export of education services: universities and medical schools attract foreign students, earning foreign exchange.\n\u2022 Less dependence on foreign experts, saving foreign exchange.\n\u2022 Higher incomes increase spending and tax revenue."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paper": "Paper 2 (Structured Response)",
+      "year": "2022",
+      "session": "January",
+      "duration": "2 hours",
+      "instructions": "1. This paper consists of FIVE questions. Answer ALL questions.\n2. Write your answers in the spaces provided in this answer booklet.\n3. Do NOT write in the margins.\n4. You are advised to take some time to read through the paper and plan your answers.",
+      "total_questions": 5,
+      "questions": [
+        {
+          "number": 1,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "stem": "Jane studied Principles of Business while attending high school and was inspired to own and operate a business in her community.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "State FOUR reasons why Jane would want to establish her own business.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each: to earn a profit and income; to be her own boss; to meet a need in her community; to use her skills and knowledge; to create employment for herself and others; for personal satisfaction and achievement; to have flexible working hours; to build wealth for the future."
+            },
+            {
+              "label": "(b)",
+              "question": "List THREE characteristics Jane would need to possess in order to become a successful entrepreneur.",
+              "marks": 3,
+              "answer": "Any THREE, 1 mark each: willingness to take risks; creativity and innovation; self-confidence; determination and perseverance; hard work; good decision making; leadership; good communication skills; organising and planning skills; self-motivation."
+            },
+            {
+              "label": "(c)",
+              "question": "State THREE reasons why Jane should conduct a feasibility study prior to establishing her business.",
+              "marks": 3,
+              "answer": "Any THREE, 1 mark each:\n\u2022 To find out whether there is enough demand for her product or service\n\u2022 To estimate the start-up costs and the expected profit\n\u2022 To identify competitors\n\u2022 To identify risks and reduce the chance of failure\n\u2022 To find a suitable location and check legal requirements\n\u2022 To provide evidence for lenders and investors"
+            },
+            {
+              "label": "(d)",
+              "question": "State ONE role of any TWO stakeholders that will be involved in Jane's business.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each (1 for the stakeholder, 1 for the role):\n\u2022 Jane (owner): provides the capital and makes the decisions.\n\u2022 Employees: provide labour and serve customers.\n\u2022 Customers: buy the goods or services, providing revenue.\n\u2022 Suppliers: provide stock and materials.\n\u2022 Government: regulates the business and collects taxes.\n\u2022 Lenders (bank or credit union): provide finance.\n\u2022 The community: provides customers and workers."
+            },
+            {
+              "label": "(e)",
+              "question": "Explain TWO ways in which Jane's business could contribute to the social and economic development of her country.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Employment: hiring local people gives them income, reduces unemployment and raises their standard of living.\n\u2022 Taxes: the taxes the business pays help fund schools, hospitals and roads.\n\u2022 Goods and services: residents can buy what they need locally, saving time and travel costs.\n\u2022 Linkages: buying from local suppliers and farmers helps other businesses grow.\n\u2022 Social contribution: sponsoring sports, schools and community projects improves community life.\n\u2022 Role model: encourages other young people to become entrepreneurs."
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "State THREE reasons why it is important for a firm to have proper documentation in all of its business transactions.",
+              "marks": 3,
+              "answer": "Any THREE, 1 mark each:\n\u2022 Provides a record and evidence of each transaction\n\u2022 Helps prepare accounts and tax returns\n\u2022 Prevents and settles disputes with customers and suppliers\n\u2022 Helps control stock and detect fraud or errors\n\u2022 Required by law and by customs\n\u2022 Supports insurance claims and loan applications"
+            },
+            {
+              "label": "(b)",
+              "question": "Outline the purpose of EACH of the following types of business documents.",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Pro forma invoice",
+                  "marks": 2,
+                  "answer": "A pro forma invoice is sent by the seller before the goods are supplied (1), to request payment in advance (for example from a new customer), to act as a quotation, or to help an importer obtain an import licence, foreign exchange or a letter of credit (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Purchase requisition",
+                  "marks": 2,
+                  "answer": "A purchase requisition is an internal document sent by a department to the purchasing department (1) asking it to buy goods or materials, stating what is needed and in what quantity (1)."
+                }
+              ]
+            },
+            {
+              "label": "(c)",
+              "question": "List THREE types of non-life insurance policies.",
+              "marks": 3,
+              "answer": "Any THREE, 1 mark each: fire, motor vehicle, marine, burglary and theft, fidelity guarantee, public liability, employer's liability, health, property (home), goods in transit, business interruption, travel."
+            },
+            {
+              "label": "(d)",
+              "question": "Describe TWO principles upon which insurance is based.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Utmost good faith: the person seeking insurance must disclose all material facts truthfully, or the policy can be cancelled.\n\u2022 Insurable interest: the insured must stand to suffer a financial loss if the thing insured is lost or damaged.\n\u2022 Indemnity: compensation restores the insured to the same financial position as before the loss, but not better.\n\u2022 Contribution: if the same risk is insured with more than one insurer, they share the loss.\n\u2022 Subrogation: after paying a claim, the insurer takes over the insured's rights.\n\u2022 Proximate cause: the loss must be directly caused by the risk insured against."
+            },
+            {
+              "label": "(e)",
+              "question": "Explain TWO ways in which insurance could be used to lower the risks associated with business.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Fire and property insurance: if buildings, equipment or stock are destroyed by fire, flood or hurricane, the insurer pays to replace them, so the business does not suffer a crippling loss.\n\u2022 Fidelity guarantee: protects against losses from theft or fraud by employees.\n\u2022 Public liability and employer's liability: pay claims if customers or workers are injured, protecting the business from costly lawsuits.\n\u2022 Goods in transit or marine insurance: covers goods lost or damaged while being transported.\n\u2022 Business interruption insurance: covers lost profits and fixed costs while the business is closed after a disaster.\n\u2022 Key person insurance: protects against the death or illness of an important manager."
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "subparts": [
                 {
                   "label": "(i)",
                   "question": "Define the term 'public relations'.",
@@ -1050,11 +1360,11 @@ function buildPobArchiveExaminerPack({ paperId, selectedQuestions, responses = {
   const allowed = new Set(parts.map((p) => p.id));
   if (Object.keys(responses).some((id) => !allowed.has(id)))
     throw new Error("unknown_historical_part");
-  const clean3 = Object.fromEntries(parts.map((p) => [p.id, String(responses[p.id] || "")]));
+  const clean4 = Object.fromEntries(parts.map((p) => [p.id, String(responses[p.id] || "")]));
   return {
     items,
     parts,
-    responses: clean3,
+    responses: clean4,
     selectedQuestions,
     maxMarks: 100,
     criterionLevel: true,
@@ -1259,8 +1569,8 @@ function buildTrustedAssessment(attempt, authority = {}) {
       if (task3.choiceGroup && task3.id !== choice) continue;
       const keys = task3.kind === "summary" ? [task3.id, `${task3.id}:analysis`] : [task3.id];
       if (!keys.some((key) => String(responses[key] || "").trim())) continue;
-      const words = String(responses[task3.id] || "").trim().split(/\s+/).filter(Boolean).length;
-      const short = task3.kind === "persuasive" && words < 150 || task3.kind === "literary" && words < 200;
+      const words2 = String(responses[task3.id] || "").trim().split(/\s+/).filter(Boolean).length;
+      const short = task3.kind === "persuasive" && words2 < 150 || task3.kind === "literary" && words2 < 200;
       items.push({
         id: task3.id,
         maxMarks: short ? Math.min(10, row.maxMarks) : row.maxMarks,

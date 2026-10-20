@@ -4921,8 +4921,8 @@ function situationCoverage(task3, response) {
     const terms = tokenise(line).map(stem).filter((w) => w.length >= 4 && !STOPWORDS.has(w));
     const needed = Math.min(2, Math.max(1, Math.ceil(terms.length * 0.2)));
     const evidence = claimUnits(response).map((unit) => {
-      const words = new Set(tokenise(unit).map(stem));
-      const matched = terms.filter((w) => words.has(w));
+      const words2 = new Set(tokenise(unit).map(stem));
+      const matched = terms.filter((w) => words2.has(w));
       return { unit, matched };
     }).sort((a, b) => b.matched.length - a.matched.length)[0];
     return {
@@ -5212,4 +5212,4 @@ function persuasiveSignals(response) {
   const directAddress = (low.match(/\b(?:you|your|we|our|us|fellow members|friends|members|community)\b/g) || []).length;
   const calls = (low.match(/\b(?:i urge you|let us|join|support|reject|vote yes|vote no|act now|we must|we should)\b/g) || []).length;
   const repetition = (low.match(/\bthink of\b/g) || []).length;
-  const counterO
+  const counte
