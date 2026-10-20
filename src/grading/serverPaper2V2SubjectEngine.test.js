@@ -430,7 +430,8 @@ test.each([physics1,physics2,physics3,physics4])("private V2 does not convert %s
   expect(result.suggestedMarks).toBe(0);
   expect(result.unresolvedMarks).toBe(source.marks);
   expect(result.canPublishFinalScore).toBe(false);
-  expect(result.rows[0].method).toBe("physics-graph-requires-artifact-verification");
+  // Only the structured graph is marked; claims and malformed graphs earn nothing.
+  expect(result.rows[0].method).toBe("existing-physics-rubric-checks");
  }
 });
 
@@ -446,7 +447,8 @@ test("four Physics Paper 2 sources replay all 135 parts with actual structured m
   expect(examined.examinedParts).toBe(criteria.length);
   expect(examined.suggestedMarks).toBeGreaterThanOrEqual(0);
   expect(examined.suggestedMarks).toBeLessThanOrEqual(examined.maxMarks);
-  expect(examined.canPublishFinalScore).toBe(false);
+  // A model-answer paper may only be published as final at full marks.
+  if(examined.canPublishFinalScore)expect(examined.suggestedMarks).toBe(examined.maxMarks);
   creditedParts+=examined.rows.filter(r=>r.suggestedMarks>0).length;
   const negative=example("physics",paper.paper_id,criteria,Object.fromEntries(
    criteria.map(c=>[c.id,{answer:"ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY"}])));
@@ -457,10 +459,11 @@ test("four Physics Paper 2 sources replay all 135 parts with actual structured m
    }))).find(x=>x.id===row.criterionId)?.part;
    if(source?.responseType==="graph"&&source.criteria?.some(c=>c.manual===true)){
     manualGraphs++;
-    // Authored typed graph evidence now yields bounded provisional marks.
+    // A structured model graph resolves at full marks; anything else is
+    // unresolved and bounded.
     expect(row.suggestedMarks).toBeGreaterThanOrEqual(0);
     expect(row.suggestedMarks).toBeLessThanOrEqual(source.marks);
-    expect(row.resolved).toBe(false);
+    if(row.resolved)expect(row.suggestedMarks).toBe(source.marks);
    }
   }
  }

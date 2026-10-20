@@ -1,5 +1,6 @@
 import { physicsPaper2Criteria, physicsPaper2PartKey } from "./physicsPaper2Bank";
 import { checkProse, contentTokens, tokenPresent } from "../../practice/cxcMarking/prose";
+import { statesOppositeOf } from "../../grading/scienceWrittenEvidence";
 import {
   comparePhysicsQuantity,
   convertQuantityValue,
@@ -241,12 +242,90 @@ function tokenCoverage(candidate, reference) {
 function strongModelMatch(candidate, part) {
   const reference = String(part?.modelResponse ?? part?.answer ?? part?.solution ?? "").trim();
   if (!candidate || !reference) return false;
+  // Shared words do not make a reversed claim ("decrease the current") correct.
+  if (statesOppositeOf(candidate, reference)) return false;
   const checked = checkProse(candidate, { key: reference, quorum: 0.72 });
   if (!checked.ok) return false;
   const tokens = usefulTokens(reference);
   if (!tokens.length) return false;
   const coverage = tokenCoverage(candidate, reference);
-  return coverage >= (tokens.length <= 3 ? 0.99 : 0.72);
+  if (coverage < (tokens.length <= 3 ? 0.99 : 0.72)) return false;
+  // The model match awards every criterion of the part, so every statement
+  // of the model answer must be present: "Pressure is force per unit area"
+  // alone does not also earn the "P = F/A" mark.
+  return physicsModelStatements(reference).every(statement => {
+    // "carbon-12" is counted through its parts, "carbon" and "12".
+    const own = usefulTokens(statement).filter(token => !token.includes("-"));
+    if (!own.length) return physicsFormulaShown(statement, candidate);
+    const spaced = String(candidate).replace(/(?<=\w)-(?=\w)/g, " ");
+    const matched = own.filter(token => tokenPresent(token, candidate) || tokenPresent(token, spaced)).length;
+    return matched / own.length >= (own.length <= 3 ? 0.99 : 0.72);
+  });
+}
+
+/** A model answer as its separate statements (sentences and ";" clauses). */
+export function physicsModelStatements(model) {
+  const pieces = String(model ?? "").split(/\s*;\s*|(?<=[.!?])\s+(?=[A-Z])/).map(s => s.trim()).filter(Boolean);
+  return pieces.length ? pieces : [String(model ?? "")];
+}
+
+const CLAUSE_JOINTS = [
+  /,\s*(?=(?:because|so|which|provided|as|since)\b)/i,
+  /\s+(?=(?:because|so that|provided)\b)/i,
+  /,\s+(?!and\b)/i,
+  /,\s*and\s+/i,
+  /\s+and\s+/i,
+];
+
+/**
+ * The model answer as exactly `count` statements, one per criterion, split at
+ * clause joints ("…, because …", "… and …") where sentences alone are too
+ * few. With the criteria's descriptions, each statement must also be the one
+ * that best matches its own criterion. Null when it cannot be divided so.
+ */
+export function physicsAlignedStatements(model, count, descriptions = null) {
+  const pieces = splitStatements(model, count);
+  if (!pieces || !Array.isArray(descriptions)) return pieces;
+  const fit = (piece, description) => {
+    const tokens = usefulTokens(cleanCriterionDescription(description)).filter(token => !token.includes("-"));
+    return tokens.length ? tokens.filter(token => tokenPresent(token, piece)).length / tokens.length : 0;
+  };
+  const aligned = descriptions.every((description, i) => {
+    const own = fit(pieces[i], description);
+    return own > 0 && pieces.every((piece, j) => j === i || fit(piece, description) < own);
+  });
+  return aligned ? pieces : null;
+}
+
+function splitStatements(model, count) {
+  let pieces = physicsModelStatements(model);
+  for (const joint of CLAUSE_JOINTS) {
+    while (pieces.length < count) {
+      const index = pieces.findIndex(piece => joint.test(piece));
+      if (index < 0) break;
+      const [head, ...tail] = pieces[index].split(joint);
+      pieces = [...pieces.slice(0, index), head.trim(), tail.join(", ").trim(), ...pieces.slice(index + 1)]
+        .filter(Boolean);
+    }
+  }
+  return pieces.length === count ? pieces : null;
+}
+
+const compactFormula = value => unsuperscript(String(value ?? "")).toLowerCase()
+  .replace(/[×*·]/g, "").replace(/÷/g, "/").replace(/[.\s]+$/g, "").replace(/\s+/g, "");
+
+/**
+ * The formula a scheme line names ("uses P = hρg", "density = mass ÷ volume",
+ * "P = F/A") is written out in the response. Lines with numbers are
+ * substitutions, not formulae.
+ */
+export function physicsFormulaShown(description, text) {
+  const line = String(description ?? "");
+  const formula = (line.match(/\b(?:uses?|using)\s+(.+?=.+?)(?:\s+(?:for|with|to)\b|,|$)/i)?.[1]
+    ?? (/^[^=]{1,40}=[^=]{1,40}$/.test(line.replace(/,.*$/, "")) ? line.replace(/,.*$/, "") : null));
+  if (!formula || /\d/.test(formula)) return false;
+  const want = compactFormula(formula);
+  return want.length >= 3 && compactFormula(text).includes(want);
 }
 
 function cleanCriterionDescription(value) {
@@ -260,13 +339,19 @@ function cleanCriterionDescription(value) {
     .trim();
 }
 
+// A line that names a category ("a correct example of a transverse wave",
+// "one beneficial use", "a reason connected to that use") describes what to
+// look for; its own words are not the answer.
+const CATEGORY_DESCRIPTOR = /\b(?:examples?|uses?|reasons?|precautions?|advantages?|disadvantages?|hazards?|sources?|effects?)\b/i;
+
 function criterionProseMatch(candidate, criterion) {
+  if (CATEGORY_DESCRIPTOR.test(String(criterion?.description ?? ""))) return false;
   const description = cleanCriterionDescription(criterion?.description);
   if (!candidate || !description) return false;
   const alternatives = description.split(/\s*,?\s+or\s+/i).map(value => value.trim()).filter(Boolean);
   return alternatives.some(reference => {
     const tokens = usefulTokens(reference);
-    if (!tokens.length) return false;
+    if (!tokens.length || statesOppositeOf(candidate, reference)) return false;
     const checked = checkProse(candidate, { key: reference, quorum: tokens.length <= 2 ? 1 : 0.5 });
     if (!checked.ok) return false;
     const coverage = tokenCoverage(candidate, reference);
@@ -372,7 +457,7 @@ function genericMarkerMatch(candidate, part, criterion) {
   if (!options.length) return false;
   const matched = options.filter(option => {
     const tokens = usefulTokens(option);
-    if (!tokens.length) return false;
+    if (!tokens.length || statesOppositeOf(candidate, option)) return false;
     const checked = checkProse(candidate, { key: option, quorum: tokens.length <= 2 ? 1 : 0.55 });
     return checked.ok && tokenCoverage(candidate, option) >= (tokens.length <= 2 ? 1 : 0.5);
   });
@@ -727,6 +812,23 @@ const PAPER2_ECF_RULES = Object.freeze({
   "phy-p2-4-q3::d::A1": Object.freeze({ sources: ["c"], transform: values => values[0] + 273, unit: "K", tolerance: 0.02 }),
 });
 
+/** The earlier parts a criterion can follow through from (empty if none). */
+export function physicsPaper2FollowThroughSources(questionId, partId, code) {
+  return [...(PAPER2_ECF_RULES[`${questionId}::${partId}::${code}`]?.sources || [])];
+}
+
+/** Every accepted value for each keyed cell of a Paper 2 table part. */
+export function physicsPaper2TableCells(key) {
+  const cells = {};
+  for (const [cell, accepted] of Object.entries(CALCULATED_TABLE_MODELS[key] || {})) cells[cell] = [...accepted];
+  for (const rows of Object.values(TABLE_EXPECTATIONS[key] || {})) {
+    for (const [cell, accepted] of rows) {
+      if (cell !== "__all__") cells[cell] = [...(cells[cell] || []), ...accepted];
+    }
+  }
+  return cells;
+}
+
 function sourceValueForEcf(question, sourcePartId, responses) {
   const sourceResponse=responses[physicsPaper2PartKey(question.question_id, sourcePartId)] || {};
   const original=String(sourceResponse.answer || "").trim();
@@ -820,6 +922,9 @@ function automaticCriterionAward({ question, part, criterion, response, partAuto
   }
 
   if (strongModelMatch(candidate, part)) return { earned: marks, correct: true, why: "The response contains the required model-answer ideas." };
+  if (String(criterion.kind || "").toUpperCase() === "M" && physicsFormulaShown(criterion.description, candidate)) {
+    return { earned: marks, correct: true, why: "The method's formula is written out." };
+  }
   if (descriptionRangeMatch(candidate, criterion.description)) return { earned: marks, correct: true, why: "The response is within the accepted range." };
   if (unitDescriptionMatch(candidate, criterion.description)) return { earned: marks, correct: true, why: "The required unit is present." };
   if (genericMarkerMatch(candidate, part, criterion)) return { earned: marks, correct: true, why: "The response matches an accepted mark-scheme point." };
@@ -928,7 +1033,8 @@ export function modelResponsesForPhysicsPaper2(paper) {
       const key = physicsPaper2PartKey(question.question_id, part.id);
       const response = {
         answer: part.modelResponse ?? part.answer ?? "",
-        working: part.solution || "",
+        // The worked solution, without the examiner's note that follows it.
+        working: String(part.solution || "").split(/\n\s*\n\s*Marker's note\b/i)[0],
       };
       if (part.responseType === "graph" && part.graph) {
         const from = Number(part.graph.line?.from ?? part.grid?.xMin ?? 0);
