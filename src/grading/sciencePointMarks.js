@@ -14,7 +14,7 @@ export function sciencePointMarks(point){
 
 export function scienceSubPoints(point){
   const text=String(point||"");
-  const parts=[...text.matchAll(/([^()]*?)\(\s*(\d)\s*\)/g)].map(m=>[m[1],Number(m[2])]);
+  const parts=[...text.matchAll(/((?:[^()]|\((?!\s*\d\s*\))[^()]*\))*?)\(\s*(\d)\s*\)/g)].map(m=>[m[1],Number(m[2])]);
   if(parts.length<2)return [text];
   return parts.map(([body,marks])=>body.replace(/^\s*(?:and\/or|and|or|,|;)\s*/i,"").trim()+` (${marks})`);
 }

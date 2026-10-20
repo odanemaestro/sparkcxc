@@ -99,18 +99,24 @@ function symbolPresent(response,reference){
   const before=/^[0-9.]/.test(ref)?"(?<![a-z0-9.])":"(?<![a-z])";
   return new RegExp(before+body+"(?![a-z0-9])").test(clean(response));
 }
-function textMatch(response,reference){
+// "a form of energy", "a type of", "a kind of" are filler: "Heat is energy"
+// states "Heat is a form of energy".
+const pointTokens=value=>tokens(String(value).replace(/\b(?:form|type|kind)\s+of\s+/gi,""))
+  .filter(t=>!/^(mark|marks|one|two|three|four|five|six|any)$/.test(t));
+function textMatch(response,reference,siblings=[]){
   // A symbolic point ("Q = It", "C₃H₇OH") has no word tokens to compare;
   // compare the compact written form instead.
   if(!tokens(reference).filter(t=>!/^(mark|marks|one|two|three|four|five|six|any)$/.test(t)).some(t=>/[a-z]{2}/.test(t)&&!/\d/.test(t)))
     return symbolPresent(response,reference);
-  return matchScienceWrittenEvidence(response,reference,{
-    // "a form of energy", "a type of", "a kind of" are filler: "Heat is
-    // energy" states "Heat is a form of energy".
-    tokens:value=>tokens(String(value).replace(/\b(?:form|type|kind)\s+of\s+/gi,""))
-      .filter(t=>!/^(mark|marks|one|two|three|four|five|six|any)$/.test(t)),
-    tokenPresent
-  }).matched;
+  const found=matchScienceWrittenEvidence(response,reference,{tokens:pointTokens,tokenPresent});
+  if(!found.matched)return false;
+  // The sentence credited must be about this point, not a sibling point
+  // sharing most of its words: "CO2 diffuses into the alveoli, so exhaled
+  // air has less of them" is not "oxygen diffuses into the blood, so
+  // exhaled air has less oxygen". It needs half the terms only this point has.
+  const distinctive=[...new Set(pointTokens(reference))]
+    .filter(t=>!siblings.some(other=>tokenPresent(other,t)));
+  return distinctive.filter(t=>tokenPresent(found.evidence,t)).length>=Math.ceil(distinctive.length/2);
 }
 function numbers(value){
   return [...String(value||"").matchAll(/[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:\s*[x×*]\s*10\s*\^?\s*[+-]?\d+)?/gi)]
@@ -194,7 +200,7 @@ export function chemistryPointMarks(point){
 /** "Use a lid (1) and/or better insulation (1)" -> two one-mark points. */
 export function chemistrySubPoints(point){
   const text=String(point||"");
-  const parts=[...text.matchAll(/([^()]*?)\(\s*(\d)\s*\)/g)].map(m=>[m[1],Number(m[2])]);
+  const parts=[...text.matchAll(/((?:[^()]|\((?!\s*\d\s*\))[^()]*\))*?)\(\s*(\d)\s*\)/g)].map(m=>[m[1],Number(m[2])]);
   if(parts.length<2)return [text];
   return parts.map(([body,marks])=>body.replace(/^\s*(?:and\/or|and|or|,|;)\s*/i,"").trim()+` (${marks})`);
 }
@@ -466,7 +472,7 @@ function lineResult(base,item,response){
       ?expressionShown(response,step)
       :numeric
       ?numericMatch(response,expectedNums,point)
-      :textMatch(response,ref));
+      :textMatch(response,ref,points.filter((_,i)=>i!==index).map(strip)));
     const signature=selected?clean(strip(point)):"";
     const earned=Boolean(selected)&&!seen.has(signature);
     if(earned)seen.add(signature);

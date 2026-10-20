@@ -14,7 +14,7 @@ export const pointMarks=point=>{
 };
 /** "Use a lid (1) and/or better insulation (1)" is two one-mark points. */
 export function subPoints(point){
- const parts=[...String(point||"").matchAll(/([^()]*?)\(\s*(\d)\s*\)/g)];
+ const parts=[...String(point||"").matchAll(/((?:[^()]|\((?!\s*\d\s*\))[^()]*\))*?)\(\s*(\d)\s*\)/g)];
  if(parts.length<2)return [point];
  return parts.map(m=>m[1].replace(/^\s*(?:and\/or|and|or|,|;)\s*/i,"").trim()+` (${m[2]})`);
 }
@@ -281,7 +281,11 @@ export function scienceFixtures({item,maxMarks,others=[],curated=[],criterionId,
  const reversed=answers.map(a=>antonymSwap(a)??(numericOnly(a)?perturbNumbers(a):null));
  if(reversed.every(Boolean))
   fixtures.push(F("incorrect",{answer:reversed.join(". ")+"."},0,"every source statement reversed"));
- const offTopic=others.find(o=>o&&!answers.some(a=>o.toLowerCase().includes(a.toLowerCase().slice(0,12))));
+ // Another question's answer is wrong here unless it happens to state this
+ // item's values ("(0.2,+3)" from the graph of the same results).
+ const values=answers.join(" ").match(/\d+(?:\.\d+)?/g)||[];
+ const offTopic=others.find(o=>o&&!answers.some(a=>o.toLowerCase().includes(a.toLowerCase().slice(0,12)))&&
+  !(values.length&&values.every(v=>new RegExp(`(?<![\\d.])${v.replace(".","\\.")}(?![\\d]|\\.\\d)`).test(o))));
  if(offTopic)fixtures.push(F("incorrect",{answer:offTopic},0,"answer to a different question on this paper"));
  fixtures.push(
   // Denying the first point removes its credit, unless the point is a list

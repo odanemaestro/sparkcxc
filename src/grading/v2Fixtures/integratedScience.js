@@ -6,6 +6,7 @@
  */
 import {SCIENCE_CALCULATIONS,SCIENCE_TABLES} from "../../integratedScience/practice/scienceStructuredMarking";
 import graphRubrics from "../../integratedScience/practice/scienceGraphRubrics.json";
+import {integratedScienceValueList} from "../../integratedScience/practice/integratedSciencePaper2Grader";
 
 const F=(cls,response,expect,note)=>({cls,response,expect,note});
 const parseLabel=point=>{
@@ -107,8 +108,41 @@ function graphFixtures(base,item,maxMarks){
  ]};
 }
 
+/**
+ * Labelled values marked by how many are correct ("2 marks for all four
+ * correct; 1 mark for two or three correct"). Expected marks follow that
+ * guidance; working beside a value, a value before its label or a second
+ * value for a label is never certain, so only its maximum is bounded.
+ */
+function valueListFixtures(list,maxMarks){
+ const {entries,full,part,lower,upper}=list;
+ const decimals=e=>(String(e.value).split(".")[1]||"").length;
+ const wrong=e=>Number((e.value+(decimals(e)?10**-decimals(e):1)).toFixed(decimals(e)));
+ const show=(e,v)=>`${e.label} ${v}${e.unit?" "+e.unit:""}`;
+ const answer=correct=>entries.map((e,i)=>show(e,i<correct?e.value:wrong(e))).join(", ");
+ const marks=n=>n===entries.length?full:(n>=lower&&n<=upper?part:0);
+ const [first,...rest]=entries;
+ return {kind:"structured",allOrNothing:false,fixtures:[
+  F("full",{answer:answer(entries.length)},full),
+  F("equivalent",{answer:[...entries].reverse().map(e=>`${e.label}: ${e.value}${e.unit?" "+e.unit:""}`).join("; ")},full,"labelled, reordered"),
+  F("equivalent",{answer:`${first.value} for ${first.label}, `+rest.map(e=>show(e,e.value)).join(", ")},{min:0,max:full},"value before its label"),
+  F("equivalent",{answer:`${first.label} ${first.value*2} - ${first.value} = ${first.value}, `+rest.map(e=>show(e,e.value)).join(", ")},{min:0,max:full},"working beside a value"),
+  F("partial",{answer:answer(lower)},marks(lower),`${lower} correct`),
+  F("partial",{answer:answer(upper)},marks(upper),`${upper} correct`),
+  ...(lower>1?[F("incorrect",{answer:answer(lower-1)},marks(lower-1),`${lower-1} correct`)]:[]),
+  F("incorrect",{answer:answer(0)},0,"every value wrong"),
+  F("competing",{answer:`${first.label} ${first.value} or ${wrong(first)}, `+rest.map(e=>show(e,e.value)).join(", ")},{min:0,max:part},"two values for one label"),
+  F("blank",{answer:""},0),
+  F("irrelevant",{answer:"ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY"},0),
+  F("irrelevant",{answer:"I caught the bus to town on Tuesday."},0),
+  F("ceiling",{answer:answer(entries.length)+"\n"+answer(entries.length)},{min:0,max:full}),
+ ]};
+}
+
 export function integratedScienceStructuredFixtures({base,item,maxMarks}){
  const type=item.response?.type||"lines";
+ const list=type==="lines"&&integratedScienceValueList(item);
+ if(list)return valueListFixtures(list,maxMarks);
  if(type==="labels")return labelFixtures(item,maxMarks);
  if(type==="calculation")return calculationFixtures(base,item,maxMarks);
  if(type==="table")return tableFixtures(base,item,maxMarks);

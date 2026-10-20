@@ -608,6 +608,10 @@ function integratedScience(rows,responses){
    resolved=(examiner.criteria||[]).every(c=>c.label)&&!/\bor\b/i.test(text)&&!IS_DENIAL.test(text);
   else if(type==="graph")
    resolved=examiner.visualEvidence?.structured===true&&Number(examiner.unassessedMarks||0)===0;
+  // Labelled values counted against the scheme guidance: certain unless a
+  // reading is ambiguous, a value is offered with an alternative or denied.
+  else if(examiner.valueList)
+   resolved=!examiner.valueList.ambiguous&&!/\bor\b/i.test(text)&&!IS_DENIAL.test(text);
   else resolved=sciencePointsCertain({examiner,item:integratedScienceLineItem(src.item),
    points:scienceMarkedPoints(integratedScienceLineItem(src.item)),text,maxMarks:row.maxMarks});
   return cap(row,examiner.score,"existing-integrated-science-evidence",resolved);
