@@ -160,18 +160,36 @@ function inferPseudocode(prompt) {
   return match ? { variables: [match[1], match[2], match[3]].map(x => x.trim()), threshold: Number(match[4]) } : { variables: [], threshold: null };
 }
 
+// A source solution or an example placed in a comment is not executable work.
+// Do not treat it as a valid SCORE assignment or branch. This is a restricted
+// pseudocode parser, not an arbitrary-language compiler or runtime.
+export function executablePseudocode(value) {
+  return String(value??"")
+    .replace(/\/\*[\s\S]*?\*\//g,"")
+    .split(/\r?\n/)
+    .map(line=>line.replace(/^\s*(?:(?:\/\/|#|--|REM\b).*)$/i,"")
+      .replace(/\s+(?:\/\/|#|--).*$/,""))
+    .join("\n");
+}
+
 export function pseudocodeSumIsEquivalent(text, vars = []) {
-  const assignment = String(text || "").match(/\bscore\s*(?:<-|←|:=|=)\s*([^\n;]+)/i);
-  if (!assignment || !vars.length) return false;
-  const expression = normaliseITAnswer(assignment[1]).replace(/\s+/g,"");
-  if (/[^a-z0-9_+()]/.test(expression)) return false;
-  const terms = expression.split("+").map(term=>term.replace(/[^a-z0-9_]/g,"")).filter(Boolean);
-  const expected = vars.map(v=>normaliseITAnswer(v).replace(/[^a-z0-9_]/g,"")).sort();
-  return terms.length===expected.length && terms.sort().every((term,index)=>term===expected[index]);
+  const lines=executablePseudocode(text).split(/\n|;/);
+  const assignments=lines.map(line=>
+    line.match(/^\s*(?:(?:set|let)\s+)?score\s*(?:<-|←|:=|=)\s*([^\n;]+?)\s*$/i))
+    .filter(Boolean);
+  // A second assignment can overwrite the first, even if the first was
+  // exactly correct. A final score based on the first is not verified.
+  if(assignments.length!==1||!vars.length)return false;
+  const expression=normaliseITAnswer(assignments[0][1]).replace(/\s+/g,"");
+  if(/[^a-z0-9_+]/.test(expression))return false;
+  const terms=expression.split("+");
+  const expected=vars.map(v=>normaliseITAnswer(v).replace(/[^a-z0-9_]/g,"")).sort();
+  return terms.length===expected.length&&
+    terms.sort().every((term,index)=>term===expected[index]);
 }
 
 export function pseudocodeBranchEvidence(text) {
-  const source=String(text || "").replace(/\r/g,"");
+  const source=executablePseudocode(text).replace(/\r/g,"");
   const first=/\b(?:if|when)\b/i.exec(source);
   if(!first) return {hasElse:false,trueAccept:false,falseReview:false};
   const body=source.slice(first.index+first[0].length);
@@ -196,7 +214,7 @@ export function pseudocodeBranchEvidence(text) {
 }
 
 function gradePseudocode(part, response) {
-  const text = informationTechnologyResponseText(response);
+  const text = executablePseudocode(informationTechnologyResponseText(response));
   const spec = part.responseSpec?.variables?.length ? part.responseSpec : inferPseudocode(part.prompt);
   const vars = spec.variables || [];
   const threshold = Number(spec.threshold);
