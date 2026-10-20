@@ -1,7 +1,8 @@
 import {matchScienceWrittenEvidence,scienceResponseClauses} from "./scienceWrittenEvidence";
 
 const tokens=value=>String(value).toLowerCase().match(/[a-z]+/g)||[];
-const tokenPresent=(text,term)=>tokens(text).includes(term);
+const tokenPresent=(text,term)=>tokens(text).some(token=>token===term ||
+ token.replace(/s$/,"")===term.replace(/s$/,""));
 const check=(response,reference,strict=false)=>matchScienceWrittenEvidence(response,reference,{tokens,tokenPresent,strict});
 
 test("scores evidence within one clause, never assembled keywords across sentences",()=>{
