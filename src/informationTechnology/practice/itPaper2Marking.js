@@ -429,7 +429,7 @@ export function gradeInformationTechnologyPart(question, part, response) {
       break;
     }
     case "reliability":
-      criteria=conceptCriteria(answer,["authenticity","currency","relevance","bias"],2,2,"Reliability criterion");
+      criteria=conceptCriteria(answer,["authenticity","accuracy","currency","relevance","bias"],2,2,"Reliability criterion");
       break;
     case "software-examples": {
       // Two different named operating systems (Windows and Linux) are two
