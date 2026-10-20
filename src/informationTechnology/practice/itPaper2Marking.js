@@ -212,6 +212,27 @@ export function pseudocodeSumIsEquivalent(text, vars = []) {
     terms.sort().every((term,index)=>term===expected[index]);
 }
 
+/**
+ * Some source questions require a score formed from all three inputs but do
+ * NOT prescribe a sum. Their mean is a valid language-neutral calculation.
+ * Parse the whole SCORE assignment, never keyword-match variable names.
+ */
+export function pseudocodeMeanIsEquivalent(text,vars=[]){
+ const lines=executablePseudocode(text).split(/\n|;/);
+ const assignments=lines.map(line=>
+  line.match(/^\s*(?:(?:set|let)\s+)?score\s*(?:<-|←|:=|=)\s*([^\n;]+?)\s*$/i))
+  .filter(Boolean);
+ if(assignments.length!==1||vars.length!==3)return false;
+ let expression=normaliseITAnswer(assignments[0][1]).replace(/\s+/g,"");
+ while(expression.startsWith("((")&&expression.endsWith("))"))
+  expression=expression.slice(1,-1);
+ const match=expression.match(/^\(([a-z0-9_+]+)\)\/(?:3|3\.0+)$/);
+ if(!match)return false;
+ const actual=match[1].split("+").sort();
+ const expected=vars.map(v=>normaliseITAnswer(v).replace(/[^a-z0-9_]/g,"")).sort();
+ return actual.length===3&&actual.every((v,i)=>v===expected[i]);
+}
+
 export function pseudocodeBranchEvidence(text) {
   const source=executablePseudocode(text).replace(/\r/g,"");
   const first=/\b(?:if|when)\b/i.exec(source);
@@ -246,7 +267,7 @@ function gradePseudocode(part, response) {
   const inputLines=(text.match(/\b(?:read|input|accept|get|enter)\b[^\n;]*/gi)||[]).join(" ");
   const inputNames=normaliseITAnswer(inputLines).split(/[^a-z0-9_]+/);
   const varsFound = vars.filter(v => inputNames.includes(normaliseITAnswer(v))).length;
-  const validScoreCalculation = pseudocodeSumIsEquivalent(text,vars);
+  const validScoreCalculation = pseudocodeSumIsEquivalent(text,vars)||pseudocodeMeanIsEquivalent(text,vars);
   const condition=(text.match(/\b(?:if|when)\s+([^\n]*?)(?:\bthen\b|\n|$)/i)?.[1] || "").trim();
   const thresholdText=String(threshold).replace(/\./g,"\\.");
   const hasCondition = Number.isFinite(threshold)
@@ -257,7 +278,7 @@ function gradePseudocode(part, response) {
     criterion("P1", 2, "Reads all three input values", hasInputVerb && varsFound === 3 ? 2 : varsFound >= 2 ? 1 : 0,
       hasInputVerb && varsFound === 3 ? "All required inputs are read." : "All three named inputs must be read."),
     criterion("P2", 2, "Calculates SCORE using all three values", validScoreCalculation ? 2 : 0,
-      validScoreCalculation ? "SCORE is calculated by adding the three required inputs." : "SCORE must be calculated as the sum of the three named inputs."),
+      validScoreCalculation ? "SCORE correctly uses all three source inputs." : "Use all three input variables in a verified SCORE calculation."),
     criterion("P3", 1, "Uses the correct threshold condition", hasCondition ? 1 : 0,
       hasCondition ? "Correct threshold condition found." : `The condition should compare SCORE with ${threshold}.`),
     criterion("P4", 1, "Displays ACCEPT on the true branch", branches.trueAccept ? 1 : 0,
