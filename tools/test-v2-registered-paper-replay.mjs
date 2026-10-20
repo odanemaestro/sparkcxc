@@ -1200,7 +1200,7 @@ try{
   const paper=sourceByPaper.get(key);
   assert(paper,"Missing first-batch source "+key);
   const emptyAnswers={},unrelatedAnswers={},contradictoryAnswers={};
-  const positiveAnswers={};
+  const positiveAnswers={},completeAnswers={};
   const explicitDenials={};
   const sourcePoints=new Map();
   const unambiguous=new Map();
@@ -1211,6 +1211,12 @@ try{
    assert(source&&Number(source.maxMarks)===Number(item.max_marks));
    const point=getPoint(item.subject_id,source);
    sourcePoints.set(item.criterion_id,point);
+   const marking=source.sourceMarking||{};
+   const authoredPoints=item.subject_id==="chemistry"?marking.points:
+     item.subject_id==="integrated-science"?marking.markScheme?.points:
+     item.subject_id==="food-nutrition-and-health"?marking.modelPoints:null;
+   if(Array.isArray(authoredPoints)&&authoredPoints.some(x=>typeof x==="string"))
+    completeAnswers[item.criterion_id]=authoredPoints.filter(x=>typeof x==="string").join("\\n");
    unrelatedAnswers[item.criterion_id]="ZXQJ VMPQ unrelated answer";
    if(!point)continue;
    const plain=!denyWords.test(point)&&!visualWords.test(point);
@@ -1233,11 +1239,13 @@ try{
   const emptyResult=assess(emptyAnswers);
   const unrelatedResult=assess(unrelatedAnswers);
   const positiveResult=Object.keys(positiveAnswers).length?assess(positiveAnswers):null;
+  const completeResult=Object.keys(completeAnswers).length?assess(completeAnswers):null;
   const negativeResult=Object.keys(explicitDenials).length?assess(explicitDenials):null;
   const contradictoryResult=Object.keys(contradictoryAnswers).length?assess(contradictoryAnswers):null;
   const byId=answer=>new Map((answer?.rows||[]).map(x=>[x.criterionId,x]));
   const blankRows=byId(emptyResult),noiseRows=byId(unrelatedResult),
-   positiveRows=byId(positiveResult),negativeRows=byId(negativeResult),
+   positiveRows=byId(positiveResult),completeRows=byId(completeResult),
+   negativeRows=byId(negativeResult),
    mixedRows=byId(contradictoryResult);
   for(const item of items){
    const id=item.criterion_id;
@@ -1247,7 +1255,9 @@ try{
     noise.maxMarks===item.max_marks,"Incorrect first-batch criterion mapping "+id);
    // Blank scripts cannot earn legitimate assessment marks.
    assert.equal(recorded.suggestedMarks,0,"Blank response awarded marks: "+key+" "+id);
-   const positive=positiveRows.get(id),negative=negativeRows.get(id),mixed=mixedRows.get(id);
+   const positive=positiveRows.get(id),complete=completeRows.get(id),
+    negative=negativeRows.get(id),mixed=mixedRows.get(id);
+   const completeMarks=complete?.suggestedMarks??null;
    const positiveMarks=positive?.suggestedMarks??null;
    const negativeMarks=negative?.suggestedMarks??null;
    const contradictoryMarks=mixed?.suggestedMarks??null;
@@ -1258,7 +1268,8 @@ try{
    const verdict=suspiciousNoise||suspiciousDenial||suspiciousMixed?
     "requires-false-positive-fix":
     !hasModel?"requires-source-answer-test-fixture":
-    positiveMarks===0?"requires-positive-answer-calibration":
+    positiveMarks===0&&completeMarks===0?"requires-positive-answer-calibration":
+    positiveMarks===0&&completeMarks>0?"first-model-point-insufficient":
     "adversarial-smoke-pass-awaits-alternative-partial-credit-review";
    batch1Checks.push({
     subject_id:item.subject_id,paper_id:item.paper_id,criterion_id:id,
@@ -1269,6 +1280,7 @@ try{
     blank_marks:recorded.suggestedMarks,
     unrelated_marks:noise.suggestedMarks,
     canonical_marks:positiveMarks,
+    complete_source_answer_marks:completeMarks,
     explicit_denial_marks:negativeMarks,
     contradictory_marks:contradictoryMarks,
     verdict,
