@@ -66,6 +66,14 @@ jobs:
           node tools/test-v2-registered-paper-replay.mjs
           node --input-type=module -e "import('./supabase/functions/_shared/server-marker-v2.mjs').then(x => { if(typeof x.evaluateExistingSubjectPaper2V2 !== 'function') process.exit(1) })"
 
+      - name: Upload private V2 criterion evidence QA report
+        uses: actions/upload-artifact@v4
+        with:
+          name: spark-v2-criterion-evidence-${{ github.sha }}
+          path: artifacts/v2-criterion-evidence-audit.json
+          if-no-files-found: error
+          retention-days: 14
+
       - name: Upload verified server marking bundle
         uses: actions/upload-artifact@v4
         with:
