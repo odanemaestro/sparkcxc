@@ -45,7 +45,8 @@ const migrations=[
 "20261020040000_marking_v2_math_original_v6_v8_source_drafts.sql",
 "20261020050000_marking_v2_math_original_v9_v10_source_drafts.sql",
 "20261020060000_marking_v2_nine_subject_source_total_readiness.sql",
-"20261020070000_marking_v2_four_source_bound_ai_criterion_reviews.sql"
+"20261020070000_marking_v2_four_source_bound_ai_criterion_reviews.sql",
+"20261020080000_marking_v2_first_300_criterion_calibration_queue.sql"
 ];
 const db=new PGlite();
 try{
@@ -62,6 +63,67 @@ try{
  const papers=(await db.query(`select subject_id,paper_id,criteria
  from spark_grading_private.rubrics_v2 order by subject_id,paper_id`)).rows;
  assert.equal(papers.length,67);
+ // The large review batch is source-anchored triage, not automatic approval.
+ const bulk=(await db.query(`SELECT batch_id,subject_id,paper_id,rubric_version,
+   criterion_id,criterion_sha256,source_sha256,max_marks,evidence_class
+   FROM spark_grading_private.v2_calibration_batch_items
+   WHERE batch_id='v2-bulk-calibration-001'
+   ORDER BY subject_id,paper_id,criterion_id`)).rows;
+ assert.equal(bulk.length,300,'The first calibration cohort must contain exactly 300 parts');
+ const batchQuotas={
+  'mathematics':100,'integrated-science':65,'chemistry':30,
+  'information-technology':30,'physics':25,'english-a':15,
+  'social-studies':15,'food-nutrition-and-health':10,
+  'principles-of-business':10
+ };
+ for(const [subject,quota] of Object.entries(batchQuotas))
+  assert.equal(bulk.filter(x=>x.subject_id===subject).length,quota,
+   'Missing subject cohort coverage: '+subject);
+ const paperMap=new Map(papers.map(p=>[p.subject_id+'::'+p.paper_id,p]));
+ let checked=0;
+ const candidateCases=[];
+ for(const item of bulk){
+  const paper=paperMap.get(item.subject_id+'::'+item.paper_id);
+  assert(paper,'Missing source-bound cohort paper');
+  const criterion=paper.criteria.find(x=>x.id===item.criterion_id);
+  assert(criterion,'Missing cohort source part '+item.criterion_id);
+  assert.equal(criterion.maxMarks,item.max_marks);
+  // Test each selected part independently. A blank or unrelated submission
+  // must not earn credit, even when the remaining paper is not supplied.
+  const args={subjectId:item.subject_id,paperId:item.paper_id,
+   criteria:[criterion]};
+  const blankResult=evaluateExistingSubjectPaper2V2({...args,responses:{}});
+  const unrelatedResult=evaluateExistingSubjectPaper2V2({
+   ...args,responses:{[item.criterion_id]:'ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY'}
+  });
+  assert.equal(blankResult.examinedParts,1);
+  assert.equal(unrelatedResult.examinedParts,1);
+  assert.equal(blankResult.suggestedMarks,0,
+   'Blank candidate earned unsupported V2 credit: '+item.criterion_id);
+  assert.equal(unrelatedResult.suggestedMarks,0,
+   'Unrelated candidate earned unsupported V2 credit: '+item.criterion_id);
+  // Even the source-canonical response is only a diagnostic for unapproved
+  // rubric versions, not a synthetic review/signature.
+  if(item.evidence_class==='direct-check-candidate'){
+   const ans=criterion.sourceMarking?.answer;
+   if(typeof ans==='string' && ans.trim()){
+    const answer=evaluateExistingSubjectPaper2V2({
+     ...args,responses:{[item.criterion_id]:{answer:ans,
+      working:criterion.sourceMarking?.solution??''}}
+    });
+    candidateCases.push({subject:item.subject_id,id:item.criterion_id,
+      suggestedMarks:answer.suggestedMarks,resolved:answer.rows[0]?.resolved});
+   }
+  }
+  checked++;
+ }
+ assert.equal(checked,300);
+ console.log('Nine-subject 300-criterion source-bound adversarial cohort',
+  JSON.stringify({checked,subjectCounts:batchQuotas,
+   directCandidates:bulk.filter(x=>x.evidence_class==='direct-check-candidate').length,
+   diagnosticExamples:candidateCases.slice(0,25),
+   accuracyCaveat:'Blank and unrelated adversarial tests do not prove equivalence, method, written or graph marking accuracy. This cohort is not 300 approvals.'}));
+
 
  // Real authored SPARK Mathematics Q1 source calibration, not certification.
  const v1=(await db.query(`select criteria from spark_grading_private.rubrics_v2
