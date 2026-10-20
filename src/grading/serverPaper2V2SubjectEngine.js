@@ -30,7 +30,7 @@ import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Orig
 // Subjects whose adapters compute criterion certainty themselves. A subject
 // joins this set only once its resolution policy is covered by the
 // criterion verification matrix (src/grading/v2CriterionVerifier.js).
-const resolutionPolicySubjects=new Set(["information-technology"]);
+const resolutionPolicySubjects=new Set(["information-technology","mathematics"]);
 const subjectIds=new Set([
  "mathematics","physics","information-technology","chemistry","english-a",
  "food-nutrition-and-health","integrated-science","social-studies","principles-of-business"
@@ -165,14 +165,13 @@ function mathematics(rows,responses){
      throw new Error("Invalid registered Mathematics mark allocation "+row.id);
    }
    const allAutomatable=detailed&&stored.every(automatableMathCriterion);
-   // The shared existing grader awards correct-answer-implied method marks on
-   // ordinary numerical tasks. That convention cannot verify a criterion
-   // explicitly marked for manual checking or drafted from a fallback.
-   // V2 must suppress that *inference* while still evaluating the independent
-   // accuracy marks and valid ECF normally.
+   // The shared grader awards correct-answer-implied method marks on ordinary
+   // numerical tasks (CXC convention, unless the question demands working).
+   // A criterion explicitly marked for manual checking cannot rely on it.
+   const manualScheme=detailed&&stored.some(c=>c?.check?.type==="manual-verification");
    const partMarkingPolicy={
     ...part.markingPolicy,
-    correctAnswerImpliesMethod:allAutomatable &&
+    correctAnswerImpliesMethod:!manualScheme && part.requireWorking!==true &&
      part.markingPolicy?.correctAnswerImpliesMethod!==false
    };
    return {row,part:{...part,criteria:detailed?stored:part.criteria,
@@ -194,11 +193,87 @@ function mathematics(rows,responses){
     blank(responsesForQuestion[selected[i].part.id])?0:x.marks),
    "existing-mathematics-MAB-ECF",
    selected.map((p,i)=>blank(responsesForQuestion[p.part.id]) ||
-    (p.definitive && !examination.parts[i]?.criteria?.some(
-     c=>c.reviewRequired||c.unresolved)))));
+    mathPartCertain(examination.parts[i],p.part.criteria,responsesForQuestion[p.part.id],
+     p.part.markingPolicy,sourceMarking(p.row)))));
  }
  return out;
 }
+
+// Checks whose outcome is decided by mathematics, not by wording: a value,
+// expression, equation, point or set either is or is not present.
+const mathStrongEvidence=new Set([
+ "numeric","equation","inequality","expression","fraction","coordinate","set",
+ "classInterval","ordered","matrix","sparkAnswer","reachesValue","containsValue",
+ "contains","containsLiteral",
+ "containsEquivalentExpression","containsInequality","labelledValue","containsPoint",
+ "calculation","algebraTransition"
+]);
+// An empty composite check is unknown, never vacuously "all strong".
+const checkTypes=check=>!object(check)?["?"]:
+ (check.type==="anyOf"||check.type==="allOf")
+  ?(Array.isArray(check.options)&&check.options.length?check.options.flatMap(checkTypes):["?"])
+  :[check.type];
+const strongMathCheck=check=>checkTypes(check).every(t=>mathStrongEvidence.has(t));
+const workingOf=response=>object(response)?String(response.working??""):"";
+/**
+ * A Mathematics part is certain when every mark decision is:
+ *  - an awarded mark backed by a mathematical check, or implied by a correct
+ *    final answer under the CXC convention;
+ *  - a withheld answer-line accuracy mark judged by a mathematical check;
+ *  - a withheld method mark when no working was shown at all.
+ * A withheld method mark beside written working may reflect a valid
+ * alternative method, so the part abstains. Wording-based checks (prose,
+ * keyword "method", concept matches) and manual checks never certify.
+ */
+const answerOf=response=>object(response)?String(response.answer??""):String(response??"");
+// "A or B" offering two different answers, when the source answer is not
+// itself a pair of alternatives ("x = -20 or x = 19").
+function competingMathAnswer(response,sourceAnswer){
+ const text=answerOf(response);
+ if(/\b(?:or|either)\b/i.test(String(sourceAnswer??"")))return false;
+ const pieces=text.split(/\s+(?:or|either|\/)\s+/i).map(x=>x.trim()).filter(Boolean);
+ return pieces.length>1&&new Set(pieces.map(x=>x.replace(/\s+/g,"").toLowerCase())).size>1;
+}
+function mathPartCertain(result,specs,response,policy={},source={}){
+ if(!result||!Array.isArray(result.criteria)||!Array.isArray(specs))return false;
+ const byCode=new Map(specs.map(s=>[s.code,s]));
+ const noWorking=!workingOf(response).trim();
+ const kindOf=(line,spec)=>String(spec?.kind||line.kind||"").toUpperCase();
+ // Competing answers earn no accuracy mark (CXC). If a checker nonetheless
+ // credited one, abstain; a checker that already withheld credit is certain.
+ if(competingMathAnswer(response,source.answer)&&result.criteria.some(line=>
+   line.awarded&&["A","B"].includes(kindOf(line,byCode.get(line.code)))))return false;
+ // A certain, correct final answer implies every method mark (CXC). Where the
+ // question demands working, the working must be present for the awarded
+ // method marks to stand on the correct answer.
+ const accuracy=result.criteria.filter(line=>["A","B"].includes(kindOf(line,byCode.get(line.code))));
+ const answerCertainlyRight=accuracy.length>0&&
+  accuracy.every(line=>line.awarded&&strongMathCheck(byCode.get(line.code)?.check))&&
+  (policy.correctAnswerImpliesMethod===true||!noWorking);
+ // Written reasoning (prose / written statements) earns certain full credit
+ // only when the written-evidence gate finds the source statement, with no
+ // contradiction or keyword list. Partial written credit abstains.
+ const fullMarks=result.marks===result.of;
+ const writtenCertain=fullMarks&&certainWrittenMark({suggestedMarks:1,maxMarks:1,
+  response:answerOf(response)+"\n"+workingOf(response),points:[String(source.answer??"")]}).resolved;
+ return result.criteria.every(line=>{
+  const spec=byCode.get(line.code);
+  if(!spec?.check||spec.check.type==="manual-verification"||spec.provisional===true)return false;
+  if(line.impliedByAnswer)return true;
+  if(answerCertainlyRight&&kindOf(line,spec)==="M"&&line.awarded)return true;
+  const strong=strongMathCheck(spec.check);
+  const written=writtenMathCheck(spec.check);
+  // Unknown or unsupported check types never certify anything.
+  if(!strong&&!written&&!checkTypes(spec.check).every(t=>mathWeakEvidence.has(t)))return false;
+  if(line.awarded)return strong||(written&&writtenCertain);
+  const kind=kindOf(line,spec);
+  if((kind==="A"||kind==="B")&&(spec.field||"answer")==="answer")return strong;
+  return noWorking;
+ });
+}
+const mathWrittenEvidence=new Set(["prose","written","reasonConcept"]);
+const mathWeakEvidence=new Set(["method"]);
+const writtenMathCheck=check=>checkTypes(check).every(t=>mathWrittenEvidence.has(t));
 const physicsSourcePapers=new Map([
  physicsPaper1,physicsPaper2,physicsPaper3,physicsPaper4
 ].map(p=>[p.paper_id,p]));
@@ -535,9 +610,7 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
   // criterion-level authority. Subjects listed in resolutionPolicySubjects
   // decide certainty in their own adapters (exact rules plus the written
   // evidence gate). Every other subject fails closed: advisory only.
-  const unverified=subjectId==="mathematics"
-    ?manualOrUnknown(source)
-    :!resolutionPolicySubjects.has(subjectId);
+  const unverified=!resolutionPolicySubjects.has(subjectId);
   if(subjectId==="mathematics" && r.resolved && r.suggestedMarks===0){
    const [questionId,partId]=r.criterionId.split("::");
    const questionAnswer=responses[questionId];

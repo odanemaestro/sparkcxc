@@ -11,6 +11,13 @@ import {verifyPaper} from "./v2PaperVerification";
 import {informationTechnologyFixtures} from "./v2Fixtures/informationTechnology";
 import {informationTechnologyPaper2RuleFor} from "../informationTechnology/practice/itPaper2Marking";
 import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json";
+import {mathematicsFixtures} from "./v2Fixtures/mathematics";
+import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
+
+function mathPart(criterionId){
+ const [qid,pid]=criterionId.split("::");
+ return PAPER2_QUESTION_BANK.find(q=>q.question_id===qid)?.parts.find(p=>p.id===pid)||null;
+}
 
 function itContext(paperId,criterionId){
  const paper=itPaper2Archive.papers.find(p=>p.id===paperId);
@@ -28,6 +35,11 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
   const set=informationTechnologyFixtures({...ctx,maxMarks:criterion.maxMarks});
   if(!set)return {blocked:"no-source-fixtures-for-rule:"+ctx.rule};
   return {...set,ruleId:"it:"+ctx.rule};
+ }
+ if(subjectId==="mathematics"){
+  const set=mathematicsFixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
+  if(set.blocked)return set;
+  return {...set,ruleId:"math:"+(criterion.sourceMarking?.criteria||[]).map(c=>c.code+"="+(c.check?.type||"?")).join(",")};
  }
  return {blocked:"subject-resolution-policy-not-yet-verified"};
 }
