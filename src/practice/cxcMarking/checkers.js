@@ -410,6 +410,28 @@ export function checkSet(raw, spec) {
     : matched ? "correct values, but extra ones as well" : "not the required values", got };
 }
 
+/**
+ * A modal class is an interval, NOT an unordered set of two observations.
+ * Accept the student's class endpoints in source order, optionally with a
+ * class label and a unit. Never treat reversed endpoints, alternatives or
+ * an extra competing class as correct.
+ */
+export function checkClassInterval(raw, spec) {
+  const value=spec?.value;
+  if(!Array.isArray(value)||value.length!==2||
+     !value.every(v=>Number.isFinite(Number(v)))||
+     Number(value[0])>=Number(value[1]))
+    return {ok:false,why:"invalid source class interval",got:null};
+  const input=String(raw??"").trim()
+    .replace(/^(?:the\s+)?(?:modal\s+)?class(?:\s+interval)?\s*(?:is\s+|:\s*)?/i,"")
+    .replace(/\s*(?:kg|kilograms?)\.?\s*$/i,"").trim();
+  const matched=/^([+-]?\d+(?:\.\d+)?)\s*(?:-|–|—|to)\s*([+-]?\d+(?:\.\d+)?)$/i.exec(input);
+  if(!matched)return {ok:false,why:"expected one ordered class interval",got:null};
+  const got=[Number(matched[1]),Number(matched[2])];
+  const ok=got[0]===Number(value[0])&&got[1]===Number(value[1]);
+  return {ok,why:ok?"correct":"not the required class interval",got};
+}
+
 export function checkOrdered(raw, spec) {
   const got = numberList(raw);
   const want = spec.value.map(Number);
@@ -1004,6 +1026,7 @@ export const CHECKERS = {
   fraction: checkFraction,
   coordinate: checkCoordinate,
   set: checkSet,
+  classInterval: checkClassInterval,
   ordered: checkOrdered,
   matrix: checkMatrix,
   contains: checkContains,
