@@ -294,7 +294,7 @@ try{
     ON q.subject_id=b.subject_id AND q.paper_id=b.paper_id
     AND q.rubric_version=b.rubric_version AND q.criterion_id=b.criterion_id
    WHERE b.batch_id='v2-bulk-calibration-007' AND q.source_matched_review`)).rows[0].n;
- assert.equal(matchedFour,4,'Preserve four existing AI source reviews without duplicate approvals');
+ assert.equal(matchedFour,9,'The final cohort retains four historical and five new source-locked AI IT reviews');
  const sourceMap=new Map(papers.map(p=>[p.subject_id+'::'+p.paper_id,p]));
  const batchesByPaper=Map.groupBy(final318,x=>x.subject_id+'::'+x.paper_id);
  for(const [key,items] of batchesByPaper){
