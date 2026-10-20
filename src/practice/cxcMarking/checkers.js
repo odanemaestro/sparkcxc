@@ -264,8 +264,8 @@ export function checkExpression(raw, spec) {
   // incorrectly awards a mark for 2(4w+4) or 4w+4w+8.
   // Opt in only for independently audited, one-variable linear problems.
   if (spec.requireSimplifiedLinear) {
-    const normalized=s.replace(/\\s+/g,"").replace(/\\*/g,"").replace(/−/g,"-");
-    const simple=/^\\+?(?:\\d+(?:\\.\\d+)?[a-z][+-]\\d+(?:\\.\\d+)?|\\d+(?:\\.\\d+)?[+-]\\d+(?:\\.\\d+)?[a-z])$/i;
+    const normalized=s.replace(/\s+/g,"").replace(/\*/g,"").replace(/−/g,"-");
+    const simple=/^\+?(?:\d+(?:\.\d+)?[a-z][+-]\d+(?:\.\d+)?|\d+(?:\.\d+)?[+-]\d+(?:\.\d+)?[a-z])$/i;
     if(!simple.test(normalized))return {
       ok:false,why:"correct value, but not in the requested simplest linear form",
       got:s,formOnly:true
