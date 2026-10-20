@@ -1290,6 +1290,13 @@ try{
   JSON.stringify({description:"Executed source-specific scoring probes. Not final rubric approvals.",
     summary:batch1Summary,criteria:batch1Checks},null,2));
  console.log("V2 BATCH 1 1036 criterion QA execution",JSON.stringify(batch1Summary));
+ console.log("V2 BATCH 1 FALSE POSITIVE CASES",JSON.stringify(
+  batch1Checks.filter(c=>c.verdict==="requires-false-positive-fix")));
+ console.log("V2 BATCH 1 POSITIVE MISSES",JSON.stringify(
+  batch1Checks.filter(c=>c.verdict==="requires-positive-answer-calibration")
+   .map(c=>({subject:c.subject_id,paper:c.paper_id,
+    criterion:c.criterion_id,marks:c.max_marks,canonical:c.canonical_marks}))));
+
 
  fs.mkdirSync('artifacts',{recursive:true});
  fs.writeFileSync('artifacts/v2-criterion-evidence-audit.json',
