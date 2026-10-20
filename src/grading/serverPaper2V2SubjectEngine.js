@@ -73,16 +73,29 @@ const sourceDenialKey=value=>String(value??"").trim().toLowerCase()
 const directlyDeniesSourcePoint=(raw,source)=>{
  const response=sourceDenialKey(text(raw));
  const intro=/^(?:it is false that|it is incorrect to say)\s+/;
- if(!intro.test(response))return false;
  const denied=response.replace(intro,"");
  const points=Array.isArray(source?.points)?source.points:
   Array.isArray(source?.markScheme?.points)?source.markScheme.points:
   Array.isArray(source?.modelPoints)?source.modelPoints:
   typeof source?.modelAnswer==="string"?[source.modelAnswer]:[];
  const substantiveNegation=/\b(?:not|no|never|cannot|without|fails?\s+to|unable\s+to|false)\b/;
- return points.some(point=>typeof point==="string" &&
-  !substantiveNegation.test(sourceDenialKey(point)) &&
-  denied===sourceDenialKey(point));
+ // A canonical source statement followed by its exact explicit denial is
+ // contradictory evidence. Withhold its marks instead of rewarding the
+ // matching keywords. Normalisation is limited to punctuation/newlines,
+ // so a generic 'not' in otherwise legitimate working does not trigger.
+ const statementKey=value=>sourceDenialKey(value)
+  .replace(/\\n/g," ").replace(/[.!?]+/g," ")
+  .replace(/\s+/g," ").trim();
+ const compound=statementKey(text(raw));
+ return points.some(point=>{
+  if(typeof point!=="string"||
+     substantiveNegation.test(sourceDenialKey(point)))return false;
+  if(intro.test(response) && denied===sourceDenialKey(point))
+   return true;
+  const original=statementKey(point);
+  return ["it is false that","it is incorrect to say"].some(prefix=>
+   compound===original+" "+prefix+" "+original);
+ });
 };
 
 
