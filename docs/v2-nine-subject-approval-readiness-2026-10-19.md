@@ -283,3 +283,33 @@ criterion reviews**. The total remains 12 source-bound nonhuman AI QA
 reviews of 2,118 registered parts, with 2,106 still pending and zero
 verified/active V2 paper rubrics. Adding a part to a calibration cohort
 must never be construed as approving its marking scheme.
+
+## Batch 006: 300 source-locked parts deployed and scientific false-denial QA
+
+Following passing [CI #2556](https://github.com/odanemaestro/sparkcxc/actions/runs/39354472986),
+the private production migration
+`20261020150000_marking_v2_sixth_300_criterion_calibration_queue.sql`
+was applied successfully after a rollback dry-run.
+
+New Batch 006 source parts: Mathematics 95, Integrated Science 110,
+Chemistry 35, Information Technology 35, Physics 15, English A 7,
+Social Studies 3. Food, Nutrition and Health and Principles of Business
+have already had their entire registered source-part inventories selected
+in the earlier calibration cohorts.
+
+Production reports **six cohorts of 300 parts (1,800 total)** with
+**1,800/1,800 current matching source SHA-256 fingerprints**, **zero
+duplicate criterion identities**, and **zero** active or verified V2 paper
+rubrics. Twelve nonhuman AI-assisted source criterion reviews remain
+recorded across 2,118 parts; **2,106** are still pending. Batch 006
+contains **zero newly qualified direct whole-part scoring checks**;
+the selected sources remain explicitly review-required. Inclusion in
+the cohort is not marking accuracy verification or approval.
+
+The shared `scienceWrittenEvidence` checker now treats claims like
+"it is false that [required scientific fact]" and "it is incorrect to say
+[required fact]" as explicit contradiction evidence, rather than awarding
+credit based on repeated correct keywords. Regression fixtures also
+preserve correct handling of source-authored negative facts. The fix
+has passed the nine-subject CI regression suite and stays on the V2
+feature branch until a separate approved rollout.
