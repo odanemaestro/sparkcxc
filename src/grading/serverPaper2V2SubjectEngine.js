@@ -73,7 +73,8 @@ const directlyDeniesSourcePoint=(raw,source)=>{
  const denied=response.replace(intro,"");
  const points=Array.isArray(source?.points)?source.points:
   Array.isArray(source?.markScheme?.points)?source.markScheme.points:
-  Array.isArray(source?.modelPoints)?source.modelPoints:[];
+  Array.isArray(source?.modelPoints)?source.modelPoints:
+  typeof source?.modelAnswer==="string"?[source.modelAnswer]:[];
  const substantiveNegation=/\b(?:not|no|never|cannot|without|fails?\s+to|unable\s+to|false)\b/;
  return points.some(point=>typeof point==="string" &&
   !substantiveNegation.test(sourceDenialKey(point)) &&
@@ -320,8 +321,12 @@ function pob(rows,responses,paperId){
   const outcome=parts.get("Q"+m[1]+":"+m[2]);
   if(!outcome||outcome.availableMarks!==row.maxMarks)
     throw new Error("POB source part mismatch");
-  return cap(row,outcome.confirmedMarks,"existing-POB-subcriterion-evidence",
-    outcome.unresolvedMarks===0);
+  const source=sourceMarking(row);
+  const raw=read(responses,row.id,"Q"+m[1]+":"+m[2]);
+  const denied=directlyDeniesSourcePoint(raw,source);
+  return cap(row,denied?0:outcome.confirmedMarks,
+    denied?"source-answer-explicit-denial":"existing-POB-subcriterion-evidence",
+    !denied && outcome.unresolvedMarks===0);
  });
 }
 function social(rows,responses){
