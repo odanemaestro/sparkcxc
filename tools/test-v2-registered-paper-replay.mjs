@@ -53,7 +53,8 @@ const migrations=[
 "20261020110000_marking_v2_math_simplest_linear_ai_reviews.sql",
 "20261020120000_marking_v2_third_300_criterion_calibration_queue.sql",
 "20261020130000_marking_v2_fourth_300_criterion_calibration_queue.sql",
-"20261020140000_marking_v2_fifth_300_criterion_calibration_queue.sql"
+"20261020140000_marking_v2_fifth_300_criterion_calibration_queue.sql",
+"20261020150000_marking_v2_sixth_300_criterion_calibration_queue.sql"
 ];
 const db=new PGlite();
 try{
@@ -262,11 +263,20 @@ try{
   assert.equal(batch5.filter(x=>x.subject_id===subject).length,number);
  assert.equal(new Set(batch5.map(x=>x.subject_id)).size,8);
 
+ const batch6=(await db.query("select subject_id,paper_id,rubric_version,criterion_id,max_marks from spark_grading_private.v2_calibration_batch_items where batch_id='v2-bulk-calibration-006'")).rows;
+ assert.equal(batch6.length,300,'Batch 006 must have exactly 300 source parts');
+ const quotas6={'mathematics':95,'integrated-science':110,
+  'chemistry':35,'information-technology':35,'physics':15,
+  'english-a':7,'social-studies':3};
+ for(const [subject,number] of Object.entries(quotas6))
+  assert.equal(batch6.filter(x=>x.subject_id===subject).length,number);
+ assert.equal(new Set(batch6.map(x=>x.subject_id)).size,7);
+
  const repeats=(await db.query(`select count(*)::int n from (
  select subject_id,paper_id,rubric_version,criterion_id from
  spark_grading_private.v2_calibration_batch_items group by 1,2,3,4
  having count(*)>1) duplicates`)).rows[0].n;
- assert.equal(repeats,0,'Source parts must never repeat across five batches');
+ assert.equal(repeats,0,'Source parts must never repeat across six batches');
  const hashes=(await db.query(`select count(*)::int total,
  count(*) filter(where b.source_sha256=q.paper_source_sha256
  and b.criterion_sha256=q.criterion_sha256)::int matched
@@ -274,8 +284,8 @@ try{
  join spark_grading_private.v2_calibration_queue q
  on q.subject_id=b.subject_id and q.paper_id=b.paper_id
  and q.rubric_version=b.rubric_version and q.criterion_id=b.criterion_id`)).rows[0];
- assert.equal(hashes.total,1500);
- assert.equal(hashes.matched,1500);
+ assert.equal(hashes.total,1800);
+ assert.equal(hashes.matched,1800);
 
  assert.equal(new Set(batch3.map(x=>x.subject_id)).size,8);
  const groups3=Map.groupBy(batch3,x=>x.subject_id+'::'+x.paper_id);
@@ -314,6 +324,23 @@ try{
  for(const [key,items] of groups5){
   const paper=papers.find(x=>x.subject_id+'::'+x.paper_id===key);
   assert(paper,'Missing Batch 005 source '+key);
+  const unrelated=Object.fromEntries(items.map(x=>[x.criterion_id,
+   'ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY']));
+  const blank=evaluateExistingSubjectPaper2V2({subjectId:paper.subject_id,
+    paperId:paper.paper_id,criteria:paper.criteria,responses:{}});
+  const wrong=evaluateExistingSubjectPaper2V2({subjectId:paper.subject_id,
+    paperId:paper.paper_id,criteria:paper.criteria,responses:unrelated});
+  for(const part of items){
+   assert.equal(blank.rows.find(r=>r.criterionId===part.criterion_id)?.suggestedMarks,0);
+   assert.equal(wrong.rows.find(r=>r.criterionId===part.criterion_id)?.suggestedMarks,0,
+    'Unrelated response awarded marks: '+part.criterion_id);
+  }
+ }
+
+ const groups6=Map.groupBy(batch6,x=>x.subject_id+'::'+x.paper_id);
+ for(const [key,items] of groups6){
+  const paper=papers.find(x=>x.subject_id+'::'+x.paper_id===key);
+  assert(paper,'Missing Batch 006 source '+key);
   const unrelated=Object.fromEntries(items.map(x=>[x.criterion_id,
    'ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY']));
   const blank=evaluateExistingSubjectPaper2V2({subjectId:paper.subject_id,
