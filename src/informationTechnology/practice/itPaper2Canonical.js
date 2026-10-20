@@ -173,6 +173,14 @@ export const IT_CANONICAL_CONCEPTS = Object.freeze({
     "source authority",
     "credible source"
   ],
+  "accuracy": [
+    "accuracy",
+    "accurate information",
+    "factually accurate",
+    "factual accuracy",
+    "correct facts",
+    "verified against reliable sources"
+  ],
   "currency": [
     "currency",
     "up to date",
