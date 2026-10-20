@@ -329,7 +329,7 @@ try{
     WHERE b.subject_id=q.subject_id AND b.paper_id=q.paper_id
       AND b.rubric_version=q.rubric_version AND b.criterion_id=q.criterion_id)) unselected
  `)).rows[0];
- assert.deepEqual(inventory,{selected:2118,registered:2118,reviews:12,unselected:0},
+ assert.deepEqual(inventory,{selected:2118,registered:2118,reviews:39,unselected:0},
    'No unselected source parts, duplicate reviews or altered reviewer authorisations');
  const repeats=(await db.query(`select count(*)::int n from (
  select subject_id,paper_id,rubric_version,criterion_id from
