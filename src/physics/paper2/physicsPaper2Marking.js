@@ -600,10 +600,10 @@ function axisLabelCorrect(actual, expected) {
     const symbolAndUnit = normaliseAxisLabel(expectedText.slice(commaIndex + 1));
     if (symbolAndUnit && got === symbolAndUnit) return true;
   }
-  // A shortened quantity name is not a complete axis label when the source
-  // requires its unit. Accept an exact symbol/unit alias or a fuller label.
-  // Never credit "Pressure" for "Pressure, P/kPa".
-  return got.includes(want);
+  // Extra contradictory text is not an equivalent axis label. Require
+  // exactly the declared quantity + units, or its exact symbol/unit alias.
+  // A label such as "not Pressure, P/kPa" must never earn axis marks.
+  return false;
 }
 
 function graphAxesLabelledCorrect(part, response) {
@@ -646,6 +646,12 @@ function graphLineCorrect(part, response) {
   const [a, b] = line;
   const dx = Number(b.x) - Number(a.x);
   if (!Number.isFinite(dx) || Math.abs(dx) < 1e-12) return false;
+  // A tiny 2-point segment with the expected slope is not the requested
+  // single best-fit line. It must span at least half the data's x-range.
+  const xs=(part?.graph?.points || []).map(point=>Number(point.x));
+  if(xs.length<2||!xs.every(Number.isFinite))return false;
+  const dataSpan=Math.max(...xs)-Math.min(...xs);
+  if(!(dataSpan>0)||Math.abs(dx)<0.5*dataSpan)return false;
   const gradient = (Number(b.y) - Number(a.y)) / dx;
   const intercept = Number(a.y) - gradient * Number(a.x);
   if (!Number.isFinite(gradient) || !Number.isFinite(intercept)) return false;
