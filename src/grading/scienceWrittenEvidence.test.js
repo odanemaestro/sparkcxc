@@ -38,3 +38,21 @@ test("contradictions after although, yet, and nevertheless cannot earn marks",()
   expect(result.contradicted).toBe(true);
  }
 });
+
+test("rejects denials using fails to and unable to",()=>{
+ for(const answer of ["Oxygen fails to move into blood.",
+                      "Oxygen is unable to move into blood."]){
+  const result=check(answer,"oxygen moves into blood");
+  expect(result.matched).toBe(false);
+  expect(result.contradicted).toBe(true);
+ }
+});
+test("curly apostrophe denials do not earn positive evidence",()=>{
+ const result=check("Oxygen doesn’t move into blood.","oxygen moves into blood");
+ expect(result.matched).toBe(false);
+ expect(result.contradicted).toBe(true);
+});
+test("source-authored negative facts retain their required polarity",()=>{
+ expect(check("Water is unable to cross the barrier.","water is unable to cross the barrier").matched).toBe(true);
+ expect(check("Water crosses the barrier.","water is unable to cross the barrier").matched).toBe(false);
+});
