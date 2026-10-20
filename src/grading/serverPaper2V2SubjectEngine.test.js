@@ -10,8 +10,17 @@ import itData from "../informationTechnology/practice/itPaper2Data.json";
 import {modelResponsesForInformationTechnologyPaper2} from "../informationTechnology/practice/itPaper2Marking";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
 import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
+import {CHEMISTRY_PAPER2_PRACTICE_SETS} from "../chemistry/data/chemistryPaper2Bank";
 
 const row=(id,maxMarks,sourceMarking)=>({id,sourcePartId:id,maxMarks,sourceMarking});
+// The registered Chemistry scheme is the source bank item's markScheme; the
+// examiner refuses any other (source drift).
+const chemistryScheme=(paperId,id)=>{
+ const paper=CHEMISTRY_PAPER2_PRACTICE_SETS.find(p=>p.id===paperId);
+ for(const q of paper.questions)for(const part of q.parts)for(const item of part.items)
+  if(q.id+"::"+part.label+"::"+item.label===id)return item.markScheme;
+ throw new Error("No chemistry source item "+id);
+};
 const example=(subjectId,paperId,criteria,responses={})=>
  examine({subjectId,paperId,criteria,responses});
 test("Mathematics source mapping preserves M/A/B and ECF paper-part accounting",()=>{
@@ -43,10 +52,7 @@ test("IT uses its canonical deterministic examiner",()=>{
 });
 test("Chemistry written source evidence is bounded by its scheme",()=>{
  const id="CHEM-G1-Q1::(a)::(i)";
- const r=example("chemistry","CHEM-P2-PRACTICE-1",[row(id,1,{
-  points:["Time taken for the cross to disappear / reaction time."],
-  guidance:"Allow chemically equivalent wording."
- })],{});
+ const r=example("chemistry","CHEM-P2-PRACTICE-1",[row(id,1,chemistryScheme("CHEM-P2-PRACTICE-1",id))],{});
  expect(r.examinedParts).toBe(1);
  expect(r.maxMarks).toBe(1);
  expect(r.canPublishFinalScore).toBe(r.unresolvedMarks===0);
@@ -318,7 +324,7 @@ test("stale Mathematics server answer is rejected before grading",()=>{
 
 test.each([
  ["chemistry","CHEM-P2-PRACTICE-1","CHEM-G1-Q1::(a)::(i)",1,
-  {points:["Time taken for the cross to disappear / reaction time."]},
+  chemistryScheme("CHEM-P2-PRACTICE-1","CHEM-G1-Q1::(a)::(i)"),
   "Time taken for the cross to disappear / reaction time."],
  ["integrated-science","is-fixed-source-pair-01","IS-M1-P2-01::(a)::(ii)",1,
   {requiredResponseType:"lines",

@@ -15,9 +15,13 @@ import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json"
 import physicsPaper4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
 import {gradeInformationTechnologyPart,informationTechnologyPaper2RuleFor,informationTechnologyResponseText} from "../informationTechnology/practice/itPaper2Marking";
 import {IT_CANONICAL_CONCEPTS,phrasePresent} from "../informationTechnology/practice/itPaper2Canonical";
-import {certainWrittenMark} from "./v2WrittenEvidenceGate";
+import {certainWrittenMark,keyTerms,cleanSourcePoint} from "./v2WrittenEvidenceGate";
+import {scienceResponseClauses} from "./scienceWrittenEvidence";
 import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json";
-import {gradeChemistryPaper2Item} from "../chemistry/practice/chemistryPaper2Grader";
+import {gradeChemistryPaper2Item,chemistryPointIsNumeric,chemistryPointMarks,chemistryFinalNumericEvidence,
+ chemistrySubPoints,chemistryEquationPoint,chemistryEstimatePoint} from "../chemistry/practice/chemistryPaper2Grader";
+import {CHEMISTRY_PAPER2_PRACTICE_SETS} from "../chemistry/data/chemistryPaper2Bank";
+import {readScienceGraph,graphPoints} from "../integratedScience/practice/scienceGraphModel";
 import {gradeEnglishAPaper2Response} from "../englishA/practice/englishAPaper2Grader";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
 import {gradeFnhWrittenPart} from "../fnh/practice/fnhPaper2Marking";
@@ -30,7 +34,7 @@ import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Orig
 // Subjects whose adapters compute criterion certainty themselves. A subject
 // joins this set only once its resolution policy is covered by the
 // criterion verification matrix (src/grading/v2CriterionVerifier.js).
-const resolutionPolicySubjects=new Set(["information-technology","mathematics"]);
+const resolutionPolicySubjects=new Set(["information-technology","mathematics","chemistry"]);
 const subjectIds=new Set([
  "mathematics","physics","information-technology","chemistry","english-a",
  "food-nutrition-and-health","integrated-science","social-studies","principles-of-business"
@@ -433,6 +437,113 @@ function itRecognisedPhrases(answer){
   for(const phrase of phrases)if(phrasePresent(answer,phrase))out.push(phrase);
  return out;
 }
+// Chemistry items are rehydrated from the source bank by id, so the examiner
+// sees the item's real response type (calculation, table, graph) and answer
+// keys, never anything supplied by the student.
+const chemistrySourceItems=new Map(CHEMISTRY_PAPER2_PRACTICE_SETS.flatMap(paper=>
+ paper.questions.flatMap(q=>q.parts.flatMap((part,pi)=>part.items.map((item,ii)=>
+  [paper.id+"|"+q.id+"::"+part.label+"::"+item.label,{question:q,pi,ii,item}])))));
+const sameScheme=(a,b)=>JSON.stringify(a?.points??null)===JSON.stringify(b?.points??null)&&
+ (a?.guidance??null)===(b?.guidance??null)&&
+ JSON.stringify(a?.alternatives??null)===JSON.stringify(b?.alternatives??null);
+// Structured answers (graph, table cells, axis labels) arrive as one object
+// under the criterion id; the grader reads them as "<base>:<field>".
+function spreadStructured(responseMap,base,value){
+ if(!object(value))return;
+ for(const [k,v] of Object.entries(value))if(k!=="answer")responseMap[base+":"+k]=v;
+ responseMap[base]=String(value.answer??"");
+}
+/**
+ * The student's own graph in the same question, read at the x-value the
+ * estimate item asks about ("at 55 °C", "after 30 minutes"), by linear
+ * interpolation between their plotted points. Null when they drew no usable
+ * graph or the x-value lies outside it.
+ */
+function ownGraphReading(src,responses,paperId){
+ const x=Number((String(src.item.prompt||"").match(/[-+]?\d+(?:\.\d+)?/)||[])[0]);
+ if(!Number.isFinite(x))return null;
+ for(const [pi,part] of src.question.parts.entries())for(const [ii,item] of part.items.entries()){
+  if(item.response?.type!=="graph")continue;
+  const id=src.question.id+"::"+part.label+"::"+item.label;
+  if(!chemistrySourceItems.has(paperId+"|"+id))continue;
+  const graph=readScienceGraph(object(responses[id])?responses[id].graph:null);
+  const points=(graph?.series||[]).flatMap(s=>graphPoints(s.points,"line").filter(Boolean))
+   .sort((a,b)=>a.x-b.x);
+  if(points.length<2)return null;
+  for(let k=1;k<points.length;k++){
+   const a=points[k-1],b=points[k];
+   if(x>=a.x&&x<=b.x&&b.x>a.x){
+    const ys=points.map(p=>p.y);
+    return {y:a.y+(b.y-a.y)*(x-a.x)/(b.x-a.x),
+     tolerance:Math.max(1e-9,(Math.max(...ys)-Math.min(...ys))*0.03)};
+   }
+  }
+  return null;
+ }
+ return null;
+}
+function chemistry(rows,responses,paperId){
+ return rows.map(row=>{
+  const src=chemistrySourceItems.get(paperId+"|"+row.id);
+  if(!src)throw new Error("Unknown Chemistry source item "+row.id);
+  const sm=sourceMarking(row);
+  if(!sameScheme(sm,src.item.markScheme)||src.item.marks!==row.maxMarks)
+   throw new Error("Registered Chemistry source drift: "+row.id);
+  const base=src.question.id+":"+src.pi+":"+src.ii;
+  const value=read(responses,row.id);
+  const responseMap={};
+  if(object(value))spreadStructured(responseMap,base,value);
+  else if(value!==null)responseMap[base]=String(value);
+  const type=src.item.response?.type||"lines";
+  if((type==="lines"||type==="calculation")&&directlyDeniesSourcePoint(value,sm))
+   return cap(row,0,"source-answer-explicit-denial",false);
+  const examiner=gradeChemistryPaper2Item(src.question,src.pi,src.ii,src.item,responseMap);
+  const text=String(responseMap[base]??"");
+  let resolved;
+  if(blank(value))resolved=true;
+  else if(Number(examiner.unassessedMarks||0)>0)resolved=false;
+  else if(type==="lines"||type==="calculation"){
+   // Values, labelled quantities and arithmetic steps are decided exactly;
+   // only worded points need the written-evidence gate. Competing final
+   // values ("0.05 or 0.5") are never certain.
+   const points=(sm.points||[]).filter(Boolean).flatMap(chemistrySubPoints);
+   // Graph-reading estimates: inside the source range is certain credit.
+   // Outside it, the scheme allows follow-through from the student's own
+   // graph: read their plotted line at the requested x-value.
+   const estimate=chemistryEstimatePoint(src.item);
+   if(estimate){
+    if(examiner.provisional===false)return cap(row,examiner.score,"existing-chemistry-evidence",true);
+    const own=ownGraphReading(src,responses,paperId);
+    const value=chemistryFinalNumericEvidence(text);
+    if(own===null||value.ambiguous||value.values.length===0)
+     return cap(row,0,"existing-chemistry-evidence",own===null&&!value.ambiguous);
+    const consistent=Math.abs(value.values[0]-own.y)<=own.tolerance;
+    return cap(row,consistent?row.maxMarks:0,"existing-chemistry-evidence",true);
+   }
+   // Equations are parsed and marked structurally: certain once parsed.
+   if(chemistryEquationPoint(src.item))
+    return cap(row,examiner.score,"existing-chemistry-evidence",examiner.equation?.parsed===true&&!examiner.equation?.competing);
+   // Formula points such as "Q = It" carry no key words: decided exactly.
+   const exact=p=>chemistryPointIsNumeric(p)||keyTerms(cleanSourcePoint(p)).length===0;
+   const worded=points.filter(p=>!exact(p));
+   // A denial ("It is false that protons = 12") or a negated value makes
+   // exactly decided points uncertain.
+   const denied=scienceResponseClauses(text).some(c=>
+    /^\s*it\s+is\s+(?:false|incorrect|not\s+true|untrue)\b/i.test(c)||/\b(?:not|never|isn'?t|cannot)\b[^.;\n]*\d/i.test(c));
+   if(points.length>worded.length&&(denied||chemistryFinalNumericEvidence(text).ambiguous))resolved=false;
+   else if(!worded.length)resolved=true;
+   else{
+    const numericMarks=examiner.criteria.filter((c,i)=>exact(points[i]))
+     .reduce((n,c)=>n+c.marks,0);
+    const numericMax=points.filter(exact).reduce((n,p)=>n+chemistryPointMarks(p),0);
+    resolved=certainWrittenMark({suggestedMarks:examiner.score-numericMarks,
+     maxMarks:Math.max(0,row.maxMarks-numericMax),response:text,points:worded}).resolved;
+   }
+  }
+  else resolved=examiner.provisional===false&&examiner.confidence!=="low";
+  return cap(row,examiner.score,"existing-chemistry-evidence",resolved);
+ });
+}
 function science(rows,responses,subject){
  const grouped=group(rows,"::"),out=[];
  for(const [qid,parts] of grouped){
@@ -575,7 +686,7 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
   case "mathematics":rows=mathematics(criteria,responses);break;
   case "physics":rows=physics(criteria,responses,paperId);break;
   case "information-technology":rows=it(criteria,responses,paperId);break;
-  case "chemistry":rows=science(criteria,responses,subjectId);break;
+  case "chemistry":rows=chemistry(criteria,responses,paperId);break;
   case "english-a":rows=english(criteria,responses);break;
   case "food-nutrition-and-health":rows=fnh(criteria,responses);break;
   case "integrated-science":rows=science(criteria,responses,subjectId);break;

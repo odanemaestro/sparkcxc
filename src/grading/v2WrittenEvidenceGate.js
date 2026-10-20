@@ -80,25 +80,32 @@ function locallyNegated(words,termSet){
  return false;
 }
 
-function classifyAlternative(clauses,alt,synonyms){
+const DENIAL=/^\s*(?:it\s+is\s+(?:false|incorrect|not\s+true|untrue)\s+(?:that|to\s+say)|it'?s\s+not\s+true\s+that)\b/i;
+const CONJUNCTION=/\b(?:however|whereas|but|although|yet|nevertheless)\b/i;
+function classifyAlternative(baseClauses,alt,synonyms,spent=new Set(),sentences=[]){
+ // A point that itself joins two ideas with "but" is compared with whole
+ // sentences, not with the halves of a split response.
+ const clauses=CONJUNCTION.test(alt)?[...baseClauses,...sentences]:baseClauses;
  const terms=keyTerms(alt);
  if(!terms.length)return {state:"absent",hits:0,terms:0};
  const minimum=terms.length<=3?terms.length:Math.ceil(terms.length*.75);
  const nearAt=terms.length>=2?Math.ceil(terms.length/2):Infinity;
  const sourceNegative=negated(alt);
- let best=0,state="absent";
- for(const clause of clauses){
-  const words=clauseWords(clause);
+ let best=0,state="absent",clause=null;
+ for(const [index,text] of clauses.entries()){
+  const words=clauseWords(text);
   const present=new Set(words.map(stem));
   const hit=terms.filter(t=>present.has(t)||(synonyms?.[t]||[]).some(s=>present.has(stem(s))));
   best=Math.max(best,hit.length);
   if(hit.length>=minimum){
-   if(!sourceNegative&&locallyNegated(words,new Set(hit)))
+   // An explicit denial contradicts whatever it restates, even a negative
+   // statement; otherwise a locally negated required term contradicts it.
+   if(DENIAL.test(text)&&!DENIAL.test(alt)||!sourceNegative&&locallyNegated(words,new Set(hit)))
     return {state:"contradict",hits:hit.length,terms:terms.length};
-   state="match";
-  }else if(hit.length>=nearAt&&state!=="match")state="near";
+   state="match";clause=index;
+  }else if(hit.length>=nearAt&&state!=="match"&&!spent.has(index))state="near";
  }
- return {state,hits:best,terms:terms.length};
+ return {state,hits:best,terms:terms.length,clause};
 }
 
 const rank={contradict:3,match:2,near:1,absent:0};
@@ -109,26 +116,35 @@ const rank={contradict:3,match:2,near:1,absent:0};
 export function classifyWrittenEvidence(response,points,{synonyms}={}){
  const raw=typeof response==="string"?response:String(response?.answer??response??"");
  const clauses=scienceResponseClauses(raw);
- const states=points.map(point=>{
+ const sentences=raw.split(/[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)/).map(s=>s.trim()).filter(Boolean);
+ const classify=spent=>points.map(point=>{
   const alts=pointAlternatives(point);
   if(!alts.length)return {point,state:"absent"};
   let best={state:"absent"};
   for(const alt of alts){
-   const r=classifyAlternative(clauses,alt,synonyms);
+   const r=classifyAlternative(clauses,alt,synonyms,spent,sentences);
    // A contradiction on any alternative wins: the answer asserts and denies.
    if(r.state==="contradict")return {point,...r};
    if(rank[r.state]>rank[best.state])best=r;
   }
   return {point,...best};
  });
+ // A clause that states one point is spent: its shared wording is not a
+ // near-miss attempt at a different point.
+ const first=classify(new Set());
+ const spent=new Set(first.filter(s=>s.state==="match"&&Number.isInteger(s.clause)).map(s=>s.clause));
+ const states=spent.size?classify(spent):first;
  // Telegraphic keyword lists: five or more words, no function word at all,
- // touching two or more different source points.
+ // drawing on terms unique to two or more different source points. A
+ // label-style statement of one point ("Period 3: 3 occupied electron
+ // shells") shares only common words with the others and is not a list.
+ const pointTerms=points.map(p=>new Set(keyTerms(cleanSourcePoint(p))));
+ const unique=pointTerms.map((set,i)=>[...set].filter(t=>pointTerms.every((other,j)=>j===i||!other.has(t))));
  const salad=clauses.some(clause=>{
   const words=clauseWords(clause);
   if(words.length<5||words.some(w=>STOP.has(w)))return false;
   const present=new Set(words.map(stem));
-  const touched=points.filter(p=>keyTerms(cleanSourcePoint(p)).some(t=>present.has(t)));
-  return touched.length>=2;
+  return unique.filter(terms=>terms.some(t=>present.has(t))).length>=2;
  });
  return {
   states,salad,blank:!raw.trim(),

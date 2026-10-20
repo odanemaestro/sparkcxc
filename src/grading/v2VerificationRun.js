@@ -14,6 +14,21 @@ import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json
 import {mathematicsFixtures} from "./v2Fixtures/mathematics";
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 
+import {scienceFixtures,pointAnswer} from "./v2Fixtures/science";
+import {CHEMISTRY_PAPER2_PRACTICE_SETS} from "../chemistry/data/chemistryPaper2Bank";
+import {CURATED_CHEMISTRY} from "./v2Fixtures/chemistryCurated";
+
+function chemistryItem(paperId,criterionId){
+ const paper=CHEMISTRY_PAPER2_PRACTICE_SETS.find(p=>p.id===paperId);
+ for(const q of paper?.questions||[])for(const part of q.parts)for(const item of part.items)
+  if(q.id+"::"+part.label+"::"+item.label===criterionId)return {paper,question:q,item};
+ return null;
+}
+function chemistryOthers(paper,exclude){
+ return paper.questions.flatMap(q=>q.parts.flatMap(p=>p.items))
+  .filter(it=>it!==exclude&&(it.response?.type||"lines")==="lines")
+  .map(it=>(it.markScheme?.points||[]).map(pointAnswer).join(". ")).filter(Boolean);
+}
 function mathPart(criterionId){
  const [qid,pid]=criterionId.split("::");
  return PAPER2_QUESTION_BANK.find(q=>q.question_id===qid)?.parts.find(p=>p.id===pid)||null;
@@ -40,6 +55,17 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
   const set=mathematicsFixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
   if(set.blocked)return set;
   return {...set,ruleId:"math:"+(criterion.sourceMarking?.criteria||[]).map(c=>c.code+"="+(c.check?.type||"?")).join(",")};
+ }
+ if(subjectId==="chemistry"){
+  const ctx=chemistryItem(paperId,criterion.id);
+  if(!ctx)return {blocked:"criterion-not-found-in-source-bank"};
+  const graphPart=ctx.question.parts.flatMap(part=>part.items.map(item=>({part,item})))
+   .find(x=>x.item.response?.type==="graph");
+  const set=scienceFixtures({item:ctx.item,maxMarks:criterion.maxMarks,criterionId:criterion.id,
+   graph:graphPart?{id:ctx.question.id+"::"+graphPart.part.label+"::"+graphPart.item.label,item:graphPart.item}:null,
+   others:chemistryOthers(ctx.paper,ctx.item),curated:CURATED_CHEMISTRY[criterion.id]||[]});
+  if(set.blocked)return set;
+  return {...set,ruleId:"chem:"+(ctx.item.response?.type||"lines")};
  }
  return {blocked:"subject-resolution-policy-not-yet-verified"};
 }
