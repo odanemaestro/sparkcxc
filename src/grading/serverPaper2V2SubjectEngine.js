@@ -13,7 +13,9 @@ import physicsPaper1 from "../physics/paper2/data/spark-phy-p02-practice-1.json"
 import physicsPaper2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
 import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
 import physicsPaper4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
-import {gradeInformationTechnologyPart,informationTechnologyPaper2RuleFor} from "../informationTechnology/practice/itPaper2Marking";
+import {gradeInformationTechnologyPart,informationTechnologyPaper2RuleFor,informationTechnologyResponseText} from "../informationTechnology/practice/itPaper2Marking";
+import {IT_CANONICAL_CONCEPTS,phrasePresent} from "../informationTechnology/practice/itPaper2Canonical";
+import {certainWrittenMark} from "./v2WrittenEvidenceGate";
 import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json";
 import {gradeChemistryPaper2Item} from "../chemistry/practice/chemistryPaper2Grader";
 import {gradeEnglishAPaper2Response} from "../englishA/practice/englishAPaper2Grader";
@@ -25,6 +27,10 @@ import {gradeSocialStudiesEssay} from "../socialStudies/marking/socialStudiesEss
 import {reviewPobHistoricalPaper2} from "../principlesOfBusiness/data/pobHistoricalPaper2RubricReview";
 import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
 
+// Subjects whose adapters compute criterion certainty themselves. A subject
+// joins this set only once its resolution policy is covered by the
+// criterion verification matrix (src/grading/v2CriterionVerifier.js).
+const resolutionPolicySubjects=new Set(["information-technology"]);
 const subjectIds=new Set([
  "mathematics","physics","information-technology","chemistry","english-a",
  "food-nutrition-and-health","integrated-science","social-studies","principles-of-business"
@@ -301,24 +307,56 @@ function it(rows,responses,paperId){
   // The registry stores the source's visible prompt, marks and scheme, but
   // not its responseSpec or question visual. Rehydrate those strictly from
   // the matching, source-checked original, never from student input.
-  const grade=gradeInformationTechnologyPart(question,expected,
-    read(responses,row.id));
-  // These five exact spreadsheet rule families have source-matched,
-  // per-criterion AI evidence reviews and regression tests across all nine
-  // authored IT papers. Wrong formulas can be authoritatively scored zero,
-  // including malformed or blank answers; other IT response types stay
-  // provisional until their own source-specific evidence is verified.
-  const verifiedFormulaRules=new Set([
-   "formula-d2-total","formula-revenue","sum-d4",
-   "sum-revenue","formula-tax"
-  ]);
-  const strictFormula=verifiedFormulaRules.has(
-   informationTechnologyPaper2RuleFor(question,expected));
+  const response=read(responses,row.id);
+  const grade=gradeInformationTechnologyPart(question,expected,response);
+  const rule=informationTechnologyPaper2RuleFor(question,expected);
   return cap(row,grade.earned,"existing-IT-specific-rules",
-    strictFormula || blank(read(responses,row.id)) ||
-    (grade.earned===row.maxMarks&&Array.isArray(grade.criteria)&&
-     grade.criteria.length>0));
+   blank(response)||itResolved({rule,grade,response,part:expected,maxMarks:row.maxMarks}));
  });
+}
+// Rules decided by exact structural equivalence rather than wording.
+const itExactRules=new Set([
+ "formula-d2-total","formula-revenue","sum-d4","sum-revenue","formula-tax",
+ "query","database-primary-field","database-foreign-field","database-types"
+]);
+const itFormulaRules=new Set(["formula-d2-total","formula-revenue","sum-d4","sum-revenue","formula-tax"]);
+function itResolved({rule,grade,response,part,maxMarks}){
+ const answer=informationTechnologyResponseText(response);
+ if(itExactRules.has(rule)){
+  // A correct formula typed without its leading "=" is a judgement call an
+  // examiner makes; abstain rather than publish either outcome.
+  if(itFormulaRules.has(rule)&&grade.earned===0&&
+     !/^\s*=/.test(answer)&&/^[\s$A-Za-z0-9*+(),:]+$/.test(answer)&&
+     gradeInformationTechnologyPart({},part,{answer:"="+answer.trim()}).earned>0)return false;
+  return true;
+ }
+ if(rule==="pseudocode"||rule==="ipo")
+  return grade.earned===maxMarks||grade.earned===0&&!/\b(?:if|score|input|read|output|display)\b/i.test(answer)
+   ||structuredItResolved(rule,grade,answer);
+ const accounted=[part.prompt,...itRecognisedPhrases(answer)];
+ const creditedPoints=(grade.criteria||[]).filter(c=>c.earned>0).length;
+ return certainWrittenMark({suggestedMarks:grade.earned,maxMarks,response:answer,
+  points:part.markScheme,accounted,pointEvidence:"grader",creditedPoints}).resolved;
+}
+// Partial pseudocode credit is certain only when the program parses into the
+// expected input / assignment / decision structure, so a missed mark reflects
+// a definite defect rather than unfamiliar syntax.
+const PSEUDOCODE_LINE=[
+ /^(?:input|read|get|enter|accept)\b/i,
+ /^(?:set\s+|let\s+)?score\s*(?:<-|←|:=|=)/i,
+ /^(?:if|when)\b/i,/^(?:else|otherwise)\b/i,/^(?:end\s*if|endif)\b/i,
+ /^(?:display|print|output|write|show)\b/i,/^(?:start|stop|begin|end)$/i
+];
+function structuredItResolved(rule,grade,answer){
+ if(rule==="ipo")return true;
+ const lines=answer.split(/\n/).map(x=>x.trim()).filter(Boolean);
+ return lines.length>0&&lines.every(line=>PSEUDOCODE_LINE.some(p=>p.test(line)));
+}
+function itRecognisedPhrases(answer){
+ const out=[];
+ for(const phrases of Object.values(IT_CANONICAL_CONCEPTS))
+  for(const phrase of phrases)if(phrasePresent(answer,phrase))out.push(phrase);
+ return out;
 }
 function science(rows,responses,subject){
  const grouped=group(rows,"::"),out=[];
@@ -494,18 +532,12 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
   const source=sourceById.get(r.criterionId);
   if(!source)throw new Error("Unregistered V2 evidence identity");
   // Mathematics has the explicit checker registry needed to evaluate
-  // criterion-level authority. Other subjects retain advisory suggestions
-  // pending source-specific verified-evidence adapters.
-  // The strict IT spreadsheet checks are the only non-Mathematics
-  // deterministic whole-part exception at this stage. Source identity,
-  // marks, prompt, schema and published check rules have already been
-  // validated by it(); all other cross-course suggestions fail closed.
-  const verifiedITFormula=subjectId==="information-technology" &&
-    r.resolved && r.method==="existing-IT-specific-rules" &&
-    source?.sourceMarking?.responseType==="formula";
+  // criterion-level authority. Subjects listed in resolutionPolicySubjects
+  // decide certainty in their own adapters (exact rules plus the written
+  // evidence gate). Every other subject fails closed: advisory only.
   const unverified=subjectId==="mathematics"
     ?manualOrUnknown(source)
-    :!verifiedITFormula;
+    :!resolutionPolicySubjects.has(subjectId);
   if(subjectId==="mathematics" && r.resolved && r.suggestedMarks===0){
    const [questionId,partId]=r.criterionId.split("::");
    const questionAnswer=responses[questionId];

@@ -125,7 +125,14 @@ export const IT_CANONICAL_CONCEPTS = Object.freeze({
     "don't click suspicious link",
     "avoid suspicious link",
     "do not follow the link",
-    "don't follow the link"
+    "don't follow the link",
+    "do not follow suspicious link",
+    "don't follow suspicious link",
+    "do not click the link",
+    "don't click the link",
+    "never click the link",
+    "do not open the link",
+    "avoid clicking the link"
   ],
   "type_official_url": [
     "type official address",
@@ -268,6 +275,15 @@ export const IT_CANONICAL_CONCEPTS = Object.freeze({
     "follow each step",
     "each pass",
     "trace"
+  ],
+  "test_data": [
+    "test data",
+    "selected test data",
+    "sample data",
+    "sample input values",
+    "sample values",
+    "chosen input values",
+    "suitable input values"
   ],
   "find_errors": [
     "find logic errors",
@@ -620,6 +636,8 @@ export const IT_CANONICAL_CONCEPTS = Object.freeze({
   "real_time": [
     "real time",
     "real-time",
+    "real-time control",
+    "real time control",
     "immediate control"
   ],
   "compact": [
@@ -667,13 +685,48 @@ export function normaliseITAnswer(value) {
     .trim();
 }
 
+const IT_NEGATION = /\b(?:not|no|never|cannot|can't|isn't|aren't|doesn't|don't|didn't|won't|without|neither|nor|unable)\b/;
+const IT_NOT_NEGATING = /\bnot\s+(?:only|just)\b/g;
+const escapeRegExp = value => value.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&");
+// Whole words only: "form" is not present in "information" or "platform".
+// Ordinary inflections are the same word: link/links, process/processed,
+// connect/connects/connecting. A final silent "e" may drop: store/storing.
+const wordPattern = word => {
+  if (!/^[a-z]+$/.test(word)) return new RegExp(`(?:^|[^a-z0-9$])${escapeRegExp(word)}(?=$|[^a-z0-9$])`);
+  // Reduce the lexicon word to its root first (avoids -> avoid, reduces ->
+  // reduc), keeping double-s words whole (process), then allow any ordinary
+  // ending on the candidate's word.
+  const root = word.length > 4 && !/ss$/.test(word) ? word.replace(/(?:ing|ed|es|s)$/, "") : word;
+  return new RegExp(`(?:^|[^a-z0-9$])${escapeRegExp(root)}e?(?:s|es|ed|d|ing)?(?=$|[^a-z0-9$])`);
+};
+
+function itClauses(text) {
+  return text.split(/(?:[;\n]+|(?<!\d)\.(?!\d)|\?|!|\s+\b(?:but|however|whereas|although)\b\s+)/)
+    .map(part => part.trim()).filter(Boolean);
+}
+
+/**
+ * Is this accepted phrase stated, positively, in one of the candidate's clauses?
+ * A multi-word phrase may be reworded within a clause, but its words cannot be
+ * collected from different sentences, and a negated clause is not evidence for
+ * a positive phrase ("an extranet does not give external users access").
+ */
 export function phrasePresent(answer, phrase) {
   const haystack = normaliseITAnswer(answer);
   const needle = normaliseITAnswer(phrase);
   if (!haystack || !needle) return false;
-  if (haystack.includes(needle)) return true;
+  const phraseNegative = IT_NEGATION.test(needle);
   const words = needle.split(/[^a-z0-9$]+/).filter(Boolean);
-  return words.length > 1 && words.every(word => haystack.includes(word));
+  return itClauses(haystack).some(clause => {
+    const exact = (words.length > 1 ? new RegExp(`(?:^|[^a-z0-9$])${escapeRegExp(needle)}(?=$|[^a-z0-9$])`) : wordPattern(needle)).exec(clause);
+    const reworded = words.length > 1 && words.every(word => wordPattern(word).test(clause));
+    if (!exact && !reworded) return false;
+    if (phraseNegative) return true;
+    const scope = exact
+      ? clause.slice(0, exact.index).split(/\s+/).slice(-4).join(" ")
+      : clause;
+    return !IT_NEGATION.test(scope.replace(IT_NOT_NEGATING, " "));
+  });
 }
 
 export function conceptPresent(answer, key) {

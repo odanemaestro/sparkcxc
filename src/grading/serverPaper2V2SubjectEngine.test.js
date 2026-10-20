@@ -372,14 +372,13 @@ test("private V2 IT source verifier retains IPO input variables and visual datab
   const model=example("information-technology",paper.id,[source],{
    [key]:models[key]
   });
-  expect(model.suggestedMarks).toBeGreaterThan(0);
-  expect(model.suggestedMarks).toBeLessThanOrEqual(part.marks);
-  expect(model.canPublishFinalScore).toBe(false);
+  // The rehydrated source gives the model answer full, certain credit.
+  expect(model.suggestedMarks).toBe(part.marks);
+  expect(model.canPublishFinalScore).toBe(true);
   const unrelated=example("information-technology",paper.id,[source],{
    [key]:"ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY"
   });
   expect(unrelated.suggestedMarks).toBe(0);
-  expect(unrelated.canPublishFinalScore).toBe(false);
  }
 });
 test("private V2 rejects changed IT source prompts, schemes or ceiling",()=>{
@@ -481,7 +480,7 @@ test("POB affirmative model-answer denials never gain provisional or authoritati
  }
 });
 
-test("every source-reviewed IT spreadsheet formula resolves correct and incorrect evidence while other paper marks remain provisional",()=>{
+test("every source-reviewed IT spreadsheet formula resolves correct and incorrect evidence; unanswered parts are certain zeros",()=>{
  const formulaAnswers={
   "2-f":["=B2*C2","=B2+C2"],
   "2-g":["=SUM(D2:D3)","=SUM(D2:D4)"],
@@ -509,9 +508,11 @@ test("every source-reviewed IT spreadsheet formula resolves correct and incorrec
     expect(graded.method).toBe("existing-IT-specific-rules");
     expect(graded.suggestedMarks).toBe(expected);
     expect(graded.resolved).toBe(true);
-    expect(output.unresolvedMarks).toBeGreaterThan(0);
-    expect(output.canPublishFinalScore).toBe(false);
-    expect(output.confirmedMarks).toBe(null);
+    // Every other part is blank: an objectively verified zero, so the
+    // paper total is final and equals this one formula's marks.
+    expect(output.unresolvedMarks).toBe(0);
+    expect(output.canPublishFinalScore).toBe(true);
+    expect(output.confirmedMarks).toBe(expected);
    }
   }
  }
