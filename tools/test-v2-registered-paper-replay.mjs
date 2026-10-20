@@ -50,7 +50,8 @@ const migrations=[
 "20261020090000_marking_v2_six_math_physics_source_ai_reviews.sql",
 "20261020100000_marking_v2_second_300_criterion_calibration_queue.sql",
 "20261020103000_marking_v2_math_simplest_linear_source_checks.sql",
-"20261020110000_marking_v2_math_simplest_linear_ai_reviews.sql"
+"20261020110000_marking_v2_math_simplest_linear_ai_reviews.sql",
+"20261020120000_marking_v2_third_300_criterion_calibration_queue.sql"
 ];
 const db=new PGlite();
 try{
