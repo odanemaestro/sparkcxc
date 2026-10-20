@@ -1,10 +1,10 @@
 {
  "provenance": {
-  "bundleSha256": "9d77cddf7b8c5dece171efcf62b32e173f555ea2436795705b215d447a20b68a",
-  "fixtureSha256": "59908583b0cfd4df0dc75e6bcd6f85c22920c9446b92bff0fb5c102467ceda0e",
-  "gitCommit": "fb1dc2e6df0eb617bda0fd23fe24c1cbc12cc4bc",
+  "bundleSha256": "0e305426aae0e8f38e6294846b2ad65f10ac73219417332825705622303e12a0",
+  "fixtureSha256": "6c21066129a63690d4cdd6f1b0e05ecd5acf0dc85ccd3c3c0785ea23b001c376",
+  "gitCommit": "b55bbaf942d34ea5241287b68e8c52d181312371",
   "workingTreeDirty": false,
-  "ranAt": "2026-10-20T13:45:43.792Z"
+  "ranAt": "2026-10-20T14:00:22.369Z"
  },
  "criteria": 2118,
  "bySubject": {
@@ -34,9 +34,9 @@
   },
   "integrated-science": {
    "criteria": 645,
-   "verified": 617,
-   "failed": 6,
-   "blocked": 22
+   "verified": 626,
+   "failed": 1,
+   "blocked": 18
   },
   "mathematics": {
    "criteria": 640,
@@ -64,19 +64,17 @@
   }
  },
  "byOutcome": {
-  "verified": 1272,
-  "blocked": 701,
-  "failed": 145
+  "verified": 1281,
+  "blocked": 697,
+  "failed": 140
  },
  "failureReasons": {
   "missing:partial": 41,
-  "uncommitted:incorrect": 42,
-  "full:resolved-wrong-mark": 1,
-  "full:required-mark-wrong": 1,
-  "incorrect:resolved-wrong-mark": 15,
   "full:required-resolution-missing": 15,
   "uncommitted:partial": 84,
   "uncommitted:equivalent": 15,
+  "uncommitted:incorrect": 40,
+  "incorrect:resolved-wrong-mark": 13,
   "missing:incorrect": 12,
   "missing:competing": 12,
   "equivalent:resolved-wrong-mark": 9
@@ -84,21 +82,21 @@
  "blockers": {
   "subject-resolution-policy-not-yet-verified": 292,
   "free-hand-drawing-requires-visual-judgement": 11,
-  "scheme-points-below-maximum": 9,
+  "scheme-points-below-maximum": 5,
   "label-scheme-without-key-answers": 1,
   "calculation-without-authored-specification": 1,
   "manual-verification-criterion": 387
  },
  "papers": {
   "total": 67,
-  "verified": 22,
+  "verified": 23,
   "failed": [],
-  "blocked": 45
+  "blocked": 44
  },
  "rehearsal": {
-  "criteriaInserted": 1272,
+  "criteriaInserted": 1281,
   "criteriaRejected": [],
-  "papersInserted": 22,
+  "papersInserted": 23,
   "papersRejected": [],
   "released": [
    "chemistry/CHEM-P2-PRACTICE-1",
@@ -120,6 +118,7 @@
    "information-technology/P2-I",
    "integrated-science/is-fixed-source-pair-01",
    "integrated-science/is-fixed-source-pair-02",
+   "integrated-science/is-fixed-source-pair-05",
    "integrated-science/is-fixed-source-pair-09",
    "integrated-science/is-fixed-source-pair-10",
    "integrated-science/is-fixed-source-pair-12"
@@ -127,5 +126,5 @@
   "releaseRejected": [],
   "criteriaRejectedCount": 0
  },
- "seconds": 47
+ "seconds": 50
 }
