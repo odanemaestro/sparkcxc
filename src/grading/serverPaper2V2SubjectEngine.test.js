@@ -3,6 +3,7 @@ import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 import {check,checkMatrix} from "../practice/cxcMarking/checkers";
 import physics1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
 import itData from "../informationTechnology/practice/itPaper2Data.json";
+import {modelResponsesForInformationTechnologyPaper2} from "../informationTechnology/practice/itPaper2Marking";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
 import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
 
@@ -339,4 +340,53 @@ test.each([
   expect(outcome.canPublishFinalScore).toBe(false);
   expect(outcome.rows[0].method).toBe("source-answer-explicit-denial");
  }
+});
+
+test("private V2 IT source verifier retains IPO input variables and visual database key evidence",()=>{
+ const paper=itData.papers[0];
+ const models=modelResponsesForInformationTechnologyPaper2(paper);
+ const actual=[
+  {q:paper.questions.find(x=>x.number===3),id:"a"},
+  {q:paper.questions.find(x=>x.number===3),id:"b"},
+  {q:paper.questions.find(x=>x.number===4),id:"a"},
+  {q:paper.questions.find(x=>x.number===4),id:"c"}
+ ];
+ for(const {q,id} of actual){
+  const part=q.parts.find(p=>p.id===id);
+  const key=q.number+"-"+id;
+  // Production schema intentionally has no responseSpec or question.visual.
+  const source=row(key,part.marks,{
+   prompt:part.prompt,markScheme:part.markScheme,
+   profile:part.profile,responseType:part.responseType
+  });
+  const model=example("information-technology",paper.id,[source],{
+   [key]:models[key]
+  });
+  expect(model.suggestedMarks).toBeGreaterThan(0);
+  expect(model.suggestedMarks).toBeLessThanOrEqual(part.marks);
+  expect(model.canPublishFinalScore).toBe(false);
+  const unrelated=example("information-technology",paper.id,[source],{
+   [key]:"ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY"
+  });
+  expect(unrelated.suggestedMarks).toBe(0);
+  expect(unrelated.canPublishFinalScore).toBe(false);
+ }
+});
+test("private V2 rejects changed IT source prompts, schemes or ceiling",()=>{
+ const paper=itData.papers[0];
+ const part=paper.questions[0].parts[0];
+ const key="1-"+part.id;
+ const source={prompt:part.prompt,markScheme:part.markScheme,
+  profile:part.profile,responseType:part.responseType};
+ for(const invalid of [
+  {...source,prompt:"Unrelated replacement question"},
+  {...source,markScheme:["One unrelated scheme"]},
+  {...source,responseType:"graph"}
+ ]){
+  expect(()=>example("information-technology",paper.id,
+   [row(key,part.marks,invalid)],{[key]:"Some response"}))
+   .toThrow(/source drift/i);
+ }
+ expect(()=>example("information-technology",paper.id,
+  [row(key,part.marks+1,source)],{})).toThrow(/source drift/i);
 });
