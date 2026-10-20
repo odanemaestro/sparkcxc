@@ -88,7 +88,7 @@ const directlyDeniesSourcePoint=(raw,source)=>{
 // independently reviewed M/A/B mark is safely resolved.
 const authoritativeMathTypes=new Set([
  "numeric","equation","inequality","expression","fraction","coordinate",
- "set","ordered","matrix"
+ "set","classInterval","ordered","matrix"
 ]);
 const automatableMathCheck=(spec,depth=0)=>{
  if(!object(spec)||depth>6||typeof spec.type!=="string"||
