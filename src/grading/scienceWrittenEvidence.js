@@ -3,7 +3,7 @@
 // Unmatched alternative wording must remain provisional, never certified wrong.
 // Negative claims often retain the same keywords as valid evidence.
 // Normalise apostrophes, and detect inability or failure before awarding marks.
-const NEGATION=/\b(?:not|no|never|cannot|can't|couldn't|won't|without|doesn'?t|isn'?t|don'?t|didn'?t|neither|nor|fails?\s+to|unable\s+to)\b/i;
+const NEGATION=/\b(?:not|no|never|cannot|can't|couldn't|won't|without|doesn'?t|isn'?t|don'?t|didn'?t|neither|nor|fails?\s+to|unable\s+to|false\s+that|is\s+false\b|incorrect\s+to\s+say)\b/i;
 const normalisePolarity=value=>String(value??"").replace(/[’‘]/g,"'");
 
 export function scienceResponseClauses(value){
