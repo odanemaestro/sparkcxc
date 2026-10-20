@@ -17,6 +17,11 @@ import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 import {scienceFixtures,pointAnswer} from "./v2Fixtures/science";
 import {CHEMISTRY_PAPER2_PRACTICE_SETS} from "../chemistry/data/chemistryPaper2Bank";
 import {CURATED_CHEMISTRY} from "./v2Fixtures/chemistryCurated";
+import {CURATED_FNH} from "./v2Fixtures/fnhCurated";
+import {fnhPointValue,fnhDistinctPairs} from "../fnh/practice/fnhPaper2Marking";
+
+// Criteria of every paper in the current run, for on-topic wrong answers.
+const papersById=new Map();
 
 function chemistryItem(paperId,criterionId){
  const paper=CHEMISTRY_PAPER2_PRACTICE_SETS.find(p=>p.id===paperId);
@@ -67,6 +72,33 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
   if(set.blocked)return set;
   return {...set,ruleId:"chem:"+(ctx.item.response?.type||"lines")};
  }
+ if(subjectId==="food-nutrition-and-health"){
+  const sm=criterion.sourceMarking||{};
+  if(!Array.isArray(sm.modelPoints)||!sm.modelPoints.length)return {blocked:"no-source-model-points"};
+  // "Distinct food–nutrient pairs": marks come from pairs, not points.
+  const lists=sm.modelPoints.filter(p=>/^[^:;]{2,40}:\s*.+,/.test(p));
+  if(fnhDistinctPairs({...sm,marks:criterion.maxMarks},lists.join(". "))){
+   const F=(cls,response,expect,note)=>({cls,response,expect,note});
+   const full=lists.join(" ");
+   return {kind:"written",ruleId:"fnh:distinct-pairs",sourceAnswer:{answer:full},alternatives:[],
+    fixtures:[F("full",{answer:full},criterion.maxMarks),
+     ...(CURATED_FNH[criterion.id]||[]),
+     F("contradiction",{answer:full+"\nIt is false that iron is found in red meat."},{min:0,max:criterion.maxMarks}),
+     F("keyword-list",{answer:"iron calcium vitamin meat dairy guava"},{min:0,max:criterion.maxMarks}),
+     F("blank",{answer:""},0),F("irrelevant",{answer:"The weather was sunny on Sunday afternoon."},0),
+     F("ceiling",{answer:full+"\n"+full},{min:0,max:criterion.maxMarks})]};
+  }
+  // Present the model points as scheme points carrying their mark value.
+  const value=fnhPointValue({...sm,marks:criterion.maxMarks});
+  const item={prompt:"",marks:criterion.maxMarks,response:{type:"lines"},
+   markScheme:{points:sm.modelPoints.map(p=>p.replace(/[.;]\s*$/,"")+` (${value})`)}};
+  const others=(papersById.get(subjectId+"|"+paperId)||[]).filter(c=>c.id!==criterion.id)
+   .map(c=>(c.sourceMarking?.modelPoints||[]).join(". ")).filter(Boolean);
+  const set=scienceFixtures({item,maxMarks:criterion.maxMarks,others,
+   curated:CURATED_FNH[criterion.id]||[],criterionId:criterion.id});
+  if(set.blocked)return set;
+  return {...set,ruleId:"fnh:"+(sm.profile||"written")+":x"+value};
+ }
  return {blocked:"subject-resolution-policy-not-yet-verified"};
 }
 
@@ -77,6 +109,7 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
  */
 export function runV2Verification(papers,provenance){
  const records=[];
+ for(const p of papers)papersById.set(p.subject_id+"|"+p.paper_id,p.criteria);
  for(const p of papers){
   for(const criterion of p.criteria){
    const base={

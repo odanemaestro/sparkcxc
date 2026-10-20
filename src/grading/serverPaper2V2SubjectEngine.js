@@ -24,7 +24,7 @@ import {CHEMISTRY_PAPER2_PRACTICE_SETS} from "../chemistry/data/chemistryPaper2B
 import {readScienceGraph,graphPoints} from "../integratedScience/practice/scienceGraphModel";
 import {gradeEnglishAPaper2Response} from "../englishA/practice/englishAPaper2Grader";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
-import {gradeFnhWrittenPart} from "../fnh/practice/fnhPaper2Marking";
+import {gradeFnhWrittenPart,fnhDistinctPairs} from "../fnh/practice/fnhPaper2Marking";
 import {gradeIntegratedSciencePaper2Item} from "../integratedScience/practice/integratedSciencePaper2Grader";
 import {gradeSocialStudiesShortAnswer} from "../socialStudies/marking/socialStudiesShortAnswerGrader";
 import {gradeSocialStudiesEssay} from "../socialStudies/marking/socialStudiesEssayGrader";
@@ -34,7 +34,7 @@ import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Orig
 // Subjects whose adapters compute criterion certainty themselves. A subject
 // joins this set only once its resolution policy is covered by the
 // criterion verification matrix (src/grading/v2CriterionVerifier.js).
-const resolutionPolicySubjects=new Set(["information-technology","mathematics","chemistry"]);
+const resolutionPolicySubjects=new Set(["information-technology","mathematics","chemistry","food-nutrition-and-health"]);
 const subjectIds=new Set([
  "mathematics","physics","information-technology","chemistry","english-a",
  "food-nutrition-and-health","integrated-science","social-studies","principles-of-business"
@@ -604,8 +604,16 @@ function fnh(rows,responses){
   if(directlyDeniesSourcePoint(answer,src))
    return cap(row,0,"source-answer-explicit-denial",false);
   const graded=gradeFnhWrittenPart(p,answer);
-  return cap(row,graded.confirmedMarks,
-   "existing-FNH-criterion-evidence",graded.unresolvedMarks===0);
+  // Distinct food-nutrient pairs are matched by name, deterministically;
+  // only a denial or negation makes them uncertain.
+  if(fnhDistinctPairs(p,answer))
+   return cap(row,graded.confirmedMarks,"existing-FNH-criterion-evidence",
+    blank(answer)||!/\b(?:not|never|no|isn'?t|doesn'?t|false|incorrect)\b/i.test(answer));
+  // Certain when the written-evidence gate agrees with the grader: full
+  // credit backed by source points, or remaining points clearly absent.
+  const resolved=blank(answer)||certainWrittenMark({suggestedMarks:graded.confirmedMarks,
+   maxMarks:row.maxMarks,response:answer,points:src.modelPoints}).resolved;
+  return cap(row,graded.confirmedMarks,"existing-FNH-criterion-evidence",resolved);
  });
 }
 function pob(rows,responses,paperId){

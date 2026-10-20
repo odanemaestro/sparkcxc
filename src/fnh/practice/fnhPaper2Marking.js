@@ -49,6 +49,52 @@ import {matchFnhCriterionEvidence,FNH_P2_RUBRIC_CALIBRATION_VERSION} from "./fnh
 import {gradeFnhHistoricalStructuredPart,getFnhHistoricalStructuredTask} from "./fnhHistoricalStructuredCriteria";
 export {FNH_P2_RUBRIC_CALIBRATION_VERSION};
 
+/**
+ * Marks each model point is worth, read from the scheme's own allocation
+ * ("Award 2 marks for each correctly linked threat and response", "two
+ * benefits each paired with correct explanations" for 4 marks). Default 1.
+ */
+export function fnhPointValue(part){
+  const text=String(part?.explanation||"").toLowerCase();
+  const words={one:1,two:2,three:3,four:4};
+  const each=text.match(/\b(\d|one|two|three)\s+marks?\s+(?:for\s+)?(?:each|per)\b/);
+  if(each)return Number(words[each[1]]??each[1]);
+  const paired=text.match(/\b(two|three|\d)\s+[a-z-]+\s+each\s+paired\b/);
+  const marks=Number(part?.marks)||0;
+  if(paired){const n=Number(words[paired[1]]??paired[1]);if(n>0&&marks%n===0)return marks/n;}
+  return 1;
+}
+
+/**
+ * "Award distinct accurate food–nutrient pairs": the model points are
+ * "Nutrient: food, food or food" lists and each distinct nutrient + food pair
+ * the candidate states earns one mark (two foods for iron are two pairs).
+ * Returns null for any other kind of part.
+ */
+export function fnhDistinctPairs(part,response){
+  const maxMarks=Math.max(0,Number(part?.marks)||0);
+  const points=(part?.modelPoints||[]);
+  if(!/\bpairs?\b/i.test(String(part?.explanation||"")+" "+points.join(" ")))return null;
+  const lists=points.map(p=>String(p).match(/^([^:;]{2,40}):\s*(.+?)\.?$/)).filter(Boolean)
+    .map(m=>({nutrient:m[1].trim(),foods:m[2].split(/,\s*|\s+or\s+/).map(x=>x.trim()).filter(Boolean)}));
+  if(lists.length<2)return null;
+  const blank=!String(response??"").trim();
+  const statements=String(response??"").split(/[;\n]+|(?<!\d)\.\s+(?!\d)/).map(s=>s.trim().toLowerCase()).filter(Boolean);
+  const has=(statement,phrase)=>String(phrase).toLowerCase().split(/\s+/).every(w=>new RegExp(`\\b${w.replace(/[^a-z0-9-]/g,"")}`).test(statement));
+  const found=new Set();
+  for(const s of statements)for(const {nutrient,foods} of lists){
+    if(!has(s,nutrient))continue;
+    // A statement naming two nutrients cannot show which food goes with which.
+    if(lists.filter(l=>has(s,l.nutrient)).length>1)continue;
+    for(const food of foods)if(has(s,food))found.add(nutrient+"|"+food.toLowerCase());
+  }
+  const confirmed=Math.min(maxMarks,found.size);
+  return {maxMarks,confirmedMarks:confirmed,unresolvedMarks:blank?0:maxMarks-confirmed,
+    assessedMarks:confirmed,status:blank?"unanswered":"criterion-verified",
+    rubricVersion:FNH_P2_RUBRIC_CALIBRATION_VERSION,
+    criteria:[...found].map((pair,i)=>({id:String(i),rule:pair.replace("|",": "),confirmed:true,marks:1,evidence:pair}))};
+}
+
 // Legacy self-check helpers above are preserved for historic stored attempts
 // and tests, but they do not participate in live exam scoring.
 export function gradeFnhWrittenPart(part,response){
@@ -56,17 +102,21 @@ export function gradeFnhWrittenPart(part,response){
   const structured=gradeFnhHistoricalStructuredPart(part,response);
   if(structured)return structured;
   const original=String(response??"");
+  const pairs=fnhDistinctPairs(part,original);
+  if(pairs)return pairs;
   const accepted=[];
+  const value=fnhPointValue(part);
   let confirmed=0;
   const criteria=(part?.modelPoints||[]).map((modelPoint,index)=>{
     const match=matchFnhCriterionEvidence(modelPoint,original,{usedEvidence:accepted});
     const earned=confirmed<maxMarks && match.confirmed;
+    const marks=earned?Math.min(value,maxMarks-confirmed):0;
     if(earned){
       accepted.push({index:match.sourceIndex,signature:match.evidenceKey,terms:match.terms});
-      confirmed+=1;
+      confirmed+=marks;
     }
     return {id:String(index),rule:String(modelPoint||""),confirmed:earned,
-      marks:earned?1:0,evidence:earned?match.evidence:"",
+      marks,evidence:earned?match.evidence:"",
       reviewRequired:!earned,reason:match.reason||null};
   });
   const blank=!original.trim();

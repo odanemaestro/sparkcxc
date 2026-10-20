@@ -85,7 +85,7 @@ const CONJUNCTION=/\b(?:however|whereas|but|although|yet|nevertheless)\b/i;
 function classifyAlternative(baseClauses,alt,synonyms,spent=new Set(),sentences=[]){
  // A point that itself joins two ideas with "but" is compared with whole
  // sentences, not with the halves of a split response.
- const clauses=CONJUNCTION.test(alt)?[...baseClauses,...sentences]:baseClauses;
+ const clauses=CONJUNCTION.test(alt)||alt.includes(";")?[...baseClauses,...sentences]:baseClauses;
  const terms=keyTerms(alt);
  if(!terms.length)return {state:"absent",hits:0,terms:0};
  const minimum=terms.length<=3?terms.length:Math.ceil(terms.length*.75);
@@ -116,7 +116,7 @@ const rank={contradict:3,match:2,near:1,absent:0};
 export function classifyWrittenEvidence(response,points,{synonyms}={}){
  const raw=typeof response==="string"?response:String(response?.answer??response??"");
  const clauses=scienceResponseClauses(raw);
- const sentences=raw.split(/[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)/).map(s=>s.trim()).filter(Boolean);
+ const sentences=raw.split(/\n+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)|(?<=\d)\.\s+(?=[A-Z])/).map(s=>s.trim()).filter(Boolean);
  const classify=spent=>points.map(point=>{
   const alts=pointAlternatives(point);
   if(!alts.length)return {point,state:"absent"};
@@ -126,6 +126,11 @@ export function classifyWrittenEvidence(response,points,{synonyms}={}){
    // A contradiction on any alternative wins: the answer asserts and denies.
    if(r.state==="contradict")return {point,...r};
    if(rank[r.state]>rank[best.state])best=r;
+   // Denying either half of a point joined by ";" contradicts the point.
+   for(const half of alt.split(/;\s*/).filter(h=>h!==alt&&keyTerms(h).length>=2)){
+    const h=classifyAlternative(clauses,half,synonyms,spent,sentences);
+    if(h.state==="contradict")return {point,...h};
+   }
   }
   return {point,...best};
  });

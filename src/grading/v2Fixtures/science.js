@@ -207,14 +207,26 @@ export function scienceFixtures({item,maxMarks,others=[],curated=[],criterionId,
   const set=equationFixtures(item,maxMarks,cleanSourcePoint(raw[0]));
   return {...set,fixtures:[...set.fixtures,...curated]};
  }
- const points=raw.flatMap(subPoints).filter(p=>!/^\s*\(?accept\b/i.test(p)&&!/earns credit\.?$/i.test(p));
- const answers=points.map(pointAnswer).filter(Boolean);
+ // Examiner instructions are not answer content. An instruction that lists
+ // acceptable content ("Give two justifications, such as protein, fibre...")
+ // is answered with one of its examples, justified.
+ const instruction=p=>/^\s*(?:award|give|accept|credit|any\s+(?:two|three|four)|up\s+to|do not award)\b/i.test(cleanSourcePoint(p));
+ const points=raw.flatMap(subPoints).filter(p=>!/^\s*\(?accept\b/i.test(p)&&!/earns credit\.?$/i.test(p))
+  .filter(p=>!instruction(p)||/\bsuch as\b/i.test(p));
+ const answers=points.map(p=>{
+  if(!instruction(p))return pointAnswer(p);
+  const example=cleanSourcePoint(p).match(/\bsuch as\s+([^,.;]+?)(?:,|\s+or\s+|\.|$)/i)?.[1]?.trim();
+  return example?`${example.charAt(0).toUpperCase()+example.slice(1)} is included because it supports health`:null;
+ }).filter(Boolean);
  if(!answers.length)return {blocked:"no-source-points"};
  const total=points.reduce((n,p)=>n+pointMarks(p),0);
  if(total<maxMarks)return {blocked:"scheme-points-below-maximum"};
  const full=answers.join(". ")+".";
  const fixtures=[F("full",{answer:full},maxMarks)];
- if(maxMarks>=2&&answers.length>=2){
+ // Hand-written fixtures for an item replace the generated partial/incorrect
+ // ones where the generated expectation cannot follow the item's scheme.
+ const own=new Set(curated.map(c=>c.cls));
+ if(maxMarks>=2&&answers.length>=2&&!own.has("partial")){
   const firstMarks=Math.min(maxMarks,pointMarks(points[0]));
   if(firstMarks<maxMarks)fixtures.push(F("partial",{answer:answers[0]+"."},firstMarks,"first scheme point only"));
  }

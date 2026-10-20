@@ -7,7 +7,8 @@ const NEGATION=/\b(?:not|no|never|cannot|can't|couldn't|won't|without|doesn'?t|i
 const normalisePolarity=value=>String(value??"").replace(/[’‘]/g,"'");
 
 export function scienceResponseClauses(value){
-  return String(value??"").split(/(?:[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)|\s+\b(?:however|whereas|but|although|yet|nevertheless)\b\s+)/i)
+  // A full stop after a number still ends a sentence when a capital follows.
+  return String(value??"").split(/(?:[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)|(?<=\d)\.\s+(?=[A-Z])|\s+\b(?:however|whereas|but|although|yet|nevertheless)\b\s+)/i)
     .map(part=>part.trim()).filter(Boolean);
 }
 
