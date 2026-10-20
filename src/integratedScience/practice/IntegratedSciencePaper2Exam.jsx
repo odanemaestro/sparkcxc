@@ -3,7 +3,7 @@ import SparkLoader from "../../components/ui/SparkLoader";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
 import ServerMarkingReview from "../../grading/ServerMarkingReview";
-import { localExamDeadline, readServerExamClock, startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
+import { isV2PaperReleased, localExamDeadline, readServerExamClock, startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
 import { loadIntegratedScienceModule } from "../data/integratedScienceBank";
 import { BankTable, TrustedBankSvg } from "./IntegratedScienceQuestionRenderer";
 import IntegratedScienceText from "../components/IntegratedScienceText";
@@ -437,10 +437,10 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
     try {
       if(active?.serverAttemptId){
-        // A fixed registered paper is submitted per criterion and unscored:
-        // the server marks it and publishes the only final result. A
-        // generated paper keeps the earlier unregistered submission.
-        const registered=Boolean(active.paperId);
+        // A fixed paper released for server marking is submitted per
+        // criterion and unscored: the server marks it and publishes the only
+        // final result. Any other paper keeps the client-scored submission.
+        const registered=Boolean(active.paperId&&active.v2Released);
         await submitServerExamAttempt({
           supabase,attemptId:active.serverAttemptId,
           responses:registered?v2ScienceResponses(paper,responses):responses,
@@ -584,12 +584,16 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     if(starting.current) return;
     starting.current=true;
     const now = Date.now();
+    // Route to server marking only when the server confirms this fixed paper
+    // is released; otherwise the existing grader's score is kept.
+    const v2Released=Boolean(active?.paperId)&&await isV2PaperReleased({
+      supabase,subjectId:"integrated-science",paperId:active.paperId});
     const server=await startServerExamAttempt({
       supabase,subjectId:"integrated-science",paper:"02",mode:"timed",
       durationSeconds:INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS,
       bankVersion:"integrated-science-v1.2.0",rubricVersion:"item-mark-schemes-v1",
       graderVersion:INTEGRATED_SCIENCE_P2_GRADER_VERSION,
-      metadata:{question_ids:active?.questionIds || [],...(active?.paperId?{paper_id:active.paperId}:{})},
+      metadata:{question_ids:active?.questionIds || [],...(v2Released?{paper_id:active.paperId}:{})},
     });
     const serverDeadline=server?.available ? localExamDeadline(server) : null;
     const serverStarted=server?.available && server.started_at ? server.started_at : new Date(now).toISOString();
@@ -599,6 +603,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
       startedAt:serverStarted,
       endsAt:Number.isFinite(serverDeadline) ? serverDeadline : now + INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS * 1000,
       serverAttemptId:server?.available ? server.attempt_id : null,
+      v2Released,
     };
 
     submitGuard.current = false;
@@ -741,7 +746,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
           </section>
         )}
 
-        {review && active?.paperId && <V2VerifiedScore supabase={supabase} attemptId={active?.serverAttemptId}
+        {review && active?.paperId && active?.v2Released && <V2VerifiedScore supabase={supabase} attemptId={active?.serverAttemptId}
         estimate={result?.score ?? null} maxMarks={result?.maxScore ?? 105}/>}
       {review && <ServerMarkingReview supabase={supabase} attemptId={active?.serverAttemptId}/>}
         <nav className="is-p2-question-nav" aria-label="Paper 02 questions">

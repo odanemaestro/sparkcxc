@@ -60,6 +60,12 @@ try{
    '{"1-a":"old answer"}'::jsonb,41,90,$4::jsonb)`,
    [historic,students[0],SUBJECT,JSON.stringify({paper_id:PAPER,score_authority:"client-practice-estimate"})]);
 
+ // Clients ask before routing: an unreleased paper is reported as such.
+ const released=async(paper=PAPER)=>{await asStudent(students[0]);
+  const r=(await one("select public.spark_v2_paper_released($1,$2) as r",[SUBJECT,paper])).r;
+  await asService();return r;};
+ assert.equal(await released(),false);
+
  // 2. A paper cannot be verified, activated or released without evidence.
  await assert.rejects(release(),/Missing evidence-backed criterion verifications/);
  await assert.rejects(db.query(`update spark_grading_private.rubrics_v2 set active=true
@@ -84,6 +90,11 @@ try{
  assert.equal((await one("select spark_grading_private.register_paper_verification_v2($1::jsonb) as r",[JSON.stringify(paperRecord)])).r.inserted,1);
  assert.equal((await release()).r.status,"activated");
  assert.equal((await release()).r.status,"already-active");
+ assert.equal(await released(),true);
+ assert.equal(await released(PAPER+"-unregistered"),false);
+ await db.exec("reset role; set test.jwt_role='anon'; set test.user_id=''; set role anon");
+ await assert.rejects(db.query("select public.spark_v2_paper_released($1,$2)",[SUBJECT,PAPER]),/permission denied/);
+ await asService();
  // A verified rubric is immutable.
  await assert.rejects(db.query(`update spark_grading_private.rubrics_v2 set criteria=criteria||'[]'::jsonb,
    expected_total_marks=expected_total_marks where subject_id=$1 and paper_id=$2 and criteria<>criteria||'[{"x":1}]'::jsonb`,[SUBJECT,PAPER]).then(()=>
