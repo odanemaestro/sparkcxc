@@ -337,8 +337,14 @@ test.each([
  const contrary=example(subject,paper,criteria,{
   [id]:"It is incorrect to say "+point
  });
+ const contradiction=example(subject,paper,criteria,{
+  [id]:point+"\\nIt is false that "+point
+ });
+ const contradictionAlt=example(subject,paper,criteria,{
+  [id]:point+". It is incorrect to say "+point
+ });
  expect(positive.suggestedMarks).toBeGreaterThanOrEqual(0);
- for(const outcome of [denied,contrary]){
+ for(const outcome of [denied,contrary,contradiction,contradictionAlt]){
   expect(outcome.suggestedMarks).toBe(0);
   expect(outcome.unresolvedMarks).toBe(marks);
   expect(outcome.canPublishFinalScore).toBe(false);
