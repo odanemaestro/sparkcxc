@@ -331,6 +331,7 @@ function variantFixtures(rule,question,part){
    F("full",{pseudocode:`INPUT ${a}, ${b}, ${c}\nSCORE = ${a} + ${b} + ${c}\nIF SCORE >= ${t} THEN\n  DISPLAY ACCEPT\nELSE\n  DISPLAY REVIEW\nENDIF`},8),
    F("equivalent",{pseudocode:`READ ${a}\nREAD ${b}\nREAD ${c}\nSCORE ← ${c} + ${a} + ${b}\nIF SCORE >= ${t} THEN\n  PRINT "ACCEPT"\nELSE\n  PRINT "REVIEW"\nEND IF`},8),
    F("equivalent",{pseudocode:`START\nINPUT ${a}, ${b}, ${c}\nSCORE = (${a} + ${b} + ${c})\nIF ${t} <= SCORE THEN\n  OUTPUT ACCEPT\nOTHERWISE\n  OUTPUT REVIEW\nENDIF\nSTOP`},8),
+   {cls:"equivalent",response:{pseudocode:`INPUT ${a}\nINPUT ${b}\nINPUT ${c}\nSCORE ← (${c} + ${b} + ${a}) / 3\nIF SCORE >= ${t} THEN\n  DISPLAY ACCEPT\nELSE\n  DISPLAY REVIEW\nENDIF`},expect:8,mustResolve:true,note:"all three score inputs used in a mathematically valid mean, source specifies no sum-only formula"},
    F("partial",{pseudocode:`INPUT ${a}, ${b}, ${c}\nSCORE = ${a} + ${b} + ${c}\nIF SCORE > ${t} THEN\n  DISPLAY ACCEPT\nELSE\n  DISPLAY REVIEW\nENDIF`},7,"strict > is the wrong threshold condition"),
    F("partial",{pseudocode:`INPUT ${a}, ${b}, ${c}\nSCORE = ${a} + ${b} + ${c}\nIF SCORE >= ${t} THEN\n  DISPLAY ACCEPT\nENDIF`},6,"no ELSE branch"),
    F("partial",{pseudocode:`INPUT ${a}, ${b}\nSCORE = ${a} + ${b}\nIF SCORE >= ${t} THEN\n  DISPLAY ACCEPT\nELSE\n  DISPLAY REVIEW\nENDIF`},{min:4,max:5},"two of three inputs; SCORE omits one value"),
