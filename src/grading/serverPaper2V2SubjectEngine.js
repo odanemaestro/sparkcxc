@@ -14,7 +14,7 @@ import physicsPaper2 from "../physics/paper2/data/spark-phy-p02-practice-2.json"
 import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
 import physicsPaper4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
 import {gradeInformationTechnologyPart,informationTechnologyPaper2RuleFor,informationTechnologyResponseText} from "../informationTechnology/practice/itPaper2Marking";
-import {IT_CANONICAL_CONCEPTS,phrasePresent} from "../informationTechnology/practice/itPaper2Canonical";
+import {IT_CANONICAL_CONCEPTS,phrasePresent,conceptPresent} from "../informationTechnology/practice/itPaper2Canonical";
 import {certainWrittenMark,keyTerms,cleanSourcePoint} from "./v2WrittenEvidenceGate";
 import {scienceResponseClauses} from "./scienceWrittenEvidence";
 import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json";
@@ -407,6 +407,15 @@ const itExactRules=new Set([
 const itFormulaRules=new Set(["formula-d2-total","formula-revenue","sum-d4","sum-revenue","formula-tax"]);
 function itResolved({rule,grade,response,part,maxMarks}){
  const answer=informationTechnologyResponseText(response);
+ // Specific denied source claims cannot become authoritative simply because
+ // a positive concept keyword appears elsewhere in a long response.
+ if(rule==="reliability" && (
+   /\baccuracy\s+(?:is|was|are)\s+not\s+(?:important|necessary|relevant|a\s+factor)\b/i.test(answer)||
+   /\b(?:website|information|source)\s+(?:need\s+not|does\s+not\s+have\s+to)\s+be\s+accurate\b/i.test(answer)))return false;
+ if(rule==="algorithm-characteristics" &&
+   /\b(?:algorithm|its\s+steps|instructions?)\b.{0,55}\b(?:must|should|will|can)\s+(?:not|never)\s+(?:end|stop|terminate|finish)\b/i.test(answer))return false;
+ if(rule==="syntax-logic" &&
+   /\blogic\s+errors?\b.{0,90}\b(?:cannot|can't|does\s+not|do\s+not|never)\s+(?:produce|give|cause)\s+(?:an?\s+)?(?:incorrect|wrong)\s+(?:result|output|answer)/i.test(answer))return false;
  if(itExactRules.has(rule)){
   // A correct formula typed without its leading "=" is a judgement call an
   // examiner makes; abstain rather than publish either outcome.
@@ -415,13 +424,63 @@ function itResolved({rule,grade,response,part,maxMarks}){
      gradeInformationTechnologyPart({},part,{answer:"="+answer.trim()}).earned>0)return false;
   return true;
  }
- if(rule==="pseudocode"||rule==="ipo")
+ if(rule==="pseudocode"||rule==="ipo"){
+  // An alternative SCORE expression that parses as an assignment but is not
+  // among the source-verified forms is a possible valid method. Do not
+  // publish an incorrect two-mark deduction just because other lines parse.
+  if(rule==="pseudocode"&&grade.criteria?.some(c=>c.code==="P2"&&c.earned===0)
+    &&/\bscore\s*(?:<-|←|:=|=)\s*[^\n;]+/i.test(answer))return false;
   return grade.earned===maxMarks||grade.earned===0&&!/\b(?:if|score|input|read|output|display)\b/i.test(answer)
    ||structuredItResolved(rule,grade,answer);
+ }
  const accounted=[part.prompt,...itRecognisedPhrases(answer)];
  const creditedPoints=(grade.criteria||[]).filter(c=>c.earned>0).length;
- return certainWrittenMark({suggestedMarks:grade.earned,maxMarks,response:answer,
-  points:part.markScheme,accounted,pointEvidence:"grader",creditedPoints}).resolved;
+ const gate=certainWrittenMark({suggestedMarks:grade.earned,maxMarks,response:answer,
+  points:part.markScheme,accounted,pointEvidence:"grader",creditedPoints});
+ if(gate.resolved)return true;
+ // The broad source descriptions for these two questions contain negative
+ // examples ("cannot run", "incorrect result") and candidate explanations
+ // may likewise give a counterexample ("a program that never stops").
+ // Do not treat a correctly explained negative consequence as a denial of
+ // the positive characteristic. Require independently identifiable, complete
+ // source points and explicitly refuse incompatible claims; unlike merely
+ // bypassing the gate this is limited to full-mark, structured evidence.
+ if(grade.earned===maxMarks && (rule==="algorithm-characteristics"||rule==="syntax-logic"))
+  return itCompleteExplanationCertain(rule,grade,answer);
+ return false;
+}
+// Auditable source-specific fallback for full, developed IT explanations.
+// Never certifies partial, contradictory, telegraphic or ambiguous responses.
+function itCompleteExplanationCertain(rule,grade,answer){
+ if(!(grade.criteria||[]).length || !grade.criteria.every(c=>c.marks>0&&c.earned===c.marks))
+  return false;
+ const text=String(answer||"").replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();
+ if(text.split(/\s+/).length<14)return false;
+ if(rule==="algorithm-characteristics"){
+  // "finite"/"terminates" are the SAME characteristic, not two marks.
+  const finite=conceptPresent(text,"finite")||conceptPresent(text,"terminates");
+  const different=["precise","unambiguous","clear_flow"].filter(c=>conceptPresent(text,c));
+  if(Number(finite)+different.length<2 ||
+     !/\b(?:because|means|ensures?|so\s+that|therefore|allows?|since|which\s+means)\b/i.test(text))return false;
+  // Denying that the proposed algorithm should terminate, be clear, or be
+  // precise is not cured by mentioning the right words elsewhere.
+  if(/\b(?:algorithm|its\s+steps|instructions?)\b.{0,55}\b(?:is|are|must|should|will|can|does)\s+(?:not|never)\s+(?:be\s+)?(?:finite|precise|clear|unambiguous|end|stop|terminate|finish)\b/i.test(text)||
+     /\b(?:algorithm|its\s+steps|instructions?)\b.{0,55}\b(?:must|should|will)\s+never\s+(?:end|stop|terminate|finish)\b/i.test(text))return false;
+  // A negative example such as "a program that never stops wastes time" is
+  // legitimate support for finiteness, not a negation of that requirement.
+  return true;
+ }
+ if(rule==="syntax-logic"){
+  const correctSyntax=/\bsyntax\s+errors?\b.{0,170}\b(?:break|breaks|broken|violate|violates|rules?|grammar|invalid|incorrect\s+syntax)\b/i.test(text);
+  const correctLogic=/\blogic\s+errors?\b.{0,170}\b(?:incorrect|wrong)\s+(?:results?|outputs?|answers?|values?)\b/i.test(text)||
+   /\blogic\s+errors?\b.{0,170}\b(?:runs?|executes?)\b.{0,90}\b(?:incorrect|wrong)\b/i.test(text);
+  if(!correctSyntax||!correctLogic)return false;
+  if(/\bsyntax\s+errors?\b.{0,65}\b(?:does\s+not|do\s+not|never|cannot|can't)\s+(?:break|violate)\b/i.test(text)||
+     /\blogic\s+errors?\b.{0,90}\b(?:does\s+not|do\s+not|never|cannot|can't)\s+(?:produce|give|cause|result\s+in)\s+(?:an?\s+)?(?:incorrect|wrong)\b/i.test(text)||
+     /\blogic\s+errors?\b.{0,55}\b(?:must|should|will)\s+not\s+(?:run|execute)\b/i.test(text))return false;
+  return true;
+ }
+ return false;
 }
 // Partial pseudocode credit is certain only when the program parses into the
 // expected input / assignment / decision structure, so a missed mark reflects
