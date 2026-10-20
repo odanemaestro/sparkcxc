@@ -1077,7 +1077,10 @@ try{
     assert(source && source.maxMarks===item.max_marks);
     const point=getPoint(item.subject_id,source);
     if(!point)continue; // No source-authored exemplar is not a failure or a synthetic answer.
-    sourceResponses[item.criterion_id]=point;
+    sourceResponses[item.criterion_id]=
+     ['mathematics','physics'].includes(item.subject_id)
+      ?{answer:point,working:String(source.sourceMarking?.solution??"")}
+      :point;
     stats.positiveCases++;
     if(['chemistry','integrated-science','food-nutrition-and-health'].includes(item.subject_id)){
      denials[item.criterion_id]='It is false that '+point;
