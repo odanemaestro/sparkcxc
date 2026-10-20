@@ -23,3 +23,17 @@ test("accepts valid negative reference only when the candidate states the negati
 test("does not split decimal values at their decimal points",()=>{
  expect(scienceResponseClauses("The mass is 2.50 g. The solution is blue.")).toEqual(["The mass is 2.50 g","The solution is blue."]);
 });
+
+test("handles qualifying contrast without merging irrelevant negation into a positive science claim",()=>{
+ expect(check("Heat increases evaporation although the water does not boil.","heat increases evaporation").matched).toBe(true);
+ expect(check("Heat increases evaporation yet the water does not boil.","heat increases evaporation").matched).toBe(true);
+});
+
+test("contradictions after although, yet, and nevertheless cannot earn marks",()=>{
+ for(const joining of ["although","yet","nevertheless"]){
+  const answer="Heat increases evaporation "+joining+" heat does not increase evaporation.";
+  const result=check(answer,"heat increases evaporation");
+  expect(result.matched).toBe(false);
+  expect(result.contradicted).toBe(true);
+ }
+});
