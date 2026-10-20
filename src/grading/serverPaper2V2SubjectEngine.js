@@ -14,7 +14,7 @@ import physicsPaper2 from "../physics/paper2/data/spark-phy-p02-practice-2.json"
 import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
 import physicsPaper4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
 import {gradeInformationTechnologyPart,informationTechnologyPaper2RuleFor,informationTechnologyResponseText} from "../informationTechnology/practice/itPaper2Marking";
-import {IT_CANONICAL_CONCEPTS,phrasePresent} from "../informationTechnology/practice/itPaper2Canonical";
+import {IT_CANONICAL_CONCEPTS,phrasePresent,conceptPresent} from "../informationTechnology/practice/itPaper2Canonical";
 import {certainWrittenMark,keyTerms,cleanSourcePoint} from "./v2WrittenEvidenceGate";
 import {scienceResponseClauses} from "./scienceWrittenEvidence";
 import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json";
