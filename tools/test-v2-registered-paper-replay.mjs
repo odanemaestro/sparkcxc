@@ -1185,6 +1185,112 @@ try{
  }
  assert.equal(evidenceCases.length,2072,
   'All 2,072 pending source parts require an explicit audit record');
+
+ // Batch 1: execute *independent response probes* for each of the 1,036
+ // outstanding source criteria, rather than treating registered answers
+ // as approvals. This produces a per-criterion QA report with failures,
+ // preserving the correct distinction between testing and sign-off.
+ const firstBatch=unapproved.slice(0,1036);
+ assert.equal(firstBatch.length,1036);
+ const batch1ByPaper=Map.groupBy(firstBatch,c=>c.subject_id+"::"+c.paper_id);
+ const batch1Checks=[];
+ for(const [key,items] of batch1ByPaper){
+  const paper=sourceByPaper.get(key);
+  assert(paper,"Missing first-batch source "+key);
+  const emptyAnswers={},unrelatedAnswers={},contradictoryAnswers={};
+  const positiveAnswers={};
+  const explicitDenials={};
+  const sourcePoints=new Map();
+  const unambiguous=new Map();
+  const denyWords=/\b(?:not|no|never|without|cannot|can'?t|doesn'?t|didn'?t|isn'?t|fails?|unable|false|incorrect)\b/i;
+  const visualWords=/\b(?:graph|diagram|draw|plot|construction)\b/i;
+  for(const item of items){
+   const source=paper.criteria.find(c=>c.id===item.criterion_id);
+   assert(source&&Number(source.maxMarks)===Number(item.max_marks));
+   const point=getPoint(item.subject_id,source);
+   sourcePoints.set(item.criterion_id,point);
+   unrelatedAnswers[item.criterion_id]="ZXQJ VMPQ unrelated answer";
+   if(!point)continue;
+   const plain=!denyWords.test(point)&&!visualWords.test(point);
+   unambiguous.set(item.criterion_id,plain);
+   positiveAnswers[item.criterion_id]=
+    ['mathematics','physics'].includes(item.subject_id)
+     ?{answer:point,working:String(source.sourceMarking?.solution??"")}
+     :point;
+   // Withhold truth-value assertions when the original statement is
+   // already negated or describes a drawing rather than a written answer.
+   if(plain&&['chemistry','integrated-science','food-nutrition-and-health'].includes(item.subject_id)){
+    explicitDenials[item.criterion_id]="It is incorrect to say "+point;
+    contradictoryAnswers[item.criterion_id]=point+"\\nIt is false that "+point;
+   }
+  }
+  const assess=responses=>evaluateExistingSubjectPaper2V2({
+   subjectId:paper.subject_id,paperId:paper.paper_id,
+   criteria:paper.criteria,responses
+  });
+  const emptyResult=assess(emptyAnswers);
+  const unrelatedResult=assess(unrelatedAnswers);
+  const positiveResult=Object.keys(positiveAnswers).length?assess(positiveAnswers):null;
+  const negativeResult=Object.keys(explicitDenials).length?assess(explicitDenials):null;
+  const contradictoryResult=Object.keys(contradictoryAnswers).length?assess(contradictoryAnswers):null;
+  const byId=answer=>new Map((answer?.rows||[]).map(x=>[x.criterionId,x]));
+  const blankRows=byId(emptyResult),noiseRows=byId(unrelatedResult),
+   positiveRows=byId(positiveResult),negativeRows=byId(negativeResult),
+   mixedRows=byId(contradictoryResult);
+  for(const item of items){
+   const id=item.criterion_id;
+   const source=paper.criteria.find(c=>c.id===id);
+   const recorded=blankRows.get(id),noise=noiseRows.get(id);
+   assert(recorded&&noise&&recorded.maxMarks===item.max_marks&&
+    noise.maxMarks===item.max_marks,"Incorrect first-batch criterion mapping "+id);
+   // Blank scripts cannot earn legitimate assessment marks.
+   assert.equal(recorded.suggestedMarks,0,"Blank response awarded marks: "+key+" "+id);
+   const positive=positiveRows.get(id),negative=negativeRows.get(id),mixed=mixedRows.get(id);
+   const positiveMarks=positive?.suggestedMarks??null;
+   const negativeMarks=negative?.suggestedMarks??null;
+   const contradictoryMarks=mixed?.suggestedMarks??null;
+   const suspiciousNoise=noise.suggestedMarks>0;
+   const suspiciousDenial=negativeMarks!==null&&negativeMarks>0;
+   const suspiciousMixed=contradictoryMarks!==null&&contradictoryMarks>0;
+   const hasModel=Boolean(sourcePoints.get(id));
+   const verdict=suspiciousNoise||suspiciousDenial||suspiciousMixed?
+    "requires-false-positive-fix":
+    !hasModel?"requires-source-answer-test-fixture":
+    positiveMarks===0?"requires-positive-answer-calibration":
+    "adversarial-smoke-pass-awaits-alternative-partial-credit-review";
+   batch1Checks.push({
+    subject_id:item.subject_id,paper_id:item.paper_id,criterion_id:id,
+    max_marks:item.max_marks,source_criterion_sha256:null,
+    has_authored_canonical_point:hasModel,
+    blank_marks:recorded.suggestedMarks,
+    unrelated_marks:noise.suggestedMarks,
+    canonical_marks:positiveMarks,
+    explicit_denial_marks:negativeMarks,
+    contradictory_marks:contradictoryMarks,
+    verdict,
+    independently_approved:false
+   });
+  }
+ }
+ assert.equal(batch1Checks.length,1036);
+ const batch1Summary={
+  batch:1,scope:"1036 of 2072 source-specific outstanding criteria",
+  distinct_papers:batch1ByPaper.size,
+  by_subject:Object.fromEntries([...new Set(batch1Checks.map(x=>x.subject_id))].map(subject=>[
+   subject,{count:batch1Checks.filter(x=>x.subject_id===subject).length,
+    with_authored_point:batch1Checks.filter(x=>x.subject_id===subject&&x.has_authored_canonical_point).length}
+  ])),
+  statuses:Object.fromEntries([...new Set(batch1Checks.map(x=>x.verdict))].map(verdict=>[
+   verdict,batch1Checks.filter(x=>x.verdict===verdict).length
+  ])),
+  approved_from_diagnostic_only:0
+ };
+ fs.mkdirSync('artifacts',{recursive:true});
+ fs.writeFileSync('artifacts/v2-criterion-qa-batch1-1036.json',
+  JSON.stringify({description:"Executed source-specific scoring probes. Not final rubric approvals.",
+    summary:batch1Summary,criteria:batch1Checks},null,2));
+ console.log("V2 BATCH 1 1036 criterion QA execution",JSON.stringify(batch1Summary));
+
  fs.mkdirSync('artifacts',{recursive:true});
  fs.writeFileSync('artifacts/v2-criterion-evidence-audit.json',
   JSON.stringify({
