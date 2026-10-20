@@ -426,3 +426,74 @@ The feature branch's private worker bundle passed CI but was **not**
 deployed to the currently active production worker. Production retains
 67 rubric versions, zero active/verified, and 12 AI-assisted
 criterion reviews. The existing live student scorer was not changed.
+
+## Evidence evaluator hardening: cross-subject large-scale phase
+
+[CI #2584](https://github.com/odanemaestro/sparkcxc/actions/runs/39360857884)
+passed the combined unit, private-database, worker-bundle, 2,106-case
+source-evidence replay and SPARK build after the following implementation
+changes on the V2 feature branch.
+
+**Information Technology (252 registered parts / 9 authored papers).**
+The pseudocode examiner now excludes commented-out examples and rejects
+duplicated/overwritten SCORE assignments. Nine source-specific positive,
+reversed-branch, comment and overwrite scenarios are tested. The archive-wide
+suite uses canonical model responses for all 252 parts, and all 252 gain
+some bounded provisional marks on their authored exemplars while the same
+parts reject blank and unrelated probes. Crucially, the private V2 IT adapter
+now retrieves the source-owned `responseSpec` (input variables/threshold)
+and question visuals (database primary/foreign fields) from the exact
+matching authored paper, verifying original prompt, mark ceiling, response
+type, profile and mark-scheme text. These source-side fields were **not**
+persisted in any of the 252 private rubric entries and must never come
+from student-provided data.
+
+**Physics (135 registered parts / 4 authored papers).**
+The replay now uses structured `{answer,working}` objects, as the real
+marker expects, rather than diagnostic plain strings. It sees provisional
+credit on 131 source parts from the full authored model responses.
+All four manual graph tasks remain **zero awarded / unresolved** until a
+trusted graph-artifact validator is available. This positive recognition
+does not establish independent examiner approval.
+
+**Mathematics (640 registered parts / 16 authored papers).**
+An additional isolated V2 invariant explicitly checks **969 manual
+subcriterion checks** covering **389 source parts**. Correct model answers
+must not convert those M/A/B/ECF/manual requirements into final authority.
+These marks remain provisional pending actual supported construction,
+written method, ECF or drawing validation.
+
+**Social Studies (60 registered parts).**
+The canonical lexicon recognises explicit denials such as `it is false
+that`, `fails to` and `unable to` rather than awarding the concept on
+keyword overlap. A first regression revealed that treating the ordinary
+word `without` as an unconditional denial incorrectly withheld marks for
+the valid definition of a common-law union. This was corrected and both
+the original exam test and new contradiction fixtures now pass.
+
+**English A (72 registered chosen-paper parts / 6 authored sets).**
+Every authored set has seven task options, including alternative creative
+tasks; registered C1 and C2 paper variants contain six assessed parts each.
+The archive-wide QA checks **42 unique authored tasks** for blank, irrelevant
+short and long repeated responses, source mark ceilings and absence of
+automatic final-score authority. The task structure was confirmed rather
+than inaccurately treating the 72 registered choices as 72 unique prompts.
+
+**Principles of Business (25 registered parts).**
+The private V2 integration now refuses provisional credit when a response
+explicitly denies a word-for-word affirmative source model answer. The
+source-first positive case and source-denial negative tests are included,
+with all ordinary alternative answers continuing through existing POB
+subcriterion grading as unresolved where necessary.
+
+**Chemistry, Integrated Science, FNH:** retained the earlier all-2,106
+source-matrix, affirmative/denial checks, FNH polarity, Science denial
+matching and unverified visual-evidence restrictions.
+
+**Release status:** This is substantially more accurate *practice evidence*
+and stronger regression coverage, not independently completed verification
+of every still-pending rubric criterion. No human review or score
+publication authority is fabricated: production still has 12 AI-assisted
+source reviews and 2,106 parts pending source-specific sign-off. All 67
+paper rubrics remain inactive. The present changes remain on draft PR #124;
+they have not been deployed to the live V2 worker or merged into main.
