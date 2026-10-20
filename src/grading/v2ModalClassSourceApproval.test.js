@@ -3,13 +3,13 @@ import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 import {evaluateExistingSubjectPaper2V2} from "./serverPaper2V2SubjectEngine";
 
 export const MODAL_CLASS_SOURCE_CASES=[
- {paper:"original-v1",question:"p2-q5-v1",part:"a",value:[16,20]},
- {paper:"original-v2",question:"p2-q5-v2",part:"a",value:[11,15]},
- {paper:"original-v3",question:"p2-q5-v3",part:"a",value:[11,15]},
- {paper:"original-v10",question:"p2-q5-v10",part:"a",value:[21,25]},
- {paper:"p2e",question:"p2e-q5",part:"b",value:[21,30]},
- {paper:"p2g",question:"p2g-q5",part:"b",value:[21,30]},
- {paper:"p2i",question:"p2i-q5",part:"b",value:[31,40]}
+ {paper:"original-v1",question:"p2-q5-v1",part:"a",value:[16,20],frequency:16},
+ {paper:"original-v2",question:"p2-q5-v2",part:"a",value:[11,15],frequency:12},
+ {paper:"original-v3",question:"p2-q5-v3",part:"a",value:[11,15],frequency:16},
+ {paper:"original-v10",question:"p2-q5-v10",part:"a",value:[21,25],frequency:12},
+ {paper:"p2e",question:"p2e-q5",part:"b",value:[21,30],frequency:14},
+ {paper:"p2g",question:"p2g-q5",part:"b",value:[21,30],frequency:18},
+ {paper:"p2i",question:"p2i-q5",part:"b",value:[31,40],frequency:20}
 ];
 
 const probe=(value,s)=>check(s,{type:"classInterval",value}).ok;
@@ -24,6 +24,16 @@ describe.each(MODAL_CLASS_SOURCE_CASES)("Modal class source approval $paper $que
   expect(part).toBeDefined();
   expect(part.marks).toBe(1);
   expect(part.answer.replace(/\s+/g,"")).toBe(answer.replace(/\s+/g,""));
+ });
+ test("modal answer uniquely matches the maximum source-table frequency",()=>{
+  const rows=source.table?.rows||
+    source.parts.find(x=>Array.isArray(x.table?.rows))?.table.rows;
+  expect(Array.isArray(rows)).toBe(true);
+  const ranked=rows.map(x=>({interval:String(x[0]).trim(),frequency:Number(x[1])}));
+  const highest=Math.max(...ranked.map(x=>x.frequency));
+  const winners=ranked.filter(x=>x.frequency===highest);
+  expect(highest).toBe(src.frequency);
+  expect(winners).toEqual([{interval:answer,frequency:src.frequency}]);
  });
  test.each([
   answer,lower+"-"+upper,lower+" to "+upper,
