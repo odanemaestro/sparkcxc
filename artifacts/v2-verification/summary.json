@@ -1,0 +1,49 @@
+{
+ "provenance": {
+  "bundleSha256": "3333598370c79e639c6099042ab6ba1c56f27b66d48412f32698e4daa8360117",
+  "fixtureSha256": "71716d6659a31c74bbfd4bf44512d500135fb3f38ceb747a13ae4809a7eb31ad",
+  "gitCommit": "10d2a23bd8ff389436c2b2a6282cd4266f4ca9a5",
+  "workingTreeDirty": false,
+  "ranAt": "2026-10-20T08:08:59.838Z"
+ },
+ "criteria": 252,
+ "bySubject": {
+  "information-technology": {
+   "criteria": 252,
+   "verified": 252,
+   "failed": 0,
+   "blocked": 0
+  }
+ },
+ "byOutcome": {
+  "verified": 252
+ },
+ "failureReasons": {},
+ "blockers": {},
+ "papers": {
+  "total": 9,
+  "verified": 9,
+  "failed": [],
+  "blocked": 0
+ },
+ "rehearsal": {
+  "criteriaInserted": 252,
+  "criteriaRejected": [],
+  "papersInserted": 9,
+  "papersRejected": [],
+  "released": [
+   "information-technology/P2-A",
+   "information-technology/P2-B",
+   "information-technology/P2-C",
+   "information-technology/P2-D",
+   "information-technology/P2-E",
+   "information-technology/P2-F",
+   "information-technology/P2-G",
+   "information-technology/P2-H",
+   "information-technology/P2-I"
+  ],
+  "releaseRejected": [],
+  "criteriaRejectedCount": 0
+ },
+ "seconds": 32
+}

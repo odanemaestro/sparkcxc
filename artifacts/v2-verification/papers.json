@@ -1,0 +1,1010 @@
+[
+ {
+  "subjectId": "information-technology",
+  "paperId": "P2-A",
+  "rubricVersion": "source-shape-draft-v2",
+  "sourceSha256": "7d1216793654984ee67802152dc1cf17e021579ad749276abb93ab3014b3e061",
+  "expectedTotalMarks": 90,
+  "criteria": 28,
+  "verifiedCriteria": 28,
+  "provenance": {
+   "bundleSha256": "3333598370c79e639c6099042ab6ba1c56f27b66d48412f32698e4daa8360117",
+   "fixtureSha256": "71716d6659a31c74bbfd4bf44512d500135fb3f38ceb747a13ae4809a7eb31ad",
+   "gitCommit": "10d2a23bd8ff389436c2b2a6282cd4266f4ca9a5",
+   "workingTreeDirty": false,
+   "ranAt": "2026-10-20T08:08:59.838Z"
+  },
+  "outcome": "verified",
+  "scenarios": [
+   {
+    "name": "full-marks",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "zero-marks",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "blank-script",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "partial-marks",
+    "passed": true,
+    "total": 52,
+    "confirmedMarks": 52,
+    "canPublish": true,
+    "expectedTotal": 52,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "mixed",
+    "passed": true,
+    "total": 44,
+    "confirmedMarks": 44,
+    "canPublish": true,
+    "expectedTotal": 44,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "missing-answers",
+    "passed": true,
+    "total": 45,
+    "confirmedMarks": 45,
+    "canPublish": true,
+    "expectedTotal": 45,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "equivalent-answers",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "contradictory",
+    "passed": true,
+    "total": 61,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 63,
+    "failures": []
+   },
+   {
+    "name": "keyword-lists",
+    "passed": true,
+    "total": 56,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 25,
+    "failures": []
+   }
+  ],
+  "missingFullFixtures": [],
+  "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
+  "evidenceSha256": "90a978962210f915320e743dfbb15322c4ebf34e296cfe38a4ac16ce4459c428"
+ },
+ {
+  "subjectId": "information-technology",
+  "paperId": "P2-B",
+  "rubricVersion": "source-shape-draft-v2",
+  "sourceSha256": "037e3ca261a53cb1f3a824fcf1a78f4c42494e7a99743e4cb6f05402bbbc8078",
+  "expectedTotalMarks": 90,
+  "criteria": 28,
+  "verifiedCriteria": 28,
+  "provenance": {
+   "bundleSha256": "3333598370c79e639c6099042ab6ba1c56f27b66d48412f32698e4daa8360117",
+   "fixtureSha256": "71716d6659a31c74bbfd4bf44512d500135fb3f38ceb747a13ae4809a7eb31ad",
+   "gitCommit": "10d2a23bd8ff389436c2b2a6282cd4266f4ca9a5",
+   "workingTreeDirty": false,
+   "ranAt": "2026-10-20T08:08:59.838Z"
+  },
+  "outcome": "verified",
+  "scenarios": [
+   {
+    "name": "full-marks",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "zero-marks",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "blank-script",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "partial-marks",
+    "passed": true,
+    "total": 54,
+    "confirmedMarks": 54,
+    "canPublish": true,
+    "expectedTotal": 54,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "mixed",
+    "passed": true,
+    "total": 46,
+    "confirmedMarks": 46,
+    "canPublish": true,
+    "expectedTotal": 46,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "missing-answers",
+    "passed": true,
+    "total": 44,
+    "confirmedMarks": 44,
+    "canPublish": true,
+    "expectedTotal": 44,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "equivalent-answers",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "contradictory",
+    "passed": true,
+    "total": 61,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 64,
+    "failures": []
+   },
+   {
+    "name": "keyword-lists",
+    "passed": true,
+    "total": 63,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 30,
+    "failures": []
+   }
+  ],
+  "missingFullFixtures": [],
+  "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
+  "evidenceSha256": "27c5440e78c8ef4212518738ead9af9dd7916730a14a2049913389642932db78"
+ },
+ {
+  "subjectId": "information-technology",
+  "paperId": "P2-C",
+  "rubricVersion": "source-shape-draft-v2",
+  "sourceSha256": "dc039556975cdcc6edfcd50efb7dedc0ec13e36e34e9be36951803f22958158c",
+  "expectedTotalMarks": 90,
+  "criteria": 28,
+  "verifiedCriteria": 28,
+  "provenance": {
+   "bundleSha256": "3333598370c79e639c6099042ab6ba1c56f27b66d48412f32698e4daa8360117",
+   "fixtureSha256": "71716d6659a31c74bbfd4bf44512d500135fb3f38ceb747a13ae4809a7eb31ad",
+   "gitCommit": "10d2a23bd8ff389436c2b2a6282cd4266f4ca9a5",
+   "workingTreeDirty": false,
+   "ranAt": "2026-10-20T08:08:59.838Z"
+  },
+  "outcome": "verified",
+  "scenarios": [
+   {
+    "name": "full-marks",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "zero-marks",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "blank-script",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "partial-marks",
+    "passed": true,
+    "total": 55,
+    "confirmedMarks": 55,
+    "canPublish": true,
+    "expectedTotal": 55,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "mixed",
+    "passed": true,
+    "total": 47,
+    "confirmedMarks": 47,
+    "canPublish": true,
+    "expectedTotal": 47,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "missing-answers",
+    "passed": true,
+    "total": 45,
+    "confirmedMarks": 45,
+    "canPublish": true,
+    "expectedTotal": 45,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "equivalent-answers",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "contradictory",
+    "passed": true,
+    "total": 74,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 69,
+    "failures": []
+   },
+   {
+    "name": "keyword-lists",
+    "passed": true,
+    "total": 67,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 31,
+    "failures": []
+   }
+  ],
+  "missingFullFixtures": [],
+  "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
+  "evidenceSha256": "e88b7c3aabdb7477fe82ad4354f4e605668640c0f0d2ff731289e5ec9fababc3"
+ },
+ {
+  "subjectId": "information-technology",
+  "paperId": "P2-D",
+  "rubricVersion": "source-shape-draft-v2",
+  "sourceSha256": "7aaba3945f509cb3a18050e1342bc6f4139225e0db07ae0fa52eab0fb0a6f667",
+  "expectedTotalMarks": 90,
+  "criteria": 28,
+  "verifiedCriteria": 28,
+  "provenance": {
+   "bundleSha256": "3333598370c79e639c6099042ab6ba1c56f27b66d48412f32698e4daa8360117",
+   "fixtureSha256": "71716d6659a31c74bbfd4bf44512d500135fb3f38ceb747a13ae4809a7eb31ad",
+   "gitCommit": "10d2a23bd8ff389436c2b2a6282cd4266f4ca9a5",
+   "workingTreeDirty": false,
+   "ranAt": "2026-10-20T08:08:59.838Z"
+  },
+  "outcome": "verified",
+  "scenarios": [
+   {
+    "name": "full-marks",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "zero-marks",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "blank-script",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "partial-marks",
+    "passed": true,
+    "total": 52,
+    "confirmedMarks": 52,
+    "canPublish": true,
+    "expectedTotal": 52,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "mixed",
+    "passed": true,
+    "total": 44,
+    "confirmedMarks": 44,
+    "canPublish": true,
+    "expectedTotal": 44,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "missing-answers",
+    "passed": true,
+    "total": 45,
+    "confirmedMarks": 45,
+    "canPublish": true,
+    "expectedTotal": 45,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "equivalent-answers",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "contradictory",
+    "passed": true,
+    "total": 61,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 63,
+    "failures": []
+   },
+   {
+    "name": "keyword-lists",
+    "passed": true,
+    "total": 56,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 25,
+    "failures": []
+   }
+  ],
+  "missingFullFixtures": [],
+  "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
+  "evidenceSha256": "f7df4ba42b28ca70f9548d31ed600e58778e7d6ca1c3e0528898b52b6aed0927"
+ },
+ {
+  "subjectId": "information-technology",
+  "paperId": "P2-E",
+  "rubricVersion": "source-shape-draft-v2",
+  "sourceSha256": "387188ffbd81777ebd0b4c3e01b3f4cab0cf27d5235a07fd343deb4048e18462",
+  "expectedTotalMarks": 90,
+  "criteria": 28,
+  "verifiedCriteria": 28,
+  "provenance": {
+   "bundleSha256": "3333598370c79e639c6099042ab6ba1c56f27b66d48412f32698e4daa8360117",
+   "fixtureSha256": "71716d6659a31c74bbfd4bf44512d500135fb3f38ceb747a13ae4809a7eb31ad",
+   "gitCommit": "10d2a23bd8ff389436c2b2a6282cd4266f4ca9a5",
+   "workingTreeDirty": false,
+   "ranAt": "2026-10-20T08:08:59.838Z"
+  },
+  "outcome": "verified",
+  "scenarios": [
+   {
+    "name": "full-marks",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "zero-marks",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "blank-script",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "partial-marks",
+    "passed": true,
+    "total": 54,
+    "confirmedMarks": 54,
+    "canPublish": true,
+    "expectedTotal": 54,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "mixed",
+    "passed": true,
+    "total": 46,
+    "confirmedMarks": 46,
+    "canPublish": true,
+    "expectedTotal": 46,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "missing-answers",
+    "passed": true,
+    "total": 44,
+    "confirmedMarks": 44,
+    "canPublish": true,
+    "expectedTotal": 44,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "equivalent-answers",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "contradictory",
+    "passed": true,
+    "total": 61,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 64,
+    "failures": []
+   },
+   {
+    "name": "keyword-lists",
+    "passed": true,
+    "total": 63,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 30,
+    "failures": []
+   }
+  ],
+  "missingFullFixtures": [],
+  "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
+  "evidenceSha256": "12516d81ea08559af0fde8410c1625cc8266d61d820926eb8c5d6c7dad331d49"
+ },
+ {
+  "subjectId": "information-technology",
+  "paperId": "P2-F",
+  "rubricVersion": "source-shape-draft-v2",
+  "sourceSha256": "84d3cf003402a0ca1f21391eb4eacc7cba0ea2787887b171d9374386358e0ba0",
+  "expectedTotalMarks": 90,
+  "criteria": 28,
+  "verifiedCriteria": 28,
+  "provenance": {
+   "bundleSha256": "3333598370c79e639c6099042ab6ba1c56f27b66d48412f32698e4daa8360117",
+   "fixtureSha256": "71716d6659a31c74bbfd4bf44512d500135fb3f38ceb747a13ae4809a7eb31ad",
+   "gitCommit": "10d2a23bd8ff389436c2b2a6282cd4266f4ca9a5",
+   "workingTreeDirty": false,
+   "ranAt": "2026-10-20T08:08:59.838Z"
+  },
+  "outcome": "verified",
+  "scenarios": [
+   {
+    "name": "full-marks",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "zero-marks",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "blank-script",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "partial-marks",
+    "passed": true,
+    "total": 55,
+    "confirmedMarks": 55,
+    "canPublish": true,
+    "expectedTotal": 55,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "mixed",
+    "passed": true,
+    "total": 47,
+    "confirmedMarks": 47,
+    "canPublish": true,
+    "expectedTotal": 47,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "missing-answers",
+    "passed": true,
+    "total": 45,
+    "confirmedMarks": 45,
+    "canPublish": true,
+    "expectedTotal": 45,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "equivalent-answers",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "contradictory",
+    "passed": true,
+    "total": 74,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 69,
+    "failures": []
+   },
+   {
+    "name": "keyword-lists",
+    "passed": true,
+    "total": 67,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 31,
+    "failures": []
+   }
+  ],
+  "missingFullFixtures": [],
+  "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
+  "evidenceSha256": "b10a73a5346a866228f445033fd174b75731a84d223c9f11778e82c9e22fbd23"
+ },
+ {
+  "subjectId": "information-technology",
+  "paperId": "P2-G",
+  "rubricVersion": "source-shape-draft-v2",
+  "sourceSha256": "d9c6bcbd1852ca9d99627203004bfa69d3829cda67c30299b6cfe9279645ec28",
+  "expectedTotalMarks": 90,
+  "criteria": 28,
+  "verifiedCriteria": 28,
+  "provenance": {
+   "bundleSha256": "3333598370c79e639c6099042ab6ba1c56f27b66d48412f32698e4daa8360117",
+   "fixtureSha256": "71716d6659a31c74bbfd4bf44512d500135fb3f38ceb747a13ae4809a7eb31ad",
+   "gitCommit": "10d2a23bd8ff389436c2b2a6282cd4266f4ca9a5",
+   "workingTreeDirty": false,
+   "ranAt": "2026-10-20T08:08:59.838Z"
+  },
+  "outcome": "verified",
+  "scenarios": [
+   {
+    "name": "full-marks",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "zero-marks",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "blank-script",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "partial-marks",
+    "passed": true,
+    "total": 52,
+    "confirmedMarks": 52,
+    "canPublish": true,
+    "expectedTotal": 52,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "mixed",
+    "passed": true,
+    "total": 44,
+    "confirmedMarks": 44,
+    "canPublish": true,
+    "expectedTotal": 44,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "missing-answers",
+    "passed": true,
+    "total": 45,
+    "confirmedMarks": 45,
+    "canPublish": true,
+    "expectedTotal": 45,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "equivalent-answers",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "contradictory",
+    "passed": true,
+    "total": 61,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 63,
+    "failures": []
+   },
+   {
+    "name": "keyword-lists",
+    "passed": true,
+    "total": 56,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 25,
+    "failures": []
+   }
+  ],
+  "missingFullFixtures": [],
+  "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
+  "evidenceSha256": "28213161778b7851e7089e2579c465c250e38b2b01803c30eaec562c06f6ed9c"
+ },
+ {
+  "subjectId": "information-technology",
+  "paperId": "P2-H",
+  "rubricVersion": "source-shape-draft-v2",
+  "sourceSha256": "721b2740fb2496d071a2f5f43c2a4cc3040c7efffae68b395de5e9add54ef0a8",
+  "expectedTotalMarks": 90,
+  "criteria": 28,
+  "verifiedCriteria": 28,
+  "provenance": {
+   "bundleSha256": "3333598370c79e639c6099042ab6ba1c56f27b66d48412f32698e4daa8360117",
+   "fixtureSha256": "71716d6659a31c74bbfd4bf44512d500135fb3f38ceb747a13ae4809a7eb31ad",
+   "gitCommit": "10d2a23bd8ff389436c2b2a6282cd4266f4ca9a5",
+   "workingTreeDirty": false,
+   "ranAt": "2026-10-20T08:08:59.838Z"
+  },
+  "outcome": "verified",
+  "scenarios": [
+   {
+    "name": "full-marks",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "zero-marks",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "blank-script",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "partial-marks",
+    "passed": true,
+    "total": 54,
+    "confirmedMarks": 54,
+    "canPublish": true,
+    "expectedTotal": 54,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "mixed",
+    "passed": true,
+    "total": 46,
+    "confirmedMarks": 46,
+    "canPublish": true,
+    "expectedTotal": 46,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "missing-answers",
+    "passed": true,
+    "total": 44,
+    "confirmedMarks": 44,
+    "canPublish": true,
+    "expectedTotal": 44,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "equivalent-answers",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "contradictory",
+    "passed": true,
+    "total": 61,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 64,
+    "failures": []
+   },
+   {
+    "name": "keyword-lists",
+    "passed": true,
+    "total": 63,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 30,
+    "failures": []
+   }
+  ],
+  "missingFullFixtures": [],
+  "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
+  "evidenceSha256": "862ef49e745383de3ec24ddf0783251b90427341b5f1b948ce8c2e00cf50b119"
+ },
+ {
+  "subjectId": "information-technology",
+  "paperId": "P2-I",
+  "rubricVersion": "source-shape-draft-v2",
+  "sourceSha256": "6af5a83b3c624086667ba6046d44311f9abd2e6e5392b6dedb8055f5585cca54",
+  "expectedTotalMarks": 90,
+  "criteria": 28,
+  "verifiedCriteria": 28,
+  "provenance": {
+   "bundleSha256": "3333598370c79e639c6099042ab6ba1c56f27b66d48412f32698e4daa8360117",
+   "fixtureSha256": "71716d6659a31c74bbfd4bf44512d500135fb3f38ceb747a13ae4809a7eb31ad",
+   "gitCommit": "10d2a23bd8ff389436c2b2a6282cd4266f4ca9a5",
+   "workingTreeDirty": false,
+   "ranAt": "2026-10-20T08:08:59.838Z"
+  },
+  "outcome": "verified",
+  "scenarios": [
+   {
+    "name": "full-marks",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "zero-marks",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "blank-script",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "partial-marks",
+    "passed": true,
+    "total": 55,
+    "confirmedMarks": 55,
+    "canPublish": true,
+    "expectedTotal": 55,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "mixed",
+    "passed": true,
+    "total": 47,
+    "confirmedMarks": 47,
+    "canPublish": true,
+    "expectedTotal": 47,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "missing-answers",
+    "passed": true,
+    "total": 45,
+    "confirmedMarks": 45,
+    "canPublish": true,
+    "expectedTotal": 45,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "equivalent-answers",
+    "passed": true,
+    "total": 90,
+    "confirmedMarks": 90,
+    "canPublish": true,
+    "expectedTotal": 90,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "contradictory",
+    "passed": true,
+    "total": 74,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 69,
+    "failures": []
+   },
+   {
+    "name": "keyword-lists",
+    "passed": true,
+    "total": 67,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": null,
+    "unresolvedMarks": 31,
+    "failures": []
+   }
+  ],
+  "missingFullFixtures": [],
+  "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
+  "evidenceSha256": "be5ac11cf4d41df9dbe9a05d20ea37057977b7bde6e4afd452a8474fb9dcaada"
+ }
+]
