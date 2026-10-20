@@ -240,6 +240,9 @@ try{
 
 
  }
+ const batch3=(await db.query("select subject_id,paper_id,rubric_version,criterion_id from spark_grading_private.v2_calibration_batch_items where batch_id='v2-bulk-calibration-003'")).rows;
+ assert.equal(batch3.length,300);
+ assert.equal(new Set(batch3.map(x=>x.subject_id)).size,8);
  const overlap=(await db.query(`SELECT count(*)::int AS n FROM
  spark_grading_private.v2_calibration_batch_items first
  JOIN spark_grading_private.v2_calibration_batch_items second
