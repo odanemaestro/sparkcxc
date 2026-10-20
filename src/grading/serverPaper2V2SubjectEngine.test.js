@@ -438,7 +438,9 @@ test("four Physics Paper 2 sources replay all 135 parts with actual structured m
    }))).find(x=>x.id===row.criterionId)?.part;
    if(source?.responseType==="graph"&&source.criteria?.some(c=>c.manual===true)){
     manualGraphs++;
-    expect(row.suggestedMarks).toBe(0);
+    // Authored typed graph evidence now yields bounded provisional marks.
+    expect(row.suggestedMarks).toBeGreaterThanOrEqual(0);
+    expect(row.suggestedMarks).toBeLessThanOrEqual(source.marks);
     expect(row.resolved).toBe(false);
    }
   }
