@@ -364,3 +364,65 @@ and partially correct answer matrices for all 2,106 unresolved parts;
 record honest, source-bound reviews; then verify worker publication,
 attempt isolation and rollback under approved criteria. Avoid claiming
 that completing the seven batches authorizes live V2 grading.
+
+## Evidence verification phase: two 1,053-criterion QA batches
+
+The seven registration/calibration cohorts are complete. This is the first
+**substantive two-batch examiner-evidence replay** covering all **2,106
+source parts without criterion review sign-offs**, split into two separate
+groups of **1,053**. The source-aligned evaluator is
+`tools/test-v2-registered-paper-replay.mjs` and the retained, per-criterion
+diagnostics are uploaded by `.github/workflows/pr-checks.yml` as the
+`spark-v2-criterion-evidence-<commit>` GitHub Actions artifact.
+
+The workflow passed
+[CI #2568](https://github.com/odanemaestro/sparkcxc/actions/runs/39357732764).
+
+| Tested property | Observed |
+|---|---:|
+| Unreviewed source criteria included | 2,106 / 2,106 |
+| Source-authored canonical answer probes available | 1,722 |
+| Canonical probes obtaining some advisory credit | 1,134 |
+| Explicit source-denial probes | 934 |
+| Source denials that are clearly contradictory to affirmative facts | 867 |
+| Such clear denials obtaining advisory credit after patch | **0** |
+| Double-negative, qualified or otherwise ambiguous denial probes | 67 |
+| Ambiguous denials obtaining advisory credit | 58 |
+| Paper rubric versions activated | **0** |
+| Criterion-level AI reviews already present | **12** |
+
+These are diagnostic counts, not scored-script accuracy statistics or
+independent approval attestations. Positive-probe failure can mean a
+structured response format is required, the sample is insufficient,
+a manual method is expected, or an implementation defect. Do not
+automatically treat any such failure as a candidate earning zero.
+
+**Issue discovered and corrected:** the native Chemistry, Integrated
+Science and FNH V2 adapters could sometimes credit a response that
+started with an explicit denial of an exact correct source marking point
+because its keywords/numbers were otherwise present. A conservative
+source-identity-linked check now leaves those attempts unresolved with
+zero advisory marks. FNH's model evidence matcher was also hardened
+against inability/failure and typographic apostrophe negations.
+New regression cases require rejected denials to receive no score
+authority. The full source replay now **fails CI if any clearly
+contradictory source denial earns marks**.
+
+A negative model point (e.g. ions **cannot** move in a solid) is
+logically different: denying that negative statement is not
+unambiguously an incorrect answer. The **67** cases of that kind are
+reported as ambiguous, never automatically failed or approved.
+
+**Remaining evidence gaps:** IT's 252 criteria, English A's 72 tasks
+and Social Studies' 60 criteria have no direct source-exemplar
+response in this particular matrix; they need domain-specific
+code/output, comprehension/writing, and structured-concept fixtures.
+Math's 969 manual-verification mark checks and Physics graphical
+requirements likewise need actual method/artifact validators.
+The matrix is not sufficient to approve those criteria and contains
+no fabricated human reviews.
+
+The feature branch's private worker bundle passed CI but was **not**
+deployed to the currently active production worker. Production retains
+67 rubric versions, zero active/verified, and 12 AI-assisted
+criterion reviews. The existing live student scorer was not changed.
