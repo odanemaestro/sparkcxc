@@ -420,8 +420,52 @@ function itResolved({rule,grade,response,part,maxMarks}){
    ||structuredItResolved(rule,grade,answer);
  const accounted=[part.prompt,...itRecognisedPhrases(answer)];
  const creditedPoints=(grade.criteria||[]).filter(c=>c.earned>0).length;
- return certainWrittenMark({suggestedMarks:grade.earned,maxMarks,response:answer,
-  points:part.markScheme,accounted,pointEvidence:"grader",creditedPoints}).resolved;
+ const gate=certainWrittenMark({suggestedMarks:grade.earned,maxMarks,response:answer,
+  points:part.markScheme,accounted,pointEvidence:"grader",creditedPoints});
+ if(gate.resolved)return true;
+ // The broad source descriptions for these two questions contain negative
+ // examples ("cannot run", "incorrect result") and candidate explanations
+ // may likewise give a counterexample ("a program that never stops").
+ // Do not treat a correctly explained negative consequence as a denial of
+ // the positive characteristic. Require independently identifiable, complete
+ // source points and explicitly refuse incompatible claims; unlike merely
+ // bypassing the gate this is limited to full-mark, structured evidence.
+ if(grade.earned===maxMarks && (rule==="algorithm-characteristics"||rule==="syntax-logic"))
+  return itCompleteExplanationCertain(rule,grade,answer);
+ return false;
+}
+// Auditable source-specific fallback for full, developed IT explanations.
+// Never certifies partial, contradictory, telegraphic or ambiguous responses.
+function itCompleteExplanationCertain(rule,grade,answer){
+ if(!(grade.criteria||[]).length || !grade.criteria.every(c=>c.marks>0&&c.earned===c.marks))
+  return false;
+ const text=String(answer||"").replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();
+ if(text.split(/\s+/).length<14)return false;
+ if(rule==="algorithm-characteristics"){
+  // "finite"/"terminates" are the SAME characteristic, not two marks.
+  const finite=conceptPresent(text,"finite")||conceptPresent(text,"terminates");
+  const different=["precise","unambiguous","clear_flow"].filter(c=>conceptPresent(text,c));
+  if(Number(finite)+different.length<2 ||
+     !/\b(?:because|means|ensures?|so\s+that|therefore|allows?|since|which\s+means)\b/i.test(text))return false;
+  // Denying that the proposed algorithm should terminate, be clear, or be
+  // precise is not cured by mentioning the right words elsewhere.
+  if(/\b(?:algorithm|its\s+steps|instructions?)\b.{0,55}\b(?:is|are|must|should|will|can|does)\s+(?:not|never)\s+(?:be\s+)?(?:finite|precise|clear|unambiguous|end|stop|terminate|finish)\b/i.test(text)||
+     /\b(?:algorithm|its\s+steps|instructions?)\b.{0,55}\b(?:must|should|will)\s+never\s+(?:end|stop|terminate|finish)\b/i.test(text))return false;
+  // A negative example such as "a program that never stops wastes time" is
+  // legitimate support for finiteness, not a negation of that requirement.
+  return true;
+ }
+ if(rule==="syntax-logic"){
+  const correctSyntax=/\bsyntax\s+errors?\b.{0,170}\b(?:break|breaks|broken|violate|violates|rules?|grammar|invalid|incorrect\s+syntax)\b/i.test(text);
+  const correctLogic=/\blogic\s+errors?\b.{0,170}\b(?:incorrect|wrong)\s+(?:results?|outputs?|answers?|values?)\b/i.test(text)||
+   /\blogic\s+errors?\b.{0,170}\b(?:runs?|executes?)\b.{0,90}\b(?:incorrect|wrong)\b/i.test(text);
+  if(!correctSyntax||!correctLogic)return false;
+  if(/\bsyntax\s+errors?\b.{0,65}\b(?:does\s+not|do\s+not|never|cannot|can't)\s+(?:break|violate)\b/i.test(text)||
+     /\blogic\s+errors?\b.{0,90}\b(?:does\s+not|do\s+not|never|cannot|can't)\s+(?:produce|give|cause|result\s+in)\s+(?:an?\s+)?(?:incorrect|wrong)\b/i.test(text)||
+     /\blogic\s+errors?\b.{0,55}\b(?:must|should|will)\s+not\s+(?:run|execute)\b/i.test(text))return false;
+  return true;
+ }
+ return false;
 }
 // Partial pseudocode credit is certain only when the program parses into the
 // expected input / assignment / decision structure, so a missed mark reflects
