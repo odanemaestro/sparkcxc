@@ -60,6 +60,26 @@ const emptyEvidence=(value,depth=0)=>{
 };
 const sourceMarking=c=>object(c.sourceMarking)?c.sourceMarking:{};
 
+const sourceDenialKey=value=>String(value??"").trim().toLowerCase()
+ .replace(/[’‘]/g,"'").replace(/\s+/g," ").replace(/[.!?]+$/,"").trim();
+// Exact-source denial is confidently contrary evidence, even when a legacy
+// tokenizer sees every expected keyword or numeric value. Partial, paraphrased
+// and double-negative claims still require their own source-specific checks.
+const directlyDeniesSourcePoint=(raw,source)=>{
+ const response=sourceDenialKey(text(raw));
+ const intro=/^(?:it is false that|it is incorrect to say)\s+/;
+ if(!intro.test(response))return false;
+ const denied=response.replace(intro,"");
+ const points=Array.isArray(source?.points)?source.points:
+  Array.isArray(source?.markScheme?.points)?source.markScheme.points:
+  Array.isArray(source?.modelPoints)?source.modelPoints:[];
+ const substantiveNegation=/\b(?:not|no|never|cannot|without|fails?\s+to|unable\s+to|false)\b/;
+ return points.some(point=>typeof point==="string" &&
+  !substantiveNegation.test(sourceDenialKey(point)) &&
+  denied===sourceDenialKey(point));
+};
+
+
 // Only directly checkable mathematical values and symbolic identities belong
 // to the authoritative V2 evidence allowlist. Text, concept, method, graph,
 // table and heuristic checkers are useful advisory evidence, not proof that an
@@ -216,6 +236,10 @@ function science(rows,responses,subject){
    const base=qid+":"+pi+":"+ii;
    const responseMap={...responses};
    const value=read(responses,row.id,base);
+   if(directlyDeniesSourcePoint(value,sm)){
+    out.push(cap(row,0,"source-answer-explicit-denial",false));
+    continue;
+   }
    if(value!==null)responseMap[base]=value;
    const item=subject==="chemistry"
     ?{marks:row.maxMarks,markScheme:sm,response:{type:sm.requiredResponseType||"lines"}}
@@ -258,6 +282,8 @@ function fnh(rows,responses){
   if(!Array.isArray(src.modelPoints))throw new Error("FNH model points missing");
   const p={id:row.id.split("::").at(-1),marks:row.maxMarks,...src};
   const answer=text(read(responses,row.id));
+  if(directlyDeniesSourcePoint(answer,src))
+   return cap(row,0,"source-answer-explicit-denial",false);
   const graded=gradeFnhWrittenPart(p,answer);
   return cap(row,graded.confirmedMarks,
    "existing-FNH-criterion-evidence",graded.unresolvedMarks===0);
