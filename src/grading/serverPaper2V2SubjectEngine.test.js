@@ -2,6 +2,9 @@ import {evaluateExistingSubjectPaper2V2 as examine} from "./serverPaper2V2Subjec
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 import {check,checkMatrix} from "../practice/cxcMarking/checkers";
 import physics1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
+import physics2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
+import physics3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
+import physics4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
 import itData from "../informationTechnology/practice/itPaper2Data.json";
 import {modelResponsesForInformationTechnologyPaper2} from "../informationTechnology/practice/itPaper2Marking";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
@@ -389,4 +392,24 @@ test("private V2 rejects changed IT source prompts, schemes or ceiling",()=>{
  }
  expect(()=>example("information-technology",paper.id,
   [row(key,part.marks+1,source)],{})).toThrow(/source drift/i);
+});
+
+test.each([physics1,physics2,physics3,physics4])("private V2 does not convert %s manual graph inputs into final marks",paper=>{
+ const q=paper.questions.find(q=>q.parts.some(p=>p.responseType==="graph"));
+ expect(q).toBeTruthy();
+ const source=q.parts.find(p=>p.responseType==="graph");
+ expect(source.criteria.some(c=>c.manual===true)).toBe(true);
+ const id=q.question_id+"::"+source.id;
+ const criteria=[row(id,source.marks,source)];
+ for(const supplied of [
+  "Both axes correctly labelled, six points plotted, correct scales, line of best fit.",
+  {answer:"graph completed",working:"six correct points",points:[[0,0],[1,1]],axisLabels:["x","y"]},
+  {answer:"A correctly plotted graph",graph:{xAxis:"time",yAxis:"distance",points:[{x:0,y:0}]}},
+ ]){
+  const result=example("physics",paper.paper_id,criteria,{[id]:supplied});
+  expect(result.suggestedMarks).toBe(0);
+  expect(result.unresolvedMarks).toBe(source.marks);
+  expect(result.canPublishFinalScore).toBe(false);
+  expect(result.rows[0].method).toBe("physics-graph-requires-artifact-verification");
+ }
 });
