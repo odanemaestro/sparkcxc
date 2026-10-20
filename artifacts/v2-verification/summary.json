@@ -1,10 +1,10 @@
 {
  "provenance": {
-  "bundleSha256": "afb93bac05fd9d392ff8433e46f97707126ffc873e2d7a9e93e8147ab9b5fc15",
-  "fixtureSha256": "c73849022cdcbd845ebbea8354ca6608b5d286c1ee39c5fe875dd71ea5ed4aae",
-  "gitCommit": "549f44a9771aaea0155bcceed2f149b7aea60888",
+  "bundleSha256": "9d77cddf7b8c5dece171efcf62b32e173f555ea2436795705b215d447a20b68a",
+  "fixtureSha256": "59908583b0cfd4df0dc75e6bcd6f85c22920c9446b92bff0fb5c102467ceda0e",
+  "gitCommit": "fb1dc2e6df0eb617bda0fd23fe24c1cbc12cc4bc",
   "workingTreeDirty": false,
-  "ranAt": "2026-10-20T13:32:17.650Z"
+  "ranAt": "2026-10-20T13:45:43.792Z"
  },
  "criteria": 2118,
  "bySubject": {
@@ -34,8 +34,8 @@
   },
   "integrated-science": {
    "criteria": 645,
-   "verified": 615,
-   "failed": 8,
+   "verified": 617,
+   "failed": 6,
    "blocked": 22
   },
   "mathematics": {
@@ -64,22 +64,21 @@
   }
  },
  "byOutcome": {
-  "verified": 1270,
+  "verified": 1272,
   "blocked": 701,
-  "failed": 147
+  "failed": 145
  },
  "failureReasons": {
   "missing:partial": 41,
   "uncommitted:incorrect": 42,
-  "irrelevant:resolved-wrong-mark": 2,
   "full:resolved-wrong-mark": 1,
   "full:required-mark-wrong": 1,
   "incorrect:resolved-wrong-mark": 15,
+  "full:required-resolution-missing": 15,
   "uncommitted:partial": 84,
+  "uncommitted:equivalent": 15,
   "missing:incorrect": 12,
   "missing:competing": 12,
-  "full:required-resolution-missing": 11,
-  "uncommitted:equivalent": 11,
   "equivalent:resolved-wrong-mark": 9
  },
  "blockers": {
@@ -97,7 +96,7 @@
   "blocked": 45
  },
  "rehearsal": {
-  "criteriaInserted": 1270,
+  "criteriaInserted": 1272,
   "criteriaRejected": [],
   "papersInserted": 22,
   "papersRejected": [],
@@ -128,5 +127,5 @@
   "releaseRejected": [],
   "criteriaRejectedCount": 0
  },
- "seconds": 41
+ "seconds": 47
 }
