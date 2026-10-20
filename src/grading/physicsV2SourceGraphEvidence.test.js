@@ -73,6 +73,22 @@ describe.each(cases)("Physics source graph V2, $paper_id",paper=>{
   extra.graph.points.push({x:Number(part.grid.xMax)*.7,y:0});
   expect(item(evaluate(extra)).suggestedMarks).toBeLessThan(7);
  });
+ test("rejects a tiny exact-slope segment and contradictory axis labels",()=>{
+  const good=responseFor(part);
+  const tiny=JSON.parse(JSON.stringify(good));
+  const m=Number(part.graph.line.gradient);
+  const x=Number(part.graph.points[0].x);
+  const delta=(Math.max(...part.graph.points.map(p=>p.x))-
+    Math.min(...part.graph.points.map(p=>p.x)))*0.01;
+  tiny.graph.line=[{x,y:m*x},{x:x+delta,y:m*(x+delta)}];
+  expect(item(evaluate(tiny)).suggestedMarks).toBeLessThanOrEqual(5);
+  const contradicted=JSON.parse(JSON.stringify(good));
+  contradicted.graph.axisXLabel="not "+String(part.grid.xLabel);
+  expect(item(evaluate(contradicted)).suggestedMarks).toBeLessThanOrEqual(6);
+  const flipped=JSON.parse(JSON.stringify(good));
+  flipped.graph.axisXLabel="incorrect "+String(part.grid.xLabel);
+  expect(item(evaluate(flipped)).suggestedMarks).toBeLessThanOrEqual(6);
+ });
  test("malformed/unbounded/spoofed graph evidence fails closed",()=>{
   for(const [name,modify] of [
    ["infinity",g=>{g.graph.points[0].x=Infinity;}],
