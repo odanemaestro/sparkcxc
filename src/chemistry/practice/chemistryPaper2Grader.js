@@ -89,11 +89,21 @@ function alternatives(point){
   return out.filter(Boolean);
 }
 const compact=value=>clean(value).replace(/\s+/g,"");
+// The compact written form of a symbol, as a whole token: "Q" is not found
+// inside "ZXQJ", nor "O2" inside "CO2". A leading coefficient ("2H2O") is
+// allowed before a symbol that starts with a letter.
+function symbolPresent(response,reference){
+  const ref=compact(reference);
+  if(!ref)return false;
+  const body=[...ref].map(ch=>ch.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("\\s*");
+  const before=/^[0-9.]/.test(ref)?"(?<![a-z0-9.])":"(?<![a-z])";
+  return new RegExp(before+body+"(?![a-z0-9])").test(clean(response));
+}
 function textMatch(response,reference){
   // A symbolic point ("Q = It", "C₃H₇OH") has no word tokens to compare;
   // compare the compact written form instead.
   if(!tokens(reference).filter(t=>!/^(mark|marks|one|two|three|four|five|six|any)$/.test(t)).some(t=>/[a-z]{2}/.test(t)&&!/\d/.test(t)))
-    return compact(response).includes(compact(reference));
+    return symbolPresent(response,reference);
   return matchScienceWrittenEvidence(response,reference,{
     // "a form of energy", "a type of", "a kind of" are filler: "Heat is
     // energy" states "Heat is a form of energy".

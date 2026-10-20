@@ -174,11 +174,11 @@ function mathematics(rows,responses){
    const allAutomatable=detailed&&stored.every(automatableMathCriterion);
    // The shared grader awards correct-answer-implied method marks on ordinary
    // numerical tasks (CXC convention, unless the question demands working).
-   // A criterion explicitly marked for manual checking cannot rely on it.
-   const manualScheme=detailed&&stored.some(c=>c?.check?.type==="manual-verification");
+   // Only a fully automatable scheme may rely on it: a criterion marked for
+   // manual checking or drafted from a fallback cannot.
    const partMarkingPolicy={
     ...part.markingPolicy,
-    correctAnswerImpliesMethod:!manualScheme && part.requireWorking!==true &&
+    correctAnswerImpliesMethod:allAutomatable && part.requireWorking!==true &&
      part.markingPolicy?.correctAnswerImpliesMethod!==false
    };
    return {row,part:{...part,criteria:detailed?stored:part.criteria,
@@ -246,6 +246,9 @@ function mathPartCertain(result,specs,response,policy={},source={}){
  const byCode=new Map(specs.map(s=>[s.code,s]));
  const noWorking=!workingOf(response).trim();
  const kindOf=(line,spec)=>String(spec?.kind||line.kind||"").toUpperCase();
+ // Credit carried forward from a wrong earlier value is not covered by the
+ // criterion verification evidence: it stays provisional.
+ if(result.criteria.some(line=>line.awarded&&line.ecf))return false;
  // Competing answers earn no accuracy mark (CXC). If a checker nonetheless
  // credited one, abstain; a checker that already withheld credit is certain.
  if(competingMathAnswer(response,source.answer)&&result.criteria.some(line=>
@@ -505,6 +508,15 @@ function sciencePointsCertain({examiner,item,points,text,maxMarks}){
  const denied=scienceResponseClauses(text).some(c=>
   /^\s*it\s+is\s+(?:false|incorrect|not\s+true|untrue)\b/i.test(c)||/\b(?:not|never|isn'?t|cannot)\b[^.;\n]*\d/i.test(c));
  if(points.length>worded.length&&(denied||chemistryFinalNumericEvidence(text).ambiguous))return false;
+ // A choice letter ("Q" from "P, Q or R") is certain only when no other
+ // option is written and nothing is denied: "R. Q is wrong" is not "Q".
+ const letters=points.filter(exact).map(p=>cleanSourcePoint(p).trim()).filter(p=>/^[A-Z]$/.test(p));
+ if(letters.some(l=>new RegExp("\\b"+l+"\\b","i").test(text))){
+  const options=new Set(String(item?.prompt||"").match(/\b[A-Z]\b/g)||[]);
+  const others=[...options].filter(o=>!letters.includes(o)&&!/^[AI]$/.test(o));
+  if(others.some(o=>new RegExp("\\b"+o+"\\b","i").test(text)))return false;
+  if(/\b(?:not|never|no|wrong|incorrect|false|isn'?t|cannot|neither|nor)\b/i.test(text))return false;
+ }
  if(!worded.length)return true;
  const numericMarks=(examiner.criteria||[]).filter((c,i)=>exact(points[i])).reduce((n,c)=>n+c.marks,0);
  const numericMax=points.filter(exact).reduce((n,p)=>n+chemistryPointMarks(p),0);

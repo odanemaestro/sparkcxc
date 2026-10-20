@@ -19,6 +19,23 @@ export function subPoints(point){
  return parts.map(m=>m[1].replace(/^\s*(?:and\/or|and|or|,|;)\s*/i,"").trim()+` (${m[2]})`);
 }
 
+/**
+ * A choice letter ("Q" from "P, Q or R") is a whole answer: the letter inside
+ * another word earns nothing, and a competing or denied choice ("R. Q is
+ * wrong.") never earns it. Other points are left unanswered, so 0 is expected.
+ */
+function letterFixtures(item,points,answers){
+ const options=[...new Set(String(item.prompt||"").match(/\b[A-Z]\b/g)||[])].filter(o=>!/^[AI]$/.test(o));
+ return points.flatMap((p,i)=>{
+  const letter=cleanSourcePoint(p).trim();
+  if(!/^[A-Z]$/.test(letter)||answers[i]?.trim()!==letter)return [];
+  const other=options.find(o=>o!==letter);
+  return [F("irrelevant",{answer:`X${letter}Z V${letter}${letter}J`},0,"choice letter inside unrelated words"),
+   ...(other?[F("competing",{answer:`${other}. ${letter} is wrong.`},0,"competing choice; the source letter is denied"),
+    F("competing",{answer:`${letter} or ${other}`},{min:0,max:0},"two choices given")]:[])];
+ });
+}
+
 const SUBSCRIPT="₀₁₂₃₄₅₆₇₈₉";
 function equationFixtures(item,maxMarks,equation){
  const states=/state symbols/i.test(item.prompt||"");
@@ -274,7 +291,10 @@ export function scienceFixtures({item,maxMarks,others=[],curated=[],criterionId,
   F("keyword-list",{answer:[...new Set(full.toLowerCase().replace(/[^a-z0-9 ]/g," ").split(/\s+/).filter(w=>w.length>3))].join(" ")},{min:0,max:maxMarks}),
   F("blank",{answer:""},0),
   F("irrelevant",{answer:"I caught the bus to town on Tuesday."},0),
+  // Capital letters inside unrelated words are not answers.
+  F("irrelevant",{answer:"ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY"},0,"letters inside unrelated words"),
   F("ceiling",{answer:full+"\n"+full},{min:0,max:maxMarks}),
+  ...letterFixtures(item,points,answers),
   ...curated);
  // One statement carrying every mark ("Warm an ammonium salt with a strong
  // alkali (2)") is all-or-nothing as the scheme is written.

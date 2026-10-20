@@ -643,8 +643,13 @@ try{
  assert.equal(cylinderModel.maxMarks,9);
  assert.equal(cylinderModel.suggestedMarks,5,
   'Canonical cylinder answer earns five machine-verifiable marks; four manual method marks are not inferred');
- assert.equal(cylinderModel.unresolvedMarks,9,
-  'Strict V2 evidence review must leave all nine cylinder mark weights unresolved until manually verifiable methods are supported');
+ // Parts with a manual-verification method check stay unresolved; the time
+ // part, whose method is a machine calculation check (154 / 5.5), resolves.
+ assert.equal(cylinderModel.unresolvedMarks,7,
+  'Manual-verification cylinder parts (a)-(c) must stay unresolved');
+ assert.deepEqual(cylinderModel.rows.filter(r=>r.resolved).map(r=>r.criterionId),['p2-q6-v1::d'],
+  'Only the machine-checked time part may resolve');
+ assert.equal(cylinderModel.canPublishFinalScore,false);
  assert.equal(cylinderModel.canPublishFinalScore,false);
  console.log('Mathematics original-v1 Q6 draft',JSON.stringify({
   validECF:carriedTime.suggestedMarks,
