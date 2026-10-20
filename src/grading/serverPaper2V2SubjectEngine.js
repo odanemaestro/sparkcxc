@@ -415,9 +415,15 @@ function itResolved({rule,grade,response,part,maxMarks}){
      gradeInformationTechnologyPart({},part,{answer:"="+answer.trim()}).earned>0)return false;
   return true;
  }
- if(rule==="pseudocode"||rule==="ipo")
+ if(rule==="pseudocode"||rule==="ipo"){
+  // An alternative SCORE expression that parses as an assignment but is not
+  // among the source-verified forms is a possible valid method. Do not
+  // publish an incorrect two-mark deduction just because other lines parse.
+  if(rule==="pseudocode"&&grade.criteria?.some(c=>c.code==="P2"&&c.earned===0)
+    &&/\bscore\s*(?:<-|←|:=|=)\s*[^\n;]+/i.test(answer))return false;
   return grade.earned===maxMarks||grade.earned===0&&!/\b(?:if|score|input|read|output|display)\b/i.test(answer)
    ||structuredItResolved(rule,grade,answer);
+ }
  const accounted=[part.prompt,...itRecognisedPhrases(answer)];
  const creditedPoints=(grade.criteria||[]).filter(c=>c.earned>0).length;
  const gate=certainWrittenMark({suggestedMarks:grade.earned,maxMarks,response:answer,
