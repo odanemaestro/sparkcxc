@@ -72,7 +72,7 @@ jobs:
           name: spark-v2-criterion-evidence-${{ github.sha }}
           path: |
             artifacts/v2-criterion-evidence-audit.json
-            artifacts/v2-criterion-qa-batch1-1036.json
+            artifacts/v2-criterion-qa-all-2063.json
           if-no-files-found: error
           retention-days: 14
 
