@@ -1066,6 +1066,7 @@ try{
   const stats={batch:batchNumber,parts:subset.length,sourcePapers:bySource.size,
    positiveCases:0,denialCases:0,positiveCreditParts:0,
    explicitDenialCreditParts:0,ambiguousCases:0,
+   unambiguousDenialCases:0,unambiguousDenialCreditParts:0,
    bySubject:{}};
   for(const [key,items] of bySource){
    const paper=sourceByPaper.get(key);
@@ -1080,11 +1081,13 @@ try{
     stats.positiveCases++;
     if(['chemistry','integrated-science','food-nutrition-and-health'].includes(item.subject_id)){
      denials[item.criterion_id]='It is false that '+point;
-     const clean=point.replace(/\\([^)]*\\)/g,'');
-     // Qualifying source references, including legitimate negative facts,
-     // need human interpretation; do not declare these a wrong answer.
-     const unambiguous=!/\\b(?:not|no|never|without|cannot|fail|false|incorrect|unable)\\b/i.test(clean)
-       && !/\\b(?:graph|diagram|draw|plot|construction)\\b/i.test(clean);
+     // Negating an already negative source fact can be a true answer.
+     // Those cases are not valid false-credit probes without semantic review.
+     const sourceContainsNegation=/\b(?:not|no|never|without|cannot|can'?t|doesn'?t|didn'?t|isn'?t|fails?|unable|false|incorrect)\b/i.test(point);
+     const sourceIsVisual=/\b(?:graph|diagram|draw|plot|construction)\b/i.test(point);
+     const unambiguous=!sourceContainsNegation&&!sourceIsVisual;
+     if(unambiguous)stats.unambiguousDenialCases++;
+     else stats.ambiguousCases++;
      applicable.set(item.criterion_id,unambiguous);
      stats.denialCases++;
     }
@@ -1119,6 +1122,8 @@ try{
      evidenceCase.denialSuggestedMarks=suggestion.suggestedMarks;
      if(suggestion.suggestedMarks>0){
       stats.explicitDenialCreditParts++;domain.denialCredit++;
+      if(evidenceCase.denialSourceIsUnambiguous)
+       stats.unambiguousDenialCreditParts++;
       // Keep the false-positive counter visible without falsely approving
       // source points whose nuance has not yet been independently assessed.
      }
@@ -1126,6 +1131,8 @@ try{
     evidenceCases.push(evidenceCase);
    }
   }
+  assert.equal(stats.unambiguousDenialCreditParts,0,
+   'An explicitly denied affirmative source answer cannot receive provisional marks');
   evidenceSummaries.push(stats);
  }
  assert.equal(evidenceCases.length,2106,
