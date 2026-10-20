@@ -54,7 +54,8 @@ const migrations=[
 "20261020120000_marking_v2_third_300_criterion_calibration_queue.sql",
 "20261020130000_marking_v2_fourth_300_criterion_calibration_queue.sql",
 "20261020140000_marking_v2_fifth_300_criterion_calibration_queue.sql",
-"20261020150000_marking_v2_sixth_300_criterion_calibration_queue.sql"
+"20261020150000_marking_v2_sixth_300_criterion_calibration_queue.sql",
+"20261020160000_marking_v2_final_318_criterion_calibration_queue.sql"
 ];
 const db=new PGlite();
 try{
@@ -272,11 +273,68 @@ try{
   assert.equal(batch6.filter(x=>x.subject_id===subject).length,number);
  assert.equal(new Set(batch6.map(x=>x.subject_id)).size,7);
 
+
+ const final318=(await db.query(`SELECT subject_id,paper_id,rubric_version,
+   criterion_id,max_marks,source_sha256,criterion_sha256,evidence_class,triage_note
+   FROM spark_grading_private.v2_calibration_batch_items
+   WHERE batch_id='v2-bulk-calibration-007'
+   ORDER BY subject_id,paper_id,criterion_id`)).rows;
+ assert.equal(final318.length,318,
+  'Final calibration batch must include 318 previously unselected source parts');
+ const quotas7={'chemistry':56,'english-a':3,
+  'information-technology':42,'integrated-science':160,
+  'mathematics':45,'physics':10,'social-studies':2};
+ for(const [subject,required] of Object.entries(quotas7))
+   assert.equal(final318.filter(x=>x.subject_id===subject).length,required,
+    'Missing final subject coverage: '+subject);
+ const matchedFour=(await db.query(`SELECT COUNT(*)::int n
+   FROM spark_grading_private.v2_calibration_batch_items b
+   JOIN spark_grading_private.v2_calibration_queue q
+    ON q.subject_id=b.subject_id AND q.paper_id=b.paper_id
+    AND q.rubric_version=b.rubric_version AND q.criterion_id=b.criterion_id
+   WHERE b.batch_id='v2-bulk-calibration-007' AND q.source_matched_review`)).rows[0].n;
+ assert.equal(matchedFour,4,'Preserve four existing AI source reviews without duplicate approvals');
+ const sourceMap=new Map(papers.map(p=>[p.subject_id+'::'+p.paper_id,p]));
+ const batchesByPaper=Map.groupBy(final318,x=>x.subject_id+'::'+x.paper_id);
+ for(const [key,items] of batchesByPaper){
+  const paper=sourceMap.get(key);
+  assert(paper,'Final cohort unknown registered paper: '+key);
+  const responses=Object.fromEntries(items.map(item=>
+   [item.criterion_id,'ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY']));
+  const noAnswers=evaluateExistingSubjectPaper2V2({
+   subjectId:paper.subject_id,paperId:paper.paper_id,
+   criteria:paper.criteria,responses:{}});
+  const unrelated=evaluateExistingSubjectPaper2V2({
+   subjectId:paper.subject_id,paperId:paper.paper_id,
+   criteria:paper.criteria,responses});
+  const zero=new Map(noAnswers.rows.map(r=>[r.criterionId,r.suggestedMarks]));
+  const wrong=new Map(unrelated.rows.map(r=>[r.criterionId,r.suggestedMarks]));
+  for(const item of items){
+   const sourcePart=paper.criteria.find(x=>x.id===item.criterion_id);
+   assert(sourcePart,'Unregistered final batch part: '+item.criterion_id);
+   assert.equal(sourcePart.maxMarks,item.max_marks);
+   assert.equal(zero.get(item.criterion_id),0,
+     'Final cohort blank answer incorrectly earned credit: '+item.criterion_id);
+   assert.equal(wrong.get(item.criterion_id),0,
+     'Final cohort unrelated answer incorrectly earned credit: '+item.criterion_id);
+  }
+ }
+ const inventory=(await db.query(`SELECT
+  (SELECT COUNT(*)::int FROM spark_grading_private.v2_calibration_batch_items) selected,
+  (SELECT COUNT(*)::int FROM spark_grading_private.v2_calibration_queue) registered,
+  (SELECT COUNT(*)::int FROM spark_grading_private.rubric_criterion_reviews_v2) reviews,
+  (SELECT COUNT(*)::int FROM spark_grading_private.v2_calibration_queue q WHERE
+   NOT EXISTS (SELECT 1 FROM spark_grading_private.v2_calibration_batch_items b
+    WHERE b.subject_id=q.subject_id AND b.paper_id=q.paper_id
+      AND b.rubric_version=q.rubric_version AND b.criterion_id=q.criterion_id)) unselected
+ `)).rows[0];
+ assert.deepEqual(inventory,{selected:2118,registered:2118,reviews:12,unselected:0},
+   'No unselected source parts, duplicate reviews or altered reviewer authorisations');
  const repeats=(await db.query(`select count(*)::int n from (
  select subject_id,paper_id,rubric_version,criterion_id from
  spark_grading_private.v2_calibration_batch_items group by 1,2,3,4
  having count(*)>1) duplicates`)).rows[0].n;
- assert.equal(repeats,0,'Source parts must never repeat across six batches');
+ assert.equal(repeats,0,'Source parts must never repeat across seven batches');
  const hashes=(await db.query(`select count(*)::int total,
  count(*) filter(where b.source_sha256=q.paper_source_sha256
  and b.criterion_sha256=q.criterion_sha256)::int matched
@@ -284,8 +342,8 @@ try{
  join spark_grading_private.v2_calibration_queue q
  on q.subject_id=b.subject_id and q.paper_id=b.paper_id
  and q.rubric_version=b.rubric_version and q.criterion_id=b.criterion_id`)).rows[0];
- assert.equal(hashes.total,1800);
- assert.equal(hashes.matched,1800);
+ assert.equal(hashes.total,2118);
+ assert.equal(hashes.matched,2118);
 
  assert.equal(new Set(batch3.map(x=>x.subject_id)).size,8);
  const groups3=Map.groupBy(batch3,x=>x.subject_id+'::'+x.paper_id);
