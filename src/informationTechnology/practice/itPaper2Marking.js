@@ -336,12 +336,28 @@ export function gradeInformationTechnologyPart(question, part, response) {
     case "machine-characteristics":
       criteria = scoreMachineCharacteristics(part.prompt, answer, part.marks);
       break;
-    case "router":
-      criteria = [
-        criterion("A1", 1, "Identifies a router", conceptPresent(answer, "router") ? 1 : 0, conceptPresent(answer, "router") ? "Router identified." : "Router was not identified."),
-        criterion("A2", 1, "States that it connects/forwards between networks", conceptPresent(answer, "connect_networks") ? 1 : 0, conceptPresent(answer, "connect_networks") ? "Router function established." : "The function of connecting different networks is required."),
+    case "router": {
+      // This exact two-mark source question is shared by Papers A-I.
+      // Broad phrase matching wrongly credited "not a router" and "router
+      // cannot link networks". Keep the B1 identity and B2 function
+      // independent, with explicit contradictory evidence scored as zero.
+      const normal=String(answer||"").toLowerCase()
+        .replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();
+      const identity=/\b(?:router|routing device)\b/.test(normal);
+      const functionEvidence=/(?:\b(?:connects?|links?)\b.{0,55}\b(?:different|separate|other|multiple)\s+networks\b|\b(?:connects?|links?)\b.{0,55}\bnetworks?\s+(?:together|to\s+other\s+networks?)\b|\b(?:forwards?|routes?)\b.{0,55}\b(?:data|packets?)\b.{0,35}\b(?:between|across|among)\s+networks\b|\b(?:forwards?|routes?)\b.{0,40}\b(?:between|across)\s+networks\b)/.test(normal);
+      const identityDenied=/\b(?:not|never|isn't|is\s+not|cannot|can't)\s+(?:a\s+)?(?:router|routing\s+device)\b|\b(?:router|routing\s+device)\b.{0,22}\b(?:not|never|cannot|can't|isn't)\s+(?:the\s+)?(?:device|hardware|answer)\b/.test(normal);
+      const functionDenied=/\b(?:not|never|cannot|can't|doesn't|does\s+not)\s+(?:\w+\s+){0,4}(?:connect|link|route|forward)\b|\b(?:router|routing\s+device)\b.{0,30}\b(?:cannot|can't|doesn't|does\s+not|never)\s+(?:connect|link|route|forward)\b/.test(normal);
+      const competing=/\b(?:router|routing device)\s+or\s+(?:a\s+)?(?:switch|hub|modem|bridge)\b|\b(?:switch|hub|modem|bridge)\s+or\s+(?:a\s+)?(?:router|routing device)\b/.test(normal);
+      const identified=identity&&!identityDenied&&!competing;
+      const functionOk=functionEvidence&&!functionDenied&&!competing;
+      criteria=[
+        criterion("A1",1,"Identifies router as device",identified?1:0,
+          identified?"Router correctly identified.":"Identify a router without a competing device."),
+        criterion("A2",1,"Links/forwards between networks",functionOk?1:0,
+          functionOk?"Correct inter-network routing function.":"State how the device connects or forwards between networks."),
       ];
       break;
+    }
     case "intranet-extranet": {
       const a = conceptPresent(answer, "intranet") && conceptPresent(answer, "intranet_private");
       const b = conceptPresent(answer, "extranet") && conceptPresent(answer, "extranet_external");
