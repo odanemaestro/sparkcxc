@@ -51,7 +51,8 @@ const migrations=[
 "20261020100000_marking_v2_second_300_criterion_calibration_queue.sql",
 "20261020103000_marking_v2_math_simplest_linear_source_checks.sql",
 "20261020110000_marking_v2_math_simplest_linear_ai_reviews.sql",
-"20261020120000_marking_v2_third_300_criterion_calibration_queue.sql"
+"20261020120000_marking_v2_third_300_criterion_calibration_queue.sql",
+"20261020130000_marking_v2_fourth_300_criterion_calibration_queue.sql"
 ];
 const db=new PGlite();
 try{
@@ -242,11 +243,20 @@ try{
  }
  const batch3=(await db.query("select subject_id,paper_id,rubric_version,criterion_id from spark_grading_private.v2_calibration_batch_items where batch_id='v2-bulk-calibration-003'")).rows;
  assert.equal(batch3.length,300);
+ const batch4=(await db.query("select subject_id,paper_id,rubric_version,criterion_id,max_marks from spark_grading_private.v2_calibration_batch_items where batch_id='v2-bulk-calibration-004'")).rows;
+ assert.equal(batch4.length,300,'Batch 004 must have exactly 300 source parts');
+ const quotas4={'mathematics':100,'integrated-science':90,
+  'chemistry':35,'information-technology':40,'physics':15,
+  'english-a':10,'social-studies':5,'food-nutrition-and-health':5};
+ for(const [subject,number] of Object.entries(quotas4))
+  assert.equal(batch4.filter(x=>x.subject_id===subject).length,number);
+ assert.equal(new Set(batch4.map(x=>x.subject_id)).size,8);
+
  const repeats=(await db.query(`select count(*)::int n from (
  select subject_id,paper_id,rubric_version,criterion_id from
  spark_grading_private.v2_calibration_batch_items group by 1,2,3,4
  having count(*)>1) duplicates`)).rows[0].n;
- assert.equal(repeats,0,'Source parts must never repeat across three batches');
+ assert.equal(repeats,0,'Source parts must never repeat across four batches');
  const hashes=(await db.query(`select count(*)::int total,
  count(*) filter(where b.source_sha256=q.paper_source_sha256
  and b.criterion_sha256=q.criterion_sha256)::int matched
@@ -254,8 +264,8 @@ try{
  join spark_grading_private.v2_calibration_queue q
  on q.subject_id=b.subject_id and q.paper_id=b.paper_id
  and q.rubric_version=b.rubric_version and q.criterion_id=b.criterion_id`)).rows[0];
- assert.equal(hashes.total,900);
- assert.equal(hashes.matched,900);
+ assert.equal(hashes.total,1200);
+ assert.equal(hashes.matched,1200);
 
  assert.equal(new Set(batch3.map(x=>x.subject_id)).size,8);
  const groups3=Map.groupBy(batch3,x=>x.subject_id+'::'+x.paper_id);
