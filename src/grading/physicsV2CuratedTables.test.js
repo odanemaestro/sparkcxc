@@ -39,7 +39,8 @@ test("eight registered Physics tables have source-specific full, partial, incorr
     const mark=result.rows.find(x=>x.criterionId===id);
     expect(mark).toBeTruthy();
     const expected=fixture.expect;
-    if(typeof expected==="number")expect(mark.suggestedMarks).toBe(expected);
+    if(typeof expected==="number")expect({criterion:id,kind:fixture.cls,score:mark.suggestedMarks})
+     .toEqual({criterion:id,kind:fixture.cls,score:expected});
     else{
      expect(mark.suggestedMarks).toBeGreaterThanOrEqual(expected.min);
      expect(mark.suggestedMarks).toBeLessThanOrEqual(expected.max);
