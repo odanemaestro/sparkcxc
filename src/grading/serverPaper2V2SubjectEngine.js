@@ -342,6 +342,15 @@ function physics(rows,responses,paperId){
     return {...src,grid:originalPart.grid,graph:originalPart.graph,
      id:fields[1],marks:row.maxMarks};
    }
+   if(src.responseType==="table"){
+    // The private rubric registry omits the source table (and its populated
+    // cells). Rehydrate it from the immutable, source-checked paper before
+    // assessing column consistency and significant-figure marks. Without
+    // this, P2-2-Q1(a) silently loses B1 even on a perfect completed table.
+    if(originalPart.responseType!=="table"||!Array.isArray(originalPart.table?.rows))
+     throw new Error("Registered Physics source table drift: "+row.id);
+    return {...src,table:originalPart.table,id:fields[1],marks:row.maxMarks};
+   }
    return {...src,id:fields[1],marks:row.maxMarks};
   })});
  }
