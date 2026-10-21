@@ -480,6 +480,11 @@ function physicsTableCertain(key,response){
   const v=norm(table[cell]);
   if(!v)return true;
   const exact=accepted.map(norm);
+  // Only an explicit, complete denial of a source-accepted table value
+  // is certainly incorrect. Unknown prose or possible synonyms still
+  // abstain; a lexical match inside "not regular" cannot earn credit.
+  if(/^(?:not|never|no|incorrect|wrong)\b/.test(v))
+   return exact.some(a=>["not ","never ","no ","incorrect ","wrong "].some(prefix=>v===prefix+a));
   if(numericRe.test(v)){
    const nums=exact.filter(a=>numericRe.test(a)).map(Number);
    if(nums.some(a=>a===Number(v)))return true;
