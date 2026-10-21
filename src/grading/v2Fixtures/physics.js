@@ -6,6 +6,7 @@
  */
 import {modelResponsesForPhysicsPaper2,unsuperscript,physicsAlignedStatements,physicsModelStatements} from "../../physics/paper2/physicsPaper2Marking";
 import {antonymSwap} from "./science";
+import {physicsCuratedTableFixtures} from "./physicsCurated";
 
 const F=(cls,response,expect,note)=>({cls,response,expect,note});
 const NONSENSE="ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY";
@@ -134,9 +135,12 @@ export function physicsFixtures({paper,question,part,maxMarks,curated=[]}){
  }else if(type==="table"){
   const model=modelResponsesForPhysicsPaper2(paper)[key]?.table;
   if(!model||!Object.keys(model).length)return {blocked:"table-without-complete-answer-key"};
-  if(!curated.length)return {blocked:"table-without-curated-fixtures"};
+  const tableCases=physicsCuratedTableFixtures(key,model,maxMarks);
+  if(!tableCases?.length)return {blocked:"table-without-curated-fixtures"};
   set={kind:"visual",allOrNothing:false,sourceAnswer:{table:model},alternatives:[],
-   fixtures:[F("full",{table:model},maxMarks),F("blank",{},0),F("irrelevant",{answer:NONSENSE},0)]};
+   fixtures:[F("full",{table:model},maxMarks),
+    F("blank",{},0),F("irrelevant",{answer:NONSENSE},0),
+    ...tableCases]};
  }else if((part.criteria||[]).some(c=>c.check?.type==="value")){
   set=valueFixtures(part,maxMarks);
  }else{

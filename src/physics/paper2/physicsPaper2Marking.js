@@ -548,6 +548,9 @@ function normalizeCellValue(value) {
 function cellMatches(value, accepted = []) {
   const candidate = normalizeCellValue(value);
   if (!candidate) return false;
+  // A contradictory cell is not made correct by mentioning the expected
+  // phrase: "not regular" must never match the alternative "regular".
+  if (/^(?:not|never|no|incorrect|wrong)\b/.test(candidate)) return false;
   const numericCandidate = /^[-+]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(candidate);
   return accepted.some(item => {
     const expected = normalizeCellValue(item);

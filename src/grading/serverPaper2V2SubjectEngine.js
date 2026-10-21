@@ -342,6 +342,15 @@ function physics(rows,responses,paperId){
     return {...src,grid:originalPart.grid,graph:originalPart.graph,
      id:fields[1],marks:row.maxMarks};
    }
+   if(src.responseType==="table"){
+    // The private rubric registry omits the source table (and its populated
+    // cells). Rehydrate it from the immutable, source-checked paper before
+    // assessing column consistency and significant-figure marks. Without
+    // this, P2-2-Q1(a) silently loses B1 even on a perfect completed table.
+    if(originalPart.responseType!=="table"||!Array.isArray(originalPart.table?.rows))
+     throw new Error("Registered Physics source table drift: "+row.id);
+    return {...src,table:originalPart.table,id:fields[1],marks:row.maxMarks};
+   }
    return {...src,id:fields[1],marks:row.maxMarks};
   })});
  }
@@ -480,6 +489,11 @@ function physicsTableCertain(key,response){
   const v=norm(table[cell]);
   if(!v)return true;
   const exact=accepted.map(norm);
+  // Only an explicit, complete denial of a source-accepted table value
+  // is certainly incorrect. Unknown prose or possible synonyms still
+  // abstain; a lexical match inside "not regular" cannot earn credit.
+  if(/^(?:not|never|no|incorrect|wrong)\b/.test(v))
+   return exact.some(a=>["not ","never ","no ","incorrect ","wrong "].some(prefix=>v===prefix+a));
   if(numericRe.test(v)){
    const nums=exact.filter(a=>numericRe.test(a)).map(Number);
    if(nums.some(a=>a===Number(v)))return true;
