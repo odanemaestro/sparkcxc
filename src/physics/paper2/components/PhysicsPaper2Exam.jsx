@@ -22,6 +22,10 @@ import {
 import { markPhysicsPaper2, modelResponsesForPhysicsPaper2 } from "../physicsPaper2Marking";
 import { buildAttemptProvenance } from "../../../grading/attemptProvenance";
 import { preparePaper2ScorePublication } from "../../../grading/scorePublication";
+import {supabase} from "../../../lib/supabaseClient";
+import {startServerExamAttempt,submitServerExamAttempt,isV2PaperReleased} from "../../../grading/serverExamAttempt";
+import V2VerifiedScore from "../../../grading/V2VerifiedScore";
+import {verifiedV2Display} from "../../../grading/verifiedV2Display";
 import "./physicsPaper2.css";
 
 function formatTime(totalSeconds) {
@@ -319,9 +323,12 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
   const [libraryOpen, setLibraryOpen] = useState(!initialActive?.paperId);
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
   const [showConstants, setShowConstants] = useState(false);
+  const [serverResult, setServerResult] = useState(null);
+  const startingRef=useRef(false);
   const submissionGuardRef = useRef(Boolean(initialActive?.resultId));
   const paper = getPhysicsPaper2Paper(active?.paperId);
   const phase = active?.phase || null;
+  const verifiedScore=verifiedV2Display(serverResult,active?.serverAttemptId);
   const modelResponses = useMemo(() => paper ? modelResponsesForPhysicsPaper2(paper) : {}, [paper]);
 
   const persistSubmission = React.useCallback(({ submittedAt, timedOut = false } = {}) => {
@@ -378,6 +385,20 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
       stored.paperReleaseIssues=publication.audit.issues;
       stored.paperReleaseMetadata=publication.metadata;
       savePhysicsPaper2Result(userId, stored);
+      // Only registered, released Physics papers start a V2 attempt. Submit
+      // the original structured answers without any client-supplied marks.
+      if(active?.serverAttemptId){
+        submitServerExamAttempt({
+          supabase,attemptId:active.serverAttemptId,responses,
+          score:null,maxScore:final.of,
+          metadata:{subject:"physics",paper:"02",paper_id:paper.paper_id,
+           client_timed_out:Boolean(timedOut),
+           spark_scoring_status:"rubric_review_required",
+           attempt_provenance:stored.attemptProvenance}
+        }).then(out=>{
+          if(!out?.available)console.warn("Physics V2 submission not confirmed; local practice result remains");
+        });
+      }
       setActive(previous => previous ? {
         ...previous,
         phase: "review",
@@ -425,17 +446,40 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
     setActive(next); setCurrentIndex(0); setResponses({}); setRemaining(PHYSICS_PAPER2_DURATION_MINUTES * 60); setLibraryOpen(false);
   }
 
-  function beginPaper() {
-    if (!paper || phase !== "instructions") return;
-    const now = Date.now();
-    submissionGuardRef.current = false;
-    setActive(previous => previous ? { ...previous, phase: "exam", startedAt: new Date(now).toISOString(), endsAt: now + PHYSICS_PAPER2_DURATION_MINUTES * 60 * 1000, currentIndex: 0, responses: previous.responses || {} } : previous);
+  async function beginPaper() {
+    if(!paper||phase!=="instructions"||startingRef.current)return;
+    startingRef.current=true;
+    let serverAttemptId=null;
+    try{
+      // Recheck the private rubric release gate at exam start. Unreleased
+      // Physics papers must remain on the existing practice grader.
+      const released=await isV2PaperReleased({supabase,subjectId:"physics",paperId:paper.paper_id});
+      if(released){
+        const server=await startServerExamAttempt({
+          supabase,subjectId:"physics",paper:"02",mode:"timed",
+          durationSeconds:PHYSICS_PAPER2_DURATION_MINUTES*60,
+          bankVersion:"physics-paper2-v1",rubricVersion:"source-shape-draft-v2",
+          graderVersion:"physics-paper2-marker-v2",
+          metadata:{paper:"02",paper_id:paper.paper_id}
+        });
+        if(server?.available&&server.attempt_id)serverAttemptId=server.attempt_id;
+      }
+    }finally{startingRef.current=false;}
+    const now=Date.now();
+    submissionGuardRef.current=false;
+    setServerResult(null);
+    setActive(previous=>previous&&previous.phase==="instructions"&&previous.paperId===paper.paper_id
+      ?{...previous,phase:"exam",startedAt:new Date(now).toISOString(),
+         endsAt:now+PHYSICS_PAPER2_DURATION_MINUTES*60*1000,currentIndex:0,
+         responses:previous.responses||{},serverAttemptId}
+      :previous);
     setCurrentIndex(0);
-    setRemaining(PHYSICS_PAPER2_DURATION_MINUTES * 60);
-    window.scrollTo?.({ top: 0, behavior: "smooth" });
+    setRemaining(PHYSICS_PAPER2_DURATION_MINUTES*60);
+    window.scrollTo?.({top:0,behavior:"smooth"});
   }
 
   function startAnotherPaper() {
+    setServerResult(null);
     savePhysicsPaper2Active(userId, null);
     submissionGuardRef.current = false;
     setActive(null); setResponses({}); setCurrentIndex(0); setRemaining(PHYSICS_PAPER2_DURATION_MINUTES * 60); setLibraryOpen(true);
@@ -474,12 +518,21 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
       <div className="phy-p2-header-tools"><button type="button" className="phy-p2-constants-control" onClick={() => setShowConstants(true)}>Physical Constants</button><div className={`phy-p2-timer ${remaining <= 600 && phase === "exam" ? "warning" : ""}`}><span>{phase === "review" ? "Submitted" : "Time remaining"}</span><strong>{phase === "review" ? "REVIEW" : formatTime(remaining)}</strong></div></div>
     </header>
 
-    {phase === "review" && <section className="phy-p2-review-summary">
-      <div><span>Marks earned</span><strong>{result.marks}/{result.of}</strong></div>
-      <div><span>Questions</span><strong>{paper.questions.length} submitted</strong></div>
-      <div><span>Estimated Paper 2 score</span><strong>{Math.round((result.marks / result.of) * 100)}%</strong></div>
-      <p>Your paper has been marked and the result is saved. Numerical and structured checks are automatic. Written and method evidence may require teacher or examiner review, so treat this as an estimated practice score.</p>
-    </section>}
+    {phase === "review" && <>
+      <section className="phy-p2-review-summary">
+        <div><span>{verifiedScore?"Verified marks":"Estimated practice marks"}</span>
+          <strong>{verifiedScore?verifiedScore.score:result.marks}/{verifiedScore?verifiedScore.maxMarks:result.of}</strong></div>
+        <div><span>Questions</span><strong>{paper.questions.length} submitted</strong></div>
+        <div><span>{verifiedScore?"Verified Paper 2 score":"Estimated Paper 2 score"}</span>
+          <strong>{verifiedScore?verifiedScore.percent:Math.round(result.marks/result.of*100)}%</strong></div>
+        <p>{verifiedScore
+          ? "The server has verified and published your Paper 2 result. Its score is authoritative."
+          : "This is an estimated practice score. Written, method and graph evidence may require verification; no provisional estimate is a final V2 mark."}</p>
+      </section>
+      {active?.serverAttemptId&&<V2VerifiedScore supabase={supabase}
+        attemptId={active.serverAttemptId} estimate={result.marks} maxMarks={result.of}
+        onResult={setServerResult}/>}
+    </>}
 
     <nav className="phy-p2-question-nav" aria-label="Paper 2 questions">{paper.questions.map((item, index) => {
       const hasAnswer = item.parts.some(part => responseHasContent(responses[physicsPaper2PartKey(item.question_id, part.id)] || {}));
