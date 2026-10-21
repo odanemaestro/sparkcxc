@@ -527,7 +527,7 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
           <strong>{verifiedScore?verifiedScore.percent:Math.round(result.marks/result.of*100)}%</strong></div>
         <p>{verifiedScore
           ? "The server has verified and published your Paper 2 result. Its score is authoritative."
-          : "This is an estimated practice score. Written, method and graph evidence may require verification; no provisional estimate is a final V2 mark."}</p>
+          : "Your paper has been marked and the result is saved as a practice estimate. Written, method and graph evidence may require verification; no provisional estimate is a final V2 mark."}</p>
       </section>
       {active?.serverAttemptId&&<V2VerifiedScore supabase={supabase}
         attemptId={active.serverAttemptId} estimate={result.marks} maxMarks={result.of}
