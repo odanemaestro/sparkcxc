@@ -66,6 +66,19 @@ jobs:
           node tools/test-v2-registered-paper-replay.mjs
           node --input-type=module -e "import('./supabase/functions/_shared/server-marker-v2.mjs').then(x => { if(typeof x.evaluateExistingSubjectPaper2V2 !== 'function') process.exit(1) })"
 
+      - name: Recheck Physics criterion evidence and source-table fixtures
+        run: |
+          node tools/v2-verify-all.mjs --subject physics --out artifacts/v2-physics-table-retest
+          node --input-type=module -e 'import fs from "node:fs";const s=JSON.parse(fs.readFileSync("artifacts/v2-physics-table-retest/summary.json","utf8"));const p=s.bySubject.physics;if(p?.criteria!==135||p.verified<57) {console.error("Physics verification regressed",JSON.stringify(p));process.exit(1)}console.log("Physics verified",p.verified,"of 135; remaining criteria stay unreleased")'
+
+      - name: Upload Physics V2 evidence results
+        uses: actions/upload-artifact@v4
+        with:
+          name: spark-v2-physics-retest-${{ github.sha }}
+          path: artifacts/v2-physics-table-retest/
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Reverify all 252 IT criteria and nine paper-level submissions
         run: |
           node tools/v2-verify-all.mjs --subject information-technology --out artifacts/v2-it-production-retest
