@@ -79,6 +79,9 @@ function evidenceMatch(response, reference, strict=false){
 }
 
 function parseLabelPoint(point){
+  const raw=String(point||"").trim();
+  const wire=raw.match(/^([A-Za-z0-9]+) *[(](?:earth|neutral|live)[)] *[-:] *(.+?) *[(]1[)]$/i);
+  if(wire)return {key:wire[1],answer:wire[2].trim()};
   const match=String(point || "").match(/^\s*([A-Za-z0-9]+)\s*[-–:]\s*([^()]+?)(?:\s*\(|$)/);
   return match ? {key:match[1].trim(),answer:match[2].trim()} : null;
 }
