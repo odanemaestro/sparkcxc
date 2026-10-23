@@ -114,9 +114,10 @@ export function markCircuitConstruction(qid,pi,ii,item,response,hasFreehand=fals
     (intact&&noOverlap);
  }else{
   const topology=correctComponents?meterCircuit(components,wires):{series:false,parallel:false};
-  marks=[Number(topology.series),Number(topology.parallel),Number(correctComponents&&noOverlap)];
+  marks=[Number(topology.series),Number(topology.parallel),Number(correctComponents&&noOverlap&&wires.length>=1&&noDuplicateWires)];
   known=(!components.length&&!wires.length)||
-    (!correctComponents&&!wires.length)||(!wires.length&&correctComponents&&noOverlap)||
+    (!correctComponents&&!wires.length)||
+    (correctComponents&&noOverlap&&wires.length<=1&&noDuplicateWires)||
     (topology.series&&topology.parallel&&noOverlap&&noDuplicateWires);
  }
  const sourceResolved=Boolean(known)&&!hasFreehand;
