@@ -42,7 +42,11 @@ const topicPresent=(kind,s)=>kind==="conductivity"?/\b(?:copper|iron|aluminium|p
  /\b(?:metal|acid|react|bubble|iron|zinc|copper|magnesium)\w*\b/.test(s);
 export function additionalTableSpec(qid,pi,ii,item){
  const spec=SPECS[qid+":"+pi+":"+ii];
- return spec&&item?.response?.type==="drawing"&&Number(item.marks)===spec.marks?spec:null;
+ const points=item?.markScheme?.points||[];
+ const sourceGuard=spec?.kind==="conductivity"?points.some(p=>/enclosed table listing all six materials/i.test(p)):
+  spec?.kind==="nutrients"?points.some(p=>/carbohydrate.*supplies energy/i.test(p)):
+  spec?.kind==="metals"?points.some(p=>/W.*many bubbles.*X.*some bubbles/i.test(p)):false;
+ return spec&&sourceGuard&&item?.response?.type==="drawing"&&Number(item.marks)===spec.marks?spec:null;
 }
 export function gradeAdditionalTable(qid,pi,ii,item,response,freehand=false){
  const spec=additionalTableSpec(qid,pi,ii,item);
