@@ -71,6 +71,10 @@ jobs:
           node tools/v2-verify-all.mjs --subject physics --out artifacts/v2-physics-table-retest
           node --input-type=module -e 'import fs from "node:fs";const s=JSON.parse(fs.readFileSync("artifacts/v2-physics-table-retest/summary.json","utf8"));const p=s.bySubject.physics;if(p?.criteria!==135||p.verified<57) {console.error("Physics verification regressed",JSON.stringify(p));process.exit(1)}console.log("Physics verified",p.verified,"of 135; remaining criteria stay unreleased")'
 
+      - name: Verify real Physics V2 publication with production method tags
+        run: |
+          node tools/test-v2-release-e2e.mjs artifacts/v2-physics-table-retest --subject physics --paper spark-phy-p02-practice-4
+
       - name: Report each unverified Physics source criterion
         run: |
           node --input-type=module <<'NODE'
