@@ -21,6 +21,7 @@ import {CURATED_FNH} from "./v2Fixtures/fnhCurated";
 import {fnhPointValue,fnhDistinctPairs} from "../fnh/practice/fnhPaper2Marking";
 import INTEGRATED_SCIENCE_PAPER2_SPECS from "../integratedScience/data/integratedSciencePaper2Specs.json";
 import {integratedScienceStructuredFixtures} from "./v2Fixtures/integratedScience";
+import {integratedScienceHypothesisFixtures} from "./v2Fixtures/integratedScienceHypothesis";
 import {integratedScienceGraphInText} from "../integratedScience/practice/integratedSciencePaper2Grader";
 import {CURATED_IS} from "./v2Fixtures/integratedScienceCurated";
 import {physicsFixtures} from "./v2Fixtures/physics";
@@ -118,6 +119,8 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
   if(ii<0)return {blocked:"criterion-not-found-in-source-bank"};
   const item=question.parts[pi].items[ii];
   const type=item.response?.type||"lines";
+  const hypothesis=integratedScienceHypothesisFixtures(qid,item,criterion.maxMarks);
+  if(hypothesis)return hypothesis;
   if(integratedScienceGraphInText(item))return {blocked:"graph-question-without-graph-response-input"};
   const structured=integratedScienceStructuredFixtures({base:qid+":"+pi+":"+ii,item,maxMarks:criterion.maxMarks});
   if(structured){
