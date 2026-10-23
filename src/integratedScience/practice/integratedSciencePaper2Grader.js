@@ -1,3 +1,4 @@
+import {markSourceParticleDiagram} from "./scienceParticleDiagramMarking";
 import {gradeAdditionalTable} from "./scienceAdditionalTableMarking";
 import {markSourceRustTable} from "./scienceRustTableMarking";
 import {markSourceHypothesis} from "./scienceHypothesisMarking";
@@ -412,6 +413,9 @@ export function gradeIntegratedSciencePaper2Item(question,partIndex,itemIndex,it
     const additional=gradeAdditionalTable(question.id,partIndex,itemIndex,item,
      responses[`${base}:drawingTable`],freehand);
     if(additional)return additional;
+    const geometry=markSourceParticleDiagram(question.id,partIndex,itemIndex,item,
+     responses[`${base}:particleLayout`],freehand);
+    if(geometry)return geometry;
     return visualResult(question.id,partIndex,itemIndex,item,responses);
   }
   return lineResult(question.id,partIndex,itemIndex,item,responses);
