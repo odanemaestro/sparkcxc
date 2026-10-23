@@ -51,3 +51,21 @@ test("missing student graph never authorizes trusted geometry",()=>{
  expect(row.resolved).toBe(false);
  expect(row.method).toBe("existing-physics-rubric-checks");
 });
+
+test("graph corroboration adds only its own method allocation",()=>{
+ const response={answer:"100 kPa",working:"incorrect method",
+  graphEvidence:{kind:"physics-gradient-triangle-v1",
+   points:[samplePhysicsGraphLine(graph,2),samplePhysicsGraphLine(graph,8)]}};
+ const row=mark("c",response);
+ // Two triangle method marks are independent of the wrong final answer.
+ // No unrelated final-answer or unit marks can be manufactured.
+ expect(row.suggestedMarks).toBe(2);
+ expect(row.resolved).toBe(false);
+});
+test("graph method evidence is bounded by the original criterion ceiling",()=>{
+ const point=samplePhysicsGraphLine(graph,100/18);
+ const row=mark("d",{answer:"133 kPa",working:"1/18=0.0556",
+  graphEvidence:{kind:"physics-pressure-reading-v1",point}});
+ expect(row.suggestedMarks).toBeLessThanOrEqual(row.maxMarks);
+ expect(row.resolved).toBe(false);
+});
