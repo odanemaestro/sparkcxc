@@ -25,6 +25,19 @@ for(const record of data){
  }
  counts.set(subject,row);
 }
+const detailIds=new Set([
+ "p2-q2-v1::a","p2-q2-v1::b1","p2-q3-v1::d",
+ "p2-q4-v1::d","p2-q9-v1::b1","p2-q10-v1::b2",
+ "IS-M2-P2-05::(a)::(iii)"
+]);
+for(const r of data.filter(r=>detailIds.has(r.criterionId))){
+ console.log("CASE_DETAIL",r.criterionId,JSON.stringify({
+  outcome:r.outcome,blocker:r.blocker,
+  required:r.missingClasses,uncommitted:r.uncommittedClasses,
+  cases:(r.cases||[]).map(c=>({cls:c.cls,expect:c.expect,marks:c.marks,
+   resolved:c.resolved,passed:c.passed,method:c.method,note:c.note}))
+ }));
+}
 for(const [subject,row] of counts){
  const sorted=Object.entries(row.reasons).sort((a,b)=>b[1]-a[1]);
  console.log("SUBJECT",subject,JSON.stringify({total:row.total,verified:row.verified,failed:row.failed,blocked:row.blocked,
