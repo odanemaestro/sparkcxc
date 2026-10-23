@@ -7,6 +7,7 @@
 import {modelResponsesForPhysicsPaper2,unsuperscript,physicsAlignedStatements,physicsModelStatements} from "../../physics/paper2/physicsPaper2Marking";
 import {antonymSwap} from "./science";
 import {physicsCuratedTableFixtures} from "./physicsCurated";
+import {getPhysicsGraphWorkingSpec} from "../physicsGraphWorkingSpecsV2";
 
 const F=(cls,response,expect,note)=>({cls,response,expect,note});
 const NONSENSE="ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY";
@@ -118,6 +119,55 @@ function writtenFixtures(part,maxMarks,others){
  return {kind:"written",allOrNothing:criteria.length===1,sourceAnswer:{answer:model,working:""},alternatives:[],fixtures};
 }
 
+
+/** Source-specific graph-working fixtures, with the actual preceding plotted line.
+ * A typed claim of having drawn a triangle is never valid method evidence.
+ * Values, grid bounds and answer units belong to the authored paper.
+ */
+function gradientMethodFixtures(paper,question,part,maxMarks){
+ const spec=getPhysicsGraphWorkingSpec(question.question_id);
+ const graphPart=question.parts.find(p=>p.id===spec?.graphPart);
+ if(!graphPart?.graph?.line||!graphPart.grid)return {blocked:"gradient-without-source-graph"};
+ const grid=graphPart.grid,line=graphPart.graph.line;
+ const slope=Number(line.gradient),intercept=Number(line.intercept||0);
+ if(!Number.isFinite(slope)||slope<=0)return {blocked:"gradient-without-source-line"};
+ const x0=Math.max(Number(line.from||0),Number(grid.xMin));
+ const x1=Math.min(Number(line.to),Number(grid.xMax),
+  (Number(grid.yMax)-intercept)/slope*0.99);
+ if(!(x1>x0))return {blocked:"gradient-without-plottable-line"};
+ const point=x=>({x,y:x*slope+intercept});
+ const graph={points:graphPart.graph.points.map(p=>({...p})),
+  line:[point(x0),point(x1)],axisXLabel:grid.xLabel,axisYLabel:grid.yLabel,
+  axisXMin:grid.xMin,axisXMax:grid.xMax,axisXStep:grid.xStep,
+  axisYMin:grid.yMin,axisYMax:grid.yMax,axisYStep:grid.yStep};
+ const evidence={kind:"physics-gradient-triangle-v1",
+  points:[point(x0+(x1-x0)*0.12),point(x0+(x1-x0)*0.85)]};
+ const graphKey=question.question_id+"::"+graphPart.id;
+ const key=question.question_id+"::"+part.id;
+ const withGraph=response=>({[graphKey]:{graph},[key]:response});
+ const answer=String(part.answer||"");
+ const blank={answer:"",working:""};
+ const noNumber="The weather was pleasant and the mountains were green.";
+ return {kind:"visual",allOrNothing:false,sourceAnswer:{answer,graphEvidence:evidence},
+  alternatives:[],fixtures:[
+   {cls:"full",responses:withGraph({answer,graphEvidence:evidence}),expect:maxMarks,
+    note:"source answer and actual large triangle on the submitted line"},
+   {cls:"partial",responses:withGraph({answer}),expect:maxMarks-2,
+    mustResolve:true,note:"correct value and unit but no drawn triangle loses both method marks"},
+   {cls:"partial",responses:withGraph({answer,graphEvidence:{
+    kind:"physics-gradient-triangle-v1",points:[point(x0),point(x0+(x1-x0)*0.2)]
+   }}),expect:maxMarks-2,note:"short triangle cannot earn method marks"},
+   {cls:"incorrect",responses:withGraph({answer:noNumber}),expect:0,
+    mustResolve:true,note:"unrelated prose supplies neither triangle nor numeric gradient"},
+   {cls:"contradiction",responses:withGraph({answer:"This is not "+answer}),
+    expect:{min:0,max:maxMarks-1},note:"negated numeric claim is not a valid final answer"},
+   {cls:"blank",response:blank,expect:0},
+   {cls:"irrelevant",response:{answer:NONSENSE},expect:0},
+   {cls:"ceiling",responses:withGraph({answer,graphEvidence:evidence,
+    working:answer+" "+answer}),expect:maxMarks}
+  ]};
+}
+
 /**
  * @param {object} paper   the authored source paper (data/spark-phy-p02-practice-N.json)
  * @param {object} question,part  the source question and part
@@ -132,6 +182,8 @@ export function physicsFixtures({paper,question,part,maxMarks,curated=[]}){
   const model=modelResponsesForPhysicsPaper2(paper)[key]?.graph;
   if(!model)return {blocked:"graph-without-source-data"};
   set=graphFixtures(part,model,maxMarks);
+ }else if(getPhysicsGraphWorkingSpec(question.question_id)?.trianglePart===part.id){
+  set=gradientMethodFixtures(paper,question,part,maxMarks);
  }else if(type==="table"){
   const model=modelResponsesForPhysicsPaper2(paper)[key]?.table;
   if(!model||!Object.keys(model).length)return {blocked:"table-without-complete-answer-key"};
