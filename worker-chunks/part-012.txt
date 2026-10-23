@@ -131,6 +131,166 @@ function gradeEnglishAPaper2(paper, answers = {}, choiceId = "") {
   };
 }
 
+// src/integratedScience/practice/scienceCircuitConstructionMarking.js
+var CASES = {
+  "IS-M2-P2-07:0:0": {
+    marks: 3,
+    kind: "materials",
+    components: ["cell", "lamp", "test-gap"],
+    points: [
+      "Cell, lamp and two crocodile clips/gap for the test material in a single series loop (1)",
+      "Correct symbols for cell and lamp (1)",
+      "Wires drawn with a ruler, no gaps other than the test position (1)"
+    ]
+  },
+  "IS-M2-P2-15:0:0": {
+    marks: 3,
+    kind: "meter",
+    components: ["cell", "resistor", "ammeter", "voltmeter"],
+    points: [
+      "Supply, resistor and ammeter in series (1)",
+      "Voltmeter in parallel across the resistor (1)",
+      "Correct symbols, lines drawn with a ruler (1)"
+    ]
+  }
+};
+var allowed = /* @__PURE__ */ new Set(["cell", "lamp", "test-gap", "resistor", "ammeter", "voltmeter", "switch", "fuse"]);
+var portName = (id, port) => id + ":" + port;
+function parse(input) {
+  let data = input;
+  try {
+    if (typeof input === "string") data = JSON.parse(input);
+  } catch {
+    return null;
+  }
+  if (!data || typeof data !== "object" || !Array.isArray(data.components) || !Array.isArray(data.wires) || data.components.length > 12 || data.wires.length > 32) return null;
+  const components = data.components;
+  if (!components.every((c) => c && typeof c === "object" && typeof c.id === "string" && /^[a-z0-9_-]{1,24}$/.test(c.id) && allowed.has(c.kind) && Number.isFinite(c.x) && Number.isFinite(c.y) && c.x >= 0.1 && c.x <= 0.9 && c.y >= 0.1 && c.y <= 0.9)) return null;
+  const ids = components.map((c) => c.id);
+  if (new Set(ids).size !== ids.length) return null;
+  if (!data.wires.every((w) => w && typeof w === "object" && ids.includes(w.from) && ids.includes(w.to) && w.from !== w.to && ["a", "b"].includes(w.fromPort) && ["a", "b"].includes(w.toPort))) return null;
+  return data;
+}
+var serial = (components, wires, kinds) => {
+  const list = kinds.map((k) => components.find((c) => c.kind === k));
+  if (list.some((c) => !c)) return false;
+  const idKinds = new Map(list.map((c) => [c.id, c.kind]));
+  const degree = new Map(list.map((c) => [c.id, 0])), pairs = /* @__PURE__ */ new Set();
+  for (const w of wires) {
+    if (!degree.has(w.from) || !degree.has(w.to)) return false;
+    degree.set(w.from, degree.get(w.from) + 1);
+    degree.set(w.to, degree.get(w.to) + 1);
+    pairs.add([w.from, w.to].sort().join("|"));
+  }
+  return wires.length === kinds.length && list.every((c) => degree.get(c.id) === 2) && pairs.size === kinds.length;
+};
+function netTopology(components, wires) {
+  const ports = components.flatMap((c) => [portName(c.id, "a"), portName(c.id, "b")]);
+  const parent = new Map(ports.map((p) => [p, p]));
+  const root = (p) => {
+    let q = p;
+    while (parent.get(q) !== q) q = parent.get(q);
+    return q;
+  };
+  for (const w of wires) {
+    const a = root(portName(w.from, w.fromPort)), b = root(portName(w.to, w.toPort));
+    if (a !== b) parent.set(a, b);
+  }
+  const byRoot = /* @__PURE__ */ new Map();
+  for (const p of ports) {
+    const r = root(p);
+    if (!byRoot.has(r)) byRoot.set(r, []);
+    byRoot.get(r).push(p);
+  }
+  return [...byRoot.values()].map((a) => a.sort());
+}
+function meterCircuit(components, wires) {
+  if (components.length !== 4 || wires.length !== 5) return { series: false, parallel: false };
+  const obj = Object.fromEntries(components.map((c) => [c.kind, c]));
+  const nets = netTopology(components, wires);
+  if (nets.length !== 3 || nets.some((net) => net.length < 2)) return { series: false, parallel: false };
+  const byPort = new Map(nets.flatMap((members, index) => members.map((p) => [p, index])));
+  const get = (kind, p) => byPort.get(portName(obj[kind].id, p));
+  const both = (kind) => [get(kind, "a"), get(kind, "b")];
+  const [r1, r2] = both("resistor"), [v1, v2] = both("voltmeter"), [a1, a2] = both("ammeter"), [c1, c2] = both("cell");
+  const parallel = r1 !== r2 && (/* @__PURE__ */ new Set([r1, r2])).size === 2 && (/* @__PURE__ */ new Set([r1, r2])).size === (/* @__PURE__ */ new Set([r1, r2, v1, v2])).size && v1 !== v2;
+  const shared = (arr1, arr2) => arr1.some((x) => arr2.includes(x));
+  const third = [0, 1, 2].find((n) => n !== r1 && n !== r2);
+  const series = third !== void 0 && [a1, a2].includes(third) && [c1, c2].includes(third) && shared([a1, a2], [r1, r2]) && shared([c1, c2], [r1, r2]) && !shared([a1, a2].filter((x) => x !== third), [c1, c2].filter((x) => x !== third));
+  return { series, parallel: parallel && series };
+}
+function circuitConstructionSource(qid, pi, ii, item2) {
+  const source2 = CASES[qid + ":" + pi + ":" + ii];
+  return source2 && item2?.response?.type === "drawing" && Number(item2?.marks) === source2.marks && JSON.stringify(item2?.markScheme?.points || []) === JSON.stringify(source2.points) ? source2 : null;
+}
+function markCircuitConstruction(qid, pi, ii, item2, response, hasFreehand = false) {
+  const source2 = circuitConstructionSource(qid, pi, ii, item2);
+  if (!source2) return null;
+  if (response == null) {
+    return hasFreehand ? null : {
+      score: 0,
+      maxMarks: 3,
+      sourceCircuit: true,
+      sourceResolved: true,
+      provisional: false,
+      unassessedMarks: 0,
+      confidence: "high",
+      criteria: []
+    };
+  }
+  const diagram = parse(response);
+  if (!diagram) return {
+    score: 0,
+    maxMarks: 3,
+    sourceCircuit: true,
+    sourceResolved: false,
+    provisional: true,
+    unassessedMarks: 3,
+    confidence: "low",
+    criteria: []
+  };
+  const { components, wires } = diagram;
+  const counts = components.map((c) => c.kind), expected = source2.components;
+  const correctComponents = counts.length === expected.length && expected.every((k) => counts.filter((v) => v === k).length === 1);
+  const noOverlap = components.every((c, i) => components.slice(i + 1).every((o) => Math.hypot(c.x - o.x, c.y - o.y) >= 0.15));
+  const uniqueWires = new Set(wires.map((w) => [portName(w.from, w.fromPort), portName(w.to, w.toPort)].sort().join("|")));
+  const noDuplicateWires = uniqueWires.size === wires.length;
+  let marks, known;
+  if (source2.kind === "materials") {
+    const loop = correctComponents && serial(components, wires, expected);
+    const degrees = new Map(components.flatMap((c) => [["" + c.id + ":a", 0], ["" + c.id + ":b", 0]]));
+    for (const w of wires) {
+      for (const port of [portName(w.from, w.fromPort), portName(w.to, w.toPort)])
+        degrees.set(port, degrees.get(port) + 1);
+    }
+    const intact = loop && [...degrees.values()].every((n) => n === 1) && noDuplicateWires;
+    marks = [Number(loop), Number(correctComponents && noOverlap), Number(intact && noOverlap)];
+    known = !components.length && !wires.length || !correctComponents && !wires.length || !wires.length && correctComponents && noOverlap || intact && noOverlap;
+  } else {
+    const topology = correctComponents ? meterCircuit(components, wires) : { series: false, parallel: false };
+    marks = [Number(topology.series), Number(topology.parallel), Number(correctComponents && noOverlap && wires.length >= 1 && noDuplicateWires)];
+    known = !components.length && !wires.length || !correctComponents && !wires.length || correctComponents && noOverlap && wires.length <= 1 && noDuplicateWires || topology.series && topology.parallel && noOverlap && noDuplicateWires;
+  }
+  const sourceResolved = Boolean(known) && !hasFreehand;
+  const score = marks.reduce((a, b) => a + b, 0);
+  return {
+    score,
+    maxMarks: 3,
+    sourceCircuit: true,
+    sourceResolved,
+    provisional: !sourceResolved,
+    unassessedMarks: sourceResolved ? 0 : 3 - score,
+    confidence: sourceResolved ? "high" : "low",
+    criteria: marks.map((m, i) => ({
+      id: "circuit-" + source2.kind + "-" + i,
+      label: source2.points[i],
+      marks: m,
+      maxMarks: 1,
+      earned: Boolean(m)
+    }))
+  };
+}
+
 // src/integratedScience/practice/scienceCircuitSymbolMarking.js
 var SOURCE_ID = "IS-M2-P2-25";
 var MARKING = [
@@ -249,7 +409,7 @@ var uniqueGroups = (values, tol = 0.025) => {
   }
   return groups.map((g) => g.mean);
 };
-function parse(value2) {
+function parse2(value2) {
   let layout = value2;
   if (typeof value2 === "string") {
     try {
@@ -303,7 +463,7 @@ function markSourceParticleDiagram(qid, pi, ii, item2, input, hasFreehand = fals
       criteria: []
     };
   }
-  const layout = parse(input);
+  const layout = parse2(input);
   if (!layout) return {
     score: 0,
     maxMarks: 2,
@@ -2942,6 +3102,15 @@ function gradeIntegratedSciencePaper2Item(question2, partIndex, itemIndex, item2
       freehand
     );
     if (symbols) return symbols;
+    const circuit = markCircuitConstruction(
+      question2.id,
+      partIndex,
+      itemIndex,
+      item2,
+      responses[`${base}:circuitNetlist`],
+      freehand
+    );
+    if (circuit) return circuit;
     return visualResult(question2.id, partIndex, itemIndex, item2, responses);
   }
   return lineResult2(question2.id, partIndex, itemIndex, item2, responses);
@@ -4116,30 +4285,4 @@ var POB_2002_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 21, "pdfPage": 4, "proposedOption": "C", "explanation": "Capital is wealth or other productive resources devoted to creating more wealth.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
     Object.freeze({ "number": 22, "pdfPage": 4, "proposedOption": "D", "explanation": "Emigration of skilled professionals may leave labour shortages and lower productive capacity in the origin country.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
     Object.freeze({ "number": 23, "pdfPage": 5, "proposedOption": "D", "explanation": "Brain drain is the migration of qualified workers to work or settle abroad.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 24, "pdfPage": 5, "proposedOption": "C", "explanation": "Underemployment includes taking jobs below a worker's capabilities or qualifications.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 25, "pdfPage": 5, "proposedOption": "A", "explanation": "Subsistence production is among the simplest forms and mainly serves the producer's own needs.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 26, "pdfPage": 5, "proposedOption": "C", "explanation": "Primary production supplies raw materials from land and natural resources.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 27, "pdfPage": 5, "proposedOption": "B", "explanation": "A bulk-increasing producer is ordinarily located near its market to reduce the cost of distributing heavier finished output.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 28, "pdfPage": 5, "proposedOption": "D", "explanation": "Mechanisation can standardise and expand output; specialist skill growth is not a necessary effect.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 29, "pdfPage": 5, "proposedOption": "B", "explanation": "Economies of scale are reductions in average unit costs associated with larger production scale.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 30, "pdfPage": 5, "proposedOption": "A", "explanation": "Capital-intensive production employs substantial machinery or equipment relative to labour.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 31, "pdfPage": 5, "proposedOption": "A", "explanation": "A favourable merchandise trade balance arises when exports are greater than imports.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 32, "pdfPage": 6, "proposedOption": "B", "explanation": "The most child-directed combination is bright packaging, free toys and repeated jingles, rather than emphasis on nutritional claims.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 33, "pdfPage": 6, "proposedOption": "D", "explanation": "Purchasing raw inputs is generally assigned to procurement, not marketing; packaging, advertising and distribution are marketing functions.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 34, "pdfPage": 6, "proposedOption": "A", "explanation": "Home production of woven baskets is a small-scale cottage manufacturing activity.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 35, "pdfPage": 6, "proposedOption": "B", "explanation": "Wholesalers purchase large quantities and split them into smaller orders for retailers.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 36, "pdfPage": 6, "proposedOption": "B", "explanation": "CIF means the exporter undertakes cost, insurance and freight to the destination port.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 37, "pdfPage": 6, "proposedOption": "C", "explanation": "Under CIF the seller pays insurance and freight as well as the goods cost under the specified contract.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 38, "pdfPage": 6, "proposedOption": "C", "explanation": "Money orders and bank drafts typically provide greater assurance of payment than unsecured promissory notes or ordinary personal cheques.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 39, "pdfPage": 7, "proposedOption": "D", "explanation": "The pictured accepted time instrument directs the drawee to pay a named person or their order, meeting the definition of a bill of exchange.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": true }),
-    Object.freeze({ "number": 40, "pdfPage": 7, "proposedOption": "C", "explanation": "In the rendered bill of exchange, the named J. Fray is the person directed to pay, making him the drawee.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": true }),
-    Object.freeze({ "number": 41, "pdfPage": 7, "proposedOption": "A", "explanation": "Shareholders may receive dividends declared by the company rather than an automatic salary or interest payment.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 42, "pdfPage": 7, "proposedOption": "A", "explanation": "Garnishment is a court-ordered deduction from earnings to satisfy a debt.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 43, "pdfPage": 7, "proposedOption": "A", "explanation": "National insurance contributions are normally required of qualifying employed persons in Caribbean social insurance systems.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 44, "pdfPage": 7, "proposedOption": "D", "explanation": "Collateral can increase a borrower's eligibility for a loan by reducing lender credit risk.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 45, "pdfPage": 7, "proposedOption": "A", "explanation": "Income tax applies to wages and salaries.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 46, "pdfPage": 7, "proposedOption": "B", "explanation": "Corporation tax applies to profits of companies according to local legislation.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 47, "pdfPage": 7, "proposedOption": "D", "explanation": "Customs duty is charged on imported goods crossing the border.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 48, "pdfPage": 8, "proposedOption": "B", "explanation": "A profit on sale of a building is a capital gain; the printed tax table assigns it a 12% rate.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 49, "pdfPage": 8, "proposedOption": "B", "explanation": "On the rendered supply-demand diagram, people demand more potatoes at lower prices and fewer at higher prices.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": true }),
-    Object.freeze({ "number": 50, "pdfPage": 8, "proposedOption": "A", "explanation": "A price-taking firm in pure competition cannot individually control the market price.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChec
+    Object.freeze({ "number": 24, "pdfPage": 5, "proposedOption": "C", "explanation": "Underemployment includes taking jobs below a worker's capabilities or qualifications.", "academicStatus": "unverified-proposal", "

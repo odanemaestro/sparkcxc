@@ -1,4 +1,30 @@
-ked": false }),
+disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 25, "pdfPage": 5, "proposedOption": "A", "explanation": "Subsistence production is among the simplest forms and mainly serves the producer's own needs.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 26, "pdfPage": 5, "proposedOption": "C", "explanation": "Primary production supplies raw materials from land and natural resources.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 27, "pdfPage": 5, "proposedOption": "B", "explanation": "A bulk-increasing producer is ordinarily located near its market to reduce the cost of distributing heavier finished output.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 28, "pdfPage": 5, "proposedOption": "D", "explanation": "Mechanisation can standardise and expand output; specialist skill growth is not a necessary effect.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 29, "pdfPage": 5, "proposedOption": "B", "explanation": "Economies of scale are reductions in average unit costs associated with larger production scale.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 30, "pdfPage": 5, "proposedOption": "A", "explanation": "Capital-intensive production employs substantial machinery or equipment relative to labour.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 31, "pdfPage": 5, "proposedOption": "A", "explanation": "A favourable merchandise trade balance arises when exports are greater than imports.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 32, "pdfPage": 6, "proposedOption": "B", "explanation": "The most child-directed combination is bright packaging, free toys and repeated jingles, rather than emphasis on nutritional claims.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 33, "pdfPage": 6, "proposedOption": "D", "explanation": "Purchasing raw inputs is generally assigned to procurement, not marketing; packaging, advertising and distribution are marketing functions.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 34, "pdfPage": 6, "proposedOption": "A", "explanation": "Home production of woven baskets is a small-scale cottage manufacturing activity.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 35, "pdfPage": 6, "proposedOption": "B", "explanation": "Wholesalers purchase large quantities and split them into smaller orders for retailers.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 36, "pdfPage": 6, "proposedOption": "B", "explanation": "CIF means the exporter undertakes cost, insurance and freight to the destination port.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 37, "pdfPage": 6, "proposedOption": "C", "explanation": "Under CIF the seller pays insurance and freight as well as the goods cost under the specified contract.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 38, "pdfPage": 6, "proposedOption": "C", "explanation": "Money orders and bank drafts typically provide greater assurance of payment than unsecured promissory notes or ordinary personal cheques.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 39, "pdfPage": 7, "proposedOption": "D", "explanation": "The pictured accepted time instrument directs the drawee to pay a named person or their order, meeting the definition of a bill of exchange.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": true }),
+    Object.freeze({ "number": 40, "pdfPage": 7, "proposedOption": "C", "explanation": "In the rendered bill of exchange, the named J. Fray is the person directed to pay, making him the drawee.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": true }),
+    Object.freeze({ "number": 41, "pdfPage": 7, "proposedOption": "A", "explanation": "Shareholders may receive dividends declared by the company rather than an automatic salary or interest payment.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 42, "pdfPage": 7, "proposedOption": "A", "explanation": "Garnishment is a court-ordered deduction from earnings to satisfy a debt.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 43, "pdfPage": 7, "proposedOption": "A", "explanation": "National insurance contributions are normally required of qualifying employed persons in Caribbean social insurance systems.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 44, "pdfPage": 7, "proposedOption": "D", "explanation": "Collateral can increase a borrower's eligibility for a loan by reducing lender credit risk.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 45, "pdfPage": 7, "proposedOption": "A", "explanation": "Income tax applies to wages and salaries.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 46, "pdfPage": 7, "proposedOption": "B", "explanation": "Corporation tax applies to profits of companies according to local legislation.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 47, "pdfPage": 7, "proposedOption": "D", "explanation": "Customs duty is charged on imported goods crossing the border.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 48, "pdfPage": 8, "proposedOption": "B", "explanation": "A profit on sale of a building is a capital gain; the printed tax table assigns it a 12% rate.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 49, "pdfPage": 8, "proposedOption": "B", "explanation": "On the rendered supply-demand diagram, people demand more potatoes at lower prices and fewer at higher prices.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": true }),
+    Object.freeze({ "number": 50, "pdfPage": 8, "proposedOption": "A", "explanation": "A price-taking firm in pure competition cannot individually control the market price.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
     Object.freeze({ "number": 51, "pdfPage": 8, "proposedOption": "B", "explanation": "Abnormal profit at the output where marginal revenue equals marginal cost is possible under monopoly, although other imperfectly competitive structures may also earn short-run abnormal profit.", "academicStatus": "disputed", "disputeType": "non-unique-imperfect-competition", "disputeDetail": "MC=MR and abnormal short-run profit can occur in monopoly and monopolistic competition, so the stated conditions may not uniquely identify an option.", "visualDiagramChecked": false }),
     Object.freeze({ "number": 52, "pdfPage": 8, "proposedOption": "A", "explanation": "Long-run perfect competition may have price, average cost, marginal cost and marginal revenue equal at equilibrium.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
     Object.freeze({ "number": 53, "pdfPage": 8, "proposedOption": "B", "explanation": "Currency devaluation makes imported items costlier in local currency and can make exports cheaper to overseas purchasers, other things equal.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
@@ -1144,75 +1170,4 @@ var POB_2015_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 46, "sourcePage": 7, "proposedOption": "A", "explanation": "Income tax is a direct levy on incomes.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
     Object.freeze({ "number": 47, "sourcePage": 7, "proposedOption": "A", "explanation": "Tax refunds are financial repayments, not usually listed as a social-service provision.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
     Object.freeze({ "number": 48, "sourcePage": 7, "proposedOption": "B", "explanation": "A net importer purchases more goods internationally than it exports.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
-    Object.freeze({ "number": 49, "sourcePage": 7, "proposedOption": "A", "explanation": "A merchandise trade surplus exists when export values exceed import values.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
-    Object.freeze({ "number": 50, "sourcePage": 8, "proposedOption": "D", "explanation": "Depreciation reduces the value of national productive capital.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
-    Object.freeze({ "number": 51, "sourcePage": 8, "proposedOption": "D", "explanation": "Terms of trade concern the relative exchange rates or prices of a country's exports and imports.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
-    Object.freeze({ "number": 52, "sourcePage": 8, "proposedOption": "C", "explanation": "The printed choice 'balance of payments' is broad; the difference between visible and invisible exports and imports more precisely denotes an external current-account goods-and-services balance.", "status": "academic-dispute", "disputeType": "accounting-scope", "defensibleAlternatives": ["C"], "note": "The printed question subtracts visible and invisible imports from matching exports, traditionally a trade/services or current-account balance rather than an entire balance-of-payments ledger." }),
-    Object.freeze({ "number": 53, "sourcePage": 8, "proposedOption": "C", "explanation": "Accounting is not one of the three principal output/income/expenditure methods of measuring national income.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
-    Object.freeze({ "number": 54, "sourcePage": 8, "proposedOption": "C", "explanation": "Import restrictions are not inherently a benefit of international trade.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
-    Object.freeze({ "number": 55, "sourcePage": 8, "proposedOption": "D", "explanation": "The integration sequence runs Federation, CARIFTA, CARICOM and the proposed CSME.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
-    Object.freeze({ "number": 56, "sourcePage": 8, "proposedOption": "C", "explanation": "Rural-to-urban migration reflects dualism between traditional agriculture and an urban modern sector, although not its defining characteristic.", "status": "academic-dispute", "disputeType": "symptom-not-definition", "defensibleAlternatives": ["C"], "note": "Rural-urban migration can result from dualism but does not define the structural coexistence of sectors. Verify intended era-specific option and syllabus." }),
-    Object.freeze({ "number": 57, "sourcePage": 8, "proposedOption": "A", "explanation": "Inflation is a sustained rise in the overall price level.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
-    Object.freeze({ "number": 58, "sourcePage": 9, "proposedOption": "B", "explanation": "Barbados and Jamaica are not OECS members; the other listed pairs contain members.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
-    Object.freeze({ "number": 59, "sourcePage": 9, "proposedOption": "D", "explanation": "Promoting regional trade and common services is a specific CARICOM purpose; general collaboration is also true.", "status": "academic-dispute", "disputeType": "two-genuine-organisational-purposes", "defensibleAlternatives": ["A", "D"], "note": "Both generic member-state collaboration and regional trade/common-service development are defensible descriptions of CARICOM aims; printed 'interregional' is imprecise." }),
-    Object.freeze({ "number": 60, "sourcePage": 9, "proposedOption": "A", "explanation": "The WTO provides a rules-based forum and process for disputes over international trade treatment.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null })
-  ])
-});
-function verifyPob2015MjP1AuthoredKey(key = POB_2015_MJ_P1_AUTHORED_KEY) {
-  const problems = [], seen = /* @__PURE__ */ new Set(), disputes = [];
-  const source2 = POB_SUPPLIED_ARCHIVE.find((x) => x.id === "POB-P1-2015-MJ");
-  if (key?.id !== source2?.id || key.sourceSha256 !== source2.sourceSha256)
-    problems.push("Source identity or fingerprint mismatch.");
-  if (!Array.isArray(key?.questions) || key.questions.length !== 60)
-    return { valid: false, problems: [...problems, "Exactly 60 answer models required."], disputes: [] };
-  for (const item2 of key.questions) {
-    if (!Number.isInteger(item2.number) || item2.number < 1 || item2.number > 60 || seen.has(item2.number))
-      problems.push("Invalid/repeated MCQ number " + item2.number);
-    seen.add(item2.number);
-    if (!["A", "B", "C", "D"].includes(item2.proposedOption) || typeof item2.explanation !== "string" || item2.explanation.length < 32)
-      problems.push("Incomplete answer explanation for question " + item2.number);
-    if (!Number.isInteger(item2.sourcePage) || item2.sourcePage < 2 || item2.sourcePage > 9)
-      problems.push("Invalid source page for question " + item2.number);
-    if (item2.status === "academic-dispute") {
-      disputes.push(item2.number);
-      if (!item2.disputeType || !item2.note || !Array.isArray(item2.defensibleAlternatives))
-        problems.push("Unexplained academic dispute at " + item2.number);
-    } else if (item2.status !== "spark-internal-provisional")
-      problems.push("Unexpected academic status at " + item2.number);
-  }
-  if (seen.size !== 60) problems.push("Not all question numbers are present.");
-  if (disputes.join(",") !== "52,56,59")
-    problems.push("Source-dependent disputed items must be tracked.");
-  if (key.liveScoringApproved !== false || key.originalCxcAnswerKeyAvailable !== false)
-    problems.push("Internal answers falsely labelled official or published.");
-  return { valid: problems.length === 0, problems, disputes };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2016MjP1AuthoredKey.js
-var pobHistorical2016MjP1AuthoredKey_exports = {};
-__export(pobHistorical2016MjP1AuthoredKey_exports, {
-  POB_2016_MJ_P1_AUTHORED_KEY: () => POB_2016_MJ_P1_AUTHORED_KEY,
-  verifyPob2016MjP1AuthoredKey: () => verifyPob2016MjP1AuthoredKey
-});
-var POB_2016_MJ_P1_AUTHORED_KEY = Object.freeze({
-  id: "POB-P1-2016-MJ",
-  paper: 1,
-  year: 2016,
-  sitting: "MJ",
-  sourceFilename: "CSEC_Principles_of_Business_P1_2016_MJ.pdf",
-  sourceSha256: "26ef3d9eb2968abba44ab80738f7e5f421c213ac507fff54d0c60c76d6e025e7",
-  sourcePages: 8,
-  printedTestCode: "01240010",
-  durationMinutes: 75,
-  questionCount: 60,
-  scannedPagesReviewed: Object.freeze([1, 2, 3, 4, 5, 6, 7, 8]),
-  markingOrigin: "SPARK-internally-derived-not-CXC-key",
-  originalCxcAnswerKeyAvailable: false,
-  independentAnswerAdjudicationComplete: false,
-  gradingCalibrationPassed: false,
-  liveScoringApproved: false,
-  entries: Object.freeze([
-    Object.freeze({ "number": 1, "pdfPage": 2, "proposedOption": "C", "explanation": "Trade is commercial activity involving exchanges of goods and services, not immigration, share trading alone or collective bargaining.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 2, "pdfPage": 2, "proposedOption": "B", "explanation": "Commonwealth Caribbean systems are generally mixed economies, combining private enterprise and government services.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 3, "pdfPage": 2, "proposedOption": "D", "explanation": "An entrepreneur identifies new business opportunities, organises a venture and bears commercial risk.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 4, "pdfPage": 2, "proposedOption": "D", "explanation": "Company losses ultimately reduce shareholders' investment, with their liability ordinarily limited under incorpo
+    Object.freeze({ "number": 49, "sourcePage": 7, "proposedOption": "A", "explanation": "A merchandise trade surplus exists when export values exceed import values.", "status": "spark-internal-provisional", "disputeType": null, "defens

@@ -1,4 +1,118 @@
-usually buy more of a product when its price falls.\n\u2022 Income: as income rises, consumers buy more and better-quality goods.\n\u2022 Advertising: attractive advertising persuades consumers to try a product.\n\u2022 Tastes and fashion, culture, peer pressure or brand loyalty (with a description)."
+sh a partnership.",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Define the term 'partnership'.",
+                  "marks": 2,
+                  "answer": "A partnership is a form of business owned by two or more people (usually up to 20) (1) who agree to carry on business together, share the capital, management, profits and losses, usually under a partnership agreement (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Outline TWO benefits of June establishing a partnership over a sole trader type business.",
+                  "marks": 4,
+                  "answer": "Any TWO, 2 marks each:\n\u2022 More capital: partners pool their money, so June can open a bigger, better-stocked supermarket.\n\u2022 Shared workload and skills: partners can share management and bring skills she lacks, such as accounting or marketing.\n\u2022 Shared losses and risks.\n\u2022 Shared decision making and ideas lead to better decisions.\n\u2022 Easier to borrow, since lenders can look to more than one person to repay.\n\u2022 The business can continue when one partner is ill or away."
+                },
+                {
+                  "label": "(iii)",
+                  "question": "Suggest THREE ethical issues that June should consider in setting up and operating her business.",
+                  "marks": 3,
+                  "answer": "Any THREE, 1 mark each:\n\u2022 Selling safe, good-quality goods and not selling expired items\n\u2022 Fair and honest pricing (no price gouging, correct weights and measures)\n\u2022 Honest advertising\n\u2022 Fair wages and good treatment of employees\n\u2022 Proper disposal of waste and protection of the environment\n\u2022 Paying taxes and obeying regulations\n\u2022 Respecting customers' privacy and treating everyone without discrimination"
+                },
+                {
+                  "label": "(iv)",
+                  "question": "Explain to June the importance of conducting a feasibility study.",
+                  "marks": 3,
+                  "answer": "A feasibility study investigates whether the supermarket is likely to succeed before June spends her money (1). It examines the demand in the area, the competition, the costs and the expected profits, and the location and legal requirements (1). This reduces her risk of failure, helps her plan the capital needed and gives lenders evidence that the business is viable (1)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Business organizations perform many transactions daily, which require the use of documents.",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "List THREE types of business documents.",
+                  "marks": 3,
+                  "answer": "Any THREE, 1 mark each: invoice, receipt, purchase order, quotation, delivery note, credit note, debit note, statement of account, cheque, letter of enquiry, pro forma invoice."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "State THREE reasons why firms utilize documents in business transactions.",
+                  "marks": 3,
+                  "answer": "Any THREE, 1 mark each:\n\u2022 To provide a written record and evidence of the transaction\n\u2022 To help prepare accounts and calculate tax\n\u2022 To avoid disputes by stating the terms clearly\n\u2022 To request payment or show that payment was made\n\u2022 For control and checking (for example matching goods received against the order)\n\u2022 Required by law or by customs"
+                }
+              ]
+            },
+            {
+              "label": "(b)",
+              "question": "Distinguish between 'insurance' and 'assurance'.",
+              "marks": 4,
+              "answer": "2 marks each:\n\u2022 Insurance covers risks that may or may not happen, such as fire, theft or accident; compensation is paid only if the event happens.\n\u2022 Assurance covers an event that is certain to happen, such as death (life assurance); payment is certain, only the time is uncertain."
+            },
+            {
+              "label": "(c)",
+              "question": "Name TWO types of insurance policies.",
+              "marks": 2,
+              "answer": "Any TWO, 1 mark each: fire, motor vehicle, marine, burglary and theft, fidelity guarantee, public liability, employer's liability, health, property, life assurance, goods in transit."
+            },
+            {
+              "label": "(d)",
+              "question": "Outline ONE principle upon which insurance is based.",
+              "marks": 2,
+              "answer": "Any ONE, 2 marks:\n\u2022 Utmost good faith: all material facts must be disclosed truthfully.\n\u2022 Insurable interest: the insured must stand to lose financially if the item is lost or damaged.\n\u2022 Indemnity: the insured is restored to the same financial position as before the loss, but may not profit.\n\u2022 Contribution, subrogation or proximate cause (with a correct explanation)."
+            },
+            {
+              "label": "(e)",
+              "question": "Explain TWO ways in which insurance is beneficial to a firm.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Compensation for losses: if the firm's property is damaged by fire, flood or theft, the insurer pays for repairs or replacement, so the firm can continue operating.\n\u2022 Peace of mind and risk taking: owners can invest and expand without fear of losing everything.\n\u2022 Easier borrowing: lenders often require insured collateral before granting loans.\n\u2022 Legal requirements: motor and employer's liability insurance protect the firm from expensive claims.\n\u2022 Fidelity guarantee protects against theft by employees.\n\u2022 Business interruption insurance covers lost profits while the firm is closed."
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "State TWO advantages to the customer of utilizing EACH of the following terms of sales:",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Cash",
+                  "marks": 2,
+                  "answer": "Any TWO, 1 mark each: the customer may receive a cash discount; no interest is paid; the customer owns the goods immediately; no debt or paperwork."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Hire purchase",
+                  "marks": 2,
+                  "answer": "Any TWO, 1 mark each: the customer can use the goods immediately while paying in instalments; expensive items become affordable; payments are spread over a period; the law protects the customer from unfair repossession once part of the price is paid."
+                },
+                {
+                  "label": "(iii)",
+                  "question": "Layaway",
+                  "marks": 2,
+                  "answer": "Any TWO, 1 mark each: no interest is charged; the item is reserved at the current price; the customer can pay in small amounts; the customer does not go into debt."
+                }
+              ]
+            },
+            {
+              "label": "(b)",
+              "question": "Describe ONE factor that could influence the behaviour of consumers.",
+              "marks": 2,
+              "answer": "Any ONE, 2 marks, for example:\n\u2022 Price: consumers usually buy more of a product when its price falls.\n\u2022 Income: as income rises, consumers buy more and better-quality goods.\n\u2022 Advertising: attractive advertising persuades consumers to try a product.\n\u2022 Tastes and fashion, culture, peer pressure or brand loyalty (with a description)."
             },
             {
               "label": "(c)",
@@ -1684,8 +1798,8 @@ function buildPobArchiveExaminerPack({ paperId, selectedQuestions, responses = {
   }
   if (items.reduce((n, i) => n + i.maxMarks, 0) !== 100)
     throw new Error("historical_candidate_total_mismatch");
-  const allowed = new Set(parts.map((p) => p.id));
-  if (Object.keys(responses).some((id) => !allowed.has(id)))
+  const allowed2 = new Set(parts.map((p) => p.id));
+  if (Object.keys(responses).some((id) => !allowed2.has(id)))
     throw new Error("unknown_historical_part");
   const clean4 = Object.fromEntries(parts.map((p) => [p.id, String(responses[p.id] || "")]));
   return {
@@ -1821,11 +1935,11 @@ function buildTrustedAssessment(attempt, authority = {}) {
     const paper = buildPob2026JanHistoricalPaper();
     if (attempt.metadata?.paper_id !== paper.id || attempt.metadata?.source_sha256 !== paper.sourceSha256 || attempt.score != null || Number(attempt.max_score) !== 100 || attempt.rubric_version !== "pob-historical-2026-jan-p2-rubric-v1" || attempt.grader_version !== SEMANTIC_MARKING_REVISION)
       throw new Error("historical_attempt_identity_mismatch");
-    const allowed2 = new Set(paper.questions.flatMap((q) => q.items.map((p) => q.id + ":" + p.id)));
-    if (Object.keys(responses).some((id) => !allowed2.has(id)))
+    const allowed3 = new Set(paper.questions.flatMap((q) => q.items.map((p) => q.id + ":" + p.id)));
+    if (Object.keys(responses).some((id) => !allowed3.has(id)))
       throw new Error("unknown_historical_part");
     const pack = buildPobJan2026ExaminerPack({ responses });
-    if (pack.paperId !== paper.id || pack.sourceSha256 !== paper.sourceSha256 || pack.maxMarks !== 100 || pack.items.some((i) => !allowed2.has(i.constraints.primaryResponseKey)))
+    if (pack.paperId !== paper.id || pack.sourceSha256 !== paper.sourceSha256 || pack.maxMarks !== 100 || pack.items.some((i) => !allowed3.has(i.constraints.primaryResponseKey)))
       throw new Error("historical_source_not_verified");
     return {
       items: pack.items,
@@ -1945,8 +2059,8 @@ function buildTrustedAssessment(attempt, authority = {}) {
     }
     baseline = { score: determined, maxScore: 100, unassessedMarks: 0 };
   } else throw new Error("unsupported_subject");
-  const allowed = new Set(items.flatMap((item2) => item2.responseKeys));
-  const semanticResponses = Object.fromEntries([...allowed].map((key) => [key, String(responses[key] || "")]));
+  const allowed2 = new Set(items.flatMap((item2) => item2.responseKeys));
+  const semanticResponses = Object.fromEntries([...allowed2].map((key) => [key, String(responses[key] || "")]));
   return {
     items,
     responses: semanticResponses,

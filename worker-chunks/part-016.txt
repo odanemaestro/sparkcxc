@@ -1,4 +1,48 @@
-industrial dispute and pressure"]],
+ shelf, rather than a binding offer by the seller.", ["1:Identifies invitation for customers to make offers", "1:Explains not itself a legally binding offer"]],
+  [2, "a.ii", "A simple contract ordinarily requires an offer and acceptance and valid consideration; it is not necessarily a deed or under seal.", ["1:First genuine simple-contract characteristic", "1:Second distinct characteristic"]],
+  [2, "a.iii", "Contracts can end after full performance and by mutual agreement between the parties.", ["1:First valid discharge method", "1:Second different valid method"]],
+  [2, "b", "A hire purchase agreement is commonly documented formally in writing with prescribed terms, and the seller/finance provider normally retains title until agreed instalments are completed. Whether it legally qualifies as a specialty contract depends on jurisdiction and formal execution requirements.", ["2:First valid distinct formal or legal feature, with accurate description", "2:Second different feature described without falsely asserting all HP agreements are deeds"]],
+  [2, "c", "Utmost good faith calls for honest disclosure of material facts by insurer and policyholder. Indemnity pays for the insured loss with the aim of restoring the former financial position, not making an insured profit.", ["2:Correct utmost-good-faith explanation", "2:Correctly contrasts indemnity principle"]],
+  [2, "d", "A business may falsify tax declarations to evade lawfully due payments, violating duties to government. It may breach employment or environmental obligations by withholding wages or illegally polluting, harming workers and society.", ["3:First distinct unethical breach of government/societal obligation, identified and explained", "3:Second different contractual/legal/ethical violation developed"]],
+  [3, "a.i", "Production means using resources to produce tangible goods or provide services.", ["1:Identifies creating goods or services", "1:Connects to inputs, activity or output"]],
+  [3, "a.ii", "Productivity measures the efficiency of production as output divided by a corresponding input, such as goods per worker-hour.", ["1:Output relative to production input", "1:Recognises efficiency measure or concrete ratio"]],
+  [3, "b.i", "Sugar cane harvesting is primary production because crops are collected from agriculture.", ["1:Correct classification: primary production"]],
+  [3, "b.ii", "Building townhouses is secondary production, the construction of physical buildings.", ["1:Correct classification: secondary/construction"]],
+  [3, "b.iii", "Creating a new line of furniture is secondary manufacturing production.", ["1:Correct classification: secondary manufacturing"]],
+  [3, "b.iv", "Providing online banking is tertiary production because financial services are supplied to consumers.", ["1:Correct classification: tertiary services"]],
+  [3, "c", "Workers' skill and training, motivation and remuneration, and availability of reliable equipment influence output per labour hour.", ["2:First factor with a causal explanation of labour productivity", "2:Second different factor outlined", "2:Third different factor explained"]],
+  [3, "d", "Managers can train staff in efficient production methods, reducing errors and improving output per worker. They can improve workflows and maintain machinery so time is not lost to bottlenecks or breakdowns.", ["3:First genuine management strategy with mechanism and productivity result", "3:Second different developed strategy"]],
+  [4, "a.i", "A market is an arrangement where buyers and sellers interact to exchange goods and services, whether in person or online.", ["1:Identifies buyers and sellers", "1:Explains exchange or transaction mechanism"]],
+  [4, "a.ii", "Traditional marketing-mix elements include product and price, alongside place and promotion.", ["1:First legitimate marketing-mix element", "1:Second distinct element"]],
+  [4, "b", "Businesses research markets to estimate demand, identify customer preferences, assess competition and choose appropriate prices.", ["1:First genuine market research motive", "1:Second distinct motive", "1:Third different motive", "1:Fourth different motive"]],
+  [4, "c", "Customer choices depend on disposable income, personal and cultural preferences, and the price or quality of competing products.", ["2:First consumer-behaviour influence and explanation", "2:Second different factor developed", "2:Third different factor developed"]],
+  [4, "d", "A firm can demonstrate products in social-media videos and link viewers to purchase pages, increasing reach. It can also run targeted advertisements and reply to customer questions directly, attracting likely buyers and improving conversion.", ["3:First specific social-media sales strategy with business result", "3:Second distinct strategy explained"]],
+  [5, "a", "People manage income through preparing personal budgets and monitoring or controlling discretionary expenditure, aside from saving and investing.", ["1:First method other than saving/investing", "1:Second different personal income management method"]],
+  [5, "b.i", "Saving is setting aside money not spent, often in a bank or credit union. Investing acquires assets expected to produce income or grow in value while accepting some risk.", ["1:Correct saving definition", "1:Contrasting investment definition"]],
+  [5, "b.ii", "A commercial-bank savings account is a savings form, while purchasing shares is a form of investment.", ["1:First correct saving example", "1:Different valid investment example"]],
+  [5, "c.i", "Personal start-up funds can come from accumulated savings and money raised by selling an owned personal asset.", ["1:First actual personal capital source", "1:Second different personal source"]],
+  [5, "c.ii", "Short-term financing is repayable within a relatively brief period, typically within one year, for example an overdraft. Long-term finance is repayable over several years, for example a mortgage or long-term term loan.", ["3:Correctly describes short-term timing and identifies one suitable source", "3:Correctly describes long-term timing and provides a suitable distinct source"]],
+  [5, "d", "Buying shares can earn dividends and capital gains if firms succeed, increasing investor wealth. A major risk is losing money when stock prices fall or an issuer fails, since returns are not guaranteed.", ["3:Stock-market investment benefit correctly identified and mechanism explained", "3:Distinct genuine investment risk explained"]]
+]);
+var POB_2023_JAN_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
+  year: 2023,
+  sitting: "JAN",
+  sourcePages: 24,
+  sourceSha256: "c9803bd124e97f4208f5317de9494f04412727c6dfdb6c0bf4447a42deaa4ace",
+  parts: PARTS5
+});
+var verifyPob2023JanP2AuthoredScheme = (paper = POB_2023_JAN_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
+
+// src/principlesOfBusiness/data/pobHistorical2023MjP2AuthoredScheme.js
+var pobHistorical2023MjP2AuthoredScheme_exports = {};
+__export(pobHistorical2023MjP2AuthoredScheme_exports, {
+  POB_2023_MJ_P2_AUTHORED_SCHEME: () => POB_2023_MJ_P2_AUTHORED_SCHEME,
+  verifyPob2023MjP2AuthoredScheme: () => verifyPob2023MjP2AuthoredScheme
+});
+var POINTS6 = Object.freeze([
+  [1, "a", "Disputes inside enterprises may result from poor communication, unfair promotions, unequal workloads and competition between staff for limited resources.", ["1:First real conflict trigger", "1:Second distinct trigger", "1:Third different source", "1:Fourth distinct source"]],
+  [1, "b.i", "Work-to-rule involves employees observing their contractual duties and work hours strictly while refusing extra tasks or voluntary overtime to apply pressure.", ["1:Identifies literal work duties without voluntary extras", "1:Explains industrial-pressure purpose"]],
+  [1, "b.ii", "Picketing is collective worker protest around a workplace, often with signs and communication encouraging support for an industrial dispute, subject to employment laws.", ["1:Describes demonstration near workplace", "1:Connects to industrial dispute and pressure"]],
   [1, "b.iii", "Strike action is a coordinated stoppage or withdrawal of labour by employees to advance work-related demands, under applicable labour law.", ["1:Identifies collective withholding of labour", "1:Explains purpose to secure working-condition change"]],
   [1, "c", "Management may hold a facilitated meeting where staff present concerns and negotiate a mutually acceptable outcome. It can also use a formal grievance and appeal process to investigate complaints impartially.", ["2:First realistic conflict-resolution strategy and operation", "2:Second different credible strategy explained"]],
   [1, "d", "Owners should comply with workplace safety rules and protect workers from injury, including suitable training and equipment. They should also advertise honestly and honour lawful consumer rights rather than misleading buyers.", ["3:First developed legal or ethical business principle and practical consequence", "3:Second different developed legal/ethical obligation"]],
@@ -2206,92 +2250,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
               "label": "(c)",
               "question": "Identify FOUR elements which the Executive Summary should contain.",
               "marks": 4,
-              "answer": "Any FOUR, 1 mark each:\n\u2022 Name, location and legal form of the business\n\u2022 Brief description of the product or service\n\u2022 The target market and the business's competitive advantage\n\u2022 The amount of financing needed and how it will be used\n\u2022 Summary of financial projections (expected sales and profit)\n\u2022 The owners and management team\n\u2022 The mission statement and goals"
-            },
-            {
-              "label": "(d)",
-              "question": "State THREE reasons why a business plan is necessary.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 To obtain financing: banks and investors ask for a business plan before lending or investing.\n\u2022 It acts as a guide (road map) for running the business.\n\u2022 It sets goals against which performance can be measured.\n\u2022 It helps the owner to identify strengths, weaknesses and risks before committing money.\n\u2022 It helps attract partners and investors.\n\u2022 It communicates the business's goals to managers and employees."
-            }
-          ]
-        },
-        {
-          "number": 2,
-          "section": "Section I",
-          "section_instructions": "Answer the THREE questions in this section.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "State the difference between a simple contract and a 'mere agreement'.",
-              "marks": 4,
-              "answer": "2 marks each:\n\u2022 A simple contract (oral, written or implied) has all the essential elements of a valid contract, including consideration and the intention to create legal relations, so it is legally binding and can be enforced in court.\n\u2022 A mere agreement lacks one or more of these elements, usually the intention to create legal relations (for example a social or domestic arrangement), so it cannot be enforced in court."
-            },
-            {
-              "label": "(b)",
-              "question": "List FOUR requirements of a valid contract.",
-              "marks": 4,
-              "answer": "Any FOUR, 1 mark each: offer and acceptance; consideration; intention to create legal relations; capacity of the parties; legality of object; genuine consent; possibility of performance; certainty of terms."
-            },
-            {
-              "label": "(c)",
-              "question": "John Pebbles requested Albert Rock to transport a group of young people to a concert. The agreed cost of the trip was $5000. John made a down payment of $100. However, the group felt that the price was too much, and decided to cancel the trip. Albert was not informed about the change of plans so he presented his transport at the appointed time to take the group to the concert. John Pebbles then told Albert that he was very sorry that the group had changed its plans. Albert demanded that John pay him immediately or face the courts. John refused to pay on the grounds that he received no service from Albert.",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Based on the information in the case, justify why the arrangement between John and Albert can be considered a valid contract.",
-                  "marks": 2,
-                  "answer": "There was an offer and acceptance: John asked Albert to transport the group and Albert agreed (1). There was consideration on both sides, $5000 (with a $100 down payment made) in return for the transport service, which also shows an intention to create legal relations (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Using information from the case, determine whether there was a 'breach of contract'. Justify your answer.",
-                  "marks": 4,
-                  "answer": "Yes, there was a breach of contract (1).\nAlbert was ready and willing to perform his part: he presented his transport at the agreed time (1). John cancelled without informing Albert and then refused to pay (1). John's failure to carry out his obligation is a breach, and the fact that he received no service is his own fault, not Albert's (1)."
-                },
-                {
-                  "label": "(iii)",
-                  "question": "Identify TWO remedies that a court can award for breach of contract.",
-                  "marks": 2,
-                  "answer": "Any TWO, 1 mark each: damages (money compensation); specific performance; injunction; rescission (cancelling the contract); quantum meruit (payment for work done)."
-                }
-              ]
-            },
-            {
-              "label": "(d)",
-              "question": "Outline TWO ways (apart from breach) by which a contract may be terminated or discharged.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Performance: both parties carry out their obligations in full.\n\u2022 Agreement: both parties agree to end the contract.\n\u2022 Frustration: an event outside the parties' control makes performance impossible (for example death, illness or destruction of the subject matter).\n\u2022 Lapse of time: the contract ends when the agreed period is over.\n\u2022 Operation of law, for example bankruptcy."
-            }
-          ]
-        },
-        {
-          "number": 3,
-          "section": "Section I",
-          "section_instructions": "Answer the THREE questions in this section.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "State TWO advantages of small businesses.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 They give personal service to customers.\n\u2022 They are flexible and can adapt quickly to changes in demand.\n\u2022 The owner can make decisions quickly.\n\u2022 They need little capital to start.\n\u2022 There is a close relationship between owner and employees.\n\u2022 They are easier to manage."
-            },
-            {
-              "label": "(b)",
-              "question": "Identify TWO relationships that exist between cottage industries and small businesses.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 A cottage industry is itself a type of small business: both operate on a small scale with little capital, few workers and the owner as manager.\n\u2022 Cottage industries supply goods to small businesses (for example craft items sold in gift shops).\n\u2022 Small businesses supply raw materials and tools to cottage industries.\n\u2022 A successful cottage industry can grow into a small business.\n\u2022 Both make use of local raw materials and family labour."
-            },
-            {
-              "label": "(c)",
-              "question": "Outline THREE benefits of operating cottage industries.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Little capital is needed to start.\n\u2022 Work is done at home, so there is no rent and no travel cost.\n\u2022 Family members are employed.\n\u2022 Working hours are flexible.\n\u2022 Local raw materials are used.\n\u2022 Traditional skills and culture are preserved.\n\u2022 Rural households earn income, and items sold to tourists earn foreign exchange."
-            },
-            {
-              "label": "(d)",
-              "question": "Discuss TWO ways in which small businesses contribute to Caribbean economies.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 Employment: small businesses employ a large share of the Caribbean workforce, including people who might not find jobs in large firms, reducing unemployment and poverty.\n\u2022 Output and income: they produce goods and services for local communities and tourists, adding to GDP.\n\u2022 Entrepreneurship and innovation: they develop business skills and new ideas, and some grow into large firms.\n\u2022 Linkages: they supply larger firms such as hotels and use local raw materials, savi
+              "answer": "Any FOUR, 1 mark each:\n\u2022 Name, location and legal form o
