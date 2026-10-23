@@ -13,7 +13,14 @@ import {evaluateExistingSubjectPaper2V2} from "./serverPaper2V2SubjectEngine";
 
 const exact=f=>typeof f?.expect==="number";
 const pick=(cases,cls)=>cases.find(c=>c.cls===cls&&c.passed&&c.resolved&&exact(c));
-const responseOf=(id,f)=>f.responses??{[id]:f.response};
+// A criterion fixture may include its own graph plus the downstream
+// gradient/read-off answer. Preserve that full-paper response map rather than
+// nesting it under the downstream criterion id when replaying the paper.
+// Earlier evidence records stored f.responses in the 'response' field, so
+// support both formats without weakening any mark or resolution checks.
+const responseOf=(id,f)=>f.responses??
+ (f.response&&typeof f.response==="object"&&!Array.isArray(f.response)&&
+  Object.hasOwn(f.response,id)?f.response:{[id]:f.response});
 
 function scenario(name,{subjectId,paperId,criteria},plan,{mustPublish}){
  const responses={};const expected=new Map();const tolerant=new Map();
