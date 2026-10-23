@@ -71,7 +71,14 @@ const SOURCE_PARTIALS=Object.freeze({
  "phy-p2-4-q4::c":Object.freeze([["Bring the negatively charged rod near the sphere without touching it.",1]]),
  "phy-p2-4-q4::d":Object.freeze([["A thick copper conductor runs from a point above the building to earth.",1]]),
  "phy-p2-4-q5::c":Object.freeze([["The commutator reverses the current in the coil every half turn.",1]]),
- "phy-p2-4-q6::b":Object.freeze([["The atomic number of nitrogen is 7.",1]])
+ "phy-p2-4-q6::b":Object.freeze([["The atomic number of nitrogen is 7.",1]]),
+ "phy-p2-1-q3::d":Object.freeze([["Some input energy is transferred into forms which are not useful.",1]]),
+ "phy-p2-1-q5::c":Object.freeze([["1/R = 1/R₁ + 1/R₂",1]]),
+ "phy-p2-1-q5::d":Object.freeze([["The total resistance is the sum of the series resistance and the parallel combination.",1]]),
+ "phy-p2-1-q6::a":Object.freeze([["The half-life is the time taken for radioactive decay.",1]]),
+ "phy-p2-3-q1::d":Object.freeze([["The current is directly proportional to the potential difference.",1]]),
+ "phy-p2-3-q1::f":Object.freeze([["The graph remains a straight line through the origin.",1]]),
+ "phy-p2-3-q1::g":Object.freeze([["Keep the switch open between readings so the wire does not warm up.",2]])
 });
 const canonical=s=>String(s??"").normalize("NFKC")
  .toLowerCase().replace(/\s+/g," ").trim().replace(/[.]+$/,"");
