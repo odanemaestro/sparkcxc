@@ -53,6 +53,25 @@ const SOURCE_PARTIALS=Object.freeze({
  "phy-p2-4-q6::c":Object.freeze([["40 ÷ 8 = 5 half-lives.",2]]),
  "phy-p2-4-q6::d":Object.freeze([["Background radiation is always present in the environment.",1]]),
  "phy-p2-4-q6::e":Object.freeze([["Gamma radiation is used to treat cancer.",1]])
+ "phy-p2-1-q3::c":Object.freeze([["Efficiency = useful output ÷ total input.",1]]),
+ "phy-p2-1-q4::a":Object.freeze([["In a transverse wave particles vibrate at right angles to the direction of travel.",1]]),
+ "phy-p2-1-q4::dii":Object.freeze([["Ultrasound is used to scan an unborn baby.",1]]),
+ "phy-p2-1-q6::c":Object.freeze([["800, 400, 200, 100, 50",1]]),
+ "phy-p2-2-q3::c":Object.freeze([["It is assumed that no heat energy is transferred to or from the surroundings.",1]]),
+ "phy-p2-2-q4::d":Object.freeze([["sin C = 1 ÷ n",1]]),
+ "phy-p2-3-q2::a":Object.freeze([["Acceleration is the rate of change of velocity.",1]]),
+ "phy-p2-3-q2::d":Object.freeze([["The accelerating stage is ½ × 10 × 25 = 125 m.",1]]),
+ "phy-p2-3-q2::e":Object.freeze([["The braking force acts on the car and not on the passenger.",1]]),
+ "phy-p2-3-q4::b":Object.freeze([["X-rays, ultraviolet",2]]),
+ "phy-p2-3-q6::a":Object.freeze([["Fission is the splitting of a heavy nucleus.",1]]),
+ "phy-p2-4-q1::e":Object.freeze([["The upthrust equals the weight of the displaced fluid.",2]]),
+ "phy-p2-4-q2::b":Object.freeze([["The two forces are at right angles, so Pythagoras applies.",1]]),
+ "phy-p2-4-q3::d":Object.freeze([["35 + 273",1]]),
+ "phy-p2-4-q4::a":Object.freeze([["Electrons transfer from the wool to the polythene.",1]]),
+ "phy-p2-4-q4::c":Object.freeze([["Bring the negatively charged rod near the sphere without touching it.",1]]),
+ "phy-p2-4-q4::d":Object.freeze([["A thick copper conductor runs from a point above the building to earth.",1]]),
+ "phy-p2-4-q5::c":Object.freeze([["The commutator reverses the current in the coil every half turn.",1]]),
+ "phy-p2-4-q6::b":Object.freeze([["The atomic number of nitrogen is 7.",1]])
 });
 const canonical=s=>String(s??"").normalize("NFKC")
  .toLowerCase().replace(/\s+/g," ").trim().replace(/[.]+$/,"");
