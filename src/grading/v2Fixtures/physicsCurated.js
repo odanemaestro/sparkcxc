@@ -89,5 +89,12 @@ export const CURATED_PHYSICS={
  "phy-p2-4-q4::c":[P("Bring the negatively charged rod near the sphere without touching it.",1)],
  "phy-p2-4-q4::d":[P("A thick copper conductor runs from a point above the building to earth.",1)],
  "phy-p2-4-q5::c":[P("The commutator reverses the current in the coil every half turn.",1)],
- "phy-p2-4-q6::b":[P("The atomic number of nitrogen is 7.",1)]
+ "phy-p2-4-q6::b":[P("The atomic number of nitrogen is 7.",1)],
+ "phy-p2-1-q3::d":[P("Some input energy is transferred into forms which are not useful.",1)],
+ "phy-p2-1-q5::c":[P("1/R = 1/R₁ + 1/R₂",1)],
+ "phy-p2-1-q5::d":[P("The total resistance is the sum of the series resistance and the parallel combination.",1)],
+ "phy-p2-1-q6::a":[P("The half-life is the time taken for radioactive decay.",1)],
+ "phy-p2-3-q1::d":[P("The current is directly proportional to the potential difference.",1)],
+ "phy-p2-3-q1::f":[P("The graph remains a straight line through the origin.",1)],
+ "phy-p2-3-q1::g":[P("Keep the switch open between readings so the wire does not warm up.",2)]
 };
