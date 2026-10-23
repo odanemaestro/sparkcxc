@@ -420,7 +420,23 @@ function physics(rows,responses,paperId){
      !/\\d/.test(String(object(response)?response.answer??"":response??"")) &&
      !String(object(response)?response.working??"":"").trim() &&
      !(object(response)&&response.graphEvidence);
-    const definitelyResolved=fullGradient||noQuantityOrGraph;
+    const pressureMethod=partId===spec.readingPart&&
+     paperId===physicsPaper1.paper_id;
+    const sourcePressure=evidence.criteria.find(x=>x.id==="A1");
+    const correctPressure=pressureMethod&&
+     sourcePressure?.candidateMarks===1&&
+     sourcePressure?.reason==="source-accepted-pressure-range";
+    const inverseShown=pressureMethod&&
+     evidence.criteria.find(x=>x.id==="M1")?.candidateMarks===1;
+    const readingShown=pressureMethod&&
+     evidence.criteria.find(x=>x.id==="M2")?.candidateMarks===1;
+    const cleanUnrecorded=pressureMethod&&
+     !object(response)?.graphEvidence&&
+     !/read(?:s|ing)?\s+(?:off|from)|graph|plot/i.test(
+      String(object(response)?response.working??"":""));
+    const certainPressure=correctPressure&&inverseShown&&
+     (readingShown||cleanUnrecorded);
+    const definitelyResolved=fullGradient||noQuantityOrGraph||certainPressure;
     return cap(row,reconciled,
      "existing-physics-graph-working-advisory",definitelyResolved);
    }
