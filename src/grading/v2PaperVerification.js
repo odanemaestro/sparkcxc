@@ -77,13 +77,27 @@ function scenario(name,{subjectId,paperId,criteria},plan,{mustPublish}){
 export function verifyPaper(paper,casesById){
  const ids=paper.criteria.map(c=>c.id);
  const plan=fn=>new Map(ids.map((id,i)=>[id,fn(casesById.get(id)||[],i,id)]));
+ // A source graphical method fixture embeds the *same question's* plotted
+ // graph to verify it alone. Whole-script cases instead choose one actual
+ // graph answer and independently choose its dependent method answers.
+ // In the zero-script, use a blank method response if the graph is wrong:
+ // a wrong/missing drawn graph plus no method evidence is a definite zero.
+ const graphIds=new Set(paper.subjectId==="physics"
+  ?paper.criteria.filter(c=>c.sourceMarking?.responseType==="graph").map(c=>c.id):[]);
+ const graphDependent=id=>paper.subjectId==="physics"&&
+  (casesById.get(id)||[]).some(f=>f.cls==="full"&&f.response&&
+   typeof f.response==="object"&&
+   Object.keys(f.response).some(key=>key!==id&&graphIds.has(key)));
  const scenarios=[
   scenario("full-marks",paper,plan(c=>pick(c,"full")),{mustPublish:true}),
-  scenario("zero-marks",paper,plan(c=>pick(c,"incorrect")),{mustPublish:true}),
+  scenario("zero-marks",paper,plan((c,i,id)=>graphDependent(id)
+   ?pick(c,"blank"):pick(c,"incorrect")),{mustPublish:true}),
   scenario("blank-script",paper,new Map(),{mustPublish:true}),
   scenario("partial-marks",paper,plan(c=>pick(c,"partial")??pick(c,"full")),{mustPublish:true}),
-  scenario("mixed",paper,plan((c,i)=>[pick(c,"full"),pick(c,"incorrect"),pick(c,"partial")??pick(c,"blank")][i%3]),{mustPublish:true}),
-  scenario("missing-answers",paper,plan((c,i)=>i%2===0?pick(c,"full"):null),{mustPublish:true}),
+  scenario("mixed",paper,plan((c,i,id)=>graphIds.has(id)?pick(c,"full"):
+   [pick(c,"full"),pick(c,"incorrect"),pick(c,"partial")??pick(c,"blank")][i%3]),{mustPublish:true}),
+  scenario("missing-answers",paper,plan((c,i,id)=>graphIds.has(id)?pick(c,"full"):
+   i%2===0?pick(c,"full"):null),{mustPublish:true}),
   scenario("equivalent-answers",paper,plan(c=>pick(c,"equivalent")??pick(c,"full")),{mustPublish:true}),
   scenario("contradictory",paper,plan(c=>c.find(x=>x.cls==="contradiction"&&x.passed)??
    c.find(x=>x.cls==="competing"&&x.passed)??pick(c,"full")),{mustPublish:false}),
