@@ -560,3 +560,15 @@
 .is-p2-netlist-canvas{display:block;max-width:100%;height:auto;min-height:160px;border:1px solid var(--is-border);border-radius:8px;background:var(--is-card);color:var(--is-ink)}
 .is-p2-netlist-connections>button{margin-bottom:1px}
 @media(max-width:650px){.is-p2-netlist-connections>label{flex-basis:100%}.is-p2-netlist-connections>button{width:100%}}
+
+/* Student-authored filtration sketch. Keep geometry and labels visible at mobile widths. */
+.is-p2-filtration-drawing{display:grid;gap:12px;padding:12px;border:1px solid var(--is-border);border-radius:12px;min-width:0}
+.is-p2-filtration-drawing>p{margin:0;color:var(--is-muted);font-size:13px;line-height:1.45}
+.is-p2-filtration-drawing>label,.is-p2-filtration-tools>label{display:grid;gap:5px;font-size:12px;font-weight:700}
+.is-p2-filtration-drawing input,.is-p2-filtration-tools select{width:100%;padding:9px 10px;box-sizing:border-box;border:1px solid var(--is-border);border-radius:8px;background:var(--is-card);color:var(--is-ink);font:inherit}
+.is-p2-filtration-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.is-p2-filtration-tools [aria-pressed="true"]{outline:2px solid var(--is-teal)}
+.is-p2-filtration-tools>label{flex:1;min-width:140px}
+.is-p2-filtration-canvas{display:block;max-width:100%;height:auto;min-height:150px;background:var(--is-card);color:var(--is-ink);border:1px solid var(--is-border);border-radius:8px}
+.is-p2-filtration-drawing .is-p2-drawing-actions>span{margin-right:auto;color:var(--is-muted);font-size:12px}
+@media(max-width:600px){.is-p2-filtration-tools>button{flex:1 1 37%}.is-p2-filtration-tools>label{flex-basis:100%}}
