@@ -6,6 +6,8 @@
  * a reason to publish a final score. See rubric activation and lease gates.
  */
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
+import {evaluatePoaSourceV2} from "../principlesOfAccounts/poaMarkingV2";
+import {evaluatePoaMethodsV2,POA_METHOD_SOURCE_FORMAT} from "../principlesOfAccounts/marking/poaMethodRegistry";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
 import {CHECKERS} from "../practice/cxcMarking/checkers";
 import {markPhysicsPaper2,physicsPaper2FollowThroughSources,physicsPaper2TableCells,unsuperscript,
@@ -43,10 +45,10 @@ import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Orig
 // joins this set only once its resolution policy is covered by the
 // criterion verification matrix (src/grading/v2CriterionVerifier.js).
 const resolutionPolicySubjects=new Set(["information-technology","mathematics","chemistry","food-nutrition-and-health",
- "integrated-science","physics"]);
+ "integrated-science","physics","principles-of-accounts"]);
 const subjectIds=new Set([
  "mathematics","physics","information-technology","chemistry","english-a",
- "food-nutrition-and-health","integrated-science","social-studies","principles-of-business"
+ "food-nutrition-and-health","integrated-science","social-studies","principles-of-business","principles-of-accounts"
 ]);
 const finite=n=>typeof n==="number"&&Number.isFinite(n);
 const object=x=>x&&typeof x==="object"&&!Array.isArray(x);
@@ -1082,6 +1084,12 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
   case "food-nutrition-and-health":rows=fnh(criteria,responses);break;
   case "integrated-science":rows=integratedScience(criteria,responses);break;
   case "principles-of-business":rows=pob(criteria,responses,paperId);break;
+  case "principles-of-accounts":
+   // Subject review diagnostics stay out of the strict five-field private
+   // worker protocol validated by spark_v2_complete_subject_job.
+   rows=(criteria.some(c=>c.sourceFormat===POA_METHOD_SOURCE_FORMAT)?evaluatePoaMethodsV2:evaluatePoaSourceV2)({paperId,criteria,responses}).map(({criterionId,maxMarks,suggestedMarks,method,resolved})=>
+    ({criterionId,maxMarks,suggestedMarks,method,resolved}));
+   break;
   case "social-studies":rows=social(criteria,responses);break;
   default:throw new TypeError("Unknown SPARK subject");
  }

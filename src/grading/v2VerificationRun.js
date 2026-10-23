@@ -30,6 +30,8 @@ import {integratedScienceCircuitFixtures} from "./v2Fixtures/integratedScienceCi
 import {filtrationSourceFixtures} from "./v2Fixtures/integratedScienceFiltration";
 import {integratedScienceGraphInText} from "../integratedScience/practice/integratedSciencePaper2Grader";
 import {CURATED_IS} from "./v2Fixtures/integratedScienceCurated";
+import {poaOriginalFixtures} from "./v2Fixtures/principlesOfAccountsOriginal";
+import {poaMethodFixtures} from "./v2Fixtures/principlesOfAccountsMethods";
 import {physicsFixtures} from "./v2Fixtures/physics";
 import {CURATED_PHYSICS} from "./v2Fixtures/physicsCurated";
 import physicsSource1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
@@ -67,6 +69,11 @@ function itContext(paperId,criterionId){
 
 /** Returns {kind, fixtures, sourceAnswer, alternatives, ruleId} or {blocked}. */
 export function fixturesForCriterion({subjectId,paperId,criterion}){
+ if(subjectId==="principles-of-accounts"){
+  if(criterion.sourceFormat==="poa-method-question-v1")return poaMethodFixtures({paperId,criterion});
+  if(paperId!=="POA-ORIGINAL-02-01")return {blocked:"legacy-specimen-policy-superseded-by-source-methods-v1"};
+  return poaOriginalFixtures({paperId,criterion});
+ }
  if(subjectId==="information-technology"){
   const ctx=itContext(paperId,criterion.id);
   if(!ctx)return {blocked:"criterion-not-found-in-source-archive"};
@@ -223,6 +230,11 @@ export function runV2PaperVerification(papers,records,provenance){
   const base={subjectId:p.subject_id,paperId:p.paper_id,rubricVersion:p.rubric_version,
    sourceSha256:p.source_sha256,expectedTotalMarks:p.expected_total_marks,
    criteria:p.criteria.length,verifiedCriteria:mine.length-unverified.length,provenance};
+  if(p.subject_id==="principles-of-accounts"&&p.criteria[0]?.sourceFormat==="poa-method-question-v1"){
+   base.sourcePaperId=p.criteria[0].sourceMarking.sourcePaperId;
+   base.sourcePdfSha256=p.criteria[0].sourceMarking.sourceSha256;
+   base.selectedQuestions=p.criteria[0].sourceMarking.selectedQuestions;
+  }
   if(unverified.length){out.push({...base,outcome:"blocked",unverifiedCriteria:unverified});continue;}
   const result=verifyPaper({subjectId:p.subject_id,paperId:p.paper_id,criteria:p.criteria},
    new Map(mine.map(r=>[r.criterionId,r.cases])));

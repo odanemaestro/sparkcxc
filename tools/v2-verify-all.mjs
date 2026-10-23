@@ -31,7 +31,9 @@ fs.rmSync(runner);
 execSync("node tools/build-server-marker-v2.mjs",{stdio:"ignore"});
 const bundleSha256=fs.readFileSync("supabase/functions/_shared/server-marker-v2.sha256","utf8").trim();
 const fixtureFiles=fs.readdirSync("src/grading/v2Fixtures").sort();
-const fixtureSha256=sha256(fixtureFiles.map(f=>fs.readFileSync("src/grading/v2Fixtures/"+f,"utf8")).join("\n"));
+const calibrationFiles=fs.readdirSync("src/principlesOfAccounts/calibration").filter(f=>f.endsWith(".js")).sort();
+const fixtureSha256=sha256([...fixtureFiles.map(f=>fs.readFileSync("src/grading/v2Fixtures/"+f,"utf8")),
+ ...calibrationFiles.map(f=>fs.readFileSync("src/principlesOfAccounts/calibration/"+f,"utf8"))].join("\n"));
 let gitCommit="unknown";
 try{gitCommit=execSync("git rev-parse HEAD").toString().trim();}catch{}
 const dirty=execSync("git status --porcelain src supabase tools").toString().trim().length>0;

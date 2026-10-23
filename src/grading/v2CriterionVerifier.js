@@ -73,6 +73,7 @@ export function verifyCriterion({subjectId,paperId,criteria,criterionId,kind,fix
    if(marks>maxMarks+1e-9||marks<0)failures.push("outside-mark-range");
    if(resolved&&!correct)failures.push("resolved-wrong-mark");
    if(mustResolve&&!resolved)failures.push("required-resolution-missing");
+   if(f.mustAbstain===true&&resolved)failures.push("required-abstention-missing");
    if(mustResolve&&resolved&&!correct)failures.push("required-mark-wrong");
   }
   results.push({cls:f.cls,note:f.note??null,expect:f.expect,marks,resolved,

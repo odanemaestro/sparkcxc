@@ -36,6 +36,9 @@ supabase/.temp/
 # Rebuilt from trusted source by npm run build:marker before edge deployment
 supabase/functions/_shared/server-marker.mjs
 supabase/functions/_shared/server-marker.sha256
+supabase/functions/_shared/server-marker-v2.mjs
+supabase/functions/_shared/server-marker-v2.sha256
+supabase/functions/_shared/server-marker-v2-checksum.mjs
 
 # Local POB semantic calibration evidence (do not commit provider outputs)
 /pob-jan2026-calibration-results.json

@@ -191,6 +191,7 @@ const VIEW_ROUTE_PATHS = Object.freeze({
   "practice-english-a": "/practice/english-a",
   "practice-chemistry": "/practice/chemistry",
   "practice-food-nutrition-and-health":"/practice/food-nutrition-and-health",
+  "practice-principles-of-accounts":"/practice/principles-of-accounts",
   "practice-principles-of-business":"/practice/principles-of-business",
   // SPARK_PHYSICS_SECTION_A_RC1_ROUTES
   physics: "/study/physics",
@@ -225,6 +226,7 @@ const ROUTE_PATH_VIEWS = Object.freeze({
   "/practice/english-a": "practice-english-a",
   "/practice/chemistry": "practice-chemistry",
   "/practice/food-nutrition-and-health":"practice-food-nutrition-and-health",
+  "/practice/principles-of-accounts":"practice-principles-of-accounts",
   "/practice/principles-of-business":"practice-principles-of-business",
   "/study/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
@@ -293,6 +295,7 @@ function viewFromBrowserHash() {
   if (normalizedPath === "/practice/english-a" || normalizedPath.startsWith("/practice/english-a/")) return "practice-english-a";
   if (normalizedPath === "/practice/chemistry" || normalizedPath.startsWith("/practice/chemistry/")) return "practice-chemistry";
   if (normalizedPath === "/practice/food-nutrition-and-health" || normalizedPath.startsWith("/practice/food-nutrition-and-health/")) return "practice-food-nutrition-and-health";
+  if (normalizedPath === "/practice/principles-of-accounts" || normalizedPath.startsWith("/practice/principles-of-accounts/")) return "practice-principles-of-accounts";
   if (normalizedPath === "/practice/principles-of-business" || normalizedPath.startsWith("/practice/principles-of-business/")) return "practice-principles-of-business";
   return ROUTE_PATH_VIEWS[normalizedPath] || "home";
 }
@@ -7640,6 +7643,7 @@ const handleLogout = async () => {
   const appHasChemistry = appStudentEnrolledSubjectIds.has("chemistry");
   const appHasFoodNutritionAndHealth=appStudentEnrolledSubjectIds.has("food-nutrition-and-health");
   const appHasPrinciplesOfBusiness=appStudentEnrolledSubjectIds.has("principles-of-business") || POB_DEV_PREVIEW;
+  const appHasPrinciplesOfAccounts=appStudentEnrolledSubjectIds.has("principles-of-accounts");
   const appGenericStudySubjectId = view === "generic-study"
     ? genericStudySubjectFromBrowserHash()
     : null;
@@ -7842,7 +7846,7 @@ if (loading || authenticatedRolePending) {
           CSEC Physics study is available from a student account.
         </div>
       )}
-      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies" || view === "practice-english-a" || view === "practice-chemistry" || view === "practice-food-nutrition-and-health" || view === "practice-principles-of-business") && session && profile?.role === "student" && (
+      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies" || view === "practice-english-a" || view === "practice-chemistry" || view === "practice-food-nutrition-and-health" || view === "practice-principles-of-business" || view === "practice-principles-of-accounts") && session && profile?.role === "student" && (
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Loading your practice subjects" />
           : (view === "practice-math" && !appHasMathematics)
@@ -7863,6 +7867,8 @@ if (loading || authenticatedRolePending) {
                 ? <SubjectEnrollmentRequiredView subjectName="Food, Nutrition and Health" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : (view === "practice-principles-of-business" && !appHasPrinciplesOfBusiness)
                 ? <SubjectEnrollmentRequiredView subjectName="Principles of Business" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
+              : (view === "practice-principles-of-accounts" && !appHasPrinciplesOfAccounts)
+                ? <SubjectEnrollmentRequiredView subjectName="Principles of Accounts" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : appStudentEnrolledSubjects.length === 0
                 ? <SubjectEnrollmentRequiredView onManageSubjects={openMySubjects} onBack={() => setView("dashboard")}/>
                 : (
@@ -7874,7 +7880,7 @@ if (loading || authenticatedRolePending) {
                       physicsEnabled={PHYSICS_SECTION_A_ENABLED}
                       enrolledSubjectIds={POB_DEV_PREVIEW ? [...appSubjectEnrollmentIds,"principles-of-business"] : appSubjectEnrollmentIds}
                       subjects={POB_DEV_PREVIEW ? [...runtimeSparkSubjects,{...getSparkSubject(SPARK_SUBJECTS,"principles-of-business"),enabled:true,status:"live"}] : runtimeSparkSubjects}
-                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : view === "practice-english-a" ? "english-a" : view === "practice-chemistry" ? "chemistry" : view === "practice-food-nutrition-and-health" ? "food-nutrition-and-health" : view === "practice-principles-of-business" ? "principles-of-business" : null}
+                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : view === "practice-english-a" ? "english-a" : view === "practice-chemistry" ? "chemistry" : view === "practice-food-nutrition-and-health" ? "food-nutrition-and-health" : view === "practice-principles-of-business" ? "principles-of-business" : view === "practice-principles-of-accounts" ? "principles-of-accounts" : null}
                       onSubjectActivity={event => {
                         recordSparkSubjectActivity({ supabase, event }).then(result => {
                           if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
