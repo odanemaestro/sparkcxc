@@ -4,11 +4,16 @@ on:
     branches: [main]
     paths:
       - "src/integratedScience/practice/scienceHypothesisMarking.js"
+      - "src/integratedScience/practice/scienceRustTableMarking.js"
+      - "src/integratedScience/practice/scienceRustTableMarking.test.js"
+      - "src/integratedScience/practice/ScienceDrawingTableResponse.jsx"
+      - "src/integratedScience/practice/ScienceDrawingTableResponse.test.jsx"
       - "src/integratedScience/practice/scienceHypothesisMarking.test.js"
       - "src/integratedScience/practice/integratedSciencePaper2Grader.js"
       - "src/grading/serverPaper2V2SubjectEngine.js"
       - "src/grading/v2VerificationRun.js"
       - "src/grading/v2Fixtures/integratedScienceHypothesis.js"
+      - "src/grading/v2Fixtures/integratedScienceRustTable.js"
       - ".github/workflows/v2-integrated-science-verify.yml"
   workflow_dispatch:
 permissions:
@@ -24,7 +29,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Hypothesis regression tests
-        run: npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js
+        run: npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js ScienceDrawingTableResponse.test.jsx
         env:
           CI: true
       - name: Verify all registered Integrated Science criteria
@@ -38,7 +43,8 @@ jobs:
             "IS-M2-P2-07::(a)::(ii)",
             "IS-M3-P2-11::(c)::(i)",
             "IS-M3-P2-13::(b)::(i)",
-            "IS-M1-P2-15::(b)::(i)"
+            "IS-M1-P2-15::(b)::(i)",
+            "IS-M3-P2-05::(a)::(i)"
           ];
           for(const id of ids){
             const rec=evidence.find(x=>x.criterionId===id);
