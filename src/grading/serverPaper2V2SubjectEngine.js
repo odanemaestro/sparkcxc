@@ -392,8 +392,14 @@ function physics(rows,responses,paperId){
    const previousGraphResponse=read(responses,questionId+"::"+spec.graphPart)||{};
    const verifiedGraph=originalParts.get(questionId+"::"+spec.graphPart);
    if(verifiedGraph?.responseType!=="graph"||
-      !submittedSourceGraph(previousGraphResponse,verifiedGraph))
+      !submittedSourceGraph(previousGraphResponse,verifiedGraph)){
+    // Without a usable drawn graph, a numerical response may still have
+    // legitimate alternative method marks. Abstain on it. An entirely blank
+    // response, however, cannot earn a triangle or read-off mark and can be
+    // scored as a certain zero even when the earlier graph is missing.
+    if(blank(response))return cap(row,0,"physics-empty-graph-dependent-response",true);
     return cap(row,grade,"existing-physics-rubric-checks",false);
+   }
    const evidence=partId===spec.trianglePart
     ?paperId===physicsPaper1.paper_id
      ?evaluatePhysicsGraphGradient({response,previousGraphResponse})
