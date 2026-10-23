@@ -421,7 +421,7 @@ function physics(rows,responses,paperId){
      evidence.criteria.find(x=>x.id==="A1")?.candidateMarks===1 &&
      evidence.criteria.find(x=>x.id==="B1")?.candidateMarks===1;
     const noQuantityOrGraph=partId===spec.trianglePart &&
-     !/\\d/.test(String(object(response)?response.answer??"":response??"")) &&
+     !/\d/.test(String(object(response)?response.answer??"":response??"")) &&
      !String(object(response)?response.working??"":"").trim() &&
      !(object(response)&&response.graphEvidence);
     const pressureMethod=partId===spec.readingPart&&
@@ -447,14 +447,14 @@ function physics(rows,responses,paperId){
      currentAnswer?.candidateMarks===1&&
      (evidence.criteria.find(x=>x.id==="M1")?.candidateMarks===1||
       (!object(response)?.graphEvidence&&
-       !/read(?:s|ing)?\\s+(?:off|from)|graph|plot/i.test(
+       !/read(?:s|ing)?\s+(?:off|from)|graph|plot/i.test(
         String(object(response)?response.working??"":""))));
     const noCurrentEvidence=currentMethod&&
-     !/\\d/.test(String(object(response)?response.answer??"":response??""))&&
+     !/\d/.test(String(object(response)?response.answer??"":response??""))&&
      !String(object(response)?response.working??"":"").trim()&&
      !object(response)?.graphEvidence;
     const noPressureEvidence=pressureMethod&&
-     !/\\d/.test(String(object(response)?response.answer??"":response??""))&&
+     !/\d/.test(String(object(response)?response.answer??"":response??""))&&
      !String(object(response)?response.working??"":"").trim()&&
      !object(response)?.graphEvidence;
     const definitelyResolved=fullGradient||noQuantityOrGraph||
