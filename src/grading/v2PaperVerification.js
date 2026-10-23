@@ -61,7 +61,11 @@ function scenario(name,{subjectId,paperId,criteria},plan,{mustPublish}){
  if(!anyUnresolved&&!out.canPublishFinalScore)failures.push("resolved-paper-not-publishable");
  const expectedTotal=[...criteria].reduce((n,c)=>n+(expected.get(c.id)??0),0);
  if(mustPublish){
-  if(!out.canPublishFinalScore)failures.push("expected-publication");
+  if(!out.canPublishFinalScore){
+   const unresolved=out.rows.filter(r=>!r.resolved)
+    .map(r=>r.criterionId+"="+r.suggestedMarks+"@"+r.method);
+   failures.push("expected-publication; unresolved: "+unresolved.join(", "));
+  }
   else if(tolerant.size===0&&Math.abs(out.confirmedMarks-expectedTotal)>1e-9)
    failures.push("total "+out.confirmedMarks+" != expected "+expectedTotal);
  }
