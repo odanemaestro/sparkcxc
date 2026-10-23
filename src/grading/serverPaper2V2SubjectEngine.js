@@ -325,6 +325,16 @@ const graphSourceMatches=(registered,original)=>
    c.marks===expected?.marks&&c.manual===expected?.manual&&
    c.description===expected?.description;
  });
+// PostgreSQL jsonb canonicalizes object key order; JavaScript source files
+// preserve authoring order. Compare complete nested values, not key order,
+// before accepting any source-specific marking rule.
+const physicsStableJSON=value=>Array.isArray(value)
+ ?value.map(physicsStableJSON):object(value)
+  ?Object.fromEntries(Object.keys(value).sort().map(key=>[key,physicsStableJSON(value[key])]))
+  :value;
+const physicsSameCriteria=(registered,authored)=>
+ JSON.stringify(physicsStableJSON(registered))===
+ JSON.stringify(physicsStableJSON(authored));
 function physics(rows,responses,paperId){
  const original=physicsSourcePapers.get(paperId);
  if(!original)throw new Error("Unknown registered Physics source paper: "+paperId);
@@ -475,7 +485,7 @@ function physics(rows,responses,paperId){
   const canonicalPartial=physicsCanonicalWrittenPartial(row.id,response);
   if(canonicalPartial!==null){
    if(source.answer!==originalPart.answer||
-      JSON.stringify(source.criteria)!==JSON.stringify(originalPart.criteria))
+      !physicsSameCriteria(source.criteria,originalPart.criteria))
     throw new Error("Source drift in Physics written partial "+row.id);
    return cap(row,canonicalPartial,"physics-source-canonical-partial",true);
   }
