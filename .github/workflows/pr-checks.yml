@@ -71,6 +71,24 @@ jobs:
           node tools/v2-verify-all.mjs --subject physics --out artifacts/v2-physics-table-retest
           node --input-type=module -e 'import fs from "node:fs";const s=JSON.parse(fs.readFileSync("artifacts/v2-physics-table-retest/summary.json","utf8"));const p=s.bySubject.physics;if(p?.criteria!==135||p.verified<57) {console.error("Physics verification regressed",JSON.stringify(p));process.exit(1)}console.log("Physics verified",p.verified,"of 135; remaining criteria stay unreleased")'
 
+      - name: Report each unverified Physics source criterion
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const rows=JSON.parse(fs.readFileSync("artifacts/v2-physics-table-retest/evidence.json","utf8"));
+          const missing=rows.filter(x=>x.outcome!=="verified");
+          console.log("Physics failed source criteria:",missing.length);
+          for(const r of missing){
+           const problems=[...(r.missingClasses||[]).map(x=>"missing:"+x),
+             ...(r.uncommittedClasses||[]).map(x=>"uncommitted:"+x),
+             ...(r.failures||[]).map(f=>f.cls+":"+f.failures.map(x=>x).join(","))];
+           console.log(JSON.stringify({criterion:r.criterionId,marks:r.maxMarks,kind:r.kind,
+            problems,partial:r.cases?.filter(x=>x.cls==="partial").map(x=>({marks:x.marks,expect:x.expect,resolved:x.resolved})),
+            incorrect:r.cases?.filter(x=>x.cls==="incorrect").map(x=>({marks:x.marks,expect:x.expect,resolved:x.resolved})),
+            full:r.cases?.filter(x=>x.cls==="full").map(x=>({marks:x.marks,expect:x.expect,resolved:x.resolved}))}));
+          }
+          NODE
+
       - name: Upload Physics V2 evidence results
         uses: actions/upload-artifact@v4
         with:
