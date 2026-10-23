@@ -25,6 +25,7 @@ import {integratedScienceHypothesisFixtures} from "./v2Fixtures/integratedScienc
 import {integratedScienceRustTableFixtures} from "./v2Fixtures/integratedScienceRustTable";
 import {additionalTableFixtures} from "./v2Fixtures/integratedScienceAdditionalTables";
 import {integratedScienceParticleFixtures} from "./v2Fixtures/integratedScienceParticles";
+import {integratedScienceCircuitSymbolFixtures} from "./v2Fixtures/integratedScienceCircuitSymbols";
 import {integratedScienceGraphInText} from "../integratedScience/practice/integratedSciencePaper2Grader";
 import {CURATED_IS} from "./v2Fixtures/integratedScienceCurated";
 import {physicsFixtures} from "./v2Fixtures/physics";
@@ -130,6 +131,8 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
   if(extraTable)return extraTable;
   const particles=integratedScienceParticleFixtures(qid,pi,ii,item,criterion.maxMarks);
   if(particles)return particles;
+  const symbols=integratedScienceCircuitSymbolFixtures(qid,pi,ii,item,criterion.maxMarks);
+  if(symbols)return symbols;
   if(integratedScienceGraphInText(item))return {blocked:"graph-question-without-graph-response-input"};
   const structured=integratedScienceStructuredFixtures({base:qid+":"+pi+":"+ii,item,maxMarks:criterion.maxMarks});
   if(structured){
