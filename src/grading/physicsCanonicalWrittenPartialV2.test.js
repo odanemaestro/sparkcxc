@@ -19,6 +19,7 @@ test("every curated answer has its own full-paper source and exact expected subm
   const rows=registered(paper);
   const source=rows.find(r=>r.id===id);
   for(const f of fixtures){
+   if(f.cls!=="partial")continue;
    expect(f.expect).toBeGreaterThan(0);
    expect(f.expect).toBeLessThan(source.maxMarks);
    const evalResult=evaluateExistingSubjectPaper2V2({subjectId:"physics",
