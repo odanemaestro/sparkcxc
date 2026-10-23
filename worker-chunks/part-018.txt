@@ -1,4 +1,7 @@
-ine ONE benefit of the growth of a company to EACH of the following groups.\n(i) Customers\n(ii) Shareholders",
+ },
+            {
+              "label": "(c)",
+              "question": "Outline ONE benefit of the growth of a company to EACH of the following groups.\n(i) Customers\n(ii) Shareholders",
               "marks": 4,
               "answer": "2 marks each:\n(i) Customers (any ONE): lower prices because of economies of scale; a wider range of products; better-quality products from more research and development; more outlets and better after-sales service.\n(ii) Shareholders (any ONE): higher profits and therefore higher dividends; an increase in the value of their shares (capital gain); greater security of their investment."
             },

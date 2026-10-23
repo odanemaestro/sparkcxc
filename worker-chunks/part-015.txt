@@ -1,3 +1,8 @@
+ct.freeze({
+  id: "POB-P2-2008-MJ",
+  paper: 2,
+  year: 2008,
+  sitting: "MJ",
   sourceFilename: "CSEC_Principles_of_Business_P2_2008_MJ.pdf",
   sourceSha256: "c1ef9a099b0edb2cf82fac344ebe011cfce418e26bf2caa05ecf9ebdc5a6531f",
   sourcePagesReviewed: Object.freeze([1, 2, 3, 4]),
@@ -1642,4 +1647,4 @@ var RULES = Object.freeze(Object.fromEntries([
   ["3:a", ["First distinct function of a consumer organisation", "Second distinct function", "Third distinct function", "Fourth distinct function"], "Educate consumers, investigate complaints, seek redress and campaign for better consumer laws.", ["advise rights", "handle disputes", "market surveillance", "product-safety alerts", "advocacy", "price monitoring"]],
   ["3:b", ["First customer-service role", "Explains how the first role helps", "Second DIFFERENT customer-service role", "Explains how the second helps"], "Responding to questions helps customers choose correctly. Resolving complaints creates confidence and repeat purchases.", ["answer questions", "after-sales help", "customer feedback", "returns", "product demonstrations"]],
   ["3:c.i", ["Defines warranty as a seller or manufacturer promise for a stated period or terms", "Explains repair, replacement, or other contractual or legal remedy for covered faults"], "A warranty promises support for a product's performance or defects, such as repair during its stated period.", ["warranty period", "defects", "repair", "replacement", "consumer remedy"]],
-  ["3:c.ii", ["Identifies web or app messaging with a support service", "Explains its use for answering questions or resolving issue
+  ["3:c.ii", ["Identifies web or app messaging with a

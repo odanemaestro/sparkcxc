@@ -1,4 +1,4 @@
-t. The payee deposits the cheque, it is cleared through the clearing house, and the money is moved from the drawer's account to the payee's account.\n\u2022 Debit card (EFT at the point of sale): the buyer's card is swiped or inserted and the PIN entered; the money is transferred electronically from the buyer's account to the seller's account.\n\u2022 Standing order: the customer instructs the bank to pay a fixed amount to a named payee at regular intervals; the bank makes the payments automatically.\n\u2022 Direct debit: the customer authorises a company to collect varying amounts directly from his account.\n\u2022 Online banking transfer: the customer logs in and transfers money to another account or pays a bill.\n\u2022 Credit card: the customer pays with the card and settles the amount with the bank later."
+ cheque instructing the bank to pay a named payee a sum from his current account. The payee deposits the cheque, it is cleared through the clearing house, and the money is moved from the drawer's account to the payee's account.\n\u2022 Debit card (EFT at the point of sale): the buyer's card is swiped or inserted and the PIN entered; the money is transferred electronically from the buyer's account to the seller's account.\n\u2022 Standing order: the customer instructs the bank to pay a fixed amount to a named payee at regular intervals; the bank makes the payments automatically.\n\u2022 Direct debit: the customer authorises a company to collect varying amounts directly from his account.\n\u2022 Online banking transfer: the customer logs in and transfers money to another account or pays a bill.\n\u2022 Credit card: the customer pays with the card and settles the amount with the bank later."
             }
           ]
         },
@@ -2899,7 +2899,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
                   "answer": "2 marks each (1 for the explanation, 1 for the example):\n\u2022 Fixed capital: assets that are kept in the business for a long time and used over and over in production, not for resale. Examples: machinery, buildings, vehicles, equipment.\n\u2022 Working capital: the money and short-term assets used for the day-to-day running of the business (current assets minus current liabilities). Examples: cash, stock of raw materials, money owed by debtors."
                 }
               ]
-            },
-            {
-              "label": "(c)",
-              "question": "Outl
+           

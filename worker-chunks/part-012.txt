@@ -178,7 +178,7 @@ var evaluate = (id, t) => {
       const target = /\b25\s*°?\s*c\b/.test(t);
       const compare = /\b(?:4|40)\s*°?\s*c\b/.test(t);
       const directional = /\b(?:best|better|more|most|higher|greater)\b/.test(t);
-      const contrary = compare && /\b(?:4|40)\s*°?\s*c\b.{0,32}\b(?:best|most|highest)\b/.test(t);
+      const contrary = compare && (/\b(?:4|40)\s*°?\s*c\b.{0,32}\b(?:best|most|highest)\b/.test(t) || /\b(?:best|most|highest)\b\s+(?:at|around)\s+(?:4|40)\s*°?\s*c\b/.test(t));
       return {
         prediction: seed && germination && target && directional && !contrary,
         comparison: seed && germination && target && compare && directional && !contrary,
@@ -3814,4 +3814,4 @@ var POB_2003_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 47, "pdfPage": 7, "proposedOption": "D", "explanation": "Excise drawback refunds eligible excise on domestically produced goods subsequently exported.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
     Object.freeze({ "number": 48, "pdfPage": 7, "proposedOption": "B", "explanation": "Consumption or sales taxes are indirect levies collected through purchases.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
     Object.freeze({ "number": 49, "pdfPage": 7, "proposedOption": "D", "explanation": "Market equilibrium is where the quantity buyers want equals the quantity sellers offer at a given price.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 50, "pdfPage": 7, "proposedOption": "B", "explanation": "A simultaneous decrease in demand and increase in supply ordinarily lowers the market price.", "status": "spark-provisional", "u
+    Object.freeze({ "number": 50, "pdfPage": 7, "proposedOption": "B", "explanation": "A simultaneous decrease in demand and increase in

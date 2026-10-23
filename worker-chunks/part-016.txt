@@ -1,4 +1,4 @@
-s promptly"], "Online chat lets customers contact support through a website and receive timely help.", ["real-time messaging", "in-app help", "customer enquiry"]],
+ support service", "Explains its use for answering questions or resolving issues promptly"], "Online chat lets customers contact support through a website and receive timely help.", ["real-time messaging", "in-app help", "customer enquiry"]],
   ["3:c.iii", ["Identifies help delivered AFTER purchase", "Gives a relevant service such as repair, advice, installation or returns"], "After-sales service supports buyers after the sale, such as help with product installation and repairs.", ["returns", "repairs", "maintenance", "help desk", "setup"]],
   ["3:d.i", ["Correctly identifies trademark as protection for a distinctive brand indicator", "Explains risk of competitors using a confusingly similar name or logo and legal protection", "Explains effect on reputation, customer recognition or sales"], "A trademark helps Leon protect his skincare brand name and logo from confusing imitation. Customers identify genuine products and the business protects its reputation.", ["brand source identifier", "exclusive use", "counterfeiting", "customer trust", "registration"]],
   ["3:d.ii", ["Identifies copyright protection for original literary expression", "Explains author's rights to control copying, distribution or licensing", "Explains income, royalties or remedies against unauthorised copies"], "Copyright protects Vashti's original novel and controls its copying and licensed publication, supporting royalties and legal remedies.", ["literary work", "copying rights", "publishing licences", "royalties", "piracy prevention"]],
@@ -2303,4 +2303,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
               "label": "(d)",
               "question": "Identify TWO types of monetary transactions that can be conducted within the banking system without the use of cash. Discuss how EACH transaction is performed.",
               "marks": 6,
-              "answer": "Any TWO, 3 marks each (1 for the type, 2 for how it is performed):\n\u2022 Cheque: the account holder writes a cheque instructing the bank to pay a named payee a sum from his current accoun
+              "answer": "Any TWO, 3 marks each (1 for the type, 2 for how it is performed):\n\u2022 Cheque: the account holder writes a

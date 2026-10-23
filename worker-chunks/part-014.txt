@@ -1,4 +1,4 @@
- the overall work into specialised tasks.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+dfPage": 2, "proposedOption": "C", "explanation": "Division of labour separates the overall work into specialised tasks.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 5, "pdfPage": 2, "proposedOption": "A", "explanation": "Private enterprise generally seeks profit for its owners.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 6, "pdfPage": 3, "proposedOption": "C", "explanation": "The purchasing supervisor is shown reporting to the finance manager in the source chart.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 7, "pdfPage": 3, "proposedOption": "B", "explanation": "The board of directors appropriately appears above the CEO in the organisation hierarchy.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
@@ -1290,8 +1290,4 @@ var ANSWERS = Object.freeze([
   [7, "c", "High youth unemployment is a major Caribbean challenge. Paid apprenticeships linked to employer demand can improve workforce skills and placement into jobs, reducing unemployment.", ["1:Identifies one genuine significant Caribbean economic problem", "2:Details a credible actionable solution matched to that problem", "1:Explains why the solution tackles the problem"]],
   [7, "d", "Public education trains workers with literacy, technical and professional skills. A more capable labour force raises productivity and attracts investment, contributing to national development.", ["1:Names an actual government social service, such as public education", "2:Explains how the selected service improves workforce skills, productivity or welfare", "1:Links the service to a specific development outcome"]]
 ]);
-var POB_2008_MJ_P2_AUTHORED_SCHEME = Object.freeze({
-  id: "POB-P2-2008-MJ",
-  paper: 2,
-  year: 2008,
-  sitting: "MJ",
+var POB_2008_MJ_P2_AUTHORED_SCHEME = Obje
