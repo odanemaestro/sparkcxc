@@ -19,7 +19,7 @@ export default function PhysicsGraphWorking({questionId,partId,graphPart,graphRe
  const reading=!!spec&&partId===spec.readingPart;
  const active=triangle||reading;
  const currentReading=reading&&questionId==="phy-p2-3-q1";
- const [selection,setSelection]=useState(questionId==="phy-p2-1-q1"&&reading?"5.56":"");
+ const [selection,setSelection]=useState(questionId==="phy-p2-1-q1"&&reading?"5.56":"3.0");
  if(!active)return null;
  const line=physicsGraphLine(graphResponse,questionId);
  const requestedX=Number(selection);
