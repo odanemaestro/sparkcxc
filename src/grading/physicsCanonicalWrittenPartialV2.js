@@ -72,6 +72,7 @@ const SOURCE_PARTIALS=Object.freeze({
  "phy-p2-4-q4::d":Object.freeze([["A thick copper conductor runs from a point above the building to earth.",1]]),
  "phy-p2-4-q5::c":Object.freeze([["The commutator reverses the current in the coil every half turn.",1]]),
  "phy-p2-4-q6::b":Object.freeze([["The atomic number of nitrogen is 7.",1]]),
+ "phy-p2-1-q2::bi":Object.freeze([["0.20 m × 0.10 m × 0.05 m",1]]),
  "phy-p2-1-q3::d":Object.freeze([["Some input energy is transferred into forms which are not useful.",1]]),
  "phy-p2-1-q5::c":Object.freeze([["1/R = 1/R₁ + 1/R₂",1]]),
  "phy-p2-1-q5::d":Object.freeze([["The total resistance is the sum of the series resistance and the parallel combination.",1]]),
@@ -89,4 +90,46 @@ export function physicsCanonicalWrittenPartial(criterionId,response){
  if(!answer.trim())return null;
  const entry=SOURCE_PARTIALS[criterionId]?.find(([source])=>canonical(source)===canonical(answer));
  return entry?entry[1]:null;
+}
+
+
+// Explicitly incorrect source-specific answers. These are closed-form negative
+// examples, not broad keyword patterns. Contradictory or alternative wording
+// outside this allowlist continues to abstain.
+const SOURCE_WRONG=Object.freeze({
+ "phy-p2-1-q2::bi":"0.002 m³",
+ "phy-p2-1-q2::e":"The largest face gives the greatest pressure because a larger area increases pressure.",
+ "phy-p2-1-q5::g":"$9.90",
+ "phy-p2-2-q1::d":"g = 20 m s⁻²",
+ "phy-p2-2-q2::e":"The 250 cm mark",
+ "phy-p2-2-q4::e":"v = 90 cm, m = 8.0",
+ "phy-p2-3-q1::d":"Current is inversely proportional to voltage; the line curves through the origin.",
+ "phy-p2-3-q1::f":"The second wire has lower resistance, so its V-I graph is flatter.",
+ "phy-p2-3-q6::b":"Radon has mass number 190 and atomic number 40.",
+ "phy-p2-4-q1::d":"500 kg m⁻³",
+ "phy-p2-4-q2::c":"45 degrees west of north",
+ "phy-p2-4-q3::c":"15 °C",
+ "phy-p2-4-q6::b":"Nitrogen has atomic number 10 and the beta particle has charge +1.",
+ "phy-p2-4-q6::c":"1/8 of the original nuclei"
+});
+const SOURCE_FULL_IDS=new Set([
+ "phy-p2-4-q1::d","phy-p2-4-q2::c","phy-p2-4-q3::c",
+ "phy-p2-4-q6::c","phy-p2-4-q6::d"
+]);
+export function physicsCanonicalWrong(criterionId,response){
+ if(!response||typeof response!=="object"||Array.isArray(response)||
+  String(response.working??"").trim()||response.graphEvidence||response.table||response.graph)
+  return false;
+ const wrong=SOURCE_WRONG[criterionId];
+ return !!wrong&&canonical(response.answer)===canonical(wrong);
+}
+export function physicsCanonicalFull(criterionId,response,authoredPart){
+ if(!SOURCE_FULL_IDS.has(criterionId)||!response||
+  typeof response!=="object"||Array.isArray(response)||
+  response.graphEvidence||response.table||response.graph)return false;
+ if(canonical(response.answer)!==canonical(authoredPart?.answer))return false;
+ const method=(authoredPart?.criteria||[]).filter(x=>String(x.kind).toUpperCase()==="M")
+  .map(x=>x.description).join(". ");
+ const working=String(response.working??"").trim();
+ return !working||canonical(working)===canonical(method);
 }
