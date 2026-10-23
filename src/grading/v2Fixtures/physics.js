@@ -120,6 +120,44 @@ function writtenFixtures(part,maxMarks,others){
 }
 
 
+/** Source-backed horizontal-to-vertical graph reading for Paper 3 Q1(e). */
+function currentReadOffFixtures(question,part,maxMarks){
+ const spec=getPhysicsGraphWorkingSpec(question.question_id);
+ const graphPart=question.parts.find(p=>p.id===spec?.graphPart);
+ if(!graphPart?.grid||!graphPart.graph?.line)return {blocked:"current-reading-without-source-graph"};
+ const grid=graphPart.grid,line=graphPart.graph.line;
+ const slope=Number(line.gradient),intercept=Number(line.intercept||0);
+ const maxX=Math.min(Number(line.to),Number(grid.xMax),
+  (Number(grid.yMax)-intercept)/slope*.99);
+ const point=x=>({x,y:slope*x+intercept});
+ const graph={points:graphPart.graph.points.map(p=>({...p})),
+  line:[point(0),point(maxX)],axisXLabel:grid.xLabel,axisYLabel:grid.yLabel,
+  axisXMin:grid.xMin,axisXMax:grid.xMax,axisXStep:grid.xStep,
+  axisYMin:grid.yMin,axisYMax:grid.yMax,axisYStep:grid.yStep};
+ const pointAtSource=point((1.75-intercept)/slope);
+ const evidence={kind:"physics-current-reading-v1",point:pointAtSource};
+ const graphKey=question.question_id+"::"+graphPart.id;
+ const key=question.question_id+"::"+part.id;
+ const withGraph=response=>({[graphKey]:{graph},[key]:response});
+ const answer=String(part.answer||"");
+ return {kind:"visual",allOrNothing:false,
+  sourceAnswer:{answer,graphEvidence:evidence},alternatives:[],fixtures:[
+   {cls:"full",responses:withGraph({answer,graphEvidence:evidence}),
+    expect:maxMarks,note:"source value with explicit horizontal and vertical projections"},
+   {cls:"partial",responses:withGraph({answer}),expect:1,
+    mustResolve:true,note:"correct numerical answer without any graphical read-off"},
+   {cls:"partial",responses:withGraph({answer,graphEvidence:{
+    kind:"physics-current-reading-v1",point:{x:0.5,y:2.5}
+   }}),expect:1,note:"wrong saved graph selection cannot earn method marks"},
+   {cls:"incorrect",responses:withGraph({answer:"The answer is not a current."}),
+    expect:0,mustResolve:true},
+   {cls:"blank",response:{answer:""},expect:0},
+   {cls:"irrelevant",response:{answer:NONSENSE},expect:0},
+   {cls:"ceiling",responses:withGraph({answer,graphEvidence:evidence}),
+    expect:maxMarks}
+  ]};
+}
+
 /** Real graph-reading evidence for Paper 1 Q1(d), never a prose claim.
  * The supplied 1/V is plotted as x=100/18 on the source paper's scaled grid.
  */
@@ -226,6 +264,8 @@ export function physicsFixtures({paper,question,part,maxMarks,curated=[]}){
   set=gradientMethodFixtures(paper,question,part,maxMarks);
  }else if(question.question_id==="phy-p2-1-q1"&&part.id==="d"){
   set=pressureReadOffFixtures(question,part,maxMarks);
+ }else if(question.question_id==="phy-p2-3-q1"&&part.id==="e"){
+  set=currentReadOffFixtures(question,part,maxMarks);
  }else if(type==="table"){
   const model=modelResponsesForPhysicsPaper2(paper)[key]?.table;
   if(!model||!Object.keys(model).length)return {blocked:"table-without-complete-answer-key"};
