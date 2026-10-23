@@ -16,6 +16,7 @@ on:
       - "src/integratedScience/practice/ScienceDrawingMagnificationEvidence.jsx"
       - "src/integratedScience/practice/ScienceDrawingMagnificationEvidence.test.jsx"
       - "src/integratedScience/practice/ScienceBiologicalDrawingEvidence.jsx"
+      - "src/integratedScience/practice/IntegratedSciencePaper2Exam.jsx"
       - "src/integratedScience/practice/ScienceBiologicalDrawingEvidence.test.jsx"
       - "src/integratedScience/practice/scienceCircuitConstructionMarking.test.js"
       - "src/integratedScience/practice/ScienceCircuitConstructionResponse.jsx"
