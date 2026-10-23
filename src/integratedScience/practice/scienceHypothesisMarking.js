@@ -59,7 +59,11 @@ export function markSourceHypothesis(questionId,item,response){
  const t=String(response??"").toLowerCase().replace(/\s+/g," ").trim();
  const checks=evaluate(questionId,t);
  if(!checks)return null;
- const ambiguous=/\b(?:or|either|perhaps|maybe|possibly)\b/.test(t)||
+ const unambiguousList=questionId==="IS-M3-P2-11"
+  ?t.replace(/\bwater,\s*acetone\s+or\s+vinegar\b/g,"")
+  :questionId==="IS-M1-P2-15"
+  ?t.replace(/\b4\s*°?\s*c\s+or\s+40\s*°?\s*c\b/g,""):t;
+ const ambiguous=/\b(?:or|either|perhaps|maybe|possibly)\b/.test(unambiguousList)||
   /\b(?:it is false that|not true that|is incorrect)\b/.test(t);
  const prediction=checks.prediction&&!ambiguous;
  const comparison=checks.comparison&&prediction;
