@@ -16,10 +16,13 @@ describe("source-bound Integrated Science hypothesis marking",()=>{
   const result=markSourceHypothesis(id,hypothesis,full);
   expect(result.score).toBe(2);
   expect(result.criteria).toHaveLength(2);
-  expect(result.provisional).toBe(true);
+  expect(result.provisional).toBe(false);
+  expect(result.sourceResolved).toBe(true);
  });
  test.each(cases)("%s does not award full credit for a partial claim",(id,full,partial)=>{
-  expect(markSourceHypothesis(id,hypothesis,partial).score).toBeLessThan(2);
+  const result=markSourceHypothesis(id,hypothesis,partial);
+  expect(result.score).toBeLessThan(2);
+  expect(result.sourceResolved).toBe(true);
  });
  test.each(cases)("%s rejects empty and irrelevant responses",(id)=>{
   expect(markSourceHypothesis(id,hypothesis,"").score).toBe(0);
@@ -27,5 +30,9 @@ describe("source-bound Integrated Science hypothesis marking",()=>{
  });
  test("denser liquid sinking deeper is contradictory",()=>{
   expect(markSourceHypothesis("IS-M3-P2-13",hypothesis,"The denser liquid sinks deeper.").score).toBe(0);
+ });
+ test("ambiguous alternatives stay unresolved",()=>{
+  const r=markSourceHypothesis("IS-M2-P2-07",hypothesis,"Copper conducts electricity or maybe not.");
+  expect(r.sourceResolved).toBe(false);
  });
 });
