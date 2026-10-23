@@ -14,6 +14,7 @@ import physicsPaper1 from "../physics/paper2/data/spark-phy-p02-practice-1.json"
 import {getPhysicsGraphWorkingSpec} from "./physicsGraphWorkingSpecsV2";
 import {evaluatePhysicsGraphGradient,evaluatePhysicsGraphPressure} from "./physicsGraphGradientV2";
 import {evaluatePhysicsSourceGradient} from "./physicsGraphGradientPoliciesV2";
+import {physicsCanonicalWrittenPartial} from "./physicsCanonicalWrittenPartialV2";
 import physicsPaper2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
 import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
 import physicsPaper4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
@@ -430,6 +431,15 @@ function physics(rows,responses,paperId){
    const typed=submittedSourceGraph(response,originalPart);
    return cap(row,typed?grade:0,"existing-physics-rubric-checks",
     blank(response)||(typed&&physicsGraphComplete(response)));
+  }
+  // These exact, source-checked subsets establish specific partial marks.
+  // Other free-form answers continue through the conservative examiner.
+  const canonicalPartial=physicsCanonicalWrittenPartial(row.id,response);
+  if(canonicalPartial!==null){
+   if(source.answer!==originalPart.answer||
+      JSON.stringify(source.criteria)!==JSON.stringify(originalPart.criteria))
+    throw new Error("Source drift in Physics written partial "+row.id);
+   return cap(row,canonicalPartial,"physics-source-canonical-partial",true);
   }
   return cap(row,grade,"existing-physics-rubric-checks",
    blank(response)||physicsPartCertain({lines,part:originalPart,response,row,responses}));
