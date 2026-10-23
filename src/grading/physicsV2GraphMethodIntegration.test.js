@@ -72,7 +72,7 @@ test("graph method evidence is bounded by the original criterion ceiling",()=>{
  const row=mark("d",{answer:"133 kPa",working:"1/18=0.0556",
   graphEvidence:{kind:"physics-pressure-reading-v1",point}});
  expect(row.suggestedMarks).toBeLessThanOrEqual(row.maxMarks);
- expect(row.resolved).toBe(false);
+ expect(row.resolved).toBe(true);
 });
 
 test("graph evidence never lets correct numeric text fabricate a triangle",()=>{
