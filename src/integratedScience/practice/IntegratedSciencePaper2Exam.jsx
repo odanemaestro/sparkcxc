@@ -1,3 +1,4 @@
+import ScienceDrawingMagnificationEvidence from "./ScienceDrawingMagnificationEvidence";
 import ScienceFiltrationDrawingResponse from "./ScienceFiltrationDrawingResponse";
 import ScienceCircuitConstructionResponse from "./ScienceCircuitConstructionResponse";
 import ScienceCircuitSymbolResponse from "./ScienceCircuitSymbolResponse";
@@ -351,6 +352,8 @@ function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onCh
   if (type === "drawing") {
     return <DrawingPad base={base} questionId={questionId} partIndex={partIndex} itemIndex={itemIndex} responses={responses} onChange={onChange} disabled={disabled}/>;
   }
+
+  if(questionId==="IS-M1-P2-27"&&partIndex===0&&itemIndex===1&&type==="calculation")return <div className="is-p2-magnification-answer"><ScienceDrawingMagnificationEvidence base={base} responses={responses} onChange={onChange} disabled={disabled}/><textarea disabled={disabled} className="is-p2-calculation-response" rows={4} value={responses[base]||""} onChange={e=>onChange(base,e.target.value)} aria-label="Written magnification calculation"/></div>;
 
   return (
     <textarea
