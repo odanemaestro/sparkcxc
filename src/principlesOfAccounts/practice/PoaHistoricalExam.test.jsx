@@ -110,3 +110,34 @@ test("source cash-book, ledger-heading and cheque fields survive exit and submit
     responses: expect.objectContaining({ "1": { cells: { "2022-1a:0:0": "1500", "2022-1b-1:heading:title": "Stationery", "2022-1c:amount": "1484" } } }),
   })));
 });
+
+test("a saved diagram can be cleared, undone and revisited without losing its labels", () => {
+  const config = props("poa-2-2020-jan"), paper = config.paper;
+  const drawing = "[[[20,20],[120,20],[120,100]]]";
+  localStorage.setItem(historicalAttemptKey(config.userId, paper.id), JSON.stringify({ ...freshHistoricalAttempt(paper), phase: "exam", index: 3,
+    selectedQuestions: paper.questions.map((q) => q.number), responses: { "4": { parts: { "drawing:strokes": drawing, "drawing:notes": "Source documents → books of original entry" } } } }));
+  render(<PoaHistoricalExam {...config}/>);
+  const area = () => screen.getByRole("img", { name: "Accounts diagram drawing area" });
+  expect(area().querySelector("polyline")).toHaveAttribute("points", "20,20 120,20 120,100");
+  fireEvent.click(screen.getByRole("button", { name: "Clear drawing", exact: true }));
+  expect(area().querySelector("polyline")).toBeNull();
+  fireEvent.click(screen.getByRole("button", { name: "Undo", exact: true }));
+  expect(area().querySelector("polyline")).not.toBeNull();
+  fireEvent.click(screen.getByRole("button", { name: "Next question", exact: true }));
+  expect(screen.queryByLabelText("Diagram labels or description")).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Previous question", exact: true }));
+  expect(area().querySelector("polyline")).not.toBeNull();
+  expect(screen.getByLabelText("Diagram labels or description")).toHaveValue("Source documents → books of original entry");
+});
+
+test("a partly printed statement exposes its five missing figures without editable layout gaps", () => {
+  const config = props("poa-2-2024-jan"), paper = config.paper;
+  localStorage.setItem(historicalAttemptKey(config.userId, paper.id), JSON.stringify({ ...freshHistoricalAttempt(paper), phase: "exam", index: 1,
+    selectedQuestions: paper.questions.map((q) => q.number) }));
+  render(<PoaHistoricalExam {...config}/>);
+  const statement = screen.getByRole("table", { name: /Gigi Millie: Statement of Financial Position/ });
+  expect(statement.querySelectorAll("input")).toHaveLength(5);
+  expect(statement).toHaveTextContent("482 900");
+  expect(statement).toHaveTextContent("98 000");
+  expect(statement.querySelector("input[aria-label*='(i)']")).toBeInTheDocument();
+});

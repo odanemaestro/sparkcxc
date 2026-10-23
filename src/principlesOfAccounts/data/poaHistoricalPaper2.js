@@ -1,8 +1,13 @@
-// Owner-supplied historical Paper 2 facsimile index.
+// Owner-supplied historical Paper 2 source index.
 // Instructions and question page locations were checked against the supplied PDF.
 // No official answer key or marking scheme was supplied; original solutions are labelled separately.
 import { POA_HISTORICAL_PAPER2_DETAILS } from "./poaHistoricalPaper2Solutions";
 import { POA_HISTORICAL_PAPER2_MORE_DETAILS } from "./poaHistoricalPaper2MoreSolutions";
+import { POA_HISTORICAL_PAPER2_MIDDLE_DETAILS } from "./poaHistoricalPaper2MiddleSolutions";
+import { POA_HISTORICAL_PAPER2_LATER_DETAILS } from "./poaHistoricalPaper2LaterSolutions";
+import { POA_HISTORICAL_PAPER2_EARLY_DETAILS } from "./poaHistoricalPaper2EarlySolutions";
+import { POA_HISTORICAL_PAPER2_MID_DETAILS } from "./poaHistoricalPaper2MidSolutions";
+import { POA_HISTORICAL_PAPER2_RECENT_DETAILS } from "./poaHistoricalPaper2RecentSolutions";
 
 const archive = [
   {
@@ -2722,7 +2727,7 @@ export const POA_HISTORICAL_PAPER2_ARCHIVE = archive.map((paper) => ({
   ...paper,
   questions: paper.questions.map((question) => ({
     ...question,
-    ...(POA_HISTORICAL_PAPER2_DETAILS[paper.id]?.[question.number] || POA_HISTORICAL_PAPER2_MORE_DETAILS[paper.id]?.[question.number] || {}),
+    ...(POA_HISTORICAL_PAPER2_DETAILS[paper.id]?.[question.number] || POA_HISTORICAL_PAPER2_MORE_DETAILS[paper.id]?.[question.number] || POA_HISTORICAL_PAPER2_MIDDLE_DETAILS[paper.id]?.[question.number] || POA_HISTORICAL_PAPER2_LATER_DETAILS[paper.id]?.[question.number] || POA_HISTORICAL_PAPER2_EARLY_DETAILS[paper.id]?.[question.number] || POA_HISTORICAL_PAPER2_MID_DETAILS[paper.id]?.[question.number] || POA_HISTORICAL_PAPER2_RECENT_DETAILS[paper.id]?.[question.number] || {}),
   })),
 }));
 

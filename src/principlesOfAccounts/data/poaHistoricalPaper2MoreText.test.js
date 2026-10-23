@@ -6,11 +6,11 @@ const question = (id, number) => questions(id).find((q) => q.number === number);
 const tables = (id, number) => question(id, number).blocks.filter((b) => b.type === "table");
 const wording = (id, number) => question(id, number).blocks.map((block) => block.text || "").join(" ");
 
-test("transcribes five complete native questions for each included historical sitting", () => {
+test("transcribes every printed question for each included historical sitting", () => {
   expect(Object.keys(POA_HISTORICAL_PAPER2_MORE_TEXT)).toEqual(expect.arrayContaining(["poa-2-2023-jan", "poa-2-2023-mj", "poa-2-2024-jan", "poa-2-2024-mj", "poa-2-2025-jan", "poa-2-2025-mj"]));
   for (const [id, records] of Object.entries(POA_HISTORICAL_PAPER2_MORE_TEXT)) {
     const paper = getPoaHistoricalPaper2(id);
-    expect(records.map((q) => q.number)).toEqual([1, 2, 3, 4, 5]);
+    expect(records.map((q) => q.number)).toEqual(paper.questions.map((q) => q.number));
     for (const record of records) {
       const archive = paper.questions.find((q) => q.number === record.number);
       expect(record.transcriptionStatus).toBe("visually-checked");
@@ -28,6 +28,41 @@ test("transcribes five complete native questions for each included historical si
       }
     }
   }
+});
+
+test("2017 papers retain printed ledger sides, wages, optional questions and payroll rounding", () => {
+  const jan = "poa-2-2017-jan";
+  expect(questions(jan)).toHaveLength(7);
+  expect(wording(jan, 4)).toContain("Answer any TWO questions");
+  expect(wording(jan, 6)).toContain("$17 110 on hand as at 30 June");
+  expect(tables(jan, 2).filter((block) => block.answerId?.startsWith("q2-b-"))).toHaveLength(2);
+  expect(tables(jan, 5)[0].rows[1]).toEqual(["Purchases", "471 300", "47 100", "8 000"]);
+  const mj = "poa-2-2017-mj";
+  const loans = tables(mj, 2).find((block) => block.caption === "6% Five-Year Bank Loan");
+  expect(loans.rows[0]).toEqual(["", "", "", "2 May", "Bank", "25 000"]);
+  expect(tables(mj, 2).find((block) => block.caption === "Wages").rows[0]).toEqual(["7 May", "Capital", "1 550", "", "", ""]);
+  expect(wording(mj, 5)).toContain("round off numbers that are less than $1.00");
+  expect(tables(mj, 5).find((block) => block.answerId === "q5-b-ii").columns[0]).toBe("Date");
+});
+
+test("2018 papers retain source blanks, the completed example and unusual bank-account data", () => {
+  const jan = "poa-2-2018-jan";
+  expect(tables(jan, 2)[0].rows[3]).toEqual(["Wednesday", "", "7", "8", "8"]);
+  expect(tables(jan, 2)[0].rows[4]).toEqual(["Thursday", "8", "", "7", "7"]);
+  const effects = tables(jan, 1).find((block) => block.answerId === "q1-b");
+  expect(effects.rows[0]).toEqual(["(i)", "Increase", "", "Increase"]);
+  expect(effects.readOnlyCells).toEqual(["0:2"]);
+  const bank = tables(jan, 3).find((block) => block.caption === "Bank Account");
+  expect(bank.rows[3]).toEqual(["Drawings", "15 000", "", ""]);
+  expect(bank.rows[5]).toEqual(["", "264 000", "", "264 000"]);
+  expect(bank.accountDivider).toBe(2);
+  expect(bank.totalRows).toEqual([5]);
+  const mj = "poa-2-2018-mj";
+  const cashbook = tables(mj, 1).find((block) => block.answerId === "q1-a");
+  expect(cashbook.columns).toHaveLength(12);
+  const costs = tables(mj, 5)[0];
+  expect(costs.rows.find((row) => row[0] === "Electricity")).toEqual(["Electricity", "162 400"]);
+  expect(wording(mj, 5)).toContain("75% of the factory rent and rates");
 });
 
 test("response forms have stable unique IDs and given data remains read-only", () => {
@@ -76,6 +111,22 @@ test("May/June 2023 preserves cash-book sides, manufacturing apportionments and 
   expect(effects.rows.slice(1).every((row) => row.slice(1).every((cell) => cell === ""))).toBe(true);
   const balances = tables(id, 5)[0];
   expect(balances.rows.find((row) => row[0] === "Short-term loans to members")).toEqual(["Short-term loans to members", "301 900", ""]);
+});
+
+test("2021 papers retain their own source values and grouped petty-cash form", () => {
+  const jan = "poa-2-2021-jan";
+  expect(tables(jan, 1)[0].rows.at(-1)).toEqual(["", "$50 800", "$50 800"]);
+  const terms = tables(jan, 3).find((table) => table.caption === "Accounting terms");
+  expect(terms.rows).toEqual([["A.", "Business entity"], ["B.", "Accrual"], ["C.", "Prudence"], ["D.", "Duality"], ["E.", "Consistency"]]);
+  expect(tables(jan, 4)[0].rows[0][1]).toContain("trade discount of $270");
+  const mj = "poa-2-2021-mj";
+  expect(tables(mj, 1).find((table) => table.caption === "Ledger balances").rows).toHaveLength(15);
+  expect(wording(mj, 4)).toContain("$5 000 on 1 May 2020");
+  const projection = tables(mj, 4).find((table) => table.answerId === "q4-c");
+  expect(projection.rows.find((row) => row[0] === "Receipts from credit customers")).toEqual(["Receipts from credit customers", "15 000", "11 000", "20 000", "9 000", "20 000", "16 000"]);
+  const petty = tables(mj, 5).find((table) => table.answerId === "q5-c-ii");
+  expect(petty.columns).toHaveLength(8);
+  expect(petty.headerRows[0].at(-1)).toEqual({ text: "ANALYSIS COLUMNS", colSpan: 4 });
 });
 
 test("retains January 2024's original examples, incomplete figures and bank records", () => {

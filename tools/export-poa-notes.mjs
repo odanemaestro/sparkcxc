@@ -32,7 +32,7 @@ const sectionHtml = POA_SECTIONS.map(
     )
       .map((t) => {
         const l = t.metadata.lesson;
-        return `<article id="${t.id}"><p class="codes">${t.metadata.syllabus.objectiveCodes.join(" · ")}</p><h3>${escape(t.title)}</h3><p>${escape(l.introduction)}</p>${l.sections.map((b) => `<div class="${b.title === "Worked example" ? "example" : b.title === "Common mistake" ? "mistake" : ""}"><h4>${escape(b.title)}</h4>${b.paragraphs.map((p) => `<p>${escape(p)}</p>`).join("")}</div>`).join("")}<details><summary>Check your understanding: ${escape(l.check.question)}</summary><p>${escape(l.check.answer)}</p></details></article>`;
+        return `<article id="${t.id}"><p class="codes">${t.metadata.syllabus.objectiveCodes.join(" · ")}</p><h3>${escape(t.title)}</h3><p>${escape(l.introduction)}</p>${l.sections.map((b) => `<div class="${b.title === "Worked example" ? "example" : b.title === "Common mistake" ? "mistake" : ""}"><h4>${escape(b.title)}</h4>${b.paragraphs.map((p) => `<p>${escape(p)}</p>`).join("")}</div>`).join("")}<h4>Key points</h4><ul>${l.keyPoints.map((point) => `<li>${escape(point)}</li>`).join("")}</ul><h4>Lesson summary</h4><p>${escape(l.summary)}</p><details><summary>Check your understanding: ${escape(l.check.question)}</summary><p>${escape(l.check.answer)}</p></details></article>`;
       })
       .join("")}</section>`,
 ).join("");

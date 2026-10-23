@@ -228,12 +228,12 @@ body.dark .poa-practice .poa-eyebrow {
 .poa-printed-question p { line-height: 1.8; white-space: pre-line; }
 .poa-printed-table-scroll { max-width: 100%; overflow-x: auto; margin: 28px 0; }
 .poa-printed-question table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
-.poa-printed-question caption { margin-bottom: 14px; text-align: center; font-weight: 700; line-height: 1.6; }
+.poa-printed-question caption { margin-bottom: 14px; text-align: center; font-weight: 700; line-height: 1.6; white-space: pre-line; }
 .poa-printed-question caption span { display: block; }
-.poa-printed-question th, .poa-printed-question td { border: 1px solid var(--poa-line); padding: 10px 12px; vertical-align: top; min-width: 60px; font-size: 0.88rem; }
+.poa-printed-question th, .poa-printed-question td { border: 1px solid var(--poa-line); padding: 10px 12px; vertical-align: top; min-width: 60px; font-size: 0.88rem; white-space: pre-line; }
 .poa-printed-question th { font-weight: 650; }
 .poa-printed-question .poa-number { text-align: right; white-space: nowrap; }
-.poa-printed-question td input { min-width: 100px; font-weight: 400; }
+.poa-printed-question td :is(input, textarea) { min-width: 100px; font-weight: 400; }
 .poa-printed-cheque { border: 1px solid currentColor; padding: 20px; margin: 24px 0; max-width: 680px; overflow-x: auto; font-family: Georgia, serif; }
 .poa-printed-cheque p { white-space: pre; }
 .poa-printed-cheque .poa-cheque-date { text-align: right; }
@@ -241,10 +241,13 @@ body.dark .poa-practice .poa-eyebrow {
 .poa-account-heading { display: flex; justify-content: space-between; gap: 24px; text-align: left; }
 .poa-account-heading label { display: flex; align-items: center; gap: 8px; }
 .poa-account-heading input { max-width: 180px; }
+.poa-drawing-pad { margin: 24px 0; }
+.poa-drawing-pad svg { display: block; width: 100%; height: auto; max-height: 480px; border: 1px solid var(--poa-line); background: var(--poa-paper); border-radius: 8px; touch-action: none; cursor: crosshair; }
+.poa-drawing-pad label { margin-top: 20px; }
 .poa-printed-question table[data-account] { border-top: 2px solid currentColor; }
 .poa-printed-question table[data-account] :is(th, td) { border: 0; }
-.poa-printed-question table[data-account] :is(th, td):nth-child(3) { border-right: 2px solid currentColor; }
-.poa-printed-question table[data-account] tr:last-child td.poa-number { border-top: 1px solid currentColor; border-bottom: 3px double currentColor; }
+.poa-printed-question table[data-account] :is(th, td).poa-account-divider { border-right: 2px solid currentColor; }
+.poa-printed-question table[data-account] tr[data-total] td.poa-number { border-top: 1px solid currentColor; border-bottom: 3px double currentColor; }
 .poa-printed-part { margin: 24px 0; }
 .poa-printed-marks { text-align: right; font-size: 0.88rem; margin-top: -8px; }
 .poa-native-mcq-options { display: grid; gap: 12px; }

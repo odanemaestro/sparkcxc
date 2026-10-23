@@ -5,6 +5,7 @@ import { startServerExamAttempt, submitServerExamAttempt, localExamDeadline, rea
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import AccountingWorkspace from "../components/AccountingWorkspace";
 import PoaQuestionText from "./PoaQuestionText";
+import PoaDrawingPad from "./PoaDrawingPad";
 import { getPoaPrintedQuestions } from "../data/poaPrintedPapers";
 import { reviewHistoricalAccountingFigures } from "./poaHistoricalFeedback";
 import { historicalAttemptKey, historicalBankVersion, historicalRubricVersion, freshHistoricalAttempt,
@@ -49,7 +50,9 @@ export default function PoaHistoricalExam({ source, paper, userId, supabase, onB
   const answered = paper.questions.filter((q) => isPaper1 ? !!attempt.responses[String(q.number)]?.answer : answerHasContent(attempt.responses[String(q.number)])).length;
   const title = source.sitting === "SPECIMEN" ? `Syllabus specimen · Paper 0${source.paper}` : `${source.year} ${source.sitting === "JAN" ? "January" : "May/June"} · Paper 0${source.paper}`;
   const printedQuestion = getPoaPrintedQuestions(paper.id).find((item) => item.number === question.number);
-  const inlineAnswerSheet = !question.answerSections?.length && printedQuestion?.blocks.some((block) => block.answerSpace);
+  const inlineAnswerSheet = !isPaper1 && printedQuestion?.blocks.some((block) => block.answerSpace);
+  const earlierWorksheet = inlineAnswerSheet && question.answerSections?.some((section) => answerHasContent(response.parts?.[section.id]) || Object.keys(response.cells || {}).some((id) => id.startsWith(`${section.id}:`)));
+  const visibleFigures = inlineAnswerSheet ? figures.filter((figure) => figure.value !== null) : figures;
   const metadata = { subject: "principles-of-accounts", paper: `0${source.paper}`, paper_id: paper.id,
     source: "poa-historical-text-v1", source_sha256: paper.sourceSha256,
     selected_questions: attempt.selectedQuestions, provisional: true, scorePublicationAllowed: false,
@@ -81,7 +84,7 @@ export default function PoaHistoricalExam({ source, paper, userId, supabase, onB
         metadata: { ...metadata, selected_questions: snapshot.selectedQuestions, selection_valid: historicalChoiceIsValid(paper, snapshot.selectedQuestions) } }) : { available: false };
       if (saved.available) {
         setAttempt((a) => ({ ...a, serverSubmitted: true }));
-        setReceipt("Your responses are saved on SPARK. A final grading result is pending.");
+        setReceipt(isPaper1 ? "Your answers are saved on SPARK." : "Your responses are saved on SPARK. A final grading result is pending.");
         const progress = await recordSubjectActivity({ supabase, activity: { subjectId: "principles-of-accounts", activityKey: `exam:poa-historical:${paper.id}:${snapshot.id}`,
           activityType: "exam", title: `Principles of Accounts ${title}`, completed: true, score: null, maxScore: paper.maxMarks, metadata } });
         if (progress?.error) setError("Your submission is saved, but progress could not be updated.");
@@ -121,7 +124,7 @@ export default function PoaHistoricalExam({ source, paper, userId, supabase, onB
     {exitConfirm && <section aria-label="Exit examination"><h2>Save and exit?</h2><p>Your answers will be saved.{attempt.mode === "timed" ? " The timer will keep running while you’re away." : " Come back whenever you’re ready."}</p><div className="poa-actions"><button type="button" onClick={onBack}>Save and exit</button><button type="button" className="secondary" onClick={() => setExitConfirm(false)}>Keep working</button></div></section>}
     <header><h1>Principles of Accounts</h1><h2>{title}</h2><p>{paper.durationMinutes} minutes · {paper.maxMarks} marks · {paper.questionCount} questions{paper.choicePolicy?.type !== "all" ? ` · answer ${paper.requiredQuestionCount}` : " · answer all questions"}.</p></header>
     <p role="alert">{error}</p>
-    {legacyNotebook && <details><summary>Your notebook from the earlier paper reader</summary><p>This work was saved before question-by-question answer sheets were introduced. You can copy it into the relevant answer below.</p><pre className="poa-legacy-notebook">{legacyNotebook}</pre></details>}
+    {legacyNotebook && <details><summary>Your saved notebook</summary><p>Your earlier notes are here. You can copy them into the relevant answers below.</p><pre className="poa-legacy-notebook">{legacyNotebook}</pre></details>}
     {attempt.phase === "instructions" ? <>
       <section><h2>Before you begin</h2><p>Read each question carefully and complete your answers in the spaces provided. Your work is saved as you go.</p>
         {paper.choicePolicy?.type === "section-choice" && <p>Answer questions {paper.choicePolicy.compulsory.join(", ")} and choose {paper.choicePolicy.choose} from questions {paper.choicePolicy.from.join(", ")}. Select the optional questions you want SPARK to retain for submission.</p>}
@@ -141,6 +144,8 @@ export default function PoaHistoricalExam({ source, paper, userId, supabase, onB
           {paper.choicePolicy?.type === "section-choice" && <label className="poa-inline-check"><input type="checkbox" disabled={review || paper.choicePolicy.compulsory.includes(question.number)} checked={attempt.selectedQuestions.includes(question.number)}
             onChange={(e) => setAttempt((a) => ({ ...a, selectedQuestions: e.target.checked ? [...a.selectedQuestions, question.number] : a.selectedQuestions.filter((n) => n !== question.number) }))}/>{paper.choicePolicy.compulsory.includes(question.number) ? "Compulsory question" : "Include this optional question in my submission"}</label>}
           {printedQuestion && <PoaQuestionText question={printedQuestion} response={response} onChange={inlineAnswerSheet ? changeResponse : undefined} disabled={review}/>}
+          {isPaper1 && printedQuestion?.sourceIncomplete && <p>There are no answer choices on this copy. Go on to the next question.</p>}
+          {!isPaper1 && (printedQuestion?.requiresDrawing || printedQuestion?.blocks.some((block) => block.responseKind === "drawing")) && <PoaDrawingPad key={question.number} response={response} onChange={changeResponse} disabled={review}/>}
           {isPaper1 ? !printedQuestion?.sourceIncomplete && <fieldset disabled={review}><legend>Choose your answer</legend><div className="poa-native-mcq-options">{"ABCD".split("").map((option, index) => {
             const content = printedQuestion?.options[index];
             const id = `poa-option-${question.number}-${option}`;
@@ -150,11 +155,12 @@ export default function PoaHistoricalExam({ source, paper, userId, supabase, onB
               <div id={`${id}-content`} onClick={() => !review && changeResponse({ ...response, answer: option })}>{typeof content === "string" ? <label htmlFor={id}>{content}</label> : content?.blocks ? <PoaQuestionText question={content}/> : null}</div>
             </div>;
           })}</div></fieldset>
-            : <AnswerSections sections={question.answerSections} response={response} disabled={review} onChange={changeResponse}/>}
+            : !inlineAnswerSheet && <AnswerSections sections={question.answerSections} response={response} disabled={review} onChange={changeResponse}/>}
+          {earlierWorksheet && <details><summary>Your earlier worksheet answers</summary><AnswerSections sections={question.answerSections} response={response} disabled onChange={changeResponse}/></details>}
           {!isPaper1 && <label>{question.answerSections?.length ? "Additional working" : "Your answer and working"}<textarea rows={14} disabled={review} value={response.working || ""} onChange={(e) => changeResponse({ ...response, working: e.target.value })}/></label>}
           {review && isPaper1 && <div className="poa-worked-feedback"><h3>Practice explanation</h3>{decision.worked && <p>Your choice: {decision.selected || "Unanswered"}. Worked choice: {decision.answer}. {decision.matches ? "Your choice matches." : "Review the reasoning below."}</p>}<p>{decision.explanation}</p></div>}
           {review && !isPaper1 && (question.modelSolution || question.workedSolution) && <details className="poa-worked-feedback"><summary>View SPARK worked solution</summary>{(Array.isArray(question.modelSolution || question.workedSolution) ? question.modelSolution || question.workedSolution : [question.modelSolution || question.workedSolution]).map((line, i) => <p key={i}>{line}</p>)}</details>}
-          {!!figures.length && <details className="poa-worked-feedback"><summary>Check individual figures</summary><p>These comparisons help you trace calculations. They do not assess your method, formatting or written explanations and are not question marks.</p><ul>{figures.map((figure) => <li key={figure.id}><strong>{figure.label}</strong>: {figure.value === null ? "No numerical answer entered" : figure.matches ? "Your figure matches" : `Your figure ${figure.entered} differs`}. Worked value: {figure.expected}. {figure.working}</li>)}</ul></details>}
+          {!!visibleFigures.length && <details className="poa-worked-feedback"><summary>Check individual figures</summary><p>Use these comparisons to trace your calculations. They check individual figures; a full answer also needs the correct method, layout and explanation.</p><ul>{visibleFigures.map((figure) => <li key={figure.id}><strong>{figure.label}</strong>: {figure.value === null ? "No numerical answer entered" : figure.matches ? "Your figure matches" : `Your figure ${figure.entered} differs`}. Worked value: {figure.expected}. {figure.working}</li>)}</ul></details>}
           <div className="poa-actions"><button type="button" className="secondary" disabled={attempt.index === 0} onClick={() => chooseQuestion(attempt.index - 1)}><BackArrowIcon/> Previous question</button><button type="button" className="secondary" disabled={attempt.index === paper.questionCount - 1} onClick={() => chooseQuestion(attempt.index + 1)}>Next question <ForwardArrowIcon/></button></div>
         </section>
       </div>
@@ -164,7 +170,7 @@ export default function PoaHistoricalExam({ source, paper, userId, supabase, onB
         <div className="poa-actions"><button type="button" disabled={busy || !historicalChoiceIsValid(paper, attempt.selectedQuestions)} onClick={() => submit()}>Submit now</button><button type="button" className="secondary" onClick={() => setConfirm(false)}>Keep working</button></div></section>}
       {review && <section className="poa-historical-review"><h2>Review your attempt</h2>
         {!historicalChoiceIsValid(paper, attempt.selectedQuestions) && <p className="poa-source-warning">Time expired before a valid optional question selection was saved. All your responses were retained for review; no paper total can be published from this selection.</p>}
-        {feedback && <p>{feedback.checked ? `Practice check: ${feedback.matching} of ${feedback.checked} checked answers correct. Review the explanations for each question.` : "Your answers are saved. Worked feedback isn’t available for this paper yet."}{attempt.serverId && " Your final result will appear when marking is complete."}</p>}
+        {feedback && <p>{feedback.checked ? `Practice check: ${feedback.matching} of ${feedback.checked} checked answers correct. Review the explanations for each question.` : "Your answers are saved. Worked feedback isn’t available for this paper yet."}</p>}
         <p>{receipt || (attempt.serverSubmitted ? "Your submission is saved on SPARK." : "Your responses are saved on this device.")}</p>
         <div className="poa-actions"><button type="button" className="secondary" onClick={exportAnswers}>Export my answers</button>{attempt.serverId && !attempt.serverSubmitted && <button type="button" disabled={busy} onClick={() => submit()}>Retry server submission</button>}{attempt.serverId && <button type="button" className="secondary" disabled={busy} onClick={async () => { setBusy(true); const result = await readServerExamV2Result({ supabase, attemptId: attempt.serverId }); if (result.available) setServerResult(result); else setError("Could not load your grading result. Try again when connected."); setBusy(false); }}>Check grading result</button>}</div>
         {serverResult && <p role="status">{serverResult.status === "verified" && Number.isFinite(serverResult.score) && Number.isFinite(serverResult.maxMarks) ? `SPARK graded result: ${serverResult.score} / ${serverResult.maxMarks}` : serverResult.status === "not-eligible" ? "Automatic grading is not available for this paper yet. Your responses remain saved." : `Grading status: ${serverResult.status}. A final score is not yet available.`}</p>}

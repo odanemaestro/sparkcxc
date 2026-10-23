@@ -4,7 +4,7 @@ import path from "node:path";
 const bundled = await build({
   stdin: {
     contents:
-      'export * from "./src/principlesOfAccounts/data/poaCourse.js";export * from "./src/principlesOfAccounts/data/poaPaper2.js";export * from "./src/principlesOfAccounts/poaSpecimenMarkingV2.js";',
+      'export * from "./src/principlesOfAccounts/data/poaCourse.js";export * from "./src/principlesOfAccounts/data/poaPaper2.js";export * from "./src/principlesOfAccounts/poaSpecimenMarkingV2.js";export * from "./src/principlesOfAccounts/data/poaHistoricalPapers.js";export * from "./src/principlesOfAccounts/data/poaPrintedPapers.js";',
     resolveDir: process.cwd(),
   },
   bundle: true,
@@ -60,6 +60,10 @@ const subjectRow = {
     historicalFiles: 51,
     distinctHistoricalPdfs: 50,
     verifiedHistoricalKeys: 0,
+    nativeHistoricalPapers: data.POA_HISTORICAL_PAPERS.filter(data.hasCompletePoaText).length,
+    historicalPaper1Items: data.POA_HISTORICAL_PAPERS.filter((paper) => paper.id.startsWith("poa-1-")).reduce((total, paper) => total + paper.questions.length, 0),
+    historicalPaper2Questions: data.POA_HISTORICAL_PAPERS.filter((paper) => paper.id.startsWith("poa-2-")).reduce((total, paper) => total + paper.questions.length, 0),
+    historicalPaper2WorkedGuidance: data.POA_HISTORICAL_PAPERS.filter((paper) => paper.id.startsWith("poa-2-")).reduce((total, paper) => total + paper.questions.filter((question) => question.modelSolution?.length || question.workedSolution?.length).length, 0),
   },
   learning_config: {
     syllabusCode: data.POA_SYLLABUS,

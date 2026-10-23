@@ -103,9 +103,9 @@ function Paper2Exam({ userId, supabase, onBack }) {
       deadline: localExamDeadline(server) || Date.now() + 10800000,
       serverId: server.attempt_id || server.id || null,
     });
-    if (!server.available)
+    if (!server.available && supabase?.rpc)
       setError(
-        "Practising offline: answers are saved here, but server grading is unavailable.",
+        "Your answers are saved on this device. Connect to SPARK to submit them for marking.",
       );
     setBusy(false);
   };
@@ -526,7 +526,7 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
         <div className="poa-actions">{POA_SPECIMEN_PAPERS.filter(hasCompletePoaText).map((specimen) => <button key={specimen.id} type="button" className="secondary" onClick={() => setSource(getPoaPaperSource(specimen))}>Open specimen Paper {specimen.paper}</button>)}</div>
       </section>}
       <section>
-        <h2>Historical past papers</h2>
+        <h2>Past papers</h2>
         <p>Choose a paper to practise. You can save your answers and come back to them later.</p>
         <label>
           Filter paper

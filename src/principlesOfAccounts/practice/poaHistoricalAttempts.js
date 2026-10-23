@@ -1,5 +1,5 @@
 export const historicalAttemptKey = (userId, paperId) => `spark-poa-historical-v2:${userId || "guest"}:${paperId}`;
-export const historicalBankVersion = (paper) => `poa-historical-facsimile-v1:${paper.id}`;
+export const historicalBankVersion = (paper) => `poa-historical-text-v1:${paper.id}`;
 export const historicalRubricVersion = (paper) => `poa-historical-worked-v1:${paper.id}`;
 export function freshHistoricalAttempt(paper) {
   return { version: 2, paperId: paper.id, sourceSha256: paper.sourceSha256,

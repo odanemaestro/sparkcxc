@@ -6,10 +6,14 @@ import { POA_HISTORICAL_PAPER2_MORE_TEXT } from "./poaHistoricalPaper2MoreText";
 import { POA_HISTORICAL_PAPER2_MIDDLE_TEXT } from "./poaHistoricalPaper2MiddleText";
 import { POA_HISTORICAL_PAPER1_EARLY_TEXT } from "./poaHistoricalPaper1EarlyText";
 import { POA_SPECIMEN_PAPER2_TEXT } from "./poaSpecimenPaper2Text";
+import { POA_SPECIMEN_PAPER1_TEXT } from "./poaSpecimenPaper1Text";
+import { POA_HISTORICAL_PAPER2_EARLY_TEXT } from "./poaHistoricalPaper2EarlyText";
+import { POA_HISTORICAL_PAPER2_MID_TEXT } from "./poaHistoricalPaper2MidText";
 
 export const POA_PRINTED_PAPERS = { ...POA_HISTORICAL_PAPER1_TEXT, ...POA_HISTORICAL_PAPER2_TEXT,
   ...POA_HISTORICAL_PAPER1_MORE_TEXT, ...POA_HISTORICAL_PAPER1_RECENT_TEXT, ...POA_HISTORICAL_PAPER2_MORE_TEXT,
-  ...POA_HISTORICAL_PAPER2_MIDDLE_TEXT, ...POA_HISTORICAL_PAPER1_EARLY_TEXT, ...POA_SPECIMEN_PAPER2_TEXT };
+  ...POA_HISTORICAL_PAPER2_MIDDLE_TEXT, ...POA_HISTORICAL_PAPER1_EARLY_TEXT, ...POA_SPECIMEN_PAPER2_TEXT, ...POA_SPECIMEN_PAPER1_TEXT,
+  ...POA_HISTORICAL_PAPER2_EARLY_TEXT, ...POA_HISTORICAL_PAPER2_MID_TEXT };
 export const getPoaPrintedQuestions = (id) => POA_PRINTED_PAPERS[id] || [];
 export function hasCompletePoaText(paper) {
   if (!paper) return false;
