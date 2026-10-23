@@ -15,6 +15,7 @@ import {getPhysicsGraphWorkingSpec} from "./physicsGraphWorkingSpecsV2";
 import {evaluatePhysicsGraphGradient,evaluatePhysicsGraphPressure} from "./physicsGraphGradientV2";
 import {evaluatePhysicsSourceGradient} from "./physicsGraphGradientPoliciesV2";
 import {physicsCanonicalWrittenPartial} from "./physicsCanonicalWrittenPartialV2";
+import {evaluatePhysicsCurrentGraphReading} from "./physicsCurrentGraphReadingV2";
 import physicsPaper2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
 import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
 import physicsPaper4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
@@ -390,7 +391,9 @@ function physics(rows,responses,paperId){
     :partId===spec.readingPart && paperId===physicsPaper1.paper_id
      ?evaluatePhysicsGraphPressure({response,previousGraphResponse,
        previousGradientResponse:read(responses,questionId+"::"+spec.trianglePart)||{}})
-     :null;
+     :partId===spec.readingPart && paperId===physicsPaper3.paper_id
+      ?evaluatePhysicsCurrentGraphReading({response,previousGraphResponse})
+      :null;
    if(evidence){
     // Geometry-only candidate marks are not trusted whole-part scores.
     // Preserve any previously estimated marks and never publish from here.
@@ -436,12 +439,25 @@ function physics(rows,responses,paperId){
       String(object(response)?response.working??"":""));
     const certainPressure=correctPressure&&inverseShown&&
      (readingShown||cleanUnrecorded);
+    const currentMethod=partId===spec.readingPart&&
+     paperId===physicsPaper3.paper_id;
+    const currentAnswer=evidence.criteria.find(x=>x.id==="A1");
+    const currentCertain=currentMethod&&
+     currentAnswer?.candidateMarks===1&&
+     (evidence.criteria.find(x=>x.id==="M1")?.candidateMarks===1||
+      (!object(response)?.graphEvidence&&
+       !/read(?:s|ing)?\\s+(?:off|from)|graph|plot/i.test(
+        String(object(response)?response.working??"":""))));
+    const noCurrentEvidence=currentMethod&&
+     !/\\d/.test(String(object(response)?response.answer??"":response??""))&&
+     !String(object(response)?response.working??"":"").trim()&&
+     !object(response)?.graphEvidence;
     const noPressureEvidence=pressureMethod&&
      !/\\d/.test(String(object(response)?response.answer??"":response??""))&&
      !String(object(response)?response.working??"":"").trim()&&
      !object(response)?.graphEvidence;
     const definitelyResolved=fullGradient||noQuantityOrGraph||
-     certainPressure||noPressureEvidence;
+     certainPressure||noPressureEvidence||currentCertain||noCurrentEvidence;
     return cap(row,reconciled,
      "existing-physics-graph-working-advisory",definitelyResolved);
    }
