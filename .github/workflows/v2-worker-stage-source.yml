@@ -8,6 +8,7 @@ on:
       - "src/grading/**"
       - "src/integratedScience/practice/scienceParticleDiagramMarking.js"
       - "src/integratedScience/practice/scienceCircuitSymbolMarking.js"
+      - "src/integratedScience/practice/scienceFiltrationDrawingMarking.js"
       - "src/integratedScience/practice/scienceHypothesisMarking.js"
       - "src/integratedScience/practice/scienceRustTableMarking.js"
       - "src/integratedScience/practice/scienceAdditionalTableMarking.js"
@@ -35,7 +36,7 @@ jobs:
           import fs from "node:fs";
           const summary=JSON.parse(fs.readFileSync("artifacts/v2-worker-stage/summary.json","utf8"));
           const result=summary.bySubject["integrated-science"];
-          if(!result||result.verified<639||result.failed>0||summary.rehearsal.criteriaRejectedCount!==0)
+          if(!result||result.verified<642||result.failed>0||summary.rehearsal.criteriaRejectedCount!==0)
             throw Error("Source-bound grading evidence did not pass");
           NODE
       - name: Compile and stage source-bound V2 examiner
