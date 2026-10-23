@@ -1,4 +1,96 @@
-f the business\n\u2022 Brief description of the product or service\n\u2022 The target market and the business's competitive advantage\n\u2022 The amount of financing needed and how it will be used\n\u2022 Summary of financial projections (expected sales and profit)\n\u2022 The owners and management team\n\u2022 The mission statement and goals"
+rkers are more productive, increasing output (economic growth).\n\u2022 A skilled workforce attracts foreign investment.\n\u2022 It encourages innovation and entrepreneurship, leading to new businesses.\n\u2022 People earn higher incomes, which reduces poverty and raises the standard of living.\n\u2022 A healthier workforce loses fewer working days.\n\u2022 Workers can use new technology, and the country depends less on foreign experts."
+            },
+            {
+              "label": "(c)",
+              "question": "Discuss the effect of EACH of the following economic problems on Caribbean countries:\n(i) Migration\n(ii) Economic dualism",
+              "marks": 6,
+              "answer": "3 marks each:\n(i) Migration: the loss of skilled people (brain drain) such as nurses, doctors and teachers causes shortages, lowers the quality of services and wastes the money spent on training them. On the other hand, remittances sent home bring in foreign exchange and migration can reduce unemployment.\n(ii) Economic dualism: a modern, capital-intensive and often foreign-owned sector (for example tourism or mining) exists alongside a traditional, low-productivity sector (small farming, informal trading). This leads to large differences in incomes, drift from rural to urban areas, unemployment in the traditional sector and few linkages between the two sectors, so growth does not benefit everyone."
+            },
+            {
+              "label": "(d)",
+              "question": "Outline THREE ways in which the Caribbean Development Bank can assist in reducing the economic problems of Caribbean countries.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Provides long-term, low-interest loans for development projects (roads, schools, water, housing).\n\u2022 Gives grants and technical assistance to help prepare and manage projects.\n\u2022 Lends to national development banks, which on-lend to small businesses, farmers and students.\n\u2022 Provides funds to rebuild after natural disasters.\n\u2022 Supports poverty reduction programmes (for example the Basic Needs Trust Fund).\n\u2022 Promotes regional co-operation and integration."
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "section": "Section II",
+          "section_instructions": "Answer TWO questions in this section as indicated.",
+          "choice": "Answer EITHER Question 6 OR Question 7. Do NOT answer both.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "State ONE function of EACH of the following economic institutions:\n(i) World Trade Organization (WTO)\n(ii) European Union",
+              "marks": 4,
+              "answer": "2 marks each:\n(i) WTO (any ONE): sets and enforces the rules of international trade; settles trade disputes between member countries; promotes freer trade by negotiating lower tariffs.\n(ii) European Union (any ONE): creates a single market with free movement of goods, services, capital and people among its member states; gives trade preferences and development aid to ACP (including Caribbean) countries, for example through the Economic Partnership Agreement."
+            },
+            {
+              "label": "(b)",
+              "question": "State THREE benefits that Caribbean countries may enjoy from being members of CARICOM.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Free trade among members gives producers a larger market.\n\u2022 Free movement of skilled persons.\n\u2022 Functional co-operation in areas such as education (CXC, UWI), health and disaster management (CDEMA).\n\u2022 Stronger bargaining power in international negotiations.\n\u2022 A common external tariff protects regional producers from outside competition.\n\u2022 Co-ordination of foreign policy."
+            },
+            {
+              "label": "(c)",
+              "question": "Outline TWO ways by which the development of the manufacturing sector can assist in reducing the economic problems of Caribbean countries.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 It creates jobs, reducing unemployment.\n\u2022 Producing goods locally (import substitution) reduces imports and saves foreign exchange.\n\u2022 Manufactured exports earn foreign exchange and improve the balance of payments.\n\u2022 It diversifies the economy, reducing dependence on agriculture and tourism.\n\u2022 It creates linkages with agriculture (agro-processing) and adds value to raw materials."
+            },
+            {
+              "label": "(d)",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Define the term 'foreign direct investment' (FDI).",
+                  "marks": 2,
+                  "answer": "Foreign direct investment is investment by foreign individuals or companies in productive assets in another country, such as factories, hotels or mines (1), which gives them ownership or control of the business (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Outline TWO ways in which foreign direct investment can contribute to the economic growth of a country.",
+                  "marks": 4,
+                  "answer": "Any TWO, 2 marks each:\n\u2022 It brings in capital, which increases production.\n\u2022 It creates jobs.\n\u2022 It transfers technology and skills to local workers.\n\u2022 It brings in foreign exchange and increases exports.\n\u2022 It increases government tax revenue.\n\u2022 It may improve infrastructure."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paper": "Paper 2 (Structured Response)",
+      "year": "2010",
+      "session": "May/June",
+      "duration": "2 hours",
+      "instructions": "Answer the THREE questions in Section I, ONE question in Section II and ONE question in Section III as indicated.",
+      "total_questions": 7,
+      "questions": [
+        {
+          "number": 1,
+          "section": "Section I",
+          "section_instructions": "Answer the THREE questions in this section.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Define the term 'business plan'.",
+              "marks": 2,
+              "answer": "A business plan is a written document that describes a business, its goals and how it intends to achieve them (1), including its marketing, management, production and financial plans; it is used to guide the business and to obtain financing (1)."
+            },
+            {
+              "label": "(b)",
+              "question": "Describe the following elements of a business plan:\n(i) Business Identification\n(ii) Product or Service Description\n(iii) Market Strategy\n(iv) Organization or Management",
+              "marks": 8,
+              "answer": "2 marks each:\n(i) Business identification: gives the name, address and location of the business, the names of the owners, its legal form (sole trader, partnership, company) and its mission and objectives.\n(ii) Product or service description: describes what the business will sell, its features and benefits, how it meets customers' needs and what makes it different from competitors.\n(iii) Market strategy: identifies the target market and competitors, summarises market research, and sets out the pricing, promotion and distribution plans.\n(iv) Organization or management: shows the management structure, the skills and experience of the owners and key managers, staffing needs and the roles of each person."
+            },
+            {
+              "label": "(c)",
+              "question": "Identify FOUR elements which the Executive Summary should contain.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each:\n\u2022 Name, location and legal form of the business\n\u2022 Brief description of the product or service\n\u2022 The target market and the business's competitive advantage\n\u2022 The amount of financing needed and how it will be used\n\u2022 Summary of financial projections (expected sales and profit)\n\u2022 The owners and management team\n\u2022 The mission statement and goals"
             },
             {
               "label": "(d)",
@@ -2785,100 +2877,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
               "label": "(b)",
               "question": "Outline TWO elements of the traditional marketing mix.",
               "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Product: the good or service offered, including its features, quality, brand and packaging.\n\u2022 Price: the amount charged for the product and the pricing strategy used.\n\u2022 Place: how the product is distributed and where it is sold.\n\u2022 Promotion: how the business communicates with customers, through advertising, sales promotion, personal selling and public relations."
-            },
-            {
-              "label": "(c)",
-              "question": "Describe EACH of the following methods of promoting sales.\n(i) Public relations (PR)\n(ii) Sales promotions",
-              "marks": 4,
-              "answer": "2 marks each:\n(i) Public relations: activities that build and maintain a good image and goodwill for the business with the public, for example press releases, sponsorships, community projects and events.\n(ii) Sales promotions: short-term incentives that encourage customers to buy quickly, for example discounts, coupons, free samples, buy-one-get-one-free offers and contests."
-            },
-            {
-              "label": "(d)",
-              "question": "Kevin and Mala have been thinking of setting up a cellphone and accessories business together.",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Define the term 'retailing'.",
-                  "marks": 2,
-                  "answer": "Retailing is selling goods and services in small quantities directly to the final consumer for personal use (1); it is the last stage of the chain of distribution (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Describe THREE suitable types of retail outlets that Kevin and Mala could consider setting up.",
-                  "marks": 6,
-                  "answer": "Any THREE, 2 marks each:\n\u2022 A small shop or kiosk in a mall or busy town centre: many passers-by, and it gives personal service at a reasonable start-up cost.\n\u2022 An online store or social media shop (e-commerce): reaches many customers at low cost, with orders delivered or collected.\n\u2022 A mobile stall at events, fairs and markets: low cost and it can move to where customers are.\n\u2022 An authorised dealer or franchise outlet of a mobile network company: a known brand that attracts customers.\n\u2022 A specialty store focused on phones and accessories, with repair services."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "number": 5,
-          "section": "All questions",
-          "section_instructions": "Answer ALL questions.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "State ONE major function of EACH of the following economic institutions.\n(i) Caribbean Community (CARICOM)\n(ii) World Trade Organization (WTO)",
-              "marks": 2,
-              "answer": "1 mark each:\n(i) CARICOM (any ONE): promotes economic integration and free trade among member states (the CSME); co-ordinates foreign policy; organises functional co-operation in areas such as health, education and disaster management.\n(ii) WTO (any ONE): sets and enforces the rules of international trade; settles trade disputes between countries; promotes freer trade by reducing tariffs."
-            },
-            {
-              "label": "(b)",
-              "question": "Outline ONE way in which governments can alleviate EACH of the following economic problems.\n(i) Unemployment\n(ii) Overpopulation\n(iii) Migration",
-              "marks": 6,
-              "answer": "2 marks each:\n(i) Unemployment (any ONE): attract investment with incentives to create jobs; give small business loans and training; start public works projects; expand skills training programmes.\n(ii) Overpopulation (any ONE): provide family planning education and access to contraception; give incentives for smaller families.\n(iii) Migration (any ONE): improve salaries and working conditions for skilled workers; bond scholarships so graduates must work at home for a period; create more opportunities for career development."
-            },
-            {
-              "label": "(c)",
-              "question": "Define the term 'economic dualism'.",
-              "marks": 2,
-              "answer": "Economic dualism is the existence of two different sectors side by side in one economy (1): a modern, capital-intensive, high-productivity sector (often urban or foreign-owned) and a traditional, labour-intensive, low-productivity sector (often rural or informal), with large differences in incomes (1)."
-            },
-            {
-              "label": "(d)",
-              "question": "Outline TWO benefits of obtaining foreign direct investment (FDI).",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Creates jobs and reduces unemployment.\n\u2022 Brings in capital that increases production.\n\u2022 Transfers technology and skills to local workers.\n\u2022 Earns foreign exchange through exports.\n\u2022 Increases government tax revenue.\n\u2022 Creates linkages with local suppliers."
-            },
-            {
-              "label": "(e)",
-              "question": "Explain TWO ways in which Caribbean governments can assist in the development of the manufacturing sector of their countries.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 Tax incentives: tax holidays and duty-free import of machinery and raw materials lower manufacturers' costs and encourage investment.\n\u2022 Finance: low-interest loans and grants through development banks help manufacturers start and expand.\n\u2022 Protection: tariffs or quotas on competing imports protect young (infant) industries until they can compete.\n\u2022 Infrastructure: industrial estates and factory space, reliable electricity, roads and ports reduce operating costs.\n\u2022 Training: programmes that provide skilled workers for factories.\n\u2022 Export promotion: trade missions and trade agreements open new markets for manufactured goods.\n\u2022 'Buy local' campaigns that increase demand for local products."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "paper": "Paper 2 (Structured Response)",
-      "year": "2019",
-      "session": "January",
-      "duration": "2 hours",
-      "instructions": "1. This paper consists of FIVE questions. Answer ALL questions.\n2. Write your answers in the spaces provided in this answer booklet.\n3. Do NOT write in the margins.\n4. You are advised to take some time to read through the paper and plan your answers.",
-      "total_questions": 5,
-      "questions": [
-        {
-          "number": 1,
-          "section": "All questions",
-          "section_instructions": "Answer ALL questions.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Define the term 'capital' as a factor of production and state TWO examples.",
-              "marks": 4,
-              "answer": "Capital is the man-made factor of production: goods made by people that are used to produce other goods and services (2). Its reward is interest.\nAny TWO examples, 1 mark each: machinery, tools, equipment, factory buildings, vehicles, computers."
-            },
-            {
-              "label": "(b)",
-              "question": "List FOUR sources of capital that could be used when setting up a business.",
-              "marks": 4,
-              "answer": "Any FOUR, 1 mark each: personal savings; loans from commercial banks; credit union loans; family and friends; partners or shareholders; government grants or development bank loans; venture capital; trade credit; hire purchase; leasing."
-            },
-            {
-              "label": "(c)",
-              "question": "June wants to set up a small supermarket, but is unsure whether she should operate as a sole trader or establi
+              "answer": "Any TW

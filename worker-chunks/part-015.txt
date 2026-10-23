@@ -1,4 +1,29 @@
- assistance and monitor economic policies through country surveillance and advice.", ["2:First genuine IMF assistance method with effect", "2:Second distinct method explained", "2:Third different IMF role developed"]],
+ups form socially from personal relations. Formal reporting is authorised through management, while informal communication develops naturally.", ["2:First correct formal versus informal organisational distinction", "2:Second different developed contrast"]],
+  [4, "c.i", "Span of control is the number of subordinates reporting directly to a particular supervisor or manager.", ["1:Identifies number of workers supervised", "1:Specifies direct reporting to one manager"]],
+  [4, "c.ii", "The marketing manager's direct span is two employees: Sales Supervisor North and Sales Supervisor South. The eight sales clerks report to those supervisors, not directly to the marketing manager.", ["1:Correct direct report count of two", "1:Correctly names both north and south sales supervisors"]],
+  [4, "d.i", "Chain of command is the official hierarchical route by which instructions and authority travel from more senior to subordinate positions.", ["1:Identifies formal authority/reporting sequence", "1:Explains movement of official instructions"]],
+  [4, "d.ii", "Consultant advises the managing director, who instructs the marketing manager, who directs either the North or South sales supervisor, who informs the relevant sales clerks. The consultant has no direct line authority over the clerks.", ["1:Consultant recommendation reaches managing director", "1:Managing director to marketing manager", "1:Marketing manager to North/South sales supervisor", "1:Supervisors pass authorised changes to sales clerks"]],
+  [4, "e.i", "An informal channel communicates unofficially through workplace social relations, including conversations or word of mouth rather than prescribed reporting channels.", ["1:Recognises unofficial/social communication", "1:Provides relevant workplace transmission example"]],
+  [4, "e.ii", "The grapevine can quickly alert managers to staff concerns, improving response time, but inaccurate rumours may distort instructions, create conflict and damage productivity.", ["1:Identifies specific effect of informal communication", "1:Explains practical mechanism", "1:Evaluates consequence for organisation"]],
+  [5, "a", "Government departments can include Ministry of Education, Ministry of Health and Ministry of Finance; nationally equivalent ministry names are acceptable.", ["1:First legitimate government department", "1:Second different department", "1:Third distinct department"]],
+  [5, "b", "Education develops schools and curriculum and trains teachers; Health regulates public health and manages clinics; Finance prepares national budgets and collects public revenues.", ["2:Two legitimate functions of FIRST ministry named in a", "2:Two legitimate functions of SECOND distinct ministry", "2:Two legitimate functions of THIRD distinct ministry"]],
+  [5, "c", "A nursery should obtain required education/early-childhood registration, obey fire/building safety inspections and meet sanitation/child-health regulations before opening.", ["1:First relevant nursery opening regulation", "1:Second different licensing/safety condition", "1:Third different condition"]],
+  [5, "d", "Early-childhood registration assures the public that staff and curriculum standards are supervised. Fire and safe premises checks protect children during emergencies. Sanitation and health rules lower transmission of preventable illness.", ["2:Explains why FIRST identified regulation matters for children/staff", "2:Explains role of SECOND identified requirement", "2:Explains benefit of THIRD distinct requirement"]],
+  [5, "e", "A nursery offers safe childcare so parents can work, and prepares local children for school through early learning and social development.", ["1:First valid community development contribution", "1:Second distinct contribution"]],
+  [6, "a.i", "Internal economies of scale are unit cost savings realised as a particular firm's output expands, such as buying inputs in bulk or specialising work.", ["1:Explains average unit cost falling with firm expansion", "1:Identifies savings are internal to individual firm"]],
+  [6, "a.ii", "Internal diseconomies occur when expansion increases average costs through internal inefficiency, such as slow communication and coordination.", ["1:Average cost rises after scale becomes excessive", "1:Identifies internal cause like bureaucracy"]],
+  [6, "b", "Technical economies and purchasing or bulk-buying economies are genuine internal economies of scale.", ["1:First valid type of internal economy", "1:Second different type"]],
+  [6, "c", "New high-output machinery spreads equipment cost over more pairs of shoes, lowering unit cost. Bulk material orders can earn supplier discounts, reducing leather and components cost per pair.", ["2:First distinct scale economy and reduced unit-cost mechanism", "2:Second different internal economy linked to lower average costs"]],
+  [6, "d.i", "Automation can displace workers formerly doing repetitive shoe-assembly tasks, increasing unemployment and affecting family incomes.", ["1:Identifies a genuine adverse social consequence", "1:Explains human/community effect"]],
+  [6, "d.ii", "Retrain affected staff for new quality-control and maintenance roles and phase expansion with placement assistance to help displaced workers find jobs.", ["2:First targeted mitigation of identified social consequence", "2:Second different practical mitigating action"]],
+  [6, "e", "A very large factory may suffer delayed decisions and coordination problems; reorganising into smaller clearly managed production teams can reduce this diseconomy.", ["2:One genuine expansion disadvantage with causal effect", "2:One practical targeted corrective measure"]],
+  [7, "a", "Backward linkages connect the chicken industry to suppliers of inputs such as feed and veterinary medicines. Forward linkages connect its output to downstream processors, restaurants, hotels and retailers.", ["2:Correct upstream/input backward linkage", "2:Correct downstream/distribution forward linkage"]],
+  [7, "b", "Feed mills and hatcheries are backward-linked suppliers. Meat processors and fast-food restaurants/hotels are downstream users of chicken.", ["1:First valid backward-linked supplier", "1:Second distinct backward supplier", "1:First forward-linked customer/processor", "1:Second different forward linkage"]],
+  [7, "c", "If chicken demand rises both countries earn greater farm sales and jobs. Boluda additionally generates purchases for local feed mills and hatcheries, extending the multiplier locally, while Aquala spends more on imported inputs. Boluda therefore retains more additional value and supplier employment at home.", ["2:First shared benefit from persistent demand explained for both countries", "2:Second developed comparison of local supplier multiplier versus imported-input leakage", "2:Third distinct benefit/trade/economic comparison with context"]],
+  [7, "d.i", "Offer capital grants or tax incentives for viable local feed suppliers and fund agricultural/technical training or infrastructure to let new input businesses operate competitively.", ["2:First distinct linkage-industry government measure and mechanism", "2:Second different developed measure"]],
+  [7, "d.ii", "A government might provide a matched grant for locally produced chicken feed equipment, conditional on employment and training targets, cutting upfront capital cost and enabling local sourcing.", ["1:Shows actionable implementation step of measure in d.i", "1:Links implementation to local linkage and economic outcome"]],
+  [8, "a", "Unemployment and debt burden strain social services; balance-of-payments or foreign-exchange shortages raise import costs. Natural disasters can also destroy infrastructure and production capacity.", ["2:First serious Caribbean economic problem and economic harm", "2:Second distinct problem developed", "2:Third different macroeconomic issue explained"]],
+  [8, "b", "The IMF can provide temporary financing during external payment crises, offer fiscal/monetary technical assistance and monitor economic policies through country surveillance and advice.", ["2:First genuine IMF assistance method with effect", "2:Second distinct method explained", "2:Third different IMF role developed"]],
   [8, "c", "A government may take a strategic public utility into ownership to secure affordable access and investment, correct serious market failure, or preserve employment/service continuity when a critical provider collapses.", ["2:First plausible nationalisation motive and public interest", "2:Second distinct developed motivation", "2:Third different reason explained"]],
   [8, "d", "Nationalised firms can burden taxpayers if inefficient or incur political interference that reduces competitiveness and service quality.", ["1:First relevant disadvantage of public ownership", "1:Second different disadvantage"]],
   [9, "a", "National income is the total factor income earned through a country's residents' productive economic activities over a specified period, properly accounting for production and external income.", ["1:Defines aggregated factor earnings or income", "1:Specifies national scope or accounting period"]],
@@ -801,7 +826,7 @@ __export(pobHistorical2015MjP2AuthoredScheme_exports, {
   POB_2015_MJ_P2_AUTHORED_SCHEME: () => POB_2015_MJ_P2_AUTHORED_SCHEME,
   verifyPob2015MjP2AuthoredScheme: () => verifyPob2015MjP2AuthoredScheme
 });
-var POINTS = Object.freeze([
+var POINTS2 = Object.freeze([
   [1, "a.i", "Profit is the remaining financial return when total revenue exceeds total costs over a period.", ["1:Defines financial surplus or earnings", "1:Specifies revenue less associated costs"]],
   [1, "a.ii", "An enterprise is an organised venture undertaking economic activity to supply goods or services.", ["1:Identifies an organised business undertaking", "1:Relates venture to production, trading or service provision"]],
   [1, "a.iii", "Specialisation occurs when people or organisations focus on a limited set of tasks or output to develop efficiency.", ["1:Explains concentration on particular tasks or products", "1:Connects to skill development or efficiency"]],
@@ -849,7 +874,7 @@ var POB_2015_MJ_P2_AUTHORED_SCHEME = buildPobSevenQuestionAuthoredRubric({
   year: 2015,
   sourcePages: 16,
   sourceSha256: "d47560a3966c538be5dd507da23d8d13eb3b9e2cb08c1ff9339867f446c108bf",
-  parts: POINTS
+  parts: POINTS2
 });
 var verifyPob2015MjP2AuthoredScheme = (paper = POB_2015_MJ_P2_AUTHORED_SCHEME) => verifyPobSevenQuestionAuthoredRubric(paper);
 
@@ -859,7 +884,7 @@ __export(pobHistorical2016MjP2AuthoredScheme_exports, {
   POB_2016_MJ_P2_AUTHORED_SCHEME: () => POB_2016_MJ_P2_AUTHORED_SCHEME,
   verifyPob2016MjP2AuthoredScheme: () => verifyPob2016MjP2AuthoredScheme
 });
-var POINTS2 = Object.freeze([
+var POINTS3 = Object.freeze([
   [1, "a.i", "Entrepreneurship involves identifying an opportunity, organising resources for a business venture and accepting commercial risk.", ["1:Identifies venture creation or business opportunity", "1:Includes organising resources or risk-bearing"]],
   [1, "a.ii", "People establish businesses to earn profits, achieve independence, use their skills and serve unmet consumer needs.", ["1:First distinct plausible start-up motivation", "1:Second distinct motivation", "1:Third distinct motivation", "1:Fourth distinct motivation"]],
   [1, "b", "Potential business stakeholders include employees, customers, suppliers and lenders.", ["1:First distinct stakeholder", "1:Second distinct stakeholder", "1:Third distinct stakeholder", "1:Fourth distinct stakeholder"]],
@@ -910,7 +935,7 @@ var POB_2016_MJ_P2_AUTHORED_SCHEME = buildPobSevenQuestionAuthoredRubric({
   year: 2016,
   sourcePages: 18,
   sourceSha256: "c74094f508db33d2a25b3c9ac89cb148fec331dce2f84b6ca11ffcc4c52f180f",
-  parts: POINTS2
+  parts: POINTS3
 });
 var verifyPob2016MjP2AuthoredScheme = (paper = POB_2016_MJ_P2_AUTHORED_SCHEME) => verifyPobSevenQuestionAuthoredRubric(paper);
 
@@ -1003,7 +1028,7 @@ function verifyPobFiveQuestionAuthoredRubric(paper) {
 }
 
 // src/principlesOfBusiness/data/pobHistorical2017MjP2AuthoredScheme.js
-var POINTS3 = Object.freeze([
+var POINTS4 = Object.freeze([
   [1, "a.i", "An enterprise is an organised business venture that provides goods or services for customers.", ["1:Business venture or undertaking", "1:Organisation of goods/services or commercial activity"]],
   [1, "a.ii", "Entrepreneurship identifies opportunities, gathers resources and bears business risk to create or operate a venture.", ["1:Identifies new business creation or opportunity", "1:Organising factors or risk-taking"]],
   [1, "b.i", "Economic benefits of a local firm include hiring residents and spending money with nearby suppliers. Social benefits include charitable sponsorship and training community members.", ["1:First distinct economic benefit", "1:Second economic benefit", "1:First genuine social benefit", "1:Second different social benefit"]],
@@ -1038,7 +1063,7 @@ var POB_2017_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
   sitting: "MJ",
   sourcePages: 16,
   sourceSha256: "b36bbd04dc4fb1a3982763eaf10d0a22fd44cfe6ed36594f69caca6eee47bb9a",
-  parts: POINTS3
+  parts: POINTS4
 });
 var verifyPob2017MjP2AuthoredScheme = (paper = POB_2017_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
 
@@ -1048,7 +1073,7 @@ __export(pobHistorical2018MjP2AuthoredScheme_exports, {
   POB_2018_MJ_P2_AUTHORED_SCHEME: () => POB_2018_MJ_P2_AUTHORED_SCHEME,
   verifyPob2018MjP2AuthoredScheme: () => verifyPob2018MjP2AuthoredScheme
 });
-var POINTS4 = Object.freeze([
+var POINTS5 = Object.freeze([
   [1, "a.i", "An organisational chart is a diagram showing employee positions, levels of authority and reporting relationships within an enterprise.", ["1:Identifies graphical representation of organisational positions", "1:Explains authority or reporting relationships"]],
   [1, "a.ii", "Rules include placing the most senior role at the top and using clear, consistent lines to show reporting relationships without crossing unnecessarily.", ["1:First appropriate chart construction rule", "1:Second distinct rule"]],
   [1, "b", "A correct simple line chart puts a managing director at the top, an operations manager on the second level and a supervisor reporting on the third level, with clear straight reporting lines.", ["1:Top level contains a clearly named senior manager", "1:Second level contains an appropriate named middle manager", "1:Third level contains one valid lower supervisory position", "1:Reporting lines follow an unambiguous top-down line chain"]],
@@ -1087,7 +1112,7 @@ var POB_2018_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
   sitting: "MJ",
   sourcePages: 14,
   sourceSha256: "d93ccbf4102186426f7326f789db4e8d3ca1b9a3a73aed63e5a360d0546f956f",
-  parts: POINTS4
+  parts: POINTS5
 });
 var verifyPob2018MjP2AuthoredScheme = (paper = POB_2018_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
 
@@ -1319,7 +1344,7 @@ __export(pobHistorical2021MjP2AuthoredScheme_exports, {
   POB_2021_MJ_P2_AUTHORED_SCHEME: () => POB_2021_MJ_P2_AUTHORED_SCHEME,
   verifyPob2021MjP2AuthoredScheme: () => verifyPob2021MjP2AuthoredScheme
 });
-var POINTS5 = Object.freeze([
+var POINTS6 = Object.freeze([
   [1, "a", "Valid instruments of exchange include coins, banknotes, cheques and credit/debit cards; bills of exchange, money orders or accepted electronic transfers may also be credited where source terminology supports them.", ["1:First genuine exchange instrument", "1:Second distinct instrument", "1:Third different instrument", "1:Fourth distinct instrument"]],
   [1, "b", "Money is a common medium of exchange that removes the need to barter goods with a double coincidence of wants; it also acts as a unit of account so traders can quote and compare clear prices.", ["2:First function of money with trading benefit", "2:Second distinct function and concrete benefit"]],
   [1, "c.i", "A sole proprietor has one owner who makes decisions and normally bears unlimited liability for the firm's debts.", ["1:One owner manages and controls decisions", "1:Unlimited personal liability or retained profits"]],
@@ -1352,7 +1377,7 @@ var POB_2021_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
   sitting: "MJ",
   sourcePages: 16,
   sourceSha256: "62420537307ee53ba37c879f2d9b920645d65aa4bcf8c28cbe22453387e09a6c",
-  parts: POINTS5
+  parts: POINTS6
 });
 var verifyPob2021MjP2AuthoredScheme = (paper = POB_2021_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
 
@@ -1418,48 +1443,4 @@ var PARTS4 = Object.freeze([
   [2, "b.ii", "A counteroffer changes terms in response to an earlier offer. It generally rejects the original offer and proposes new terms requiring acceptance.", ["1:Explains offer on revised terms", "1:Explains original offer is displaced or needs renewed assent"]],
   [2, "c", "Parties can discharge a contract by complete performance, when all agreed duties are fulfilled, ending their mutual obligations.", ["1:Identifies a recognised discharge method", "1:Describes how it operates"]],
   [2, "d.i", "Mark and Doris appear to have acted at cross purposes as to the identity of the car, a mutual misunderstanding or mutual mistake about the subject matter rather than proven fraud.", ["1:Identifies mutual mistake or misunderstanding about contractual subject matter"]],
-  [2, "d.ii", "They could identify the car precisely by make, colour and VIN in a written agreement, verify the exact vehicle during inspection and confirm both parties' understanding before payment.", ["1:First realistic preventative clarification step", "1:Second distinct action", "1:Third distinct action"]],
-  [2, "d.iii", "Doris and Mark could negotiate a swap to the intended vehicle, or agree to cancel the transaction and return the payment; mediation is another acceptable resolution.", ["1:First valid non-litigation settlement", "1:Second distinct practical remedy"]],
-  [3, "a.i", "Cottage businesses commonly run on a small scale, require limited starting capital, rely on household or family labour and use simple tools or locally available materials.", ["1:First correct cottage industry feature", "1:Second different feature", "1:Third distinct feature", "1:Fourth distinct feature"]],
-  [3, "a.ii", "Examples include handmade baskets and traditional pottery produced by small Caribbean craft workshops.", ["1:First suitable cottage-manufactured product", "1:Second different product"]],
-  [3, "b", "Tourism businesses may purchase locally made baskets or crafts as souvenirs, providing authentic offerings for visitors while supporting local producers.", ["1:Identifies tourism stakeholder receiving cottage output or service", "1:Explains tourism value or tourism-market effect"]],
-  [3, "c", "Primary production extracts or harvests natural resources, for example fishing. Secondary production processes raw materials into manufactured goods, for example turning timber into furniture.", ["2:Correct primary production definition and an appropriate example", "2:Correct contrasting secondary production definition and example"]],
-  [3, "d", "Increasing available capital enables the firm to purchase more machinery or stock, expanding its productive capacity and potential sales.", ["1:Identifies suitable use of extra capital", "1:Explains growth benefit"]],
-  [3, "e", "Linkages let local farmers supply hotels, replacing imports and increasing local incomes. They also encourage manufacturers and service suppliers to trade with one another, creating jobs and additional value throughout the economy.", ["3:First distinct linkage-industry contribution and economic chain of effect", "3:Second different developed contribution"]],
-  [4, "a.i", "Figure 1 shows A as the producer or manufacturer and B as the retailer, between wholesaler and consumer.", ["1:Correct source diagram A = producer/manufacturer", "1:Correct source diagram B = retailer"]],
-  [4, "a.ii", "The wholesaler purchases stock in large quantities and breaks it into smaller orders for retailers. The retailer sells smaller quantities directly to final consumers.", ["2:First valid distribution link properly named with function", "2:Second different link identified with its role"]],
-  [4, "b", "Supply chain technologies include barcode scanners, GPS tracking, RFID tags and electronic inventory management systems.", ["1:First legitimate logistics technology", "1:Second different technology", "1:Third different technology", "1:Fourth distinct technology"]],
-  [4, "c", "Electronic inventory systems show stock movements in real time, lowering stockouts. GPS and electronic shipment data let managers track deliveries and adjust routes, improving arrival reliability.", ["2:First information-technology benefit to logistics developed", "2:Second distinct benefit outlined"]],
-  [4, "d.i", "Alex may face customs clearance delays and spoilage or refrigeration failure during shipping of perishable imported foods.", ["1:First genuine international food distribution problem", "1:Second distinct problem"]],
-  [4, "d.ii", "Use advance customs documentation and a reliable customs broker to reduce clearance delays. Use temperature-monitored refrigerated carriers and contingency transport arrangements to prevent spoilage.", ["2:First remedy directly tied to one named import problem, with mechanism", "2:Second different targeted remedy and mechanism"]],
-  [5, "a.i", "Unemployment describes people without paid jobs who are available, willing and actively seeking work.", ["1:Identifies absence of employment", "1:Includes willingness/availability or active search"]],
-  [5, "a.ii", "Types of unemployment include frictional, structural and seasonal unemployment.", ["1:First recognised unemployment type", "1:Second distinct type", "1:Third different type"]],
-  [5, "a.iii", "Government can finance apprenticeships and vocational training so unemployed workers obtain qualifications for available jobs.", ["1:Appropriate government employment intervention", "1:Explains employment mechanism"]],
-  [5, "b.i", "Reasons for migration include access to higher-paying jobs, greater education opportunities and joining family living overseas.", ["1:First genuine overseas migration motive", "1:Second distinct motive", "1:Third different motive"]],
-  [5, "b.ii", "Emigration may cause brain drain, reducing the number of trained workers available for local hospitals, schools or production.", ["1:Identifies a negative national impact of outward migration", "1:Explains why the impact harms development"]],
-  [5, "c.i", "Foreign investment involves individuals or companies from abroad putting capital into businesses, productive assets or securities in a host country.", ["1:Identifies capital from outside the country", "1:Explains investment in domestic business/assets"]],
-  [5, "c.ii", "Investment from abroad funds new plants and creates employment, while new technology and expertise improve local productivity and output.", ["3:First distinct positive Caribbean FDI outcome and development mechanism", "3:Second different developed host-economy benefit"]]
-]);
-var POB_2022_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
-  year: 2022,
-  sitting: "MJ",
-  sourcePages: 13,
-  sourceSha256: "2c2e6223ffe0f1473f068485db00ad2a240df9e4407e4235bb4ecf9e58a71982",
-  parts: PARTS4
-});
-var verifyPob2022MjP2AuthoredScheme = (paper = POB_2022_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
-
-// src/principlesOfBusiness/data/pobHistorical2023JanP2AuthoredScheme.js
-var pobHistorical2023JanP2AuthoredScheme_exports = {};
-__export(pobHistorical2023JanP2AuthoredScheme_exports, {
-  POB_2023_JAN_P2_AUTHORED_SCHEME: () => POB_2023_JAN_P2_AUTHORED_SCHEME,
-  verifyPob2023JanP2AuthoredScheme: () => verifyPob2023JanP2AuthoredScheme
-});
-var PARTS5 = Object.freeze([
-  [1, "a.i", "Managers must offer safe, accurately described goods and handle customer complaints fairly.", ["1:First legitimate customer-related responsibility", "1:Second distinct customer responsibility"]],
-  [1, "a.ii", "Managers must provide safe working conditions and pay wages or agreed benefits in accordance with labour law.", ["1:First valid employee responsibility", "1:Second distinct obligation"]],
-  [1, "b", "Stakeholders besides customers and employees include suppliers and business owners or shareholders.", ["1:First business stakeholder other than employees and customers", "1:Second different suitable stakeholder"]],
-  [1, "c", "Managers could recognise strong performance, pay suitable performance rewards, provide staff development and offer fair promotion opportunities.", ["1:First genuine motivation strategy", "1:Second different strategy", "1:Third distinct strategy", "1:Fourth distinct strategy"]],
-  [1, "d", "Teamwork combines different employees' skills to solve problems efficiently and coordinates tasks so fewer mistakes occur.", ["2:First benefit of teamwork and how this improves results", "2:Second different benefit and mechanism"]],
-  [1, "e", "Management at New Harbour Garment Factory can organise regular two-way meetings where employees ask questions and managers explain changes, reducing misunderstandings. A confidential feedback or grievance channel with timely follow-up ensures workers' concerns are heard and addressed.", ["3:First distinct communication intervention, practical details and outcome", "3:Second different developed intervention"]],
-  [2, "a.i", "An invitation to treat is a request for others to make offers, such as goods displayed on a
+  [2, "d.ii", "They could identify the car precisely by make, colour and VIN in a written agreement, verify the exact vehicle during inspection and confirm both parties' understand

@@ -1,4 +1,48 @@
- shelf, rather than a binding offer by the seller.", ["1:Identifies invitation for customers to make offers", "1:Explains not itself a legally binding offer"]],
+ing before payment.", ["1:First realistic preventative clarification step", "1:Second distinct action", "1:Third distinct action"]],
+  [2, "d.iii", "Doris and Mark could negotiate a swap to the intended vehicle, or agree to cancel the transaction and return the payment; mediation is another acceptable resolution.", ["1:First valid non-litigation settlement", "1:Second distinct practical remedy"]],
+  [3, "a.i", "Cottage businesses commonly run on a small scale, require limited starting capital, rely on household or family labour and use simple tools or locally available materials.", ["1:First correct cottage industry feature", "1:Second different feature", "1:Third distinct feature", "1:Fourth distinct feature"]],
+  [3, "a.ii", "Examples include handmade baskets and traditional pottery produced by small Caribbean craft workshops.", ["1:First suitable cottage-manufactured product", "1:Second different product"]],
+  [3, "b", "Tourism businesses may purchase locally made baskets or crafts as souvenirs, providing authentic offerings for visitors while supporting local producers.", ["1:Identifies tourism stakeholder receiving cottage output or service", "1:Explains tourism value or tourism-market effect"]],
+  [3, "c", "Primary production extracts or harvests natural resources, for example fishing. Secondary production processes raw materials into manufactured goods, for example turning timber into furniture.", ["2:Correct primary production definition and an appropriate example", "2:Correct contrasting secondary production definition and example"]],
+  [3, "d", "Increasing available capital enables the firm to purchase more machinery or stock, expanding its productive capacity and potential sales.", ["1:Identifies suitable use of extra capital", "1:Explains growth benefit"]],
+  [3, "e", "Linkages let local farmers supply hotels, replacing imports and increasing local incomes. They also encourage manufacturers and service suppliers to trade with one another, creating jobs and additional value throughout the economy.", ["3:First distinct linkage-industry contribution and economic chain of effect", "3:Second different developed contribution"]],
+  [4, "a.i", "Figure 1 shows A as the producer or manufacturer and B as the retailer, between wholesaler and consumer.", ["1:Correct source diagram A = producer/manufacturer", "1:Correct source diagram B = retailer"]],
+  [4, "a.ii", "The wholesaler purchases stock in large quantities and breaks it into smaller orders for retailers. The retailer sells smaller quantities directly to final consumers.", ["2:First valid distribution link properly named with function", "2:Second different link identified with its role"]],
+  [4, "b", "Supply chain technologies include barcode scanners, GPS tracking, RFID tags and electronic inventory management systems.", ["1:First legitimate logistics technology", "1:Second different technology", "1:Third different technology", "1:Fourth distinct technology"]],
+  [4, "c", "Electronic inventory systems show stock movements in real time, lowering stockouts. GPS and electronic shipment data let managers track deliveries and adjust routes, improving arrival reliability.", ["2:First information-technology benefit to logistics developed", "2:Second distinct benefit outlined"]],
+  [4, "d.i", "Alex may face customs clearance delays and spoilage or refrigeration failure during shipping of perishable imported foods.", ["1:First genuine international food distribution problem", "1:Second distinct problem"]],
+  [4, "d.ii", "Use advance customs documentation and a reliable customs broker to reduce clearance delays. Use temperature-monitored refrigerated carriers and contingency transport arrangements to prevent spoilage.", ["2:First remedy directly tied to one named import problem, with mechanism", "2:Second different targeted remedy and mechanism"]],
+  [5, "a.i", "Unemployment describes people without paid jobs who are available, willing and actively seeking work.", ["1:Identifies absence of employment", "1:Includes willingness/availability or active search"]],
+  [5, "a.ii", "Types of unemployment include frictional, structural and seasonal unemployment.", ["1:First recognised unemployment type", "1:Second distinct type", "1:Third different type"]],
+  [5, "a.iii", "Government can finance apprenticeships and vocational training so unemployed workers obtain qualifications for available jobs.", ["1:Appropriate government employment intervention", "1:Explains employment mechanism"]],
+  [5, "b.i", "Reasons for migration include access to higher-paying jobs, greater education opportunities and joining family living overseas.", ["1:First genuine overseas migration motive", "1:Second distinct motive", "1:Third different motive"]],
+  [5, "b.ii", "Emigration may cause brain drain, reducing the number of trained workers available for local hospitals, schools or production.", ["1:Identifies a negative national impact of outward migration", "1:Explains why the impact harms development"]],
+  [5, "c.i", "Foreign investment involves individuals or companies from abroad putting capital into businesses, productive assets or securities in a host country.", ["1:Identifies capital from outside the country", "1:Explains investment in domestic business/assets"]],
+  [5, "c.ii", "Investment from abroad funds new plants and creates employment, while new technology and expertise improve local productivity and output.", ["3:First distinct positive Caribbean FDI outcome and development mechanism", "3:Second different developed host-economy benefit"]]
+]);
+var POB_2022_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
+  year: 2022,
+  sitting: "MJ",
+  sourcePages: 13,
+  sourceSha256: "2c2e6223ffe0f1473f068485db00ad2a240df9e4407e4235bb4ecf9e58a71982",
+  parts: PARTS4
+});
+var verifyPob2022MjP2AuthoredScheme = (paper = POB_2022_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
+
+// src/principlesOfBusiness/data/pobHistorical2023JanP2AuthoredScheme.js
+var pobHistorical2023JanP2AuthoredScheme_exports = {};
+__export(pobHistorical2023JanP2AuthoredScheme_exports, {
+  POB_2023_JAN_P2_AUTHORED_SCHEME: () => POB_2023_JAN_P2_AUTHORED_SCHEME,
+  verifyPob2023JanP2AuthoredScheme: () => verifyPob2023JanP2AuthoredScheme
+});
+var PARTS5 = Object.freeze([
+  [1, "a.i", "Managers must offer safe, accurately described goods and handle customer complaints fairly.", ["1:First legitimate customer-related responsibility", "1:Second distinct customer responsibility"]],
+  [1, "a.ii", "Managers must provide safe working conditions and pay wages or agreed benefits in accordance with labour law.", ["1:First valid employee responsibility", "1:Second distinct obligation"]],
+  [1, "b", "Stakeholders besides customers and employees include suppliers and business owners or shareholders.", ["1:First business stakeholder other than employees and customers", "1:Second different suitable stakeholder"]],
+  [1, "c", "Managers could recognise strong performance, pay suitable performance rewards, provide staff development and offer fair promotion opportunities.", ["1:First genuine motivation strategy", "1:Second different strategy", "1:Third distinct strategy", "1:Fourth distinct strategy"]],
+  [1, "d", "Teamwork combines different employees' skills to solve problems efficiently and coordinates tasks so fewer mistakes occur.", ["2:First benefit of teamwork and how this improves results", "2:Second different benefit and mechanism"]],
+  [1, "e", "Management at New Harbour Garment Factory can organise regular two-way meetings where employees ask questions and managers explain changes, reducing misunderstandings. A confidential feedback or grievance channel with timely follow-up ensures workers' concerns are heard and addressed.", ["3:First distinct communication intervention, practical details and outcome", "3:Second different developed intervention"]],
+  [2, "a.i", "An invitation to treat is a request for others to make offers, such as goods displayed on a shelf, rather than a binding offer by the seller.", ["1:Identifies invitation for customers to make offers", "1:Explains not itself a legally binding offer"]],
   [2, "a.ii", "A simple contract ordinarily requires an offer and acceptance and valid consideration; it is not necessarily a deed or under seal.", ["1:First genuine simple-contract characteristic", "1:Second distinct characteristic"]],
   [2, "a.iii", "Contracts can end after full performance and by mutual agreement between the parties.", ["1:First valid discharge method", "1:Second different valid method"]],
   [2, "b", "A hire purchase agreement is commonly documented formally in writing with prescribed terms, and the seller/finance provider normally retains title until agreed instalments are completed. Whether it legally qualifies as a specialty contract depends on jurisdiction and formal execution requirements.", ["2:First valid distinct formal or legal feature, with accurate description", "2:Second different feature described without falsely asserting all HP agreements are deeds"]],
@@ -39,7 +83,7 @@ __export(pobHistorical2023MjP2AuthoredScheme_exports, {
   POB_2023_MJ_P2_AUTHORED_SCHEME: () => POB_2023_MJ_P2_AUTHORED_SCHEME,
   verifyPob2023MjP2AuthoredScheme: () => verifyPob2023MjP2AuthoredScheme
 });
-var POINTS6 = Object.freeze([
+var POINTS7 = Object.freeze([
   [1, "a", "Disputes inside enterprises may result from poor communication, unfair promotions, unequal workloads and competition between staff for limited resources.", ["1:First real conflict trigger", "1:Second distinct trigger", "1:Third different source", "1:Fourth distinct source"]],
   [1, "b.i", "Work-to-rule involves employees observing their contractual duties and work hours strictly while refusing extra tasks or voluntary overtime to apply pressure.", ["1:Identifies literal work duties without voluntary extras", "1:Explains industrial-pressure purpose"]],
   [1, "b.ii", "Picketing is collective worker protest around a workplace, often with signs and communication encouraging support for an industrial dispute, subject to employment laws.", ["1:Describes demonstration near workplace", "1:Connects to industrial dispute and pressure"]],
@@ -81,7 +125,7 @@ var POB_2023_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
   sitting: "MJ",
   sourcePages: 17,
   sourceSha256: "79ed3fa6c2ad12d802a4bfe5ddcd558a5c109980f398bba18f2ff3b1b3277049",
-  parts: POINTS6
+  parts: POINTS7
 });
 var verifyPob2023MjP2AuthoredScheme = (paper = POB_2023_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
 
@@ -391,7 +435,7 @@ __export(pobHistorical2024MjP2AuthoredScheme_exports, {
   POB_2024_MJ_P2_AUTHORED_SCHEME: () => POB_2024_MJ_P2_AUTHORED_SCHEME,
   verifyPob2024MjP2AuthoredScheme: () => verifyPob2024MjP2AuthoredScheme
 });
-var POINTS7 = Object.freeze([
+var POINTS8 = Object.freeze([
   [1, "a", "Planning sets objectives, organising allocates people/resources, directing or leading guides staff, and controlling compares performance to targets and corrects deviations.", ["1:Planning", "1:Organising", "1:Directing or leading", "1:Controlling"]],
   [1, "b.i", "The business must provide safe working conditions and pay employees fairly and on time under applicable labour law.", ["1:First legal or ethical responsibility to workers", "1:Second distinct responsibility"]],
   [1, "b.ii", "Management should supply safe properly described goods and deal honestly with customer complaints or returns.", ["1:First genuine responsibility to consumers", "1:Second distinct responsibility"]],
@@ -430,7 +474,7 @@ var POB_2024_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
   sitting: "MJ",
   sourcePages: 16,
   sourceSha256: "c70368e4d1beff0eeece2495db1ff2a657a4e9d3efdca74e8b6bbf7a5119d0f2",
-  parts: POINTS7
+  parts: POINTS8
 });
 var verifyPob2024MjP2AuthoredScheme = (paper = POB_2024_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
 
@@ -2158,96 +2202,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
               "label": "(b)",
               "question": "Outline THREE ways in which human resource development can affect the economic growth and development of Caribbean countries.",
               "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Better trained workers are more productive, increasing output (economic growth).\n\u2022 A skilled workforce attracts foreign investment.\n\u2022 It encourages innovation and entrepreneurship, leading to new businesses.\n\u2022 People earn higher incomes, which reduces poverty and raises the standard of living.\n\u2022 A healthier workforce loses fewer working days.\n\u2022 Workers can use new technology, and the country depends less on foreign experts."
-            },
-            {
-              "label": "(c)",
-              "question": "Discuss the effect of EACH of the following economic problems on Caribbean countries:\n(i) Migration\n(ii) Economic dualism",
-              "marks": 6,
-              "answer": "3 marks each:\n(i) Migration: the loss of skilled people (brain drain) such as nurses, doctors and teachers causes shortages, lowers the quality of services and wastes the money spent on training them. On the other hand, remittances sent home bring in foreign exchange and migration can reduce unemployment.\n(ii) Economic dualism: a modern, capital-intensive and often foreign-owned sector (for example tourism or mining) exists alongside a traditional, low-productivity sector (small farming, informal trading). This leads to large differences in incomes, drift from rural to urban areas, unemployment in the traditional sector and few linkages between the two sectors, so growth does not benefit everyone."
-            },
-            {
-              "label": "(d)",
-              "question": "Outline THREE ways in which the Caribbean Development Bank can assist in reducing the economic problems of Caribbean countries.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Provides long-term, low-interest loans for development projects (roads, schools, water, housing).\n\u2022 Gives grants and technical assistance to help prepare and manage projects.\n\u2022 Lends to national development banks, which on-lend to small businesses, farmers and students.\n\u2022 Provides funds to rebuild after natural disasters.\n\u2022 Supports poverty reduction programmes (for example the Basic Needs Trust Fund).\n\u2022 Promotes regional co-operation and integration."
-            }
-          ]
-        },
-        {
-          "number": 7,
-          "section": "Section II",
-          "section_instructions": "Answer TWO questions in this section as indicated.",
-          "choice": "Answer EITHER Question 6 OR Question 7. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "State ONE function of EACH of the following economic institutions:\n(i) World Trade Organization (WTO)\n(ii) European Union",
-              "marks": 4,
-              "answer": "2 marks each:\n(i) WTO (any ONE): sets and enforces the rules of international trade; settles trade disputes between member countries; promotes freer trade by negotiating lower tariffs.\n(ii) European Union (any ONE): creates a single market with free movement of goods, services, capital and people among its member states; gives trade preferences and development aid to ACP (including Caribbean) countries, for example through the Economic Partnership Agreement."
-            },
-            {
-              "label": "(b)",
-              "question": "State THREE benefits that Caribbean countries may enjoy from being members of CARICOM.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Free trade among members gives producers a larger market.\n\u2022 Free movement of skilled persons.\n\u2022 Functional co-operation in areas such as education (CXC, UWI), health and disaster management (CDEMA).\n\u2022 Stronger bargaining power in international negotiations.\n\u2022 A common external tariff protects regional producers from outside competition.\n\u2022 Co-ordination of foreign policy."
-            },
-            {
-              "label": "(c)",
-              "question": "Outline TWO ways by which the development of the manufacturing sector can assist in reducing the economic problems of Caribbean countries.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 It creates jobs, reducing unemployment.\n\u2022 Producing goods locally (import substitution) reduces imports and saves foreign exchange.\n\u2022 Manufactured exports earn foreign exchange and improve the balance of payments.\n\u2022 It diversifies the economy, reducing dependence on agriculture and tourism.\n\u2022 It creates linkages with agriculture (agro-processing) and adds value to raw materials."
-            },
-            {
-              "label": "(d)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Define the term 'foreign direct investment' (FDI).",
-                  "marks": 2,
-                  "answer": "Foreign direct investment is investment by foreign individuals or companies in productive assets in another country, such as factories, hotels or mines (1), which gives them ownership or control of the business (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Outline TWO ways in which foreign direct investment can contribute to the economic growth of a country.",
-                  "marks": 4,
-                  "answer": "Any TWO, 2 marks each:\n\u2022 It brings in capital, which increases production.\n\u2022 It creates jobs.\n\u2022 It transfers technology and skills to local workers.\n\u2022 It brings in foreign exchange and increases exports.\n\u2022 It increases government tax revenue.\n\u2022 It may improve infrastructure."
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "paper": "Paper 2 (Structured Response)",
-      "year": "2010",
-      "session": "May/June",
-      "duration": "2 hours",
-      "instructions": "Answer the THREE questions in Section I, ONE question in Section II and ONE question in Section III as indicated.",
-      "total_questions": 7,
-      "questions": [
-        {
-          "number": 1,
-          "section": "Section I",
-          "section_instructions": "Answer the THREE questions in this section.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Define the term 'business plan'.",
-              "marks": 2,
-              "answer": "A business plan is a written document that describes a business, its goals and how it intends to achieve them (1), including its marketing, management, production and financial plans; it is used to guide the business and to obtain financing (1)."
-            },
-            {
-              "label": "(b)",
-              "question": "Describe the following elements of a business plan:\n(i) Business Identification\n(ii) Product or Service Description\n(iii) Market Strategy\n(iv) Organization or Management",
-              "marks": 8,
-              "answer": "2 marks each:\n(i) Business identification: gives the name, address and location of the business, the names of the owners, its legal form (sole trader, partnership, company) and its mission and objectives.\n(ii) Product or service description: describes what the business will sell, its features and benefits, how it meets customers' needs and what makes it different from competitors.\n(iii) Market strategy: identifies the target market and competitors, summarises market research, and sets out the pricing, promotion and distribution plans.\n(iv) Organization or management: shows the management structure, the skills and experience of the owners and key managers, staffing needs and the roles of each person."
-            },
-            {
-              "label": "(c)",
-              "question": "Identify FOUR elements which the Executive Summary should contain.",
-              "marks": 4,
-              "answer": "Any FOUR, 1 mark each:\n\u2022 Name, location and legal form o
+              "answer": "Any THREE, 2 marks each:\n\u2022 Better trained wo

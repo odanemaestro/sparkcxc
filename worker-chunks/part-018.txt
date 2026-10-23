@@ -1,4 +1,100 @@
-sh a partnership.",
+O, 2 marks each:\n\u2022 Product: the good or service offered, including its features, quality, brand and packaging.\n\u2022 Price: the amount charged for the product and the pricing strategy used.\n\u2022 Place: how the product is distributed and where it is sold.\n\u2022 Promotion: how the business communicates with customers, through advertising, sales promotion, personal selling and public relations."
+            },
+            {
+              "label": "(c)",
+              "question": "Describe EACH of the following methods of promoting sales.\n(i) Public relations (PR)\n(ii) Sales promotions",
+              "marks": 4,
+              "answer": "2 marks each:\n(i) Public relations: activities that build and maintain a good image and goodwill for the business with the public, for example press releases, sponsorships, community projects and events.\n(ii) Sales promotions: short-term incentives that encourage customers to buy quickly, for example discounts, coupons, free samples, buy-one-get-one-free offers and contests."
+            },
+            {
+              "label": "(d)",
+              "question": "Kevin and Mala have been thinking of setting up a cellphone and accessories business together.",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Define the term 'retailing'.",
+                  "marks": 2,
+                  "answer": "Retailing is selling goods and services in small quantities directly to the final consumer for personal use (1); it is the last stage of the chain of distribution (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Describe THREE suitable types of retail outlets that Kevin and Mala could consider setting up.",
+                  "marks": 6,
+                  "answer": "Any THREE, 2 marks each:\n\u2022 A small shop or kiosk in a mall or busy town centre: many passers-by, and it gives personal service at a reasonable start-up cost.\n\u2022 An online store or social media shop (e-commerce): reaches many customers at low cost, with orders delivered or collected.\n\u2022 A mobile stall at events, fairs and markets: low cost and it can move to where customers are.\n\u2022 An authorised dealer or franchise outlet of a mobile network company: a known brand that attracts customers.\n\u2022 A specialty store focused on phones and accessories, with repair services."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "State ONE major function of EACH of the following economic institutions.\n(i) Caribbean Community (CARICOM)\n(ii) World Trade Organization (WTO)",
+              "marks": 2,
+              "answer": "1 mark each:\n(i) CARICOM (any ONE): promotes economic integration and free trade among member states (the CSME); co-ordinates foreign policy; organises functional co-operation in areas such as health, education and disaster management.\n(ii) WTO (any ONE): sets and enforces the rules of international trade; settles trade disputes between countries; promotes freer trade by reducing tariffs."
+            },
+            {
+              "label": "(b)",
+              "question": "Outline ONE way in which governments can alleviate EACH of the following economic problems.\n(i) Unemployment\n(ii) Overpopulation\n(iii) Migration",
+              "marks": 6,
+              "answer": "2 marks each:\n(i) Unemployment (any ONE): attract investment with incentives to create jobs; give small business loans and training; start public works projects; expand skills training programmes.\n(ii) Overpopulation (any ONE): provide family planning education and access to contraception; give incentives for smaller families.\n(iii) Migration (any ONE): improve salaries and working conditions for skilled workers; bond scholarships so graduates must work at home for a period; create more opportunities for career development."
+            },
+            {
+              "label": "(c)",
+              "question": "Define the term 'economic dualism'.",
+              "marks": 2,
+              "answer": "Economic dualism is the existence of two different sectors side by side in one economy (1): a modern, capital-intensive, high-productivity sector (often urban or foreign-owned) and a traditional, labour-intensive, low-productivity sector (often rural or informal), with large differences in incomes (1)."
+            },
+            {
+              "label": "(d)",
+              "question": "Outline TWO benefits of obtaining foreign direct investment (FDI).",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Creates jobs and reduces unemployment.\n\u2022 Brings in capital that increases production.\n\u2022 Transfers technology and skills to local workers.\n\u2022 Earns foreign exchange through exports.\n\u2022 Increases government tax revenue.\n\u2022 Creates linkages with local suppliers."
+            },
+            {
+              "label": "(e)",
+              "question": "Explain TWO ways in which Caribbean governments can assist in the development of the manufacturing sector of their countries.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Tax incentives: tax holidays and duty-free import of machinery and raw materials lower manufacturers' costs and encourage investment.\n\u2022 Finance: low-interest loans and grants through development banks help manufacturers start and expand.\n\u2022 Protection: tariffs or quotas on competing imports protect young (infant) industries until they can compete.\n\u2022 Infrastructure: industrial estates and factory space, reliable electricity, roads and ports reduce operating costs.\n\u2022 Training: programmes that provide skilled workers for factories.\n\u2022 Export promotion: trade missions and trade agreements open new markets for manufactured goods.\n\u2022 'Buy local' campaigns that increase demand for local products."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paper": "Paper 2 (Structured Response)",
+      "year": "2019",
+      "session": "January",
+      "duration": "2 hours",
+      "instructions": "1. This paper consists of FIVE questions. Answer ALL questions.\n2. Write your answers in the spaces provided in this answer booklet.\n3. Do NOT write in the margins.\n4. You are advised to take some time to read through the paper and plan your answers.",
+      "total_questions": 5,
+      "questions": [
+        {
+          "number": 1,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Define the term 'capital' as a factor of production and state TWO examples.",
+              "marks": 4,
+              "answer": "Capital is the man-made factor of production: goods made by people that are used to produce other goods and services (2). Its reward is interest.\nAny TWO examples, 1 mark each: machinery, tools, equipment, factory buildings, vehicles, computers."
+            },
+            {
+              "label": "(b)",
+              "question": "List FOUR sources of capital that could be used when setting up a business.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each: personal savings; loans from commercial banks; credit union loans; family and friends; partners or shareholders; government grants or development bank loans; venture capital; trade credit; hire purchase; leasing."
+            },
+            {
+              "label": "(c)",
+              "question": "June wants to set up a small supermarket, but is unsure whether she should operate as a sole trader or establish a partnership.",
               "subparts": [
                 {
                   "label": "(i)",

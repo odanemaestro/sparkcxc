@@ -131,6 +131,173 @@ function gradeEnglishAPaper2(paper, answers = {}, choiceId = "") {
   };
 }
 
+// src/integratedScience/practice/scienceFiltrationDrawingMarking.js
+var QID = "IS-M3-P2-11";
+var POINTS = [
+  "Funnel with filter paper drawn correctly (1)",
+  "Beaker/flask to collect the filtrate (1)",
+  "Labels: filter paper, residue, filtrate, funnel (any three) (1)",
+  "Clean lines, drawn with a ruler, appropriate title (1)"
+];
+var finite = (x) => typeof x === "number" && Number.isFinite(x);
+var validPoint = (p) => Array.isArray(p) && p.length === 2 && p.every((x) => finite(x) && x >= 0 && x <= 1);
+var near = (a, b, t2 = 0.06) => Math.hypot(a[0] - b[0], a[1] - b[1]) <= t2;
+var validLine = (s) => Array.isArray(s) && s.length === 2 && s.every(validPoint) && !near(s[0], s[1], 0.012);
+var topBottom = (s) => s[0][1] <= s[1][1] ? [s[0], s[1]] : [s[1], s[0]];
+var mid = (s) => [(s[0][0] + s[1][0]) / 2, (s[0][1] + s[1][1]) / 2];
+function read(value2) {
+  let data = value2;
+  if (typeof value2 === "string") {
+    try {
+      data = JSON.parse(value2);
+    } catch {
+      return null;
+    }
+  }
+  if (!data || typeof data !== "object" || Array.isArray(data) || !Array.isArray(data.lines) || !Array.isArray(data.labels) || data.lines.length > 80 || data.labels.length > 12 || typeof data.title !== "string" || data.title.length > 160) return null;
+  if (!data.lines.every(validLine)) return null;
+  if (!data.labels.every((l) => l && ["funnel", "filter paper", "residue", "filtrate"].includes(l.name) && validPoint(l.from) && validPoint(l.to) && !near(l.from, l.to, 0.03))) return null;
+  return data;
+}
+var slanted = (line, sign) => {
+  const [t2, b] = topBottom(line), change = b[0] - t2[0], dy = b[1] - t2[1];
+  return dy >= 0.11 && Math.abs(change) >= 0.075 && Math.abs(change) <= 0.37 && (sign < 0 ? change > 0.075 : change < -0.075);
+};
+function findFunnel(lines) {
+  for (const l of lines.filter((s) => slanted(s, -1))) for (const r of lines.filter((s) => slanted(s, 1))) {
+    const [lt, lb] = topBottom(l), [rt, rb] = topBottom(r);
+    if (lt[0] >= rt[0] || rt[0] - lt[0] < 0.17 || Math.abs(lt[1] - rt[1]) > 0.1 || Math.abs(lb[1] - rb[1]) > 0.09 || lb[0] > rb[0] + 0.055) continue;
+    const neck = [(lb[0] + rb[0]) / 2, (lb[1] + rb[1]) / 2];
+    const stem4 = lines.some((s) => {
+      const [a, b] = topBottom(s);
+      return Math.abs(a[0] - b[0]) < 0.043 && b[1] - a[1] > 0.055 && near(a, neck, 0.085);
+    });
+    if (!stem4) continue;
+    return {
+      left: l,
+      right: r,
+      neck,
+      topY: (lt[1] + rt[1]) / 2,
+      width: rt[0] - lt[0],
+      leftX: lt[0],
+      rightX: rt[0]
+    };
+  }
+  return null;
+}
+function findFilter(lines, funnel) {
+  if (!funnel) return null;
+  for (const l of lines.filter((s) => slanted(s, -1))) for (const r of lines.filter((s) => slanted(s, 1))) {
+    if (l === funnel.left || r === funnel.right) continue;
+    const [lt, lb] = topBottom(l), [rt, rb] = topBottom(r);
+    if (lt[0] >= rt[0] || Math.abs(lb[1] - rb[1]) > 0.085 || Math.abs(lb[0] - rb[0]) > 0.095) continue;
+    const top = (lt[1] + rt[1]) / 2, tip = [(lb[0] + rb[0]) / 2, (lb[1] + rb[1]) / 2];
+    if (top <= funnel.topY + 0.01 || top >= funnel.neck[1] - 0.045 || lt[0] <= funnel.leftX || rt[0] >= funnel.rightX || tip[1] >= funnel.neck[1] + 0.02 || Math.abs(tip[0] - funnel.neck[0]) > 0.085) continue;
+    return { left: l, right: r, tip, topY: top };
+  }
+  return null;
+}
+function findBeaker(lines, funnel) {
+  if (!funnel) return null;
+  const vertical = lines.filter((s) => {
+    const [a, b] = topBottom(s);
+    return b[1] - a[1] >= 0.16 && Math.abs(a[0] - b[0]) < 0.045;
+  });
+  for (const l of vertical) for (const r of vertical) {
+    if (l === r) continue;
+    const L = topBottom(l), R = topBottom(r);
+    if (L[0][0] >= R[0][0] || R[0][0] - L[0][0] < 0.16 || Math.abs(L[1][1] - R[1][1]) > 0.06 || L[0][1] < funnel.neck[1] - 0.065 || L[0][1] > funnel.neck[1] + 0.16) continue;
+    const bottom = lines.some((s) => {
+      const a = s[0], b = s[1];
+      return Math.abs(a[1] - b[1]) < 0.04 && (near(a, L[1], 0.06) && near(b, R[1], 0.06) || near(a, R[1], 0.06) && near(b, L[1], 0.06));
+    });
+    if (bottom && funnel.neck[0] >= L[0][0] - 0.055 && funnel.neck[0] <= R[0][0] + 0.055)
+      return {
+        left: l,
+        right: r,
+        topY: Math.min(L[0][1], R[0][1]),
+        bottomY: (L[1][1] + R[1][1]) / 2,
+        leftX: L[0][0],
+        rightX: R[0][0]
+      };
+  }
+  return null;
+}
+var nearLine = (p, line, tol = 0.1) => {
+  const [a, b] = line, v = [b[0] - a[0], b[1] - a[1]], w = [p[0] - a[0], p[1] - a[1]];
+  const d = v[0] * v[0] + v[1] * v[1], u = Math.max(0, Math.min(1, (w[0] * v[0] + w[1] * v[1]) / d));
+  return Math.hypot(p[0] - a[0] - u * v[0], p[1] - a[1] - u * v[1]) <= tol;
+};
+function goodLabels(labels, funnel, filter, beaker) {
+  const valid = /* @__PURE__ */ new Set();
+  for (const l of labels) {
+    const p = l.to;
+    if (l.name === "funnel" && funnel && [funnel.left, funnel.right].some((s) => nearLine(p, s, 0.055))) valid.add(l.name);
+    if (l.name === "filter paper" && filter && [filter.left, filter.right].some((s) => nearLine(p, s, 0.055))) valid.add(l.name);
+    if (l.name === "residue" && filter && p[1] >= filter.topY - 0.045 && p[1] <= filter.tip[1] && Math.abs(p[0] - filter.tip[0]) < 0.075) valid.add(l.name);
+    if (l.name === "filtrate" && beaker && p[1] > beaker.topY + 0.015 && p[1] < beaker.bottomY - 0.02 && p[0] > beaker.leftX + 0.015 && p[0] < beaker.rightX - 0.015) valid.add(l.name);
+  }
+  return valid.size;
+}
+function isSourceFiltrationDrawing(qid, pi, ii, item2) {
+  return qid === QID && pi === 0 && ii === 1 && item2?.response?.type === "drawing" && Number(item2?.marks) === 4 && JSON.stringify(item2?.markScheme?.points || []) === JSON.stringify(POINTS);
+}
+function markSourceFiltrationDrawing(qid, pi, ii, item2, input, freehand = false) {
+  if (!isSourceFiltrationDrawing(qid, pi, ii, item2)) return null;
+  if (input == null) return freehand ? null : {
+    score: 0,
+    maxMarks: 4,
+    sourceGeometry: true,
+    sourceResolved: true,
+    unassessedMarks: 0,
+    provisional: false,
+    criteria: []
+  };
+  const d = read(input);
+  if (!d) return {
+    score: 0,
+    maxMarks: 4,
+    sourceGeometry: true,
+    sourceResolved: false,
+    provisional: true,
+    unassessedMarks: 4,
+    criteria: []
+  };
+  const funnel = findFunnel(d.lines), paper = findFilter(d.lines, funnel), beaker = findBeaker(d.lines, funnel);
+  const labels = goodLabels(d.labels, funnel, paper, beaker);
+  const title = /\b(?:filtration|filtering|separating)\b/i.test(d.title) && /\b(?:mixture|sand|salt|apparatus|setup|set.up)\b/i.test(d.title);
+  const neat = d.lines.length >= 7 && d.lines.length <= 25 && !freehand && d.labels.every((l) => !d.lines.some((s) => near(l.from, mid(s), 0.02))) && title;
+  const hits = [Boolean(funnel && paper), Boolean(beaker), labels >= 3, Boolean(neat)];
+  const score = hits.filter(Boolean).length;
+  const blank = d.lines.length === 0 && d.labels.length === 0 && !d.title.trim();
+  const unknown = d.lines.length > 25 || d.labels.length > 5 || Boolean(freehand) || // Valid partial credit must have recognizable geometry rather than labels alone.
+  !blank && d.lines.length > 0 && (!funnel || !paper || !beaker) && score > 0 && d.lines.length > 6;
+  const resolved = !unknown;
+  return {
+    score,
+    maxMarks: 4,
+    sourceGeometry: true,
+    sourceResolved: resolved,
+    provisional: !resolved,
+    unassessedMarks: resolved ? 0 : 4 - score,
+    confidence: resolved ? "high" : "low",
+    criteria: hits.map((hit, i) => ({
+      id: "filtration-" + i,
+      label: POINTS[i],
+      marks: Number(hit),
+      maxMarks: 1,
+      earned: hit
+    })),
+    visualEvidence: {
+      funnel: Boolean(funnel),
+      filterPaper: Boolean(paper),
+      beaker: Boolean(beaker),
+      correctLabels: labels,
+      appropriateTitle: title
+    }
+  };
+}
+
 // src/integratedScience/practice/scienceCircuitConstructionMarking.js
 var CASES = {
   "IS-M2-P2-07:0:0": {
@@ -336,7 +503,7 @@ function openSwitch(shapes) {
   }));
 }
 var checker = { fuse, voltmeter, switch: openSwitch };
-function read(input) {
+function read2(input) {
   let source2 = input;
   try {
     if (typeof source2 === "string") source2 = JSON.parse(source2);
@@ -364,7 +531,7 @@ function isSourceCircuitSymbols(qid, pi, ii, item2) {
 function markSourceCircuitSymbols(qid, pi, ii, item2, value2, freehand = false) {
   if (!isSourceCircuitSymbols(qid, pi, ii, item2)) return null;
   if (value2 == null) return freehand ? null : { score: 0, maxMarks: 3, sourceGeometry: true, sourceResolved: true, provisional: false, unassessedMarks: 0, criteria: [] };
-  const drawing = read(value2);
+  const drawing = read2(value2);
   if (!drawing) return { score: 0, maxMarks: 3, sourceGeometry: true, sourceResolved: false, provisional: true, unassessedMarks: 3, criteria: [] };
   const earned = names.map((n) => checker[n](drawing[n]));
   const score = earned.filter(Boolean).length;
@@ -2584,12 +2751,12 @@ function ratioShown(response, ratio) {
 }
 function expressionShown(response, step) {
   const text = String(response ?? "").replace(/(\d),(?=\d{3}\b)/g, "$1");
-  const near = (a, b) => Math.abs(a - b) <= Math.max(1e-9, Math.abs(b) * 5e-3);
+  const near2 = (a, b) => Math.abs(a - b) <= Math.max(1e-9, Math.abs(b) * 5e-3);
   const expressions = [...text.matchAll(/[-+]?\d+(?:\.\d+)?(?:\s*[×x*\/÷+\-−]\s*\(?\s*[-+]?\d+(?:\.\d+)?\s*\)?)+/g)].map((m) => numbers(m[0].replace(/[×x*\/÷+()]/g, " ")));
-  if (expressions.some((got) => step.operands.every((o) => got.some((g) => near(g, o))))) return true;
+  if (expressions.some((got) => step.operands.every((o) => got.some((g) => near2(g, o))))) return true;
   if (step.value === null) return false;
   const results = [...text.matchAll(/=\s*\$?\s*([-+]?\d+(?:\.\d+)?)/g)].map((m) => Number(m[1]));
-  return results.some((v) => near(v, step.value));
+  return results.some((v) => near2(v, step.value));
 }
 function scienceMarkedPoints(item2) {
   let points = (item2?.markScheme?.points || []).filter(Boolean).flatMap(chemistrySubPoints);
@@ -3111,6 +3278,15 @@ function gradeIntegratedSciencePaper2Item(question2, partIndex, itemIndex, item2
       freehand
     );
     if (circuit) return circuit;
+    const filtration = markSourceFiltrationDrawing(
+      question2.id,
+      partIndex,
+      itemIndex,
+      item2,
+      responses[`${base}:filtrationDrawing`],
+      freehand
+    );
+    if (filtration) return filtration;
     return visualResult(question2.id, partIndex, itemIndex, item2, responses);
   }
   return lineResult2(question2.id, partIndex, itemIndex, item2, responses);
@@ -4262,27 +4438,4 @@ var POB_2002_MJ_P1_AUTHORED_KEY = Object.freeze({
   gradingCalibrationPassed: false,
   liveScoringApproved: false,
   questions: Object.freeze([
-    Object.freeze({ "number": 1, "pdfPage": 2, "proposedOption": "D", "explanation": "Different economic systems represent different ways of allocating scarce resources to solve comparable economic problems.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 2, "pdfPage": 2, "proposedOption": "C", "explanation": "Specialisation can raise efficiency and output but does not automatically improve working conditions.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 3, "pdfPage": 2, "proposedOption": "A", "explanation": "Private enterprises primarily seek a financial return for their owners.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 4, "pdfPage": 2, "proposedOption": "D", "explanation": "A private-sector public limited company is formed by statutory registration under the Companies Act, not by legislation establishing a state body.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 5, "pdfPage": 2, "proposedOption": "B", "explanation": "Share capital reflects 10,000 shares at their $2 nominal value, or $20,000; the 12.5% share premium is accounted for separately from nominal capital.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 6, "pdfPage": 2, "proposedOption": "B", "explanation": "The board of directors is charged with setting broad company policy and supervising management.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 7, "pdfPage": 2, "proposedOption": "A", "explanation": "Multinational investment can create jobs; repatriation of profits and depletion of resources are potential disadvantages.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 8, "pdfPage": 2, "proposedOption": "B", "explanation": "Payments, budgets and costing are finance functions; advertising belongs to marketing.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 9, "pdfPage": 3, "proposedOption": "C", "explanation": "Growth does not guarantee higher productivity, although it may increase capital investment and task specialisation.", "academicStatus": "disputed", "disputeType": "growth-productivity-causality", "disputeDetail": "Growth can increase organisational communication needs, but productivity is not necessarily raised. Confirm intended answer using paper-era syllabus.", "visualDiagramChecked": false }),
-    Object.freeze({ "number": 10, "pdfPage": 3, "proposedOption": "C", "explanation": "A trade union represents and protects the interests and general welfare of its members.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 11, "pdfPage": 3, "proposedOption": "B", "explanation": "Suitable conditions and good human relations directly help employees work effectively; producing a surplus is a business outcome rather than a workforce condition.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 12, "pdfPage": 3, "proposedOption": "A", "explanation": "The manager decides without consulting employees, characteristic of authoritarian leadership.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 13, "pdfPage": 3, "proposedOption": "B", "explanation": "Delivering good-quality products and communicating with employees promotes successful operations; maximum markup is not necessarily sustainable.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 14, "pdfPage": 3, "proposedOption": "D", "explanation": "Management must oversee operational efficiency, employee relations, product quality and matters involving board-level governance, subject to which organ legally declares dividends.", "academicStatus": "disputed", "disputeType": "dividend-decision-authority", "disputeDetail": "Ordinary managers are not necessarily authorised to determine dividends; directors/shareholders may decide according to corporate legislation.", "visualDiagramChecked": false }),
-    Object.freeze({ "number": 15, "pdfPage": 3, "proposedOption": "C", "explanation": "Laissez-faire leadership generally gives subordinates autonomy to make day-to-day decisions.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 16, "pdfPage": 4, "proposedOption": "C", "explanation": "Overstated opening stock raises cost of goods sold by $1,500, reducing calculated gross and net profit by $1,500.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 17, "pdfPage": 4, "proposedOption": "C", "explanation": "A transfer of land ordinarily requires the prescribed written instrument, unlike an ordinary cash purchase of goods.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 18, "pdfPage": 4, "proposedOption": "B", "explanation": "Fraudulent impersonation can make consent defective; the effect can differ if identity was essential to the other contracting party.", "academicStatus": "disputed", "disputeType": "contract-identity-impersonation", "disputeDetail": "Fraudulent misrepresentation generally raises voidability; identity mistake can instead produce a void contract in some fact patterns.", "visualDiagramChecked": false }),
-    Object.freeze({ "number": 19, "pdfPage": 4, "proposedOption": "A", "explanation": "Agriculture obtains raw natural products and is categorised as primary or extractive production.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 20, "pdfPage": 4, "proposedOption": "B", "explanation": "Using available labour for additional production and providing vocational training addresses unemployment without substituting machines for workers.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 21, "pdfPage": 4, "proposedOption": "C", "explanation": "Capital is wealth or other productive resources devoted to creating more wealth.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 22, "pdfPage": 4, "proposedOption": "D", "explanation": "Emigration of skilled professionals may leave labour shortages and lower productive capacity in the origin country.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 23, "pdfPage": 5, "proposedOption": "D", "explanation": "Brain drain is the migration of qualified workers to work or settle abroad.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
-    Object.freeze({ "number": 24, "pdfPage": 5, "proposedOption": "C", "explanation": "Underemployment includes taking jobs below a worker's capabilities or qualifications.", "academicStatus": "unverified-proposal", "
+    Object.freeze({ "number": 1, "pdfPage": 2, "proposedOption": "D", "explanation": "Different economic systems repr
