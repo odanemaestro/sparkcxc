@@ -10,6 +10,7 @@
  *   - where a scenario expects publication, publication happens.
  */
 import {evaluateExistingSubjectPaper2V2} from "./serverPaper2V2SubjectEngine";
+import {physicsPaper2FollowThroughSources} from "../physics/paper2/physicsPaper2Marking";
 
 const exact=f=>typeof f?.expect==="number";
 const pick=(cases,cls)=>cases.find(c=>c.cls===cls&&c.passed&&c.resolved&&exact(c));
@@ -92,13 +93,29 @@ export function verifyPaper(paper,casesById){
   (casesById.get(id)||[]).some(f=>f.cls==="full"&&f.response&&
    typeof f.response==="object"&&
    Object.keys(f.response).some(key=>key!==id&&graphIds.has(key)));
+ // A numeric mark can be earned by legitimate error-carried-forward (ECF)
+ // from a *different* earlier answer. Do not construct an internally
+ // contradictory script by independently combining two wrong/partial source
+ // fixtures and then demand that their standalone marks remain final. Use
+ // blank downstream answers in the zero/mixed scripts, and a complete
+ // canonical downstream answer in the partial script. The source ECF rules,
+ // not a manually curated list of failing paper IDs, decide which parts.
+ const ecfDependent=id=>{
+  if(paper.subjectId!=="physics")return false;
+  const row=paper.criteria.find(c=>c.id===id);
+  const [questionId,partId]=id.split("::");
+  return (row?.sourceMarking?.criteria||[]).some(c=>
+   physicsPaper2FollowThroughSources(questionId,partId,c.code).length>0);
+ };
  const scenarios=[
   scenario("full-marks",paper,plan(c=>pick(c,"full")),{mustPublish:true}),
-  scenario("zero-marks",paper,plan((c,i,id)=>graphDependent(id)
+  scenario("zero-marks",paper,plan((c,i,id)=>graphDependent(id)||ecfDependent(id)
    ?pick(c,"blank"):pick(c,"incorrect")),{mustPublish:true}),
   scenario("blank-script",paper,new Map(),{mustPublish:true}),
-  scenario("partial-marks",paper,plan(c=>pick(c,"partial")??pick(c,"full")),{mustPublish:true}),
+  scenario("partial-marks",paper,plan((c,i,id)=>ecfDependent(id)
+   ?pick(c,"full"):pick(c,"partial")??pick(c,"full")),{mustPublish:true}),
   scenario("mixed",paper,plan((c,i,id)=>graphIds.has(id)?pick(c,"full"):
+   ecfDependent(id)?pick(c,"blank"):
    [pick(c,"full"),pick(c,"incorrect"),pick(c,"partial")??pick(c,"blank")][i%3]),{mustPublish:true}),
   scenario("missing-answers",paper,plan((c,i,id)=>graphIds.has(id)?pick(c,"full"):
    i%2===0?pick(c,"full"):null),{mustPublish:true}),
