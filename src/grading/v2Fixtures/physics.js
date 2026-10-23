@@ -120,6 +120,46 @@ function writtenFixtures(part,maxMarks,others){
 }
 
 
+/** Real graph-reading evidence for Paper 1 Q1(d), never a prose claim.
+ * The supplied 1/V is plotted as x=100/18 on the source paper's scaled grid.
+ */
+function pressureReadOffFixtures(question,part,maxMarks){
+ const spec=getPhysicsGraphWorkingSpec(question.question_id);
+ const graphPart=question.parts.find(p=>p.id===spec?.graphPart);
+ if(!graphPart?.grid||!graphPart.graph?.line)return {blocked:"pressure-reading-without-source-graph"};
+ const grid=graphPart.grid,line=graphPart.graph.line;
+ const slope=Number(line.gradient),intercept=Number(line.intercept||0);
+ const xMax=Math.min(Number(line.to),Number(grid.xMax),
+  (Number(grid.yMax)-intercept)/slope*0.99);
+ const point=x=>({x,y:slope*x+intercept});
+ const graph={points:graphPart.graph.points.map(p=>({...p})),
+  line:[point(0),point(xMax)],axisXLabel:grid.xLabel,axisYLabel:grid.yLabel,
+  axisXMin:grid.xMin,axisXMax:grid.xMax,axisXStep:grid.xStep,
+  axisYMin:grid.yMin,axisYMax:grid.yMax,axisYStep:grid.yStep};
+ const readPoint=point(100/18),answer=String(part.answer||"");
+ const graphKey=question.question_id+"::"+graphPart.id;
+ const key=question.question_id+"::"+part.id;
+ const withGraph=response=>({[graphKey]:{graph},[key]:response});
+ const correct={answer,working:"1/18=0.0556"};
+ const evidence={kind:"physics-pressure-reading-v1",point:readPoint};
+ return {kind:"visual",allOrNothing:false,
+  sourceAnswer:{...correct,graphEvidence:evidence},alternatives:[],fixtures:[
+   {cls:"full",responses:withGraph({...correct,graphEvidence:evidence}),
+    expect:maxMarks,note:"pressure read from candidate's own plotted line"},
+   {cls:"partial",responses:withGraph(correct),expect:maxMarks-1,
+    mustResolve:true,note:"correct inverse and answer without saved read-off point"},
+   {cls:"partial",responses:withGraph({...correct,
+    graphEvidence:{kind:"physics-pressure-reading-v1",point:{x:6.5,y:156}}}),
+    expect:maxMarks-1,note:"a selection at the wrong x position never earns read-off mark"},
+   {cls:"incorrect",responses:withGraph({answer:"The mountains were green."}),expect:0,
+    mustResolve:true,note:"no graph reading, no inverse volume and no pressure"},
+   {cls:"blank",response:{answer:"",working:""},expect:0},
+   {cls:"irrelevant",response:{answer:NONSENSE},expect:0},
+   {cls:"ceiling",responses:withGraph({...correct,graphEvidence:evidence}),
+    expect:maxMarks}
+  ]};
+}
+
 /** Source-specific graph-working fixtures, with the actual preceding plotted line.
  * A typed claim of having drawn a triangle is never valid method evidence.
  * Values, grid bounds and answer units belong to the authored paper.
@@ -184,6 +224,8 @@ export function physicsFixtures({paper,question,part,maxMarks,curated=[]}){
   set=graphFixtures(part,model,maxMarks);
  }else if(getPhysicsGraphWorkingSpec(question.question_id)?.trianglePart===part.id){
   set=gradientMethodFixtures(paper,question,part,maxMarks);
+ }else if(question.question_id==="phy-p2-1-q1"&&part.id==="d"){
+  set=pressureReadOffFixtures(question,part,maxMarks);
  }else if(type==="table"){
   const model=modelResponsesForPhysicsPaper2(paper)[key]?.table;
   if(!model||!Object.keys(model).length)return {blocked:"table-without-complete-answer-key"};
