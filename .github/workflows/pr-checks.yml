@@ -71,6 +71,41 @@ jobs:
           node tools/v2-verify-all.mjs --subject physics --out artifacts/v2-physics-table-retest
           node --input-type=module -e 'import fs from "node:fs";const s=JSON.parse(fs.readFileSync("artifacts/v2-physics-table-retest/summary.json","utf8"));const p=s.bySubject.physics;if(p?.criteria!==135||p.verified<57) {console.error("Physics verification regressed",JSON.stringify(p));process.exit(1)}console.log("Physics verified",p.verified,"of 135; remaining criteria stay unreleased")'
 
+      - name: Report each unverified Physics source criterion
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const rows=JSON.parse(fs.readFileSync("artifacts/v2-physics-table-retest/evidence.json","utf8"));
+          const missing=rows.filter(x=>x.outcome!=="verified");
+          console.log("Physics failed source criteria:",missing.length);
+          for(const r of missing){
+           const problems=[...(r.missingClasses||[]).map(x=>"missing:"+x),
+             ...(r.uncommittedClasses||[]).map(x=>"uncommitted:"+x),
+             ...(r.failures||[]).map(f=>f.cls+":"+f.failures.map(x=>x).join(","))];
+           console.log(JSON.stringify({criterion:r.criterionId,marks:r.maxMarks,kind:r.kind,
+            problems,partial:r.cases?.filter(x=>x.cls==="partial").map(x=>({marks:x.marks,expect:x.expect,resolved:x.resolved})),
+            incorrect:r.cases?.filter(x=>x.cls==="incorrect").map(x=>({marks:x.marks,expect:x.expect,resolved:x.resolved})),
+            full:r.cases?.filter(x=>x.cls==="full").map(x=>({marks:x.marks,expect:x.expect,resolved:x.resolved}))}));
+          }
+          NODE
+
+      - name: Publish source-verified Physics evidence for review
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TEMP_DIR="$(mktemp -d)"
+          mkdir -p "$TEMP_DIR/verified"
+          node --input-type=module -e 'import fs from "node:fs";const a=JSON.parse(fs.readFileSync("artifacts/v2-physics-table-retest/evidence.json","utf8"));fs.writeFileSync(process.argv[1],JSON.stringify(a.filter(x=>x.outcome==="verified")));' "$TEMP_DIR/verified/physics-evidence.json"
+          git -C "$TEMP_DIR" init -q
+          git -C "$TEMP_DIR" config user.name "github-actions[bot]"
+          git -C "$TEMP_DIR" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C "$TEMP_DIR" add verified
+          git -C "$TEMP_DIR" commit -qm "Automated source-verification evidence for ${GITHUB_SHA}"
+          git -C "$TEMP_DIR" remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git -C "$TEMP_DIR" push origin HEAD:"refs/heads/artifacts/physics-verified-${GITHUB_SHA}"
+
       - name: Upload Physics V2 evidence results
         uses: actions/upload-artifact@v4
         with:

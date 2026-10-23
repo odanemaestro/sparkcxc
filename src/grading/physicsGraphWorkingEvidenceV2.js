@@ -49,6 +49,7 @@ export function validatePhysicsGradientTriangle({graphResponse,response,question
  });
 }
 export function validatePhysicsPressureReading({graphResponse,response,questionId="phy-p2-1-q1"}={}){
+ if(questionId!=="phy-p2-1-q1")return false;
  const spec=getPhysicsGraphWorkingSpec(questionId);
  if(!spec?.readingPart)return false;
  const limits=limitsFor(questionId);
@@ -58,4 +59,20 @@ export function validatePhysicsPressureReading({graphResponse,response,questionI
  if(Math.abs(p.x-100/18)>0.12)return false;
  const onLine=samplePhysicsGraphLine(graphResponse,p.x,questionId);
  return !!onLine&&Math.abs(p.y-onLine.y)<=Math.max(1e-10,1e-8*(limits.yMax-limits.yMin));
+}
+
+/** Current is read across from 1.75 V, then down to the x-axis, on the
+ * candidate's actual V against I line (Paper 3 Q1). This is saved graphic
+ * evidence, never a numerical estimate inferred from prose. */
+export function validatePhysicsCurrentReading({graphResponse,response,questionId="phy-p2-3-q1"}={}){
+ if(questionId!=="phy-p2-3-q1")return false;
+ const spec=getPhysicsGraphWorkingSpec(questionId);
+ if(spec?.readingPart!=="e")return false;
+ const point=response?.graphEvidence?.point;
+ if(response?.graphEvidence?.kind!=="physics-current-reading-v1"||
+  !inGrid(point,spec.limits))return false;
+ if(Math.abs(point.y-1.75)>0.08)return false;
+ const onLine=samplePhysicsGraphLine(graphResponse,point.x,questionId);
+ return !!onLine&&Math.abs(point.y-onLine.y)<=
+  Math.max(1e-10,1e-8*(spec.limits.yMax-spec.limits.yMin));
 }

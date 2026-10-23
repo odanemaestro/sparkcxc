@@ -219,7 +219,9 @@ function ReviewPanel({ result, question, responses, modelResponses }) {
           <span>Recorded graph working</span>
           <p>{response.graphEvidence.kind === "physics-gradient-triangle-v1"
             ? `Gradient triangle: ${response.graphEvidence.points?.length || 0} selected points`
-            : "Pressure reading: one point selected on your graph"}. This is saved practice evidence and is not yet counted by the existing marking engine.</p>
+            : response.graphEvidence.kind === "physics-current-reading-v1"
+              ? "Current reading: one point selected on your graph"
+              : "Pressure reading: one point selected on your graph"}. This is saved graph-working evidence for V2 and is not counted by the legacy marking engine.</p>
         </div>}
         {workedSolution && <div className="phy-p2-worked-solution"><span>Worked solution</span><MathText as="div" prose>{workedSolution}</MathText></div>}
         {part.markerNote && <div className="phy-p2-marker-guidance"><span>Marker guidance</span><MathText as="div" prose>{part.markerNote}</MathText></div>}

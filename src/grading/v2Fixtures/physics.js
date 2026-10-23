@@ -7,6 +7,7 @@
 import {modelResponsesForPhysicsPaper2,unsuperscript,physicsAlignedStatements,physicsModelStatements} from "../../physics/paper2/physicsPaper2Marking";
 import {antonymSwap} from "./science";
 import {physicsCuratedTableFixtures} from "./physicsCurated";
+import {getPhysicsGraphWorkingSpec} from "../physicsGraphWorkingSpecsV2";
 
 const F=(cls,response,expect,note)=>({cls,response,expect,note});
 const NONSENSE="ZXQJ VMPQ UNRELATED RESPONSE TEST ONLY";
@@ -118,6 +119,133 @@ function writtenFixtures(part,maxMarks,others){
  return {kind:"written",allOrNothing:criteria.length===1,sourceAnswer:{answer:model,working:""},alternatives:[],fixtures};
 }
 
+
+/** Source-backed horizontal-to-vertical graph reading for Paper 3 Q1(e). */
+function currentReadOffFixtures(question,part,maxMarks){
+ const spec=getPhysicsGraphWorkingSpec(question.question_id);
+ const graphPart=question.parts.find(p=>p.id===spec?.graphPart);
+ if(!graphPart?.grid||!graphPart.graph?.line)return {blocked:"current-reading-without-source-graph"};
+ const grid=graphPart.grid,line=graphPart.graph.line;
+ const slope=Number(line.gradient),intercept=Number(line.intercept||0);
+ const maxX=Math.min(Number(line.to),Number(grid.xMax),
+  (Number(grid.yMax)-intercept)/slope*.99);
+ const point=x=>({x,y:slope*x+intercept});
+ const graph={points:graphPart.graph.points.map(p=>({...p})),
+  line:[point(0),point(maxX)],axisXLabel:grid.xLabel,axisYLabel:grid.yLabel,
+  axisXMin:grid.xMin,axisXMax:grid.xMax,axisXStep:grid.xStep,
+  axisYMin:grid.yMin,axisYMax:grid.yMax,axisYStep:grid.yStep};
+ const pointAtSource=point((1.75-intercept)/slope);
+ const evidence={kind:"physics-current-reading-v1",point:pointAtSource};
+ const graphKey=question.question_id+"::"+graphPart.id;
+ const key=question.question_id+"::"+part.id;
+ const withGraph=response=>({[graphKey]:{graph},[key]:response});
+ const answer=String(part.answer||"");
+ return {kind:"visual",allOrNothing:false,
+  sourceAnswer:{answer,graphEvidence:evidence},alternatives:[],fixtures:[
+   {cls:"full",responses:withGraph({answer,graphEvidence:evidence}),
+    expect:maxMarks,note:"source value with explicit horizontal and vertical projections"},
+   {cls:"partial",responses:withGraph({answer}),expect:1,
+    mustResolve:true,note:"correct numerical answer without any graphical read-off"},
+   {cls:"partial",responses:withGraph({answer,graphEvidence:{
+    kind:"physics-current-reading-v1",point:{x:0.5,y:2.5}
+   }}),expect:1,note:"wrong saved graph selection cannot earn method marks"},
+   {cls:"incorrect",responses:withGraph({answer:"The answer is not a current."}),
+    expect:0,mustResolve:true},
+   {cls:"blank",response:{answer:""},expect:0},
+   {cls:"irrelevant",response:{answer:NONSENSE},expect:0},
+   {cls:"ceiling",responses:withGraph({answer,graphEvidence:evidence}),
+    expect:maxMarks}
+  ]};
+}
+
+/** Real graph-reading evidence for Paper 1 Q1(d), never a prose claim.
+ * The supplied 1/V is plotted as x=100/18 on the source paper's scaled grid.
+ */
+function pressureReadOffFixtures(question,part,maxMarks){
+ const spec=getPhysicsGraphWorkingSpec(question.question_id);
+ const graphPart=question.parts.find(p=>p.id===spec?.graphPart);
+ if(!graphPart?.grid||!graphPart.graph?.line)return {blocked:"pressure-reading-without-source-graph"};
+ const grid=graphPart.grid,line=graphPart.graph.line;
+ const slope=Number(line.gradient),intercept=Number(line.intercept||0);
+ const xMax=Math.min(Number(line.to),Number(grid.xMax),
+  (Number(grid.yMax)-intercept)/slope*0.99);
+ const point=x=>({x,y:slope*x+intercept});
+ const graph={points:graphPart.graph.points.map(p=>({...p})),
+  line:[point(0),point(xMax)],axisXLabel:grid.xLabel,axisYLabel:grid.yLabel,
+  axisXMin:grid.xMin,axisXMax:grid.xMax,axisXStep:grid.xStep,
+  axisYMin:grid.yMin,axisYMax:grid.yMax,axisYStep:grid.yStep};
+ const readPoint=point(100/18),answer=String(part.answer||"");
+ const graphKey=question.question_id+"::"+graphPart.id;
+ const key=question.question_id+"::"+part.id;
+ const withGraph=response=>({[graphKey]:{graph},[key]:response});
+ const correct={answer,working:"1/18=0.0556"};
+ const evidence={kind:"physics-pressure-reading-v1",point:readPoint};
+ return {kind:"visual",allOrNothing:false,
+  sourceAnswer:{...correct,graphEvidence:evidence},alternatives:[],fixtures:[
+   {cls:"full",responses:withGraph({...correct,graphEvidence:evidence}),
+    expect:maxMarks,note:"pressure read from candidate's own plotted line"},
+   {cls:"partial",responses:withGraph(correct),expect:maxMarks-1,
+    mustResolve:true,note:"correct inverse and answer without saved read-off point"},
+   {cls:"partial",responses:withGraph({...correct,
+    graphEvidence:{kind:"physics-pressure-reading-v1",point:{x:6.5,y:156}}}),
+    expect:maxMarks-1,note:"a selection at the wrong x position never earns read-off mark"},
+   {cls:"incorrect",responses:withGraph({answer:"The mountains were green."}),expect:0,
+    mustResolve:true,note:"no graph reading, no inverse volume and no pressure"},
+   {cls:"blank",response:{answer:"",working:""},expect:0},
+   {cls:"irrelevant",response:{answer:NONSENSE},expect:0},
+   {cls:"ceiling",responses:withGraph({...correct,graphEvidence:evidence}),
+    expect:maxMarks}
+  ]};
+}
+
+/** Source-specific graph-working fixtures, with the actual preceding plotted line.
+ * A typed claim of having drawn a triangle is never valid method evidence.
+ * Values, grid bounds and answer units belong to the authored paper.
+ */
+function gradientMethodFixtures(paper,question,part,maxMarks){
+ const spec=getPhysicsGraphWorkingSpec(question.question_id);
+ const graphPart=question.parts.find(p=>p.id===spec?.graphPart);
+ if(!graphPart?.graph?.line||!graphPart.grid)return {blocked:"gradient-without-source-graph"};
+ const grid=graphPart.grid,line=graphPart.graph.line;
+ const slope=Number(line.gradient),intercept=Number(line.intercept||0);
+ if(!Number.isFinite(slope)||slope<=0)return {blocked:"gradient-without-source-line"};
+ const x0=Math.max(Number(line.from||0),Number(grid.xMin));
+ const x1=Math.min(Number(line.to),Number(grid.xMax),
+  (Number(grid.yMax)-intercept)/slope*0.99);
+ if(!(x1>x0))return {blocked:"gradient-without-plottable-line"};
+ const point=x=>({x,y:x*slope+intercept});
+ const graph={points:graphPart.graph.points.map(p=>({...p})),
+  line:[point(x0),point(x1)],axisXLabel:grid.xLabel,axisYLabel:grid.yLabel,
+  axisXMin:grid.xMin,axisXMax:grid.xMax,axisXStep:grid.xStep,
+  axisYMin:grid.yMin,axisYMax:grid.yMax,axisYStep:grid.yStep};
+ const evidence={kind:"physics-gradient-triangle-v1",
+  points:[point(x0+(x1-x0)*0.12),point(x0+(x1-x0)*0.85)]};
+ const graphKey=question.question_id+"::"+graphPart.id;
+ const key=question.question_id+"::"+part.id;
+ const withGraph=response=>({[graphKey]:{graph},[key]:response});
+ const answer=String(part.answer||"");
+ const blank={answer:"",working:""};
+ const noNumber="The weather was pleasant and the mountains were green.";
+ return {kind:"visual",allOrNothing:false,sourceAnswer:{answer,graphEvidence:evidence},
+  alternatives:[],fixtures:[
+   {cls:"full",responses:withGraph({answer,graphEvidence:evidence}),expect:maxMarks,
+    note:"source answer and actual large triangle on the submitted line"},
+   {cls:"partial",responses:withGraph({answer}),expect:maxMarks-2,
+    mustResolve:true,note:"correct value and unit but no drawn triangle loses both method marks"},
+   {cls:"partial",responses:withGraph({answer,graphEvidence:{
+    kind:"physics-gradient-triangle-v1",points:[point(x0),point(x0+(x1-x0)*0.2)]
+   }}),expect:maxMarks-2,note:"short triangle cannot earn method marks"},
+   {cls:"incorrect",responses:withGraph({answer:noNumber}),expect:0,
+    mustResolve:true,note:"unrelated prose supplies neither triangle nor numeric gradient"},
+   {cls:"contradiction",responses:withGraph({answer:"This is not "+answer}),
+    expect:{min:0,max:maxMarks-1},note:"negated numeric claim is not a valid final answer"},
+   {cls:"blank",response:blank,expect:0},
+   {cls:"irrelevant",response:{answer:NONSENSE},expect:0},
+   {cls:"ceiling",responses:withGraph({answer,graphEvidence:evidence,
+    working:answer+" "+answer}),expect:maxMarks}
+  ]};
+}
+
 /**
  * @param {object} paper   the authored source paper (data/spark-phy-p02-practice-N.json)
  * @param {object} question,part  the source question and part
@@ -132,6 +260,12 @@ export function physicsFixtures({paper,question,part,maxMarks,curated=[]}){
   const model=modelResponsesForPhysicsPaper2(paper)[key]?.graph;
   if(!model)return {blocked:"graph-without-source-data"};
   set=graphFixtures(part,model,maxMarks);
+ }else if(getPhysicsGraphWorkingSpec(question.question_id)?.trianglePart===part.id){
+  set=gradientMethodFixtures(paper,question,part,maxMarks);
+ }else if(question.question_id==="phy-p2-1-q1"&&part.id==="d"){
+  set=pressureReadOffFixtures(question,part,maxMarks);
+ }else if(question.question_id==="phy-p2-3-q1"&&part.id==="e"){
+  set=currentReadOffFixtures(question,part,maxMarks);
  }else if(type==="table"){
   const model=modelResponsesForPhysicsPaper2(paper)[key]?.table;
   if(!model||!Object.keys(model).length)return {blocked:"table-without-complete-answer-key"};

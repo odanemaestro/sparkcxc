@@ -13,6 +13,9 @@ import {markPhysicsPaper2,physicsPaper2FollowThroughSources,physicsPaper2TableCe
 import physicsPaper1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
 import {getPhysicsGraphWorkingSpec} from "./physicsGraphWorkingSpecsV2";
 import {evaluatePhysicsGraphGradient,evaluatePhysicsGraphPressure} from "./physicsGraphGradientV2";
+import {evaluatePhysicsSourceGradient} from "./physicsGraphGradientPoliciesV2";
+import {physicsCanonicalWrittenPartial,physicsCanonicalWrong,physicsCanonicalFull} from "./physicsCanonicalWrittenPartialV2";
+import {evaluatePhysicsCurrentGraphReading} from "./physicsCurrentGraphReadingV2";
 import physicsPaper2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
 import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
 import physicsPaper4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
@@ -322,6 +325,16 @@ const graphSourceMatches=(registered,original)=>
    c.marks===expected?.marks&&c.manual===expected?.manual&&
    c.description===expected?.description;
  });
+// PostgreSQL jsonb canonicalizes object key order; JavaScript source files
+// preserve authoring order. Compare complete nested values, not key order,
+// before accepting any source-specific marking rule.
+const physicsStableJSON=value=>Array.isArray(value)
+ ?value.map(physicsStableJSON):object(value)
+  ?Object.fromEntries(Object.keys(value).sort().map(key=>[key,physicsStableJSON(value[key])]))
+  :value;
+const physicsSameCriteria=(registered,authored)=>
+ JSON.stringify(physicsStableJSON(registered))===
+ JSON.stringify(physicsStableJSON(authored));
 function physics(rows,responses,paperId){
  const original=physicsSourcePapers.get(paperId);
  if(!original)throw new Error("Unknown registered Physics source paper: "+paperId);
@@ -381,26 +394,83 @@ function physics(rows,responses,paperId){
    if(verifiedGraph?.responseType!=="graph"||
       !submittedSourceGraph(previousGraphResponse,verifiedGraph))
     return cap(row,grade,"existing-physics-rubric-checks",false);
-   const evidence=partId===spec.trianglePart && paperId===physicsPaper1.paper_id
-    ?evaluatePhysicsGraphGradient({response,previousGraphResponse})
+   const evidence=partId===spec.trianglePart
+    ?paperId===physicsPaper1.paper_id
+     ?evaluatePhysicsGraphGradient({response,previousGraphResponse})
+     :evaluatePhysicsSourceGradient({questionId,response,previousGraphResponse})
     :partId===spec.readingPart && paperId===physicsPaper1.paper_id
      ?evaluatePhysicsGraphPressure({response,previousGraphResponse,
        previousGradientResponse:read(responses,questionId+"::"+spec.trianglePart)||{}})
-     :null;
+     :partId===spec.readingPart && paperId===physicsPaper3.paper_id
+      ?evaluatePhysicsCurrentGraphReading({response,previousGraphResponse})
+      :null;
    if(evidence){
     // Geometry-only candidate marks are not trusted whole-part scores.
     // Preserve any previously estimated marks and never publish from here.
     // Reconcile each individual M/A/B allocation. A whole-part maximum
     // would incorrectly combine marks earned for different criteria.
     const evidenceByCode=new Map(evidence.criteria.map(item=>[item.id,item]));
+    const graphOnlyMethods=partId===spec.trianglePart?["M1"]:
+     paperId===physicsPaper3.paper_id?["M1","M2"]:["M2"];
     const reconciled=originalPart.criteria.reduce((total,criterion)=>{
      const legacy=lines.find(line=>line.criterion.code===criterion.code);
      const suggested=evidenceByCode.get(criterion.code)?.candidateMarks;
+     // A verbal claim or correct result cannot stand in for the graphical
+     // action explicitly required by the original Physics marking scheme.
+     if(graphOnlyMethods.includes(criterion.code))
+      return total+(typeof suggested==="number"?Math.min(criterion.marks,suggested):0);
      return total+Math.min(criterion.marks,Math.max(legacy?.earned||0,
       typeof suggested==="number"?suggested:0));
     },0);
+    // Certify only decisions with complete source-supported graphical proof.
+    // A correct gradient quantity and unit plus an explicit recorded triangle
+    // establish each M/A/B allocation. A missing triangle costs M1 even when
+    // the numeric result is right. Unrecognised numerical expressions,
+    // follow-through and ambiguous units are kept provisional.
+    const fullGradient=partId===spec.trianglePart &&
+     evidence.criteria.find(x=>x.id==="A1")?.candidateMarks===1 &&
+     evidence.criteria.find(x=>x.id==="B1")?.candidateMarks===1;
+    const noQuantityOrGraph=partId===spec.trianglePart &&
+     !/\d/.test(String(object(response)?response.answer??"":response??"")) &&
+     !String(object(response)?response.working??"":"").trim() &&
+     !(object(response)&&response.graphEvidence);
+    const pressureMethod=partId===spec.readingPart&&
+     paperId===physicsPaper1.paper_id;
+    const sourcePressure=evidence.criteria.find(x=>x.id==="A1");
+    const correctPressure=pressureMethod&&
+     sourcePressure?.candidateMarks===1&&
+     sourcePressure?.reason==="source-accepted-pressure-range";
+    const inverseShown=pressureMethod&&
+     evidence.criteria.find(x=>x.id==="M1")?.candidateMarks===1;
+    const readingShown=pressureMethod&&
+     evidence.criteria.find(x=>x.id==="M2")?.candidateMarks===1;
+    const cleanUnrecorded=pressureMethod&&
+     !object(response)?.graphEvidence&&
+     !/read(?:s|ing)?\s+(?:off|from)|graph|plot/i.test(
+      String(object(response)?response.working??"":""));
+    const certainPressure=correctPressure&&inverseShown&&
+     (readingShown||cleanUnrecorded);
+    const currentMethod=partId===spec.readingPart&&
+     paperId===physicsPaper3.paper_id;
+    const currentAnswer=evidence.criteria.find(x=>x.id==="A1");
+    const currentCertain=currentMethod&&
+     currentAnswer?.candidateMarks===1&&
+     (evidence.criteria.find(x=>x.id==="M1")?.candidateMarks===1||
+      (!object(response)?.graphEvidence&&
+       !/read(?:s|ing)?\s+(?:off|from)|graph|plot/i.test(
+        String(object(response)?response.working??"":""))));
+    const noCurrentEvidence=currentMethod&&
+     !/\d/.test(String(object(response)?response.answer??"":response??""))&&
+     !String(object(response)?response.working??"":"").trim()&&
+     !object(response)?.graphEvidence;
+    const noPressureEvidence=pressureMethod&&
+     !/\d/.test(String(object(response)?response.answer??"":response??""))&&
+     !String(object(response)?response.working??"":"").trim()&&
+     !object(response)?.graphEvidence;
+    const definitelyResolved=fullGradient||noQuantityOrGraph||
+     certainPressure||noPressureEvidence||currentCertain||noCurrentEvidence;
     return cap(row,reconciled,
-     "existing-physics-graph-working-advisory",false);
+     "existing-physics-graph-working-advisory",definitelyResolved);
    }
   }
   if(source.responseType==="graph"){
@@ -409,6 +479,20 @@ function physics(rows,responses,paperId){
    const typed=submittedSourceGraph(response,originalPart);
    return cap(row,typed?grade:0,"existing-physics-rubric-checks",
     blank(response)||(typed&&physicsGraphComplete(response)));
+  }
+  // These exact, source-checked subsets establish specific partial marks.
+  // Other free-form answers continue through the conservative examiner.
+  const canonicalPartial=physicsCanonicalWrittenPartial(row.id,response);
+  const explicitWrong=physicsCanonicalWrong(row.id,response);
+  const completeSource=physicsCanonicalFull(row.id,response,originalPart);
+  if(canonicalPartial!==null||explicitWrong||completeSource){
+   if(source.answer!==originalPart.answer||
+      !physicsSameCriteria(source.criteria,originalPart.criteria))
+    throw new Error("Source drift in Physics written evidence "+row.id);
+   const mark=explicitWrong?0:completeSource?row.maxMarks:canonicalPartial;
+   const method=explicitWrong?"physics-source-explicit-wrong":
+    completeSource?"physics-source-complete-answer":"physics-source-canonical-partial";
+   return cap(row,mark,method,true);
   }
   return cap(row,grade,"existing-physics-rubric-checks",
    blank(response)||physicsPartCertain({lines,part:originalPart,response,row,responses}));

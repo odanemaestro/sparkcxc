@@ -59,8 +59,9 @@ describe.each(sources)("source-calibrated additional Physics graph gradient",ent
   expect(evaluatePhysicsAdditionalGraphGradient({questionId:id,previousGraphResponse:changed,
    response:old}).criteria[0].candidateMarks).toBeNull();
  });
- test("unsupported non-source evidence cannot be applied to graph-reading marks",()=>{
-  expect(getPhysicsGraphWorkingSpec(id).readingPart).toBeNull();
+ test("read-off work is available only for the source paper whose question requires it",()=>{
+  expect(getPhysicsGraphWorkingSpec(id).readingPart).toBe(
+   id==="phy-p2-3-q1"?"e":null);
  });
 });
 test("unknown question IDs cannot opt into grading",()=>{
