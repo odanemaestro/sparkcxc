@@ -11,6 +11,8 @@ import {CHECKERS} from "../practice/cxcMarking/checkers";
 import {markPhysicsPaper2,physicsPaper2FollowThroughSources,physicsPaper2TableCells,unsuperscript,
  physicsFormulaShown,physicsModelStatements,physicsAlignedStatements} from "../physics/paper2/physicsPaper2Marking";
 import physicsPaper1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
+import {getPhysicsGraphWorkingSpec} from "./physicsGraphWorkingSpecsV2";
+import {evaluatePhysicsGraphGradient,evaluatePhysicsGraphPressure} from "./physicsGraphGradientV2";
 import physicsPaper2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
 import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
 import physicsPaper4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
@@ -364,6 +366,34 @@ function physics(rows,responses,paperId){
   const source=sourceMarking(row);
   const response=read(responses,row.id);
   const originalPart=originalParts.get(row.id);
+  // Saved triangle and read-off geometry is source-bound advisory evidence.
+  // It must not independently approve a rubric or publish a score. The
+  // candidate never chooses the graph part or the method-mark allocation.
+  const [questionId,partId]=row.id.split("::");
+  const spec=getPhysicsGraphWorkingSpec(questionId);
+  if(spec && (partId===spec.trianglePart || partId===spec.readingPart)){
+   const originalCodes=originalPart?.criteria?.map(c=>[c.code,c.marks]);
+   const registeredCodes=source.criteria?.map(c=>[c.code,c.marks]);
+   if(JSON.stringify(originalCodes)!==JSON.stringify(registeredCodes))
+    throw new Error("Source drift in registered Physics graph working "+row.id);
+   const previousGraphResponse=read(responses,questionId+"::"+spec.graphPart)||{};
+   const verifiedGraph=originalParts.get(questionId+"::"+spec.graphPart);
+   if(verifiedGraph?.responseType!=="graph"||
+      !submittedSourceGraph(previousGraphResponse,verifiedGraph))
+    return cap(row,grade,"existing-physics-rubric-checks",false);
+   const evidence=partId===spec.trianglePart && paperId===physicsPaper1.paper_id
+    ?evaluatePhysicsGraphGradient({response,previousGraphResponse})
+    :partId===spec.readingPart && paperId===physicsPaper1.paper_id
+     ?evaluatePhysicsGraphPressure({response,previousGraphResponse,
+       previousGradientResponse:read(responses,questionId+"::"+spec.trianglePart)||{}})
+     :null;
+   if(evidence){
+    // Geometry-only candidate marks are not trusted whole-part scores.
+    // Preserve any previously estimated marks and never publish from here.
+    return cap(row,Math.max(grade,evidence.suggestedMarks),
+     "existing-physics-graph-working-advisory",false);
+   }
+  }
   if(source.responseType==="graph"){
    // Only the structured graph (labels, scale, plotted points, line) is
    // marked; anything else earns nothing and is never certain.
