@@ -5,7 +5,7 @@ import {scienceFixtures} from "./v2Fixtures/science";
 function part(id,label,itemLabel){
  const question=sources[id],pi=question.parts.findIndex(p=>p.label===label);
  const ii=question.parts[pi].items.findIndex(i=>i.label===itemLabel);
- return {question,pi,ii,item:question.parts[pi].items[ii],
+ return {question:{...question,id},pi,ii,item:question.parts[pi].items[ii],
   base:id+":"+pi+":"+ii};
 }
 test("plug colours are marked only against source-owned X, Y and Z terminals",()=>{
