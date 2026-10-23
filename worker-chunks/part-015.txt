@@ -1,4 +1,21 @@
-s pledged as security.", ["1:First viable real collateral asset", "1:Second different collateral asset"]],
+n in a", "1:Accurate different function matched to second department in a", "1:Accurate third department duty matched to a", "1:Accurate fourth department duty matched to a"]],
+  [1, "c", "At Christmas the marketing team plans promotion; production increases bottling output; purchasing orders more syrup and bottles; finance budgets for overtime and inventories.", ["2:First legitimate department from Q1(a) named with explained response to seasonal soft-drink demand", "2:Second distinct department and developed response", "2:Third distinct department and developed response", "2:Fourth distinct department and developed response"]],
+  [1, "d", "A clear internal grievance and mediation process allows both sides to be heard. Management can arrange a moderated discussion and agree on a corrective plan.", ["2:First distinct credible conflict-resolution process and how it works", "2:Second different conflict-resolution process, supported by practical description"]],
+  [2, "a", "Subsistence production provides only enough for the producer's basic needs. Surplus production exceeds those needs and makes additional goods available for sale; the distinguishing feature is quantity and intended use. The syllabus also lists domestic consumption and export production as other distinct levels.", ["1:Names a valid first level of production, such as subsistence", "1:Names a different syllabus-listed level: domestic consumption, surplus or export", "2:Explains main difference in production destination/purpose, rather than simply naming them"]],
+  [2, "b", "Primary production takes materials from nature, such as cultivating sugar cane. Secondary production transforms them, as in making sugar or assembling furniture.", ["2:Accurate primary classification, explained with primary industry example", "2:Accurate contrasting secondary industry and manufacture/construction example"]],
+  [2, "c", "A cottage industry is small-scale and often home or family operated, creating local income. It commonly uses little capital and local hand skills, offering enterprise without high start-up investment.", ["1:First correct cottage-industry characteristic", "1:Second different cottage-industry characteristic", "2:Explain development benefit that follows first characteristic", "2:Explain a distinct development benefit following second characteristic"]],
+  [2, "d", "Cottage craft makers provide input goods and souvenirs to hotels and tour operators, keeping visitor spending locally. Agricultural processors buy crops from farmers, creating stable supplier demand, jobs and further economic activity.", ["3:First credible Caribbean industry linkage and causal economic-development outcome", "3:Second different linkage and developed jobs, income, export or import-substitution outcome"]],
+  [3, "a", "Consumer behaviour depends on disposable income, cultural preferences and price/quality relative to competing products.", ["2:First factor and why it affects consumer choice", "2:Second distinct factor with relevant explanation", "2:Third different factor explained"]],
+  [3, "b", "In Jamaica, the Consumer Affairs Commission accepts consumer complaints; the Bureau of Standards Jamaica can address product quality and standards concerns.", ["1:First genuine local consumer redress or protection body", "1:Second different relevant consumer protection body"]],
+  [3, "c", "One channel is bakery/producer directly to consumers, such as home delivery. Another is bakery/producer to the shopping mart retailer, then consumers.", ["2:Valid direct distribution route stated and described", "2:Distinct valid retail intermediary route with correct participant order"]],
+  [3, "d", "Fresh flowers should travel by rapid refrigerated road delivery or air freight for distant markets to limit wilting. Cement can move in bulk by sea or heavy trucks due to weight and low perishability. Daily newspapers need rapid local road dispatch to remain timely. Physical cash may use secured armoured vehicles; electronic transfers are suitable for sending money without transporting cash.", ["2:Appropriate first product transport with relevant time/perishability justification", "2:Appropriate cement mode with weight/cost rationale", "2:Appropriate newspaper mode with urgency/distribution reasoning", "2:Appropriate secure money transport or transfer and safety/efficiency rationale"]],
+  [4, "a", "An individual may establish a venture for self-employment and personal independence, or for profits by satisfying market demand.", ["2:First genuine entrepreneurial motive developed", "2:Second distinct entrepreneurial motive outlined"]],
+  [4, "b", "Businesses provide local jobs, support local suppliers and sponsor skills, sport or community development.", ["2:First distinct developed community contribution", "2:Second different community-development contribution", "2:Third distinct contribution with relevant effect"]],
+  [4, "c", "The public sector includes state-owned and government-controlled activity such as a public hospital. The private sector includes privately owned enterprises, such as a family grocery store.", ["2:Public-sector definition accurately explained", "1:Correct government organisation example", "2:Private-sector definition accurately distinguished", "1:Credible privately owned business example"]],
+  [4, "d", "Government may nationalise a utility to ensure an essential service is available affordably. It may also protect strategic infrastructure or rescue a critical failing enterprise.", ["2:First realistic nationalisation motive with causal explanation", "2:Second distinct and developed public-interest reason"]],
+  [5, "a", "A business plan summarises objectives and describes the financial, marketing and operating methods for achieving them.", ["1:Identifies written roadmap of business objectives", "1:Explains planning implementation or financing purpose"]],
+  [5, "b", "Marketing plans identify customers and promotions; finance plans forecast costs and cash flow; production plans describe output and materials; organisational plans allocate staffing and management duties.", ["2:First legitimate business-plan element described correctly", "2:Second different element and relevant details", "2:Third different element developed", "2:Fourth distinct element developed"]],
+  [5, "c", "Land and buildings, or an owned vehicle, may be acceptable assets pledged as security.", ["1:First viable real collateral asset", "1:Second different collateral asset"]],
   [5, "d", "Collateral reduces lender risk because pledged assets can be realised following default. It can also support approval when a borrower has an uncertain credit history.", ["2:First valid reason lenders demand collateral with explanation", "2:Second distinct valid reason developed"]],
   [5, "e", "Borrower misrepresentation can lead to refusal or recall of credit, making legitimate future loans harder. Fraud or dishonest loan records may also create contractual and legal penalties and harm the borrower's reputation.", ["2:First borrower-focused impact of unethical business conduct explained", "2:Second distinct realistic impact with consequence"]],
   [6, "a", "Standard of living reflects material access to income, goods and services. Quality of life includes health, safety, personal liberty, environmental conditions and broader well-being.", ["2:Correct material consumption/income concept of standard of living", "2:Correct quality-of-life concept and meaningful contrast"]],
@@ -1489,164 +1506,4 @@ var POB_HISTORICAL_P2_2024_JAN_DRAFT = Object.freeze({
         {
           "id": "b",
           "marks": 4,
-          "prompt": "Describe TWO functional areas of a business."
-        },
-        {
-          "id": "c",
-          "marks": 4,
-          "prompt": "List FOUR ethical or legal principles that business owners should adopt when establishing and operating a business."
-        },
-        {
-          "id": "d",
-          "marks": 6,
-          "prompt": "Explain the likely consequences of failing to comply with any TWO of the ethical principles listed in (c) above."
-        }
-      ]
-    },
-    {
-      "number": 2,
-      "title": "Starting a business",
-      "marks": 20,
-      "parts": [
-        {
-          "id": "a.i",
-          "marks": 2,
-          "prompt": "Define the term feasibility study."
-        },
-        {
-          "id": "a.ii",
-          "marks": 2,
-          "prompt": "State TWO reasons why it is important to conduct a feasibility study."
-        },
-        {
-          "id": "a.iii",
-          "marks": 3,
-          "prompt": "Identify ONE primary source and TWO secondary sources of information used in conducting business research."
-        },
-        {
-          "id": "b",
-          "marks": 4,
-          "prompt": "Outline TWO reasons why planning is necessary for the successful operation of a business."
-        },
-        {
-          "id": "c",
-          "marks": 3,
-          "prompt": "State THREE measures or laws put in place by Caribbean governments for the protection of consumers."
-        },
-        {
-          "id": "d",
-          "marks": 6,
-          "prompt": "Jomo is planning to open a barber shop. Explain TWO factors that Jomo should consider when deciding on the location of his business."
-        }
-      ]
-    },
-    {
-      "number": 3,
-      "title": "Consumers and intellectual property",
-      "marks": 20,
-      "parts": [
-        {
-          "id": "a",
-          "marks": 4,
-          "prompt": "List FOUR functions of consumer organizations."
-        },
-        {
-          "id": "b",
-          "marks": 4,
-          "prompt": "Corporate businesses are paying more attention to customer service. Outline TWO roles of customer service."
-        },
-        {
-          "id": "c.i",
-          "marks": 2,
-          "prompt": "Describe warranty as a form of customer service."
-        },
-        {
-          "id": "c.ii",
-          "marks": 2,
-          "prompt": "Describe online chat as a form of customer service."
-        },
-        {
-          "id": "c.iii",
-          "marks": 2,
-          "prompt": "Describe after-sales service as a form of customer service."
-        },
-        {
-          "id": "d.i",
-          "marks": 3,
-          "prompt": "Leon has created a unique line of natural skin care products which includes soaps and lotions. He is preparing to launch his product line at a small business expo. Explain to Leon the importance of obtaining a trademark for his new line of products."
-        },
-        {
-          "id": "d.ii",
-          "marks": 3,
-          "prompt": "Vashti wrote a children's novel and is about to have it published. Explain to Vashti the importance of obtaining the copyright for her novel."
-        }
-      ]
-    },
-    {
-      "number": 4,
-      "title": "Supply chain operations",
-      "marks": 20,
-      "parts": [
-        {
-          "id": "a",
-          "marks": 4,
-          "prompt": "List FOUR activities involved in supply chain operations."
-        },
-        {
-          "id": "b.i",
-          "marks": 2,
-          "prompt": "State TWO advantages of supply chain operations."
-        },
-        {
-          "id": "b.ii",
-          "marks": 2,
-          "prompt": "State TWO challenges associated with supply chain operations."
-        },
-        {
-          "id": "c",
-          "marks": 6,
-          "prompt": "Outline how THREE forms of technology have impacted supply chain operations."
-        },
-        {
-          "id": "d",
-          "marks": 6,
-          "prompt": "The directors of Tropical Grove Ltd are extremely excited to introduce a new soft drink to the market. They are optimistic that they will have a competitive advantage over similar producers. Explain TWO benefits that Tropical Grove Ltd could gain by outsourcing some of its operations to gain a competitive advantage."
-        }
-      ]
-    },
-    {
-      "number": 5,
-      "title": "Government responsibilities and taxation",
-      "marks": 20,
-      "parts": [
-        {
-          "id": "a",
-          "marks": 4,
-          "prompt": "Identify TWO direct taxes and TWO indirect taxes charged by the government of a country."
-        },
-        {
-          "id": "b",
-          "marks": 6,
-          "prompt": "Outline THREE measures that could be taken by regional governments to influence their citizens to protect the natural environment."
-        },
-        {
-          "id": "c",
-          "marks": 4,
-          "prompt": "State FOUR responsibilities of Caribbean governments to their citizens, other than the protection of the environment."
-        },
-        {
-          "id": "d",
-          "marks": 6,
-          "prompt": "Caribbean governments have experienced ongoing challenges in the provision of quality healthcare services within their countries. Identify TWO of these healthcare challenges and advise the government of your country on how EACH challenge could be resolved."
-        }
-      ]
-    }
-  ]
-});
-
-// src/principlesOfBusiness/data/pobHistorical2024JanP2AuthoredRubric.js
-var RULES = Object.freeze(Object.fromEntries([
-  ["1:a.i", ["Stakeholder is an interested individual or group", "Business affects them or they influence its decisions"], "Stakeholders are people or groups with an interest in a business who can affect or be affected by its activities.", ["owners", "employees", "customers", "suppliers", "investors", "creditors", "government", "community"]],
-  ["1:a.ii", ["Names one valid stakeholder", "Names a second DISTINCT valid stakeholder"], "Employees and customers.", ["owners", "employees", "customers", "suppliers", "investors", "creditors", "government", "community"]],
-  ["1:a.iii", ["Refers to one stakeholder chosen in a.ii", "Accurately describes that stakeholder's role"], "Suppliers provide stock or materials to the business.", ["workers produce goods", "customers purchase goods", "government regulates trade", "owners supply finance and manage"]],
-  ["1:b", ["Identifies a valid first functional area", "Describes its actual duties", "Identifies a second DIFFERENT functional area", 
+          "prompt": "Describe TWO functional

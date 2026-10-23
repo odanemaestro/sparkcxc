@@ -1,4 +1,84 @@
-ment or introducing new technology.\n\u2022 When applying for a loan, since lenders want evidence that the project is viable.\n\u2022 Before relocating the business.\n\u2022 Before a large public project such as a new road or port."
+itical and economic relations with other countries."
+            },
+            {
+              "label": "(b)",
+              "question": "Distinguish between balance of trade and balance of payments and illustrate with the use of an example, how EACH is calculated.",
+              "marks": 8,
+              "answer": "2 marks for each definition and 2 for each worked example:\n\u2022 Balance of trade: the difference between the value of a country's visible exports and visible imports (goods only) over a period.\nExample: exports of goods $500m, imports of goods $650m. Balance of trade = 500 \u2212 650 = \u2212$150m (a deficit).\n\u2022 Balance of payments: a record of ALL a country's financial transactions with the rest of the world over a period. It includes the current account (goods, services, income and transfers) and the capital and financial account (investment and loans).\nExample: visible balance \u2212$150m; services, income and transfers (invisibles) +$200m, so the current account = \u2212150 + 200 = +$50m. Capital and financial account inflows +$30m. Overall balance = 50 + 30 = +$80m (a surplus, added to the reserves)."
+            },
+            {
+              "label": "(c)",
+              "question": "Discuss TWO ways in which an improvement in the quality of education can affect economic growth and development.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Higher productivity: better educated workers produce more and make fewer mistakes, increasing output (growth).\n\u2022 Attracting investment: a well-educated workforce attracts foreign and local investors, creating jobs.\n\u2022 Innovation and entrepreneurship: educated people are more likely to start businesses and use new technology.\n\u2022 Higher incomes and less poverty: education leads to better-paid jobs, improving the standard of living (development).\n\u2022 Social benefits: better health awareness, lower crime and more informed citizens improve quality of life."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paper": "Paper 2 (Structured Response)",
+      "year": "2011",
+      "session": "May/June",
+      "duration": "2 hours",
+      "instructions": "Answer the THREE questions in Section I, ONE question in Section II and ONE question in Section III as indicated.",
+      "total_questions": 7,
+      "questions": [
+        {
+          "number": 1,
+          "section": "Section I",
+          "section_instructions": "Answer the THREE questions in this section.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "State TWO characteristics of EACH of the following types of leadership styles:",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Democratic",
+                  "marks": 4,
+                  "answer": "Any TWO, 2 marks each:\n\u2022 The leader consults subordinates and lets them take part in decision making.\n\u2022 Decisions are often made by the majority.\n\u2022 There is two-way communication between the leader and the workers.\n\u2022 Authority and responsibility are delegated.\n\u2022 Teamwork and suggestions from staff are encouraged."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Autocratic",
+                  "marks": 4,
+                  "answer": "Any TWO, 2 marks each:\n\u2022 The leader makes all decisions alone without consulting workers.\n\u2022 Communication is one-way: orders and instructions flow downward.\n\u2022 Workers are closely supervised.\n\u2022 Strict rules are enforced, often with punishment for breaking them.\n\u2022 There is little or no delegation."
+                }
+              ]
+            },
+            {
+              "label": "(b)",
+              "question": "State THREE essential characteristics of a good leader.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Good communication skills\n\u2022 Honesty and integrity\n\u2022 Decisiveness (able to make timely decisions)\n\u2022 Confidence\n\u2022 Vision (a clear idea of where the organization is going)\n\u2022 Ability to motivate and inspire others\n\u2022 Fairness and consistency\n\u2022 Knowledge and competence in the job\n\u2022 Empathy (understanding the needs of workers)\n\u2022 Willingness to delegate and accept responsibility"
+            },
+            {
+              "label": "(c)",
+              "question": "Discuss how the lack of TWO of the essential characteristics of good leadership identified in (b) above can affect an organization.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each, matched to (b), for example:\n\u2022 Lack of communication skills: instructions are misunderstood, causing errors, wasted resources, conflict and low morale.\n\u2022 Lack of integrity: workers lose trust in the leader, unethical practices may spread and the organization's reputation suffers.\n\u2022 Lack of decisiveness: decisions are delayed, opportunities are missed and staff become frustrated.\n\u2022 Lack of ability to motivate: productivity falls, absenteeism and labour turnover rise.\n\u2022 Lack of fairness: favouritism causes resentment, grievances and industrial disputes."
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "section": "Section I",
+          "section_instructions": "Answer the THREE questions in this section.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Define the term 'feasibility study'.",
+              "marks": 2,
+              "answer": "A feasibility study is an investigation carried out before starting a business or project (1) to find out whether it is practical and likely to succeed, by examining the market, costs, technical needs and legal requirements (1)."
+            },
+            {
+              "label": "(b)",
+              "question": "Outline THREE instances where feasibility studies are useful.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Before starting a new business.\n\u2022 Before launching a new product.\n\u2022 Before expanding, opening a new branch or entering a new market.\n\u2022 Before buying expensive equipment or introducing new technology.\n\u2022 When applying for a loan, since lenders want evidence that the project is viable.\n\u2022 Before relocating the business.\n\u2022 Before a large public project such as a new road or port."
             },
             {
               "label": "(c)",
@@ -2816,88 +2896,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
               "label": "(e)",
               "question": "The government of your country has set up centres to train citizens in computer engineering and small appliance repair. Explain TWO benefits that could be gained from this initiative.",
               "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 Employment: trained citizens can find jobs or start their own repair businesses, reducing unemployment.\n\u2022 A more skilled workforce: higher productivity and more foreign investment in technology-based industries.\n\u2022 Foreign exchange savings: appliances and computers can be repaired locally instead of being replaced with imports, or instead of paying foreign technicians.\n\u2022 Entrepreneurship: graduates can open small businesses, increasing incomes and tax revenue.\n\u2022 Less crime and a better standard of living as young people gain useful skills."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "paper": "Paper 2 (Structured Response)",
-      "year": "2019",
-      "session": "May/June",
-      "duration": "2 hours",
-      "instructions": "1. This paper consists of FIVE questions. Answer ALL questions.\n2. Write your answers in the spaces provided in this answer booklet.\n3. Do NOT write in the margins.\n4. You are advised to take some time to read through the paper and plan your answers.",
-      "total_questions": 5,
-      "questions": [
-        {
-          "number": 1,
-          "section": "All questions",
-          "section_instructions": "Answer ALL questions.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Define the term 'stakeholder' as it relates to a business.",
-                  "marks": 2,
-                  "answer": "A stakeholder is any individual or group (1) that has an interest in, or is affected by, the activities and performance of a business (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Identify TWO stakeholders who are involved in a business.",
-                  "marks": 2,
-                  "answer": "Any TWO, 1 mark each: owners/shareholders, employees, customers, suppliers, government, lenders (banks), the community, trade unions, competitors."
-                }
-              ]
-            },
-            {
-              "label": "(b)",
-              "question": "Outline ONE function of EACH of the stakeholders identified in (a) (ii).",
-              "marks": 4,
-              "answer": "2 marks for each function, matched to (a)(ii), for example:\n\u2022 Owners/shareholders: provide the capital, bear the risk and make or approve major decisions.\n\u2022 Employees: provide the labour and skills to produce goods and services.\n\u2022 Customers: buy the products, providing revenue, and give feedback.\n\u2022 Suppliers: provide raw materials and goods on time, often on credit.\n\u2022 Government: regulates the business, provides infrastructure and collects taxes.\n\u2022 Lenders: provide loans and overdrafts."
-            },
-            {
-              "label": "(c)",
-              "question": "Describe ONE activity that may be carried out in EACH of the following functional areas of a business.\n(i) Marketing\n(ii) Finance\n(iii) Personnel/human resources (HR)",
-              "marks": 6,
-              "answer": "2 marks each:\n(i) Marketing (any ONE): carrying out market research to find out customers' needs; planning advertising and sales promotions; setting prices; arranging distribution of products to outlets.\n(ii) Finance (any ONE): keeping the accounting records; preparing budgets and the final accounts; paying wages and suppliers; raising capital; controlling credit.\n(iii) Personnel/HR (any ONE): recruiting and selecting staff; training and developing employees; handling wages and benefits; employee welfare, health and safety; dealing with discipline and industrial relations."
-            },
-            {
-              "label": "(d)",
-              "question": "Explain TWO legal or ethical principles that business owners should adopt in the establishment and operation of a business. In your explanation, include relevant examples of EACH principle.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each (explanation plus example):\n\u2022 Obeying the law (legal compliance): register the business, obtain licences and pay taxes. Example: registering the business name and paying VAT and income tax on time.\n\u2022 Honesty in dealing with customers: give truthful information and sell safe goods. Example: no misleading advertisements, correct weights and measures, not selling expired goods.\n\u2022 Fair treatment of employees: pay fair wages, provide safe conditions and avoid discrimination. Example: paying at least the minimum wage and contributing to national insurance.\n\u2022 Protecting the environment: dispose of waste properly and reduce pollution. Example: a factory treating its waste water before releasing it.\n\u2022 Respecting intellectual property: not copying other people's products, brands or software. Example: using only licensed software.\n\u2022 Confidentiality: protecting customers' personal information."
-            }
-          ]
-        },
-        {
-          "number": 2,
-          "section": "All questions",
-          "section_instructions": "Answer ALL questions.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "State TWO functions of management in a business organization.",
-                  "marks": 2,
-                  "answer": "Any TWO, 1 mark each: planning, organising, directing (leading), controlling, co-ordinating, staffing, motivating, delegating."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Describe EACH function stated in (a) (i).",
-                  "marks": 4,
-                  "answer": "2 marks each, matched to (a)(i), for example:\n\u2022 Planning: setting goals and deciding in advance the strategies and actions needed to achieve them.\n\u2022 Organising: arranging the people, tasks and resources of the business into a structure, so that work is divided and responsibilities are clear.\n\u2022 Directing: guiding, instructing and supervising employees.\n\u2022 Controlling: comparing actual performance with planned targets and taking corrective action.\n\u2022 Co-ordinating: bringing together the work of different departments so they work towards common goals."
-                }
-              ]
-            },
-            {
-              "label": "(b)",
-              "question": "State TWO responsibilities of management to EACH of the following groups.\n(i) Employees\n(ii) Government",
-              "marks": 4,
-              "answer": "1 mark each.\n(i) Employees (any TWO)
+              "answer": "Any TWO, 3 marks each:\n\u2022 Employment: trained citizens can find jobs or start their own repair businesses, reducing unemployment.\n\u2022 A more skilled workforce: higher productivity and more foreign investment in technology-based industries.\n\u2022 Foreign exchange savings: appliances and computers can be repaired locally instead of being replaced with imports, or in

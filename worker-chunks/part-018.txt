@@ -1,4 +1,88 @@
-: fair wages and benefits; safe working conditions; training and development; fair treatment without discrimination; job security; good communication.\n(ii) Government (any TWO): pay taxes on time; obey laws and regulations; register the business and obtain licences; pay over employees' statutory deductions (income tax, national insurance); provide accurate information and statistics."
+stead of paying foreign technicians.\n\u2022 Entrepreneurship: graduates can open small businesses, increasing incomes and tax revenue.\n\u2022 Less crime and a better standard of living as young people gain useful skills."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paper": "Paper 2 (Structured Response)",
+      "year": "2019",
+      "session": "May/June",
+      "duration": "2 hours",
+      "instructions": "1. This paper consists of FIVE questions. Answer ALL questions.\n2. Write your answers in the spaces provided in this answer booklet.\n3. Do NOT write in the margins.\n4. You are advised to take some time to read through the paper and plan your answers.",
+      "total_questions": 5,
+      "questions": [
+        {
+          "number": 1,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Define the term 'stakeholder' as it relates to a business.",
+                  "marks": 2,
+                  "answer": "A stakeholder is any individual or group (1) that has an interest in, or is affected by, the activities and performance of a business (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Identify TWO stakeholders who are involved in a business.",
+                  "marks": 2,
+                  "answer": "Any TWO, 1 mark each: owners/shareholders, employees, customers, suppliers, government, lenders (banks), the community, trade unions, competitors."
+                }
+              ]
+            },
+            {
+              "label": "(b)",
+              "question": "Outline ONE function of EACH of the stakeholders identified in (a) (ii).",
+              "marks": 4,
+              "answer": "2 marks for each function, matched to (a)(ii), for example:\n\u2022 Owners/shareholders: provide the capital, bear the risk and make or approve major decisions.\n\u2022 Employees: provide the labour and skills to produce goods and services.\n\u2022 Customers: buy the products, providing revenue, and give feedback.\n\u2022 Suppliers: provide raw materials and goods on time, often on credit.\n\u2022 Government: regulates the business, provides infrastructure and collects taxes.\n\u2022 Lenders: provide loans and overdrafts."
+            },
+            {
+              "label": "(c)",
+              "question": "Describe ONE activity that may be carried out in EACH of the following functional areas of a business.\n(i) Marketing\n(ii) Finance\n(iii) Personnel/human resources (HR)",
+              "marks": 6,
+              "answer": "2 marks each:\n(i) Marketing (any ONE): carrying out market research to find out customers' needs; planning advertising and sales promotions; setting prices; arranging distribution of products to outlets.\n(ii) Finance (any ONE): keeping the accounting records; preparing budgets and the final accounts; paying wages and suppliers; raising capital; controlling credit.\n(iii) Personnel/HR (any ONE): recruiting and selecting staff; training and developing employees; handling wages and benefits; employee welfare, health and safety; dealing with discipline and industrial relations."
+            },
+            {
+              "label": "(d)",
+              "question": "Explain TWO legal or ethical principles that business owners should adopt in the establishment and operation of a business. In your explanation, include relevant examples of EACH principle.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each (explanation plus example):\n\u2022 Obeying the law (legal compliance): register the business, obtain licences and pay taxes. Example: registering the business name and paying VAT and income tax on time.\n\u2022 Honesty in dealing with customers: give truthful information and sell safe goods. Example: no misleading advertisements, correct weights and measures, not selling expired goods.\n\u2022 Fair treatment of employees: pay fair wages, provide safe conditions and avoid discrimination. Example: paying at least the minimum wage and contributing to national insurance.\n\u2022 Protecting the environment: dispose of waste properly and reduce pollution. Example: a factory treating its waste water before releasing it.\n\u2022 Respecting intellectual property: not copying other people's products, brands or software. Example: using only licensed software.\n\u2022 Confidentiality: protecting customers' personal information."
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "State TWO functions of management in a business organization.",
+                  "marks": 2,
+                  "answer": "Any TWO, 1 mark each: planning, organising, directing (leading), controlling, co-ordinating, staffing, motivating, delegating."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Describe EACH function stated in (a) (i).",
+                  "marks": 4,
+                  "answer": "2 marks each, matched to (a)(i), for example:\n\u2022 Planning: setting goals and deciding in advance the strategies and actions needed to achieve them.\n\u2022 Organising: arranging the people, tasks and resources of the business into a structure, so that work is divided and responsibilities are clear.\n\u2022 Directing: guiding, instructing and supervising employees.\n\u2022 Controlling: comparing actual performance with planned targets and taking corrective action.\n\u2022 Co-ordinating: bringing together the work of different departments so they work towards common goals."
+                }
+              ]
+            },
+            {
+              "label": "(b)",
+              "question": "State TWO responsibilities of management to EACH of the following groups.\n(i) Employees\n(ii) Government",
+              "marks": 4,
+              "answer": "1 mark each.\n(i) Employees (any TWO): fair wages and benefits; safe working conditions; training and development; fair treatment without discrimination; job security; good communication.\n(ii) Government (any TWO): pay taxes on time; obey laws and regulations; register the business and obtain licences; pay over employees' statutory deductions (income tax, national insurance); provide accurate information and statistics."
             },
             {
               "label": "(c)",
@@ -1691,7 +1775,7 @@ function buildTrustedAssessment(attempt, authority = {}) {
     const paperId = attempt.metadata?.paper_id, choice = attempt.metadata?.selected_creative_prompt || "";
     if (!englishAPaper2Sets.some((p) => p.id === paperId)) throw new Error("unknown_paper");
     const paper = buildEnglishAPaper2(paperId);
-    if (choice && !paper.tasks.some((t) => t.choiceGroup && t.id === choice)) throw new Error("invalid_creative_selection");
+    if (choice && !paper.tasks.some((t2) => t2.choiceGroup && t2.id === choice)) throw new Error("invalid_creative_selection");
     baseline = gradeEnglishAPaper2(paper, responses, choice);
     for (const row of baseline.rows) {
       const task3 = row.task;

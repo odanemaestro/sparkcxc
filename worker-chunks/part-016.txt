@@ -1,4 +1,164 @@
-"Describes its actual duties"], "Marketing promotes and sells products. Finance manages money, budgets and payments.", ["production", "marketing", "finance", "human resources", "operations", "purchasing", "customer service"]],
+ areas of a business."
+        },
+        {
+          "id": "c",
+          "marks": 4,
+          "prompt": "List FOUR ethical or legal principles that business owners should adopt when establishing and operating a business."
+        },
+        {
+          "id": "d",
+          "marks": 6,
+          "prompt": "Explain the likely consequences of failing to comply with any TWO of the ethical principles listed in (c) above."
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Starting a business",
+      "marks": 20,
+      "parts": [
+        {
+          "id": "a.i",
+          "marks": 2,
+          "prompt": "Define the term feasibility study."
+        },
+        {
+          "id": "a.ii",
+          "marks": 2,
+          "prompt": "State TWO reasons why it is important to conduct a feasibility study."
+        },
+        {
+          "id": "a.iii",
+          "marks": 3,
+          "prompt": "Identify ONE primary source and TWO secondary sources of information used in conducting business research."
+        },
+        {
+          "id": "b",
+          "marks": 4,
+          "prompt": "Outline TWO reasons why planning is necessary for the successful operation of a business."
+        },
+        {
+          "id": "c",
+          "marks": 3,
+          "prompt": "State THREE measures or laws put in place by Caribbean governments for the protection of consumers."
+        },
+        {
+          "id": "d",
+          "marks": 6,
+          "prompt": "Jomo is planning to open a barber shop. Explain TWO factors that Jomo should consider when deciding on the location of his business."
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Consumers and intellectual property",
+      "marks": 20,
+      "parts": [
+        {
+          "id": "a",
+          "marks": 4,
+          "prompt": "List FOUR functions of consumer organizations."
+        },
+        {
+          "id": "b",
+          "marks": 4,
+          "prompt": "Corporate businesses are paying more attention to customer service. Outline TWO roles of customer service."
+        },
+        {
+          "id": "c.i",
+          "marks": 2,
+          "prompt": "Describe warranty as a form of customer service."
+        },
+        {
+          "id": "c.ii",
+          "marks": 2,
+          "prompt": "Describe online chat as a form of customer service."
+        },
+        {
+          "id": "c.iii",
+          "marks": 2,
+          "prompt": "Describe after-sales service as a form of customer service."
+        },
+        {
+          "id": "d.i",
+          "marks": 3,
+          "prompt": "Leon has created a unique line of natural skin care products which includes soaps and lotions. He is preparing to launch his product line at a small business expo. Explain to Leon the importance of obtaining a trademark for his new line of products."
+        },
+        {
+          "id": "d.ii",
+          "marks": 3,
+          "prompt": "Vashti wrote a children's novel and is about to have it published. Explain to Vashti the importance of obtaining the copyright for her novel."
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Supply chain operations",
+      "marks": 20,
+      "parts": [
+        {
+          "id": "a",
+          "marks": 4,
+          "prompt": "List FOUR activities involved in supply chain operations."
+        },
+        {
+          "id": "b.i",
+          "marks": 2,
+          "prompt": "State TWO advantages of supply chain operations."
+        },
+        {
+          "id": "b.ii",
+          "marks": 2,
+          "prompt": "State TWO challenges associated with supply chain operations."
+        },
+        {
+          "id": "c",
+          "marks": 6,
+          "prompt": "Outline how THREE forms of technology have impacted supply chain operations."
+        },
+        {
+          "id": "d",
+          "marks": 6,
+          "prompt": "The directors of Tropical Grove Ltd are extremely excited to introduce a new soft drink to the market. They are optimistic that they will have a competitive advantage over similar producers. Explain TWO benefits that Tropical Grove Ltd could gain by outsourcing some of its operations to gain a competitive advantage."
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Government responsibilities and taxation",
+      "marks": 20,
+      "parts": [
+        {
+          "id": "a",
+          "marks": 4,
+          "prompt": "Identify TWO direct taxes and TWO indirect taxes charged by the government of a country."
+        },
+        {
+          "id": "b",
+          "marks": 6,
+          "prompt": "Outline THREE measures that could be taken by regional governments to influence their citizens to protect the natural environment."
+        },
+        {
+          "id": "c",
+          "marks": 4,
+          "prompt": "State FOUR responsibilities of Caribbean governments to their citizens, other than the protection of the environment."
+        },
+        {
+          "id": "d",
+          "marks": 6,
+          "prompt": "Caribbean governments have experienced ongoing challenges in the provision of quality healthcare services within their countries. Identify TWO of these healthcare challenges and advise the government of your country on how EACH challenge could be resolved."
+        }
+      ]
+    }
+  ]
+});
+
+// src/principlesOfBusiness/data/pobHistorical2024JanP2AuthoredRubric.js
+var RULES = Object.freeze(Object.fromEntries([
+  ["1:a.i", ["Stakeholder is an interested individual or group", "Business affects them or they influence its decisions"], "Stakeholders are people or groups with an interest in a business who can affect or be affected by its activities.", ["owners", "employees", "customers", "suppliers", "investors", "creditors", "government", "community"]],
+  ["1:a.ii", ["Names one valid stakeholder", "Names a second DISTINCT valid stakeholder"], "Employees and customers.", ["owners", "employees", "customers", "suppliers", "investors", "creditors", "government", "community"]],
+  ["1:a.iii", ["Refers to one stakeholder chosen in a.ii", "Accurately describes that stakeholder's role"], "Suppliers provide stock or materials to the business.", ["workers produce goods", "customers purchase goods", "government regulates trade", "owners supply finance and manage"]],
+  ["1:b", ["Identifies a valid first functional area", "Describes its actual duties", "Identifies a second DIFFERENT functional area", "Describes its actual duties"], "Marketing promotes and sells products. Finance manages money, budgets and payments.", ["production", "marketing", "finance", "human resources", "operations", "purchasing", "customer service"]],
   ["1:c", ["First valid legal or ethical principle", "Second DISTINCT principle", "Third DISTINCT principle", "Fourth DISTINCT principle"], "Advertise honestly, comply with employment law, follow environmental regulations and report taxes correctly.", ["honest advertising", "fair wages", "no bribery", "pay taxes", "product safety", "consumer rights", "worker protection", "environmental responsibility"]],
   ["1:d", ["Identifies breach of FIRST earlier principle", "Explains an actual immediate consequence", "Links to a further effect on business or society", "Identifies a DIFFERENT earlier principle", "Explains its immediate consequence", "Links to a further effect"], "Dishonest advertising can cause complaints, lawsuits and falling sales. Breaking labour laws can trigger fines, disputes and production delays.", ["fines", "loss of trust", "customer injury", "legal action", "loss of licence", "environmental damage"]],
   ["2:a.i", ["Identifies a systematic investigation made before starting a venture", "Explains its purpose is assessing likely practicality, costs, demand or viability"], "A feasibility study evaluates a business proposal before investment to judge whether it is workable and viable.", ["market feasibility", "financial feasibility", "technical feasibility"]],
@@ -2168,84 +2328,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
               "label": "(a)",
               "question": "Outline THREE benefits that a country may gain from engaging in international trade.",
               "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Access to goods it cannot produce or can produce only at high cost.\n\u2022 Specialisation according to comparative advantage, increasing total output.\n\u2022 Foreign exchange earned from exports.\n\u2022 A wider variety of goods for consumers.\n\u2022 A larger market for producers, allowing economies of scale.\n\u2022 Access to capital goods, raw materials and new technology.\n\u2022 Better political and economic relations with other countries."
-            },
-            {
-              "label": "(b)",
-              "question": "Distinguish between balance of trade and balance of payments and illustrate with the use of an example, how EACH is calculated.",
-              "marks": 8,
-              "answer": "2 marks for each definition and 2 for each worked example:\n\u2022 Balance of trade: the difference between the value of a country's visible exports and visible imports (goods only) over a period.\nExample: exports of goods $500m, imports of goods $650m. Balance of trade = 500 \u2212 650 = \u2212$150m (a deficit).\n\u2022 Balance of payments: a record of ALL a country's financial transactions with the rest of the world over a period. It includes the current account (goods, services, income and transfers) and the capital and financial account (investment and loans).\nExample: visible balance \u2212$150m; services, income and transfers (invisibles) +$200m, so the current account = \u2212150 + 200 = +$50m. Capital and financial account inflows +$30m. Overall balance = 50 + 30 = +$80m (a surplus, added to the reserves)."
-            },
-            {
-              "label": "(c)",
-              "question": "Discuss TWO ways in which an improvement in the quality of education can affect economic growth and development.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 Higher productivity: better educated workers produce more and make fewer mistakes, increasing output (growth).\n\u2022 Attracting investment: a well-educated workforce attracts foreign and local investors, creating jobs.\n\u2022 Innovation and entrepreneurship: educated people are more likely to start businesses and use new technology.\n\u2022 Higher incomes and less poverty: education leads to better-paid jobs, improving the standard of living (development).\n\u2022 Social benefits: better health awareness, lower crime and more informed citizens improve quality of life."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "paper": "Paper 2 (Structured Response)",
-      "year": "2011",
-      "session": "May/June",
-      "duration": "2 hours",
-      "instructions": "Answer the THREE questions in Section I, ONE question in Section II and ONE question in Section III as indicated.",
-      "total_questions": 7,
-      "questions": [
-        {
-          "number": 1,
-          "section": "Section I",
-          "section_instructions": "Answer the THREE questions in this section.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "State TWO characteristics of EACH of the following types of leadership styles:",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Democratic",
-                  "marks": 4,
-                  "answer": "Any TWO, 2 marks each:\n\u2022 The leader consults subordinates and lets them take part in decision making.\n\u2022 Decisions are often made by the majority.\n\u2022 There is two-way communication between the leader and the workers.\n\u2022 Authority and responsibility are delegated.\n\u2022 Teamwork and suggestions from staff are encouraged."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Autocratic",
-                  "marks": 4,
-                  "answer": "Any TWO, 2 marks each:\n\u2022 The leader makes all decisions alone without consulting workers.\n\u2022 Communication is one-way: orders and instructions flow downward.\n\u2022 Workers are closely supervised.\n\u2022 Strict rules are enforced, often with punishment for breaking them.\n\u2022 There is little or no delegation."
-                }
-              ]
-            },
-            {
-              "label": "(b)",
-              "question": "State THREE essential characteristics of a good leader.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Good communication skills\n\u2022 Honesty and integrity\n\u2022 Decisiveness (able to make timely decisions)\n\u2022 Confidence\n\u2022 Vision (a clear idea of where the organization is going)\n\u2022 Ability to motivate and inspire others\n\u2022 Fairness and consistency\n\u2022 Knowledge and competence in the job\n\u2022 Empathy (understanding the needs of workers)\n\u2022 Willingness to delegate and accept responsibility"
-            },
-            {
-              "label": "(c)",
-              "question": "Discuss how the lack of TWO of the essential characteristics of good leadership identified in (b) above can affect an organization.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each, matched to (b), for example:\n\u2022 Lack of communication skills: instructions are misunderstood, causing errors, wasted resources, conflict and low morale.\n\u2022 Lack of integrity: workers lose trust in the leader, unethical practices may spread and the organization's reputation suffers.\n\u2022 Lack of decisiveness: decisions are delayed, opportunities are missed and staff become frustrated.\n\u2022 Lack of ability to motivate: productivity falls, absenteeism and labour turnover rise.\n\u2022 Lack of fairness: favouritism causes resentment, grievances and industrial disputes."
-            }
-          ]
-        },
-        {
-          "number": 2,
-          "section": "Section I",
-          "section_instructions": "Answer the THREE questions in this section.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Define the term 'feasibility study'.",
-              "marks": 2,
-              "answer": "A feasibility study is an investigation carried out before starting a business or project (1) to find out whether it is practical and likely to succeed, by examining the market, costs, technical needs and legal requirements (1)."
-            },
-            {
-              "label": "(b)",
-              "question": "Outline THREE instances where feasibility studies are useful.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Before starting a new business.\n\u2022 Before launching a new product.\n\u2022 Before expanding, opening a new branch or entering a new market.\n\u2022 Before buying expensive equip
+              "answer": "Any THREE, 2 marks each:\n\u2022 Access to goods it cannot produce or can produce only at high cost.\n\u2022 Specialisation according to comparative advantage, increasing total output.\n\u2022 Foreign exchange earned from exports.\n\u2022 A wider variety of goods for consumers.\n\u2022 A larger market for producers, allowing economies of scale.\n\u2022 Access to capital goods, raw materials and new technology.\n\u2022 Better pol
