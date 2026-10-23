@@ -1,4 +1,6 @@
-esent different ways of allocating scarce resources to solve comparable economic problems.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+liveScoringApproved: false,
+  questions: Object.freeze([
+    Object.freeze({ "number": 1, "pdfPage": 2, "proposedOption": "D", "explanation": "Different economic systems represent different ways of allocating scarce resources to solve comparable economic problems.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
     Object.freeze({ "number": 2, "pdfPage": 2, "proposedOption": "C", "explanation": "Specialisation can raise efficiency and output but does not automatically improve working conditions.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
     Object.freeze({ "number": 3, "pdfPage": 2, "proposedOption": "A", "explanation": "Private enterprises primarily seek a financial return for their owners.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
     Object.freeze({ "number": 4, "pdfPage": 2, "proposedOption": "D", "explanation": "A private-sector public limited company is formed by statutory registration under the Companies Act, not by legislation establishing a state body.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
@@ -1164,4 +1166,4 @@ var POB_2015_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 17, "sourcePage": 4, "proposedOption": "B", "explanation": "The periodic price paid for insurance coverage is the premium.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
     Object.freeze({ "number": 18, "sourcePage": 4, "proposedOption": "A", "explanation": "An open cheque can be presented for cash, unlike an ordinary crossed cheque.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
     Object.freeze({ "number": 19, "sourcePage": 4, "proposedOption": "D", "explanation": "Employers' liability insurance may cover compensable employee injuries sustained at work.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
-    Object.freeze({ "number": 20, "sourcePage": 4, "proposedOption": "C", "explanation": "Material misrepresentation can make contractual consent defective.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], 
+    Object.freeze({ "number": 20, "sourcePage": 4, "proposedOption": "C", "e

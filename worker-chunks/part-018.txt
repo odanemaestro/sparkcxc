@@ -1,4 +1,8 @@
-O, 2 marks each:\n\u2022 Product: the good or service offered, including its features, quality, brand and packaging.\n\u2022 Price: the amount charged for the product and the pricing strategy used.\n\u2022 Place: how the product is distributed and where it is sold.\n\u2022 Promotion: how the business communicates with customers, through advertising, sales promotion, personal selling and public relations."
+ {
+              "label": "(b)",
+              "question": "Outline TWO elements of the traditional marketing mix.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Product: the good or service offered, including its features, quality, brand and packaging.\n\u2022 Price: the amount charged for the product and the pricing strategy used.\n\u2022 Place: how the product is distributed and where it is sold.\n\u2022 Promotion: how the business communicates with customers, through advertising, sales promotion, personal selling and public relations."
             },
             {
               "label": "(c)",

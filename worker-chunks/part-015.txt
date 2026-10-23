@@ -1,4 +1,5 @@
-ups form socially from personal relations. Formal reporting is authorised through management, while informal communication develops naturally.", ["2:First correct formal versus informal organisational distinction", "2:Second different developed contrast"]],
+1:Names appropriate formal line-and-staff organisational structure"]],
+  [4, "b", "A formal organisation has deliberately assigned roles and a charted hierarchy; informal groups form socially from personal relations. Formal reporting is authorised through management, while informal communication develops naturally.", ["2:First correct formal versus informal organisational distinction", "2:Second different developed contrast"]],
   [4, "c.i", "Span of control is the number of subordinates reporting directly to a particular supervisor or manager.", ["1:Identifies number of workers supervised", "1:Specifies direct reporting to one manager"]],
   [4, "c.ii", "The marketing manager's direct span is two employees: Sales Supervisor North and Sales Supervisor South. The eight sales clerks report to those supervisors, not directly to the marketing manager.", ["1:Correct direct report count of two", "1:Correctly names both north and south sales supervisors"]],
   [4, "d.i", "Chain of command is the official hierarchical route by which instructions and authority travel from more senior to subordinate positions.", ["1:Identifies formal authority/reporting sequence", "1:Explains movement of official instructions"]],
@@ -1443,4 +1444,4 @@ var PARTS4 = Object.freeze([
   [2, "b.ii", "A counteroffer changes terms in response to an earlier offer. It generally rejects the original offer and proposes new terms requiring acceptance.", ["1:Explains offer on revised terms", "1:Explains original offer is displaced or needs renewed assent"]],
   [2, "c", "Parties can discharge a contract by complete performance, when all agreed duties are fulfilled, ending their mutual obligations.", ["1:Identifies a recognised discharge method", "1:Describes how it operates"]],
   [2, "d.i", "Mark and Doris appear to have acted at cross purposes as to the identity of the car, a mutual misunderstanding or mutual mistake about the subject matter rather than proven fraud.", ["1:Identifies mutual mistake or misunderstanding about contractual subject matter"]],
-  [2, "d.ii", "They could identify the car precisely by make, colour and VIN in a written agreement, verify the exact vehicle during inspection and confirm both parties' understand
+  [2, 

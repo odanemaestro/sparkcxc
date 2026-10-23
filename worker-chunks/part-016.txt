@@ -1,4 +1,4 @@
-ing before payment.", ["1:First realistic preventative clarification step", "1:Second distinct action", "1:Third distinct action"]],
+"d.ii", "They could identify the car precisely by make, colour and VIN in a written agreement, verify the exact vehicle during inspection and confirm both parties' understanding before payment.", ["1:First realistic preventative clarification step", "1:Second distinct action", "1:Third distinct action"]],
   [2, "d.iii", "Doris and Mark could negotiate a swap to the intended vehicle, or agree to cancel the transaction and return the payment; mediation is another acceptable resolution.", ["1:First valid non-litigation settlement", "1:Second distinct practical remedy"]],
   [3, "a.i", "Cottage businesses commonly run on a small scale, require limited starting capital, rely on household or family labour and use simple tools or locally available materials.", ["1:First correct cottage industry feature", "1:Second different feature", "1:Third distinct feature", "1:Fourth distinct feature"]],
   [3, "a.ii", "Examples include handmade baskets and traditional pottery produced by small Caribbean craft workshops.", ["1:First suitable cottage-manufactured product", "1:Second different product"]],
@@ -2200,6 +2200,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
             },
             {
               "label": "(b)",
-              "question": "Outline THREE ways in which human resource development can affect the economic growth and development of Caribbean countries.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Better trained wo
+              "question": "Outline THREE ways in which human resource development 

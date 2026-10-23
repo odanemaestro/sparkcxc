@@ -1,4 +1,6 @@
-rkers are more productive, increasing output (economic growth).\n\u2022 A skilled workforce attracts foreign investment.\n\u2022 It encourages innovation and entrepreneurship, leading to new businesses.\n\u2022 People earn higher incomes, which reduces poverty and raises the standard of living.\n\u2022 A healthier workforce loses fewer working days.\n\u2022 Workers can use new technology, and the country depends less on foreign experts."
+can affect the economic growth and development of Caribbean countries.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Better trained workers are more productive, increasing output (economic growth).\n\u2022 A skilled workforce attracts foreign investment.\n\u2022 It encourages innovation and entrepreneurship, leading to new businesses.\n\u2022 People earn higher incomes, which reduces poverty and raises the standard of living.\n\u2022 A healthier workforce loses fewer working days.\n\u2022 Workers can use new technology, and the country depends less on foreign experts."
             },
             {
               "label": "(c)",
@@ -2873,8 +2875,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
               "marks": 4,
               "answer": "Any FOUR, 1 mark each: market research; product development; pricing; advertising; sales promotion; distribution; packaging; branding; personal selling; after-sales service; public relations."
             },
-            {
-              "label": "(b)",
-              "question": "Outline TWO elements of the traditional marketing mix.",
-              "marks": 4,
-              "answer": "Any TW
+           

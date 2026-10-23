@@ -1,4 +1,4 @@
-"note": null }),
+xplanation": "Material misrepresentation can make contractual consent defective.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
     Object.freeze({ "number": 21, "sourcePage": 4, "proposedOption": "D", "explanation": "Human resources refers to people and their productive abilities.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
     Object.freeze({ "number": 22, "sourcePage": 4, "proposedOption": "B", "explanation": "Skilled workers emigrating from their home country produce a brain-drain concern.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
     Object.freeze({ "number": 23, "sourcePage": 4, "proposedOption": "B", "explanation": "The labour force is the workforce available or seeking participation in economic production.", "status": "spark-internal-provisional", "disputeType": null, "defensibleAlternatives": [], "note": null }),
@@ -1355,5 +1355,4 @@ var ROWS2 = Object.freeze([
   [3, "c", "Purr Chase can repay the bank by a standing-order transfer from an account, by cash deposits at the bank, or by a cheque or electronic bank transfer.", ["2:First genuine loan repayment method outlined", "2:Second different payment method and transaction detail", "2:Third different method outlined"]],
   [3, "d", "The central bank can raise commercial-bank reserve requirements, limiting loanable funds. It can sell securities or tighten funding rates so banks have less liquidity or face higher lending costs.", ["2:First legitimate central bank credit-tightening method and mechanism", "2:Second distinct instrument and bank-lending effect"]],
   [3, "e", "A credit union may provide consumer loans and other member credit facilities, subject to membership and lending criteria.", ["1:Valid nonbank provider of similar consumer credit"]],
-  [4, "a", "The source chart primarily shows a formal line-and-staff organisation: solid line authority from shareholders to directors to management, with a dashed relationship involving engineer and consultant.", ["1:Names appropriate formal line-and-staff organisational structure"]],
-  [4, "b", "A formal organisation has deliberately assigned roles and a charted hierarchy; informal gro
+  [4, "a", "The source chart primarily shows a formal line-and-staff organisation: solid line authority from shareholders to directors to management, with a dashed relationship involving engineer and consultant.", ["
