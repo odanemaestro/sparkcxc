@@ -22,20 +22,20 @@ const mark=(part,response,graphResponse=graph)=>{
   }});
  return results.rows.find(r=>r.criterionId==="phy-p2-1-q1::"+part);
 };
-test("saved full-size gradient triangle contributes provisional method evidence",()=>{
+test("saved full-size gradient triangle yields source-certain method evidence",()=>{
  const response={answer:"2400 kPa cm³",graphEvidence:{
   kind:"physics-gradient-triangle-v1",
   points:[samplePhysicsGraphLine(graph,2),samplePhysicsGraphLine(graph,8)]
  }};
  const row=mark("c",response);
  expect(row.suggestedMarks).toBe(4);
- expect(row.resolved).toBe(false);
+ expect(row.resolved).toBe(true);
  expect(row.method).toBe("existing-physics-graph-working-advisory");
 });
-test("a typed triangle claim cannot turn provisional gradient evidence into full credit",()=>{
+test("a typed triangle claim cannot manufacture gradient method credit",()=>{
  const row=mark("c",{answer:"2400 kPa cm³",working:"triangle drawn"});
- expect(row.resolved).toBe(false);
- expect(row.suggestedMarks).toBeLessThanOrEqual(4);
+ expect(row.resolved).toBe(true);
+ expect(row.suggestedMarks).toBe(2);
 });
 test("recorded read-off point contributes provisional pressure method evidence",()=>{
  const point=samplePhysicsGraphLine(graph,100/18);
@@ -60,7 +60,7 @@ test("graph corroboration adds only its own method allocation",()=>{
  // Two triangle method marks are independent of the wrong final answer.
  // No unrelated final-answer or unit marks can be manufactured.
  expect(row.suggestedMarks).toBe(2);
- expect(row.resolved).toBe(false);
+ expect(row.resolved).toBe(true);
 });
 test("graph method evidence is bounded by the original criterion ceiling",()=>{
  const point=samplePhysicsGraphLine(graph,100/18);
@@ -73,8 +73,8 @@ test("graph method evidence is bounded by the original criterion ceiling",()=>{
 test("graph evidence never lets correct numeric text fabricate a triangle",()=>{
  const row=mark("c",{answer:"2400 kPa cm³",
   working:"a large triangle was drawn on the graph"});
- expect(row.suggestedMarks).toBeLessThanOrEqual(2);
- expect(row.resolved).toBe(false);
+ expect(row.suggestedMarks).toBe(2);
+ expect(row.resolved).toBe(true);
 });
 test("a typed graph-reading claim never substitutes for a recorded point",()=>{
  const row=mark("d",{answer:"133 kPa",working:"1/18=0.0556; read pressure from the plotted line"});
