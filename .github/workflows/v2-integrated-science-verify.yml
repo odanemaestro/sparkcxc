@@ -1,0 +1,57 @@
+name: Verify Integrated Science V2 criterion evidence
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/integratedScience/practice/scienceHypothesisMarking.js"
+      - "src/integratedScience/practice/scienceHypothesisMarking.test.js"
+      - "src/integratedScience/practice/integratedSciencePaper2Grader.js"
+      - "src/grading/serverPaper2V2SubjectEngine.js"
+      - "src/grading/v2VerificationRun.js"
+      - "src/grading/v2Fixtures/integratedScienceHypothesis.js"
+      - ".github/workflows/v2-integrated-science-verify.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Hypothesis regression tests
+        run: npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js
+        env:
+          CI: true
+      - name: Verify all registered Integrated Science criteria
+        run: node tools/v2-verify-all.mjs --subject integrated-science --out artifacts/v2-science-verification
+      - name: Report source-bound verified hypotheses
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const evidence=JSON.parse(fs.readFileSync("artifacts/v2-science-verification/evidence.json","utf8"));
+          const ids=[
+            "IS-M2-P2-07::(a)::(ii)",
+            "IS-M3-P2-11::(c)::(i)",
+            "IS-M3-P2-13::(b)::(i)",
+            "IS-M1-P2-15::(b)::(i)"
+          ];
+          for(const id of ids){
+            const rec=evidence.find(x=>x.criterionId===id);
+            console.log(JSON.stringify({id,outcome:rec?.outcome,blocker:rec?.blocker,
+              failures:rec?.failures,uncommitted:rec?.uncommittedClasses,missing:rec?.missingClasses}));
+          }
+          const summary=JSON.parse(fs.readFileSync("artifacts/v2-science-verification/summary.json","utf8"));
+          console.log("SUMMARY="+JSON.stringify(summary.bySubject));
+          NODE
+      - name: Upload verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integrated-science-v2-evidence
+          path: artifacts/v2-science-verification/
+          if-no-files-found: warn
