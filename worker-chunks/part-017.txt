@@ -1,4 +1,69 @@
-brand customers already trust.\n\u2022 To obtain legal protection by registering the brand as a trademark."
+ng foreign exchange.\n\u2022 Competition: they compete with larger firms, keeping prices down and giving consumers choice.\n\u2022 They pay taxes and spread economic activity to rural areas."
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "section": "Section II",
+          "section_instructions": "Answer ONE question in this section as indicated.",
+          "choice": "Answer EITHER Question 4 OR Question 5. Do NOT answer both.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Distinguish between capital intensive production and labour intensive production, giving ONE example of EACH form of production.",
+              "marks": 6,
+              "answer": "3 marks each (2 for the explanation, 1 for the example):\n\u2022 Capital intensive production uses a large amount of capital (machinery and equipment) compared with labour. Examples: oil refining, alumina processing, a bottling plant, car assembly.\n\u2022 Labour intensive production uses a large amount of labour compared with capital. Examples: harvesting sugar cane by hand, hairdressing, craft making, many tourism services."
+            },
+            {
+              "label": "(b)",
+              "question": "Employees must be technologically competent to succeed in today's workplace. List FOUR technological competencies that today's employees need.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each:\n\u2022 Computer literacy (word processing, spreadsheets, presentations)\n\u2022 Using the internet and e-mail\n\u2022 Operating computerised or automated equipment\n\u2022 Data entry and database management\n\u2022 Using point-of-sale systems\n\u2022 Using social media and digital marketing tools\n\u2022 Basic troubleshooting of computer problems\n\u2022 Awareness of cyber security"
+            },
+            {
+              "label": "(c)",
+              "question": "State TWO disadvantages of modern technology.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Workers lose their jobs when machines replace them (technological unemployment).\n\u2022 It is expensive to buy, install and maintain.\n\u2022 Staff must be retrained.\n\u2022 Businesses become dependent on it: a breakdown or power cut can stop work.\n\u2022 Risks of cybercrime, hacking and loss of data.\n\u2022 Health problems such as eye strain and repetitive strain injury.\n\u2022 It becomes outdated quickly."
+            },
+            {
+              "label": "(d)",
+              "question": "Discuss TWO ways by which modern technology can improve the efficiency of businesses.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Automation: machines produce goods faster and more consistently than people, lowering the cost per unit.\n\u2022 Accuracy: computerised accounting, stock control (bar codes, point-of-sale systems) and quality control reduce errors and waste.\n\u2022 Faster communication: e-mail, video conferencing and mobile phones speed up decision making and reduce travel costs.\n\u2022 Better information: databases and management information systems give managers up-to-date information for decisions.\n\u2022 E-commerce allows businesses to reach more customers at lower cost."
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "section": "Section II",
+          "section_instructions": "Answer ONE question in this section as indicated.",
+          "choice": "Answer EITHER Question 4 OR Question 5. Do NOT answer both.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Define the term 'branding'.",
+                  "marks": 2,
+                  "answer": "Branding is giving a product a distinctive name, symbol, logo or design (1) so that customers can identify it and tell it apart from competitors' products (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "State TWO ways in which branding influences the packaging of a product.",
+                  "marks": 4,
+                  "answer": "Any TWO, 2 marks each:\n\u2022 The brand name, logo and colours are printed prominently on the package so that it is easily recognised on the shelf.\n\u2022 The package design must match the brand image (for example elegant packaging for a luxury brand, recyclable packaging for an 'eco' brand).\n\u2022 Packaging is kept consistent across the brand's whole product range.\n\u2022 The package carries the brand's slogan and information that builds loyalty.\n\u2022 The shape of the package can itself become part of the brand (for example a distinctive bottle)."
+                }
+              ]
+            },
+            {
+              "label": "(b)",
+              "question": "Discuss TWO reasons for branding a product.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 To distinguish the product from competitors' products, so customers can easily find and ask for it.\n\u2022 To build brand loyalty, which leads to repeat purchases and steady sales.\n\u2022 To allow the firm to charge a higher (premium) price because customers trust the brand.\n\u2022 To make advertising more effective, since all promotion is linked to one recognisable name.\n\u2022 To make it easier to launch new products under a brand customers already trust.\n\u2022 To obtain legal protection by registering the brand as a trademark."
             },
             {
               "label": "(c)",
@@ -2842,44 +2907,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
               "label": "(b)",
               "question": "Describe ONE factor that could influence the behaviour of consumers.",
               "marks": 2,
-              "answer": "Any ONE, 2 marks, for example:\n\u2022 Price: consumers usually buy more of a product when its price falls.\n\u2022 Income: as income rises, consumers buy more and better-quality goods.\n\u2022 Advertising: attractive advertising persuades consumers to try a product.\n\u2022 Tastes and fashion, culture, peer pressure or brand loyalty (with a description)."
-            },
-            {
-              "label": "(c)",
-              "question": "Figure 1 shows a traditional chain of distribution for a certain product. Identify EACH link in the chain by placing the correct name in EACH box above.",
-              "diagram_svg": `<svg style="max-width:100%;height:auto" width="640" height="112" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 130" font-family="'Times New Roman', Times, serif" font-size="17" fill="#000"><rect width="740" height="130" fill="#fff"/><rect x="10" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><path d="M166 38H182V32L194 43L182 54V48H166Z" fill="#fff" stroke="#000" stroke-width="1.4"/><rect x="200" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><path d="M356 38H372V32L384 43L372 54V48H356Z" fill="#fff" stroke="#000" stroke-width="1.4"/><rect x="390" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><path d="M546 38H562V32L574 43L562 54V48H546Z" fill="#fff" stroke="#000" stroke-width="1.4"/><rect x="580" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><text x="370" y="112" text-anchor="middle" font-weight="bold">Figure 1. Traditional chain of distribution</text></svg>`,
-              "marks": 4,
-              "answer": "1 mark for each box, in order:\nManufacturer (producer) \u2192 Wholesaler \u2192 Retailer \u2192 Consumer.\nSee the completed figure in answer_diagram_svg.",
-              "answer_diagram_svg": `<svg style="max-width:100%;height:auto" width="640" height="112" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 130" font-family="'Times New Roman', Times, serif" font-size="17" fill="#000"><rect width="740" height="130" fill="#fff"/><rect x="10" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><text x="85" y="43" text-anchor="middle" dominant-baseline="middle" font-weight="bold">Manufacturer</text><path d="M166 38H182V32L194 43L182 54V48H166Z" fill="#fff" stroke="#000" stroke-width="1.4"/><rect x="200" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><text x="275" y="43" text-anchor="middle" dominant-baseline="middle" font-weight="bold">Wholesaler</text><path d="M356 38H372V32L384 43L372 54V48H356Z" fill="#fff" stroke="#000" stroke-width="1.4"/><rect x="390" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><text x="465" y="43" text-anchor="middle" dominant-baseline="middle" font-weight="bold">Retailer</text><path d="M546 38H562V32L574 43L562 54V48H546Z" fill="#fff" stroke="#000" stroke-width="1.4"/><rect x="580" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><text x="655" y="43" text-anchor="middle" dominant-baseline="middle" font-weight="bold">Consumer</text><text x="370" y="112" text-anchor="middle" font-weight="bold">Figure 1. Traditional chain of distribution (completed)</text></svg>`
-            },
-            {
-              "label": "(d)",
-              "question": "List FOUR problems that are likely to be encountered in the distribution of goods.",
-              "marks": 4,
-              "answer": "Any FOUR, 1 mark each: poor roads; traffic congestion; high transport and fuel costs; lack of storage or refrigeration; spoilage of perishable goods; theft in transit; delays at ports and customs; natural disasters; breakdown of vehicles; shortage of drivers."
-            },
-            {
-              "label": "(e)",
-              "question": "Suggest ONE appropriate mode of transportation for EACH of the following products.\n(i) Fresh meat from processing plant to supermarket\n(ii) Cement from factory to construction site\n(iii) Oil from oilfield to refinery\n(iv) Bauxite from mine to processing plant",
-              "marks": 4,
-              "answer": "1 mark each:\n(i) Refrigerated truck (van)\n(ii) Truck (lorry or cement mixer truck)\n(iii) Pipeline\n(iv) Rail (or conveyor belt)"
-            }
-          ]
-        },
-        {
-          "number": 4,
-          "section": "All questions",
-          "section_instructions": "Answer ALL questions.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Outline TWO ways in which a budget could assist persons in the management of their personal income.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 It controls spending by showing where money goes, so people live within their income.\n\u2022 It encourages regular saving for emergencies and future goals.\n\u2022 It helps avoid debt by planning expenses in advance.\n\u2022 It sets priorities, so that essential bills are paid first.\n\u2022 It helps plan for large purchases."
-            },
-            {
-              "label": "(b)",
-              "question": "Describe THREE services offered by commercial banks.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Savings accounts: customers deposit money safely and earn interest.\n\u2022 Current accounts: customers make payments by cheque or debit card.\n\u2022 Loans and overdrafts: customers borrow money for personal or business needs.\n\u2022 Fixed deposits: money is left 
+              "answer": "Any ONE, 2 marks, for example:\n\u2022 Price: consumers 

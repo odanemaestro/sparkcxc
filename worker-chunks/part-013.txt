@@ -1,4 +1,42 @@
-cial.");
+ked": false }),
+    Object.freeze({ "number": 51, "pdfPage": 8, "proposedOption": "B", "explanation": "Abnormal profit at the output where marginal revenue equals marginal cost is possible under monopoly, although other imperfectly competitive structures may also earn short-run abnormal profit.", "academicStatus": "disputed", "disputeType": "non-unique-imperfect-competition", "disputeDetail": "MC=MR and abnormal short-run profit can occur in monopoly and monopolistic competition, so the stated conditions may not uniquely identify an option.", "visualDiagramChecked": false }),
+    Object.freeze({ "number": 52, "pdfPage": 8, "proposedOption": "A", "explanation": "Long-run perfect competition may have price, average cost, marginal cost and marginal revenue equal at equilibrium.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 53, "pdfPage": 8, "proposedOption": "B", "explanation": "Currency devaluation makes imported items costlier in local currency and can make exports cheaper to overseas purchasers, other things equal.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 54, "pdfPage": 9, "proposedOption": "B", "explanation": "Buying more imported consumer goods does not necessarily build local productive capacity or community development.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 55, "pdfPage": 9, "proposedOption": "B", "explanation": "Differences in natural resources, output and comparative costs between countries motivate international trade.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 56, "pdfPage": 9, "proposedOption": "B", "explanation": "Short life expectancy is a common aggregate indicator of low living standards, although persistent illness and unhealthy housing are also linked to poverty.", "academicStatus": "disputed", "disputeType": "standard-of-living-indicators", "disputeDetail": "Short life expectancy, persistent illness and unhealthy conditions can all be linked with low living standards. The question asks for a distinguishing feature.", "visualDiagramChecked": false }),
+    Object.freeze({ "number": 57, "pdfPage": 9, "proposedOption": "B", "explanation": "OPEC is an oil-producing states' organisation that most English-speaking Caribbean territories do not belong to.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 58, "pdfPage": 9, "proposedOption": "A", "explanation": "The arrow travels down an unchanged demand curve as price falls and quantity demanded rises, an extension of demand.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": true }),
+    Object.freeze({ "number": 59, "pdfPage": 9, "proposedOption": "C", "explanation": "State enterprises' losses may be financed from general tax revenue, imposing costs on taxpayers.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false }),
+    Object.freeze({ "number": 60, "pdfPage": 9, "proposedOption": "C", "explanation": "Unemployment, external payment deficits, weak manufacturing productivity and limited investment finance are all significant Caribbean economic challenges.", "academicStatus": "unverified-proposal", "disputeType": null, "disputeDetail": null, "visualDiagramChecked": false })
+  ])
+});
+function verifyPob2002MjP1AuthoredKey(key = POB_2002_MJ_P1_AUTHORED_KEY) {
+  const issues = [], seen = /* @__PURE__ */ new Set(), disputed = [];
+  const source2 = POB_SUPPLIED_ARCHIVE.find((p) => p.id === key?.id);
+  if (!source2 || source2.paper !== 1 || key?.sourceSha256 !== source2.sourceSha256 || key.sourceFilename !== source2.filename)
+    issues.push("2002 owner-supplied source PDF identity or SHA-256 mismatch.");
+  if (!Array.isArray(key?.questions) || key.questions.length !== 60)
+    return { valid: false, issues: [...issues, "Sixty MCQ answers required."], disputes: 0 };
+  for (const item2 of key.questions) {
+    if (!Number.isInteger(item2.number) || item2.number < 1 || item2.number > 60 || seen.has(item2.number))
+      issues.push("Invalid or repeated MCQ slot " + item2.number);
+    seen.add(item2.number);
+    if (!["A", "B", "C", "D"].includes(item2.proposedOption) || item2.explanation?.length < 35)
+      issues.push("Answer or explanation missing for " + item2.number);
+    if (!Number.isInteger(item2.pdfPage) || item2.pdfPage < 2 || item2.pdfPage > 9)
+      issues.push("Invalid PDF page reference " + item2.number);
+    if (item2.academicStatus === "disputed") {
+      disputed.push(item2.number);
+      if (!item2.disputeType || !item2.disputeDetail)
+        issues.push("Unexplained disputed MCQ " + item2.number);
+    } else if (item2.academicStatus !== "unverified-proposal")
+      issues.push("Prematurely validated answer " + item2.number);
+  }
+  if (seen.size !== 60) issues.push("Missing question IDs.");
+  if (disputed.join(",") !== "9,14,18,51,56") issues.push("Mandatory dispute IDs removed.");
+  if (key.liveScoringApproved !== false || key.officialCxcAnswerKeySupplied !== false)
+    issues.push("Unverified academic answers must not be published or claimed official.");
   return { valid: issues.length === 0, issues, disputes: disputed.length, disputedNumbers: disputed };
 }
 
@@ -1177,22 +1215,4 @@ var POB_2016_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 1, "pdfPage": 2, "proposedOption": "C", "explanation": "Trade is commercial activity involving exchanges of goods and services, not immigration, share trading alone or collective bargaining.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
     Object.freeze({ "number": 2, "pdfPage": 2, "proposedOption": "B", "explanation": "Commonwealth Caribbean systems are generally mixed economies, combining private enterprise and government services.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
     Object.freeze({ "number": 3, "pdfPage": 2, "proposedOption": "D", "explanation": "An entrepreneur identifies new business opportunities, organises a venture and bears commercial risk.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 4, "pdfPage": 2, "proposedOption": "D", "explanation": "Company losses ultimately reduce shareholders' investment, with their liability ordinarily limited under incorporation rules.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 5, "pdfPage": 2, "proposedOption": "C", "explanation": "A command economy is characterised by government direction of central economic decisions.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 6, "pdfPage": 2, "proposedOption": "D", "explanation": "Delegating work or authority is chiefly an organising/directing function, not setting the goals of planning.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 7, "pdfPage": 2, "proposedOption": "B", "explanation": "Consulting employees through meetings before decisions is a democratic or participative leadership style.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 8, "pdfPage": 2, "proposedOption": "A", "explanation": "Selecting business objectives and procedures for achieving them is planning.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 9, "pdfPage": 2, "proposedOption": "D", "explanation": "Inspiring staff, delegating appropriately and making informed decisions are all positive leadership behaviours.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 10, "pdfPage": 3, "proposedOption": "A", "explanation": "Subsidised meals are fringe benefits over and above the employee's regular wage.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 11, "pdfPage": 3, "proposedOption": "B", "explanation": "Purchasing falls under procurement, while product presentation, advertising and distribution are marketing matters.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 12, "pdfPage": 3, "proposedOption": "B", "explanation": "A sole trader is most suited to an owner seeking direct and independent business control.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 13, "pdfPage": 3, "proposedOption": "C", "explanation": "Payment of National Insurance contributions is a statutory compliance obligation, making it a regulatory concern.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 14, "pdfPage": 3, "proposedOption": "B", "explanation": "Collateral gives the lender security that may be realised if the borrower defaults, subject to law and the loan agreement.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 15, "pdfPage": 3, "proposedOption": "D", "explanation": "Making a lawful and procedurally fair redundancy decision can be legitimate, whereas money laundering, tax evasion and deceptive marketing are unethical.", "status": "academic-dispute", "uncertainty": "retrenchment-and-employment-rights", "sourceAnalysis": "Dismissal/retrenchment may be justified on performance grounds only when fair process and law are followed; otherwise the conduct itself may be unethical.", "sourceVisualChecked": true }),
-    Object.freeze({ "number": 16, "pdfPage": 3, "proposedOption": "C", "explanation": "Post-dated cheques bear an intended payment date in the future.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 17, "pdfPage": 3, "proposedOption": "A", "explanation": "Without consideration or genuine meeting of minds, a simple contract may fail to arise; writing is not universally required.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 18, "pdfPage": 3, "proposedOption": "A", "explanation": "Breach of agreed obligations can discharge a contract and create remedies such as damages.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 19, "pdfPage": 3, "proposedOption": "B", "explanation": "Public liability insurance protects a cinema against eligible injury claims by visitors.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 20, "pdfPage": 4, "proposedOption": "A", "explanation": "An open cheque may allow cash to be collected at a bank counter, subject to banking controls.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 21, "pdfPage": 4, "proposedOption": "D", "explanation": "Food processing transforms inputs into manufactured products, making it a manufacturing industry.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "numbe
+    Object.freeze({ "number": 4, "pdfPage": 2, "proposedOption": "D", "explanation": "Company losses ultimately reduce shareholders' investment, with their liability ordinarily limited under incorpo

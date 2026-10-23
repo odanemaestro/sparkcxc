@@ -1,4 +1,44 @@
-for a fixed period at a higher rate of interest.\n\u2022 Foreign exchange: buying and selling foreign currency.\n\u2022 Safety deposit boxes and night safe facilities.\n\u2022 Online banking, ATMs and standing orders.\n\u2022 Credit cards."
+usually buy more of a product when its price falls.\n\u2022 Income: as income rises, consumers buy more and better-quality goods.\n\u2022 Advertising: attractive advertising persuades consumers to try a product.\n\u2022 Tastes and fashion, culture, peer pressure or brand loyalty (with a description)."
+            },
+            {
+              "label": "(c)",
+              "question": "Figure 1 shows a traditional chain of distribution for a certain product. Identify EACH link in the chain by placing the correct name in EACH box above.",
+              "diagram_svg": `<svg style="max-width:100%;height:auto" width="640" height="112" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 130" font-family="'Times New Roman', Times, serif" font-size="17" fill="#000"><rect width="740" height="130" fill="#fff"/><rect x="10" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><path d="M166 38H182V32L194 43L182 54V48H166Z" fill="#fff" stroke="#000" stroke-width="1.4"/><rect x="200" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><path d="M356 38H372V32L384 43L372 54V48H356Z" fill="#fff" stroke="#000" stroke-width="1.4"/><rect x="390" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><path d="M546 38H562V32L574 43L562 54V48H546Z" fill="#fff" stroke="#000" stroke-width="1.4"/><rect x="580" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><text x="370" y="112" text-anchor="middle" font-weight="bold">Figure 1. Traditional chain of distribution</text></svg>`,
+              "marks": 4,
+              "answer": "1 mark for each box, in order:\nManufacturer (producer) \u2192 Wholesaler \u2192 Retailer \u2192 Consumer.\nSee the completed figure in answer_diagram_svg.",
+              "answer_diagram_svg": `<svg style="max-width:100%;height:auto" width="640" height="112" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 130" font-family="'Times New Roman', Times, serif" font-size="17" fill="#000"><rect width="740" height="130" fill="#fff"/><rect x="10" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><text x="85" y="43" text-anchor="middle" dominant-baseline="middle" font-weight="bold">Manufacturer</text><path d="M166 38H182V32L194 43L182 54V48H166Z" fill="#fff" stroke="#000" stroke-width="1.4"/><rect x="200" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><text x="275" y="43" text-anchor="middle" dominant-baseline="middle" font-weight="bold">Wholesaler</text><path d="M356 38H372V32L384 43L372 54V48H356Z" fill="#fff" stroke="#000" stroke-width="1.4"/><rect x="390" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><text x="465" y="43" text-anchor="middle" dominant-baseline="middle" font-weight="bold">Retailer</text><path d="M546 38H562V32L574 43L562 54V48H546Z" fill="#fff" stroke="#000" stroke-width="1.4"/><rect x="580" y="10" width="150" height="66" fill="none" stroke="#000" stroke-width="1.6"/><text x="655" y="43" text-anchor="middle" dominant-baseline="middle" font-weight="bold">Consumer</text><text x="370" y="112" text-anchor="middle" font-weight="bold">Figure 1. Traditional chain of distribution (completed)</text></svg>`
+            },
+            {
+              "label": "(d)",
+              "question": "List FOUR problems that are likely to be encountered in the distribution of goods.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each: poor roads; traffic congestion; high transport and fuel costs; lack of storage or refrigeration; spoilage of perishable goods; theft in transit; delays at ports and customs; natural disasters; breakdown of vehicles; shortage of drivers."
+            },
+            {
+              "label": "(e)",
+              "question": "Suggest ONE appropriate mode of transportation for EACH of the following products.\n(i) Fresh meat from processing plant to supermarket\n(ii) Cement from factory to construction site\n(iii) Oil from oilfield to refinery\n(iv) Bauxite from mine to processing plant",
+              "marks": 4,
+              "answer": "1 mark each:\n(i) Refrigerated truck (van)\n(ii) Truck (lorry or cement mixer truck)\n(iii) Pipeline\n(iv) Rail (or conveyor belt)"
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Outline TWO ways in which a budget could assist persons in the management of their personal income.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 It controls spending by showing where money goes, so people live within their income.\n\u2022 It encourages regular saving for emergencies and future goals.\n\u2022 It helps avoid debt by planning expenses in advance.\n\u2022 It sets priorities, so that essential bills are paid first.\n\u2022 It helps plan for large purchases."
+            },
+            {
+              "label": "(b)",
+              "question": "Describe THREE services offered by commercial banks.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Savings accounts: customers deposit money safely and earn interest.\n\u2022 Current accounts: customers make payments by cheque or debit card.\n\u2022 Loans and overdrafts: customers borrow money for personal or business needs.\n\u2022 Fixed deposits: money is left for a fixed period at a higher rate of interest.\n\u2022 Foreign exchange: buying and selling foreign currency.\n\u2022 Safety deposit boxes and night safe facilities.\n\u2022 Online banking, ATMs and standing orders.\n\u2022 Credit cards."
             },
             {
               "label": "(c)",
@@ -1491,18 +1531,18 @@ function validateSemanticPass(pass, items, responses) {
 function reconcileSemanticPasses(first, second, items, responses) {
   const a = validateSemanticPass(first, items, responses), b = validateSemanticPass(second, items, responses);
   const criteria = items.map((item2) => {
-    const left = a.find((c) => c.id === item2.id), right = b.find((c) => c.id === item2.id);
-    const agreed = left.marks === right.marks && !left.uncertain && !right.uncertain;
+    const left2 = a.find((c) => c.id === item2.id), right2 = b.find((c) => c.id === item2.id);
+    const agreed = left2.marks === right2.marks && !left2.uncertain && !right2.uncertain;
     return {
       id: item2.id,
       maxMarks: item2.maxMarks,
-      marks: agreed ? left.marks : null,
-      minMarks: agreed ? left.marks : left.uncertain || right.uncertain ? 0 : Math.min(left.marks, right.marks),
-      maxPossibleMarks: agreed ? left.marks : left.uncertain || right.uncertain ? item2.maxMarks : Math.max(left.marks, right.marks),
+      marks: agreed ? left2.marks : null,
+      minMarks: agreed ? left2.marks : left2.uncertain || right2.uncertain ? 0 : Math.min(left2.marks, right2.marks),
+      maxPossibleMarks: agreed ? left2.marks : left2.uncertain || right2.uncertain ? item2.maxMarks : Math.max(left2.marks, right2.marks),
       status: agreed ? "agreed" : "uncertain",
-      feedback: agreed ? left.feedback : "Automated checks disagree or lack sufficient evidence. This criterion remains uncertain.",
-      evidence: agreed ? left.evidence : [],
-      passes: [left, right]
+      feedback: agreed ? left2.feedback : "Automated checks disagree or lack sufficient evidence. This criterion remains uncertain.",
+      evidence: agreed ? left2.evidence : [],
+      passes: [left2, right2]
     };
   });
   return {

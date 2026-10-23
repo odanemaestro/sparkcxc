@@ -1,4 +1,24 @@
-k can convey bricks from company to building site.", ["1:Appropriate road heavy-goods vehicle"]],
+industrial dispute and pressure"]],
+  [1, "b.iii", "Strike action is a coordinated stoppage or withdrawal of labour by employees to advance work-related demands, under applicable labour law.", ["1:Identifies collective withholding of labour", "1:Explains purpose to secure working-condition change"]],
+  [1, "c", "Management may hold a facilitated meeting where staff present concerns and negotiate a mutually acceptable outcome. It can also use a formal grievance and appeal process to investigate complaints impartially.", ["2:First realistic conflict-resolution strategy and operation", "2:Second different credible strategy explained"]],
+  [1, "d", "Owners should comply with workplace safety rules and protect workers from injury, including suitable training and equipment. They should also advertise honestly and honour lawful consumer rights rather than misleading buyers.", ["3:First developed legal or ethical business principle and practical consequence", "3:Second different developed legal/ethical obligation"]],
+  [2, "a", "An entrepreneur identifies market opportunities and combines capital, labour and resources to start or develop a business while accepting financial risk.", ["1:Identifies venture/opportunity role", "1:Mentions organisation of factors or calculated risk"]],
+  [2, "b", "Entrepreneurs commonly show initiative, creativity and perseverance when they face business setbacks.", ["1:First real entrepreneurial trait", "1:Second distinct trait", "1:Third different trait"]],
+  [2, "c.i", "Collateral is an owned asset pledged to a lender as security in the event that a borrower fails to repay a loan.", ["1:Asset pledged as loan security", "1:Explains creditor use/default risk"]],
+  [2, "c.ii", "Examples of collateral include land/buildings, owned vehicles and negotiable investments such as eligible shares or bonds.", ["1:First valid collateral asset", "1:Second distinct asset", "1:Third different asset"]],
+  [2, "d", "A venture must satisfy any lawful business registration and licensing requirements, such as a municipal food licence. It must also meet public-health and safety standards, for example premises inspection before selling food.", ["2:First real government requirement with an accurate national example", "2:Second different requirement with realistic example"]],
+  [2, "e", "Entrepreneurship creates employment and income for residents, increasing spending and tax revenue. New firms can supply innovative locally made products, expand industrial output and reduce import dependence.", ["3:First distinct employment or national production benefit developed", "3:Second different economic development mechanism"]],
+  [3, "a", "Packaging should reflect product safety/perishability and the intended customers' need for convenient size, information or presentation.", ["1:First actual packaging factor", "1:Second different factor"]],
+  [3, "b.i", "Successful salespeople display accurate product knowledge, honesty, polite communication and attentive listening.", ["1:First genuine seller quality", "1:Second distinct quality", "1:Third different trait", "1:Fourth distinct trait"]],
+  [3, "b.ii", "Free product samples let customers test an unfamiliar item without paying full price. Time-limited coupons or discounts encourage purchase by reducing short-run cost.", ["2:First true sales-promotion technique described", "2:Second distinct method explained"]],
+  [3, "c", "A cash discount rewards paying promptly or within a specified period, reducing the payable invoice after sale. A trade discount is an upfront list-price reduction, normally offered to trade buyers or for quantity/reseller status.", ["2:Correct cash/early-payment discount meaning", "2:Contrasting trade-discount eligibility or commercial purpose"]],
+  [3, "d.i", "Copyright protects Kylie's original musical composition and recorded creative expression, granting control over reproduction and commercial licences. It supports royalty earnings and legal remedies against unauthorised copying; copyright generally arises automatically in original protected works, so universal mandatory registration should not be required for credit.", ["1:Correct original music and creator's exclusive rights", "1:Explains protection/permission for copying or licensing", "1:Links rights to royalties or redress"]],
+  [3, "d.ii", "A trademark identifies Jovan's NuttyJo brand as originating from his business and can protect its name or logo from confusing imitation, helping shoppers recognise genuine products and preserving reputation and sales.", ["1:Correctly links trademark to brand name, logo or commercial origin", "1:Explains protection against confusing competitor use", "1:Explains reputation/marketing benefit"]],
+  [4, "a.i", "Retailers sell small quantities directly to final consumers and provide accessible locations or after-sales information.", ["1:First genuine retail intermediary function", "1:Second distinct function"]],
+  [4, "a.ii", "Wholesalers purchase stock in bulk from producers and supply smaller lots to retailers, storing goods until needed.", ["1:First actual wholesale function", "1:Second distinct function"]],
+  [4, "b", "The producer/manufacturer and final consumer are the other two links in the traditional distribution channel.", ["1:Producer/manufacturer", "1:Final consumer"]],
+  [4, "c.i", "Temperature-controlled road transport, such as a refrigerated truck, is most suitable for local meat products.", ["1:Appropriate temperature-controlled road vehicle"]],
+  [4, "c.ii", "A heavy-duty flatbed or tipper truck can convey bricks from company to building site.", ["1:Appropriate road heavy-goods vehicle"]],
   [4, "c.iii", "A pipeline is appropriate for crude oil going from an oilfield to a connected refinery; an oil tanker is suitable if the refinery is across water.", ["1:Suitable pipeline or route-appropriate oil tanker"]],
   [4, "c.iv", "Cars between countries are best shipped in a roll-on/roll-off vessel or vehicle-carrying cargo ship.", ["1:Suitable sea freight vehicle carrier"]],
   [4, "d", "Goods distribution can be impeded by congested roads, inadequate cold storage, high transport costs or border/port delays.", ["1:First real goods-distribution problem", "1:Second different problem", "1:Third different obstacle", "1:Fourth distinct issue"]],
@@ -2274,69 +2294,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
               "label": "(d)",
               "question": "Discuss TWO ways in which small businesses contribute to Caribbean economies.",
               "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 Employment: small businesses employ a large share of the Caribbean workforce, including people who might not find jobs in large firms, reducing unemployment and poverty.\n\u2022 Output and income: they produce goods and services for local communities and tourists, adding to GDP.\n\u2022 Entrepreneurship and innovation: they develop business skills and new ideas, and some grow into large firms.\n\u2022 Linkages: they supply larger firms such as hotels and use local raw materials, saving foreign exchange.\n\u2022 Competition: they compete with larger firms, keeping prices down and giving consumers choice.\n\u2022 They pay taxes and spread economic activity to rural areas."
-            }
-          ]
-        },
-        {
-          "number": 4,
-          "section": "Section II",
-          "section_instructions": "Answer ONE question in this section as indicated.",
-          "choice": "Answer EITHER Question 4 OR Question 5. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Distinguish between capital intensive production and labour intensive production, giving ONE example of EACH form of production.",
-              "marks": 6,
-              "answer": "3 marks each (2 for the explanation, 1 for the example):\n\u2022 Capital intensive production uses a large amount of capital (machinery and equipment) compared with labour. Examples: oil refining, alumina processing, a bottling plant, car assembly.\n\u2022 Labour intensive production uses a large amount of labour compared with capital. Examples: harvesting sugar cane by hand, hairdressing, craft making, many tourism services."
-            },
-            {
-              "label": "(b)",
-              "question": "Employees must be technologically competent to succeed in today's workplace. List FOUR technological competencies that today's employees need.",
-              "marks": 4,
-              "answer": "Any FOUR, 1 mark each:\n\u2022 Computer literacy (word processing, spreadsheets, presentations)\n\u2022 Using the internet and e-mail\n\u2022 Operating computerised or automated equipment\n\u2022 Data entry and database management\n\u2022 Using point-of-sale systems\n\u2022 Using social media and digital marketing tools\n\u2022 Basic troubleshooting of computer problems\n\u2022 Awareness of cyber security"
-            },
-            {
-              "label": "(c)",
-              "question": "State TWO disadvantages of modern technology.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Workers lose their jobs when machines replace them (technological unemployment).\n\u2022 It is expensive to buy, install and maintain.\n\u2022 Staff must be retrained.\n\u2022 Businesses become dependent on it: a breakdown or power cut can stop work.\n\u2022 Risks of cybercrime, hacking and loss of data.\n\u2022 Health problems such as eye strain and repetitive strain injury.\n\u2022 It becomes outdated quickly."
-            },
-            {
-              "label": "(d)",
-              "question": "Discuss TWO ways by which modern technology can improve the efficiency of businesses.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 Automation: machines produce goods faster and more consistently than people, lowering the cost per unit.\n\u2022 Accuracy: computerised accounting, stock control (bar codes, point-of-sale systems) and quality control reduce errors and waste.\n\u2022 Faster communication: e-mail, video conferencing and mobile phones speed up decision making and reduce travel costs.\n\u2022 Better information: databases and management information systems give managers up-to-date information for decisions.\n\u2022 E-commerce allows businesses to reach more customers at lower cost."
-            }
-          ]
-        },
-        {
-          "number": 5,
-          "section": "Section II",
-          "section_instructions": "Answer ONE question in this section as indicated.",
-          "choice": "Answer EITHER Question 4 OR Question 5. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Define the term 'branding'.",
-                  "marks": 2,
-                  "answer": "Branding is giving a product a distinctive name, symbol, logo or design (1) so that customers can identify it and tell it apart from competitors' products (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "State TWO ways in which branding influences the packaging of a product.",
-                  "marks": 4,
-                  "answer": "Any TWO, 2 marks each:\n\u2022 The brand name, logo and colours are printed prominently on the package so that it is easily recognised on the shelf.\n\u2022 The package design must match the brand image (for example elegant packaging for a luxury brand, recyclable packaging for an 'eco' brand).\n\u2022 Packaging is kept consistent across the brand's whole product range.\n\u2022 The package carries the brand's slogan and information that builds loyalty.\n\u2022 The shape of the package can itself become part of the brand (for example a distinctive bottle)."
-                }
-              ]
-            },
-            {
-              "label": "(b)",
-              "question": "Discuss TWO reasons for branding a product.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 To distinguish the product from competitors' products, so customers can easily find and ask for it.\n\u2022 To build brand loyalty, which leads to repeat purchases and steady sales.\n\u2022 To allow the firm to charge a higher (premium) price because customers trust the brand.\n\u2022 To make advertising more effective, since all promotion is linked to one recognisable name.\n\u2022 To make it easier to launch new products under a 
+              "answer": "Any TWO, 3 marks each:\n\u2022 Employment: small businesses employ a large share of the Caribbean workforce, including people who might not find jobs in large firms, reducing unemployment and poverty.\n\u2022 Output and income: they produce goods and services for local communities and tourists, adding to GDP.\n\u2022 Entrepreneurship and innovation: they develop business skills and new ideas, and some grow into large firms.\n\u2022 Linkages: they supply larger firms such as hotels and use local raw materials, savi
