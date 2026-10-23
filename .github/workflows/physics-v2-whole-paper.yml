@@ -1,0 +1,41 @@
+name: Physics V2 whole-paper source replay
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/grading/**'
+      - 'src/physics/paper2/**'
+      - 'tools/v2-verify-all.mjs'
+      - '.github/workflows/physics-v2-whole-paper.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  physics-paper-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Recheck every criterion and replay every entire paper
+        run: |
+          node tools/v2-verify-all.mjs --subject physics --out artifacts/physics-paper-replay
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const s=JSON.parse(fs.readFileSync("artifacts/physics-paper-replay/summary.json","utf8"));
+          console.log("Physics full-paper summary:",JSON.stringify(s.papers,null,2));
+          if(s.bySubject.physics?.verified!==135 || s.papers.total!==4 || s.papers.verified!==4 || s.papers.failed.length)
+            process.exit(1);
+          NODE
+      - name: Attach source test evidence, including failing scenarios
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: physics-whole-paper-replay-${{ github.sha }}
+          path: artifacts/physics-paper-replay/
+          if-no-files-found: warn

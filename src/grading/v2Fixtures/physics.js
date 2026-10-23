@@ -120,21 +120,32 @@ function writtenFixtures(part,maxMarks,others){
 }
 
 
+/** All dependent graph-working fixtures use the *same* fully marked
+ * source graph as the independently selected graph-part fixture. Drawing
+ * evidence may not depend on a subtly different (e.g. 99%-length) line. */
+function physicsSourceFixtureGraph(paper,question,graphPart){
+ const id=question.question_id+"::"+graphPart.id;
+ const source=modelResponsesForPhysicsPaper2(paper)[id]?.graph;
+ if(!source||!graphPart.grid)return null;
+ const grid=graphPart.grid;
+ return {...source,line:clipLine(source.line,{
+  yMin:Number(grid.yMin),yMax:Number(grid.yMax)})};
+}
+function sourceLinePoint(graph,x){
+ const [a,b]=graph?.line||[];
+ if(!a||!b||b.x===a.x)return null;
+ return {x,y:a.y+(x-a.x)*(b.y-a.y)/(b.x-a.x)};
+}
+
 /** Source-backed horizontal-to-vertical graph reading for Paper 3 Q1(e). */
-function currentReadOffFixtures(question,part,maxMarks){
+function currentReadOffFixtures(paper,question,part,maxMarks){
  const spec=getPhysicsGraphWorkingSpec(question.question_id);
  const graphPart=question.parts.find(p=>p.id===spec?.graphPart);
- if(!graphPart?.grid||!graphPart.graph?.line)return {blocked:"current-reading-without-source-graph"};
- const grid=graphPart.grid,line=graphPart.graph.line;
- const slope=Number(line.gradient),intercept=Number(line.intercept||0);
- const maxX=Math.min(Number(line.to),Number(grid.xMax),
-  (Number(grid.yMax)-intercept)/slope*.99);
- const point=x=>({x,y:slope*x+intercept});
- const graph={points:graphPart.graph.points.map(p=>({...p})),
-  line:[point(0),point(maxX)],axisXLabel:grid.xLabel,axisYLabel:grid.yLabel,
-  axisXMin:grid.xMin,axisXMax:grid.xMax,axisXStep:grid.xStep,
-  axisYMin:grid.yMin,axisYMax:grid.yMax,axisYStep:grid.yStep};
- const pointAtSource=point((1.75-intercept)/slope);
+ const graph=physicsSourceFixtureGraph(paper,question,graphPart);
+ if(!graph?.line||graph.line.length!==2)return {blocked:"current-reading-without-source-graph"};
+ const [a,b]=graph.line;
+ const xAtSource=a.x+(1.75-a.y)*(b.x-a.x)/(b.y-a.y);
+ const pointAtSource=sourceLinePoint(graph,xAtSource);
  const evidence={kind:"physics-current-reading-v1",point:pointAtSource};
  const graphKey=question.question_id+"::"+graphPart.id;
  const key=question.question_id+"::"+part.id;
@@ -161,20 +172,12 @@ function currentReadOffFixtures(question,part,maxMarks){
 /** Real graph-reading evidence for Paper 1 Q1(d), never a prose claim.
  * The supplied 1/V is plotted as x=100/18 on the source paper's scaled grid.
  */
-function pressureReadOffFixtures(question,part,maxMarks){
+function pressureReadOffFixtures(paper,question,part,maxMarks){
  const spec=getPhysicsGraphWorkingSpec(question.question_id);
  const graphPart=question.parts.find(p=>p.id===spec?.graphPart);
- if(!graphPart?.grid||!graphPart.graph?.line)return {blocked:"pressure-reading-without-source-graph"};
- const grid=graphPart.grid,line=graphPart.graph.line;
- const slope=Number(line.gradient),intercept=Number(line.intercept||0);
- const xMax=Math.min(Number(line.to),Number(grid.xMax),
-  (Number(grid.yMax)-intercept)/slope*0.99);
- const point=x=>({x,y:slope*x+intercept});
- const graph={points:graphPart.graph.points.map(p=>({...p})),
-  line:[point(0),point(xMax)],axisXLabel:grid.xLabel,axisYLabel:grid.yLabel,
-  axisXMin:grid.xMin,axisXMax:grid.xMax,axisXStep:grid.xStep,
-  axisYMin:grid.yMin,axisYMax:grid.yMax,axisYStep:grid.yStep};
- const readPoint=point(100/18),answer=String(part.answer||"");
+ const graph=physicsSourceFixtureGraph(paper,question,graphPart);
+ if(!graph?.line||graph.line.length!==2)return {blocked:"pressure-reading-without-source-graph"};
+ const readPoint=sourceLinePoint(graph,100/18),answer=String(part.answer||"");
  const graphKey=question.question_id+"::"+graphPart.id;
  const key=question.question_id+"::"+part.id;
  const withGraph=response=>({[graphKey]:{graph},[key]:response});
@@ -206,18 +209,12 @@ function gradientMethodFixtures(paper,question,part,maxMarks){
  const spec=getPhysicsGraphWorkingSpec(question.question_id);
  const graphPart=question.parts.find(p=>p.id===spec?.graphPart);
  if(!graphPart?.graph?.line||!graphPart.grid)return {blocked:"gradient-without-source-graph"};
- const grid=graphPart.grid,line=graphPart.graph.line;
- const slope=Number(line.gradient),intercept=Number(line.intercept||0);
- if(!Number.isFinite(slope)||slope<=0)return {blocked:"gradient-without-source-line"};
- const x0=Math.max(Number(line.from||0),Number(grid.xMin));
- const x1=Math.min(Number(line.to),Number(grid.xMax),
-  (Number(grid.yMax)-intercept)/slope*0.99);
+ const graph=physicsSourceFixtureGraph(paper,question,graphPart);
+ const [a,b]=graph?.line||[];
+ if(!a||!b)return {blocked:"gradient-without-source-line"};
+ const x0=Math.min(a.x,b.x),x1=Math.max(a.x,b.x);
  if(!(x1>x0))return {blocked:"gradient-without-plottable-line"};
- const point=x=>({x,y:x*slope+intercept});
- const graph={points:graphPart.graph.points.map(p=>({...p})),
-  line:[point(x0),point(x1)],axisXLabel:grid.xLabel,axisYLabel:grid.yLabel,
-  axisXMin:grid.xMin,axisXMax:grid.xMax,axisXStep:grid.xStep,
-  axisYMin:grid.yMin,axisYMax:grid.yMax,axisYStep:grid.yStep};
+ const point=x=>sourceLinePoint(graph,x);
  const evidence={kind:"physics-gradient-triangle-v1",
   points:[point(x0+(x1-x0)*0.12),point(x0+(x1-x0)*0.85)]};
  const graphKey=question.question_id+"::"+graphPart.id;
@@ -263,9 +260,9 @@ export function physicsFixtures({paper,question,part,maxMarks,curated=[]}){
  }else if(getPhysicsGraphWorkingSpec(question.question_id)?.trianglePart===part.id){
   set=gradientMethodFixtures(paper,question,part,maxMarks);
  }else if(question.question_id==="phy-p2-1-q1"&&part.id==="d"){
-  set=pressureReadOffFixtures(question,part,maxMarks);
+  set=pressureReadOffFixtures(paper,question,part,maxMarks);
  }else if(question.question_id==="phy-p2-3-q1"&&part.id==="e"){
-  set=currentReadOffFixtures(question,part,maxMarks);
+  set=currentReadOffFixtures(paper,question,part,maxMarks);
  }else if(type==="table"){
   const model=modelResponsesForPhysicsPaper2(paper)[key]?.table;
   if(!model||!Object.keys(model).length)return {blocked:"table-without-complete-answer-key"};

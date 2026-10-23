@@ -10,17 +10,36 @@
  *   - where a scenario expects publication, publication happens.
  */
 import {evaluateExistingSubjectPaper2V2} from "./serverPaper2V2SubjectEngine";
+import {physicsPaper2FollowThroughSources} from "../physics/paper2/physicsPaper2Marking";
 
 const exact=f=>typeof f?.expect==="number";
 const pick=(cases,cls)=>cases.find(c=>c.cls===cls&&c.passed&&c.resolved&&exact(c));
-const responseOf=(id,f)=>f.responses??{[id]:f.response};
+// A criterion fixture may include its own graph plus the downstream
+// gradient/read-off answer. Preserve that full-paper response map rather than
+// nesting it under the downstream criterion id when replaying the paper.
+// Earlier evidence records stored f.responses in the 'response' field, so
+// support both formats without weakening any mark or resolution checks.
+const responseOf=(id,f)=>f.responses??
+ (f.response&&typeof f.response==="object"&&!Array.isArray(f.response)&&
+  Object.hasOwn(f.response,id)?f.response:{[id]:f.response});
 
 function scenario(name,{subjectId,paperId,criteria},plan,{mustPublish}){
  const responses={};const expected=new Map();const tolerant=new Map();
+ const chosen=new Map();
  for(const [id,f] of plan){
   if(!f)continue;
-  Object.assign(responses,responseOf(id,f));
+  const fixtureResponses=responseOf(id,f);
+  Object.assign(responses,fixtureResponses);
+  if(Object.hasOwn(fixtureResponses,id))chosen.set(id,fixtureResponses[id]);
   if(exact(f))expected.set(id,f.expect);else tolerant.set(id,f.expect);
+ }
+ // A downstream graph-working fixture supplies the source graph solely to
+ // verify that criterion in isolation. It cannot replace a graph answer
+ // independently selected for the *whole script*. Apply every student's
+ // selected per-part answer last; remove deliberately missing answers.
+ for(const [id,f] of plan){
+  if(!f)delete responses[id];
+  else if(chosen.has(id))responses[id]=chosen.get(id);
  }
  const maxMarks=criteria.reduce((n,c)=>n+c.maxMarks,0);
  const failures=[];let out;
@@ -43,7 +62,11 @@ function scenario(name,{subjectId,paperId,criteria},plan,{mustPublish}){
  if(!anyUnresolved&&!out.canPublishFinalScore)failures.push("resolved-paper-not-publishable");
  const expectedTotal=[...criteria].reduce((n,c)=>n+(expected.get(c.id)??0),0);
  if(mustPublish){
-  if(!out.canPublishFinalScore)failures.push("expected-publication");
+  if(!out.canPublishFinalScore){
+   const unresolved=out.rows.filter(r=>!r.resolved)
+    .map(r=>r.criterionId+"="+r.suggestedMarks+"@"+r.method);
+   failures.push("expected-publication; unresolved: "+unresolved.join(", "));
+  }
   else if(tolerant.size===0&&Math.abs(out.confirmedMarks-expectedTotal)>1e-9)
    failures.push("total "+out.confirmedMarks+" != expected "+expectedTotal);
  }
@@ -59,13 +82,43 @@ function scenario(name,{subjectId,paperId,criteria},plan,{mustPublish}){
 export function verifyPaper(paper,casesById){
  const ids=paper.criteria.map(c=>c.id);
  const plan=fn=>new Map(ids.map((id,i)=>[id,fn(casesById.get(id)||[],i,id)]));
+ // A source graphical method fixture embeds the *same question's* plotted
+ // graph to verify it alone. Whole-script cases instead choose one actual
+ // graph answer and independently choose its dependent method answers.
+ // In the zero-script, use a blank method response if the graph is wrong:
+ // a wrong/missing drawn graph plus no method evidence is a definite zero.
+ const graphIds=new Set(paper.subjectId==="physics"
+  ?paper.criteria.filter(c=>c.sourceMarking?.responseType==="graph").map(c=>c.id):[]);
+ const graphDependent=id=>paper.subjectId==="physics"&&
+  (casesById.get(id)||[]).some(f=>f.cls==="full"&&f.response&&
+   typeof f.response==="object"&&
+   Object.keys(f.response).some(key=>key!==id&&graphIds.has(key)));
+ // A numeric mark can be earned by legitimate error-carried-forward (ECF)
+ // from a *different* earlier answer. Do not construct an internally
+ // contradictory script by independently combining two wrong/partial source
+ // fixtures and then demand that their standalone marks remain final. Use
+ // blank downstream answers in the zero/mixed scripts, and a complete
+ // canonical downstream answer in the partial script. The source ECF rules,
+ // not a manually curated list of failing paper IDs, decide which parts.
+ const ecfDependent=id=>{
+  if(paper.subjectId!=="physics")return false;
+  const row=paper.criteria.find(c=>c.id===id);
+  const [questionId,partId]=id.split("::");
+  return (row?.sourceMarking?.criteria||[]).some(c=>
+   physicsPaper2FollowThroughSources(questionId,partId,c.code).length>0);
+ };
  const scenarios=[
   scenario("full-marks",paper,plan(c=>pick(c,"full")),{mustPublish:true}),
-  scenario("zero-marks",paper,plan(c=>pick(c,"incorrect")),{mustPublish:true}),
+  scenario("zero-marks",paper,plan((c,i,id)=>graphDependent(id)||ecfDependent(id)
+   ?pick(c,"blank"):pick(c,"incorrect")),{mustPublish:true}),
   scenario("blank-script",paper,new Map(),{mustPublish:true}),
-  scenario("partial-marks",paper,plan(c=>pick(c,"partial")??pick(c,"full")),{mustPublish:true}),
-  scenario("mixed",paper,plan((c,i)=>[pick(c,"full"),pick(c,"incorrect"),pick(c,"partial")??pick(c,"blank")][i%3]),{mustPublish:true}),
-  scenario("missing-answers",paper,plan((c,i)=>i%2===0?pick(c,"full"):null),{mustPublish:true}),
+  scenario("partial-marks",paper,plan((c,i,id)=>ecfDependent(id)
+   ?pick(c,"full"):pick(c,"partial")??pick(c,"full")),{mustPublish:true}),
+  scenario("mixed",paper,plan((c,i,id)=>graphIds.has(id)?pick(c,"full"):
+   ecfDependent(id)?pick(c,"blank"):
+   [pick(c,"full"),pick(c,"incorrect"),pick(c,"partial")??pick(c,"blank")][i%3]),{mustPublish:true}),
+  scenario("missing-answers",paper,plan((c,i,id)=>graphIds.has(id)?pick(c,"full"):
+   i%2===0?pick(c,"full"):null),{mustPublish:true}),
   scenario("equivalent-answers",paper,plan(c=>pick(c,"equivalent")??pick(c,"full")),{mustPublish:true}),
   scenario("contradictory",paper,plan(c=>c.find(x=>x.cls==="contradiction"&&x.passed)??
    c.find(x=>x.cls==="competing"&&x.passed)??pick(c,"full")),{mustPublish:false}),
