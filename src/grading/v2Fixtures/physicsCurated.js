@@ -98,3 +98,31 @@ export const CURATED_PHYSICS={
  "phy-p2-3-q1::f":[P("The graph remains a straight line through the origin.",1)],
  "phy-p2-3-q1::g":[P("Keep the switch open between readings so the wire does not warm up.",2)]
 };
+
+
+const SOURCE_WRONG_CASES=Object.freeze({
+ "phy-p2-1-q2::bi":"0.002 m³",
+ "phy-p2-1-q2::e":"The largest face gives the greatest pressure because a larger area increases pressure.",
+ "phy-p2-1-q5::g":"$9.90",
+ "phy-p2-2-q1::d":"g = 20 m s⁻²",
+ "phy-p2-2-q2::e":"The 250 cm mark",
+ "phy-p2-2-q4::e":"v = 90 cm, m = 8.0",
+ "phy-p2-3-q1::d":"Current is inversely proportional to voltage; the line curves through the origin.",
+ "phy-p2-3-q1::f":"The second wire has lower resistance, so its V-I graph is flatter.",
+ "phy-p2-3-q6::b":"Radon has mass number 190 and atomic number 40.",
+ "phy-p2-4-q1::d":"500 kg m⁻³",
+ "phy-p2-4-q2::c":"45 degrees west of north",
+ "phy-p2-4-q3::c":"15 °C",
+ "phy-p2-4-q6::b":"Nitrogen has atomic number 10 and the beta particle has charge +1.",
+ "phy-p2-4-q6::c":"1/8 of the original nuclei"
+});
+for(const [id,answer] of Object.entries(SOURCE_WRONG_CASES)){
+ CURATED_PHYSICS[id]=[...(CURATED_PHYSICS[id]||[]),{
+  cls:"incorrect",response:{answer,working:""},expect:0,mustResolve:true,
+  note:"source-specific mutually wrong final response without method working"
+ }];
+}
+CURATED_PHYSICS["phy-p2-1-q2::bi"]=[
+ ...(CURATED_PHYSICS["phy-p2-1-q2::bi"]||[]),
+ P("0.20 m × 0.10 m × 0.05 m",1)
+];
