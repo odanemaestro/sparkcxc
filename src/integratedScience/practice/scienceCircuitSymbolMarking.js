@@ -88,7 +88,11 @@ export function markSourceCircuitSymbols(qid,pi,ii,item,value,freehand=false){
  const score=earned.filter(Boolean).length;
  // Multiple redundant drawings or mixed freehand geometry are uncertain.
  const overdrawn=names.some(n=>drawing[n].length>4);
- const resolved=!freehand&&!overdrawn;
+ const clearlyWrong=(n,shapes)=>n==="fuse"?shapes.every(s=>s.kind==="letter"):
+  n==="voltmeter"?shapes.every(s=>s.kind==="rect"):
+  shapes.every(s=>s.kind==="circle");
+ const resolved=!freehand&&!overdrawn&&names.every((n,i)=>
+  earned[i]||drawing[n].length===0||clearlyWrong(n,drawing[n]));
  return {score,maxMarks:3,sourceGeometry:true,sourceResolved:resolved,
   provisional:!resolved,unassessedMarks:resolved?0:3-score,confidence:resolved?"high":"low",
   criteria:names.map((name,i)=>({id:"circuit-symbol-"+name,label:MARKING[i],
