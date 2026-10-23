@@ -2,6 +2,8 @@ import React from "react";
 import {render,screen,fireEvent,waitFor} from "@testing-library/react";
 import PhysicsPaper2Exam from "./PhysicsPaper2Exam";
 import {confirmPhysicsV2Submission} from "./physicsV2SubmissionConfirmation";
+import {getPhysicsPaper2Paper} from "../physicsPaper2Bank";
+import {markPhysicsPaper2,modelResponsesForPhysicsPaper2} from "../physicsPaper2Marking";
 
 jest.mock("../../../practice/MathText",()=>({children})=><span>{children}</span>);
 jest.mock("../../../practice/Paper2ResponseInput",()=>()=>null);
@@ -17,29 +19,17 @@ jest.mock("../physicsPaper2Marking",()=>({
  markPhysicsPaper2:jest.fn(()=>({marks:42,of:100,criteria:[]})),
  modelResponsesForPhysicsPaper2:jest.fn(()=>({}))
 }));
-jest.mock("../physicsPaper2Bank",()=>{
- const original=jest.requireActual("../physicsPaper2Bank");
- return {
- PHYSICS_PAPER2_PAPERS:[],
- PHYSICS_PAPER2_DURATION_MINUTES:150,
- getPhysicsPaper2Paper:jest.fn(()=>({
-  paper_id:"spark-phy-p02-practice-1",marks:100,
-  questions:[{question_id:"phy-p2-1-q1",question_number:1,marks:100,
-   section:"I",topic:"Graph",stem:"Read the graph",
-   parts:[{id:"a",label:"(a)",prompt:"State a value",marks:100,
-    answerType:"text",criteria:[]}]}]
- })),
- physicsPaper2MarkingCoverage:jest.fn(()=>({})),
- physicsPaper2PaperNumber:jest.fn(()=>1),
- physicsPaper2PaperLetter:jest.fn(()=>"A"),
- physicsPaper2PaperName:jest.fn(()=>"Practice Paper A"),
- physicsPaper2PartKey:jest.fn((q,p)=>q+"::"+p),
- physicsPaper2Topics:jest.fn(()=>[]),
- readPhysicsPaper2Active:original.readPhysicsPaper2Active,
- readPhysicsPaper2Results:original.readPhysicsPaper2Results,
- savePhysicsPaper2Active:original.savePhysicsPaper2Active,
- savePhysicsPaper2Result:original.savePhysicsPaper2Result
-};});
+jest.mock("../physicsPaper2Bank",()=>({
+ ...jest.requireActual("../physicsPaper2Bank"),
+ getPhysicsPaper2Paper:jest.fn()
+}));
+const paper={
+ paper_id:"spark-phy-p02-practice-1",marks:100,
+ questions:[{question_id:"phy-p2-1-q1",question_number:1,marks:100,
+  section:"I",topic:"Graph",stem:"Read the graph",
+  parts:[{id:"a",label:"(a)",prompt:"State a value",marks:100,
+   answerType:"text",criteria:[]}]}]
+};
 const snapshot={"phy-p2-1-q1::a":{answer:"saved answer"}};
 const active=status=>({
  paperId:"spark-phy-p02-practice-1",phase:"review",
@@ -51,7 +41,12 @@ const active=status=>({
 const restore=status=>window.localStorage.setItem(
  "spark-physics-paper2-active-v1:student-1",JSON.stringify(active(status)));
 beforeEach(()=>{
- jest.clearAllMocks();
+ // Jest uses resetMocks:true, so inline jest.fn implementations need restoring
+ // before every test. A missing getPhysicsPaper2Paper implementation would
+ // otherwise render the library instead of the saved review.
+ getPhysicsPaper2Paper.mockReturnValue(paper);
+ markPhysicsPaper2.mockReturnValue({marks:42,of:100,criteria:[]});
+ modelResponsesForPhysicsPaper2.mockReturnValue({});
  window.localStorage.clear();
  window.localStorage.setItem("spark-physics-paper2-results-v1:student-1",
   JSON.stringify([{id:"result-1",attemptProvenance:{bank_version:"physics-paper2-v1"}}]));
