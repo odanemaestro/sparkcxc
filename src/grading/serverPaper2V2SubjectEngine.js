@@ -396,9 +396,14 @@ function physics(rows,responses,paperId){
     // Reconcile each individual M/A/B allocation. A whole-part maximum
     // would incorrectly combine marks earned for different criteria.
     const evidenceByCode=new Map(evidence.criteria.map(item=>[item.id,item]));
+    const graphOnlyMethod=partId===spec.trianglePart?"M1":"M2";
     const reconciled=originalPart.criteria.reduce((total,criterion)=>{
      const legacy=lines.find(line=>line.criterion.code===criterion.code);
      const suggested=evidenceByCode.get(criterion.code)?.candidateMarks;
+     // A verbal claim or correct result cannot stand in for the graphical
+     // action explicitly required by the original Physics marking scheme.
+     if(criterion.code===graphOnlyMethod)
+      return total+(typeof suggested==="number"?Math.min(criterion.marks,suggested):0);
      return total+Math.min(criterion.marks,Math.max(legacy?.earned||0,
       typeof suggested==="number"?suggested:0));
     },0);
