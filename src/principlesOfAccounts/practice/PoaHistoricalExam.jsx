@@ -85,8 +85,8 @@ export default function PoaHistoricalExam({ source, paper, userId, supabase, onB
       if (saved.available) {
         setAttempt((a) => ({ ...a, serverSubmitted: true }));
         setReceipt(isPaper1 ? "Your answers are saved on SPARK." : "Your responses are saved on SPARK. A final grading result is pending.");
-        const progress = await recordSubjectActivity({ supabase, activity: { subjectId: "principles-of-accounts", activityKey: `exam:poa-historical:${paper.id}:${snapshot.id}`,
-          activityType: "exam", title: `Principles of Accounts ${title}`, completed: true, score: null, maxScore: paper.maxMarks, metadata } });
+        const progress = await recordSubjectActivity({ supabase, activity: { subjectId: "principles-of-accounts", activityKey: isPaper1 ? `exam:poa-historical:${paper.id}:${snapshot.id}` : `exam:poa-v2:${snapshot.serverId}`,
+          activityType: "exam", title: `Principles of Accounts ${title}`, completed: true, score: null, maxScore: paper.maxMarks, metadata: { ...metadata, server_attempt_id: snapshot.serverId } } });
         if (progress?.error) setError("Your submission is saved, but progress could not be updated.");
       } else setReceipt(snapshot.serverId ? "SPARK could not save this submission. Your answers remain here; retry when connected." : "Your completed practice is saved on this device. Export a copy to keep your answers.");
     } catch { setError("The submission could not finish. Your answers are saved here; retry when connected."); }

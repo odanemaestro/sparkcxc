@@ -1,0 +1,152 @@
+{
+  "scope": "Disposable Supabase stage; SPARK-authored Accounts Paper 2 numerical checkpoints only",
+  "productionChanged": false,
+  "historicalPaper2FinalGradingEnabled": false,
+  "specimenFinalGradingEnabled": false,
+  "writtenMethodMarksAssessed": false,
+  "live": {
+    "httpStatus": 200,
+    "kind": "hosted-accounts-staging-rehearsal",
+    "projectRef": "cfqetgozfxmavwexhrxz",
+    "passed": true,
+    "cleanup": {
+      "passed": true
+    },
+    "papers": [
+      {
+        "kind": "live-supabase-http",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "subjectId": "principles-of-accounts",
+        "paperId": "POA-ORIGINAL-02-01",
+        "runId": "ea5f1ac3-3feb-4222-8330-678c9990d733",
+        "startedAt": "2026-10-23T05:15:06.050Z",
+        "finishedAt": "2026-10-23T05:15:25.202Z",
+        "passed": true,
+        "cleanup": {
+          "passed": true,
+          "fixtureAccounts": 3,
+          "errors": []
+        },
+        "checks": [
+          {
+            "name": "isolated staging project and Accounts schema present",
+            "passed": true
+          },
+          {
+            "name": "confirmed disposable users authenticate with distinct sessions",
+            "passed": true
+          },
+          {
+            "name": "published staging catalog and learning RPC expose 11 sections and 33 lessons",
+            "passed": true
+          },
+          {
+            "name": "student enrollment and approved-parent ownership rules",
+            "passed": true
+          },
+          {
+            "name": "lesson progress persists with one linked-parent notification and no cross-user reads",
+            "passed": true
+          },
+          {
+            "name": "labs, practice, leave and reenroll preserve progress and suppress inactive notifications",
+            "passed": true
+          },
+          {
+            "name": "Paper 1 choice-only source answers remain unscored; numeric practice estimates persist without V2 Paper 2 routing",
+            "passed": true
+          },
+          {
+            "name": "deployed worker and queue reject student and anonymous invocation",
+            "passed": true
+          },
+          {
+            "name": "server rejects altered Paper 1 and Paper 2 timed durations",
+            "passed": true
+          },
+          {
+            "name": "Paper 2 full: saved source, owned result, worker state and score publication",
+            "passed": true,
+            "status": "verified",
+            "score": 100
+          },
+          {
+            "name": "Paper 2 full: canonical progress, deduped family notifications and late-sync protection",
+            "passed": true
+          },
+          {
+            "name": "Paper 2 zero: saved source, owned result, worker state and score publication",
+            "passed": true,
+            "status": "verified",
+            "score": 0
+          },
+          {
+            "name": "Paper 2 zero: canonical progress, deduped family notifications and late-sync protection",
+            "passed": true
+          },
+          {
+            "name": "Paper 2 unresolved: saved source, owned result, worker state and score publication",
+            "passed": true,
+            "status": "provisional",
+            "score": null
+          },
+          {
+            "name": "Paper 2 unresolved: canonical progress, deduped family notifications and late-sync protection",
+            "passed": true
+          },
+          {
+            "name": "pending Paper 2 student and linked-parent notifications contain no final score",
+            "passed": true
+          }
+        ]
+      }
+    ]
+  },
+  "postRunDatabaseCheck": {
+    "users": 0,
+    "sessions": 0,
+    "profiles": 0,
+    "family_links": 0,
+    "attempts": 0,
+    "progress": 0,
+    "notifications": 0,
+    "publication_receipts": 0,
+    "verified_criteria": 100,
+    "course_enabled": false,
+    "course_status": "draft",
+    "nonce_consumed": true
+  },
+  "temporaryEndpoint": {
+    "checkedAt": "2026-10-23T05:16:15.125Z",
+    "httpStatus": 403,
+    "retired": true,
+    "body": {
+      "error": "Accounts staging rehearsal is disabled"
+    }
+  },
+  "provenance": {
+    "sourceCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
+    "workerProtocolSha256": "0f40265490f40efedba82105fe9f6003ee46d723b58923d9f9fe15c5329f10fb",
+    "workerFiles": [
+      {
+        "name": "index.mjs",
+        "sha256": "979578bd586e637e8877c2a60a720e15332b8984c6b235a9afd595386e73fd68"
+      },
+      {
+        "name": "server-marker-v2.mjs",
+        "sha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb"
+      },
+      {
+        "name": "server-marker-v2-checksum.mjs",
+        "sha256": "ff00d959511f2ce2475fc98560134791a1cd7eab8a214b62257bbdc392b006dc"
+      }
+    ],
+    "rehearsalSourceSha256": "28b652ed9b9e945d0005dbe40830d46ddd7da30c38938fdf54d454977013743c",
+    "rehearsalVersion": 7,
+    "disabledVersion": 8,
+    "workerVersion": 3,
+    "prerequisiteSchemaBlocks": 28,
+    "privateNonceFilesRemoved": true
+  }
+}

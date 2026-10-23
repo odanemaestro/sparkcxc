@@ -143,7 +143,7 @@ function Paper2Exam({ userId, supabase, onBack }) {
             supabase,
             activity: {
               subjectId: "principles-of-accounts",
-              activityKey: `exam:poa-paper2:${snapshot.id}`,
+              activityKey: `exam:poa-v2:${snapshot.serverId}`,
               activityType: "exam",
               title: "Principles of Accounts Paper 02",
               completed: true,
@@ -152,6 +152,7 @@ function Paper2Exam({ userId, supabase, onBack }) {
               metadata: {
                 paper: "02",
                 paper_id: POA_PAPER2_ID,
+                server_attempt_id: snapshot.serverId,
                 provisional: true,
                 unresolved_marks: 100,
                 scorePublicationAllowed: false,

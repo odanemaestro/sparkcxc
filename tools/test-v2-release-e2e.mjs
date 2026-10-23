@@ -22,14 +22,26 @@ const {evaluateExistingSubjectPaper2V2}=await import("../supabase/functions/_sha
 const {BUNDLE_SHA256}=await import("../supabase/functions/_shared/server-marker-v2-checksum.mjs");
 
 const SUBJECT=flag("--subject")||"information-technology",PAPER=flag("--paper")||"P2-A";
-// Timed Paper 2 durations the database owns (English A and Integrated Science).
-const DURATION={"english-a":9900,"integrated-science":9000}[SUBJECT]??7200;
+// Timed Paper 2 durations the database owns.
+const DURATION={"english-a":9900,"integrated-science":9000,"principles-of-accounts":10800}[SUBJECT]??7200;
 const paperRecord=papers.find(p=>p.subjectId===SUBJECT&&p.paperId===PAPER&&p.outcome==="verified");
 assert(paperRecord,"verified paper evidence for "+PAPER+" is required");
 const mine=evidence.filter(r=>r.subjectId===SUBJECT&&r.paperId===PAPER);
 assert(mine.length>0&&mine.every(r=>r.outcome==="verified"));
 
 const db=await openRegistry();
+if(SUBJECT==="principles-of-accounts"){
+ // The isolated registry omits the application catalogue. Load the exact
+ // canonical progress table/index definitions for the Accounts publication
+ // bridge, then idempotently install its hooks against those real columns.
+ const progressSql=fs.readFileSync("supabase/migrations/20260910_spark_multisubject_progress_v1.sql","utf8");
+ const end=progressSql.indexOf("alter table public.spark_subject_progress enable row level security;");
+ assert(end>0,"canonical progress schema boundary is required");
+ await db.exec(progressSql.slice(0,end).replace(/^begin;/,""));
+ const integration=fs.readdirSync("supabase/migrations").find(name=>name.endsWith("_marking_v2_poa_release_integration.sql"));
+ assert(integration,"Accounts release integration migration is required");
+ await db.exec(fs.readFileSync("supabase/migrations/"+integration,"utf8"));
+}
 const asService=()=>db.exec("reset role; set test.jwt_role='service_role'; set test.user_id=''");
 const asStudent=id=>db.exec(`reset role; set test.jwt_role='authenticated'; set test.user_id='${id}'; set role authenticated`);
 const one=async(sql,params)=>(await db.query(sql,params)).rows[0];
@@ -137,6 +149,12 @@ try{
  assert.equal(Number(published.score),rubric.expected_total_marks);
  assert.equal(published.metadata.score_authority,"server-v2-deterministic");
  assert.equal(published.metadata.v2_source_sha256,rubric.source_sha256);
+ if(SUBJECT==="principles-of-accounts"){
+  const progress=await one("select score,metadata from public.spark_subject_progress where activity_key=$1",["exam:poa-v2:"+attemptFull]);
+  assert.equal(Number(progress.score),rubric.expected_total_marks);
+  assert.equal(progress.metadata.score_authority,"server-v2-deterministic");
+  assert.equal((await one("select count(*)::int n from public.spark_subject_activity_events where activity_key=$1",["exam:poa-v2:"+attemptFull])).n,1);
+ }
  // Retry safety: the same lease cannot complete twice; no job remains.
  const replay=(await one("select public.spark_v2_complete_subject_job($1,$2,$3::jsonb,$4) as d",
   [r1.job.jobId,r1.job.leaseToken,JSON.stringify(r1.exam.rows),BUNDLE_SHA256])).d;
@@ -172,6 +190,13 @@ try{
  const attemptBad=await submit(extra,fullAnswers);
  const job=(await one("select public.spark_v2_claim_next_shadow_job() as j")).j;
  const exam=evaluateExistingSubjectPaper2V2({subjectId:job.subjectId,paperId:job.paperId,criteria:job.criteria,responses:job.responses});
+ // The worker wire protocol carries exactly five server-owned row fields.
+ await assert.rejects(db.query("select public.spark_v2_complete_subject_job($1,$2,$3::jsonb,$4)",
+  [job.jobId,job.leaseToken,JSON.stringify(exam.rows.map((r,i)=>i===0?{...r,clientDiagnostic:true}:r)),BUNDLE_SHA256]),/Invalid verified examiner row/);
+ if(SUBJECT==="principles-of-accounts"){
+  await assert.rejects(db.query("select public.spark_v2_complete_subject_job($1,$2,$3::jsonb,$4)",
+   [job.jobId,job.leaseToken,JSON.stringify(exam.rows.map((r,i)=>i===0?{...r,method:"existing-IT-specific-rules"}:r)),BUNDLE_SHA256]),/(?:Subject|Accounts) examiner provenance mismatch/);
+ }
  const tampered=exam.rows.map((r,i)=>i===0?{...r,suggestedMarks:r.maxMarks+1}:r);
  await assert.rejects(db.query("select public.spark_v2_complete_subject_job($1,$2,$3::jsonb,$4)",
   [job.jobId,job.leaseToken,JSON.stringify(tampered),BUNDLE_SHA256]),/exceeds source scheme/);
@@ -188,6 +213,11 @@ try{
  // 7. Historic scores are unchanged.
  const old=await one("select score,metadata from public.spark_exam_attempts where id=$1",[historic]);
  assert.equal(Number(old.score),41);assert.equal(old.metadata.score_authority,"client-practice-estimate");
+ if(SUBJECT==="principles-of-accounts"){
+  assert.equal((await one("select count(*)::int n from spark_grading_private.poa_published_results_v2")).n,3);
+  assert.equal((await one("select count(*)::int n from public.spark_subject_activity_events where activity_key like 'exam:poa-v2:%'")).n,3);
+  assert.equal((await one("select count(*)::int n from public.spark_subject_progress where activity_key=$1",["exam:poa-v2:"+attemptMixed])).n,0);
+ }
  console.log("V2 automated release gate + end-to-end publication passed",JSON.stringify({
   paper:SUBJECT+"/"+PAPER,criteria:mine.length,fullScore:Number(r1.done.score),zeroScore:0,
   provisionalUnresolved:attemptMixed?true:false,attempts:[attemptFull,attemptZero,attemptMixed,attemptBad].length}));

@@ -23,6 +23,7 @@ import INTEGRATED_SCIENCE_PAPER2_SPECS from "../integratedScience/data/integrate
 import {integratedScienceStructuredFixtures} from "./v2Fixtures/integratedScience";
 import {integratedScienceGraphInText} from "../integratedScience/practice/integratedSciencePaper2Grader";
 import {CURATED_IS} from "./v2Fixtures/integratedScienceCurated";
+import {poaOriginalFixtures} from "./v2Fixtures/principlesOfAccountsOriginal";
 
 // Criteria of every paper in the current run, for on-topic wrong answers.
 const papersById=new Map();
@@ -53,6 +54,10 @@ function itContext(paperId,criterionId){
 
 /** Returns {kind, fixtures, sourceAnswer, alternatives, ruleId} or {blocked}. */
 export function fixturesForCriterion({subjectId,paperId,criterion}){
+ if(subjectId==="principles-of-accounts"){
+  if(paperId!=="POA-ORIGINAL-02-01")return {blocked:"accounts-specimen-method-and-presentation-policy-pending"};
+  return poaOriginalFixtures({paperId,criterion});
+ }
  if(subjectId==="information-technology"){
   const ctx=itContext(paperId,criterion.id);
   if(!ctx)return {blocked:"criterion-not-found-in-source-archive"};

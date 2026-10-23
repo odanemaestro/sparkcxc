@@ -1,0 +1,156 @@
+[
+ {
+  "subjectId": "principles-of-accounts",
+  "paperId": "POA-ORIGINAL-02-01",
+  "rubricVersion": "poa-original-criteria-v1",
+  "sourceSha256": "dd855fecbe8ec3ee9c61f86c5b3f424d91a45112e07e5dc84fa3782df435a6f8",
+  "expectedTotalMarks": 100,
+  "criteria": 100,
+  "verifiedCriteria": 100,
+  "provenance": {
+   "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
+   "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
+   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "workingTreeDirty": false,
+   "ranAt": "2026-10-23T05:03:03.149Z"
+  },
+  "outcome": "verified",
+  "scenarios": [
+   {
+    "name": "full-marks",
+    "passed": true,
+    "total": 100,
+    "confirmedMarks": 100,
+    "canPublish": true,
+    "expectedTotal": 100,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "zero-marks",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "blank-script",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": 0,
+    "canPublish": true,
+    "expectedTotal": 0,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "partial-marks",
+    "passed": true,
+    "total": 100,
+    "confirmedMarks": 100,
+    "canPublish": true,
+    "expectedTotal": 100,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "mixed",
+    "passed": true,
+    "total": 34,
+    "confirmedMarks": 34,
+    "canPublish": true,
+    "expectedTotal": 34,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "missing-answers",
+    "passed": true,
+    "total": 50,
+    "confirmedMarks": 50,
+    "canPublish": true,
+    "expectedTotal": 50,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "equivalent-answers",
+    "passed": true,
+    "total": 100,
+    "confirmedMarks": 100,
+    "canPublish": true,
+    "expectedTotal": 100,
+    "unresolvedMarks": 0,
+    "failures": []
+   },
+   {
+    "name": "contradictory",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": 0,
+    "unresolvedMarks": 100,
+    "failures": []
+   },
+   {
+    "name": "keyword-lists",
+    "passed": true,
+    "total": 0,
+    "confirmedMarks": null,
+    "canPublish": false,
+    "expectedTotal": 0,
+    "unresolvedMarks": 100,
+    "failures": []
+   }
+  ],
+  "missingFullFixtures": [],
+  "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
+  "evidenceSha256": "c6a0b10f304db381924d8f167426231e27bb97169df0b9d7efc7fdaddbfeb1ff"
+ },
+ {
+  "subjectId": "principles-of-accounts",
+  "paperId": "poa-specimen-2-2017",
+  "rubricVersion": "poa-historical-worked-v1:poa-specimen-2-2017",
+  "sourceSha256": "8eb9472775142ebb38e4db7d2137590ff03bf04d1779efe00b1a12614045b18b",
+  "expectedTotalMarks": 100,
+  "criteria": 22,
+  "verifiedCriteria": 0,
+  "provenance": {
+   "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
+   "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
+   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "workingTreeDirty": false,
+   "ranAt": "2026-10-23T05:03:03.149Z"
+  },
+  "outcome": "blocked",
+  "unverifiedCriteria": [
+   "poa-specimen-2-2017::1a-i",
+   "poa-specimen-2-2017::1a-ii",
+   "poa-specimen-2-2017::1b-i",
+   "poa-specimen-2-2017::1b-ii",
+   "poa-specimen-2-2017::1c",
+   "poa-specimen-2-2017::2a",
+   "poa-specimen-2-2017::2b",
+   "poa-specimen-2-2017::2c",
+   "poa-specimen-2-2017::3a",
+   "poa-specimen-2-2017::3b",
+   "poa-specimen-2-2017::3c",
+   "poa-specimen-2-2017::3d",
+   "poa-specimen-2-2017::3e",
+   "poa-specimen-2-2017::4a",
+   "poa-specimen-2-2017::4b",
+   "poa-specimen-2-2017::4c",
+   "poa-specimen-2-2017::4d",
+   "poa-specimen-2-2017::5a",
+   "poa-specimen-2-2017::5b",
+   "poa-specimen-2-2017::5c",
+   "poa-specimen-2-2017::5d",
+   "poa-specimen-2-2017::5e"
+  ],
+  "evidenceSha256": "8c86f4a0355eaddda4ad3b6ad718eb337ff0b96215f3d41da38d096f5c7ba8c8"
+ }
+]

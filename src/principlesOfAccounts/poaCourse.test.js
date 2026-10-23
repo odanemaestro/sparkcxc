@@ -109,7 +109,9 @@ test("V2 diagnoses correct and incorrect cells without claiming final authority"
     responses: correct,
   });
   expect(result.suggestedMarks).toBe(100);
-  expect(result.canPublishFinalScore).toBe(false);
+  // The private server can resolve the calibrated original one-mark numeric
+  // rubric. The browser diagnostics above remain advisory.
+  expect(result.canPublishFinalScore).toBe(true);
   const id = poaPaper2Criteria()[0].id;
   correct[id] = { answer: "123" };
   expect(reviewPoaPaper2V2(correct).candidateMarks).toBe(99);

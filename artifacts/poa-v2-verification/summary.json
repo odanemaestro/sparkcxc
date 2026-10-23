@@ -1,0 +1,44 @@
+{
+ "provenance": {
+  "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
+  "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
+  "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+  "workingTreeDirty": false,
+  "ranAt": "2026-10-23T05:03:03.149Z"
+ },
+ "criteria": 122,
+ "bySubject": {
+  "principles-of-accounts": {
+   "criteria": 122,
+   "verified": 100,
+   "failed": 0,
+   "blocked": 22
+  }
+ },
+ "byOutcome": {
+  "verified": 100,
+  "blocked": 22
+ },
+ "failureReasons": {},
+ "blockers": {
+  "accounts-specimen-method-and-presentation-policy-pending": 22
+ },
+ "papers": {
+  "total": 2,
+  "verified": 1,
+  "failed": [],
+  "blocked": 1
+ },
+ "rehearsal": {
+  "criteriaInserted": 100,
+  "criteriaRejected": [],
+  "papersInserted": 1,
+  "papersRejected": [],
+  "released": [
+   "principles-of-accounts/POA-ORIGINAL-02-01"
+  ],
+  "releaseRejected": [],
+  "criteriaRejectedCount": 0
+ },
+ "seconds": 2
+}
