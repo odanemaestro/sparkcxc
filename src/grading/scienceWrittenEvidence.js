@@ -31,6 +31,22 @@ function contrastedTerms(clause,reference){
   return CONTRASTS.some(([a,b])=>(wanted.has(a)&&!said.has(a)&&said.has(b))||(wanted.has(b)&&!said.has(b)&&said.has(a)));
 }
 
+/**
+ * A response clause states the opposite of a term the reference requires
+ * ("decrease the current" against "increase the current"), without the
+ * required term itself.
+ */
+export function statesOppositeOf(response,reference){
+  const wanted=new Set(words(reference));
+  // A pair whose two terms both appear in the reference ("large angles …
+  // a small nucleus") cannot tell a reversed claim apart.
+  const pairs=CONTRASTS.filter(([a,b])=>wanted.has(a)!==wanted.has(b));
+  return scienceResponseClauses(response).some(clause=>{
+    const said=new Set(words(clause));
+    return pairs.some(([a,b])=>wanted.has(a)?!said.has(a)&&said.has(b):!said.has(b)&&said.has(a));
+  });
+}
+
 export function matchScienceWrittenEvidence(response,reference,{tokens,tokenPresent,strict=false}){
   const terms=[...new Set(tokens(reference))];
   if(!terms.length)return {matched:false,evidence:"",contradicted:false};

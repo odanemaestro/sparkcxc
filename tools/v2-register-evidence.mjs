@@ -37,19 +37,42 @@ for(const p of papers){
 select spark_grading_private.register_criterion_verifications_v2(${quote(JSON.stringify(mine))}::jsonb);
 ${paperVerified?`select spark_grading_private.register_paper_verification_v2(${quote(JSON.stringify(p))}::jsonb);`:""}
 ${paperVerified&&doRelease?`select spark_grading_private.release_verified_rubric_v2(${lit(p.subjectId)},${lit(p.paperId)},${lit(p.rubricVersion)});`:""}
-commit;
-select r.subject_id,r.paper_id,r.verified_criteria,r.criteria,r.paper_verified,
- g.verification_status,g.active from spark_grading_private.rubric_release_status_v2 r
+-- Verify the database postconditions before commit. Supabase CLI may produce
+-- empty or human-readable stdout even though SQL succeeded, so commit success
+-- and this explicit server-side check are the source of truth.
+do $physics_release_status$
+declare v_criteria integer; v_approved integer;
+declare v_paper_verified boolean; v_active boolean; v_status text;
+begin
+ select r.criteria,r.verified_criteria,r.paper_verified,g.active,g.verification_status
+  into v_criteria,v_approved,v_paper_verified,v_active,v_status
+ from spark_grading_private.rubric_release_status_v2 r
  join spark_grading_private.rubrics_v2 g using(subject_id,paper_id,rubric_version)
- where r.subject_id=${lit(p.subjectId)} and r.paper_id=${lit(p.paperId)} and r.rubric_version=${lit(p.rubricVersion)};`;
+ where r.subject_id=${lit(p.subjectId)} and r.paper_id=${lit(p.paperId)}
+   and r.rubric_version=${lit(p.rubricVersion)};
+ if not found then raise exception 'Rubric status lookup failed'; end if;
+ if ${paperVerified} and
+  (v_approved is distinct from v_criteria or v_paper_verified is distinct from true) then
+  raise exception 'Paper verification not registered';
+ end if;
+ if ${paperVerified&&doRelease} and
+  (v_status is distinct from 'verified' or v_active is distinct from true) then
+  raise exception 'Paper was not activated';
+ end if;
+end
+$physics_release_status$;
+commit;`;
  const file=`${tmp}/${p.subjectId}-${p.paperId}.sql`;
  fs.writeFileSync(file,sql);
  try{
-  const out=execFileSync(process.platform==="win32"?"npx.cmd":"npx",
+  execFileSync(process.platform==="win32"?"npx.cmd":"npx",
    ["supabase","db","query","--linked","--project-ref",ref,"-f",file],
    {encoding:"utf8",stdio:["ignore","pipe","pipe"],shell:process.platform==="win32"});
-  const rows=JSON.parse(out.slice(out.indexOf("{"))).rows;
-  results.push({paper:p.subjectId+"/"+p.paperId,ok:true,...rows[0]});
+  // Success means the transaction committed with the database assertions
+  // satisfied. Do not JSON.parse CLI stdout: it may be empty on Windows.
+  results.push({paper:p.subjectId+"/"+p.paperId,ok:true,
+   status:paperVerified&&doRelease?"verified-active":
+    paperVerified?"paper-verified":"criteria-registered"});
  }catch(e){
   results.push({paper:p.subjectId+"/"+p.paperId,ok:false,error:String(e.stderr||e.message).slice(0,400)});
  }finally{fs.rmSync(file,{force:true});}

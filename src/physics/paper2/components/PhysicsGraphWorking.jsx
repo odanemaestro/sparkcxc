@@ -5,6 +5,7 @@ import {
  samplePhysicsGraphLine,
  validatePhysicsGradientTriangle,
  validatePhysicsPressureReading,
+ validatePhysicsCurrentReading,
 } from "../../../grading/physicsGraphWorkingEvidenceV2";
 
 /**
@@ -17,7 +18,8 @@ export default function PhysicsGraphWorking({questionId,partId,graphPart,graphRe
  const triangle=!!spec&&partId===spec.trianglePart;
  const reading=!!spec&&partId===spec.readingPart;
  const active=triangle||reading;
- const [selection,setSelection]=useState(partId==="d"?"5.56":"3.0");
+ const currentReading=reading&&questionId==="phy-p2-3-q1";
+ const [selection,setSelection]=useState(questionId==="phy-p2-1-q1"&&reading?"5.56":"3.0");
  if(!active)return null;
  const line=physicsGraphLine(graphResponse,questionId);
  const requestedX=Number(selection);
@@ -27,13 +29,15 @@ export default function PhysicsGraphWorking({questionId,partId,graphPart,graphRe
  const evidence=response?.graphEvidence;
  const points=triangle&&evidence?.kind==="physics-gradient-triangle-v1"
   &&Array.isArray(evidence.points)?evidence.points:[];
- const readPoint=reading&&evidence?.kind==="physics-pressure-reading-v1"
+ const readPoint=reading&&evidence?.kind===(currentReading?"physics-current-reading-v1":"physics-pressure-reading-v1")
   &&evidence.point&&Number.isFinite(evidence.point.x)&&Number.isFinite(evidence.point.y)
   ?evidence.point:null;
  const pointA=points[0]&&Number.isFinite(points[0].x)&&Number.isFinite(points[0].y)?points[0]:null;
  const pointB=points[1]&&Number.isFinite(points[1].x)&&Number.isFinite(points[1].y)?points[1]:null;
  const triangleValid=pointB&&validatePhysicsGradientTriangle({graphResponse,response,questionId});
- const readingValid=readPoint&&validatePhysicsPressureReading({graphResponse,response,questionId});
+ const readingValid=readPoint&&(currentReading
+  ?validatePhysicsCurrentReading({graphResponse,response,questionId})
+  :validatePhysicsPressureReading({graphResponse,response,questionId}));
  const limits=spec?.limits||{xMin:0,xMax:11,yMin:0,yMax:260};
  const xTicks=Array.from({length:6},(_,i)=>limits.xMin+(limits.xMax-limits.xMin)*i/5);
  const yTicks=Array.from({length:7},(_,i)=>limits.yMin+(limits.yMax-limits.yMin)*i/6);
@@ -46,7 +50,7 @@ export default function PhysicsGraphWorking({questionId,partId,graphPart,graphRe
   if(!selected)return;
   if(reading){
    onChange({...response,graphEvidence:{
-    kind:"physics-pressure-reading-v1",point:selected
+    kind:currentReading?"physics-current-reading-v1":"physics-pressure-reading-v1",point:selected
    }});
   }else{
    const next=step===1?[selected]:[pointA,selected];
@@ -63,9 +67,11 @@ export default function PhysicsGraphWorking({questionId,partId,graphPart,graphRe
    <p className="phy-p2-graph-working-help">
     {triangle
      ?"Choose two different positions on your own best-fit line, at least half the graph width apart, to draw the gradient triangle."
-     :"Choose the position near 1/V = 5.56 on your own graph, record the point, then write your pressure reading in the answer field."}
+     :currentReading
+      ?"Use your plotted line to find the current at V = 1.75 V. Record the point, then enter the current in the answer field."
+      :"Choose the position near 1/V = 5.56 on your own graph, record the point, then write your pressure reading in the answer field."}
    </p>
-   <svg viewBox="0 0 640 305" role="img" aria-label="Your saved best-fit pressure graph with selected working" className="phy-p2-working-graph">
+   <svg viewBox="0 0 640 305" role="img" aria-label="Your saved best-fit graph with selected working" className="phy-p2-working-graph">
     <rect x={area.left} y={area.top} width={area.width} height={area.height} fill="none" stroke="currentColor" opacity=".45"/>
     {xTicks.map(x=><g key={"x"+x}>
      <line x1={px(x)} x2={px(x)} y1={area.top} y2={area.top+area.height} className="phy-p2-working-grid"/>
@@ -104,7 +110,7 @@ export default function PhysicsGraphWorking({questionId,partId,graphPart,graphRe
     </div>
     <p role="status" className="phy-p2-graph-working-help">
      {triangle?(pointB?(triangleValid?"Gradient triangle recorded.":"Triangle is too short or does not match your saved line. Choose two points farther apart.") :pointA?"First point recorded. Choose the second.":"No triangle recorded yet.")
-      :readPoint?(readingValid?"Graph-reading point recorded. Enter the pressure in your answer.":"Reading no longer matches your line. Record it again."):"No graph-reading point recorded yet."}
+      :readPoint?(readingValid?(currentReading?"Current reading recorded. Enter the current in your answer.":"Graph-reading point recorded. Enter the pressure in your answer."):"Reading no longer matches your line. Record it again."):"No graph-reading point recorded yet."}
     </p>
    </div>
   </>}

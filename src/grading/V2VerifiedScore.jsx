@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React,{useEffect,useRef,useState} from "react";
 import {readServerExamV2Result} from "./serverExamAttempt";
 import "./serverMarking.css";
 
@@ -11,23 +11,29 @@ const MAX_POLLS=30;
  * plainly that the score is still being checked or needs review, and that any
  * on-screen mark is a practice estimate.
  */
-export default function V2VerifiedScore({supabase,attemptId,estimate=null,maxMarks}){
+export default function V2VerifiedScore({supabase,attemptId,estimate=null,maxMarks,onResult}){
   const [result,setResult]=useState(null);
   const [polls,setPolls]=useState(0);
+  const [refreshKey,setRefreshKey]=useState(0);
+  const onResultRef=useRef(onResult);
+  onResultRef.current=onResult;
   useEffect(()=>{
     if(!attemptId||!supabase?.rpc)return undefined;
     let cancelled=false,timer;
     const poll=async(count)=>{
       const next=await readServerExamV2Result({supabase,attemptId});
       if(cancelled)return;
-      if(next.available)setResult(next);
+      if(next.available){
+        setResult(next);
+        onResultRef.current?.(next);
+      }
       setPolls(count);
-      const pending=!next.available||next.status==="queued"||next.status==="running"||next.status==="retry";
+      const pending=!next.available||["queued","running","retry","provisional"].includes(next.status);
       if(pending&&count<MAX_POLLS)timer=setTimeout(()=>poll(count+1),POLL_MS);
     };
     poll(1);
     return()=>{cancelled=true;clearTimeout(timer);};
-  },[supabase,attemptId]);
+  },[supabase,attemptId,refreshKey]);
 
   if(!attemptId||!supabase?.rpc)return null;
   const status=result?.status;
@@ -54,5 +60,7 @@ export default function V2VerifiedScore({supabase,attemptId,estimate=null,maxMar
     <div className="spark-marking-review-head"><div><span className="spark-marking-eyebrow">SPARK server marking</span>
       <h2>Your verified result</h2></div></div>
     {body}
+    {status!=="verified" && <button className="it-practice-secondary" type="button"
+      onClick={()=>{setPolls(0);setRefreshKey(n=>n+1);}}>Check verified result</button>}
   </section>;
 }

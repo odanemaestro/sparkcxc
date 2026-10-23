@@ -1,0 +1,59 @@
+name: V2 Mathematics and Science criterion calibration
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/grading/**"
+      - "src/practice/**"
+      - "src/integratedScience/**"
+      - "tools/v2-verify-all.mjs"
+      - "tools/report-v2-criterion-gaps.mjs"
+      - "supabase/migrations/**"
+      - ".github/workflows/v2-math-science-calibration.yml"
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Mathematics source-bound criterion verification
+        run: |
+          node tools/v2-verify-all.mjs --subject mathematics --out artifacts/v2-math-calibration
+          node tools/report-v2-criterion-gaps.mjs artifacts/v2-math-calibration
+      - name: Integrated Science source-bound criterion verification
+        run: |
+          node tools/v2-verify-all.mjs --subject integrated-science --out artifacts/v2-science-calibration
+          node tools/report-v2-criterion-gaps.mjs artifacts/v2-science-calibration
+      - name: Print only newly verified criteria for source-bound registration
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const ids=new Set([
+            "p2-q2-v2::a","p2-q2-v2::b1",
+            "IS-M2-P2-08::(b)::(i)","IS-M2-P2-14::(c)::(i)"
+          ]);
+          const files=[
+            "artifacts/v2-math-calibration/evidence.json",
+            "artifacts/v2-science-calibration/evidence.json"
+          ];
+          const hits=files.flatMap(f=>JSON.parse(fs.readFileSync(f,"utf8")))
+            .filter(r=>ids.has(r.criterionId)&&r.outcome==="verified");
+          if(hits.length!==ids.size)throw Error(
+            "One or more expected new criteria have not passed verification");
+          console.log("V2_REGISTERABLE_RECORDS="+JSON.stringify(hits));
+          NODE
+      - name: Upload complete evidence and failure reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v2-math-science-criterion-calibration
+          path: |
+            artifacts/v2-math-calibration/
+            artifacts/v2-science-calibration/
+          if-no-files-found: warn

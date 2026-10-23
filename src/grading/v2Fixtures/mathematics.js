@@ -54,7 +54,22 @@ export function mathematicsFixtures({criterion,part,maxMarks}){
  if(!answer)return {blocked:"no-registered-source-answer"};
  if(scheme.some(c=>c?.check?.type==="manual-verification"))
   return {blocked:"manual-verification-criterion"};
- const curated=CURATED_MATHEMATICS[criterion.id]||[];
+ const sourceMA=scheme.length===2 && maxMarks===2 &&
+  scheme[0]?.kind==="M" && scheme[0]?.marks===1 && scheme[0]?.field==="working" &&
+  scheme[0]?.check?.type==="containsEquivalentExpression" &&
+  typeof scheme[0]?.check?.value==="string" &&
+  scheme[1]?.kind==="A" && scheme[1]?.marks===1 &&
+  scheme[1]?.field==="answer" && scheme[1]?.check?.type==="expression";
+ const sourceCases=sourceMA?[
+  F("full",{answer,working:scheme[0].check.value},maxMarks,
+   "source-specified method expression and final accuracy"),
+  F("partial",{answer:perturbAnswer(answer),working:scheme[0].check.value},1,
+   "source-specified method with an incorrect final result"),
+  ...((()=>{const form=commuted(answer)||((/^[0-9]+[a-z][\^0-9]+[a-z][\^0-9]+$/i.test(answer))?answer.replace(/([0-9])([a-z])/gi,'$1*$2').replace(/(\^[0-9]+)([a-z])/gi,'$1*$2'):null);return form?[F("equivalent",
+   {answer:form,working:scheme[0].check.value},maxMarks,"commuted factors")]:[];})())
+ ]:[];
+ const authored=CURATED_MATHEMATICS[criterion.id]||[];
+ const curated=[...sourceCases.filter(f=>!authored.some(x=>x.cls===f.cls)),...authored];
  const fixtures=[F("full",{answer,working:solution},maxMarks)];
  const accepted=[...new Set([...(part?.accepted||[]),
   ...scheme.flatMap(c=>c.check?.accepted||[])].map(String))].filter(a=>a&&a!==answer);
@@ -82,7 +97,13 @@ export function mathematicsFixtures({criterion,part,maxMarks}){
   F("irrelevant",{answer:"banana",working:"I am not sure how to do this question."},0),
   F("ceiling",{answer:answer+" "+answer,working:solution+"\n"+solution},{min:0,max:maxMarks}),
   ...curated);
+ // Only use source-authored override fixtures for their declared class.
+ // An old generic fixture whose "working" is an explanatory paragraph,
+ // rather than a parseable mathematical expression, can falsely withhold a
+ // correct method mark. Keep all other adversarial test classes intact.
+ const overridden=new Set(curated.map(f=>f.cls));
+ const sourceChecked=fixtures.filter(f=>!overridden.has(f.cls)||curated.includes(f));
  return {kind:"structured",sourceAnswer:{answer,working:solution},
-  alternatives:fixtures.filter(f=>f.cls==="equivalent").map(f=>f.response),
-  allOrNothing:scheme.length<=1,fixtures};
+  alternatives:sourceChecked.filter(f=>f.cls==="equivalent").map(f=>f.response),
+  allOrNothing:scheme.length<=1,fixtures:sourceChecked};
 }

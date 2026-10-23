@@ -1,3 +1,10 @@
+import {markSourceFiltrationDrawing} from "./scienceFiltrationDrawingMarking";
+import {markCircuitConstruction} from "./scienceCircuitConstructionMarking";
+import {markSourceCircuitSymbols} from "./scienceCircuitSymbolMarking";
+import {markSourceParticleDiagram} from "./scienceParticleDiagramMarking";
+import {gradeAdditionalTable} from "./scienceAdditionalTableMarking";
+import {markSourceRustTable} from "./scienceRustTableMarking";
+import {markSourceHypothesis} from "./scienceHypothesisMarking";
 import { markScienceCalculation, SCIENCE_TABLES } from "./scienceStructuredMarking";
 import { gradeScienceGraph } from "./scienceGraphMarking";
 import { matchScienceWrittenEvidence } from "../../grading/scienceWrittenEvidence";
@@ -79,6 +86,9 @@ function evidenceMatch(response, reference, strict=false){
 }
 
 function parseLabelPoint(point){
+  const raw=String(point||"").trim();
+  const wire=raw.match(/^([A-Za-z0-9]+) *[(](?:earth|neutral|live)[)] *[-:] *(.+?) *[(]1[)]$/i);
+  if(wire)return {key:wire[1],answer:wire[2].trim()};
   const match=String(point || "").match(/^\s*([A-Za-z0-9]+)\s*[-–:]\s*([^()]+?)(?:\s*\(|$)/);
   return match ? {key:match[1].trim(),answer:match[2].trim()} : null;
 }
@@ -189,6 +199,8 @@ function lineResult(questionId,partIndex,itemIndex,item,responses){
   const base=`${questionId}:${partIndex}:${itemIndex}`;
   const list=integratedScienceValueList(item);
   if(list)return valueListResult(base,item,list,responses[base]);
+  const hypothesis=markSourceHypothesis(questionId,item,responses[base]);
+  if(hypothesis)return hypothesis;
   return gradeSciencePointLines(base,integratedScienceLineItem(item),responses[base]||"");
 }
 
@@ -394,7 +406,30 @@ export function gradeIntegratedSciencePaper2Item(question,partIndex,itemIndex,it
   if(type==="calculation") return calculationResult(question.id,partIndex,itemIndex,item,responses);
   if(type==="table") return tableResult(question.id,partIndex,itemIndex,item,responses);
   if(type==="graph") return gradeScienceGraph(question,partIndex,itemIndex,item,responses,(a,b)=>evidenceMatch(a,b,true));
-  if(type==="drawing") return visualResult(question.id,partIndex,itemIndex,item,responses);
+  if(type==="drawing"){
+    const base=`${question.id}:${partIndex}:${itemIndex}`;
+    const freehand=String(responses[`${base}:strokes`]||"")!==""
+     && String(responses[`${base}:strokes`])!=="[]" || Boolean(String(responses[base]||"").trim());
+    const table=markSourceRustTable(question.id,partIndex,itemIndex,item,
+     responses[`${base}:drawingTable`],freehand);
+    if(table)return table;
+    const additional=gradeAdditionalTable(question.id,partIndex,itemIndex,item,
+     responses[`${base}:drawingTable`],freehand);
+    if(additional)return additional;
+    const geometry=markSourceParticleDiagram(question.id,partIndex,itemIndex,item,
+     responses[`${base}:particleLayout`],freehand);
+    if(geometry)return geometry;
+    const symbols=markSourceCircuitSymbols(question.id,partIndex,itemIndex,item,
+     responses[`${base}:symbolDrawing`],freehand);
+    if(symbols)return symbols;
+    const circuit=markCircuitConstruction(question.id,partIndex,itemIndex,item,
+     responses[`${base}:circuitNetlist`],freehand);
+    if(circuit)return circuit;
+    const filtration=markSourceFiltrationDrawing(question.id,partIndex,itemIndex,item,
+     responses[`${base}:filtrationDrawing`],freehand);
+    if(filtration)return filtration;
+    return visualResult(question.id,partIndex,itemIndex,item,responses);
+  }
   return lineResult(question.id,partIndex,itemIndex,item,responses);
 }
 

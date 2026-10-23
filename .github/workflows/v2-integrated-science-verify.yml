@@ -1,0 +1,114 @@
+name: Verify Integrated Science V2 criterion evidence
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/integratedScience/practice/scienceHypothesisMarking.js"
+      - "src/integratedScience/practice/scienceRustTableMarking.js"
+      - "src/integratedScience/practice/scienceAdditionalTableMarking.js"
+      - "src/integratedScience/practice/scienceParticleDiagramMarking.js"
+      - "src/integratedScience/practice/scienceCircuitSymbolMarking.js"
+      - "src/integratedScience/practice/scienceCircuitConstructionMarking.js"
+      - "src/integratedScience/practice/scienceFiltrationDrawingMarking.js"
+      - "src/integratedScience/practice/scienceFiltrationDrawingMarking.test.js"
+      - "src/integratedScience/practice/ScienceFiltrationDrawingResponse.jsx"
+      - "src/integratedScience/practice/ScienceFiltrationDrawingResponse.test.jsx"
+      - "src/integratedScience/practice/ScienceDrawingMagnificationEvidence.jsx"
+      - "src/integratedScience/practice/ScienceDrawingMagnificationEvidence.test.jsx"
+      - "src/integratedScience/practice/ScienceBiologicalDrawingEvidence.jsx"
+      - "src/integratedScience/practice/ScienceGuidedDiagramPractice.jsx"
+      - "src/integratedScience/practice/ScienceGuidedDiagramPractice.test.jsx"
+      - "src/integratedScience/practice/scienceGuidedDiagramMarking.js"
+      - "src/integratedScience/practice/scienceGuidedDiagramMarking.test.js"
+      - "src/integratedScience/practice/integratedScienceAdaptedPaper2.js"
+      - "src/integratedScience/practice/integratedScienceAdaptedPaper2.test.js"
+      - "src/integratedScience/practice/IntegratedScienceAdaptedPaper2Assessment.jsx"
+      - "src/integratedScience/practice/IntegratedScienceAdaptedPaper2Assessment.test.jsx"
+      - "src/integratedScience/practice/IntegratedSciencePaper2Exam.jsx"
+      - "src/integratedScience/practice/IntegratedSciencePaper2Exam.jsx"
+      - "src/integratedScience/practice/ScienceBiologicalDrawingEvidence.test.jsx"
+      - "src/integratedScience/practice/scienceCircuitConstructionMarking.test.js"
+      - "src/integratedScience/practice/ScienceCircuitConstructionResponse.jsx"
+      - "src/integratedScience/practice/ScienceCircuitConstructionResponse.test.jsx"
+      - "src/integratedScience/practice/scienceCircuitSymbolMarking.test.js"
+      - "src/integratedScience/practice/ScienceCircuitSymbolResponse.jsx"
+      - "src/integratedScience/practice/ScienceCircuitSymbolResponse.test.jsx"
+      - "src/integratedScience/practice/scienceParticleDiagramMarking.test.js"
+      - "src/integratedScience/practice/ScienceParticleDiagramResponse.jsx"
+      - "src/integratedScience/practice/ScienceParticleDiagramResponse.test.jsx"
+      - "src/integratedScience/practice/scienceAdditionalTableMarking.test.js"
+      - "src/integratedScience/practice/scienceRustTableMarking.test.js"
+      - "src/integratedScience/practice/ScienceDrawingTableResponse.jsx"
+      - "src/integratedScience/practice/ScienceDrawingTableResponse.test.jsx"
+      - "src/integratedScience/practice/scienceHypothesisMarking.test.js"
+      - "src/integratedScience/practice/integratedSciencePaper2Grader.js"
+      - "src/grading/serverPaper2V2SubjectEngine.js"
+      - "src/grading/v2VerificationRun.js"
+      - "src/grading/v2Fixtures/integratedScienceHypothesis.js"
+      - "src/grading/v2Fixtures/integratedScienceRustTable.js"
+      - "src/grading/v2Fixtures/integratedScienceAdditionalTables.js"
+      - "src/grading/v2Fixtures/integratedScienceParticles.js"
+      - "src/grading/v2Fixtures/integratedScienceCircuitSymbols.js"
+      - "src/grading/v2Fixtures/integratedScienceCircuits.js"
+      - "src/grading/v2Fixtures/integratedScienceFiltration.js"
+      - ".github/workflows/v2-integrated-science-verify.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Hypothesis regression tests
+        run: npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js ScienceDrawingTableResponse.test.jsx scienceAdditionalTableMarking.test.js scienceParticleDiagramMarking.test.js ScienceParticleDiagramResponse.test.jsx scienceCircuitSymbolMarking.test.js ScienceCircuitSymbolResponse.test.jsx scienceCircuitConstructionMarking.test.js ScienceCircuitConstructionResponse.test.jsx scienceFiltrationDrawingMarking.test.js ScienceFiltrationDrawingResponse.test.jsx ScienceDrawingMagnificationEvidence.test.jsx ScienceBiologicalDrawingEvidence.test.jsx ScienceGuidedDiagramPractice.test.jsx scienceGuidedDiagramMarking.test.js integratedScienceAdaptedPaper2.test.js IntegratedScienceAdaptedPaper2Assessment.test.jsx
+        env:
+          CI: true
+      - name: Verify all registered Integrated Science criteria
+        run: node tools/v2-verify-all.mjs --subject integrated-science --out artifacts/v2-science-verification
+      - name: Report source-bound verified hypotheses
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const evidence=JSON.parse(fs.readFileSync("artifacts/v2-science-verification/evidence.json","utf8"));
+          const ids=[
+            "IS-M2-P2-07::(a)::(ii)",
+            "IS-M3-P2-11::(c)::(i)",
+            "IS-M3-P2-13::(b)::(i)",
+            "IS-M1-P2-15::(b)::(i)",
+            "IS-M3-P2-05::(a)::(i)",
+            "IS-M2-P2-07::(a)::(iii)",
+            "IS-M2-P2-13::(b)::(i)",
+            "IS-M3-P2-15::(a)::(i)",
+            "IS-M3-P2-25::(b)::(i)",
+            "IS-M2-P2-25::(b)::(i)",
+            "IS-M2-P2-07::(a)::(i)",
+            "IS-M2-P2-15::(a)::(i)",
+            "IS-M3-P2-11::(a)::(ii)"
+          ];
+          for(const id of ids){
+            const rec=evidence.find(x=>x.criterionId===id);
+            console.log(JSON.stringify({id,outcome:rec?.outcome,blocker:rec?.blocker,
+              failures:rec?.failures,uncommitted:rec?.uncommittedClasses,missing:rec?.missingClasses}));
+          }
+          const records=ids.map(id=>evidence.find(x=>x.criterionId===id));
+          if(records.every(r=>r?.outcome==="verified"&&r?.provenance?.workingTreeDirty===false)){
+            console.log("SPARK_SOURCE_APPROVAL_EVIDENCE_BASE64="+Buffer.from(JSON.stringify(records)).toString("base64"));
+          } else {
+            console.log("No registerable hypothesis evidence: at least one item is not verified.");
+          }
+          const summary=JSON.parse(fs.readFileSync("artifacts/v2-science-verification/summary.json","utf8"));
+          console.log("SUMMARY="+JSON.stringify(summary.bySubject));
+          NODE
+      - name: Upload verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integrated-science-v2-evidence
+          path: artifacts/v2-science-verification/
+          if-no-files-found: warn

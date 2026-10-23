@@ -21,10 +21,24 @@ import {CURATED_FNH} from "./v2Fixtures/fnhCurated";
 import {fnhPointValue,fnhDistinctPairs} from "../fnh/practice/fnhPaper2Marking";
 import INTEGRATED_SCIENCE_PAPER2_SPECS from "../integratedScience/data/integratedSciencePaper2Specs.json";
 import {integratedScienceStructuredFixtures} from "./v2Fixtures/integratedScience";
+import {integratedScienceHypothesisFixtures} from "./v2Fixtures/integratedScienceHypothesis";
+import {integratedScienceRustTableFixtures} from "./v2Fixtures/integratedScienceRustTable";
+import {additionalTableFixtures} from "./v2Fixtures/integratedScienceAdditionalTables";
+import {integratedScienceParticleFixtures} from "./v2Fixtures/integratedScienceParticles";
+import {integratedScienceCircuitSymbolFixtures} from "./v2Fixtures/integratedScienceCircuitSymbols";
+import {integratedScienceCircuitFixtures} from "./v2Fixtures/integratedScienceCircuits";
+import {filtrationSourceFixtures} from "./v2Fixtures/integratedScienceFiltration";
 import {integratedScienceGraphInText} from "../integratedScience/practice/integratedSciencePaper2Grader";
 import {CURATED_IS} from "./v2Fixtures/integratedScienceCurated";
 import {poaOriginalFixtures} from "./v2Fixtures/principlesOfAccountsOriginal";
 import {poaMethodFixtures} from "./v2Fixtures/principlesOfAccountsMethods";
+import {physicsFixtures} from "./v2Fixtures/physics";
+import {CURATED_PHYSICS} from "./v2Fixtures/physicsCurated";
+import physicsSource1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
+import physicsSource2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
+import physicsSource3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
+import physicsSource4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
+const physicsSources=new Map([physicsSource1,physicsSource2,physicsSource3,physicsSource4].map(p=>[p.paper_id,p]));
 
 // Criteria of every paper in the current run, for on-topic wrong answers.
 const papersById=new Map();
@@ -118,6 +132,20 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
   if(ii<0)return {blocked:"criterion-not-found-in-source-bank"};
   const item=question.parts[pi].items[ii];
   const type=item.response?.type||"lines";
+  const hypothesis=integratedScienceHypothesisFixtures(qid,item,criterion.maxMarks);
+  if(hypothesis)return hypothesis;
+  const rustTable=integratedScienceRustTableFixtures(qid,pi,ii,item,criterion.maxMarks);
+  if(rustTable)return rustTable;
+  const extraTable=additionalTableFixtures(qid,pi,ii,item,criterion.maxMarks);
+  if(extraTable)return extraTable;
+  const particles=integratedScienceParticleFixtures(qid,pi,ii,item,criterion.maxMarks);
+  if(particles)return particles;
+  const symbols=integratedScienceCircuitSymbolFixtures(qid,pi,ii,item,criterion.maxMarks);
+  if(symbols)return symbols;
+  const circuits=integratedScienceCircuitFixtures(qid,pi,ii,item,criterion.maxMarks);
+  if(circuits)return circuits;
+  const filtration=filtrationSourceFixtures(qid,pi,ii,item,criterion.maxMarks);
+  if(filtration)return filtration;
   if(integratedScienceGraphInText(item))return {blocked:"graph-question-without-graph-response-input"};
   const structured=integratedScienceStructuredFixtures({base:qid+":"+pi+":"+ii,item,maxMarks:criterion.maxMarks});
   if(structured){
@@ -131,6 +159,16 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
    curated:CURATED_IS[criterion.id]||[]});
   if(set.blocked)return set;
   return {...set,ruleId:"is:lines"};
+ }
+ if(subjectId==="physics"){
+  const paper=physicsSources.get(paperId);
+  const [qid,pid]=criterion.id.split("::");
+  const question=paper?.questions.find(q=>q.question_id===qid);
+  const part=question?.parts.find(p=>p.id===pid);
+  if(!part)return {blocked:"criterion-not-found-in-source-paper"};
+  const set=physicsFixtures({paper,question,part,maxMarks:criterion.maxMarks,curated:CURATED_PHYSICS[criterion.id]||[]});
+  if(set.blocked)return set;
+  return {...set,ruleId:"physics:"+(part.responseType||"text")+":"+(part.criteria||[]).map(c=>c.code+(c.check?"="+c.check.type:"")).join(",")};
  }
  return {blocked:"subject-resolution-policy-not-yet-verified"};
 }

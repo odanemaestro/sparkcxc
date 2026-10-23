@@ -402,3 +402,12 @@
 .phy-p2-graph-working-buttons button:focus-visible{outline:3px solid var(--p2-teal);outline-offset:2px}
 .phy-p2-graph-working-buttons .phy-p2-working-clear{background:transparent}
 @media(max-width:560px){.phy-p2-graph-working{padding:12px}.phy-p2-graph-working-buttons{display:grid;grid-template-columns:1fr}.phy-p2-graph-working-buttons button{width:100%;min-height:44px}}
+
+/* Honest Physics V2 submission state, with a visible, accessible retry. */
+.phy-p2-server-submission{margin-top:16px;padding:18px 20px;border:1px solid var(--p2-border);border-radius:14px;background:var(--p2-card);color:var(--p2-ink)}
+.phy-p2-server-submission strong{font-size:16px}
+.phy-p2-server-submission p{font-size:14px;line-height:1.6;color:var(--p2-soft-ink);margin:8px 0 14px}
+.phy-p2-server-submission .phy-p2-secondary{min-height:44px}
+.phy-p2-server-submission button:focus-visible{outline:3px solid var(--p2-teal);outline-offset:3px}
+.phy-p2-result-actions button:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:560px){.phy-p2-server-submission{padding:15px}.phy-p2-server-submission .phy-p2-secondary{width:100%}}

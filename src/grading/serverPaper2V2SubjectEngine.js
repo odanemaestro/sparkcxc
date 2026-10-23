@@ -10,15 +10,21 @@ import {evaluatePoaSourceV2} from "../principlesOfAccounts/poaMarkingV2";
 import {evaluatePoaMethodsV2,POA_METHOD_SOURCE_FORMAT} from "../principlesOfAccounts/marking/poaMethodRegistry";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
 import {CHECKERS} from "../practice/cxcMarking/checkers";
-import {markPhysicsPaper2} from "../physics/paper2/physicsPaper2Marking";
+import {markPhysicsPaper2,physicsPaper2FollowThroughSources,physicsPaper2TableCells,unsuperscript,
+ physicsFormulaShown,physicsModelStatements,physicsAlignedStatements} from "../physics/paper2/physicsPaper2Marking";
 import physicsPaper1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
+import {getPhysicsGraphWorkingSpec} from "./physicsGraphWorkingSpecsV2";
+import {evaluatePhysicsGraphGradient,evaluatePhysicsGraphPressure} from "./physicsGraphGradientV2";
+import {evaluatePhysicsSourceGradient} from "./physicsGraphGradientPoliciesV2";
+import {physicsCanonicalWrittenPartial,physicsCanonicalWrong,physicsCanonicalFull} from "./physicsCanonicalWrittenPartialV2";
+import {evaluatePhysicsCurrentGraphReading} from "./physicsCurrentGraphReadingV2";
 import physicsPaper2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
 import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
 import physicsPaper4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
 import {gradeInformationTechnologyPart,informationTechnologyPaper2RuleFor,informationTechnologyResponseText} from "../informationTechnology/practice/itPaper2Marking";
 import {IT_CANONICAL_CONCEPTS,phrasePresent,conceptPresent} from "../informationTechnology/practice/itPaper2Canonical";
 import {certainWrittenMark,keyTerms,cleanSourcePoint} from "./v2WrittenEvidenceGate";
-import {scienceResponseClauses} from "./scienceWrittenEvidence";
+import {scienceResponseClauses,statesOppositeOf} from "./scienceWrittenEvidence";
 import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json";
 import {gradeChemistryPaper2Item,chemistryPointIsNumeric,chemistryPointMarks,chemistryFinalNumericEvidence,
  chemistryEquationPoint,chemistryEstimatePoint,wordEquationPoint,scienceMarkedPoints} from "../chemistry/practice/chemistryPaper2Grader";
@@ -39,7 +45,7 @@ import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Orig
 // joins this set only once its resolution policy is covered by the
 // criterion verification matrix (src/grading/v2CriterionVerifier.js).
 const resolutionPolicySubjects=new Set(["information-technology","mathematics","chemistry","food-nutrition-and-health",
- "integrated-science","principles-of-accounts"]);
+ "integrated-science","physics","principles-of-accounts"]);
 const subjectIds=new Set([
  "mathematics","physics","information-technology","chemistry","english-a",
  "food-nutrition-and-health","integrated-science","social-studies","principles-of-business","principles-of-accounts"
@@ -321,6 +327,16 @@ const graphSourceMatches=(registered,original)=>
    c.marks===expected?.marks&&c.manual===expected?.manual&&
    c.description===expected?.description;
  });
+// PostgreSQL jsonb canonicalizes object key order; JavaScript source files
+// preserve authoring order. Compare complete nested values, not key order,
+// before accepting any source-specific marking rule.
+const physicsStableJSON=value=>Array.isArray(value)
+ ?value.map(physicsStableJSON):object(value)
+  ?Object.fromEntries(Object.keys(value).sort().map(key=>[key,physicsStableJSON(value[key])]))
+  :value;
+const physicsSameCriteria=(registered,authored)=>
+ JSON.stringify(physicsStableJSON(registered))===
+ JSON.stringify(physicsStableJSON(authored));
 function physics(rows,responses,paperId){
  const original=physicsSourcePapers.get(paperId);
  if(!original)throw new Error("Unknown registered Physics source paper: "+paperId);
@@ -343,6 +359,15 @@ function physics(rows,responses,paperId){
     return {...src,grid:originalPart.grid,graph:originalPart.graph,
      id:fields[1],marks:row.maxMarks};
    }
+   if(src.responseType==="table"){
+    // The private rubric registry omits the source table (and its populated
+    // cells). Rehydrate it from the immutable, source-checked paper before
+    // assessing column consistency and significant-figure marks. Without
+    // this, P2-2-Q1(a) silently loses B1 even on a perfect completed table.
+    if(originalPart.responseType!=="table"||!Array.isArray(originalPart.table?.rows))
+     throw new Error("Registered Physics source table drift: "+row.id);
+    return {...src,table:originalPart.table,id:fields[1],marks:row.maxMarks};
+   }
    return {...src,id:fields[1],marks:row.maxMarks};
   })});
  }
@@ -350,27 +375,263 @@ function physics(rows,responses,paperId){
   marks:rows.reduce((n,r)=>n+r.maxMarks,0)};
  const examination=markPhysicsPaper2(paper,responses);
  return rows.map(row=>{
-  const grade=examination.criteria.filter(x=>
-   x.question.question_id+"::"+x.part.id===row.id)
-   .reduce((n,x)=>n+x.earned,0);
+  const lines=examination.criteria.filter(x=>
+   x.question.question_id+"::"+x.part.id===row.id);
+  const grade=lines.reduce((n,x)=>n+x.earned,0);
   const source=sourceMarking(row);
   const response=read(responses,row.id);
-  const manualGraph=source.responseType==="graph"&&
-    source.criteria?.some(criterion=>criterion.manual===true);
-  if(manualGraph){
-   const originalPart=originalParts.get(row.id);
-   const typed=submittedSourceGraph(response,originalPart);
-   // Coordinates/axes/points/line are real structured diagnostics, unlike
-   // the former permanently-zero graph stub. Do not claim entire-paper
-   // resolution or paper approval from these provisional visual marks.
-   return cap(row,typed?grade:0,
-    typed?"source-graph-typed-advisory":"physics-graph-requires-artifact-verification",
-    blank(response));
+  const originalPart=originalParts.get(row.id);
+  // Saved triangle and read-off geometry is source-bound advisory evidence.
+  // It must not independently approve a rubric or publish a score. The
+  // candidate never chooses the graph part or the method-mark allocation.
+  const [questionId,partId]=row.id.split("::");
+  const spec=getPhysicsGraphWorkingSpec(questionId);
+  if(spec && (partId===spec.trianglePart || partId===spec.readingPart)){
+   const originalCodes=originalPart?.criteria?.map(c=>[c.code,c.marks]);
+   const registeredCodes=source.criteria?.map(c=>[c.code,c.marks]);
+   if(JSON.stringify(originalCodes)!==JSON.stringify(registeredCodes))
+    throw new Error("Source drift in registered Physics graph working "+row.id);
+   const previousGraphResponse=read(responses,questionId+"::"+spec.graphPart)||{};
+   const verifiedGraph=originalParts.get(questionId+"::"+spec.graphPart);
+   if(verifiedGraph?.responseType!=="graph"||
+      !submittedSourceGraph(previousGraphResponse,verifiedGraph)){
+    // Without a usable drawn graph, a numerical response may still have
+    // legitimate alternative method marks. Abstain on it. An entirely blank
+    // response, however, cannot earn a triangle or read-off mark and can be
+    // scored as a certain zero even when the earlier graph is missing.
+    if(blank(response))return cap(row,0,"physics-empty-graph-dependent-response",true);
+    return cap(row,grade,"existing-physics-rubric-checks",false);
+   }
+   const evidence=partId===spec.trianglePart
+    ?paperId===physicsPaper1.paper_id
+     ?evaluatePhysicsGraphGradient({response,previousGraphResponse})
+     :evaluatePhysicsSourceGradient({questionId,response,previousGraphResponse})
+    :partId===spec.readingPart && paperId===physicsPaper1.paper_id
+     ?evaluatePhysicsGraphPressure({response,previousGraphResponse,
+       previousGradientResponse:read(responses,questionId+"::"+spec.trianglePart)||{}})
+     :partId===spec.readingPart && paperId===physicsPaper3.paper_id
+      ?evaluatePhysicsCurrentGraphReading({response,previousGraphResponse})
+      :null;
+   if(evidence){
+    // Geometry-only candidate marks are not trusted whole-part scores.
+    // Preserve any previously estimated marks and never publish from here.
+    // Reconcile each individual M/A/B allocation. A whole-part maximum
+    // would incorrectly combine marks earned for different criteria.
+    const evidenceByCode=new Map(evidence.criteria.map(item=>[item.id,item]));
+    const graphOnlyMethods=partId===spec.trianglePart?["M1"]:
+     paperId===physicsPaper3.paper_id?["M1","M2"]:["M2"];
+    const reconciled=originalPart.criteria.reduce((total,criterion)=>{
+     const legacy=lines.find(line=>line.criterion.code===criterion.code);
+     const suggested=evidenceByCode.get(criterion.code)?.candidateMarks;
+     // A verbal claim or correct result cannot stand in for the graphical
+     // action explicitly required by the original Physics marking scheme.
+     if(graphOnlyMethods.includes(criterion.code))
+      return total+(typeof suggested==="number"?Math.min(criterion.marks,suggested):0);
+     return total+Math.min(criterion.marks,Math.max(legacy?.earned||0,
+      typeof suggested==="number"?suggested:0));
+    },0);
+    // Certify only decisions with complete source-supported graphical proof.
+    // A correct gradient quantity and unit plus an explicit recorded triangle
+    // establish each M/A/B allocation. A missing triangle costs M1 even when
+    // the numeric result is right. Unrecognised numerical expressions,
+    // follow-through and ambiguous units are kept provisional.
+    const fullGradient=partId===spec.trianglePart &&
+     evidence.criteria.find(x=>x.id==="A1")?.candidateMarks===1 &&
+     evidence.criteria.find(x=>x.id==="B1")?.candidateMarks===1;
+    const noQuantityOrGraph=partId===spec.trianglePart &&
+     !/\d/.test(String(object(response)?response.answer??"":response??"")) &&
+     !String(object(response)?response.working??"":"").trim() &&
+     !(object(response)&&response.graphEvidence);
+    const pressureMethod=partId===spec.readingPart&&
+     paperId===physicsPaper1.paper_id;
+    const sourcePressure=evidence.criteria.find(x=>x.id==="A1");
+    const correctPressure=pressureMethod&&
+     sourcePressure?.candidateMarks===1&&
+     sourcePressure?.reason==="source-accepted-pressure-range";
+    const inverseShown=pressureMethod&&
+     evidence.criteria.find(x=>x.id==="M1")?.candidateMarks===1;
+    const readingShown=pressureMethod&&
+     evidence.criteria.find(x=>x.id==="M2")?.candidateMarks===1;
+    const cleanUnrecorded=pressureMethod&&
+     !object(response)?.graphEvidence&&
+     !/read(?:s|ing)?\s+(?:off|from)|graph|plot/i.test(
+      String(object(response)?response.working??"":""));
+    const certainPressure=correctPressure&&inverseShown&&
+     (readingShown||cleanUnrecorded);
+    const currentMethod=partId===spec.readingPart&&
+     paperId===physicsPaper3.paper_id;
+    const currentAnswer=evidence.criteria.find(x=>x.id==="A1");
+    const currentCertain=currentMethod&&
+     currentAnswer?.candidateMarks===1&&
+     (evidence.criteria.find(x=>x.id==="M1")?.candidateMarks===1||
+      (!object(response)?.graphEvidence&&
+       !/read(?:s|ing)?\s+(?:off|from)|graph|plot/i.test(
+        String(object(response)?response.working??"":""))));
+    const noCurrentEvidence=currentMethod&&
+     !/\d/.test(String(object(response)?response.answer??"":response??""))&&
+     !String(object(response)?response.working??"":"").trim()&&
+     !object(response)?.graphEvidence;
+    const noPressureEvidence=pressureMethod&&
+     !/\d/.test(String(object(response)?response.answer??"":response??""))&&
+     !String(object(response)?response.working??"":"").trim()&&
+     !object(response)?.graphEvidence;
+    const definitelyResolved=fullGradient||noQuantityOrGraph||
+     certainPressure||noPressureEvidence||currentCertain||noCurrentEvidence;
+    return cap(row,reconciled,
+     "existing-physics-graph-working-advisory",definitelyResolved);
+   }
   }
-  const resolved=blank(response)||
-    (source.criteria?.length>0&&
-     source.criteria.every(c=>c.check&&c.check.type==="value"));
-  return cap(row,grade,"existing-physics-rubric-checks",resolved);
+  if(source.responseType==="graph"){
+   // Only the structured graph (labels, scale, plotted points, line) is
+   // marked; anything else earns nothing and is never certain.
+   const typed=submittedSourceGraph(response,originalPart);
+   return cap(row,typed?grade:0,"existing-physics-rubric-checks",
+    blank(response)||(typed&&physicsGraphComplete(response)));
+  }
+  // These exact, source-checked subsets establish specific partial marks.
+  // Other free-form answers continue through the conservative examiner.
+  const canonicalPartial=physicsCanonicalWrittenPartial(row.id,response);
+  const explicitWrong=physicsCanonicalWrong(row.id,response);
+  const completeSource=physicsCanonicalFull(row.id,response,originalPart);
+  if(canonicalPartial!==null||explicitWrong||completeSource){
+   if(source.answer!==originalPart.answer||
+      !physicsSameCriteria(source.criteria,originalPart.criteria))
+    throw new Error("Source drift in Physics written evidence "+row.id);
+   const mark=explicitWrong?0:completeSource?row.maxMarks:canonicalPartial;
+   const method=explicitWrong?"physics-source-explicit-wrong":
+    completeSource?"physics-source-complete-answer":"physics-source-canonical-partial";
+   return cap(row,mark,method,true);
+  }
+  return cap(row,grade,"existing-physics-rubric-checks",
+   blank(response)||physicsPartCertain({lines,part:originalPart,response,row,responses}));
+ });
+}
+/** Every structured graph field the four graph criteria read is present. */
+function physicsGraphComplete(response){
+ const g=response.graph;
+ return ["axisXMin","axisXMax","axisXStep","axisYMin","axisYMax","axisYStep"].every(k=>finite(Number(g[k])))&&
+  typeof g.axisXLabel==="string"&&typeof g.axisYLabel==="string";
+}
+const PHYSICS_DENIAL=/^\s*it\s+is\s+(?:false|incorrect|not\s+true|untrue)\b|\b(?:not|never|isn'?t|cannot)\b/i;
+/**
+ * Per-mark certainty for a Physics part, following the paper's conventions:
+ * - a value mark is certain when met canonically; withheld only where no
+ *   follow-through rule could credit the candidate's own earlier value;
+ * - follow-through and the once-per-question missing-unit penalty depend on
+ *   other parts and stay provisional;
+ * - a method mark is certain when implied by a certainly correct final
+ *   answer, or withheld when no working is shown and the answer is wrong;
+ * - keyed table cells are certain unless a value is close to, but not, an
+ *   accepted one, or is unrecognised text;
+ * - written points are certain only through the written-evidence gate.
+ */
+function physicsPartCertain({lines,part,response,row,responses}){
+ if(!part||!lines.length)return false;
+ const why=l=>String(l.why||"");
+ if(lines.some(l=>/follow-through|missing unit|missing-unit/i.test(why(l))))return false;
+ const answer=String(object(response)?response.answer??"":response??"");
+ const working=String(object(response)?response.working??"":"");
+ const text=[answer,working].filter(s=>s.trim()).join("\n");
+ if(part.responseType==="table")return physicsTableCertain(row.id,response);
+ const values=lines.filter(l=>l.criterion.check?.type==="value");
+ const valueCertain=l=>l.earned===l.possible
+  ?why(l)==="Criterion met."
+  :l.earned===0&&physicsPaper2FollowThroughSources(l.question.question_id,part.id,l.criterion.code)
+    .every(p=>blank(read(responses,l.question.question_id+"::"+p)));
+ if(!values.every(valueCertain))return false;
+ const answerRight=values.length>0&&values.every(l=>l.earned===l.possible);
+ const written=[];
+ for(const l of lines){
+  if(l.criterion.check?.type==="value")continue;
+  if(/implies the method/i.test(why(l)))continue;
+  const kind=String(l.criterion.kind||"").toUpperCase();
+  if(kind==="M"){
+   // A wrong or missing answer with no working: no method is shown.
+   if(l.earned===0&&!working.trim()&&values.length&&!answerRight)continue;
+   // A credited method is certain when the working shows the scheme's own
+   // substitution or result ("substitutes 500 × 10 × 12") or its formula.
+   if(l.earned===l.possible&&physicsMethodShown(l.criterion.description,working))continue;
+   return false;
+  }
+  if(/within the accepted range|required unit is present/i.test(why(l))&&l.earned===l.possible){
+   if(PHYSICS_DENIAL.test(text)||/\bor\b/i.test(answer))return false;
+   continue;
+  }
+  written.push(l);
+ }
+ if(!written.length)return true;
+ const model=String(part.modelResponse??part.answer??"");
+ if(statesOppositeOf(text,model))return false;
+ // An explicit denial ("It is false that …") may deny part of a statement.
+ if(/\b(?:it\s+is\s+(?:false|incorrect|not\s+true|untrue)|it'?s\s+not\s+true)\b/i.test(text))return false;
+ const earned=written.reduce((n,l)=>n+l.earned,0),max=written.reduce((n,l)=>n+l.possible,0);
+ const gateOn=points=>{
+  const gate=certainWrittenMark({suggestedMarks:earned,maxMarks:max,response:text,points});
+  const states=new Map((gate.evidence?.states||[]).map(s=>[s.point,s.state]));
+  // A symbolic statement ("P = F/A") is shown when its formula is written out.
+  const state=p=>keyTerms(cleanSourcePoint(p)).length?states.get(p):physicsFormulaShown(p,text)?"match":"absent";
+  return {resolved:gate.resolved,state};
+ };
+ // Full credit needs every model statement.
+ if(earned===max){
+  const points=physicsModelStatements(model),gate=gateOn(points);
+  return gate.resolved&&points.every(p=>gate.state(p)==="match");
+ }
+ // Less than full credit: each criterion needs its own model statement, best
+ // matching its description, and the marker must have credited exactly the
+ // criteria whose statements are shown, with every other one clearly absent.
+ const aligned=written.length===lines.length
+  ?physicsAlignedStatements(model,written.length,written.map(l=>l.criterion.description)):null;
+ if(!aligned){
+  // No credit, and no model statement even partly present.
+  const points=physicsModelStatements(model),gate=gateOn(points);
+  return earned===0&&gate.resolved&&points.every(p=>gate.state(p)==="absent");
+ }
+ const gate=gateOn(aligned);
+ return gate.resolved&&written.every((l,i)=>l.earned===l.possible
+  ?gate.state(aligned[i])==="match":l.earned===0&&gate.state(aligned[i])==="absent");
+}
+const physicsNumbers=value=>(unsuperscript(String(value??""))
+ .replace(/[−–—]/g,"-").replace(/(\d)\s+(?=\d{3}\b)/g,"$1")
+ .replace(/(\d(?:\.\d+)?)\s*[×x*]\s*10\s*\^?\s*([+-]?\d+)/gi,"$1e$2")
+ .match(/(?<![\w.])\d+(?:\.\d+)?(?:e[+-]?\d+)?/gi)||[]).map(Number);
+/**
+ * The working states the method a scheme line describes: every number of a
+ * substitution or intermediate result ("weight = mg = 2.7 × 10 = 27 N"), or
+ * the formula of a "uses …" line ("uses v = f λ") written out.
+ */
+function physicsMethodShown(description,working){
+ if(!String(working||"").trim())return false;
+ const wanted=physicsNumbers(description);
+ if(wanted.length>=2){
+  const have=physicsNumbers(working);
+  return wanted.every(n=>have.some(h=>Math.abs(h-n)<=Math.max(1e-9,Math.abs(n)*1e-3)));
+ }
+ return physicsFormulaShown(description,working);
+}
+function physicsTableCertain(key,response){
+ const table=object(response)&&object(response.table)?response.table:null;
+ if(!table)return false;
+ const cells=physicsPaper2TableCells(key);
+ if(!Object.keys(cells).length)return false;
+ const norm=v=>unsuperscript(String(v??"")).toLowerCase().replace(/[−–—]/g,"-").replace(/\s+/g," ").trim();
+ const numericRe=/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)$/;
+ return Object.entries(cells).every(([cell,accepted])=>{
+  const v=norm(table[cell]);
+  if(!v)return true;
+  const exact=accepted.map(norm);
+  // Only an explicit, complete denial of a source-accepted table value
+  // is certainly incorrect. Unknown prose or possible synonyms still
+  // abstain; a lexical match inside "not regular" cannot earn credit.
+  if(/^(?:not|never|no|incorrect|wrong)\b/.test(v))
+   return exact.some(a=>["not ","never ","no ","incorrect ","wrong "].some(prefix=>v===prefix+a));
+  if(numericRe.test(v)){
+   const nums=exact.filter(a=>numericRe.test(a)).map(Number);
+   if(nums.some(a=>a===Number(v)))return true;
+   // Unmatched numbers are certain only when clearly different values.
+   return nums.length>0&&nums.every(a=>Math.abs(Number(v)-a)>Math.max(0.02*Math.abs(a),1e-9));
+  }
+  return exact.some(a=>a===v||v.split(/[^a-z0-9]+/).includes(a));
  });
 }
 function it(rows,responses,paperId){
@@ -653,12 +914,31 @@ function integratedScience(rows,responses){
   if(object(value))spreadStructured(responseMap,base,value);
   else if(value!==null)responseMap[base]=String(value);
   const type=src.item.response?.type||"lines";
+  // The authored IS-M2-P2-05(a)(iii) scheme awards 1 mark for one
+  // experimental error and 1 for its matching remedy (maximum 2).
+  // The broad legacy concept checker does not recognise a standalone error,
+  // and could turn an explicitly correct one-mark response into a zero.
+  // Certify only this complete, unambiguous, source-checked statement.
+  // Other wording and alternate methods remain in the conservative examiner.
+  const sourceError=src.item.markScheme?.points||[];
+  if(row.id==="IS-M2-P2-05::(a)::(iii)"&&row.maxMarks===2&&
+     type==="lines"&&src.item.markScheme?.guidance===
+      "1 mark for error; 1 mark for matching improvement"&&
+     sourceError.some(p=>/Air leaks at the bungs - seal joints with Vaseline \(1 \+ 1\)/i.test(p))){
+   const answer=object(value)?String(value.answer??""):String(value??"");
+   const extra=object(value)?String(value.working??"").trim():"";
+   if(!extra&&/^air leaks at (?:the )?bungs?\.?$/i.test(answer.trim()))
+    return cap(row,1,"existing-integrated-science-evidence",true);
+  }
   if(type==="lines"&&directlyDeniesSourcePoint(value,sm.markScheme||sm))
    return cap(row,0,"existing-integrated-science-evidence",false);
   const examiner=gradeIntegratedSciencePaper2Item(src.question,src.pi,src.ii,src.item,responseMap);
   const text=Object.values(object(value)?value:{answer:value}).filter(v=>typeof v==="string").join("\n");
   let resolved;
   if(blank(value))resolved=true;
+  else if(examiner.sourceTable)resolved=examiner.sourceResolved===true;
+  else if(examiner.sourceGeometry)resolved=examiner.sourceResolved===true;
+  else if(examiner.sourceCircuit)resolved=examiner.sourceResolved===true;
   else if(type==="drawing"||integratedScienceGraphInText(src.item))resolved=false;
   else if(Number(examiner.unassessedMarks||0)>0)resolved=false;
   // Two names offered for one label ("anther or stigma") is a competing answer.
@@ -671,6 +951,8 @@ function integratedScience(rows,responses){
    resolved=examiner.visualEvidence?.structured===true&&Number(examiner.unassessedMarks||0)===0;
   // Labelled values counted against the scheme guidance: certain unless a
   // reading is ambiguous, a value is offered with an alternative or denied.
+  else if(examiner.sourceHypothesis)
+   resolved=examiner.sourceResolved===true;
   else if(examiner.valueList)
    resolved=!examiner.valueList.ambiguous&&!/\bor\b/i.test(text)&&!IS_DENIAL.test(text);
   else resolved=sciencePointsCertain({examiner,item:integratedScienceLineItem(src.item),

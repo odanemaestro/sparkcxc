@@ -3,6 +3,7 @@ import { buildAttemptProvenance } from "../../grading/attemptProvenance";
 import { preparePaper2ScorePublication } from "../../grading/scorePublication";
 import { startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
 import V2VerifiedScore from "../../grading/V2VerifiedScore";
+import {verifiedV2Display,verifiedV2Parts} from "../../grading/verifiedV2Display";
 import bank from "./itPaper2Data.json";
 import InformationTechnologyQuestionVisual from "./InformationTechnologyQuestionVisual";
 import {
@@ -159,12 +160,22 @@ export default function InformationTechnologyPaper2Exam({ supabase, onExit, star
   const [answers, setAnswers] = useState({});
   const [flags, setFlags] = useState({});
   const [grading, setGrading] = useState(null);
+  const [serverResult, setServerResult] = useState(null);
   const [remaining, setRemaining] = useState(DURATION);
   const [showExit, setShowExit] = useState(false);
   const submittedRef = useRef(false);
 
   const paper = useMemo(() => bank.papers.find(item => item.id === active?.paperId) || null, [active]);
   const question = paper?.questions?.[questionIndex] || null;
+  const finalV2Score = verifiedV2Display(serverResult,active?.serverAttemptId);
+  const finalV2Parts = verifiedV2Parts(serverResult,active?.serverAttemptId);
+  const displayedProfiles=finalV2Parts && paper?.questions ? paper.questions.reduce((out,q)=>{
+    for(const part of q.parts){
+      const id=partKey(q.number,part.id);
+      if(finalV2Parts.has(id))out[part.profile]=(out[part.profile]||0)+finalV2Parts.get(id);
+    }
+    return out;
+  },{}) : null;
 
   useEffect(() => {
     if (startFresh) return;
@@ -200,6 +211,7 @@ export default function InformationTechnologyPaper2Exam({ supabase, onExit, star
 
   async function start() {
     clearActive();
+    setServerResult(null);
     const selected = choosePaper();
     const next = {
       paperId: selected.id,
@@ -414,14 +426,15 @@ export default function InformationTechnologyPaper2Exam({ supabase, onExit, star
     return (
       <main className="it-exam">
         <section className="it-result-hero">
-          <div className="it-practice-eyebrow">{paper.title} complete{active?.serverAttemptId ? " · practice estimate" : ""}</div>
-          <h1>{result.marks}/90</h1>
-          <p>{Math.round((result.marks / 90) * 100)}%</p>
-          <V2VerifiedScore supabase={supabase} attemptId={active?.serverAttemptId} estimate={result.marks} maxMarks={90}/>
+          <div className="it-practice-eyebrow">{paper.title} complete{finalV2Score ? " · server verified" : " · practice estimate"}</div>
+          <h1>{finalV2Score ? finalV2Score.score : result.marks}/90</h1>
+          <p>{finalV2Score ? finalV2Score.percent : Math.round((result.marks / 90) * 100)}%</p>
+          {finalV2Score && result.marks!==finalV2Score.score && <small>Earlier practice estimate: {result.marks}/90. The verified server score is final.</small>}
+          <V2VerifiedScore supabase={supabase} attemptId={active?.serverAttemptId} estimate={result.marks} maxMarks={90} onResult={setServerResult}/>
           <div className="it-profile-results">
-            <div><span>Theory</span><strong>{result.profiles.Theory}/35</strong></div>
-            <div><span>Productivity Tools</span><strong>{result.profiles["Productivity Tools"]}/30</strong></div>
-            <div><span>Problem-Solving & Programming</span><strong>{result.profiles["Problem-Solving and Programming"]}/25</strong></div>
+            <div><span>Theory</span><strong>{displayedProfiles ? displayedProfiles.Theory : result.profiles.Theory}/35</strong></div>
+            <div><span>Productivity Tools</span><strong>{displayedProfiles ? displayedProfiles["Productivity Tools"] : result.profiles["Productivity Tools"]}/30</strong></div>
+            <div><span>Problem-Solving & Programming</span><strong>{displayedProfiles ? displayedProfiles["Problem-Solving and Programming"] : result.profiles["Problem-Solving and Programming"]}/25</strong></div>
           </div>
           <button className="it-practice-primary" type="button" onClick={onExit}>Back to IT Practice</button>
         </section>
@@ -436,14 +449,14 @@ export default function InformationTechnologyPaper2Exam({ supabase, onExit, star
     return (
       <main className="it-exam">
         <header className="it-exam-topbar">
-          <div><strong>SPARK marking review</strong><span>{paper.title} · Marked point-by-point against the authored scheme</span></div>
-          <div className="it-mark-total">{result.marks}/90</div>
+          <div><strong>SPARK marking review</strong><span>{paper.title} · {finalV2Score ? "Server-verified results" : "Practice estimate pending server verification"}</span></div>
+          <div className="it-mark-total">{finalV2Score ? finalV2Score.score : result.marks}/90</div>
         </header>
-        <V2VerifiedScore supabase={supabase} attemptId={active?.serverAttemptId} estimate={result.marks} maxMarks={90}/>
+        <V2VerifiedScore supabase={supabase} attemptId={active?.serverAttemptId} estimate={result.marks} maxMarks={90} onResult={setServerResult}/>
         <div className="it-mark-profile-strip">
-          <span>Theory {result.profiles.Theory}/35</span>
-          <span>Productivity Tools {result.profiles["Productivity Tools"]}/30</span>
-          <span>Problem-Solving & Programming {result.profiles["Problem-Solving and Programming"]}/25</span>
+          <span>Theory {displayedProfiles ? displayedProfiles.Theory : result.profiles.Theory}/35</span>
+          <span>Productivity Tools {displayedProfiles ? displayedProfiles["Productivity Tools"] : result.profiles["Productivity Tools"]}/30</span>
+          <span>Problem-Solving & Programming {displayedProfiles ? displayedProfiles["Problem-Solving and Programming"] : result.profiles["Problem-Solving and Programming"]}/25</span>
         </div>
         <section className="it-marking-list">
           {allParts.map(item => {
@@ -453,22 +466,22 @@ export default function InformationTechnologyPaper2Exam({ supabase, onExit, star
               <article className="it-marking-item" key={key}>
                 <div className="it-marking-head">
                   <strong>Question {item.questionNumber} ({item.id})</strong>
-                  <span>{evaluation.earned}/{item.marks} · {item.profile}</span>
+                  <span>{finalV2Parts?.get(key) ?? evaluation.earned}/{item.marks} · {item.profile}</span>
                 </div>
                 <p className="it-marking-prompt">{item.prompt}</p>
                 <div className="it-your-answer"><strong>Your answer</strong><ResponsePreview part={item} value={answers[key]}/></div>
                 <div className="it-auto-mark-summary">
-                  <strong>SPARK mark: {evaluation.earned}/{item.marks}</strong>
-                  <span>Canonical rule: {evaluation.rule}</span>
+                  <strong>{finalV2Parts ? "Verified mark" : "Practice estimate"}: {finalV2Parts?.get(key) ?? evaluation.earned}/{item.marks}</strong>
+                  {!finalV2Parts && <span>Canonical rule: {evaluation.rule}</span>}
                 </div>
-                <div className="it-criterion-review">
+                {!finalV2Parts && <div className="it-criterion-review">
                   {evaluation.criteria.map(row => (
                     <div className={row.correct ? "met" : "missed"} key={row.code}>
                       <span>{row.correct ? "✓" : "○"}</span>
                       <div><strong>{row.earned}/{row.marks} · {row.description}</strong><p>{row.why}</p></div>
                     </div>
                   ))}
-                </div>
+                </div>}
                 <div className="it-mark-scheme"><strong>Authored mark scheme</strong><ul>{item.markScheme.map((point, i) => <li key={i}>{point}</li>)}</ul></div>
               </article>
             );

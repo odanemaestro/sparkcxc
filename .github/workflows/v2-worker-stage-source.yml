@@ -1,0 +1,81 @@
+name: Stage verified V2 worker source bundle
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v2-worker-stage-source.yml"
+      - "src/grading/**"
+      - "src/integratedScience/practice/scienceParticleDiagramMarking.js"
+      - "src/integratedScience/practice/scienceCircuitSymbolMarking.js"
+      - "src/integratedScience/practice/scienceFiltrationDrawingMarking.js"
+      - "src/integratedScience/practice/scienceHypothesisMarking.js"
+      - "src/integratedScience/practice/scienceRustTableMarking.js"
+      - "src/integratedScience/practice/scienceAdditionalTableMarking.js"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stage-private-examiner:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Check source examiners before staging
+        run: |
+          npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js scienceAdditionalTableMarking.test.js scienceParticleDiagramMarking.test.js scienceCircuitSymbolMarking.test.js
+          node tools/v2-verify-all.mjs --subject integrated-science --out artifacts/v2-worker-stage
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const summary=JSON.parse(fs.readFileSync("artifacts/v2-worker-stage/summary.json","utf8"));
+          const result=summary.bySubject["integrated-science"];
+          if(!result||result.verified<642||result.failed>0||summary.rehearsal.criteriaRejectedCount!==0)
+            throw Error("Source-bound grading evidence did not pass");
+          NODE
+      - name: Compile and stage source-bound V2 examiner
+        shell: bash
+        env:
+          TARGET_BRANCH: internal/v2-marker-release-parts
+        run: |
+          set -euo pipefail
+          node tools/build-server-marker-v2.mjs
+          mkdir -p /tmp/spark-v2-chunks
+          python3 - <<'PY'
+          import hashlib,json,pathlib,os
+          base=pathlib.Path("supabase/functions/_shared")
+          content=(base/"server-marker-v2.mjs").read_text(encoding="utf-8")
+          digest=hashlib.sha256(content.encode("utf-8")).hexdigest()
+          expected=(base/"server-marker-v2.sha256").read_text().strip()
+          if digest!=expected:raise RuntimeError("Compiled V2 worker hash mismatch")
+          out=pathlib.Path("/tmp/spark-v2-chunks")
+          chunks=[content[i:i+180000] for i in range(0,len(content),180000)]
+          for i,chunk in enumerate(chunks):
+              (out/("part-%03d.txt"%i)).write_text(chunk,encoding="utf-8")
+          (out/"manifest.json").write_text(json.dumps({
+              "bundleSha256":digest,
+              "sourceCommit":os.environ["GITHUB_SHA"],
+              "parts":len(chunks),
+              "characters":len(content),
+              "bytes":len(content.encode("utf-8")),
+              "subject":"spark-v2-private-worker"},indent=2))
+          print("Source-only authenticated bundle staged",len(chunks),"chunks",digest)
+          PY
+          git fetch --no-tags origin "$TARGET_BRANCH"
+          git worktree add --detach /tmp/spark-v2-export FETCH_HEAD
+          mkdir -p /tmp/spark-v2-export/worker-v2-chunks
+          rm -f /tmp/spark-v2-export/worker-v2-chunks/part-*.txt
+          cp /tmp/spark-v2-chunks/* /tmp/spark-v2-export/worker-v2-chunks/
+          git -C /tmp/spark-v2-export add worker-v2-chunks
+          if git -C /tmp/spark-v2-export diff --cached --quiet; then
+            echo "No changes to stage"
+          else
+            git -C /tmp/spark-v2-export -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Stage source-bound V2 examiner for ${GITHUB_SHA}"
+            git -C /tmp/spark-v2-export push origin HEAD:"$TARGET_BRANCH"
+          fi

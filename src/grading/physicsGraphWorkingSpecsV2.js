@@ -8,7 +8,7 @@ const specimens=Object.freeze({
   limits:Object.freeze({xMin:0,xMax:11,yMin:0,yMax:260})}),
  "phy-p2-2-q1":Object.freeze({graphPart:"b",trianglePart:"c",readingPart:null,referenceXSpan:0.8,
   limits:Object.freeze({xMin:0,xMax:1.1,yMin:0,yMax:4.5})}),
- "phy-p2-3-q1":Object.freeze({graphPart:"a",trianglePart:"b",readingPart:null,referenceXSpan:0.49,
+ "phy-p2-3-q1":Object.freeze({graphPart:"a",trianglePart:"b",readingPart:"e",referenceXSpan:0.49,
   limits:Object.freeze({xMin:0,xMax:0.7,yMin:0,yMax:3.5})}),
  "phy-p2-4-q1":Object.freeze({graphPart:"b",trianglePart:"c",readingPart:null,referenceXSpan:80,
   limits:Object.freeze({xMin:0,xMax:110,yMin:0,yMax:1.1})})

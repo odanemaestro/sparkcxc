@@ -8,6 +8,7 @@ declare
   anchor text;
   replacement text;
   old_pattern text := 'coalesce(v_row->>''method'','''')!~ ''^(existing-[A-Za-z0-9-]{3,80}|physics-graph-requires-artifact-verification)$''';
+  physics_pattern text := 'coalesce(v_row->>''method'','''')!~ ''^(existing-[A-Za-z0-9-]{3,80}|physics-graph-requires-artifact-verification|physics-empty-graph-dependent-response|physics-source-explicit-wrong|physics-source-complete-answer|physics-source-canonical-partial)$''';
 begin
   select pg_get_functiondef('public.spark_start_exam_attempt(text,text,text,integer,text,text,text,jsonb)'::regprocedure) into def;
   if strpos(def,'Accounts timed durations are server-owned')=0 then
@@ -71,7 +72,10 @@ $duration$;
 
   select pg_get_functiondef('public.spark_v2_complete_subject_job(uuid,uuid,jsonb,text)'::regprocedure) into def;
   if strpos(def,'Accounts examiner provenance is paper-specific')=0 then
-    if strpos(def,old_pattern)=0 then
+    -- Fresh installs reach this migration before the Physics provenance patch;
+    -- existing production already has that exact patch. Accept either known
+    -- validator and leave its Physics method allowlist unchanged.
+    if strpos(def,old_pattern)=0 and strpos(def,physics_pattern)=0 then
       raise exception 'Unexpected V2 method validator; refusing Accounts provenance patch';
     end if;
     anchor:='v_total:=v_total+v_mark;';
