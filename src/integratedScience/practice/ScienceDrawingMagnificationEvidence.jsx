@@ -37,7 +37,7 @@ export function magnificationArithmeticEvidence(values){
  const drawing=Number(values.drawingHeightMm),actual=Number(values.actualHeightMm);
  const expected=drawing/actual;
  const answer=String(values.magnificationAnswer??"").trim().replace(/[×xX]/g,"").trim();
- if(!/^(?:\\d+(?:\\.\\d+)?|\\.\\d+)$/.test(answer))
+ if(!/^(?:\d+(?:\.\d+)?|\.\d+)$/.test(answer))
   return {consistent:false,reviewRequired:true,reason:"invalid-answer"};
  const given=Number(answer);
  const working=String(values.magnificationWorking??"").replace(/,/g,"");
