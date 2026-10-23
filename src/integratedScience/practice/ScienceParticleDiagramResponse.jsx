@@ -20,7 +20,7 @@ export default function ScienceParticleDiagramResponse({base,responses,onChange,
  const place=(which,event)=>{
   if(disabled||layout[which].length>=36)return;
   const rect=event.currentTarget.getBoundingClientRect();
-  if(rect.width<=0||rect.height<=0)return;
+  if(rect.width<=0||rect.height<=0||!Number.isFinite(event.clientX)||!Number.isFinite(event.clientY))return;
   const x=Number(Math.max(0,Math.min(1,(event.clientX-rect.left)/rect.width)).toFixed(4));
   const y=Number(Math.max(0,Math.min(1,(event.clientY-rect.top)/rect.height)).toFixed(4));
   save({...layout,[which]:[...layout[which],[x,y]]});
