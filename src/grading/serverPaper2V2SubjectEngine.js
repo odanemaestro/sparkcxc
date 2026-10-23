@@ -13,6 +13,7 @@ import {markPhysicsPaper2,physicsPaper2FollowThroughSources,physicsPaper2TableCe
 import physicsPaper1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
 import {getPhysicsGraphWorkingSpec} from "./physicsGraphWorkingSpecsV2";
 import {evaluatePhysicsGraphGradient,evaluatePhysicsGraphPressure} from "./physicsGraphGradientV2";
+import {evaluatePhysicsSourceGradient} from "./physicsGraphGradientPoliciesV2";
 import physicsPaper2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
 import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
 import physicsPaper4 from "../physics/paper2/data/spark-phy-p02-practice-4.json";
@@ -381,8 +382,10 @@ function physics(rows,responses,paperId){
    if(verifiedGraph?.responseType!=="graph"||
       !submittedSourceGraph(previousGraphResponse,verifiedGraph))
     return cap(row,grade,"existing-physics-rubric-checks",false);
-   const evidence=partId===spec.trianglePart && paperId===physicsPaper1.paper_id
-    ?evaluatePhysicsGraphGradient({response,previousGraphResponse})
+   const evidence=partId===spec.trianglePart
+    ?paperId===physicsPaper1.paper_id
+     ?evaluatePhysicsGraphGradient({response,previousGraphResponse})
+     :evaluatePhysicsSourceGradient({questionId,response,previousGraphResponse})
     :partId===spec.readingPart && paperId===physicsPaper1.paper_id
      ?evaluatePhysicsGraphPressure({response,previousGraphResponse,
        previousGradientResponse:read(responses,questionId+"::"+spec.trianglePart)||{}})
