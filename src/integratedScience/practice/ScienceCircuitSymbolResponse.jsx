@@ -23,7 +23,7 @@ const makeShape=(tool,start,end)=>{
  if(tool==="line")return {kind:"line",x1:start[0],y1:start[1],x2:end[0],y2:end[1]};
  if(tool==="rect")return {kind:"rect",x:Math.min(start[0],end[0]),y:Math.min(start[1],end[1]),
   w:Math.abs(start[0]-end[0]),h:Math.abs(start[1]-end[1])};
- if(tool==="circle")return {kind:"circle",cx:start[0],cy:start[1],r:Number(Math.hypot(start[0]-end[0],start[1]-end[1]).toFixed(4))};
+ if(tool==="circle")return {kind:"circle",cx:start[0],cy:start[1],r:Number((Math.hypot((start[0]-end[0])*250,(start[1]-end[1])*150)/150).toFixed(4))};
  return null;
 };
 export default function ScienceCircuitSymbolResponse({base,responses,onChange,disabled}){
