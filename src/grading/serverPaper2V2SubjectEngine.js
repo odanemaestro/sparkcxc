@@ -436,7 +436,12 @@ function physics(rows,responses,paperId){
       String(object(response)?response.working??"":""));
     const certainPressure=correctPressure&&inverseShown&&
      (readingShown||cleanUnrecorded);
-    const definitelyResolved=fullGradient||noQuantityOrGraph||certainPressure;
+    const noPressureEvidence=pressureMethod&&
+     !/\\d/.test(String(object(response)?response.answer??"":response??""))&&
+     !String(object(response)?response.working??"":"").trim()&&
+     !object(response)?.graphEvidence;
+    const definitelyResolved=fullGradient||noQuantityOrGraph||
+     certainPressure||noPressureEvidence;
     return cap(row,reconciled,
      "existing-physics-graph-working-advisory",definitelyResolved);
    }
