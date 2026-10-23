@@ -1,4 +1,23 @@
- "dispute": null, "alternatives": [], "note": null }),
+ the overall work into specialised tasks.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 5, "pdfPage": 2, "proposedOption": "A", "explanation": "Private enterprise generally seeks profit for its owners.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 6, "pdfPage": 3, "proposedOption": "C", "explanation": "The purchasing supervisor is shown reporting to the finance manager in the source chart.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 7, "pdfPage": 3, "proposedOption": "B", "explanation": "The board of directors appropriately appears above the CEO in the organisation hierarchy.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 8, "pdfPage": 4, "proposedOption": "C", "explanation": "Mr Lloyd consults workers before decisions, a democratic management approach.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 9, "pdfPage": 4, "proposedOption": "A", "explanation": "An MIS processes information to support management decision-making.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 10, "pdfPage": 4, "proposedOption": "B", "explanation": "A small shoe-shine operation has little need for a formal MIS compared with a bank or department store.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 11, "pdfPage": 4, "proposedOption": "B", "explanation": "Shipping heavy engines between two Caribbean islands is suited to maritime freight.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 12, "pdfPage": 4, "proposedOption": "A", "explanation": "Subsidised meals for staff are nonwage fringe benefits.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 13, "pdfPage": 4, "proposedOption": "D", "explanation": "A money order is not normally a lender's collateral asset, unlike owned bonds, shares or property.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 14, "pdfPage": 4, "proposedOption": "B", "explanation": "Shareholders of limited companies enjoy limited liability under the company structure.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 15, "pdfPage": 4, "proposedOption": "D", "explanation": "The executive summary condenses a business plan's major points.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 16, "pdfPage": 5, "proposedOption": "A", "explanation": "Cash pledged as loan security is collateral.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 17, "pdfPage": 5, "proposedOption": "D", "explanation": "A purchase order documents an offer or instruction to buy specified goods.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 18, "pdfPage": 5, "proposedOption": "A", "explanation": "Contract breach can discharge the parties' original obligations and give rise to remedies.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 19, "pdfPage": 5, "proposedOption": "D", "explanation": "Employers' liability cover is intended for eligible workplace injury liabilities.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 20, "pdfPage": 5, "proposedOption": "B", "explanation": "Insurance premiums are amounts paid by policyholders for cover.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 21, "pdfPage": 5, "proposedOption": "D", "explanation": "Human resources refers to human workers and their productive capabilities.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 22, "pdfPage": 5, "proposedOption": "C", "explanation": "Working capital funds recurring expenses and day-to-day operations.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 23, "pdfPage": 5, "proposedOption": "D", "explanation": "Food processing transforms agricultural products and is a manufacturing activity.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 24, "pdfPage": 5, "proposedOption": "A", "explanation": "Mechanisation tends to displace some routine or unskilled manual work.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 25, "pdfPage": 6, "proposedOption": "D", "explanation": "Industrial linkages arise when the output of one firm or industry supplies another.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 26, "pdfPage": 6, "proposedOption": "C", "explanation": "A home-based craft operation is a typical small cottage enterprise.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
@@ -1276,93 +1295,3 @@ var POB_2008_MJ_P2_AUTHORED_SCHEME = Object.freeze({
   paper: 2,
   year: 2008,
   sitting: "MJ",
-  sourceFilename: "CSEC_Principles_of_Business_P2_2008_MJ.pdf",
-  sourceSha256: "c1ef9a099b0edb2cf82fac344ebe011cfce418e26bf2caa05ecf9ebdc5a6531f",
-  sourcePagesReviewed: Object.freeze([1, 2, 3, 4]),
-  printedCode: "01240020",
-  timeLimitMinutes: 120,
-  questionsOffered: 7,
-  questionsToAnswer: 5,
-  requiredQuestions: Object.freeze([1, 2, 3]),
-  optionalQuestionPairs: Object.freeze([[4, 5], [6, 7]]),
-  offeredMarks: 140,
-  maximumCandidateMarks: 100,
-  rubricSource: "SPARK-authored-not-official-CXC",
-  officialCxcMarkingSchemeSupplied: false,
-  fullDigitalQuestionBankVerified: false,
-  semanticCalibrationComplete: false,
-  liveScoringApproved: false,
-  questions: Object.freeze([1, 2, 3, 4, 5, 6, 7].map((number) => Object.freeze({
-    number,
-    marks: 20,
-    parts: Object.freeze(ANSWERS.filter((row) => row[0] === number).map(([, partId, modelAnswer, rules3]) => Object.freeze({
-      id: partId,
-      modelAnswer,
-      marks: rules3.reduce((sum, s) => sum + Number(s.split(":")[0]), 0),
-      criteria: Object.freeze(rules3.map((raw) => {
-        const idx = raw.indexOf(":");
-        return Object.freeze({
-          marks: Number(raw.slice(0, idx)),
-          rule: raw.slice(idx + 1),
-          sourceSchemeVerified: false,
-          authoredBySpark: true
-        });
-      }))
-    })))
-  })))
-});
-function validatePob2008MjP2Choices(numbers2) {
-  if (!Array.isArray(numbers2) || numbers2.length !== 5 || numbers2.some((n) => !Number.isInteger(n)) || new Set(numbers2).size !== 5)
-    return false;
-  const s = new Set(numbers2);
-  return [1, 2, 3].every((n) => s.has(n)) && [4, 5].filter((n) => s.has(n)).length === 1 && [6, 7].filter((n) => s.has(n)).length === 1;
-}
-function verifyPob2008MjP2AuthoredScheme(paper = POB_2008_MJ_P2_AUTHORED_SCHEME) {
-  const issues = [];
-  const source2 = POB_SUPPLIED_ARCHIVE.find((x) => x.id === paper?.id);
-  if (!source2 || source2.sourceSha256 !== paper.sourceSha256 || source2.paper !== 2 || source2.filename !== paper.sourceFilename)
-    issues.push("Source SHA-256, identity or paper type mismatch.");
-  if (!Array.isArray(paper?.questions) || paper.questions.length !== 7)
-    issues.push("Seven source questions required.");
-  let total = 0, parts = 0;
-  const questionNumbers = /* @__PURE__ */ new Set();
-  for (const q of paper?.questions || []) {
-    if (!Number.isInteger(q.number) || q.number < 1 || q.number > 7 || questionNumbers.has(q.number))
-      issues.push("Invalid or duplicated question number.");
-    questionNumbers.add(q.number);
-    let partTotal = 0;
-    const ids = /* @__PURE__ */ new Set();
-    for (const p of q.parts || []) {
-      parts++;
-      partTotal += p.marks;
-      if (!p.id || ids.has(p.id)) issues.push("Duplicate part " + p.id);
-      ids.add(p.id);
-      if (typeof p.modelAnswer !== "string" || p.modelAnswer.length < 35)
-        issues.push("Missing supported model answer for " + q.number + ":" + p.id);
-      if (!Number.isInteger(p.marks) || p.marks < 1 || p.criteria?.reduce((sum, x) => sum + x.marks, 0) !== p.marks)
-        issues.push("Wrong part criterion max for " + q.number + ":" + p.id);
-      if (p.criteria?.some((c) => !c.rule || c.sourceSchemeVerified !== false))
-        issues.push("Rubric origin incorrectly marked official.");
-    }
-    if (partTotal !== 20) issues.push("Incorrect 20-mark question total for " + q.number);
-    total += partTotal;
-  }
-  if (total !== 140 || paper.maximumCandidateMarks !== 100)
-    issues.push("Offered 140 versus attempted 100 mismatch.");
-  if (!validatePob2008MjP2Choices([1, 2, 3, 4, 6]) || validatePob2008MjP2Choices([1, 2, 3, 4, 5]))
-    issues.push("Wrong historic optional-question selection.");
-  if (paper.liveScoringApproved !== false || paper.officialCxcMarkingSchemeSupplied !== false)
-    issues.push("Cannot publish SPARK academic draft as CXC official grade.");
-  return { valid: issues.length === 0, issues, offeredMarks: total, partCount: parts };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2009MjP2AuthoredScheme.js
-var pobHistorical2009MjP2AuthoredScheme_exports = {};
-__export(pobHistorical2009MjP2AuthoredScheme_exports, {
-  POB_2009_MJ_P2_AUTHORED_SCHEME: () => POB_2009_MJ_P2_AUTHORED_SCHEME,
-  verifyPob2009MjP2AuthoredScheme: () => verifyPob2009MjP2AuthoredScheme
-});
-var SOURCE = Object.freeze([
-  [1, "a", 4, "A wish to earn profit and provide independent employment are reasons for starting a business.", ["2:Profit motivation with an accurate business explanation", "2:Self-employment, independence or another DISTINCT developed reason for establishing a venture"]],
-  [1, "b", 6, "A new enterprise can employ residents, buy local supplies and provide nearby goods and services.", ["2:Local jobs with added household income", "2:Use of local suppliers, multiplying earnings for residents", "2:Improved access to goods or community tax and development benefits, with explanation"]],
-  [1, "c", 6, "A planned economy uses central decisions on what to produce, public ownership of major resources and administered prices. 

@@ -1,4 +1,70 @@
-pose. The borrower usually provides collateral and repays the amount with interest in regular instalments over an agreed period.\n\u2022 Overdraft: the bank allows a current account holder to withdraw more than the balance in the account, up to an agreed limit. Interest is charged daily only on the amount overdrawn, and the overdraft can be withdrawn by the bank.\n\u2022 Credit card: the bank issues a card with a credit limit. The holder buys goods and services now, receives a monthly statement, and pays interest on any balance not paid in full by the due date.\n\u2022 Mortgage: a long-term loan to buy property, with the property itself used as security; it is repaid over many years."
+t. The payee deposits the cheque, it is cleared through the clearing house, and the money is moved from the drawer's account to the payee's account.\n\u2022 Debit card (EFT at the point of sale): the buyer's card is swiped or inserted and the PIN entered; the money is transferred electronically from the buyer's account to the seller's account.\n\u2022 Standing order: the customer instructs the bank to pay a fixed amount to a named payee at regular intervals; the bank makes the payments automatically.\n\u2022 Direct debit: the customer authorises a company to collect varying amounts directly from his account.\n\u2022 Online banking transfer: the customer logs in and transfers money to another account or pays a bill.\n\u2022 Credit card: the customer pays with the card and settles the amount with the bank later."
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "section": "Section II",
+          "section_instructions": "Answer EITHER Question 4 OR Question 5. Do NOT answer both.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Distinguish between the terms 'market' and 'marketing'.",
+              "marks": 4,
+              "answer": "2 marks each:\n\u2022 Market: any place or arrangement, physical or electronic, where buyers and sellers come into contact to exchange goods and services.\n\u2022 Marketing: the management process of identifying, anticipating and satisfying customers' needs profitably. It includes market research, product development, pricing, promotion and distribution."
+            },
+            {
+              "label": "(b)",
+              "question": "State FOUR reasons for conducting market research.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each:\n\u2022 To find out customers' needs and wants\n\u2022 To estimate the size of the market and likely demand\n\u2022 To set a suitable price\n\u2022 To study competitors\n\u2022 To test new products and reduce the risk of failure\n\u2022 To choose the best promotion and distribution methods\n\u2022 To identify the target market"
+            },
+            {
+              "label": "(c)",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Define the term 'monopoly'.",
+                  "marks": 2,
+                  "answer": "A monopoly is a market structure in which there is only one seller of a product that has no close substitutes (1), and barriers prevent other firms from entering the market (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "State TWO features of monopolistic competition.",
+                  "marks": 4,
+                  "answer": "Any TWO, 2 marks each:\n\u2022 Many sellers in the market.\n\u2022 Products are differentiated (each firm's product is slightly different, often by brand).\n\u2022 Entry into and exit from the market is relatively easy.\n\u2022 Each firm has some control over its price.\n\u2022 Firms rely heavily on advertising and other non-price competition."
+                }
+              ]
+            },
+            {
+              "label": "(d)",
+              "question": "Discuss ONE potential problem related to the distribution of goods\n(i) locally\n(ii) internationally.",
+              "marks": 6,
+              "answer": "3 marks each:\n(i) Locally (any ONE): poor roads and traffic congestion cause delays and damage to goods and raise costs; high transport costs; customers scattered in small rural communities; lack of proper storage for perishable goods; theft during delivery.\n(ii) Internationally (any ONE): high freight and insurance costs; delays at ports and customs, with a lot of documentation; different standards and regulations in other countries; long distances, so perishable goods may spoil; changes in exchange rates; language and cultural differences; the risk that the overseas buyer does not pay."
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "section": "Section II",
+          "section_instructions": "Answer EITHER Question 4 OR Question 5. Do NOT answer both.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Identify TWO types of credit methods provided by commercial banks.",
+                  "marks": 2,
+                  "answer": "Any TWO, 1 mark each: loan, overdraft, credit card, line of credit, mortgage, hire purchase financing."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Explain how EACH of the TWO types of credit methods identified in (a) (i) works.",
+                  "marks": 6,
+                  "answer": "3 marks each, matched to (a)(i), for example:\n\u2022 Loan: the bank lends a fixed sum for a stated purpose. The borrower usually provides collateral and repays the amount with interest in regular instalments over an agreed period.\n\u2022 Overdraft: the bank allows a current account holder to withdraw more than the balance in the account, up to an agreed limit. Interest is charged daily only on the amount overdrawn, and the overdraft can be withdrawn by the bank.\n\u2022 Credit card: the bank issues a card with a credit limit. The holder buys goods and services now, receives a monthly statement, and pays interest on any balance not paid in full by the due date.\n\u2022 Mortgage: a long-term loan to buy property, with the property itself used as security; it is repaid over many years."
                 }
               ]
             },
@@ -2836,62 +2902,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
             },
             {
               "label": "(c)",
-              "question": "Outline ONE benefit of the growth of a company to EACH of the following groups.\n(i) Customers\n(ii) Shareholders",
-              "marks": 4,
-              "answer": "2 marks each:\n(i) Customers (any ONE): lower prices because of economies of scale; a wider range of products; better-quality products from more research and development; more outlets and better after-sales service.\n(ii) Shareholders (any ONE): higher profits and therefore higher dividends; an increase in the value of their shares (capital gain); greater security of their investment."
-            },
-            {
-              "label": "(d)",
-              "question": "Explain TWO ways in which increased productivity may be advantageous to a business.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 Lower cost per unit: more output from the same inputs spreads costs over more units, so the business can lower its prices or earn more profit.\n\u2022 Higher profits: more output and lower costs increase profits, which can be reinvested or paid to owners.\n\u2022 Greater competitiveness: lower prices and reliable supply help the business win customers and compete with imports or other firms.\n\u2022 The business can meet larger orders and expand into new markets, including exports.\n\u2022 It can pay higher wages, improving staff morale and keeping good workers."
-            }
-          ]
-        },
-        {
-          "number": 4,
-          "section": "All questions",
-          "section_instructions": "Answer ALL questions.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Outline TWO functions of consumer organizations.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Educate consumers about their rights and how to make wise purchases.\n\u2022 Investigate consumers' complaints and help them obtain redress.\n\u2022 Test and compare products and publish the results.\n\u2022 Lobby government for better consumer protection laws.\n\u2022 Monitor prices and expose unfair practices."
-            },
-            {
-              "label": "(b)",
-              "question": "Outline TWO benefits of good customer service.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Customer loyalty and repeat business.\n\u2022 Good word-of-mouth publicity that attracts new customers.\n\u2022 A good reputation and image for the business.\n\u2022 Higher sales and profits.\n\u2022 Fewer complaints and returns.\n\u2022 An advantage over competitors."
-            },
-            {
-              "label": "(c)",
-              "question": "Describe EACH of the following forms of customer service.\n(i) Warranties\n(ii) Toll free numbers/toll free call centres\n(iii) Suggestion boxes",
-              "marks": 6,
-              "answer": "2 marks each:\n(i) Warranties: a written promise by the seller or manufacturer that, for a stated period, the product will be repaired or replaced free of charge if it develops a fault.\n(ii) Toll free numbers/call centres: telephone numbers customers can call free of charge to ask questions, place orders, get help or make complaints.\n(iii) Suggestion boxes: boxes placed in the business where customers can drop written comments, complaints or ideas, which management reads and uses to improve service."
-            },
-            {
-              "label": "(d)",
-              "question": "A trademark is a firm's brand that allows it certain benefits in the marketplace. Explain TWO ways in which trademarks are beneficial in the conduct of a business.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 Legal protection: a registered trademark gives the firm the sole right to use its name or logo, so competitors cannot copy it and the firm can take legal action against counterfeiters.\n\u2022 Recognition and loyalty: customers easily identify the firm's products, which builds loyalty and repeat sales.\n\u2022 Premium pricing: a well-known trademark signals quality, so the firm can charge higher prices.\n\u2022 Valuable asset: the trademark can be licensed or franchised to others for fees.\n\u2022 It makes advertising and launching new products easier."
-            }
-          ]
-        },
-        {
-          "number": 5,
-          "section": "All questions",
-          "section_instructions": "Answer ALL questions.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Define the term 'information and communications technology' (ICT).",
-              "marks": 2,
-              "answer": "ICT refers to the technologies, such as computers, the internet, telephones and software (1), that are used to collect, store, process and communicate information (1)."
-            },
-            {
-              "label": "(b)",
-              "question": "Describe ONE way in which computer-aided design (CAD) is used in a
+              "question": "Outl

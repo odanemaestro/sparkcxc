@@ -27,7 +27,7 @@ function gradePersuasive(task3, response) {
   const d = lang.diagnostics;
   const sig = persuasiveSignals(response);
   const length = wordRangePenalty(task3, response);
-  const topic = taskTopicalEvidence(task3, response);
+  const topic2 = taskTopicalEvidence(task3, response);
   const developedReasons = supportedArgumentCount(response);
   const position = sig.stance ? 3 : 1;
   const support = Math.min(5, sig.supportSignals >= 8 ? 5 : sig.supportSignals >= 5 ? 4 : sig.supportSignals >= 3 ? 3 : sig.supportSignals >= 1 ? 1.5 : 0);
@@ -36,14 +36,14 @@ function gradePersuasive(task3, response) {
   const devices = Math.min(4, (sig.rhetorical ? 1 : 0) + (sig.repetition >= 2 ? 1 : sig.repetition ? 0.5 : 0) + (sig.calls ? 1 : 0) + (sig.directAddress >= 4 ? 1 : 0));
   let evaluating = round(clamp((position + support + audience + opposition + devices) * length.factor, 0, 16));
   if (!developedReasons) evaluating = Math.min(evaluating, 6);
-  if (topic.required && !topic.hits.length) evaluating = Math.min(evaluating, 5);
+  if (topic2.required && !topic2.hits.length) evaluating = Math.min(evaluating, 5);
   const structure = sig.paragraphs.length >= 5 ? 2 : sig.paragraphs.length >= 3 ? 1 : 0;
   const progression = sig.supportSignals >= 5 ? 2 : sig.supportSignals >= 2 ? 1 : 0;
   const counterFlow = sig.responseToOpposition ? 1 : 0;
   const framing = (sig.hasOpening ? 1 : 0) + (sig.hasConclusion ? 1 : 0);
   let analysing = round(clamp(structure + progression + counterFlow + framing, 0, 7));
   if (!developedReasons) analysing = Math.min(analysing, 3);
-  if (topic.required && !topic.hits.length) analysing = Math.min(analysing, 3);
+  if (topic2.required && !topic2.hits.length) analysing = Math.min(analysing, 3);
   let understanding = round(clamp(lang.score, 0, 7));
   if (d.wordCount < 150) {
     evaluating = Math.min(evaluating, 6);
@@ -65,7 +65,7 @@ function gradePersuasive(task3, response) {
       sig.stance ? "A clear position is established and maintained." : "State a clear position early and maintain it.",
       sig.responseToOpposition ? "The response raises an opposing view and answers it." : "A relevant opposing view and rebuttal can strengthen the argument.",
       developedReasons ? "The response includes developed reason statements." : "Develop reasons with specific examples, causes, effects or supporting explanation.",
-      ...topic.required && !topic.hits.length ? ["The response lacks clear evidence of the topic named in the question."] : [],
+      ...topic2.required && !topic2.hits.length ? ["The response lacks clear evidence of the topic named in the question."] : [],
       deviceNames.length ? "Persuasive devices detected: " + deviceNames.join(", ") + "." : "Use purposeful persuasive devices rather than relying only on assertion.",
       sig.hasOpening && sig.hasConclusion ? "The argument has a recognisable opening and conclusion." : "Strengthen the introduction and conclusion so the argument is clearly framed.",
       d.paragraphCount >= 5 ? "The response has a developed multi-paragraph structure." : "The specimen mark scheme expects a developed structure with introduction, body paragraphs and conclusion.",
@@ -75,7 +75,7 @@ function gradePersuasive(task3, response) {
     diagnostics: {
       ...d,
       developedReasons,
-      topicEvidence: topic,
+      topicEvidence: topic2,
       persuasiveSignals: { ...sig, paragraphs: sig.paragraphs.length }
     }
   };
@@ -128,6 +128,94 @@ function gradeEnglishAPaper2(paper, answers = {}, choiceId = "") {
       return { module, score: round(moduleRows.reduce((sum, row) => sum + row.score, 0)), max: moduleRows.reduce((sum, row) => sum + row.maxMarks, 0) };
     }),
     note: "SPARK practice estimate aligned to the profile structure in the CXC 01/G/SYLL 25 specimen mark scheme. It checks task fulfilment, stimulus use, organisation, language and mechanics and shows the evidence behind each mark. Extended-writing marks are automated practice estimates and may differ from official examination marking."
+  };
+}
+
+// src/integratedScience/practice/scienceHypothesisMarking.js
+var HYPOTHESIS_GUIDANCE = /1 mark for a clearly stated hypothesis;?\s*1 mark for a testable hypothesis/i;
+var topic = (id, t) => {
+  switch (id) {
+    case "IS-M2-P2-07":
+      return /\b(?:metals?|copper|iron|alumini?um|plastic|wood)\b/.test(t);
+    case "IS-M3-P2-11":
+      return /\b(?:methylated|alcohol|solvent|acetone|vinegar|ink|stain)\b/.test(t);
+    case "IS-M3-P2-13":
+      return /\b(?:density|dense|denser|liquid|test tube|sinking)\b/.test(t);
+    case "IS-M1-P2-15":
+      return /\b(?:beans?|seeds?|germinat\w*|temperature)\b/.test(t);
+    default:
+      return false;
+  }
+};
+var evaluate = (id, t) => {
+  switch (id) {
+    case "IS-M2-P2-07": {
+      const conductor = /\b(?:metal\w*|copper|iron|alumini?um)\b/.test(t) && /\b(?:conduct\w*|light\w*|electric\w*|lamp|bulb)\b/.test(t);
+      const insulator = /\b(?:plastic|dry wood|wood|insulat\w*|non.?metal\w*)\b/.test(t);
+      const negative = /\b(?:will not|won't|does not|doesn't|cannot|can't|not|fail\w*)\b/.test(t);
+      const reversed = /\b(?:metal\w*|copper|iron|alumini?um)\b.{0,28}\b(?:will not|won't|does not|doesn't|cannot|can't|not)\b.{0,20}\bconduct/i.test(t);
+      return { prediction: conductor && !reversed, comparison: conductor && insulator && negative && !reversed, contrary: reversed };
+    }
+    case "IS-M3-P2-11": {
+      const solvent = /\b(?:methylated spirit|alcohol|organic solvent)\b/.test(t);
+      const outcome = /\b(?:remov\w*|clean\w*|lift\w*)\b/.test(t) && /\b(?:ink|stain\w*)\b/.test(t);
+      const control = /\b(?:water|acetone|vinegar|other solvents?)\b/.test(t);
+      const better = /\b(?:better|more effective\w*|faster|best)\b/.test(t);
+      const contrary = /\b(?:methylated spirit|alcohol)\b.{0,60}\b(?:worse|less effective|does not remove|will not remove)\b/.test(t);
+      return { prediction: solvent && outcome && !contrary, comparison: solvent && outcome && control && better && !contrary, contrary };
+    }
+    case "IS-M3-P2-13": {
+      const density = /\b(?:denser|density|dense)\b/.test(t);
+      const depth = /\b(?:sink\w*|depth|deep\w*|submerg\w*|float\w*)\b/.test(t);
+      const direction = /\b(?:less deep\w*|shallower|less far|less deeply|not as deep\w*|sink\w* less|float\w* higher)\b/.test(t);
+      const variable = /\b(?:denser|higher density|density increase\w*|more dense)\b/.test(t);
+      const contrary = variable && /\b(?:sink\w* deeper|more deeply|deeper|sink\w* further)\b/.test(t) && !direction;
+      return { prediction: density && depth && !contrary, comparison: density && depth && variable && direction && !contrary, contrary };
+    }
+    case "IS-M1-P2-15": {
+      const seed = /\b(?:beans?|seeds?)\b/.test(t);
+      const germination = /\b(?:germinat\w*|sprout\w*)\b/.test(t);
+      const target = /\b25\s*°?\s*c\b/.test(t);
+      const compare = /\b(?:4|40)\s*°?\s*c\b/.test(t);
+      const directional = /\b(?:best|better|more|most|higher|greater)\b/.test(t);
+      const contrary = compare && /\b(?:4|40)\s*°?\s*c\b.{0,32}\b(?:best|most|highest)\b/.test(t);
+      return {
+        prediction: seed && germination && target && directional && !contrary,
+        comparison: seed && germination && target && compare && directional && !contrary,
+        contrary
+      };
+    }
+    default:
+      return null;
+  }
+};
+function isSourceHypothesis(item2) {
+  return Number(item2?.marks) === 2 && HYPOTHESIS_GUIDANCE.test(String(item2?.markScheme?.guidance || ""));
+}
+function markSourceHypothesis(questionId, item2, response) {
+  if (!isSourceHypothesis(item2)) return null;
+  const t = String(response ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+  const checks = evaluate(questionId, t);
+  if (!checks) return null;
+  const unambiguousList = questionId === "IS-M3-P2-11" ? t.replace(/\bwater,\s*acetone\s+or\s+vinegar\b/g, "") : questionId === "IS-M1-P2-15" ? t.replace(/\b4\s*°?\s*c\s+or\s+40\s*°?\s*c\b/g, "") : t;
+  const ambiguous = /\b(?:or|either|perhaps|maybe|possibly)\b/.test(unambiguousList) || /\b(?:it is false that|not true that|is incorrect)\b/.test(t);
+  const prediction = checks.prediction && !ambiguous;
+  const comparison = checks.comparison && prediction;
+  const score = Number(prediction) + Number(comparison);
+  const recognized = !t || checks.contrary || !topic(questionId, t) || prediction;
+  const resolved = recognized && !ambiguous;
+  return {
+    score,
+    maxMarks: 2,
+    unassessedMarks: 0,
+    confidence: resolved ? "high" : "low",
+    provisional: !resolved,
+    sourceHypothesis: true,
+    sourceResolved: resolved,
+    criteria: [
+      { id: questionId + ":prediction", label: "Scientific prediction", marks: Number(prediction), maxMarks: 1, earned: prediction, evidence: t },
+      { id: questionId + ":testable", label: "Testable comparison", marks: Number(comparison), maxMarks: 1, earned: comparison, evidence: t }
+    ]
   };
 }
 
@@ -2248,6 +2336,8 @@ function lineResult2(questionId, partIndex, itemIndex, item2, responses) {
   const base = `${questionId}:${partIndex}:${itemIndex}`;
   const list = integratedScienceValueList(item2);
   if (list) return valueListResult(base, item2, list, responses[base]);
+  const hypothesis = markSourceHypothesis(questionId, item2, responses[base]);
+  if (hypothesis) return hypothesis;
   return gradeSciencePointLines(base, integratedScienceLineItem(item2), responses[base] || "");
 }
 function tableResult(questionId, partIndex, itemIndex, item2, responses) {
@@ -3724,40 +3814,4 @@ var POB_2003_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 47, "pdfPage": 7, "proposedOption": "D", "explanation": "Excise drawback refunds eligible excise on domestically produced goods subsequently exported.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
     Object.freeze({ "number": 48, "pdfPage": 7, "proposedOption": "B", "explanation": "Consumption or sales taxes are indirect levies collected through purchases.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
     Object.freeze({ "number": 49, "pdfPage": 7, "proposedOption": "D", "explanation": "Market equilibrium is where the quantity buyers want equals the quantity sellers offer at a given price.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 50, "pdfPage": 7, "proposedOption": "B", "explanation": "A simultaneous decrease in demand and increase in supply ordinarily lowers the market price.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 51, "pdfPage": 7, "proposedOption": "C", "explanation": "A shortage of an item relative to strong demand normally pushes its price higher.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 52, "pdfPage": 7, "proposedOption": "A", "explanation": "A cheaper nearby rival may draw customers away from Browne and reduce the capital tied up in his trading operations or sales receipts.", "status": "requires-adjudication", "uncertainty": "capital-fall-is-not-certain", "reasonToReview": "Loss of customers is likely; a decrease in capital is not necessarily the immediate accounting effect of a competitor's lower price.", "diagramPageChecked": false }),
-    Object.freeze({ "number": 53, "pdfPage": 8, "proposedOption": "C", "explanation": "Import restrictions are trade barriers rather than a benefit generated by international exchange.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 54, "pdfPage": 8, "proposedOption": "B", "explanation": "Differences in available resources, skills and relative costs make trade between regions beneficial.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 55, "pdfPage": 8, "proposedOption": "B", "explanation": "Higher consumer-good imports alone do not improve local production, finance or infrastructure.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 56, "pdfPage": 8, "proposedOption": "D", "explanation": "Domestic trade exchanges goods within the country and does not independently bring in foreign exchange.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 57, "pdfPage": 8, "proposedOption": "B", "explanation": "OPEC is not an organisation most English-speaking Caribbean countries belong to.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 58, "pdfPage": 8, "proposedOption": "B", "explanation": "Mixed public and private economic activity is typical of Commonwealth Caribbean economies.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 59, "pdfPage": 8, "proposedOption": "B", "explanation": "Trade in furniture between Barbados and Jamaica takes place within CARICOM.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 60, "pdfPage": 8, "proposedOption": "D", "explanation": "Public ownership commonly applies to water, communications and electricity, rather than most food production.", "status": "requires-adjudication", "uncertainty": "historical-utility-privatisation", "reasonToReview": "Communications and electricity ownership varied across Caribbean countries in 2003, so the claim about most nationalised services needs country-specific historical verification.", "diagramPageChecked": false })
-  ])
-});
-function verifyPob2003MjP1AuthoredKey(key = POB_2003_MJ_P1_AUTHORED_KEY) {
-  const issues = [], seen = /* @__PURE__ */ new Set(), disputes = [];
-  const original = POB_SUPPLIED_ARCHIVE.find((p) => p.id === "POB-P1-2003-MJ");
-  if (key?.id !== original?.id || key.sourceSha256 !== original.sourceSha256 || key.sourceFilename !== original.filename)
-    issues.push("Original 2003 exam source identity or fingerprint mismatch.");
-  if (!Array.isArray(key?.entries) || key.entries.length !== 60)
-    return { valid: false, issues: [...issues, "Exactly 60 answers are required."], disputes: 0 };
-  for (const entry of key.entries) {
-    if (!Number.isInteger(entry.number) || entry.number < 1 || entry.number > 60 || seen.has(entry.number))
-      issues.push("Duplicate or invalid question " + entry.number);
-    seen.add(entry.number);
-    if (!["A", "B", "C", "D"].includes(entry.proposedOption) || entry.explanation?.length < 35)
-      issues.push("Invalid academic answer/explanation " + entry.number);
-    if (!Number.isInteger(entry.pdfPage) || entry.pdfPage < 1 || entry.pdfPage > 8)
-      issues.push("Question-source PDF page mismatch " + entry.number);
-    if (entry.status === "requires-adjudication") {
-      disputes.push(entry.number);
-      if (!entry.uncertainty || !entry.reasonToReview)
-        issues.push("Missing dispute evidence " + entry.number);
-    } else if (entry.status !== "spark-provisional")
-      issues.push("Answer prematurely marked academically complete " + entry.number);
-  }
-  if (seen.size !== 60) issues.push("Question sequence incomplete.");
-  if (disputes.join(",") !== "1,19,36,44,5
+    Object.freeze({ "number": 50, "pdfPage": 7, "proposedOption": "B", "explanation": "A simultaneous decrease in demand and increase in supply ordinarily lowers the market price.", "status": "spark-provisional", "u

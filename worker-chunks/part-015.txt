@@ -1,4 +1,93 @@
-A free-market economy relies more on private decisions, ownership and supply and demand.", ["2:Explains central versus decentralised allocation of resources", "2:Distinguishes public from private ownership and decision-making", "2:Distinguishes administered prices versus market supply-and-demand prices"]],
+  sourceFilename: "CSEC_Principles_of_Business_P2_2008_MJ.pdf",
+  sourceSha256: "c1ef9a099b0edb2cf82fac344ebe011cfce418e26bf2caa05ecf9ebdc5a6531f",
+  sourcePagesReviewed: Object.freeze([1, 2, 3, 4]),
+  printedCode: "01240020",
+  timeLimitMinutes: 120,
+  questionsOffered: 7,
+  questionsToAnswer: 5,
+  requiredQuestions: Object.freeze([1, 2, 3]),
+  optionalQuestionPairs: Object.freeze([[4, 5], [6, 7]]),
+  offeredMarks: 140,
+  maximumCandidateMarks: 100,
+  rubricSource: "SPARK-authored-not-official-CXC",
+  officialCxcMarkingSchemeSupplied: false,
+  fullDigitalQuestionBankVerified: false,
+  semanticCalibrationComplete: false,
+  liveScoringApproved: false,
+  questions: Object.freeze([1, 2, 3, 4, 5, 6, 7].map((number) => Object.freeze({
+    number,
+    marks: 20,
+    parts: Object.freeze(ANSWERS.filter((row) => row[0] === number).map(([, partId, modelAnswer, rules3]) => Object.freeze({
+      id: partId,
+      modelAnswer,
+      marks: rules3.reduce((sum, s) => sum + Number(s.split(":")[0]), 0),
+      criteria: Object.freeze(rules3.map((raw) => {
+        const idx = raw.indexOf(":");
+        return Object.freeze({
+          marks: Number(raw.slice(0, idx)),
+          rule: raw.slice(idx + 1),
+          sourceSchemeVerified: false,
+          authoredBySpark: true
+        });
+      }))
+    })))
+  })))
+});
+function validatePob2008MjP2Choices(numbers2) {
+  if (!Array.isArray(numbers2) || numbers2.length !== 5 || numbers2.some((n) => !Number.isInteger(n)) || new Set(numbers2).size !== 5)
+    return false;
+  const s = new Set(numbers2);
+  return [1, 2, 3].every((n) => s.has(n)) && [4, 5].filter((n) => s.has(n)).length === 1 && [6, 7].filter((n) => s.has(n)).length === 1;
+}
+function verifyPob2008MjP2AuthoredScheme(paper = POB_2008_MJ_P2_AUTHORED_SCHEME) {
+  const issues = [];
+  const source2 = POB_SUPPLIED_ARCHIVE.find((x) => x.id === paper?.id);
+  if (!source2 || source2.sourceSha256 !== paper.sourceSha256 || source2.paper !== 2 || source2.filename !== paper.sourceFilename)
+    issues.push("Source SHA-256, identity or paper type mismatch.");
+  if (!Array.isArray(paper?.questions) || paper.questions.length !== 7)
+    issues.push("Seven source questions required.");
+  let total = 0, parts = 0;
+  const questionNumbers = /* @__PURE__ */ new Set();
+  for (const q of paper?.questions || []) {
+    if (!Number.isInteger(q.number) || q.number < 1 || q.number > 7 || questionNumbers.has(q.number))
+      issues.push("Invalid or duplicated question number.");
+    questionNumbers.add(q.number);
+    let partTotal = 0;
+    const ids = /* @__PURE__ */ new Set();
+    for (const p of q.parts || []) {
+      parts++;
+      partTotal += p.marks;
+      if (!p.id || ids.has(p.id)) issues.push("Duplicate part " + p.id);
+      ids.add(p.id);
+      if (typeof p.modelAnswer !== "string" || p.modelAnswer.length < 35)
+        issues.push("Missing supported model answer for " + q.number + ":" + p.id);
+      if (!Number.isInteger(p.marks) || p.marks < 1 || p.criteria?.reduce((sum, x) => sum + x.marks, 0) !== p.marks)
+        issues.push("Wrong part criterion max for " + q.number + ":" + p.id);
+      if (p.criteria?.some((c) => !c.rule || c.sourceSchemeVerified !== false))
+        issues.push("Rubric origin incorrectly marked official.");
+    }
+    if (partTotal !== 20) issues.push("Incorrect 20-mark question total for " + q.number);
+    total += partTotal;
+  }
+  if (total !== 140 || paper.maximumCandidateMarks !== 100)
+    issues.push("Offered 140 versus attempted 100 mismatch.");
+  if (!validatePob2008MjP2Choices([1, 2, 3, 4, 6]) || validatePob2008MjP2Choices([1, 2, 3, 4, 5]))
+    issues.push("Wrong historic optional-question selection.");
+  if (paper.liveScoringApproved !== false || paper.officialCxcMarkingSchemeSupplied !== false)
+    issues.push("Cannot publish SPARK academic draft as CXC official grade.");
+  return { valid: issues.length === 0, issues, offeredMarks: total, partCount: parts };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2009MjP2AuthoredScheme.js
+var pobHistorical2009MjP2AuthoredScheme_exports = {};
+__export(pobHistorical2009MjP2AuthoredScheme_exports, {
+  POB_2009_MJ_P2_AUTHORED_SCHEME: () => POB_2009_MJ_P2_AUTHORED_SCHEME,
+  verifyPob2009MjP2AuthoredScheme: () => verifyPob2009MjP2AuthoredScheme
+});
+var SOURCE = Object.freeze([
+  [1, "a", 4, "A wish to earn profit and provide independent employment are reasons for starting a business.", ["2:Profit motivation with an accurate business explanation", "2:Self-employment, independence or another DISTINCT developed reason for establishing a venture"]],
+  [1, "b", 6, "A new enterprise can employ residents, buy local supplies and provide nearby goods and services.", ["2:Local jobs with added household income", "2:Use of local suppliers, multiplying earnings for residents", "2:Improved access to goods or community tax and development benefits, with explanation"]],
+  [1, "c", 6, "A planned economy uses central decisions on what to produce, public ownership of major resources and administered prices. A free-market economy relies more on private decisions, ownership and supply and demand.", ["2:Explains central versus decentralised allocation of resources", "2:Distinguishes public from private ownership and decision-making", "2:Distinguishes administered prices versus market supply-and-demand prices"]],
   [1, "d", 4, "Converting a partnership to a private limited company generally gives its shareholders limited liability and gives the business a separate continuing legal identity.", ["2:Shareholders have limited liability, protecting personal assets within law", "2:Separate legal identity or continuity, or improved access to equity finance, appropriately explained"]],
   [2, "a", 2, "Entrepreneurship is identifying an opportunity and organising resources to start a venture while bearing business risks.", ["1:Identifies business opportunity and creation or organisation of a venture", "1:Explains risk-taking or investment of resources"]],
   [2, "b", 3, "Mrs Greenwood could arrange preventive maintenance or backup machinery and reschedule orders so the factory can meet customers' needs.", ["1:Identifies entrepreneurial problem-solving or initiative", "1:Gives a realistic equipment-repair, backup, leasing, outsourcing or staffing solution", "1:Explains impact on output reliability and delivery commitments"]],
@@ -1553,16 +1642,4 @@ var RULES = Object.freeze(Object.fromEntries([
   ["3:a", ["First distinct function of a consumer organisation", "Second distinct function", "Third distinct function", "Fourth distinct function"], "Educate consumers, investigate complaints, seek redress and campaign for better consumer laws.", ["advise rights", "handle disputes", "market surveillance", "product-safety alerts", "advocacy", "price monitoring"]],
   ["3:b", ["First customer-service role", "Explains how the first role helps", "Second DIFFERENT customer-service role", "Explains how the second helps"], "Responding to questions helps customers choose correctly. Resolving complaints creates confidence and repeat purchases.", ["answer questions", "after-sales help", "customer feedback", "returns", "product demonstrations"]],
   ["3:c.i", ["Defines warranty as a seller or manufacturer promise for a stated period or terms", "Explains repair, replacement, or other contractual or legal remedy for covered faults"], "A warranty promises support for a product's performance or defects, such as repair during its stated period.", ["warranty period", "defects", "repair", "replacement", "consumer remedy"]],
-  ["3:c.ii", ["Identifies web or app messaging with a support service", "Explains its use for answering questions or resolving issues promptly"], "Online chat lets customers contact support through a website and receive timely help.", ["real-time messaging", "in-app help", "customer enquiry"]],
-  ["3:c.iii", ["Identifies help delivered AFTER purchase", "Gives a relevant service such as repair, advice, installation or returns"], "After-sales service supports buyers after the sale, such as help with product installation and repairs.", ["returns", "repairs", "maintenance", "help desk", "setup"]],
-  ["3:d.i", ["Correctly identifies trademark as protection for a distinctive brand indicator", "Explains risk of competitors using a confusingly similar name or logo and legal protection", "Explains effect on reputation, customer recognition or sales"], "A trademark helps Leon protect his skincare brand name and logo from confusing imitation. Customers identify genuine products and the business protects its reputation.", ["brand source identifier", "exclusive use", "counterfeiting", "customer trust", "registration"]],
-  ["3:d.ii", ["Identifies copyright protection for original literary expression", "Explains author's rights to control copying, distribution or licensing", "Explains income, royalties or remedies against unauthorised copies"], "Copyright protects Vashti's original novel and controls its copying and licensed publication, supporting royalties and legal remedies.", ["literary work", "copying rights", "publishing licences", "royalties", "piracy prevention"]],
-  ["4:a", ["First actual supply-chain operation", "Second DIFFERENT supply-chain operation", "Third DIFFERENT operation", "Fourth DIFFERENT operation"], "Procure materials, store inventory, transport supplies and distribute products.", ["sourcing", "purchasing", "processing", "warehousing", "inventory tracking", "order fulfilment", "returns"]],
-  ["4:b.i", ["Names first valid supply-chain advantage", "Names a different advantage"], "Lower procurement costs and more reliable product delivery.", ["reduced waste", "availability", "quality", "stock accuracy", "speed"]],
-  ["4:b.ii", ["Names first real supply-chain challenge", "Names a different challenge"], "Supplier delays and increased shipping costs.", ["stockouts", "natural disasters", "quality problems", "forecast errors", "late deliveries"]],
-  ["4:c", ["Names first supply-chain technology", "Explains its supply-chain effect", "Names second DIFFERENT technology", "Explains its effect", "Names third DIFFERENT technology", "Explains its effect"], "Barcode scanners improve stock counts. GPS tracking shows where deliveries are. ERP software coordinates ordering and inventory.", ["RFID", "GPS", "ERP", "EDI", "automated ordering", "route optimisation", "inventory scanners"]],
-  ["4:d", ["Names first realistic outsourced activity or benefit", "Explains the cost, quality, capacity or skills mechanism", "Links to competitive business effect", "Names second DIFFERENT benefit or outsourced activity", "Explains the second mechanism", "Links to a distinct competitive outcome"], "Using a specialist shipping provider can cut transport costs and improve delivery reliability. Outsourced quality testing supplies expertise and makes product quality more consistent.", ["specialist logistics", "contract bottling", "marketing services", "call-centre support", "quality assurance"]],
-  ["5:a", ["Names a genuine FIRST DIRECT tax", "Names a second DIFFERENT DIRECT tax", "Names a genuine FIRST INDIRECT tax", "Names a second DIFFERENT INDIRECT tax"], "Direct taxes: personal income tax and corporation tax. Indirect taxes: GCT or VAT and customs duty.", ["direct:income tax,corporation tax,property tax", "indirect:general consumption tax,value added tax,excise duty,customs duty"]],
-  ["5:b", ["Names first government environmental measure", "Explains how it changes people's conduct", "Names second DIFFERENT environmental measure", "Explains its effect", "Names third DIFFERENT measure", "Explains its effect"], "Supply recycling bins to encourage waste sorting. Teach environmental conservation in schools. Offer solar-energy incentives to reduce fossil-fuel use.", ["recycling facilities", "anti-litter fines", "education", "tree planting", "plastic bans", "renewable rebates", "water conservation"]],
-  ["5:c", ["Names first government obligation", "Names second DISTINCT government obligation", "Names third DISTINCT obligation", "Names fourth DISTINCT obligation"], "Provide public education, healthcare, law enforcement and roads.", ["justice", "security", "public infrastructure", "health", "education", "social security", "defence", "sanitation"]],
-  ["5:d", ["Identifies first concrete healthcare challenge", "Recommends a solution matched to the first challenge", "Explains resulting care improvement", "Identifies second DIFFERENT healthcare challenge", "Recommends a separate appropriate response", "Explains its result"], "Train and retain more nurses to ease staff shortages and reduce queues. Open mobile rural clinics to reduce travel barriers and improve access.", ["health worker s
+  ["3:c.ii", ["Identifies web or app messaging with a support service", "Explains its use for answering questions or resolving issue

@@ -1,4 +1,16 @@
-hortage", "rural access", "underfunding", "medicine shortages", "obsolete equipment", "long waiting times"]]
+s promptly"], "Online chat lets customers contact support through a website and receive timely help.", ["real-time messaging", "in-app help", "customer enquiry"]],
+  ["3:c.iii", ["Identifies help delivered AFTER purchase", "Gives a relevant service such as repair, advice, installation or returns"], "After-sales service supports buyers after the sale, such as help with product installation and repairs.", ["returns", "repairs", "maintenance", "help desk", "setup"]],
+  ["3:d.i", ["Correctly identifies trademark as protection for a distinctive brand indicator", "Explains risk of competitors using a confusingly similar name or logo and legal protection", "Explains effect on reputation, customer recognition or sales"], "A trademark helps Leon protect his skincare brand name and logo from confusing imitation. Customers identify genuine products and the business protects its reputation.", ["brand source identifier", "exclusive use", "counterfeiting", "customer trust", "registration"]],
+  ["3:d.ii", ["Identifies copyright protection for original literary expression", "Explains author's rights to control copying, distribution or licensing", "Explains income, royalties or remedies against unauthorised copies"], "Copyright protects Vashti's original novel and controls its copying and licensed publication, supporting royalties and legal remedies.", ["literary work", "copying rights", "publishing licences", "royalties", "piracy prevention"]],
+  ["4:a", ["First actual supply-chain operation", "Second DIFFERENT supply-chain operation", "Third DIFFERENT operation", "Fourth DIFFERENT operation"], "Procure materials, store inventory, transport supplies and distribute products.", ["sourcing", "purchasing", "processing", "warehousing", "inventory tracking", "order fulfilment", "returns"]],
+  ["4:b.i", ["Names first valid supply-chain advantage", "Names a different advantage"], "Lower procurement costs and more reliable product delivery.", ["reduced waste", "availability", "quality", "stock accuracy", "speed"]],
+  ["4:b.ii", ["Names first real supply-chain challenge", "Names a different challenge"], "Supplier delays and increased shipping costs.", ["stockouts", "natural disasters", "quality problems", "forecast errors", "late deliveries"]],
+  ["4:c", ["Names first supply-chain technology", "Explains its supply-chain effect", "Names second DIFFERENT technology", "Explains its effect", "Names third DIFFERENT technology", "Explains its effect"], "Barcode scanners improve stock counts. GPS tracking shows where deliveries are. ERP software coordinates ordering and inventory.", ["RFID", "GPS", "ERP", "EDI", "automated ordering", "route optimisation", "inventory scanners"]],
+  ["4:d", ["Names first realistic outsourced activity or benefit", "Explains the cost, quality, capacity or skills mechanism", "Links to competitive business effect", "Names second DIFFERENT benefit or outsourced activity", "Explains the second mechanism", "Links to a distinct competitive outcome"], "Using a specialist shipping provider can cut transport costs and improve delivery reliability. Outsourced quality testing supplies expertise and makes product quality more consistent.", ["specialist logistics", "contract bottling", "marketing services", "call-centre support", "quality assurance"]],
+  ["5:a", ["Names a genuine FIRST DIRECT tax", "Names a second DIFFERENT DIRECT tax", "Names a genuine FIRST INDIRECT tax", "Names a second DIFFERENT INDIRECT tax"], "Direct taxes: personal income tax and corporation tax. Indirect taxes: GCT or VAT and customs duty.", ["direct:income tax,corporation tax,property tax", "indirect:general consumption tax,value added tax,excise duty,customs duty"]],
+  ["5:b", ["Names first government environmental measure", "Explains how it changes people's conduct", "Names second DIFFERENT environmental measure", "Explains its effect", "Names third DIFFERENT measure", "Explains its effect"], "Supply recycling bins to encourage waste sorting. Teach environmental conservation in schools. Offer solar-energy incentives to reduce fossil-fuel use.", ["recycling facilities", "anti-litter fines", "education", "tree planting", "plastic bans", "renewable rebates", "water conservation"]],
+  ["5:c", ["Names first government obligation", "Names second DISTINCT government obligation", "Names third DISTINCT obligation", "Names fourth DISTINCT obligation"], "Provide public education, healthcare, law enforcement and roads.", ["justice", "security", "public infrastructure", "health", "education", "social security", "defence", "sanitation"]],
+  ["5:d", ["Identifies first concrete healthcare challenge", "Recommends a solution matched to the first challenge", "Explains resulting care improvement", "Identifies second DIFFERENT healthcare challenge", "Recommends a separate appropriate response", "Explains its result"], "Train and retain more nurses to ease staff shortages and reduce queues. Open mobile rural clinics to reduce travel barriers and improve access.", ["health worker shortage", "rural access", "underfunding", "medicine shortages", "obsolete equipment", "long waiting times"]]
 ].map(([id, criteria, modelAnswer, acceptedIllustrations]) => [id, [criteria, modelAnswer, acceptedIllustrations]])));
 var POB_2024_JAN_P2_SPARK_MARKING = Object.freeze({
   id: "POB-P2-2024-JAN",
@@ -2291,70 +2303,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
               "label": "(d)",
               "question": "Identify TWO types of monetary transactions that can be conducted within the banking system without the use of cash. Discuss how EACH transaction is performed.",
               "marks": 6,
-              "answer": "Any TWO, 3 marks each (1 for the type, 2 for how it is performed):\n\u2022 Cheque: the account holder writes a cheque instructing the bank to pay a named payee a sum from his current account. The payee deposits the cheque, it is cleared through the clearing house, and the money is moved from the drawer's account to the payee's account.\n\u2022 Debit card (EFT at the point of sale): the buyer's card is swiped or inserted and the PIN entered; the money is transferred electronically from the buyer's account to the seller's account.\n\u2022 Standing order: the customer instructs the bank to pay a fixed amount to a named payee at regular intervals; the bank makes the payments automatically.\n\u2022 Direct debit: the customer authorises a company to collect varying amounts directly from his account.\n\u2022 Online banking transfer: the customer logs in and transfers money to another account or pays a bill.\n\u2022 Credit card: the customer pays with the card and settles the amount with the bank later."
-            }
-          ]
-        },
-        {
-          "number": 4,
-          "section": "Section II",
-          "section_instructions": "Answer EITHER Question 4 OR Question 5. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Distinguish between the terms 'market' and 'marketing'.",
-              "marks": 4,
-              "answer": "2 marks each:\n\u2022 Market: any place or arrangement, physical or electronic, where buyers and sellers come into contact to exchange goods and services.\n\u2022 Marketing: the management process of identifying, anticipating and satisfying customers' needs profitably. It includes market research, product development, pricing, promotion and distribution."
-            },
-            {
-              "label": "(b)",
-              "question": "State FOUR reasons for conducting market research.",
-              "marks": 4,
-              "answer": "Any FOUR, 1 mark each:\n\u2022 To find out customers' needs and wants\n\u2022 To estimate the size of the market and likely demand\n\u2022 To set a suitable price\n\u2022 To study competitors\n\u2022 To test new products and reduce the risk of failure\n\u2022 To choose the best promotion and distribution methods\n\u2022 To identify the target market"
-            },
-            {
-              "label": "(c)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Define the term 'monopoly'.",
-                  "marks": 2,
-                  "answer": "A monopoly is a market structure in which there is only one seller of a product that has no close substitutes (1), and barriers prevent other firms from entering the market (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "State TWO features of monopolistic competition.",
-                  "marks": 4,
-                  "answer": "Any TWO, 2 marks each:\n\u2022 Many sellers in the market.\n\u2022 Products are differentiated (each firm's product is slightly different, often by brand).\n\u2022 Entry into and exit from the market is relatively easy.\n\u2022 Each firm has some control over its price.\n\u2022 Firms rely heavily on advertising and other non-price competition."
-                }
-              ]
-            },
-            {
-              "label": "(d)",
-              "question": "Discuss ONE potential problem related to the distribution of goods\n(i) locally\n(ii) internationally.",
-              "marks": 6,
-              "answer": "3 marks each:\n(i) Locally (any ONE): poor roads and traffic congestion cause delays and damage to goods and raise costs; high transport costs; customers scattered in small rural communities; lack of proper storage for perishable goods; theft during delivery.\n(ii) Internationally (any ONE): high freight and insurance costs; delays at ports and customs, with a lot of documentation; different standards and regulations in other countries; long distances, so perishable goods may spoil; changes in exchange rates; language and cultural differences; the risk that the overseas buyer does not pay."
-            }
-          ]
-        },
-        {
-          "number": 5,
-          "section": "Section II",
-          "section_instructions": "Answer EITHER Question 4 OR Question 5. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Identify TWO types of credit methods provided by commercial banks.",
-                  "marks": 2,
-                  "answer": "Any TWO, 1 mark each: loan, overdraft, credit card, line of credit, mortgage, hire purchase financing."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Explain how EACH of the TWO types of credit methods identified in (a) (i) works.",
-                  "marks": 6,
-                  "answer": "3 marks each, matched to (a)(i), for example:\n\u2022 Loan: the bank lends a fixed sum for a stated pur
+              "answer": "Any TWO, 3 marks each (1 for the type, 2 for how it is performed):\n\u2022 Cheque: the account holder writes a cheque instructing the bank to pay a named payee a sum from his current accoun

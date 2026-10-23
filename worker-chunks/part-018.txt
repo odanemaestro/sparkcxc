@@ -1,4 +1,62 @@
- business organization.",
+ine ONE benefit of the growth of a company to EACH of the following groups.\n(i) Customers\n(ii) Shareholders",
+              "marks": 4,
+              "answer": "2 marks each:\n(i) Customers (any ONE): lower prices because of economies of scale; a wider range of products; better-quality products from more research and development; more outlets and better after-sales service.\n(ii) Shareholders (any ONE): higher profits and therefore higher dividends; an increase in the value of their shares (capital gain); greater security of their investment."
+            },
+            {
+              "label": "(d)",
+              "question": "Explain TWO ways in which increased productivity may be advantageous to a business.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Lower cost per unit: more output from the same inputs spreads costs over more units, so the business can lower its prices or earn more profit.\n\u2022 Higher profits: more output and lower costs increase profits, which can be reinvested or paid to owners.\n\u2022 Greater competitiveness: lower prices and reliable supply help the business win customers and compete with imports or other firms.\n\u2022 The business can meet larger orders and expand into new markets, including exports.\n\u2022 It can pay higher wages, improving staff morale and keeping good workers."
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Outline TWO functions of consumer organizations.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Educate consumers about their rights and how to make wise purchases.\n\u2022 Investigate consumers' complaints and help them obtain redress.\n\u2022 Test and compare products and publish the results.\n\u2022 Lobby government for better consumer protection laws.\n\u2022 Monitor prices and expose unfair practices."
+            },
+            {
+              "label": "(b)",
+              "question": "Outline TWO benefits of good customer service.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Customer loyalty and repeat business.\n\u2022 Good word-of-mouth publicity that attracts new customers.\n\u2022 A good reputation and image for the business.\n\u2022 Higher sales and profits.\n\u2022 Fewer complaints and returns.\n\u2022 An advantage over competitors."
+            },
+            {
+              "label": "(c)",
+              "question": "Describe EACH of the following forms of customer service.\n(i) Warranties\n(ii) Toll free numbers/toll free call centres\n(iii) Suggestion boxes",
+              "marks": 6,
+              "answer": "2 marks each:\n(i) Warranties: a written promise by the seller or manufacturer that, for a stated period, the product will be repaired or replaced free of charge if it develops a fault.\n(ii) Toll free numbers/call centres: telephone numbers customers can call free of charge to ask questions, place orders, get help or make complaints.\n(iii) Suggestion boxes: boxes placed in the business where customers can drop written comments, complaints or ideas, which management reads and uses to improve service."
+            },
+            {
+              "label": "(d)",
+              "question": "A trademark is a firm's brand that allows it certain benefits in the marketplace. Explain TWO ways in which trademarks are beneficial in the conduct of a business.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Legal protection: a registered trademark gives the firm the sole right to use its name or logo, so competitors cannot copy it and the firm can take legal action against counterfeiters.\n\u2022 Recognition and loyalty: customers easily identify the firm's products, which builds loyalty and repeat sales.\n\u2022 Premium pricing: a well-known trademark signals quality, so the firm can charge higher prices.\n\u2022 Valuable asset: the trademark can be licensed or franchised to others for fees.\n\u2022 It makes advertising and launching new products easier."
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Define the term 'information and communications technology' (ICT).",
+              "marks": 2,
+              "answer": "ICT refers to the technologies, such as computers, the internet, telephones and software (1), that are used to collect, store, process and communicate information (1)."
+            },
+            {
+              "label": "(b)",
+              "question": "Describe ONE way in which computer-aided design (CAD) is used in a business organization.",
               "marks": 2,
               "answer": "Any ONE, 2 marks, for example: designers use CAD software to create, change and test drawings and designs of products (for example furniture, clothing, buildings or machine parts) on a computer, viewing them in 3-D before they are made, which saves time and materials."
             },
