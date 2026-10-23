@@ -1,3 +1,4 @@
+import {gradeAdditionalTable} from "./scienceAdditionalTableMarking";
 import {markSourceRustTable} from "./scienceRustTableMarking";
 import {markSourceHypothesis} from "./scienceHypothesisMarking";
 import { markScienceCalculation, SCIENCE_TABLES } from "./scienceStructuredMarking";
@@ -408,6 +409,9 @@ export function gradeIntegratedSciencePaper2Item(question,partIndex,itemIndex,it
     const table=markSourceRustTable(question.id,partIndex,itemIndex,item,
      responses[`${base}:drawingTable`],freehand);
     if(table)return table;
+    const additional=gradeAdditionalTable(question.id,partIndex,itemIndex,item,
+     responses[`${base}:drawingTable`],freehand);
+    if(additional)return additional;
     return visualResult(question.id,partIndex,itemIndex,item,responses);
   }
   return lineResult(question.id,partIndex,itemIndex,item,responses);
