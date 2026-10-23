@@ -14,7 +14,7 @@ import physicsPaper1 from "../physics/paper2/data/spark-phy-p02-practice-1.json"
 import {getPhysicsGraphWorkingSpec} from "./physicsGraphWorkingSpecsV2";
 import {evaluatePhysicsGraphGradient,evaluatePhysicsGraphPressure} from "./physicsGraphGradientV2";
 import {evaluatePhysicsSourceGradient} from "./physicsGraphGradientPoliciesV2";
-import {physicsCanonicalWrittenPartial} from "./physicsCanonicalWrittenPartialV2";
+import {physicsCanonicalWrittenPartial,physicsCanonicalWrong,physicsCanonicalFull} from "./physicsCanonicalWrittenPartialV2";
 import {evaluatePhysicsCurrentGraphReading} from "./physicsCurrentGraphReadingV2";
 import physicsPaper2 from "../physics/paper2/data/spark-phy-p02-practice-2.json";
 import physicsPaper3 from "../physics/paper2/data/spark-phy-p02-practice-3.json";
@@ -483,11 +483,16 @@ function physics(rows,responses,paperId){
   // These exact, source-checked subsets establish specific partial marks.
   // Other free-form answers continue through the conservative examiner.
   const canonicalPartial=physicsCanonicalWrittenPartial(row.id,response);
-  if(canonicalPartial!==null){
+  const explicitWrong=physicsCanonicalWrong(row.id,response);
+  const completeSource=physicsCanonicalFull(row.id,response,originalPart);
+  if(canonicalPartial!==null||explicitWrong||completeSource){
    if(source.answer!==originalPart.answer||
       !physicsSameCriteria(source.criteria,originalPart.criteria))
-    throw new Error("Source drift in Physics written partial "+row.id);
-   return cap(row,canonicalPartial,"physics-source-canonical-partial",true);
+    throw new Error("Source drift in Physics written evidence "+row.id);
+   const mark=explicitWrong?0:completeSource?row.maxMarks:canonicalPartial;
+   const method=explicitWrong?"physics-source-explicit-wrong":
+    completeSource?"physics-source-complete-answer":"physics-source-canonical-partial";
+   return cap(row,mark,method,true);
   }
   return cap(row,grade,"existing-physics-rubric-checks",
    blank(response)||physicsPartCertain({lines,part:originalPart,response,row,responses}));
