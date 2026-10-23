@@ -37,12 +37,17 @@ test("a typed triangle claim cannot manufacture gradient method credit",()=>{
  expect(row.resolved).toBe(true);
  expect(row.suggestedMarks).toBe(2);
 });
-test("recorded read-off point contributes provisional pressure method evidence",()=>{
+test("recorded read-off point gives source-certain pressure method evidence",()=>{
  const point=samplePhysicsGraphLine(graph,100/18);
  const row=mark("d",{answer:"133 kPa",working:"1/18=0.0556",
  graphEvidence:{kind:"physics-pressure-reading-v1",point}});
  expect(row.suggestedMarks).toBe(3);
- expect(row.resolved).toBe(false);
+ expect(row.resolved).toBe(true);
+});
+test("inverse and source pressure without a recorded graph read earn only two marks",()=>{
+ const row=mark("d",{answer:"133 kPa",working:"1/18=0.0556"});
+ expect(row.suggestedMarks).toBe(2);
+ expect(row.resolved).toBe(true);
 });
 test("missing student graph never authorizes trusted geometry",()=>{
  const row=mark("c",{answer:"2400 kPa cm³",graphEvidence:{
