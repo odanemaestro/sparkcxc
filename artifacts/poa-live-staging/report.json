@@ -1,10 +1,2179 @@
 {
-  "scope": "Disposable Supabase stage; SPARK-authored Accounts Paper 2 numerical checkpoints only",
-  "productionChanged": false,
-  "historicalPaper2FinalGradingEnabled": false,
-  "specimenFinalGradingEnabled": false,
-  "writtenMethodMarksAssessed": false,
-  "live": {
+  "kind": "live-supabase-http",
+  "passed": true,
+  "projectRef": "cfqetgozfxmavwexhrxz",
+  "productionTouched": false,
+  "subjectId": "principles-of-accounts",
+  "sourcePapers": 29,
+  "methodVariants": 94,
+  "methodSubmissions": 282,
+  "originalControlChecks": 19,
+  "provenance": {
+    "bundleSha256": "bb46d344f93eea27c432ffe8c255b85ca631e87f8de63874afb4a436d0e7a676",
+    "fixtureSha256": "f88545672adce4ac235cefc5b5ead55ef4609ec9fa126e45e41223d2908d4bc1",
+    "gitCommit": "dcb3ee7f80433a88835ed79bbd3bd835a0a62247",
+    "workingTreeDirty": false,
+    "ranAt": "2026-10-23T22:39:01.921Z"
+  },
+  "calibration": {
+    "independentNumericChecks": 2223,
+    "criterionFixtures": 2013,
+    "sourceFixtures": 1738,
+    "verifiedCriteria": 570,
+    "verifiedPaperVariants": 95
+  },
+  "methods": {
+    "passed": true,
+    "batches": [
+      {
+        "paperIds": [
+          "poa-2-2026-jan--q-1-2-3-4-5",
+          "poa-specimen-2-2017--q-1-2-3-4-5"
+        ],
+        "httpStatus": 200,
+        "kind": "hosted-accounts-staging-rehearsal",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "passed": true,
+        "cleanup": {
+          "passed": true
+        },
+        "papers": [
+          {
+            "kind": "live-supabase-http",
+            "projectRef": "cfqetgozfxmavwexhrxz",
+            "subjectId": "principles-of-accounts",
+            "paperId": "POA-METHOD-BATCH",
+            "runId": "1826da48-7bec-4a01-9482-9d035e6e3bbc",
+            "startedAt": "2026-10-23T22:27:10.013Z",
+            "finishedAt": "2026-10-23T22:27:28.047Z",
+            "passed": true,
+            "cleanup": {
+              "passed": true,
+              "fixtureAccounts": 3,
+              "errors": []
+            },
+            "checks": [
+              {
+                "name": "poa-2-2026-jan--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2026-jan--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2026-jan--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-specimen-2-2017--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-specimen-2-2017--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-specimen-2-2017--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "paperIds": [
+          "poa-2-2005-mj--q-1-2-3-4-5",
+          "poa-2-2005-mj--q-1-2-3-4-6",
+          "poa-2-2005-mj--q-1-2-3-4-7",
+          "poa-2-2005-mj--q-1-2-3-5-6",
+          "poa-2-2005-mj--q-1-2-3-5-7",
+          "poa-2-2005-mj--q-1-2-3-6-7",
+          "poa-2-2006-mj--q-1-2-3-4-5",
+          "poa-2-2006-mj--q-1-2-3-4-6",
+          "poa-2-2006-mj--q-1-2-3-4-7",
+          "poa-2-2006-mj--q-1-2-3-5-6",
+          "poa-2-2006-mj--q-1-2-3-5-7",
+          "poa-2-2006-mj--q-1-2-3-6-7",
+          "poa-2-2007-mj--q-1-2-3-4-5",
+          "poa-2-2007-mj--q-1-2-3-4-6"
+        ],
+        "httpStatus": 200,
+        "kind": "hosted-accounts-staging-rehearsal",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "passed": true,
+        "cleanup": {
+          "passed": true
+        },
+        "papers": [
+          {
+            "kind": "live-supabase-http",
+            "projectRef": "cfqetgozfxmavwexhrxz",
+            "subjectId": "principles-of-accounts",
+            "paperId": "POA-METHOD-BATCH",
+            "runId": "3e2eb669-a935-4c80-808d-154079554aea",
+            "startedAt": "2026-10-23T22:28:42.739Z",
+            "finishedAt": "2026-10-23T22:30:16.770Z",
+            "passed": true,
+            "cleanup": {
+              "passed": true,
+              "fixtureAccounts": 3,
+              "errors": []
+            },
+            "checks": [
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2005-mj--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2006-mj--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "paperIds": [
+          "poa-2-2007-mj--q-1-2-3-4-7",
+          "poa-2-2007-mj--q-1-2-3-5-6",
+          "poa-2-2007-mj--q-1-2-3-5-7",
+          "poa-2-2007-mj--q-1-2-3-6-7",
+          "poa-2-2008-mj--q-1-2-3-4-5",
+          "poa-2-2008-mj--q-1-2-3-4-6",
+          "poa-2-2008-mj--q-1-2-3-4-7",
+          "poa-2-2008-mj--q-1-2-3-5-6",
+          "poa-2-2008-mj--q-1-2-3-5-7",
+          "poa-2-2008-mj--q-1-2-3-6-7",
+          "poa-2-2009-mj--q-1-2-3-4-5",
+          "poa-2-2009-mj--q-1-2-3-4-6",
+          "poa-2-2009-mj--q-1-2-3-4-7",
+          "poa-2-2009-mj--q-1-2-3-5-6"
+        ],
+        "httpStatus": 200,
+        "kind": "hosted-accounts-staging-rehearsal",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "passed": true,
+        "cleanup": {
+          "passed": true
+        },
+        "papers": [
+          {
+            "kind": "live-supabase-http",
+            "projectRef": "cfqetgozfxmavwexhrxz",
+            "subjectId": "principles-of-accounts",
+            "paperId": "POA-METHOD-BATCH",
+            "runId": "b76952df-6e3f-4026-8104-a579c48640b1",
+            "startedAt": "2026-10-23T22:30:35.683Z",
+            "finishedAt": "2026-10-23T22:32:05.713Z",
+            "passed": true,
+            "cleanup": {
+              "passed": true,
+              "fixtureAccounts": 3,
+              "errors": []
+            },
+            "checks": [
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2007-mj--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2008-mj--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "paperIds": [
+          "poa-2-2009-mj--q-1-2-3-5-7",
+          "poa-2-2009-mj--q-1-2-3-6-7",
+          "poa-2-2010-mj--q-1-2-3-4-5",
+          "poa-2-2010-mj--q-1-2-3-4-6",
+          "poa-2-2010-mj--q-1-2-3-4-7",
+          "poa-2-2010-mj--q-1-2-3-5-6",
+          "poa-2-2010-mj--q-1-2-3-5-7",
+          "poa-2-2010-mj--q-1-2-3-6-7",
+          "poa-2-2011-mj--q-1-2-3-4-5",
+          "poa-2-2011-mj--q-1-2-3-4-6",
+          "poa-2-2011-mj--q-1-2-3-4-7",
+          "poa-2-2011-mj--q-1-2-3-5-6",
+          "poa-2-2011-mj--q-1-2-3-5-7",
+          "poa-2-2011-mj--q-1-2-3-6-7"
+        ],
+        "httpStatus": 200,
+        "kind": "hosted-accounts-staging-rehearsal",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "passed": true,
+        "cleanup": {
+          "passed": true
+        },
+        "papers": [
+          {
+            "kind": "live-supabase-http",
+            "projectRef": "cfqetgozfxmavwexhrxz",
+            "subjectId": "principles-of-accounts",
+            "paperId": "POA-METHOD-BATCH",
+            "runId": "b2728694-e54d-4f7d-9338-8bafd5acdf96",
+            "startedAt": "2026-10-23T22:32:25.186Z",
+            "finishedAt": "2026-10-23T22:34:03.440Z",
+            "passed": true,
+            "cleanup": {
+              "passed": true,
+              "fixtureAccounts": 3,
+              "errors": []
+            },
+            "checks": [
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2009-mj--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2010-mj--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2011-mj--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "paperIds": [
+          "poa-2-2012-mj--q-1-2-3-4-5",
+          "poa-2-2012-mj--q-1-2-3-4-6",
+          "poa-2-2012-mj--q-1-2-3-4-7",
+          "poa-2-2012-mj--q-1-2-3-5-6",
+          "poa-2-2012-mj--q-1-2-3-5-7",
+          "poa-2-2012-mj--q-1-2-3-6-7",
+          "poa-2-2013-mj--q-1-2-3-4-5"
+        ],
+        "httpStatus": 200,
+        "kind": "hosted-accounts-staging-rehearsal",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "passed": true,
+        "cleanup": {
+          "passed": true
+        },
+        "papers": [
+          {
+            "kind": "live-supabase-http",
+            "projectRef": "cfqetgozfxmavwexhrxz",
+            "subjectId": "principles-of-accounts",
+            "paperId": "POA-METHOD-BATCH",
+            "runId": "c1c07d87-4a02-42fe-83a2-82a629929368",
+            "startedAt": "2026-10-23T22:45:51.526Z",
+            "finishedAt": "2026-10-23T22:46:57.523Z",
+            "passed": true,
+            "cleanup": {
+              "passed": true,
+              "fixtureAccounts": 3,
+              "errors": []
+            },
+            "checks": [
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2012-mj--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "paperIds": [
+          "poa-2-2013-mj--q-1-2-3-4-6",
+          "poa-2-2013-mj--q-1-2-3-4-7",
+          "poa-2-2013-mj--q-1-2-3-5-6",
+          "poa-2-2013-mj--q-1-2-3-5-7",
+          "poa-2-2013-mj--q-1-2-3-6-7",
+          "poa-2-2014-mj--q-1-2-3-4-5",
+          "poa-2-2014-mj--q-1-2-3-4-6"
+        ],
+        "httpStatus": 200,
+        "kind": "hosted-accounts-staging-rehearsal",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "passed": true,
+        "cleanup": {
+          "passed": true
+        },
+        "papers": [
+          {
+            "kind": "live-supabase-http",
+            "projectRef": "cfqetgozfxmavwexhrxz",
+            "subjectId": "principles-of-accounts",
+            "paperId": "POA-METHOD-BATCH",
+            "runId": "782124ba-d6a7-4aad-a0f5-05d322ddbbad",
+            "startedAt": "2026-10-23T22:47:08.692Z",
+            "finishedAt": "2026-10-23T22:48:12.449Z",
+            "passed": true,
+            "cleanup": {
+              "passed": true,
+              "fixtureAccounts": 3,
+              "errors": []
+            },
+            "checks": [
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2013-mj--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "paperIds": [
+          "poa-2-2014-mj--q-1-2-3-4-7",
+          "poa-2-2014-mj--q-1-2-3-5-6",
+          "poa-2-2014-mj--q-1-2-3-5-7",
+          "poa-2-2014-mj--q-1-2-3-6-7",
+          "poa-2-2015-mj--q-1-2-3-4-5",
+          "poa-2-2015-mj--q-1-2-3-4-6",
+          "poa-2-2015-mj--q-1-2-3-4-7"
+        ],
+        "httpStatus": 200,
+        "kind": "hosted-accounts-staging-rehearsal",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "passed": true,
+        "cleanup": {
+          "passed": true
+        },
+        "papers": [
+          {
+            "kind": "live-supabase-http",
+            "projectRef": "cfqetgozfxmavwexhrxz",
+            "subjectId": "principles-of-accounts",
+            "paperId": "POA-METHOD-BATCH",
+            "runId": "2a8184e0-9b31-4471-a6c6-ede561c81f12",
+            "startedAt": "2026-10-23T22:48:24.652Z",
+            "finishedAt": "2026-10-23T22:49:31.573Z",
+            "passed": true,
+            "cleanup": {
+              "passed": true,
+              "fixtureAccounts": 3,
+              "errors": []
+            },
+            "checks": [
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2014-mj--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "paperIds": [
+          "poa-2-2015-mj--q-1-2-3-5-6",
+          "poa-2-2015-mj--q-1-2-3-5-7",
+          "poa-2-2015-mj--q-1-2-3-6-7",
+          "poa-2-2016-mj--q-1-2-3-4-5",
+          "poa-2-2016-mj--q-1-2-3-4-6",
+          "poa-2-2016-mj--q-1-2-3-4-7",
+          "poa-2-2016-mj--q-1-2-3-5-6"
+        ],
+        "httpStatus": 200,
+        "kind": "hosted-accounts-staging-rehearsal",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "passed": true,
+        "cleanup": {
+          "passed": true
+        },
+        "papers": [
+          {
+            "kind": "live-supabase-http",
+            "projectRef": "cfqetgozfxmavwexhrxz",
+            "subjectId": "principles-of-accounts",
+            "paperId": "POA-METHOD-BATCH",
+            "runId": "34dc4a7c-eccd-4e1f-9b0f-1294e383dddc",
+            "startedAt": "2026-10-23T22:49:44.264Z",
+            "finishedAt": "2026-10-23T22:50:50.921Z",
+            "passed": true,
+            "cleanup": {
+              "passed": true,
+              "fixtureAccounts": 3,
+              "errors": []
+            },
+            "checks": [
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2015-mj--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "paperIds": [
+          "poa-2-2016-mj--q-1-2-3-5-7",
+          "poa-2-2016-mj--q-1-2-3-6-7",
+          "poa-2-2017-jan--q-1-2-3-4-5",
+          "poa-2-2017-jan--q-1-2-3-4-6",
+          "poa-2-2017-jan--q-1-2-3-4-7",
+          "poa-2-2017-jan--q-1-2-3-5-6",
+          "poa-2-2017-jan--q-1-2-3-5-7"
+        ],
+        "httpStatus": 200,
+        "kind": "hosted-accounts-staging-rehearsal",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "passed": true,
+        "cleanup": {
+          "passed": true
+        },
+        "papers": [
+          {
+            "kind": "live-supabase-http",
+            "projectRef": "cfqetgozfxmavwexhrxz",
+            "subjectId": "principles-of-accounts",
+            "paperId": "POA-METHOD-BATCH",
+            "runId": "f9f66e5c-075f-4f67-8f1b-462a6759d408",
+            "startedAt": "2026-10-23T22:51:02.986Z",
+            "finishedAt": "2026-10-23T22:52:11.061Z",
+            "passed": true,
+            "cleanup": {
+              "passed": true,
+              "fixtureAccounts": 3,
+              "errors": []
+            },
+            "checks": [
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2016-mj--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-4-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-4-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-4-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-4-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-4-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-4-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-5-6: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-5-6: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-5-6: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-5-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-5-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-5-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "paperIds": [
+          "poa-2-2017-jan--q-1-2-3-6-7",
+          "poa-2-2017-mj--q-1-2-3-4-5",
+          "poa-2-2018-jan--q-1-2-3-4-5",
+          "poa-2-2018-mj--q-1-2-3-4-5",
+          "poa-2-2019-mj--q-1-2-3-4-5",
+          "poa-2-2020-jan--q-1-2-3-4-5",
+          "poa-2-2021-jan--q-1-2-3-4-5"
+        ],
+        "httpStatus": 200,
+        "kind": "hosted-accounts-staging-rehearsal",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "passed": true,
+        "cleanup": {
+          "passed": true
+        },
+        "papers": [
+          {
+            "kind": "live-supabase-http",
+            "projectRef": "cfqetgozfxmavwexhrxz",
+            "subjectId": "principles-of-accounts",
+            "paperId": "POA-METHOD-BATCH",
+            "runId": "021f7cc3-0029-4df6-ae82-12fffb15efe5",
+            "startedAt": "2026-10-23T22:52:30.888Z",
+            "finishedAt": "2026-10-23T22:53:35.458Z",
+            "passed": true,
+            "cleanup": {
+              "passed": true,
+              "fixtureAccounts": 3,
+              "errors": []
+            },
+            "checks": [
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-6-7: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-6-7: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2017-jan--q-1-2-3-6-7: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2017-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2017-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2017-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2018-jan--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2018-jan--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2018-jan--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2018-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2018-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2018-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2019-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2019-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2019-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2020-jan--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2020-jan--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2020-jan--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2021-jan--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2021-jan--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2021-jan--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "paperIds": [
+          "poa-2-2021-mj--q-1-2-3-4-5",
+          "poa-2-2022-mj--q-1-2-3-4-5",
+          "poa-2-2023-jan--q-1-2-3-4-5",
+          "poa-2-2023-mj--q-1-2-3-4-5",
+          "poa-2-2024-jan--q-1-2-3-4-5",
+          "poa-2-2024-mj--q-1-2-3-4-5",
+          "poa-2-2025-jan--q-1-2-3-4-5"
+        ],
+        "httpStatus": 200,
+        "kind": "hosted-accounts-staging-rehearsal",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "passed": true,
+        "cleanup": {
+          "passed": true
+        },
+        "papers": [
+          {
+            "kind": "live-supabase-http",
+            "projectRef": "cfqetgozfxmavwexhrxz",
+            "subjectId": "principles-of-accounts",
+            "paperId": "POA-METHOD-BATCH",
+            "runId": "e8f3f688-77fc-4707-88e4-edd182150d98",
+            "startedAt": "2026-10-23T22:53:52.498Z",
+            "finishedAt": "2026-10-23T22:54:56.205Z",
+            "passed": true,
+            "cleanup": {
+              "passed": true,
+              "fixtureAccounts": 3,
+              "errors": []
+            },
+            "checks": [
+              {
+                "name": "poa-2-2021-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2021-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2021-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2022-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2022-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2022-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2023-jan--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2023-jan--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2023-jan--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2023-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2023-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2023-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2024-jan--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2024-jan--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2024-jan--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2024-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2024-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2024-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              },
+              {
+                "name": "poa-2-2025-jan--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2025-jan--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2025-jan--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "paperIds": [
+          "poa-2-2025-mj--q-1-2-3-4-5"
+        ],
+        "httpStatus": 200,
+        "kind": "hosted-accounts-staging-rehearsal",
+        "projectRef": "cfqetgozfxmavwexhrxz",
+        "passed": true,
+        "cleanup": {
+          "passed": true
+        },
+        "papers": [
+          {
+            "kind": "live-supabase-http",
+            "projectRef": "cfqetgozfxmavwexhrxz",
+            "subjectId": "principles-of-accounts",
+            "paperId": "POA-METHOD-BATCH",
+            "runId": "32687189-8313-4e98-b932-041a77b11429",
+            "startedAt": "2026-10-23T22:55:07.070Z",
+            "finishedAt": "2026-10-23T22:55:20.971Z",
+            "passed": true,
+            "cleanup": {
+              "passed": true,
+              "fixtureAccounts": 3,
+              "errors": []
+            },
+            "checks": [
+              {
+                "name": "poa-2-2025-mj--q-1-2-3-4-5: full, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 100
+              },
+              {
+                "name": "poa-2-2025-mj--q-1-2-3-4-5: zero, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "verified",
+                "score": 0
+              },
+              {
+                "name": "poa-2-2025-mj--q-1-2-3-4-5: unresolved, source, ownership, score, progress and family notification",
+                "passed": true,
+                "status": "provisional",
+                "score": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "original": {
     "httpStatus": 200,
     "kind": "hosted-accounts-staging-rehearsal",
     "projectRef": "cfqetgozfxmavwexhrxz",
@@ -18,9 +2187,9 @@
         "projectRef": "cfqetgozfxmavwexhrxz",
         "subjectId": "principles-of-accounts",
         "paperId": "POA-ORIGINAL-02-01",
-        "runId": "d572e46c-44cb-422f-8b9d-53d4205956c0",
-        "startedAt": "2026-10-23T05:32:24.018Z",
-        "finishedAt": "2026-10-23T05:32:47.873Z",
+        "runId": "2a50010b-9896-4c89-b9d2-1f73c6e53d6f",
+        "startedAt": "2026-10-23T22:55:53.035Z",
+        "finishedAt": "2026-10-23T22:56:34.740Z",
         "passed": true,
         "cleanup": {
           "passed": true,
@@ -114,59 +2283,48 @@
       }
     ]
   },
-  "postRunDatabaseCheck": {
-    "users": 0,
-    "sessions": 0,
-    "profiles": 0,
-    "family_links": 0,
-    "attempts": 0,
-    "progress": 0,
-    "notifications": 0,
-    "publication_receipts": 0,
-    "verified_criteria": 100,
-    "course_enabled": false,
-    "course_status": "draft",
-    "nonce_consumed": true
-  },
-  "cleanupCheckedAt": "2026-10-23T05:33:27.176Z",
-  "temporaryEndpoint": {
-    "checkedAt": "2026-10-23T05:34:13.884Z",
-    "httpStatus": 403,
-    "retired": true,
-    "body": {
-      "error": "Accounts staging rehearsal is disabled"
+  "transientRuns": [
+    {
+      "reason": "Staging API rate limit",
+      "cleanupPassed": true,
+      "rerunPassed": true,
+      "remediation": "Paced requests, bounded throttle retries and smaller batches; no grading-policy change."
     }
+  ],
+  "cleanup": {
+    "passed": true,
+    "users": 0,
+    "attempts": 0,
+    "profiles": 0,
+    "progress": 0,
+    "sessions": 0,
+    "enrollments": 0,
+    "family_links": 0,
+    "marking_jobs": 0,
+    "course_status": "draft",
+    "notifications": 0,
+    "course_enabled": false,
+    "activity_events": 0,
+    "publication_receipts": 0,
+    "nonceFilesRemoved": 14,
+    "nonceFilesRemaining": 0
   },
-  "conflictingLabelChecks": {
-    "scripts": 3,
-    "casesPerScript": 7,
-    "silentSync": true,
-    "invalidAndForeignReferences": true,
-    "pendingScoresAndNotificationsUnscored": true
+  "release": {
+    "active_papers": 95,
+    "exact_sources": true,
+    "paper_evidence": true,
+    "active_criteria": 570
   },
-  "provenance": {
-    "sourceCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
-    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
-    "workerProtocolSha256": "0f40265490f40efedba82105fe9f6003ee46d723b58923d9f9fe15c5329f10fb",
-    "workerFiles": [
-      {
-        "name": "index.mjs",
-        "sha256": "979578bd586e637e8877c2a60a720e15332b8984c6b235a9afd595386e73fd68"
-      },
-      {
-        "name": "server-marker-v2.mjs",
-        "sha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb"
-      },
-      {
-        "name": "server-marker-v2-checksum.mjs",
-        "sha256": "ff00d959511f2ce2475fc98560134791a1cd7eab8a214b62257bbdc392b006dc"
-      }
-    ],
-    "rehearsalSourceSha256": "a75b2d62025dd9a53a382c4eda1c06cab86b16ccc9f3ab265451dc220ec64ec8",
-    "rehearsalVersion": 9,
-    "disabledVersion": 10,
-    "workerVersion": 3,
-    "prerequisiteSchemaBlocks": 29,
-    "privateNonceFilesRemoved": true
-  }
+  "retirement": {
+    "disabled": true,
+    "anonymousStatus": 403,
+    "formerNonceStatus": 403,
+    "deployedVersion": 25
+  },
+  "worker": {
+    "deployedVersion": 4,
+    "bundleSha256": "bb46d344f93eea27c432ffe8c255b85ca631e87f8de63874afb4a436d0e7a676",
+    "authentication": "Exact server-held service key in apikey header, constant-time digest comparison; fixed disposable stage only"
+  },
+  "limitation": "SPARK-authored method allocations preserve printed caps. Unrecognized prose, ambiguous work and unsupported drawings remain provisional."
 }

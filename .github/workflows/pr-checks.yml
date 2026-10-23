@@ -54,11 +54,13 @@ jobs:
       - name: Verify Accounts calibration and isolated publication controls
         run: |
           node tools/calibrate-poa-original.mjs
-          node --test tools/v2-registry.test.mjs tools/test-poa-staging.test.mjs tools/poa-staging-edge-runtime.test.mjs tools/poa-stage-worker-auth.test.mjs
+          node tools/calibrate-poa-methods.mjs
+          node --test tools/v2-registry.test.mjs tools/test-poa-staging.test.mjs tools/poa-staging-edge-runtime.test.mjs tools/poa-stage-worker-auth.test.mjs tools/poa-stage-fetch.test.mjs
           node tools/v2-verify-all.mjs --subject principles-of-accounts --out artifacts/poa-v2-ci
-          node --input-type=module -e 'import fs from "node:fs"; const s=JSON.parse(fs.readFileSync("artifacts/poa-v2-ci/summary.json","utf8")); const a=s.bySubject["principles-of-accounts"]; if(a?.verified!==100 || a.failed!==0 || a.blocked!==22 || s.papers.verified!==1 || s.rehearsal.criteriaRejectedCount || s.rehearsal.papersRejected.length || s.rehearsal.releaseRejected.length) throw new Error("Accounts calibration/release evidence mismatch");'
+          node --input-type=module -e 'import fs from "node:fs"; const s=JSON.parse(fs.readFileSync("artifacts/poa-v2-ci/summary.json","utf8")); const a=s.bySubject["principles-of-accounts"]; if(a?.verified!==570 || a.failed!==0 || a.blocked!==22 || s.papers.verified!==95 || s.rehearsal.criteriaRejectedCount || s.rehearsal.papersRejected.length || s.rehearsal.releaseRejected.length) throw new Error("Accounts calibration/release evidence mismatch");'
           node tools/test-v2-release-e2e.mjs artifacts/poa-v2-ci --subject principles-of-accounts --paper POA-ORIGINAL-02-01
           node tools/test-poa-release-integration.mjs artifacts/poa-v2-ci
+          node tools/test-poa-method-release.mjs artifacts/poa-v2-ci
 
       - name: Upload Accounts calibration evidence
         uses: actions/upload-artifact@v4

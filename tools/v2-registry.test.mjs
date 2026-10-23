@@ -22,7 +22,10 @@ test("migrated Accounts drafts have exact source fingerprints, with no course sc
   const db = await openRegistry();
   try {
     const papers = (await loadRubrics(db)).filter((p) => p.subject_id === "principles-of-accounts");
-    assert.equal(papers.length, 2);
+    assert.equal(papers.length, 96);
+    const methods=papers.filter(p=>p.rubric_version==='poa-source-methods-v1');
+    assert.equal(methods.length,94);
+    assert(methods.every(p=>p.criteria.length===5&&p.criteria.reduce((n,c)=>n+c.maxMarks,0)===100));
     const original = papers.find((p) => p.paper_id === "POA-ORIGINAL-02-01");
     const specimen = papers.find((p) => p.paper_id === "poa-specimen-2-2017");
     assert.equal(original.criteria.length, 100);

@@ -1,5 +1,7 @@
 # Accounts specimen: independent grading source audit
 
+Update, 23 October 2026: the dated source findings below now have a versioned SPARK allocation and revenue-unit policy. The specimen and all historical Paper 2 papers passed calibration and hosted staging. See [the method policy](poa-specimen-method-policy.md), [grading notes](poa-method-grading.md) and [live results](../artifacts/poa-live-staging/report.json). Statements below about unresolved allocations describe the pre-policy audit, rather than a current release blocker.
+
 Audit date: 22 October 2026. This is source evidence and calibration preparation, not an approval, an activation record or a claim that every possible student answer can be graded automatically.
 
 ## Evidence inspected

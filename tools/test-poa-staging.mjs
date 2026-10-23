@@ -6,6 +6,7 @@ import path from "node:path";
 import {pathToFileURL} from "node:url";
 import {createClient} from "@supabase/supabase-js";
 import {isOpaqueServiceKey,legacyServiceClaims} from "./poa-stage-worker-auth.mjs";
+import {createPoaStageFetch} from "./poa-stage-fetch.mjs";
 
 /**
  * Live, disposable Supabase rehearsal. This is not the PGlite SQL test.
@@ -96,7 +97,7 @@ export function verifiedScriptsFromRecords(records,papers,paperId) {
   ]};
 }
 
-const clientOptions={auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}};
+const clientOptions={auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},global:{fetch:createPoaStageFetch()}};
 const value=async (operation,label) => {
   const {data,error}=await operation;
   if(error) throw new Error(`${label}: ${error.code || error.status || "error"} ${error.message}`);

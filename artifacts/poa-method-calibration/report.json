@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "authority": "spark-authored",
+  "sourcePapers": 29,
+  "sourceQuestions": 171,
+  "validPaperVariants": 94,
+  "independentNumericChecks": 2223,
+  "criterionFixtures": 2013,
+  "sourceFixtures": 1738,
+  "heldOutSemantic": {
+    "accepted": 24,
+    "withheld": 112,
+    "wrongRejected": 68
+  },
+  "failures": []
+}

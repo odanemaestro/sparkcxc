@@ -7,6 +7,7 @@
  */
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 import {evaluatePoaSourceV2} from "../principlesOfAccounts/poaMarkingV2";
+import {evaluatePoaMethodsV2,POA_METHOD_SOURCE_FORMAT} from "../principlesOfAccounts/marking/poaMethodRegistry";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
 import {CHECKERS} from "../practice/cxcMarking/checkers";
 import {markPhysicsPaper2} from "../physics/paper2/physicsPaper2Marking";
@@ -804,7 +805,7 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
   case "principles-of-accounts":
    // Subject review diagnostics stay out of the strict five-field private
    // worker protocol validated by spark_v2_complete_subject_job.
-   rows=evaluatePoaSourceV2({paperId,criteria,responses}).map(({criterionId,maxMarks,suggestedMarks,method,resolved})=>
+   rows=(criteria.some(c=>c.sourceFormat===POA_METHOD_SOURCE_FORMAT)?evaluatePoaMethodsV2:evaluatePoaSourceV2)({paperId,criteria,responses}).map(({criterionId,maxMarks,suggestedMarks,method,resolved})=>
     ({criterionId,maxMarks,suggestedMarks,method,resolved}));
    break;
   case "social-studies":rows=social(criteria,responses);break;

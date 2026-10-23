@@ -31,3 +31,9 @@ The builder starts from the genuine worker entry point and asserts that its exam
 When transferring the generated files through an API, read every path literally and reject file-read errors, empty contents and truncated chunks before deployment. Normalize Windows path separators when a path is embedded in JavaScript. Confirm the deployed worker rejects an anonymous request promptly before starting the rehearsal. An empty uploaded entry point can boot without serving a handler and leave the rehearsal waiting until timeout.
 
 See Supabase's [API-key migration guidance](https://supabase.com/docs/guides/getting-started/migrating-to-new-api-keys) and [authorization header reference](https://supabase.com/docs/guides/functions/auth-headers) for the key and gateway distinction.
+
+## Source-method batches
+
+The builder defaults to the original numerical paper. For source-method rehearsals, pass a fixed `selectedPaperIds` array and `methodBatch: true` to `buildPoaStagingEdge`. The selected IDs must already have genuine complete V2 verification evidence. `tools/test-poa-method-staging.mjs` shares three disposable accounts across a small batch and checks full, zero and unresolved scripts for each variant. Seven variants per batch kept the hosted requests within the stage's limits.
+
+The rehearsal transport spaces requests and retries only explicit HTTP 429 responses or explicit throttle exceptions, with bounded delays. Unknown network failures and HTTP 500 responses are not replayed. The original platform rehearsal uses the same paced SDK transport. The nonce, exact-project guard, cleanup and retirement rules above apply to both runners.

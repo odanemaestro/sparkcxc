@@ -53,7 +53,7 @@ commit;
 }
 
 export async function buildPoaStagingEdge({root=localRoot,outDir=".audit-output/poa-staging-edge",
-  evidenceDir="artifacts/poa-v2-verification",ttlMinutes=60}={}) {
+  evidenceDir="artifacts/poa-v2-verification",ttlMinutes=60,selectedPaperIds=["POA-ORIGINAL-02-01"],methodBatch=false}={}) {
   root=path.resolve(root);
   outDir=path.resolve(root,outDir);
   // Secrets and deployment-only fixtures must remain in ignored audit output.
@@ -64,7 +64,10 @@ export async function buildPoaStagingEdge({root=localRoot,outDir=".audit-output/
   const records=JSON.parse(fs.readFileSync(path.join(evidenceDir,"evidence.json"),"utf8"));
   const papers=JSON.parse(fs.readFileSync(path.join(evidenceDir,"papers.json"),"utf8"));
   const accountsPapers=papers.filter(paper=>paper.subjectId===SUBJECT);
-  const selected=accountsPapers.filter(paper=>paper.outcome==="verified");
+  assert(Array.isArray(selectedPaperIds)&&selectedPaperIds.length>0&&new Set(selectedPaperIds).size===selectedPaperIds.length,"Select distinct fixed paper IDs");
+  const selected=accountsPapers.filter(paper=>paper.outcome==="verified"&&selectedPaperIds.includes(paper.paperId));
+  assert.equal(selected.length,selectedPaperIds.length,"Every selected paper must have verified Accounts evidence");
+  if(methodBatch)assert(selected.length<=14&&selected.every(p=>p.rubricVersion==="poa-source-methods-v1"),"Method batches require at most fourteen verified source-method variants");
   assert(selected.length,"No verified Accounts calibration evidence found");
   const commit=git(root,"rev-parse","HEAD");
   const bundle=fs.readFileSync(path.join(root,"supabase/functions/_shared/server-marker-v2.mjs"));
@@ -98,10 +101,11 @@ export async function buildPoaStagingEdge({root=localRoot,outDir=".audit-output/
   const supabaseVersion=JSON.parse(fs.readFileSync(path.join(root,"node_modules/@supabase/supabase-js/package.json"),"utf8")).version;
   assert.match(supabaseVersion,/^\d+\.\d+\.\d+$/,"Pin an exact installed Supabase client version");
   const entry=`import {createClient} from "@supabase/supabase-js";
-import {runStaging} from ${JSON.stringify(path.join(root,"tools/test-poa-staging.mjs"))};
+import {${methodBatch?"runMethodStagingBatch":"runStaging"}} from ${JSON.stringify(path.join(root,methodBatch?"tools/test-poa-method-staging.mjs":"tools/test-poa-staging.mjs"))};
 import {createStageRehearsalHandler,POA_STAGE_CLAIM_RPC} from ${JSON.stringify(path.join(root,"tools/poa-staging-edge-runtime.mjs"))};
 const handler=createStageRehearsalHandler({nonceSha256:${JSON.stringify(nonceSha256)},expiresAt:${JSON.stringify(expiresAt)},
- paperIds:${JSON.stringify(paperIds)},verification:${JSON.stringify(verification)},runStaging,
+ paperIds:${JSON.stringify(methodBatch?["POA-METHOD-BATCH"]:paperIds)},verification:${JSON.stringify(verification)},
+ runStaging:${methodBatch?`(config,options)=>runMethodStagingBatch(config,{...options,paperIds:${JSON.stringify(paperIds)}})`:"runStaging"},
  env:name=>Deno.env.get(name),claimNonce:async({url,serviceKey})=>{
    const {data,error}=await createClient(url,serviceKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}}).rpc(POA_STAGE_CLAIM_RPC);
    if(error)throw new Error("Could not claim fixed staging rehearsal");
