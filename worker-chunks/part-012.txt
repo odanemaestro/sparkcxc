@@ -131,6 +131,116 @@ function gradeEnglishAPaper2(paper, answers = {}, choiceId = "") {
   };
 }
 
+// src/integratedScience/practice/scienceParticleDiagramMarking.js
+var ID = "IS-M3-P2-25";
+var SOURCE_POINTS = [
+  "Solid: particles closely packed in a regular arrangement (1)",
+  "Liquid: particles close together but irregularly arranged (1)"
+];
+var within = (n, a, b) => n >= a && n <= b;
+var gap = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
+var uniqueGroups = (values, tol = 0.025) => {
+  const sorted = [...values].sort((a, b) => a - b), groups = [];
+  for (const v of sorted) {
+    if (!groups.length || Math.abs(v - groups.at(-1).mean) > tol) groups.push({ mean: v, n: 1 });
+    else {
+      const g = groups.at(-1);
+      g.mean = (g.mean * g.n + v) / (g.n + 1);
+      g.n++;
+    }
+  }
+  return groups.map((g) => g.mean);
+};
+function parse(value2) {
+  let layout = value2;
+  if (typeof value2 === "string") {
+    try {
+      layout = JSON.parse(value2);
+    } catch {
+      return null;
+    }
+  }
+  if (!layout || typeof layout !== "object" || Array.isArray(layout)) return null;
+  const validate = (p) => Array.isArray(p) && p.length === 2 && p.every((n) => typeof n === "number" && Number.isFinite(n) && within(n, 0, 1));
+  for (const k of ["solid", "liquid"]) {
+    if (!Array.isArray(layout[k]) || layout[k].length > 36 || !layout[k].every(validate)) return null;
+  }
+  return layout;
+}
+function characterize(pts) {
+  if (pts.length < 9) return { type: pts.length ? "insufficient" : "blank" };
+  const distances = pts.map((p, i) => Math.min(...pts.filter((_, j) => i !== j).map((q) => gap(p, q))));
+  if (distances.some((d) => d < 0.04)) return { type: "ambiguous" };
+  const average = distances.reduce((n, d) => n + d, 0) / distances.length;
+  if (!within(average, 0.105, 0.33)) return { type: average > 0.4 ? "sparse" : "ambiguous" };
+  const xs = uniqueGroups(pts.map((p) => p[0])), ys = uniqueGroups(pts.map((p) => p[1]));
+  const lattice = xs.length >= 3 && ys.length >= 3 && xs.length * ys.length <= pts.length + 2 && pts.every((p) => xs.some((x) => Math.abs(x - p[0]) < 0.025) && ys.some((y) => Math.abs(y - p[1]) < 0.025));
+  if (lattice) {
+    const spacing = (v) => v.slice(1).map((x, i) => x - v[i]);
+    const dx = spacing(xs), dy = spacing(ys), all = [...dx, ...dy];
+    const regular = all.every((d) => within(d, 0.13, 0.34)) && Math.max(...dx) / Math.min(...dx) < 1.35 && Math.max(...dy) / Math.min(...dy) < 1.35 && xs.length >= 3 && ys.length >= 3;
+    if (regular) return { type: "regular" };
+  }
+  const close = distances.filter((d) => d <= 0.285).length / pts.length;
+  const xspan = Math.max(...pts.map((p) => p[0])) - Math.min(...pts.map((p) => p[0]));
+  const yspan = Math.max(...pts.map((p) => p[1])) - Math.min(...pts.map((p) => p[1]));
+  if (close >= 0.8 && xspan >= 0.33 && yspan >= 0.33 && xspan <= 0.85 && yspan <= 0.85)
+    return { type: "irregular" };
+  return { type: "ambiguous" };
+}
+function isSourceParticleDiagram(qid, pi, ii, item2) {
+  return qid === ID && pi === 1 && ii === 0 && item2?.response?.type === "drawing" && Number(item2?.marks) === 2 && JSON.stringify(item2?.markScheme?.points || []) === JSON.stringify(SOURCE_POINTS);
+}
+function markSourceParticleDiagram(qid, pi, ii, item2, input, hasFreehand = false) {
+  if (!isSourceParticleDiagram(qid, pi, ii, item2)) return null;
+  if (input == null) {
+    return hasFreehand ? null : {
+      score: 0,
+      maxMarks: 2,
+      sourceGeometry: true,
+      sourceResolved: true,
+      provisional: false,
+      confidence: "high",
+      unassessedMarks: 0,
+      criteria: []
+    };
+  }
+  const layout = parse(input);
+  if (!layout) return {
+    score: 0,
+    maxMarks: 2,
+    sourceGeometry: true,
+    sourceResolved: false,
+    provisional: true,
+    confidence: "low",
+    unassessedMarks: 2,
+    criteria: []
+  };
+  const solid = characterize(layout.solid), liquid = characterize(layout.liquid);
+  const first = solid.type === "regular", second = liquid.type === "irregular";
+  const resolved = [solid, liquid].every((x) => ["regular", "irregular", "blank", "insufficient", "sparse"].includes(x.type));
+  const score = Number(first) + Number(second);
+  return {
+    score,
+    maxMarks: 2,
+    sourceGeometry: true,
+    sourceResolved: resolved,
+    provisional: !resolved,
+    confidence: resolved ? "high" : "low",
+    unassessedMarks: resolved ? 0 : 2 - score,
+    criteria: [
+      { id: "solid-particles", label: SOURCE_POINTS[0], marks: Number(first), maxMarks: 1, earned: first },
+      { id: "liquid-particles", label: SOURCE_POINTS[1], marks: Number(second), maxMarks: 1, earned: second }
+    ],
+    visualEvidence: {
+      solidType: solid.type,
+      liquidType: liquid.type,
+      solidParticles: layout.solid.length,
+      liquidParticles: layout.liquid.length
+    }
+  };
+}
+
 // src/integratedScience/practice/scienceAdditionalTableMarking.js
 var SPECS = {
   "IS-M2-P2-07:0:2": { marks: 3, kind: "conductivity" },
@@ -2716,6 +2826,15 @@ function gradeIntegratedSciencePaper2Item(question2, partIndex, itemIndex, item2
       freehand
     );
     if (additional) return additional;
+    const geometry = markSourceParticleDiagram(
+      question2.id,
+      partIndex,
+      itemIndex,
+      item2,
+      responses[`${base}:particleLayout`],
+      freehand
+    );
+    if (geometry) return geometry;
     return visualResult(question2.id, partIndex, itemIndex, item2, responses);
   }
   return lineResult2(question2.id, partIndex, itemIndex, item2, responses);
@@ -3954,41 +4073,4 @@ function verifyPob2002MjP1AuthoredKey(key = POB_2002_MJ_P1_AUTHORED_KEY) {
   if (seen.size !== 60) issues.push("Missing question IDs.");
   if (disputed.join(",") !== "9,14,18,51,56") issues.push("Mandatory dispute IDs removed.");
   if (key.liveScoringApproved !== false || key.officialCxcAnswerKeySupplied !== false)
-    issues.push("Unverified academic answers must not be published or claimed official.");
-  return { valid: issues.length === 0, issues, disputes: disputed.length, disputedNumbers: disputed };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2003MjP1AuthoredKey.js
-var pobHistorical2003MjP1AuthoredKey_exports = {};
-__export(pobHistorical2003MjP1AuthoredKey_exports, {
-  POB_2003_MJ_P1_AUTHORED_KEY: () => POB_2003_MJ_P1_AUTHORED_KEY,
-  verifyPob2003MjP1AuthoredKey: () => verifyPob2003MjP1AuthoredKey
-});
-var POB_2003_MJ_P1_AUTHORED_KEY = Object.freeze({
-  id: "POB-P1-2003-MJ",
-  paper: 1,
-  year: 2003,
-  sitting: "MJ",
-  sourceFilename: "CSEC_Principles_of_Business_P1_2003_MJ.pdf",
-  sourceSha256: "9ed7f0c7d46949cbb23b02f21dd2dbca4d9e948347ad0b239547979343607b0f",
-  pages: 8,
-  questionCount: 60,
-  origin: "SPARK authored academic proposals",
-  originalCxcKeySupplied: false,
-  allOriginalOptionsChecked: false,
-  markingCalibrationComplete: false,
-  liveScoringApproved: false,
-  entries: Object.freeze([
-    Object.freeze({ "number": 1, "pdfPage": 1, "proposedOption": "B", "explanation": "Producing goods, creating employment and developing the workforce are activities of a business, while maximising sales is a commercial objective rather than a universal function.", "status": "requires-adjudication", "uncertainty": "business-function-vs-sales-maximisation", "reasonToReview": "The distinction between a business function, an objective and workforce training is imprecise; verify against the examination-era syllabus.", "diagramPageChecked": false }),
-    Object.freeze({ "number": 2, "pdfPage": 1, "proposedOption": "C", "explanation": "Before monetary exchange, goods themselves were directly traded for other goods under barter.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 3, "pdfPage": 1, "proposedOption": "B", "explanation": "The board of directors develops overall policy on behalf of company shareholders.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 4, "pdfPage": 1, "proposedOption": "D", "explanation": "Ordinary shareholders ordinarily receive distributions after preference shareholders' priority dividend rights are met.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 5, "pdfPage": 1, "proposedOption": "A", "explanation": "Line authority is the formal superior-to-subordinate chain of command.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 6, "pdfPage": 1, "proposedOption": "D", "explanation": "Delegating operations to departmental managers makes a rapidly growing sole-trader business easier to control.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 7, "pdfPage": 1, "proposedOption": "A", "explanation": "A union ordinarily first takes an employee grievance to the personnel officer for discussion before industrial action.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 8, "pdfPage": 1, "proposedOption": "B", "explanation": "Suggestion schemes, instructional films and notice boards are communication methods; mere presence of staff members is not a specific technique.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 9, "pdfPage": 2, "proposedOption": "B", "explanation": "The rendered organisational chart shows direct vertical reporting or line authority between higher and lower levels.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": true }),
-    Object.freeze({ "number": 10, "pdfPage": 2, "proposedOption": "B", "explanation": "Managing directors delegate functions and responsibilities through managers below them.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": true }),
-    Object.freeze({ "number": 11, "pdfPage": 2, "proposedOption": "C", "explanation": "The general manager in the chart has executive management responsibility and coordinates departments.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": true }),
-    Object.freeze({ "number": 12, "pdfPage": 2, "proposedOption": "C", "explanation": "Coordinating, delegating and controlling staff and materials are recognised functions of managers; compelling union membership is not.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 13, "pdfPage": 2, "proposedOption": "A", "explanation": "Ref
+    issues.push("Unverified academic answers must not be published or claimed offi

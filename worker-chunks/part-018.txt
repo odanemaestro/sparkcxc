@@ -1,4 +1,78 @@
-wer": "Any TWO, 3 marks each:\n\u2022 Employment: trained citizens can find jobs or start their own repair businesses, reducing unemployment.\n\u2022 A more skilled workforce: higher productivity and more foreign investment in technology-based industries.\n\u2022 Foreign exchange savings: appliances and computers can be repaired locally instead of being replaced with imports, or instead of paying foreign technicians.\n\u2022 Entrepreneurship: graduates can open small businesses, increasing incomes and tax revenue.\n\u2022 Less crime and a better standard of living as young people gain useful skills."
+for a fixed period at a higher rate of interest.\n\u2022 Foreign exchange: buying and selling foreign currency.\n\u2022 Safety deposit boxes and night safe facilities.\n\u2022 Online banking, ATMs and standing orders.\n\u2022 Credit cards."
+            },
+            {
+              "label": "(c)",
+              "question": "List FOUR functions of a central bank.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each: issues notes and coins; banker to the government; banker to commercial banks; lender of last resort; controls the money supply and interest rates (monetary policy); manages foreign exchange reserves; regulates and supervises commercial banks; manages the public debt; advises the government."
+            },
+            {
+              "label": "(d)",
+              "question": "Explain how the central bank uses EACH of the following measures to regulate the activities of commercial banks.",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Open market operations",
+                  "marks": 3,
+                  "answer": "The central bank buys or sells government securities (treasury bills and bonds) on the open market (1). When it sells securities, banks and the public pay for them, so money leaves the banking system and banks have less to lend (1). When it buys securities, money flows into the banks and they can lend more (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Liquid asset requirements",
+                  "marks": 3,
+                  "answer": "The central bank requires commercial banks to keep a set percentage of their deposits in liquid assets (cash, deposits at the central bank, treasury bills) (1). Raising the percentage leaves banks less money to lend, which reduces credit (1); lowering it allows them to lend more. It also makes sure banks can meet customers' withdrawals (1)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Define EACH of the following types of taxes:",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Progressive tax",
+                  "marks": 2,
+                  "answer": "A progressive tax is one in which the rate (percentage) of tax increases as income increases (1), so higher earners pay a larger share of their income, for example income tax with rising bands (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Proportional tax",
+                  "marks": 2,
+                  "answer": "A proportional (flat) tax is one in which the same rate (percentage) of tax is charged at all levels of income (1), so everyone pays the same share of their income (1)."
+                }
+              ]
+            },
+            {
+              "label": "(b)",
+              "question": "State THREE reasons why governments charge taxes.",
+              "marks": 3,
+              "answer": "Any THREE, 1 mark each: to raise revenue for government spending; to redistribute income; to discourage consumption of harmful goods; to protect local industries; to control inflation and manage the economy; to pay the national debt."
+            },
+            {
+              "label": "(c)",
+              "question": "Identify THREE ways in which governments regulate the activities of businesses.",
+              "marks": 3,
+              "answer": "Any THREE, 1 mark each: registration and licensing; health and safety standards and inspections; price controls; taxation; labour laws (minimum wage); environmental and zoning laws; fair competition laws; consumer protection laws."
+            },
+            {
+              "label": "(d)",
+              "question": "Outline TWO measures used by governments to protect consumers.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Consumer protection laws (for example the Sale of Goods Act, Hire Purchase Act).\n\u2022 Agencies such as a Consumer Affairs Commission and Bureau of Standards to handle complaints and enforce standards.\n\u2022 Price controls on basic items.\n\u2022 Labelling requirements.\n\u2022 Inspection of food, drugs, weights and measures.\n\u2022 Consumer education programmes."
+            },
+            {
+              "label": "(e)",
+              "question": "The government of your country has set up centres to train citizens in computer engineering and small appliance repair. Explain TWO benefits that could be gained from this initiative.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Employment: trained citizens can find jobs or start their own repair businesses, reducing unemployment.\n\u2022 A more skilled workforce: higher productivity and more foreign investment in technology-based industries.\n\u2022 Foreign exchange savings: appliances and computers can be repaired locally instead of being replaced with imports, or instead of paying foreign technicians.\n\u2022 Entrepreneurship: graduates can open small businesses, increasing incomes and tax revenue.\n\u2022 Less crime and a better standard of living as young people gain useful skills."
             }
           ]
         }

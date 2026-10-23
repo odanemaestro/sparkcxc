@@ -1,4 +1,41 @@
-using staff discussions and suggestions is characteristic of an authoritarian management style.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+cial.");
+  return { valid: issues.length === 0, issues, disputes: disputed.length, disputedNumbers: disputed };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2003MjP1AuthoredKey.js
+var pobHistorical2003MjP1AuthoredKey_exports = {};
+__export(pobHistorical2003MjP1AuthoredKey_exports, {
+  POB_2003_MJ_P1_AUTHORED_KEY: () => POB_2003_MJ_P1_AUTHORED_KEY,
+  verifyPob2003MjP1AuthoredKey: () => verifyPob2003MjP1AuthoredKey
+});
+var POB_2003_MJ_P1_AUTHORED_KEY = Object.freeze({
+  id: "POB-P1-2003-MJ",
+  paper: 1,
+  year: 2003,
+  sitting: "MJ",
+  sourceFilename: "CSEC_Principles_of_Business_P1_2003_MJ.pdf",
+  sourceSha256: "9ed7f0c7d46949cbb23b02f21dd2dbca4d9e948347ad0b239547979343607b0f",
+  pages: 8,
+  questionCount: 60,
+  origin: "SPARK authored academic proposals",
+  originalCxcKeySupplied: false,
+  allOriginalOptionsChecked: false,
+  markingCalibrationComplete: false,
+  liveScoringApproved: false,
+  entries: Object.freeze([
+    Object.freeze({ "number": 1, "pdfPage": 1, "proposedOption": "B", "explanation": "Producing goods, creating employment and developing the workforce are activities of a business, while maximising sales is a commercial objective rather than a universal function.", "status": "requires-adjudication", "uncertainty": "business-function-vs-sales-maximisation", "reasonToReview": "The distinction between a business function, an objective and workforce training is imprecise; verify against the examination-era syllabus.", "diagramPageChecked": false }),
+    Object.freeze({ "number": 2, "pdfPage": 1, "proposedOption": "C", "explanation": "Before monetary exchange, goods themselves were directly traded for other goods under barter.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 3, "pdfPage": 1, "proposedOption": "B", "explanation": "The board of directors develops overall policy on behalf of company shareholders.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 4, "pdfPage": 1, "proposedOption": "D", "explanation": "Ordinary shareholders ordinarily receive distributions after preference shareholders' priority dividend rights are met.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 5, "pdfPage": 1, "proposedOption": "A", "explanation": "Line authority is the formal superior-to-subordinate chain of command.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 6, "pdfPage": 1, "proposedOption": "D", "explanation": "Delegating operations to departmental managers makes a rapidly growing sole-trader business easier to control.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 7, "pdfPage": 1, "proposedOption": "A", "explanation": "A union ordinarily first takes an employee grievance to the personnel officer for discussion before industrial action.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 8, "pdfPage": 1, "proposedOption": "B", "explanation": "Suggestion schemes, instructional films and notice boards are communication methods; mere presence of staff members is not a specific technique.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 9, "pdfPage": 2, "proposedOption": "B", "explanation": "The rendered organisational chart shows direct vertical reporting or line authority between higher and lower levels.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": true }),
+    Object.freeze({ "number": 10, "pdfPage": 2, "proposedOption": "B", "explanation": "Managing directors delegate functions and responsibilities through managers below them.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": true }),
+    Object.freeze({ "number": 11, "pdfPage": 2, "proposedOption": "C", "explanation": "The general manager in the chart has executive management responsibility and coordinates departments.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": true }),
+    Object.freeze({ "number": 12, "pdfPage": 2, "proposedOption": "C", "explanation": "Coordinating, delegating and controlling staff and materials are recognised functions of managers; compelling union membership is not.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 13, "pdfPage": 2, "proposedOption": "A", "explanation": "Refusing staff discussions and suggestions is characteristic of an authoritarian management style.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
     Object.freeze({ "number": 14, "pdfPage": 3, "proposedOption": "A", "explanation": "Allowing employees meaningful participation in decisions generally supports morale and commitment.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
     Object.freeze({ "number": 15, "pdfPage": 3, "proposedOption": "B", "explanation": "Ordinary simple contracts require offer, acceptance and consideration, not an additional generic step of legalisation.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
     Object.freeze({ "number": 16, "pdfPage": 3, "proposedOption": "B", "explanation": "When a sale contract is void, title does not pass and any payment made normally must be restored, subject to the circumstances.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
@@ -1158,19 +1195,4 @@ var POB_2016_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 19, "pdfPage": 3, "proposedOption": "B", "explanation": "Public liability insurance protects a cinema against eligible injury claims by visitors.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
     Object.freeze({ "number": 20, "pdfPage": 4, "proposedOption": "A", "explanation": "An open cheque may allow cash to be collected at a bank counter, subject to banking controls.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
     Object.freeze({ "number": 21, "pdfPage": 4, "proposedOption": "D", "explanation": "Food processing transforms inputs into manufactured products, making it a manufacturing industry.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 22, "pdfPage": 4, "proposedOption": "D", "explanation": "Moving from Jamaica to the United States to live or work is external migration.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 23, "pdfPage": 4, "proposedOption": "B", "explanation": "A person departing Trinidad to settle in Barbados is an emigrant from Trinidad's perspective.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 24, "pdfPage": 4, "proposedOption": "C", "explanation": "Capital-intensive production relies heavily on machinery compared with workers.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 25, "pdfPage": 4, "proposedOption": "D", "explanation": "A production linkage exists when the output of one industry becomes the input of another.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 26, "pdfPage": 4, "proposedOption": "A", "explanation": "Expansion may increase capital and task specialisation without necessarily increasing output per worker.", "status": "academic-dispute", "uncertainty": "growth-does-not-prove-productivity", "sourceAnalysis": "The listed organisational changes can all vary with growth; increasing productivity is not an automatic outcome.", "sourceVisualChecked": true }),
-    Object.freeze({ "number": 27, "pdfPage": 4, "proposedOption": "A", "explanation": "Cars are manufactured finished goods, unlike unprocessed mined gold or construction itself.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 28, "pdfPage": 4, "proposedOption": "C", "explanation": "A loss leader is offered at an unusually low price to attract shoppers.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 29, "pdfPage": 5, "proposedOption": "A", "explanation": "Trade discounts reward bulk purchasing or wholesale quantities rather than first-time visits.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 30, "pdfPage": 5, "proposedOption": "C", "explanation": "Shares are investment securities rather than payment terms for retail purchase; cash, credit and hire purchase are terms.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 31, "pdfPage": 5, "proposedOption": "D", "explanation": "Place of residence can affect buying, but the direct product-specific factors listed are price, quality and brand loyalty.", "status": "academic-dispute", "uncertainty": "consumer-place-of-residence", "sourceAnalysis": "Where a consumer lives may strongly influence consumption; the question asks LEAST likely, not irrelevant.", "sourceVisualChecked": true }),
-    Object.freeze({ "number": 32, "pdfPage": 5, "proposedOption": "A", "explanation": "Unpaid favourable news coverage or editorial space is publicity, not paid advertising.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 33, "pdfPage": 5, "proposedOption": "D", "explanation": "A small supply available to many willing buyers tends to raise the market price.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 34, "pdfPage": 5, "proposedOption": "C", "explanation": "A territory with one electricity provider and no close competitor is a monopoly market.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 35, "pdfPage": 5, "proposedOption": "B", "explanation": "Share trading entails investment risks and possible returns or benefits.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 36, "pdfPage": 5, "proposedOption": "D", "explanation": "Holders of company shares may receive dividends if approved and declared.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 37, "pdfPage": 5, "proposedOption": "C", "explanation": "A standing order instructs a bank to make recurring fixed-amount payments.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": nul
+    Object.freeze({ "numbe

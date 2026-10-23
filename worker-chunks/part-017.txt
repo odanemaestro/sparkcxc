@@ -1,4 +1,64 @@
- it cannot produce or can produce only at high cost.\n\u2022 Specialisation according to comparative advantage, increasing total output.\n\u2022 Foreign exchange earned from exports.\n\u2022 A wider variety of goods for consumers.\n\u2022 A larger market for producers, allowing economies of scale.\n\u2022 Access to capital goods, raw materials and new technology.\n\u2022 Better political and economic relations with other countries."
+brand customers already trust.\n\u2022 To obtain legal protection by registering the brand as a trademark."
+            },
+            {
+              "label": "(c)",
+              "question": "Identify FOUR factors that influence consumer behaviour.",
+              "marks": 4,
+              "answer": "Any FOUR, 1 mark each: price; income; tastes and preferences; quality; advertising and promotion; culture and religion; family and friends; availability and convenience; brand loyalty; age and gender."
+            },
+            {
+              "label": "(d)",
+              "question": "Outline TWO ways by which producers can prevent their products from being reproduced by unauthorized persons.",
+              "marks": 4,
+              "answer": "Any TWO, 2 marks each:\n\u2022 Patent: gives the inventor the sole legal right to make and sell an invention for a number of years.\n\u2022 Copyright: protects original works such as books, music, art and software from being copied.\n\u2022 Trademark registration: protects brand names and logos.\n\u2022 Registration of industrial designs.\n\u2022 Security features such as holograms, serial numbers or encryption, together with legal action against counterfeiters.\n\u2022 Licensing agreements that control who may produce the product."
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "section": "Section III",
+          "section_instructions": "Answer ONE question in this section as indicated.",
+          "choice": "Answer EITHER Question 6 OR Question 7. Do NOT answer both.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Identify TWO indicators of economic growth.",
+              "marks": 2,
+              "answer": "Any TWO, 1 mark each: an increase in real GDP or GNP; an increase in real income per head (per capita income); an increase in the output of goods and services; an increase in employment; an increase in exports; an increase in investment."
+            },
+            {
+              "label": "(b)",
+              "question": "State ONE difference between economic growth and economic development.",
+              "marks": 3,
+              "answer": "Economic growth is an increase in the real output of goods and services (real GDP) of a country over time, a measure of quantity (1\xBD). Economic development is a wider improvement in people's standard of living and quality of life, such as better health, education, housing and less poverty (1\xBD)."
+            },
+            {
+              "label": "(c)",
+              "question": "Describe THREE ways in which a society benefits from rules and regulations enforced by government.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Consumers are protected: food and drug standards, weights and measures and price controls make goods safe and prices fair.\n\u2022 Workers are protected: minimum wage, health and safety and labour laws.\n\u2022 The environment is protected from pollution and destruction.\n\u2022 Fair competition: laws prevent monopolies from abusing their power.\n\u2022 Public health and safety: building codes, zoning and licensing.\n\u2022 Taxes are collected to pay for public services.\n\u2022 Investors are protected by company and securities laws."
+            },
+            {
+              "label": "(d)",
+              "question": "Discuss THREE ways in which a country can achieve positive economic growth.",
+              "marks": 9,
+              "answer": "Any THREE, 3 marks each:\n\u2022 Increase investment in capital goods and infrastructure (machinery, roads, ports, electricity), which raises the country's capacity to produce.\n\u2022 Develop human resources through education and training, making workers more productive.\n\u2022 Attract foreign direct investment through tax incentives, which brings capital, technology and jobs.\n\u2022 Increase exports and find new markets, which raises output and earns foreign exchange.\n\u2022 Make better use of natural resources and diversify into new industries.\n\u2022 Adopt new technology, which increases output per worker.\n\u2022 Maintain political stability and sound fiscal and monetary policies (for example low interest rates) to encourage business confidence."
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "section": "Section III",
+          "section_instructions": "Answer ONE question in this section as indicated.",
+          "choice": "Answer EITHER Question 6 OR Question 7. Do NOT answer both.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Outline THREE benefits that a country may gain from engaging in international trade.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Access to goods it cannot produce or can produce only at high cost.\n\u2022 Specialisation according to comparative advantage, increasing total output.\n\u2022 Foreign exchange earned from exports.\n\u2022 A wider variety of goods for consumers.\n\u2022 A larger market for producers, allowing economies of scale.\n\u2022 Access to capital goods, raw materials and new technology.\n\u2022 Better political and economic relations with other countries."
             },
             {
               "label": "(b)",
@@ -2822,78 +2882,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
               "label": "(b)",
               "question": "Describe THREE services offered by commercial banks.",
               "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Savings accounts: customers deposit money safely and earn interest.\n\u2022 Current accounts: customers make payments by cheque or debit card.\n\u2022 Loans and overdrafts: customers borrow money for personal or business needs.\n\u2022 Fixed deposits: money is left for a fixed period at a higher rate of interest.\n\u2022 Foreign exchange: buying and selling foreign currency.\n\u2022 Safety deposit boxes and night safe facilities.\n\u2022 Online banking, ATMs and standing orders.\n\u2022 Credit cards."
-            },
-            {
-              "label": "(c)",
-              "question": "List FOUR functions of a central bank.",
-              "marks": 4,
-              "answer": "Any FOUR, 1 mark each: issues notes and coins; banker to the government; banker to commercial banks; lender of last resort; controls the money supply and interest rates (monetary policy); manages foreign exchange reserves; regulates and supervises commercial banks; manages the public debt; advises the government."
-            },
-            {
-              "label": "(d)",
-              "question": "Explain how the central bank uses EACH of the following measures to regulate the activities of commercial banks.",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Open market operations",
-                  "marks": 3,
-                  "answer": "The central bank buys or sells government securities (treasury bills and bonds) on the open market (1). When it sells securities, banks and the public pay for them, so money leaves the banking system and banks have less to lend (1). When it buys securities, money flows into the banks and they can lend more (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Liquid asset requirements",
-                  "marks": 3,
-                  "answer": "The central bank requires commercial banks to keep a set percentage of their deposits in liquid assets (cash, deposits at the central bank, treasury bills) (1). Raising the percentage leaves banks less money to lend, which reduces credit (1); lowering it allows them to lend more. It also makes sure banks can meet customers' withdrawals (1)."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "number": 5,
-          "section": "All questions",
-          "section_instructions": "Answer ALL questions.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Define EACH of the following types of taxes:",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Progressive tax",
-                  "marks": 2,
-                  "answer": "A progressive tax is one in which the rate (percentage) of tax increases as income increases (1), so higher earners pay a larger share of their income, for example income tax with rising bands (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Proportional tax",
-                  "marks": 2,
-                  "answer": "A proportional (flat) tax is one in which the same rate (percentage) of tax is charged at all levels of income (1), so everyone pays the same share of their income (1)."
-                }
-              ]
-            },
-            {
-              "label": "(b)",
-              "question": "State THREE reasons why governments charge taxes.",
-              "marks": 3,
-              "answer": "Any THREE, 1 mark each: to raise revenue for government spending; to redistribute income; to discourage consumption of harmful goods; to protect local industries; to control inflation and manage the economy; to pay the national debt."
-            },
-            {
-              "label": "(c)",
-              "question": "Identify THREE ways in which governments regulate the activities of businesses.",
-              "marks": 3,
-              "answer": "Any THREE, 1 mark each: registration and licensing; health and safety standards and inspections; price controls; taxation; labour laws (minimum wage); environmental and zoning laws; fair competition laws; consumer protection laws."
-            },
-            {
-              "label": "(d)",
-              "question": "Outline TWO measures used by governments to protect consumers.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Consumer protection laws (for example the Sale of Goods Act, Hire Purchase Act).\n\u2022 Agencies such as a Consumer Affairs Commission and Bureau of Standards to handle complaints and enforce standards.\n\u2022 Price controls on basic items.\n\u2022 Labelling requirements.\n\u2022 Inspection of food, drugs, weights and measures.\n\u2022 Consumer education programmes."
-            },
-            {
-              "label": "(e)",
-              "question": "The government of your country has set up centres to train citizens in computer engineering and small appliance repair. Explain TWO benefits that could be gained from this initiative.",
-              "marks": 6,
-              "ans
+              "answer": "Any THREE, 2 marks each:\n\u2022 Savings accounts: customers deposit money safely and earn interest.\n\u2022 Current accounts: customers make payments by cheque or debit card.\n\u2022 Loans and overdrafts: customers borrow money for personal or business needs.\n\u2022 Fixed deposits: money is left 

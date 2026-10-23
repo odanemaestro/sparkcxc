@@ -1,4 +1,32 @@
-man resources, production and finance departments.", ["1:First genuine, distinct business department", "1:Second distinct department", "1:Third distinct department", "1:Fourth distinct department"]],
+ies overseas and improved professional development or family living conditions can motivate individuals to migrate.", ["2:First legitimate migration motive explained", "2:Second different developed motive"]],
+  [8, "a", "If a growing population enters working age faster than available jobs expand, unemployment increases. For example, a town gaining 1,000 young job seekers but only 400 openings may have 600 more people unable to find work.", ["1:Identifies size of labour supply growing faster than labour demand", "1:Explains why this raises unemployment", "1:Appropriate numeric or realistic example"]],
+  [8, "b", "Seasonal unemployment arises when tourism or harvesting workers are laid off outside peak periods. Structural unemployment results when technology or industry changes leave workers with skills that no longer match vacancies.", ["2:First genuine type with accurately matched cause", "2:Second distinct type and appropriate cause"]],
+  [8, "c", "For seasonal joblessness, retrain for complementary off-season occupations, support alternative seasonal industries and extend the tourist season through year-round events. For structural joblessness, offer retraining, paid apprenticeships and support for relocating to areas with suitable jobs.", ["1:First practical remedy for named type and brief expected action", "1:Second distinct measure for the FIRST type", "1:Third independent strategy for FIRST type", "1:First real remedy for SECOND type", "1:Second distinct remedy for SECOND type", "1:Third distinct remedy for SECOND type"]],
+  [8, "d", "Relevant Caribbean trade arrangements include CARICOM/CSME, CARIFORUM\u2013EU Economic Partnership Agreement and the Caribbean Basin Initiative (CBI), allowing historically appropriate agreements to be credited.", ["1:First historically valid Caribbean trade arrangement", "1:Second distinct arrangement", "1:Third different arrangement"]],
+  [8, "e", "CARICOM's trade framework creates a larger reachable regional market, but full implementation barriers constrain benefits. Preferential access under the CBI or Caribbean-EU EPA can boost exports and investment yet depend on eligible products and rules of origin.", ["2:Evaluates first selected arrangement's genuine economic development impact and limitations", "2:Evaluates SECOND distinct arrangement with balanced effect"]],
+  [9, "a", "Commercial banks accept public deposits, make personal/business loans and handle retail payments. A central bank manages monetary policy, financial-system liquidity, currency and commercial-bank supervision.", ["2:First clear difference in primary services/clientele", "2:Second different structural/monetary policy distinction"]],
+  [9, "b", "Commercial banks supply savings and current accounts, personal/business loans, electronic payment services, and foreign exchange facilities.", ["1:First genuine bank service", "1:Second different service", "1:Third distinct service", "1:Fourth distinct service"]],
+  [9, "c", "Savings accounts hold money safely and may pay interest; loans spread necessary expenditure over time; payment transfers settle bills conveniently; currency exchange facilitates overseas travel and imports.", ["1:Corresponding customer benefit of FIRST service named in b", "1:Matching specific benefit of SECOND distinct service", "1:Benefit matching THIRD selected service", "1:Benefit matching FOURTH selected service"]],
+  [9, "d", "Shares can provide dividends and gains but may lose capital value; commercial bank savings normally earn agreed interest with easier withdrawal and lower investment risk, subject to deposit terms and protections.", ["2:First developed risk/return difference between shares and bank saving", "2:Second different liquidity/ownership/return distinction"]],
+  [9, "e", "Central banks can provide emergency liquidity to solvent banks against appropriate collateral and supervise/require bank restructuring or stronger capital and reserves to restore confidence.", ["2:First credible financial-system stabilisation intervention explained", "2:Second distinct central bank/regulator protection measure"]]
+]);
+var POB_2007_MJ_P2_AUTHORED_SCHEME = makePobEarlyP2AuthoredScheme({
+  year: 2007,
+  sourcePages: 6,
+  sourceSha256: "261496a8749d2729734c6897bc8ffce176db974254d95e900bfdaf4b12510e65",
+  parts: ROWS3
+});
+var verifyPob2007MjP2AuthoredScheme = (paper = POB_2007_MJ_P2_AUTHORED_SCHEME) => verifyPobEarlyP2AuthoredScheme(paper);
+
+// src/principlesOfBusiness/data/pobHistorical2008MjP2AuthoredScheme.js
+var pobHistorical2008MjP2AuthoredScheme_exports = {};
+__export(pobHistorical2008MjP2AuthoredScheme_exports, {
+  POB_2008_MJ_P2_AUTHORED_SCHEME: () => POB_2008_MJ_P2_AUTHORED_SCHEME,
+  validatePob2008MjP2Choices: () => validatePob2008MjP2Choices,
+  verifyPob2008MjP2AuthoredScheme: () => verifyPob2008MjP2AuthoredScheme
+});
+var ANSWERS = Object.freeze([
+  [1, "a", "A business may have marketing, human resources, production and finance departments.", ["1:First genuine, distinct business department", "1:Second distinct department", "1:Third distinct department", "1:Fourth distinct department"]],
   [1, "b", "Marketing promotes products; production makes goods; finance manages money; human resources recruits and trains employees.", ["1:Accurate function of first department chosen in a", "1:Accurate different function matched to second department in a", "1:Accurate third department duty matched to a", "1:Accurate fourth department duty matched to a"]],
   [1, "c", "At Christmas the marketing team plans promotion; production increases bottling output; purchasing orders more syrup and bottles; finance budgets for overtime and inventories.", ["2:First legitimate department from Q1(a) named with explained response to seasonal soft-drink demand", "2:Second distinct department and developed response", "2:Third distinct department and developed response", "2:Fourth distinct department and developed response"]],
   [1, "d", "A clear internal grievance and mediation process allows both sides to be heard. Management can arrange a moderated discussion and agree on a corrective plan.", ["2:First distinct credible conflict-resolution process and how it works", "2:Second different conflict-resolution process, supported by practical description"]],
@@ -1436,63 +1464,4 @@ var POINTS6 = Object.freeze([
   [4, "a.ii", "Wholesalers purchase stock in bulk from producers and supply smaller lots to retailers, storing goods until needed.", ["1:First actual wholesale function", "1:Second distinct function"]],
   [4, "b", "The producer/manufacturer and final consumer are the other two links in the traditional distribution channel.", ["1:Producer/manufacturer", "1:Final consumer"]],
   [4, "c.i", "Temperature-controlled road transport, such as a refrigerated truck, is most suitable for local meat products.", ["1:Appropriate temperature-controlled road vehicle"]],
-  [4, "c.ii", "A heavy-duty flatbed or tipper truck can convey bricks from company to building site.", ["1:Appropriate road heavy-goods vehicle"]],
-  [4, "c.iii", "A pipeline is appropriate for crude oil going from an oilfield to a connected refinery; an oil tanker is suitable if the refinery is across water.", ["1:Suitable pipeline or route-appropriate oil tanker"]],
-  [4, "c.iv", "Cars between countries are best shipped in a roll-on/roll-off vessel or vehicle-carrying cargo ship.", ["1:Suitable sea freight vehicle carrier"]],
-  [4, "d", "Goods distribution can be impeded by congested roads, inadequate cold storage, high transport costs or border/port delays.", ["1:First real goods-distribution problem", "1:Second different problem", "1:Third different obstacle", "1:Fourth distinct issue"]],
-  [4, "e", "Reliable route scheduling and improved vehicle servicing reduce late deliveries and unnecessary fuel cost. Appropriate insulated/refrigerated packaging prevents spoilage and damage to vulnerable goods.", ["3:First developed appropriate solution matched to distribution challenge", "3:Second different targeted measure and benefit"]],
-  [5, "a.i", "Standard of living is the level of material well-being and access to goods/services available to citizens, not merely their happiness.", ["1:Material access or consumption concept", "1:Goods/services and income or welfare level"]],
-  [5, "a.ii", "Real income per capita and quality of housing/access to reliable utilities are two factors determining a population's material standard of living.", ["1:First valid standard-of-living determinant", "1:Second different factor"]],
-  [5, "a.iii", "Infant mortality rate is the number of deaths of children younger than one year per 1,000 live births in a defined population and period.", ["1:Correctly defines deaths under one year old", "1:Per 1,000 live births within period"]],
-  [5, "b.i", "Gross national product measures final goods and services attributable to a nation's resident production factors, including net primary income earned from abroad. It differs from purely domestic GDP.", ["1:Total output/income attributable to residents", "1:Net income abroad or appropriate national scope"]],
-  [5, "b.ii", "Gross domestic product measures market value or volume of final goods/services produced within a country's geographical borders over a defined period, regardless of producer ownership.", ["1:Production of final goods/services within borders", "1:Given time period and inclusive of domestic activity"]],
-  [5, "b.iii", "Per capita income is total national income divided by the number of people in the population, giving a mean income measure rather than every individual's earnings.", ["1:Correct national income numerator", "1:Population denominator or formula"]],
-  [5, "c", "Countries trade to import goods they cannot efficiently make and to sell exports in larger markets, earning foreign exchange.", ["1:First valid international trade reason", "1:Second distinct reason"]],
-  [5, "d", "New foreign investment can create jobs, reducing unemployment and raising household income. It also brings capital, technology and export links that raise regional productivity and productive capacity.", ["3:First developed positive host-country investment mechanism", "3:Second different investment growth contribution"]]
-]);
-var POB_2023_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
-  year: 2023,
-  sitting: "MJ",
-  sourcePages: 17,
-  sourceSha256: "79ed3fa6c2ad12d802a4bfe5ddcd558a5c109980f398bba18f2ff3b1b3277049",
-  parts: POINTS6
-});
-var verifyPob2023MjP2AuthoredScheme = (paper = POB_2023_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
-
-// src/principlesOfBusiness/data/pobHistorical2024JanP2AuthoredRubric.js
-var pobHistorical2024JanP2AuthoredRubric_exports = {};
-__export(pobHistorical2024JanP2AuthoredRubric_exports, {
-  POB_2024_JAN_P2_SPARK_MARKING: () => POB_2024_JAN_P2_SPARK_MARKING,
-  verifyPob2024JanP2AuthoredRubric: () => verifyPob2024JanP2AuthoredRubric
-});
-
-// src/principlesOfBusiness/data/pobHistoricalP22024JanDraft.js
-var POB_HISTORICAL_P2_2024_JAN_DRAFT = Object.freeze({
-  "id": "POB-P2-2024-JAN",
-  "sourceFilename": "CSEC_Principles_of_Business_P2_2024_JAN.pdf",
-  "year": 2024,
-  "sitting": "JAN",
-  "origin": "user-supplied",
-  "status": "transcription-draft",
-  "textLayerExtracted": true,
-  "sourcePageCount": 2,
-  "sourceWordingStatus": "normalised-from-supplied-copy",
-  "sourceAuthenticity": "user-supplied-copy-not-officially-authenticated",
-  "visualPageVerified": true,
-  "answerKeyVerified": false,
-  "markingSchemeVerified": false,
-  "simulatorReady": false,
-  "totalMarks": 100,
-  "questions": [
-    {
-      "number": 1,
-      "title": "Business stakeholders",
-      "marks": 20,
-      "parts": [
-        {
-          "id": "a.i",
-          "marks": 2,
-          "prompt": "Define the term stakeholder as it relates to a business."
-        },
-        {
-          "id"
+  [4, "c.ii", "A heavy-duty flatbed or tipper truc

@@ -1,4 +1,63 @@
-: "a.ii",
+k can convey bricks from company to building site.", ["1:Appropriate road heavy-goods vehicle"]],
+  [4, "c.iii", "A pipeline is appropriate for crude oil going from an oilfield to a connected refinery; an oil tanker is suitable if the refinery is across water.", ["1:Suitable pipeline or route-appropriate oil tanker"]],
+  [4, "c.iv", "Cars between countries are best shipped in a roll-on/roll-off vessel or vehicle-carrying cargo ship.", ["1:Suitable sea freight vehicle carrier"]],
+  [4, "d", "Goods distribution can be impeded by congested roads, inadequate cold storage, high transport costs or border/port delays.", ["1:First real goods-distribution problem", "1:Second different problem", "1:Third different obstacle", "1:Fourth distinct issue"]],
+  [4, "e", "Reliable route scheduling and improved vehicle servicing reduce late deliveries and unnecessary fuel cost. Appropriate insulated/refrigerated packaging prevents spoilage and damage to vulnerable goods.", ["3:First developed appropriate solution matched to distribution challenge", "3:Second different targeted measure and benefit"]],
+  [5, "a.i", "Standard of living is the level of material well-being and access to goods/services available to citizens, not merely their happiness.", ["1:Material access or consumption concept", "1:Goods/services and income or welfare level"]],
+  [5, "a.ii", "Real income per capita and quality of housing/access to reliable utilities are two factors determining a population's material standard of living.", ["1:First valid standard-of-living determinant", "1:Second different factor"]],
+  [5, "a.iii", "Infant mortality rate is the number of deaths of children younger than one year per 1,000 live births in a defined population and period.", ["1:Correctly defines deaths under one year old", "1:Per 1,000 live births within period"]],
+  [5, "b.i", "Gross national product measures final goods and services attributable to a nation's resident production factors, including net primary income earned from abroad. It differs from purely domestic GDP.", ["1:Total output/income attributable to residents", "1:Net income abroad or appropriate national scope"]],
+  [5, "b.ii", "Gross domestic product measures market value or volume of final goods/services produced within a country's geographical borders over a defined period, regardless of producer ownership.", ["1:Production of final goods/services within borders", "1:Given time period and inclusive of domestic activity"]],
+  [5, "b.iii", "Per capita income is total national income divided by the number of people in the population, giving a mean income measure rather than every individual's earnings.", ["1:Correct national income numerator", "1:Population denominator or formula"]],
+  [5, "c", "Countries trade to import goods they cannot efficiently make and to sell exports in larger markets, earning foreign exchange.", ["1:First valid international trade reason", "1:Second distinct reason"]],
+  [5, "d", "New foreign investment can create jobs, reducing unemployment and raising household income. It also brings capital, technology and export links that raise regional productivity and productive capacity.", ["3:First developed positive host-country investment mechanism", "3:Second different investment growth contribution"]]
+]);
+var POB_2023_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
+  year: 2023,
+  sitting: "MJ",
+  sourcePages: 17,
+  sourceSha256: "79ed3fa6c2ad12d802a4bfe5ddcd558a5c109980f398bba18f2ff3b1b3277049",
+  parts: POINTS6
+});
+var verifyPob2023MjP2AuthoredScheme = (paper = POB_2023_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
+
+// src/principlesOfBusiness/data/pobHistorical2024JanP2AuthoredRubric.js
+var pobHistorical2024JanP2AuthoredRubric_exports = {};
+__export(pobHistorical2024JanP2AuthoredRubric_exports, {
+  POB_2024_JAN_P2_SPARK_MARKING: () => POB_2024_JAN_P2_SPARK_MARKING,
+  verifyPob2024JanP2AuthoredRubric: () => verifyPob2024JanP2AuthoredRubric
+});
+
+// src/principlesOfBusiness/data/pobHistoricalP22024JanDraft.js
+var POB_HISTORICAL_P2_2024_JAN_DRAFT = Object.freeze({
+  "id": "POB-P2-2024-JAN",
+  "sourceFilename": "CSEC_Principles_of_Business_P2_2024_JAN.pdf",
+  "year": 2024,
+  "sitting": "JAN",
+  "origin": "user-supplied",
+  "status": "transcription-draft",
+  "textLayerExtracted": true,
+  "sourcePageCount": 2,
+  "sourceWordingStatus": "normalised-from-supplied-copy",
+  "sourceAuthenticity": "user-supplied-copy-not-officially-authenticated",
+  "visualPageVerified": true,
+  "answerKeyVerified": false,
+  "markingSchemeVerified": false,
+  "simulatorReady": false,
+  "totalMarks": 100,
+  "questions": [
+    {
+      "number": 1,
+      "title": "Business stakeholders",
+      "marks": 20,
+      "parts": [
+        {
+          "id": "a.i",
+          "marks": 2,
+          "prompt": "Define the term stakeholder as it relates to a business."
+        },
+        {
+          "id": "a.ii",
           "marks": 2,
           "prompt": "Identify TWO stakeholders that are involved in a business."
         },
@@ -2280,64 +2339,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
               "label": "(b)",
               "question": "Discuss TWO reasons for branding a product.",
               "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 To distinguish the product from competitors' products, so customers can easily find and ask for it.\n\u2022 To build brand loyalty, which leads to repeat purchases and steady sales.\n\u2022 To allow the firm to charge a higher (premium) price because customers trust the brand.\n\u2022 To make advertising more effective, since all promotion is linked to one recognisable name.\n\u2022 To make it easier to launch new products under a brand customers already trust.\n\u2022 To obtain legal protection by registering the brand as a trademark."
-            },
-            {
-              "label": "(c)",
-              "question": "Identify FOUR factors that influence consumer behaviour.",
-              "marks": 4,
-              "answer": "Any FOUR, 1 mark each: price; income; tastes and preferences; quality; advertising and promotion; culture and religion; family and friends; availability and convenience; brand loyalty; age and gender."
-            },
-            {
-              "label": "(d)",
-              "question": "Outline TWO ways by which producers can prevent their products from being reproduced by unauthorized persons.",
-              "marks": 4,
-              "answer": "Any TWO, 2 marks each:\n\u2022 Patent: gives the inventor the sole legal right to make and sell an invention for a number of years.\n\u2022 Copyright: protects original works such as books, music, art and software from being copied.\n\u2022 Trademark registration: protects brand names and logos.\n\u2022 Registration of industrial designs.\n\u2022 Security features such as holograms, serial numbers or encryption, together with legal action against counterfeiters.\n\u2022 Licensing agreements that control who may produce the product."
-            }
-          ]
-        },
-        {
-          "number": 6,
-          "section": "Section III",
-          "section_instructions": "Answer ONE question in this section as indicated.",
-          "choice": "Answer EITHER Question 6 OR Question 7. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Identify TWO indicators of economic growth.",
-              "marks": 2,
-              "answer": "Any TWO, 1 mark each: an increase in real GDP or GNP; an increase in real income per head (per capita income); an increase in the output of goods and services; an increase in employment; an increase in exports; an increase in investment."
-            },
-            {
-              "label": "(b)",
-              "question": "State ONE difference between economic growth and economic development.",
-              "marks": 3,
-              "answer": "Economic growth is an increase in the real output of goods and services (real GDP) of a country over time, a measure of quantity (1\xBD). Economic development is a wider improvement in people's standard of living and quality of life, such as better health, education, housing and less poverty (1\xBD)."
-            },
-            {
-              "label": "(c)",
-              "question": "Describe THREE ways in which a society benefits from rules and regulations enforced by government.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Consumers are protected: food and drug standards, weights and measures and price controls make goods safe and prices fair.\n\u2022 Workers are protected: minimum wage, health and safety and labour laws.\n\u2022 The environment is protected from pollution and destruction.\n\u2022 Fair competition: laws prevent monopolies from abusing their power.\n\u2022 Public health and safety: building codes, zoning and licensing.\n\u2022 Taxes are collected to pay for public services.\n\u2022 Investors are protected by company and securities laws."
-            },
-            {
-              "label": "(d)",
-              "question": "Discuss THREE ways in which a country can achieve positive economic growth.",
-              "marks": 9,
-              "answer": "Any THREE, 3 marks each:\n\u2022 Increase investment in capital goods and infrastructure (machinery, roads, ports, electricity), which raises the country's capacity to produce.\n\u2022 Develop human resources through education and training, making workers more productive.\n\u2022 Attract foreign direct investment through tax incentives, which brings capital, technology and jobs.\n\u2022 Increase exports and find new markets, which raises output and earns foreign exchange.\n\u2022 Make better use of natural resources and diversify into new industries.\n\u2022 Adopt new technology, which increases output per worker.\n\u2022 Maintain political stability and sound fiscal and monetary policies (for example low interest rates) to encourage business confidence."
-            }
-          ]
-        },
-        {
-          "number": 7,
-          "section": "Section III",
-          "section_instructions": "Answer ONE question in this section as indicated.",
-          "choice": "Answer EITHER Question 6 OR Question 7. Do NOT answer both.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "question": "Outline THREE benefits that a country may gain from engaging in international trade.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Access to goods
+              "answer": "Any TWO, 3 marks each:\n\u2022 To distinguish the product from competitors' products, so customers can easily find and ask for it.\n\u2022 To build brand loyalty, which leads to repeat purchases and steady sales.\n\u2022 To allow the firm to charge a higher (premium) price because customers trust the brand.\n\u2022 To make advertising more effective, since all promotion is linked to one recognisable name.\n\u2022 To make it easier to launch new products under a 
