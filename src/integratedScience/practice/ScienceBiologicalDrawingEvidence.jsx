@@ -39,7 +39,7 @@ function locate(event){
  return [Number(Math.max(0,Math.min(1,(event.clientX-box.left)/box.width)).toFixed(4)),
   Number(Math.max(0,Math.min(1,(event.clientY-box.top)/box.height)).toFixed(4))];
 }
-export default function ScienceBiologicalDrawingEvidence({base,questionId,partIndex,itemIndex,responses,onChange,disabled,sharedCanvas=false}){
+export default function ScienceBiologicalDrawingEvidence({base,questionId,partIndex,itemIndex,responses,onChange,disabled,sharedCanvas=false,selectedLabel="",onLabelChange}){
  const source=biologicalDrawingSource(questionId,partIndex,itemIndex);
  const [name,setName]=useState("");
  const start=useRef(null);
