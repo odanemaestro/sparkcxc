@@ -5,6 +5,8 @@ on:
     paths:
       - "src/integratedScience/practice/scienceHypothesisMarking.js"
       - "src/integratedScience/practice/scienceRustTableMarking.js"
+      - "src/integratedScience/practice/scienceAdditionalTableMarking.js"
+      - "src/integratedScience/practice/scienceAdditionalTableMarking.test.js"
       - "src/integratedScience/practice/scienceRustTableMarking.test.js"
       - "src/integratedScience/practice/ScienceDrawingTableResponse.jsx"
       - "src/integratedScience/practice/ScienceDrawingTableResponse.test.jsx"
@@ -14,6 +16,7 @@ on:
       - "src/grading/v2VerificationRun.js"
       - "src/grading/v2Fixtures/integratedScienceHypothesis.js"
       - "src/grading/v2Fixtures/integratedScienceRustTable.js"
+      - "src/grading/v2Fixtures/integratedScienceAdditionalTables.js"
       - ".github/workflows/v2-integrated-science-verify.yml"
   workflow_dispatch:
 permissions:
@@ -44,7 +47,10 @@ jobs:
             "IS-M3-P2-11::(c)::(i)",
             "IS-M3-P2-13::(b)::(i)",
             "IS-M1-P2-15::(b)::(i)",
-            "IS-M3-P2-05::(a)::(i)"
+            "IS-M3-P2-05::(a)::(i)",
+            "IS-M2-P2-07::(a)::(iii)",
+            "IS-M2-P2-13::(b)::(i)",
+            "IS-M3-P2-15::(a)::(i)"
           ];
           for(const id of ids){
             const rec=evidence.find(x=>x.criterionId===id);
