@@ -45,6 +45,12 @@ jobs:
             console.log(JSON.stringify({id,outcome:rec?.outcome,blocker:rec?.blocker,
               failures:rec?.failures,uncommitted:rec?.uncommittedClasses,missing:rec?.missingClasses}));
           }
+          const records=ids.map(id=>evidence.find(x=>x.criterionId===id));
+          if(records.every(r=>r?.outcome==="verified"&&r?.provenance?.workingTreeDirty===false)){
+            console.log("SPARK_SOURCE_APPROVAL_EVIDENCE_BASE64="+Buffer.from(JSON.stringify(records)).toString("base64"));
+          } else {
+            console.log("No registerable hypothesis evidence: at least one item is not verified.");
+          }
           const summary=JSON.parse(fs.readFileSync("artifacts/v2-science-verification/summary.json","utf8"));
           console.log("SUMMARY="+JSON.stringify(summary.bySubject));
           NODE
