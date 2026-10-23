@@ -34,3 +34,19 @@ test("every curated answer has its own full-paper source and exact expected subm
   }
  }
 });
+
+
+test("PostgreSQL JSONB key reordering preserves source identity, not changed rubric content",()=>{
+ const id="phy-p2-1-q3::e";
+ const rows=registered(p1);
+ const target=rows.find(row=>row.id===id);
+ const reorder=source=>Object.fromEntries(Object.keys(source).sort().map(k=>[k,source[k]]));
+ target.sourceMarking.criteria=target.sourceMarking.criteria.map(reorder);
+ const answer={answer:"Solar and wind.",working:""};
+ const run=()=>evaluateExistingSubjectPaper2V2({subjectId:"physics",
+  paperId:p1.paper_id,criteria:rows,responses:{[id]:answer}});
+ expect(run().rows.find(x=>x.criterionId===id)).toEqual(expect.objectContaining({
+  suggestedMarks:2,resolved:true}));
+ target.sourceMarking.criteria[0].description="falsified source criterion";
+ expect(run).toThrow(/source drift/i);
+});
