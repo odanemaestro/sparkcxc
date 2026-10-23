@@ -1,4 +1,4 @@
-ore than the balance in the account, up to an agreed limit. Interest is charged daily only on the amount overdrawn, and the overdraft can be withdrawn by the bank.\n\u2022 Credit card: the bank issues a card with a credit limit. The holder buys goods and services now, receives a monthly statement, and pays interest on any balance not paid in full by the due date.\n\u2022 Mortgage: a long-term loan to buy property, with the property itself used as security; it is repaid over many years."
+pose. The borrower usually provides collateral and repays the amount with interest in regular instalments over an agreed period.\n\u2022 Overdraft: the bank allows a current account holder to withdraw more than the balance in the account, up to an agreed limit. Interest is charged daily only on the amount overdrawn, and the overdraft can be withdrawn by the bank.\n\u2022 Credit card: the bank issues a card with a credit limit. The holder buys goods and services now, receives a monthly statement, and pays interest on any balance not paid in full by the due date.\n\u2022 Mortgage: a long-term loan to buy property, with the property itself used as security; it is repaid over many years."
                 }
               ]
             },
@@ -2894,6 +2894,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
             },
             {
               "label": "(b)",
-              "question": "Describe ONE way in which computer-aided design (CAD) is used in a business organization.",
-              "marks": 2,
-              "answer": "Any ONE, 2 marks, for example: designers use CAD software to create, change and test drawings and designs of products (for ex
+              "question": "Describe ONE way in which computer-aided design (CAD) is used in a

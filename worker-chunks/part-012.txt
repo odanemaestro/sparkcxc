@@ -2157,6 +2157,9 @@ function evidenceMatch(response, reference, strict = false) {
   }).matched;
 }
 function parseLabelPoint(point) {
+  const raw = String(point || "").trim();
+  const wire = raw.match(/^([A-Za-z0-9]+) *[(](?:earth|neutral|live)[)] *[-:] *(.+?) *[(]1[)]$/i);
+  if (wire) return { key: wire[1], answer: wire[2].trim() };
   const match = String(point || "").match(/^\s*([A-Za-z0-9]+)\s*[-–:]\s*([^()]+?)(?:\s*\(|$)/);
   return match ? { key: match[1].trim(), answer: match[2].trim() } : null;
 }
@@ -3757,7 +3760,4 @@ function verifyPob2003MjP1AuthoredKey(key = POB_2003_MJ_P1_AUTHORED_KEY) {
       issues.push("Answer prematurely marked academically complete " + entry.number);
   }
   if (seen.size !== 60) issues.push("Question sequence incomplete.");
-  if (disputes.join(",") !== "1,19,36,44,52,60")
-    issues.push("Disputed answers must remain visible and unresolved.");
-  if (key.liveScoringApproved !== false || key.originalCxcKeySupplied !== false)
-    issues.push("Academic proposal cannot
+  if (disputes.join(",") !== "1,19,36,44,5

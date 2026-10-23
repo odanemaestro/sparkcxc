@@ -1,4 +1,5 @@
-ceptedIllustrations]])));
+hortage", "rural access", "underfunding", "medicine shortages", "obsolete equipment", "long waiting times"]]
+].map(([id, criteria, modelAnswer, acceptedIllustrations]) => [id, [criteria, modelAnswer, acceptedIllustrations]])));
 var POB_2024_JAN_P2_SPARK_MARKING = Object.freeze({
   id: "POB-P2-2024-JAN",
   subject: "principles-of-business",
@@ -2356,4 +2357,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
                   "label": "(ii)",
                   "question": "Explain how EACH of the TWO types of credit methods identified in (a) (i) works.",
                   "marks": 6,
-                  "answer": "3 marks each, matched to (a)(i), for example:\n\u2022 Loan: the bank lends a fixed sum for a stated purpose. The borrower usually provides collateral and repays the amount with interest in regular instalments over an agreed period.\n\u2022 Overdraft: the bank allows a current account holder to withdraw m
+                  "answer": "3 marks each, matched to (a)(i), for example:\n\u2022 Loan: the bank lends a fixed sum for a stated pur

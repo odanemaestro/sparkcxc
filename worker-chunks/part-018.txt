@@ -1,4 +1,6 @@
-ample furniture, clothing, buildings or machine parts) on a computer, viewing them in 3-D before they are made, which saves time and materials."
+ business organization.",
+              "marks": 2,
+              "answer": "Any ONE, 2 marks, for example: designers use CAD software to create, change and test drawings and designs of products (for example furniture, clothing, buildings or machine parts) on a computer, viewing them in 3-D before they are made, which saves time and materials."
             },
             {
               "label": "(c)",

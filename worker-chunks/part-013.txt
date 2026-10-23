@@ -1,4 +1,7 @@
- be published as CXC-official/live-scored.");
+2,60")
+    issues.push("Disputed answers must remain visible and unresolved.");
+  if (key.liveScoringApproved !== false || key.originalCxcKeySupplied !== false)
+    issues.push("Academic proposal cannot be published as CXC-official/live-scored.");
   return { valid: issues.length === 0, issues, disputes: disputes.length, disputedNumbers: disputes };
 }
 
@@ -1196,5 +1199,4 @@ var POB_2017_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 20, "pdfPage": 5, "proposedOption": "B", "explanation": "Insurance premiums are amounts paid by policyholders for cover.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 21, "pdfPage": 5, "proposedOption": "D", "explanation": "Human resources refers to human workers and their productive capabilities.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 22, "pdfPage": 5, "proposedOption": "C", "explanation": "Working capital funds recurring expenses and day-to-day operations.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 23, "pdfPage": 5, "proposedOption": "D", "explanation": "Food processing transforms agricultural products and is a manufacturing activity.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 24, "pdfPage": 5, "proposedOption": "A", "explanation": "Mechanisation tends to displace some routine or unskilled ma
+    Object.freeze({ "number": 23, "pdfPage": 5, "proposedOption": "D", "explanation": "Food processing transforms agricultural products and is a manufacturing activity.", "status": "spark-internal-provisional",

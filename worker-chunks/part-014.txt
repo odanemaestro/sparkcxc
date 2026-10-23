@@ -1,4 +1,5 @@
-nual work.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+ "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 24, "pdfPage": 5, "proposedOption": "A", "explanation": "Mechanisation tends to displace some routine or unskilled manual work.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 25, "pdfPage": 6, "proposedOption": "D", "explanation": "Industrial linkages arise when the output of one firm or industry supplies another.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 26, "pdfPage": 6, "proposedOption": "C", "explanation": "A home-based craft operation is a typical small cottage enterprise.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 27, "pdfPage": 6, "proposedOption": "A", "explanation": "Employing many people but little machinery is labour-intensive production.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
@@ -1364,4 +1365,4 @@ __export(pobHistorical2009MjP2AuthoredScheme_exports, {
 var SOURCE = Object.freeze([
   [1, "a", 4, "A wish to earn profit and provide independent employment are reasons for starting a business.", ["2:Profit motivation with an accurate business explanation", "2:Self-employment, independence or another DISTINCT developed reason for establishing a venture"]],
   [1, "b", 6, "A new enterprise can employ residents, buy local supplies and provide nearby goods and services.", ["2:Local jobs with added household income", "2:Use of local suppliers, multiplying earnings for residents", "2:Improved access to goods or community tax and development benefits, with explanation"]],
-  [1, "c", 6, "A planned economy uses central decisions on what to produce, public ownership of major resources and administered prices. A free-market economy relies more on private decisions, ownership and supply and demand.", ["2:Explains central versus decentralised allocation of resources", "2:Distinguishes public from private owners
+  [1, "c", 6, "A planned economy uses central decisions on what to produce, public ownership of major resources and administered prices. 
