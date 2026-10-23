@@ -65,7 +65,7 @@ export function mathematicsFixtures({criterion,part,maxMarks}){
    "source-specified method expression and final accuracy"),
   F("partial",{answer:perturbAnswer(answer),working:scheme[0].check.value},1,
    "source-specified method with an incorrect final result"),
-  ...((()=>{const form=commuted(answer);return form?[F("equivalent",
+  ...((()=>{const form=commuted(answer)||((/^[0-9]+[a-z][\^0-9]+[a-z][\^0-9]+$/i.test(answer))?answer.replace(/([0-9])([a-z])/gi,'$1*$2').replace(/(\^[0-9]+)([a-z])/gi,'$1*$2'):null);return form?[F("equivalent",
    {answer:form,working:scheme[0].check.value},maxMarks,"commuted factors")]:[];})())
  ]:[];
  const authored=CURATED_MATHEMATICS[criterion.id]||[];
