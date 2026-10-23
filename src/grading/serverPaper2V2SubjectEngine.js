@@ -936,6 +936,7 @@ function integratedScience(rows,responses){
   if(blank(value))resolved=true;
   else if(examiner.sourceTable)resolved=examiner.sourceResolved===true;
   else if(examiner.sourceGeometry)resolved=examiner.sourceResolved===true;
+  else if(examiner.sourceCircuit)resolved=examiner.sourceResolved===true;
   else if(type==="drawing"||integratedScienceGraphInText(src.item))resolved=false;
   else if(Number(examiner.unassessedMarks||0)>0)resolved=false;
   // Two names offered for one label ("anther or stigma") is a competing answer.
