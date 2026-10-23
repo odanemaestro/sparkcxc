@@ -42,7 +42,7 @@ export function markSourceRustTable(questionId,partIndex,itemIndex,item,tableRes
  const title=trim(table.title);
  const headings=table.headings.map(trim);
  const rows=table.rows.map(row=>Array.isArray(row)?row.map(trim):[]);
- const entries=new Map(),duplicates=false;
+ const entries=new Map();let duplicates=false;
  for(const row of rows){
   const id=entryId(row[0]);
   if(!id)continue;
