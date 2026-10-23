@@ -1,3 +1,4 @@
+import ScienceParticleDiagramResponse from "./ScienceParticleDiagramResponse";
 import ScienceDrawingTableResponse from "./ScienceDrawingTableResponse";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import SparkLoader from "../../components/ui/SparkLoader";
@@ -266,6 +267,7 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
   const up=()=>{drawingRef.current=false;};
   return <div className="is-p2-drawing-workspace">
     <ScienceDrawingTableResponse base={base} questionId={questionId} partIndex={partIndex} itemIndex={itemIndex} responses={responses} onChange={onChange} disabled={disabled}/>
+    {questionId==="IS-M3-P2-25"&&partIndex===1&&itemIndex===0&&<ScienceParticleDiagramResponse base={base} responses={responses} onChange={onChange} disabled={disabled}/>}
     <svg ref={svgRef} className="is-p2-drawing-response" viewBox="0 0 600 300" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} role="img" aria-label="Student drawing canvas">
       <rect x="1" y="1" width="598" height="298" fill="none" stroke="currentColor" opacity=".35"/>
       {strokes.map((stroke,index)=><polyline key={index} points={stroke.map(point=>`${point.x},${point.y}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>)}
