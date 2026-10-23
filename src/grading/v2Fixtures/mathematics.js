@@ -82,7 +82,13 @@ export function mathematicsFixtures({criterion,part,maxMarks}){
   F("irrelevant",{answer:"banana",working:"I am not sure how to do this question."},0),
   F("ceiling",{answer:answer+" "+answer,working:solution+"\n"+solution},{min:0,max:maxMarks}),
   ...curated);
+ // Only use source-authored override fixtures for their declared class.
+ // An old generic fixture whose "working" is an explanatory paragraph,
+ // rather than a parseable mathematical expression, can falsely withhold a
+ // correct method mark. Keep all other adversarial test classes intact.
+ const overridden=new Set(curated.map(f=>f.cls));
+ const sourceChecked=fixtures.filter(f=>!overridden.has(f.cls)||curated.includes(f));
  return {kind:"structured",sourceAnswer:{answer,working:solution},
-  alternatives:fixtures.filter(f=>f.cls==="equivalent").map(f=>f.response),
-  allOrNothing:scheme.length<=1,fixtures};
+  alternatives:sourceChecked.filter(f=>f.cls==="equivalent").map(f=>f.response),
+  allOrNothing:scheme.length<=1,fixtures:sourceChecked};
 }
