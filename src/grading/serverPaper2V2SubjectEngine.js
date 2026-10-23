@@ -407,8 +407,21 @@ function physics(rows,responses,paperId){
      return total+Math.min(criterion.marks,Math.max(legacy?.earned||0,
       typeof suggested==="number"?suggested:0));
     },0);
+    // Certify only decisions with complete source-supported graphical proof.
+    // A correct gradient quantity and unit plus an explicit recorded triangle
+    // establish each M/A/B allocation. A missing triangle costs M1 even when
+    // the numeric result is right. Unrecognised numerical expressions,
+    // follow-through and ambiguous units are kept provisional.
+    const fullGradient=partId===spec.trianglePart &&
+     evidence.criteria.find(x=>x.id==="A1")?.candidateMarks===1 &&
+     evidence.criteria.find(x=>x.id==="B1")?.candidateMarks===1;
+    const noQuantityOrGraph=partId===spec.trianglePart &&
+     !/\\d/.test(String(object(response)?response.answer??"":response??"")) &&
+     !String(object(response)?response.working??"":"").trim() &&
+     !(object(response)&&response.graphEvidence);
+    const definitelyResolved=fullGradient||noQuantityOrGraph;
     return cap(row,reconciled,
-     "existing-physics-graph-working-advisory",false);
+     "existing-physics-graph-working-advisory",definitelyResolved);
    }
   }
   if(source.responseType==="graph"){
