@@ -10,7 +10,12 @@ import {integratedScienceValueList} from "../../integratedScience/practice/integ
 
 const F=(cls,response,expect,note)=>({cls,response,expect,note});
 const parseLabel=point=>{
- const m=String(point||"").match(/^\s*([A-Za-z0-9]+)\s*[-–:]\s*([^()]+?)(?:\s*\(|$)/);
+ const raw=String(point||"").trim();
+ // Electricity source diagrams write X (earth) - green and yellow (1).
+ // The bracket is the meaning of the terminal, NOT the keyed answer.
+ const wire=raw.match(/^([A-Za-z0-9]+)\s*\((?:earth|neutral|live)\)\s*[-–:]\s*(.*?)\s*\(1\)\s*$/i);
+ if(wire)return {key:wire[1],answer:wire[2].trim()};
+ const m=raw.match(/^([A-Za-z0-9]+)\s*[-–:]\s*([^()]+?)(?:\s*\(|$)/);
  return m?{key:m[1].trim(),answer:m[2].trim()}:null;
 };
 
