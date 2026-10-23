@@ -15,6 +15,8 @@ on:
       - "src/integratedScience/practice/ScienceFiltrationDrawingResponse.test.jsx"
       - "src/integratedScience/practice/ScienceDrawingMagnificationEvidence.jsx"
       - "src/integratedScience/practice/ScienceDrawingMagnificationEvidence.test.jsx"
+      - "src/integratedScience/practice/ScienceBiologicalDrawingEvidence.jsx"
+      - "src/integratedScience/practice/ScienceBiologicalDrawingEvidence.test.jsx"
       - "src/integratedScience/practice/scienceCircuitConstructionMarking.test.js"
       - "src/integratedScience/practice/ScienceCircuitConstructionResponse.jsx"
       - "src/integratedScience/practice/ScienceCircuitConstructionResponse.test.jsx"
@@ -54,7 +56,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Hypothesis regression tests
-        run: npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js ScienceDrawingTableResponse.test.jsx scienceAdditionalTableMarking.test.js scienceParticleDiagramMarking.test.js ScienceParticleDiagramResponse.test.jsx scienceCircuitSymbolMarking.test.js ScienceCircuitSymbolResponse.test.jsx scienceCircuitConstructionMarking.test.js ScienceCircuitConstructionResponse.test.jsx scienceFiltrationDrawingMarking.test.js ScienceFiltrationDrawingResponse.test.jsx ScienceDrawingMagnificationEvidence.test.jsx
+        run: npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js ScienceDrawingTableResponse.test.jsx scienceAdditionalTableMarking.test.js scienceParticleDiagramMarking.test.js ScienceParticleDiagramResponse.test.jsx scienceCircuitSymbolMarking.test.js ScienceCircuitSymbolResponse.test.jsx scienceCircuitConstructionMarking.test.js ScienceCircuitConstructionResponse.test.jsx scienceFiltrationDrawingMarking.test.js ScienceFiltrationDrawingResponse.test.jsx ScienceDrawingMagnificationEvidence.test.jsx ScienceBiologicalDrawingEvidence.test.jsx
         env:
           CI: true
       - name: Verify all registered Integrated Science criteria
