@@ -23,7 +23,8 @@ import { markPhysicsPaper2, modelResponsesForPhysicsPaper2 } from "../physicsPap
 import { buildAttemptProvenance } from "../../../grading/attemptProvenance";
 import { preparePaper2ScorePublication } from "../../../grading/scorePublication";
 import {supabase} from "../../../lib/supabaseClient";
-import {startServerExamAttempt,submitServerExamAttempt,isV2PaperReleased} from "../../../grading/serverExamAttempt";
+import {startServerExamAttempt,isV2PaperReleased} from "../../../grading/serverExamAttempt";
+import {confirmPhysicsV2Submission} from "./physicsV2SubmissionConfirmation";
 import V2VerifiedScore from "../../../grading/V2VerifiedScore";
 import {verifiedV2Display} from "../../../grading/verifiedV2Display";
 import "./physicsPaper2.css";
@@ -317,7 +318,13 @@ function PaperLibrary({ userId, active, onResume, onStart, onBack }) {
 }
 
 export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
-  const initialActive = useMemo(() => readPhysicsPaper2Active(userId), [userId]);
+  const initialActive = useMemo(() => {
+    const saved=readPhysicsPaper2Active(userId);
+    // Browser reload can interrupt an in-flight network request. The answer
+    // snapshot is still saved and retrying the same attempt is idempotent.
+    return saved?.serverSubmissionStatus==="submitting"
+      ?{...saved,serverSubmissionStatus:"unconfirmed"}:saved;
+  }, [userId]);
   const [active, setActive] = useState(initialActive);
   const [currentIndex, setCurrentIndex] = useState(initialActive?.currentIndex || 0);
   const [responses, setResponses] = useState(initialActive?.responses || {});
@@ -327,11 +334,40 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
   const [showConstants, setShowConstants] = useState(false);
   const [serverResult, setServerResult] = useState(null);
   const startingRef=useRef(false);
+  const sendingRef=useRef(false);
   const submissionGuardRef = useRef(Boolean(initialActive?.resultId));
   const paper = getPhysicsPaper2Paper(active?.paperId);
   const phase = active?.phase || null;
   const verifiedScore=verifiedV2Display(serverResult,active?.serverAttemptId);
   const modelResponses = useMemo(() => paper ? modelResponsesForPhysicsPaper2(paper) : {}, [paper]);
+
+  // Never show verified-result polling until BOTH the exam submission and
+  // the owner-scoped V2 queue result have been acknowledged by the server.
+  // Keep the complete snapshot in local storage on failure, and always retry
+  // the existing attempt instead of creating a second examination.
+  const confirmServerSubmission=React.useCallback(async ({
+    attemptId,paperId,resultId,snapshot,maxMarks,provenance,timedOut,checkOnly=false
+  })=>{
+    if(!attemptId||sendingRef.current)return;
+    sendingRef.current=true;
+    const updateStatus=status=>setActive(previous=>
+      previous?.serverAttemptId===attemptId&&previous?.resultId===resultId
+        ?{...previous,serverSubmissionStatus:status}:previous);
+    updateStatus(checkOnly?"checking":"submitting");
+    try{
+      const confirmation=await confirmPhysicsV2Submission({
+        supabase,attemptId,paperId,responses:snapshot,maxMarks,provenance,
+        timedOut,checkOnly
+      });
+      updateStatus(confirmation.status);
+      if(confirmation.result)setServerResult(confirmation.result);
+    }catch(error){
+      console.warn("Physics V2 submission confirmation unavailable",error);
+      updateStatus(checkOnly?"checking":"failed");
+    }finally{
+      sendingRef.current=false;
+    }
+  },[]);
 
   const persistSubmission = React.useCallback(({ submittedAt, timedOut = false } = {}) => {
     if (!paper || submissionGuardRef.current) return null;
@@ -387,20 +423,6 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
       stored.paperReleaseIssues=publication.audit.issues;
       stored.paperReleaseMetadata=publication.metadata;
       savePhysicsPaper2Result(userId, stored);
-      // Only registered, released Physics papers start a V2 attempt. Submit
-      // the original structured answers without any client-supplied marks.
-      if(active?.serverAttemptId){
-        submitServerExamAttempt({
-          supabase,attemptId:active.serverAttemptId,responses,
-          score:null,maxScore:final.of,
-          metadata:{subject:"physics",paper:"02",paper_id:paper.paper_id,
-           client_timed_out:Boolean(timedOut),
-           spark_scoring_status:"rubric_review_required",
-           attempt_provenance:stored.attemptProvenance}
-        }).then(out=>{
-          if(!out?.available)console.warn("Physics V2 submission not confirmed; local practice result remains");
-        });
-      }
       setActive(previous => previous ? {
         ...previous,
         phase: "review",
@@ -408,14 +430,22 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
         timedOut: Boolean(timedOut),
         resultId: stored.id,
         resultSaved: true,
+        serverSubmissionStatus:active?.serverAttemptId?"submitting":"unavailable",
       } : previous);
+      if(active?.serverAttemptId){
+        void confirmServerSubmission({
+          attemptId:active.serverAttemptId,paperId:paper.paper_id,
+          resultId:stored.id,snapshot:responses,maxMarks:final.of,
+          provenance:stored.attemptProvenance,timedOut:Boolean(timedOut)
+        });
+      }
       onActivity?.({ type: "physics_paper2_exam", paperId: paper.paper_id, paperNumber, paperLabel: stored.paperLabel, score: stored.score, maxScore: stored.maxScore, percent: stored.percent, provisionalGrading:stored.provisionalGrading, reviewRecommended:stored.reviewRecommended, paperReleaseMetadata:stored.paperReleaseMetadata, confirmedMarks:stored.confirmedMarks, at: completedAt });
       return stored;
     } catch (error) {
       submissionGuardRef.current = false;
       throw error;
     }
-  }, [paper, responses, userId, onActivity]);
+  }, [paper, responses, userId, onActivity,active?.serverAttemptId,active?.startedAt,confirmServerSubmission]);
 
   useEffect(() => {
     if (!active?.paperId) return;
@@ -480,7 +510,24 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
     window.scrollTo?.({top:0,behavior:"smooth"});
   }
 
+  function retryServerSubmission({checkOnly=false}={}){
+    if(!active?.serverAttemptId||!active?.resultId||sendingRef.current)return;
+    const stored=readPhysicsPaper2Results(userId).find(row=>row.id===active.resultId);
+    const provenance=stored?.attemptProvenance||buildAttemptProvenance({
+      subjectId:"physics",paper:"02",mode:"timed",bankVersion:"physics-paper2-v1",
+      rubricVersion:"physics-authored-criteria-v1",graderVersion:"physics-paper2-marker-v2",
+      startedAt:active.startedAt,submittedAt:active.submittedAt,responses
+    });
+    void confirmServerSubmission({
+      attemptId:active.serverAttemptId,paperId:paper.paper_id,
+      resultId:active.resultId,snapshot:responses,maxMarks:paper.marks,
+      provenance,timedOut:Boolean(active.timedOut),checkOnly
+    });
+  }
+
   function startAnotherPaper() {
+    if(active?.serverAttemptId&&active.serverSubmissionStatus!=="confirmed"&&
+      active.serverSubmissionStatus!=="not-eligible")return;
     setServerResult(null);
     savePhysicsPaper2Active(userId, null);
     submissionGuardRef.current = false;
@@ -531,9 +578,27 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
           ? "The server has verified and published your Paper 2 result. Its score is authoritative."
           : "Your paper has been marked and the result is saved as a practice estimate. Written, method and graph evidence may require verification; no provisional estimate is a final V2 mark."}</p>
       </section>
-      {active?.serverAttemptId&&<V2VerifiedScore supabase={supabase}
-        attemptId={active.serverAttemptId} estimate={result.marks} maxMarks={result.of}
-        onResult={setServerResult}/>}
+      {active?.serverAttemptId&&active.serverSubmissionStatus==="confirmed"&&
+        <V2VerifiedScore supabase={supabase}
+          attemptId={active.serverAttemptId} estimate={result.marks} maxMarks={result.of}
+          onResult={setServerResult}/>}
+      {active?.serverAttemptId&&active.serverSubmissionStatus!=="confirmed"&&
+        <section className="phy-p2-server-submission" role="status" aria-live="polite">
+          <strong>Server submission</strong>
+          <p>{active.serverSubmissionStatus==="submitting"
+            ?"Sending your completed paper to SPARK's server."
+            :active.serverSubmissionStatus==="checking"
+            ?"Your paper was received, but SPARK couldn't confirm the marking queue. Check its status."
+            :active.serverSubmissionStatus==="not-eligible"
+            ?"Your paper reached the server, but it was not accepted for V2 marking. Your practice result is saved. Please contact SPARK support."
+            :"SPARK couldn't confirm that your paper reached the server. Your answers are saved on this device. Retry sending this same examination."}</p>
+          {active.serverSubmissionStatus!=="submitting"&&
+           active.serverSubmissionStatus!=="not-eligible"&&
+            <button type="button" className="phy-p2-secondary" disabled={sendingRef.current}
+              onClick={()=>retryServerSubmission({checkOnly:active.serverSubmissionStatus==="checking"})}>
+              {active.serverSubmissionStatus==="checking"?"Check server submission":"Retry server submission"}
+            </button>}
+        </section>}
     </>}
 
     <nav className="phy-p2-question-nav" aria-label="Paper 2 questions">{paper.questions.map((item, index) => {
@@ -571,7 +636,9 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
     </article>
 
     <footer className="phy-p2-exam-footer"><button type="button" className="phy-p2-primary" disabled={currentIndex === 0} onClick={() => { setCurrentIndex(index => Math.max(0, index - 1)); window.scrollTo?.({ top: 0, behavior: "smooth" }); }}><span aria-hidden="true">{"\u2190"}</span> Previous</button><span>Question {currentIndex + 1} of {paper.questions.length}</span>{currentIndex < paper.questions.length - 1 ? <button type="button" className="phy-p2-primary" onClick={() => { setCurrentIndex(index => Math.min(paper.questions.length - 1, index + 1)); window.scrollTo?.({ top: 0, behavior: "smooth" }); }}>Next question <span aria-hidden="true">{"\u2192"}</span></button> : phase === "exam" ? <button type="button" className="phy-p2-primary" onClick={() => setShowSubmitConfirm(true)}>Submit paper</button> : <button type="button" className="phy-p2-secondary" disabled>Review complete</button>}</footer>
-    {phase === "review" && <div className="phy-p2-result-actions"><button type="button" className="phy-p2-primary phy-p2-back-practice" onClick={onBack}><span aria-hidden="true">{"\u2190"}</span><span>Back to Physics practice</span></button><button type="button" className="phy-p2-primary" onClick={startAnotherPaper}>Start another Paper 2</button></div>}
+    {phase === "review" && <div className="phy-p2-result-actions"><button type="button" className="phy-p2-primary phy-p2-back-practice" onClick={onBack}><span aria-hidden="true">{"\u2190"}</span><span>Back to Physics practice</span></button><button type="button" className="phy-p2-primary" disabled={Boolean(active?.serverAttemptId)&&
+      active.serverSubmissionStatus!=="confirmed"&&active.serverSubmissionStatus!=="not-eligible"}
+      onClick={startAnotherPaper}>Start another Paper 2</button></div>}
     {showConstants && <PhysicsConstantsModal onClose={() => setShowConstants(false)}/>}
     {showSubmitConfirm && phase === "exam" && <div className="phy-p2-modal-backdrop" role="presentation" onMouseDown={() => setShowSubmitConfirm(false)}><section className="phy-p2-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="phy-p2-submit-title" onMouseDown={event => event.stopPropagation()}><span className="phy-p2-eyebrow">SUBMIT PAPER</span><h2 id="phy-p2-submit-title">Submit {physicsPaper2PaperName(paper)}?</h2><p>SPARK will grade and save your result immediately, then open your final answer review. You will not be able to change your responses after submission.</p><div className="phy-p2-confirm-actions"><button type="button" className="phy-p2-secondary" onClick={() => setShowSubmitConfirm(false)}>Return to paper</button><button type="button" className="phy-p2-primary" onClick={submitPaper}>Submit paper</button></div></section></div>}
   </div></main>;
