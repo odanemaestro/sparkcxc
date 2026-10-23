@@ -122,7 +122,9 @@ export function markSourceFiltrationDrawing(qid,pi,ii,item,input,freehand=false)
  const hits=[Boolean(funnel&&paper),Boolean(beaker),labels>=3,Boolean(neat)];
  const score=hits.filter(Boolean).length;
  const blank=d.lines.length===0&&d.labels.length===0&&!d.title.trim();
- const unknown=d.lines.length>25||d.labels.length>5||Boolean(freehand)||
+ const uniqueLines=new Set(d.lines.map(s=>[s[0].join(","),s[1].join(",")].sort().join("|")));
+ const duplicated=uniqueLines.size!==d.lines.length;
+ const unknown=duplicated||d.lines.length>25||d.labels.length>5||Boolean(freehand)||
   // Valid partial credit must have recognizable geometry rather than labels alone.
   (!blank&&d.lines.length>0&&(!funnel||!paper||!beaker)&&score>0&&d.lines.length>6);
  const resolved=!unknown;
