@@ -26,7 +26,33 @@ const SOURCE_PARTIALS=Object.freeze({
  "phy-p2-3-q4::d":Object.freeze([
   ["Ultraviolet radiation is used to sterilise equipment.",1]]),
  "phy-p2-4-q2::a":Object.freeze([
-  ["A scalar has magnitude only. A vector has magnitude and direction.",2]])
+  ["A scalar has magnitude only. A vector has magnitude and direction.",2]]),
+ "phy-p2-1-q2::e":Object.freeze([["The smallest face experiences the greatest pressure.",1]]),
+ "phy-p2-1-q5::g":Object.freeze([["Energy used = 2 kW × 3 h = 6 kWh.",1]]),
+ "phy-p2-2-q1::d":Object.freeze([["T² = (4π²/g) l",1]]),
+ "phy-p2-2-q2::e":Object.freeze([["2.0 × 0.30 = 3.0 × d",1]]),
+ "phy-p2-2-q4::e":Object.freeze([["1/f = 1/u + 1/v",1]]),
+ "phy-p2-2-q5::a":Object.freeze([["A magnetic field is a region around a magnet.",1]]),
+ "phy-p2-2-q5::b":Object.freeze([["A permanent magnet retains magnetism, while a temporary magnet loses it.",1]]),
+ "phy-p2-2-q6::d":Object.freeze([["Fusion is the joining of light nuclei to form a heavier one.",1]]),
+ "phy-p2-3-q1::c":Object.freeze([["The gradient represents the resistance.",1]]),
+ "phy-p2-3-q3::d":Object.freeze([["Gaps are left between the sections of a bridge.",1]]),
+ "phy-p2-3-q4::e":Object.freeze([["Diffraction is the spreading out of a wave at a gap or an edge.",1]]),
+ "phy-p2-3-q6::b":Object.freeze([["The mass number of radon is 222.",1]]),
+ "phy-p2-3-q6::c":Object.freeze([["It can kill or damage living cells.",1]]),
+ "phy-p2-3-q6::d":Object.freeze([["A small amount of nuclear fuel yields a large amount of energy.",1]]),
+ "phy-p2-3-q6::e":Object.freeze([["Gamma radiation is used to treat cancer.",1]]),
+ "phy-p2-4-q1::d":Object.freeze([["The gradient represents density times g.",1]]),
+ "phy-p2-4-q2::c":Object.freeze([["tan θ = 6.0 ÷ 8.0",2]]),
+ "phy-p2-4-q2::e":Object.freeze([["The resultant force on a body in equilibrium is zero.",1]]),
+ "phy-p2-4-q3::a":Object.freeze([["The volume of a liquid varies with temperature.",1]]),
+ "phy-p2-4-q3::c":Object.freeze([["θ = (l − l₀) ÷ (l₁₀₀ − l₀) × 100",1]]),
+ "phy-p2-4-q5::a":Object.freeze([["The first finger points in the direction of the magnetic field.",1]]),
+ "phy-p2-4-q5::b":Object.freeze([["Increase the current in the coil.",1]]),
+ "phy-p2-4-q6::a":Object.freeze([["Uranium has 92 protons.",1]]),
+ "phy-p2-4-q6::c":Object.freeze([["40 ÷ 8 = 5 half-lives.",2]]),
+ "phy-p2-4-q6::d":Object.freeze([["Background radiation is always present in the environment.",1]]),
+ "phy-p2-4-q6::e":Object.freeze([["Gamma radiation is used to treat cancer.",1]])
 });
 const canonical=s=>String(s??"").normalize("NFKC")
  .toLowerCase().replace(/\s+/g," ").trim().replace(/[.]+$/,"");
