@@ -1,3 +1,4 @@
+import {markSourceFiltrationDrawing} from "./scienceFiltrationDrawingMarking";
 import {markCircuitConstruction} from "./scienceCircuitConstructionMarking";
 import {markSourceCircuitSymbols} from "./scienceCircuitSymbolMarking";
 import {markSourceParticleDiagram} from "./scienceParticleDiagramMarking";
@@ -424,6 +425,9 @@ export function gradeIntegratedSciencePaper2Item(question,partIndex,itemIndex,it
     const circuit=markCircuitConstruction(question.id,partIndex,itemIndex,item,
      responses[`${base}:circuitNetlist`],freehand);
     if(circuit)return circuit;
+    const filtration=markSourceFiltrationDrawing(question.id,partIndex,itemIndex,item,
+     responses[`${base}:filtrationDrawing`],freehand);
+    if(filtration)return filtration;
     return visualResult(question.id,partIndex,itemIndex,item,responses);
   }
   return lineResult(question.id,partIndex,itemIndex,item,responses);
