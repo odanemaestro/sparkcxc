@@ -45,7 +45,7 @@ const evaluate=(id,t)=>{
   const compare=/\b(?:4|40)\s*°?\s*c\b/.test(t);
   const directional=/\b(?:best|better|more|most|higher|greater)\b/.test(t);
   const contrary=compare&&(/\b(?:4|40)\s*°?\s*c\b.{0,32}\b(?:best|most|highest)\b/.test(t)||
-   /\b(?:best|most|highest)\b.{0,18}\b(?:4|40)\s*°?\s*c\b/.test(t));
+   /\b(?:best|most|highest)\b\s+(?:at|around)\s+(?:4|40)\s*°?\s*c\b/.test(t));
   return {prediction:seed&&germination&&target&&directional&&!contrary,
     comparison:seed&&germination&&target&&compare&&directional&&!contrary,contrary};
  }
