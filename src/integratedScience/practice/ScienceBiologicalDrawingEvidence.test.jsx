@@ -36,5 +36,5 @@ test("disabled display prevents student changes",()=>{
   questionId="IS-M1-P2-21" partIndex={1} itemIndex={0} responses={{}}
   onChange={onChange} disabled={true}/>);
  expect(screen.getByPlaceholderText("Your measured value, in mm").disabled).toBe(true);
- expect(screen.getByRole("button",{name:"Undo label line"})).toBeTruthy();
+ expect(screen.queryByRole("button",{name:"Undo label line"})).toBeNull();
 });
