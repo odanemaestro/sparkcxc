@@ -15,7 +15,7 @@ test("records user placed geometry instead of providing an answer template",()=>
  render(<ScienceParticleDiagramResponse base="IS-M3-P2-25:1:0" responses={{}} onChange={onChange} disabled={false}/>);
  const solid=screen.getByLabelText("Solid particle arrangement drawing");
  solid.getBoundingClientRect=()=>({left:10,top:10,width:200,height:100});
- fireEvent.pointerDown(solid,{clientX:110,clientY:60});
+ fireEvent(solid,new MouseEvent("pointerdown",{bubbles:true,clientX:110,clientY:60}));
  expect(onChange).toHaveBeenCalledTimes(1);
  const [key,json]=onChange.mock.calls[0];
  expect(key).toBe("IS-M3-P2-25:1:0:particleLayout");
