@@ -7,6 +7,10 @@ on:
       - "src/integratedScience/practice/scienceRustTableMarking.js"
       - "src/integratedScience/practice/scienceAdditionalTableMarking.js"
       - "src/integratedScience/practice/scienceParticleDiagramMarking.js"
+      - "src/integratedScience/practice/scienceCircuitSymbolMarking.js"
+      - "src/integratedScience/practice/scienceCircuitSymbolMarking.test.js"
+      - "src/integratedScience/practice/ScienceCircuitSymbolResponse.jsx"
+      - "src/integratedScience/practice/ScienceCircuitSymbolResponse.test.jsx"
       - "src/integratedScience/practice/scienceParticleDiagramMarking.test.js"
       - "src/integratedScience/practice/ScienceParticleDiagramResponse.jsx"
       - "src/integratedScience/practice/ScienceParticleDiagramResponse.test.jsx"
@@ -22,6 +26,7 @@ on:
       - "src/grading/v2Fixtures/integratedScienceRustTable.js"
       - "src/grading/v2Fixtures/integratedScienceAdditionalTables.js"
       - "src/grading/v2Fixtures/integratedScienceParticles.js"
+      - "src/grading/v2Fixtures/integratedScienceCircuitSymbols.js"
       - ".github/workflows/v2-integrated-science-verify.yml"
   workflow_dispatch:
 permissions:
@@ -37,7 +42,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Hypothesis regression tests
-        run: npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js ScienceDrawingTableResponse.test.jsx scienceAdditionalTableMarking.test.js scienceParticleDiagramMarking.test.js ScienceParticleDiagramResponse.test.jsx
+        run: npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js ScienceDrawingTableResponse.test.jsx scienceAdditionalTableMarking.test.js scienceParticleDiagramMarking.test.js ScienceParticleDiagramResponse.test.jsx scienceCircuitSymbolMarking.test.js ScienceCircuitSymbolResponse.test.jsx
         env:
           CI: true
       - name: Verify all registered Integrated Science criteria
@@ -56,7 +61,8 @@ jobs:
             "IS-M2-P2-07::(a)::(iii)",
             "IS-M2-P2-13::(b)::(i)",
             "IS-M3-P2-15::(a)::(i)",
-            "IS-M3-P2-25::(b)::(i)"
+            "IS-M3-P2-25::(b)::(i)",
+            "IS-M2-P2-25::(b)::(i)"
           ];
           for(const id of ids){
             const rec=evidence.find(x=>x.criterionId===id);
