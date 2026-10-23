@@ -4,10 +4,10 @@
  * Unknown wording remains provisional for later review, never force-approved.
  */
 const RULES={
- "IS-M2-P2-07":{terms:/\b(?:copper|iron|alumini?um|metal)s?\b/i,contrast:/\b(?:plastic|wood|non.?metal|insulat\w*)\b/i,effect:/\b(?:conduct|light|lamp|bulb|electric|current)\w*\b/i,negative:/\b(?:not|won't|will not|doesn't|do not|fail|cannot)\b/i},
- "IS-M3-P2-11":{terms:/\b(?:methylated spirit|alcohol|organic solvent)\b/i,contrast:/\b(?:water|acetone|vinegar|other solvents?)\b/i,effect:/\b(?:ink|stain|remove|clean)\w*\b/i,negative:null},
- "IS-M3-P2-13":{terms:/\b(?:dens\w*|liquid)\b/i,contrast:/\b(?:sink|depth|float|submerg|immers)\w*\b/i,effect:/\b(?:less|lower|shallower|higher|more|deep)\b/i,negative:null},
- "IS-M1-P2-15":{terms:/\b(?:bean|seed|germinat)\w*\b/i,contrast:/\b(?:25\s*°?\s*c|4\s*°?\s*c|40\s*°?\s*c|temperature|warm|cold|hot)\b/i,effect:/\b(?:germinat|grow|more|best|most|higher)\w*\b/i,negative:null},
+ "IS-M2-P2-07":{terms:/\b(?:copper|iron|alumini?um|metal)s?\b/i,contrast:/\b(?:plastic|wood|non.?metal|insulat\w*)\b/i,effect:/\b(?:conduct\w*|light\w*|lamp|bulb|electric\w*|current)\b/i,negative:/\b(?:not|won't|will not|doesn't|do not|fail|cannot)\b/i},
+ "IS-M3-P2-11":{terms:/\b(?:methylated spirit|alcohol|organic solvent)\b/i,contrast:/\b(?:water|acetone|vinegar|other solvents?)\b/i,effect:/\b(?:ink|stain\w*|remov\w*|clean\w*)\b/i,negative:null},
+ "IS-M3-P2-13":{terms:/\b(?:dens\w*|liquid)\b/i,contrast:/\b(?:sink|depth|float|submerg|immers)\w*\b/i,effect:/\b(?:less|lower|shallower|higher|more|deep\w*)\b/i,negative:null},
+ "IS-M1-P2-15":{terms:/\b(?:bean|seed\w*|germinat\w*)\b/i,contrast:/\b(?:25\s*°?\s*c|4\s*°?\s*c|40\s*°?\s*c|temperature|warm|cold|hot)\b/i,effect:/\b(?:germinat\w*|grow\w*|more|best|most|higher)\b/i,negative:null},
 };
 const contradicts=(id,text)=>{
  if(/\b(?:no difference|same (?:rate|result|effect)|will not affect|has no effect)\b/i.test(text))return true;
