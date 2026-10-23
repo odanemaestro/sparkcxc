@@ -69,3 +69,15 @@ test("graph method evidence is bounded by the original criterion ceiling",()=>{
  expect(row.suggestedMarks).toBeLessThanOrEqual(row.maxMarks);
  expect(row.resolved).toBe(false);
 });
+
+test("graph evidence never lets correct numeric text fabricate a triangle",()=>{
+ const row=mark("c",{answer:"2400 kPa cm³",
+  working:"a large triangle was drawn on the graph"});
+ expect(row.suggestedMarks).toBeLessThanOrEqual(2);
+ expect(row.resolved).toBe(false);
+});
+test("a typed graph-reading claim never substitutes for a recorded point",()=>{
+ const row=mark("d",{answer:"133 kPa",working:"1/18=0.0556; read pressure from the plotted line"});
+ expect(row.suggestedMarks).toBeLessThanOrEqual(2);
+ expect(row.resolved).toBe(false);
+});
