@@ -27,6 +27,7 @@ import {additionalTableFixtures} from "./v2Fixtures/integratedScienceAdditionalT
 import {integratedScienceParticleFixtures} from "./v2Fixtures/integratedScienceParticles";
 import {integratedScienceCircuitSymbolFixtures} from "./v2Fixtures/integratedScienceCircuitSymbols";
 import {integratedScienceCircuitFixtures} from "./v2Fixtures/integratedScienceCircuits";
+import {filtrationSourceFixtures} from "./v2Fixtures/integratedScienceFiltration";
 import {integratedScienceGraphInText} from "../integratedScience/practice/integratedSciencePaper2Grader";
 import {CURATED_IS} from "./v2Fixtures/integratedScienceCurated";
 import {physicsFixtures} from "./v2Fixtures/physics";
@@ -136,6 +137,8 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
   if(symbols)return symbols;
   const circuits=integratedScienceCircuitFixtures(qid,pi,ii,item,criterion.maxMarks);
   if(circuits)return circuits;
+  const filtration=filtrationSourceFixtures(qid,pi,ii,item,criterion.maxMarks);
+  if(filtration)return filtration;
   if(integratedScienceGraphInText(item))return {blocked:"graph-question-without-graph-response-input"};
   const structured=integratedScienceStructuredFixtures({base:qid+":"+pi+":"+ii,item,maxMarks:criterion.maxMarks});
   if(structured){
