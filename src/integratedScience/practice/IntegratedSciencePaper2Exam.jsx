@@ -1,4 +1,4 @@
-import ScienceBiologicalDrawingEvidence from "./ScienceBiologicalDrawingEvidence";
+import ScienceBiologicalDrawingEvidence,{readBiologicalDrawingEvidence,biologicalDrawingSource} from "./ScienceBiologicalDrawingEvidence";
 import ScienceDrawingMagnificationEvidence from "./ScienceDrawingMagnificationEvidence";
 import ScienceFiltrationDrawingResponse from "./ScienceFiltrationDrawingResponse";
 import ScienceCircuitConstructionResponse from "./ScienceCircuitConstructionResponse";
@@ -249,6 +249,12 @@ function readStrokes(value){
 function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disabled}){
   const svgRef=useRef(null);
   const drawingRef=useRef(false);
+  const biological=(questionId==="IS-M1-P2-21"&&partIndex===1&&itemIndex===0)||(questionId==="IS-M1-P2-27"&&partIndex===0&&itemIndex===0);
+  const [drawMode,setDrawMode]=useState("draw");
+  const [selectedLabel,setSelectedLabel]=useState("");
+  const [labelStart,setLabelStart]=useState(null);
+  const bioEvidence=biological?readBiologicalDrawingEvidence(responses[base+":biologicalEvidence"],biologicalDrawingSource(questionId,partIndex,itemIndex)):null;
+
   const strokes=readStrokes(responses[`${base}:strokes`]);
   const updateStrokes=next=>onChange(`${base}:strokes`,JSON.stringify(next));
   const pointFromEvent=event=>{
@@ -259,6 +265,7 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
   const down=event=>{
     if(disabled) return;
     const point=pointFromEvent(event); if(!point) return;
+    if(biological&&drawMode==="label"){if(!selectedLabel)return;setLabelStart([point.x/600,point.y/300]);event.currentTarget.setPointerCapture?.(event.pointerId);return;}
     drawingRef.current=true;
     event.currentTarget.setPointerCapture?.(event.pointerId);
     updateStrokes([...strokes,[point]]);
@@ -269,17 +276,25 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
     const next=strokes.map((stroke,index)=>index===strokes.length-1?[...stroke,point]:stroke);
     updateStrokes(next);
   };
-  const up=()=>{drawingRef.current=false;};
+  const up=event=>{
+    drawingRef.current=false;
+    if(!biological||drawMode!=="label"||!labelStart||!selectedLabel||disabled){setLabelStart(null);return;}
+    const point=pointFromEvent(event);setLabelStart(null);
+    if(!point||Math.hypot(labelStart[0]-point.x/600,labelStart[1]-point.y/300)<.035||bioEvidence.labels.length>=18)return;
+    onChange(base+":biologicalEvidence",JSON.stringify({...bioEvidence,labels:[...bioEvidence.labels,{name:selectedLabel,from:labelStart,to:[point.x/600,point.y/300]}]}));
+  };
   return <div className="is-p2-drawing-workspace">
     <ScienceDrawingTableResponse base={base} questionId={questionId} partIndex={partIndex} itemIndex={itemIndex} responses={responses} onChange={onChange} disabled={disabled}/>
-    {((questionId==="IS-M1-P2-21"&&partIndex===1&&itemIndex===0)||(questionId==="IS-M1-P2-27"&&partIndex===0&&itemIndex===0))&&<ScienceBiologicalDrawingEvidence base={base} questionId={questionId} partIndex={partIndex} itemIndex={itemIndex} responses={responses} onChange={onChange} disabled={disabled}/>}
+    {((questionId==="IS-M1-P2-21"&&partIndex===1&&itemIndex===0)||(questionId==="IS-M1-P2-27"&&partIndex===0&&itemIndex===0))&&<ScienceBiologicalDrawingEvidence base={base} questionId={questionId} partIndex={partIndex} itemIndex={itemIndex} responses={responses} onChange={onChange} disabled={disabled} sharedCanvas selectedLabel={selectedLabel} onLabelChange={setSelectedLabel}/>}
     {questionId==="IS-M3-P2-11"&&partIndex===0&&itemIndex===1&&<ScienceFiltrationDrawingResponse base={base} responses={responses} onChange={onChange} disabled={disabled}/>}
     {questionId==="IS-M3-P2-25"&&partIndex===1&&itemIndex===0&&<ScienceParticleDiagramResponse base={base} responses={responses} onChange={onChange} disabled={disabled}/>}
     {questionId==="IS-M2-P2-25"&&partIndex===1&&itemIndex===0&&<ScienceCircuitSymbolResponse base={base} responses={responses} onChange={onChange} disabled={disabled}/>}
     {questionId==="IS-M2-P2-07"&&partIndex===0&&itemIndex===0||questionId==="IS-M2-P2-15"&&partIndex===0&&itemIndex===0?<ScienceCircuitConstructionResponse base={base} responses={responses} onChange={onChange} disabled={disabled}/>:null}
+    {biological&&!disabled&&<div className="is-p2-drawing-actions"><button type="button" className="is-exam-secondary" aria-pressed={drawMode==="draw"} onClick={()=>setDrawMode("draw")}>Draw specimen</button><button type="button" className="is-exam-secondary" aria-pressed={drawMode==="label"} onClick={()=>setDrawMode("label")}>Draw label line</button></div>}
     <svg ref={svgRef} className="is-p2-drawing-response" viewBox="0 0 600 300" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} role="img" aria-label="Student drawing canvas">
       <rect x="1" y="1" width="598" height="298" fill="none" stroke="currentColor" opacity=".35"/>
       {strokes.map((stroke,index)=><polyline key={index} points={stroke.map(point=>`${point.x},${point.y}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>)}
+      {bioEvidence?.labels.map((l,i)=><g key={"bio-label-"+i} pointerEvents="none"><line x1={l.from[0]*600} y1={l.from[1]*300} x2={l.to[0]*600} y2={l.to[1]*300} stroke="currentColor" strokeWidth="1.5"/><text x={l.from[0]*600} y={l.from[1]*300-5} textAnchor="middle" fontSize="12" fill="currentColor">{l.name}</text></g>)}
     </svg>
     {!disabled && <div className="is-p2-drawing-actions">
       <button type="button" className="is-exam-secondary" onClick={()=>updateStrokes(strokes.slice(0,-1))} disabled={!strokes.length}>Undo stroke</button>
