@@ -52,7 +52,7 @@ const SOURCE_PARTIALS=Object.freeze({
  "phy-p2-4-q6::a":Object.freeze([["Uranium has 92 protons.",1]]),
  "phy-p2-4-q6::c":Object.freeze([["40 ÷ 8 = 5 half-lives.",2]]),
  "phy-p2-4-q6::d":Object.freeze([["Background radiation is always present in the environment.",1]]),
- "phy-p2-4-q6::e":Object.freeze([["Gamma radiation is used to treat cancer.",1]])
+ "phy-p2-4-q6::e":Object.freeze([["Gamma radiation is used to treat cancer.",1]]),
  "phy-p2-1-q3::c":Object.freeze([["Efficiency = useful output ÷ total input.",1]]),
  "phy-p2-1-q4::a":Object.freeze([["In a transverse wave particles vibrate at right angles to the direction of travel.",1]]),
  "phy-p2-1-q4::dii":Object.freeze([["Ultrasound is used to scan an unborn baby.",1]]),
