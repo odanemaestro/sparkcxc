@@ -6,11 +6,11 @@ const C=(id,met,description)=>({id,maxMarks:1,candidateMarks:met?1:null,
  * projection to the current axis. The recorded coordinate must come from
  * the learner's own graph, never their written assertion alone. */
 export function evaluatePhysicsCurrentGraphReading({response={},previousGraphResponse={}}={}){
- const text=String(response.answer??"").trim();
+ const text=String(response?.answer??"").trim();
  const match=/^(?:(?:current|i|answer)\s*(?:=|:)\s*)?([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*a$/i.exec(text);
  const value=match?Number(match[1]):null;
  const sourceNumeric=value!==null&&Number.isFinite(value)&&value>=0.33&&value<=0.37;
- const point=response.graphEvidence?.point;
+ const point=response?.graphEvidence?.point;
  const graphic=validatePhysicsCurrentReading({graphResponse:previousGraphResponse,
   response,questionId:"phy-p2-3-q1"})&&
   sourceNumeric&&Math.abs(value-point.x)<=0.02;
