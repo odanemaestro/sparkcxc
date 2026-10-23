@@ -572,3 +572,13 @@
 .is-p2-filtration-canvas{display:block;max-width:100%;height:auto;min-height:150px;background:var(--is-card);color:var(--is-ink);border:1px solid var(--is-border);border-radius:8px}
 .is-p2-filtration-drawing .is-p2-drawing-actions>span{margin-right:auto;color:var(--is-muted);font-size:12px}
 @media(max-width:600px){.is-p2-filtration-tools>button{flex:1 1 37%}.is-p2-filtration-tools>label{flex-basis:100%}}
+
+/* Evidence capture only: drawing measurements require source reconciliation. */
+.is-p2-magnification-evidence{min-width:0;border:1px solid var(--is-border);padding:12px;border-radius:10px}
+.is-p2-magnification-evidence legend{font-weight:750;padding:0 5px}
+.is-p2-magnification-evidence p{margin:0 0 10px;color:var(--is-muted);font-size:13px}
+.is-p2-magnification-answer{display:grid;gap:10px}
+.is-p2-magnification-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.is-p2-magnification-grid label{display:grid;gap:5px;font-size:12px;font-weight:700}
+.is-p2-magnification-grid input{min-width:0;width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid var(--is-border);border-radius:8px;background:var(--is-card);color:var(--is-ink);font:inherit}
+@media(max-width:640px){.is-p2-magnification-grid{grid-template-columns:1fr}}
