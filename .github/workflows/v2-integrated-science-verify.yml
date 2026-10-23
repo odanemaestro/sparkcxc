@@ -32,7 +32,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Hypothesis regression tests
-        run: npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js ScienceDrawingTableResponse.test.jsx
+        run: npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js ScienceDrawingTableResponse.test.jsx scienceAdditionalTableMarking.test.js
         env:
           CI: true
       - name: Verify all registered Integrated Science criteria
