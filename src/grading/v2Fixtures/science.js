@@ -247,7 +247,14 @@ export function scienceFixtures({item,maxMarks,others=[],curated=[],criterionId,
  // Examiner instructions are not answer content. An instruction that lists
  // acceptable content ("Give two justifications, such as protein, fibre...")
  // is answered with one of its examples, justified.
- const instruction=p=>/^\s*(?:award|give|accept|credit|any\s+(?:two|three|four)|up\s+to|do not award)\b/i.test(cleanSourcePoint(p));
+ const instruction=p=>{
+  const text=cleanSourcePoint(p);
+  // CPR source-marked answers actually begin with "Give 30 chest
+  // compressions" and "Give 2 rescue breaths". These are actions performed
+  // by a first-aider, not examiner directions ("Give two marks").
+  if(/^give\s+(?:30\s+chest\s+compressions|2\s+rescue\s+breaths)\b/i.test(text))return false;
+  return /^\s*(?:award|give|accept|credit|any\s+(?:two|three|four)|up\s+to|do not award)\b/i.test(text);
+ };
  let points=raw.flatMap(subPoints).filter(p=>!/^\s*\(?accept\b/i.test(p)&&!/earns credit\.?$/i.test(p))
   .filter(p=>!instruction(p)||/\bsuch as\b/i.test(p));
  // A compound point ("A, so B") under-allocated by its scheme carries one
