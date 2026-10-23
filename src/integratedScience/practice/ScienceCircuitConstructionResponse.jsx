@@ -53,6 +53,7 @@ export default function ScienceCircuitConstructionResponse({base,responses,onCha
  const sequence=useRef(0);
  const save=next=>onChange(base+":circuitNetlist",JSON.stringify(next));
  const place=event=>{
+  if(event.target!==event.currentTarget&&event.target?.getAttribute?.("data-place-surface")!=="true")return;
   if(disabled||diagram.components.length>=12)return;
   const r=event.currentTarget.getBoundingClientRect();
   if(!r.width||!r.height||!Number.isFinite(event.clientX)||!Number.isFinite(event.clientY))return;
@@ -93,7 +94,7 @@ export default function ScienceCircuitConstructionResponse({base,responses,onCha
   <svg viewBox="0 0 640 330" role="img" aria-label="Blank circuit construction canvas"
    onPointerDown={place} className="is-p2-netlist-canvas"
    style={{width:"100%",maxWidth:"780px",touchAction:"none",cursor:disabled?"default":"crosshair"}}>
-   <rect x="1" y="1" width="638" height="328" fill="none" stroke="currentColor" opacity=".4"/>
+   <rect data-place-surface="true" x="1" y="1" width="638" height="328" fill="none" stroke="currentColor" opacity=".4"/>
    {diagram.wires.map((w,i)=>{
     const pts=wirePoints(w);return !pts?null:<line key={"wire-"+i}
      x1={pts[0][0]*640} y1={pts[0][1]*330} x2={pts[1][0]*640} y2={pts[1][1]*330}
