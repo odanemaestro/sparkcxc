@@ -1,3 +1,4 @@
+import {markSourceHypothesis} from "./scienceHypothesisMarking";
 import { markScienceCalculation, SCIENCE_TABLES } from "./scienceStructuredMarking";
 import { gradeScienceGraph } from "./scienceGraphMarking";
 import { matchScienceWrittenEvidence } from "../../grading/scienceWrittenEvidence";
@@ -192,6 +193,8 @@ function lineResult(questionId,partIndex,itemIndex,item,responses){
   const base=`${questionId}:${partIndex}:${itemIndex}`;
   const list=integratedScienceValueList(item);
   if(list)return valueListResult(base,item,list,responses[base]);
+  const hypothesis=markSourceHypothesis(questionId,item,responses[base]);
+  if(hypothesis)return hypothesis;
   return gradeSciencePointLines(base,integratedScienceLineItem(item),responses[base]||"");
 }
 
