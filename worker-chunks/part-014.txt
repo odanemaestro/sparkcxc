@@ -1,4 +1,6 @@
-"proposedOption": "C", "explanation": "The intersection marked Z is the price-and-quantity equilibrium of supply and the original demand curve.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
+l, "sourceVisualChecked": true }),
+    Object.freeze({ "number": 38, "pdfPage": 5, "proposedOption": "A", "explanation": "Central banks normally issue currency notes and coins or supervise national currency issuance.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
+    Object.freeze({ "number": 39, "pdfPage": 6, "proposedOption": "C", "explanation": "The intersection marked Z is the price-and-quantity equilibrium of supply and the original demand curve.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
     Object.freeze({ "number": 40, "pdfPage": 6, "proposedOption": "C", "explanation": "At point Z the illustrated equilibrium price is four dollars.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
     Object.freeze({ "number": 41, "pdfPage": 6, "proposedOption": "B", "explanation": "Price controls and subsidies can directly protect purchasers; customs duties mainly regulate imported trade.", "status": "academic-dispute", "uncertainty": "import-protection-versus-consumer-welfare", "sourceAnalysis": "Custom duties can protect local consumer safety indirectly but usually raise prices, so price ceilings/subsidies are best.", "sourceVisualChecked": true }),
     Object.freeze({ "number": 42, "pdfPage": 6, "proposedOption": "A", "explanation": "Lower taxes can raise disposable resources for households and businesses, stimulating spending or investment.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
@@ -1336,5 +1338,4 @@ __export(pobHistorical2008MjP2AuthoredScheme_exports, {
   verifyPob2008MjP2AuthoredScheme: () => verifyPob2008MjP2AuthoredScheme
 });
 var ANSWERS = Object.freeze([
-  [1, "a", "A business may have marketing, human resources, production and finance departments.", ["1:First genuine, distinct business department", "1:Second distinct department", "1:Third distinct department", "1:Fourth distinct department"]],
-  [1, "b", "Marketing promotes products; production makes goods; finance manages money; human resources recruits and trains employees.", ["1:Accurate function of first department chose
+  [1, "a", "A business may have marketing, hu

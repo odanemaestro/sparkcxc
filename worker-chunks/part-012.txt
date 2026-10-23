@@ -156,7 +156,9 @@ var rowKnown = (kind, row) => {
 var topicPresent = (kind, s) => kind === "conductivity" ? /\b(?:copper|iron|aluminium|plastic|wood|graphite|material|conduct|lamp|electric)\w*\b/.test(s) : kind === "nutrients" ? /\b(?:food|nutrient|carbohydrate|protein|fat|energy|rice|yam|fish|pea|butter|ackee)\w*\b/.test(s) : /\b(?:metal|acid|react|bubble|iron|zinc|copper|magnesium)\w*\b/.test(s);
 function additionalTableSpec(qid, pi, ii, item2) {
   const spec = SPECS[qid + ":" + pi + ":" + ii];
-  return spec && item2?.response?.type === "drawing" && Number(item2.marks) === spec.marks ? spec : null;
+  const points = item2?.markScheme?.points || [];
+  const sourceGuard = spec?.kind === "conductivity" ? points.some((p) => /enclosed table listing all six materials/i.test(p)) : spec?.kind === "nutrients" ? points.some((p) => /carbohydrate.*supplies energy/i.test(p)) : spec?.kind === "metals" ? points.some((p) => /W.*many bubbles.*X.*some bubbles/i.test(p)) : false;
+  return spec && sourceGuard && item2?.response?.type === "drawing" && Number(item2.marks) === spec.marks ? spec : null;
 }
 function gradeAdditionalTable(qid, pi, ii, item2, response, freehand = false) {
   const spec = additionalTableSpec(qid, pi, ii, item2);
@@ -3989,5 +3991,4 @@ var POB_2003_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 10, "pdfPage": 2, "proposedOption": "B", "explanation": "Managing directors delegate functions and responsibilities through managers below them.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": true }),
     Object.freeze({ "number": 11, "pdfPage": 2, "proposedOption": "C", "explanation": "The general manager in the chart has executive management responsibility and coordinates departments.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": true }),
     Object.freeze({ "number": 12, "pdfPage": 2, "proposedOption": "C", "explanation": "Coordinating, delegating and controlling staff and materials are recognised functions of managers; compelling union membership is not.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 13, "pdfPage": 2, "proposedOption": "A", "explanation": "Refusing staff discussions and suggestions is characteristic of an authoritarian management style.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 14, "pdfPage": 3, "proposedOption": "A", "explanation": "Allowing employees meaningful participation in decisions generally supports morale and comm
+    Object.freeze({ "number": 13, "pdfPage": 2, "proposedOption": "A", "explanation": "Ref

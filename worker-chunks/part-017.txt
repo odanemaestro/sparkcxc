@@ -1,4 +1,4 @@
-itical and economic relations with other countries."
+ it cannot produce or can produce only at high cost.\n\u2022 Specialisation according to comparative advantage, increasing total output.\n\u2022 Foreign exchange earned from exports.\n\u2022 A wider variety of goods for consumers.\n\u2022 A larger market for producers, allowing economies of scale.\n\u2022 Access to capital goods, raw materials and new technology.\n\u2022 Better political and economic relations with other countries."
             },
             {
               "label": "(b)",
@@ -2896,4 +2896,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
               "label": "(e)",
               "question": "The government of your country has set up centres to train citizens in computer engineering and small appliance repair. Explain TWO benefits that could be gained from this initiative.",
               "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 Employment: trained citizens can find jobs or start their own repair businesses, reducing unemployment.\n\u2022 A more skilled workforce: higher productivity and more foreign investment in technology-based industries.\n\u2022 Foreign exchange savings: appliances and computers can be repaired locally instead of being replaced with imports, or in
+              "ans

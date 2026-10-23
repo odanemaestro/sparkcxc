@@ -1,4 +1,16 @@
- areas of a business."
+: "a.ii",
+          "marks": 2,
+          "prompt": "Identify TWO stakeholders that are involved in a business."
+        },
+        {
+          "id": "a.iii",
+          "marks": 2,
+          "prompt": "Outline ONE role of ONE of the stakeholders identified in (a)(ii) above."
+        },
+        {
+          "id": "b",
+          "marks": 4,
+          "prompt": "Describe TWO functional areas of a business."
         },
         {
           "id": "c",
@@ -2328,4 +2340,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
               "label": "(a)",
               "question": "Outline THREE benefits that a country may gain from engaging in international trade.",
               "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Access to goods it cannot produce or can produce only at high cost.\n\u2022 Specialisation according to comparative advantage, increasing total output.\n\u2022 Foreign exchange earned from exports.\n\u2022 A wider variety of goods for consumers.\n\u2022 A larger market for producers, allowing economies of scale.\n\u2022 Access to capital goods, raw materials and new technology.\n\u2022 Better pol
+              "answer": "Any THREE, 2 marks each:\n\u2022 Access to goods

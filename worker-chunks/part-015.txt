@@ -1,4 +1,5 @@
-n in a", "1:Accurate different function matched to second department in a", "1:Accurate third department duty matched to a", "1:Accurate fourth department duty matched to a"]],
+man resources, production and finance departments.", ["1:First genuine, distinct business department", "1:Second distinct department", "1:Third distinct department", "1:Fourth distinct department"]],
+  [1, "b", "Marketing promotes products; production makes goods; finance manages money; human resources recruits and trains employees.", ["1:Accurate function of first department chosen in a", "1:Accurate different function matched to second department in a", "1:Accurate third department duty matched to a", "1:Accurate fourth department duty matched to a"]],
   [1, "c", "At Christmas the marketing team plans promotion; production increases bottling output; purchasing orders more syrup and bottles; finance budgets for overtime and inventories.", ["2:First legitimate department from Q1(a) named with explained response to seasonal soft-drink demand", "2:Second distinct department and developed response", "2:Third distinct department and developed response", "2:Fourth distinct department and developed response"]],
   [1, "d", "A clear internal grievance and mediation process allows both sides to be heard. Management can arrange a moderated discussion and agree on a corrective plan.", ["2:First distinct credible conflict-resolution process and how it works", "2:Second different conflict-resolution process, supported by practical description"]],
   [2, "a", "Subsistence production provides only enough for the producer's basic needs. Surplus production exceeds those needs and makes additional goods available for sale; the distinguishing feature is quantity and intended use. The syllabus also lists domestic consumption and export production as other distinct levels.", ["1:Names a valid first level of production, such as subsistence", "1:Names a different syllabus-listed level: domestic consumption, surplus or export", "2:Explains main difference in production destination/purpose, rather than simply naming them"]],
@@ -1494,16 +1495,4 @@ var POB_HISTORICAL_P2_2024_JAN_DRAFT = Object.freeze({
           "prompt": "Define the term stakeholder as it relates to a business."
         },
         {
-          "id": "a.ii",
-          "marks": 2,
-          "prompt": "Identify TWO stakeholders that are involved in a business."
-        },
-        {
-          "id": "a.iii",
-          "marks": 2,
-          "prompt": "Outline ONE role of ONE of the stakeholders identified in (a)(ii) above."
-        },
-        {
-          "id": "b",
-          "marks": 4,
-          "prompt": "Describe TWO functional
+          "id"
