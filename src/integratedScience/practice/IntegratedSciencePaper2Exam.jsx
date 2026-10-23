@@ -1,6 +1,7 @@
 import ScienceBiologicalDrawingEvidence,{readBiologicalDrawingEvidence,biologicalDrawingSource} from "./ScienceBiologicalDrawingEvidence";
 import ScienceDrawingMagnificationEvidence from "./ScienceDrawingMagnificationEvidence";
 import ScienceGuidedDiagramPractice,{ScienceGuidedMagnificationPractice} from "./ScienceGuidedDiagramPractice";
+import IntegratedScienceAdaptedPaper2Assessment from "./IntegratedScienceAdaptedPaper2Assessment";
 import ScienceFiltrationDrawingResponse from "./ScienceFiltrationDrawingResponse";
 import ScienceCircuitConstructionResponse from "./ScienceCircuitConstructionResponse";
 import ScienceCircuitSymbolResponse from "./ScienceCircuitSymbolResponse";
@@ -436,6 +437,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
       ? Math.max(0,Math.round((Number(initial.endsAt) - Date.now()) / 1000))
       : INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS
   );
+  const [adaptedOpen,setAdaptedOpen] = useState(false);
   const [confirmSubmit,setConfirmSubmit] = useState(false);
   const [showExitConfirm,setShowExitConfirm] = useState(false);
   const submitGuard = useRef(Boolean(initial?.submittedAt));
@@ -671,6 +673,8 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     goTop();
   }
 
+  if(adaptedOpen&&!active?.questionIds?.length)return <IntegratedScienceAdaptedPaper2Assessment onExit={()=>setAdaptedOpen(false)}/>;
+
   if (!active?.questionIds?.length) {
     return (
       <main className="is-exam-root">
@@ -699,6 +703,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
           <div className="is-exam-library-actions">
             <button type="button" className="is-exam-primary" onClick={createPaper}>Generate practice paper</button>
+            <button type="button" className="is-exam-secondary" onClick={()=>setAdaptedOpen(true)}>Adapted biology assessment · 12 marks</button>
           </div>
         </div>
       </main>
