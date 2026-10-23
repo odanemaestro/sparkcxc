@@ -912,6 +912,22 @@ function integratedScience(rows,responses){
   if(object(value))spreadStructured(responseMap,base,value);
   else if(value!==null)responseMap[base]=String(value);
   const type=src.item.response?.type||"lines";
+  // The authored IS-M2-P2-05(a)(iii) scheme awards 1 mark for one
+  // experimental error and 1 for its matching remedy (maximum 2).
+  // The broad legacy concept checker does not recognise a standalone error,
+  // and could turn an explicitly correct one-mark response into a zero.
+  // Certify only this complete, unambiguous, source-checked statement.
+  // Other wording and alternate methods remain in the conservative examiner.
+  const sourceError=src.item.markScheme?.points||[];
+  if(row.id==="IS-M2-P2-05::(a)::(iii)"&&row.maxMarks===2&&
+     type==="lines"&&src.item.markScheme?.guidance===
+      "1 mark for error; 1 mark for matching improvement"&&
+     sourceError.some(p=>/Air leaks at the bungs - seal joints with Vaseline \(1 \+ 1\)/i.test(p))){
+   const answer=object(value)?String(value.answer??""):String(value??"");
+   const extra=object(value)?String(value.working??"").trim():"";
+   if(!extra&&/^air leaks at (?:the )?bungs?\.?$/i.test(answer.trim()))
+    return cap(row,1,"existing-integrated-science-evidence",true);
+  }
   if(type==="lines"&&directlyDeniesSourcePoint(value,sm.markScheme||sm))
    return cap(row,0,"existing-integrated-science-evidence",false);
   const examiner=gradeIntegratedSciencePaper2Item(src.question,src.pi,src.ii,src.item,responseMap);
