@@ -9,6 +9,12 @@ import {verifiedScripts} from "./test-poa-staging.mjs";
 const MIGRATIONS="supabase/migrations/";
 const SUBJECT="principles-of-accounts",PAPER="POA-ORIGINAL-02-01";
 const integrationFile=()=>fs.readdirSync(MIGRATIONS).find(name=>name.endsWith("_marking_v2_poa_release_integration.sql"));
+const ownedProgressFile=()=>fs.readdirSync(MIGRATIONS).find(name=>name.endsWith("_marking_v2_poa_owned_attempt_progress.sql"));
+const installOwnedProgressGuard=async db=>{
+  const name=ownedProgressFile();assert(name,"Accounts owned-attempt progress migration required");
+  const sql=fs.readFileSync(MIGRATIONS+name,"utf8");
+  await db.exec(sql);await db.exec(sql);
+};
 
 /** Real committed progress and notification SQL; unrelated booking/reward
  * models are tiny dependency tables, not replacement notification functions.
@@ -35,6 +41,7 @@ export async function installAccountsProgressTestSchema(db){
   const file=integrationFile(); assert(file,"Accounts integration migration required");
   const sql=fs.readFileSync(MIGRATIONS+file,"utf8");
   await db.exec(sql); await db.exec(sql);
+  await installOwnedProgressGuard(db);
 }
 
 export async function runAccountsReleaseIntegration(dir="artifacts/poa-v2-verification"){
@@ -113,6 +120,12 @@ export async function runAccountsReleaseIntegration(dir="artifacts/poa-v2-verifi
       const numeric=await start();
       await db.query("select * from public.spark_submit_exam_attempt($1,'{}','numeric',41,60)",[numeric.attempt_id]);
       assert.equal(Number((await one("select score from public.spark_exam_attempts where id=$1",[numeric.attempt_id])).score),41);
+      const practiceKey=`p1-control:${label}`;
+      await db.query("select public.spark_record_subject_progress($1,$2,'exam',null,null,'Accounts Paper 01',true,41,60,null,$3::jsonb,false)",
+        [SUBJECT,practiceKey,JSON.stringify({paper:"01",server_attempt_id:numeric.attempt_id})]);
+      const practice=await one("select score,activity_type,metadata from public.spark_subject_progress where activity_key=$1",[practiceKey]);
+      assert.equal(Number(practice.score),41);assert.equal(practice.activity_type,"exam");
+      assert.equal(practice.metadata.score_authority,"client-practice-estimate");
       const otherSubject=await one("select * from public.spark_start_exam_attempt('information-technology','01','practice',731)");
       await assert.rejects(db.query("select * from public.spark_submit_exam_attempt($1,'{}','null',null,60)",[otherSubject.attempt_id]),/Invalid practice score/);
       const invalid=await start();
@@ -138,6 +151,7 @@ export async function runAccountsReleaseIntegration(dir="artifacts/poa-v2-verifi
     await db.exec(fs.readFileSync(MIGRATIONS+"20261019194500_marking_v2_allow_ungraded_submission.sql","utf8"));
     const integrationSql=fs.readFileSync(MIGRATIONS+integrationFile(),"utf8");
     await db.exec(integrationSql);await db.exec(integrationSql);
+    await installOwnedProgressGuard(db);
     await checkPaper1("full production submission");
 
     for(const role of["anon","authenticated"]){
@@ -170,6 +184,51 @@ export async function runAccountsReleaseIntegration(dir="artifacts/poa-v2-verifi
     assert.equal(pending.metadata.score_authority,"pending-server-marking");assert.equal(pending.metadata.finalScore,undefined);
     const pendingNotice=await one("select message,metadata from public.notifications where recipient_user_id=$1 and type='paper2_completed'",[ids.student]);
     assert.match(pendingNotice.message,/final score is not yet available/);assert.equal(pendingNotice.metadata.score,null);
+
+    const assertPending=async activityKey=>{
+      const saved=await one("select activity_type,title,score,percent,best_percent,metadata from public.spark_subject_progress where activity_key=$1",[activityKey]);
+      assert.equal(saved.activity_type,"exam");assert.equal(saved.title,"Principles of Accounts Paper 02");
+      assert.equal(saved.score,null);assert.equal(saved.percent,null);assert.equal(saved.best_percent,null);
+      assert.equal(saved.metadata.paper,"02");assert.equal(saved.metadata.paper_type,"paper2");
+      assert.equal(saved.metadata.score_authority,"pending-server-marking");
+      assert.equal(saved.metadata.scorePublicationAllowed,false);
+      assert.equal(saved.metadata.finalScore,undefined);
+    };
+    const forged=async(activityKey,activityType,metadata)=>{
+      await db.query("select public.spark_record_subject_progress($1,$2,$3,null,null,'Accounts Paper 01',true,100,100,100,$4::jsonb,false)",
+        [SUBJECT,activityKey,activityType,JSON.stringify({score_authority:"server-v2-deterministic",finalScore:100,...metadata})]);
+      await assertPending(activityKey);
+    };
+    await forged(key,"exam",{paper:"01",paper_type:"paper1",server_attempt_id:attempt});
+    await forged(key,"topic_quiz",{paper:"01",paper_type:"paper1"});
+    await forged("paper1-owned-p2-legacy-reference","lesson",{paper:"01",server_attempt_id:attempt});
+    await forged("conflicting-paper-metadata","topic_quiz",{paper:"01",paper_type:"paper2"});
+    await forged("conflicting-paper-source","practice",{paper:"01",paper_id:PAPER});
+    await forged("invalid-attempt-reference","exam",{paper:"01",server_attempt_id:"not-a-uuid"});
+    await user(ids.other);
+    const foreignAttempt=await one("select * from public.spark_start_exam_attempt($1,'02','timed',10800)",[SUBJECT]);
+    await user(ids.student);
+    await forged("foreign-attempt-reference","exam",{paper:"01",server_attempt_id:foreignAttempt.attempt_id});
+    await db.query("select public.spark_sync_subject_progress($1,$2::jsonb)",[SUBJECT,JSON.stringify([{
+      activity_key:key,activity_type:"lesson",completed:true,title:"Accounts Paper 01",score:100,max_score:100,
+      percent:100,best_percent:100,metadata:{paper:"01",paper_type:"paper1"},
+    }])]);
+    await assertPending(key);
+    const attemptAfterSpoof=await one("select score from public.spark_exam_attempts where id=$1",[attempt]);
+    assert.equal(attemptAfterSpoof.score,null);
+    await service();
+    const spoofNotices=await db.query("select type,message,metadata from public.notifications where metadata->>'activity_key'=any($1::text[])",
+      [[key,"paper1-owned-p2-legacy-reference","conflicting-paper-metadata","conflicting-paper-source","invalid-attempt-reference","foreign-attempt-reference"]]);
+    assert(spoofNotices.rows.length>=12,"Every spoof rehearsal must exercise student and parent notifications");
+    for(const notice of spoofNotices.rows){
+      assert(["paper2_completed","child_paper2_completed"].includes(notice.type));
+      assert(!/scored|100[.]?0?%/.test(notice.message));
+      assert.equal(notice.metadata.score,null);assert.equal(notice.metadata.percent,null);
+      assert.notEqual(notice.metadata.v2_result_phase,"verified");
+    }
+    const beforeFinalEvents=(await one("select count(*)::int n from public.spark_subject_activity_events where activity_key=$1",[key])).n;
+    const beforeFinalNotices=(await one("select count(*)::int n from public.notifications where type in ('paper2_completed','child_paper2_completed')")).n;
+    passed("owned Paper 2 identity overrides spoofed Paper 1, quiz and lesson labels in RPC and silent sync without scored notifications");
     await user(ids.other);
     assert.equal((await one("select public.spark_v2_exam_result($1) r",[attempt])).r,null);
     assert.equal((await db.query("select * from public.spark_subject_progress where user_id=$1",[ids.student])).rows.length,0);
@@ -213,8 +272,8 @@ export async function runAccountsReleaseIntegration(dir="artifacts/poa-v2-verifi
     const afterLate=await one("select score,metadata from public.spark_subject_progress where activity_key=$1",[key]);
     assert.equal(Number(afterLate.score),100);assert.equal(afterLate.metadata.score_authority,"server-v2-deterministic");
     await service();
-    assert.equal((await one("select count(*)::int n from public.spark_subject_activity_events where activity_key=$1",[key])).n,2);
-    assert.equal((await one("select count(*)::int n from public.notifications where type in ('paper2_completed','child_paper2_completed')")).n,4);
+    assert.equal((await one("select count(*)::int n from public.spark_subject_activity_events where activity_key=$1",[key])).n,beforeFinalEvents+1);
+    assert.equal((await one("select count(*)::int n from public.notifications where type in ('paper2_completed','child_paper2_completed')")).n,beforeFinalNotices+2);
     passed("late browser progress and silent offline sync cannot erase a verified grade or emit a later pending notification");
 
     const uncertain=scripts.scenarios.find(s=>s.name==="unresolved");

@@ -30,6 +30,7 @@ const names = [
  '20261021091000_poa_progress_notifications.sql',
  '20261023042600_marking_v2_poa_release_integration.sql',
  '20261023042602_marking_v2_poa_draft_source_fingerprints.sql',
+ '20261023052742_marking_v2_poa_owned_attempt_progress.sql',
 ];
 const plan=names.map(name=>{
  let sql=fs.readFileSync('supabase/migrations/'+name,'utf8');

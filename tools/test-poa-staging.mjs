@@ -259,6 +259,12 @@ export async function runStaging(config, {evidenceDir, verification, paperId="PO
     const paper1Estimate=row(await select(student.client,"spark_exam_attempts","score,metadata",{id:paper1Practice.attempt_id}));
     assert.equal(Number(paper1Estimate.score),41);
     assert.equal(paper1Estimate.metadata.score_authority,"client-practice-estimate");
+    await progress(student.client,"paper1-numeric-control","exam",{p_score:41,p_max_score:60,
+      p_metadata:{staging_run:runId,paper:"01",server_attempt_id:paper1Practice.attempt_id}});
+    const paper1NumericProgress=row(await select(student.client,"spark_subject_progress","score,metadata",{user_id:student.id,
+      subject_id:SUBJECT,activity_key:`stage:${runId}:paper1-numeric-control`}));
+    assert.equal(Number(paper1NumericProgress.score),41);
+    assert.equal(paper1NumericProgress.metadata.score_authority,"client-practice-estimate");
     check("Paper 1 choice-only source answers remain unscored; numeric practice estimates persist without V2 Paper 2 routing");
 
     const deniedWorker=await worker(student.accessToken);
@@ -311,6 +317,56 @@ export async function runStaging(config, {evidenceDir, verification, paperId="PO
       const clientProgress=row(await select(student.client,"spark_subject_progress","score,percent,metadata",{user_id:student.id,subject_id:SUBJECT,activity_key:progressKey}));
       assert.equal(clientProgress.score,null);assert.equal(clientProgress.percent,null);
       assert.notEqual(clientProgress.metadata.score_authority,"server-v2-deterministic");
+      const spoofKeys=[progressKey,`stage:${runId}:${scenario.name}:paper1-owned-p2`,
+        `stage:${runId}:${scenario.name}:conflicting-p2`,
+        `stage:${runId}:${scenario.name}:invalid-attempt`,
+        `stage:${runId}:${scenario.name}:foreign-attempt`,
+        `stage:${runId}:${scenario.name}:conflicting-source`];
+      const assertPendingProgress=async key=>{
+        const saved=row(await select(student.client,"spark_subject_progress","activity_type,title,score,percent,best_percent,metadata",{
+          user_id:student.id,subject_id:SUBJECT,activity_key:key}));
+        assert.equal(saved.activity_type,"exam");assert.equal(saved.title,"Principles of Accounts Paper 02");
+        assert.equal(saved.score,null);assert.equal(saved.percent,null);assert.equal(saved.best_percent,null);
+        assert.equal(saved.metadata.paper,"02");assert.equal(saved.metadata.paper_type,"paper2");
+        assert.equal(saved.metadata.score_authority,"pending-server-marking");
+        assert.equal(saved.metadata.scorePublicationAllowed,false);assert.equal(saved.metadata.finalScore,undefined);
+      };
+      const spoofProgress=async(key,type,metadata)=>{
+        await rpc(student.client,"spark_record_subject_progress",{...pendingProgress,
+          p_activity_key:key,p_activity_type:type,p_title:"Staging Accounts Paper 01",
+          p_metadata:{staging_run:runId,score_authority:"server-v2-deterministic",finalScore:100,...metadata}});
+        await assertPendingProgress(key);
+      };
+      await spoofProgress(progressKey,"exam",{paper:"01",paper_type:"paper1",server_attempt_id:started.attempt_id});
+      await spoofProgress(progressKey,"topic_quiz",{paper:"01",paper_type:"paper1"});
+      await spoofProgress(spoofKeys[1],"lesson",{paper:"01",server_attempt_id:started.attempt_id});
+      await spoofProgress(spoofKeys[2],"topic_quiz",{paper:"01",paper_type:"paper2",paper_id:paperId});
+      await spoofProgress(spoofKeys[3],"exam",{paper:"01",server_attempt_id:"not-a-uuid"});
+      const foreignAttempt=row(await rpc(other.client,"spark_start_exam_attempt",{
+        p_subject_id:SUBJECT,p_paper:"02",p_session_mode:"timed",p_duration_seconds:10800,
+        p_metadata:{staging_run:runId}}));
+      await spoofProgress(spoofKeys[4],"exam",{paper:"01",server_attempt_id:foreignAttempt.attempt_id});
+      await spoofProgress(spoofKeys[5],"practice",{paper:"01",paper_type:"paper1",paper_id:paperId});
+      await rpc(student.client,"spark_sync_subject_progress",{p_subject_id:SUBJECT,p_rows:[{
+        activity_key:progressKey,activity_type:"lesson",title:"Staging Accounts Paper 01",completed:true,
+        score:100,max_score:100,percent:100,best_percent:100,metadata:{paper:"01",paper_type:"paper1"},
+      }]});
+      await assertPendingProgress(progressKey);
+      const noEarlyScore=row(await select(student.client,"spark_exam_attempts","score",{id:started.attempt_id}));
+      assert.equal(noEarlyScore.score,null);
+      for(const client of[student.client,parent.client]){
+        const notices=(await select(client,"notifications","type,message,metadata"))
+          .filter(n=>spoofKeys.includes(n.metadata?.activity_key));
+        assert(notices.length>=8,"Source identity spoofs must exercise each student's and parent's notification path");
+        for(const notice of notices){
+          assert(["paper2_completed","child_paper2_completed"].includes(notice.type));
+          assert(!/scored|100[.]?0?%/.test(notice.message));
+          assert.equal(notice.metadata.score,null);assert.equal(notice.metadata.percent,null);
+          assert.notEqual(notice.metadata.v2_result_phase,"verified");
+        }
+      }
+      check(`Paper 2 ${scenario.name}: owned identity blocks Paper 1, quiz and lesson score spoofs before the worker`,
+        {spoofCases:7,silentSync:true,invalidAndForeignReferences:true});
       if(fixture) {
         assert.equal(before.v2_paper_id,paperId);
         assert.equal(before.v2_rubric_version,fixture.paper.rubricVersion,"Server chooses registered version");

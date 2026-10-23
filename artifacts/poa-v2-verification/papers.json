@@ -10,9 +10,9 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
   "outcome": "verified",
   "scenarios": [
@@ -109,7 +109,7 @@
   ],
   "missingFullFixtures": [],
   "verificationMethod": "spark-v2-criterion-verifier-1 paper end-to-end scenario replay",
-  "evidenceSha256": "c6a0b10f304db381924d8f167426231e27bb97169df0b9d7efc7fdaddbfeb1ff"
+  "evidenceSha256": "f73be62e99414cd58701a9c3ef44a286112735b1efea9cec8081ae73bea2aba6"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -122,9 +122,9 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
   "outcome": "blocked",
   "unverifiedCriteria": [
@@ -151,6 +151,6 @@
    "poa-specimen-2-2017::5d",
    "poa-specimen-2-2017::5e"
   ],
-  "evidenceSha256": "8c86f4a0355eaddda4ad3b6ad718eb337ff0b96215f3d41da38d096f5c7ba8c8"
+  "evidenceSha256": "0436fa684c3a851ea54b859dff98510a05970fbccabaa559eed01b39cf14b31f"
  }
 ]

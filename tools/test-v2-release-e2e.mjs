@@ -41,6 +41,9 @@ if(SUBJECT==="principles-of-accounts"){
  const integration=fs.readdirSync("supabase/migrations").find(name=>name.endsWith("_marking_v2_poa_release_integration.sql"));
  assert(integration,"Accounts release integration migration is required");
  await db.exec(fs.readFileSync("supabase/migrations/"+integration,"utf8"));
+ const ownedProgress=fs.readdirSync("supabase/migrations").find(name=>name.endsWith("_marking_v2_poa_owned_attempt_progress.sql"));
+ assert(ownedProgress,"Accounts owned-attempt progress guard is required");
+ await db.exec(fs.readFileSync("supabase/migrations/"+ownedProgress,"utf8"));
 }
 const asService=()=>db.exec("reset role; set test.jwt_role='service_role'; set test.user_id=''");
 const asStudent=id=>db.exec(`reset role; set test.jwt_role='authenticated'; set test.user_id='${id}'; set role authenticated`);

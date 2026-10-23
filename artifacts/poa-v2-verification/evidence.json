@@ -274,11 +274,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "dca1e4664e48441919b2290e82bc6b753d96f0304479dd128734f29be84c6222"
+  "evidenceSha256": "144f741f31555a4048a63cd482738bf797b1d7523e139c2de899cca8518bd745"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -555,11 +555,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "b2b7a4c59610b4a4bb98ab48cfa798bb200212dc890cab142d5d6bde1cda7950"
+  "evidenceSha256": "9d09cacc14deabee8330a76cccfde53c2c4d1c2a4f5c0e14a27b48e5b1448f54"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -836,11 +836,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "814a9f22e10b1bea163ca344b2966525e9d8d5e558bea6ffd433b0db79fc006a"
+  "evidenceSha256": "2528e6bff958cd4a2780e3bc49a98ace6c8f0e45482029b57c730e18d1cb7bfe"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -1117,11 +1117,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "99904a6b9b4f5bc601070e286133bbe106b218203a3393556d024aafa5c531c5"
+  "evidenceSha256": "caee3118c380031838e44ae04a5bcc77927da6240d643d5384f9db3baada13cf"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -1398,11 +1398,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "1742dde937eef73c7fa824b6dcf4c1806e171167e18be47121c4c071a177db76"
+  "evidenceSha256": "3ac30e9599373b39c51072a5b4faa935e45cd479858e63fff6d4cbd4c152e76f"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -1679,11 +1679,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "0689c44b2e07c888578f877fb2fa044df33e14b74bd74bed8870b73be812bad3"
+  "evidenceSha256": "ae065b82e868a7330ed9dffbe1a39b4390799651aeb40406b45c822ef153977e"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -1960,11 +1960,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "27711d4081ba0e58c00d62779ab31957d79b09ae20f8c29a5581bc8ae9462c90"
+  "evidenceSha256": "2697b142544d0cd60e6c6dd0730ec77b25cee4e72f1def5cf75cbffec83a6101"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -2241,11 +2241,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "51bbc56a1474ae4705bf60f6ff18340bceff6bded33b959a50894a12e1ec16a6"
+  "evidenceSha256": "76bb0be7124d39ff5fd9db3a0c7c6aeeb58d5b8990464b38c5128586b44fead5"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -2522,11 +2522,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "5ce012c40817d916fefc04135b537429d4b95cc5235da5e2077bf0da6ae79876"
+  "evidenceSha256": "4fa1402c5029f92e6cdc4823228fef4f87d93f655598950b349c8b23e59d9078"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -2803,11 +2803,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "9727fc92654cd6891a36b0ae46a4e5d64d7a76209fb8c231a1aab8262e63c67b"
+  "evidenceSha256": "189fd5deefc120814ffa39dcacfe3e0d834941052d7746fc296a1fc1b21c2d35"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -3084,11 +3084,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "447624e61ebf22d210d4cfaac976e04d26710bf51c3b822742f5cf79005f902f"
+  "evidenceSha256": "b6873c1db125f3e68939948a2bed7b182580f648b9b8402998390d352844201e"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -3365,11 +3365,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "563be5c6620f9b20073c9e8c33be9c4010083979df5acee4ee61ec9076adaa5f"
+  "evidenceSha256": "42a7e217367e395f654d68338ea2f5cac7faab79a9a5002a820e5537445743ee"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -3646,11 +3646,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "93036d5015ea10954eac7e8bf4a388349a8e4f86cf59cfd7bc7969297e5417a1"
+  "evidenceSha256": "fe56b3a55b9059d69fef815dbda2799426e1016cba7b53cfd89001c93eaa705a"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -3927,11 +3927,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "eb17b4cfe8a44cd52a5638e0052d990e9c64e131848136f8d298af94a0e03a81"
+  "evidenceSha256": "46d71a3386e19ae6dd28cc6255f8093e9be6925b7c5f7be3c6a2d0955e41c257"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -4208,11 +4208,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "71ed5748d37f03c3f5acd050abbd1a179d0f0ecc55f8a0186f74fcf7bebbe3b7"
+  "evidenceSha256": "a00acfcd7238ce9ed94fa32c685d8cf1e0dd96818cc2cd5a4f6fcc6f30120ef2"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -4489,11 +4489,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "8917e7a69f2ee3ef2e789e8dd06e668ba5649d63493721862a4c266f85802b14"
+  "evidenceSha256": "2c6cede60eb36b1ef91c6c82a177c1f4496e23a8384244f283f9f16868a4a4de"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -4754,11 +4754,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "579df477a14281acf8c07fe17b68514814e7f3bd54954fc91270e9790328fb2d"
+  "evidenceSha256": "415122fc1fa091b3e755ae4fdb767323c7355b530a429a1bf5b08871d0f7f29e"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -5035,11 +5035,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "7349c79a30a186a616850a0be0e3e4a160b28ff619e1144148aec7ccd1a2a8b9"
+  "evidenceSha256": "34105736a35eb71bb6aca771775375b63d15c133d508c7151d2e384280e7d457"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -5316,11 +5316,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "feca55d58979d2e6195248280308554996b26b2d8f366e728526c0caf9d0850a"
+  "evidenceSha256": "97b0af38a44e775467f3af98ec708d86fb819ef7b2c3fec79e066062916d793e"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -5613,11 +5613,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "f01efc4b425de427900ec43cf27c55676dfeeb42f2165937a410fdd37319885c"
+  "evidenceSha256": "b186029a6f8951e7fd5f51d197211ef090e4b77e6629b8e80cb93f1908f0b68f"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -5894,11 +5894,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "7d82a02042ae9eddcdf04a25a2f2250ad540de9ee7331df95bd6cb76126f3763"
+  "evidenceSha256": "b5d967b123f84b38694e1e84c937115ef981ee3216de5aa651a1f5eb230d470c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -6175,11 +6175,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "64b287ad7c35551f04231e7be6dc136185326648fac83e4622d8dc5952bfa067"
+  "evidenceSha256": "f7b55763d5de0db463dfe920853343ca738bc084a3fba0ba70156b6aa9146ca3"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -6456,11 +6456,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "e2a14a61c3163fd38328339e8830fe9fed7c16cdf5e1a596becd1d1fdfa85463"
+  "evidenceSha256": "083bf8df072defe096c01f59afc1b35e6c1ce253399408b80f5ad8f580b5cd7e"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -6737,11 +6737,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "f5a1d1b17c8fb9f243011952fc11bdac6ebd2ac261d44707e78b070dbd997623"
+  "evidenceSha256": "81188260cdd45a216892dff43dce9ae0698ea8b6f98498b39a27d7aa5e8dc2c0"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -7018,11 +7018,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "2cd0f4fe24911c669bed26669c35b344a9c65e3b9b470c9804d1b921cdcb0e46"
+  "evidenceSha256": "dcf6a20985f9a89ca3c88d04ac3287237414974c813f09ad024ec00a7a8fa01c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -7299,11 +7299,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "37eaa2a005f417dd540cc361f0676d10049fd4b34e475876d96d59299e9db936"
+  "evidenceSha256": "946d07d6c4d2a6a00cca88ea84caa8e0a5db78113e2fdbebf1df8969d2696853"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -7580,11 +7580,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "25cecad7d16a348fdd5c6197e93ee9d6126b90c2695f3e4b52ea39ba9753c285"
+  "evidenceSha256": "9e7157a613b1345940fff6b7d58142e151074e327115856b900714acef71c341"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -7861,11 +7861,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "bea9525d87e102b40808bd9fb029e460ffc01b83d034f102a82aa77ef860234a"
+  "evidenceSha256": "745e150b824818150b34fdccd39c94360da7067d79ed517a7fe54fe8cf9d6421"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -8142,11 +8142,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "32b4bcd5759d31745867570eaf26084c7495dc5fc3b3404e309f6b6035a6ae0b"
+  "evidenceSha256": "c328c7ebe95077342d96b9840c487c05751c47d56ec98300e6b85947af2a6317"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -8423,11 +8423,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "aa841fbd911756a46440125343b2345967dbe2dbd8cb3e687f8449d2f4902aa0"
+  "evidenceSha256": "69dbab79968f790fd99692c06c8640cf14d9b3783e068472832c43f67d6e3fd7"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -8704,11 +8704,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "fe2a5205ebd02078bccda81775cfca80da6fa9ee922309f8ebe3ad8115a88dae"
+  "evidenceSha256": "8305b9ca78c3897ceed8e6f1c866d27a863a61b32e50fa6ffaba169c9970640c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -8985,11 +8985,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "81528298fb56342476779392970b6861b67e0e6d4f40e9d221ba4f0f07bf07a2"
+  "evidenceSha256": "9875dc60dd48168ba6fd570da176756f93e99b65b8ae8624483e93bee2336c3a"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -9266,11 +9266,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "cf369c1904763809ed2aa240aeee64fb4c270ef9693ec55b31c20db184e4b3fa"
+  "evidenceSha256": "ae56bac8d3fda0412b45f1cf9a74ab1ab5decad00e479b71e19a9d9b80763a0d"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -9547,11 +9547,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "4721b5bac1f9040846e542fa8c913a4f453e6e03b5eae9396d518158c0273c4c"
+  "evidenceSha256": "c69b4c1d0f6f9a6485f440839cc968ca261d4a2f818a54a13ad0032b71bb48a5"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -9828,11 +9828,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "3bdef664eed4542c0ad6a3568a687dcf8c070585ed1443fccf1b30cedc124560"
+  "evidenceSha256": "33c0c3486d0e64d27e0bee5f4e7804c062b04a60e44300325e3f67c174c7b338"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -10109,11 +10109,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "6b9de9c2bc378728973f02b56dff7ebf7bf1b1912ba1597a5f378e1de8262bba"
+  "evidenceSha256": "e317fe89636813cf4b2c0af45b115658f690da55035ddd9c6094610cd59dffb8"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -10390,11 +10390,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "da58768a6984ebb2ce021441402ab4e712ad33ee8b3d68221325bfd7f93008f7"
+  "evidenceSha256": "8efbf09277d10d920ba2cc7884cfdf53814fab36eb0285c0654951b242548146"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -10671,11 +10671,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "51c84d4ebc6f5feec05eb0e85445e7305c471e52cfee1df842702d633f77ef9e"
+  "evidenceSha256": "ed6ee7613a7376f7c9bbe4baaf8f3a3c82312a5bdaa8d880831062011f1a27de"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -10952,11 +10952,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "be433626f8ab0698b302bcc34716ae07f2e9940939b48e98edb2a236eeefd8d4"
+  "evidenceSha256": "ef31a063fc555fd49f5bee036b00df557232cced6390bbb2859d6dd7a0a0463b"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -11233,11 +11233,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "2c55f41b59ca8e253a26ba17d0fbea9f500b588b0dfbf75efbc43d27453972d2"
+  "evidenceSha256": "04418c8aab8dee6f8b8a75dcaed11f1fdcb8211a4d56c0015027eec96453cf64"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -11514,11 +11514,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "7ec4df88b2fefc8227f54f4e3ba0431a3ff8f9c9ca0623dd98a583ca5a8042c8"
+  "evidenceSha256": "74da255d6b49d2d0ade326bb1379514ce502eb77efb7fe809955ffdd399c37d9"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -11795,11 +11795,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "efbf9a8db261926c4be6192ce4e0d6cd5275fefd790c0835a6dbabb6638c7d0c"
+  "evidenceSha256": "83ea9ea7737a217d3c6f8f1c82c5c089f3a2c0c64f6ebff6b99e550d85acf34b"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -12076,11 +12076,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "59e62064e93ca0dc0d921dbf3ddc815b8844e6de54ff99526e16c83c6e305917"
+  "evidenceSha256": "42dab2baa7f172b4ea99fa40df640e4a96bb0fbcf980991222a43ae2e0519107"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -12357,11 +12357,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "614317237f84f74ddea6418c02b9e6ee982b68659d0fa0bb70413fd87b13e5a9"
+  "evidenceSha256": "f5b7bb1a3c90dbfe6fc25749e03cb4607431b848edbfe53a7067d0345f570de8"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -12638,11 +12638,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "15af368f9256c4352a02a33a02588ca20c807a6ac2a9bd513fbdef6ae4a7d3cd"
+  "evidenceSha256": "531ec75b4cfc75a452116c5b45a862d287a8901e62429bf69b7886f87443141c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -12919,11 +12919,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "9f312c053f36fd23f7ab920c1d7cf581e1c6c75bd62434cfa326712d5b1cfeac"
+  "evidenceSha256": "7599d682872b26f070169703d26ff91ec951b5375dc1898b78ee58ff0255f111"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -13200,11 +13200,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "4f6ddc6b3b2ddc887c3c89e0d68eb08f58f18df3351a59f66257dcd508fb5b70"
+  "evidenceSha256": "4b9613ae4e72e83687acb3fbf94da7f1ab5cf68d926a493e6effdef8b2216d19"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -13481,11 +13481,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "4625f0d2efbfc78dc4c1b3835abf7cbacbbedc44602db590a076f94e539d89b1"
+  "evidenceSha256": "fc179da0d6acc6e5128a1067263168343bbaa5151bec8b5eb06718afabe8011d"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -13762,11 +13762,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "22666387f2610b05d5c34a3efbbc2885c9157945aa0b7b1c3b638a7337245409"
+  "evidenceSha256": "4dfbb5df24cf8c12c5f165d81d51fd8c2a80b04bd8e59fc8cfe953ed5cf6013c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -14043,11 +14043,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "9cbe0ba8813691fc65fee05a91b4074a33dfbfd5664a177191d78653ec30efa8"
+  "evidenceSha256": "1134ad031818130f315bd0df96440a58dc8ac10dc5848225e46f1dc259446524"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -14324,11 +14324,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "e14d0016bdfdd92c2e1b7f2bdfe671602e0c5babfc703273e5207956e5791907"
+  "evidenceSha256": "6807308827afd7d4c8079db1e7f06dad18f075a7ef36187822330563bf6c906b"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -14605,11 +14605,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "40910de55b380dead1bd2a77670016b46617b474a949be41b03a6d012e75b0df"
+  "evidenceSha256": "b79be0a386004e3e02bb42cbe33ed17c0d4ac54c9d6ccee5d2c0ced5efdcfacc"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -14886,11 +14886,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "d9a6303768b584ca662a70d971ce3878ed2243ad60be914c1eaaaa06ef48665a"
+  "evidenceSha256": "6ed70407cfe43a8862c7ce12410ec6895b039e696641d95ae9d15da0803f363e"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -15167,11 +15167,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "e1816088598e0c30eea1ddb60e2ddf8adde0febda8a3d2dabb7fec6c04032d13"
+  "evidenceSha256": "5bf939a4ec37724134155305caba98608b83cf6b08e7c80ebed67e157f7f7dd3"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -15448,11 +15448,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "49af80a1fe0a5dc8631a85757302b4fc2c98bd8cd1a2f21eb03e94270ddbc0f0"
+  "evidenceSha256": "38edb7efa2f5e0a0ca584d99ff0a08eba5d7cb1510d7684baa812c28605ec80f"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -15729,11 +15729,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "5498989d4ce6762826f43dc272d49b864ede793377725fe1333be94c63d1fc0d"
+  "evidenceSha256": "1bba37a38ab6712ae319b9317690ebce8da227ffb352c293d2c7e819b5ec20e1"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -16010,11 +16010,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "b17578bb040e76ad3be59e8fabfea118a10737cc353ba5ed8405a67310f34fc7"
+  "evidenceSha256": "04eef0347f37ecebdc02fd7d2d10de8a2425b1212cc5f62ce5481e58c633167c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -16291,11 +16291,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "0721cda0235c7587013dcc0b53e3887e85af89a76ef96c26cda59a433c69c894"
+  "evidenceSha256": "2183116399aaf7431219ee1c4de721491fa4c47c5c3e2cd6285e1c8148fa5d7f"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -16572,11 +16572,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "5a148cde4e8d0ecbc763e0558963ade7db10405a196e37b1a1e175b578391165"
+  "evidenceSha256": "805c8351438a845f186ed7eded30b1e1e264f082d6f5ef1f38f71ebd9ca1dcec"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -16853,11 +16853,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "07b33b0c06fede2529f2ed90459ed6ce056d6d8ab9799a580f2b58957aad16ab"
+  "evidenceSha256": "f2e75450df38a96ef4ac0e9134cc036041cc27e247ccf78c25239aa3cf580d9b"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -17134,11 +17134,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "7aa73019fb615aa6769ababaf46fda76e8fb5ea03769e9e9763190dc9721b33d"
+  "evidenceSha256": "881e7dc8373cdd325bedfa140f24504754f51a65e38853a0ae5e9c2aaf40e8a8"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -17415,11 +17415,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "de8fb0a3d4cdd2f551aafdd5b7f407ca36d96fb53675d19e5fe3ff6e47765d4b"
+  "evidenceSha256": "ece9f7fe008debe054c22709156e1ec956f1ec7a49b4666d56795fa825e319af"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -17696,11 +17696,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "5e77bf0a5b3a633b364afe675797eee3271377b2419b2edf90eb8ff7978a80cb"
+  "evidenceSha256": "cb625bb29ded077a7e174f737334522a78efddf8acaa54683f9361c80dd92a6c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -17977,11 +17977,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "54ac5ba138b8d762457aa79170b1cb6461e3cd7c0d41d8f5d697aa0ba6b20a85"
+  "evidenceSha256": "ebc0ada3027f651bacb095a6606dcae9885c82a33319303cb85565e4a79ef404"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -18258,11 +18258,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "93792dd20f07a25cf4d19a624c9d6a480180cc840724818cdc8163ed979800cd"
+  "evidenceSha256": "adaa10529b34ea77d40da5aa02384f1ac5d770523f6c14c166bf94ecaa2e0acf"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -18539,11 +18539,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "0f7588d644ff6515f9e4fd40bf23a77db5b39d1b03792293f94f30a4004b810b"
+  "evidenceSha256": "725df504ab0efdd02eb3af70df19d9f12ff8e2641717eb91fca6b9943765e695"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -18820,11 +18820,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "43b8418bf719f686e0b5f4eb2c8b6d6befb4e72118194792859a80feb23baea9"
+  "evidenceSha256": "ca7289dbdfdeaa78f149579dad6277f157fddd0e221deeeaa58b258072c8a044"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -19101,11 +19101,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "4365e8aee4b6b0a908f56db332d6de98610675f2f0bb3f9f05a935ee5e136fd4"
+  "evidenceSha256": "743bc46702b1ccd826608218e5b7ff00a2ef3059373ea2340f57bb390d04701b"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -19382,11 +19382,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "a7ee59b4967951e5496f6a7a9f6f3b4670c794a8c6fb2afbb03199bc3537060b"
+  "evidenceSha256": "86f669d4ce43a1105fb04d9fb1058ac0e1938283652c16bdab089451b7b7e904"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -19663,11 +19663,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "efa995af586bc3e2228bdf5cdcbd2d1cca2f9c02ce27acf79f3112f6777b451d"
+  "evidenceSha256": "6cdfa7be6f34bf217b8a842c43ae7c028179d909042f65221b4d708827ae5e82"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -19944,11 +19944,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "d9e6d1f1f6084c7d0d2a1cd4d5994b9f6331df0a0dd1cfff335030fed2d1f3bc"
+  "evidenceSha256": "f23d15305888911face3741c9c18bf097679c24ad4dd4271caf6863bcfd84966"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -20225,11 +20225,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "8204bfbc3515d85e645a945f154def445e2cc85938b3f19e0bb56100d1460ead"
+  "evidenceSha256": "9916d8496d65f95652088934dd806aa1776e6f344a0d182844bc9cc75ab4bc4c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -20506,11 +20506,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "8ad23b96a5bb852dd0216faadff78dad98e745fa1dd43a63b64f4ea37db37e31"
+  "evidenceSha256": "f1462ce7af873987ddefa6a1b09d3d59068d9102fa758bcda8596a7ed1f9d7b5"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -20787,11 +20787,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "2751f9317aa4cf12ef00599fe71854515530678bfbcf4a947a0e126d790cd4eb"
+  "evidenceSha256": "242d3b88c0916e7145b889445f03293554797bad2ebe3393d24ec98bea4da275"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -21068,11 +21068,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "20bdb69dc8723ffa12bbdacfc9bff47636656ca9b294d511c00ef341ce1cb39a"
+  "evidenceSha256": "6545948472ee38ba1e484fbbb302d30e4387a249d5f4277ef4f3288809459c22"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -21349,11 +21349,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "7c9d5ac67dcba538ddcedee0d1433df94d13a7a410d454054680fe39ce0025ca"
+  "evidenceSha256": "a8faadd2cdd4cba9acdc19f95ae7cf908d14f85e5e0a283eae23f3b0ca196dab"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -21630,11 +21630,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "70515c91fb7ac3efdd0b3db5a75c3c672ae74b6c7681e323e4e94f2f73e8bbf6"
+  "evidenceSha256": "bdc3fd9ccb737f44b3955ca193a0f8812073cf61227b88331285a25f5d8b9bba"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -21911,11 +21911,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "23b5ac50ec6f5d7c55e29b1e2c492f9bdb47b0fecbfb1a4b6b865d32d9d62649"
+  "evidenceSha256": "4595670f1c7fa9ae7a2b530734de23b50819addf237961ba4a2a8815e6339558"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -22192,11 +22192,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "f0e4862fead17fe1e591c3b0ec22351d189b3906fc03ee940b597b9e0cf117fa"
+  "evidenceSha256": "6b653e84316e2e6c3c6de2b6926af161cabbd89fa3e2d99cba31c9013accfd7f"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -22473,11 +22473,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "7c1e4a594c4724215f3051e6e3a37db4117ac7b9ce7c825d2a4fa5ffb1feccdf"
+  "evidenceSha256": "b27fafa326f890831f45db25d5351ecc230e5743b0406fe1b030f05503e44cee"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -22754,11 +22754,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "82952f9b295b2d706d8f0501419c25880ae1bd520301d680c0a7fb45a5c98240"
+  "evidenceSha256": "c489a0447def0e962cfe6000854a17fa7c46a9ed85f7ddf400b430c642f709c9"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -23035,11 +23035,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "96ee1c8cbaa77afa7d8a86900f1599fa8ca537b1ade1309752823d802effca07"
+  "evidenceSha256": "1ace499a2ca07816e51fa4ee97132d5b93a430c3d7e2f25eb3eaefb4c6618460"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -23316,11 +23316,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "8ea821ee21072e589966f868aaf81d2d7b7e48a04adb56202f4815bcf4d09e89"
+  "evidenceSha256": "b38056b93e486d83df3f7ca1669f7c773f7314f528b24a2dd64f64dcd410a65c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -23597,11 +23597,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "4d6a24f37e9bd1a29260785ff8650d5251df700122b7b07e3e9593582949efaf"
+  "evidenceSha256": "cc796383aab10ddce0218151065375b01da659be0f939e145402c66582259979"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -23878,11 +23878,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "9bda716ed0942d4c900ca193c96637caf874689fdaa9d3176cfd8d0d9ad025a2"
+  "evidenceSha256": "b6f848b41673f134f914220792465af269261c3d322d10c62825dd994e113db0"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -24159,11 +24159,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "7f2e05aed434ef9fe276f87cc11b904ac54cddd195be5f26e968d8862a672794"
+  "evidenceSha256": "bbee018a65e0d61f3649c5e0acf5aad0880a99b077324e651ddb3b00dfe98d4e"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -24440,11 +24440,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "0046441ca60ec389d02296dda557f761738fc4e43b6f9dbb696196477f4902c3"
+  "evidenceSha256": "83534bac91ed69bbc5d4a9b196911c13f7e28b24b3bfefcff51e02a11db3bd7c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -24721,11 +24721,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "9fb649f8cbabeb9f96f2670e2374437b6f3aa2ec9476d3d1cc73430308ea3c6f"
+  "evidenceSha256": "11a75f9848c2489f98d001c85ed9b9c09daaf03ef63a0fa711590685329ce0ef"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -25002,11 +25002,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "e605582aefd32264848e26c0dffa6b75649628163290342301f7fc2f039242bd"
+  "evidenceSha256": "8924a364142deaf4588ce1ef207153b8e0cb49c17fd1365bda1ab78fd516dbd8"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -25283,11 +25283,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "607c9cc67e996d3d8fcf2b17bf52a6ecf92fe89a6b3bd15cd3978338268adb9e"
+  "evidenceSha256": "54f625e8e5ea811e27a4b456e499bfedbe8c695d743de9b3244b0dee222a0eee"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -25564,11 +25564,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "ca21e254013bd70b83e9df1ee41c18703e152804fde1a9bb1908417a3e09cc19"
+  "evidenceSha256": "a7b6a437e568ea6944c5e68680362118232f8f2e344b27a2e1c5352ab4adff7b"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -25845,11 +25845,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "36100db0a686f81fe95dac3d7fc58470a019071f4055211c28f2d635c1c973b9"
+  "evidenceSha256": "552156361bab6ca9fbb31844829e71f0d88e63fee770ba71d73f363d64cc71ad"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -26126,11 +26126,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "144b6fb649be5235222d4550a2ab3797f1fb0b3292686d49189e31961551b41b"
+  "evidenceSha256": "b669978a976f04c7f92563d0ad179902f13a39dfeb5dfc6125c4a1a665ff8858"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -26407,11 +26407,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "ce46f2fde841a7457f182149b5342c88fd7f6f5937d7534f00901e2ef6207051"
+  "evidenceSha256": "f9fa89344409f1c742306367b78d2e01c80dc54775e0436b8cbbb7651bbc38c1"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -26688,11 +26688,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "379c6efc2e3d01a4d793d3159db30d7a5049e0a4ffba15c68b6d981628b35523"
+  "evidenceSha256": "d32ead7079052904925c8e29f52998712ee465a88b88dd0187097caaec3fa84f"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -26969,11 +26969,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "5a4c9826fe882ba4680283acd648971aae228b6c04bd0301adb5965033f6cc18"
+  "evidenceSha256": "37f324a6c5cb98887e1b9a123a1652ce8755e7cf7ba33665b4a2d81094cbaa9c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -27250,11 +27250,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "631dde1e5bede61044b14ffb6524e1627dda5ef529e2541771239f3c5b0bc2c3"
+  "evidenceSha256": "ee0c96b1b4163b1dc860129eea749818fa9f23e4f7600f47c95f3a2df97c3767"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -27531,11 +27531,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "ded8152c8a6668d6f5e6246b9e9ef88743e57dd0fc92a6ed1cbe0da012c3e03b"
+  "evidenceSha256": "9f60c571797c60fbb5bbf26c8ebfddf0453c72493ba7855883984ef6584747e5"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -27812,11 +27812,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "997d285d893ae3246b433c84d68e96135c09ef3dc9152945a156544007e61b91"
+  "evidenceSha256": "c40c05d2cb33bdea5002a563192ed28c0fff34829d6c5380bd06a175dce784f2"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28093,11 +28093,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "a2bb959057df43a054d4fd385656caeade32a64534ef1f1109b0e318966fc811"
+  "evidenceSha256": "633bc064b354902c8d4f81574ce2985eccfe07bc626b8414c26b36131d469e2c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28114,11 +28114,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "9f56110424098b624d97c1f38494aca474fa20a04246184a38787aca01407f41"
+  "evidenceSha256": "65a3b59a461d517c3427a6cee7a43af83d8e3c2ff749cb089ab854d5dc334996"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28135,11 +28135,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "ee3c2affadfedab1be48a8419226ecd52c5aaa060d3805ec6a39ac9218be9f7f"
+  "evidenceSha256": "60485a176673b6ebad10f8fa165bd645dd6a484559716034e2d29e2dc79d413c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28156,11 +28156,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "5711db6701d5ebcf2d9370476a4a9cbd2a718e53da3ba5669ca44db6389affda"
+  "evidenceSha256": "2a0ea32b83faf0fc0a4dee734c01a0f93a313a6612b0c7dc8bf940043deb92e3"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28177,11 +28177,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "c9c41252155c939b38209fc199e68a8e8312d06e47b70d2cabba4a4e602dff2f"
+  "evidenceSha256": "8c9cdfa92487c0b2bb902a7a6a516414259577695c48b111f472f834b9a01644"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28198,11 +28198,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "74011a21ad0b0b0fabd52b1246b17711a042f067b8463e5091a041531a17ecc3"
+  "evidenceSha256": "06274ad562675ec388cce0f7e9038ad935323c70272afa66e1e470bc80993295"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28219,11 +28219,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "8b808ecd44a6b2f47c366c497418bd393e331e1d8bc315cef270a878a0482dc6"
+  "evidenceSha256": "015390a79b3cdd412a223bbdfae2a45e02df5578149166e43fd60196ffe9cffd"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28240,11 +28240,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "90b6d7f16fcc267ec8c39abf9b64d80ca72d4e15d29c278bd8dac08bef867bbb"
+  "evidenceSha256": "b2634553bae0af9e8c126c778682e5326d82857c18b7c299d91d842526a154e7"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28261,11 +28261,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "d282bbeb51b4d7e4dd83107f8f3e0181812359af8d028f95c044fe2777dba444"
+  "evidenceSha256": "82c9a693f0d44023840fdea915438d3c27dea5f4aa7cffd504eeaca39d153079"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28282,11 +28282,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "ece1865c4271e70c578bf75fed9b6c5115f52407ae72dddc4ec02a582e545aa5"
+  "evidenceSha256": "a48a4e52fcdd6ba8a5781f396d810dcdad6640e3cab11ce448087dafa6313efa"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28303,11 +28303,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "5770349b6f4e784bb636439478a5605d1ace307b16bb123afab630d77846399f"
+  "evidenceSha256": "34ccaac037327237cec5265bc7caf539f2d36442c1ade17f9167708bac553d73"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28324,11 +28324,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "1daa06e926d3d6bacc8c82920a4773035ff41c277cfada89b052547f97b92d75"
+  "evidenceSha256": "d06a5e940c6e5c8c616ce66022b209db1309f35194236547fde47e941dc5a102"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28345,11 +28345,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "2a246a83f1cf22ce26d664784f987e012bae8690343dfaf2ab08e82b4518e761"
+  "evidenceSha256": "58aaee2e0715d4ac56a78d0648f039734c7921b2136ab440dcf2b88587f17a5c"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28366,11 +28366,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "d66c175c3fccfbd4fe225b40a0ad324689f8882af20bfee8d74eba9a97a1ea15"
+  "evidenceSha256": "9f7ac6e088c5d52858d0fb9b42228631c42ef5f6d838f6f89faf5ecc0bb0e3d6"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28387,11 +28387,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "06ac558d3b1a7cabb55fab4c86211dd0ee7f63006e612975cad6d6ea736c2b90"
+  "evidenceSha256": "e1e709d8ba95edb435286ff2edb77d209ca2aec7d06e1e1f3908cbd3241de17d"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28408,11 +28408,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "6913fa027748ab559f9a799683f8a843aad79895e5212934fc37b9ce2e7cca3a"
+  "evidenceSha256": "80796f0a313917ec0276591a4d81b6188a5cc4b6c3f1c1a4ddf08f76fbe723f5"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28429,11 +28429,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "7dd8db7b7df87835509972d5091a622d913287eb4e28ac959ff464ddc54046e6"
+  "evidenceSha256": "132cda141504ca7b681281db48296afd80ff3865ff602d7802c2af655cea7f9b"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28450,11 +28450,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "dcbb8170b08f6ed6296a7615ed641b86424603b3cb9cb065a970caf5568a4220"
+  "evidenceSha256": "ff6433031b260d6a6f018c4ec0b7a128ec333e071112fe2f52cdffa520cfc4c1"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28471,11 +28471,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "6240f0d8818bbd291bc8c996b30ffd6f58bcdda7911a1bcf93e7be0189395e56"
+  "evidenceSha256": "2689af0d7a8c0e7c7f148c06d7edda9f4f9537da3534a6aff309c3f600bce624"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28492,11 +28492,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "6f70208057cb5d8e90a2d1f890d0d011af5288cb92012615a64b84fc476ed119"
+  "evidenceSha256": "b46c6b6562f29b5bdb7cd8bbd9fe1784fbd94b9619d1e94d887f3b68dd37a7b0"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28513,11 +28513,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "c8ef0a1a406c5bf4f875bf916374cb3a69e73390d3b216ac5da5dbf0a53375e2"
+  "evidenceSha256": "a23eca3601e1b2fc745f9cb02820df15edb1bbd58bb1905bc2abb7ba590275db"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28534,11 +28534,11 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "0f9aa190ea8243203745ec55e7eda49a193827d6bcd582cff02199b42577528f"
+  "evidenceSha256": "a23cc7dd60c9303dc3e8dd0deedad043637d8e89907dfed779fef6cad606352a"
  },
  {
   "subjectId": "principles-of-accounts",
@@ -28555,10 +28555,10 @@
   "provenance": {
    "bundleSha256": "027c882e39518c604c1c582d9ce0974d0493c3a35db1484a009f3544386396eb",
    "fixtureSha256": "87b77f5a9d99804d61df60a9c0c4acca5a90b03300a67dcacade83ad765a6a8a",
-   "gitCommit": "31a48a49d492c2c556135fd9a5a7c23a7f06f226",
+   "gitCommit": "68b8682a6695fcc379929c8c3c1d4d847fc53cff",
    "workingTreeDirty": false,
-   "ranAt": "2026-10-23T05:03:03.149Z"
+   "ranAt": "2026-10-23T05:31:34.691Z"
   },
-  "evidenceSha256": "f4ccfe2436d5de5ece92b6c743a8e3a1da263fa0ef1f102adf15063ad700191f"
+  "evidenceSha256": "98378982a85faba0011268eb6a8cc5d73338251445fecd3e47254846e4409480"
  }
 ]
