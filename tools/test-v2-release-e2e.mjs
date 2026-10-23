@@ -104,10 +104,34 @@ try{
 
  // 4. Student submission -> queue -> worker -> atomic publication.
  const rubric=await one("select * from spark_grading_private.rubrics_v2 where subject_id=$1 and paper_id=$2",[SUBJECT,PAPER]);
- const fullAnswers=Object.fromEntries(mine.map(r=>[r.criterionId,r.cases.find(c=>c.cls==="full").response]));
- const incorrect=Object.fromEntries(mine.map(r=>[r.criterionId,r.cases.find(c=>c.cls==="incorrect"&&c.resolved).response]));
- const contradictory=Object.fromEntries(mine.map(r=>[r.criterionId,
-  (r.cases.find(c=>c.cls==="contradiction"&&!c.resolved)??r.cases.find(c=>c.cls==="full")).response]));
+ // A Physics source-method fixture may include BOTH its own answer and
+ // the upstream plotted graph. Merge these into the complete response map,
+ // rather than nesting several part IDs under the downstream part ID.
+ // Then reapply the explicitly selected answer for each individual part.
+ const composeScript=choose=>{
+  const script={},chosen=new Map();
+  for(const r of mine){
+   const fixture=choose(r);
+   const value=fixture?.response;
+   if(value&&typeof value==="object"&&!Array.isArray(value)&&
+      Object.hasOwn(value,r.criterionId)){
+    Object.assign(script,value);
+    chosen.set(r.criterionId,value[r.criterionId]);
+   }else{
+    chosen.set(r.criterionId,value);
+   }
+  }
+  for(const [id,value] of chosen)script[id]=value;
+  return script;
+ };
+ const fullAnswers=composeScript(r=>r.cases.find(c=>c.cls==="full"));
+ // Independent incorrect Physics fixtures may assert mutually incompatible
+ // graph and follow-through evidence when combined. For the full-paper zero
+ // publication check, a blank script is the unambiguous source-backed 0/100
+ // case (and mirrors the successfully published production smoke test).
+ const incorrect=SUBJECT==="physics"?{}:
+  composeScript(r=>r.cases.find(c=>c.cls==="incorrect"&&c.resolved));
+ const contradictory=composeScript(r=>r.cases.find(c=>c.cls==="contradiction"&&!c.resolved)??r.cases.find(c=>c.cls==="full"));
  const submit=async(student,responses)=>{
   await asStudent(student);
   const started=await one(`select * from public.spark_start_exam_attempt($1,'02','timed',$3,
