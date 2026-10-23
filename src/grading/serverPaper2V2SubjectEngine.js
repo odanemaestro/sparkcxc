@@ -390,7 +390,16 @@ function physics(rows,responses,paperId){
    if(evidence){
     // Geometry-only candidate marks are not trusted whole-part scores.
     // Preserve any previously estimated marks and never publish from here.
-    return cap(row,Math.max(grade,evidence.suggestedMarks),
+    // Reconcile each individual M/A/B allocation. A whole-part maximum
+    // would incorrectly combine marks earned for different criteria.
+    const evidenceByCode=new Map(evidence.criteria.map(item=>[item.id,item]));
+    const reconciled=originalPart.criteria.reduce((total,criterion)=>{
+     const legacy=lines.find(line=>line.criterion.code===criterion.code);
+     const suggested=evidenceByCode.get(criterion.code)?.candidateMarks;
+     return total+Math.min(criterion.marks,Math.max(legacy?.earned||0,
+      typeof suggested==="number"?suggested:0));
+    },0);
+    return cap(row,reconciled,
      "existing-physics-graph-working-advisory",false);
    }
   }
