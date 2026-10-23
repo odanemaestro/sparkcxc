@@ -11,14 +11,18 @@ export const CURATED_MATHEMATICS={
   F("full",{answer:"2xy^3",working:"12x^5y^5"},2,
    "source M1 numerator followed by the A1 simplified expression"),
   F("partial",{answer:"3xy^4",working:"12x^5y^5"},1,
-   "source numerator obtained but final simplified result incorrect")
+   "source numerator obtained but final simplified result incorrect"),
+  F("equivalent",{answer:"2*x*y^3",working:"12x^5y^5"},2,
+   "explicit multiplication operators express the same reduced monomial")
  ],
  // The source M1 is the extracted difference-of-squares factor.
  "p2-q2-v1::b1":[
   F("full",{answer:"4(m-5n)(m+5n)",working:"4(m^2-25n^2)"},2,
    "source common factor working and complete factorisation"),
   F("partial",{answer:"4(m^2-25n^2)",working:"4(m^2-25n^2)"},1,
-   "only extracts common factor four without complete factorisation")
+   "only extracts common factor four without complete factorisation"),
+  F("equivalent",{answer:"4(m+5n)(m-5n)",working:"4(m^2-25n^2)"},2,
+   "commuted difference-of-squares factors retain the source M/A marks")
  ],
  // A reflected length earns B1; an independent explanation earns B2.
  "p2-q3-v1::d":[
