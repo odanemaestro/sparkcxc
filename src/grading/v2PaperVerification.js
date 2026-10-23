@@ -24,10 +24,21 @@ const responseOf=(id,f)=>f.responses??
 
 function scenario(name,{subjectId,paperId,criteria},plan,{mustPublish}){
  const responses={};const expected=new Map();const tolerant=new Map();
+ const chosen=new Map();
  for(const [id,f] of plan){
   if(!f)continue;
-  Object.assign(responses,responseOf(id,f));
+  const fixtureResponses=responseOf(id,f);
+  Object.assign(responses,fixtureResponses);
+  if(Object.hasOwn(fixtureResponses,id))chosen.set(id,fixtureResponses[id]);
   if(exact(f))expected.set(id,f.expect);else tolerant.set(id,f.expect);
+ }
+ // A downstream graph-working fixture supplies the source graph solely to
+ // verify that criterion in isolation. It cannot replace a graph answer
+ // independently selected for the *whole script*. Apply every student's
+ // selected per-part answer last; remove deliberately missing answers.
+ for(const [id,f] of plan){
+  if(!f)delete responses[id];
+  else if(chosen.has(id))responses[id]=chosen.get(id);
  }
  const maxMarks=criteria.reduce((n,c)=>n+c.maxMarks,0);
  const failures=[];let out;
