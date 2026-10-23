@@ -1,8 +1,8 @@
 {
-  "bundleSha256": "8f5bbbb8302508875397c7f84953f296cfae2eb96a3166653cfa88c30a834860",
-  "sourceCommit": "a32b80a7ff7c717c6e465466cb9ea2c4ff8d328c",
-  "parts": 10,
-  "characters": 1668004,
-  "bytes": 1668568,
+  "bundleSha256": "12b27a29a2f3ea02e304d081b10b21bbce5007fee0b74cb03d59f242559721d4",
+  "sourceCommit": "760bb3a66369438a026ced11bcbcc79d50dd3af1",
+  "parts": 17,
+  "characters": 3011378,
+  "bytes": 3011969,
   "subject": "spark-v2-private-worker"
 }
