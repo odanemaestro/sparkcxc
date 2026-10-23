@@ -1,3 +1,4 @@
+import {markSourceRustTable} from "./scienceRustTableMarking";
 import {markSourceHypothesis} from "./scienceHypothesisMarking";
 import { markScienceCalculation, SCIENCE_TABLES } from "./scienceStructuredMarking";
 import { gradeScienceGraph } from "./scienceGraphMarking";
@@ -400,7 +401,15 @@ export function gradeIntegratedSciencePaper2Item(question,partIndex,itemIndex,it
   if(type==="calculation") return calculationResult(question.id,partIndex,itemIndex,item,responses);
   if(type==="table") return tableResult(question.id,partIndex,itemIndex,item,responses);
   if(type==="graph") return gradeScienceGraph(question,partIndex,itemIndex,item,responses,(a,b)=>evidenceMatch(a,b,true));
-  if(type==="drawing") return visualResult(question.id,partIndex,itemIndex,item,responses);
+  if(type==="drawing"){
+    const base=`${question.id}:${partIndex}:${itemIndex}`;
+    const freehand=String(responses[`${base}:strokes`]||"")!==""
+     && String(responses[`${base}:strokes`])!=="[]" || Boolean(String(responses[base]||"").trim());
+    const table=markSourceRustTable(question.id,partIndex,itemIndex,item,
+     responses[`${base}:drawingTable`],freehand);
+    if(table)return table;
+    return visualResult(question.id,partIndex,itemIndex,item,responses);
+  }
   return lineResult(question.id,partIndex,itemIndex,item,responses);
 }
 
