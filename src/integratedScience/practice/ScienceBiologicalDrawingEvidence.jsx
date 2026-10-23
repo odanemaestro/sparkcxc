@@ -39,7 +39,7 @@ function locate(event){
  return [Number(Math.max(0,Math.min(1,(event.clientX-box.left)/box.width)).toFixed(4)),
   Number(Math.max(0,Math.min(1,(event.clientY-box.top)/box.height)).toFixed(4))];
 }
-export default function ScienceBiologicalDrawingEvidence({base,questionId,partIndex,itemIndex,responses,onChange,disabled}){
+export default function ScienceBiologicalDrawingEvidence({base,questionId,partIndex,itemIndex,responses,onChange,disabled,sharedCanvas=false}){
  const source=biologicalDrawingSource(questionId,partIndex,itemIndex);
  const [name,setName]=useState("");
  const start=useRef(null);
@@ -55,7 +55,7 @@ export default function ScienceBiologicalDrawingEvidence({base,questionId,partIn
   save({...evidence,labels:[...evidence.labels,{name,from,to}]});
  };
  return <section className="is-p2-biological-evidence" aria-label={source.title+" annotation evidence"}>
-  <p>Draw the specimen on the freehand canvas, then add labels here by drawing each leader line. Place the label line from the word toward the part of your own drawing. These annotations are not automatically graded.</p>
+  <p>Draw your specimen in the shared drawing area, then select a label and draw its leader line on that same diagram. Label positions and measurements require verification before marks can be awarded.</p>
   <label>Diagram title
    <input disabled={disabled} value={evidence.title} placeholder="Write your own diagram title"
     onChange={e=>save({...evidence,title:e.target.value})}/>
@@ -66,7 +66,7 @@ export default function ScienceBiologicalDrawingEvidence({base,questionId,partIn
     {source.names.map(n=><option key={n} value={n}>{n}</option>)}
    </select>
   </label>
-  <svg className="is-p2-biological-annotation-canvas" viewBox="0 0 640 320" role="img"
+  {!sharedCanvas&&<svg className="is-p2-biological-annotation-canvas" viewBox="0 0 640 320" role="img"
    aria-label="Student placed biological label lines" onPointerDown={down} onPointerUp={up}
    onPointerCancel={()=>{start.current=null;}}
    style={{width:"100%",maxWidth:"720px",touchAction:"none",cursor:disabled?"default":"crosshair"}}>
@@ -77,11 +77,12 @@ export default function ScienceBiologicalDrawingEvidence({base,questionId,partIn
     <text x={l.from[0]*640} y={l.from[1]*320-6} fontSize="14"
      textAnchor="middle" fill="currentColor">{l.name}</text>
    </g>)}
-  </svg>
+  </svg>}
   <label>Measured {source.dimension} of your own drawing (mm)
    <input disabled={disabled} value={evidence.measurementMm} inputMode="decimal"
     placeholder="Your measured value, in mm" onChange={e=>save({...evidence,measurementMm:e.target.value})}/>
   </label>
+  {sharedCanvas&&<p>Use the **Draw** and **Label line** controls directly beneath the common diagram to switch tools.</p>}
   {!disabled&&<button type="button" className="is-exam-secondary" disabled={!evidence.labels.length}
    onClick={()=>save({...evidence,labels:evidence.labels.slice(0,-1)})}>Undo label line</button>}
  </section>;
