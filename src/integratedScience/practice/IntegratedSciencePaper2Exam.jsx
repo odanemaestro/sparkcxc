@@ -1,3 +1,4 @@
+import ScienceBiologicalDrawingEvidence from "./ScienceBiologicalDrawingEvidence";
 import ScienceDrawingMagnificationEvidence from "./ScienceDrawingMagnificationEvidence";
 import ScienceFiltrationDrawingResponse from "./ScienceFiltrationDrawingResponse";
 import ScienceCircuitConstructionResponse from "./ScienceCircuitConstructionResponse";
@@ -271,6 +272,7 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
   const up=()=>{drawingRef.current=false;};
   return <div className="is-p2-drawing-workspace">
     <ScienceDrawingTableResponse base={base} questionId={questionId} partIndex={partIndex} itemIndex={itemIndex} responses={responses} onChange={onChange} disabled={disabled}/>
+    {((questionId==="IS-M1-P2-21"&&partIndex===1&&itemIndex===0)||(questionId==="IS-M1-P2-27"&&partIndex===0&&itemIndex===0))&&<ScienceBiologicalDrawingEvidence base={base} questionId={questionId} partIndex={partIndex} itemIndex={itemIndex} responses={responses} onChange={onChange} disabled={disabled}/>}
     {questionId==="IS-M3-P2-11"&&partIndex===0&&itemIndex===1&&<ScienceFiltrationDrawingResponse base={base} responses={responses} onChange={onChange} disabled={disabled}/>}
     {questionId==="IS-M3-P2-25"&&partIndex===1&&itemIndex===0&&<ScienceParticleDiagramResponse base={base} responses={responses} onChange={onChange} disabled={disabled}/>}
     {questionId==="IS-M2-P2-25"&&partIndex===1&&itemIndex===0&&<ScienceCircuitSymbolResponse base={base} responses={responses} onChange={onChange} disabled={disabled}/>}
