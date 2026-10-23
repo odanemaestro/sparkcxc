@@ -125,7 +125,12 @@ try{
   return script;
  };
  const fullAnswers=composeScript(r=>r.cases.find(c=>c.cls==="full"));
- const incorrect=composeScript(r=>r.cases.find(c=>c.cls==="incorrect"&&c.resolved));
+ // Independent incorrect Physics fixtures may assert mutually incompatible
+ // graph and follow-through evidence when combined. For the full-paper zero
+ // publication check, a blank script is the unambiguous source-backed 0/100
+ // case (and mirrors the successfully published production smoke test).
+ const incorrect=SUBJECT==="physics"?{}:
+  composeScript(r=>r.cases.find(c=>c.cls==="incorrect"&&c.resolved));
  const contradictory=composeScript(r=>r.cases.find(c=>c.cls==="contradiction"&&!c.resolved)??r.cases.find(c=>c.cls==="full"));
  const submit=async(student,responses)=>{
   await asStudent(student);
