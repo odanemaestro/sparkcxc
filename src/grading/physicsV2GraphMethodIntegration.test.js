@@ -58,9 +58,9 @@ test("graph corroboration adds only its own method allocation",()=>{
    points:[samplePhysicsGraphLine(graph,2),samplePhysicsGraphLine(graph,8)]}};
  const row=mark("c",response);
  // Two triangle method marks are independent of the wrong final answer.
- // No unrelated final-answer or unit marks can be manufactured.
+ // Follow-through with a wrong value stays provisional.
  expect(row.suggestedMarks).toBe(2);
- expect(row.resolved).toBe(true);
+ expect(row.resolved).toBe(false);
 });
 test("graph method evidence is bounded by the original criterion ceiling",()=>{
  const point=samplePhysicsGraphLine(graph,100/18);
