@@ -582,3 +582,10 @@
 .is-p2-magnification-grid label{display:grid;gap:5px;font-size:12px;font-weight:700}
 .is-p2-magnification-grid input{min-width:0;width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid var(--is-border);border-radius:8px;background:var(--is-card);color:var(--is-ink);font:inherit}
 @media(max-width:640px){.is-p2-magnification-grid{grid-template-columns:1fr}}
+
+/* Biological drawing evidence: student annotations are independent of grade. */
+.is-p2-biological-evidence{display:grid;gap:10px;padding:12px;min-width:0;border:1px solid var(--is-border);border-radius:10px}
+.is-p2-biological-evidence>p{margin:0;font-size:13px;color:var(--is-muted)}
+.is-p2-biological-evidence>label{display:grid;gap:5px;font-size:12px;font-weight:700}
+.is-p2-biological-evidence input,.is-p2-biological-evidence select{box-sizing:border-box;width:100%;min-width:0;padding:9px 10px;border:1px solid var(--is-border);border-radius:8px;background:var(--is-card);color:var(--is-ink);font:inherit}
+.is-p2-biological-annotation-canvas{display:block;max-width:100%;height:auto;min-height:150px;border:1px solid var(--is-border);border-radius:8px;background:var(--is-card);color:var(--is-ink)}
