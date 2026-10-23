@@ -131,6 +131,98 @@ function gradeEnglishAPaper2(paper, answers = {}, choiceId = "") {
   };
 }
 
+// src/integratedScience/practice/scienceRustTableMarking.js
+var SOURCE_ID = "IS-M3-P2-05";
+var trim = (x) => String(x ?? "").trim().toLowerCase().replace(/\s+/g, " ");
+var rust = (text) => /\b(?:rust\w*|corro\w*)\b/.test(text);
+var noRust = (text) => /\b(?:no|without)\s+(?:rust\w*|corrosion)\b/.test(text) || /\b(?:did not|does not|not|never)\s+rust\b/.test(text) || /\brust[- ]free\b/.test(text);
+var heavyRust = (text) => !noRust(text) && (/\b(?:a lot of|lots of|much|heavy|extensive|severe|plenty of)\s+rust\w*\b/.test(text) || /\brust\w*\s+(?:heavily|extensively|most|a lot)\b/.test(text));
+var validRow = (id, text) => {
+  if (!text) return true;
+  if (id === "A") return rust(text) && !noRust(text);
+  if (id === "B" || id === "C") return noRust(text);
+  if (id === "D") return heavyRust(text);
+  return false;
+};
+var titleOk = (t) => /\b(?:rust\w*|corrosion|nails?)\b/.test(t);
+var headingOk = (a, b) => /\b(?:test\s*tube\w*|conditions?|tube\w*)\b/.test(a) && /\b(?:observations?|results?)\b/.test(b);
+var entryId = (s) => {
+  const m = trim(s).match(/^(?:(?:test\s*)?tube\s*)?([abcd])$/);
+  return m?.[1]?.toUpperCase() || null;
+};
+function isSourceRustTable(questionId, partIndex, itemIndex, item2) {
+  return questionId === SOURCE_ID && partIndex === 0 && itemIndex === 0 && item2?.response?.type === "drawing" && Number(item2?.marks) === 5 && (item2?.markScheme?.points || []).some((p) => /^A\s*-\s*nail rusted/i.test(p));
+}
+function markSourceRustTable(questionId, partIndex, itemIndex, item2, tableResponse, freehand = false) {
+  if (!isSourceRustTable(questionId, partIndex, itemIndex, item2)) return null;
+  if (tableResponse == null) {
+    if (freehand) return null;
+    return {
+      score: 0,
+      maxMarks: 5,
+      sourceTable: true,
+      sourceResolved: true,
+      provisional: false,
+      confidence: "high",
+      unassessedMarks: 0,
+      criteria: []
+    };
+  }
+  let table = tableResponse;
+  try {
+    if (typeof table === "string") table = JSON.parse(table);
+  } catch {
+    return null;
+  }
+  if (!table || !Array.isArray(table.headings) || !Array.isArray(table.rows)) return null;
+  const title = trim(table.title);
+  const headings = table.headings.map(trim);
+  const rows = table.rows.map((row) => Array.isArray(row) ? row.map(trim) : []);
+  const entries = /* @__PURE__ */ new Map();
+  let duplicates = false;
+  for (const row of rows) {
+    const id = entryId(row[0]);
+    if (!id) continue;
+    if (entries.has(id)) duplicates = true;
+    else entries.set(id, row[1] || "");
+  }
+  const hasHeaders = headingOk(headings[0] || "", headings[1] || "");
+  const a = validRow("A", entries.get("A") || "") && Boolean(entries.get("A"));
+  const bc = ["B", "C"].every((id) => Boolean(entries.get(id)) && validRow(id, entries.get(id)));
+  const d = Boolean(entries.get("D")) && validRow("D", entries.get("D"));
+  const hits = [Boolean(title) && titleOk(title), hasHeaders, a, bc, d];
+  const score = hits.filter(Boolean).length;
+  const allWords = [title, ...headings, ...rows.flat()].join(" ");
+  const absentTopic = !/\b(?:rust\w*|corro\w*|nails?|test\s*tube\w*|observations?)\b/.test(allWords);
+  const blank = !allWords.trim();
+  const ambiguous = /\b(?:or|either|perhaps|maybe)\b/.test(allWords);
+  const knownTitle = !title || titleOk(title);
+  const knownHeaders = headings.every((h, i) => !h || (i === 0 ? /\b(?:test\s*tube\w*|conditions?|tube\w*)\b/.test(h) : /\b(?:observations?|results?)\b/.test(h)));
+  const knownRows = rows.every((row) => {
+    const id = entryId(row[0]);
+    if (!row.some(Boolean)) return true;
+    return Boolean(id) && validRow(id, row[1] || "");
+  });
+  const resolved = !ambiguous && !duplicates && (blank || absentTopic || knownTitle && knownHeaders && knownRows);
+  const labels = [
+    "Suitable title",
+    "Enclosed table with correct headings",
+    "Test tube A: rusted",
+    "Test tubes B and C: no rust",
+    "Test tube D: extensive rust"
+  ];
+  return {
+    score,
+    maxMarks: 5,
+    sourceTable: true,
+    sourceResolved: resolved,
+    provisional: !resolved,
+    unassessedMarks: 0,
+    confidence: resolved ? "high" : "low",
+    criteria: hits.map((earned, i) => ({ id: "rust-table-" + (i + 1), label: labels[i], marks: Number(earned), maxMarks: 1, earned }))
+  };
+}
+
 // src/integratedScience/practice/scienceHypothesisMarking.js
 var HYPOTHESIS_GUIDANCE = /1 mark for a clearly stated hypothesis;?\s*1 mark for a testable hypothesis/i;
 var topic = (id, t) => {
@@ -2503,7 +2595,20 @@ function gradeIntegratedSciencePaper2Item(question2, partIndex, itemIndex, item2
   if (type === "calculation") return calculationResult(question2.id, partIndex, itemIndex, item2, responses);
   if (type === "table") return tableResult(question2.id, partIndex, itemIndex, item2, responses);
   if (type === "graph") return gradeScienceGraph(question2, partIndex, itemIndex, item2, responses, (a, b) => evidenceMatch(a, b, true));
-  if (type === "drawing") return visualResult(question2.id, partIndex, itemIndex, item2, responses);
+  if (type === "drawing") {
+    const base = `${question2.id}:${partIndex}:${itemIndex}`;
+    const freehand = String(responses[`${base}:strokes`] || "") !== "" && String(responses[`${base}:strokes`]) !== "[]" || Boolean(String(responses[base] || "").trim());
+    const table = markSourceRustTable(
+      question2.id,
+      partIndex,
+      itemIndex,
+      item2,
+      responses[`${base}:drawingTable`],
+      freehand
+    );
+    if (table) return table;
+    return visualResult(question2.id, partIndex, itemIndex, item2, responses);
+  }
   return lineResult2(question2.id, partIndex, itemIndex, item2, responses);
 }
 function gradeIntegratedSciencePaper2(paper = [], responses = {}) {
@@ -3799,19 +3904,4 @@ var POB_2003_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 32, "pdfPage": 5, "proposedOption": "B", "explanation": "A wholesale price reduction is a sales incentive, not primarily a public-relations activity.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
     Object.freeze({ "number": 33, "pdfPage": 5, "proposedOption": "C", "explanation": "In hire purchase, the buyer takes possession and pays instalments while ownership typically passes after final payment.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
     Object.freeze({ "number": 34, "pdfPage": 5, "proposedOption": "D", "explanation": "Internal economies of scale reduce average costs per unit as firm output expands.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 35, "pdfPage": 5, "proposedOption": "B", "explanation": "Hire purchase is chiefly a retail consumer purchasing arrangement.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 36, "pdfPage": 5, "proposedOption": "A", "explanation": "Every person consumes goods or services, which distinguishes consumers from producers or sellers.", "status": "requires-adjudication", "uncertainty": "definition-of-consumer", "reasonToReview": "Using goods and having needs/wants may both apply to all people, depending on textbook definition.", "diagramPageChecked": false }),
-    Object.freeze({ "number": 37, "pdfPage": 5, "proposedOption": "D", "explanation": "Credit notes correct overcharges and account for damaged or returned goods; undercharges may require debit adjustments.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 38, "pdfPage": 6, "proposedOption": "B", "explanation": "Marketing typically begins with research, then production preparation, promotion and final sales.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 39, "pdfPage": 6, "proposedOption": "C", "explanation": "A charter party sets out the contract to hire a vessel to carry cargo for agreed payment.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 40, "pdfPage": 6, "proposedOption": "B", "explanation": "A bill of sale and an appropriate negotiable bill of lading may convey or evidence title to goods.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 41, "pdfPage": 6, "proposedOption": "A", "explanation": "Cheques are generally issued against a current bank account.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 42, "pdfPage": 6, "proposedOption": "B", "explanation": "A fidelity guarantee or fidelity bond policy protects an employer from covered dishonesty by staff.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 43, "pdfPage": 6, "proposedOption": "B", "explanation": "Acting as government banker, holding commercial bank deposits and regulating money are core central-bank functions.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 44, "pdfPage": 6, "proposedOption": "D", "explanation": "A spouse's solely owned and uninsured property is not security the borrower can freely pledge without the owner's consent and lender safeguards.", "status": "requires-adjudication", "uncertainty": "security-of-encumbered-assets", "reasonToReview": "A mortgaged home may be unsuitable for additional collateral without lender consent; spouse property also depends on ownership authorisation, not just insurance.", "diagramPageChecked": false }),
-    Object.freeze({ "number": 45, "pdfPage": 7, "proposedOption": "C", "explanation": "Excise duty is imposed on specified goods made within a country.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 46, "pdfPage": 7, "proposedOption": "B", "explanation": "Customs drawback refunds duty on imported goods incorporated into exported output, subject to scheme rules.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 47, "pdfPage": 7, "proposedOption": "D", "explanation": "Excise drawback refunds eligible excise on domestically produced goods subsequently exported.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 48, "pdfPage": 7, "proposedOption": "B", "explanation": "Consumption or sales taxes are indirect levies collected through purchases.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 49, "pdfPage": 7, "proposedOption": "D", "explanation": "Market equilibrium is where the quantity buyers want equals the quantity sellers offer at a given price.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
-    Object.freeze({ "number": 50, "pdfPage": 7, "proposedOption": "B", "explanation": "A simultaneous decrease in demand and increase in
+    Object.freeze({ "number": 35, "pdfPage": 5, "proposedOption": "B", "explanation": "Hire purchase is chiefly a retail consumer purchasing arrangement.

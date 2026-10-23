@@ -1,4 +1,63 @@
-dfPage": 2, "proposedOption": "C", "explanation": "Division of labour separates the overall work into specialised tasks.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+global framework for negotiating trade rules and settling trade disputes.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
+    Object.freeze({ "number": 59, "pdfPage": 8, "proposedOption": "A", "explanation": "Sole traders generally face fewer sources of new equity funding than larger partnerships or incorporated public firms.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
+    Object.freeze({ "number": 60, "pdfPage": 8, "proposedOption": "B", "explanation": "Domestic industrial development can replace some imported products and lower import spending.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true })
+  ])
+});
+function verifyPob2016MjP1AuthoredKey(key = POB_2016_MJ_P1_AUTHORED_KEY) {
+  const issues = [], seen = /* @__PURE__ */ new Set(), disputes = [];
+  const src = POB_SUPPLIED_ARCHIVE.find((r) => r.id === key?.id);
+  if (!src || src.paper !== 1 || key.sourceSha256 !== src.sourceSha256 || key.sourceFilename !== src.filename || key.printedTestCode !== "01240010")
+    issues.push("2016 source original paper cover, type or digest mismatch.");
+  if (!Array.isArray(key?.entries) || key.entries.length !== 60)
+    return { valid: false, issues: [...issues, "60 original questions required."], disputes };
+  for (const item2 of key.entries) {
+    if (!Number.isInteger(item2.number) || item2.number < 1 || item2.number > 60 || seen.has(item2.number))
+      issues.push("Question number repeated/out-of-range.");
+    seen.add(item2.number);
+    if (item2.proposedOption !== null && !["A", "B", "C", "D"].includes(item2.proposedOption) || typeof item2.explanation !== "string" || item2.explanation.length < 35)
+      issues.push("Missing question explanation or invalid option Q" + item2.number);
+    if (!Number.isInteger(item2.pdfPage) || item2.pdfPage < 2 || item2.pdfPage > 8 || item2.sourceVisualChecked !== true)
+      issues.push("No source-image proof of original Q" + item2.number);
+    if (item2.status === "academic-dispute") {
+      disputes.push(item2.number);
+      if (!item2.uncertainty || !item2.sourceAnalysis)
+        issues.push("Dispute lacks description Q" + item2.number);
+    } else if (item2.status !== "spark-authored-provisional" || item2.proposedOption === null)
+      issues.push("Answer not suitable for proposal Q" + item2.number);
+  }
+  if (seen.size !== 60) issues.push("Missing PDF original questions.");
+  if (disputes.join(",") !== "15,26,31,41,47,57")
+    issues.push("Unresolved 2016 academic issues were silently removed.");
+  if (key.liveScoringApproved !== false || key.originalCxcAnswerKeyAvailable !== false || key.independentAnswerAdjudicationComplete !== false)
+    issues.push("Source reading is not a license to release marks or claim official CXC authority.");
+  return { valid: issues.length === 0, issues, disputes };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2017MjP1AuthoredKey.js
+var pobHistorical2017MjP1AuthoredKey_exports = {};
+__export(pobHistorical2017MjP1AuthoredKey_exports, {
+  POB_2017_MJ_P1_AUTHORED_KEY: () => POB_2017_MJ_P1_AUTHORED_KEY,
+  verifyPob2017MjP1AuthoredKey: () => verifyPob2017MjP1AuthoredKey
+});
+var POB_2017_MJ_P1_AUTHORED_KEY = Object.freeze({
+  id: "POB-P1-2017-MJ",
+  paper: 1,
+  year: 2017,
+  sitting: "MJ",
+  sourceFilename: "CSEC_Principles_of_Business_P1_2017_MJ.pdf",
+  sourceSha256: "bf573c0f0cefcff2d743a33b4f3502f59f99bb3aa56980de6d1d451951d21cff",
+  offeredQuestions: 60,
+  timeLimitMinutes: 75,
+  officialCxcKeySupplied: false,
+  fullQuestionAndOptionProof: false,
+  gradingBenchmarked: false,
+  liveScoringApproved: false,
+  source: "SPARK internal academic solution drafts",
+  entries: Object.freeze([
+    Object.freeze({ "number": 1, "pdfPage": 2, "proposedOption": "B", "explanation": "The Caribbean commonly uses mixed economies rather than purely planned or fully competitive systems.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 2, "pdfPage": 2, "proposedOption": "A", "explanation": "Labour means workers' physical and mental capabilities or effort used to perform economic tasks.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 3, "pdfPage": 2, "proposedOption": "B", "explanation": "The public sector primarily serves the population through public services and regulations.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 4, "pdfPage": 2, "proposedOption": "C", "explanation": "Division of labour separates the overall work into specialised tasks.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 5, "pdfPage": 2, "proposedOption": "A", "explanation": "Private enterprise generally seeks profit for its owners.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 6, "pdfPage": 3, "proposedOption": "C", "explanation": "The purchasing supervisor is shown reporting to the finance manager in the source chart.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 7, "pdfPage": 3, "proposedOption": "B", "explanation": "The board of directors appropriately appears above the CEO in the organisation hierarchy.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
@@ -1276,18 +1335,4 @@ var ANSWERS = Object.freeze([
   [4, "d", "Government may nationalise a utility to ensure an essential service is available affordably. It may also protect strategic infrastructure or rescue a critical failing enterprise.", ["2:First realistic nationalisation motive with causal explanation", "2:Second distinct and developed public-interest reason"]],
   [5, "a", "A business plan summarises objectives and describes the financial, marketing and operating methods for achieving them.", ["1:Identifies written roadmap of business objectives", "1:Explains planning implementation or financing purpose"]],
   [5, "b", "Marketing plans identify customers and promotions; finance plans forecast costs and cash flow; production plans describe output and materials; organisational plans allocate staffing and management duties.", ["2:First legitimate business-plan element described correctly", "2:Second different element and relevant details", "2:Third different element developed", "2:Fourth distinct element developed"]],
-  [5, "c", "Land and buildings, or an owned vehicle, may be acceptable assets pledged as security.", ["1:First viable real collateral asset", "1:Second different collateral asset"]],
-  [5, "d", "Collateral reduces lender risk because pledged assets can be realised following default. It can also support approval when a borrower has an uncertain credit history.", ["2:First valid reason lenders demand collateral with explanation", "2:Second distinct valid reason developed"]],
-  [5, "e", "Borrower misrepresentation can lead to refusal or recall of credit, making legitimate future loans harder. Fraud or dishonest loan records may also create contractual and legal penalties and harm the borrower's reputation.", ["2:First borrower-focused impact of unethical business conduct explained", "2:Second distinct realistic impact with consequence"]],
-  [6, "a", "Standard of living reflects material access to income, goods and services. Quality of life includes health, safety, personal liberty, environmental conditions and broader well-being.", ["2:Correct material consumption/income concept of standard of living", "2:Correct quality-of-life concept and meaningful contrast"]],
-  [6, "b", "A 2% increase in real GDP means the country's inflation-adjusted value or volume of final domestic output is 2% greater than in the preceding comparison period; it is not simply a 2% rise in prices.", ["1:Real GDP concerns final domestic output adjusted for inflation", "1:States magnitude is two percent growth compared with base period", "1:Clarifies real output growth rather than nominal price inflation"]],
-  [6, "c", "Higher real wages and employment help households buy necessities; better access to education and medical services supports healthier, more productive lives; improved affordable housing enhances material well-being.", ["2:First credible source of improved living standards with causal effect", "2:Second distinct contributing factor developed", "2:Third different factor explained"]],
-  [6, "d", "The income approach adds factor earnings, including wages, profits, rents and interest, plus appropriate net income from abroad for GNP. The expenditure approach adds final consumption, investment, government purchases and net exports, then adjusts from GDP to national output where needed.", ["2:First national-product measurement method and workings, including national scope", "2:Second distinct valid method described without double-counting"]],
-  [6, "e", "GDP may rise while growth benefits mostly a few wealthy owners; average gains may not reach households. Population growth or environmental degradation may also offset nominal output benefits.", ["1:Identifies credible disparity between aggregate real GDP and welfare", "1:Explains unequal distribution, population or environmental mechanism", "1:Relates this to no actual improvement in people's living conditions"]],
-  [7, "a.i", "A CARICOM single market reduces barriers to trade and allows eligible factors of production to move under agreed regional rules, making participating economies function more like one market.", ["1:Defines a coordinated integrated regional market", "1:Explains reduction of barriers and shared access among members", "1:Mentions agreed movement of goods, services, labour or capital appropriately"]],
-  [7, "a.ii", "CARICOM aims to strengthen regional trade, coordinate economic policies and promote members' social or functional cooperation.", ["1:First genuine distinct CARICOM aim", "1:Second distinct aim", "1:Third different aim"]],
-  [7, "b", "Regional integration allows local firms to sell to a larger market, may reduce duplication and trading costs, and creates new opportunities for qualifying skilled Caribbean workers.", ["2:First distinct developed single-market economic advantage", "2:Second distinct advantage with plausible market mechanism", "2:Third different developed advantage"]],
-  [7, "c", "High youth unemployment is a major Caribbean challenge. Paid apprenticeships linked to employer demand can improve workforce skills and placement into jobs, reducing unemployment.", ["1:Identifies one genuine significant Caribbean economic problem", "2:Details a credible actionable solution matched to that problem", "1:Explains why the solution tackles the problem"]],
-  [7, "d", "Public education trains workers with literacy, technical and professional skills. A more capable labour force raises productivity and attracts investment, contributing to national development.", ["1:Names an actual government social service, such as public education", "2:Explains how the selected service improves workforce skills, productivity or welfare", "1:Links the service to a specific development outcome"]]
-]);
-var POB_2008_MJ_P2_AUTHORED_SCHEME = Obje
+  [5, "c", "Land and buildings, or an owned vehicle, may be acceptable asset

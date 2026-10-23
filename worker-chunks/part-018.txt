@@ -1,4 +1,70 @@
- },
+: fair wages and benefits; safe working conditions; training and development; fair treatment without discrimination; job security; good communication.\n(ii) Government (any TWO): pay taxes on time; obey laws and regulations; register the business and obtain licences; pay over employees' statutory deductions (income tax, national insurance); provide accurate information and statistics."
+            },
+            {
+              "label": "(c)",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Define the term 'teamwork'.",
+                  "marks": 2,
+                  "answer": "Teamwork is a group of people working together co-operatively (1), combining their skills and efforts to achieve a common goal (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "State ONE advantage and ONE disadvantage of teamwork within an organization.",
+                  "marks": 2,
+                  "answer": "1 mark each:\n\u2022 Advantage (any ONE): better ideas and decisions; work is done faster; higher morale; shared responsibility; members learn from one another.\n\u2022 Disadvantage (any ONE): decisions take longer; conflict between members; some members do less work than others ('free riders'); it is hard to reward individual effort; groupthink."
+                }
+              ]
+            },
+            {
+              "label": "(d)",
+              "question": "For some time now, there has been a breakdown in communication between the managers and employees of ABC Plastic Co. Ltd. Explain TWO strategies the management of ABC Plastic Co. Ltd. could implement to improve communication within the organization.",
+              "marks": 6,
+              "answer": "Any TWO, 3 marks each:\n\u2022 Hold regular staff meetings: managers share information, explain decisions and listen to employees' concerns, so information flows both ways.\n\u2022 Introduce an open door policy: employees can approach managers at any time, so problems are raised and solved early.\n\u2022 Use suggestion boxes and staff surveys: employees can give ideas and feedback without fear.\n\u2022 Use notice boards, newsletters, e-mail or the intranet: everyone receives the same information quickly.\n\u2022 Train managers in communication skills: instructions become clearer and managers learn to listen.\n\u2022 Involve employee representatives (or the union) in decisions through joint committees."
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "section": "All questions",
+          "section_instructions": "Answer ALL questions.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Define the term 'production'.",
+                  "marks": 2,
+                  "answer": "Production is the process of creating goods and services to satisfy human wants (1) by combining the factors of production (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Identify TWO factors of production, other than capital, used in the manufacture of goods and provision of services.",
+                  "marks": 2,
+                  "answer": "Any TWO, 1 mark each: land (natural resources), labour, entrepreneurship (enterprise)."
+                }
+              ]
+            },
+            {
+              "label": "(b)",
+              "subparts": [
+                {
+                  "label": "(i)",
+                  "question": "Define the term 'capital'.",
+                  "marks": 2,
+                  "answer": "Capital is man-made goods used to produce other goods and services, such as machinery, tools and buildings (1); the term also refers to the money invested in a business (1)."
+                },
+                {
+                  "label": "(ii)",
+                  "question": "Differentiate between 'fixed capital' and 'working capital' and give an example of EACH type.",
+                  "marks": 4,
+                  "answer": "2 marks each (1 for the explanation, 1 for the example):\n\u2022 Fixed capital: assets that are kept in the business for a long time and used over and over in production, not for resale. Examples: machinery, buildings, vehicles, equipment.\n\u2022 Working capital: the money and short-term assets used for the day-to-day running of the business (current assets minus current liabilities). Examples: cash, stock of raw materials, money owed by debtors."
+                }
+              ]
+            },
             {
               "label": "(c)",
               "question": "Outline ONE benefit of the growth of a company to EACH of the following groups.\n(i) Customers\n(ii) Shareholders",

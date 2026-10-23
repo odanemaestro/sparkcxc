@@ -1,4 +1,19 @@
- supply ordinarily lowers the market price.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 36, "pdfPage": 5, "proposedOption": "A", "explanation": "Every person consumes goods or services, which distinguishes consumers from producers or sellers.", "status": "requires-adjudication", "uncertainty": "definition-of-consumer", "reasonToReview": "Using goods and having needs/wants may both apply to all people, depending on textbook definition.", "diagramPageChecked": false }),
+    Object.freeze({ "number": 37, "pdfPage": 5, "proposedOption": "D", "explanation": "Credit notes correct overcharges and account for damaged or returned goods; undercharges may require debit adjustments.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 38, "pdfPage": 6, "proposedOption": "B", "explanation": "Marketing typically begins with research, then production preparation, promotion and final sales.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 39, "pdfPage": 6, "proposedOption": "C", "explanation": "A charter party sets out the contract to hire a vessel to carry cargo for agreed payment.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 40, "pdfPage": 6, "proposedOption": "B", "explanation": "A bill of sale and an appropriate negotiable bill of lading may convey or evidence title to goods.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 41, "pdfPage": 6, "proposedOption": "A", "explanation": "Cheques are generally issued against a current bank account.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 42, "pdfPage": 6, "proposedOption": "B", "explanation": "A fidelity guarantee or fidelity bond policy protects an employer from covered dishonesty by staff.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 43, "pdfPage": 6, "proposedOption": "B", "explanation": "Acting as government banker, holding commercial bank deposits and regulating money are core central-bank functions.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 44, "pdfPage": 6, "proposedOption": "D", "explanation": "A spouse's solely owned and uninsured property is not security the borrower can freely pledge without the owner's consent and lender safeguards.", "status": "requires-adjudication", "uncertainty": "security-of-encumbered-assets", "reasonToReview": "A mortgaged home may be unsuitable for additional collateral without lender consent; spouse property also depends on ownership authorisation, not just insurance.", "diagramPageChecked": false }),
+    Object.freeze({ "number": 45, "pdfPage": 7, "proposedOption": "C", "explanation": "Excise duty is imposed on specified goods made within a country.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 46, "pdfPage": 7, "proposedOption": "B", "explanation": "Customs drawback refunds duty on imported goods incorporated into exported output, subject to scheme rules.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 47, "pdfPage": 7, "proposedOption": "D", "explanation": "Excise drawback refunds eligible excise on domestically produced goods subsequently exported.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 48, "pdfPage": 7, "proposedOption": "B", "explanation": "Consumption or sales taxes are indirect levies collected through purchases.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 49, "pdfPage": 7, "proposedOption": "D", "explanation": "Market equilibrium is where the quantity buyers want equals the quantity sellers offer at a given price.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
+    Object.freeze({ "number": 50, "pdfPage": 7, "proposedOption": "B", "explanation": "A simultaneous decrease in demand and increase in supply ordinarily lowers the market price.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
     Object.freeze({ "number": 51, "pdfPage": 7, "proposedOption": "C", "explanation": "A shortage of an item relative to strong demand normally pushes its price higher.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
     Object.freeze({ "number": 52, "pdfPage": 7, "proposedOption": "A", "explanation": "A cheaper nearby rival may draw customers away from Browne and reduce the capital tied up in his trading operations or sales receipts.", "status": "requires-adjudication", "uncertainty": "capital-fall-is-not-certain", "reasonToReview": "Loss of customers is likely; a decrease in capital is not necessarily the immediate accounting effect of a competitor's lower price.", "diagramPageChecked": false }),
     Object.freeze({ "number": 53, "pdfPage": 8, "proposedOption": "C", "explanation": "Import restrictions are trade barriers rather than a benefit generated by international exchange.", "status": "spark-provisional", "uncertainty": null, "reasonToReview": null, "diagramPageChecked": false }),
@@ -1157,63 +1172,4 @@ var POB_2016_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 55, "pdfPage": 8, "proposedOption": "D", "explanation": "Economic dualism describes a modern technologically advanced sector alongside a less-developed traditional sector.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
     Object.freeze({ "number": 56, "pdfPage": 8, "proposedOption": "A", "explanation": "CSME coordination can support a common trade policy within participating states.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
     Object.freeze({ "number": 57, "pdfPage": 8, "proposedOption": "B", "explanation": "CARICOM promotes regional trade and shared services, though general state collaboration is also a genuine purpose.", "status": "academic-dispute", "uncertainty": "CARICOM-broad-vs-specific", "sourceAnalysis": "General member collaboration is also a real CARICOM purpose, alongside the more specific regional trade and common services.", "sourceVisualChecked": true }),
-    Object.freeze({ "number": 58, "pdfPage": 8, "proposedOption": "A", "explanation": "The WTO operates a global framework for negotiating trade rules and settling trade disputes.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 59, "pdfPage": 8, "proposedOption": "A", "explanation": "Sole traders generally face fewer sources of new equity funding than larger partnerships or incorporated public firms.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true }),
-    Object.freeze({ "number": 60, "pdfPage": 8, "proposedOption": "B", "explanation": "Domestic industrial development can replace some imported products and lower import spending.", "status": "spark-authored-provisional", "uncertainty": null, "sourceAnalysis": null, "sourceVisualChecked": true })
-  ])
-});
-function verifyPob2016MjP1AuthoredKey(key = POB_2016_MJ_P1_AUTHORED_KEY) {
-  const issues = [], seen = /* @__PURE__ */ new Set(), disputes = [];
-  const src = POB_SUPPLIED_ARCHIVE.find((r) => r.id === key?.id);
-  if (!src || src.paper !== 1 || key.sourceSha256 !== src.sourceSha256 || key.sourceFilename !== src.filename || key.printedTestCode !== "01240010")
-    issues.push("2016 source original paper cover, type or digest mismatch.");
-  if (!Array.isArray(key?.entries) || key.entries.length !== 60)
-    return { valid: false, issues: [...issues, "60 original questions required."], disputes };
-  for (const item2 of key.entries) {
-    if (!Number.isInteger(item2.number) || item2.number < 1 || item2.number > 60 || seen.has(item2.number))
-      issues.push("Question number repeated/out-of-range.");
-    seen.add(item2.number);
-    if (item2.proposedOption !== null && !["A", "B", "C", "D"].includes(item2.proposedOption) || typeof item2.explanation !== "string" || item2.explanation.length < 35)
-      issues.push("Missing question explanation or invalid option Q" + item2.number);
-    if (!Number.isInteger(item2.pdfPage) || item2.pdfPage < 2 || item2.pdfPage > 8 || item2.sourceVisualChecked !== true)
-      issues.push("No source-image proof of original Q" + item2.number);
-    if (item2.status === "academic-dispute") {
-      disputes.push(item2.number);
-      if (!item2.uncertainty || !item2.sourceAnalysis)
-        issues.push("Dispute lacks description Q" + item2.number);
-    } else if (item2.status !== "spark-authored-provisional" || item2.proposedOption === null)
-      issues.push("Answer not suitable for proposal Q" + item2.number);
-  }
-  if (seen.size !== 60) issues.push("Missing PDF original questions.");
-  if (disputes.join(",") !== "15,26,31,41,47,57")
-    issues.push("Unresolved 2016 academic issues were silently removed.");
-  if (key.liveScoringApproved !== false || key.originalCxcAnswerKeyAvailable !== false || key.independentAnswerAdjudicationComplete !== false)
-    issues.push("Source reading is not a license to release marks or claim official CXC authority.");
-  return { valid: issues.length === 0, issues, disputes };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2017MjP1AuthoredKey.js
-var pobHistorical2017MjP1AuthoredKey_exports = {};
-__export(pobHistorical2017MjP1AuthoredKey_exports, {
-  POB_2017_MJ_P1_AUTHORED_KEY: () => POB_2017_MJ_P1_AUTHORED_KEY,
-  verifyPob2017MjP1AuthoredKey: () => verifyPob2017MjP1AuthoredKey
-});
-var POB_2017_MJ_P1_AUTHORED_KEY = Object.freeze({
-  id: "POB-P1-2017-MJ",
-  paper: 1,
-  year: 2017,
-  sitting: "MJ",
-  sourceFilename: "CSEC_Principles_of_Business_P1_2017_MJ.pdf",
-  sourceSha256: "bf573c0f0cefcff2d743a33b4f3502f59f99bb3aa56980de6d1d451951d21cff",
-  offeredQuestions: 60,
-  timeLimitMinutes: 75,
-  officialCxcKeySupplied: false,
-  fullQuestionAndOptionProof: false,
-  gradingBenchmarked: false,
-  liveScoringApproved: false,
-  source: "SPARK internal academic solution drafts",
-  entries: Object.freeze([
-    Object.freeze({ "number": 1, "pdfPage": 2, "proposedOption": "B", "explanation": "The Caribbean commonly uses mixed economies rather than purely planned or fully competitive systems.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 2, "pdfPage": 2, "proposedOption": "A", "explanation": "Labour means workers' physical and mental capabilities or effort used to perform economic tasks.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 3, "pdfPage": 2, "proposedOption": "B", "explanation": "The public sector primarily serves the population through public services and regulations.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 4, "p
+    Object.freeze({ "number": 58, "pdfPage": 8, "proposedOption": "A", "explanation": "The WTO operates a 

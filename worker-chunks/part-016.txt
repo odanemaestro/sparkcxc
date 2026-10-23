@@ -1,4 +1,16 @@
- support service", "Explains its use for answering questions or resolving issues promptly"], "Online chat lets customers contact support through a website and receive timely help.", ["real-time messaging", "in-app help", "customer enquiry"]],
+"Describes its actual duties"], "Marketing promotes and sells products. Finance manages money, budgets and payments.", ["production", "marketing", "finance", "human resources", "operations", "purchasing", "customer service"]],
+  ["1:c", ["First valid legal or ethical principle", "Second DISTINCT principle", "Third DISTINCT principle", "Fourth DISTINCT principle"], "Advertise honestly, comply with employment law, follow environmental regulations and report taxes correctly.", ["honest advertising", "fair wages", "no bribery", "pay taxes", "product safety", "consumer rights", "worker protection", "environmental responsibility"]],
+  ["1:d", ["Identifies breach of FIRST earlier principle", "Explains an actual immediate consequence", "Links to a further effect on business or society", "Identifies a DIFFERENT earlier principle", "Explains its immediate consequence", "Links to a further effect"], "Dishonest advertising can cause complaints, lawsuits and falling sales. Breaking labour laws can trigger fines, disputes and production delays.", ["fines", "loss of trust", "customer injury", "legal action", "loss of licence", "environmental damage"]],
+  ["2:a.i", ["Identifies a systematic investigation made before starting a venture", "Explains its purpose is assessing likely practicality, costs, demand or viability"], "A feasibility study evaluates a business proposal before investment to judge whether it is workable and viable.", ["market feasibility", "financial feasibility", "technical feasibility"]],
+  ["2:a.ii", ["First valid reason for conducting feasibility research", "A second DIFFERENT valid reason"], "To measure customer demand and to estimate whether expected revenue will cover costs.", ["identify risks", "study rivals", "resource needs", "evaluate funding", "avoid wasted investment"]],
+  ["2:a.iii", ["Gives a genuine PRIMARY first-hand research source", "Gives a genuine SECONDARY already-published source", "Gives another DISTINCT SECONDARY source"], "Primary source: interviews with possible buyers. Secondary sources: government census and industry reports.", ["surveys", "direct observation", "focus groups", "government statistics", "newspaper archives", "published research"]],
+  ["2:b", ["First valid planning purpose", "Explains HOW first purpose supports success", "Second DISTINCT planning purpose", "Explains HOW second purpose helps"], "Planning sets measurable goals so progress can be checked. Cash budgeting anticipates expenses and helps prevent shortages.", ["risk planning", "resource allocation", "coordination", "time scheduling", "financing", "staffing"]],
+  ["2:c", ["Names first actual consumer-protection law or public measure", "Second DISTINCT measure", "Third DISTINCT measure"], "Consumer-protection legislation, product safety inspections and compulsory accurate product labelling.", ["fair trading acts", "competition laws", "standards agency", "weights and measures", "consumer complaints authority", "food standards"]],
+  ["2:d", ["First relevant barber-shop location factor", "Explains its practical effect on a barber shop", "Links effect to customer access, profitability or costs", "Second DIFFERENT location factor", "Explains the practical consequence", "Connects to business outcome"], "Locate near target clients so visits and sales increase. Choose premises with affordable rent to control recurring costs.", ["foot traffic", "parking", "water and electricity", "security", "competition", "rent", "transport links", "customer demographics"]],
+  ["3:a", ["First distinct function of a consumer organisation", "Second distinct function", "Third distinct function", "Fourth distinct function"], "Educate consumers, investigate complaints, seek redress and campaign for better consumer laws.", ["advise rights", "handle disputes", "market surveillance", "product-safety alerts", "advocacy", "price monitoring"]],
+  ["3:b", ["First customer-service role", "Explains how the first role helps", "Second DIFFERENT customer-service role", "Explains how the second helps"], "Responding to questions helps customers choose correctly. Resolving complaints creates confidence and repeat purchases.", ["answer questions", "after-sales help", "customer feedback", "returns", "product demonstrations"]],
+  ["3:c.i", ["Defines warranty as a seller or manufacturer promise for a stated period or terms", "Explains repair, replacement, or other contractual or legal remedy for covered faults"], "A warranty promises support for a product's performance or defects, such as repair during its stated period.", ["warranty period", "defects", "repair", "replacement", "consumer remedy"]],
+  ["3:c.ii", ["Identifies web or app messaging with a support service", "Explains its use for answering questions or resolving issues promptly"], "Online chat lets customers contact support through a website and receive timely help.", ["real-time messaging", "in-app help", "customer enquiry"]],
   ["3:c.iii", ["Identifies help delivered AFTER purchase", "Gives a relevant service such as repair, advice, installation or returns"], "After-sales service supports buyers after the sale, such as help with product installation and repairs.", ["returns", "repairs", "maintenance", "help desk", "setup"]],
   ["3:d.i", ["Correctly identifies trademark as protection for a distinctive brand indicator", "Explains risk of competitors using a confusingly similar name or logo and legal protection", "Explains effect on reputation, customer recognition or sales"], "A trademark helps Leon protect his skincare brand name and logo from confusing imitation. Customers identify genuine products and the business protects its reputation.", ["brand source identifier", "exclusive use", "counterfeiting", "customer trust", "registration"]],
   ["3:d.ii", ["Identifies copyright protection for original literary expression", "Explains author's rights to control copying, distribution or licensing", "Explains income, royalties or remedies against unauthorised copies"], "Copyright protects Vashti's original novel and controls its copying and licensed publication, supporting royalties and legal remedies.", ["literary work", "copying rights", "publishing licences", "royalties", "piracy prevention"]],
@@ -2236,71 +2248,4 @@ var pobPaper2OwnerBatch3Drafts_default = {
               "label": "(b)",
               "question": "Outline THREE instances where feasibility studies are useful.",
               "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Before starting a new business.\n\u2022 Before launching a new product.\n\u2022 Before expanding, opening a new branch or entering a new market.\n\u2022 Before buying expensive equipment or introducing new technology.\n\u2022 When applying for a loan, since lenders want evidence that the project is viable.\n\u2022 Before relocating the business.\n\u2022 Before a large public project such as a new road or port."
-            },
-            {
-              "label": "(c)",
-              "question": "State THREE roles of an entrepreneur.",
-              "marks": 6,
-              "answer": "Any THREE, 2 marks each:\n\u2022 Organising and combining the factors of production.\n\u2022 Bearing the risk of the business.\n\u2022 Making key decisions and planning.\n\u2022 Innovating: introducing new products and methods.\n\u2022 Raising capital.\n\u2022 Managing the day-to-day running of the business."
-            },
-            {
-              "label": "(d)",
-              "question": "Discuss TWO ways in which entrepreneurs contribute to the development of your country.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each:\n\u2022 They create jobs, reducing unemployment and poverty.\n\u2022 They introduce new products, services and methods, which improves the standard of living.\n\u2022 They export goods and services, earning foreign exchange.\n\u2022 They pay taxes, which fund government services.\n\u2022 They create linkages by buying from local suppliers and using local raw materials.\n\u2022 They increase competition, which leads to better quality and lower prices.\n\u2022 They support community development through sponsorships and donations."
-            }
-          ]
-        },
-        {
-          "number": 3,
-          "section": "Section I",
-          "section_instructions": "Answer the THREE questions in this section.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "Define the term 'savings'.",
-                  "marks": 2,
-                  "answer": "Savings is the part of income that is not spent on consumption (1) but is set aside for future use (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "List TWO methods of saving that are available to individuals.",
-                  "marks": 2,
-                  "answer": "Any TWO, 1 mark each: savings account at a commercial bank; credit union shares or deposits; fixed deposits; 'partner', 'sou-sou' or 'susu' (informal saving); buying shares, bonds or unit trusts; endowment insurance policies; pension plans; building society accounts."
-                }
-              ]
-            },
-            {
-              "label": "(b)",
-              "question": "Identify TWO sources of short-term financing and TWO sources of long-term financing.",
-              "marks": 4,
-              "answer": "1 mark each.\nShort-term (any TWO): bank overdraft, trade credit, short-term bank loan, credit card, factoring.\nLong-term (any TWO): mortgage, debentures, issuing shares, long-term bank loan, retained profits, loans or grants from a development bank or government, venture capital."
-            },
-            {
-              "label": "(c)",
-              "question": "Explain the role of the Central Bank as",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "an advisor to the government",
-                  "marks": 3,
-                  "answer": "The Central Bank advises the government on monetary and economic policy, such as interest rates, exchange rates, the money supply and inflation (1). It also advises on government borrowing and managing the national debt (1), and provides research and statistics on the economy to help the government plan (1)."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "a lender of last resort.",
-                  "marks": 3,
-                  "answer": "When a commercial bank runs short of cash and cannot borrow anywhere else (1), the Central Bank lends it money, usually at the bank (discount) rate, so that it can meet depositors' withdrawals (1). This prevents the bank from collapsing and keeps public confidence in the banking system (1)."
-                }
-              ]
-            },
-            {
-              "label": "(d)",
-              "question": "Identify TWO types of monetary transactions that can be conducted within the banking system without the use of cash. Discuss how EACH transaction is performed.",
-              "marks": 6,
-              "answer": "Any TWO, 3 marks each (1 for the type, 2 for how it is performed):\n\u2022 Cheque: the account holder writes a
+              "answer": "Any THREE, 2 marks each:\n\u2022 Before starting a new business.\n\u2022 Before launching a new product.\n\u2022 Before expanding, opening a new branch or entering a new market.\n\u2022 Before buying expensive equip
