@@ -1,7 +1,7 @@
 .poa-practice {
-  --poa-paper: var(--fnh-ui-paper, var(--spark-paper, #fff));
-  --poa-ink: var(--fnh-ui-ink, var(--spark-ink, #19344c));
-  --poa-line: var(--fnh-ui-line, var(--spark-border, #ccd9e6));
+  --poa-paper: var(--spark-paper, #fff);
+  --poa-ink: var(--spark-ink, #19344c);
+  --poa-line: var(--spark-border, #ccd9e6);
   color: var(--poa-ink);
   max-width: 1120px;
   margin: 0 auto;
@@ -185,9 +185,9 @@ body.dark :is(.poa-practice, .poa-workspace) select {
 [data-theme="dark"] .poa-practice,
 .dark .poa-practice,
 body.dark .poa-practice {
-  --poa-paper: var(--fnh-ui-paper, #122337);
-  --poa-ink: var(--fnh-ui-ink, #edf4fa);
-  --poa-line: var(--fnh-ui-line, #34485d);
+  --poa-paper: var(--spark-paper, #122337);
+  --poa-ink: var(--spark-ink, #edf4fa);
+  --poa-line: var(--spark-border, #34485d);
 }
 @media (max-width: 640px) {
   .poa-practice-choices,
