@@ -37,3 +37,13 @@ test("incorrect student magnification remains review-required, not awarded",()=>
  expect(evidence.consistent).toBe(false);
  expect(evidence.reviewRequired).toBe(true);
 });
+
+test("magnification rejects unrelated, reversed or contradictory working",()=>{
+ const base={drawingHeightMm:"105",actualHeightMm:"35",magnificationAnswer:"×3"};
+ for(const magnificationWorking of ["1 ÷ 2", "35 ÷ 105", "105 / 35 or 1 / 2"]){
+  const result=magnificationArithmeticEvidence({...base,magnificationWorking});
+  expect(result.consistent).toBe(false);
+  expect(result.reviewRequired).toBe(true);
+ }
+ expect(magnificationArithmeticEvidence({...base,magnificationWorking:"105 divided by 35"}).consistent).toBe(true);
+});
