@@ -220,10 +220,15 @@ function mathematics(rows,responses){
    const residual=gradeOriginalMathResidual48({
     criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
    });
-   // An abstention must preserve the existing provisional method/accuracy
-   // suggestion instead of replacing it with zero or bypassing CSEC ECF.
-   if(residual!==null&&residual.resolved===true)
-    return cap(p.row,residual.marks,residual.method,true);
+   // A source rule that abstains preserves existing CSEC M/A/B/ECF suggestions
+   // but MUST NOT promote uncertain legacy guesses into authoritative marks.
+   if(residual!==null){
+    if(residual.resolved===true)
+     return cap(p.row,residual.marks,residual.method,true);
+    const prior=blank(answer)?0:examination.parts[i].marks;
+    return cap(p.row,Math.max(residual.marks,prior),
+      residual.method+"-advisory-preserved",false);
+   }
    const originalText=gradeOriginalText50({
     criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
    });
