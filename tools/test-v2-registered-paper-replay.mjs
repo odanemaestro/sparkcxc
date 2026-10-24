@@ -1529,7 +1529,14 @@ try{
  assert([...allowedNext29].every(id=>![
   allowedNumerics,allowedMMA,allowedCalc,allowedSymbolic,allowedMethods,allowedText,allowedResidual48
  ].some(set=>set.has(id))),"New Maths source grader duplicates an approved cohort");
- let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0,trustedTextCount=0,trustedResidualCount=0,trustedNextMathCount=0;
+ const proof18=fs.readFileSync("src/grading/v2MathFinalReasoning.js","utf8");
+ const proof18Header="export const MATH_FINAL_REASONING_IDS=Object.freeze(";
+ const proof18Pos=proof18.indexOf(proof18Header),proof18End=proof18.indexOf(");",proof18Pos+proof18Header.length);
+ assert(proof18Pos>=0&&proof18End>proof18Pos,"Final Mathematical reasoning source IDs missing");
+ const allowedFinal18=new Set(JSON.parse(proof18.slice(proof18Pos+proof18Header.length,proof18End)));
+ assert.equal(allowedFinal18.size,18);
+ assert([...allowedFinal18].every(id=>![allowedNext29,allowedResidual48,allowedText,allowedMethods,allowedSymbolic,allowedCalc,allowedMMA,allowedNumerics].some(set=>set.has(id))),"Overlapping math verifier sources");
+ let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0,trustedTextCount=0,trustedResidualCount=0,trustedNextMathCount=0,trustedFinal18Count=0;
  let manualCheckCount=0,manualPartCount=0;
  for(const paper of mathPaperRows){
   const cases=paper.criteria.filter(p=>p.sourceMarking?.criteria?.some(c=>
@@ -1596,6 +1603,10 @@ try{
     assert.equal(found.suggestedMarks,part.maxMarks,
      "New source-proven maths part altered source marks: "+part.id);
     trustedNextMathCount++;
+   }else if(allowedFinal18.has(part.id)){
+    assert.equal(found.resolved,true,"Source-authored final proof not resolved: "+part.id);
+    assert.equal(found.suggestedMarks,part.maxMarks,"Final Mathematics proof mark ceiling drift: "+part.id);
+    trustedFinal18Count++;
    }else{
     assert.equal(found.resolved,false,
      'Unapproved Mathematics method-check implied authority: '+part.id);
@@ -1626,6 +1637,7 @@ try{
  // This loop deliberately replays only criteria containing manual-verification
  // checks. The other nine members of the 48-part cohort have typed source
  // checks and are exercised by the standalone 576-case verification matrix.
+ assert.equal(trustedFinal18Count,1,"One manual-only reflection proof source must resolve");
  assert.equal(trustedNextMathCount,2,
   "Both registered original matrix-equation parts require source-proof authority");
  assert.equal(trustedResidualCount,39,
