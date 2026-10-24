@@ -395,6 +395,27 @@ export function checkCoordinate(raw, spec) {
 }
 
 export function checkSet(raw, spec) {
+  // Independently labelled graph-vertex profit calculations have *two*
+  // numbers in the coordinate and one result: (x, y): $profit. Only the
+  // three amounts after the colons are the requested answer set. Do not
+  // accidentally treat the six vertex coordinates as extra profit claims.
+  // Require complete, unambiguous labelled entries, not arbitrary prose.
+  const entries=String(raw??"").trim().split(/[;\n]/).map(s=>s.trim()).filter(Boolean);
+  if(Array.isArray(spec?.value)&&spec.value.length>=2&&
+     entries.length===spec.value.length){
+    const amounts=entries.map(entry=>{
+      const match=/^\(\s*[+-]?\d+(?:\.\d+)?\s*,\s*[+-]?\d+(?:\.\d+)?\s*\)\s*:\s*\$?\s*([+-]?\d+(?:\.\d+)?)$/.exec(entry);
+      return match?Number(match[1]):null;
+    });
+    if(amounts.every(v=>v!==null&&Number.isFinite(v))){
+      const wanted=spec.value.map(Number),used=new Set(),tol=toleranceFor(spec);
+      const matchAll=wanted.every(w=>{
+        const i=amounts.findIndex((g,j)=>!used.has(j)&&near(g,w,tol));
+        if(i<0)return false;used.add(i);return true;
+      });
+      return {ok:matchAll,why:matchAll?"correct labelled vertex results":"incorrect labelled vertex results",got:amounts};
+    }
+  }
   const got = numberList(raw);
   const want = spec.value.map(Number);
   const tol = toleranceFor(spec);

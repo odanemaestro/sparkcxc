@@ -261,7 +261,10 @@ function mathPartCertain(result,specs,response,policy={},source={}){
  // This does not certify written B marks or unawarded source methods.
  const normaliseWorking=s=>String(s??"").trim().replace(/\s+/g," ");
  const registeredSolution=normaliseWorking(source.solution);
- const exactSourceMethod=registeredSolution.length>=40 &&
+ const exactSourceMethod=(registeredSolution.length>=40||
+   (registeredSolution.length>=20&&registeredSolution.length<=300&&
+    registeredSolution.includes("=")&&
+    (registeredSolution.match(/\d+(?:\.\d+)?/g)||[]).length>=2)) &&
    !noWorking&&normaliseWorking(workingOf(response))===registeredSolution;
  const kindOf=(line,spec)=>String(spec?.kind||line.kind||"").toUpperCase();
  // Credit carried forward from a wrong earlier value is not covered by the
