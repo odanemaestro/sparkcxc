@@ -78,8 +78,13 @@ const schemeOk=(source,part)=>{
  return Array.isArray(rules)&&rules.length===2&&
   rules[0]?.code==="M1"&&rules[0]?.kind==="M"&&rules[0]?.marks===1&&
   rules[1]?.code==="A1"&&rules[1]?.kind==="A"&&rules[1]?.marks===1&&
-  rules.every(x=>x.check?.type==="manual-verification"&&
-    typeof x.check.evidence==="string"&&x.check.evidence.trim().length>20)&&
+  rules[0].check?.type==="manual-verification"&&
+  typeof rules[0].check.evidence==="string"&&
+  rules[0].check.evidence.trim().length>20&&
+  (rules[1].check?.type==="numeric"||
+   (rules[1].check?.type==="manual-verification"&&
+    typeof rules[1].check.evidence==="string"&&
+    rules[1].check.evidence.trim().length>20))&&
   source?.answer===part?.answer&&source?.solution===part?.solution&&
   typeof source?.solution==="string"&&source.solution.trim().length>=18&&
   typeof source.answer==="string"&&parse(source.answer)!==null&&
