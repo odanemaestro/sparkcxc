@@ -1497,7 +1497,15 @@ try{
   "No original Mathematics criterion can belong to two source cohorts");
  assert([...allowedMMA].every(id=>!allowedNumerics.has(id)),
   "Two-mark and three-mark source approval groups must not overlap");
- let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0;
+ const textSource=fs.readFileSync("src/grading/v2OriginalMathText50.js","utf8");
+ const textHeader="export const ORIGINAL_TEXT_50_IDS=Object.freeze(";
+ const textStart=textSource.indexOf(textHeader),textEnd=textSource.indexOf(");",textStart+textHeader.length);
+ assert(textStart>=0&&textEnd>textStart,"Missing original fifty text sources");
+ const allowedText=new Set(JSON.parse(textSource.slice(textStart+textHeader.length,textEnd)));
+ assert.equal(allowedText.size,50,"Fifty distinct original short-answer parts required");
+ assert([...allowedText].every(id=>![allowedMethods,allowedSymbolic,allowedCalc,allowedMMA,allowedNumerics].some(set=>set.has(id))),
+  "Original source grading cohorts cannot overlap");
+ let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0,trustedTextCount=0;
  let manualCheckCount=0,manualPartCount=0;
  for(const paper of mathPaperRows){
   const cases=paper.criteria.filter(p=>p.sourceMarking?.criteria?.some(c=>
@@ -1526,6 +1534,11 @@ try{
     assert.equal(found.suggestedMarks,3,
      'Incorrect three-mark M1/M2/A1 score: '+part.id);
     trustedMMACount++;
+   }else if(allowedText.has(part.id)){
+    assert.equal(found.resolved,true,"Original text source proof not resolved: "+part.id);
+    assert.equal(found.suggestedMarks,part.maxMarks,
+      "Original text grading altered source mark ceiling: "+part.id);
+    trustedTextCount++;
    }else if(allowedMethods.has(part.id)){
     assert.equal(found.resolved,true,"Source-verified original method did not resolve: "+part.id);
     assert.equal(found.suggestedMarks,part.maxMarks,
@@ -1559,6 +1572,8 @@ try{
   'Exactly fifty source-authored original symbolic methods must resolve');
  assert.equal(trustedMethodsCount,50,
   'Exactly fifty new source-authored original method checks must resolve');
+ assert.equal(trustedTextCount,50,
+  'Exactly fifty source-authored original text questions must resolve');
  assert.equal(manualCheckCount,967,
   'The entire 967-check Mathematics manual-validation inventory must be retained');
  assert(manualPartCount>0);
