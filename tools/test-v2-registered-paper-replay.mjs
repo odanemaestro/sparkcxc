@@ -1475,11 +1475,20 @@ try{
  assert(calcPos>=0&&calcEnd>calcPos,"Source-verified calculation list is malformed");
  const allowedCalc=new Set(JSON.parse(calcSource.slice(calcPos+calcHeader.length,calcEnd)));
  assert.equal(allowedCalc.size,50,"The new calculation cohort must contain exactly fifty parts");
+ const symbolicSource=fs.readFileSync("src/grading/v2OriginalMathSymbolic50.js","utf8");
+ const symbolicHeader="export const SOURCE_SYMBOLIC_50_IDS=Object.freeze(";
+ const symbolicPos=symbolicSource.indexOf(symbolicHeader);
+ const symbolicEnd=symbolicSource.indexOf(");",symbolicPos+symbolicHeader.length);
+ assert(symbolicPos>=0&&symbolicEnd>symbolicPos,"Missing source symbolic list");
+ const allowedSymbolic=new Set(JSON.parse(symbolicSource.slice(symbolicPos+symbolicHeader.length,symbolicEnd)));
+ assert.equal(allowedSymbolic.size,50,"Exactly fifty source-authorised symbolic parts");
+ assert([...allowedSymbolic].every(id=>!allowedNumerics.has(id)&&!allowedMMA.has(id)&&!allowedCalc.has(id)),
+  "Mathematics source cohorts must not overlap");
  assert([...allowedCalc].every(id=>!allowedNumerics.has(id)&&!allowedMMA.has(id)),
   "No original Mathematics criterion can belong to two source cohorts");
  assert([...allowedMMA].every(id=>!allowedNumerics.has(id)),
   "Two-mark and three-mark source approval groups must not overlap");
- let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0;
+ let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0;
  let manualCheckCount=0,manualPartCount=0;
  for(const paper of mathPaperRows){
   const cases=paper.criteria.filter(p=>p.sourceMarking?.criteria?.some(c=>
@@ -1508,6 +1517,11 @@ try{
     assert.equal(found.suggestedMarks,3,
      'Incorrect three-mark M1/M2/A1 score: '+part.id);
     trustedMMACount++;
+   }else if(allowedSymbolic.has(part.id)){
+    assert.equal(found.resolved,true,"Original symbolic source proof must resolve: "+part.id);
+    assert.equal(found.suggestedMarks,part.maxMarks,
+     "Original symbolic source cannot change mark ceiling: "+part.id);
+    trustedSymbolicCount++;
    }else if(allowedCalc.has(part.id)){
     assert.equal(found.resolved,true,"Source calculation method must resolve: "+part.id);
     assert.equal(found.suggestedMarks,part.maxMarks,
@@ -1527,6 +1541,8 @@ try{
   'Exactly fifty independently source-authorised M1/M2/A1 methods must resolve');
  assert.equal(trustedCalcCount,50,
   'Exactly fifty additional source-authored original calculation methods must resolve');
+ assert.equal(trustedSymbolicCount,50,
+  'Exactly fifty source-authored original symbolic methods must resolve');
  assert.equal(manualCheckCount,967,
   'The entire 967-check Mathematics manual-validation inventory must be retained');
  assert(manualPartCount>0);
