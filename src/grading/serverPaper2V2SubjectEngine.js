@@ -9,6 +9,7 @@ import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 import {gradeOriginalMathematicsTable} from "./v2OriginalMathTableScoring";
 import {gradeOriginalMathematicsGraph} from "./v2OriginalMathGraphScoring";
 import {gradeOriginalMathOgive} from "./v2OriginalMathOgive";
+import {gradeOriginalMathConstruction} from "./v2OriginalMathConstruction";
 import {evaluatePoaSourceV2} from "../principlesOfAccounts/poaMarkingV2";
 import {evaluatePoaMethodsV2,POA_METHOD_SOURCE_FORMAT} from "../principlesOfAccounts/marking/poaMethodRegistry";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
@@ -208,6 +209,11 @@ function mathematics(rows,responses){
    throw new Error("Incomplete Mathematics marker");
   out.push(...selected.map((p,i)=>{
    const answer=responsesForQuestion[p.part.id];
+   const sourceConstruction=gradeOriginalMathConstruction({
+    criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
+   });
+   if(sourceConstruction!==null)
+    return cap(p.row,sourceConstruction.marks,sourceConstruction.method,true);
    const sourceOgive=gradeOriginalMathOgive({
     criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
    });
