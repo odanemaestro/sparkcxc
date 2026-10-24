@@ -857,6 +857,13 @@ function chemistry(rows,responses,paperId){
   const responseMap={};
   if(object(value))spreadStructured(responseMap,base,value);
   else if(value!==null)responseMap[base]=String(value);
+  // Drawing-based magnification is a two-part response: its measurements
+  // must match the student's separately submitted flower drawing.
+  if(row.id==="IS-M1-P2-27::(a)::(ii)"){
+   const drawing=read(responses,"IS-M1-P2-27::(a)::(i)");
+   if(object(drawing)&&Object.hasOwn(drawing,"biologicalEvidence"))
+    responseMap["IS-M1-P2-27:0:0:biologicalEvidence"]=drawing.biologicalEvidence;
+  }
   const type=src.item.response?.type||"lines";
   if((type==="lines"||type==="calculation")&&directlyDeniesSourcePoint(value,sm))
    return cap(row,0,"existing-chemistry-evidence",false);
