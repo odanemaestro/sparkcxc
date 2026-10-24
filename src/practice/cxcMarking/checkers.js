@@ -400,11 +400,11 @@ export function checkSet(raw, spec) {
   // three amounts after the colons are the requested answer set. Do not
   // accidentally treat the six vertex coordinates as extra profit claims.
   // Require complete, unambiguous labelled entries, not arbitrary prose.
-  const entries=String(raw??"").trim().split(/[;\\n]/).map(s=>s.trim()).filter(Boolean);
+  const entries=String(raw??"").trim().split(/[;\n]/).map(s=>s.trim()).filter(Boolean);
   if(Array.isArray(spec?.value)&&spec.value.length>=2&&
      entries.length===spec.value.length){
     const amounts=entries.map(entry=>{
-      const match=/^\\(\\s*[+-]?\\d+(?:\\.\\d+)?\\s*,\\s*[+-]?\\d+(?:\\.\\d+)?\\s*\\)\\s*:\\s*\\$?\\s*([+-]?\\d+(?:\\.\\d+)?)$/.exec(entry);
+      const match=/^\(\s*[+-]?\d+(?:\.\d+)?\s*,\s*[+-]?\d+(?:\.\d+)?\s*\)\s*:\s*\$?\s*([+-]?\d+(?:\.\d+)?)$/.exec(entry);
       return match?Number(match[1]):null;
     });
     if(amounts.every(v=>v!==null&&Number.isFinite(v))){
