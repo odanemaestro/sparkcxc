@@ -1608,8 +1608,13 @@ try{
   'Exactly fifty new source-authored original method checks must resolve');
  assert.equal(trustedTextCount,50,
   'Exactly fifty source-authored original text questions must resolve');
- assert.equal(trustedResidualCount,48,
-  "All 48 source-proven residual Maths parts must resolve at their own allocation");
+ // This loop deliberately replays only criteria containing manual-verification
+ // checks. The other nine members of the 48-part cohort have typed source
+ // checks and are exercised by the standalone 576-case verification matrix.
+ assert.equal(trustedResidualCount,39,
+  "All 39 previously manual Mathematics parts in this replay must resolve");
+ assert.equal(allowedResidual48.size-trustedResidualCount,9,
+  "The other nine source parts use existing typed checks");
  assert.equal(manualCheckCount,967,
   'The entire 967-check Mathematics manual-validation inventory must be retained');
  assert(manualPartCount>0);
