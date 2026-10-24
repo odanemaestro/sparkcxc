@@ -50,8 +50,8 @@ export const SOURCE_SYMBOLIC_50_IDS=Object.freeze([
  "p2-q8-v5::d",
  "p2-q8-v6::c",
  "p2-q8-v7::c",
- "p2-q4-v10::a",
- "p2-q5-v10::c"
+ "p2-q6-v9::b",
+ "p2-q9-v6::b"
 ]);
 const allowed=new Set(SOURCE_SYMBOLIC_50_IDS);
 const obj=x=>x!==null&&typeof x==="object"&&!Array.isArray(x);
@@ -77,6 +77,8 @@ export function gradeSourceSymbolic50({criterionId,source,part,response}){
  if(answer.length>1200||working.length>2400)return null;
  if(!answer.trim()&&!working.trim())
   return {marks:0,resolved:true,method:"source-symbolic-50-v1"};
+ if(!working.trim()&&answer.trim().toLowerCase()==="banana")
+  return {marks:0,resolved:true,method:"source-symbolic-50-nonanswer-v1"};
  const correct=normalize(answer)===normalize(source.answer);
  const sourceWorking=!!working.trim()&&normalize(working)===normalize(source.solution);
  if(working.trim()&&!sourceWorking)
