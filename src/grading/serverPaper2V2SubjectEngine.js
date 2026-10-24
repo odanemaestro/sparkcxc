@@ -216,7 +216,7 @@ function mathematics(rows,responses){
     criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
    });
    if(sourceMMA!==null)
-    return cap(p.row,sourceMMA.marks,sourceMMA.method,true);
+    return cap(p.row,sourceMMA.marks,sourceMMA.method,sourceMMA.resolved===true);
    const sourceNumeric=gradeOriginalMathNumericWorking({
     criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
    });
