@@ -19,6 +19,7 @@ import {gradeOriginalSourceMethod50} from "./v2OriginalMathSourceMethods50";
 import {gradeOriginalText50} from "./v2OriginalMathText50";
 import {gradeOriginalMathResidual48} from "./v2OriginalMathResidual48";
 import {gradeMathNext29} from "./v2MathNext29";
+import {gradeMathFinalReasoning} from "./v2MathFinalReasoning";
 import {evaluatePoaSourceV2} from "../principlesOfAccounts/poaMarkingV2";
 import {evaluatePoaMethodsV2,POA_METHOD_SOURCE_FORMAT} from "../principlesOfAccounts/marking/poaMethodRegistry";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
@@ -218,6 +219,12 @@ function mathematics(rows,responses){
    throw new Error("Incomplete Mathematics marker");
   out.push(...selected.map((p,i)=>{
    const answer=responsesForQuestion[p.part.id];
+   const finalReasoning=gradeMathFinalReasoning({criterionId:p.row.id,
+    source:sourceMarking(p.row),part:p.part,maxMarks:p.row.maxMarks,response:answer});
+   if(finalReasoning!==null){
+    if(finalReasoning.resolved===true)return cap(p.row,finalReasoning.marks,finalReasoning.method,true);
+    return cap(p.row,Math.max(finalReasoning.marks,blank(answer)?0:examination.parts[i].marks),finalReasoning.method+"-provisional",false);
+   }
    const remaining=gradeMathNext29({
     criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,
     maxMarks:p.row.maxMarks,response:answer
