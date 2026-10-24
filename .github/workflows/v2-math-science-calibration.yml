@@ -108,6 +108,19 @@ jobs:
             throw Error("Do not approve unverified Mathematics source table evidence");
           for(const record of sourceTableRows)
             console.log("V2_SOURCE_TABLE_15_ITEM="+JSON.stringify(record));
+          // Graph B marks are registered ONLY with complete source-scoped
+          // adversarial verification evidence, including A/B label conflicts.
+          const sourceGraphIds=new Set(["p2e-q3::a","p2g-q3::a","p2i-q3::a","p2e-q8::b","p2g-q8::b","p2i-q8::b"]);
+          const sourceGraphRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(record=>sourceGraphIds.has(record.criterionId));
+          if(sourceGraphRecords.length!==6||
+             new Set(sourceGraphRecords.map(r=>r.criterionId)).size!==6||
+             sourceGraphRecords.some(r=>r.outcome!=="verified"||
+               r.provenance?.workingTreeDirty!==false||
+               !r.sourceSha256||!r.criterionSha256||!r.evidenceSha256))
+             throw Error("Mathematics graph source verification incomplete");
+          for(const record of sourceGraphRecords)
+            console.log("V2_SOURCE_GRAPH_6_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));
