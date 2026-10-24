@@ -163,6 +163,32 @@ jobs:
              throw Error("Nine E-J original compass constructions lack complete source proof");
           for(const record of padRecords)
             console.log("V2_SOURCE_EJ_PAD_9_ITEM="+JSON.stringify(record));
+          // Register only the exact 50 conservative source-authored M1/A1
+          // criteria whose real full-paper examiner resolved all adversarial
+          // source cases and whose bundle/criterion digests are clean.
+          const numericSource=fs.readFileSync("src/grading/v2OriginalMathNumericWorking.js","utf8");
+          const header="export const SOURCE_NUMERIC_TWO_MARK_IDS=Object.freeze(";
+          const pos=numericSource.indexOf(header);
+          if(pos<0)throw Error("Missing authoritative fifty-part list");
+          const end=numericSource.indexOf(");",pos+header.length);
+          if(end<0)throw Error("Missing end of fifty-part list");
+          const rawIds=numericSource.slice(pos+header.length,end);
+          if(!rawIds)throw Error("Could not read authored 50-source allowlist");
+          const numericIds=new Set(JSON.parse(rawIds));
+          if(numericIds.size!==50)throw Error("Numeric batch must contain 50 unique original parts");
+          const numericRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>numericIds.has(r.criterionId));
+          if(numericRecords.length!==50||
+             new Set(numericRecords.map(r=>r.criterionId)).size!==50||
+             numericRecords.some(r=>r.outcome!=="verified"||
+               r.provenance?.workingTreeDirty!==false||
+               r.kind!=="structured"||r.maxMarks!==2||
+               !r.sourceSha256||!r.criterionSha256||!r.evidenceSha256||
+               !Array.isArray(r.cases)||r.cases.length<10||
+               r.cases.some(x=>!x.passed)))
+            throw Error("Fifty numerical M/A source criteria are not independently verified");
+          for(const record of numericRecords)
+            console.log("V2_SOURCE_NUMERIC_50_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));
