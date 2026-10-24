@@ -57,6 +57,11 @@ test("unreduced fraction earns no accuracy even for an integer source answer",()
  expect(grade({criterionId:id,source,part,response:{answer:"14/2",working:part.solution}}))
   .toMatchObject({marks:2,resolved:true});
 });
+test("an incorrect bare number cannot resolve source method marks",()=>{
+ const id="p2-q6-v1::b",part=partFor(id),source=sourceFor(part);
+ expect(grade({criterionId:id,part,source,response:{answer:"160",working:""}}))
+  .toMatchObject({marks:0,resolved:false});
+});
 test("other parts receive no unverified authority",()=>{
  const part=partFor(THREE_MARK_NUMERIC_IDS[0]);
  expect(grade({criterionId:"p2-q1-v1::z",part,source:sourceFor(part),response:{answer:part.answer,working:part.solution}})).toBeNull();
