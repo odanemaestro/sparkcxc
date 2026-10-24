@@ -77,14 +77,15 @@ export function markSourceBiologicalDrawing(qid,partIndex,itemIndex,item,respons
  const tidy=clean(paths);
  const large=Boolean(box&&(box.right-box.left)>=210&&(box.bottom-box.top)>=155);
  const leaderLines=rulerLabels(evidence,paths);
+ const hasDrawing=paths.length>=2;
  const scoreParts=isStoma?[
   {label:"Clean continuous lines, no shading",ok:tidy},
   {label:"Large drawing",ok:large},
   {label:"Correct stoma and guard cell structure",ok:false,unknown:true},
   {label:"Correct anatomical proportions",ok:false,unknown:true},
   {label:"Correctly placed anatomical labels",ok:false,unknown:true},
-  {label:"Appropriate title and surface view",ok:stomaTitle(evidence?.title||"")},
-  {label:"Stated magnification agrees with measured width and 0.02 mm",ok:magnificationReported(evidence,responses[base])}
+  {label:"Appropriate title and surface view",ok:hasDrawing&&stomaTitle(evidence?.title||"")},
+  {label:"Stated magnification agrees with measured width and 0.02 mm",ok:hasDrawing&&magnificationReported(evidence,responses[base])}
  ]:[
   {label:"Clean continuous lines, no shading",ok:tidy},
   {label:"Large drawing",ok:large},
@@ -98,7 +99,7 @@ export function markSourceBiologicalDrawing(qid,partIndex,itemIndex,item,respons
   sourceBiological:true,sourceResolved:false,provisional:true,visualEvidenceRequired:true,
   confidence:"low",
   criteria:scoreParts.map((p,i)=>({id:base+":bio:"+i,label:p.label,marks:Number(p.ok),maxMarks:1,earned:p.ok,
-   provisional:p.unknown===true||true})),
+   provisional:true})),
   visualEvidence:{strokeCount:paths.length,cleanContinuousLines:tidy,large,nonCrossingLabelLines:leaderLines,
    title:stomaTitle(evidence?.title||""),shapeAndLabelTargetsIndependentlyVerified:false}
  };
