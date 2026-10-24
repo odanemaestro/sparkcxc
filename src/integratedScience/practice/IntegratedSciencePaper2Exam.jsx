@@ -307,6 +307,7 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
       {strokes.map((stroke,index)=><polyline key={index} points={stroke.map(point=>`${point.x},${point.y}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>)}
       {bioEvidence?.labels.map((l,i)=><g key={"bio-label-"+i} pointerEvents="none"><line x1={l.from[0]*600} y1={l.from[1]*300} x2={l.to[0]*600} y2={l.to[1]*300} stroke="currentColor" strokeWidth="1.5"/><text x={l.from[0]*600} y={l.from[1]*300-5} textAnchor="middle" fontSize="12" fill="currentColor">{l.name}</text></g>)}
     </svg>
+    {biological&&bioEvidence?.title?.trim()&&<p className="is-p2-biological-caption" style={{textAlign:"center",marginTop:8}} aria-label="Drawing title below diagram">{bioEvidence.title}</p>}
     {!disabled && <div className="is-p2-drawing-actions">
       <button type="button" className="is-exam-secondary" onClick={()=>updateStrokes(strokes.slice(0,-1))} disabled={!strokes.length}>Undo stroke</button>
       <button type="button" className="is-exam-secondary" onClick={()=>updateStrokes([])} disabled={!strokes.length}>Clear drawing</button>
