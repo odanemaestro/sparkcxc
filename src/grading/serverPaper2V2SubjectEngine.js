@@ -284,6 +284,18 @@ function mathPartCertain(result,specs,response,policy={},source={}){
  const fullMarks=result.marks===result.of;
  const writtenCertain=fullMarks&&certainWrittenMark({suggestedMarks:1,maxMarks:1,
   response:answerOf(response)+"\n"+workingOf(response),points:[String(source.answer??"")]}).resolved;
+ // A complete source sentence is stronger evidence than a keyword match.
+ const simplifyMathStatement=s=>String(s??'').trim().toLowerCase()
+  .replace(/\s+/g,' ').replace(/[.!?]+$/,'');
+ const exactCandidate=simplifyMathStatement(answerOf(response));
+ const approvedSentences=String(source.solution??'')
+  .split(/(?<=[.!?])\s+/).map(simplifyMathStatement);
+ const isAuthoredStatement=spec=>spec?.check?.type==='written'&&
+  exactCandidate.length>=18&&(
+   approvedSentences.includes(exactCandidate)||
+   (spec.check.any||[]).some(t=>typeof t==='string'&&
+    simplifyMathStatement(t).length>=18&&
+    simplifyMathStatement(t)===exactCandidate));
  return result.criteria.every(line=>{
   const spec=byCode.get(line.code);
   if(!spec?.check||spec.check.type==="manual-verification"||spec.provisional===true)return false;
@@ -293,7 +305,7 @@ function mathPartCertain(result,specs,response,policy={},source={}){
   const written=writtenMathCheck(spec.check);
   // Unknown or unsupported check types never certify anything.
   if(!strong&&!written&&!checkTypes(spec.check).every(t=>mathWeakEvidence.has(t)))return false;
-  if(line.awarded)return strong||(written&&writtenCertain)||
+  if(line.awarded)return strong||(written&&(writtenCertain||isAuthoredStatement(spec)))||
    (exactSourceMethod&&kindOf(line,spec)==="M"&&
     checkTypes(spec.check).every(type=>mathWeakEvidence.has(type)));
   const kind=kindOf(line,spec);
