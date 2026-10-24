@@ -12,7 +12,7 @@ export function mathematicsThreeMarkNumericFixtures({criterion,part,maxMarks}){
  const full={answer,working:solution};
  const alternate=/correct to \d+ decimal places?/i.test(part.prompt||"")?" "+answer+" ":alternative(answer);
  return {kind:"structured",ruleId:"math:source-three-mark-MMA",sourceAnswer:full,
-  alternatives:[{answer:alternative(answer),working:solution}],
+  alternatives:[{answer:alternate,working:solution}],
   fixtures:[
    F("full",full,3,"full source-specified method and independently correct answer"),
    F("equivalent",{answer:alternative(answer),working:solution},3,"format-equivalent numeric answer"),
