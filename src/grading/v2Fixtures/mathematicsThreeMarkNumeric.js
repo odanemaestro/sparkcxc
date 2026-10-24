@@ -15,7 +15,7 @@ export function mathematicsThreeMarkNumericFixtures({criterion,part,maxMarks}){
   alternatives:[{answer:alternate,working:solution}],
   fixtures:[
    F("full",full,3,"full source-specified method and independently correct answer"),
-   F("equivalent",{answer:alternative(answer),working:solution},3,"format-equivalent numeric answer"),
+   F("equivalent",{answer:alternate,working:solution},3,"format-equivalent numeric answer"),
    F("partial",{answer:wrong,working:solution},2,"correct method but wrong final number"),
    F("partial",{answer:"",working:solution},2,"correct method without answer earns M1/M2"),
    F("incorrect",{answer:"banana",working:""},0,"conclusively irrelevant nonnumerical result"),
