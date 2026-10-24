@@ -1505,7 +1505,16 @@ try{
  assert.equal(allowedText.size,50,"Fifty distinct original short-answer parts required");
  assert([...allowedText].every(id=>![allowedMethods,allowedSymbolic,allowedCalc,allowedMMA,allowedNumerics].some(set=>set.has(id))),
   "Original source grading cohorts cannot overlap");
- let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0,trustedTextCount=0;
+ const residualSrc=fs.readFileSync("src/grading/v2OriginalMathResidual48.js","utf8");
+ const residualHeader="export const ORIGINAL_RESIDUAL_48_IDS=Object.freeze(";
+ const residualPos=residualSrc.indexOf(residualHeader);
+ const residualEnd=residualSrc.indexOf(");",residualPos+residualHeader.length);
+ assert(residualPos>=0&&residualEnd>residualPos,"Residual Mathematics source list missing");
+ const allowedResidual48=new Set(JSON.parse(residualSrc.slice(residualPos+residualHeader.length,residualEnd)));
+ assert.equal(allowedResidual48.size,48,"Exactly 48 new Mathematics source proofs required");
+ assert([...allowedResidual48].every(id=>![allowedText,allowedMethods,allowedSymbolic,allowedCalc,allowedMMA,allowedNumerics].some(set=>set.has(id))),
+  "Residual Mathematics source cohort overlaps previous verified batches");
+ let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0,trustedTextCount=0,trustedResidualCount=0;
  let manualCheckCount=0,manualPartCount=0;
  for(const paper of mathPaperRows){
   const cases=paper.criteria.filter(p=>p.sourceMarking?.criteria?.some(c=>
@@ -1554,6 +1563,11 @@ try{
     assert.equal(found.suggestedMarks,part.maxMarks,
      "Source calculation must retain its own allocation: "+part.id);
     trustedCalcCount++;
+   }else if(allowedResidual48.has(part.id)){
+    assert.equal(found.resolved,true,"New residual Maths source evidence did not resolve: "+part.id);
+    assert.equal(found.suggestedMarks,part.maxMarks,
+     "Residual Mathematics criterion changed mark ceiling: "+part.id);
+    trustedResidualCount++;
    }else{
     assert.equal(found.resolved,false,
      'Unapproved Mathematics method-check implied authority: '+part.id);
@@ -1574,6 +1588,8 @@ try{
   'Exactly fifty new source-authored original method checks must resolve');
  assert.equal(trustedTextCount,50,
   'Exactly fifty source-authored original text questions must resolve');
+ assert.equal(trustedResidualCount,48,
+  "All 48 source-proven residual Maths parts must resolve at their own allocation");
  assert.equal(manualCheckCount,967,
   'The entire 967-check Mathematics manual-validation inventory must be retained');
  assert(manualPartCount>0);
