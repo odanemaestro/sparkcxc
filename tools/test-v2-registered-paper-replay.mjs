@@ -1449,8 +1449,19 @@ try{
  }
 
 
- // All archived Mathematics method/graphical draft checks must remain
- // explicitly unverified, even when the model's final answer is provided.
+ // Only the fifty explicitly source-pinned M1/A1 numerical methods now
+ // resolve from genuine authored working. All other source-manual drafts
+ // remain provisional and no incomplete paper is authorised for release.
+ const numericSource=fs.readFileSync("src/grading/v2OriginalMathNumericWorking.js","utf8");
+ const numericHeader="export const SOURCE_NUMERIC_TWO_MARK_IDS=Object.freeze(";
+ const numericStart=numericSource.indexOf(numericHeader);
+ assert(numericStart>=0,"Trusted Mathematics source allowlist is missing");
+ const numericEnd=numericSource.indexOf(");",numericStart+numericHeader.length);
+ assert(numericEnd>numericStart,"Trusted Mathematics source allowlist is malformed");
+ const allowedNumerics=new Set(JSON.parse(
+   numericSource.slice(numericStart+numericHeader.length,numericEnd)));
+ assert.equal(allowedNumerics.size,50);
+ let trustedNumericCount=0;
  let manualCheckCount=0,manualPartCount=0;
  for(const paper of mathPaperRows){
   const cases=paper.criteria.filter(p=>p.sourceMarking?.criteria?.some(c=>
@@ -1469,12 +1480,20 @@ try{
   for(const part of cases){
    const found=result.rows.find(row=>row.criterionId===part.id);
    assert(found,'Missing calibrated math source part '+part.id);
-   assert.equal(found.resolved,false,
-    'Unapproved Mathematics method-check implied authority: '+part.id);
+   if(allowedNumerics.has(part.id)){
+    assert.equal(found.resolved,true,'Source-authorised numeric method missing: '+part.id);
+    assert.equal(found.suggestedMarks,2,'Incorrect two-mark M1/A1 score: '+part.id);
+    trustedNumericCount++;
+   }else{
+    assert.equal(found.resolved,false,
+     'Unapproved Mathematics method-check implied authority: '+part.id);
+   }
   }
   assert.equal(result.canPublishFinalScore,false,
    'Manual-verification Mathematics draft cannot publish a final score: '+paper.paper_id);
  }
+ assert.equal(trustedNumericCount,50,
+  'Exactly fifty source-authorised M1/A1 methods must resolve');
  assert.equal(manualCheckCount,967,
   'The entire 969-check Mathematics manual-validation inventory must be retained');
  assert(manualPartCount>0);
