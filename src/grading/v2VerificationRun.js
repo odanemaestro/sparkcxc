@@ -16,6 +16,7 @@ import {mathematicsTableFixtures} from "./v2Fixtures/mathematicsTableCells";
 import {mathematicsGraphFixtures} from "./v2Fixtures/mathematicsGraph";
 import {mathematicsOgiveFixtures} from "./v2Fixtures/mathematicsOgive";
 import {mathematicsConstructionFixtures} from "./v2Fixtures/mathematicsConstruction";
+import {mathematicsOriginalPadFixtures} from "./v2Fixtures/mathematicsOriginalPad";
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 
 import {scienceFixtures,pointAnswer} from "./v2Fixtures/science";
@@ -87,6 +88,8 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
   return {...set,ruleId:"it:"+ctx.rule};
  }
  if(subjectId==="mathematics"){
+  const originalPad=mathematicsOriginalPadFixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
+  if(originalPad)return originalPad;
   const construction=mathematicsConstructionFixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
   if(construction)return construction;
   const ogive=mathematicsOgiveFixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
