@@ -5,7 +5,7 @@ const sourceOf=id=>{
  const [qid,pid]=id.split("::");
  const part=PAPER2_QUESTION_BANK.find(q=>q.question_id===qid)?.parts.find(p=>p.id===pid);
  if(!part)throw Error("No original Mathematics source for "+id);
- const B=/^(p2-q(?:2|7)-v[12]::)/.test(id);
+ const B=/^(p2-q(?:2|7)-v[12]::)/.test(id)||id==="p2-q3-v2::b";
  const single=part.marks===1;
  const source={answer:part.answer,solution:part.solution,
   criteria:Array.from({length:part.marks},(_,i)=>{
