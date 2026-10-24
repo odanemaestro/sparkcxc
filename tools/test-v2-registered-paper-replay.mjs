@@ -1519,7 +1519,17 @@ try{
 
  assert([...allowedResidual48].every(id=>![allowedText,allowedMethods,allowedSymbolic,allowedCalc,allowedMMA,allowedNumerics].some(set=>set.has(id))),
   "Residual Mathematics source cohort overlaps previous verified batches");
- let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0,trustedTextCount=0,trustedResidualCount=0;
+ const nextMath=fs.readFileSync("src/grading/v2MathNext29.js","utf8");
+ const nextMathHeader="export const MATH_NEXT_29_IDS=Object.freeze(";
+ const nextMathStart=nextMath.indexOf(nextMathHeader);
+ const nextMathEnd=nextMath.indexOf(");",nextMathStart+nextMathHeader.length);
+ assert(nextMathStart>=0&&nextMathEnd>nextMathStart,"New mathematics source cohort missing");
+ const allowedNext29=new Set(JSON.parse(nextMath.slice(nextMathStart+nextMathHeader.length,nextMathEnd)));
+ assert.equal(allowedNext29.size,29,"29 new independent source evidence parts required");
+ assert([...allowedNext29].every(id=>![
+  allowedNumerics,allowedMMA,allowedCalc,allowedSymbolic,allowedMethods,allowedText,allowedResidual48
+ ].some(set=>set.has(id))),"New Maths source grader duplicates an approved cohort");
+ let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0,trustedTextCount=0,trustedResidualCount=0,trustedNextMathCount=0;
  let manualCheckCount=0,manualPartCount=0;
  for(const paper of mathPaperRows){
   const cases=paper.criteria.filter(p=>p.sourceMarking?.criteria?.some(c=>
@@ -1581,6 +1591,11 @@ try{
       "Residual Mathematics criterion changed mark ceiling: "+part.id);
     }
     trustedResidualCount++;
+   }else if(allowedNext29.has(part.id)){
+    assert.equal(found.resolved,true,"New source-proven maths part unresolved: "+part.id);
+    assert.equal(found.suggestedMarks,part.maxMarks,
+     "New source-proven maths part altered source marks: "+part.id);
+    trustedNextMathCount++;
    }else{
     assert.equal(found.resolved,false,
      'Unapproved Mathematics method-check implied authority: '+part.id);
@@ -1611,6 +1626,8 @@ try{
  // This loop deliberately replays only criteria containing manual-verification
  // checks. The other nine members of the 48-part cohort have typed source
  // checks and are exercised by the standalone 576-case verification matrix.
+ assert.equal(trustedNextMathCount,2,
+  "Both registered original matrix-equation parts require source-proof authority");
  assert.equal(trustedResidualCount,39,
   "All 39 previously manual Mathematics parts in this replay must resolve");
  assert.equal(allowedResidual48.size-trustedResidualCount,9,
