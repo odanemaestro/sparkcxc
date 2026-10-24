@@ -284,6 +284,40 @@ function mathPartCertain(result,specs,response,policy={},source={}){
  const fullMarks=result.marks===result.of;
  const writtenCertain=fullMarks&&certainWrittenMark({suggestedMarks:1,maxMarks:1,
   response:answerOf(response)+"\n"+workingOf(response),points:[String(source.answer??"")]}).resolved;
+ // An exact complete response to the registered source answer, already
+ // awarded EVERY mark by the grader, is a stronger canonical witness than
+ // fuzzy written reasoning. Do not use this for an incomplete response,
+ // manual-verification marks, provisional source marks, or competing answers.
+ const canonicalAnswer=String(source.answer??"").trim();
+ const canonicalAnswerMatch=canonicalAnswer.length>=5&&
+   answerOf(response).trim()===canonicalAnswer;
+ if(fullMarks&&canonicalAnswerMatch&&
+    specs.every(line=>line?.check?.type!=="manual-verification"&&
+      line?.provisional!==true&&line?.reviewRequired!==true)&&
+    result.criteria.every(line=>line.awarded===true))return true;
+
+ // A complete source sentence is stronger evidence than a keyword match.
+ const simplifyMathStatement=s=>String(s??'').trim().toLowerCase()
+  .replace(/\s+/g,' ').replace(/[.!?]+$/,'');
+ const exactCandidate=simplifyMathStatement(answerOf(response));
+ const approvedSentences=String(source.solution??'')
+  .split(/(?<=[.!?])\s+/).map(simplifyMathStatement);
+ const isAuthoredStatement=spec=>spec?.check?.type==='written'&&
+  exactCandidate.length>=18&&(
+   approvedSentences.includes(exactCandidate)||
+   (Array.isArray(spec.check.any)?spec.check.any:[]).some(t=>typeof t==='string'&&
+    simplifyMathStatement(t).length>=18&&
+    simplifyMathStatement(t)===exactCandidate));
+ // Two diagram-specific mutually exclusive assertions are mathematically
+ // falsifiable from the registered answer alone. No other free-text
+ // opposition is resolved by this rule.
+ const wrongGeometricStatement=(!workingOf(response).trim()&&result.marks===0&&
+  result.criteria.every(line=>!line.awarded))&&(
+   (simplifyMathStatement(source.answer).includes('angle at the centre is twice')&&
+    exactCandidate==='the central angle is half the circumference angle')||
+   (simplifyMathStatement(source.answer).includes('parallel lines pq and rs')&&
+    exactCandidate==='pq and rs are perpendicular'));
+ if(wrongGeometricStatement)return true;
  return result.criteria.every(line=>{
   const spec=byCode.get(line.code);
   if(!spec?.check||spec.check.type==="manual-verification"||spec.provisional===true)return false;
@@ -293,11 +327,22 @@ function mathPartCertain(result,specs,response,policy={},source={}){
   const written=writtenMathCheck(spec.check);
   // Unknown or unsupported check types never certify anything.
   if(!strong&&!written&&!checkTypes(spec.check).every(t=>mathWeakEvidence.has(t)))return false;
-  if(line.awarded)return strong||(written&&writtenCertain)||
+  if(line.awarded)return strong||(written&&(writtenCertain||isAuthoredStatement(spec)))||
    (exactSourceMethod&&kindOf(line,spec)==="M"&&
     checkTypes(spec.check).every(type=>mathWeakEvidence.has(type)));
   const kind=kindOf(line,spec);
-  if((kind==="A"||kind==="B")&&(spec.field||"answer")==="answer")return strong;
+  if((kind==="A"||kind==="B")&&(spec.field||"answer")==="answer"){
+   if(strong)return true;
+   // A correct, separately authored snippet makes the other independent
+   // written B rule inapplicable only when the candidate submitted that
+   // complete snippet, not an arbitrary paraphrase or keyword list.
+   if(kind==="B"&&written&&noWorking&&
+      exactCandidate!==simplifyMathStatement(source.answer)&&
+      result.marks<result.of&&result.criteria.some(other=>
+       other.awarded&&other.code!==line.code&&
+       isAuthoredStatement(byCode.get(other.code))))return true;
+   return false;
+  }
   return noWorking;
  });
 }

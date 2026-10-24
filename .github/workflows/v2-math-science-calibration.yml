@@ -71,6 +71,18 @@ jobs:
                 r.provenance?.workingTreeDirty!==false||
                 !r.evidenceSha256||!r.sourceSha256||!r.criterionSha256))
             throw Error("Source-bound 57-criterion Mathematics batch was not fully verified");
+          // Only source-verified geometry reasoning records can be registered.
+          const geometryIds=new Set(["p2e-q6::c","p2f-q6::c","p2g-q6::c",
+            "p2h-q6::c","p2i-q6::c","p2j-q6::c"]);
+          const geometryRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>geometryIds.has(r.criterionId));
+          if(geometryRecords.length!==6||
+             geometryRecords.some(r=>r.outcome!=="verified"||
+               r.provenance?.workingTreeDirty!==false||
+               !r.evidenceSha256||!r.sourceSha256||!r.criterionSha256))
+            throw Error("Geometry reasoning approval evidence is not complete");
+          for(const record of geometryRecords)
+            console.log("V2_GEOMETRY_APPROVAL_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));

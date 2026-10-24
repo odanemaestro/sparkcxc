@@ -67,5 +67,29 @@ export const CURATED_MATHEMATICS={
  ],
  "p2j-q8::a":[
   F("partial",{answer:"x + y <= 40",working:""},2,"first independent source constraint")
+ ],
+ "p2e-q6::c":[
+  F("partial",{answer:"angle at the centre is twice the angle at the circumference"},1),
+  F("incorrect",{answer:"The central angle is half the circumference angle."},0)
+ ],
+ "p2g-q6::c":[
+  F("partial",{answer:"angle at the centre is twice the angle at the circumference"},1),
+  F("incorrect",{answer:"The central angle is half the circumference angle."},0)
+ ],
+ "p2i-q6::c":[
+  F("partial",{answer:"angle at the centre is twice the angle at the circumference"},1),
+  F("incorrect",{answer:"The central angle is half the circumference angle."},0)
+ ],
+ "p2f-q6::c":[
+  F("partial",{answer:"PQ is parallel to RS."},1),
+  F("incorrect",{answer:"PQ and RS are perpendicular."},0)
+ ],
+ "p2h-q6::c":[
+  F("partial",{answer:"PQ is parallel to RS."},1),
+  F("incorrect",{answer:"PQ and RS are perpendicular."},0)
+ ],
+ "p2j-q6::c":[
+  F("partial",{answer:"PQ is parallel to RS."},1),
+  F("incorrect",{answer:"PQ and RS are perpendicular."},0)
  ]
 };
