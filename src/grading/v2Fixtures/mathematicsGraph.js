@@ -30,8 +30,9 @@ export function mathematicsGraphFixtures({criterion,part,maxMarks}){
    F("incorrect",wrong,0,"incorrect coordinates despite having a graph object"),
    F("blank",{points:[]},0,"no marks without plotted evidence"),
    F("irrelevant",{answer:"I can draw a graph",points:[]},0,"prose cannot substitute for plotted coordinates"),
-   F("competing",{points:[...all,extra],curve:false},{min:0,max:maxMarks-1},
-    "one extra contradictory plot cannot earn a smooth curve mark"),
+   F("competing",{points:[...all,
+     {...extra,...(plot?{label:"A"}:{})}],curve:false},{min:0,max:maxMarks-1},
+    "contradictory A label or unsmoothed extra plot cannot earn full source credit"),
    F("ceiling",ceiling,{min:0,max:maxMarks},
     "additional point cannot push marks past original source maximum")
   ]};
