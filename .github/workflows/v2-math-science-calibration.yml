@@ -224,6 +224,24 @@ jobs:
              throw Error("Batch fifty original calculations are missing full source verification");
           for(const record of calcRecords)
             console.log("V2_SOURCE_CALC_50_ITEM="+JSON.stringify(record));
+          const symbolicSource=fs.readFileSync("src/grading/v2OriginalMathSymbolic50.js","utf8");
+          const symHeader="export const SOURCE_SYMBOLIC_50_IDS=Object.freeze(";
+          const symStart=symbolicSource.indexOf(symHeader);
+          const symEnd=symbolicSource.indexOf(");",symStart+symHeader.length);
+          if(symStart<0||symEnd<0)throw Error("Source symbolic allowlist is missing");
+          const symIds=new Set(JSON.parse(symbolicSource.slice(symStart+symHeader.length,symEnd)));
+          const symRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>symIds.has(r.criterionId));
+          if(symIds.size!==50||symRecords.length!==50||
+            new Set(symRecords.map(r=>r.criterionId)).size!==50||
+            symRecords.some(r=>r.outcome!=="verified"||
+              r.provenance?.workingTreeDirty!==false||
+              !r.criterionSha256||!r.sourceSha256||!r.evidenceSha256||
+              !Array.isArray(r.cases)||r.cases.length<9||
+              r.cases.some(c=>!c.passed)))
+           throw Error("Fifty symbolic source criteria lack complete verification");
+          for(const record of symRecords)
+            console.log("V2_SOURCE_SYMBOLIC_50_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));
