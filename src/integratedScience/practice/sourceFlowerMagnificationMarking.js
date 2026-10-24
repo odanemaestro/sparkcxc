@@ -32,6 +32,7 @@ export function markSourceFlowerMagnification(responses={},base=FLOWER_SOURCE_MA
  const complete=Boolean(matchesDrawing&&hasDimensions&&working&&answer);
  return {score,maxMarks:2,sourceBiological:true,sourceResolved:false,
   provisional:true,confidence:complete?"medium":"low",
+  reason:"The real drawing height and source specimen scale have not been independently verified.",
   unassessedMarks:2-score,visualEvidenceRequired:true,
   criteria:[
    {id:base+":method",label:"Magnification = measured drawing height / actual height",marks:Number(methodCorrect),maxMarks:1,earned:methodCorrect},
