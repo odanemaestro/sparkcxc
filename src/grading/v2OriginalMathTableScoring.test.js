@@ -18,7 +18,7 @@ test.each(["p2e","p2f","p2g","p2h","p2i","p2j"])(
  const complete={cells:cells(ctx.part)};
  const full=gradeOriginalMathematicsTable({...ctx,criterionId,response:complete});
  expect(full).toMatchObject({marks:ctx.part.marks,resolved:true});
- const wrong={cells:Object.fromEntries(Object.keys(complete.cells).map(k=>[k:"999"]))};
+ const wrong={cells:Object.fromEntries(Object.keys(complete.cells).map(k=>[k,"999"]))};
  const noCredit=gradeOriginalMathematicsTable({...ctx,criterionId,response:wrong});
  expect(noCredit).toMatchObject({marks:0,resolved:true});
  const empty=gradeOriginalMathematicsTable({...ctx,criterionId,response:{cells:{}}});
