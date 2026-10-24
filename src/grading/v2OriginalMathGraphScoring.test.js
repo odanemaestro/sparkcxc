@@ -22,7 +22,7 @@ test.each(ids)("source-bound graph %s resolves only genuine original marks",id=>
  expect(grade({points,curve:!label})).toMatchObject({marks:part.marks,resolved:true});
  expect(grade({points:[...points].reverse(),curve:!label})).toMatchObject({marks:part.marks,resolved:true});
  expect(grade({points:[]}).marks).toBe(0);
- expect(grade({points:[points[0]]})).toMatchObject({marks:1,resolved:true});
+ expect(grade({points:label?[points[0]]:points.slice(0,3)})).toMatchObject({marks:1,resolved:true});
  expect(grade({points:[{x:part.responseSchema.graph.xMin,y:part.responseSchema.graph.yMin}]}))
   .toMatchObject({marks:0,resolved:true});
  if(label){
