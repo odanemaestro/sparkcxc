@@ -296,6 +296,16 @@ function mathPartCertain(result,specs,response,policy={},source={}){
    (Array.isArray(spec.check.any)?spec.check.any:[]).some(t=>typeof t==='string'&&
     simplifyMathStatement(t).length>=18&&
     simplifyMathStatement(t)===exactCandidate));
+ // Two diagram-specific mutually exclusive assertions are mathematically
+ // falsifiable from the registered answer alone. No other free-text
+ // opposition is resolved by this rule.
+ const wrongGeometricStatement=(!workingOf(response).trim()&&result.marks===0&&
+  result.criteria.every(line=>!line.awarded))&&(
+   (simplifyMathStatement(source.answer).includes('angle at the centre is twice')&&
+    exactCandidate==='the central angle is half the circumference angle')||
+   (simplifyMathStatement(source.answer).includes('parallel lines pq and rs')&&
+    exactCandidate==='pq and rs are perpendicular'));
+ if(wrongGeometricStatement)return true;
  return result.criteria.every(line=>{
   const spec=byCode.get(line.code);
   if(!spec?.check||spec.check.type==="manual-verification"||spec.provisional===true)return false;
