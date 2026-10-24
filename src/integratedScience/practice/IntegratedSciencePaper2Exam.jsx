@@ -411,7 +411,7 @@ function MarkScheme({ item, evaluation }) {
   return (
     <div className="is-p2-mark-scheme">
       <strong>SPARK marking review</strong>
-      {evaluation && <div className="is-p2-auto-score"><b>{evaluation.score}/{evaluation.maxMarks} marks</b><span>{evaluation.confidence === "high" ? "High-confidence structured check" : "Estimated from the authored marking points"}</span>{evaluation.unassessedMarks>0 && <span>{evaluation.unassessedMarks} marks remain unassessed. {evaluation.reason}</span>}</div>}
+      {evaluation && <div className="is-p2-auto-score"><b>{evaluation.score}/{evaluation.maxMarks} marks</b><span>{evaluation.sourceBiological ? "Provisional drawing evidence, not a final verified mark" : evaluation.confidence === "high" ? "High-confidence structured check" : "Estimated from the authored marking points"}</span>{evaluation.unassessedMarks>0 && <span>{evaluation.unassessedMarks} marks remain unassessed.</span>}{evaluation.reason&&<span>{evaluation.reason}</span>}</div>}
       {evaluation?.criteria?.length > 0 && <ul className="is-p2-auto-criteria">{evaluation.criteria.map(row => <li key={row.id}><b>{row.marks}/{row.maxMarks}</b> <IntegratedScienceText>{row.label}</IntegratedScienceText></li>)}</ul>}
       <ul>{(scheme.points || []).map((point,index) => <li key={index}><IntegratedScienceText>{point}</IntegratedScienceText></li>)}</ul>
       {scheme.guidance && <p><b>Guidance:</b> <IntegratedScienceText>{scheme.guidance}</IntegratedScienceText></p>}
