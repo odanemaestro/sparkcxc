@@ -109,5 +109,23 @@ export const CURATED_MATHEMATICS={
    "complete optimum vertex and maximum-profit statement"),
   F("partial",{answer:"15, 25",working:"The greatest of the profits is $420, at the vertex (15, 25). So 15 trays of buns and 25 trays of bread should be made."},1,
    "correct source maximum-profit working, but final vertex response omits the required profit")
+ ],
+ "p2f-q2::c":[
+  F("equivalent",{answer:"Answer: q = (4p + 5)/3",working:"Multiplying both sides by 4: 4p = 3q - 5. Adding 5 to both sides: 4p + 5 = 3q. Dividing both sides by 3: q = (4p + 5)/3."},2,
+   "complete subject equation explicitly identifies the required variable"),
+  F("partial",{answer:"(4p + 5)/3",working:"Multiplying both sides by 4: 4p = 3q - 5. Adding 5 to both sides: 4p + 5 = 3q. Dividing both sides by 3: q = (4p + 5)/3."},1,
+   "numerical expression omits the explicit requested subject variable")
+ ],
+ "p2h-q2::c":[
+  F("equivalent",{answer:"Answer: a = 2A/h - b",working:"Multiplying both sides by 2: 2A = h(a + b). Dividing by h: 2A/h = a + b. Subtracting b: a = 2A/h - b."},2,
+   "complete subject equation explicitly identifies the required variable"),
+  F("partial",{answer:"2A/h - b",working:"Multiplying both sides by 2: 2A = h(a + b). Dividing by h: 2A/h = a + b. Subtracting b: a = 2A/h - b."},1,
+   "numerical expression omits the explicit requested subject variable")
+ ],
+ "p2j-q2::c":[
+  F("equivalent",{answer:"Answer: s = (v^2 - u^2)/(2a)",working:"Rearrange v^2 = u^2 + 2as by subtracting u^2 to get v^2 - u^2 = 2as. Dividing through by 2a gives s = (v^2 - u^2)/(2a)."},2,
+   "complete subject equation explicitly identifies the required variable"),
+  F("partial",{answer:"(v^2 - u^2)/(2a)",working:"Rearrange v^2 = u^2 + 2as by subtracting u^2 to get v^2 - u^2 = 2as. Dividing through by 2a gives s = (v^2 - u^2)/(2a)."},1,
+   "numerical expression omits the explicit requested subject variable")
  ]
 };
