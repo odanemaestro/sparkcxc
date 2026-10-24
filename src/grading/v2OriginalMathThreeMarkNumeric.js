@@ -95,7 +95,7 @@ export function gradeThreeMarkNumericSource({criterionId,source,part,response}){
  const submitted=numericValue(answer),expected=numericValue(source.answer);
  const method=!!working.trim()&&normalize(working)===normalize(source.solution);
  if(working.trim()&&!method)return null;
- const places=/correct to (\\d+) decimal places?/i.exec(part.prompt||"");
+ const places=/correct to (\d+) decimal places?/i.exec(part.prompt||"");
  const precisionOk=!places||
   (typeof answer==="string"&&
    new RegExp("^\\s*[-+]?\\d+\\.\\d{"+Number(places[1])+"}\\s*$").test(answer));
