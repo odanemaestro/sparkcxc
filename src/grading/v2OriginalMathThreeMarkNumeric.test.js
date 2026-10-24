@@ -48,6 +48,13 @@ test("correct reduced mixed number is provisional without method, authoritative 
  expect(grade({criterionId:id,source,part,response:{answer:"1 8/10",working:part.solution}}))
   .toMatchObject({marks:2,resolved:true});
 });
+test("unreduced fraction earns no accuracy even for an integer source answer",()=>{
+ const id="p2-q1-v1::a",part=partFor(id),source=sourceFor(part);
+ expect(grade({criterionId:id,source,part,response:{answer:"14/2",working:""}}))
+  .toMatchObject({marks:0,resolved:true});
+ expect(grade({criterionId:id,source,part,response:{answer:"14/2",working:part.solution}}))
+  .toMatchObject({marks:2,resolved:true});
+});
 test("other parts receive no unverified authority",()=>{
  const part=partFor(THREE_MARK_NUMERIC_IDS[0]);
  expect(grade({criterionId:"p2-q1-v1::z",part,source:sourceFor(part),response:{answer:part.answer,working:part.solution}})).toBeNull();
