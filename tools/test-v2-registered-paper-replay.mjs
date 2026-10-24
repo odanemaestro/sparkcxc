@@ -75,7 +75,7 @@ try{
  grant execute on function auth.uid(),auth.jwt() to anon,authenticated,service_role;`);
  for(const name of migrations)
   await db.exec(fs.readFileSync("supabase/migrations/"+name,"utf8"));
- const papers=(await db.query(`select subject_id,paper_id,criteria
+ const papers=(await db.query(`select subject_id,paper_id,criteria,active,verification_status
  from spark_grading_private.rubrics_v2 order by subject_id,paper_id`)).rows;
  assert.equal(papers.length,67);
 
@@ -1586,8 +1586,15 @@ try{
      'Unapproved Mathematics method-check implied authority: '+part.id);
    }
   }
-  assert.equal(result.canPublishFinalScore,false,
-   'Manual-verification Mathematics draft cannot publish a final score: '+paper.paper_id);
+  // A complete mathematics calculation is not permission to publish. The
+  // database release gate still rejects every inactive, draft-version paper.
+  assert.equal(paper.active,false,
+   'An unapproved Mathematics paper must not become active: '+paper.paper_id);
+  assert.equal(paper.verification_status,'draft',
+   'Source-fixture checks cannot independently release Mathematics: '+paper.paper_id);
+  if(result.canPublishFinalScore)
+   assert(result.rows.every(r=>r.resolved),
+    'No Mathematics draft can claim mathematical completeness with an unresolved part');
  }
  assert.equal(trustedNumericCount,50,
   'Exactly fifty source-authorised M1/A1 methods must resolve');
