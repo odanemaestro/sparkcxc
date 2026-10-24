@@ -36,8 +36,8 @@ test.each(["stoma","flower"])(
   const [id,base]=IDS[key],fixtures=originalBiologySourceFixtures(id).fixtures;
   for(const cls of ["blank","irrelevant"]){
    const sample=fixtures.find(f=>f.cls===cls);
-   expect(verifyOriginalBiologyEvidence(base,flattened(key,sample)))
-    .toMatchObject({score:0,resolved:true});
+   // This focused examiner abstains. The paper-level adapter handles blanks.
+   expect(verifyOriginalBiologyEvidence(base,flattened(key,sample))).toBeNull();
   }
  }
 );
