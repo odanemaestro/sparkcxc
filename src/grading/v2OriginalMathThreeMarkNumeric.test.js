@@ -62,6 +62,15 @@ test("an incorrect bare number cannot resolve source method marks",()=>{
  expect(grade({criterionId:id,part,source,response:{answer:"160",working:""}}))
   .toMatchObject({marks:0,resolved:false});
 });
+test("answers explicitly requested to two decimal places must retain the precision",()=>{
+ const id="p2-q3-v2::c",part=partFor(id),source=sourceFor(part);
+ expect(grade({criterionId:id,part,source,response:{answer:"5.00",working:""}}))
+  .toMatchObject({marks:1,resolved:false});
+ expect(grade({criterionId:id,part,source,response:{answer:"5",working:""}}))
+  .toMatchObject({marks:0,resolved:false});
+ expect(grade({criterionId:id,part,source,response:{answer:"5",working:part.solution}}))
+  .toMatchObject({marks:2,resolved:true});
+});
 test("other parts receive no unverified authority",()=>{
  const part=partFor(THREE_MARK_NUMERIC_IDS[0]);
  expect(grade({criterionId:"p2-q1-v1::z",part,source:sourceFor(part),response:{answer:part.answer,working:part.solution}})).toBeNull();
