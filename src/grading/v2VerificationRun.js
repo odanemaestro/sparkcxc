@@ -26,6 +26,7 @@ import {mathematicsOriginalText50Fixtures} from "./v2Fixtures/mathematicsOrigina
 import {mathematicsOriginalResidual48Fixtures} from "./v2Fixtures/mathematicsOriginalResidual48";
 import {mathematicsNext29Fixtures} from "./v2Fixtures/mathematicsNext29";
 import {mathematicsFinalReasoningFixtures} from "./v2Fixtures/mathematicsFinalReasoning";
+import {mathematicsFinal11Fixtures} from "./v2Fixtures/mathematicsFinal11";
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 
 import {scienceFixtures,pointAnswer} from "./v2Fixtures/science";
@@ -97,6 +98,8 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
   return {...set,ruleId:"it:"+ctx.rule};
  }
  if(subjectId==="mathematics"){
+  const final11=mathematicsFinal11Fixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
+  if(final11)return final11;
   const final18=mathematicsFinalReasoningFixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
   if(final18)return final18;
   const next29=mathematicsNext29Fixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
