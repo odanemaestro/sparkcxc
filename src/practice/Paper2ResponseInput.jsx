@@ -526,6 +526,8 @@ function GraphWorkspace({ schema, value, onChange, readOnly = false }) {
   const response = safeObject(value);
   const [hover, setHover] = useState(null);
   const graph = schema.graph || {};
+  const [pointLabel,setPointLabel] = useState("A");
+  const pointLabels=Array.isArray(graph.pointLabels)?graph.pointLabels:[];
   const width = 650, height = 420, margin = 45;
   const customAxes = graph.axisSetupMode === "custom" || Boolean(graph.allowCustomAxes);
   const numericAxis = (value, fallback) => {
@@ -579,6 +581,14 @@ function GraphWorkspace({ schema, value, onChange, readOnly = false }) {
     if (activeGraphTool === "line") {
       const next = linePoints.length >= 2 ? [p] : linePoints.some(existing => sameCoordinate(existing,p)) ? linePoints : [...linePoints, p];
       onChange({ ...response, linePoints: next });
+    } else if(pointLabels.length){
+      // A and B are placed deliberately; a relabelled point replaces only
+      // the previous point with that label, never the other source point.
+      const remaining=points.filter(existing=>existing.label!==pointLabel);
+      onChange({ ...response, points:[...remaining,{...p,label:pointLabel}] });
+      const following=pointLabels.find(label=>label!==pointLabel&&
+        !remaining.some(existing=>existing.label===label));
+      if(following)setPointLabel(following);
     } else if (!points.some(existing => sameCoordinate(existing,p))) {
       onChange({ ...response, points: [...points, p] });
     }
@@ -614,6 +624,17 @@ function GraphWorkspace({ schema, value, onChange, readOnly = false }) {
   return (
     <div className={`paper2-workspace paper2-graph-workspace${readOnly ? " paper2-workspace-readonly" : ""}`}>
       {!readOnly && <WorkspaceGuide type="graph" customAxes={customAxes} />}
+      {!readOnly && pointLabels.length>0 && (
+        <div className="paper2-workspace-toolbar paper2-graph-mode-toolbar" role="group" aria-label="Point label to plot">
+          <span>Choose the point label before placing it on the axes</span>
+          {pointLabels.map(label=>(
+            <button type="button" key={label} className={pointLabel===label?"active":""}
+              aria-pressed={pointLabel===label} onClick={()=>setPointLabel(label)}>
+              Plot point {label}
+            </button>
+          ))}
+        </div>
+      )}
       {!readOnly && combinedPointLineMode && (
         <div className="paper2-workspace-toolbar paper2-graph-mode-toolbar" role="group" aria-label="Graph drawing tool">
           <span>Graph tools</span>
@@ -659,7 +680,7 @@ function GraphWorkspace({ schema, value, onChange, readOnly = false }) {
         {(customAxes ? String(response.axisYLabel || "").trim() : graph.yLabel) && <text transform={`translate(14 ${height/2}) rotate(-90)`} textAnchor="middle" fill="currentColor" stroke="none" fontSize="12">{customAxes ? response.axisYLabel : graph.yLabel}</text>}
         {background.length > 1 && <path d={smoothCurvePath(background, toScreen)} fill="none" stroke="currentColor" strokeOpacity="0.3" strokeWidth="2" />}
         {response.curve && orderedPoints.length > 1 && <path d={smoothCurvePath(orderedPoints, toScreen)} fill="none" stroke="currentColor" strokeWidth="2" />}
-        {points.map((point,index) => { const p=toScreen(point); return <g key={`p-${index}`}><circle cx={p.x} cy={p.y} r="4" fill="currentColor" stroke="none"/><text x={p.x+6} y={p.y-7} fill="currentColor" stroke="none" fontSize="9">({formatNumber(point.x)}, {formatNumber(point.y)})</text></g>; })}
+        {points.map((point,index) => { const p=toScreen(point); return <g key={`p-${index}`}><circle cx={p.x} cy={p.y} r="4" fill="currentColor" stroke="none"/><text x={p.x+6} y={p.y-7} fill="currentColor" stroke="none" fontSize="9">{point.label?point.label+" ":""}({formatNumber(point.x)}, {formatNumber(point.y)})</text></g>; })}
         {linePoints.length >= 2 && (() => { const a=toScreen(linePoints[0]),b=toScreen(linePoints[linePoints.length-1]); return <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="currentColor" strokeWidth="2.2"/>; })()}
         {linePoints.map((point,index) => { const p=toScreen(point); return <circle key={`l-${index}`} cx={p.x} cy={p.y} r="4" fill="currentColor" stroke="none"/>; })}
         {hover && (() => { const p=toScreen(hover); const tx=Math.min(width-118,Math.max(6,p.x+10)); const ty=Math.max(20,p.y-12); return <g pointerEvents="none" className="paper2-graph-crosshair"><line x1={p.x} y1={margin} x2={p.x} y2={height-margin} stroke="currentColor" strokeDasharray="3 3"/><line x1={margin} y1={p.y} x2={width-margin} y2={p.y} stroke="currentColor" strokeDasharray="3 3"/><circle cx={p.x} cy={p.y} r="5" fill="none" stroke="currentColor" strokeWidth="2"/><rect x={tx} y={ty-14} width="104" height="20" rx="5" fill="currentColor" opacity="0.88"/><text x={tx+52} y={ty} textAnchor="middle" fill="white" stroke="none" fontSize="11">({formatNumber(hover.x)}, {formatNumber(hover.y)})</text></g>; })()}

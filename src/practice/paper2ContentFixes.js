@@ -543,6 +543,19 @@ export const PAPER2_CONTENT_FIXES = [
     },
     optional: true,
   },
+  // Students must explicitly label the two plotted points on the original
+  // source axes. No mark is inferred from unlabeled coordinates.
+  ...["p2e-q3","p2g-q3","p2i-q3"].map(question=>({
+    id:"MATH-V2-POINT-LABELS-"+question,question,part:"a",
+    defect:"two plotted source points lacked individual A/B label controls",
+    why:"the source explicitly awards one mark for each accurately plotted and labelled point",
+    apply:part=>({
+      ...part,responseSchema:{
+        ...part.responseSchema,
+        graph:{...part.responseSchema?.graph,pointLabels:["A","B"]}
+      }
+    })
+  })),
 ];
 
 // ---------------------------------------------------------------------------
