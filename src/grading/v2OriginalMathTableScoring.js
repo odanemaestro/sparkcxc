@@ -61,8 +61,8 @@ export function gradeOriginalMathematicsTable({criterionId,source,part,response}
    if(String(value??"").trim()==="")return true;
    if(key==="dn"){
      const expr=String(value??"").trim();
-     return expr.length<=96&&/^[A-Za-z0-9+\\-*/^().\\s]+$/.test(expr)&&
-       !/\\b(?:or|either)\\b/i.test(expr);
+     return expr.length<=96&&/^[A-Za-z0-9+*/^().\s-]+$/.test(expr)&&
+       !/\b(?:or|either)\b/i.test(expr);
    }
    return parseNumber(value)!==null;
  };
