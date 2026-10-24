@@ -51,7 +51,7 @@ test("correct reduced mixed number is provisional without method, authoritative 
 test("unreduced fraction earns no accuracy even for an integer source answer",()=>{
  const id="p2-q1-v1::a",part=partFor(id),source=sourceFor(part);
  expect(grade({criterionId:id,source,part,response:{answer:"14/2",working:""}}))
-  .toMatchObject({marks:0,resolved:true});
+  .toMatchObject({marks:0,resolved:false});
  expect(grade({criterionId:id,source,part,response:{answer:"14/2",working:part.solution}}))
   .toMatchObject({marks:2,resolved:true});
 });
