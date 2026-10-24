@@ -117,15 +117,15 @@ export const CURATED_MATHEMATICS={
    "numerical expression omits the explicit requested subject variable")
  ],
  "p2h-q2::c":[
-  F("equivalent",{answer:"Answer: a = 2A/h - b",working:"Multiplying both sides by 2: 2A = h(a + b). Dividing by h: 2A/h = a + b. Subtracting b: a = 2A/h - b."},2,
+  F("equivalent",{answer:"Answer: a = 2A/h - b",working:"Multiplying both sides by 2: 2A = h(a + b). Dividing both sides by h: 2A/h = a + b. Subtracting b from both sides: a = 2A/h - b."},2,
    "complete subject equation explicitly identifies the required variable"),
-  F("partial",{answer:"2A/h - b",working:"Multiplying both sides by 2: 2A = h(a + b). Dividing by h: 2A/h = a + b. Subtracting b: a = 2A/h - b."},1,
+  F("partial",{answer:"2A/h - b",working:"Multiplying both sides by 2: 2A = h(a + b). Dividing both sides by h: 2A/h = a + b. Subtracting b from both sides: a = 2A/h - b."},1,
    "numerical expression omits the explicit requested subject variable")
  ],
  "p2j-q2::c":[
-  F("equivalent",{answer:"Answer: s = (v^2 - u^2)/(2a)",working:"Rearrange v^2 = u^2 + 2as by subtracting u^2 to get v^2 - u^2 = 2as. Dividing through by 2a gives s = (v^2 - u^2)/(2a)."},2,
+  F("equivalent",{answer:"Answer: s = (v^2 - u^2)/(2a)",working:"Subtracting u^2 from both sides: v^2 - u^2 = 2as. Dividing both sides by 2a: s = (v^2 - u^2)/(2a)."},2,
    "complete subject equation explicitly identifies the required variable"),
-  F("partial",{answer:"(v^2 - u^2)/(2a)",working:"Rearrange v^2 = u^2 + 2as by subtracting u^2 to get v^2 - u^2 = 2as. Dividing through by 2a gives s = (v^2 - u^2)/(2a)."},1,
+  F("partial",{answer:"(v^2 - u^2)/(2a)",working:"Subtracting u^2 from both sides: v^2 - u^2 = 2as. Dividing both sides by 2a: s = (v^2 - u^2)/(2a)."},1,
    "numerical expression omits the explicit requested subject variable")
  ]
 };
