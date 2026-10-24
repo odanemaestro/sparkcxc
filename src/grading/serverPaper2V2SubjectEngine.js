@@ -13,6 +13,7 @@ import {gradeOriginalMathConstruction} from "./v2OriginalMathConstruction";
 import {gradeOriginalMathPad} from "./v2OriginalMathPad";
 import {gradeOriginalMathNumericWorking} from "./v2OriginalMathNumericWorking";
 import {gradeThreeMarkNumericSource} from "./v2OriginalMathThreeMarkNumeric";
+import {gradeSourceCalc50} from "./v2OriginalMathSourceCalculations50";
 import {evaluatePoaSourceV2} from "../principlesOfAccounts/poaMarkingV2";
 import {evaluatePoaMethodsV2,POA_METHOD_SOURCE_FORMAT} from "../principlesOfAccounts/marking/poaMethodRegistry";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
@@ -212,6 +213,11 @@ function mathematics(rows,responses){
    throw new Error("Incomplete Mathematics marker");
   out.push(...selected.map((p,i)=>{
    const answer=responsesForQuestion[p.part.id];
+   const calc50=gradeSourceCalc50({
+    criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
+   });
+   if(calc50!==null)
+    return cap(p.row,calc50.marks,calc50.method,calc50.resolved===true);
    const sourceMMA=gradeThreeMarkNumericSource({
     criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
    });
