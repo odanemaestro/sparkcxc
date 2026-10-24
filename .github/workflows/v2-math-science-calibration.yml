@@ -145,6 +145,24 @@ jobs:
             throw Error("Original Mathematics Q3 ruler/compass evidence is unverified");
           for(const record of constructionRecords)
             console.log("V2_SOURCE_CONSTRUCTION_2_ITEM="+JSON.stringify(record));
+          // E-J ruler/compass geometry: no approvals without nine complete,
+          // clean and source-hashed original construction response fixtures.
+          const padIds=new Set([
+            "p2e-q4::a1","p2f-q4::a1","p2f-q4::a2",
+            "p2g-q4::a1","p2h-q4::a1","p2h-q4::a2",
+            "p2i-q4::a1","p2j-q4::a1","p2j-q4::a2"
+          ]);
+          const padRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>padIds.has(r.criterionId));
+          if(padRecords.length!==padIds.size||
+             new Set(padRecords.map(r=>r.criterionId)).size!==padIds.size||
+             padRecords.some(r=>r.outcome!=="verified"||
+                r.provenance?.workingTreeDirty!==false||
+                !r.evidenceSha256||!r.sourceSha256||!r.criterionSha256||
+                r.cases.some(x=>!x.passed)))
+             throw Error("Nine E-J original compass constructions lack complete source proof");
+          for(const record of padRecords)
+            console.log("V2_SOURCE_EJ_PAD_9_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));
