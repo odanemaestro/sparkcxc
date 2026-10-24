@@ -36,6 +36,7 @@ import {gradeFnhWrittenPart,fnhDistinctPairs} from "../fnh/practice/fnhPaper2Mar
 import {gradeIntegratedSciencePaper2Item,integratedSciencePoints,integratedScienceLineItem,
  integratedScienceGraphInText} from "../integratedScience/practice/integratedSciencePaper2Grader";
 import INTEGRATED_SCIENCE_PAPER2_SPECS from "../integratedScience/data/integratedSciencePaper2Specs.json";
+import {verifyOriginalBiologyEvidence} from "../integratedScience/practice/sourceBiologyV2Verification";
 import {gradeSocialStudiesShortAnswer} from "../socialStudies/marking/socialStudiesShortAnswerGrader";
 import {gradeSocialStudiesEssay} from "../socialStudies/marking/socialStudiesEssayGrader";
 import {reviewPobHistoricalPaper2} from "../principlesOfBusiness/data/pobHistoricalPaper2RubricReview";
@@ -919,8 +920,16 @@ function integratedScience(rows,responses){
    const drawing=read(responses,"IS-M1-P2-27::(a)::(i)");
    if(object(drawing)&&Object.hasOwn(drawing,"biologicalEvidence"))
     responseMap["IS-M1-P2-27:0:0:biologicalEvidence"]=drawing.biologicalEvidence;
+   if(object(drawing)&&Object.hasOwn(drawing,"strokes"))
+    responseMap["IS-M1-P2-27:0:0:strokes"]=drawing.strokes;
   }
   const type=src.item.response?.type||"lines";
+  // Resolve only source-matched, physically calibrated digital diagrams.
+  // Unsupported or ambiguous freehand evidence still takes the conservative
+  // provisional path below. Historical source marks are unchanged.
+  const certified=verifyOriginalBiologyEvidence(base,responseMap);
+  if(certified?.resolved===true)return cap(row,certified.score,
+   "original-integrated-science-biological-source-v2",true);
   // The authored IS-M2-P2-05(a)(iii) scheme awards 1 mark for one
   // experimental error and 1 for its matching remedy (maximum 2).
   // The broad legacy concept checker does not recognise a standalone error,
