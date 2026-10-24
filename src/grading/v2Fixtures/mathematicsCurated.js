@@ -47,5 +47,25 @@ export const CURATED_MATHEMATICS={
    "states the opposite of the original source conclusion"),
   F("competing",{answer:"M is not singular or M is singular."},0,
    "two incompatible answers; no certain reason")
+ ],
+ // Intermediate protractor readings satisfy only the broad B1 tolerance.
+ "p2e-q4::b":[
+  F("partial",{answer:"55",working:""},1,"broad 5.5-degree B1, not narrow 2.5-degree B2")
+ ],
+ "p2g-q4::b":[
+  F("partial",{answer:"4.65",working:""},1,"broad 0.5 B1, not narrow 0.25 B2")
+ ],
+ "p2i-q4::b":[
+  F("partial",{answer:"7.6",working:""},1,"broad 0.5 B1, not narrow 0.25 B2")
+ ],
+ // First correct linear-resource inequality earns its B2 allocation.
+ "p2f-q8::a":[
+  F("partial",{answer:"x + y <= 30",working:""},2,"first independent source constraint")
+ ],
+ "p2h-q8::a":[
+  F("partial",{answer:"x + y <= 24",working:""},2,"first independent source constraint")
+ ],
+ "p2j-q8::a":[
+  F("partial",{answer:"x + y <= 40",working:""},2,"first independent source constraint")
  ]
 };

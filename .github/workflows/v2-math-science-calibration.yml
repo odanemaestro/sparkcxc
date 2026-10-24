@@ -47,6 +47,19 @@ jobs:
           if(hits.length!==ids.size)throw Error(
             "One or more expected new criteria have not passed verification");
           console.log("V2_REGISTERABLE_RECORDS="+JSON.stringify(hits));
+          // Emit only the six newly source-verified Mathematics criteria. The
+          // production registration RPC validates each source and evidence SHA.
+          const newlyApprovedIds=new Set([
+            "p2e-q4::b","p2g-q4::b","p2i-q4::b",
+            "p2f-q8::a","p2h-q8::a","p2j-q8::a"
+          ]);
+          const mathRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>newlyApprovedIds.has(r.criterionId));
+          if(mathRecords.length!==newlyApprovedIds.size||
+             mathRecords.some(r=>r.outcome!=="verified"||
+               r.provenance?.workingTreeDirty!==false))
+            throw Error("Six Mathematics source-bound approvals must pass and be clean");
+          console.log("V2_MATH_REGISTERABLE_RECORDS="+JSON.stringify(mathRecords));
           NODE
       - name: Upload complete evidence and failure reports
         if: always()
