@@ -23,6 +23,8 @@ describe.each(THREE_MARK_NUMERIC_IDS)("Mathematics source MMA %s",id=>{
    if(f.mustAbstain){
     if(f.response?.working===""&&f.response?.answer===part.answer)
      expect(result).toMatchObject({marks:1,resolved:false});
+    else if(f.cls==="incorrect"&&f.response?.working==="")
+     expect(result).toMatchObject({marks:0,resolved:false});
     else expect(result).toBeNull();
     continue;
    }
@@ -51,8 +53,22 @@ test("correct reduced mixed number is provisional without method, authoritative 
 test("unreduced fraction earns no accuracy even for an integer source answer",()=>{
  const id="p2-q1-v1::a",part=partFor(id),source=sourceFor(part);
  expect(grade({criterionId:id,source,part,response:{answer:"14/2",working:""}}))
-  .toMatchObject({marks:0,resolved:true});
+  .toMatchObject({marks:0,resolved:false});
  expect(grade({criterionId:id,source,part,response:{answer:"14/2",working:part.solution}}))
+  .toMatchObject({marks:2,resolved:true});
+});
+test("an incorrect bare number cannot resolve source method marks",()=>{
+ const id="p2-q6-v1::b",part=partFor(id),source=sourceFor(part);
+ expect(grade({criterionId:id,part,source,response:{answer:"160",working:""}}))
+  .toMatchObject({marks:0,resolved:false});
+});
+test("answers explicitly requested to two decimal places must retain the precision",()=>{
+ const id="p2-q3-v2::c",part=partFor(id),source=sourceFor(part);
+ expect(grade({criterionId:id,part,source,response:{answer:"5.00",working:""}}))
+  .toMatchObject({marks:1,resolved:false});
+ expect(grade({criterionId:id,part,source,response:{answer:"5",working:""}}))
+  .toMatchObject({marks:0,resolved:false});
+ expect(grade({criterionId:id,part,source,response:{answer:"5",working:part.solution}}))
   .toMatchObject({marks:2,resolved:true});
 });
 test("other parts receive no unverified authority",()=>{

@@ -10,14 +10,16 @@ export function mathematicsThreeMarkNumericFixtures({criterion,part,maxMarks}){
  if(!answer||!solution)return {blocked:"missing-source-MMA-evidence"};
  const wrong=answer.includes("/")?"999/997":String(Number(answer)+37.31);
  const full={answer,working:solution};
+ const alternate=/correct to \d+ decimal places?/i.test(part.prompt||"")?" "+answer+" ":alternative(answer);
  return {kind:"structured",ruleId:"math:source-three-mark-MMA",sourceAnswer:full,
-  alternatives:[{answer:alternative(answer),working:solution}],
+  alternatives:[{answer:alternate,working:solution}],
   fixtures:[
    F("full",full,3,"full source-specified method and independently correct answer"),
-   F("equivalent",{answer:alternative(answer),working:solution},3,"format-equivalent numeric answer"),
+   F("equivalent",{answer:alternate,working:solution},3,"format-equivalent numeric answer"),
    F("partial",{answer:wrong,working:solution},2,"correct method but wrong final number"),
    F("partial",{answer:"",working:solution},2,"correct method without answer earns M1/M2"),
-   F("incorrect",{answer:wrong,working:""},0,"unworked incorrect result"),
+   F("incorrect",{answer:"banana",working:""},0,"conclusively irrelevant nonnumerical result"),
+   {...F("incorrect",{answer:wrong,working:""},0,"incorrect bare number leaves method credit unresolved"),mustAbstain:true},
    F("blank",{answer:"",working:""},0),
    F("irrelevant",{answer:"banana",working:""},0),
    F("competing",{answer:answer+" or "+wrong,working:solution},2,"competing final results lose A1"),

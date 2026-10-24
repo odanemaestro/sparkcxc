@@ -95,10 +95,15 @@ export function gradeThreeMarkNumericSource({criterionId,source,part,response}){
  const submitted=numericValue(answer),expected=numericValue(source.answer);
  const method=!!working.trim()&&normalize(working)===normalize(source.solution);
  if(working.trim()&&!method)return null;
- const correct=!!submitted&&!!expected&&
+ const places=/correct to (\d+) decimal places?/i.exec(part.prompt||"");
+ const precisionOk=!places||
+  (typeof answer==="string"&&
+   new RegExp("^\\s*[-+]?\\d+\\.\\d{"+Number(places[1])+"}\\s*$").test(answer));
+ const correct=!!submitted&&!!expected&&precisionOk&&
   Math.abs(submitted.value-expected.value)<1e-9&&
   (!submitted.fraction||submitted.reduced)&&
   (!expected.fraction||submitted.fraction);
- if(correct&&!method)return {marks:1,resolved:false,method:"source-MMA-unverified-method-v1"};
+ if(!method&&submitted)
+  return {marks:Number(correct),resolved:false,method:"source-MMA-unverified-method-v1"};
  return {marks:Number(method)*2+Number(correct),resolved:true,method:"source-MMA-numeric-v1"};
 }
