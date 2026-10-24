@@ -43,7 +43,7 @@ const stomaAnnotations=[
 const flowerAnnotations=[
  annotation("petal",[60,45],[125,105]),
  annotation("sepal",[60,210],[164,210]),
- annotation("anther",[60,95],[244,103]),
+ annotation("anther",[60,135],[244,103]),
  annotation("stigma",[540,42],[300,70]),
  annotation("style",[540,135],[300,143]),
  annotation("ovary",[540,219],[265,205])
