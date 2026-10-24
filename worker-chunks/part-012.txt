@@ -2300,6 +2300,31 @@ function bounds(paths) {
   const xs = coords.map((p) => p.x), ys = coords.map((p) => p.y);
   return { left: Math.min(...xs), right: Math.max(...xs), top: Math.min(...ys), bottom: Math.max(...ys) };
 }
+function plausibleBiologicalContours(contours, isStoma) {
+  const features = contours.map((path) => {
+    const b = bounds([path]);
+    return {
+      b,
+      cx: (b.left + b.right) / 2,
+      cy: (b.top + b.bottom) / 2,
+      w: b.right - b.left,
+      h: b.bottom - b.top
+    };
+  });
+  if (isStoma) {
+    for (const a of features) for (const b of features) {
+      if (a === b || a.cx >= b.cx || a.w < 35 || b.w < 35 || a.h < 75 || b.h < 75 || a.h / a.w < 1.1 || b.h / b.w < 1.1 || a.h / a.w > 5 || b.h / b.w > 5 || Math.abs(a.cy - b.cy) > 40 || Math.abs(a.h - b.h) > 65 || b.b.left - a.b.right < 3 || b.b.left - a.b.right > 115) continue;
+      if (features.some((p) => p !== a && p !== b && p.cx > a.b.right && p.cx < b.b.left && p.w >= 10 && p.w <= 90 && p.h >= 40 && p.cy > Math.min(a.b.top, b.b.top) && p.cy < Math.max(a.b.bottom, b.b.bottom))) return true;
+    }
+    return false;
+  }
+  if (features.length < 5) return false;
+  const all = bounds(contours), mx = (all.left + all.right) / 2, my = (all.top + all.bottom) / 2;
+  const petals = features.filter((p) => p.w >= 65 && p.h >= 55 && p.cy < my + 8);
+  const sepals = features.filter((p) => p.w >= 30 && p.h >= 22 && p.cy > my + 15);
+  const ovary = features.some((p) => Math.abs(p.cx - mx) < 55 && p.cy > my && p.w >= 25 && p.w <= 95 && p.h >= 42);
+  return petals.some((a) => petals.some((b) => a !== b && Math.abs(a.cx - b.cx) >= 65 && a.cx < mx && b.cx > mx)) && sepals.some((a) => sepals.some((b) => a !== b && Math.abs(a.cx - b.cx) >= 50 && a.cx < mx && b.cx > mx)) && ovary;
+}
 function clean2(paths) {
   if (paths.length < 2 || paths.length > 24) return false;
   const total = paths.reduce((sum, p) => sum + p.length, 0);
@@ -2348,7 +2373,7 @@ function markSourceBiologicalDrawing(qid, partIndex, itemIndex, item2, responses
     const b = bounds([p]);
     return b.right - b.left >= 26 && b.bottom - b.top >= 32;
   });
-  const hasContours = contours.length >= (isStoma ? 2 : 3);
+  const hasContours = plausibleBiologicalContours(contours, isStoma);
   const tidy = hasContours && clean2(paths);
   const large = Boolean(hasContours && box && box.right - box.left >= 210 && box.bottom - box.top >= 155);
   const leaderLines = hasContours && rulerLabels(evidence, paths);
@@ -2430,7 +2455,9 @@ function readBiologicalDrawingEvidence(raw, source2) {
   return {
     title: typeof data.title === "string" ? data.title.slice(0, 160) : "",
     measurementMm: typeof data.measurementMm === "string" ? data.measurementMm.slice(0, 20) : "",
-    labels: Array.isArray(data.labels) ? data.labels.filter((l) => l && source2.names.includes(l.name) && normalizePoint(l.from) && normalizePoint(l.to)).slice(0, 18) : []
+    // Preserve the student's incorrect terms as assessment evidence.
+    // Filtering them out would silently erase wrong answers before marking.
+    labels: Array.isArray(data.labels) ? data.labels.filter((l) => l && typeof l.name === "string" && /^[A-Za-z][A-Za-z0-9 ()-]{0,44}$/.test(l.name.trim()) && normalizePoint(l.from) && normalizePoint(l.to)).slice(0, 18).map((l) => ({ ...l, name: l.name.trim() })) : []
   };
 }
 
@@ -4681,40 +4708,4 @@ function gradeIntegratedSciencePaper2(paper = [], responses = {}) {
 }
 
 // src/principlesOfBusiness/data/pobPaper2Original.js
-var part = (id, prompt, marks, criteria, modelAnswer, profile = "application") => ({
-  id,
-  prompt,
-  marks,
-  criteria: criteria.map(([marks2, rule, alternatives2 = []]) => ({ marks: marks2, rule, alternatives: alternatives2 })),
-  modelAnswer,
-  profile
-});
-var question = (number, title, sections, context, items) => ({
-  id: "POB-SPARK-P2-ORIGINAL-01-Q" + number,
-  number,
-  title,
-  sections,
-  context,
-  items,
-  marks: items.reduce((sum, item2) => sum + item2.marks, 0),
-  origin: "spark-original",
-  markSchemeVersion: "v1-reviewed-pending-subject-calibration"
-});
-var POB_PAPER2_ORIGINAL_01 = Object.freeze({
-  id: "pob-original-paper2-01",
-  title: "SPARK Original Principles of Business Paper 2",
-  origin: "spark-original",
-  timeLimitMinutes: 120,
-  marks: 100,
-  questionCount: 5,
-  compulsory: true,
-  description: "Five compulsory structured questions, 20 marks each, matching the modern 2019-onwards syllabus.",
-  questions: [
-    question(
-      1,
-      "Choosing a Business Structure",
-      [1, 3],
-      "Three friends in St Catherine plan to produce and sell bottled sauces. They must choose an ownership structure, source finance and sell to local supermarkets.",
-      [
-        part("a", "Define the term entrepreneur.", 2, [[2, "A person who identifies an opportunity, organises resources and accepts business risks.", ["business organiser taking risk", "person starting and operating a business"]]], "An entrepreneur organises production and bears risk.", "knowledge"),
-        part("b", "State THREE factors the friends should investigate before starting the business.", 3, [[1, "Evidence of likely demand and competition."], [1, "Realistic costs and access to finance."], [1, "Health, registration, supplier or legal requirements."]], "They should study demand, start-up costs and the regulatory requirements.
+var part = (id, prompt, marks, criteria

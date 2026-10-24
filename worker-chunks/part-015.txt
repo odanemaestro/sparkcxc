@@ -1,4 +1,26 @@
-vidence) issues.push("Unexplained dispute.");
+hored-provisional", "disputeEvidence": null, "sourceImageCompared": true }),
+    Object.freeze({ "number": 59, "sourcePdfPage": 10, "proposedOption": "C", "explanation": "The historical integration sequence is Federation, CARIFTA, CARICOM and then CSME.", "status": "spark-authored-provisional", "disputeEvidence": null, "sourceImageCompared": true }),
+    Object.freeze({ "number": 60, "sourcePdfPage": 10, "proposedOption": "D", "explanation": "Recession-related job losses are cyclical unemployment.", "status": "spark-authored-provisional", "disputeEvidence": null, "sourceImageCompared": true })
+  ])
+});
+function verifyPob2021MjP1AuthoredKey(key = POB_2021_MJ_P1_AUTHORED_KEY) {
+  const issues = [], seen = /* @__PURE__ */ new Set(), disputes = [];
+  const src = POB_SUPPLIED_ARCHIVE.find((x) => x.id === key?.id);
+  if (!src || src.sourceSha256 !== key.sourceSha256 || src.filename !== key.sourceFilename)
+    issues.push("Original source fingerprint mismatch.");
+  if (!Array.isArray(key?.entries) || key.entries.length !== 60)
+    return { valid: false, issues: [...issues, "Exactly 60 source-present questions required."], disputes: [] };
+  for (const item2 of key.entries) {
+    if (!Number.isInteger(item2.number) || item2.number < 1 || item2.number > 60 || seen.has(item2.number))
+      issues.push("Invalid/duplicate question " + item2.number);
+    seen.add(item2.number);
+    if (!Number.isInteger(item2.sourcePdfPage) || item2.sourcePdfPage < 2 || item2.sourcePdfPage > 10)
+      issues.push("Invalid source page " + item2.number);
+    if (typeof item2.explanation !== "string" || item2.explanation.length < 35)
+      issues.push("Missing developed explanation " + item2.number);
+    if (item2.status === "academic-dispute") {
+      disputes.push(item2.number);
+      if (!item2.disputeEvidence) issues.push("Unexplained dispute.");
     } else if (item2.status !== "spark-authored-provisional" || !["A", "B", "C", "D"].includes(item2.proposedOption))
       issues.push("Unproven key mapping.");
   }
@@ -1481,24 +1503,4 @@ var POINTS2 = Object.freeze([
   [7, "a.i", "Governments regulate business with safety and licensing requirements and enforce taxation or fair-competition laws.", ["2:First valid regulatory approach described", "2:Second distinct regulatory approach described"]],
   [7, "a.ii", "Governments may enforce consumer protection law against unfair trading and require standards testing or accurate product labels to reduce harm.", ["2:First developed consumer protection measure", "2:Second distinct protective measure explained"]],
   [7, "b", "Better roads shorten transport time for goods, increase tourism and access to markets, and allow workers to reach workplaces more reliably.", ["2:First developed economic or social benefit of improved transport", "2:Second distinct developed benefit", "2:Third different developed benefit"]],
-  [7, "c", "Government can equip and maintain schools and improve teacher training and recruitment, increasing the quality and reach of education.", ["3:First distinct education-improvement strategy with expected effect", "3:Second different developed strategy"]]
-]);
-var POB_2015_MJ_P2_AUTHORED_SCHEME = buildPobSevenQuestionAuthoredRubric({
-  year: 2015,
-  sourcePages: 16,
-  sourceSha256: "d47560a3966c538be5dd507da23d8d13eb3b9e2cb08c1ff9339867f446c108bf",
-  parts: POINTS2
-});
-var verifyPob2015MjP2AuthoredScheme = (paper = POB_2015_MJ_P2_AUTHORED_SCHEME) => verifyPobSevenQuestionAuthoredRubric(paper);
-
-// src/principlesOfBusiness/data/pobHistorical2016MjP2AuthoredScheme.js
-var pobHistorical2016MjP2AuthoredScheme_exports = {};
-__export(pobHistorical2016MjP2AuthoredScheme_exports, {
-  POB_2016_MJ_P2_AUTHORED_SCHEME: () => POB_2016_MJ_P2_AUTHORED_SCHEME,
-  verifyPob2016MjP2AuthoredScheme: () => verifyPob2016MjP2AuthoredScheme
-});
-var POINTS3 = Object.freeze([
-  [1, "a.i", "Entrepreneurship involves identifying an opportunity, organising resources for a business venture and accepting commercial risk.", ["1:Identifies venture creation or business opportunity", "1:Includes organising resources or risk-bearing"]],
-  [1, "a.ii", "People establish businesses to earn profits, achieve independence, use their skills and serve unmet consumer needs.", ["1:First distinct plausible start-up motivation", "1:Second distinct motivation", "1:Third distinct motivation", "1:Fourth distinct motivation"]],
-  [1, "b", "Potential business stakeholders include employees, customers, suppliers and lenders.", ["1:First distinct stakeholder", "1:Second distinct stakeholder", "1:Third distinct stakeholder", "1:Fourth distinct stakeholder"]],
-  [1, "c", "Janice may offer financial consultancy, helping clients budget and plan borrowing, and business-plan advisory services, helping entrepreneurs evaluate cash flow and loan applications.", ["2:First credible financial service with its specific t
+  [7, "c", "Government can equip and maintain schools and improve teacher training and recruitment, increasing the quality and reach of education.", ["3:First distinct education-improvement 

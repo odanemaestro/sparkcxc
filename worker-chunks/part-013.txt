@@ -1,4 +1,40 @@
-", "knowledge"),
+, modelAnswer, profile = "application") => ({
+  id,
+  prompt,
+  marks,
+  criteria: criteria.map(([marks2, rule, alternatives2 = []]) => ({ marks: marks2, rule, alternatives: alternatives2 })),
+  modelAnswer,
+  profile
+});
+var question = (number, title, sections, context, items) => ({
+  id: "POB-SPARK-P2-ORIGINAL-01-Q" + number,
+  number,
+  title,
+  sections,
+  context,
+  items,
+  marks: items.reduce((sum, item2) => sum + item2.marks, 0),
+  origin: "spark-original",
+  markSchemeVersion: "v1-reviewed-pending-subject-calibration"
+});
+var POB_PAPER2_ORIGINAL_01 = Object.freeze({
+  id: "pob-original-paper2-01",
+  title: "SPARK Original Principles of Business Paper 2",
+  origin: "spark-original",
+  timeLimitMinutes: 120,
+  marks: 100,
+  questionCount: 5,
+  compulsory: true,
+  description: "Five compulsory structured questions, 20 marks each, matching the modern 2019-onwards syllabus.",
+  questions: [
+    question(
+      1,
+      "Choosing a Business Structure",
+      [1, 3],
+      "Three friends in St Catherine plan to produce and sell bottled sauces. They must choose an ownership structure, source finance and sell to local supermarkets.",
+      [
+        part("a", "Define the term entrepreneur.", 2, [[2, "A person who identifies an opportunity, organises resources and accepts business risks.", ["business organiser taking risk", "person starting and operating a business"]]], "An entrepreneur organises production and bears risk.", "knowledge"),
+        part("b", "State THREE factors the friends should investigate before starting the business.", 3, [[1, "Evidence of likely demand and competition."], [1, "Realistic costs and access to finance."], [1, "Health, registration, supplier or legal requirements."]], "They should study demand, start-up costs and the regulatory requirements.", "knowledge"),
         part("c", "Explain TWO benefits and TWO limitations of operating as a partnership.", 4, [[1, "Pooling finance and skills."], [1, "Sharing work, responsibilities and decisions."], [1, "Potential disagreement or slower decisions."], [1, "Possible personal liability or difficult ownership continuity, depending on legal form."]], "Partners can pool money and expertise, but decisions may cause disputes and liability must be understood."),
         part("d", "Explain TWO reasons for preparing a business plan before applying for finance.", 4, [[2, "A plan estimates demand and operating costs and shows whether the idea could be viable."], [2, "A plan sets out the team, repayment approach and risks for lenders or investors."]], "A plan helps the owners assess cash requirements and presents evidence to prospective lenders."),
         part("e", "Recommend an ownership structure and justify your recommendation using THREE relevant factors.", 7, [[1, "Names a legally plausible business structure."], [2, "Explains liability and ownership implications."], [2, "Explains the effect on access to finance or management."], [2, "Connects the choice to this sauce business's scale, partners and expansion plans."]], "A registered company may suit a growing venture seeking separation of personal and business obligations, but a partnership may be cheaper initially. Credit any well-justified alternative.")
@@ -1763,9 +1799,4 @@ var POB_2008_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 10, "pdfPage": 2, "proposedOption": "A", "explanation": "Ordinary partnerships may legally dissolve on a partner's death, though their trading activity may continue with new arrangements.", "status": "academic-dispute", "dispute": "partnership-dissolution-vs-business-continuity", "alternatives": ["A", "B"], "note": "The legal partnership may end on death, but a surviving business can reorganise rather than permanently close." }),
     Object.freeze({ "number": 11, "pdfPage": 3, "proposedOption": "C", "explanation": "Receiving, inspecting, costing and recording inventory are stock-control functions.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 12, "pdfPage": 3, "proposedOption": "B", "explanation": "Raising directors' salaries uses revenue for management compensation, though the printed question ambiguously asks what business is not primarily seeking profit.", "status": "academic-dispute", "dispute": "profit-motive-unclear", "alternatives": ["B"], "note": "Increasing directors' remuneration might benefit directors, while price rises, input reductions and factory growth often pursue profit; the scenario does not establish management's underlying aim." }),
-    Object.freeze({ "number": 13, "pdfPage": 3, "proposedOption": "A", "explanation": "Planning reduces risk by anticipating problems and resource requirements.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 14, "pdfPage": 3, "proposedOption": "A", "explanation": "Cash pledged to secure borrowing is collateral.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 15, "pdfPage": 3, "proposedOption": "D", "explanation": "Executive summaries condense a business plan.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 16, "pdfPage": 3, "proposedOption": "D", "explanation": "A lender may require insurance for real-estate collateral, but the acceptability of already-mortgaged property and insurance policies is conditional.", "status": "academic-dispute", "dispute": "financial-plan-feature-overlap", "alternatives": ["D"], "note": "Business plans often include actual or prospective lenders, so listing finance institution is not obviously outside a plan." }),
-    Object.freeze({ "number": 17, "pdfPage": 3, "proposedOption": "D", "explanation": "Acceptance of an offer, whether in writing or orally, can form a contract; communication of the initial offer is also essential.", "status": "academic-dispute", "dispute": "two-essential-contract-conditions", "alternatives": ["A", "D"], "note": "Both communication of offer and acceptance by offeree are legally essential. Printed choices express both as true." }),
-    Object.freeze({ "number": 18, "pdfPage": 3, "proposedOption": "C", "explanation": "Coordinating, delegating and controlling are management functions; enforcing unionisation is not.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "
+    Object.freeze({ "number": 13, "pdfPage": 3, "proposedOption": "A", "explanation": "Planning reduces ris

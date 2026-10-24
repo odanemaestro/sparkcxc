@@ -1,4 +1,28 @@
-r example in tax administration, central banking and statistics.\n\u2022 Gives policy advice and economic programmes (structural adjustment) to help stabilise the economy.\n\u2022 Monitors member countries' economies and warns them of problems.\n\u2022 Helps to maintain stable exchange rates."
+l hatchery."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "section": "Section II",
+          "section_instructions": "Answer THREE questions in this section as indicated.",
+          "topic": "Finance and Introduction to Economics",
+          "choice": "Answer EITHER Question 8 OR Question 9. Do NOT answer both.",
+          "total_marks": 20,
+          "parts": [
+            {
+              "label": "(a)",
+              "question": "Discuss THREE major economic problems facing Caribbean countries.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 High unemployment: many people, especially young people, cannot find jobs, which leads to poverty, crime and migration.\n\u2022 Balance of payments deficits: the region imports more than it exports, so it uses up foreign exchange and must borrow.\n\u2022 Large national debt: a big part of government revenue goes to repaying loans instead of providing services.\n\u2022 Dependence on a few products (tourism, sugar, bananas, bauxite): the economy suffers badly when prices fall or there is a hurricane.\n\u2022 Inflation: rising prices reduce people's purchasing power.\n\u2022 Brain drain: skilled people migrate, leaving shortages of skills.\n\u2022 Natural disasters: hurricanes and floods destroy crops and infrastructure."
+            },
+            {
+              "label": "(b)",
+              "question": "Outline THREE ways in which the International Monetary Fund (IMF) assists Caribbean countries in solving their economic problems.",
+              "marks": 6,
+              "answer": "Any THREE, 2 marks each:\n\u2022 Gives loans to countries with balance of payments problems.\n\u2022 Provides technical assistance and training, for example in tax administration, central banking and statistics.\n\u2022 Gives policy advice and economic programmes (structural adjustment) to help stabilise the economy.\n\u2022 Monitors member countries' economies and warns them of problems.\n\u2022 Helps to maintain stable exchange rates."
             },
             {
               "label": "(c)",
@@ -2612,35 +2636,4 @@ var pobPaper2OwnerBatch4Drafts_default = {
                   "label": "(i)",
                   "question": "Employers",
                   "marks": 3,
-                  "answer": "Any ONE well described, 3 marks, for example:\n\u2022 Provide employment and pay fair wages: employers hire workers, pay them fairly and on time and provide benefits.\n\u2022 Provide safe working conditions and the tools and training workers need.\n\u2022 Organise the resources of the business and make decisions about what to produce and how.\n\u2022 Pay taxes and statutory deductions (such as national insurance) to the government."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "Employees",
-                  "marks": 3,
-                  "answer": "Any ONE well described, 3 marks, for example:\n\u2022 Provide their labour and skills to produce goods and services efficiently and to the required quality.\n\u2022 Follow lawful instructions, company rules and safety procedures.\n\u2022 Be punctual, honest and loyal, and take care of the business's property.\n\u2022 Serve customers courteously, protecting the business's reputation."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "number": 2,
-          "section": "Section I",
-          "section_instructions": "Answer the THREE questions in this section.",
-          "total_marks": 20,
-          "parts": [
-            {
-              "label": "(a)",
-              "subparts": [
-                {
-                  "label": "(i)",
-                  "question": "List FOUR functions of a manager.",
-                  "marks": 4,
-                  "answer": "Any FOUR, 1 mark each: planning, organising, directing (leading), controlling, co-ordinating, staffing, motivating, delegating, communicating."
-                },
-                {
-                  "label": "(ii)",
-                  "question": "State THREE guidelines for establishing good relations between management and employees.",
-                  "marks": 3,
-                  "answer": "Any THREE, 1 mark each:\n\u2022 Keep open, two-way communication.\n\u2022 Treat all employees fairly and consistently.\n\u2022 Involve employees in deci
+                  "answer": "Any ONE well described, 3 marks, for example:\n\u2022 Provide employment and pay fair wages: employers hire workers, pay them fairly and on time and provide benefits.\n\u2022 Provide safe working conditions and the tools and training workers need.\n\u2022 Organis

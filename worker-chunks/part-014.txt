@@ -1,4 +1,9 @@
-note": null }),
+k by anticipating problems and resource requirements.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 14, "pdfPage": 3, "proposedOption": "A", "explanation": "Cash pledged to secure borrowing is collateral.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 15, "pdfPage": 3, "proposedOption": "D", "explanation": "Executive summaries condense a business plan.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
+    Object.freeze({ "number": 16, "pdfPage": 3, "proposedOption": "D", "explanation": "A lender may require insurance for real-estate collateral, but the acceptability of already-mortgaged property and insurance policies is conditional.", "status": "academic-dispute", "dispute": "financial-plan-feature-overlap", "alternatives": ["D"], "note": "Business plans often include actual or prospective lenders, so listing finance institution is not obviously outside a plan." }),
+    Object.freeze({ "number": 17, "pdfPage": 3, "proposedOption": "D", "explanation": "Acceptance of an offer, whether in writing or orally, can form a contract; communication of the initial offer is also essential.", "status": "academic-dispute", "dispute": "two-essential-contract-conditions", "alternatives": ["A", "D"], "note": "Both communication of offer and acceptance by offeree are legally essential. Printed choices express both as true." }),
+    Object.freeze({ "number": 18, "pdfPage": 3, "proposedOption": "C", "explanation": "Coordinating, delegating and controlling are management functions; enforcing unionisation is not.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 19, "pdfPage": 4, "proposedOption": "B", "explanation": "Misrepresentation can vitiate a party's informed consent.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 20, "pdfPage": 4, "proposedOption": "C", "explanation": "A void sale contract ordinarily does not transfer title and payments generally must be restored rather than retained.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 21, "pdfPage": 4, "proposedOption": "D", "explanation": "Working capital covers recurring operating costs.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
@@ -1190,26 +1195,4 @@ var POB_2021_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 55, "sourcePdfPage": 9, "proposedOption": "D", "explanation": "Industrial expansion can generate employment and help relieve unemployment, although boosting exports can also contribute.", "status": "academic-dispute", "disputeEvidence": "Increasing exports can also support job creation, so D industrialisation is not unique.", "sourceImageCompared": true }),
     Object.freeze({ "number": 56, "sourcePdfPage": 9, "proposedOption": "B", "explanation": "This option broadly describes national production; strict GNP equals GDP plus net primary income from abroad, so source language is an oversimplification.", "status": "academic-dispute", "disputeEvidence": "Printed national product choices omit a precise GDP plus net primary income adjustment; B is only an approximation.", "sourceImageCompared": true }),
     Object.freeze({ "number": 57, "sourcePdfPage": 9, "proposedOption": "B", "explanation": "Promoting trade and common regional services is a specific CARICOM purpose, but generic member-state collaboration is also valid.", "status": "academic-dispute", "disputeEvidence": "CARICOM both promotes member collaboration and regional trade; overlapping claims make uniqueness questionable.", "sourceImageCompared": true }),
-    Object.freeze({ "number": 58, "sourcePdfPage": 9, "proposedOption": "D", "explanation": "A price control is a government-imposed limit on a selling price.", "status": "spark-authored-provisional", "disputeEvidence": null, "sourceImageCompared": true }),
-    Object.freeze({ "number": 59, "sourcePdfPage": 10, "proposedOption": "C", "explanation": "The historical integration sequence is Federation, CARIFTA, CARICOM and then CSME.", "status": "spark-authored-provisional", "disputeEvidence": null, "sourceImageCompared": true }),
-    Object.freeze({ "number": 60, "sourcePdfPage": 10, "proposedOption": "D", "explanation": "Recession-related job losses are cyclical unemployment.", "status": "spark-authored-provisional", "disputeEvidence": null, "sourceImageCompared": true })
-  ])
-});
-function verifyPob2021MjP1AuthoredKey(key = POB_2021_MJ_P1_AUTHORED_KEY) {
-  const issues = [], seen = /* @__PURE__ */ new Set(), disputes = [];
-  const src = POB_SUPPLIED_ARCHIVE.find((x) => x.id === key?.id);
-  if (!src || src.sourceSha256 !== key.sourceSha256 || src.filename !== key.sourceFilename)
-    issues.push("Original source fingerprint mismatch.");
-  if (!Array.isArray(key?.entries) || key.entries.length !== 60)
-    return { valid: false, issues: [...issues, "Exactly 60 source-present questions required."], disputes: [] };
-  for (const item2 of key.entries) {
-    if (!Number.isInteger(item2.number) || item2.number < 1 || item2.number > 60 || seen.has(item2.number))
-      issues.push("Invalid/duplicate question " + item2.number);
-    seen.add(item2.number);
-    if (!Number.isInteger(item2.sourcePdfPage) || item2.sourcePdfPage < 2 || item2.sourcePdfPage > 10)
-      issues.push("Invalid source page " + item2.number);
-    if (typeof item2.explanation !== "string" || item2.explanation.length < 35)
-      issues.push("Missing developed explanation " + item2.number);
-    if (item2.status === "academic-dispute") {
-      disputes.push(item2.number);
-      if (!item2.disputeE
+    Object.freeze({ "number": 58, "sourcePdfPage": 9, "proposedOption": "D", "explanation": "A price control is a government-imposed limit on a selling price.", "status": "spark-aut
