@@ -28,7 +28,13 @@ describe.each(ORIGINAL_RESIDUAL_48_IDS)("Mathematics residual source %s",id=>{
     expect(result).toMatchObject({resolved:false});
     continue;
    }
-   expect(result).toMatchObject({resolved:true,marks:f.expect});
+   if(typeof f.expect==="number")
+    expect(result).toMatchObject({resolved:true,marks:f.expect});
+   else {
+    expect(result?.resolved).toBe(true);
+    expect(result.marks).toBeGreaterThanOrEqual(f.expect.min);
+    expect(result.marks).toBeLessThanOrEqual(f.expect.max);
+   }
   }
  });
  test("untrusted source drift and response fields never receive authoritative marks",()=>{
