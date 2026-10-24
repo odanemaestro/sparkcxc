@@ -1512,6 +1512,11 @@ try{
  assert(residualPos>=0&&residualEnd>residualPos,"Residual Mathematics source list missing");
  const allowedResidual48=new Set(JSON.parse(residualSrc.slice(residualPos+residualHeader.length,residualEnd)));
  assert.equal(allowedResidual48.size,48,"Exactly 48 new Mathematics source proofs required");
+ const residualTablesSource=fs.readFileSync("src/grading/v2OriginalMathResidualTables48.js","utf8");
+ const residualTableIds=new Set([...residualTablesSource.matchAll(/^\s*"(p2-q[^"]+::[a-z]\d*)":\s*\[\[/gm)].map(m=>m[1]));
+ assert.equal(residualTableIds.size,15,"Fifteen keyed original Mathematics tables must be audited");
+ assert([...residualTableIds].every(id=>allowedResidual48.has(id)),"Unexpected unverified table part");
+
  assert([...allowedResidual48].every(id=>![allowedText,allowedMethods,allowedSymbolic,allowedCalc,allowedMMA,allowedNumerics].some(set=>set.has(id))),
   "Residual Mathematics source cohort overlaps previous verified batches");
  let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0,trustedTextCount=0,trustedResidualCount=0;
@@ -1564,9 +1569,17 @@ try{
      "Source calculation must retain its own allocation: "+part.id);
     trustedCalcCount++;
    }else if(allowedResidual48.has(part.id)){
-    assert.equal(found.resolved,true,"New residual Maths source evidence did not resolve: "+part.id);
-    assert.equal(found.suggestedMarks,part.maxMarks,
-     "Residual Mathematics criterion changed mark ceiling: "+part.id);
+    if(residualTableIds.has(part.id)){
+     // Free text is not keyed table evidence. The separate 12-case source suite
+     // verifies correct cells for all fifteen tables; pasted numbers abstain.
+     assert.equal(found.resolved,false,
+      "Unkeyed prose must not certify a Mathematics table: "+part.id);
+    }else{
+     assert.equal(found.resolved,true,
+      "New residual Maths source evidence did not resolve: "+part.id);
+     assert.equal(found.suggestedMarks,part.maxMarks,
+      "Residual Mathematics criterion changed mark ceiling: "+part.id);
+    }
     trustedResidualCount++;
    }else{
     assert.equal(found.resolved,false,
