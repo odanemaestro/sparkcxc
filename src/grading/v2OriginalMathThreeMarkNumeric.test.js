@@ -23,6 +23,8 @@ describe.each(THREE_MARK_NUMERIC_IDS)("Mathematics source MMA %s",id=>{
    if(f.mustAbstain){
     if(f.response?.working===""&&f.response?.answer===part.answer)
      expect(result).toMatchObject({marks:1,resolved:false});
+    else if(f.cls==="incorrect"&&f.response?.working==="")
+     expect(result).toMatchObject({marks:0,resolved:false});
     else expect(result).toBeNull();
     continue;
    }
