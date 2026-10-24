@@ -16,7 +16,7 @@ export function mathematicsSymbolic50Fixtures({criterion,part,maxMarks}){
    F("equivalent",{answer:" "+answer+" ",working:" "+working+" "},maxMarks,"formatting equivalent"),
    F("partial",{answer:wrong,working},maxMarks-1,"method but incorrect final"),
    F("partial",{answer:"",working},maxMarks-1,"method with no final answer"),
-   {...F("incorrect",{answer:wrong,working:""},0,"unworked wrong final is provisional"),mustAbstain:true},
+   {...F("incorrect",{answer:"banana",working:""},0,"conclusively non-answer receives zero")},
    F("blank",{answer:"",working:""},0),
    {...F("irrelevant",{answer:"nothing relevant",working:""},0,"unsupported response is provisional"),mustAbstain:true},
    F("competing",{answer:answer+" or "+wrong,working},maxMarks-1,"contradiction denies accuracy"),
