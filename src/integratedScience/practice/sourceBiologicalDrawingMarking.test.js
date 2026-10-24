@@ -7,7 +7,7 @@ const sample=(base,marks,strokes,biologicalEvidence,notes="")=>
   [base]:notes
  });
 const line=(x,y)=>Array.from({length:12},(_,i)=>({x:x+i*9,y:y+i*3}));
-const drawing=[line(110,40),line(310,55),line(190,145)];
+const drawing=[line(110,20),line(310,75),line(190,205)];
 test("historical drawings remain unresolved without independently verified anatomy",()=>{
  const stoma=sample("IS-M1-P2-21:1:0",7,drawing,{title:"Stoma in leaf epidermis surface view",measurementMm:"60",labels:[]},"×3000");
  expect(stoma.score).toBe(4);
@@ -19,8 +19,8 @@ test("historical drawings remain unresolved without independently verified anato
 });
 test("labels alone, empty submissions and spoofed title cannot prove biology",()=>{
  const no=sample("IS-M1-P2-21:1:0",7,[],{title:"Stoma in leaf surface view",measurementMm:"60",labels:[]});
- expect(no.score).toBe(1);
- expect(no.unassessedMarks).toBe(6);
+ expect(no.score).toBe(0);
+ expect(no.unassessedMarks).toBe(7);
  const empty=sample("IS-M1-P2-27:0:0",6,[],{title:"",labels:[]});
  expect(empty.score).toBe(0);
 });
