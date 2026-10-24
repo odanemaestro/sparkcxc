@@ -14,7 +14,7 @@ const GROUPS={
   p2i:[["m2","m3"],["m4","p2"],["p3","p4"]],
   p2j:[["c3"],["c4"]]
 };
-const numberPattern=/^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)$/;
+const numberPattern=/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/;
 const plainObject=x=>Boolean(x)&&typeof x==="object"&&!Array.isArray(x);
 const stable=x=>Array.isArray(x)?x.map(stable):
   plainObject(x)?Object.fromEntries(Object.keys(x).sort().map(k=>[k,stable(x[k])])):x;
