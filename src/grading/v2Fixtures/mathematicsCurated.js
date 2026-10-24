@@ -95,19 +95,19 @@ export const CURATED_MATHEMATICS={
  "p2f-q8::d":[
   F("equivalent",{answer:"Answer: 10 shirts and 20 dresses, giving a profit of $180",working:"The greatest of the profits is $180, at the vertex (10, 20). So 10 shirts and 20 dresses should be made."},2,
    "complete optimum vertex and maximum-profit statement"),
-  F("partial",{answer:"10, 20",working:""},0,
-   "vertex alone lacks the maximum-profit comparison required for method mark")
+  F("partial",{answer:"10, 20",working:"The greatest of the profits is $180, at the vertex (10, 20). So 10 shirts and 20 dresses should be made."},1,
+   "correct source maximum-profit working, but final vertex response omits the required profit")
  ],
  "p2h-q8::d":[
-  F("equivalent",{answer:"Answer: 12 chairs and 12 tables, giving a profit of $192",working:"The greatest profit is $192 at (12, 12), so 12 chairs and 12 tables should be made."},2,
+  F("equivalent",{answer:"Answer: 12 chairs and 12 tables, giving a profit of $192",working:"The greatest of the profits is $192, at the vertex (12, 12). So 12 chairs and 12 tables should be made."},2,
    "complete optimum vertex and maximum-profit statement"),
-  F("partial",{answer:"12, 12",working:""},0,
-   "vertex alone lacks the maximum-profit comparison required for method mark")
+  F("partial",{answer:"12, 12",working:"The greatest of the profits is $192, at the vertex (12, 12). So 12 chairs and 12 tables should be made."},1,
+   "correct source maximum-profit working, but final vertex response omits the required profit")
  ],
  "p2j-q8::d":[
-  F("equivalent",{answer:"Answer: 15 trays of buns and 25 trays of bread, giving a profit of $420",working:"The greatest profit is $420 at (15, 25), so 15 trays of buns and 25 trays of bread should be made."},2,
+  F("equivalent",{answer:"Answer: 15 trays of buns and 25 trays of bread, giving a profit of $420",working:"The greatest of the profits is $420, at the vertex (15, 25). So 15 trays of buns and 25 trays of bread should be made."},2,
    "complete optimum vertex and maximum-profit statement"),
-  F("partial",{answer:"15, 25",working:""},0,
-   "vertex alone lacks the maximum-profit comparison required for method mark")
+  F("partial",{answer:"15, 25",working:"The greatest of the profits is $420, at the vertex (15, 25). So 15 trays of buns and 25 trays of bread should be made."},1,
+   "correct source maximum-profit working, but final vertex response omits the required profit")
  ]
 };
