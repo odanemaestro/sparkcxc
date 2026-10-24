@@ -294,6 +294,22 @@ jobs:
             throw Error("Residual 48 original Mathematics sources lack full evidence");
           for(const record of residualRecords)
             console.log("V2_RESIDUAL_48_ITEM="+JSON.stringify(record));
+          const nextFile=fs.readFileSync("src/grading/v2MathNext29.js","utf8");
+          const nextHead="export const MATH_NEXT_29_IDS=Object.freeze(";
+          const nextStart=nextFile.indexOf(nextHead);
+          const nextEnd=nextFile.indexOf(");",nextStart+nextHead.length);
+          if(nextStart<0||nextEnd<0)throw Error("Next math source cohort missing");
+          const nextIds=new Set(JSON.parse(nextFile.slice(nextStart+nextHead.length,nextEnd)));
+          const next29Records=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>nextIds.has(r.criterionId));
+          if(nextIds.size!==29||next29Records.length!==29||
+            new Set(next29Records.map(x=>x.criterionId)).size!==29||
+            next29Records.some(r=>r.outcome!=="verified"||r.provenance?.workingTreeDirty!==false||
+              !r.criterionSha256||!r.sourceSha256||!r.evidenceSha256||
+              !Array.isArray(r.cases)||r.cases.length<12||r.cases.some(c=>!c.passed)))
+            throw Error("New source-bound Mathematics 29 criteria not fully verified");
+          for(const record of next29Records)
+            console.log("V2_MATH_NEXT_29_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));
