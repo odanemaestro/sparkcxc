@@ -30,7 +30,7 @@ function sourceOk(id,source,part,max){
   typeof source.solution!=="string"||source.solution!==part.solution)
   return false;
  if(id==="p2e-q2::c"){
-  return max===2&&part.marks===3&&checks.map(c=>c.kind+":"+c.marks).join(",")==="M:1,A:1,B:0";
+  return max===2&&part.marks===2&&checks.map(c=>c.kind+":"+c.marks).join(",")==="M:1,A:1,B:0";
  }
  return max===part.marks&&(id.endsWith("::b")&&part.responseSchema?.type==="graph"?
    max===3: id.endsWith("::e")?max===2:
@@ -68,6 +68,10 @@ function graphGrade(part,source,response,id){
  const tol=part.responseSchema.criteria[0].tolerance;
  const [tx,ty]=Array.isArray(tol)?tol:[tol,tol];
  const hits=points.map(([x,y])=>response.points.filter(p=>close(p.x,x,tx)&&close(p.y,y,ty)));
+ // An entirely off-source drawing is confidently wrong; mixtures of
+ // correct and extraneous points remain provisional.
+ if(hits.every(v=>v.length===0)&&response.points.length<=1)
+  return {marks:0,resolved:true,method:"source-final-11-v1-no-valid-points"};
  // Ambiguous duplicated or unexpected points must not earn authoritative marks.
  const matched=hits.every(v=>v.length<=1);
  if(!matched||response.points.some(p=>!points.some(([x,y])=>close(p.x,x,tx)&&close(p.y,y,ty))))
