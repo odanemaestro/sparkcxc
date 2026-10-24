@@ -1213,7 +1213,21 @@ function social(rows,responses){
  return rows.map(row=>{
   const sm=sourceMarking(row),raw=text(read(responses,row.id));
   if(sm.marking){
-   const result=gradeSocialStudiesShortAnswer(raw,sm.marking);
+   // Linked development earns credit for an explanation of a strategy from
+   // the preceding part. Resolve that preceding answer using the source's
+   // zero-based part index, not the candidate's answer text or a guess.
+   let context={};
+   if(sm.marking.type==="linked_development"){
+    const sourceQuestionId=row.id.split("::")[0];
+    const siblings=rows.filter(c=>c.id.startsWith(sourceQuestionId+"::"));
+    const previousIndex=Number(sm.marking.followFromPartIndex);
+    const currentIndex=siblings.findIndex(c=>c.id===row.id);
+    if(!Number.isSafeInteger(previousIndex)||previousIndex<0||
+       previousIndex>=currentIndex)
+     throw new Error("Invalid Social Studies source follow-through index "+row.id);
+    context={previousResponse:text(read(responses,siblings[previousIndex].id))};
+   }
+   const result=gradeSocialStudiesShortAnswer(raw,sm.marking,context);
    return cap(row,result.marks,"existing-social-studies-concepts",
     blank(raw)||(result.marks===row.maxMarks&&result.reviewRequired!==true));
   }
