@@ -255,7 +255,7 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
   const [drawMode,setDrawMode]=useState("draw");
   const [selectedLabel,setSelectedLabel]=useState("");
   const [labelStart,setLabelStart]=useState(null);
-  const [guidedMode,setGuidedMode]=useState(Boolean(biological));
+  const [guidedMode,setGuidedMode]=useState(false);
   const bioEvidence=biological?readBiologicalDrawingEvidence(responses[base+":biologicalEvidence"],biologicalDrawingSource(questionId,partIndex,itemIndex)):null;
 
   const strokes=readStrokes(responses[`${base}:strokes`]);
@@ -288,7 +288,7 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
   };
   return <div className="is-p2-drawing-workspace">
     {biological&&<div className="is-p2-drawing-actions">
-      <button type="button" className="is-exam-secondary" aria-pressed={guidedMode} onClick={()=>setGuidedMode(true)}>Label a ready-made diagram</button>
+      <button type="button" className="is-exam-secondary" aria-pressed={guidedMode} onClick={()=>setGuidedMode(true)}>Alternative label practice (not original exam marks)</button>
       <button type="button" className="is-exam-secondary" aria-pressed={!guidedMode} onClick={()=>setGuidedMode(false)}>Original freehand drawing</button>
     </div>}
     {biological&&guidedMode
