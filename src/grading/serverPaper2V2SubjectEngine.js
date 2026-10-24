@@ -254,6 +254,15 @@ function mathPartCertain(result,specs,response,policy={},source={}){
  if(!result||!Array.isArray(result.criteria)||!Array.isArray(specs))return false;
  const byCode=new Map(specs.map(s=>[s.code,s]));
  const noWorking=!workingOf(response).trim();
+ // A candidate may earn source-authored method credit even after entering
+ // an incorrect final answer. Only the *entire*, immutable, registered
+ // worked solution is strong enough to resolve otherwise wording-based M
+ // checks: arbitrary keywords, partial fragments and similar working abstain.
+ // This does not certify written B marks or unawarded source methods.
+ const normaliseWorking=s=>String(s??"").trim().replace(/\\s+/g," ");
+ const registeredSolution=normaliseWorking(source.solution);
+ const exactSourceMethod=registeredSolution.length>=40 &&
+   !noWorking&&normaliseWorking(workingOf(response))===registeredSolution;
  const kindOf=(line,spec)=>String(spec?.kind||line.kind||"").toUpperCase();
  // Credit carried forward from a wrong earlier value is not covered by the
  // criterion verification evidence: it stays provisional.
@@ -284,7 +293,9 @@ function mathPartCertain(result,specs,response,policy={},source={}){
   const written=writtenMathCheck(spec.check);
   // Unknown or unsupported check types never certify anything.
   if(!strong&&!written&&!checkTypes(spec.check).every(t=>mathWeakEvidence.has(t)))return false;
-  if(line.awarded)return strong||(written&&writtenCertain);
+  if(line.awarded)return strong||(written&&writtenCertain)||
+   (exactSourceMethod&&kindOf(line,spec)==="M"&&
+    checkTypes(spec.check).every(type=>mathWeakEvidence.has(type)));
   const kind=kindOf(line,spec);
   if((kind==="A"||kind==="B")&&(spec.field||"answer")==="answer")return strong;
   return noWorking;
