@@ -57,7 +57,7 @@ function concave(path){
 }
 function stomaFeatures(g){
  if(g.shapes.length!==3)return null;
- const tall=g.shapes.filter(s=>height(s.b)>80&&height(s.b)>width(s.b)*1.12)
+ const tall=g.shapes.filter(s=>height(s.b)>150&&height(s.b)>width(s.b)*1.12)
   .sort((a,b)=>centroid(a.b).x-centroid(b.b).x);
  if(tall.length!==2||tall.some(s=>!concave(s.path)))return null;
  const [left,right]=tall;
