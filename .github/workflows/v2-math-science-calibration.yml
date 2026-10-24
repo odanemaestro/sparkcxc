@@ -208,6 +208,22 @@ jobs:
               r.cases.some(c=>!c.passed)))
             throw Error("Fifty three-mark Mathematics sources have incomplete examiner proofs");
           for(const r of mmaRows) console.log("V2_SOURCE_MMA_50_ITEM="+JSON.stringify(r));
+          const calcFile=fs.readFileSync("src/grading/v2OriginalMathSourceCalculations50.js","utf8");
+          const calcHeader="export const SOURCE_CALC_50_IDS=Object.freeze(";
+          const calcBegin=calcFile.indexOf(calcHeader),calcEnd=calcFile.indexOf(");",calcBegin+calcHeader.length);
+          if(calcBegin<0||calcEnd<0)throw Error("Missing source-verified calculation allowlist");
+          const calcIds=new Set(JSON.parse(calcFile.slice(calcBegin+calcHeader.length,calcEnd)));
+          const calcRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+           .filter(x=>calcIds.has(x.criterionId));
+          if(calcIds.size!==50||calcRecords.length!==50||
+            new Set(calcRecords.map(x=>x.criterionId)).size!==50||
+            calcRecords.some(x=>x.outcome!=="verified"||
+              x.provenance?.workingTreeDirty!==false||
+              !x.sourceSha256||!x.criterionSha256||!x.evidenceSha256||
+              !Array.isArray(x.cases)||x.cases.length<10||x.cases.some(c=>!c.passed)))
+             throw Error("Batch fifty original calculations are missing full source verification");
+          for(const record of calcRecords)
+            console.log("V2_SOURCE_CALC_50_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));
