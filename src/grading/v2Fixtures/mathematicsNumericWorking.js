@@ -32,6 +32,8 @@ export function mathematicsNumericWorkingFixtures({criterion,part,maxMarks}){
     "two contradictory final numbers with a source-proven method"),
    F("ceiling",{answer,working:solution},2,
     "source cannot grant more than two existing marks"),
+   {...F("working",{answer:NaN,working:solution},null,
+    "non-finite answer cannot establish method or accuracy"),mustAbstain:true},
    {...F("working",{answer,working:"a completely different method"},null,
     "unrecognized method remains provisional"),mustAbstain:true},
    {...F("working",{answer,working:""},null,
