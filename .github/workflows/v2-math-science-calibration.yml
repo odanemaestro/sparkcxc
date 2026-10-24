@@ -261,6 +261,22 @@ jobs:
             throw Error("New fifty Mathematics source method proofs are incomplete");
           for(const record of methodsRecords)
             console.log("V2_SOURCE_METHODS_50_ITEM="+JSON.stringify(record));
+          const textSource=fs.readFileSync("src/grading/v2OriginalMathText50.js","utf8");
+          const textHeader="export const ORIGINAL_TEXT_50_IDS=Object.freeze(";
+          const textStart=textSource.indexOf(textHeader),textEnd=textSource.indexOf(");",textStart+textHeader.length);
+          if(textStart<0||textEnd<=textStart)throw Error("Missing fifty original short-answer sources");
+          const textIds=new Set(JSON.parse(textSource.slice(textStart+textHeader.length,textEnd)));
+          const textRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>textIds.has(r.criterionId));
+          if(textIds.size!==50||textRecords.length!==50||
+             new Set(textRecords.map(x=>x.criterionId)).size!==50||
+             textRecords.some(r=>r.outcome!=="verified"||
+              r.provenance?.workingTreeDirty!==false||
+              !r.sourceSha256||!r.criterionSha256||!r.evidenceSha256||
+              !Array.isArray(r.cases)||r.cases.length<11||r.cases.some(x=>!x.passed)))
+            throw Error("Original fifty Mathematics text sources lack full proof");
+          for(const record of textRecords)
+            console.log("V2_ORIGINAL_TEXT_50_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));

@@ -22,6 +22,7 @@ import {mathematicsThreeMarkNumericFixtures} from "./v2Fixtures/mathematicsThree
 import {mathematicsSourceCalc50Fixtures} from "./v2Fixtures/mathematicsSourceCalculations50";
 import {mathematicsSymbolic50Fixtures} from "./v2Fixtures/mathematicsSymbolic50";
 import {mathematicsSourceMethods50Fixtures} from "./v2Fixtures/mathematicsSourceMethods50";
+import {mathematicsOriginalText50Fixtures} from "./v2Fixtures/mathematicsOriginalText50";
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 
 import {scienceFixtures,pointAnswer} from "./v2Fixtures/science";
@@ -93,6 +94,8 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
   return {...set,ruleId:"it:"+ctx.rule};
  }
  if(subjectId==="mathematics"){
+  const text50=mathematicsOriginalText50Fixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
+  if(text50)return text50;
   const sourceMethod50=mathematicsSourceMethods50Fixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
   if(sourceMethod50)return sourceMethod50;
   const symbolic=mathematicsSymbolic50Fixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
