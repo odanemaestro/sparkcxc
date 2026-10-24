@@ -42,6 +42,24 @@ test("Mathematics source mapping preserves M/A/B and ECF paper-part accounting",
  expect(r.suggestedMarks).toBeLessThanOrEqual(r.maxMarks);
  expect(r.canPublishFinalScore).toBe(r.unresolvedMarks===0);
 });
+test("Mathematics only certifies source-verified method marks for exact registered working",()=>{
+ const q=PAPER2_QUESTION_BANK.find(x=>x.question_id==="p2f-q9");
+ const part=q.parts.find(p=>p.id==="a");
+ const criteria=q.parts.map(p=>row(q.question_id+"::"+p.id,p.marks,{
+  answer:p.answer,criteria:p.criteria,solution:p.solution
+ }));
+ const id=q.question_id+"::a";
+ const exact=example("mathematics","p2f",criteria,{
+  [id]:{answer:"36.4",working:part.solution}
+ }).rows.find(x=>x.criterionId===id);
+ expect(exact.suggestedMarks).toBe(2);
+ expect(exact.resolved).toBe(true);
+ const near=example("mathematics","p2f",criteria,{
+  [id]:{answer:"36.4",working:part.solution+" (unverified extra statement)"}
+ }).rows.find(x=>x.criterionId===id);
+ expect(near.suggestedMarks).toBe(2);
+ expect(near.resolved).toBe(false);
+});
 test("Physics grades from original criteria and retains manual-unresolved boundary",()=>{
  const q=physics1.questions[0];
  const criteria=q.parts.map(p=>row(q.question_id+"::"+p.id,p.marks,p));
