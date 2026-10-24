@@ -121,6 +121,19 @@ jobs:
              throw Error("Mathematics graph source verification incomplete");
           for(const record of sourceGraphRecords)
             console.log("V2_SOURCE_GRAPH_6_ITEM="+JSON.stringify(record));
+          // Independently prove exact source and criterion hashes for the
+          // original F/H/J cumulative-frequency graphs before DB registration.
+          const ogiveIds=new Set(["p2f-q5::b","p2h-q5::b","p2j-q5::b"]);
+          const ogiveRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>ogiveIds.has(r.criterionId));
+          if(ogiveRecords.length!==3||
+             new Set(ogiveRecords.map(r=>r.criterionId)).size!==3||
+             ogiveRecords.some(r=>r.outcome!=="verified"||
+                r.provenance?.workingTreeDirty!==false||
+                !r.evidenceSha256||!r.sourceSha256||!r.criterionSha256))
+            throw Error("Original source frequency graph evidence incomplete");
+          for(const record of ogiveRecords)
+            console.log("V2_SOURCE_OGIVE_3_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));
