@@ -94,10 +94,10 @@ export function gradeOriginalMathResidual48({criterionId,source,part,response}){
   return {marks:0,resolved:true,method:method+"-irrelevant"};
  const accurate=clean(answer)===clean(source.answer);
  const intercept=/^p2-q8-v[12]::d$/.test(criterionId)&&part.marks===2
-  ?source.answer.match(/^\\(\\s*0\\s*,\\s*([+-]?\\d+)\\s*\\)$/):null;
+  ?source.answer.match(/^\(\s*0\s*,\s*([+-]?\d+)\s*\)$/):null;
  if(intercept&&source.solution.includes("f(0)")&&
-   answer.replace(/\\s+/g,"")===source.answer.replace(/\\s+/g,"")&&
-   working.replace(/\\s+/g,"").toLowerCase()===("f(0)="+intercept[1]))
+   answer.replace(/\s+/g,"")===source.answer.replace(/\s+/g,"")&&
+   working.replace(/\s+/g,"").toLowerCase()===("f(0)="+intercept[1]))
   return {marks:2,resolved:true,method:"source-original-y-intercept-v1"};
  const sourceWorking=!!working.trim()&&clean(working)===clean(source.solution);
  if(working.trim()&&!sourceWorking)
