@@ -29,8 +29,9 @@ test("historical answers, flags, page and question restore, then submit through 
   fireEvent.click(screen.getByRole("radio", { name: /^C / }));
   expect(screen.queryByLabelText(/Calculation or reasoning/)).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole("button", { name: "Flag for review" }));
-  fireEvent.click(screen.getByRole("button", { name: "Next question", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: /^Question 2(?:,|$)/ }));
   expect(screen.getByRole("heading", { name: "Question 2", exact: true })).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: /^Question 2(?:,|$)/ })).toHaveAttribute("aria-current", "step");
   view.unmount();
   render(<PoaHistoricalExam {...config}/>);
   expect(screen.getByRole("heading", { name: "Question 2", exact: true })).toBeInTheDocument();
@@ -47,6 +48,7 @@ test("historical answers, flags, page and question restore, then submit through 
   }));
   expect(screen.getByText(/Practice check: 1 of 60 checked answers correct/)).toBeInTheDocument();
   expect(screen.getByRole("radio", { name: /^C / })).toBeDisabled();
+  expect(screen.queryByRole("button", { name: /Export my answers/i })).not.toBeInTheDocument();
 });
 
 test("expiry preserves optional working with invalid selection and submits exactly once", async () => {
@@ -64,6 +66,26 @@ test("expiry preserves optional working with invalid selection and submits exact
   expect(readServerExamClock).toHaveBeenCalledTimes(1);
 });
 
+test("optional question selection is checked before opening submission confirmation", async () => {
+  render(<PoaHistoricalExam {...props("poa-2-2017-jan")}/>);
+  fireEvent.click(screen.getByRole("button", { name: "Start practice", exact: true }));
+  await screen.findByRole("button", { name: "Submit paper", exact: true });
+  fireEvent.click(screen.getByRole("button", { name: "Submit paper", exact: true }));
+  expect(screen.getByRole("alert")).toHaveTextContent("Select exactly 2 optional questions");
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  for (const number of [4, 5]) {
+    fireEvent.click(screen.getByRole("button", { name: new RegExp(`^Question ${number}(?:,|$)`) }));
+    fireEvent.click(screen.getByRole("checkbox", { name: "Include this optional question in my submission" }));
+  }
+  expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Submit paper", exact: true }));
+  expect(screen.getByRole("dialog")).toHaveTextContent("Submit this paper?");
+  fireEvent.click(screen.getByRole("button", { name: "Keep working", exact: true }));
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  expect(submitServerExamAttempt).not.toHaveBeenCalled();
+});
+
 test("restored timed practice refreshes the server clock before trusting an expired device deadline", async () => {
   const config = props("poa-1-2022-jan"), paper = config.paper;
   localStorage.setItem(historicalAttemptKey(config.userId, paper.id), JSON.stringify({ ...freshHistoricalAttempt(paper), phase: "exam", mode: "timed", deadline: Date.now() - 200000,
@@ -71,7 +93,7 @@ test("restored timed practice refreshes the server clock before trusting an expi
   readServerExamClock.mockResolvedValue({ available: true, localDeadline: Date.now() + 100000 });
   render(<PoaHistoricalExam {...config}/>);
   await waitFor(() => expect(readServerExamClock).toHaveBeenCalledTimes(1));
-  await waitFor(() => expect(screen.getByText(/Time remaining 00:01:/)).toBeInTheDocument());
+  await waitFor(() => expect(screen.getByText(/^00:01:/)).toBeInTheDocument());
   expect(submitServerExamAttempt).not.toHaveBeenCalled();
 });
 
@@ -82,7 +104,13 @@ test("the text Paper 1 has full answer choices, no reasoning field, and a save-a
   await screen.findByText(/Which of the following financial statements shows/);
   expect(screen.getByRole("radio", { name: /D Statement of financial position/ })).toBeInTheDocument();
   expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
+  expect(screen.queryByRole("button", { name: /Export my answers/i })).not.toBeInTheDocument();
   expect(document.querySelector("canvas, object, iframe")).toBeNull();
+  fireEvent.click(screen.getByRole("button", { name: "Exit examination", exact: true }));
+  expect(screen.getByRole("dialog")).toHaveTextContent("Save and exit?");
+  fireEvent.click(screen.getByRole("button", { name: "Keep working", exact: true }));
+  expect(config.onBack).not.toHaveBeenCalled();
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole("button", { name: "Exit examination", exact: true }));
   fireEvent.click(screen.getByRole("button", { name: "Save and exit", exact: true }));
   expect(config.onBack).toHaveBeenCalledTimes(1);

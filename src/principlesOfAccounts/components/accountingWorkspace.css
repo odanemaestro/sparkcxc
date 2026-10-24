@@ -1,7 +1,7 @@
 .poa-workspace {
-  --poa-paper: var(--fnh-ui-paper, var(--spark-paper, #fff));
-  --poa-ink: var(--fnh-ui-ink, var(--spark-ink, #19344c));
-  --poa-line: var(--fnh-ui-line, var(--spark-border, #ccd9e6));
+  --poa-paper: var(--spark-paper, #fff);
+  --poa-ink: var(--spark-ink, #19344c);
+  --poa-line: var(--spark-border, #ccd9e6);
   color: var(--poa-ink);
   background: var(--poa-paper);
   border: 1px solid var(--poa-line);
@@ -29,7 +29,7 @@
 .poa-eyebrow {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--fnh-ui-teal-ink, #126d75);
+  color: var(--spark-teal-dark, #126d75);
 }
 .poa-workspace button {
   min-height: 44px;
@@ -91,6 +91,7 @@
   background: var(--poa-paper);
   color: inherit;
   font: inherit;
+  font-size: 16px;
 }
 .poa-workspace select {
   appearance: none;
@@ -240,9 +241,9 @@ body.dark .poa-workspace select {
 [data-theme="dark"] .poa-workspace,
 body.dark .poa-workspace,
 .dark .poa-workspace {
-  --poa-paper: var(--fnh-ui-paper, #122337);
-  --poa-ink: var(--fnh-ui-ink, #edf4fa);
-  --poa-line: var(--fnh-ui-line, #34485d);
+  --poa-paper: var(--spark-paper, #122337);
+  --poa-ink: var(--spark-ink, #edf4fa);
+  --poa-line: var(--spark-border, #34485d);
 }
 @media (max-width: 640px) {
   .poa-journal-line {

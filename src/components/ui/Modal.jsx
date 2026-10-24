@@ -8,13 +8,15 @@ import { T } from "../../theme";
 const Modal = ({ children, onClose, maxWidth = 500, className = "", showClose = false, closeLabel = "Close dialog" }) => {
   const cardRef = useRef(null);
   const previousFocusRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
   useEffect(() => {
     previousFocusRef.current = document.activeElement;
 
     const onKeyDown = event => {
       if (event.key === "Escape") {
-        onClose?.();
+        onCloseRef.current?.();
         return;
       }
 
@@ -60,7 +62,7 @@ const Modal = ({ children, onClose, maxWidth = 500, className = "", showClose = 
         previous.focus({ preventScroll: true });
       }
     };
-  }, [onClose]);
+  }, []);
 
   return (
     <div

@@ -1,0 +1,301 @@
+/* Accounts uses the same compact paper library and examination frame as SPARK's other subjects. */
+.poa-practice.poa-practice-shell,
+.poa-practice.poa-exam {
+  --poa-soft-ink: var(--spark-ink-soft, #2d3e6b);
+  --poa-accent: var(--spark-teal-dark, #0a7268);
+  --poa-accent-soft: var(--spark-teal-light, #ccfbf1);
+  --poa-accent-fill: #087d70;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1280px;
+  padding: 24px 28px 48px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.poa-practice.poa-practice-shell *,
+.poa-practice.poa-exam * { box-sizing: border-box; }
+.poa-practice.poa-practice-shell > section {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+.poa-practice :is(.poa-library-header, .poa-exam-heading, .poa-exam-content, .poa-library-card) {
+  min-width: 0;
+}
+.poa-practice :is(input, textarea) { caret-color: var(--poa-accent); }
+.poa-practice :is(input, textarea, select):not([type="radio"]):not([type="checkbox"]) { font-size: 16px; min-height: 44px; }
+.poa-practice.poa-practice-shell :is(button, input, textarea, select, a):focus-visible,
+.poa-practice.poa-exam :is(button, input, textarea, select, a):focus-visible { outline: 3px solid var(--poa-accent) !important; outline-offset: 3px !important; }
+.poa-practice ::selection { background: var(--poa-accent-soft); color: var(--poa-ink); }
+.poa-practice :is(.poa-printed-table-scroll, .poa-table-scroll, .poa-exam-navigator, .poa-navigation-content) {
+  scrollbar-color: var(--spark-border-strong, #94a3b8) var(--poa-paper);
+  scrollbar-width: thin;
+}
+.poa-practice .poa-back { margin-bottom: 20px; }
+.poa-practice .poa-library-header {
+  padding: 24px;
+  margin: 0 0 22px;
+  border: 1px solid var(--poa-line);
+  border-radius: 16px;
+  background: var(--poa-paper);
+}
+.poa-practice .poa-library-header h1 {
+  max-width: none;
+  color: var(--poa-ink);
+  margin: 0 0 12px;
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+.poa-practice .poa-library-header p {
+  max-width: 70ch;
+  margin: 0;
+  color: var(--poa-soft-ink);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.poa-practice .poa-paper-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.poa-practice button.poa-paper-choice,
+.poa-practice button.poa-paper-choice:hover:not(:disabled) {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) 20px;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  gap: 18px;
+  padding: 24px;
+  text-align: left;
+  background: var(--poa-paper) !important;
+  color: var(--poa-ink) !important;
+  border: 1px solid var(--poa-line) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.poa-practice button.poa-paper-choice:hover:not(:disabled) { border-color: var(--poa-accent) !important; }
+.poa-practice .poa-paper-choice .poa-paper-choice-number {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: var(--poa-accent-soft);
+  color: var(--poa-accent) !important;
+  font-size: 21px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.poa-practice .poa-paper-choice-copy { display: grid; gap: 7px; min-width: 0; }
+.poa-practice .poa-paper-choice .poa-paper-choice-copy strong { color: var(--poa-ink) !important; font-size: 21px; line-height: 1.2; }
+.poa-practice .poa-paper-choice .poa-paper-choice-copy > span { color: var(--poa-soft-ink) !important; font-size: 14px; line-height: 1.5; font-weight: 500; }
+.poa-practice .poa-paper-choice .poa-paper-choice-copy small { color: var(--poa-soft-ink) !important; font-size: 12px; line-height: 1.5; font-weight: 500; }
+.poa-practice .poa-paper-choice > svg { color: var(--poa-accent) !important; }
+.poa-practice.poa-practice-shell > .poa-workspace-entry {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--poa-line);
+}
+.poa-practice .poa-workspace-entry h2 { margin: 0 0 7px; font-size: 20px; }
+.poa-practice .poa-workspace-entry p { margin: 0; font-size: 14px; color: var(--poa-soft-ink); }
+.poa-practice .poa-library-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+  max-width: 480px;
+  padding: 5px;
+  margin-bottom: 26px;
+  border: 1px solid var(--poa-line);
+  border-radius: 12px;
+  background: var(--poa-paper);
+}
+.poa-practice .poa-library-tabs button,
+.poa-practice .poa-library-tabs button:hover:not(:disabled) {
+  min-width: 0;
+  background: transparent !important;
+  color: var(--poa-soft-ink) !important;
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.poa-practice .poa-library-tabs button.active,
+.poa-practice .poa-library-tabs button.active:hover:not(:disabled) {
+  background: var(--poa-accent-soft) !important;
+  color: var(--poa-ink) !important;
+  border-color: var(--poa-line) !important;
+}
+.poa-practice .poa-library-section-heading { margin: 0 0 20px; }
+.poa-practice .poa-library-section-heading h2 { margin: 0 0 7px; font-size: 20px; }
+.poa-practice .poa-library-section-heading p { margin: 0; color: var(--poa-soft-ink); font-size: 14px; }
+.poa-practice .poa-library-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+.poa-practice .poa-library-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid var(--poa-line);
+  border-radius: 14px;
+  background: var(--poa-paper);
+}
+.poa-practice .poa-library-card h3 { margin: 0; font-size: 19px; line-height: 1.3; color: var(--poa-ink); }
+.poa-practice .poa-library-card p { margin: 0; font-size: 14px; line-height: 1.65; color: var(--poa-soft-ink); }
+.poa-practice .poa-library-card > button { margin-top: auto; }
+.poa-practice .poa-library-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 16px; font-size: 13px; line-height: 1.6; color: var(--poa-soft-ink); }
+.poa-practice .poa-library-card .poa-library-meta { font-size: 12px; }
+.poa-practice .poa-library-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 200px)); gap: 16px; margin: 0 0 24px; }
+.poa-practice .poa-library-filters label { min-width: 0; }
+.poa-practice .poa-library-empty { grid-column: 1 / -1; padding: 24px 0; color: var(--poa-soft-ink); }
+
+/* The question and navigator share a bounded desktop frame. */
+.poa-practice.poa-exam .poa-exam-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px;
+  margin: 0 0 20px;
+  border: 1px solid var(--poa-line);
+  border-radius: 16px;
+  background: var(--poa-paper);
+}
+.poa-practice.poa-exam .poa-exam-title h1 { max-width: none; margin: 0 0 9px; color: var(--poa-ink); font-size: 24px; line-height: 1.2; letter-spacing: -0.03em; }
+.poa-practice.poa-exam .poa-exam-title h2 { margin: 0 0 7px; color: var(--poa-ink); font-size: 16px; line-height: 1.4; }
+.poa-practice.poa-exam .poa-exam-title p { margin: 0; color: var(--poa-soft-ink); font-size: 14px; line-height: 1.6; }
+.poa-practice .poa-exam-timer { display: grid; flex-shrink: 0; gap: 6px; min-width: 160px; padding: 14px 16px; border: 1px solid var(--poa-line); border-radius: 12px; }
+.poa-practice .poa-exam-timer span { color: var(--poa-soft-ink); font-size: 12px; }
+.poa-practice .poa-exam-timer strong { color: var(--poa-ink); font-size: 22px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.poa-practice .poa-exam-layout { display: grid; grid-template-columns: minmax(0, 1fr) 248px; gap: 20px; align-items: start; }
+.poa-practice .poa-exam-content { min-width: 0; }
+.poa-practice.poa-exam .poa-native-exam-body { margin: 0; padding: 28px; }
+.poa-practice.poa-exam > .poa-exam-instructions { max-width: 1030px; width: 100%; margin: 0 auto; padding: 26px; }
+.poa-practice .poa-exam-instructions h2 { margin: 0 0 16px; font-size: 20px; }
+.poa-practice .poa-exam-instructions p { font-size: 14px; color: var(--poa-soft-ink); }
+.poa-practice .poa-question-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin: 0 0 20px; }
+.poa-practice .poa-question-heading h2 { margin: 0; font-size: 20px; line-height: 1.4; }
+.poa-practice .poa-question-heading h2 small,
+.poa-practice .poa-question-heading > span { color: var(--poa-soft-ink); font-size: 13px; font-weight: 650; white-space: nowrap; }
+.poa-practice .poa-answer-sheet > fieldset { min-width: 0; margin: 20px 0 0; padding: 0; border: 0; }
+.poa-practice .poa-answer-sheet > fieldset > legend { margin-bottom: 12px; padding: 0; color: var(--poa-soft-ink); font-size: 13px; font-weight: 750; }
+.poa-practice .poa-native-mcq-option { align-items: start; min-width: 0; grid-template-columns: 20px 22px minmax(0, 1fr); gap: 10px; }
+.poa-practice .poa-native-mcq-option > label { min-width: 0; overflow-wrap: anywhere; }
+.poa-practice .poa-native-mcq-option[data-selected] { border-color: var(--poa-accent); background: var(--spark-teal-surface, #f0fdf9); }
+.poa-practice .poa-answer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.poa-practice .poa-answer-grid > div { min-width: 0; }
+.poa-practice .poa-question-actions { justify-content: space-between; gap: 12px; padding-top: 20px; margin-top: 24px; border-top: 1px solid var(--poa-line); }
+.poa-practice .poa-exam-submit-strip { align-items: center; justify-content: space-between; gap: 16px; margin-top: 18px; }
+.poa-practice .poa-exam-submit-strip > span { color: var(--poa-soft-ink); font-size: 13px; }
+.poa-practice .poa-historical-review { padding: 24px; border: 1px solid var(--poa-line); border-radius: 16px; background: var(--poa-paper); }
+.poa-practice .poa-legacy-notebook { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; font-size: 14px; }
+.poa-practice .poa-printed-table-scroll { overscroll-behavior-x: contain; }
+.poa-practice .poa-printed-question td :is(input, textarea) { min-width: 100px; }
+.poa-practice .poa-printed-question,
+.poa-practice .poa-printed-part { min-width: 0; }
+.poa-practice .poa-printed-question p,
+.poa-practice .poa-printed-part p { overflow-wrap: anywhere; }
+.poa-practice .poa-account-heading { flex-wrap: wrap; }
+.poa-practice .poa-account-heading label { min-width: 0; flex-wrap: wrap; }
+.poa-practice .poa-exam-navigator {
+  position: sticky;
+  top: 20px;
+  min-width: 0;
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+  overflow: auto;
+  padding: 18px;
+  border: 1px solid var(--poa-line);
+  border-radius: 16px;
+  background: var(--poa-paper);
+}
+.poa-practice .poa-navigation-heading h2 { margin: 0; font-size: 17px; line-height: 1.3; }
+.poa-practice .poa-navigation-heading > span { display: block; margin-top: 8px; font-size: 12px; color: var(--poa-soft-ink); font-variant-numeric: tabular-nums; }
+.poa-practice .poa-navigation-content > p { margin: 14px 0 0; color: var(--poa-soft-ink); font-size: 12px; }
+.poa-practice .poa-navigation-toggle { display: none; }
+.poa-practice .poa-question-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 14px 0; }
+.poa-practice .poa-question-nav button { position: relative; min-width: 44px; min-height: 44px; padding: 0; flex: none; border: 1px solid var(--poa-line); border-radius: 8px; background: transparent; color: var(--poa-ink); font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.poa-practice .poa-question-nav button:hover { border-color: var(--poa-accent); }
+.poa-practice .poa-question-nav button[data-answered="true"]:not([aria-current="step"]) { background: var(--spark-teal-surface, #f0fdf9); border-color: var(--poa-accent); }
+.poa-practice .poa-question-nav button[aria-current="step"] { background: var(--poa-accent-fill); color: #fff; border-color: var(--poa-accent-fill); }
+.poa-practice .poa-flag-dot { background: var(--spark-amber, #d97706); width: 7px; height: 7px; }
+.poa-practice .poa-navigation-key { display: flex; flex-wrap: wrap; gap: 12px; color: var(--poa-soft-ink); font-size: 11px; }
+.poa-practice .poa-navigation-key > span { display: inline-flex; align-items: center; gap: 5px; }
+.poa-practice .poa-navigation-key i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: var(--poa-accent); }
+.poa-practice .poa-navigation-key > span:nth-child(2) i { border-radius: 50%; background: var(--spark-amber, #d97706); }
+.poa-original-paper1 .fnh-nav-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.poa-original-paper1 .fnh-nav-grid button { min-width: 44px; min-height: 44px; }
+.poa-original-paper1 .fnh-exam-top > span,
+.poa-original-paper1 .fnh-session-heading small { display: none; }
+.poa-original-paper1 .fnh-session-heading h1 { margin: 0 0 9px; font-size: 24px; letter-spacing: -0.03em; }
+
+@media (max-width: 1000px) {
+  .poa-practice .poa-library-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .poa-practice .poa-exam-layout { grid-template-columns: minmax(0, 1fr); }
+  .poa-practice .poa-exam-navigator { order: -1; position: static; max-height: none; overflow: visible; padding: 12px 18px; }
+  .poa-practice .poa-navigation-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .poa-practice .poa-navigation-heading h2 { display: none; }
+  .poa-practice .poa-navigation-heading > span { margin: 0; }
+  .poa-practice .poa-navigation-toggle { display: inline-flex; min-height: 44px; gap: 8px; padding: 8px 12px; font-size: 12px; }
+  .poa-practice .poa-navigation-toggle svg { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .poa-practice .poa-navigation-content { display: none; }
+  .poa-practice .poa-navigation-content[data-open="true"] { display: block; max-height: 270px; margin-top: 12px; padding-top: 2px; overflow: auto; border-top: 1px solid var(--poa-line); }
+  .poa-practice .poa-navigation-content .poa-question-nav { grid-template-columns: repeat(auto-fill, 44px); }
+}
+@media (max-width: 760px) {
+  .poa-practice .poa-paper-choices { grid-template-columns: minmax(0, 1fr); }
+  .poa-practice button.poa-paper-choice { gap: 16px; }
+}
+@media (max-width: 640px) {
+  .poa-practice.poa-practice-shell,
+  .poa-practice.poa-exam { padding: 18px 12px calc(32px + env(safe-area-inset-bottom, 0px)); }
+  .poa-practice .poa-library-header { padding: 18px; }
+  .poa-practice .poa-library-header h1 { font-size: 26px; }
+  .poa-practice button.poa-paper-choice { grid-template-columns: 44px minmax(0, 1fr) 18px; padding: 18px; gap: 12px; }
+  .poa-practice .poa-paper-choice .poa-paper-choice-number { width: 44px; height: 44px; font-size: 18px; }
+  .poa-practice .poa-paper-choice .poa-paper-choice-copy strong { font-size: 20px; }
+  .poa-practice .poa-library-grid,
+  .poa-practice .poa-library-filters,
+  .poa-practice .poa-answer-grid { grid-template-columns: minmax(0, 1fr); }
+  .poa-practice .poa-library-filters { gap: 14px; }
+  .poa-practice .poa-library-card { padding: 18px; }
+  .poa-practice .poa-library-tabs { width: 100%; }
+  .poa-practice .poa-library-tabs button { padding-inline: 8px; font-size: 13px; }
+  .poa-practice.poa-exam .poa-exam-heading { align-items: stretch; flex-direction: column; gap: 18px; padding: 18px; }
+  .poa-practice.poa-exam .poa-exam-title h1 { font-size: 22px; }
+  .poa-practice.poa-exam .poa-exam-title h2 { font-size: 15px; }
+  .poa-practice .poa-exam-timer { display: flex; align-items: center; justify-content: space-between; min-width: 0; padding: 12px 14px; }
+  .poa-practice .poa-exam-timer strong { font-size: 21px; }
+  .poa-practice.poa-exam .poa-native-exam-body,
+  .poa-practice.poa-exam > .poa-exam-instructions,
+  .poa-practice .poa-historical-review { padding: 18px; }
+  .poa-practice .poa-exam-navigator { padding-inline: 12px; }
+  .poa-practice .poa-question-heading { align-items: flex-start; }
+  .poa-practice .poa-question-heading h2 { font-size: 19px; }
+  .poa-practice .poa-native-mcq-option { padding: 12px; gap: 8px; grid-template-columns: 20px 18px minmax(0, 1fr); }
+  .poa-practice .poa-actions > button { flex: 1 1 auto; }
+  .poa-practice .poa-exam-submit-strip > span { flex-basis: 100%; }
+  .poa-practice .poa-workspace-entry > button { width: 100%; }
+}
+@media (max-width: 590px) {
+  .poa-original-paper1 .fnh-session-heading h1 { font-size: 22px; }
+  .poa-original-paper1 .fnh-timer { display: flex; align-items: center; justify-content: space-between; }
+  .poa-original-paper1 .fnh-timer strong { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .poa-practice :is(button, input, textarea, select) { transition: none !important; }
+}

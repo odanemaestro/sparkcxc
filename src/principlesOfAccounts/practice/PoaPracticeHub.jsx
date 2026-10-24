@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
+import ConfirmModal from "../../components/ui/ConfirmModal";
 import FnhPaper1Exam from "../../fnh/practice/FnhPaper1Exam";
 import { POA_PAPER1 } from "../data/poaPaper1";
 import {
@@ -22,7 +23,9 @@ import AccountingWorkspace from "../components/AccountingWorkspace";
 import PoaHistoricalExam from "./PoaHistoricalExam";
 import { getPoaHistoricalPaper, getPoaPaperSource, POA_SPECIMEN_PAPERS } from "../data/poaHistoricalPapers";
 import { hasCompletePoaText } from "../data/poaPrintedPapers";
+import { PoaExamHeader, PoaQuestionNavigator } from "./PoaExamLayout";
 import "./poaPractice.css";
+import "./poaLayout.css";
 const CONFIG = Object.freeze({
   number: 1,
   label: "Accounting foundations and applications",
@@ -193,19 +196,39 @@ function Paper2Exam({ userId, supabase, onBack }) {
     window.scrollTo?.({ top: 0, behavior: "instant" });
   }, [attempt.index, attempt.phase]);
   return (
-    <main className="poa-practice">
-      <button className="poa-back" type="button" onClick={() => attempt.phase === "exam" ? setExitConfirm(true) : onBack()}>
+    <main className="poa-practice poa-exam">
+      <button className="poa-back" data-spark-action="nav" type="button" onClick={() => attempt.phase === "exam" ? setExitConfirm(true) : onBack()}>
         <BackArrowIcon /> {attempt.phase === "exam" ? "Exit examination" : "Back to Accounts practice"}
       </button>
-      {exitConfirm && <section aria-label="Exit examination"><h2>Save and exit?</h2><p>Your answers will be saved. The timer will keep running while you’re away.</p><div className="poa-actions"><button type="button" onClick={onBack}>Save and exit</button><button type="button" className="secondary" onClick={() => setExitConfirm(false)}>Keep working</button></div></section>}
-      <header>
-        <span className="poa-eyebrow">SPARK original · Paper 02</span>
-        <h1>Principles of Accounts</h1>
-        <p>Five compulsory questions · 20 marks each · 3 hours · 100 marks.</p>
-      </header>
-      <p role="alert">{error}</p>
+      <PoaExamHeader
+        paperTitle="Paper 2 · Practice set 1"
+        description="Five compulsory questions · 20 marks each · 3 hours · 100 marks"
+        summary={attempt.phase === "instructions" ? "Five compulsory questions · 20 marks each · 100 marks" : `${Object.values(attempt.responses).filter((r) => String(r?.answer ?? "").trim()).length}/100 checkpoints answered · Five questions`}
+        timeLabel={attempt.phase === "instructions" ? "Duration" : review ? "Status" : "Time remaining"}
+        timeValue={attempt.phase === "instructions" ? "3 hours" : review ? "Submitted" : formatTime(seconds)}
+      />
+      {error && <p role="alert" className="poa-error">{error}</p>}
+      <ConfirmModal
+        open={exitConfirm}
+        onClose={() => setExitConfirm(false)}
+        onConfirm={onBack}
+        title="Save and exit?"
+        message="Your answers will be saved. The timer will keep running while you’re away."
+        confirmLabel="Save and exit"
+        cancelLabel="Keep working"
+      />
+      <ConfirmModal
+        open={confirm}
+        onClose={() => setConfirm(false)}
+        onConfirm={() => submit()}
+        title="Submit your responses?"
+        message="You can review your answers after submission, but you will not be able to edit this attempt."
+        confirmLabel="Submit now"
+        cancelLabel="Keep working"
+        busy={busy}
+      />
       {attempt.phase === "instructions" ? (
-        <section>
+        <section className="poa-exam-instructions">
           <h2>Before you begin</h2>
           <p>
             Complete all five questions. Show your working in the provided
@@ -219,43 +242,18 @@ function Paper2Exam({ userId, supabase, onBack }) {
             answers after submission. A final exam result appears separately
             when SPARK has completed grading.
           </p>
-          <button type="button" disabled={busy} onClick={begin}>
+          <button type="button" data-spark-action="exam" disabled={busy} onClick={begin}>
             {busy ? "Starting…" : "Start Paper 2"}
           </button>
         </section>
       ) : (
-        <>
-          <div className="poa-exam-status">
-            <strong>
-              {review
-                ? "Submitted · practice feedback"
-                : `Time remaining ${formatTime(seconds)}`}
-            </strong>
-            <span>
-              {
-                Object.values(attempt.responses).filter((r) =>
-                  String(r?.answer ?? "").trim(),
-                ).length
-              }
-              /100 checkpoints answered
-            </span>
-          </div>
-          <nav className="poa-question-nav" aria-label="Paper 2 questions">
-            {POA_PAPER2.map((q, i) => (
-              <button
-                type="button"
-                key={q.id}
-                aria-current={attempt.index === i ? "step" : undefined}
-                onClick={() => setAttempt({ ...attempt, index: i })}
-              >
-                Question {i + 1}
-              </button>
-            ))}
-          </nav>
-          <section>
-            <h2>
-              {question.number}. {question.title} <small>(20 marks)</small>
-            </h2>
+        <div className="poa-exam-layout">
+          <div className="poa-exam-content">
+          <section className="poa-native-exam-body">
+            <div className="poa-question-heading">
+              <h2>{question.number}. {question.title}</h2>
+              <span>20 marks</span>
+            </div>
             <p>{question.scenario}</p>
             <div className="poa-answer-grid">
               {question.checkpoints.map((c) => {
@@ -328,6 +326,7 @@ function Paper2Exam({ userId, supabase, onBack }) {
             {attempt.index > 0 && (
               <button
                 type="button"
+                data-spark-action="nav"
                 className="secondary"
                 onClick={() =>
                   setAttempt({ ...attempt, index: attempt.index - 1 })
@@ -339,6 +338,7 @@ function Paper2Exam({ userId, supabase, onBack }) {
             {attempt.index < 4 && (
               <button
                 type="button"
+                data-spark-action="forward"
                 className="secondary"
                 onClick={() =>
                   setAttempt({ ...attempt, index: attempt.index + 1 })
@@ -350,6 +350,7 @@ function Paper2Exam({ userId, supabase, onBack }) {
             {!review && (
               <button
                 type="button"
+                data-spark-action="exam"
                 disabled={busy}
                 onClick={() => setConfirm(true)}
               >
@@ -357,28 +358,6 @@ function Paper2Exam({ userId, supabase, onBack }) {
               </button>
             )}
           </div>
-          {confirm && (
-            <section
-              className="poa-submit-confirm"
-              aria-label="Confirm submission"
-            >
-              <h2>Submit your responses?</h2>
-              <p>
-                You will be able to review your answers but cannot edit this
-                attempt after submission.
-              </p>
-              <button type="button" disabled={busy} onClick={() => submit()}>
-                Submit now
-              </button>
-              <button
-                type="button"
-                className="secondary"
-                onClick={() => setConfirm(false)}
-              >
-                Keep working
-              </button>
-            </section>
-          )}
           {review && (
             <section aria-live="polite">
               <h2>Practice feedback</h2>
@@ -393,6 +372,7 @@ function Paper2Exam({ userId, supabase, onBack }) {
                   <button
                     disabled={busy}
                     type="button"
+                    data-spark-action="exam"
                     onClick={() => submit()}
                   >
                     Retry server submission
@@ -401,6 +381,7 @@ function Paper2Exam({ userId, supabase, onBack }) {
                     disabled={busy}
                     className="secondary"
                     type="button"
+                    data-spark-action="nav"
                     onClick={async () => {
                       setBusy(true);
                       const result = await readServerExamV2Result({
@@ -436,13 +417,26 @@ function Paper2Exam({ userId, supabase, onBack }) {
                   This replaces the local saved attempt. Review or copy your
                   working first.
                 </p>
-                <button disabled={busy} type="button" onClick={begin}>
+                <button disabled={busy} type="button" data-spark-action="exam" onClick={begin}>
                   Start a new Paper 2 attempt
                 </button>
               </details>
             </section>
           )}
-        </>
+          </div>
+          <PoaQuestionNavigator
+            questions={POA_PAPER2.map((q) => ({
+              id: q.id,
+              label: `Question ${q.number}`,
+              answered: q.checkpoints.some((checkpoint) => {
+                const response = attempt.responses[checkpoint.id];
+                return String(response?.answer ?? "").trim() || String(response?.working ?? "").trim();
+              }),
+            }))}
+            currentId={question.id}
+            onSelect={(id) => setAttempt((current) => ({ ...current, index: POA_PAPER2.findIndex((q) => q.id === id) }))}
+          />
+        </div>
       )}
     </main>
   );
@@ -450,16 +444,26 @@ function Paper2Exam({ userId, supabase, onBack }) {
 export default function PoaPracticeHub({ userId, supabase, onBack }) {
   const [mode, setMode] = useState("home"),
     [source, setSource] = useState(null),
-    [paper, setPaper] = useState("all");
+    [libraryPaper, setLibraryPaper] = useState("1"),
+    [libraryTabs, setLibraryTabs] = useState({ 1: "practice", 2: "practice" }),
+    [filters, setFilters] = useState({
+      1: { year: "all", sitting: "all" },
+      2: { year: "all", sitting: "all" },
+    });
+  useEffect(() => {
+    window.scrollTo?.({ top: 0, left: 0, behavior: "instant" });
+  }, [mode, source?.id]);
   if (mode === "paper1")
     return (
+      <div className="poa-original-paper1">
       <FnhPaper1Exam
         key={userId || "guest"}
         supabase={supabase}
         userId={userId}
         practiceConfig={CONFIG}
-        onBack={() => setMode("home")}
+        onBack={() => setMode("library")}
       />
+      </div>
     );
   if (mode === "paper2")
     return (
@@ -467,7 +471,7 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
         key={userId}
         supabase={supabase}
         userId={userId}
-        onBack={() => setMode("home")}
+        onBack={() => setMode("library")}
       />
     );
   if (source)
@@ -484,81 +488,144 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
   const sources = manifest
     .filter(
       (s) =>
-        s.paper && !s.duplicateOf && hasCompletePoaText(getPoaHistoricalPaper(s.id)) && (paper === "all" || s.paper === paper),
+        s.paper === libraryPaper && !s.duplicateOf && hasCompletePoaText(getPoaHistoricalPaper(s.id)),
     )
-    .sort((a, b) => b.year - a.year || a.paper.localeCompare(b.paper));
+    .sort((a, b) => b.year - a.year || a.sitting.localeCompare(b.sitting));
+  if (mode === "workspace") return (
+    <main className="poa-practice poa-practice-shell">
+      <button type="button" className="poa-back" data-spark-action="nav" onClick={() => setMode("home")}>
+        <BackArrowIcon /> Back to Accounts practice
+      </button>
+      <header className="poa-library-header">
+        <h1>Accounting tools</h1>
+        <p>Work through a ledger, cash book, reconciliation or financial statement at your own pace.</p>
+      </header>
+      <AccountingWorkspace key={userId || "guest"} userId={userId} />
+    </main>
+  );
+  if (mode === "library") {
+    const isPaper1 = libraryPaper === "1";
+    const tab = libraryTabs[libraryPaper];
+    const filter = filters[libraryPaper];
+    const years = [...new Set(sources.map((s) => s.year))];
+    const matches = sources.filter((s) =>
+      (filter.year === "all" || String(s.year) === filter.year) &&
+      (filter.sitting === "all" || s.sitting === filter.sitting),
+    );
+    const specimens = POA_SPECIMEN_PAPERS.filter((p) => String(p.paper) === libraryPaper && hasCompletePoaText(p));
+    const updateFilter = (next) => setFilters((current) => ({
+      ...current, [libraryPaper]: { ...current[libraryPaper], ...next },
+    }));
+    return (
+      <main className="poa-practice poa-practice-shell">
+        <button type="button" className="poa-back" data-spark-action="nav" onClick={() => setMode("home")}>
+          <BackArrowIcon /> Back to Accounts practice
+        </button>
+        <header className="poa-library-header">
+          <h1>Paper {libraryPaper}: {isPaper1 ? "Multiple choice" : "Structured questions"}</h1>
+          <p>Choose a practice set or a past paper. Read the instructions before starting your examination.</p>
+          <div className="poa-library-meta">
+            <span>{isPaper1 ? "60 multiple-choice questions" : "Written answers and working"}</span>
+            <span>{isPaper1 ? "90 minutes" : "3 hours"}</span>
+          </div>
+        </header>
+        <div className="poa-library-tabs" role="group" aria-label="Choose practice or past papers">
+          <button type="button" className={tab === "practice" ? "active" : ""} data-spark-action="nav" aria-pressed={tab === "practice"} onClick={() => setLibraryTabs((current) => ({ ...current, [libraryPaper]: "practice" }))}>Practice sets</button>
+          <button type="button" className={tab === "past" ? "active" : ""} data-spark-action="nav" aria-pressed={tab === "past"} onClick={() => setLibraryTabs((current) => ({ ...current, [libraryPaper]: "past" }))}>Past papers</button>
+        </div>
+        {tab === "practice" ? (
+          <>
+            <div className="poa-library-section-heading">
+              <h2>Choose a practice set</h2>
+              <p>Your timer starts after the instructions.</p>
+            </div>
+            <section className="poa-library-grid" aria-label={`Paper ${libraryPaper} practice sets`}>
+              <article className="poa-library-card">
+                <h3>Practice set 1</h3>
+                <p>{isPaper1 ? "60 syllabus-based multiple-choice questions with an answer review and explanations." : "Five compulsory questions. Show your working, enter your answers, then review the worked solutions."}</p>
+                <p className="poa-library-meta">{isPaper1 ? "60 marks · 90 minutes" : "100 marks · 3 hours"}</p>
+                <button type="button" data-spark-action="forward" onClick={() => setMode(isPaper1 ? "paper1" : "paper2")}>
+                  Select practice paper <ForwardArrowIcon />
+                </button>
+              </article>
+              {specimens.map((specimen) => <article className="poa-library-card" key={specimen.id}>
+                <h3>Syllabus specimen paper</h3>
+                <p>Practise the specimen questions, then review your answers and worked solutions.</p>
+                <p className="poa-library-meta">Paper {libraryPaper} · {isPaper1 ? "Multiple choice" : "Structured questions"}</p>
+                <button type="button" className="secondary" data-spark-action="forward" onClick={() => setSource(getPoaPaperSource(specimen))}>
+                  Select specimen paper <ForwardArrowIcon />
+                </button>
+              </article>)}
+            </section>
+          </>
+        ) : (
+          <>
+            <div className="poa-library-section-heading">
+              <h2>Choose a past paper</h2>
+              <p>Find an examination by year and session.</p>
+            </div>
+            <div className="poa-library-filters">
+              <label htmlFor="poa-library-year">Year
+                <select id="poa-library-year" value={filter.year} onChange={(e) => updateFilter({ year: e.target.value })}>
+                  <option value="all">All years</option>
+                  {years.map((year) => <option key={year} value={year}>{year}</option>)}
+                </select>
+              </label>
+              <label htmlFor="poa-library-session">Session
+                <select id="poa-library-session" value={filter.sitting} onChange={(e) => updateFilter({ sitting: e.target.value })}>
+                  <option value="all">All sessions</option>
+                  <option value="JAN">January</option>
+                  <option value="MJ">May/June</option>
+                </select>
+              </label>
+            </div>
+            <section className="poa-library-grid" aria-label={`Paper ${libraryPaper} past papers`}>
+              {matches.map((s) => <article className="poa-library-card" key={s.id}>
+                <h3>{s.year} {s.sitting === "JAN" ? "January" : "May/June"}</h3>
+                <p className="poa-library-meta">Paper {libraryPaper} · {isPaper1 ? "Multiple choice" : "Structured questions"}</p>
+                <p>Read the original questions, save your answers and review your work when you finish.</p>
+                <button type="button" className="secondary" data-spark-action="forward" onClick={() => setSource(s)}>
+                  Select past paper <ForwardArrowIcon />
+                </button>
+              </article>)}
+              {matches.length === 0 && <p className="poa-library-empty">No papers match these filters. Try another year or session.</p>}
+            </section>
+          </>
+        )}
+      </main>
+    );
+  }
   return (
-    <main className="poa-practice">
-      <button type="button" className="poa-back" onClick={onBack}>
+    <main className="poa-practice poa-practice-shell">
+      <button type="button" className="poa-back" data-spark-action="nav" onClick={onBack}>
         <BackArrowIcon /> Back to practice subjects
       </button>
-      <header>
-        <span className="poa-eyebrow">CSEC · Principles of Accounts</span>
-        <h1>Put your accounting skills to work</h1>
-        <p>
-          Choose a practice paper or open the accounting tools.
-        </p>
+      <header className="poa-library-header">
+        <h1>Principles of Accounts practice</h1>
+        <p>Choose Paper 1 or Paper 2 for practice sets, past papers and an answer review.</p>
       </header>
-      <div className="poa-practice-choices">
-        <section>
-          <h2>Paper 1</h2>
-          <p>
-            Original practice: 60 multiple-choice questions in 90 minutes.
-            Review your answers and explanations when you finish.
-          </p>
-          <button type="button" onClick={() => setMode("paper1")}>
-            Open Paper 1 <ForwardArrowIcon />
-          </button>
-        </section>
-        <section>
-          <h2>Paper 2</h2>
-          <p>
-            Original practice: five questions in 3 hours.
-            Show your working, then review the worked answers.
-          </p>
-          <button type="button" onClick={() => setMode("paper2")}>
-            Open Paper 2 <ForwardArrowIcon />
-          </button>
-        </section>
-      </div>
-      {POA_SPECIMEN_PAPERS.some(hasCompletePoaText) && <section>
-        <h2>Syllabus specimen papers</h2>
-        <p>Try the syllabus specimen papers, then review your answers and worked solutions.</p>
-        <div className="poa-actions">{POA_SPECIMEN_PAPERS.filter(hasCompletePoaText).map((specimen) => <button key={specimen.id} type="button" className="secondary" onClick={() => setSource(getPoaPaperSource(specimen))}>Open specimen Paper {specimen.paper}</button>)}</div>
-      </section>}
-      <section>
-        <h2>Past papers</h2>
-        <p>Choose a paper to practise. You can save your answers and come back to them later.</p>
-        <label>
-          Filter paper
-          <select value={paper} onChange={(e) => setPaper(e.target.value)}>
-            <option value="all">All papers</option>
-            <option value="1">Paper 1</option>
-            <option value="2">Paper 2</option>
-          </select>
-        </label>
-        <ul className="poa-paper-list">
-          {sources.map((s) => (
-            <li key={s.id}>
-              <span>
-                <strong>
-                  {s.year} · {s.sitting === "JAN" ? "January" : "May/June"} ·
-                  Paper 0{s.paper}
-                </strong>
-                <small>{s.paper === "1" ? "Multiple choice" : "Structured questions"}</small>
-              </span>
-              <button
-                type="button"
-                className="secondary"
-                onClick={() => setSource(s)}
-              >
-                Open past paper <ForwardArrowIcon />
-              </button>
-            </li>
-          ))}
-        </ul>
+      <section className="poa-paper-choices" aria-label="Choose an examination paper">
+        {["1", "2"].map((paper) => <button
+          type="button"
+          key={paper}
+          className="poa-paper-choice"
+          data-spark-action="forward"
+          aria-label={`Open Paper ${paper}`}
+          onClick={() => { setLibraryPaper(paper); setMode("library"); }}
+        >
+          <span className="poa-paper-choice-number" aria-hidden="true">0{paper}</span>
+          <span className="poa-paper-choice-copy">
+            <strong>Paper {paper}</strong>
+            <span>{paper === "1" ? "Multiple choice · 90 minutes" : "Structured questions · 3 hours"}</span>
+            <small>Practice sets and past papers</small>
+          </span>
+          <ForwardArrowIcon />
+        </button>)}
       </section>
-      <details className="poa-lesson-tools"><summary>Accounting tools</summary><AccountingWorkspace key={userId || "guest"} userId={userId} /></details>
+      <section className="poa-workspace-entry">
+        <div><h2>Accounting tools</h2><p>Practise with a ledger, cash book, trial balance and more.</p></div>
+        <button type="button" className="secondary" data-spark-action="forward" onClick={() => setMode("workspace")}>Open accounting tools <ForwardArrowIcon /></button>
+      </section>
     </main>
   );
 }

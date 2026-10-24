@@ -1,6 +1,6 @@
 /** @jest-environment jsdom */
 import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor, within } from "@testing-library/react";
 import PoaPracticeHub from "./PoaPracticeHub";
 import {
   startServerExamAttempt,
@@ -17,6 +17,10 @@ jest.mock("../../grading/serverExamAttempt", () => ({
 jest.mock("../../subjects/subjectProgress", () => ({
   recordSubjectActivity: jest.fn(async () => ({ error: null })),
 }));
+const openOriginalPaper2 = () => {
+  fireEvent.click(screen.getByRole("button", { name: "Open Paper 2", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Select practice paper", exact: true }));
+};
 beforeEach(() => {
   localStorage.clear();
   jest.clearAllMocks();
@@ -40,9 +44,7 @@ beforeEach(() => {
 });
 test("submits immutable response keys and a null score to the shared V2 attempt path", async () => {
   render(<PoaPracticeHub userId="student-a" supabase={{ rpc: jest.fn() }} />);
-  fireEvent.click(
-    screen.getByRole("button", { name: "Open Paper 2", exact: true }),
-  );
+  openOriginalPaper2();
   fireEvent.click(
     screen.getByRole("button", { name: "Start Paper 2", exact: true }),
   );
@@ -104,9 +106,7 @@ test("an expired saved attempt automatically submits the saved answers once", as
     }),
   );
   render(<PoaPracticeHub userId="student-a" supabase={{ rpc: jest.fn() }} />);
-  fireEvent.click(
-    screen.getByRole("button", { name: "Open Paper 2", exact: true }),
-  );
+  openOriginalPaper2();
   await waitFor(() => expect(submitServerExamAttempt).toHaveBeenCalledTimes(1));
   expect(submitServerExamAttempt).toHaveBeenCalledWith(
     expect.objectContaining({
@@ -120,15 +120,42 @@ test("an expired saved attempt automatically submits the saved answers once", as
 
 test("Paper 2 can save and exit without submitting the attempt", async () => {
   render(<PoaPracticeHub userId="student-a" supabase={{ rpc: jest.fn() }}/>);
-  fireEvent.click(screen.getByRole("button", { name: "Open Paper 2", exact: true }));
+  openOriginalPaper2();
   fireEvent.click(screen.getByRole("button", { name: "Start Paper 2", exact: true }));
   await screen.findByLabelText(/^Net sales/);
   fireEvent.change(screen.getByLabelText(/^Net sales/), { target: { value: "116000" } });
+  fireEvent.change(screen.getByLabelText("Show your working for this question"), { target: { value: "120000 - 4000 = 116000" } });
   fireEvent.click(screen.getByRole("button", { name: "Exit examination", exact: true }));
+  expect(screen.getByRole("dialog")).toBeInTheDocument();
   fireEvent.click(screen.getByRole("button", { name: "Save and exit", exact: true }));
-  expect(screen.getByRole("button", { name: "Open Paper 2", exact: true })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: "Paper 2: Structured questions", exact: true })).toBeInTheDocument();
   expect(submitServerExamAttempt).not.toHaveBeenCalled();
-  fireEvent.click(screen.getByRole("button", { name: "Open Paper 2", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Select practice paper", exact: true }));
   expect(screen.getByLabelText(/^Net sales/)).toHaveValue("116000");
+  expect(screen.getByLabelText("Show your working for this question")).toHaveValue("120000 - 4000 = 116000");
   expect(screen.queryByText(/missing|duplicate/i)).not.toBeInTheDocument();
+});
+
+test("paper libraries separate practice sets and past papers and retain each paper's filters", () => {
+  render(<PoaPracticeHub userId="student-a" />);
+  expect(screen.getByRole("button", { name: "Open accounting tools" })).toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Open Paper 1", exact: true }));
+  expect(screen.getByRole("button", { name: "Practice sets", exact: true })).toHaveAttribute("aria-pressed", "true");
+  expect(screen.getByRole("button", { name: "Select specimen paper" })).toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Past papers", exact: true }));
+  fireEvent.change(screen.getByLabelText("Year"), { target: { value: "2025" } });
+  fireEvent.change(screen.getByLabelText("Session"), { target: { value: "JAN" } });
+  const paper1Library = screen.getByRole("region", { name: "Paper 1 past papers" });
+  expect(within(paper1Library).getAllByRole("article")).toHaveLength(1);
+  expect(within(paper1Library).getByRole("heading", { name: "2025 January" })).toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Back to Accounts practice" }));
+  fireEvent.click(screen.getByRole("button", { name: "Open Paper 2", exact: true }));
+  expect(screen.getByRole("button", { name: "Practice sets", exact: true })).toHaveAttribute("aria-pressed", "true");
+  fireEvent.click(screen.getByRole("button", { name: "Past papers", exact: true }));
+  expect(screen.getByLabelText("Year")).toHaveValue("all");
+  fireEvent.click(screen.getByRole("button", { name: "Back to Accounts practice" }));
+  fireEvent.click(screen.getByRole("button", { name: "Open Paper 1", exact: true }));
+  expect(screen.getByRole("button", { name: "Past papers", exact: true })).toHaveAttribute("aria-pressed", "true");
+  expect(screen.getByLabelText("Year")).toHaveValue("2025");
+  expect(screen.getByLabelText("Session")).toHaveValue("JAN");
 });
