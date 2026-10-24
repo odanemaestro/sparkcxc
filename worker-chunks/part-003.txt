@@ -1,4 +1,1429 @@
-
+",
+        "Nutrients"
+      ],
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "I and II only",
+        B: "I and III only",
+        C: "II and III only",
+        D: "I, II and III"
+      },
+      answer: "D",
+      explanation: "Microorganisms need moisture, a suitable (warm) temperature and nutrients.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-216",
+      module: 1,
+      objective: {
+        code: "1.7.11",
+        topic: 7,
+        topicTitle: "Health",
+        text: "determine conditions which promote the growth of microorganisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Bread will stay free of mould for LONGEST if it is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "stored in a refrigerator in a sealed bag",
+        B: "kept in a warm, damp cupboard",
+        C: "left uncovered on a kitchen counter",
+        D: "wrapped in a damp cloth"
+      },
+      answer: "A",
+      explanation: "Low temperature slows microbial growth and the sealed bag keeps out spores.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-217",
+      module: 1,
+      objective: {
+        code: "1.7.11",
+        topic: 7,
+        topicTitle: "Health",
+        text: "determine conditions which promote the growth of microorganisms"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Yeast is used in making bread because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "adds vitamins to the flour",
+        B: "kills harmful bacteria",
+        C: "produces carbon dioxide which makes the dough rise",
+        D: "removes water from the dough"
+      },
+      answer: "C",
+      explanation: "Yeast ferments sugar and releases carbon dioxide gas, which makes the dough rise.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-441",
+      module: 1,
+      objective: {
+        code: "1.7.11",
+        topic: 7,
+        topicTitle: "Health",
+        text: "determine conditions which promote the growth of microorganisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Food kept in the 'danger zone' between 5 \xB0C and 60 \xB0C is likely to spoil quickly because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "bacteria are all killed",
+        B: "the food freezes",
+        C: "enzymes are destroyed",
+        D: "bacteria multiply rapidly at these temperatures"
+      },
+      answer: "D",
+      explanation: "Warm conditions are ideal for microbial growth.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-442",
+      module: 1,
+      objective: {
+        code: "1.7.11",
+        topic: 7,
+        topicTitle: "Health",
+        text: "determine conditions which promote the growth of microorganisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is an example of microorganisms being used in food production?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Frying plantains",
+        B: "Boiling rice",
+        C: "Making cheese",
+        D: "Squeezing oranges"
+      },
+      answer: "C",
+      explanation: "Bacteria and fungi are used to make cheese.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-443",
+      module: 1,
+      objective: {
+        code: "1.7.11",
+        topic: 7,
+        topicTitle: "Health",
+        text: "determine conditions which promote the growth of microorganisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Bread mould grows well on bread because the bread provides",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "nutrients and moisture",
+        B: "salt and vinegar",
+        C: "light",
+        D: "oxygen only"
+      },
+      answer: "A",
+      explanation: "Mould needs food, water and warmth.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-444",
+      module: 1,
+      objective: {
+        code: "1.7.11",
+        topic: 7,
+        topicTitle: "Health",
+        text: "determine conditions which promote the growth of microorganisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Calcium propionate is added to sliced bread in order to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "add flavour",
+        B: "make it rise",
+        C: "add colour",
+        D: "slow down the growth of mould"
+      },
+      answer: "D",
+      explanation: "It is a preservative that inhibits mould.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-512",
+      module: 1,
+      objective: {
+        code: "1.7.11",
+        topic: 7,
+        topicTitle: "Health",
+        text: "determine conditions which promote the growth of microorganisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following foods is MOST likely to spoil quickly at room temperature?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Dry crackers",
+        B: "Cooked rice",
+        C: "Sugar",
+        D: "Salt"
+      },
+      answer: "B",
+      explanation: "Moist, nutrient-rich foods support microbial growth.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-513",
+      module: 1,
+      objective: {
+        code: "1.7.11",
+        topic: 7,
+        topicTitle: "Health",
+        text: "determine conditions which promote the growth of microorganisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Microorganisms are used in food processing to make",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "table salt",
+        B: "sugar crystals",
+        C: "vegetable oil",
+        D: "vinegar, soy sauce and bread"
+      },
+      answer: "D",
+      explanation: "Fermentation by microbes produces these foods.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-514",
+      module: 1,
+      objective: {
+        code: "1.7.11",
+        topic: 7,
+        topicTitle: "Health",
+        text: "determine conditions which promote the growth of microorganisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Mould on bread grows as",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "single bacteria",
+        B: "thread-like hyphae producing spores",
+        C: "viruses",
+        D: "crystals"
+      },
+      answer: "B",
+      explanation: "Bread mould is a fungus.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-218",
+      module: 1,
+      objective: {
+        code: "1.7.11",
+        topic: 7,
+        topicTitle: "Health",
+        text: "determine conditions which promote the growth of microorganisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "On which piece of bread would MOST mould grow?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-BREAD",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "A",
+        B: "B",
+        C: "C",
+        D: "D"
+      },
+      answer: "B",
+      explanation: "B has moisture and a warm temperature, which moulds need; C is too cold, A too dry and salt in D draws water out.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-219",
+      module: 1,
+      objective: {
+        code: "1.7.11",
+        topic: 7,
+        topicTitle: "Health",
+        text: "determine conditions which promote the growth of microorganisms"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Dishes B and C were set up to find out the effect of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-BREAD",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "moisture",
+        B: "salt",
+        C: "light",
+        D: "temperature"
+      },
+      answer: "D",
+      explanation: "B and C differ only in temperature (25 \xB0C and 4 \xB0C).",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-220",
+      module: 1,
+      objective: {
+        code: "1.7.12",
+        topic: 7,
+        topicTitle: "Health",
+        text: "apply the principles used in food preservation"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Salting fish preserves it because the salt",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "adds nutrients which bacteria cannot use",
+        B: "raises the temperature of the fish",
+        C: "draws water out of the bacterial cells by osmosis",
+        D: "keeps oxygen in the fish"
+      },
+      answer: "C",
+      explanation: "Salt makes a concentrated solution that removes water from microbes by osmosis, so they cannot grow.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-221",
+      module: 1,
+      objective: {
+        code: "1.7.12",
+        topic: 7,
+        topicTitle: "Health",
+        text: "apply the principles used in food preservation"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following methods of food preservation works by removing water?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Drying",
+        B: "Canning",
+        C: "Refrigeration",
+        D: "Pickling"
+      },
+      answer: "A",
+      explanation: "Drying (e.g. sun-drying or solar drying) removes the moisture that microbes need.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-222",
+      module: 1,
+      objective: {
+        code: "1.7.12",
+        topic: 7,
+        topicTitle: "Health",
+        text: "apply the principles used in food preservation"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Pickling preserves food because vinegar",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "removes all oxygen",
+        B: "makes the food too acidic for most microorganisms",
+        C: "freezes the food",
+        D: "adds sugar to the food"
+      },
+      answer: "B",
+      explanation: "Vinegar lowers the pH so that most bacteria and fungi cannot survive.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-223",
+      module: 1,
+      objective: {
+        code: "1.7.12",
+        topic: 7,
+        topicTitle: "Health",
+        text: "apply the principles used in food preservation"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In canning, food is heated in the can and then sealed. The heating",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "adds vitamins to the food",
+        B: "makes the can rust",
+        C: "increases the water content",
+        D: "kills microorganisms and the seal prevents new ones from entering"
+      },
+      answer: "D",
+      explanation: "Heat sterilises the food and the airtight seal stops re-contamination.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-224",
+      module: 1,
+      objective: {
+        code: "1.7.12",
+        topic: 7,
+        topicTitle: "Health",
+        text: "apply the principles used in food preservation"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Making jams and guava jelly with large amounts of sugar preserves the fruit because sugar",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "kills microbes by heating",
+        B: "adds acid to the fruit",
+        C: "removes water from microbes by osmosis",
+        D: "provides oxygen"
+      },
+      answer: "C",
+      explanation: "Concentrated sugar solution draws water out of microbial cells, just as salt does.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-225",
+      module: 1,
+      objective: {
+        code: "1.7.12",
+        topic: 7,
+        topicTitle: "Health",
+        text: "apply the principles used in food preservation"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "An inverter-type refrigerator is recommended for food storage because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "keeps food at a steady low temperature while using less electricity",
+        B: "heats food to kill bacteria",
+        C: "removes all water from food",
+        D: "adds preservatives to food"
+      },
+      answer: "A",
+      explanation: "Inverter technology varies the compressor speed, keeping the temperature steady and saving energy.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-445",
+      module: 1,
+      objective: {
+        code: "1.7.12",
+        topic: 7,
+        topicTitle: "Health",
+        text: "apply the principles used in food preservation"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Food preservation is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cooking of food",
+        B: "treatment of food to slow down or prevent spoilage",
+        C: "growing of food",
+        D: "digestion of food"
+      },
+      answer: "B",
+      explanation: "Preservation extends shelf life by stopping microbial growth.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-446",
+      module: 1,
+      objective: {
+        code: "1.7.12",
+        topic: 7,
+        topicTitle: "Health",
+        text: "apply the principles used in food preservation"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Refrigeration preserves food because low temperatures",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "slow down the activity of microorganisms and enzymes",
+        B: "kill all microorganisms",
+        C: "remove water",
+        D: "add salt"
+      },
+      answer: "A",
+      explanation: "Cold slows growth; it does not kill most microbes.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-447",
+      module: 1,
+      objective: {
+        code: "1.7.12",
+        topic: 7,
+        topicTitle: "Health",
+        text: "apply the principles used in food preservation"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Curing meat involves adding salt and nitrites. Curing preserves meat because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "adds water",
+        B: "raises the temperature",
+        C: "adds oxygen",
+        D: "makes conditions unsuitable for bacteria"
+      },
+      answer: "D",
+      explanation: "Salt removes water and nitrites inhibit bacteria.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-448",
+      module: 1,
+      objective: {
+        code: "1.7.12",
+        topic: 7,
+        topicTitle: "Health",
+        text: "apply the principles used in food preservation"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Solar drying of fruit and fish is useful in the Caribbean because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it needs electricity",
+        B: "it uses free, renewable energy from the sun",
+        C: "it adds moisture",
+        D: "it only works at night"
+      },
+      answer: "B",
+      explanation: "Sunshine is plentiful and free.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-449",
+      module: 1,
+      objective: {
+        code: "1.7.12",
+        topic: 7,
+        topicTitle: "Health",
+        text: "apply the principles used in food preservation"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Canned food should not be eaten if the can is swollen because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "bacteria inside may be producing gas and toxins",
+        B: "the can is too cold",
+        C: "the food has too much salt",
+        D: "the can is new"
+      },
+      answer: "A",
+      explanation: "A bulging can suggests bacterial growth, possibly Clostridium botulinum.",
+      topic: 7
+    },
+    {
+      id: "IS-M1-P1-450",
+      module: 1,
+      objective: {
+        code: "1.7.12",
+        topic: 7,
+        topicTitle: "Health",
+        text: "apply the principles used in food preservation"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following methods of food preservation uses heat?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Freezing",
+        B: "Salting",
+        C: "Pasteurisation",
+        D: "Drying in the shade"
+      },
+      answer: "C",
+      explanation: "Pasteurisation heats milk to kill most harmful bacteria.",
+      topic: 7
+    }
+  ],
+  paper02: [
+    {
+      id: "IS-M1-P2-01",
+      module: 1,
+      kind: "practical",
+      title: "Sexual reproduction and growth in plants",
+      totalMarks: 20,
+      profileMarks: {
+        KC: 8,
+        UK: 7,
+        XS: 5
+      },
+      topics: [
+        {
+          topic: 2,
+          title: "Reproduction and Growth in Plants"
+        }
+      ],
+      objectives: [
+        "1.2.3",
+        "1.2.4",
+        "1.2.6"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Farmer Ramdial grows pumpkins, beans and ornamental flowers on his farm. Figure 1 shows a section through one of the flowers on his farm.",
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="80 30 540 475" width="540" height="475" role="img" aria-label="Longitudinal section of a flower"><title>Longitudinal section of a flower</title><rect x="80" y="30" width="540" height="475" fill="white" /><g fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" font-family="Arial, Helvetica, sans-serif"><path d="M285 398 C252 391 226 345 191 328 C226 325 247 358 285 384 Z" fill="#fff" /><path d="M354 398 C388 389 416 344 451 325 C415 326 393 359 354 384 Z" fill="#fff" /><path d="M166 111 C196 82 238 67 278 76 C299 65 334 65 357 76 C401 66 451 78 486 111 C449 114 425 150 416 200 C405 263 400 323 378 363 C367 384 350 399 340 408 L337 469 H307 L303 409 C285 400 268 387 255 365 C232 327 222 267 214 210 C206 153 195 126 166 111 Z" fill="#fff" /><path d="M278 76 C286 80 292 87 296 94 M357 76 C365 80 373 86 376 94" stroke-width="1.5" /><path d="M236 157 C236 222 242 291 266 343 C279 370 291 388 306 399 L308 390 C288 371 280 354 273 337 C251 286 248 222 248 157 Z" fill="#fff" /><path d="M394 157 C394 221 388 289 366 341 C354 368 344 386 331 399 L329 390 C347 370 356 351 362 335 C382 284 382 220 382 157 Z" fill="#fff" /><path d="M242 121 C233 121 231 133 232 146 C232 158 235 168 242 168 C249 168 252 158 252 145 C252 131 249 121 242 121 Z" fill="#fff" /><path d="M388 121 C379 121 377 133 378 146 C378 158 381 168 388 168 C395 168 398 158 398 145 C398 131 395 121 388 121 Z" fill="#fff" /><path d="M241 127 C238 139 239 153 242 162 M387 127 C384 139 385 153 388 162" stroke-width="1.05" /><path d="M310 157 C301 149 296 139 301 132 C306 124 315 124 320 127 C326 123 336 127 339 134 C342 142 336 150 330 157 L330 273 C346 290 355 311 354 334 C354 359 344 378 332 385 L331 402 H309 L308 385 C294 378 285 359 285 335 C284 311 294 289 310 273 Z" fill="#fff" /><path d="M320 286 C306 286 295 309 295 335 C295 360 306 378 320 378 C334 378 344 360 344 335 C344 309 334 286 320 286 Z" fill="#fff" stroke-width="1.5" /><line x1="320" y1="292" x2="320" y2="371" stroke-width="1.15" /><path d="M320 307 Q316 310 313 309 M320 307 Q324 310 327 309" stroke-width="1.05" /><ellipse cx="308" cy="307" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><ellipse cx="332" cy="307" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><path d="M320 332 Q316 335 313 334 M320 332 Q324 335 327 334" stroke-width="1.05" /><ellipse cx="308" cy="332" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><ellipse cx="332" cy="332" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><path d="M320 356 Q316 359 313 358 M320 356 Q324 359 327 358" stroke-width="1.05" /><ellipse cx="308" cy="356" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><ellipse cx="332" cy="356" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /></g><path d="M388 141 H537" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="553" y="146" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">P</text><path d="M329 133 L537 64" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="553" y="72" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">Q</text><path d="M350 312 L537 299" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="553" y="307" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">R</text><path d="M308 332 H125" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="105" y="343" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="end" fill="#111" stroke="none" style="stroke:none;fill:#111">S</text></svg>',
+          figure: "Figure 1. Section through a flower",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Identify the parts labelled P, Q, R and S in Figure 1.",
+              marks: 4,
+              objective: "1.2.3",
+              profile: {
+                KC: 4
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "labels",
+                keys: [
+                  "P",
+                  "Q",
+                  "R",
+                  "S"
+                ]
+              },
+              markScheme: {
+                points: [
+                  "P - anther",
+                  "Q - stigma",
+                  "R - ovary",
+                  "S - ovule"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State ONE function of the part labelled P.",
+              marks: 1,
+              objective: "1.2.3",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Produces pollen grains (male gametes)."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "The flowers on Farmer Ramdial's farm have large, brightly coloured petals and a strong scent. Suggest the MOST likely agent of pollination for these flowers and give TWO reasons for your answer.",
+              marks: 3,
+              objective: "1.2.3",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "Agent: insects/animals (bees) (1)",
+                  "Large, brightly coloured petals attract insects (1)",
+                  "Scent attracts insects (1)",
+                  "(Accept: nectar present as a reward to insects)"
+                ],
+                guidance: "1 mark for agent; 1 mark each for any two reasons",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "Farmer Ramdial measured the height of a bean plant each week after germination. His results are shown in Table 1.",
+          svg: null,
+          figure: null,
+          table: {
+            title: "TABLE 1: HEIGHT OF A BEAN PLANT",
+            headers: [
+              "Time/weeks",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ],
+            rows: [
+              [
+                "Height/cm",
+                "2",
+                "5",
+                "11",
+                "18",
+                "23",
+                "25"
+              ]
+            ],
+            source: null
+          },
+          items: [
+            {
+              label: "(i)",
+              prompt: "On the grid provided, plot a line graph of height against time to represent the data in Table 1. You MUST label EACH axis.",
+              marks: 5,
+              objective: "1.2.4",
+              profile: {
+                XS: 5
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "graph",
+                height: 320,
+                x: "Time/weeks",
+                y: "Height/cm"
+              },
+              markScheme: {
+                points: [
+                  "Points plotted: (1, 2), (2, 5), (3, 11), (4, 18), (5, 23), (6, 25)",
+                  "Axes labelled: Time/weeks and Height/cm",
+                  "Suitable scale using at least 75% of the grid",
+                  "Smooth curve drawn through all points"
+                ],
+                guidance: "2 marks for correct plotting of points (all points = 2; at least half = 1); 1 mark for both axes labelled with units; 1 mark for an appropriate scale (at least 75% of the grid used); 1 mark for a smooth line/curve joining the points",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Describe the pattern of growth of the bean plant shown by your graph.",
+              marks: 2,
+              objective: "1.2.4",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Growth is slow at first (weeks 1-2) (1)",
+                  "then rapid between weeks 2 and 5 and slows down/levels off after week 5 (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State the THREE conditions necessary for the germination of the bean seeds.",
+              marks: 3,
+              objective: "1.2.4",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "Water",
+                  "Oxygen",
+                  "Suitable (warm) temperature"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "Farmer Ramdial rotates his pumpkins with beans on the same plot of land each year.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Explain how growing beans in the rotation helps to improve the fertility of the soil.",
+              marks: 2,
+              objective: "1.2.6",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Beans are legumes with root nodules containing nitrogen-fixing bacteria (1)",
+                  "which convert nitrogen from the air into nitrates/nitrogen compounds that enrich the soil (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-02",
+      module: 1,
+      kind: "structured",
+      title: "Cells, osmosis and the heart",
+      totalMarks: 15,
+      profileMarks: {
+        KC: 8,
+        UK: 7,
+        XS: 0
+      },
+      topics: [
+        {
+          topic: 1,
+          title: "Units of Life"
+        },
+        {
+          topic: 4,
+          title: "Transport Systems"
+        }
+      ],
+      objectives: [
+        "1.1.2",
+        "1.1.1",
+        "1.4.2"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Figure 2 shows a cell from a leaf.",
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="55 5 435 370" width="522" height="444" role="img" aria-label="Plant cell"><title>Plant cell</title><rect x="55" y="5" width="435" height="370" fill="white" /><g fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M208 44C238 31 279 28 307 39C330 48 340 67 340 96L336 295C336 327 321 343 288 344L225 344C195 343 181 328 180 296L173 115C171 77 182 54 208 44Z" stroke-width="3" /><path d="M212 55C240 43 278 41 302 50C320 57 328 72 328 97L324 294C324 320 313 331 287 332L225 332C202 331 193 320 192 294L185 114C183 82 191 65 212 55Z" stroke-width="1.5" /><path d="M235 148C247 142 260 156 275 162C285 166 295 166 298 179C300 203 286 241 277 273C272 290 265 303 257 297C246 288 244 273 238 259C229 235 216 206 217 183C217 166 222 153 235 148Z" fill="white" stroke-width="1.5" /><circle cx="221" cy="104" r="19" fill="#eee" stroke-width="1.5" /><circle cx="224" cy="104" r="6" fill="#555" stroke-width=".8" /><g transform="translate(200 151) rotate(-81) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(279 75) rotate(34) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(305 116) rotate(29) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(269 135) rotate(-38) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(310 190) rotate(-57) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(306 265) rotate(-57) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(282 315) rotate(-26) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(214 295) rotate(52) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(202 249) rotate(-87) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g></g><path d="M338 179 H412" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="424" y="185" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">W</text><path d="M285 76 L412 59" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="424" y="65" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">X</text><path d="M270 235 L412 254" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="424" y="260" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">Y</text><path d="M202 104 H118" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="102" y="106" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="end" fill="#111" stroke="none" style="stroke:none;fill:#111">Z</text><text x="257" y="218" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">cell sap</text></svg>',
+          figure: "Figure 2. Diagram of a leaf cell",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Identify the parts labelled W, X, Y and Z.",
+              marks: 4,
+              objective: "1.1.2",
+              profile: {
+                KC: 4
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "labels",
+                keys: [
+                  "W",
+                  "X",
+                  "Y",
+                  "Z"
+                ]
+              },
+              markScheme: {
+                points: [
+                  "W - cell wall",
+                  "X - chloroplast",
+                  "Y - vacuole",
+                  "Z - nucleus"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State TWO features in Figure 2 which show that it is a plant cell.",
+              marks: 2,
+              objective: "1.1.2",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Cell wall present",
+                  "Chloroplasts present",
+                  "Large (permanent) vacuole",
+                  "Regular/fixed shape"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "Mrs Clarke sells lettuce at an open market. By midday the leaves wilt, but after she sprinkles them with water they become firm again.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Define the term 'osmosis'.",
+              marks: 1,
+              objective: "1.1.1",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "The movement of water molecules from a dilute solution (high water concentration) to a more concentrated solution (low water concentration) through a selectively permeable membrane."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain how sprinkling water on the lettuce causes the leaves to become firm again.",
+              marks: 3,
+              objective: "1.1.1",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "The water outside is more dilute than the cell sap (1)",
+                  "water enters the cells by osmosis through the selectively permeable membrane (1)",
+                  "the vacuoles swell and press against the cell wall, making the cells turgid/firm (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "The heart pumps blood around the body.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Name the blood vessel which carries blood from the heart to the lungs.",
+              marks: 1,
+              objective: "1.4.2",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Pulmonary artery"
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "The wall of the left ventricle is much thicker than that of the right ventricle. Explain why.",
+              marks: 2,
+              objective: "1.4.2",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "The left ventricle pumps blood to all parts of the body (1)",
+                  "so it must produce a higher pressure/more force than the right ventricle, which pumps only to the lungs (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State the function of the valves in the heart.",
+              marks: 1,
+              objective: "1.4.2",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "To prevent the backflow of blood / keep blood flowing in one direction."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iv)",
+              prompt: "Name the type of blood cell which transports oxygen.",
+              marks: 1,
+              objective: "1.4.2",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Red blood cell (erythrocyte)"
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-03",
+      module: 1,
+      kind: "practical",
+      title: "Soil and soil erosion",
+      totalMarks: 20,
+      profileMarks: {
+        KC: 2,
+        UK: 8,
+        XS: 10
+      },
+      topics: [
+        {
+          topic: 2,
+          title: "Reproduction and Growth in Plants"
+        }
+      ],
+      objectives: [
+        "1.2.6",
+        "1.2.7"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "A group of students collected soil from three sites, P, Q and R, in their school compound. They poured 100 cm\xB3 of water through equal masses of each soil sample using the apparatus shown in Figure 3 and recorded the volume of water which drained through in 10 minutes. Their results are shown in Table 2.",
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 5 720 435" width="792" height="479" role="img" aria-label="Drainage through three soil samples"><title>Drainage through three soil samples</title><rect x="30" y="5" width="720" height="435" fill="white" /><defs><marker id="is-precision-m1-paper02-2-parts-0-svg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#111" stroke="none" /></marker><pattern id="is-precision-m1-paper02-2-parts-0-svg-hatch" width="7" height="7" patternUnits="userSpaceOnUse"><path d="M0 7L7 0" stroke="#888" stroke-width=".6" /></pattern><pattern id="is-precision-m1-paper02-2-parts-0-svg-dots" width="11" height="11" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r=".8" fill="#555" /></pattern><pattern id="is-precision-m1-paper02-2-parts-0-svg-water" width="14" height="12" patternUnits="userSpaceOnUse"><path d="M2 6h5" stroke="#888" stroke-width=".7" /></pattern></defs><g fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><text x="135" y="35" font-family="Arial, Helvetica, sans-serif" font-size="22" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">P</text><path d="M97 96L129 158L129 210L141 220L141 158L173 96" /><path d="M107 116L163 116L144 153Q135 161 126 153Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-dots)" stroke-width="1.1" /><path d="M126 153Q135 147 144 153L140 164Q135 168 130 164Z" fill="white" stroke-width="1.1" /><path d="M105 240 V380 Q135 390 165 380 V240" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /><ellipse cx="135" cy="240" rx="30" ry="4" fill="white" stroke="#111" stroke-width="1.25" /><path d="M106 289.0 H164 V379 Q135 388 106 379 Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-water)" stroke="none" /><path d="M106 289.0 H164" fill="none" stroke="#111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 380.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 367.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 354.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 341.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 328.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 315.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 302.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 289.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 276.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 263.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 250.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M95 390 H175" fill="none" stroke="#111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M135 225 Q131 231 135 233 Q139 231 135 225Z" fill="none" stroke="#111" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" /><text x="380" y="35" font-family="Arial, Helvetica, sans-serif" font-size="22" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">Q</text><path d="M342 96L374 158L374 210L386 220L386 158L418 96" /><path d="M352 116L408 116L389 153Q380 161 371 153Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-dots)" stroke-width="1.1" /><path d="M371 153Q380 147 389 153L385 164Q380 168 375 164Z" fill="white" stroke-width="1.1" /><path d="M350 240 V380 Q380 390 410 380 V240" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /><ellipse cx="380" cy="240" rx="30" ry="4" fill="white" stroke="#111" stroke-width="1.25" /><path d="M351 347.5 H409 V379 Q380 388 351 379 Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-water)" stroke="none" /><path d="M351 347.5 H409" fill="none" stroke="#111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 380.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 367.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 354.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 341.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 328.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 315.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 302.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 289.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 276.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 263.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 250.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M340 390 H420" fill="none" stroke="#111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M380 225 Q376 231 380 233 Q384 231 380 225Z" fill="none" stroke="#111" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" /><text x="625" y="35" font-family="Arial, Helvetica, sans-serif" font-size="22" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">R</text><path d="M587 96L619 158L619 210L631 220L631 158L663 96" /><path d="M597 116L653 116L634 153Q625 161 616 153Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-dots)" stroke-width="1.1" /><path d="M616 153Q625 147 634 153L630 164Q625 168 620 164Z" fill="white" stroke-width="1.1" /><path d="M595 240 V380 Q625 390 655 380 V240" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /><ellipse cx="625" cy="240" rx="30" ry="4" fill="white" stroke="#111" stroke-width="1.25" /><path d="M596 317.6 H654 V379 Q625 388 596 379 Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-water)" stroke="none" /><path d="M596 317.6 H654" fill="none" stroke="#111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 380.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 367.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 354.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 341.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 328.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 315.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 302.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 289.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 276.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 263.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 250.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M585 390 H665" fill="none" stroke="#111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M625 225 Q621 231 625 233 Q629 231 625 225Z" fill="none" stroke="#111" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" /></g><text x="390" y="426" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">Each funnel was given 100 cm\xB3 of water.</text></svg>',
+          figure: "Figure 3. Apparatus used to compare the drainage of soil samples",
+          table: {
+            title: "TABLE 2: DRAINAGE THROUGH SOIL SAMPLES",
+            headers: [
+              "Soil sample",
+              "Volume of water collected/cm\xB3",
+              "Volume of water retained/cm\xB3"
+            ],
+            rows: [
+              [
+                "P",
+                "70",
+                ""
+              ],
+              [
+                "Q",
+                "25",
+                ""
+              ],
+              [
+                "R",
+                "48",
+                ""
+              ]
+            ],
+            source: null
+          },
+          items: [
+            {
+              label: "(i)",
+              prompt: "Complete Table 2 by calculating the volume of water RETAINED by EACH soil sample.",
+              marks: 3,
+              objective: "1.2.6",
+              profile: {
+                XS: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "P: 30 cm\xB3",
+                  "Q: 75 cm\xB3",
+                  "R: 52 cm\xB3"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Identify which sample, P, Q or R, is MOST likely to be clay. Give a reason for your answer.",
+              marks: 2,
+              objective: "1.2.6",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Q (1)",
+                  "It retained the most water/drained the least because clay has very small particles and small air spaces (1)"
+                ],
+                guidance: "1 mark for identification; 1 mark for reason",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State ONE variable which the students MUST keep constant in this experiment.",
+              marks: 1,
+              objective: "1.2.6",
+              profile: {
+                XS: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Mass/volume of soil",
+                  "Volume of water added",
+                  "Time allowed for drainage",
+                  "Size of funnel/filter paper"
+                ],
+                guidance: "Any one, 1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "One student claimed that soil taken from under trees contains more humus than soil taken from an open field.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "State a suitable hypothesis to test the student's claim.",
+              marks: 2,
+              objective: "1.2.6",
+              profile: {
+                XS: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Soil from under trees contains more humus (organic matter) than soil from an open field.",
+                  "OR: If soil from under trees is heated, it will lose more mass than an equal mass of soil from an open field."
+                ],
+                guidance: "1 mark for a clearly stated hypothesis; 1 mark for a testable hypothesis",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Outline a suitable method the student could use to test the hypothesis in (b) (i).",
+              marks: 4,
+              objective: "1.2.6",
+              profile: {
+                XS: 4
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 8
+              },
+              markScheme: {
+                points: [
+                  "Dry equal masses of the two soil samples (e.g. in an oven at about 100 \xB0C) and weigh each (1)",
+                  "Heat each sample strongly in a crucible to burn off the humus (1)",
+                  "Cool and reweigh; repeat heating until the mass is constant (1)",
+                  "Calculate the loss in mass for each sample and compare - the greater loss shows more humus (1)"
+                ],
+                guidance: "1 mark each for any four logical steps",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Explain how humus improves the fertility of soil.",
+              marks: 3,
+              objective: "1.2.6",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "Humus decomposes and releases mineral nutrients (1)",
+                  "it increases the water-holding capacity of the soil (1)",
+                  "it binds particles into crumbs, improving aeration/drainage/soil structure (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "Many farms in the Caribbean are on steep hillsides.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "State TWO causes of soil erosion on hillsides.",
+              marks: 2,
+              objective: "1.2.7",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Heavy rainfall/run-off",
+                  "Deforestation/removal of vegetation",
+                  "Bush fires",
+                  "Ploughing up and down the slope",
+                  "Overgrazing"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Describe how terracing helps to reduce soil erosion.",
+              marks: 2,
+              objective: "1.2.7",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Terraces are flat steps cut into the slope (1)",
+                  "which slow down the flow of run-off water so that less soil is carried away (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
               prompt: "Explain why soil erosion reduces food production.",
               marks: 1,
               objective: "1.2.7",
@@ -4002,1613 +5427,4 @@
               label: "(i)",
               prompt: "State a suitable aim for an investigation to test Paul's idea.",
               marks: 1,
-              objective: "1.7.6",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "To find out whether drinking caffeine shortens reaction time."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO variables which must be controlled.",
-              marks: 2,
-              objective: "1.7.6",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Same person/same group of people",
-                  "Same ruler and dropping method",
-                  "Same volume/strength of drink",
-                  "Same time allowed after drinking",
-                  "Same hand used"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Suggest ONE limitation of the ruler-drop test.",
-              marks: 1,
-              objective: "1.6.5",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "The catcher may anticipate the drop",
-                  "The ruler may not be dropped from exactly the same position",
-                  "Reading the ruler is imprecise"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "Explain why caffeine is classified as a stimulant.",
-              marks: 2,
-              objective: "1.7.6",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "It speeds up the activity of the nervous system (1)",
-                  "making a person more alert and increasing heart rate (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "Figure 4 shows a motor neurone.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 185" width="460" height="185" role="img" aria-label="A motor neurone" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A motor neurone</title><rect x="0" y="0" width="460" height="185" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="70" cy="90" r="26" fill="#fff" stroke-width="1.5"/><circle cx="70" cy="90" r="8" fill="#000"/><path d="M88.4,108.4 l15.6,15.6 l1.5,7.9" fill="none" stroke-width="1"/><path d="M70.0,116.0 l0.0,22.0 l-4.5,6.6" fill="none" stroke-width="1"/><path d="M51.6,108.4 l-15.6,15.6 l-7.9,1.5" fill="none" stroke-width="1"/><path d="M44.0,90.0 l-22.0,0.0 l-6.6,-4.5" fill="none" stroke-width="1"/><path d="M51.6,71.6 l-15.6,-15.6 l-1.5,-7.9" fill="none" stroke-width="1"/><path d="M70.0,64.0 l-0.0,-22.0 l4.5,-6.6" fill="none" stroke-width="1"/><path d="M88.4,71.6 l15.6,-15.6 l7.9,-1.5" fill="none" stroke-width="1"/><line x1="96" y1="90" x2="380" y2="90" stroke-width="1.4"/><rect x="120" y="82" width="34" height="16" fill="#fff" rx="8" stroke-width="1"/><rect x="162" y="82" width="34" height="16" fill="#fff" rx="8" stroke-width="1"/><rect x="204" y="82" width="34" height="16" fill="#fff" rx="8" stroke-width="1"/><rect x="246" y="82" width="34" height="16" fill="#fff" rx="8" stroke-width="1"/><rect x="288" y="82" width="34" height="16" fill="#fff" rx="8" stroke-width="1"/><rect x="330" y="82" width="34" height="16" fill="#fff" rx="8" stroke-width="1"/><path d="M380,90 q20,-9.0 34,-18" fill="none" stroke-width="1"/><circle cx="414" cy="72" r="3" fill="#000"/><path d="M380,90 q20,-3.0 34,-6" fill="none" stroke-width="1"/><circle cx="414" cy="84" r="3" fill="#000"/><path d="M380,90 q20,3.0 34,6" fill="none" stroke-width="1"/><circle cx="414" cy="96" r="3" fill="#000"/><path d="M380,90 q20,9.0 34,18" fill="none" stroke-width="1"/><circle cx="414" cy="108" r="3" fill="#000"/><line x1="200" y1="130" x2="300" y2="130"/><polygon points="300,130 293.7,133 293.7,127" fill="#000" stroke-width="1"/><text x="250" y="148" text-anchor="middle" fill="#000" stroke="none" font-size="12">direction of impulse</text><line x1="70" y1="90" x2="40" y2="20" stroke-width="0.9"/><text x="36" y="24" text-anchor="end" fill="#000" stroke="none">P</text><line x1="290" y1="90" x2="300" y2="40" stroke-width="0.9"/><text x="304" y="44" text-anchor="start" fill="#000" stroke="none">Q</text><line x1="180" y1="98" x2="180" y2="170" stroke-width="0.9"/><text x="176" y="174" text-anchor="middle" fill="#000" stroke="none">R</text><line x1="420" y1="100" x2="430" y2="150" stroke-width="0.9"/><text x="426" y="154" text-anchor="middle" fill="#000" stroke="none">S</text></g></svg>`,
-          figure: "Figure 4. A motor neurone",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Identify the parts labelled P and Q.",
-              marks: 2,
-              objective: "1.6.5",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "P",
-                  "Q"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "P - cell body (1)",
-                  "Q - axon (nerve fibre) (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State the function of a motor neurone.",
-              marks: 3,
-              objective: "1.6.5",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "It carries nerve impulses (1)",
-                  "from the central nervous system (brain/spinal cord) (1)",
-                  "to an effector such as a muscle or gland (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-20",
-      module: 1,
-      kind: "structured",
-      title: "Dengue, vectors and immunity",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 5,
-        UK: 10,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 7,
-          title: "Health"
-        }
-      ],
-      objectives: [
-        "1.7.8",
-        "1.7.9",
-        "1.7.2",
-        "1.7.3"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "There has been an outbreak of dengue fever in a Caribbean community. Dengue is caused by a virus carried by the Aedes aegypti mosquito. Figure 5 shows stages in the life cycle of a mosquito.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 135" width="480" height="135" role="img" aria-label="Stages in the life cycle of a mosquito" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Stages in the life cycle of a mosquito</title><rect x="0" y="0" width="480" height="135" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="20" y1="60" x2="460" y2="60" stroke-width="0.8"/><text x="240" y="20" text-anchor="middle" fill="#000" stroke="none" font-size="11">water surface</text><ellipse cx="40" cy="56" rx="3" ry="5" fill="#fff" stroke-width="0.8"/><ellipse cx="47" cy="56" rx="3" ry="5" fill="#fff" stroke-width="0.8"/><ellipse cx="54" cy="56" rx="3" ry="5" fill="#fff" stroke-width="0.8"/><ellipse cx="61" cy="56" rx="3" ry="5" fill="#fff" stroke-width="0.8"/><ellipse cx="68" cy="56" rx="3" ry="5" fill="#fff" stroke-width="0.8"/><ellipse cx="75" cy="56" rx="3" ry="5" fill="#fff" stroke-width="0.8"/><text x="58" y="110" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">W</text><path d="M160,60 L160,68 Q158,80 162,95 L160,120 M154,70 L166,70" fill="none" stroke-width="1.3"/><line x1="156" y1="78" x2="164" y2="78" stroke-width="0.7"/><line x1="156" y1="86" x2="164" y2="86" stroke-width="0.7"/><line x1="156" y1="94" x2="164" y2="94" stroke-width="0.7"/><line x1="156" y1="102" x2="164" y2="102" stroke-width="0.7"/><line x1="156" y1="110" x2="164" y2="110" stroke-width="0.7"/><text x="185" y="110" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">X</text><path d="M280,62 Q300,62 305,80 Q305,100 285,102 Q270,100 272,88 Q290,92 290,80 Q286,70 272,68 Z" fill="#fff" stroke-width="1.3"/><line x1="282" y1="62" x2="280" y2="55" stroke-width="1"/><line x1="290" y1="62" x2="293" y2="55" stroke-width="1"/><text x="310" y="125" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">Y</text><ellipse cx="420" cy="45" rx="18" ry="5" fill="#fff"/><circle cx="400" cy="44" r="4" fill="#fff"/><line x1="396" y1="44" x2="382" y2="40"/><line x1="412" y1="49" x2="402" y2="62" stroke-width="0.8"/><line x1="420" y1="49" x2="414" y2="62" stroke-width="0.8"/><line x1="428" y1="49" x2="426" y2="62" stroke-width="0.8"/><path d="M420,40 q10,-18 24,-10 q-6,10 -24,10" fill="none" stroke-width="0.9"/><text x="420" y="110" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">Z</text></g></svg>`,
-          figure: "Figure 5. Stages in the life cycle of a mosquito",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Define the term 'vector'.",
-              marks: 1,
-              objective: "1.7.8",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "An organism that carries a pathogen from one host to another."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Name the stages labelled X and Y.",
-              marks: 2,
-              objective: "1.7.9",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "X",
-                  "Y"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "X - larva (1)",
-                  "Y - pupa (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Recommend TWO methods of control the community could use to reduce the number of mosquitoes. State the stage targeted by EACH method.",
-              marks: 4,
-              objective: "1.7.9",
-              profile: {
-                UK: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 8
-              },
-              markScheme: {
-                points: [
-                  "Remove/cover containers holding water, e.g. tyres, drums (1) - eggs/larvae (1)",
-                  "Spray oil on stagnant water (1) - larvae and pupae (1)",
-                  "Put guppy fish in ponds (1) - larvae (1)",
-                  "Fog with insecticide/use screens and nets (1) - adults (1)"
-                ],
-                guidance: "1 mark for each method; 1 mark for each correct stage",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why antibiotics cannot be used to treat dengue fever.",
-              marks: 2,
-              objective: "1.7.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Dengue is caused by a virus (1)",
-                  "antibiotics only kill bacteria and have no effect on viruses (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Distinguish between natural active immunity and artificial active immunity.",
-              marks: 2,
-              objective: "1.7.3",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Natural active immunity develops after the body is infected and makes its own antibodies (1)",
-                  "artificial active immunity develops after vaccination, when a vaccine stimulates antibody production (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State TWO ways in which improper disposal of domestic waste increases the risk of disease in a community.",
-              marks: 2,
-              objective: "1.7.8",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Containers collect rainwater where mosquitoes breed",
-                  "Garbage attracts rats, flies and cockroaches",
-                  "Rotting waste contaminates water supplies",
-                  "Blocked drains cause stagnant water/flooding"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Name ONE disease spread by houseflies and ONE disease spread by rats.",
-              marks: 2,
-              objective: "1.7.8",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Houseflies: gastroenteritis/typhoid/cholera/dysentery (1)",
-                  "Rats: leptospirosis/plague (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-21",
-      module: 1,
-      kind: "practical",
-      title: "Water loss from leaves",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 2,
-        UK: 6,
-        XS: 12
-      },
-      topics: [
-        {
-          topic: 4,
-          title: "Transport Systems"
-        }
-      ],
-      objectives: [
-        "1.4.1",
-        "1.1.2",
-        "1.4.2"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Four similar leaves, A, B, C and D, were treated as follows and hung up in a sunny laboratory. Vaseline (petroleum jelly) is waterproof. Each leaf was weighed at the start and after 24 hours. The results are shown in Table 1.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 1: LOSS IN MASS OF LEAVES",
-            headers: [
-              "Leaf",
-              "Treatment",
-              "Starting mass/g",
-              "Final mass/g",
-              "Loss in mass/g"
-            ],
-            rows: [
-              [
-                "A",
-                "no Vaseline",
-                "4.0",
-                "2.8",
-                ""
-              ],
-              [
-                "B",
-                "Vaseline on upper surface",
-                "4.1",
-                "3.0",
-                ""
-              ],
-              [
-                "C",
-                "Vaseline on lower surface",
-                "3.9",
-                "3.7",
-                ""
-              ],
-              [
-                "D",
-                "Vaseline on both surfaces",
-                "4.0",
-                "4.0",
-                ""
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "Complete Table 1 by calculating the loss in mass of EACH leaf.",
-              marks: 2,
-              objective: "1.4.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "A 1.2 g, B 1.1 g, C 0.2 g, D 0.0 g"
-                ],
-                guidance: "2 marks for all four correct; 1 mark for two or three correct",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Calculate the percentage loss in mass of leaf A. Show your working.",
-              marks: 2,
-              objective: "1.4.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 110
-              },
-              markScheme: {
-                points: [
-                  "1.2 \xF7 4.0 \xD7 100 (1)",
-                  "= 30% (1)"
-                ],
-                guidance: "1 mark for working; 1 mark for answer",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Using the results, state which surface of the leaf loses MORE water. Give a reason for your answer.",
-              marks: 2,
-              objective: "1.4.1",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Lower surface (1)",
-                  "Leaf C, with the lower surface covered, lost much less mass than leaf B, with the upper surface covered (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "Explain the difference in water loss between the two surfaces.",
-              marks: 2,
-              objective: "1.4.1",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "There are more stomata on the lower surface (1)",
-                  "water vapour diffuses out through the stomata (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(v)",
-              prompt: "State the purpose of leaf D in this experiment.",
-              marks: 1,
-              objective: "1.4.1",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "It is a control, showing that no water is lost when both surfaces are sealed (the loss is through the surfaces)."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Figure 1 shows the lower epidermis of a leaf.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" width="420" height="240" role="img" aria-label="Lower epidermis of a leaf" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Lower epidermis of a leaf</title><rect x="0" y="0" width="420" height="240" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M68,80 Q90,52 112,80 Q90,108 68,80 Z" fill="#fff" stroke-width="1.4"/><path d="M78,80 Q90,72 102,80 Q90,88 78,80 Z" fill="none" stroke-width="1"/><circle cx="80" cy="72" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="98" cy="71" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="81" cy="89" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="100" cy="88" r="1.2" fill="#000" stroke-width="0.5"/><path d="M208,70 Q230,42 252,70 Q230,98 208,70 Z" fill="#fff" stroke-width="1.4"/><path d="M218,70 Q230,62 242,70 Q230,78 218,70 Z" fill="none" stroke-width="1"/><circle cx="220" cy="62" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="238" cy="61" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="221" cy="79" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="240" cy="78" r="1.2" fill="#000" stroke-width="0.5"/><path d="M138,170 Q160,142 182,170 Q160,198 138,170 Z" fill="#fff" stroke-width="1.4"/><path d="M148,170 Q160,162 172,170 Q160,178 148,170 Z" fill="none" stroke-width="1"/><circle cx="150" cy="162" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="168" cy="161" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="151" cy="179" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="170" cy="178" r="1.2" fill="#000" stroke-width="0.5"/><path d="M278,170 Q300,142 322,170 Q300,198 278,170 Z" fill="#fff" stroke-width="1.4"/><path d="M288,170 Q300,162 312,170 Q300,178 288,170 Z" fill="none" stroke-width="1"/><circle cx="290" cy="162" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="308" cy="161" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="291" cy="179" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="310" cy="178" r="1.2" fill="#000" stroke-width="0.5"/><path d="M20,40 Q60,30 70,60" fill="none" stroke-width="0.8"/><path d="M110,40 Q160,20 200,50" fill="none" stroke-width="0.8"/><path d="M20,120 Q70,130 130,160" fill="none" stroke-width="0.8"/><path d="M200,110 Q250,120 270,150" fill="none" stroke-width="0.8"/><path d="M40,220 Q100,200 140,190" fill="none" stroke-width="0.8"/><path d="M190,200 Q240,220 280,195" fill="none" stroke-width="0.8"/><path d="M330,130 L360,60" fill="none" stroke-width="0.8"/><path d="M260,100 Q300,110 360,100" fill="none" stroke-width="0.8"/><line x1="246" y1="62" x2="380" y2="40" stroke-width="0.9"/><text x="384" y="44" text-anchor="start" fill="#000" stroke="none">X</text><line x1="232" y1="71" x2="380" y2="80" stroke-width="0.9"/><text x="384" y="84" text-anchor="start" fill="#000" stroke="none">Y</text></g></svg>`,
-          figure: "Figure 1. Lower epidermis of a leaf",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Make a large, labelled drawing of ONE stoma and its two guard cells as seen in Figure 1. Include a title. The actual width of the stoma and guard cells is 0.02 mm; measure your drawing and state its magnification.",
-              marks: 7,
-              objective: "1.1.2",
-              profile: {
-                XS: 7
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "drawing",
-                height: 260
-              },
-              markScheme: {
-                points: [
-                  "Drawing of a pore surrounded by two kidney-shaped guard cells",
-                  "Labels: guard cell, stoma (pore), chloroplast/nucleus",
-                  "Title below the drawing, e.g. 'Stoma in the lower epidermis of a leaf (surface view)'",
-                  "Magnification = drawing width \xF7 actual width (e.g. 60 mm \xF7 0.02 mm = \xD7 3 000)"
-                ],
-                guidance: "Clarity (2): clean continuous lines, no shading; large drawing. Accuracy (2): all structures present; correct proportions. Labelling (1): label lines ruled and not crossing, structures correctly named. Title (1): appropriate title below the drawing, with the view. Magnification (1): stated",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State TWO conditions which increase the rate of transpiration.",
-              marks: 2,
-              objective: "1.4.1",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "High temperature",
-                  "Low humidity",
-                  "Wind/moving air",
-                  "High light intensity"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why transpiration is important for the movement of water in a plant.",
-              marks: 2,
-              objective: "1.4.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Evaporation from the leaves produces a pull (transpiration pull) (1)",
-                  "which draws a column of water up the xylem from the roots (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-22",
-      module: 1,
-      kind: "structured",
-      title: "Pregnancy, birth and the placenta",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 10,
-        UK: 5,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 3,
-          title: "Reproduction and Growth in Animals"
-        }
-      ],
-      objectives: [
-        "1.3.4",
-        "1.3.6"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Figure 2 shows a foetus in the uterus.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 290" width="340" height="290" role="img" aria-label="A foetus in the uterus" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A foetus in the uterus</title><rect x="0" y="0" width="340" height="290" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M100,40 Q40,60 45,150 Q55,240 150,250 Q245,240 255,150 Q260,60 200,40 Q150,25 100,40 Z" fill="#fff" stroke-width="2"/><path d="M110,58 Q62,76 66,150 Q74,224 150,232 Q226,224 234,150 Q238,76 190,58 Q150,45 110,58 Z" fill="none" stroke-width="0.8" stroke-dasharray="4 3"/><path d="M170,50 Q205,48 230,70 Q215,80 170,64 Z" fill="#fff" stroke-width="1.2"/><circle cx="125" cy="190" r="26" fill="#fff" stroke-width="1.3"/><path d="M140,168 Q190,150 190,120 Q185,95 160,100 Q140,110 145,140" fill="#fff" stroke-width="1.3"/><path d="M190,68 Q200,110 170,120" fill="none" stroke-width="1.5"/><path d="M140,250 L140,280 M160,250 L160,280" fill="none" stroke-width="1.4"/><line x1="210" y1="66" x2="300" y2="50" stroke-width="0.9"/><text x="304" y="54" text-anchor="start" fill="#000" stroke="none">P</text><line x1="195" y1="95" x2="300" y2="100" stroke-width="0.9"/><text x="304" y="104" text-anchor="start" fill="#000" stroke="none">Q</text><line x1="220" y1="180" x2="300" y2="180" stroke-width="0.9"/><text x="304" y="184" text-anchor="start" fill="#000" stroke="none">R</text><line x1="158" y1="262" x2="300" y2="265" stroke-width="0.9"/><text x="304" y="269" text-anchor="start" fill="#000" stroke="none">S</text></g></svg>`,
-          figure: "Figure 2. A foetus in the uterus",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Identify the structures labelled P, Q and S.",
-              marks: 3,
-              objective: "1.3.4",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "P",
-                  "Q",
-                  "S"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "P - placenta",
-                  "Q - umbilical cord",
-                  "S - cervix (vagina)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO substances which pass from the mother to the foetus and ONE which passes from the foetus to the mother.",
-              marks: 3,
-              objective: "1.3.4",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Mother to foetus: oxygen, glucose, amino acids, antibodies, water, minerals (any two) (2)",
-                  "Foetus to mother: carbon dioxide / urea (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain why a pregnant woman who smokes may give birth to a baby with a low birth weight.",
-              marks: 3,
-              objective: "1.3.6",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Carbon monoxide in smoke combines with haemoglobin (1)",
-                  "so less oxygen reaches the foetus through the placenta (1)",
-                  "the foetus respires and grows less, so it is smaller at birth (nicotine also narrows blood vessels) (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Describe what happens during the three stages of labour.",
-              marks: 3,
-              objective: "1.3.4",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Stage 1: the uterus contracts and the cervix dilates (1)",
-                  "Stage 2: strong contractions push the baby out head first (crowning and expulsion) (1)",
-                  "Stage 3: the placenta separates and is expelled as the afterbirth (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State ONE use of ultrasound during pregnancy.",
-              marks: 1,
-              objective: "1.3.6",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Check the growth/position of the foetus",
-                  "Detect twins",
-                  "Detect abnormalities",
-                  "Estimate the due date"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain why babies are immunised against diseases such as polio.",
-              marks: 2,
-              objective: "1.3.6",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "The vaccine stimulates the baby to make antibodies and memory cells (1)",
-                  "so the baby is protected if it later meets the disease (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-23",
-      module: 1,
-      kind: "practical",
-      title: "Microorganisms and milk",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 4,
-        UK: 8,
-        XS: 8
-      },
-      topics: [
-        {
-          topic: 7,
-          title: "Health"
-        }
-      ],
-      objectives: [
-        "1.7.11",
-        "1.7.12",
-        "1.7.1",
-        "1.7.8"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Samples of fresh milk were kept at 4 \xB0C and at 30 \xB0C. The pH of each sample was measured every 12 hours. The results are shown in Table 2.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 2: pH OF MILK SAMPLES",
-            headers: [
-              "Time/hours",
-              "0",
-              "12",
-              "24",
-              "36",
-              "48"
-            ],
-            rows: [
-              [
-                "pH at 4 \xB0C",
-                "6.7",
-                "6.7",
-                "6.6",
-                "6.5",
-                "6.5"
-              ],
-              [
-                "pH at 30 \xB0C",
-                "6.7",
-                "6.2",
-                "5.4",
-                "4.8",
-                "4.5"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "On the grid provided, plot graphs of pH against time for BOTH samples on the same axes. Include a key.",
-              marks: 6,
-              objective: "1.7.11",
-              profile: {
-                XS: 6
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "graph",
-                height: 320,
-                x: "Time/hours",
-                y: "pH"
-              },
-              markScheme: {
-                points: [
-                  "Both sets of points correctly plotted (2)",
-                  "Key (1)",
-                  "Axes labelled with units (1)",
-                  "Suitable scale (1)",
-                  "Lines/curves drawn neatly (1)"
-                ],
-                guidance: "Award as shown",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Describe how the pH of the milk kept at 30 \xB0C changed over 48 hours.",
-              marks: 1,
-              objective: "1.7.11",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "It decreased from 6.7 to 4.5 - the milk became more acidic."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain why the pH of the milk at 30 \xB0C fell.",
-              marks: 3,
-              objective: "1.7.11",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Bacteria in the milk multiplied rapidly at the warm temperature (1)",
-                  "they fed on the milk sugar (lactose) (1)",
-                  "producing lactic acid, which lowered the pH (the milk soured) (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "Explain why the pH of the milk at 4 \xB0C hardly changed.",
-              marks: 2,
-              objective: "1.7.12",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Low temperature slows down the growth/activity of bacteria (1)",
-                  "so very little acid was produced (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Pasteurisation involves heating milk to about 72 \xB0C for 15 seconds and cooling it quickly. Explain how this helps milk to stay fresh longer.",
-              marks: 2,
-              objective: "1.7.12",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Heating kills most of the bacteria in the milk (1)",
-                  "rapid cooling and refrigeration stop the remaining bacteria from multiplying (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO conditions, other than temperature, which microorganisms need to grow.",
-              marks: 2,
-              objective: "1.7.11",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Moisture",
-                  "Nutrients/food",
-                  "Suitable pH",
-                  "Oxygen (for some)"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Name ONE food made using bacteria and milk.",
-              marks: 1,
-              objective: "1.7.1",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Yoghurt / cheese"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State TWO precautions to take when handling the milk samples in this experiment.",
-              marks: 2,
-              objective: "1.7.11",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Do not taste the milk",
-                  "Keep containers covered",
-                  "Use a clean pH probe/rinse between readings",
-                  "Wash hands after handling",
-                  "Label samples clearly"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Distinguish between a pathogen and a vector.",
-              marks: 1,
-              objective: "1.7.8",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "A pathogen causes disease; a vector carries the pathogen from one host to another."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-24",
-      module: 1,
-      kind: "structured",
-      title: "Kidneys, skin and water balance",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 8,
-        UK: 7,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 5,
-          title: "Excretion"
-        },
-        {
-          topic: 6,
-          title: "Sense Organs and Coordination"
-        }
-      ],
-      objectives: [
-        "1.5.2",
-        "1.6.6"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Figure 3 shows a longitudinal section through a kidney.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 290" width="340" height="290" role="img" aria-label="Longitudinal section through a kidney" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Longitudinal section through a kidney</title><rect x="0" y="0" width="340" height="290" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M150,30 Q60,30 60,140 Q60,250 150,250 Q200,250 205,200 Q185,170 190,140 Q185,110 205,80 Q200,30 150,30 Z" fill="#fff" stroke-width="1.8"/><path d="M150,52 Q82,52 82,140 Q82,228 150,228 Q180,228 184,196" fill="none" stroke-width="0.9" stroke-dasharray="4 3"/><path d="M100,65 L150,74.0 L100,95 Z" fill="none" stroke-width="1"/><path d="M100,100 L150,113.0 L100,130 Z" fill="none" stroke-width="1"/><path d="M100,135 L150,152.0 L100,165 Z" fill="none" stroke-width="1"/><path d="M100,170 L150,191.0 L100,200 Z" fill="none" stroke-width="1"/><path d="M160,110 Q200,140 160,170 Q175,140 160,110" fill="#fff" stroke-width="1.1"/><path d="M195,135 Q230,140 240,200 L245,280 M200,150 Q222,152 228,205 L232,280" fill="none" stroke-width="1.3"/><line x1="85" y1="65" x2="30" y2="40" stroke-width="0.9"/><text x="26" y="44" text-anchor="end" fill="#000" stroke="none">P</text><line x1="115" y1="150" x2="30" y2="170" stroke-width="0.9"/><text x="26" y="174" text-anchor="end" fill="#000" stroke="none">Q</text><line x1="172" y1="140" x2="300" y2="110" stroke-width="0.9"/><text x="304" y="114" text-anchor="start" fill="#000" stroke="none">R</text><line x1="238" y1="250" x2="300" y2="250" stroke-width="0.9"/><text x="304" y="254" text-anchor="start" fill="#000" stroke="none">S</text></g></svg>`,
-          figure: "Figure 3. Section through a kidney",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Identify the parts labelled P, R and S.",
-              marks: 3,
-              objective: "1.5.2",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "P",
-                  "R",
-                  "S"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "P - cortex",
-                  "R - pelvis",
-                  "S - ureter"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State the main function of the kidneys in excretion.",
-              marks: 1,
-              objective: "1.5.2",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "To remove urea, excess water and excess salts from the blood (forming urine)."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Table 3 shows the concentration of some substances in the blood plasma entering a kidney and in the urine of a healthy person.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 3: COMPOSITION OF PLASMA AND URINE",
-            headers: [
-              "Substance",
-              "Blood plasma/g per 100 cm\xB3",
-              "Urine/g per 100 cm\xB3"
-            ],
-            rows: [
-              [
-                "Protein",
-                "8.0",
-                "0.0"
-              ],
-              [
-                "Glucose",
-                "0.1",
-                "0.0"
-              ],
-              [
-                "Urea",
-                "0.03",
-                "2.0"
-              ],
-              [
-                "Salts",
-                "0.9",
-                "1.5"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why there is no protein in the urine.",
-              marks: 2,
-              objective: "1.5.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Protein molecules are too large (1)",
-                  "to pass through the walls of the glomerulus during ultrafiltration (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why there is glucose in the plasma but none in the urine.",
-              marks: 2,
-              objective: "1.5.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Glucose is filtered out of the blood in the glomerulus (1)",
-                  "but all of it is reabsorbed back into the blood in the tubule (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Suggest why the concentration of urea is much higher in urine than in plasma.",
-              marks: 2,
-              objective: "1.5.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Most of the water filtered is reabsorbed (1)",
-                  "while urea is not reabsorbed, so it becomes concentrated in the urine (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name the hormone which controls the water content of the blood, and the gland which releases it.",
-              marks: 2,
-              objective: "1.6.6",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Antidiuretic hormone (ADH) (1)",
-                  "Pituitary gland (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO ways in which the skin helps to control body temperature when the body is too hot.",
-              marks: 2,
-              objective: "1.5.2",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Sweat glands produce more sweat which evaporates",
-                  "Blood vessels near the surface dilate so more heat is lost",
-                  "Hairs lie flat"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State ONE disadvantage of dialysis for a patient with kidney failure.",
-              marks: 1,
-              objective: "1.5.2",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Time-consuming - several hours, several times a week",
-                  "Expensive",
-                  "Restricted diet and fluid intake",
-                  "Risk of infection"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-25",
-      module: 1,
-      kind: "practical",
-      title: "Soil composition",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 4,
-        UK: 11,
-        XS: 5
-      },
-      topics: [
-        {
-          topic: 2,
-          title: "Reproduction and Growth in Plants"
-        }
-      ],
-      objectives: [
-        "1.2.6"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Students shook 100 cm\xB3 of soil from each of two gardens with water in measuring cylinders and left them to settle. They measured the height of each layer. The results are shown in Table 4.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 4: SEDIMENTATION OF SOIL SAMPLES",
-            headers: [
-              "Layer",
-              "Garden X/cm\xB3",
-              "Garden Y/cm\xB3"
-            ],
-            rows: [
-              [
-                "Gravel and coarse sand",
-                "55",
-                "10"
-              ],
-              [
-                "Fine sand and silt",
-                "30",
-                "25"
-              ],
-              [
-                "Clay",
-                "10",
-                "55"
-              ],
-              [
-                "Humus (floating)",
-                "5",
-                "10"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "On the grid provided, draw a bar chart to compare the composition of the two soils. Use a key.",
-              marks: 5,
-              objective: "1.2.6",
-              profile: {
-                XS: 5
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "graph",
-                height: 300,
-                x: "Layer",
-                y: "Volume/cm\xB3"
-              },
-              markScheme: {
-                points: [
-                  "Bars for both gardens for each layer, correct heights (2)",
-                  "Key to distinguish X and Y (1)",
-                  "Axes labelled (1)",
-                  "Suitable scale and equal bar widths (1)"
-                ],
-                guidance: "Award as shown",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why gravel and sand settle at the bottom while humus floats.",
-              marks: 2,
-              objective: "1.2.6",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Gravel and sand particles are large and heavy/dense, so they settle first (1)",
-                  "humus is organic matter with a low density, so it floats (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Identify the type of soil in EACH garden.",
-              marks: 2,
-              objective: "1.2.6",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Garden X - sandy soil (1)",
-                  "Garden Y - clay soil (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "The owner of garden Y finds that water collects on the surface after rain and his vegetables grow poorly.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why the vegetables grow poorly in garden Y.",
-              marks: 3,
-              objective: "1.2.6",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Clay has very small particles and pore spaces, so it drains poorly and becomes waterlogged (1)",
-                  "the air spaces fill with water, so roots lack oxygen (1)",
-                  "and cannot respire to absorb minerals, so growth is poor (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Suggest TWO ways to improve the soil in garden Y.",
-              marks: 2,
-              objective: "1.2.6",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Add compost/manure/humus",
-                  "Add sand",
-                  "Dig drainage channels",
-                  "Plough/till to aerate",
-                  "Add lime to break up clay (flocculation)"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "Figure 4 shows a soil profile.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 245" width="360" height="245" role="img" aria-label="Soil profile" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Soil profile</title><rect x="0" y="0" width="360" height="245" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="90" y="20" width="170" height="210" fill="none"/><path d="M90,55 q40,-6 85,0 q45,6 85,0" fill="none" stroke-width="1"/><path d="M90,115 q40,-6 85,0 q45,6 85,0" fill="none" stroke-width="1"/><path d="M90,175 q40,-6 85,0 q45,6 85,0" fill="none" stroke-width="1"/><circle cx="116.5" cy="46.2" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="217.2" cy="31.4" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="174.3" cy="36.2" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="199.3" cy="44.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="110" cy="25.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="228.7" cy="35.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="217" cy="25.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="166.3" cy="43" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="131.6" cy="48.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="239.2" cy="25.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="99.1" cy="38.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="245.3" cy="34.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="129.7" cy="35.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="99.6" cy="30.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="165.1" cy="37.4" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="132.3" cy="30.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="130" cy="36.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="141.4" cy="25.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="229" cy="38.9" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="197.8" cy="29.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="253.8" cy="46.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="114.3" cy="33.3" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="210.4" cy="42.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="244.8" cy="35.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="227.8" cy="41.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="143.5" cy="39.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="236.2" cy="46.2" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="175.8" cy="39.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="100.5" cy="31.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="222.6" cy="35.4" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="122.7" cy="38.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="207.5" cy="41.9" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="155" cy="36" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="176.3" cy="44.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="178.4" cy="34.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="173.4" cy="25.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="102" cy="42.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="252.3" cy="39.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="158" cy="29.3" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="175.4" cy="49.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="218.3" cy="38.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="232.6" cy="30.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="177.2" cy="48.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="187.4" cy="36.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="138.1" cy="38.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="248.1" cy="25.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="220.4" cy="45.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="236.8" cy="43.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="224.5" cy="38" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="184.8" cy="35.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="104" cy="46.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="186.2" cy="30" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="175.8" cy="37.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="152.1" cy="33.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="181.2" cy="40.6" r="1.1" fill="#000" stroke-width="0.5"/><path d="M105,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M132,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M159,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M1
+             

@@ -1,4 +1,2300 @@
-    stem: "The tube labelled S carries urine to the",
+se",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "more people need more water, land, food and energy",
+        B: "fewer people are born",
+        C: "the death rate increases",
+        D: "more forests grow"
+      },
+      answer: "A",
+      explanation: "Each extra person uses resources.",
+      topic: 3
+    },
+    {
+      id: "IS-M1-P1-319",
+      module: 1,
+      objective: {
+        code: "1.3.8",
+        topic: 3,
+        topicTitle: "Reproduction and Growth in Animals",
+        text: "discuss the need for human population control"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following factors would cause a population to INCREASE?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Increased use of family planning",
+        B: "Emigration",
+        C: "A rise in the age at which women marry",
+        D: "Better health care lowering the death rate"
+      },
+      answer: "D",
+      explanation: "When the death rate falls and the birth rate stays high, the population grows.",
+      topic: 3
+    },
+    {
+      id: "IS-M1-P1-472",
+      module: 1,
+      objective: {
+        code: "1.3.8",
+        topic: 3,
+        topicTitle: "Reproduction and Growth in Animals",
+        text: "discuss the need for human population control"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is a likely effect of overpopulation on natural resources?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "More forests",
+        B: "Deforestation and shortages of fresh water",
+        C: "Cleaner air",
+        D: "More fish in the sea"
+      },
+      answer: "B",
+      explanation: "More land and water are needed.",
+      topic: 3
+    },
+    {
+      id: "IS-M1-P1-473",
+      module: 1,
+      objective: {
+        code: "1.3.8",
+        topic: 3,
+        topicTitle: "Reproduction and Growth in Animals",
+        text: "discuss the need for human population control"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Improved world food production can support a larger population, but it may also lead to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "fewer farms",
+        B: "less land clearing",
+        C: "overuse of fertilisers and loss of habitats",
+        D: "less pollution"
+      },
+      answer: "C",
+      explanation: "Intensive agriculture has environmental costs.",
+      topic: 3
+    },
+    {
+      id: "IS-M1-P1-474",
+      module: 1,
+      objective: {
+        code: "1.3.8",
+        topic: 3,
+        topicTitle: "Reproduction and Growth in Animals",
+        text: "discuss the need for human population control"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A country's population grows when",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the death rate is higher than the birth rate",
+        B: "many people emigrate",
+        C: "the birth rate falls to zero",
+        D: "the birth rate is higher than the death rate"
+      },
+      answer: "D",
+      explanation: "Natural increase = births - deaths.",
+      topic: 3
+    },
+    {
+      id: "IS-M1-P1-320",
+      module: 1,
+      objective: {
+        code: "1.3.8",
+        topic: 3,
+        topicTitle: "Reproduction and Growth in Animals",
+        text: "discuss the need for human population control"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "By approximately how many millions did the population increase between 1980 and 2020?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-POP",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "8",
+        B: "12",
+        C: "20",
+        D: "28"
+      },
+      answer: "C",
+      explanation: "28 million - 8 million = 20 million.",
+      topic: 3
+    },
+    {
+      id: "IS-M1-P1-321",
+      module: 1,
+      objective: {
+        code: "1.3.8",
+        topic: 3,
+        topicTitle: "Reproduction and Growth in Animals",
+        text: "discuss the need for human population control"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following problems would MOST likely result from the trend shown in the graph?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-POP",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Too many empty schools",
+        B: "A decline in water use",
+        C: "Less demand for food",
+        D: "Shortage of housing and jobs"
+      },
+      answer: "D",
+      explanation: "A rapidly rising population increases demand for housing, jobs and services.",
+      topic: 3
+    },
+    {
+      id: "IS-M1-P1-097",
+      module: 1,
+      objective: {
+        code: "1.4.1",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "justify the need for transport systems within a living organism"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Large multicellular organisms need a transport system because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "their surface area to volume ratio is small",
+        B: "their surface area to volume ratio is large",
+        C: "diffusion is faster in large organisms",
+        D: "they do not need oxygen"
+      },
+      answer: "A",
+      explanation: "As size increases, the surface area to volume ratio decreases, so diffusion alone cannot supply every cell quickly enough.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-098",
+      module: 1,
+      objective: {
+        code: "1.4.1",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "justify the need for transport systems within a living organism"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The loss of water vapour from the leaves of a plant is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "osmosis",
+        B: "guttation",
+        C: "respiration",
+        D: "transpiration"
+      },
+      answer: "D",
+      explanation: "Transpiration is the evaporation of water from leaves, mainly through the stomata.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-099",
+      module: 1,
+      objective: {
+        code: "1.4.1",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "justify the need for transport systems within a living organism"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following conditions would cause the rate of transpiration to INCREASE?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "High humidity",
+        B: "Still air",
+        C: "High temperature",
+        D: "Low light intensity"
+      },
+      answer: "C",
+      explanation: "Warmth increases evaporation. Humid, still air or darkness (closed stomata) slow transpiration down.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-322",
+      module: 1,
+      objective: {
+        code: "1.4.1",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "justify the need for transport systems within a living organism"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "An amoeba does NOT need a transport system because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "has a small surface area to volume ratio",
+        B: "has a large surface area to volume ratio",
+        C: "does not need oxygen",
+        D: "has a heart"
+      },
+      answer: "B",
+      explanation: "Diffusion across its surface is enough to supply a single cell.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-323",
+      module: 1,
+      objective: {
+        code: "1.4.1",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "justify the need for transport systems within a living organism"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The transport system in humans carries all of the following EXCEPT",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "oxygen",
+        B: "urea",
+        C: "undigested fibre",
+        D: "digested food"
+      },
+      answer: "C",
+      explanation: "Undigested fibre stays in the gut and is egested.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-324",
+      module: 1,
+      objective: {
+        code: "1.4.1",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "justify the need for transport systems within a living organism"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following conditions would DECREASE the rate of transpiration?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Wind",
+        B: "High temperature",
+        C: "Bright light",
+        D: "High humidity"
+      },
+      answer: "D",
+      explanation: "Humid air reduces the concentration gradient of water vapour between leaf and air.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-325",
+      module: 1,
+      objective: {
+        code: "1.4.1",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "justify the need for transport systems within a living organism"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A plant wilts on a hot, sunny afternoon because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it photosynthesises too fast",
+        B: "it loses water by transpiration faster than its roots can take it up",
+        C: "it is attacked by insects",
+        D: "the soil is too cold"
+      },
+      answer: "B",
+      explanation: "Cells lose turgor when water loss exceeds uptake.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-326",
+      module: 1,
+      objective: {
+        code: "1.4.1",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "justify the need for transport systems within a living organism"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A celery stalk placed in water containing red dye turned red at the top after two hours. This shows that",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "sugar moves down through the phloem",
+        B: "the dye is made in the leaves",
+        C: "water moves up the stem through the xylem",
+        D: "the stem carries out photosynthesis"
+      },
+      answer: "C",
+      explanation: "The dye is carried with water up the xylem by the transpiration pull.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-100",
+      module: 1,
+      objective: {
+        code: "1.4.1",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "justify the need for transport systems within a living organism"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is the surface area to volume ratio of the 2 cm cube?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-AGAR",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "1 : 1",
+        B: "2 : 1",
+        C: "3 : 1",
+        D: "6 : 1"
+      },
+      answer: "C",
+      explanation: "Surface area = 6 \xD7 2 \xD7 2 = 24 cm\xB2; volume = 2 \xD7 2 \xD7 2 = 8 cm\xB3; ratio 24 : 8 = 3 : 1.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-101",
+      module: 1,
+      objective: {
+        code: "1.4.1",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "justify the need for transport systems within a living organism"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "After five minutes the acid had changed the colour of the WHOLE of one cube only. Which cube was it?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-AGAR",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "The 2 cm cube",
+        B: "The 3 cm cube",
+        C: "All three cubes",
+        D: "The 1 cm cube"
+      },
+      answer: "D",
+      explanation: "The smallest cube has the largest surface area to volume ratio, so the acid diffuses to its centre first.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-102",
+      module: 1,
+      objective: {
+        code: "1.4.1",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "justify the need for transport systems within a living organism"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In which condition would the air bubble move FASTEST towards the shoot?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-POTO",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "In a dark cupboard",
+        B: "In a humid room",
+        C: "Next to a fan in sunlight",
+        D: "In a closed plastic bag"
+      },
+      answer: "C",
+      explanation: "Wind and light increase transpiration, so water is drawn up faster and the bubble moves quickly.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-103",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which component of blood carries oxygen?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Plasma",
+        B: "Red blood cells",
+        C: "Platelets",
+        D: "White blood cells"
+      },
+      answer: "B",
+      explanation: "Red blood cells contain haemoglobin, which combines with oxygen.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-104",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which component of blood helps it to clot at a wound?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Plasma",
+        B: "Phagocytes",
+        C: "Red blood cells",
+        D: "Platelets"
+      },
+      answer: "D",
+      explanation: "Platelets start the clotting process.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-105",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Some athletes illegally inject extra red blood cells before a race. This practice, called blood doping, gives them an advantage because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "makes the blood clot faster",
+        B: "increases the oxygen carried to the muscles",
+        C: "increases the number of antibodies",
+        D: "reduces the heart rate to zero"
+      },
+      answer: "B",
+      explanation: "More red blood cells carry more oxygen, so muscles can respire aerobically for longer.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-106",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which blood vessel carries deoxygenated blood from the heart to the lungs?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Pulmonary artery",
+        B: "Aorta",
+        C: "Vena cava",
+        D: "Pulmonary vein"
+      },
+      answer: "A",
+      explanation: "The pulmonary artery is the only artery carrying deoxygenated blood.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-107",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The stage of the heartbeat when the ventricles contract and push blood into the arteries is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "diastole",
+        B: "ventricular systole",
+        C: "atrial systole",
+        D: "fibrillation"
+      },
+      answer: "B",
+      explanation: "Ventricular systole is contraction of the ventricles.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-108",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "In flowering plants, water and mineral salts are carried from the roots to the leaves by the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "phloem",
+        B: "cambium",
+        C: "xylem",
+        D: "stomata"
+      },
+      answer: "C",
+      explanation: "Xylem vessels carry water and minerals upwards.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-109",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Sugars made in the leaves are transported to other parts of the plant by the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "xylem",
+        B: "phloem",
+        C: "root hairs",
+        D: "stomata"
+      },
+      answer: "B",
+      explanation: "Phloem carries dissolved food (mainly sucrose) from leaves to other parts.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-327",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The liquid part of blood is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "serum albumin",
+        B: "lymph",
+        C: "plasma",
+        D: "platelets"
+      },
+      answer: "C",
+      explanation: "Plasma is mostly water carrying dissolved substances.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-328",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Plasma transports all of the following EXCEPT",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "oxygen combined with haemoglobin",
+        B: "glucose",
+        C: "urea",
+        D: "hormones"
+      },
+      answer: "A",
+      explanation: "Oxygen combined with haemoglobin is carried inside red blood cells, not in the plasma.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-329",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Veins have valves in order to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "increase blood pressure",
+        B: "prevent backflow of blood",
+        C: "produce blood cells",
+        D: "exchange gases"
+      },
+      answer: "B",
+      explanation: "Blood in veins is at low pressure, so valves keep it flowing towards the heart.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-330",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which blood vessel carries oxygenated blood from the lungs to the heart?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Pulmonary artery",
+        B: "Vena cava",
+        C: "Pulmonary vein",
+        D: "Aorta"
+      },
+      answer: "C",
+      explanation: "The pulmonary vein is the only vein carrying oxygenated blood.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-331",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The vena cava brings blood from the body into the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "left atrium",
+        B: "right atrium",
+        C: "left ventricle",
+        D: "right ventricle"
+      },
+      answer: "B",
+      explanation: "Deoxygenated blood returns to the right atrium.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-332",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is the correct path of blood through the heart?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Vena cava \u2192 right atrium \u2192 right ventricle \u2192 pulmonary artery",
+        B: "Vena cava \u2192 left atrium \u2192 left ventricle \u2192 aorta",
+        C: "Pulmonary vein \u2192 right atrium \u2192 right ventricle \u2192 aorta",
+        D: "Aorta \u2192 left ventricle \u2192 left atrium \u2192 pulmonary vein"
+      },
+      answer: "A",
+      explanation: "Blood from the body enters the right side and is pumped to the lungs.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-333",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "During diastole",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the ventricles contract",
+        B: "the heart muscle relaxes and the chambers fill with blood",
+        C: "the atria contract",
+        D: "all valves are closed permanently"
+      },
+      answer: "B",
+      explanation: "Diastole is the relaxation phase.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-334",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The valve between the left atrium and the left ventricle is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "tricuspid valve",
+        B: "semi-lunar valve",
+        C: "pulmonary valve",
+        D: "bicuspid valve"
+      },
+      answer: "D",
+      explanation: "The bicuspid (mitral) valve has two flaps.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-335",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A person with too few platelets would MOST likely",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "become anaemic",
+        B: "have too many antibodies",
+        C: "bleed for a long time after a cut",
+        D: "be unable to digest fat"
+      },
+      answer: "C",
+      explanation: "Platelets are needed for blood clotting.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-336",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Red blood cells are adapted to carry oxygen because they",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "have a large nucleus",
+        B: "can engulf bacteria",
+        C: "produce antibodies",
+        D: "contain haemoglobin and have no nucleus"
+      },
+      answer: "D",
+      explanation: "No nucleus leaves more room for haemoglobin; the biconcave shape increases surface area.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-337",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Lymphocytes protect the body by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "producing antibodies",
+        B: "carrying oxygen",
+        C: "clotting blood",
+        D: "digesting fats"
+      },
+      answer: "A",
+      explanation: "Lymphocytes are white blood cells that make antibodies.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-475",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is the correct path of blood from the lungs?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Pulmonary artery \u2192 right atrium \u2192 right ventricle \u2192 aorta",
+        B: "Vena cava \u2192 left atrium \u2192 aorta",
+        C: "Pulmonary vein \u2192 right ventricle \u2192 pulmonary artery",
+        D: "Pulmonary vein \u2192 left atrium \u2192 left ventricle \u2192 aorta"
+      },
+      answer: "D",
+      explanation: "Oxygenated blood enters the left side and is pumped to the body.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-110",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Cell X has no nucleus and contains haemoglobin. Cell X is a",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-BLOOD",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "platelet",
+        B: "phagocyte",
+        C: "lymphocyte",
+        D: "red blood cell"
+      },
+      answer: "D",
+      explanation: "The biconcave disc without a nucleus is a red blood cell.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-111",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which cell engulfs and digests bacteria?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-BLOOD",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "X",
+        B: "Z",
+        C: "Y",
+        D: "X and Z"
+      },
+      answer: "C",
+      explanation: "Y, with a lobed nucleus, is a phagocyte, which engulfs bacteria.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-112",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Cell Z helps to protect the body by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-BLOOD",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "producing antibodies",
+        B: "carrying oxygen",
+        C: "clotting the blood",
+        D: "carrying carbon dioxide"
+      },
+      answer: "A",
+      explanation: "Z has a large round nucleus: a lymphocyte, which produces antibodies.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-113",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which chamber pumps blood to all parts of the body?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-HEART",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "A",
+        B: "B",
+        C: "C",
+        D: "D"
+      },
+      answer: "D",
+      explanation: "D is the left ventricle, which pumps oxygenated blood into the aorta; it has the thickest wall.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-114",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The blood vessel labelled G is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-HEART",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "aorta",
+        B: "vena cava",
+        C: "pulmonary vein",
+        D: "pulmonary artery"
+      },
+      answer: "A",
+      explanation: "G arches from the left ventricle: the aorta.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-115",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which labelled structure prevents blood from flowing back from the right ventricle into the right atrium?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-HEART",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "E",
+        B: "F",
+        C: "H",
+        D: "J"
+      },
+      answer: "A",
+      explanation: "E is the tricuspid valve between the right atrium and right ventricle.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-116",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The wall of chamber D is thicker than the wall of chamber B because D",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-HEART",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "holds more blood",
+        B: "pumps blood to the lungs only",
+        C: "receives blood from the vena cava",
+        D: "pumps blood at high pressure around the whole body"
+      },
+      answer: "D",
+      explanation: "The left ventricle must pump blood much further, around the whole body, so it has more muscle.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-338",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Vessel X has a thick, muscular wall. Vessel X is MOST likely",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-VESS",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "a vein",
+        B: "a capillary",
+        C: "an artery",
+        D: "the vena cava"
+      },
+      answer: "C",
+      explanation: "Arteries have thick elastic, muscular walls to withstand high pressure.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-339",
+      module: 1,
+      objective: {
+        code: "1.4.2",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "relate the structures in transport systems to their functions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In which vessel does exchange of materials with body cells take place?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-VESS",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "X",
+        B: "Z",
+        C: "Y",
+        D: "X and Y"
+      },
+      answer: "B",
+      explanation: "Z is a capillary, whose wall is one cell thick.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-117",
+      module: 1,
+      objective: {
+        code: "1.4.3",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "distinguish among the different blood groups"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A person with blood group AB has",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "no antigens on the red cells and antibodies a and b in the plasma",
+        B: "antigen A on the red cells and antibody b in the plasma",
+        C: "antigens A and B on the red cells and no antibodies in the plasma",
+        D: "antigen B on the red cells and antibody a in the plasma"
+      },
+      answer: "C",
+      explanation: "Group AB has both antigens and neither antibody, so it is the universal recipient.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-118",
+      module: 1,
+      objective: {
+        code: "1.4.3",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "distinguish among the different blood groups"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which blood group can be given to patients of ALL other ABO blood groups?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "A",
+        B: "B",
+        C: "AB",
+        D: "O"
+      },
+      answer: "D",
+      explanation: "Group O red cells carry no A or B antigens, so they are not agglutinated by the recipient's antibodies (universal donor).",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-119",
+      module: 1,
+      objective: {
+        code: "1.4.3",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "distinguish among the different blood groups"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The clumping together of red blood cells when incompatible blood is mixed is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "clotting",
+        B: "agglutination",
+        C: "phagocytosis",
+        D: "immunisation"
+      },
+      answer: "B",
+      explanation: "Agglutination happens when antibodies in the plasma react with matching antigens on red cells.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-120",
+      module: 1,
+      objective: {
+        code: "1.4.3",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "distinguish among the different blood groups"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Mrs Singh is Rhesus negative and is expecting her second Rhesus positive baby. The doctor gives her an injection because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the baby's antibodies may destroy her blood",
+        B: "she will produce too much milk",
+        C: "the baby will have blood group O",
+        D: "her antibodies may destroy the red blood cells of the baby"
+      },
+      answer: "D",
+      explanation: "Anti-Rh antibodies made after the first Rh-positive pregnancy can cross the placenta and destroy the red cells of the next Rh-positive baby.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-340",
+      module: 1,
+      objective: {
+        code: "1.4.3",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "distinguish among the different blood groups"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A person with blood group A has",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "antigen A on the red cells and antibody b in the plasma",
+        B: "antigen B on the red cells and antibody a in the plasma",
+        C: "no antigens and both antibodies",
+        D: "both antigens and no antibodies"
+      },
+      answer: "A",
+      explanation: "Group A: antigen A, antibody anti-B.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-341",
+      module: 1,
+      objective: {
+        code: "1.4.3",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "distinguish among the different blood groups"
+      },
+      profile: "UK",
+      difficulty: 3,
+      stem: "A patient with blood group B needs a transfusion. Which blood groups can he safely receive?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "A and B",
+        B: "B and O",
+        C: "AB only",
+        D: "A and O"
+      },
+      answer: "B",
+      explanation: "Group B plasma contains anti-A, so only blood without antigen A (groups B and O) is safe.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-342",
+      module: 1,
+      objective: {
+        code: "1.4.3",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "distinguish among the different blood groups"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "People with blood group AB are called universal recipients because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "their red cells have no antigens",
+        B: "they can donate to everyone",
+        C: "they have no anti-A or anti-B antibodies in their plasma",
+        D: "they have Rhesus antibodies"
+      },
+      answer: "C",
+      explanation: "With no antibodies, they do not agglutinate donor cells of any ABO group.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-343",
+      module: 1,
+      objective: {
+        code: "1.4.3",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "distinguish among the different blood groups"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Blood group is an inherited trait. This means it is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "caused by diet",
+        B: "changed by exercise",
+        C: "caused by infection",
+        D: "passed from parents to their children through genes"
+      },
+      answer: "D",
+      explanation: "Blood group is determined by genes inherited from both parents.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-344",
+      module: 1,
+      objective: {
+        code: "1.4.3",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "distinguish among the different blood groups"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Before a blood transfusion, the blood of donor and patient is cross-matched in order to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "prevent agglutination of red blood cells",
+        B: "increase the number of platelets",
+        C: "make the blood thicker",
+        D: "remove antibodies from the patient"
+      },
+      answer: "A",
+      explanation: "Incompatible blood clumps, blocking vessels, which can be fatal.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-345",
+      module: 1,
+      objective: {
+        code: "1.4.3",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "distinguish among the different blood groups"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Health workers wear gloves when handling blood MAINLY to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "keep the blood warm",
+        B: "stop the blood from clotting",
+        C: "prevent agglutination",
+        D: "protect themselves from blood-borne infections such as HIV and hepatitis"
+      },
+      answer: "D",
+      explanation: "Blood may contain pathogens.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-476",
+      module: 1,
+      objective: {
+        code: "1.4.3",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "distinguish among the different blood groups"
+      },
+      profile: "UK",
+      difficulty: 3,
+      stem: "A mother with blood group A and a father with blood group B could have a child with blood group",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "AB only",
+        B: "A only",
+        C: "A, B, AB or O",
+        D: "O only"
+      },
+      answer: "C",
+      explanation: "Depending on the genes inherited, all four groups are possible.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-121",
+      module: 1,
+      objective: {
+        code: "1.4.3",
+        topic: 4,
+        topicTitle: "Transport Systems",
+        text: "distinguish among the different blood groups"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which blood sample is blood group O?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-BTYPE",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "W",
+        B: "X",
+        C: "Y",
+        D: "Z"
+      },
+      answer: "D",
+      explanation: "Group O has neither antigen, so it does not clump with anti-A or anti-B serum.",
+      topic: 4
+    },
+    {
+      id: "IS-M1-P1-122",
+      module: 1,
+      objective: {
+        code: "1.5.1",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "distinguish between excretion and egestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Excretion is the removal of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "undigested food from the body",
+        B: "water from the leaves of plants",
+        C: "waste products of metabolism from the body",
+        D: "food from the stomach"
+      },
+      answer: "C",
+      explanation: "Excretion removes metabolic wastes such as urea and carbon dioxide; removal of undigested food is egestion.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-123",
+      module: 1,
+      objective: {
+        code: "1.5.1",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "distinguish between excretion and egestion"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is an example of egestion rather than excretion?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Breathing out carbon dioxide",
+        B: "Passing out urine",
+        C: "Sweating",
+        D: "Passing out faeces"
+      },
+      answer: "D",
+      explanation: "Faeces are mostly undigested food that never entered body cells, so their removal is egestion.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-124",
+      module: 1,
+      objective: {
+        code: "1.5.1",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "distinguish between excretion and egestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following pairs matches an excretory organ with a substance it excretes?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Lungs - urea",
+        B: "Skin - water and salts",
+        C: "Kidneys - carbon dioxide",
+        D: "Large intestine - urea"
+      },
+      answer: "B",
+      explanation: "Skin excretes water and salts in sweat; lungs excrete CO\u2082 and water vapour; kidneys excrete urea, salts and water.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-346",
+      module: 1,
+      objective: {
+        code: "1.5.1",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "distinguish between excretion and egestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Urea is made in the liver from the breakdown of excess",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "amino acids",
+        B: "glucose",
+        C: "fats",
+        D: "vitamins"
+      },
+      answer: "A",
+      explanation: "Excess amino acids are deaminated in the liver to form urea.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-347",
+      module: 1,
+      objective: {
+        code: "1.5.1",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "distinguish between excretion and egestion"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Carbon dioxide is described as an excretory product because it is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "undigested food",
+        B: "made by bacteria in the gut",
+        C: "produced by respiration in body cells",
+        D: "taken in with food"
+      },
+      answer: "C",
+      explanation: "It is a waste product of metabolism.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-348",
+      module: 1,
+      objective: {
+        code: "1.5.1",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "distinguish between excretion and egestion"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is NOT an excretory product in humans?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Faeces",
+        B: "Urea",
+        C: "Carbon dioxide",
+        D: "Excess salts"
+      },
+      answer: "A",
+      explanation: "Faeces are removed by egestion.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-477",
+      module: 1,
+      objective: {
+        code: "1.5.1",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "distinguish between excretion and egestion"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following correctly matches a waste product with its origin?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Carbon dioxide - digestion of fat",
+        B: "Urea - breakdown of excess amino acids",
+        C: "Faeces - respiration",
+        D: "Bile pigments - photosynthesis"
+      },
+      answer: "B",
+      explanation: "Urea is made in the liver from excess amino acids.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-478",
+      module: 1,
+      objective: {
+        code: "1.5.1",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "distinguish between excretion and egestion"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Egestion is carried out by the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "kidneys",
+        B: "lungs",
+        C: "skin",
+        D: "anus"
+      },
+      answer: "D",
+      explanation: "Undigested food leaves through the anus.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-479",
+      module: 1,
+      objective: {
+        code: "1.5.1",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "distinguish between excretion and egestion"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Bile pigments from broken-down red blood cells are excreted in the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "sweat",
+        B: "breath",
+        C: "faeces",
+        D: "tears"
+      },
+      answer: "C",
+      explanation: "Bile pigments are excreted into the gut and colour the faeces.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-125",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following substances would NOT normally be found in the urine of a healthy person?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Urea",
+        B: "Water",
+        C: "Glucose",
+        D: "Salts"
+      },
+      answer: "C",
+      explanation: "All glucose is reabsorbed in a healthy kidney. Glucose in urine is a sign of diabetes.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-126",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "On a very hot day, a person's urine is small in volume and dark in colour because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "less ADH is released and more water is lost",
+        B: "more ADH is released and more water is reabsorbed",
+        C: "the kidneys stop making urea",
+        D: "the bladder absorbs water"
+      },
+      answer: "B",
+      explanation: "Water lost in sweat makes the blood concentrated; the pituitary releases more ADH, so the tubules reabsorb more water.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-127",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A dialysis machine is used for a person whose",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "kidneys have failed",
+        B: "lungs are damaged",
+        C: "heart valves leak",
+        D: "liver produces too much bile"
+      },
+      answer: "A",
+      explanation: "Dialysis removes urea and excess salts and water from the blood when the kidneys cannot.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-128",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The hormone which controls the amount of water reabsorbed by the kidneys is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "insulin",
+        B: "antidiuretic hormone (ADH)",
+        C: "adrenaline",
+        D: "thyroxine"
+      },
+      answer: "B",
+      explanation: "ADH from the pituitary gland makes the collecting ducts more permeable to water.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-349",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following substances is filtered out of the blood in the glomerulus but is normally ALL reabsorbed?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Glucose",
+        B: "Urea",
+        C: "Excess water",
+        D: "Excess salts"
+      },
+      answer: "A",
+      explanation: "Glucose is completely reabsorbed in the first coiled tubule.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-350",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Protein molecules are NOT found in the filtrate in the kidney tubule because they",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "are reabsorbed",
+        B: "are digested in the kidney",
+        C: "are too large to pass through the walls of the glomerulus",
+        D: "are excreted by the lungs"
+      },
+      answer: "C",
+      explanation: "Large molecules and blood cells stay in the blood during ultrafiltration.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-351",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In a dialysis machine, urea moves from the patient's blood into the dialysis fluid by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "osmosis",
+        B: "diffusion",
+        C: "active transport",
+        D: "filtration"
+      },
+      answer: "B",
+      explanation: "Dialysis fluid has no urea, so urea diffuses across the partially permeable membrane.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-352",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "UK",
+      difficulty: 3,
+      stem: "The dialysis fluid contains glucose and salts at the same concentration as normal blood so that",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "urea can enter the blood",
+        B: "the blood clots",
+        C: "more glucose enters the blood",
+        D: "useful substances are not lost from the blood"
+      },
+      answer: "D",
+      explanation: "There is no concentration gradient for these substances, so they are not removed.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-353",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "After drinking a large volume of water, a person produces",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "a small volume of concentrated urine",
+        B: "a large volume of dilute urine",
+        C: "no urine",
+        D: "urine containing glucose"
+      },
+      answer: "B",
+      explanation: "Less ADH is released, so less water is reabsorbed.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-354",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The skin helps to cool the body by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "producing urea",
+        B: "making vitamin C",
+        C: "producing sweat which evaporates",
+        D: "storing glucose"
+      },
+      answer: "C",
+      explanation: "Evaporation of sweat removes heat.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-355",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The lungs excrete",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "urea and salts",
+        B: "carbon dioxide and water vapour",
+        C: "glucose",
+        D: "bile"
+      },
+      answer: "B",
+      explanation: "These are waste products of respiration.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-129",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Ultrafiltration takes place at the structure labelled",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-NEPH",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "Q",
+        C: "R",
+        D: "S"
+      },
+      answer: "A",
+      explanation: "P is the glomerulus in the Bowman's capsule, where small molecules are filtered out of the blood under pressure.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-130",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Glucose is reabsorbed into the blood MAINLY at the structure labelled",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-NEPH",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "Q",
+        C: "R",
+        D: "T"
+      },
+      answer: "B",
+      explanation: "Q is the first (proximal) coiled tubule where all the glucose is reabsorbed.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-131",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which labelled structure produces sweat?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-SKIN",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "A",
+        B: "C",
+        C: "D",
+        D: "F"
+      },
+      answer: "C",
+      explanation: "D is the coiled sweat gland.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-132",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which labelled structure helps to reduce heat loss from the body?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-SKIN",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "B",
+        B: "C",
+        C: "E",
+        D: "F"
+      },
+      answer: "D",
+      explanation: "F is the fat (adipose) layer, which insulates the body.",
+      topic: 5
+    },
+    {
+      id: "IS-M1-P1-356",
+      module: 1,
+      objective: {
+        code: "1.5.2",
+        topic: 5,
+        topicTitle: "Excretion",
+        text: "explain the mechanism of excretion by the lungs, skin and kidneys in humans"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The tube labelled S carries urine to the",
       statements: null,
       after: null,
       stimulus: null,
@@ -5589,1429 +7885,4 @@
       stem: "Which of the following conditions promote the growth of microorganisms in food?",
       statements: [
         "Moisture",
-        "Warm temperature",
-        "Nutrients"
-      ],
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "I and II only",
-        B: "I and III only",
-        C: "II and III only",
-        D: "I, II and III"
-      },
-      answer: "D",
-      explanation: "Microorganisms need moisture, a suitable (warm) temperature and nutrients.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-216",
-      module: 1,
-      objective: {
-        code: "1.7.11",
-        topic: 7,
-        topicTitle: "Health",
-        text: "determine conditions which promote the growth of microorganisms"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Bread will stay free of mould for LONGEST if it is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "stored in a refrigerator in a sealed bag",
-        B: "kept in a warm, damp cupboard",
-        C: "left uncovered on a kitchen counter",
-        D: "wrapped in a damp cloth"
-      },
-      answer: "A",
-      explanation: "Low temperature slows microbial growth and the sealed bag keeps out spores.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-217",
-      module: 1,
-      objective: {
-        code: "1.7.11",
-        topic: 7,
-        topicTitle: "Health",
-        text: "determine conditions which promote the growth of microorganisms"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Yeast is used in making bread because it",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "adds vitamins to the flour",
-        B: "kills harmful bacteria",
-        C: "produces carbon dioxide which makes the dough rise",
-        D: "removes water from the dough"
-      },
-      answer: "C",
-      explanation: "Yeast ferments sugar and releases carbon dioxide gas, which makes the dough rise.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-441",
-      module: 1,
-      objective: {
-        code: "1.7.11",
-        topic: 7,
-        topicTitle: "Health",
-        text: "determine conditions which promote the growth of microorganisms"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Food kept in the 'danger zone' between 5 \xB0C and 60 \xB0C is likely to spoil quickly because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "bacteria are all killed",
-        B: "the food freezes",
-        C: "enzymes are destroyed",
-        D: "bacteria multiply rapidly at these temperatures"
-      },
-      answer: "D",
-      explanation: "Warm conditions are ideal for microbial growth.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-442",
-      module: 1,
-      objective: {
-        code: "1.7.11",
-        topic: 7,
-        topicTitle: "Health",
-        text: "determine conditions which promote the growth of microorganisms"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following is an example of microorganisms being used in food production?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Frying plantains",
-        B: "Boiling rice",
-        C: "Making cheese",
-        D: "Squeezing oranges"
-      },
-      answer: "C",
-      explanation: "Bacteria and fungi are used to make cheese.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-443",
-      module: 1,
-      objective: {
-        code: "1.7.11",
-        topic: 7,
-        topicTitle: "Health",
-        text: "determine conditions which promote the growth of microorganisms"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Bread mould grows well on bread because the bread provides",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "nutrients and moisture",
-        B: "salt and vinegar",
-        C: "light",
-        D: "oxygen only"
-      },
-      answer: "A",
-      explanation: "Mould needs food, water and warmth.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-444",
-      module: 1,
-      objective: {
-        code: "1.7.11",
-        topic: 7,
-        topicTitle: "Health",
-        text: "determine conditions which promote the growth of microorganisms"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Calcium propionate is added to sliced bread in order to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "add flavour",
-        B: "make it rise",
-        C: "add colour",
-        D: "slow down the growth of mould"
-      },
-      answer: "D",
-      explanation: "It is a preservative that inhibits mould.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-512",
-      module: 1,
-      objective: {
-        code: "1.7.11",
-        topic: 7,
-        topicTitle: "Health",
-        text: "determine conditions which promote the growth of microorganisms"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following foods is MOST likely to spoil quickly at room temperature?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Dry crackers",
-        B: "Cooked rice",
-        C: "Sugar",
-        D: "Salt"
-      },
-      answer: "B",
-      explanation: "Moist, nutrient-rich foods support microbial growth.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-513",
-      module: 1,
-      objective: {
-        code: "1.7.11",
-        topic: 7,
-        topicTitle: "Health",
-        text: "determine conditions which promote the growth of microorganisms"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Microorganisms are used in food processing to make",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "table salt",
-        B: "sugar crystals",
-        C: "vegetable oil",
-        D: "vinegar, soy sauce and bread"
-      },
-      answer: "D",
-      explanation: "Fermentation by microbes produces these foods.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-514",
-      module: 1,
-      objective: {
-        code: "1.7.11",
-        topic: 7,
-        topicTitle: "Health",
-        text: "determine conditions which promote the growth of microorganisms"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Mould on bread grows as",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "single bacteria",
-        B: "thread-like hyphae producing spores",
-        C: "viruses",
-        D: "crystals"
-      },
-      answer: "B",
-      explanation: "Bread mould is a fungus.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-218",
-      module: 1,
-      objective: {
-        code: "1.7.11",
-        topic: 7,
-        topicTitle: "Health",
-        text: "determine conditions which promote the growth of microorganisms"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "On which piece of bread would MOST mould grow?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M1-S-BREAD",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "A",
-        B: "B",
-        C: "C",
-        D: "D"
-      },
-      answer: "B",
-      explanation: "B has moisture and a warm temperature, which moulds need; C is too cold, A too dry and salt in D draws water out.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-219",
-      module: 1,
-      objective: {
-        code: "1.7.11",
-        topic: 7,
-        topicTitle: "Health",
-        text: "determine conditions which promote the growth of microorganisms"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Dishes B and C were set up to find out the effect of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M1-S-BREAD",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "moisture",
-        B: "salt",
-        C: "light",
-        D: "temperature"
-      },
-      answer: "D",
-      explanation: "B and C differ only in temperature (25 \xB0C and 4 \xB0C).",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-220",
-      module: 1,
-      objective: {
-        code: "1.7.12",
-        topic: 7,
-        topicTitle: "Health",
-        text: "apply the principles used in food preservation"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Salting fish preserves it because the salt",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "adds nutrients which bacteria cannot use",
-        B: "raises the temperature of the fish",
-        C: "draws water out of the bacterial cells by osmosis",
-        D: "keeps oxygen in the fish"
-      },
-      answer: "C",
-      explanation: "Salt makes a concentrated solution that removes water from microbes by osmosis, so they cannot grow.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-221",
-      module: 1,
-      objective: {
-        code: "1.7.12",
-        topic: 7,
-        topicTitle: "Health",
-        text: "apply the principles used in food preservation"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which of the following methods of food preservation works by removing water?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Drying",
-        B: "Canning",
-        C: "Refrigeration",
-        D: "Pickling"
-      },
-      answer: "A",
-      explanation: "Drying (e.g. sun-drying or solar drying) removes the moisture that microbes need.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-222",
-      module: 1,
-      objective: {
-        code: "1.7.12",
-        topic: 7,
-        topicTitle: "Health",
-        text: "apply the principles used in food preservation"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Pickling preserves food because vinegar",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "removes all oxygen",
-        B: "makes the food too acidic for most microorganisms",
-        C: "freezes the food",
-        D: "adds sugar to the food"
-      },
-      answer: "B",
-      explanation: "Vinegar lowers the pH so that most bacteria and fungi cannot survive.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-223",
-      module: 1,
-      objective: {
-        code: "1.7.12",
-        topic: 7,
-        topicTitle: "Health",
-        text: "apply the principles used in food preservation"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "In canning, food is heated in the can and then sealed. The heating",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "adds vitamins to the food",
-        B: "makes the can rust",
-        C: "increases the water content",
-        D: "kills microorganisms and the seal prevents new ones from entering"
-      },
-      answer: "D",
-      explanation: "Heat sterilises the food and the airtight seal stops re-contamination.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-224",
-      module: 1,
-      objective: {
-        code: "1.7.12",
-        topic: 7,
-        topicTitle: "Health",
-        text: "apply the principles used in food preservation"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Making jams and guava jelly with large amounts of sugar preserves the fruit because sugar",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "kills microbes by heating",
-        B: "adds acid to the fruit",
-        C: "removes water from microbes by osmosis",
-        D: "provides oxygen"
-      },
-      answer: "C",
-      explanation: "Concentrated sugar solution draws water out of microbial cells, just as salt does.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-225",
-      module: 1,
-      objective: {
-        code: "1.7.12",
-        topic: 7,
-        topicTitle: "Health",
-        text: "apply the principles used in food preservation"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "An inverter-type refrigerator is recommended for food storage because it",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "keeps food at a steady low temperature while using less electricity",
-        B: "heats food to kill bacteria",
-        C: "removes all water from food",
-        D: "adds preservatives to food"
-      },
-      answer: "A",
-      explanation: "Inverter technology varies the compressor speed, keeping the temperature steady and saving energy.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-445",
-      module: 1,
-      objective: {
-        code: "1.7.12",
-        topic: 7,
-        topicTitle: "Health",
-        text: "apply the principles used in food preservation"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Food preservation is the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "cooking of food",
-        B: "treatment of food to slow down or prevent spoilage",
-        C: "growing of food",
-        D: "digestion of food"
-      },
-      answer: "B",
-      explanation: "Preservation extends shelf life by stopping microbial growth.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-446",
-      module: 1,
-      objective: {
-        code: "1.7.12",
-        topic: 7,
-        topicTitle: "Health",
-        text: "apply the principles used in food preservation"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Refrigeration preserves food because low temperatures",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "slow down the activity of microorganisms and enzymes",
-        B: "kill all microorganisms",
-        C: "remove water",
-        D: "add salt"
-      },
-      answer: "A",
-      explanation: "Cold slows growth; it does not kill most microbes.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-447",
-      module: 1,
-      objective: {
-        code: "1.7.12",
-        topic: 7,
-        topicTitle: "Health",
-        text: "apply the principles used in food preservation"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Curing meat involves adding salt and nitrites. Curing preserves meat because it",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "adds water",
-        B: "raises the temperature",
-        C: "adds oxygen",
-        D: "makes conditions unsuitable for bacteria"
-      },
-      answer: "D",
-      explanation: "Salt removes water and nitrites inhibit bacteria.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-448",
-      module: 1,
-      objective: {
-        code: "1.7.12",
-        topic: 7,
-        topicTitle: "Health",
-        text: "apply the principles used in food preservation"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Solar drying of fruit and fish is useful in the Caribbean because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "it needs electricity",
-        B: "it uses free, renewable energy from the sun",
-        C: "it adds moisture",
-        D: "it only works at night"
-      },
-      answer: "B",
-      explanation: "Sunshine is plentiful and free.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-449",
-      module: 1,
-      objective: {
-        code: "1.7.12",
-        topic: 7,
-        topicTitle: "Health",
-        text: "apply the principles used in food preservation"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Canned food should not be eaten if the can is swollen because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "bacteria inside may be producing gas and toxins",
-        B: "the can is too cold",
-        C: "the food has too much salt",
-        D: "the can is new"
-      },
-      answer: "A",
-      explanation: "A bulging can suggests bacterial growth, possibly Clostridium botulinum.",
-      topic: 7
-    },
-    {
-      id: "IS-M1-P1-450",
-      module: 1,
-      objective: {
-        code: "1.7.12",
-        topic: 7,
-        topicTitle: "Health",
-        text: "apply the principles used in food preservation"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which of the following methods of food preservation uses heat?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Freezing",
-        B: "Salting",
-        C: "Pasteurisation",
-        D: "Drying in the shade"
-      },
-      answer: "C",
-      explanation: "Pasteurisation heats milk to kill most harmful bacteria.",
-      topic: 7
-    }
-  ],
-  paper02: [
-    {
-      id: "IS-M1-P2-01",
-      module: 1,
-      kind: "practical",
-      title: "Sexual reproduction and growth in plants",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 8,
-        UK: 7,
-        XS: 5
-      },
-      topics: [
-        {
-          topic: 2,
-          title: "Reproduction and Growth in Plants"
-        }
-      ],
-      objectives: [
-        "1.2.3",
-        "1.2.4",
-        "1.2.6"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Farmer Ramdial grows pumpkins, beans and ornamental flowers on his farm. Figure 1 shows a section through one of the flowers on his farm.",
-          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="80 30 540 475" width="540" height="475" role="img" aria-label="Longitudinal section of a flower"><title>Longitudinal section of a flower</title><rect x="80" y="30" width="540" height="475" fill="white" /><g fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" font-family="Arial, Helvetica, sans-serif"><path d="M285 398 C252 391 226 345 191 328 C226 325 247 358 285 384 Z" fill="#fff" /><path d="M354 398 C388 389 416 344 451 325 C415 326 393 359 354 384 Z" fill="#fff" /><path d="M166 111 C196 82 238 67 278 76 C299 65 334 65 357 76 C401 66 451 78 486 111 C449 114 425 150 416 200 C405 263 400 323 378 363 C367 384 350 399 340 408 L337 469 H307 L303 409 C285 400 268 387 255 365 C232 327 222 267 214 210 C206 153 195 126 166 111 Z" fill="#fff" /><path d="M278 76 C286 80 292 87 296 94 M357 76 C365 80 373 86 376 94" stroke-width="1.5" /><path d="M236 157 C236 222 242 291 266 343 C279 370 291 388 306 399 L308 390 C288 371 280 354 273 337 C251 286 248 222 248 157 Z" fill="#fff" /><path d="M394 157 C394 221 388 289 366 341 C354 368 344 386 331 399 L329 390 C347 370 356 351 362 335 C382 284 382 220 382 157 Z" fill="#fff" /><path d="M242 121 C233 121 231 133 232 146 C232 158 235 168 242 168 C249 168 252 158 252 145 C252 131 249 121 242 121 Z" fill="#fff" /><path d="M388 121 C379 121 377 133 378 146 C378 158 381 168 388 168 C395 168 398 158 398 145 C398 131 395 121 388 121 Z" fill="#fff" /><path d="M241 127 C238 139 239 153 242 162 M387 127 C384 139 385 153 388 162" stroke-width="1.05" /><path d="M310 157 C301 149 296 139 301 132 C306 124 315 124 320 127 C326 123 336 127 339 134 C342 142 336 150 330 157 L330 273 C346 290 355 311 354 334 C354 359 344 378 332 385 L331 402 H309 L308 385 C294 378 285 359 285 335 C284 311 294 289 310 273 Z" fill="#fff" /><path d="M320 286 C306 286 295 309 295 335 C295 360 306 378 320 378 C334 378 344 360 344 335 C344 309 334 286 320 286 Z" fill="#fff" stroke-width="1.5" /><line x1="320" y1="292" x2="320" y2="371" stroke-width="1.15" /><path d="M320 307 Q316 310 313 309 M320 307 Q324 310 327 309" stroke-width="1.05" /><ellipse cx="308" cy="307" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><ellipse cx="332" cy="307" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><path d="M320 332 Q316 335 313 334 M320 332 Q324 335 327 334" stroke-width="1.05" /><ellipse cx="308" cy="332" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><ellipse cx="332" cy="332" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><path d="M320 356 Q316 359 313 358 M320 356 Q324 359 327 358" stroke-width="1.05" /><ellipse cx="308" cy="356" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /><ellipse cx="332" cy="356" rx="4.5" ry="8" fill="#fff" stroke-width="1.4" /></g><path d="M388 141 H537" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="553" y="146" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">P</text><path d="M329 133 L537 64" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="553" y="72" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">Q</text><path d="M350 312 L537 299" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="553" y="307" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">R</text><path d="M308 332 H125" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="105" y="343" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="end" fill="#111" stroke="none" style="stroke:none;fill:#111">S</text></svg>',
-          figure: "Figure 1. Section through a flower",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Identify the parts labelled P, Q, R and S in Figure 1.",
-              marks: 4,
-              objective: "1.2.3",
-              profile: {
-                KC: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "P",
-                  "Q",
-                  "R",
-                  "S"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "P - anther",
-                  "Q - stigma",
-                  "R - ovary",
-                  "S - ovule"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State ONE function of the part labelled P.",
-              marks: 1,
-              objective: "1.2.3",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Produces pollen grains (male gametes)."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "The flowers on Farmer Ramdial's farm have large, brightly coloured petals and a strong scent. Suggest the MOST likely agent of pollination for these flowers and give TWO reasons for your answer.",
-              marks: 3,
-              objective: "1.2.3",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Agent: insects/animals (bees) (1)",
-                  "Large, brightly coloured petals attract insects (1)",
-                  "Scent attracts insects (1)",
-                  "(Accept: nectar present as a reward to insects)"
-                ],
-                guidance: "1 mark for agent; 1 mark each for any two reasons",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Farmer Ramdial measured the height of a bean plant each week after germination. His results are shown in Table 1.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 1: HEIGHT OF A BEAN PLANT",
-            headers: [
-              "Time/weeks",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6"
-            ],
-            rows: [
-              [
-                "Height/cm",
-                "2",
-                "5",
-                "11",
-                "18",
-                "23",
-                "25"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "On the grid provided, plot a line graph of height against time to represent the data in Table 1. You MUST label EACH axis.",
-              marks: 5,
-              objective: "1.2.4",
-              profile: {
-                XS: 5
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "graph",
-                height: 320,
-                x: "Time/weeks",
-                y: "Height/cm"
-              },
-              markScheme: {
-                points: [
-                  "Points plotted: (1, 2), (2, 5), (3, 11), (4, 18), (5, 23), (6, 25)",
-                  "Axes labelled: Time/weeks and Height/cm",
-                  "Suitable scale using at least 75% of the grid",
-                  "Smooth curve drawn through all points"
-                ],
-                guidance: "2 marks for correct plotting of points (all points = 2; at least half = 1); 1 mark for both axes labelled with units; 1 mark for an appropriate scale (at least 75% of the grid used); 1 mark for a smooth line/curve joining the points",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Describe the pattern of growth of the bean plant shown by your graph.",
-              marks: 2,
-              objective: "1.2.4",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Growth is slow at first (weeks 1-2) (1)",
-                  "then rapid between weeks 2 and 5 and slows down/levels off after week 5 (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State the THREE conditions necessary for the germination of the bean seeds.",
-              marks: 3,
-              objective: "1.2.4",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Water",
-                  "Oxygen",
-                  "Suitable (warm) temperature"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "Farmer Ramdial rotates his pumpkins with beans on the same plot of land each year.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain how growing beans in the rotation helps to improve the fertility of the soil.",
-              marks: 2,
-              objective: "1.2.6",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Beans are legumes with root nodules containing nitrogen-fixing bacteria (1)",
-                  "which convert nitrogen from the air into nitrates/nitrogen compounds that enrich the soil (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-02",
-      module: 1,
-      kind: "structured",
-      title: "Cells, osmosis and the heart",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 8,
-        UK: 7,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 1,
-          title: "Units of Life"
-        },
-        {
-          topic: 4,
-          title: "Transport Systems"
-        }
-      ],
-      objectives: [
-        "1.1.2",
-        "1.1.1",
-        "1.4.2"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Figure 2 shows a cell from a leaf.",
-          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="55 5 435 370" width="522" height="444" role="img" aria-label="Plant cell"><title>Plant cell</title><rect x="55" y="5" width="435" height="370" fill="white" /><g fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M208 44C238 31 279 28 307 39C330 48 340 67 340 96L336 295C336 327 321 343 288 344L225 344C195 343 181 328 180 296L173 115C171 77 182 54 208 44Z" stroke-width="3" /><path d="M212 55C240 43 278 41 302 50C320 57 328 72 328 97L324 294C324 320 313 331 287 332L225 332C202 331 193 320 192 294L185 114C183 82 191 65 212 55Z" stroke-width="1.5" /><path d="M235 148C247 142 260 156 275 162C285 166 295 166 298 179C300 203 286 241 277 273C272 290 265 303 257 297C246 288 244 273 238 259C229 235 216 206 217 183C217 166 222 153 235 148Z" fill="white" stroke-width="1.5" /><circle cx="221" cy="104" r="19" fill="#eee" stroke-width="1.5" /><circle cx="224" cy="104" r="6" fill="#555" stroke-width=".8" /><g transform="translate(200 151) rotate(-81) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(279 75) rotate(34) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(305 116) rotate(29) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(269 135) rotate(-38) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(310 190) rotate(-57) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(306 265) rotate(-57) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(282 315) rotate(-26) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(214 295) rotate(52) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g><g transform="translate(202 249) rotate(-87) scale(0.75)"><ellipse cx="0" cy="0" rx="12" ry="6" fill="white" stroke-width="1.2" /><ellipse cx="0" cy="0" rx="10" ry="4.4" stroke-width=".65" /><line x1="-8" y1="-2.2" x2="-4" y2="-2.2" stroke-width=".65" /><line x1="-8" y1="0" x2="-4" y2="0" stroke-width=".65" /><line x1="-8" y1="2.2" x2="-4" y2="2.2" stroke-width=".65" /><line x1="-2" y1="-2.2" x2="2" y2="-2.2" stroke-width=".65" /><line x1="-2" y1="0" x2="2" y2="0" stroke-width=".65" /><line x1="-2" y1="2.2" x2="2" y2="2.2" stroke-width=".65" /><line x1="4" y1="-2.2" x2="8" y2="-2.2" stroke-width=".65" /><line x1="4" y1="0" x2="8" y2="0" stroke-width=".65" /><line x1="4" y1="2.2" x2="8" y2="2.2" stroke-width=".65" /><line x1="-4" y1="0" x2="-2" y2="0" stroke-width=".65" /><line x1="2" y1="0" x2="4" y2="0" stroke-width=".65" /></g></g><path d="M338 179 H412" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="424" y="185" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">W</text><path d="M285 76 L412 59" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="424" y="65" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">X</text><path d="M270 235 L412 254" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="424" y="260" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="start" fill="#111" stroke="none" style="stroke:none;fill:#111">Y</text><path d="M202 104 H118" fill="none" stroke="#111" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><text x="102" y="106" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="end" fill="#111" stroke="none" style="stroke:none;fill:#111">Z</text><text x="257" y="218" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">cell sap</text></svg>',
-          figure: "Figure 2. Diagram of a leaf cell",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Identify the parts labelled W, X, Y and Z.",
-              marks: 4,
-              objective: "1.1.2",
-              profile: {
-                KC: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "W",
-                  "X",
-                  "Y",
-                  "Z"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "W - cell wall",
-                  "X - chloroplast",
-                  "Y - vacuole",
-                  "Z - nucleus"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO features in Figure 2 which show that it is a plant cell.",
-              marks: 2,
-              objective: "1.1.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Cell wall present",
-                  "Chloroplasts present",
-                  "Large (permanent) vacuole",
-                  "Regular/fixed shape"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Mrs Clarke sells lettuce at an open market. By midday the leaves wilt, but after she sprinkles them with water they become firm again.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Define the term 'osmosis'.",
-              marks: 1,
-              objective: "1.1.1",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "The movement of water molecules from a dilute solution (high water concentration) to a more concentrated solution (low water concentration) through a selectively permeable membrane."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how sprinkling water on the lettuce causes the leaves to become firm again.",
-              marks: 3,
-              objective: "1.1.1",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "The water outside is more dilute than the cell sap (1)",
-                  "water enters the cells by osmosis through the selectively permeable membrane (1)",
-                  "the vacuoles swell and press against the cell wall, making the cells turgid/firm (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "The heart pumps blood around the body.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name the blood vessel which carries blood from the heart to the lungs.",
-              marks: 1,
-              objective: "1.4.2",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Pulmonary artery"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "The wall of the left ventricle is much thicker than that of the right ventricle. Explain why.",
-              marks: 2,
-              objective: "1.4.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "The left ventricle pumps blood to all parts of the body (1)",
-                  "so it must produce a higher pressure/more force than the right ventricle, which pumps only to the lungs (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State the function of the valves in the heart.",
-              marks: 1,
-              objective: "1.4.2",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "To prevent the backflow of blood / keep blood flowing in one direction."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "Name the type of blood cell which transports oxygen.",
-              marks: 1,
-              objective: "1.4.2",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Red blood cell (erythrocyte)"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M1-P2-03",
-      module: 1,
-      kind: "practical",
-      title: "Soil and soil erosion",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 2,
-        UK: 8,
-        XS: 10
-      },
-      topics: [
-        {
-          topic: 2,
-          title: "Reproduction and Growth in Plants"
-        }
-      ],
-      objectives: [
-        "1.2.6",
-        "1.2.7"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "A group of students collected soil from three sites, P, Q and R, in their school compound. They poured 100 cm\xB3 of water through equal masses of each soil sample using the apparatus shown in Figure 3 and recorded the volume of water which drained through in 10 minutes. Their results are shown in Table 2.",
-          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 5 720 435" width="792" height="479" role="img" aria-label="Drainage through three soil samples"><title>Drainage through three soil samples</title><rect x="30" y="5" width="720" height="435" fill="white" /><defs><marker id="is-precision-m1-paper02-2-parts-0-svg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#111" stroke="none" /></marker><pattern id="is-precision-m1-paper02-2-parts-0-svg-hatch" width="7" height="7" patternUnits="userSpaceOnUse"><path d="M0 7L7 0" stroke="#888" stroke-width=".6" /></pattern><pattern id="is-precision-m1-paper02-2-parts-0-svg-dots" width="11" height="11" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r=".8" fill="#555" /></pattern><pattern id="is-precision-m1-paper02-2-parts-0-svg-water" width="14" height="12" patternUnits="userSpaceOnUse"><path d="M2 6h5" stroke="#888" stroke-width=".7" /></pattern></defs><g fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><text x="135" y="35" font-family="Arial, Helvetica, sans-serif" font-size="22" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">P</text><path d="M97 96L129 158L129 210L141 220L141 158L173 96" /><path d="M107 116L163 116L144 153Q135 161 126 153Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-dots)" stroke-width="1.1" /><path d="M126 153Q135 147 144 153L140 164Q135 168 130 164Z" fill="white" stroke-width="1.1" /><path d="M105 240 V380 Q135 390 165 380 V240" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /><ellipse cx="135" cy="240" rx="30" ry="4" fill="white" stroke="#111" stroke-width="1.25" /><path d="M106 289.0 H164 V379 Q135 388 106 379 Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-water)" stroke="none" /><path d="M106 289.0 H164" fill="none" stroke="#111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 380.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 367.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 354.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 341.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 328.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 315.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 302.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 289.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 276.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 263.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M105 250.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M95 390 H175" fill="none" stroke="#111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M135 225 Q131 231 135 233 Q139 231 135 225Z" fill="none" stroke="#111" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" /><text x="380" y="35" font-family="Arial, Helvetica, sans-serif" font-size="22" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">Q</text><path d="M342 96L374 158L374 210L386 220L386 158L418 96" /><path d="M352 116L408 116L389 153Q380 161 371 153Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-dots)" stroke-width="1.1" /><path d="M371 153Q380 147 389 153L385 164Q380 168 375 164Z" fill="white" stroke-width="1.1" /><path d="M350 240 V380 Q380 390 410 380 V240" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /><ellipse cx="380" cy="240" rx="30" ry="4" fill="white" stroke="#111" stroke-width="1.25" /><path d="M351 347.5 H409 V379 Q380 388 351 379 Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-water)" stroke="none" /><path d="M351 347.5 H409" fill="none" stroke="#111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 380.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 367.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 354.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 341.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 328.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 315.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 302.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 289.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 276.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 263.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M350 250.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M340 390 H420" fill="none" stroke="#111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M380 225 Q376 231 380 233 Q384 231 380 225Z" fill="none" stroke="#111" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" /><text x="625" y="35" font-family="Arial, Helvetica, sans-serif" font-size="22" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">R</text><path d="M587 96L619 158L619 210L631 220L631 158L663 96" /><path d="M597 116L653 116L634 153Q625 161 616 153Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-dots)" stroke-width="1.1" /><path d="M616 153Q625 147 634 153L630 164Q625 168 620 164Z" fill="white" stroke-width="1.1" /><path d="M595 240 V380 Q625 390 655 380 V240" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /><ellipse cx="625" cy="240" rx="30" ry="4" fill="white" stroke="#111" stroke-width="1.25" /><path d="M596 317.6 H654 V379 Q625 388 596 379 Z" fill="url(#is-precision-m1-paper02-2-parts-0-svg-water)" stroke="none" /><path d="M596 317.6 H654" fill="none" stroke="#111" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 380.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 367.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 354.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 341.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 328.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 315.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 302.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 289.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 276.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 263.0 h7" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M595 250.0 h12" fill="none" stroke="#111" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" /><path d="M585 390 H665" fill="none" stroke="#111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /><path d="M625 225 Q621 231 625 233 Q629 231 625 225Z" fill="none" stroke="#111" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" /></g><text x="390" y="426" font-family="Arial, Helvetica, sans-serif" font-size="19" text-anchor="middle" fill="#111" stroke="none" style="stroke:none;fill:#111">Each funnel was given 100 cm\xB3 of water.</text></svg>',
-          figure: "Figure 3. Apparatus used to compare the drainage of soil samples",
-          table: {
-            title: "TABLE 2: DRAINAGE THROUGH SOIL SAMPLES",
-            headers: [
-              "Soil sample",
-              "Volume of water collected/cm\xB3",
-              "Volume of water retained/cm\xB3"
-            ],
-            rows: [
-              [
-                "P",
-                "70",
-                ""
-              ],
-              [
-                "Q",
-                "25",
-                ""
-              ],
-              [
-                "R",
-                "48",
-                ""
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "Complete Table 2 by calculating the volume of water RETAINED by EACH soil sample.",
-              marks: 3,
-              objective: "1.2.6",
-              profile: {
-                XS: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "P: 30 cm\xB3",
-                  "Q: 75 cm\xB3",
-                  "R: 52 cm\xB3"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Identify which sample, P, Q or R, is MOST likely to be clay. Give a reason for your answer.",
-              marks: 2,
-              objective: "1.2.6",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Q (1)",
-                  "It retained the most water/drained the least because clay has very small particles and small air spaces (1)"
-                ],
-                guidance: "1 mark for identification; 1 mark for reason",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State ONE variable which the students MUST keep constant in this experiment.",
-              marks: 1,
-              objective: "1.2.6",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Mass/volume of soil",
-                  "Volume of water added",
-                  "Time allowed for drainage",
-                  "Size of funnel/filter paper"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "One student claimed that soil taken from under trees contains more humus than soil taken from an open field.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State a suitable hypothesis to test the student's claim.",
-              marks: 2,
-              objective: "1.2.6",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Soil from under trees contains more humus (organic matter) than soil from an open field.",
-                  "OR: If soil from under trees is heated, it will lose more mass than an equal mass of soil from an open field."
-                ],
-                guidance: "1 mark for a clearly stated hypothesis; 1 mark for a testable hypothesis",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Outline a suitable method the student could use to test the hypothesis in (b) (i).",
-              marks: 4,
-              objective: "1.2.6",
-              profile: {
-                XS: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 8
-              },
-              markScheme: {
-                points: [
-                  "Dry equal masses of the two soil samples (e.g. in an oven at about 100 \xB0C) and weigh each (1)",
-                  "Heat each sample strongly in a crucible to burn off the humus (1)",
-                  "Cool and reweigh; repeat heating until the mass is constant (1)",
-                  "Calculate the loss in mass for each sample and compare - the greater loss shows more humus (1)"
-                ],
-                guidance: "1 mark each for any four logical steps",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain how humus improves the fertility of soil.",
-              marks: 3,
-              objective: "1.2.6",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Humus decomposes and releases mineral nutrients (1)",
-                  "it increases the water-holding capacity of the soil (1)",
-                  "it binds particles into crumbs, improving aeration/drainage/soil structure (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "Many farms in the Caribbean are on steep hillsides.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State TWO causes of soil erosion on hillsides.",
-              marks: 2,
-              objective: "1.2.7",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Heavy rainfall/run-off",
-                  "Deforestation/removal of vegetation",
-                  "Bush fires",
-                  "Ploughing up and down the slope",
-                  "Overgrazing"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Describe how terracing helps to reduce soil erosion.",
-              marks: 2,
-              objective: "1.2.7",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Terraces are flat steps cut into the slope (1)",
-                  "which slow down the flow of run-off water so that less soil is carried away (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
+        "Warm temperature

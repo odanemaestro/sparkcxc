@@ -1,4 +1,1997 @@
-cids",
+ions: {
+        A: "reacts with the drink",
+        B: "is light, cheap and can be recycled",
+        C: "is magnetic",
+        D: "is very heavy"
+      },
+      answer: "B",
+      explanation: "Aluminium cans are light, do not rust and are easily recycled.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-178",
+      module: 3,
+      objective: {
+        code: "3.5.3",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Acidic foods such as tomatoes should NOT be cooked for long periods in aluminium pots because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "aluminium is a poor conductor",
+        B: "the pot will become magnetic",
+        C: "aluminium is too heavy",
+        D: "the acid reacts with the aluminium and it may dissolve into the food"
+      },
+      answer: "D",
+      explanation: "Acids attack the protective oxide layer and small amounts of aluminium may enter the food.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-179",
+      module: 3,
+      objective: {
+        code: "3.5.3",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Aluminium does not corrode easily in air because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it is very unreactive",
+        B: "it is always painted",
+        C: "it forms a protective layer of aluminium oxide",
+        D: "it contains iron"
+      },
+      answer: "C",
+      explanation: "The thin oxide layer stops further reaction.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-435",
+      module: 3,
+      objective: {
+        code: "3.5.3",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Aluminium foil is used to wrap food because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "is magnetic",
+        B: "is light, can be shaped easily and reflects heat",
+        C: "rusts",
+        D: "is expensive"
+      },
+      answer: "B",
+      explanation: "Foil keeps food hot and is easily folded.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-436",
+      module: 3,
+      objective: {
+        code: "3.5.3",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Aluminium cooking pots should not be scoured with steel wool regularly because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it removes the protective oxide layer",
+        B: "it makes the pot magnetic",
+        C: "it adds aluminium",
+        D: "it strengthens the pot"
+      },
+      answer: "A",
+      explanation: "Without the oxide layer, more aluminium may dissolve into food.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-437",
+      module: 3,
+      objective: {
+        code: "3.5.3",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "An advantage of aluminium cooking pots is that they",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "are very heavy",
+        B: "react with food",
+        C: "heat up quickly and evenly",
+        D: "rust"
+      },
+      answer: "C",
+      explanation: "Aluminium is a good conductor of heat.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-565",
+      module: 3,
+      objective: {
+        code: "3.5.3",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Aluminium pots should NOT be used to store acidic foods such as tomatoes because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the acid reacts with aluminium",
+        B: "aluminium makes the food cold",
+        C: "aluminium is too heavy",
+        D: "the food becomes too sweet"
+      },
+      answer: "A",
+      explanation: "Aluminium dissolves in acids, affecting food.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-566",
+      module: 3,
+      objective: {
+        code: "3.5.3",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is a DISADVANTAGE of aluminium cooking utensils?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "They are light.",
+        B: "They dent easily.",
+        C: "They conduct heat well.",
+        D: "They do not rust."
+      },
+      answer: "B",
+      explanation: "Aluminium is soft.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-180",
+      module: 3,
+      objective: {
+        code: "3.5.4",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the benefits of using alloys to make household items"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "An alloy is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "a pure metal",
+        B: "a compound of a metal and oxygen",
+        C: "a non-metal",
+        D: "a mixture of a metal with other elements"
+      },
+      answer: "D",
+      explanation: "Alloys are mixtures designed to improve properties.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-181",
+      module: 3,
+      objective: {
+        code: "3.5.4",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the benefits of using alloys to make household items"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Brass is an alloy of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "iron and carbon",
+        B: "copper and tin",
+        C: "copper and zinc",
+        D: "lead and tin"
+      },
+      answer: "C",
+      explanation: "Brass is copper and zinc.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-182",
+      module: 3,
+      objective: {
+        code: "3.5.4",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the benefits of using alloys to make household items"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Steel is an alloy of iron and",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "copper",
+        B: "carbon",
+        C: "zinc",
+        D: "lead"
+      },
+      answer: "B",
+      explanation: "Steel contains iron with a small amount of carbon; stainless steel also contains chromium and nickel.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-183",
+      module: 3,
+      objective: {
+        code: "3.5.4",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the benefits of using alloys to make household items"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Stainless steel is used to make cutlery because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "is hard and does not rust",
+        B: "is soft and rusts easily",
+        C: "is a poor conductor",
+        D: "has a low melting point"
+      },
+      answer: "A",
+      explanation: "Chromium in stainless steel prevents rusting.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-184",
+      module: 3,
+      objective: {
+        code: "3.5.4",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the benefits of using alloys to make household items"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Solder, an alloy of tin and lead, is used to join electrical wires because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "has a very high melting point",
+        B: "is an insulator",
+        C: "is magnetic",
+        D: "has a low melting point"
+      },
+      answer: "D",
+      explanation: "Solder melts easily and conducts electricity.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-438",
+      module: 3,
+      objective: {
+        code: "3.5.4",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the benefits of using alloys to make household items"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Bronze is an alloy of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "copper and zinc",
+        B: "copper and tin",
+        C: "iron and carbon",
+        D: "lead and tin"
+      },
+      answer: "B",
+      explanation: "Bronze is used for medals and statues.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-439",
+      module: 3,
+      objective: {
+        code: "3.5.4",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the benefits of using alloys to make household items"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Alloys are often harder than the pure metals they are made from because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the different-sized atoms stop the layers sliding over each other",
+        B: "they contain more of one metal",
+        C: "they are non-metals",
+        D: "they are softer"
+      },
+      answer: "A",
+      explanation: "Irregular arrangement of atoms makes alloys harder.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-440",
+      module: 3,
+      objective: {
+        code: "3.5.4",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the benefits of using alloys to make household items"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Brass is used for door handles and locks because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "rusts easily",
+        B: "is soft",
+        C: "is hard, attractive and resists corrosion",
+        D: "is magnetic"
+      },
+      answer: "C",
+      explanation: "Brass does not rust and looks like gold.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-441",
+      module: 3,
+      objective: {
+        code: "3.5.4",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the benefits of using alloys to make household items"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Electroplating a steel spoon with silver",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "makes it rust",
+        B: "makes it heavier than gold",
+        C: "removes the steel",
+        D: "gives an attractive, corrosion-resistant surface"
+      },
+      answer: "D",
+      explanation: "A thin layer of silver improves appearance and resistance.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-567",
+      module: 3,
+      objective: {
+        code: "3.5.4",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the benefits of using alloys to make household items"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Solder, used to join electrical wires, is an alloy chosen because it has a",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "high melting point",
+        B: "high density",
+        C: "low melting point",
+        D: "poor conductivity"
+      },
+      answer: "C",
+      explanation: "It melts easily with a soldering iron.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-185",
+      module: 3,
+      objective: {
+        code: "3.5.5",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "examine the conditions which cause rusting"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is the word equation for rusting?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Iron + water \u2192 iron + hydrogen",
+        B: "Iron + salt \u2192 rust + chlorine",
+        C: "Iron + oxygen + water \u2192 hydrated iron(III) oxide (rust)",
+        D: "Iron oxide + water \u2192 iron + oxygen"
+      },
+      answer: "C",
+      explanation: "Rust is hydrated iron(III) oxide.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-186",
+      module: 3,
+      objective: {
+        code: "3.5.5",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "examine the conditions which cause rusting"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Cars and burglar bars in coastal areas rust faster because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "there is less oxygen at the coast",
+        B: "the sun is weaker",
+        C: "sea air is dry",
+        D: "sea spray contains salt which speeds up rusting"
+      },
+      answer: "D",
+      explanation: "Salt (an electrolyte) speeds up the rusting reaction.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-187",
+      module: 3,
+      objective: {
+        code: "3.5.5",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "examine the conditions which cause rusting"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Rusting is described as an oxidation reaction because iron",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "loses oxygen",
+        B: "combines with nitrogen",
+        C: "combines with oxygen",
+        D: "melts"
+      },
+      answer: "C",
+      explanation: "Oxidation is the gain of oxygen.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-442",
+      module: 3,
+      objective: {
+        code: "3.5.5",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "examine the conditions which cause rusting"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following conditions would cause iron to rust FASTEST?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Dry desert air",
+        B: "Warm, humid, salty air",
+        C: "Cold dry air",
+        D: "Oil"
+      },
+      answer: "B",
+      explanation: "Water, oxygen, salt and warmth speed rusting.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-443",
+      module: 3,
+      objective: {
+        code: "3.5.5",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "examine the conditions which cause rusting"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Emissions from industrial plants speed up rusting because they contain",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "acidic gases such as sulphur dioxide",
+        B: "pure oxygen",
+        C: "helium",
+        D: "nitrogen only"
+      },
+      answer: "A",
+      explanation: "Acid in the air increases corrosion.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-444",
+      module: 3,
+      objective: {
+        code: "3.5.5",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "examine the conditions which cause rusting"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Rusting is a problem in the Caribbean because of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cold winters",
+        B: "the warm, humid tropical climate and sea spray",
+        C: "lack of rain",
+        D: "snow"
+      },
+      answer: "B",
+      explanation: "Tropical climates accelerate corrosion.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-445",
+      module: 3,
+      objective: {
+        code: "3.5.5",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "examine the conditions which cause rusting"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Tarnishing of silver is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "a chemical reaction with substances in the air",
+        B: "a physical change",
+        C: "caused by light only",
+        D: "caused by magnetism"
+      },
+      answer: "A",
+      explanation: "Silver reacts with sulphur compounds to form black silver sulphide.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-446",
+      module: 3,
+      objective: {
+        code: "3.5.5",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "examine the conditions which cause rusting"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The mass of an iron nail INCREASES when it rusts because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it loses iron",
+        B: "it combines with oxygen and water",
+        C: "rust is lighter",
+        D: "water evaporates"
+      },
+      answer: "B",
+      explanation: "Oxygen and water are added to the iron.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-188",
+      module: 3,
+      objective: {
+        code: "3.5.5",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "examine the conditions which cause rusting"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In which test tube would the nail rust the MOST?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M3-S-RUST",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "A",
+        B: "B",
+        C: "C",
+        D: "D"
+      },
+      answer: "D",
+      explanation: "Water, air and salt are present; salt speeds up rusting.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-189",
+      module: 3,
+      objective: {
+        code: "3.5.5",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "examine the conditions which cause rusting"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The nail in test tube B does not rust because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M3-S-RUST",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "there is no water",
+        B: "there is too much salt",
+        C: "there is no oxygen",
+        D: "the temperature is too high"
+      },
+      answer: "C",
+      explanation: "Boiling removes dissolved oxygen and the oil layer prevents air from dissolving again.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-190",
+      module: 3,
+      objective: {
+        code: "3.5.5",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "examine the conditions which cause rusting"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Test tubes B and C together show that rusting needs",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M3-S-RUST",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "both oxygen and water",
+        B: "water only",
+        C: "oxygen only",
+        D: "salt"
+      },
+      answer: "A",
+      explanation: "No rust without oxygen (B) and no rust without water (C).",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-191",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Coating iron with a layer of zinc to prevent rusting is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "electroplating",
+        B: "galvanising",
+        C: "painting",
+        D: "alloying"
+      },
+      answer: "B",
+      explanation: "Galvanised zinc sheet is used for roofing.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-192",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Painting a gate prevents rusting because the paint",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "reacts with the iron",
+        B: "adds oxygen to the iron",
+        C: "makes the gate stronger",
+        D: "keeps out air and water"
+      },
+      answer: "D",
+      explanation: "It is a barrier between the metal and oxygen and water.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-193",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Tools are often stored with silica gel packets. The silica gel",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "adds oxygen",
+        B: "adds salt",
+        C: "absorbs moisture",
+        D: "heats the tools"
+      },
+      answer: "C",
+      explanation: "Silica gel is a desiccant (drying agent); without moisture, rusting cannot occur.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-194",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Bicycle chains are covered with oil or grease MAINLY to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "make them heavier",
+        B: "keep out air and water and reduce friction",
+        C: "add colour",
+        D: "conduct electricity"
+      },
+      answer: "B",
+      explanation: "Oil is a barrier and a lubricant.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-195",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Coating a metal object with a thin layer of another metal using electricity is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "electroplating",
+        B: "galvanising",
+        C: "painting",
+        D: "sacrificial protection"
+      },
+      answer: "A",
+      explanation: "Electroplating uses electrolysis, for example chromium on car parts.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-447",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Burglar bars and gates are often painted because paint",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "reacts with the iron",
+        B: "makes them heavier",
+        C: "conducts electricity",
+        D: "prevents air and water reaching the iron"
+      },
+      answer: "D",
+      explanation: "Paint is a protective barrier.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-448",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Galvanised iron sheets are used for roofing because the zinc coating",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "protects the iron from rusting, even if scratched",
+        B: "makes the roof heavier",
+        C: "reflects all light",
+        D: "is magnetic"
+      },
+      answer: "A",
+      explanation: "Zinc corrodes in preference to iron (sacrificial protection).",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-449",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Car bumpers used to be chromium-plated in order to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "reduce the weight",
+        B: "prevent rusting and give a shiny finish",
+        C: "increase friction",
+        D: "make them magnetic"
+      },
+      answer: "B",
+      explanation: "Chromium resists corrosion.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-450",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which method of rust prevention is used for food cans?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Painting",
+        B: "Galvanising with zinc",
+        C: "Coating steel with tin",
+        D: "Oiling"
+      },
+      answer: "C",
+      explanation: "Tin plating is non-toxic and resists corrosion.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-451",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Plastic coating on wire fences prevents rusting by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "keeping air and water away from the iron",
+        B: "reacting with oxygen",
+        C: "adding zinc",
+        D: "absorbing water"
+      },
+      answer: "A",
+      explanation: "A barrier method.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-568",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Silver jewellery tarnishes because silver reacts with",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "nitrogen",
+        B: "sulfur compounds in the air",
+        C: "water only",
+        D: "oxygen to form rust"
+      },
+      answer: "B",
+      explanation: "Black silver sulfide forms.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-569",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following prevents tarnishing of brass door handles?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Leaving them in damp air",
+        B: "Washing with salt water",
+        C: "Coating with clear lacquer",
+        D: "Scratching the surface"
+      },
+      answer: "C",
+      explanation: "Lacquer excludes air.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-570",
+      module: 3,
+      objective: {
+        code: "3.5.6",
+        topic: 5,
+        topicTitle: "Metals and Non-metals",
+        text: "discuss the methods used to reduce or prevent tarnishing of metals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Silver cutlery can be kept from tarnishing by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "leaving it near eggs",
+        B: "washing it in salt water",
+        C: "keeping it in damp cupboards",
+        D: "storing it in airtight bags"
+      },
+      answer: "D",
+      explanation: "Excluding air and sulfur compounds reduces tarnish.",
+      topic: 5
+    },
+    {
+      id: "IS-M3-P1-196",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The MOST common solvent used in the home is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "kerosene",
+        B: "acetone",
+        C: "water",
+        D: "turpentine"
+      },
+      answer: "C",
+      explanation: "Water dissolves more substances than any other common liquid.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-197",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Bleach is used in the home to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "remove grease",
+        B: "kill germs and remove stains",
+        C: "soften fabrics",
+        D: "polish furniture"
+      },
+      answer: "B",
+      explanation: "Bleach (sodium hypochlorite) is a disinfectant and stain remover.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-198",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which chemical is BEST for removing nail polish?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Acetone",
+        B: "Water",
+        C: "Vinegar",
+        D: "Bleach"
+      },
+      answer: "A",
+      explanation: "Nail polish dissolves in acetone.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-199",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which chemical is used to remove oil-based paint from brushes?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Water",
+        B: "Vinegar",
+        C: "Turpentine",
+        D: "Baking soda"
+      },
+      answer: "C",
+      explanation: "Turpentine is a non-aqueous solvent which dissolves oil paint.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-200",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Antacids are used to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "kill bacteria",
+        B: "clean floors",
+        C: "remove rust",
+        D: "relieve indigestion by neutralising excess stomach acid"
+      },
+      answer: "D",
+      explanation: "Antacids are bases, such as magnesium hydroxide.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-201",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Bleach should NEVER be mixed with ammonia-based cleaners because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the mixture becomes too weak",
+        B: "a poisonous gas is produced",
+        C: "it turns into water",
+        D: "it becomes explosive salt"
+      },
+      answer: "B",
+      explanation: "They react to form toxic chloramine gases.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-202",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following hazard symbols means that a substance is flammable?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: true,
+      options: {
+        A: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="toxic hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>toxic hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><circle cx="60" cy="48" r="16" fill="#000"/><circle cx="53" cy="46" r="4" fill="#fff"/><circle cx="67" cy="46" r="4" fill="#fff"/><line x1="38" y1="70" x2="82" y2="90" stroke-width="5"/><line x1="38" y1="90" x2="82" y2="70" stroke-width="5"/></g></svg>`,
+        B: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="flammable hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>flammable hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff" /><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5" /><g transform="translate(-3.18 -3.8) scale(0.27)"><path d="M220 315C167 338 139 294 160 251C156 278 179 278 170 241C169 214 190 194 188 169C210 183 215 205 216 221C234 193 216 164 225 132C238 159 263 170 263 198C282 192 278 174 281 166C306 195 298 221 309 240C323 259 324 290 296 311C274 329 245 330 220 315Z" fill="black" stroke="black" stroke-width="1" /><path d="M227 313C207 301 199 284 210 268C208 280 224 281 222 260C221 249 232 238 232 226C245 241 243 257 249 266C260 252 255 239 258 231C282 254 288 287 270 304C259 315 245 319 227 313Z" fill="white" stroke="black" stroke-width="1" /><line x1="170" y1="340" x2="304" y2="340" stroke="black" stroke-width="3" /></g></g></svg>`,
+        C: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="corrosive hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>corrosive hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><polygon points="40,30 52,30 50,50 42,50" fill="#fff"/><polygon points="68,30 80,30 78,50 70,50" fill="#fff"/><path d="M46,53 v6 M74,53 v6" fill="none" stroke-width="2"/><rect x="30" y="78" width="60" height="10" fill="#000"/><path d="M38,65 q4,8 8,0 q4,-8 8,0" fill="none" stroke-width="1.5"/></g></svg>`,
+        D: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="irritant hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>irritant hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><rect x="55" y="30" width="10" height="38" fill="#000" rx="3"/><circle cx="60" cy="82" r="6" fill="#000"/></g></svg>`
+      },
+      answer: "B",
+      explanation: "The flame symbol warns that the substance catches fire easily.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-203",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which hazard symbol would be found on a bottle of concentrated acid?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: true,
+      options: {
+        A: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="explosive hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>explosive hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><circle cx="60" cy="70" r="12" fill="#000"/><line x1="60" y1="54" x2="60" y2="40" stroke-width="2.5"/><line x1="71.3" y1="58.7" x2="81.2" y2="48.8" stroke-width="2.5"/><line x1="76" y1="70" x2="90" y2="70" stroke-width="2.5"/><line x1="71.3" y1="81.3" x2="81.2" y2="91.2" stroke-width="2.5"/><line x1="60" y1="86" x2="60" y2="100" stroke-width="2.5"/><line x1="48.7" y1="81.3" x2="38.8" y2="91.2" stroke-width="2.5"/><line x1="44" y1="70" x2="30" y2="70" stroke-width="2.5"/><line x1="48.7" y1="58.7" x2="38.8" y2="48.8" stroke-width="2.5"/></g></svg>`,
+        B: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="flammable hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>flammable hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff" /><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5" /><g transform="translate(-3.18 -3.8) scale(0.27)"><path d="M220 315C167 338 139 294 160 251C156 278 179 278 170 241C169 214 190 194 188 169C210 183 215 205 216 221C234 193 216 164 225 132C238 159 263 170 263 198C282 192 278 174 281 166C306 195 298 221 309 240C323 259 324 290 296 311C274 329 245 330 220 315Z" fill="black" stroke="black" stroke-width="1" /><path d="M227 313C207 301 199 284 210 268C208 280 224 281 222 260C221 249 232 238 232 226C245 241 243 257 249 266C260 252 255 239 258 231C282 254 288 287 270 304C259 315 245 319 227 313Z" fill="white" stroke="black" stroke-width="1" /><line x1="170" y1="340" x2="304" y2="340" stroke="black" stroke-width="3" /></g></g></svg>`,
+        C: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="toxic hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>toxic hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><circle cx="60" cy="48" r="16" fill="#000"/><circle cx="53" cy="46" r="4" fill="#fff"/><circle cx="67" cy="46" r="4" fill="#fff"/><line x1="38" y1="70" x2="82" y2="90" stroke-width="5"/><line x1="38" y1="90" x2="82" y2="70" stroke-width="5"/></g></svg>`,
+        D: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="corrosive hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>corrosive hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><polygon points="40,30 52,30 50,50 42,50" fill="#fff"/><polygon points="68,30 80,30 78,50 70,50" fill="#fff"/><path d="M46,53 v6 M74,53 v6" fill="none" stroke-width="2"/><rect x="30" y="78" width="60" height="10" fill="#000"/><path d="M38,65 q4,8 8,0 q4,-8 8,0" fill="none" stroke-width="1.5"/></g></svg>`
+      },
+      answer: "D",
+      explanation: "Corrosive substances damage skin and materials.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-204",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Buying household chemicals in bulk and using the recommended amount",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "saves money and reduces waste",
+        B: "increases pollution",
+        C: "makes the chemical stronger",
+        D: "is dangerous"
+      },
+      answer: "A",
+      explanation: "Economic use of household chemicals.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-452",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which household chemical is used as a disinfectant?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Baking powder",
+        B: "Table salt",
+        C: "Bleach",
+        D: "Vinegar"
+      },
+      answer: "C",
+      explanation: "Bleach kills microorganisms.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-453",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Baking powder is used in cake making to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "sweeten the cake",
+        B: "colour the cake",
+        C: "preserve the cake",
+        D: "make the cake rise by releasing carbon dioxide"
+      },
+      answer: "D",
+      explanation: "It reacts when heated or wet to release CO\u2082.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-454",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Ammonia solution is commonly used for",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cooking",
+        B: "brushing teeth",
+        C: "cleaning glass and hard surfaces",
+        D: "treating burns"
+      },
+      answer: "C",
+      explanation: "Ammonia cuts grease on glass.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-455",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Methylated spirit is used to clean",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "glass and remove some ink stains",
+        B: "wounds on babies",
+        C: "food",
+        D: "aluminium pots"
+      },
+      answer: "A",
+      explanation: "It dissolves grease and some stains.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-456",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "An eco-friendly cleaning product is one which",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "contains phosphates",
+        B: "is biodegradable and less harmful to the environment",
+        C: "is flammable",
+        D: "is toxic to fish"
+      },
+      answer: "B",
+      explanation: "Eco-friendly products break down naturally.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-457",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which hazard symbol warns that a substance may explode?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: true,
+      options: {
+        A: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="flammable hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>flammable hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff" /><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5" /><g transform="translate(-3.18 -3.8) scale(0.27)"><path d="M220 315C167 338 139 294 160 251C156 278 179 278 170 241C169 214 190 194 188 169C210 183 215 205 216 221C234 193 216 164 225 132C238 159 263 170 263 198C282 192 278 174 281 166C306 195 298 221 309 240C323 259 324 290 296 311C274 329 245 330 220 315Z" fill="black" stroke="black" stroke-width="1" /><path d="M227 313C207 301 199 284 210 268C208 280 224 281 222 260C221 249 232 238 232 226C245 241 243 257 249 266C260 252 255 239 258 231C282 254 288 287 270 304C259 315 245 319 227 313Z" fill="white" stroke="black" stroke-width="1" /><line x1="170" y1="340" x2="304" y2="340" stroke="black" stroke-width="3" /></g></g></svg>`,
+        B: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="explosive hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>explosive hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><circle cx="60" cy="70" r="12" fill="#000"/><line x1="60" y1="54" x2="60" y2="40" stroke-width="2.5"/><line x1="71.3" y1="58.7" x2="81.2" y2="48.8" stroke-width="2.5"/><line x1="76" y1="70" x2="90" y2="70" stroke-width="2.5"/><line x1="71.3" y1="81.3" x2="81.2" y2="91.2" stroke-width="2.5"/><line x1="60" y1="86" x2="60" y2="100" stroke-width="2.5"/><line x1="48.7" y1="81.3" x2="38.8" y2="91.2" stroke-width="2.5"/><line x1="44" y1="70" x2="30" y2="70" stroke-width="2.5"/><line x1="48.7" y1="58.7" x2="38.8" y2="48.8" stroke-width="2.5"/></g></svg>`,
+        C: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="irritant hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>irritant hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><rect x="55" y="30" width="10" height="38" fill="#000" rx="3"/><circle cx="60" cy="82" r="6" fill="#000"/></g></svg>`,
+        D: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="toxic hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>toxic hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><circle cx="60" cy="48" r="16" fill="#000"/><circle cx="53" cy="46" r="4" fill="#fff"/><circle cx="67" cy="46" r="4" fill="#fff"/><line x1="38" y1="70" x2="82" y2="90" stroke-width="5"/><line x1="38" y1="90" x2="82" y2="70" stroke-width="5"/></g></svg>`
+      },
+      answer: "B",
+      explanation: "The exploding bomb symbol.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-458",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The skull and crossbones hazard symbol means that a substance is",
+      statements: null,
+      after: null,
+      stimulus: {
+        lead: "to the following hazard symbol.",
+        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="toxic hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>toxic hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><circle cx="60" cy="48" r="16" fill="#000"/><circle cx="53" cy="46" r="4" fill="#fff"/><circle cx="67" cy="46" r="4" fill="#fff"/><line x1="38" y1="70" x2="82" y2="90" stroke-width="5"/><line x1="38" y1="90" x2="82" y2="70" stroke-width="5"/></g></svg>`,
+        table: null
+      },
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "flammable",
+        B: "corrosive",
+        C: "oxidising",
+        D: "toxic"
+      },
+      answer: "D",
+      explanation: "Toxic substances can cause death if swallowed, inhaled or absorbed.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-459",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Household chemicals should never be stored in soft drink bottles because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the bottles will melt",
+        B: "the chemicals become weaker",
+        C: "someone may drink them by mistake",
+        D: "it is expensive"
+      },
+      answer: "C",
+      explanation: "Accidental poisoning, especially of children.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-460",
+      module: 3,
+      objective: {
+        code: "3.6.1",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "discuss the uses of common household chemicals"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Hand sanitisers usually contain",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "alcohol",
+        B: "sugar",
+        C: "salt",
+        D: "bleach"
+      },
+      answer: "A",
+      explanation: "Alcohol (at least 60%) kills many microbes.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-205",
+      module: 3,
+      objective: {
+        code: "3.6.2",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "examine the properties of acids, bases and salts"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A solution with a pH of 2 is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "weakly acidic",
+        B: "strongly acidic",
+        C: "neutral",
+        D: "strongly alkaline"
+      },
+      answer: "B",
+      explanation: "pH below 7 is acidic; the lower the pH, the stronger the acid.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-206",
+      module: 3,
+      objective: {
+        code: "3.6.2",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "examine the properties of acids, bases and salts"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following household substances is alkaline?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Baking soda solution",
+        B: "Vinegar",
+        C: "Lime juice",
+        D: "Soft drink"
+      },
+      answer: "A",
+      explanation: "Baking soda (sodium hydrogencarbonate) solution has a pH of about 8-9.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-207",
+      module: 3,
+      objective: {
+        code: "3.6.2",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "examine the properties of acids, bases and salts"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "When an acid reacts with a base, the products are",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "hydrogen and oxygen",
+        B: "a salt and water",
+        C: "a salt and hydrogen",
+        D: "carbon dioxide only"
+      },
+      answer: "B",
+      explanation: "Acid + base \u2192 salt + water (neutralisation).",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-208",
+      module: 3,
+      objective: {
+        code: "3.6.2",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "examine the properties of acids, bases and salts"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A wasp sting is alkaline. Which of the following would BEST relieve the pain?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Baking soda",
+        B: "Soap solution",
+        C: "Vinegar",
+        D: "Toothpaste"
+      },
+      answer: "C",
+      explanation: "A weak acid (vinegar) neutralises the alkali.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-209",
+      module: 3,
+      objective: {
+        code: "3.6.2",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "examine the properties of acids, bases and salts"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Farmers add lime to soil that is too acidic. This is an example of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "neutralisation",
+        B: "distillation",
+        C: "filtration",
+        D: "evaporation"
+      },
+      answer: "A",
+      explanation: "Lime is a base which neutralises acidic soil.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-210",
+      module: 3,
+      objective: {
+        code: "3.6.2",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "examine the properties of acids, bases and salts"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Litmus paper turns red in",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "alkalis",
+        B: "neutral solutions",
+        C: "all solutions",
+        D: "acids"
+      },
+      answer: "D",
+      explanation: "Blue litmus turns red in acids.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-461",
+      module: 3,
+      objective: {
+        code: "3.6.2",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "examine the properties of acids, bases and salts"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "An alkali is a base which",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "is always solid",
+        B: "dissolves in water",
+        C: "has a pH below 7",
+        D: "turns blue litmus red"
+      },
+      answer: "B",
+      explanation: "Soluble bases are alkalis, e.g. sodium hydroxide.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-462",
+      module: 3,
+      objective: {
+        code: "3.6.2",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "examine the properties of acids, bases and salts"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Universal indicator turns green in a solution of pH",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "1",
+        B: "4",
+        C: "7",
+        D: "13"
+      },
+      answer: "C",
+      explanation: "Green indicates neutral.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-463",
+      module: 3,
+      objective: {
+        code: "3.6.2",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "examine the properties of acids, bases and salts"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A student tested a household liquid with universal indicator and it turned purple. The liquid is MOST likely",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "vinegar",
+        B: "lemon juice",
+        C: "water",
+        D: "oven cleaner"
+      },
+      answer: "D",
+      explanation: "Purple shows a strong alkali (pH 13-14).",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-464",
+      module: 3,
+      objective: {
+        code: "3.6.2",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "examine the properties of acids, bases and salts"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is a use of neutralisation in health?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Adding salt to food",
+        B: "Boiling water",
+        C: "Taking an antacid for indigestion",
+        D: "Freezing meat"
+      },
+      answer: "C",
+      explanation: "Antacids neutralise excess stomach acid.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-465",
+      module: 3,
+      objective: {
+        code: "3.6.2",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "examine the properties of acids, bases and salts"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "In cooking, baking soda is sometimes added to reduce the sourness of acidic foods because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "adds more acid",
+        B: "neutralises some of the acid",
+        C: "adds sugar",
+        D: "adds vitamins"
+      },
+      answer: "B",
+      explanation: "Baking soda is a weak base.",
+      topic: 6
+    },
+    {
+      id: "IS-M3-P1-466",
+      module: 3,
+      objective: {
+        code: "3.6.2",
+        topic: 6,
+        topicTitle: "Household Chemicals",
+        text: "examine the properties of acids, bases and salts"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Sewage treatment plants may add lime to waste water in order to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "neutralise acids",
         B: "add colour",
         C: "increase acidity",
         D: "add bacteria"
@@ -4551,1620 +6544,4 @@ cids",
               markScheme: {
                 points: [
                   "Acid: lime juice / rain water (1)",
-                  "Alkali: baking soda solution / oven cleaner (1)",
-                  "Neutral: table salt solution (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why a person suffering from indigestion could take baking soda (sodium hydrogencarbonate).",
-              marks: 2,
-              objective: "3.6.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Indigestion is caused by excess stomach acid (1)",
-                  "baking soda is a base/alkali which neutralises the acid (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State the name of the process in (a) (ii) and the general word equation for it.",
-              marks: 2,
-              objective: "3.6.2",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Neutralisation (1)",
-                  "Acid + base \u2192 salt + water (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Figure 7 shows two hazard symbols found on household chemicals.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" width="300" height="150" role="img" aria-label="Two hazard symbols"><title>Two hazard symbols</title><rect width="300" height="150" fill="#fff" /><g transform="translate(20,5)"><svg viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="flammable hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><rect x="0" y="0" width="120" height="120" fill="#fff" /><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5" /><g transform="translate(-3.18 -3.8) scale(0.27)"><path d="M220 315C167 338 139 294 160 251C156 278 179 278 170 241C169 214 190 194 188 169C210 183 215 205 216 221C234 193 216 164 225 132C238 159 263 170 263 198C282 192 278 174 281 166C306 195 298 221 309 240C323 259 324 290 296 311C274 329 245 330 220 315Z" fill="black" stroke="black" stroke-width="1" /><path d="M227 313C207 301 199 284 210 268C208 280 224 281 222 260C221 249 232 238 232 226C245 241 243 257 249 266C260 252 255 239 258 231C282 254 288 287 270 304C259 315 245 319 227 313Z" fill="white" stroke="black" stroke-width="1" /><line x1="170" y1="340" x2="304" y2="340" stroke="black" stroke-width="3" /></g></g></svg></g><g transform="translate(160,5)"><svg viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="corrosive hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><rect x="0" y="0" width="120" height="120" fill="#fff" /><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5" /><polygon points="40,30 52,30 50,50 42,50" fill="#fff" /><polygon points="68,30 80,30 78,50 70,50" fill="#fff" /><path d="M46,53 v6 M74,53 v6" fill="none" stroke-width="2" /><rect x="30" y="78" width="60" height="10" fill="#000" /><path d="M38,65 q4,8 8,0 q4,-8 8,0" fill="none" stroke-width="1.5" /></g></svg></g><text x="80" y="145" text-anchor="middle" font-family="Times New Roman, serif" font-size="14" font-weight="bold" style="stroke:none;fill:#000">A</text><text x="220" y="145" text-anchor="middle" font-family="Times New Roman, serif" font-size="14" font-weight="bold" style="stroke:none;fill:#000">B</text></svg>`,
-          figure: "Figure 7. Hazard symbols",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State the meaning of symbols A and B.",
-              marks: 2,
-              objective: "3.6.1",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "A",
-                  "B"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "A - flammable (catches fire easily) (1)",
-                  "B - corrosive (burns skin/destroys materials) (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO precautions for the safe storage of household chemicals.",
-              marks: 2,
-              objective: "3.6.1",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Keep out of reach of children",
-                  "Store in original labelled containers",
-                  "Keep flammable chemicals away from heat/flames",
-                  "Store in a cool, dry, ventilated place",
-                  "Never store in food or drink bottles",
-                  "Do not mix bleach with ammonia"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Distinguish between soapy and soapless detergents in terms of how they are made and how they behave in hard water.",
-              marks: 2,
-              objective: "3.6.7",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Soap is made from animal fats/vegetable oils and an alkali, while soapless detergents are made from petroleum products (1)",
-                  "soap forms scum in hard water, while soapless detergents do not (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Suggest ONE environmental problem caused by non-biodegradable detergents.",
-              marks: 2,
-              objective: "3.6.7",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "They are not broken down by bacteria, so foam builds up in rivers (1), reducing oxygen and harming aquatic life / phosphates cause eutrophication (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M3-P2-07",
-      module: 3,
-      kind: "practical",
-      title: "Density and flotation",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 3,
-        UK: 9,
-        XS: 8
-      },
-      topics: [
-        {
-          topic: 3,
-          title: "Water and the Aquatic Environment"
-        }
-      ],
-      objectives: [
-        "3.3.7",
-        "3.3.9"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Students measured the mass and volume of different-sized pieces of the same type of wood. Their results are shown in Table 3.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 3: MASS AND VOLUME OF WOOD SAMPLES",
-            headers: [
-              "Mass/g",
-              "12",
-              "24",
-              "36",
-              "48",
-              "60"
-            ],
-            rows: [
-              [
-                "Volume/cm\xB3",
-                "20",
-                "40",
-                "60",
-                "80",
-                "100"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "On the grid provided, plot a graph of mass against volume. Draw the line of best fit.",
-              marks: 5,
-              objective: "3.3.7",
-              profile: {
-                XS: 5
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "graph",
-                height: 320,
-                x: "Volume/cm\xB3",
-                y: "Mass/g"
-              },
-              markScheme: {
-                points: [
-                  "Points (20,12) (40,24) (60,36) (80,48) (100,60) plotted",
-                  "Axes labelled with units",
-                  "Suitable scale",
-                  "Straight line of best fit through origin"
-                ],
-                guidance: "2 marks for correct plotting of points (all points = 2; at least half = 1); 1 mark for both axes labelled with units; 1 mark for an appropriate scale (at least 75% of the grid used); 1 mark for a smooth line/curve joining the points",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Calculate the density of the wood. Show your working.",
-              marks: 2,
-              objective: "3.3.7",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 110
-              },
-              markScheme: {
-                points: [
-                  "Density = mass \xF7 volume = 60 \xF7 100 (1)",
-                  "= 0.6 g/cm\xB3 (1)"
-                ],
-                guidance: "1 mark for correct substitution/working; 1 mark for correct answer with unit",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Predict whether the wood will float or sink in water (density 1.0 g/cm\xB3). Give a reason.",
-              marks: 2,
-              objective: "3.3.7",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "It will float (1)",
-                  "because its density (0.6 g/cm\xB3) is less than that of water (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "Describe how the volume of an irregularly shaped stone could be measured.",
-              marks: 3,
-              objective: "3.3.7",
-              profile: {
-                XS: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Partly fill a measuring cylinder with water and record the volume (1)",
-                  "gently lower the stone on a thread into the water until fully immersed and record the new volume (1)",
-                  "the difference between the two readings is the volume of the stone (1)"
-                ],
-                guidance: "1 mark each (accept displacement can method)",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Figure 8 shows an egg placed in fresh water (X) and in a concentrated salt solution (Y).",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 235" width="440" height="235" role="img" aria-label="An egg placed in two liquids" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>An egg placed in two liquids</title><rect x="0" y="0" width="440" height="235" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="60,40 60,180 180,180 180,40" fill="none"/><line x1="60" y1="40" x2="55" y2="36"/><line x1="60" y1="60" x2="180" y2="60" stroke-width="0.9"/><ellipse cx="120" cy="150" rx="14" ry="18" fill="#fff"/><text x="120" y="205" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">X</text><text x="120" y="222" text-anchor="middle" fill="#000" stroke="none" font-size="11">fresh water</text><polyline points="250,40 250,180 370,180 370,40" fill="none"/><line x1="250" y1="40" x2="245" y2="36"/><line x1="250" y1="60" x2="370" y2="60" stroke-width="0.9"/><ellipse cx="310" cy="75" rx="14" ry="18" fill="#fff"/><text x="310" y="205" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">Y</text><text x="310" y="222" text-anchor="middle" fill="#000" stroke="none" font-size="11">concentrated salt solution</text></g></svg>`,
-          figure: "Figure 8. An egg in two liquids",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why the egg floats in Y but sinks in X.",
-              marks: 3,
-              objective: "3.3.7",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "The salt solution is denser than fresh water (1)",
-                  "so it provides a greater upthrust for the same volume displaced (1)",
-                  "in Y the upthrust equals the weight of the egg so it floats; in X the upthrust is less than its weight (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State Archimedes' principle.",
-              marks: 2,
-              objective: "3.3.7",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "When an object is wholly or partly immersed in a fluid, it experiences an upthrust (1)",
-                  "equal to the weight of fluid displaced (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why ships have Plimsoll lines painted on their hulls.",
-              marks: 2,
-              objective: "3.3.7",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "They show the maximum safe loading depth (1)",
-                  "which varies with water density (fresh/salt) and season, preventing overloading and sinking (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Name ONE water safety device and state how it helps to save lives.",
-              marks: 1,
-              objective: "3.3.9",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Life jacket/life raft/inflatable tube - keeps a person afloat"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M3-P2-08",
-      module: 3,
-      kind: "structured",
-      title: "Skeleton, muscles, forces and momentum",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 5,
-        UK: 10,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 4,
-          title: "Forces"
-        }
-      ],
-      objectives: [
-        "3.4.7",
-        "3.4.8",
-        "3.4.5",
-        "3.4.3",
-        "3.4.2"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Figure 9 shows the bones and muscles of the human arm.",
-          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540" role="img" aria-label="Bones and muscles of the human arm"><title>Bones and muscles of the human arm</title><rect width="900" height="540" fill="white" /><g fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" font-family="Arial, Helvetica, sans-serif"><path d="M620 124C650 126 684 142 696 169C709 208 686 279 660 338C645 372 629 395 610 411C616 391 625 366 634 337L672 190C680 167 664 147 642 143Z" fill="#f3f3f3" stroke="#111" stroke-width="1.7" /><path d="M681 172C688 214 662 294 636 358" fill="none" stroke="#111" stroke-width="0.72" /><path d="M689 187C692 231 666 307 635 369" fill="none" stroke="#111" stroke-width="0.72" /><path d="M684 216C677 270 652 336 628 382" fill="none" stroke="#111" stroke-width="0.72" /><path d="M594 57C612 51 631 57 638 73C646 91 636 113 620 124L605 119C617 110 626 95 624 83C622 73 614 69 605 72 M620 124C608 135 593 128 596 116C597 108 603 105 610 106" fill="white" stroke="#161616" stroke-width="1.4" /><path d="M663 71C681 65 698 78 701 94C704 111 687 123 680 139C673 155 674 177 668 198L618 364C612 383 624 396 619 412C615 430 591 438 576 427C561 417 564 397 573 382C589 355 594 328 601 301L634 171C638 154 639 140 636 124C632 102 641 78 663 71Z" fill="white" stroke="#161616" stroke-width="2.15" /><path d="M660 85C648 101 652 117 655 133C658 148 653 172 648 194L610 337 M580 397C590 388 605 392 610 404C615 416 602 425 590 421" fill="none" stroke="#161616" stroke-width="1.1" /><path d="M579 414C575 429 559 437 546 435C517 431 487 439 451 445L316 467C299 470 284 466 282 455C281 446 293 441 307 442L449 429C494 424 533 424 550 412C556 405 558 397 565 395C563 406 566 414 579 414Z" fill="white" stroke="#161616" stroke-width="1.85" /><path d="M545 405C557 403 566 410 563 418C559 427 548 428 541 420C527 424 502 428 476 432L322 455C310 457 300 452 300 444C301 435 314 430 324 433L473 420C500 417 522 415 537 411Z" fill="white" stroke="#161616" stroke-width="1.85" /><path d="M320 442C366 440 421 431 472 427 M311 457C355 451 397 447 442 442" fill="none" stroke="#161616" stroke-width="0.95" /><path d="M579 414C587 420 601 421 610 413 M540 411C547 417 555 418 563 415" fill="none" stroke="#161616" stroke-width="1" /><path d="M632 72C631 103 637 132 626 162 M604 116C615 127 624 149 627 166" fill="none" stroke="#161616" stroke-width="1.25" /><path d="M627 157C619 175 603 194 589 223C572 260 559 304 551 345C551 357 549 370 544 380C564 361 583 329 596 293C612 251 624 201 627 157Z" fill="#f3f3f3" stroke="#161616" stroke-width="1.7" /><path d="M544 380C536 395 521 409 505 418 M551 370C549 389 531 406 514 419" fill="none" stroke="#161616" stroke-width="1.3" /><path d="M621 174C603 211 578 279 552 354" fill="none" stroke="#161616" stroke-width="0.72" /><path d="M616 190C605 223 582 299 552 363" fill="none" stroke="#161616" stroke-width="0.72" /><path d="M608 210C596 246 574 313 550 370" fill="none" stroke="#161616" stroke-width="0.72" /><path d="M599 234C587 271 569 323 547 375" fill="none" stroke="#161616" stroke-width="0.72" /><path d="M587 264C574 300 561 339 546 377" fill="none" stroke="#161616" stroke-width="0.72" /><ellipse cx="296" cy="446" rx="8" ry="7" fill="white" stroke="#161616" stroke-width="1.1" /><ellipse cx="292" cy="459" rx="8" ry="6" fill="white" stroke="#161616" stroke-width="1.1" /><ellipse cx="281" cy="449" rx="7" ry="6" fill="white" stroke="#161616" stroke-width="1.1" /><path d="M282 443C264 448 250 449 232 444C214 440 199 431 192 415C189 409 187 398 183 395C177 400 180 416 185 427C191 443 200 455 217 461C239 471 266 468 285 459" fill="white" stroke="#161616" stroke-width="1.75" /><path d="M192 409C198 428 213 441 233 447C250 453 264 454 278 452 M186 425C196 445 214 455 232 457 M254 434C262 432 266 427 270 424C278 426 277 433 268 439L257 444" fill="none" stroke="#161616" stroke-width="1.1" /><path d="M610 404C600 415 588 420 579 414M615 410C602 426 586 430 575 420" fill="none" stroke="#111" stroke-width="1.3" /><path d="M590 252H395" fill="none" stroke="#111" stroke-width="1.1" /><text x="375" y="259" fill="#111" stroke="none" font-size="24" text-anchor="end" style="stroke:none;fill:#111">P</text><path d="M678 254H790" fill="none" stroke="#111" stroke-width="1.1" /><text x="810" y="261" fill="#111" stroke="none" font-size="24" text-anchor="start" style="stroke:none;fill:#111">Q</text><path d="M650 225L739 142H790" fill="none" stroke="#111" stroke-width="1.1" /><text x="810" y="149" fill="#111" stroke="none" font-size="24" text-anchor="start" style="stroke:none;fill:#111">R</text><path d="M430 428L415 493" fill="none" stroke="#111" stroke-width="1.1" /><text x="412" y="521" fill="#111" stroke="none" font-size="24" text-anchor="middle" style="stroke:none;fill:#111">S</text></g></svg>',
-          figure: "Figure 9. The human arm",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Identify the muscles labelled P and Q and the bone labelled R.",
-              marks: 3,
-              objective: "3.4.7",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "P",
-                  "Q",
-                  "R"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "P - biceps",
-                  "Q - triceps",
-                  "R - humerus"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how the arm is straightened.",
-              marks: 2,
-              objective: "3.4.8",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "The triceps (Q) contracts while the biceps (P) relaxes (1)",
-                  "pulling on the forearm bones so the arm straightens at the elbow (hinge joint); the muscles work as an antagonistic pair (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State TWO functions of the skeleton.",
-              marks: 2,
-              objective: "3.4.7",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Support",
-                  "Protection of organs",
-                  "Movement",
-                  "Breathing (rib cage)",
-                  "Production of blood cells"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "A truck of mass 3 000 kg moving at 10 m/s collides with a stationary car of mass 1 000 kg. The two vehicles move off together.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Calculate the momentum of the truck before the collision.",
-              marks: 2,
-              objective: "3.4.5",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 110
-              },
-              markScheme: {
-                points: [
-                  "p = mv = 3 000 \xD7 10 (1)",
-                  "= 30 000 kg m/s (1)"
-                ],
-                guidance: "1 mark for correct substitution/working; 1 mark for correct answer with unit",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Calculate the velocity of the truck and car immediately after the collision.",
-              marks: 2,
-              objective: "3.4.5",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 110
-              },
-              markScheme: {
-                points: [
-                  "Total momentum after = 30 000 kg m/s = (3 000 + 1 000) \xD7 v (1)",
-                  "v = 7.5 m/s (1)"
-                ],
-                guidance: "1 mark for correct substitution/working; 1 mark for correct answer with unit",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why double-decker buses carry passengers upstairs but luggage below.",
-              marks: 2,
-              objective: "3.4.3",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Heavy loads placed low keep the centre of gravity low (1)",
-                  "so the bus is more stable and less likely to topple when turning (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why passengers should wear seat belts.",
-              marks: 2,
-              objective: "3.4.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "When a car stops suddenly, passengers continue to move forward because of inertia (Newton's first law) (1)",
-                  "the seat belt provides a force to stop them hitting the windscreen/dashboard (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M3-P2-09",
-      module: 3,
-      kind: "practical",
-      title: "States of matter and changes of state",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 7,
-        UK: 7,
-        XS: 6
-      },
-      topics: [
-        {
-          topic: 6,
-          title: "Household Chemicals"
-        }
-      ],
-      objectives: [
-        "3.6.3"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Kemar heated crushed ice in a beaker and recorded the temperature every minute. His results are shown in Table 4.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 4: TEMPERATURE OF ICE BEING HEATED",
-            headers: [
-              "Time/min",
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "8"
-            ],
-            rows: [
-              [
-                "Temperature/\xB0C",
-                "-10",
-                "0",
-                "0",
-                "0",
-                "20",
-                "40",
-                "60",
-                "80",
-                "95"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "On the grid provided, plot a graph of temperature against time. Join the points with straight lines.",
-              marks: 5,
-              objective: "3.6.3",
-              profile: {
-                XS: 5
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "graph",
-                height: 320,
-                x: "Time/min",
-                y: "Temperature/\xB0C"
-              },
-              markScheme: {
-                points: [
-                  "All nine points correctly plotted",
-                  "Axes labelled with units",
-                  "Suitable scale including negative values",
-                  "Points joined with straight lines"
-                ],
-                guidance: "2 marks for correct plotting of points (all points = 2; at least half = 1); 1 mark for both axes labelled with units; 1 mark for an appropriate scale (at least 75% of the grid used); 1 mark for a smooth line/curve joining the points",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why the temperature remained constant between 1 and 3 minutes.",
-              marks: 3,
-              objective: "3.6.3",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "The ice was melting (changing state) (1)",
-                  "the heat energy supplied was used to overcome the forces of attraction between the particles (1)",
-                  "rather than to increase the kinetic energy of the particles, so the temperature did not rise (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State ONE source of error in Kemar's experiment.",
-              marks: 1,
-              objective: "3.6.3",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Heat gained from the surroundings / uneven heating",
-                  "Not stirring the ice",
-                  "Thermometer touching the bottom of the beaker",
-                  "Parallax error in reading the thermometer"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Figure 10 shows the arrangement of particles in three states of matter.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 145" width="420" height="145" role="img" aria-label="Particles in three states"><rect width="420" height="145" fill="#fff"/><g transform="translate(5,0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 110" width="130" height="110" role="img" aria-label="particles in a solid" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>particles in a solid</title><rect x="0" y="0" width="130" height="110" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="10" width="110" height="90" fill="#fff"/><circle cx="25" cy="25" r="8" fill="#fff"/><circle cx="25" cy="45" r="8" fill="#fff"/><circle cx="25" cy="65" r="8" fill="#fff"/><circle cx="25" cy="85" r="8" fill="#fff"/><circle cx="45" cy="25" r="8" fill="#fff"/><circle cx="45" cy="45" r="8" fill="#fff"/><circle cx="45" cy="65" r="8" fill="#fff"/><circle cx="45" cy="85" r="8" fill="#fff"/><circle cx="65" cy="25" r="8" fill="#fff"/><circle cx="65" cy="45" r="8" fill="#fff"/><circle cx="65" cy="65" r="8" fill="#fff"/><circle cx="65" cy="85" r="8" fill="#fff"/><circle cx="85" cy="25" r="8" fill="#fff"/><circle cx="85" cy="45" r="8" fill="#fff"/><circle cx="85" cy="65" r="8" fill="#fff"/><circle cx="85" cy="85" r="8" fill="#fff"/><circle cx="105" cy="25" r="8" fill="#fff"/><circle cx="105" cy="45" r="8" fill="#fff"/><circle cx="105" cy="65" r="8" fill="#fff"/><circle cx="105" cy="85" r="8" fill="#fff"/></g></svg></g><g transform="translate(145,0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 110" width="130" height="110" role="img" aria-label="particles in a liquid" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>particles in a liquid</title><rect x="0" y="0" width="130" height="110" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="10" width="110" height="90" fill="#fff"/><circle cx="24" cy="88" r="8" fill="#fff"/><circle cx="42" cy="86" r="8" fill="#fff"/><circle cx="60" cy="88" r="8" fill="#fff"/><circle cx="78" cy="86" r="8" fill="#fff"/><circle cx="96" cy="88" r="8" fill="#fff"/><circle cx="32" cy="70" r="8" fill="#fff"/><circle cx="50" cy="69" r="8" fill="#fff"/><circle cx="70" cy="71" r="8" fill="#fff"/><circle cx="89" cy="70" r="8" fill="#fff"/><circle cx="104" cy="72" r="8" fill="#fff"/><circle cx="40" cy="52" r="8" fill="#fff"/><circle cx="60" cy="53" r="8" fill="#fff"/><circle cx="80" cy="55" r="8" fill="#fff"/><circle cx="25" cy="55" r="8" fill="#fff"/></g></svg></g><g transform="translate(285,0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 110" width="130" height="110" role="img" aria-label="particles in a gas" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>particles in a gas</title><rect x="0" y="0" width="130" height="110" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="10" width="110" height="90" fill="#fff"/><circle cx="25" cy="25" r="8" fill="#fff"/><circle cx="80" cy="30" r="8" fill="#fff"/><circle cx="55" cy="60" r="8" fill="#fff"/><circle cx="100" cy="80" r="8" fill="#fff"/><circle cx="30" cy="85" r="8" fill="#fff"/><circle cx="95" cy="20" r="8" fill="#fff"/></g></svg></g><text x="70" y="135" text-anchor="middle" font-family="Times New Roman, serif" font-size="14" font-weight="bold">X</text><text x="210" y="135" text-anchor="middle" font-family="Times New Roman, serif" font-size="14" font-weight="bold">Y</text><text x="350" y="135" text-anchor="middle" font-family="Times New Roman, serif" font-size="14" font-weight="bold">Z</text></svg>`,
-          figure: "Figure 10. Arrangement of particles",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Identify the states of matter X, Y and Z.",
-              marks: 3,
-              objective: "3.6.3",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "X",
-                  "Y",
-                  "Z"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "X - solid",
-                  "Y - liquid",
-                  "Z - gas"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Compare the particles in a solid and a gas in terms of their movement and the forces of attraction between them.",
-              marks: 2,
-              objective: "3.6.3",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Solid particles only vibrate about fixed positions while gas particles move quickly and randomly in all directions (1)",
-                  "forces of attraction are strong in a solid and very weak in a gas (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name the change of state in EACH of the following: water vapour forming droplets on a cold glass; moth balls getting smaller in a cupboard.",
-              marks: 2,
-              objective: "3.6.3",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Condensation (1)",
-                  "Sublimation (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State what is meant by 'plasma' and give ONE example.",
-              marks: 2,
-              objective: "3.6.3",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Plasma is the fourth state of matter - a very hot, ionised gas containing charged particles (1)",
-                  "e.g. lightning, the sun/stars, neon lights, plasma TV (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain why sweat evaporating from the skin has a cooling effect.",
-              marks: 2,
-              objective: "3.6.3",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "The particles with the most energy escape from the surface of the liquid (1)",
-                  "taking latent heat from the skin, so the skin cools (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M3-P2-10",
-      module: 3,
-      kind: "structured",
-      title: "Water pollution, fishing and diving",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 4,
-        UK: 11,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 3,
-          title: "Water and the Aquatic Environment"
-        }
-      ],
-      objectives: [
-        "3.3.5",
-        "3.3.4",
-        "3.3.8",
-        "3.3.10"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Fishermen in a coastal village report a large number of dead fish after heavy rains washed fertiliser from nearby farms into the bay.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name the process that results when fertilisers enter a body of water.",
-              marks: 1,
-              objective: "3.3.5",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Eutrophication"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how fertilisers washed into the bay lead to the death of fish.",
-              marks: 4,
-              objective: "3.3.5",
-              profile: {
-                UK: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 8
-              },
-              markScheme: {
-                points: [
-                  "Nitrates/phosphates cause rapid growth of algae (algal bloom) (1)",
-                  "the algae block light so plants below die, and the algae themselves die (1)",
-                  "bacteria decompose the dead plants and algae (1)",
-                  "the bacteria use up the dissolved oxygen, so the fish suffocate (1)"
-                ],
-                guidance: "4 marks for a full explanation; 3 satisfactory; 2 partial; 1 limited",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State TWO other sources of water pollution.",
-              marks: 2,
-              objective: "3.3.5",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Oil spills",
-                  "Sewage",
-                  "Pesticides",
-                  "Industrial waste",
-                  "Plastics/garbage",
-                  "Sediment from erosion"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Describe ONE method of fishing used locally and state ONE disadvantage of it.",
-              marks: 2,
-              objective: "3.3.4",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "e.g. Trawling - a large net is dragged behind a boat (1); it damages the sea bed and catches unwanted species/young fish (1)",
-                  "Long-lining - a long line with many baited hooks (1); may catch turtles, sharks and birds as bycatch (1)",
-                  "Fish pots - wire traps with a funnel entrance (1); lost pots continue to trap fish (ghost fishing) (1)"
-                ],
-                guidance: "1 mark for description; 1 mark for disadvantage",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how sonar helps fishermen.",
-              marks: 2,
-              objective: "3.3.8",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Sonar sends out pulses of sound which reflect off the sea bed or shoals of fish (1)",
-                  "the time taken for the echo to return shows the depth/position of the fish (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why a scuba diver who returns to the surface too quickly may suffer from 'the bends'.",
-              marks: 3,
-              objective: "3.3.10",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "At depth the high pressure causes more nitrogen to dissolve in the blood (1)",
-                  "if the diver rises quickly the pressure falls rapidly (1)",
-                  "the nitrogen comes out of solution as bubbles in the blood and joints, causing pain (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State ONE way in which decompression sickness is treated.",
-              marks: 1,
-              objective: "3.3.10",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Placing the diver in a decompression (hyperbaric) chamber."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M3-P2-11",
-      module: 3,
-      kind: "practical",
-      title: "Mixtures and separation techniques",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 4,
-        UK: 3,
-        XS: 13
-      },
-      topics: [
-        {
-          topic: 6,
-          title: "Household Chemicals"
-        }
-      ],
-      objectives: [
-        "3.6.5",
-        "3.6.1",
-        "3.6.4"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Samantha was given a mixture of sand, salt and water.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Outline the steps Samantha should use to obtain dry salt and dry sand from the mixture.",
-              marks: 4,
-              objective: "3.6.5",
-              profile: {
-                XS: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 8
-              },
-              markScheme: {
-                points: [
-                  "Stir the mixture to make sure all the salt dissolves (1)",
-                  "Filter the mixture - the sand remains on the filter paper as residue (1)",
-                  "Wash and dry the sand (1)",
-                  "Evaporate the filtrate (salt solution) to dryness/crystallise to obtain the salt (1)"
-                ],
-                guidance: "1 mark each for any four steps in a logical order",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Draw a labelled diagram of the apparatus used for filtration.",
-              marks: 4,
-              objective: "3.6.5",
-              profile: {
-                XS: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "drawing",
-                height: 240
-              },
-              markScheme: {
-                points: [
-                  "Funnel with filter paper drawn correctly (1)",
-                  "Beaker/flask to collect the filtrate (1)",
-                  "Labels: filter paper, residue, filtrate, funnel (any three) (1)",
-                  "Clean lines, drawn with a ruler, appropriate title (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Figure 11 shows a chromatogram of three food colourings, X, Y and Z.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 270" width="360" height="270" role="img" aria-label="A paper chromatogram" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A paper chromatogram</title><rect x="0" y="0" width="360" height="270" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="120" y="20" width="120" height="220" fill="#fff"/><line x1="120" y1="200" x2="240" y2="200" stroke-width="0.8" stroke-dasharray="4 3"/><text x="250" y="204" text-anchor="start" fill="#000" stroke="none" font-size="11">start line</text><line x1="120" y1="45" x2="240" y2="45" stroke-width="0.8" stroke-dasharray="2 3"/><text x="250" y="49" text-anchor="start" fill="#000" stroke="none" font-size="11">solvent front</text><circle cx="150" cy="200" r="3" fill="#000" stroke-width="0.5"/><ellipse cx="150" cy="150" rx="7" ry="5" fill="#fff"/><ellipse cx="150" cy="90" rx="7" ry="5" fill="#fff"/><circle cx="180" cy="200" r="3" fill="#000" stroke-width="0.5"/><ellipse cx="180" cy="150" rx="7" ry="5" fill="#fff"/><circle cx="210" cy="200" r="3" fill="#000" stroke-width="0.5"/><ellipse cx="210" cy="120" rx="7" ry="5" fill="#fff"/><ellipse cx="210" cy="70" rx="7" ry="5" fill="#fff"/><text x="150" y="262" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="12">X</text><text x="180" y="262" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="12">Y</text><text x="210" y="262" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="12">Z</text><line x1="110" y1="225" x2="250" y2="225" stroke-width="0.8"/></g></svg>`,
-          figure: "Figure 11. Paper chromatogram",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Which food colouring contains the MOST dyes?",
-              marks: 1,
-              objective: "3.6.5",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "X or Z (two dyes each) - accept either"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain why the start line must be drawn in pencil and not ink.",
-              marks: 2,
-              objective: "3.6.5",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Ink contains dyes which would dissolve in the solvent and separate (1)",
-                  "which would mix with/confuse the results; pencil (graphite) does not dissolve (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State ONE everyday example of chromatography in the home.",
-              marks: 1,
-              objective: "3.6.5",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Colours bleeding/running from clothes in the laundry."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "A student wants to find out which solvent is BEST for removing ballpoint ink stains from cotton cloth. She has water, methylated spirit, acetone and vinegar.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State a suitable hypothesis.",
-              marks: 2,
-              objective: "3.6.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Methylated spirit (an organic solvent) will remove ballpoint ink stains better than water, acetone or vinegar."
-                ],
-                guidance: "1 mark for a clearly stated hypothesis; 1 mark for a testable hypothesis",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO variables which should be kept constant.",
-              marks: 2,
-              objective: "3.6.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Size/age of the ink stain",
-                  "Type of cloth",
-                  "Volume of solvent",
-                  "Time of soaking/rubbing"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State ONE safety precaution when using acetone.",
-              marks: 1,
-              objective: "3.6.1",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Keep away from flames (flammable)",
-                  "Use in a well-ventilated area",
-                  "Wear gloves/goggles"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "Distinguish between a solution and a suspension.",
-              marks: 3,
-              objective: "3.6.4",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "In a solution the solute particles are dissolved and too small to be seen; in a suspension the particles are large and visible (1)",
-                  "a solution does not settle but a suspension settles on standing (1)",
-                  "a solution passes through filter paper completely, while the particles of a suspension are trapped (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M3-P2-12",
-      module: 3,
-      kind: "structured",
-      title: "Pollution, waste and materials",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 2,
-        UK: 13,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 7,
-          title: "Pollutants and Environment"
-        },
-        {
-          topic: 5,
-          title: "Metals and Non-metals"
-        }
-      ],
-      objectives: [
-        "3.7.1",
-        "3.7.3",
-        "3.7.2",
-        "3.5.4",
-        "3.5.3"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Community A is a farming village while Community B is next to an industrial estate with a landfill.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State ONE likely air pollutant in EACH community and its source.",
-              marks: 2,
-              objective: "3.7.1",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Community A: pesticide sprays / dust from ploughing / smoke from burning crop residue (1)",
-                  "Community B: sulphur dioxide/smoke from factories, methane or smoke from the landfill (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State TWO effects of air pollution on human health.",
-              marks: 2,
-              objective: "3.7.1",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Asthma",
-                  "Bronchitis/respiratory infections",
-                  "Lung cancer",
-                  "Emphysema",
-                  "Allergies",
-                  "Eye irritation"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain why burning plastics at the landfill is harmful.",
-              marks: 2,
-              objective: "3.7.3",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Burning plastics releases toxic gases such as dioxins (1)",
-                  "which cause respiratory illness and cancer and pollute the air (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Justify the importance of proper garbage collection and disposal in a community.",
-              marks: 3,
-              objective: "3.7.2",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "It prevents breeding of pests such as rats, flies and mosquitoes which spread disease (1)",
-                  "it prevents pollution of land, surface water and groundwater (1)",
-                  "it maintains the beauty of the area/tourism and prevents blocked drains and flooding (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Suggest TWO ways households can reduce the amount of waste they produce.",
-              marks: 2,
-              objective: "3.7.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Refuse unnecessary packaging/plastic bags",
-                  "Reuse containers",
-                  "Recycle plastic, glass and paper",
-                  "Compost kitchen waste",
-                  "Repair items instead of discarding"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why stainless steel is preferred to iron for making kitchen sinks.",
-              marks: 2,
-              objective: "3.5.4",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Stainless steel is an alloy containing chromium/nickel which does not rust (1)",
-                  "so it stays clean, hygienic and lasts longer than iron, which would rust in the wet conditions (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-      
+                  "Alkali: baking s

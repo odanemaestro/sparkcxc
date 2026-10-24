@@ -1,4 +1,2139 @@
-tionsAreSvg: false,
+ns: {
+        A: "a fuse",
+        B: "a lamp",
+        C: "an ammeter",
+        D: "a resistor"
+      },
+      answer: "D",
+      explanation: "A plain rectangle is a resistor.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-322",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is the symbol for a lamp?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: true,
+      options: {
+        A: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" width="120" height="50" role="img" aria-label="fuse" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>fuse</title><rect x="0" y="0" width="120" height="50" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="25" x2="35" y2="25"/><line x1="85" y1="25" x2="110" y2="25"/><rect x="42" y="19" width="36" height="12" fill="#fff"/><line x1="36" y1="25" x2="84" y2="25"/></g></svg>`,
+        B: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" width="120" height="50" role="img" aria-label="ammeter" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>ammeter</title><rect x="0" y="0" width="120" height="50" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="25" x2="35" y2="25"/><line x1="85" y1="25" x2="110" y2="25"/><line x1="35" y1="25" x2="49" y2="25"/><line x1="71" y1="25" x2="85" y2="25"/><circle cx="60" cy="25" r="11" fill="#fff"/><text x="60" y="30" text-anchor="middle" fill="#000" stroke="none" font-weight="bold">A</text></g></svg>`,
+        C: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" width="120" height="50" role="img" aria-label="resistor" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>resistor</title><rect x="0" y="0" width="120" height="50" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="25" x2="35" y2="25"/><line x1="85" y1="25" x2="110" y2="25"/><line x1="35" y1="25" x2="45" y2="25"/><line x1="75" y1="25" x2="85" y2="25"/><rect x="45" y="19.5" width="30" height="11" fill="#fff"/></g></svg>`,
+        D: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" width="120" height="50" role="img" aria-label="lamp" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>lamp</title><rect x="0" y="0" width="120" height="50" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="25" x2="35" y2="25"/><line x1="85" y1="25" x2="110" y2="25"/><line x1="35" y1="25" x2="50" y2="25"/><line x1="70" y1="25" x2="85" y2="25"/><circle cx="60" cy="25" r="10" fill="#fff"/><line x1="52.9" y1="17.9" x2="67.1" y2="32.1"/><line x1="52.9" y1="32.1" x2="67.1" y2="17.9"/></g></svg>`
+      },
+      answer: "D",
+      explanation: "A lamp is a circle with a cross inside.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-323",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is the symbol for an open switch?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: true,
+      options: {
+        A: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" width="120" height="50" role="img" aria-label="cell" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>cell</title><rect x="0" y="0" width="120" height="50" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="25" x2="56" y2="25"/><line x1="64" y1="25" x2="110" y2="25"/><line x1="56" y1="11" x2="56" y2="39" stroke-width="1.6"/><line x1="64" y1="18" x2="64" y2="32" stroke-width="3"/></g></svg>`,
+        B: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" width="120" height="50" role="img" aria-label="switch" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>switch</title><rect x="0" y="0" width="120" height="50" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="25" x2="35" y2="25"/><line x1="85" y1="25" x2="110" y2="25"/><circle cx="39" cy="25" r="2.5" fill="#fff"/><circle cx="81" cy="25" r="2.5" fill="#fff"/><line x1="41" y1="24" x2="77" y2="11"/></g></svg>`,
+        C: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" width="120" height="50" role="img" aria-label="voltmeter" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>voltmeter</title><rect x="0" y="0" width="120" height="50" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="25" x2="35" y2="25"/><line x1="85" y1="25" x2="110" y2="25"/><line x1="35" y1="25" x2="49" y2="25"/><line x1="71" y1="25" x2="85" y2="25"/><circle cx="60" cy="25" r="11" fill="#fff"/><text x="60" y="30" text-anchor="middle" fill="#000" stroke="none" font-weight="bold">V</text></g></svg>`,
+        D: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" width="120" height="50" role="img" aria-label="battery" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>battery</title><rect x="0" y="0" width="120" height="50" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="25" x2="35" y2="25"/><line x1="85" y1="25" x2="110" y2="25"/><line x1="35" y1="25" x2="40" y2="25"/><line x1="80" y1="25" x2="85" y2="25"/><line x1="46" y1="11" x2="46" y2="39" stroke-width="1.6"/><line x1="54" y1="18" x2="54" y2="32" stroke-width="3"/><line x1="66" y1="11" x2="66" y2="39" stroke-width="1.6"/><line x1="74" y1="18" x2="74" y2="32" stroke-width="3"/><line x1="54" y1="25" x2="66" y2="25" stroke-dasharray="2 3"/></g></svg>`
+      },
+      answer: "B",
+      explanation: "An open switch shows a break in the circuit with a hinged line.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-324",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Adding a third lamp in series to a circuit containing two lamps would",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "make all the lamps dimmer",
+        B: "make all the lamps brighter",
+        C: "have no effect",
+        D: "make one lamp go out"
+      },
+      answer: "A",
+      explanation: "Total resistance increases, so current decreases.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-325",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Adding another lamp in parallel to a circuit containing one lamp would",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "make the first lamp go out",
+        B: "make the first lamp dimmer",
+        C: "not change the brightness of the first lamp",
+        D: "reduce the current from the battery"
+      },
+      answer: "C",
+      explanation: "Each parallel branch gets the full voltage; the total current increases.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-326",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A 1 200 W iron is used on a 120 V supply. The current it draws is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "0.1 A",
+        B: "10 A",
+        C: "1 080 A",
+        D: "144 000 A"
+      },
+      answer: "B",
+      explanation: "I = P \xF7 V = 1 200 \xF7 120 = 10 A.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-327",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The resistance of a lamp which draws 0.5 A when connected to 6 V is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "3 \u03A9",
+        B: "6.5 \u03A9",
+        C: "12 \u03A9",
+        D: "30 \u03A9"
+      },
+      answer: "C",
+      explanation: "R = V \xF7 I = 6 \xF7 0.5 = 12 \u03A9.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-328",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A transformer is used to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "change the voltage of an a.c. supply",
+        B: "store electricity",
+        C: "measure current",
+        D: "protect a circuit from high current"
+      },
+      answer: "A",
+      explanation: "Transformers step voltages up or down.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-134",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "If one lamp in the circuit breaks, the other lamp will",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-SERIES",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "go out",
+        B: "become brighter",
+        C: "become dimmer",
+        D: "stay the same"
+      },
+      answer: "A",
+      explanation: "In a series circuit there is only one path; a break stops current everywhere.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-135",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The ammeter reads 0.5 A. The current through EACH lamp is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-SERIES",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "0.25 A",
+        B: "0.5 A",
+        C: "1.0 A",
+        D: "2.0 A"
+      },
+      answer: "B",
+      explanation: "Current is the same at every point in a series circuit.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-136",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Ammeter A2 reads 0.3 A and ammeter A3 reads 0.2 A. What is the reading on ammeter A1?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-PARA",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "0.1 A",
+        B: "0.2 A",
+        C: "0.3 A",
+        D: "0.5 A"
+      },
+      answer: "D",
+      explanation: "In a parallel circuit the main current equals the sum of the branch currents: 0.3 + 0.2 = 0.5 A.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-137",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "If lamp P blows, lamp Q will",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-PARA",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "go out",
+        B: "stay lit",
+        C: "flicker on and off",
+        D: "become dimmer"
+      },
+      answer: "B",
+      explanation: "Q is on a separate branch, so current still flows through it.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-329",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The total resistance in the circuit is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-RES",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "2 \u03A9",
+        B: "4 \u03A9",
+        C: "6 \u03A9",
+        D: "8 \u03A9"
+      },
+      answer: "C",
+      explanation: "Resistances in series add: 2 + 4 = 6 \u03A9.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-330",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "UK",
+      difficulty: 3,
+      stem: "The reading on the ammeter is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-RES",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "0.5 A",
+        B: "2 A",
+        C: "6 A",
+        D: "72 A"
+      },
+      answer: "B",
+      explanation: "I = V \xF7 R = 12 \xF7 6 = 2 A.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-331",
+      module: 2,
+      objective: {
+        code: "2.4.2",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "examine the flow of electricity in circuits"
+      },
+      profile: "UK",
+      difficulty: 3,
+      stem: "The voltage across the 4 \u03A9 resistor is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-RES",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "2 V",
+        B: "4 V",
+        C: "8 V",
+        D: "12 V"
+      },
+      answer: "C",
+      explanation: "V = IR = 2 \xD7 4 = 8 V.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-138",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A 2 000 W stove is used for 3 hours. The energy used is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "0.67 kWh",
+        B: "6 kWh",
+        C: "600 kWh",
+        D: "6 000 kWh"
+      },
+      answer: "B",
+      explanation: "Energy = power \xD7 time = 2 kW \xD7 3 h = 6 kWh.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-139",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A 100 W television is switched on for 5 hours each day. If electricity costs $0.40 per kWh, the cost of using it for one day is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "$0.50",
+        B: "$2.00",
+        C: "$200.00",
+        D: "$0.20"
+      },
+      answer: "D",
+      explanation: "Energy = 0.1 kW \xD7 5 h = 0.5 kWh; cost = 0.5 \xD7 $0.40 = $0.20.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-140",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following charges on an electricity bill depends on the price of oil?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Meter rental",
+        B: "Fuel adjustment charge",
+        C: "Customer service charge",
+        D: "Deposit"
+      },
+      answer: "B",
+      explanation: "The fuel adjustment (fuel surcharge) varies with the cost of fuel used to generate electricity.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-141",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following appliances is likely to use the MOST electrical energy in one hour?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Radio (10 W)",
+        B: "Ceiling fan (75 W)",
+        C: "Clothes iron (1 200 W)",
+        D: "LED bulb (9 W)"
+      },
+      answer: "C",
+      explanation: "Heating appliances have high power ratings, so they use the most energy per hour.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-142",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "One kilowatt-hour (kWh) is the energy used by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "a 1 000 W appliance in 1 hour",
+        B: "a 1 W appliance in 1 hour",
+        C: "a 1 000 W appliance in 1 minute",
+        D: "a 100 W appliance in 1 hour"
+      },
+      answer: "A",
+      explanation: "1 kWh = 1 kW \xD7 1 h.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-143",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "How much electrical energy was used in the home during June?",
+      statements: null,
+      after: null,
+      stimulus: {
+        lead: "to the following reading on a household electricity meter on 1 June. On 1 July the meter read 04 913 kWh.",
+        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 115" width="380" height="115" role="img" aria-label="Meter reading on 1 June" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Meter reading on 1 June</title><rect x="0" y="0" width="380" height="115" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="20" width="300" height="80" fill="#fff" rx="6" stroke-width="1.6"/><rect x="60" y="40" width="38" height="42" fill="#fff"/><text x="79" y="70" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="24">0</text><rect x="105" y="40" width="38" height="42" fill="#fff"/><text x="124" y="70" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="24">4</text><rect x="150" y="40" width="38" height="42" fill="#fff"/><text x="169" y="70" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="24">5</text><rect x="195" y="40" width="38" height="42" fill="#fff"/><text x="214" y="70" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="24">2</text><rect x="240" y="40" width="38" height="42" fill="#fff"/><text x="259" y="70" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="24">7</text><text x="315" y="70" text-anchor="middle" fill="#000" stroke="none">kWh</text></g></svg>`,
+        table: null
+      },
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "386 kWh",
+        B: "4 527 kWh",
+        C: "4 913 kWh",
+        D: "9 440 kWh"
+      },
+      answer: "A",
+      explanation: "Energy used = final reading - initial reading = 4 913 - 4 527 = 386 kWh.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-332",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "UK",
+      difficulty: 3,
+      stem: "An electric kettle rated at 2.5 kW is used for 12 minutes each day. How much energy does it use each day?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "0.5 kWh",
+        B: "2.5 kWh",
+        C: "30 kWh",
+        D: "300 kWh"
+      },
+      answer: "A",
+      explanation: "12 minutes = 0.2 h; 2.5 \xD7 0.2 = 0.5 kWh.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-333",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following would save the MOST money on an electricity bill?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Switching off a phone charger",
+        B: "Reducing the use of an electric water heater",
+        C: "Switching off a 9 W LED bulb",
+        D: "Unplugging a radio"
+      },
+      answer: "B",
+      explanation: "Heating appliances have the highest power ratings.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-334",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Five 60 W bulbs are left on for 10 hours. The energy used is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "0.3 kWh",
+        B: "3 kWh",
+        C: "30 kWh",
+        D: "3 000 kWh"
+      },
+      answer: "B",
+      explanation: "5 \xD7 60 = 300 W = 0.3 kW; 0.3 \xD7 10 = 3 kWh.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-335",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A fan uses 0.9 kWh per day. If electricity costs $0.70 per kWh, the cost for 30 days is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "$0.63",
+        B: "$21.00",
+        C: "$18.90",
+        D: "$27.00"
+      },
+      answer: "C",
+      explanation: "0.9 \xD7 30 = 27 kWh; 27 \xD7 $0.70 = $18.90.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-336",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The instrument used to measure electrical energy consumed in a home is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "electricity (kWh) meter",
+        B: "ammeter",
+        C: "voltmeter",
+        D: "thermostat"
+      },
+      answer: "A",
+      explanation: "The meter records units (kWh) used.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-144",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "If one unit (kWh) costs $0.50, what is the cost of the electricity used during the month?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-METER",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "$386.00",
+        B: "$772.00",
+        C: "$2 263.50",
+        D: "$193.00"
+      },
+      answer: "D",
+      explanation: "Units used = 4 913 - 4 527 = 386 kWh; cost = 386 \xD7 $0.50 = $193.00.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-419",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "How many kilowatt hours are used by the refrigerator in one day?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-BILL3",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "0.2",
+        B: "2.4",
+        C: "4.8",
+        D: "24"
+      },
+      answer: "C",
+      explanation: "0.2 kW \xD7 24 h = 4.8 kWh.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-420",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which appliance uses the MOST energy in one day?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-BILL3",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Air conditioner",
+        B: "Refrigerator",
+        C: "Electric kettle",
+        D: "Television"
+      },
+      answer: "A",
+      explanation: "1.5 \xD7 8 = 12 kWh.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-421",
+      module: 2,
+      objective: {
+        code: "2.4.3",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "assess the consumption of electricity in the home"
+      },
+      profile: "UK",
+      difficulty: 3,
+      stem: "If one unit of electricity costs $0.50, the cost of using the television for one day is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-BILL3",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "$0.05",
+        B: "$0.25",
+        C: "$0.50",
+        D: "$2.50"
+      },
+      answer: "B",
+      explanation: "0.1 \xD7 5 = 0.5 kWh; 0.5 \xD7 $0.50 = $0.25.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-145",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The fuse in a plug is connected to the live wire so that",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the appliance works faster",
+        B: "the appliance is disconnected from the high voltage if the fuse melts",
+        C: "current can flow to earth",
+        D: "the neutral wire carries more current"
+      },
+      answer: "B",
+      explanation: "When the fuse blows, the live connection is broken so the appliance is no longer at a dangerous voltage.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-146",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "UK",
+      difficulty: 3,
+      stem: "A 690 W blender is used on a 230 V supply. Which fuse should be fitted in its plug?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "1 A",
+        B: "3 A",
+        C: "5 A",
+        D: "13 A"
+      },
+      answer: "C",
+      explanation: "I = P \xF7 V = 690 \xF7 230 = 3 A. The fuse must be rated slightly ABOVE the normal current, so a 5 A fuse is used; 13 A would not protect the appliance.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-147",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Plugging too many appliances into one socket is dangerous because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the voltage becomes too low",
+        B: "the appliances become magnetised",
+        C: "the fuse becomes stronger",
+        D: "the large current may overheat the wires and cause a fire"
+      },
+      answer: "D",
+      explanation: "Overloading draws a large current which heats the wires and can melt insulation.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-148",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Thick cables are used for heavy-duty appliances such as electric stoves because thick wires",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "have more resistance",
+        B: "are cheaper",
+        C: "have less resistance and do not overheat",
+        D: "are better insulators"
+      },
+      answer: "C",
+      explanation: "Thicker wires have lower resistance, so large currents produce less heat.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-149",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The earth wire in an appliance with a metal case",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "carries current to the appliance",
+        B: "provides a safe path for current if the case becomes live",
+        C: "controls the speed of the appliance",
+        D: "is connected to the switch"
+      },
+      answer: "B",
+      explanation: "If a fault makes the case live, current flows to earth, the fuse blows and the user is protected.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-337",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "In a correctly wired three-pin plug, the blue wire is connected to the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "live terminal",
+        B: "earth terminal",
+        C: "fuse",
+        D: "neutral terminal"
+      },
+      answer: "D",
+      explanation: "Blue = neutral, brown = live, green/yellow = earth.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-338",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A fuse melts when",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the voltage is too low",
+        B: "the current is larger than its rating",
+        C: "the appliance is switched off",
+        D: "the wire is too thick"
+      },
+      answer: "B",
+      explanation: "Excess current heats and melts the fuse wire.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-339",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A 3 kW heater is used on a 240 V supply. Which fuse rating is MOST suitable?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "3 A",
+        B: "5 A",
+        C: "13 A",
+        D: "30 A"
+      },
+      answer: "C",
+      explanation: "I = 3 000 \xF7 240 = 12.5 A, so a 13 A fuse is needed.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-340",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A frayed flex on an electric iron is dangerous because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the iron uses more energy",
+        B: "exposed live wires may cause shock or fire",
+        C: "the iron heats too slowly",
+        D: "the fuse becomes stronger"
+      },
+      answer: "B",
+      explanation: "Damaged insulation exposes conductors.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-341",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A circuit breaker is used instead of a fuse in many homes because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "never trips",
+        B: "increases current",
+        C: "can be reset after it trips",
+        D: "is a type of lamp"
+      },
+      answer: "C",
+      explanation: "A circuit breaker switches off on overload and can be reset.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-342",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Overhead transmission cables are thick in order to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "reduce resistance and heating",
+        B: "increase resistance",
+        C: "make them easier to see",
+        D: "reduce voltage to zero"
+      },
+      answer: "A",
+      explanation: "Thicker wires carry large currents with less heating and energy loss.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-150",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The wire connected to terminal Z should be coloured",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-PLUG",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "brown",
+        B: "green and yellow",
+        C: "blue",
+        D: "black"
+      },
+      answer: "A",
+      explanation: "Z has the fuse beside it: the live terminal, connected to the brown wire.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-151",
+      module: 2,
+      objective: {
+        code: "2.4.4",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss the safety features of electrical devices"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The wire connected at X is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-PLUG",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "live wire",
+        B: "neutral wire",
+        C: "fuse wire",
+        D: "earth wire"
+      },
+      answer: "D",
+      explanation: "X is the large top pin: earth, with the green and yellow wire.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-152",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is an energy conservation measure in the home?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Leaving lights on in empty rooms",
+        B: "Opening the refrigerator often",
+        C: "Unplugging appliances not in use",
+        D: "Using filament bulbs"
+      },
+      answer: "C",
+      explanation: "Appliances on standby still use energy.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-153",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "An occupancy sensor saves energy by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "making lamps brighter",
+        B: "switching lights off automatically when a room is empty",
+        C: "increasing the voltage",
+        D: "charging batteries"
+      },
+      answer: "B",
+      explanation: "Sensors detect movement and turn lights off when nobody is present.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-154",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Replacing filament bulbs with LED bulbs saves energy because LED bulbs",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "produce more heat",
+        B: "are larger",
+        C: "use a higher voltage",
+        D: "convert a larger fraction of electrical energy into light"
+      },
+      answer: "D",
+      explanation: "LEDs waste far less energy as heat, so a lower wattage gives the same light.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-343",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Energy conservation means",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "creating new energy",
+        B: "reducing the amount of energy wasted",
+        C: "using more electricity",
+        D: "storing electricity in the ground"
+      },
+      answer: "B",
+      explanation: "Conserving energy saves money and resources.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-344",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A faulty refrigerator whose door seal is broken wastes energy because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it uses less electricity",
+        B: "the light stays off",
+        C: "it becomes too cold",
+        D: "cold air escapes and the compressor runs longer"
+      },
+      answer: "D",
+      explanation: "The motor must work harder to keep the inside cold.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-345",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which type of television screen generally uses the LEAST electrical energy?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Plasma",
+        B: "LED",
+        C: "Cathode ray tube",
+        D: "Projector"
+      },
+      answer: "B",
+      explanation: "LED backlit screens are the most efficient.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-346",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following actions would help to conserve energy at school?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Leaving the air conditioner on with windows open",
+        B: "Using filament bulbs",
+        C: "Keeping lights on in empty rooms",
+        D: "Switching off computers at the end of the day"
+      },
+      answer: "D",
+      explanation: "Standby and unused appliances waste energy.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-422",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following actions would reduce the electricity bill of a household?",
+      statements: [
+        "Replacing filament bulbs with LED bulbs",
+        "Switching off lights in empty rooms",
+        "Drying clothes on a line instead of in a dryer"
+      ],
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "I and II only",
+        B: "I and III only",
+        C: "II and III only",
+        D: "I, II and III"
+      },
+      answer: "D",
+      explanation: "All three reduce energy use.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-423",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Painting the roof of a house white helps to conserve energy because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "reflects radiant heat, reducing the need for air conditioning",
+        B: "absorbs more heat",
+        C: "makes the house brighter at night",
+        D: "conducts heat into the house"
+      },
+      answer: "A",
+      explanation: "White surfaces are poor absorbers of radiation.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-424",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Buying an appliance with a high energy-efficiency rating is advisable because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "uses more current",
+        B: "needs a larger fuse",
+        C: "wastes less energy",
+        D: "has a higher power rating"
+      },
+      answer: "C",
+      explanation: "More of the input energy is converted to useful energy.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-425",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Car-pooling helps to conserve energy by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "making cars heavier",
+        B: "increasing traffic",
+        C: "using more fuel",
+        D: "reducing the fuel used per person"
+      },
+      answer: "D",
+      explanation: "Fewer vehicles carry the same number of people.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-426",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Keeping the door of a refrigerator closed as much as possible",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "wastes energy",
+        B: "saves energy because less warm air enters",
+        C: "makes the compressor work harder",
+        D: "has no effect"
+      },
+      answer: "B",
+      explanation: "The motor runs less often.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-427",
+      module: 2,
+      objective: {
+        code: "2.4.5",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss energy conservation measures"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is a way to conserve energy in the kitchen?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Covering pots while cooking",
+        B: "Leaving the oven door open",
+        C: "Boiling more water than needed",
+        D: "Using a small pot on a large burner"
+      },
+      answer: "A",
+      explanation: "Covers reduce heat loss by evaporation and convection.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-155",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following light sources is the LEAST efficient?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "LED bulb",
+        B: "Fluorescent tube",
+        C: "Filament lamp",
+        D: "Compact fluorescent bulb"
+      },
+      answer: "C",
+      explanation: "Most of the energy supplied to a filament lamp becomes heat.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-156",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Fluorescent tubes produce fewer sharp shadows than a filament lamp because they",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "are a point source of light",
+        B: "give out only red light",
+        C: "are brighter",
+        D: "are an extended (long) source of light"
+      },
+      answer: "D",
+      explanation: "A long light source produces soft shadows with a large penumbra.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-157",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The brightness of which light source is MOST easily controlled by a simple dimmer switch?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Filament lamp",
+        B: "Fluorescent tube",
+        C: "Compact fluorescent bulb",
+        D: "Neon sign"
+      },
+      answer: "A",
+      explanation: "Filament lamps dim smoothly as the voltage is reduced.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-347",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following light sources produces light MOST similar to daylight?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Candle",
+        B: "Filament lamp",
+        C: "Daylight fluorescent tube",
+        D: "Sodium street lamp"
+      },
+      answer: "C",
+      explanation: "'Daylight' tubes and LEDs are designed to match natural light.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-348",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Compact fluorescent bulbs (CFLs) must be disposed of carefully because they contain",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "mercury",
+        B: "lead",
+        C: "uranium",
+        D: "copper only"
+      },
+      answer: "A",
+      explanation: "CFLs contain a small amount of toxic mercury vapour.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-349",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A filament lamp becomes very hot because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it produces a lot of light",
+        B: "it has no resistance",
+        C: "most of its electrical energy is converted to heat",
+        D: "it is made of plastic"
+      },
+      answer: "C",
+      explanation: "Only about 10% becomes light.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-350",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A point source of light produces",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "no shadows",
+        B: "soft, fuzzy shadows",
+        C: "coloured shadows",
+        D: "sharp shadows"
+      },
+      answer: "D",
+      explanation: "A small source gives a sharp umbra with little penumbra.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-428",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Used fluorescent tubes should be disposed of carefully because they contain",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "lead",
+        B: "sodium",
+        C: "mercury",
+        D: "tungsten"
+      },
+      answer: "C",
+      explanation: "Mercury vapour is toxic.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-429",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The filament of an incandescent lamp is made of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "copper",
+        B: "aluminium",
+        C: "mercury",
+        D: "tungsten"
+      },
+      answer: "D",
+      explanation: "Tungsten has a very high melting point.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-158",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which light source is MOST likely a filament lamp?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-LAMPS",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Q",
+        B: "P",
+        C: "R",
+        D: "Q and R"
+      },
+      answer: "B",
+      explanation: "P uses the most energy for the same light, so it is the least efficient: a filament lamp.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-159",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which light source is MOST likely an LED bulb?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-LAMPS",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "R",
+        B: "P",
+        C: "Q",
+        D: "P and Q"
+      },
+      answer: "A",
+      explanation: "R uses the least energy, which is typical of an LED.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-430",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which lamp is the MOST energy efficient?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-LAMPS",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Filament",
+        B: "Compact fluorescent (CFL)",
+        C: "They are all the same",
+        D: "LED"
+      },
+      answer: "D",
+      explanation: "It uses the least power for the same brightness.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-431",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The filament lamp uses the most power because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-LAMPS",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "produces more light",
+        B: "lasts the longest",
+        C: "wastes most of its energy as heat",
+        D: "contains mercury"
+      },
+      answer: "C",
+      explanation: "A filament must be white hot to glow.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-432",
+      module: 2,
+      objective: {
+        code: "2.4.6",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "compare artificial sources of light"
+      },
+      profile: "UK",
+      difficulty: 3,
+      stem: "Although the LED lamp costs the most to buy, it is the cheapest in the long run because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M2-S-LAMPS",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "uses less electricity and lasts much longer",
+        B: "is brighter",
+        C: "produces more heat",
+        D: "uses more power"
+      },
+      answer: "A",
+      explanation: "Running costs outweigh purchase price.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-160",
+      module: 2,
+      objective: {
+        code: "2.4.7",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss first aid methods for treating electrical accidents"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A person is receiving an electric shock from a faulty appliance. The FIRST thing a rescuer should do is to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "pull the person away with bare hands",
+        B: "switch off the power at the mains",
+        C: "throw water on the person",
+        D: "give CPR immediately"
+      },
+      answer: "B",
+      explanation: "Touching the person would pass current to the rescuer; the supply must be cut first.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-161",
+      module: 2,
+      objective: {
+        code: "2.4.7",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss first aid methods for treating electrical accidents"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "If the power cannot be switched off, the rescuer should separate the casualty from the source using",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "a dry wooden broom",
+        B: "a metal rod",
+        C: "a wet towel",
+        D: "an aluminium ladder"
+      },
+      answer: "A",
+      explanation: "Dry wood is an insulator.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-162",
+      module: 2,
+      objective: {
+        code: "2.4.7",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss first aid methods for treating electrical accidents"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A minor burn should be treated by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "applying butter to it",
+        B: "bursting any blisters",
+        C: "cooling it under clean running water",
+        D: "covering it with cotton wool"
+      },
+      answer: "C",
+      explanation: "Cool running water for about 20 minutes reduces damage and pain; then cover with a clean, non-fluffy dressing.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-351",
+      module: 2,
+      objective: {
+        code: "2.4.7",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss first aid methods for treating electrical accidents"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A person has a burn on the hand from touching a hot iron. The FIRST treatment should be to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "apply toothpaste",
+        B: "hold the burn under cool running water",
+        C: "burst the blister",
+        D: "cover it with butter"
+      },
+      answer: "B",
+      explanation: "Cooling reduces tissue damage and pain.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-352",
+      module: 2,
+      objective: {
+        code: "2.4.7",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss first aid methods for treating electrical accidents"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "After a casualty of electric shock has been separated from the supply, the rescuer should check for",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "broken glass",
+        B: "the colour of the wires",
+        C: "the meter reading",
+        D: "breathing and a pulse"
+      },
+      answer: "D",
+      explanation: "If there is no breathing, CPR should begin.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-353",
+      module: 2,
+      objective: {
+        code: "2.4.7",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss first aid methods for treating electrical accidents"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "An electrical burn can be more serious than it appears because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it only affects the skin",
+        B: "the current may damage tissues deep inside the body",
+        C: "it heals very quickly",
+        D: "it never blisters"
+      },
+      answer: "B",
+      explanation: "Current passing through the body can damage internal organs.",
+      topic: 4
+    },
+    {
+      id: "IS-M2-P1-433",
+      module: 2,
+      objective: {
+        code: "2.4.7",
+        topic: 4,
+        topicTitle: "Electricity and Lighting",
+        text: "discuss first aid methods for treating electrical accidents"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The FIRST thing to do when a person receives an electric shock and is still in contact with the wire is to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
       options: {
         A: "switch off the power at the main switch",
         B: "pull the person away with bare hands",
@@ -4105,1682 +6240,4 @@ tionsAreSvg: false,
           items: [
             {
               label: "(i)",
-              prompt: "Name the parts of the human body represented by Q and S.",
-              marks: 2,
-              objective: "2.2.6",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Q - lungs (1)",
-                  "S - diaphragm (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Describe what happens to the balloons when the rubber sheet is pulled down. Explain your answer.",
-              marks: 3,
-              objective: "2.2.6",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "The balloons inflate (1)",
-                  "pulling the sheet down increases the volume inside the jar (1)",
-                  "so the pressure inside falls below atmospheric pressure and air rushes into the balloons (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State ONE way in which the bell jar model is NOT a good model of the human chest.",
-              marks: 1,
-              objective: "2.2.6",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "The walls of the bell jar cannot move like the ribs",
-                  "There are no intercostal muscles",
-                  "The balloons are not attached to the jar wall like the pleural membranes",
-                  "Only one pair of 'lungs'/no alveoli"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name TWO harmful substances in cigarette smoke.",
-              marks: 2,
-              objective: "2.2.8",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Nicotine",
-                  "Tar",
-                  "Carbon monoxide"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how smoking reduces the efficiency of gaseous exchange in the lungs.",
-              marks: 3,
-              objective: "2.2.8",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Carbon monoxide combines with haemoglobin so less oxygen is carried (1)",
-                  "tar coats the alveoli / damages cilia so mucus builds up and infections occur (1)",
-                  "emphysema breaks down alveolar walls, reducing the surface area for gaseous exchange (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Suggest ONE reason why smoking should be banned in public places.",
-              marks: 3,
-              objective: "2.2.8",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Non-smokers would inhale second-hand smoke (1) containing the same harmful chemicals (1), increasing their risk of asthma, lung cancer and heart disease (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-06",
-      module: 2,
-      kind: "structured",
-      title: "Fossil fuels and alternative sources of energy",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 4,
-        UK: 11,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 3,
-          title: "Fossil Fuels and Alternative Sources of Energy"
-        }
-      ],
-      objectives: [
-        "2.3.1",
-        "2.3.2"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Most Caribbean countries generate electricity by burning imported diesel and fuel oil.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State the energy conversions that take place when electricity is generated in a power station burning fuel oil.",
-              marks: 3,
-              objective: "2.3.1",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Chemical energy in the fuel \u2192 heat energy (1)",
-                  "heat \u2192 kinetic energy of steam/turbine (1)",
-                  "kinetic \u2192 electrical energy in the generator (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how burning fossil fuels contributes to global warming.",
-              marks: 3,
-              objective: "2.3.1",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Burning fossil fuels releases carbon dioxide (1)",
-                  "carbon dioxide is a greenhouse gas which traps heat (infrared radiation) in the atmosphere (1)",
-                  "so the average temperature of the earth increases (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State ONE effect of acid rain on the environment.",
-              marks: 1,
-              objective: "2.3.1",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Kills fish/aquatic life",
-                  "Damages leaves/plants/forests",
-                  "Corrodes buildings/statues/metals",
-                  "Makes soil acidic"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Table 4 shows some alternative sources of energy.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 4: ALTERNATIVE SOURCES OF ENERGY",
-            headers: [
-              "Source",
-              "How energy is obtained"
-            ],
-            rows: [
-              [
-                "Solar",
-                "photovoltaic panels on roofs"
-              ],
-              [
-                "Wind",
-                "turbines on hills or near the coast"
-              ],
-              [
-                "Geothermal",
-                "steam from hot rocks underground"
-              ],
-              [
-                "Biogas",
-                "decomposing animal and plant waste"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why solar energy is suitable for use in the Caribbean.",
-              marks: 2,
-              objective: "2.3.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "The Caribbean receives strong sunshine for most of the year (1)",
-                  "so solar panels/water heaters can produce energy reliably and reduce fuel imports (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State ONE disadvantage of EACH of the following: wind energy; geothermal energy.",
-              marks: 2,
-              objective: "2.3.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Wind: unreliable when there is little wind / noise / visual pollution / damaged in hurricanes / harms birds (1)",
-                  "Geothermal: only available in volcanic areas / high cost of drilling / may release gases (hydrogen sulphide) (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Evaluate the use of biogas by a pig farmer in a rural community.",
-              marks: 4,
-              objective: "2.3.2",
-              profile: {
-                UK: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 8
-              },
-              markScheme: {
-                points: [
-                  "Advantage: uses animal waste that would otherwise pollute, reducing smell/flies (1)",
-                  "Advantage: provides cheap fuel for cooking/lighting, saving money (1)",
-                  "Disadvantage: digester is costly to build / needs maintenance / methane is flammable (1)",
-                  "Judgement: overall beneficial because it turns waste into energy and fertiliser (1)"
-                ],
-                guidance: "4 marks for a full evaluation (advantages, disadvantages and a judgement); 3 satisfactory; 2 partial; 1 limited",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-07",
-      module: 2,
-      kind: "practical",
-      title: "Conductors and electric circuits",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 3,
-        UK: 7,
-        XS: 10
-      },
-      topics: [
-        {
-          topic: 4,
-          title: "Electricity and Lighting"
-        }
-      ],
-      objectives: [
-        "2.4.2",
-        "2.4.1"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "A group of students was given a cell, a lamp, connecting wires, crocodile clips and samples of copper wire, plastic, iron nail, dry wood, aluminium foil and pencil lead. They were asked to find out which materials conduct electricity.",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Draw a circuit diagram of the apparatus the students should set up, using the correct circuit symbols.",
-              marks: 3,
-              objective: "2.4.2",
-              profile: {
-                XS: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "drawing",
-                height: 220
-              },
-              markScheme: {
-                points: [
-                  "Cell, lamp and two crocodile clips/gap for the test material in a single series loop (1)",
-                  "Correct symbols for cell and lamp (1)",
-                  "Wires drawn with a ruler, no gaps other than the test position (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State a suitable hypothesis for the investigation.",
-              marks: 2,
-              objective: "2.4.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Metals such as copper, iron and aluminium will conduct electricity and light the lamp, while plastic and dry wood will not."
-                ],
-                guidance: "1 mark for a clearly stated hypothesis; 1 mark for a testable hypothesis",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Construct a table suitable for recording the results of the investigation.",
-              marks: 3,
-              objective: "2.4.1",
-              profile: {
-                XS: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "drawing",
-                height: 200
-              },
-              markScheme: {
-                points: [
-                  "Title (1)",
-                  "Column headings: Material; Did the lamp light? / Conductor or insulator (1)",
-                  "Enclosed table listing all six materials (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "Which material in the list is a non-metal that conducts electricity?",
-              marks: 1,
-              objective: "2.4.1",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Pencil lead (graphite)"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(v)",
-              prompt: "State the manipulated variable and the responding variable in this investigation.",
-              marks: 2,
-              objective: "2.4.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Manipulated: the type of material placed in the circuit (1)",
-                  "Responding: whether the lamp lights (brightness of the lamp) (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Figure 7 shows a circuit containing two identical lamps.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 265" width="440" height="265" role="img" aria-label="A parallel circuit" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A parallel circuit</title><rect x="0" y="0" width="440" height="265" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="40,40 400,40 400,220 40,220 40,40" fill="none" stroke-width="1.4"/><rect x="196" y="24" width="48" height="32" fill="#fff" stroke="none"/><line x1="206" y1="26" x2="206" y2="54" stroke-width="1.6"/><line x1="214" y1="33" x2="214" y2="47" stroke-width="3"/><line x1="226" y1="26" x2="226" y2="54" stroke-width="1.6"/><line x1="234" y1="33" x2="234" y2="47" stroke-width="3"/><line x1="214" y1="40" x2="226" y2="40" stroke-dasharray="2 3"/><polyline points="140,220 140,130 320,130 320,220" fill="none" stroke-width="1.4"/><circle cx="230" cy="130" r="10" fill="#fff"/><line x1="222.9" y1="122.9" x2="237.1" y2="137.1"/><line x1="222.9" y1="137.1" x2="237.1" y2="122.9"/><circle cx="230" cy="220" r="10" fill="#fff"/><line x1="222.9" y1="212.9" x2="237.1" y2="227.1"/><line x1="222.9" y1="227.1" x2="237.1" y2="212.9"/><text x="230" y="112" text-anchor="middle" fill="#000" stroke="none" font-weight="bold">P</text><text x="230" y="247" text-anchor="middle" fill="#000" stroke="none" font-weight="bold">Q</text><circle cx="40" cy="130" r="11" fill="#fff"/><text x="40" y="135" text-anchor="middle" fill="#000" stroke="none" font-weight="bold">A</text><text x="58" y="160" text-anchor="start" fill="#000" stroke="none" font-size="12">A1</text><circle cx="320" cy="175" r="11" fill="#fff"/><text x="320" y="180" text-anchor="middle" fill="#000" stroke="none" font-weight="bold">A</text><text x="338" y="180" text-anchor="start" fill="#000" stroke="none" font-size="12">A2</text><circle cx="175" cy="220" r="11" fill="#fff"/><text x="175" y="225" text-anchor="middle" fill="#000" stroke="none" font-weight="bold">A</text><text x="175" y="250" text-anchor="middle" fill="#000" stroke="none" font-size="12">A3</text></g></svg>`,
-          figure: "Figure 7. Circuit diagram",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State whether lamps P and Q are connected in series or in parallel.",
-              marks: 1,
-              objective: "2.4.2",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Parallel"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Ammeter A2 reads 0.4 A and ammeter A3 reads 0.4 A. State the reading on ammeter A1.",
-              marks: 1,
-              objective: "2.4.2",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "0.8 A"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State TWO advantages of wiring the lamps in a house in parallel rather than in series.",
-              marks: 2,
-              objective: "2.4.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Each lamp can be switched on/off independently",
-                  "If one lamp fails the others stay lit",
-                  "Each lamp receives the full mains voltage, so all are fully bright"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "A current of 0.5 A flows through a resistor when the voltage across it is 6 V. Calculate the resistance of the resistor. Show your working.",
-              marks: 2,
-              objective: "2.4.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 120
-              },
-              markScheme: {
-                points: [
-                  "R = V \xF7 I = 6 \xF7 0.5 (1)",
-                  "= 12 \u03A9 (1)"
-                ],
-                guidance: "1 mark for correct substitution/working; 1 mark for correct answer with unit",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Calculate the power of a lamp which draws 0.5 A from a 12 V supply. Show your working.",
-              marks: 2,
-              objective: "2.4.2",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 120
-              },
-              markScheme: {
-                points: [
-                  "P = IV = 0.5 \xD7 12 (1)",
-                  "= 6 W (1)"
-                ],
-                guidance: "1 mark for correct substitution/working; 1 mark for correct answer with unit",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Define the term 'insulator'.",
-              marks: 1,
-              objective: "2.4.1",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "A material which does not allow electricity (or heat) to flow through it easily."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-08",
-      module: 2,
-      kind: "structured",
-      title: "Electricity in the home",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 5,
-        UK: 10,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 4,
-          title: "Electricity and Lighting"
-        }
-      ],
-      objectives: [
-        "2.4.3",
-        "2.4.4",
-        "2.4.5"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Mrs Walters wants to find out how much it costs to use three appliances in her home. One unit (kWh) of electricity costs $0.60.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 5: APPLIANCES USED IN MRS WALTERS' HOME",
-            headers: [
-              "Appliance",
-              "Power rating/W",
-              "Power rating/kW",
-              "Hours used per day",
-              "Energy used per day/kWh"
-            ],
-            rows: [
-              [
-                "Electric stove",
-                "2 000",
-                "2.0",
-                "2",
-                ""
-              ],
-              [
-                "Washing machine",
-                "500",
-                "",
-                "1",
-                "0.5"
-              ],
-              [
-                "Ceiling fan",
-                "75",
-                "0.075",
-                "8",
-                ""
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "Complete Table 5 by filling in the THREE missing values.",
-              marks: 3,
-              objective: "2.4.3",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Stove energy per day: 2.0 \xD7 2 = 4 kWh (1)",
-                  "Washing machine power: 0.5 kW (1)",
-                  "Fan energy per day: 0.075 \xD7 8 = 0.6 kWh (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Calculate the cost of using ALL three appliances for 30 days. Show your working.",
-              marks: 3,
-              objective: "2.4.3",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 150
-              },
-              markScheme: {
-                points: [
-                  "Total per day = 4 + 0.5 + 0.6 = 5.1 kWh (1)",
-                  "For 30 days = 5.1 \xD7 30 = 153 kWh (1)",
-                  "Cost = 153 \xD7 $0.60 = $91.80 (1)"
-                ],
-                guidance: "1 mark for each correct step (allow error carried forward)",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Figure 8 shows the inside of a three-pin plug.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 295" width="420" height="295" role="img" aria-label="Inside a three-pin plug" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Inside a three-pin plug</title><rect x="0" y="0" width="420" height="295" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="60" y="20" width="240" height="240" fill="#fff" rx="18" stroke-width="1.6"/><rect x="165" y="40" width="30" height="40" fill="#fff"/><rect x="90" y="150" width="30" height="40" fill="#fff"/><rect x="240" y="150" width="30" height="40" fill="#fff"/><rect x="236" y="90" width="38" height="50" fill="#fff" rx="6"/><line x1="255" y1="95" x2="255" y2="135" stroke-width="0.8"/><rect x="150" y="225" width="60" height="28" fill="#fff" rx="4"/><path d="M170,253 Q175,200 180,80" fill="none" stroke-width="2.2"/><path d="M165,253 Q140,220 105,190" fill="none" stroke-width="2.2"/><path d="M195,253 Q230,220 255,190" fill="none" stroke-width="2.2"/><line x1="180" y1="60" x2="330" y2="45" stroke-width="0.9"/><text x="334" y="49" text-anchor="start" fill="#000" stroke="none">X</text><line x1="95" y1="170" x2="30" y2="190" stroke-width="0.9"/><text x="26" y="194" text-anchor="end" fill="#000" stroke="none">Y</text><line x1="270" y1="170" x2="330" y2="175" stroke-width="0.9"/><text x="334" y="179" text-anchor="start" fill="#000" stroke="none">Z</text><line x1="274" y1="110" x2="330" y2="110" stroke-width="0.9"/><text x="334" y="114" text-anchor="start" fill="#000" stroke="none">fuse</text><line x1="205" y1="240" x2="330" y2="240" stroke-width="0.9"/><text x="334" y="244" text-anchor="start" fill="#000" stroke="none">cable grip</text><text x="180" y="285" text-anchor="middle" fill="#000" stroke="none" font-size="12">cable</text></g></svg>`,
-          figure: "Figure 8. Three-pin plug",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State the colour of the wire which should be connected to EACH of the terminals X, Y and Z.",
-              marks: 3,
-              objective: "2.4.4",
-              profile: {
-                KC: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "labels",
-                keys: [
-                  "X",
-                  "Y",
-                  "Z"
-                ]
-              },
-              markScheme: {
-                points: [
-                  "X (earth) - green and yellow (1)",
-                  "Y (neutral) - blue (1)",
-                  "Z (live) - brown (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how a fuse protects an appliance.",
-              marks: 2,
-              objective: "2.4.4",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "If too large a current flows, the thin fuse wire heats up and melts (1)",
-                  "breaking the circuit so no more current flows, preventing overheating/fire (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State TWO ways Mrs Walters could reduce her electricity bill.",
-              marks: 2,
-              objective: "2.4.5",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Switch off lights and appliances when not in use",
-                  "Use LED/energy-saving bulbs",
-                  "Use a solar water heater",
-                  "Iron clothes in large batches",
-                  "Use inverter appliances",
-                  "Unplug appliances on standby"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Other than energy used, state ONE charge that may appear on an electricity bill.",
-              marks: 2,
-              objective: "2.4.3",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Fuel adjustment charge (1) - varies with the cost of fuel used to generate electricity (1)",
-                  "Meter rental/customer charge (1) - fixed monthly fee for supplying the meter/service (1)"
-                ],
-                guidance: "1 mark for the charge; 1 mark for description",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-09",
-      module: 2,
-      kind: "practical",
-      title: "Absorption of radiant heat",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 6,
-        UK: 6,
-        XS: 8
-      },
-      topics: [
-        {
-          topic: 5,
-          title: "Temperature Control and Ventilation"
-        }
-      ],
-      objectives: [
-        "2.5.1"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Ravi wanted to find out which colour of container absorbs the sun's radiant heat BEST. He filled four identical cans painted different colours with 200 cm\xB3 of water at 28 \xB0C and placed them in direct sunlight. After 30 minutes he recorded the final temperature of the water. His results are shown in Table 6.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 6: TEMPERATURE OF WATER IN CANS",
-            headers: [
-              "Colour of can",
-              "Initial temperature/\xB0C",
-              "Final temperature/\xB0C",
-              "Temperature rise/\xB0C"
-            ],
-            rows: [
-              [
-                "Black",
-                "28",
-                "46",
-                ""
-              ],
-              [
-                "Dark green",
-                "28",
-                "39",
-                ""
-              ],
-              [
-                "White",
-                "28",
-                "32",
-                ""
-              ],
-              [
-                "Shiny silver",
-                "28",
-                "30",
-                ""
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "Complete Table 6 by calculating the temperature rise for EACH can.",
-              marks: 2,
-              objective: "2.5.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Black 18, Dark green 11, White 4, Shiny silver 2"
-                ],
-                guidance: "2 marks for all four correct; 1 mark for two or three correct",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "On the grid provided, draw a bar chart of temperature rise for each colour of can. You MUST label EACH axis.",
-              marks: 4,
-              objective: "2.5.1",
-              profile: {
-                XS: 4
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "graph",
-                height: 300,
-                x: "Colour of can",
-                y: "Temperature rise/\xB0C"
-              },
-              markScheme: {
-                points: [
-                  "Four bars of correct height",
-                  "Axes labelled (Colour of can; Temperature rise/\xB0C)",
-                  "Bars of equal width and equally spaced",
-                  "Suitable scale"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State a conclusion from Ravi's results.",
-              marks: 1,
-              objective: "2.5.1",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Black (dull, dark) surfaces absorb radiant heat best; shiny/white surfaces absorb least (reflect most)."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "State TWO variables Ravi kept constant.",
-              marks: 2,
-              objective: "2.5.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Volume of water",
-                  "Initial temperature of water",
-                  "Size/type of can",
-                  "Time in sunlight",
-                  "Position/amount of sunlight"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Using your knowledge of heat transfer, suggest why solar water heaters have black collector panels.",
-              marks: 2,
-              objective: "2.5.1",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Black surfaces are the best absorbers of radiant heat (1)",
-                  "so the water in the pipes heats up faster/to a higher temperature (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Identify and describe briefly the THREE methods by which heat energy is transferred.",
-              marks: 6,
-              objective: "2.5.1",
-              profile: {
-                KC: 6
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 12
-              },
-              markScheme: {
-                points: [
-                  "Conduction (1) - transfer through a solid from particle to particle without the particles moving from place to place (1)",
-                  "Convection (1) - transfer in liquids and gases by movement of the heated fluid (warm fluid rises, cool fluid sinks) (1)",
-                  "Radiation (1) - transfer by electromagnetic (infrared) waves; needs no medium and can travel through a vacuum (1)"
-                ],
-                guidance: "1 mark for each method; 1 mark for each description",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why the sea breeze blows from the sea towards the land during the day.",
-              marks: 3,
-              objective: "2.5.1",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "The land heats up faster than the sea during the day (1)",
-                  "air above the land is warmed, expands, becomes less dense and rises (1)",
-                  "cooler air from over the sea moves in to replace it (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-10",
-      module: 2,
-      kind: "structured",
-      title: "Thermometers, thermostats and body temperature",
-      totalMarks: 15,
-      profileMarks: {
-        KC: 3,
-        UK: 12,
-        XS: 0
-      },
-      topics: [
-        {
-          topic: 5,
-          title: "Temperature Control and Ventilation"
-        }
-      ],
-      objectives: [
-        "2.5.3",
-        "2.5.2",
-        "2.5.4"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Figure 9 shows a clinical thermometer.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 110" width="440" height="110" role="img" aria-label="A clinical thermometer" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A clinical thermometer</title><rect x="0" y="0" width="440" height="110" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="30" width="380" height="30" fill="#fff" rx="15"/><circle cx="52" cy="45" r="9" fill="#fff"/><line x1="61" y1="45" x2="110" y2="45" stroke-width="2"/><line x1="110" y1="43" x2="118" y2="45" stroke-width="1"/><line x1="118" y1="45" x2="250" y2="45" stroke-width="1.4"/><line x1="140" y1="30" x2="140" y2="38" stroke-width="1"/><text x="140" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">35</text><line x1="143.6" y1="30" x2="143.6" y2="34" stroke-width="0.5"/><line x1="147.2" y1="30" x2="147.2" y2="34" stroke-width="0.5"/><line x1="150.8" y1="30" x2="150.8" y2="34" stroke-width="0.5"/><line x1="154.4" y1="30" x2="154.4" y2="34" stroke-width="0.5"/><line x1="158" y1="30" x2="158" y2="36" stroke-width="0.5"/><line x1="161.6" y1="30" x2="161.6" y2="34" stroke-width="0.5"/><line x1="165.2" y1="30" x2="165.2" y2="34" stroke-width="0.5"/><line x1="168.8" y1="30" x2="168.8" y2="34" stroke-width="0.5"/><line x1="172.4" y1="30" x2="172.4" y2="34" stroke-width="0.5"/><line x1="176" y1="30" x2="176" y2="38" stroke-width="1"/><text x="176" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">36</text><line x1="179.6" y1="30" x2="179.6" y2="34" stroke-width="0.5"/><line x1="183.2" y1="30" x2="183.2" y2="34" stroke-width="0.5"/><line x1="186.8" y1="30" x2="186.8" y2="34" stroke-width="0.5"/><line x1="190.4" y1="30" x2="190.4" y2="34" stroke-width="0.5"/><line x1="194" y1="30" x2="194" y2="36" stroke-width="0.5"/><line x1="197.6" y1="30" x2="197.6" y2="34" stroke-width="0.5"/><line x1="201.2" y1="30" x2="201.2" y2="34" stroke-width="0.5"/><line x1="204.8" y1="30" x2="204.8" y2="34" stroke-width="0.5"/><line x1="208.4" y1="30" x2="208.4" y2="34" stroke-width="0.5"/><line x1="212" y1="30" x2="212" y2="38" stroke-width="1"/><text x="212" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">37</text><line x1="215.6" y1="30" x2="215.6" y2="34" stroke-width="0.5"/><line x1="219.2" y1="30" x2="219.2" y2="34" stroke-width="0.5"/><line x1="222.8" y1="30" x2="222.8" y2="34" stroke-width="0.5"/><line x1="226.4" y1="30" x2="226.4" y2="34" stroke-width="0.5"/><line x1="230" y1="30" x2="230" y2="36" stroke-width="0.5"/><line x1="233.6" y1="30" x2="233.6" y2="34" stroke-width="0.5"/><line x1="237.2" y1="30" x2="237.2" y2="34" stroke-width="0.5"/><line x1="240.8" y1="30" x2="240.8" y2="34" stroke-width="0.5"/><line x1="244.4" y1="30" x2="244.4" y2="34" stroke-width="0.5"/><line x1="248" y1="30" x2="248" y2="38" stroke-width="1"/><text x="248" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">38</text><line x1="251.6" y1="30" x2="251.6" y2="34" stroke-width="0.5"/><line x1="255.2" y1="30" x2="255.2" y2="34" stroke-width="0.5"/><line x1="258.8" y1="30" x2="258.8" y2="34" stroke-width="0.5"/><line x1="262.4" y1="30" x2="262.4" y2="34" stroke-width="0.5"/><line x1="266" y1="30" x2="266" y2="36" stroke-width="0.5"/><line x1="269.6" y1="30" x2="269.6" y2="34" stroke-width="0.5"/><line x1="273.2" y1="30" x2="273.2" y2="34" stroke-width="0.5"/><line x1="276.8" y1="30" x2="276.8" y2="34" stroke-width="0.5"/><line x1="280.4" y1="30" x2="280.4" y2="34" stroke-width="0.5"/><line x1="284" y1="30" x2="284" y2="38" stroke-width="1"/><text x="284" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">39</text><line x1="287.6" y1="30" x2="287.6" y2="34" stroke-width="0.5"/><line x1="291.2" y1="30" x2="291.2" y2="34" stroke-width="0.5"/><line x1="294.8" y1="30" x2="294.8" y2="34" stroke-width="0.5"/><line x1="298.4" y1="30" x2="298.4" y2="34" stroke-width="0.5"/><line x1="302" y1="30" x2="302" y2="36" stroke-width="0.5"/><line x1="305.6" y1="30" x2="305.6" y2="34" stroke-width="0.5"/><line x1="309.2" y1="30" x2="309.2" y2="34" stroke-width="0.5"/><line x1="312.8" y1="30" x2="312.8" y2="34" stroke-width="0.5"/><line x1="316.4" y1="30" x2="316.4" y2="34" stroke-width="0.5"/><line x1="320" y1="30" x2="320" y2="38" stroke-width="1"/><text x="320" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">40</text><line x1="323.6" y1="30" x2="323.6" y2="34" stroke-width="0.5"/><line x1="327.2" y1="30" x2="327.2" y2="34" stroke-width="0.5"/><line x1="330.8" y1="30" x2="330.8" y2="34" stroke-width="0.5"/><line x1="334.4" y1="30" x2="334.4" y2="34" stroke-width="0.5"/><line x1="338" y1="30" x2="338" y2="36" stroke-width="0.5"/><line x1="341.6" y1="30" x2="341.6" y2="34" stroke-width="0.5"/><line x1="345.2" y1="30" x2="345.2" y2="34" stroke-width="0.5"/><line x1="348.8" y1="30" x2="348.8" y2="34" stroke-width="0.5"/><line x1="352.4" y1="30" x2="352.4" y2="34" stroke-width="0.5"/><line x1="356" y1="30" x2="356" y2="38" stroke-width="1"/><text x="356" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">41</text><line x1="359.6" y1="30" x2="359.6" y2="34" stroke-width="0.5"/><line x1="363.2" y1="30" x2="363.2" y2="34" stroke-width="0.5"/><line x1="366.8" y1="30" x2="366.8" y2="34" stroke-width="0.5"/><line x1="370.4" y1="30" x2="370.4" y2="34" stroke-width="0.5"/><line x1="374" y1="30" x2="374" y2="36" stroke-width="0.5"/><line x1="377.6" y1="30" x2="377.6" y2="34" stroke-width="0.5"/><line x1="381.2" y1="30" x2="381.2" y2="34" stroke-width="0.5"/><line x1="384.8" y1="30" x2="384.8" y2="34" stroke-width="0.5"/><line x1="388.4" y1="30" x2="388.4" y2="34" stroke-width="0.5"/><line x1="392" y1="30" x2="392" y2="38" stroke-width="1"/><text x="392" y="76" text-anchor="middle" fill="#000" stroke="none" font-size="11">42</text><line x1="114" y1="44" x2="114" y2="100" stroke-width="0.9"/><text x="110" y="104" text-anchor="middle" fill="#000" stroke="none">constriction</text><text x="400" y="95" text-anchor="end" fill="#000" stroke="none" font-size="12">\xB0C</text></g></svg>`,
-          figure: "Figure 9. A clinical thermometer",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State the range of temperatures shown on the clinical thermometer.",
-              marks: 1,
-              objective: "2.5.3",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "35 \xB0C to 42 \xB0C"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain the purpose of the constriction.",
-              marks: 2,
-              objective: "2.5.3",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "The constriction breaks the mercury thread when the thermometer is removed from the body (1)",
-                  "so the reading stays in place and can be read accurately (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "State ONE advantage and ONE disadvantage of using alcohol instead of mercury in a laboratory thermometer.",
-              marks: 2,
-              objective: "2.5.3",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Advantage: can measure lower temperatures (freezes at -115 \xB0C) / cheaper / less toxic (1)",
-                  "Disadvantage: must be dyed to be seen / boils at 78 \xB0C so cannot measure high temperatures / wets the glass (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "Figure 10 shows the thermostat in an electric iron.",
-          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 205" width="400" height="205" role="img" aria-label="Thermostat in an electric iron" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Thermostat in an electric iron</title><rect x="0" y="0" width="400" height="205" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="150" width="320" height="16" fill="#fff"/><text x="200" y="190" text-anchor="middle" fill="#000" stroke="none" font-size="12">heating element</text><line x1="60" y1="110" x2="250" y2="110" stroke-width="5"/><line x1="60" y1="116" x2="250" y2="116" stroke-width="5"/><rect x="40" y="100" width="20" height="30" fill="none"/><line x1="40" y1="105" x2="45" y2="100" stroke-width="0.6"/><line x1="40" y1="110" x2="50" y2="100" stroke-width="0.6"/><line x1="40" y1="115" x2="55" y2="100" stroke-width="0.6"/><line x1="40" y1="120" x2="60" y2="100" stroke-width="0.6"/><line x1="40" y1="125" x2="60" y2="105" stroke-width="0.6"/><line x1="40" y1="130" x2="60" y2="110" stroke-width="0.6"/><line x1="45" y1="130" x2="60" y2="115" stroke-width="0.6"/><line x1="50" y1="130" x2="60" y2="120" stroke-width="0.6"/><line x1="55" y1="130" x2="60" y2="125" stroke-width="0.6"/><rect x="245" y="102" width="10" height="6" fill="#000" stroke-width="0.5"/><line x1="250" y1="60" x2="250" y2="96" stroke-width="2"/><rect x="245" y="92" width="10" height="6" fill="#000" stroke-width="0.5"/><rect x="236" y="30" width="28" height="30" fill="#fff"/><line x1="250" y1="20" x2="250" y2="30"/><line x1="150" y1="113" x2="150" y2="70" stroke-width="0.9"/><text x="146" y="74" text-anchor="middle" fill="#000" stroke="none">P</text><line x1="256" y1="100" x2="330" y2="90" stroke-width="0.9"/><text x="334" y="94" text-anchor="start" fill="#000" stroke="none">Q</text><line x1="264" y1="45" x2="330" y2="45" stroke-width="0.9"/><text x="334" y="49" text-anchor="start" fill="#000" stroke="none">R</text></g></svg>`,
-          figure: "Figure 10. Thermostat in an electric iron",
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Name the part labelled P.",
-              marks: 1,
-              objective: "2.5.2",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Bimetallic strip"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Describe how the thermostat keeps the iron at a steady temperature.",
-              marks: 3,
-              objective: "2.5.2",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "As the iron heats up the bimetallic strip bends because one metal expands more than the other (1)",
-                  "the contacts Q separate and the heating element is switched off (1)",
-                  "as it cools the strip straightens, the contacts close and heating begins again (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "State normal human body temperature.",
-              marks: 1,
-              objective: "2.5.4",
-              profile: {
-                KC: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "37 \xB0C (accept 36.5-37.5 \xB0C)"
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "Explain how sweating helps to cool the body.",
-              marks: 3,
-              objective: "2.5.4",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Sweat glands release sweat onto the skin surface (1)",
-                  "the water in sweat evaporates (1)",
-                  "taking latent heat of vaporisation from the skin, which cools the body (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Explain why it is harder to keep cool on a hot, humid day.",
-              marks: 2,
-              objective: "2.5.4",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Humid air already contains a lot of water vapour (1)",
-                  "so sweat evaporates slowly and less heat is removed from the body (1)"
-                ],
-                guidance: "2 marks for a full outline; 1 mark for a partial outline",
-                alternatives: null
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "IS-M2-P2-11",
-      module: 2,
-      kind: "practical",
-      title: "Energy value of food",
-      totalMarks: 20,
-      profileMarks: {
-        KC: 7,
-        UK: 8,
-        XS: 5
-      },
-      topics: [
-        {
-          topic: 2,
-          title: "Energy in Life Processes"
-        },
-        {
-          topic: 1,
-          title: "Conservation of Energy"
-        }
-      ],
-      objectives: [
-        "2.2.1",
-        "2.1.1",
-        "2.1.2"
-      ],
-      parts: [
-        {
-          label: "(a)",
-          context: "Students investigated the energy content of three foods by burning 1 g of each food under a boiling tube containing 20 cm\xB3 of water. The rise in temperature of the water was recorded. Their results are shown in Table 7.",
-          svg: null,
-          figure: null,
-          table: {
-            title: "TABLE 7: TEMPERATURE RISE WHEN FOODS WERE BURNT",
-            headers: [
-              "Food",
-              "Mass of food/g",
-              "Initial temperature/\xB0C",
-              "Final temperature/\xB0C",
-              "Temperature rise/\xB0C"
-            ],
-            rows: [
-              [
-                "Peanut",
-                "1",
-                "27",
-                "75",
-                "48"
-              ],
-              [
-                "Bread",
-                "1",
-                "27",
-                "48",
-                ""
-              ],
-              [
-                "Cornflakes",
-                "1",
-                "27",
-                "",
-                "18"
-              ]
-            ],
-            source: null
-          },
-          items: [
-            {
-              label: "(i)",
-              prompt: "Complete Table 7 by filling in the missing values.",
-              marks: 2,
-              objective: "2.2.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Bread temperature rise: 21 \xB0C (1)",
-                  "Cornflakes final temperature: 45 \xB0C (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "The energy released can be calculated using: energy (J) = mass of water (g) \xD7 4.2 \xD7 temperature rise (\xB0C). Calculate the energy released by 1 g of peanut. Show your working. (1 cm\xB3 of water has a mass of 1 g.)",
-              marks: 2,
-              objective: "2.2.1",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "calculation",
-                height: 130
-              },
-              markScheme: {
-                points: [
-                  "Energy = 20 \xD7 4.2 \xD7 48 (1)",
-                  "= 4 032 J (4.0 kJ) (1)"
-                ],
-                guidance: "1 mark for correct substitution/working; 1 mark for correct answer with unit",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iii)",
-              prompt: "Suggest why the peanut released the MOST energy.",
-              marks: 1,
-              objective: "2.2.1",
-              profile: {
-                UK: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Peanuts contain a lot of fat/oil, which releases more energy per gram than carbohydrate."
-                ],
-                guidance: "1 mark",
-                alternatives: null
-              }
-            },
-            {
-              label: "(iv)",
-              prompt: "The actual energy content of peanuts is about 24 000 J per gram. Suggest TWO reasons why the students' result was much lower.",
-              marks: 2,
-              objective: "2.2.1",
-              profile: {
-                XS: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Heat was lost to the surrounding air",
-                  "Heat was absorbed by the boiling tube",
-                  "The food did not burn completely",
-                  "Heat was lost while moving the burning food to the tube"
-                ],
-                guidance: "Any two, 1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(v)",
-              prompt: "State ONE safety precaution which should be taken during this experiment.",
-              marks: 1,
-              objective: "2.2.1",
-              profile: {
-                XS: 1
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 2
-              },
-              markScheme: {
-                points: [
-                  "Wear safety goggles",
-                  "Tie back long hair",
-                  "Hold the burning food with a mounted needle/tongs",
-                  "Check for nut allergies"
-                ],
-                guidance: "Any one, 1 mark",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(b)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Explain why food is important as a source of energy for living organisms.",
-              marks: 3,
-              objective: "2.2.1",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Food contains chemical energy (1)",
-                  "which is released during respiration (1)",
-                  "and used for activities such as movement, growth, active transport and keeping warm (1)"
-                ],
-                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State ONE difference between protein-energy malnutrition (PEM) and obesity.",
-              marks: 2,
-              objective: "2.2.1",
-              profile: {
-                UK: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "PEM results from too little protein/energy in the diet (1), while obesity results from taking in more energy than is used, stored as fat (1)"
-                ],
-                guidance: "1 mark for each side of the comparison",
-                alternatives: null
-              }
-            }
-          ]
-        },
-        {
-          label: "(c)",
-          context: "",
-          svg: null,
-          figure: null,
-          table: null,
-          items: [
-            {
-              label: "(i)",
-              prompt: "Define the term 'energy' and state its SI unit.",
-              marks: 2,
-              objective: "2.1.1",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "The ability to do work / produce a change (1)",
-                  "Joule (J) (1)"
-                ],
-                guidance: "1 mark each",
-                alternatives: null
-              }
-            },
-            {
-              label: "(ii)",
-              prompt: "State the energy conversion that occurs when food is burnt.",
-              marks: 2,
-              objective: "2.1.2",
-              profile: {
-                KC: 2
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 4
-              },
-              markScheme: {
-                points: [
-                  "Chemical energy (1) \u2192 heat and light energy (1)"
-                ],
-                guidanc
+              prompt:

@@ -1,4 +1,1613 @@
-86,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M213,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M240,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><circle cx="248" cy="104.7" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="104" cy="65.8" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="228.7" cy="95.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="202.2" cy="75.9" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="192" cy="89.3" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="188" cy="69.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="163.9" cy="79.7" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="210.7" cy="106.8" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="246.9" cy="86.5" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="166.2" cy="74.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="100.7" cy="63.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="169.4" cy="76.3" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="155.8" cy="102.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="179.1" cy="87.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="132.8" cy="63.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="147" cy="68.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="176.6" cy="106.9" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="202.9" cy="70.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="238" cy="97.9" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="212.5" cy="102.8" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="217.1" cy="97.5" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="151.6" cy="106.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="248.9" cy="69.3" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="215.6" cy="94.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="168.8" cy="85.9" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="173.4" cy="103.6" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="175.1" cy="99.4" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="151.6" cy="101.7" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="239" cy="82.7" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="185.8" cy="103.4" r="0.8" fill="#000" stroke-width="0.5"/><path d="M110,140 l6.0,-10 l10,3.0 l4.0,8.0 l-8.0,5.0 z" fill="#fff" stroke-width="1"/><path d="M156,150 l8.4,-14 l14,4.2 l5.6000000000000005,11.200000000000001 l-11.200000000000001,7.0 z" fill="#fff" stroke-width="1"/><path d="M216,135 l5.3999999999999995,-9 l9,2.6999999999999997 l3.6,7.2 l-7.2,4.5 z" fill="#fff" stroke-width="1"/><path d="M144,165 l3.5999999999999996,-6 l6,1.7999999999999998 l2.4000000000000004,4.800000000000001 l-4.800000000000001,3.0 z" fill="#fff" stroke-width="1"/><path d="M227,160 l4.8,-8 l8,2.4 l3.2,6.4 l-6.4,4.0 z" fill="#fff" stroke-width="1"/><rect x="90" y="180" width="170" height="50" fill="none"/><line x1="90" y1="188" x2="98" y2="180" stroke-width="0.6"/><line x1="90" y1="196" x2="106" y2="180" stroke-width="0.6"/><line x1="90" y1="204" x2="114" y2="180" stroke-width="0.6"/><line x1="90" y1="212" x2="122" y2="180" stroke-width="0.6"/><line x1="90" y1="220" x2="130" y2="180" stroke-width="0.6"/><line x1="90" y1="228" x2="138" y2="180" stroke-width="0.6"/><line x1="96" y1="230" x2="146" y2="180" stroke-width="0.6"/><line x1="104" y1="230" x2="154" y2="180" stroke-width="0.6"/><line x1="112" y1="230" x2="162" y2="180" stroke-width="0.6"/><line x1="120" y1="230" x2="170" y2="180" stroke-width="0.6"/><line x1="128" y1="230" x2="178" y2="180" stroke-width="0.6"/><line x1="136" y1="230" x2="186" y2="180" stroke-width="0.6"/><line x1="144" y1="230" x2="194" y2="180" stroke-width="0.6"/><line x1="152" y1="230" x2="202" y2="180" stroke-width="0.6"/><line x1="160" y1="230" x2="210" y2="180" stroke-width="0.6"/><line x1="168" y1="230" x2="218" y2="180" stroke-width="0.6"/><line x1="176" y1="230" x2="226" y2="180" stroke-width="0.6"/><line x1="184" y1="230" x2="234" y2="180" stroke-width="0.6"/><line x1="192" y1="230" x2="242" y2="180" stroke-width="0.6"/><line x1="200" y1="230" x2="250" y2="180" stroke-width="0.6"/><line x1="208" y1="230" x2="258" y2="180" stroke-width="0.6"/><line x1="216" y1="230" x2="260" y2="186" stroke-width="0.6"/><line x1="224" y1="230" x2="260" y2="194" stroke-width="0.6"/><line x1="232" y1="230" x2="260" y2="202" stroke-width="0.6"/><line x1="240" y1="230" x2="260" y2="210" stroke-width="0.6"/><line x1="248" y1="230" x2="260" y2="218" stroke-width="0.6"/><line x1="256" y1="230" x2="260" y2="226" stroke-width="0.6"/><line x1="260" y1="38" x2="300" y2="38" stroke-width="0.9"/><text x="304" y="42" text-anchor="start" fill="#000" stroke="none">W</text><line x1="260" y1="88" x2="300" y2="88" stroke-width="0.9"/><text x="304" y="92" text-anchor="start" fill="#000" stroke="none">X</text><line x1="260" y1="145" x2="300" y2="145" stroke-width="0.9"/><text x="304" y="149" text-anchor="start" fill="#000" stroke="none">Y</text><line x1="260" y1="205" x2="300" y2="205" stroke-width="0.9"/><text x="304" y="209" text-anchor="start" fill="#000" stroke="none">Z</text></g></svg>`,
+ objective: "1.7.6",
+              profile: {
+                XS: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "To find out whether drinking caffeine shortens reaction time."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State TWO variables which must be controlled.",
+              marks: 2,
+              objective: "1.7.6",
+              profile: {
+                XS: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Same person/same group of people",
+                  "Same ruler and dropping method",
+                  "Same volume/strength of drink",
+                  "Same time allowed after drinking",
+                  "Same hand used"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Suggest ONE limitation of the ruler-drop test.",
+              marks: 1,
+              objective: "1.6.5",
+              profile: {
+                XS: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "The catcher may anticipate the drop",
+                  "The ruler may not be dropped from exactly the same position",
+                  "Reading the ruler is imprecise"
+                ],
+                guidance: "Any one, 1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iv)",
+              prompt: "Explain why caffeine is classified as a stimulant.",
+              marks: 2,
+              objective: "1.7.6",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "It speeds up the activity of the nervous system (1)",
+                  "making a person more alert and increasing heart rate (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "Figure 4 shows a motor neurone.",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 185" width="460" height="185" role="img" aria-label="A motor neurone" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A motor neurone</title><rect x="0" y="0" width="460" height="185" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="70" cy="90" r="26" fill="#fff" stroke-width="1.5"/><circle cx="70" cy="90" r="8" fill="#000"/><path d="M88.4,108.4 l15.6,15.6 l1.5,7.9" fill="none" stroke-width="1"/><path d="M70.0,116.0 l0.0,22.0 l-4.5,6.6" fill="none" stroke-width="1"/><path d="M51.6,108.4 l-15.6,15.6 l-7.9,1.5" fill="none" stroke-width="1"/><path d="M44.0,90.0 l-22.0,0.0 l-6.6,-4.5" fill="none" stroke-width="1"/><path d="M51.6,71.6 l-15.6,-15.6 l-1.5,-7.9" fill="none" stroke-width="1"/><path d="M70.0,64.0 l-0.0,-22.0 l4.5,-6.6" fill="none" stroke-width="1"/><path d="M88.4,71.6 l15.6,-15.6 l7.9,-1.5" fill="none" stroke-width="1"/><line x1="96" y1="90" x2="380" y2="90" stroke-width="1.4"/><rect x="120" y="82" width="34" height="16" fill="#fff" rx="8" stroke-width="1"/><rect x="162" y="82" width="34" height="16" fill="#fff" rx="8" stroke-width="1"/><rect x="204" y="82" width="34" height="16" fill="#fff" rx="8" stroke-width="1"/><rect x="246" y="82" width="34" height="16" fill="#fff" rx="8" stroke-width="1"/><rect x="288" y="82" width="34" height="16" fill="#fff" rx="8" stroke-width="1"/><rect x="330" y="82" width="34" height="16" fill="#fff" rx="8" stroke-width="1"/><path d="M380,90 q20,-9.0 34,-18" fill="none" stroke-width="1"/><circle cx="414" cy="72" r="3" fill="#000"/><path d="M380,90 q20,-3.0 34,-6" fill="none" stroke-width="1"/><circle cx="414" cy="84" r="3" fill="#000"/><path d="M380,90 q20,3.0 34,6" fill="none" stroke-width="1"/><circle cx="414" cy="96" r="3" fill="#000"/><path d="M380,90 q20,9.0 34,18" fill="none" stroke-width="1"/><circle cx="414" cy="108" r="3" fill="#000"/><line x1="200" y1="130" x2="300" y2="130"/><polygon points="300,130 293.7,133 293.7,127" fill="#000" stroke-width="1"/><text x="250" y="148" text-anchor="middle" fill="#000" stroke="none" font-size="12">direction of impulse</text><line x1="70" y1="90" x2="40" y2="20" stroke-width="0.9"/><text x="36" y="24" text-anchor="end" fill="#000" stroke="none">P</text><line x1="290" y1="90" x2="300" y2="40" stroke-width="0.9"/><text x="304" y="44" text-anchor="start" fill="#000" stroke="none">Q</text><line x1="180" y1="98" x2="180" y2="170" stroke-width="0.9"/><text x="176" y="174" text-anchor="middle" fill="#000" stroke="none">R</text><line x1="420" y1="100" x2="430" y2="150" stroke-width="0.9"/><text x="426" y="154" text-anchor="middle" fill="#000" stroke="none">S</text></g></svg>`,
+          figure: "Figure 4. A motor neurone",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Identify the parts labelled P and Q.",
+              marks: 2,
+              objective: "1.6.5",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "labels",
+                keys: [
+                  "P",
+                  "Q"
+                ]
+              },
+              markScheme: {
+                points: [
+                  "P - cell body (1)",
+                  "Q - axon (nerve fibre) (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State the function of a motor neurone.",
+              marks: 3,
+              objective: "1.6.5",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "It carries nerve impulses (1)",
+                  "from the central nervous system (brain/spinal cord) (1)",
+                  "to an effector such as a muscle or gland (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-20",
+      module: 1,
+      kind: "structured",
+      title: "Dengue, vectors and immunity",
+      totalMarks: 15,
+      profileMarks: {
+        KC: 5,
+        UK: 10,
+        XS: 0
+      },
+      topics: [
+        {
+          topic: 7,
+          title: "Health"
+        }
+      ],
+      objectives: [
+        "1.7.8",
+        "1.7.9",
+        "1.7.2",
+        "1.7.3"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "There has been an outbreak of dengue fever in a Caribbean community. Dengue is caused by a virus carried by the Aedes aegypti mosquito. Figure 5 shows stages in the life cycle of a mosquito.",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 135" width="480" height="135" role="img" aria-label="Stages in the life cycle of a mosquito" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Stages in the life cycle of a mosquito</title><rect x="0" y="0" width="480" height="135" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="20" y1="60" x2="460" y2="60" stroke-width="0.8"/><text x="240" y="20" text-anchor="middle" fill="#000" stroke="none" font-size="11">water surface</text><ellipse cx="40" cy="56" rx="3" ry="5" fill="#fff" stroke-width="0.8"/><ellipse cx="47" cy="56" rx="3" ry="5" fill="#fff" stroke-width="0.8"/><ellipse cx="54" cy="56" rx="3" ry="5" fill="#fff" stroke-width="0.8"/><ellipse cx="61" cy="56" rx="3" ry="5" fill="#fff" stroke-width="0.8"/><ellipse cx="68" cy="56" rx="3" ry="5" fill="#fff" stroke-width="0.8"/><ellipse cx="75" cy="56" rx="3" ry="5" fill="#fff" stroke-width="0.8"/><text x="58" y="110" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">W</text><path d="M160,60 L160,68 Q158,80 162,95 L160,120 M154,70 L166,70" fill="none" stroke-width="1.3"/><line x1="156" y1="78" x2="164" y2="78" stroke-width="0.7"/><line x1="156" y1="86" x2="164" y2="86" stroke-width="0.7"/><line x1="156" y1="94" x2="164" y2="94" stroke-width="0.7"/><line x1="156" y1="102" x2="164" y2="102" stroke-width="0.7"/><line x1="156" y1="110" x2="164" y2="110" stroke-width="0.7"/><text x="185" y="110" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">X</text><path d="M280,62 Q300,62 305,80 Q305,100 285,102 Q270,100 272,88 Q290,92 290,80 Q286,70 272,68 Z" fill="#fff" stroke-width="1.3"/><line x1="282" y1="62" x2="280" y2="55" stroke-width="1"/><line x1="290" y1="62" x2="293" y2="55" stroke-width="1"/><text x="310" y="125" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">Y</text><ellipse cx="420" cy="45" rx="18" ry="5" fill="#fff"/><circle cx="400" cy="44" r="4" fill="#fff"/><line x1="396" y1="44" x2="382" y2="40"/><line x1="412" y1="49" x2="402" y2="62" stroke-width="0.8"/><line x1="420" y1="49" x2="414" y2="62" stroke-width="0.8"/><line x1="428" y1="49" x2="426" y2="62" stroke-width="0.8"/><path d="M420,40 q10,-18 24,-10 q-6,10 -24,10" fill="none" stroke-width="0.9"/><text x="420" y="110" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">Z</text></g></svg>`,
+          figure: "Figure 5. Stages in the life cycle of a mosquito",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Define the term 'vector'.",
+              marks: 1,
+              objective: "1.7.8",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "An organism that carries a pathogen from one host to another."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Name the stages labelled X and Y.",
+              marks: 2,
+              objective: "1.7.9",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "labels",
+                keys: [
+                  "X",
+                  "Y"
+                ]
+              },
+              markScheme: {
+                points: [
+                  "X - larva (1)",
+                  "Y - pupa (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Recommend TWO methods of control the community could use to reduce the number of mosquitoes. State the stage targeted by EACH method.",
+              marks: 4,
+              objective: "1.7.9",
+              profile: {
+                UK: 4
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 8
+              },
+              markScheme: {
+                points: [
+                  "Remove/cover containers holding water, e.g. tyres, drums (1) - eggs/larvae (1)",
+                  "Spray oil on stagnant water (1) - larvae and pupae (1)",
+                  "Put guppy fish in ponds (1) - larvae (1)",
+                  "Fog with insecticide/use screens and nets (1) - adults (1)"
+                ],
+                guidance: "1 mark for each method; 1 mark for each correct stage",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Explain why antibiotics cannot be used to treat dengue fever.",
+              marks: 2,
+              objective: "1.7.2",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Dengue is caused by a virus (1)",
+                  "antibiotics only kill bacteria and have no effect on viruses (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Distinguish between natural active immunity and artificial active immunity.",
+              marks: 2,
+              objective: "1.7.3",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Natural active immunity develops after the body is infected and makes its own antibodies (1)",
+                  "artificial active immunity develops after vaccination, when a vaccine stimulates antibody production (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "State TWO ways in which improper disposal of domestic waste increases the risk of disease in a community.",
+              marks: 2,
+              objective: "1.7.8",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Containers collect rainwater where mosquitoes breed",
+                  "Garbage attracts rats, flies and cockroaches",
+                  "Rotting waste contaminates water supplies",
+                  "Blocked drains cause stagnant water/flooding"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Name ONE disease spread by houseflies and ONE disease spread by rats.",
+              marks: 2,
+              objective: "1.7.8",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Houseflies: gastroenteritis/typhoid/cholera/dysentery (1)",
+                  "Rats: leptospirosis/plague (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-21",
+      module: 1,
+      kind: "practical",
+      title: "Water loss from leaves",
+      totalMarks: 20,
+      profileMarks: {
+        KC: 2,
+        UK: 6,
+        XS: 12
+      },
+      topics: [
+        {
+          topic: 4,
+          title: "Transport Systems"
+        }
+      ],
+      objectives: [
+        "1.4.1",
+        "1.1.2",
+        "1.4.2"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Four similar leaves, A, B, C and D, were treated as follows and hung up in a sunny laboratory. Vaseline (petroleum jelly) is waterproof. Each leaf was weighed at the start and after 24 hours. The results are shown in Table 1.",
+          svg: null,
+          figure: null,
+          table: {
+            title: "TABLE 1: LOSS IN MASS OF LEAVES",
+            headers: [
+              "Leaf",
+              "Treatment",
+              "Starting mass/g",
+              "Final mass/g",
+              "Loss in mass/g"
+            ],
+            rows: [
+              [
+                "A",
+                "no Vaseline",
+                "4.0",
+                "2.8",
+                ""
+              ],
+              [
+                "B",
+                "Vaseline on upper surface",
+                "4.1",
+                "3.0",
+                ""
+              ],
+              [
+                "C",
+                "Vaseline on lower surface",
+                "3.9",
+                "3.7",
+                ""
+              ],
+              [
+                "D",
+                "Vaseline on both surfaces",
+                "4.0",
+                "4.0",
+                ""
+              ]
+            ],
+            source: null
+          },
+          items: [
+            {
+              label: "(i)",
+              prompt: "Complete Table 1 by calculating the loss in mass of EACH leaf.",
+              marks: 2,
+              objective: "1.4.1",
+              profile: {
+                XS: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "A 1.2 g, B 1.1 g, C 0.2 g, D 0.0 g"
+                ],
+                guidance: "2 marks for all four correct; 1 mark for two or three correct",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Calculate the percentage loss in mass of leaf A. Show your working.",
+              marks: 2,
+              objective: "1.4.1",
+              profile: {
+                XS: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "calculation",
+                height: 110
+              },
+              markScheme: {
+                points: [
+                  "1.2 \xF7 4.0 \xD7 100 (1)",
+                  "= 30% (1)"
+                ],
+                guidance: "1 mark for working; 1 mark for answer",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Using the results, state which surface of the leaf loses MORE water. Give a reason for your answer.",
+              marks: 2,
+              objective: "1.4.1",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Lower surface (1)",
+                  "Leaf C, with the lower surface covered, lost much less mass than leaf B, with the upper surface covered (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iv)",
+              prompt: "Explain the difference in water loss between the two surfaces.",
+              marks: 2,
+              objective: "1.4.1",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "There are more stomata on the lower surface (1)",
+                  "water vapour diffuses out through the stomata (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(v)",
+              prompt: "State the purpose of leaf D in this experiment.",
+              marks: 1,
+              objective: "1.4.1",
+              profile: {
+                XS: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "It is a control, showing that no water is lost when both surfaces are sealed (the loss is through the surfaces)."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "Figure 1 shows the lower epidermis of a leaf.",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" width="420" height="240" role="img" aria-label="Lower epidermis of a leaf" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Lower epidermis of a leaf</title><rect x="0" y="0" width="420" height="240" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M68,80 Q90,52 112,80 Q90,108 68,80 Z" fill="#fff" stroke-width="1.4"/><path d="M78,80 Q90,72 102,80 Q90,88 78,80 Z" fill="none" stroke-width="1"/><circle cx="80" cy="72" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="98" cy="71" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="81" cy="89" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="100" cy="88" r="1.2" fill="#000" stroke-width="0.5"/><path d="M208,70 Q230,42 252,70 Q230,98 208,70 Z" fill="#fff" stroke-width="1.4"/><path d="M218,70 Q230,62 242,70 Q230,78 218,70 Z" fill="none" stroke-width="1"/><circle cx="220" cy="62" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="238" cy="61" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="221" cy="79" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="240" cy="78" r="1.2" fill="#000" stroke-width="0.5"/><path d="M138,170 Q160,142 182,170 Q160,198 138,170 Z" fill="#fff" stroke-width="1.4"/><path d="M148,170 Q160,162 172,170 Q160,178 148,170 Z" fill="none" stroke-width="1"/><circle cx="150" cy="162" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="168" cy="161" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="151" cy="179" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="170" cy="178" r="1.2" fill="#000" stroke-width="0.5"/><path d="M278,170 Q300,142 322,170 Q300,198 278,170 Z" fill="#fff" stroke-width="1.4"/><path d="M288,170 Q300,162 312,170 Q300,178 288,170 Z" fill="none" stroke-width="1"/><circle cx="290" cy="162" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="308" cy="161" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="291" cy="179" r="1.2" fill="#000" stroke-width="0.5"/><circle cx="310" cy="178" r="1.2" fill="#000" stroke-width="0.5"/><path d="M20,40 Q60,30 70,60" fill="none" stroke-width="0.8"/><path d="M110,40 Q160,20 200,50" fill="none" stroke-width="0.8"/><path d="M20,120 Q70,130 130,160" fill="none" stroke-width="0.8"/><path d="M200,110 Q250,120 270,150" fill="none" stroke-width="0.8"/><path d="M40,220 Q100,200 140,190" fill="none" stroke-width="0.8"/><path d="M190,200 Q240,220 280,195" fill="none" stroke-width="0.8"/><path d="M330,130 L360,60" fill="none" stroke-width="0.8"/><path d="M260,100 Q300,110 360,100" fill="none" stroke-width="0.8"/><line x1="246" y1="62" x2="380" y2="40" stroke-width="0.9"/><text x="384" y="44" text-anchor="start" fill="#000" stroke="none">X</text><line x1="232" y1="71" x2="380" y2="80" stroke-width="0.9"/><text x="384" y="84" text-anchor="start" fill="#000" stroke="none">Y</text></g></svg>`,
+          figure: "Figure 1. Lower epidermis of a leaf",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Make a large, labelled drawing of ONE stoma and its two guard cells as seen in Figure 1. Include a title. The actual width of the stoma and guard cells is 0.02 mm; measure your drawing and state its magnification.",
+              marks: 7,
+              objective: "1.1.2",
+              profile: {
+                XS: 7
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "drawing",
+                height: 260
+              },
+              markScheme: {
+                points: [
+                  "Drawing of a pore surrounded by two kidney-shaped guard cells",
+                  "Labels: guard cell, stoma (pore), chloroplast/nucleus",
+                  "Title below the drawing, e.g. 'Stoma in the lower epidermis of a leaf (surface view)'",
+                  "Magnification = drawing width \xF7 actual width (e.g. 60 mm \xF7 0.02 mm = \xD7 3 000)"
+                ],
+                guidance: "Clarity (2): clean continuous lines, no shading; large drawing. Accuracy (2): all structures present; correct proportions. Labelling (1): label lines ruled and not crossing, structures correctly named. Title (1): appropriate title below the drawing, with the view. Magnification (1): stated",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "State TWO conditions which increase the rate of transpiration.",
+              marks: 2,
+              objective: "1.4.1",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "High temperature",
+                  "Low humidity",
+                  "Wind/moving air",
+                  "High light intensity"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain why transpiration is important for the movement of water in a plant.",
+              marks: 2,
+              objective: "1.4.2",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Evaporation from the leaves produces a pull (transpiration pull) (1)",
+                  "which draws a column of water up the xylem from the roots (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-22",
+      module: 1,
+      kind: "structured",
+      title: "Pregnancy, birth and the placenta",
+      totalMarks: 15,
+      profileMarks: {
+        KC: 10,
+        UK: 5,
+        XS: 0
+      },
+      topics: [
+        {
+          topic: 3,
+          title: "Reproduction and Growth in Animals"
+        }
+      ],
+      objectives: [
+        "1.3.4",
+        "1.3.6"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Figure 2 shows a foetus in the uterus.",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 290" width="340" height="290" role="img" aria-label="A foetus in the uterus" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A foetus in the uterus</title><rect x="0" y="0" width="340" height="290" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M100,40 Q40,60 45,150 Q55,240 150,250 Q245,240 255,150 Q260,60 200,40 Q150,25 100,40 Z" fill="#fff" stroke-width="2"/><path d="M110,58 Q62,76 66,150 Q74,224 150,232 Q226,224 234,150 Q238,76 190,58 Q150,45 110,58 Z" fill="none" stroke-width="0.8" stroke-dasharray="4 3"/><path d="M170,50 Q205,48 230,70 Q215,80 170,64 Z" fill="#fff" stroke-width="1.2"/><circle cx="125" cy="190" r="26" fill="#fff" stroke-width="1.3"/><path d="M140,168 Q190,150 190,120 Q185,95 160,100 Q140,110 145,140" fill="#fff" stroke-width="1.3"/><path d="M190,68 Q200,110 170,120" fill="none" stroke-width="1.5"/><path d="M140,250 L140,280 M160,250 L160,280" fill="none" stroke-width="1.4"/><line x1="210" y1="66" x2="300" y2="50" stroke-width="0.9"/><text x="304" y="54" text-anchor="start" fill="#000" stroke="none">P</text><line x1="195" y1="95" x2="300" y2="100" stroke-width="0.9"/><text x="304" y="104" text-anchor="start" fill="#000" stroke="none">Q</text><line x1="220" y1="180" x2="300" y2="180" stroke-width="0.9"/><text x="304" y="184" text-anchor="start" fill="#000" stroke="none">R</text><line x1="158" y1="262" x2="300" y2="265" stroke-width="0.9"/><text x="304" y="269" text-anchor="start" fill="#000" stroke="none">S</text></g></svg>`,
+          figure: "Figure 2. A foetus in the uterus",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Identify the structures labelled P, Q and S.",
+              marks: 3,
+              objective: "1.3.4",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "labels",
+                keys: [
+                  "P",
+                  "Q",
+                  "S"
+                ]
+              },
+              markScheme: {
+                points: [
+                  "P - placenta",
+                  "Q - umbilical cord",
+                  "S - cervix (vagina)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State TWO substances which pass from the mother to the foetus and ONE which passes from the foetus to the mother.",
+              marks: 3,
+              objective: "1.3.4",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "Mother to foetus: oxygen, glucose, amino acids, antibodies, water, minerals (any two) (2)",
+                  "Foetus to mother: carbon dioxide / urea (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Explain why a pregnant woman who smokes may give birth to a baby with a low birth weight.",
+              marks: 3,
+              objective: "1.3.6",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "Carbon monoxide in smoke combines with haemoglobin (1)",
+                  "so less oxygen reaches the foetus through the placenta (1)",
+                  "the foetus respires and grows less, so it is smaller at birth (nicotine also narrows blood vessels) (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Describe what happens during the three stages of labour.",
+              marks: 3,
+              objective: "1.3.4",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "Stage 1: the uterus contracts and the cervix dilates (1)",
+                  "Stage 2: strong contractions push the baby out head first (crowning and expulsion) (1)",
+                  "Stage 3: the placenta separates and is expelled as the afterbirth (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State ONE use of ultrasound during pregnancy.",
+              marks: 1,
+              objective: "1.3.6",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Check the growth/position of the foetus",
+                  "Detect twins",
+                  "Detect abnormalities",
+                  "Estimate the due date"
+                ],
+                guidance: "Any one, 1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Explain why babies are immunised against diseases such as polio.",
+              marks: 2,
+              objective: "1.3.6",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "The vaccine stimulates the baby to make antibodies and memory cells (1)",
+                  "so the baby is protected if it later meets the disease (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-23",
+      module: 1,
+      kind: "practical",
+      title: "Microorganisms and milk",
+      totalMarks: 20,
+      profileMarks: {
+        KC: 4,
+        UK: 8,
+        XS: 8
+      },
+      topics: [
+        {
+          topic: 7,
+          title: "Health"
+        }
+      ],
+      objectives: [
+        "1.7.11",
+        "1.7.12",
+        "1.7.1",
+        "1.7.8"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Samples of fresh milk were kept at 4 \xB0C and at 30 \xB0C. The pH of each sample was measured every 12 hours. The results are shown in Table 2.",
+          svg: null,
+          figure: null,
+          table: {
+            title: "TABLE 2: pH OF MILK SAMPLES",
+            headers: [
+              "Time/hours",
+              "0",
+              "12",
+              "24",
+              "36",
+              "48"
+            ],
+            rows: [
+              [
+                "pH at 4 \xB0C",
+                "6.7",
+                "6.7",
+                "6.6",
+                "6.5",
+                "6.5"
+              ],
+              [
+                "pH at 30 \xB0C",
+                "6.7",
+                "6.2",
+                "5.4",
+                "4.8",
+                "4.5"
+              ]
+            ],
+            source: null
+          },
+          items: [
+            {
+              label: "(i)",
+              prompt: "On the grid provided, plot graphs of pH against time for BOTH samples on the same axes. Include a key.",
+              marks: 6,
+              objective: "1.7.11",
+              profile: {
+                XS: 6
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "graph",
+                height: 320,
+                x: "Time/hours",
+                y: "pH"
+              },
+              markScheme: {
+                points: [
+                  "Both sets of points correctly plotted (2)",
+                  "Key (1)",
+                  "Axes labelled with units (1)",
+                  "Suitable scale (1)",
+                  "Lines/curves drawn neatly (1)"
+                ],
+                guidance: "Award as shown",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Describe how the pH of the milk kept at 30 \xB0C changed over 48 hours.",
+              marks: 1,
+              objective: "1.7.11",
+              profile: {
+                UK: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "It decreased from 6.7 to 4.5 - the milk became more acidic."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Explain why the pH of the milk at 30 \xB0C fell.",
+              marks: 3,
+              objective: "1.7.11",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "Bacteria in the milk multiplied rapidly at the warm temperature (1)",
+                  "they fed on the milk sugar (lactose) (1)",
+                  "producing lactic acid, which lowered the pH (the milk soured) (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iv)",
+              prompt: "Explain why the pH of the milk at 4 \xB0C hardly changed.",
+              marks: 2,
+              objective: "1.7.12",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Low temperature slows down the growth/activity of bacteria (1)",
+                  "so very little acid was produced (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Pasteurisation involves heating milk to about 72 \xB0C for 15 seconds and cooling it quickly. Explain how this helps milk to stay fresh longer.",
+              marks: 2,
+              objective: "1.7.12",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Heating kills most of the bacteria in the milk (1)",
+                  "rapid cooling and refrigeration stop the remaining bacteria from multiplying (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State TWO conditions, other than temperature, which microorganisms need to grow.",
+              marks: 2,
+              objective: "1.7.11",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Moisture",
+                  "Nutrients/food",
+                  "Suitable pH",
+                  "Oxygen (for some)"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Name ONE food made using bacteria and milk.",
+              marks: 1,
+              objective: "1.7.1",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Yoghurt / cheese"
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "State TWO precautions to take when handling the milk samples in this experiment.",
+              marks: 2,
+              objective: "1.7.11",
+              profile: {
+                XS: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Do not taste the milk",
+                  "Keep containers covered",
+                  "Use a clean pH probe/rinse between readings",
+                  "Wash hands after handling",
+                  "Label samples clearly"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Distinguish between a pathogen and a vector.",
+              marks: 1,
+              objective: "1.7.8",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "A pathogen causes disease; a vector carries the pathogen from one host to another."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-24",
+      module: 1,
+      kind: "structured",
+      title: "Kidneys, skin and water balance",
+      totalMarks: 15,
+      profileMarks: {
+        KC: 8,
+        UK: 7,
+        XS: 0
+      },
+      topics: [
+        {
+          topic: 5,
+          title: "Excretion"
+        },
+        {
+          topic: 6,
+          title: "Sense Organs and Coordination"
+        }
+      ],
+      objectives: [
+        "1.5.2",
+        "1.6.6"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Figure 3 shows a longitudinal section through a kidney.",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 290" width="340" height="290" role="img" aria-label="Longitudinal section through a kidney" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Longitudinal section through a kidney</title><rect x="0" y="0" width="340" height="290" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M150,30 Q60,30 60,140 Q60,250 150,250 Q200,250 205,200 Q185,170 190,140 Q185,110 205,80 Q200,30 150,30 Z" fill="#fff" stroke-width="1.8"/><path d="M150,52 Q82,52 82,140 Q82,228 150,228 Q180,228 184,196" fill="none" stroke-width="0.9" stroke-dasharray="4 3"/><path d="M100,65 L150,74.0 L100,95 Z" fill="none" stroke-width="1"/><path d="M100,100 L150,113.0 L100,130 Z" fill="none" stroke-width="1"/><path d="M100,135 L150,152.0 L100,165 Z" fill="none" stroke-width="1"/><path d="M100,170 L150,191.0 L100,200 Z" fill="none" stroke-width="1"/><path d="M160,110 Q200,140 160,170 Q175,140 160,110" fill="#fff" stroke-width="1.1"/><path d="M195,135 Q230,140 240,200 L245,280 M200,150 Q222,152 228,205 L232,280" fill="none" stroke-width="1.3"/><line x1="85" y1="65" x2="30" y2="40" stroke-width="0.9"/><text x="26" y="44" text-anchor="end" fill="#000" stroke="none">P</text><line x1="115" y1="150" x2="30" y2="170" stroke-width="0.9"/><text x="26" y="174" text-anchor="end" fill="#000" stroke="none">Q</text><line x1="172" y1="140" x2="300" y2="110" stroke-width="0.9"/><text x="304" y="114" text-anchor="start" fill="#000" stroke="none">R</text><line x1="238" y1="250" x2="300" y2="250" stroke-width="0.9"/><text x="304" y="254" text-anchor="start" fill="#000" stroke="none">S</text></g></svg>`,
+          figure: "Figure 3. Section through a kidney",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Identify the parts labelled P, R and S.",
+              marks: 3,
+              objective: "1.5.2",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "labels",
+                keys: [
+                  "P",
+                  "R",
+                  "S"
+                ]
+              },
+              markScheme: {
+                points: [
+                  "P - cortex",
+                  "R - pelvis",
+                  "S - ureter"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State the main function of the kidneys in excretion.",
+              marks: 1,
+              objective: "1.5.2",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "To remove urea, excess water and excess salts from the blood (forming urine)."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "Table 3 shows the concentration of some substances in the blood plasma entering a kidney and in the urine of a healthy person.",
+          svg: null,
+          figure: null,
+          table: {
+            title: "TABLE 3: COMPOSITION OF PLASMA AND URINE",
+            headers: [
+              "Substance",
+              "Blood plasma/g per 100 cm\xB3",
+              "Urine/g per 100 cm\xB3"
+            ],
+            rows: [
+              [
+                "Protein",
+                "8.0",
+                "0.0"
+              ],
+              [
+                "Glucose",
+                "0.1",
+                "0.0"
+              ],
+              [
+                "Urea",
+                "0.03",
+                "2.0"
+              ],
+              [
+                "Salts",
+                "0.9",
+                "1.5"
+              ]
+            ],
+            source: null
+          },
+          items: [
+            {
+              label: "(i)",
+              prompt: "Explain why there is no protein in the urine.",
+              marks: 2,
+              objective: "1.5.2",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Protein molecules are too large (1)",
+                  "to pass through the walls of the glomerulus during ultrafiltration (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain why there is glucose in the plasma but none in the urine.",
+              marks: 2,
+              objective: "1.5.2",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Glucose is filtered out of the blood in the glomerulus (1)",
+                  "but all of it is reabsorbed back into the blood in the tubule (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Suggest why the concentration of urea is much higher in urine than in plasma.",
+              marks: 2,
+              objective: "1.5.2",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Most of the water filtered is reabsorbed (1)",
+                  "while urea is not reabsorbed, so it becomes concentrated in the urine (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Name the hormone which controls the water content of the blood, and the gland which releases it.",
+              marks: 2,
+              objective: "1.6.6",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Antidiuretic hormone (ADH) (1)",
+                  "Pituitary gland (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State TWO ways in which the skin helps to control body temperature when the body is too hot.",
+              marks: 2,
+              objective: "1.5.2",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Sweat glands produce more sweat which evaporates",
+                  "Blood vessels near the surface dilate so more heat is lost",
+                  "Hairs lie flat"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State ONE disadvantage of dialysis for a patient with kidney failure.",
+              marks: 1,
+              objective: "1.5.2",
+              profile: {
+                UK: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Time-consuming - several hours, several times a week",
+                  "Expensive",
+                  "Restricted diet and fluid intake",
+                  "Risk of infection"
+                ],
+                guidance: "Any one, 1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M1-P2-25",
+      module: 1,
+      kind: "practical",
+      title: "Soil composition",
+      totalMarks: 20,
+      profileMarks: {
+        KC: 4,
+        UK: 11,
+        XS: 5
+      },
+      topics: [
+        {
+          topic: 2,
+          title: "Reproduction and Growth in Plants"
+        }
+      ],
+      objectives: [
+        "1.2.6"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Students shook 100 cm\xB3 of soil from each of two gardens with water in measuring cylinders and left them to settle. They measured the height of each layer. The results are shown in Table 4.",
+          svg: null,
+          figure: null,
+          table: {
+            title: "TABLE 4: SEDIMENTATION OF SOIL SAMPLES",
+            headers: [
+              "Layer",
+              "Garden X/cm\xB3",
+              "Garden Y/cm\xB3"
+            ],
+            rows: [
+              [
+                "Gravel and coarse sand",
+                "55",
+                "10"
+              ],
+              [
+                "Fine sand and silt",
+                "30",
+                "25"
+              ],
+              [
+                "Clay",
+                "10",
+                "55"
+              ],
+              [
+                "Humus (floating)",
+                "5",
+                "10"
+              ]
+            ],
+            source: null
+          },
+          items: [
+            {
+              label: "(i)",
+              prompt: "On the grid provided, draw a bar chart to compare the composition of the two soils. Use a key.",
+              marks: 5,
+              objective: "1.2.6",
+              profile: {
+                XS: 5
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "graph",
+                height: 300,
+                x: "Layer",
+                y: "Volume/cm\xB3"
+              },
+              markScheme: {
+                points: [
+                  "Bars for both gardens for each layer, correct heights (2)",
+                  "Key to distinguish X and Y (1)",
+                  "Axes labelled (1)",
+                  "Suitable scale and equal bar widths (1)"
+                ],
+                guidance: "Award as shown",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain why gravel and sand settle at the bottom while humus floats.",
+              marks: 2,
+              objective: "1.2.6",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Gravel and sand particles are large and heavy/dense, so they settle first (1)",
+                  "humus is organic matter with a low density, so it floats (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Identify the type of soil in EACH garden.",
+              marks: 2,
+              objective: "1.2.6",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Garden X - sandy soil (1)",
+                  "Garden Y - clay soil (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "The owner of garden Y finds that water collects on the surface after rain and his vegetables grow poorly.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Explain why the vegetables grow poorly in garden Y.",
+              marks: 3,
+              objective: "1.2.6",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "Clay has very small particles and pore spaces, so it drains poorly and becomes waterlogged (1)",
+                  "the air spaces fill with water, so roots lack oxygen (1)",
+                  "and cannot respire to absorb minerals, so growth is poor (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Suggest TWO ways to improve the soil in garden Y.",
+              marks: 2,
+              objective: "1.2.6",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Add compost/manure/humus",
+                  "Add sand",
+                  "Dig drainage channels",
+                  "Plough/till to aerate",
+                  "Add lime to break up clay (flocculation)"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "Figure 4 shows a soil profile.",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 245" width="360" height="245" role="img" aria-label="Soil profile" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Soil profile</title><rect x="0" y="0" width="360" height="245" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="90" y="20" width="170" height="210" fill="none"/><path d="M90,55 q40,-6 85,0 q45,6 85,0" fill="none" stroke-width="1"/><path d="M90,115 q40,-6 85,0 q45,6 85,0" fill="none" stroke-width="1"/><path d="M90,175 q40,-6 85,0 q45,6 85,0" fill="none" stroke-width="1"/><circle cx="116.5" cy="46.2" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="217.2" cy="31.4" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="174.3" cy="36.2" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="199.3" cy="44.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="110" cy="25.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="228.7" cy="35.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="217" cy="25.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="166.3" cy="43" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="131.6" cy="48.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="239.2" cy="25.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="99.1" cy="38.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="245.3" cy="34.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="129.7" cy="35.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="99.6" cy="30.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="165.1" cy="37.4" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="132.3" cy="30.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="130" cy="36.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="141.4" cy="25.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="229" cy="38.9" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="197.8" cy="29.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="253.8" cy="46.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="114.3" cy="33.3" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="210.4" cy="42.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="244.8" cy="35.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="227.8" cy="41.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="143.5" cy="39.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="236.2" cy="46.2" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="175.8" cy="39.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="100.5" cy="31.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="222.6" cy="35.4" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="122.7" cy="38.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="207.5" cy="41.9" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="155" cy="36" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="176.3" cy="44.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="178.4" cy="34.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="173.4" cy="25.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="102" cy="42.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="252.3" cy="39.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="158" cy="29.3" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="175.4" cy="49.6" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="218.3" cy="38.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="232.6" cy="30.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="177.2" cy="48.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="187.4" cy="36.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="138.1" cy="38.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="248.1" cy="25.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="220.4" cy="45.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="236.8" cy="43.5" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="224.5" cy="38" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="184.8" cy="35.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="104" cy="46.8" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="186.2" cy="30" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="175.8" cy="37.1" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="152.1" cy="33.7" r="1.1" fill="#000" stroke-width="0.5"/><circle cx="181.2" cy="40.6" r="1.1" fill="#000" stroke-width="0.5"/><path d="M105,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M132,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M159,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M186,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M213,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><path d="M240,30 q3,8 -2,16" fill="none" stroke-width="0.7"/><circle cx="248" cy="104.7" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="104" cy="65.8" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="228.7" cy="95.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="202.2" cy="75.9" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="192" cy="89.3" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="188" cy="69.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="163.9" cy="79.7" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="210.7" cy="106.8" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="246.9" cy="86.5" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="166.2" cy="74.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="100.7" cy="63.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="169.4" cy="76.3" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="155.8" cy="102.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="179.1" cy="87.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="132.8" cy="63.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="147" cy="68.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="176.6" cy="106.9" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="202.9" cy="70.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="238" cy="97.9" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="212.5" cy="102.8" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="217.1" cy="97.5" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="151.6" cy="106.1" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="248.9" cy="69.3" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="215.6" cy="94.2" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="168.8" cy="85.9" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="173.4" cy="103.6" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="175.1" cy="99.4" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="151.6" cy="101.7" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="239" cy="82.7" r="0.8" fill="#000" stroke-width="0.5"/><circle cx="185.8" cy="103.4" r="0.8" fill="#000" stroke-width="0.5"/><path d="M110,140 l6.0,-10 l10,3.0 l4.0,8.0 l-8.0,5.0 z" fill="#fff" stroke-width="1"/><path d="M156,150 l8.4,-14 l14,4.2 l5.6000000000000005,11.200000000000001 l-11.200000000000001,7.0 z" fill="#fff" stroke-width="1"/><path d="M216,135 l5.3999999999999995,-9 l9,2.6999999999999997 l3.6,7.2 l-7.2,4.5 z" fill="#fff" stroke-width="1"/><path d="M144,165 l3.5999999999999996,-6 l6,1.7999999999999998 l2.4000000000000004,4.800000000000001 l-4.800000000000001,3.0 z" fill="#fff" stroke-width="1"/><path d="M227,160 l4.8,-8 l8,2.4 l3.2,6.4 l-6.4,4.0 z" fill="#fff" stroke-width="1"/><rect x="90" y="180" width="170" height="50" fill="none"/><line x1="90" y1="188" x2="98" y2="180" stroke-width="0.6"/><line x1="90" y1="196" x2="106" y2="180" stroke-width="0.6"/><line x1="90" y1="204" x2="114" y2="180" stroke-width="0.6"/><line x1="90" y1="212" x2="122" y2="180" stroke-width="0.6"/><line x1="90" y1="220" x2="130" y2="180" stroke-width="0.6"/><line x1="90" y1="228" x2="138" y2="180" stroke-width="0.6"/><line x1="96" y1="230" x2="146" y2="180" stroke-width="0.6"/><line x1="104" y1="230" x2="154" y2="180" stroke-width="0.6"/><line x1="112" y1="230" x2="162" y2="180" stroke-width="0.6"/><line x1="120" y1="230" x2="170" y2="180" stroke-width="0.6"/><line x1="128" y1="230" x2="178" y2="180" stroke-width="0.6"/><line x1="136" y1="230" x2="186" y2="180" stroke-width="0.6"/><line x1="144" y1="230" x2="194" y2="180" stroke-width="0.6"/><line x1="152" y1="230" x2="202" y2="180" stroke-width="0.6"/><line x1="160" y1="230" x2="210" y2="180" stroke-width="0.6"/><line x1="168" y1="230" x2="218" y2="180" stroke-width="0.6"/><line x1="176" y1="230" x2="226" y2="180" stroke-width="0.6"/><line x1="184" y1="230" x2="234" y2="180" stroke-width="0.6"/><line x1="192" y1="230" x2="242" y2="180" stroke-width="0.6"/><line x1="200" y1="230" x2="250" y2="180" stroke-width="0.6"/><line x1="208" y1="230" x2="258" y2="180" stroke-width="0.6"/><line x1="216" y1="230" x2="260" y2="186" stroke-width="0.6"/><line x1="224" y1="230" x2="260" y2="194" stroke-width="0.6"/><line x1="232" y1="230" x2="260" y2="202" stroke-width="0.6"/><line x1="240" y1="230" x2="260" y2="210" stroke-width="0.6"/><line x1="248" y1="230" x2="260" y2="218" stroke-width="0.6"/><line x1="256" y1="230" x2="260" y2="226" stroke-width="0.6"/><line x1="260" y1="38" x2="300" y2="38" stroke-width="0.9"/><text x="304" y="42" text-anchor="start" fill="#000" stroke="none">W</text><line x1="260" y1="88" x2="300" y2="88" stroke-width="0.9"/><text x="304" y="92" text-anchor="start" fill="#000" stroke="none">X</text><line x1="260" y1="145" x2="300" y2="145" stroke-width="0.9"/><text x="304" y="149" text-anchor="start" fill="#000" stroke="none">Y</text><line x1="260" y1="205" x2="300" y2="205" stroke-width="0.9"/><text x="304" y="209" text-anchor="start" fill="#000" stroke="none">Z</text></g></svg>`,
           figure: "Figure 4. A soil profile",
           table: null,
           items: [
@@ -1982,1972 +3591,4 @@ var is_module2_default = {
       optionsAreSvg: false,
       options: {
         A: "potential energy of water \u2192 kinetic energy \u2192 electrical energy",
-        B: "chemical \u2192 heat \u2192 electrical",
-        C: "nuclear \u2192 heat \u2192 electrical",
-        D: "light \u2192 electrical"
-      },
-      answer: "A",
-      explanation: "Water stored at a height falls, turning turbines and generators.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-211",
-      module: 2,
-      objective: {
-        code: "2.1.2",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "discuss the inter-conversion and conservation of mass energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A filament lamp is supplied with 100 J of electrical energy and gives out 10 J of light energy. How much energy is wasted as heat?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "10 J",
-        B: "90 J",
-        C: "100 J",
-        D: "110 J"
-      },
-      answer: "B",
-      explanation: "Energy is conserved: 100 J - 10 J = 90 J is lost as heat.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-212",
-      module: 2,
-      objective: {
-        code: "2.1.2",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "discuss the inter-conversion and conservation of mass energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The efficiency of the lamp described above is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "10%",
-        B: "50%",
-        C: "90%",
-        D: "100%"
-      },
-      answer: "A",
-      explanation: "Efficiency = useful output \xF7 input \xD7 100 = 10 \xF7 100 \xD7 100 = 10%.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-213",
-      module: 2,
-      objective: {
-        code: "2.1.2",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "discuss the inter-conversion and conservation of mass energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following energy changes occurs in a loudspeaker?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Sound \u2192 electrical",
-        B: "Chemical \u2192 sound",
-        C: "Light \u2192 sound",
-        D: "Electrical \u2192 sound"
-      },
-      answer: "D",
-      explanation: "A loudspeaker changes electrical signals into sound; a microphone does the reverse.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-214",
-      module: 2,
-      objective: {
-        code: "2.1.2",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "discuss the inter-conversion and conservation of mass energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "In a car engine, the energy stored in gasoline is changed MAINLY into",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "kinetic energy and heat",
-        B: "light energy only",
-        C: "nuclear energy",
-        D: "sound energy only"
-      },
-      answer: "A",
-      explanation: "Most of the chemical energy becomes heat; some becomes kinetic energy of the car.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-215",
-      module: 2,
-      objective: {
-        code: "2.1.2",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "discuss the inter-conversion and conservation of mass energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following is an effect of internal combustion engines on the environment?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Increase in oxygen levels",
-        B: "Air pollution by carbon monoxide and nitrogen oxides",
-        C: "Reduction of greenhouse gases",
-        D: "Cleaner rivers"
-      },
-      answer: "B",
-      explanation: "Burning fuel releases harmful gases and CO\u2082.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-216",
-      module: 2,
-      objective: {
-        code: "2.1.2",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "discuss the inter-conversion and conservation of mass energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following would REDUCE the harmful effects of vehicles on the environment?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Driving larger vehicles",
-        B: "Removing catalytic converters",
-        C: "Using leaded fuel",
-        D: "Using public transport and car-pooling"
-      },
-      answer: "D",
-      explanation: "Fewer vehicles on the road means less fuel burnt.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-217",
-      module: 2,
-      objective: {
-        code: "2.1.2",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "discuss the inter-conversion and conservation of mass energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Electric and hybrid cars help to reduce pollution in cities because they",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "produce little or no exhaust gases while driving",
-        B: "use more gasoline",
-        C: "have no batteries",
-        D: "run on coal"
-      },
-      answer: "A",
-      explanation: "Electric motors produce no exhaust at the point of use.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-015",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which of the following is the word equation for photosynthesis?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Glucose + oxygen \u2192 carbon dioxide + water + energy",
-        B: "Glucose \u2192 alcohol + carbon dioxide + energy",
-        C: "Carbon dioxide + water \u2192 glucose + oxygen (in light, with chlorophyll)",
-        D: "Carbon dioxide + oxygen \u2192 glucose + water"
-      },
-      answer: "C",
-      explanation: "Photosynthesis: carbon dioxide + water \u2192 glucose + oxygen, using light energy absorbed by chlorophyll.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-016",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The balanced chemical equation for photosynthesis is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "C\u2086H\u2081\u2082O\u2086 + 6O\u2082 \u2192 6CO\u2082 + 6H\u2082O",
-        B: "6CO\u2082 + 6H\u2082O \u2192 C\u2086H\u2081\u2082O\u2086 + 6O\u2082",
-        C: "6CO\u2082 + 6O\u2082 \u2192 C\u2086H\u2081\u2082O\u2086 + 6H\u2082O",
-        D: "C\u2086H\u2081\u2082O\u2086 \u2192 2C\u2082H\u2085OH + 2CO\u2082"
-      },
-      answer: "B",
-      explanation: "6CO\u2082 + 6H\u2082O \u2192 C\u2086H\u2081\u2082O\u2086 + 6O\u2082 (light and chlorophyll are needed).",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-017",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "During photosynthesis, light energy is converted into",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "heat energy",
-        B: "kinetic energy",
-        C: "chemical energy",
-        D: "electrical energy"
-      },
-      answer: "C",
-      explanation: "Light energy is stored as chemical energy in glucose.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-018",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The pigment which absorbs light for photosynthesis is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "haemoglobin",
-        B: "melanin",
-        C: "starch",
-        D: "chlorophyll"
-      },
-      answer: "D",
-      explanation: "Chlorophyll, in chloroplasts, absorbs light energy.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-019",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The chemical used to test a leaf for the presence of starch is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "iodine solution",
-        B: "Benedict's solution",
-        C: "limewater",
-        D: "biuret reagent"
-      },
-      answer: "A",
-      explanation: "Iodine turns blue-black in the presence of starch.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-020",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A variegated leaf has green and white parts. After exposure to light and testing with iodine, ONLY the green parts turned blue-black. This shows that photosynthesis requires",
-      statements: null,
-      after: null,
-      stimulus: {
-        lead: "to the following diagram of a variegated leaf.",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 200" width="440" height="200" role="img" aria-label="A variegated leaf" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A variegated leaf</title><rect x="0" y="0" width="440" height="200" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M60,110 Q120,20 260,40 Q360,60 400,110 Q360,160 260,180 Q120,200 60,110 Z" fill="#fff" stroke-width="1.6"/><path d="M90,110 Q130,60 250,55 Q330,65 370,110 Q330,150 250,165 Q130,160 90,110 Z" fill="none" stroke-width="1" stroke-dasharray="3 3"/><circle cx="219.5" cy="114.2" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="323.3" cy="107.6" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="231.7" cy="116.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="160.6" cy="110.8" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="258.6" cy="130.5" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="140.7" cy="96.2" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="139.9" cy="131.7" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="272.6" cy="77.9" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="336.1" cy="142.5" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="263.9" cy="118.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="154.6" cy="76.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="236.2" cy="79.2" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="161.8" cy="91.9" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="126.6" cy="107.5" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="216.9" cy="134" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="234.2" cy="119.8" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="230" cy="121.4" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="220.6" cy="94.5" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="339.5" cy="144.7" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="304.8" cy="124.5" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="189.4" cy="91.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="183.6" cy="79.9" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="288.6" cy="103" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="306.2" cy="102.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="330.8" cy="134.3" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="120.1" cy="89.7" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="320.3" cy="107.9" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="335.7" cy="102.8" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="136.1" cy="119.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="291.3" cy="93.9" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="139.2" cy="98.3" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="332.1" cy="128.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="146" cy="92.2" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="142.2" cy="79.2" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="295.3" cy="87.4" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="243" cy="106.3" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="162" cy="126.2" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="148.8" cy="120.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="145.6" cy="104.5" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="166.8" cy="93.9" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="333.6" cy="131.2" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="186.9" cy="136.9" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="166.4" cy="102.6" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="308" cy="119.9" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="142.1" cy="144.3" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="166.9" cy="93.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="290" cy="98" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="185.2" cy="80.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="139.8" cy="115.8" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="173.5" cy="117.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="201.8" cy="106.7" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="331" cy="108.9" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="246.4" cy="135.7" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="160.2" cy="85.8" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="319.9" cy="132.2" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="174.9" cy="88.3" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="282.7" cy="140.8" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="163.2" cy="141.5" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="314.1" cy="117.2" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="212.7" cy="82.3" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="128.5" cy="142.4" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="172.4" cy="124.3" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="176.5" cy="132.7" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="251.2" cy="95.5" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="158.6" cy="125.4" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="135.1" cy="91" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="243.1" cy="134.7" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="255.1" cy="94.6" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="321.8" cy="89.3" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="123.6" cy="93.8" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="218.1" cy="79.2" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="158.8" cy="100.8" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="245.9" cy="84.2" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="199.7" cy="137.4" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="335.7" cy="121" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="272.1" cy="115.9" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="150.9" cy="77.5" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="123.9" cy="138.7" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="274.2" cy="142.4" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="124.7" cy="119.5" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="226.1" cy="126.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="190.2" cy="145" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="136.6" cy="113.2" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="282.1" cy="138" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="282.2" cy="124.3" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="294.5" cy="139.1" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="197.4" cy="123" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="318.2" cy="136" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="211.8" cy="130.3" r="0.9" fill="#000" stroke-width="0.5"/><circle cx="310" cy="115.1" r="0.9" fill="#000" stroke-width="0.5"/><line x1="40" y1="110" x2="400" y2="110" stroke-width="1.2"/><line x1="250" y1="90" x2="330" y2="20" stroke-width="0.9"/><text x="334" y="24" text-anchor="start" fill="#000" stroke="none">green part</text><line x1="78" y1="115" x2="40" y2="170" stroke-width="0.9"/><text x="44" y="174" text-anchor="start" fill="#000" stroke="none">white part</text></g></svg>`,
-        table: null
-      },
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "light",
-        B: "water",
-        C: "carbon dioxide",
-        D: "chlorophyll"
-      },
-      answer: "D",
-      explanation: "White parts lack chlorophyll and did not make starch.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-021",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The gas collected in the test tube during the pondweed experiment relights a glowing splint. The gas is",
-      statements: null,
-      after: null,
-      stimulus: {
-        lead: "to the following diagram of an experiment using pondweed.",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250" role="img" aria-label="Bubbles of gas given off by pondweed" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Bubbles of gas given off by pondweed</title><rect x="0" y="0" width="400" height="250" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="120,60 120,230 300,230 300,60" fill="none"/><line x1="120" y1="60" x2="115" y2="56"/><line x1="120" y1="80" x2="300" y2="80" stroke-width="0.9"/><polyline points="155,170 206,210 206,210" fill="none"/><polyline points="265,170 214,210 214,210" fill="none"/><polyline points="155,170 265,170" fill="none"/><path d="M196,40 L196,136.0 A14.0,14.0 0 0 0 224,136.0 L224,40" fill="none"/><line x1="196" y1="55" x2="224" y2="55" stroke-width="0.8"/><circle cx="210" cy="120" r="3" fill="none"/><circle cx="206" cy="100" r="3" fill="none"/><circle cx="213" cy="80" r="3" fill="none"/><circle cx="209" cy="140" r="3" fill="none"/><circle cx="211" cy="160" r="3" fill="none"/><path d="M190,225 q-20,-20 -10,-50 M200,225 q10,-25 0,-50 M215,225 q25,-20 15,-50 M230,225 q20,-15 25,-40" fill="none" stroke-width="1.2"/><line x1="248" y1="195" x2="330" y2="205" stroke-width="0.9"/><text x="334" y="209" text-anchor="start" fill="#000" stroke="none">pondweed</text><line x1="224" y1="90" x2="330" y2="90" stroke-width="0.9"/><text x="334" y="94" text-anchor="start" fill="#000" stroke="none">gas</text><line x1="40" y1="110" x2="110" y2="110"/><polygon points="110,110 102.7,113.4 102.7,106.6" fill="#000" stroke-width="1"/><text x="40" y="100" text-anchor="start" fill="#000" stroke="none">light</text></g></svg>`,
-        table: null
-      },
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "oxygen",
-        B: "hydrogen",
-        C: "nitrogen",
-        D: "carbon dioxide"
-      },
-      answer: "A",
-      explanation: "Oxygen, a product of photosynthesis, relights a glowing splint.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-022",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Plants convert much of the glucose made in photosynthesis into starch MAINLY because starch",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "is sweeter than glucose",
-        B: "is insoluble and can be stored without affecting osmosis in the cells",
-        C: "passes easily through cell membranes",
-        D: "gives the leaf its green colour"
-      },
-      answer: "B",
-      explanation: "Starch is insoluble, so it can be stored in large amounts without drawing water into cells by osmosis. Glucose is also used to make cellulose and, with nitrates, proteins.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-218",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The raw materials (substrates) for photosynthesis are",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "glucose and oxygen",
-        B: "starch and water",
-        C: "oxygen and water",
-        D: "carbon dioxide and water"
-      },
-      answer: "D",
-      explanation: "CO\u2082 from air and water from soil are used.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-219",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Photosynthesis takes place MAINLY in the",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "roots",
-        B: "leaves",
-        C: "flowers",
-        D: "seeds"
-      },
-      answer: "B",
-      explanation: "Leaves have most chloroplasts and are adapted to absorb light.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-220",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Plants in a greenhouse grew faster when extra carbon dioxide was added to the air. This is because carbon dioxide",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "is a raw material for photosynthesis",
-        B: "kills insects",
-        C: "increases the temperature only",
-        D: "provides nitrogen"
-      },
-      answer: "A",
-      explanation: "More CO\u2082 increases the rate of photosynthesis if light and temperature are suitable.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-221",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following is NOT needed for photosynthesis?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Light",
-        B: "Oxygen",
-        C: "Chlorophyll",
-        D: "Carbon dioxide"
-      },
-      answer: "B",
-      explanation: "Oxygen is a product, not a requirement.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-222",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "During a starch test, the leaf is placed in hot ethanol in order to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "kill bacteria",
-        B: "soften the leaf",
-        C: "remove the chlorophyll",
-        D: "add starch"
-      },
-      answer: "C",
-      explanation: "Removing the green colour makes the iodine colour change easy to see.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-223",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The ethanol used in the starch test is heated in a water bath and NOT directly over a flame because ethanol",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "is toxic",
-        B: "freezes easily",
-        C: "is acidic",
-        D: "is flammable"
-      },
-      answer: "D",
-      explanation: "Ethanol vapour catches fire easily.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-224",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following shows that light energy is converted to chemical energy in photosynthesis?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Glucose is produced and stored as starch",
-        B: "Oxygen is absorbed",
-        C: "Water is released",
-        D: "Heat is given out"
-      },
-      answer: "A",
-      explanation: "The energy is stored in the chemical bonds of glucose.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-023",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following shows the colours observed at X and Y after the leaf was tested with iodine solution?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-FOIL",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "X blue-black, Y blue-black",
-        B: "X brown, Y blue-black",
-        C: "X blue-black, Y brown",
-        D: "X brown, Y brown"
-      },
-      answer: "C",
-      explanation: "X received light and made starch (blue-black). Y was covered, so no photosynthesis and iodine stays brown.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-024",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "This experiment shows that",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-FOIL",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "chlorophyll is needed for photosynthesis",
-        B: "carbon dioxide is needed for photosynthesis",
-        C: "oxygen is produced in photosynthesis",
-        D: "light is needed for photosynthesis"
-      },
-      answer: "D",
-      explanation: "The only difference between X and Y was light.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-025",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Before the experiment, the plant was kept in the dark for 48 hours in order to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-FOIL",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "remove the starch already present in the leaves",
-        B: "kill the leaf",
-        C: "increase the chlorophyll",
-        D: "allow the leaves to absorb more water"
-      },
-      answer: "A",
-      explanation: "Destarching ensures any starch found was made during the experiment.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-225",
-      module: 2,
-      objective: {
-        code: "2.1.3",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "examine the role of photosynthesis in the conversion of energy"
-      },
-      profile: "UK",
-      difficulty: 3,
-      stem: "Above a light intensity of about 6 units the rate of photosynthesis stops increasing. The MOST likely reason is that",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-RATE",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the plant has no chlorophyll",
-        B: "light is not needed any more",
-        C: "the plant is respiring too fast",
-        D: "another factor such as carbon dioxide or temperature is limiting the rate"
-      },
-      answer: "D",
-      explanation: "Once light is plentiful, another factor becomes limiting.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-026",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The arrows in a food chain show the direction of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "movement of the animals",
-        B: "flow of energy",
-        C: "flow of water",
-        D: "increase in size"
-      },
-      answer: "B",
-      explanation: "Arrows point from the organism eaten to the one that eats it, showing the flow of energy.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-027",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Bacteria and fungi which break down dead organisms are called",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "producers",
-        B: "herbivores",
-        C: "decomposers",
-        D: "carnivores"
-      },
-      answer: "C",
-      explanation: "Decomposers recycle nutrients from dead matter.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-028",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "All the organisms of different species living in the same area at the same time make up a",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "population",
-        B: "community",
-        C: "habitat",
-        D: "niche"
-      },
-      answer: "B",
-      explanation: "A community is all the populations of different species in an area; a population is one species.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-029",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Only about 10 per cent of the energy at one trophic level is passed to the next. Most of the energy is lost as",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "light",
-        B: "sound",
-        C: "chemical energy in the soil",
-        D: "heat from respiration"
-      },
-      answer: "D",
-      explanation: "Much energy is used in respiration and lost as heat; some is in parts not eaten or in faeces.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-030",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A pyramid of numbers for the food chain mango tree \u2192 caterpillars \u2192 birds would be",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "wider at the top than the bottom",
-        B: "narrow at the base and wide in the middle",
-        C: "the same width at every level",
-        D: "wide at the base and narrow at the top"
-      },
-      answer: "B",
-      explanation: "One large tree supports many caterpillars, which support fewer birds, so the base bar is narrow.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-031",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which type of ecological pyramid is ALWAYS wider at the base than at the top?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Pyramid of energy",
-        B: "Pyramid of numbers",
-        C: "Pyramid of biomass",
-        D: "Pyramid of size"
-      },
-      answer: "A",
-      explanation: "Energy is always lost at each level, so a pyramid of energy is never inverted.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-032",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Food chains in the sea usually begin with",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "fish",
-        B: "zooplankton",
-        C: "phytoplankton",
-        D: "sharks"
-      },
-      answer: "C",
-      explanation: "Phytoplankton (microscopic algae) are the main producers in aquatic ecosystems.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-226",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A herbivore is an animal which feeds on",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "other animals only",
-        B: "plants only",
-        C: "plants and animals",
-        D: "dead matter"
-      },
-      answer: "B",
-      explanation: "Herbivores such as goats and cows eat plants.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-227",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "An omnivore eats",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "both plants and animals",
-        B: "only plants",
-        C: "only meat",
-        D: "only dead matter"
-      },
-      answer: "A",
-      explanation: "Humans and pigs are omnivores.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-228",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A group of organisms of the same species living in one area is a",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "community",
-        B: "ecosystem",
-        C: "habitat",
-        D: "population"
-      },
-      answer: "D",
-      explanation: "A population is one species; a community is many species.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-229",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The place where an organism lives is its",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "niche",
-        B: "habitat",
-        C: "population",
-        D: "trophic level"
-      },
-      answer: "B",
-      explanation: "A habitat is the natural home of an organism.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-230",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "An ecosystem consists of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "only the plants in an area",
-        B: "only the animals in an area",
-        C: "a single population",
-        D: "a community of organisms together with their non-living environment"
-      },
-      answer: "D",
-      explanation: "Ecosystems include both living and non-living parts.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-231",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "In the food chain grass \u2192 grasshopper \u2192 lizard \u2192 hawk, the lizard is a",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "producer",
-        B: "secondary consumer",
-        C: "primary consumer",
-        D: "tertiary consumer"
-      },
-      answer: "B",
-      explanation: "It eats the primary consumer.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-232",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "In the food chain above, which organism occupies the SECOND trophic level?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Grass",
-        B: "Lizard",
-        C: "Grasshopper",
-        D: "Hawk"
-      },
-      answer: "C",
-      explanation: "Producers are trophic level 1; primary consumers are level 2.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-233",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Producers in a food chain receive their energy from",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the sun",
-        B: "the soil",
-        C: "decomposers",
-        D: "water"
-      },
-      answer: "A",
-      explanation: "They capture light energy by photosynthesis.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-234",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Shark populations decline when too many are caught. Which of the following would MOST likely happen to the numbers of small fish they eat?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "They would decrease at once",
-        B: "They would stay the same",
-        C: "They would die out",
-        D: "They would increase at first"
-      },
-      answer: "D",
-      explanation: "Fewer predators means more prey survive; this upsets ecological balance.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-235",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following explains why the numbers of top carnivores are usually small?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "They have too much food",
-        B: "Much energy is lost at each trophic level so little is available to them",
-        C: "They are producers",
-        D: "They do not respire"
-      },
-      answer: "B",
-      explanation: "Only about 10% of energy passes to the next level.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-236",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 3,
-      stem: "Pollution of a coastal area with pesticides kills many zooplankton. The FIRST effect on the food chain phytoplankton \u2192 zooplankton \u2192 small fish is likely to be",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "a decrease in phytoplankton",
-        B: "an increase in small fish",
-        C: "an increase in phytoplankton and a decrease in small fish",
-        D: "no change"
-      },
-      answer: "C",
-      explanation: "Less grazing lets phytoplankton increase; less food means fewer small fish.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-033",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following organisms are primary consumers?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-WEB",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Grass and cabbage",
-        B: "Frog and bird",
-        C: "Snake and hawk",
-        D: "Caterpillar and grasshopper"
-      },
-      answer: "D",
-      explanation: "Caterpillars and grasshoppers feed directly on the producers.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-034",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which organism is a tertiary consumer in the food chain grass \u2192 caterpillar \u2192 frog \u2192 snake?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-WEB",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Caterpillar",
-        B: "Frog",
-        C: "Snake",
-        D: "Grass"
-      },
-      answer: "C",
-      explanation: "Grass is the producer, caterpillar primary, frog secondary and snake tertiary consumer.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-035",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "If all the frogs died from a disease, the number of snakes would MOST likely",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-WEB",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "increase",
-        B: "stay the same",
-        C: "double",
-        D: "decrease"
-      },
-      answer: "D",
-      explanation: "Frogs are the snakes' only food in this web, so snakes would decrease.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-237",
-      module: 2,
-      objective: {
-        code: "2.1.4",
-        topic: 1,
-        topicTitle: "Conservation of Energy",
-        text: "analyse the transfer of energy in the environment"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The pyramid has a narrow base because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M2-S-PYR",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "there are more trees than caterpillars",
-        B: "one large producer can support many small consumers",
-        C: "energy increases up the chain",
-        D: "birds eat mango trees"
-      },
-      answer: "B",
-      explanation: "Numbers do not take size into account; a pyramid of biomass would have a wide base.",
-      topic: 1
-    },
-    {
-      id: "IS-M2-P1-036",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which of the following nutrients is the MAIN source of energy in the diet?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Carbohydrates",
-        B: "Proteins",
-        C: "Vitamins",
-        D: "Minerals"
-      },
-      answer: "A",
-      explanation: "Carbohydrates such as starch and sugar supply most of the body's energy.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-037",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which food group in the Caribbean food groups includes rice, bread, yam and green banana?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Legumes",
-        B: "Staples",
-        C: "Food from animals",
-        D: "Fruits"
-      },
-      answer: "B",
-      explanation: "Staples are starchy foods such as cereals and ground provisions.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-038",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Protein is needed in the diet MAINLY for",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the production of vitamin D",
-        B: "insulation",
-        C: "the prevention of scurvy",
-        D: "growth and repair of body tissues"
-      },
-      answer: "D",
-      explanation: "Proteins provide amino acids for growth and repair.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-039",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Lack of vitamin C in the diet causes",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "rickets",
-        B: "night blindness",
-        C: "scurvy",
-        D: "anaemia"
-      },
-      answer: "C",
-      explanation: "Scurvy (bleeding gums, poor wound healing) results from lack of vitamin C.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-040",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which mineral is needed for the formation of haemoglobin?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Calcium",
-        B: "Iodine",
-        C: "Sodium",
-        D: "Iron"
-      },
-      answer: "D",
-      explanation: "Iron is part of haemoglobin; lack of iron causes anaemia.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-041",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Rickets in children is caused by a lack of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "vitamin D",
-        B: "vitamin A",
-        C: "vitamin B\u2081\u2082",
-        D: "vitamin C"
-      },
-      answer: "A",
-      explanation: "Vitamin D is needed to absorb calcium for strong bones; lack of it causes rickets.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-042",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Iodine is needed in the diet for the production of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "insulin",
-        B: "adrenaline",
-        C: "thyroxine",
-        D: "haemoglobin"
-      },
-      answer: "C",
-      explanation: "Iodine is used by the thyroid gland to make thyroxine; lack causes goitre.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-043",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Fibre (roughage) in the diet is important because it",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "helps to prevent constipation",
-        B: "provides a lot of energy",
-        C: "builds muscle",
-        D: "carries oxygen"
-      },
-      answer: "A",
-      explanation: "Fibre adds bulk and helps peristalsis move food through the intestines.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-044",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A balanced diet is one which contains",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "only proteins and fats",
-        B: "large amounts of sugar",
-        C: "only fruits and vegetables",
-        D: "all the nutrients in the correct proportions"
-      },
-      answer: "D",
-      explanation: "A balanced diet provides carbohydrates, proteins, fats, vitamins, minerals, fibre and water in the right amounts.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-045",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following people would need the GREATEST daily energy intake?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "A 70-year-old retired teacher",
-        B: "A 25-year-old construction worker",
-        C: "A 10-year-old girl",
-        D: "A 30-year-old office clerk"
-      },
-      answer: "B",
-      explanation: "Energy needs depend on age, sex and activity; heavy manual labour needs the most energy.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-046",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Kwashiorkor is a deficiency disease caused by a lack of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "vitamin C",
-        B: "iron",
-        C: "fibre",
-        D: "protein"
-      },
-      answer: "D",
-      explanation: "Kwashiorkor is a form of protein-energy malnutrition; a swollen belly is a sign.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-047",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Eating too much food high in fat and sugar and doing little exercise is MOST likely to lead to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "obesity",
-        B: "scurvy",
-        C: "kwashiorkor",
-        D: "goitre"
-      },
-      answer: "A",
-      explanation: "Energy intake greater than energy used is stored as fat.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-048",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Monosodium glutamate (MSG) is added to food as a",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "preservative",
-        B: "flavour enhancer",
-        C: "colouring",
-        D: "sweetener"
-      },
-      answer: "B",
-      explanation: "MSG enhances flavour; too much may cause headaches in some people.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-238",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which of the following foods is the BEST source of protein?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Red peas (kidney beans)",
-        B: "Rice",
-        C: "Butter",
-        D: "Sugar cane"
-      },
-      answer: "A",
-      explanation: "Legumes are a good plant source of protein.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-239",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Vitamin A is needed for",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "blood clotting",
-        B: "strong bones only",
-        C: "good vision in dim light",
-        D: "digestion of protein"
-      },
-      answer: "C",
-      explanation: "Lack of vitamin A causes night blindness.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-240",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Lack of vitamin B\u2081\u2082 in the diet may cause",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "scurvy",
-        B: "rickets",
-        C: "goitre",
-        D: "anaemia"
-      },
-      answer: "D",
-      explanation: "B\u2081\u2082 is needed to make red blood cells.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-241",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Calcium is needed in the diet for",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "carrying oxygen",
-        B: "strong bones and teeth",
-        C: "making thyroxine",
-        D: "seeing in dim light"
-      },
-      answer: "B",
-      explanation: "Calcium hardens bones and teeth and is used in muscle contraction.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-242",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A food label shows 'Energy: 1 500 kJ per 100 g'. How much energy is in a 40 g serving?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "37.5 kJ",
-        B: "150 kJ",
-        C: "600 kJ",
-        D: "3 750 kJ"
-      },
-      answer: "C",
-      explanation: "1 500 \xD7 40 \xF7 100 = 600 kJ.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-243",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Why do growing teenagers need more protein than elderly people?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "They are building new tissues",
-        B: "They need less energy",
-        C: "Protein prevents scurvy",
-        D: "Protein is stored as fat"
-      },
-      answer: "A",
-      explanation: "Growth requires amino acids to build cells.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-244",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A pregnant woman needs extra iron in her diet because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "iron prevents scurvy",
-        B: "iron gives energy",
-        C: "she makes more red blood cells for herself and the baby",
-        D: "iron is needed for bones"
-      },
-      answer: "C",
-      explanation: "Blood volume increases during pregnancy.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-245",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Water is important in the diet because it",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "provides energy",
-        B: "builds muscle",
-        C: "stores fat",
-        D: "is a solvent and transports substances in the body"
-      },
-      answer: "D",
-      explanation: "Water carries dissolved substances and helps control temperature.",
-      topic: 2
-    },
-    {
-      id: "IS-M2-P1-246",
-      module: 2,
-      objective: {
-        code: "2.2.1",
-        topic: 2,
-        topicTitle: "Energy in Life Processes",
-        text: "examine the importance of food as a source of energy"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following Caribbean foods is a staple?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Callaloo",
-        B: "Salt
+        B: "chemical \u2192 heat \u2

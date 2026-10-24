@@ -1,4 +1,2360 @@
-cTitle: "Water and the Aquatic Environment",
+e Terrestrial Environment",
+        text: "explain the causes of the different types of volcanic eruptions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A cinder cone volcano is formed MAINLY from",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "fragments of lava thrown into the air",
+        B: "runny lava flows",
+        C: "sea water",
+        D: "ice"
+      },
+      answer: "A",
+      explanation: "Cinders (scoria) pile up around the vent.",
+      topic: 2
+    },
+    {
+      id: "IS-M3-P1-310",
+      module: 3,
+      objective: {
+        code: "3.2.4",
+        topic: 2,
+        topicTitle: "The Terrestrial Environment",
+        text: "explain the causes of the different types of volcanic eruptions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is a SHORT-TERM effect of a volcanic eruption?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Formation of fertile soils",
+        B: "Development of tourism",
+        C: "Destruction of crops by ash fall",
+        D: "Geothermal energy supply"
+      },
+      answer: "C",
+      explanation: "Ash immediately damages crops, water and buildings.",
+      topic: 2
+    },
+    {
+      id: "IS-M3-P1-311",
+      module: 3,
+      objective: {
+        code: "3.2.4",
+        topic: 2,
+        topicTitle: "The Terrestrial Environment",
+        text: "explain the causes of the different types of volcanic eruptions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "The eruption of the Soufri\xE8re Hills volcano in Montserrat caused",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the island to sink",
+        B: "a new island to form",
+        C: "no damage",
+        D: "the capital, Plymouth, to be abandoned"
+      },
+      answer: "D",
+      explanation: "Pyroclastic flows and ash buried Plymouth.",
+      topic: 2
+    },
+    {
+      id: "IS-M3-P1-312",
+      module: 3,
+      objective: {
+        code: "3.2.4",
+        topic: 2,
+        topicTitle: "The Terrestrial Environment",
+        text: "explain the causes of the different types of volcanic eruptions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A seismograph works by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "measuring rainfall",
+        B: "measuring air pressure",
+        C: "recording vibrations of the ground as a trace on paper or a screen",
+        D: "measuring wind speed"
+      },
+      answer: "C",
+      explanation: "It detects and records seismic waves.",
+      topic: 2
+    },
+    {
+      id: "IS-M3-P1-313",
+      module: 3,
+      objective: {
+        code: "3.2.4",
+        topic: 2,
+        topicTitle: "The Terrestrial Environment",
+        text: "explain the causes of the different types of volcanic eruptions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "During an earthquake, a person indoors should",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "run outside immediately",
+        B: "drop, cover and hold on under a sturdy table",
+        C: "stand near windows",
+        D: "use the elevator"
+      },
+      answer: "B",
+      explanation: "Taking cover protects against falling objects.",
+      topic: 2
+    },
+    {
+      id: "IS-M3-P1-058",
+      module: 3,
+      objective: {
+        code: "3.2.4",
+        topic: 2,
+        topicTitle: "The Terrestrial Environment",
+        text: "explain the causes of the different types of volcanic eruptions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The structure labelled R is the",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M3-S-VOLC",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "magma chamber",
+        B: "crater",
+        C: "vent",
+        D: "cone"
+      },
+      answer: "A",
+      explanation: "R is the pool of molten rock beneath the volcano.",
+      topic: 2
+    },
+    {
+      id: "IS-M3-P1-059",
+      module: 3,
+      objective: {
+        code: "3.2.4",
+        topic: 2,
+        topicTitle: "The Terrestrial Environment",
+        text: "explain the causes of the different types of volcanic eruptions"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Magma rises to the surface through the structure labelled",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M3-S-VOLC",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "Q",
+        C: "R",
+        D: "S"
+      },
+      answer: "B",
+      explanation: "Q is the main vent.",
+      topic: 2
+    },
+    {
+      id: "IS-M3-P1-060",
+      module: 3,
+      objective: {
+        code: "3.2.4",
+        topic: 2,
+        topicTitle: "The Terrestrial Environment",
+        text: "explain the causes of the different types of volcanic eruptions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which volcano is a shield volcano?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M3-S-VSHAPE",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "P",
+        B: "R",
+        C: "Q",
+        D: "None of them"
+      },
+      answer: "C",
+      explanation: "Shield volcanoes are broad with gentle slopes, formed from runny basaltic lava.",
+      topic: 2
+    },
+    {
+      id: "IS-M3-P1-061",
+      module: 3,
+      objective: {
+        code: "3.2.4",
+        topic: 2,
+        topicTitle: "The Terrestrial Environment",
+        text: "explain the causes of the different types of volcanic eruptions"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Volcano R is tall and steep and built of alternating layers of ash and lava. It is a",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M3-S-VSHAPE",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "shield volcano",
+        B: "composite (strato) volcano",
+        C: "cinder cone",
+        D: "fissure volcano"
+      },
+      answer: "B",
+      explanation: "Composite volcanoes, like La Soufri\xE8re in St Vincent, have explosive eruptions.",
+      topic: 2
+    },
+    {
+      id: "IS-M3-P1-062",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Pure water boils at",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "0 \xB0C",
+        B: "37 \xB0C",
+        C: "100 \xB0C",
+        D: "110 \xB0C"
+      },
+      answer: "C",
+      explanation: "At normal atmospheric pressure pure water boils at 100 \xB0C.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-063",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Compared with fresh water, sea water",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "boils at a lower temperature",
+        B: "freezes at a higher temperature",
+        C: "has a lower density",
+        D: "has a higher density"
+      },
+      answer: "D",
+      explanation: "Dissolved salts make sea water denser; it boils above 100 \xB0C and freezes below 0 \xB0C.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-064",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Ice floats on water because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "ice is denser than water",
+        B: "ice contains air bubbles only",
+        C: "ice is less dense than water",
+        D: "water pushes ice down"
+      },
+      answer: "C",
+      explanation: "Water expands when it freezes, so ice is less dense than liquid water.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-065",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following properties of water helps aquatic organisms to survive when the air temperature changes quickly?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Its low boiling point",
+        B: "Its high specific heat capacity",
+        C: "It is colourless",
+        D: "It conducts electricity"
+      },
+      answer: "B",
+      explanation: "Water heats up and cools down slowly, keeping aquatic habitats stable.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-066",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Freshwater fish placed in sea water are likely to die because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "they get too much oxygen",
+        B: "the water is too cold",
+        C: "water leaves their cells by osmosis",
+        D: "salt water is less dense"
+      },
+      answer: "C",
+      explanation: "Sea water is more concentrated, so the fish lose water from their bodies by osmosis.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-314",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Water is a good solvent. This is important because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it makes water boil at 100 \xB0C",
+        B: "it makes water denser",
+        C: "it prevents evaporation",
+        D: "many substances can be transported dissolved in water"
+      },
+      answer: "D",
+      explanation: "Blood plasma and sap carry dissolved materials.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-315",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Sea water contains more dissolved oxygen when it is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "warm and still",
+        B: "cold and moving",
+        C: "polluted with sewage",
+        D: "covered with oil"
+      },
+      answer: "B",
+      explanation: "Gases are more soluble in cold water; waves mix in air.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-316",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The main dissolved salt in sea water is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "calcium carbonate",
+        B: "copper sulphate",
+        C: "sodium chloride",
+        D: "sodium hydroxide"
+      },
+      answer: "C",
+      explanation: "Common salt makes up most of the dissolved solids.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-317",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Coral reefs are found in shallow, clear tropical water because corals need",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cold dark water",
+        B: "warm water and light for the algae living in them",
+        C: "fresh water",
+        D: "muddy water"
+      },
+      answer: "B",
+      explanation: "Corals depend on photosynthetic algae.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-318",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A marine fish placed in fresh water would",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "gain water by osmosis and may die",
+        B: "lose water by osmosis",
+        C: "remain unaffected",
+        D: "float higher"
+      },
+      answer: "A",
+      explanation: "Fresh water is more dilute than the fish's body fluids.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-526",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Water is called the 'universal solvent' because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "dissolves everything",
+        B: "dissolves many different substances",
+        C: "has a high boiling point",
+        D: "freezes at 0 \xB0C"
+      },
+      answer: "B",
+      explanation: "Many salts, sugars and gases dissolve in water.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-527",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Water pipes may burst in very cold weather because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "water contracts when it freezes",
+        B: "ice is a good conductor",
+        C: "water expands when it freezes",
+        D: "pipes shrink more than water"
+      },
+      answer: "C",
+      explanation: "Expansion on freezing exerts great pressure.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-528",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Some insects can walk on the surface of water because of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "surface tension",
+        B: "evaporation",
+        C: "capillarity only",
+        D: "density"
+      },
+      answer: "A",
+      explanation: "The surface behaves like an elastic skin.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-319",
+      module: 3,
+      objective: {
+        code: "3.3.1",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "discuss the properties of water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The process labelled P is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M3-S-WC",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "condensation",
+        B: "evaporation",
+        C: "precipitation",
+        D: "run-off"
+      },
+      answer: "B",
+      explanation: "Water from the sea changes to vapour.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-320",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "The process labelled R is",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M3-S-WC",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "evaporation",
+        B: "transpiration",
+        C: "infiltration",
+        D: "precipitation"
+      },
+      answer: "D",
+      explanation: "Rain falling from clouds is precipitation.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-067",
+      module: 3,
+      objective: {
+        code: "3.3.2",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "distinguish between hard and soft water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Hard water is water which",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "lathers easily with soap",
+        B: "does not lather easily with soap",
+        C: "contains no dissolved substances",
+        D: "has a pH of 14"
+      },
+      answer: "B",
+      explanation: "Calcium and magnesium ions react with soap to form scum.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-068",
+      module: 3,
+      objective: {
+        code: "3.3.2",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "distinguish between hard and soft water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Temporary hardness of water is caused by dissolved",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "calcium sulphate",
+        B: "sodium chloride",
+        C: "magnesium sulphate",
+        D: "calcium hydrogencarbonate"
+      },
+      answer: "D",
+      explanation: "Calcium hydrogencarbonate decomposes on boiling, removing temporary hardness.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-069",
+      module: 3,
+      objective: {
+        code: "3.3.2",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "distinguish between hard and soft water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Permanent hardness can be removed by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "boiling",
+        B: "adding washing soda (sodium carbonate)",
+        C: "filtration",
+        D: "chlorination"
+      },
+      answer: "B",
+      explanation: "Washing soda precipitates the calcium and magnesium ions as carbonates.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-070",
+      module: 3,
+      objective: {
+        code: "3.3.2",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "distinguish between hard and soft water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is an ADVANTAGE of hard water?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "It forms scale in kettles",
+        B: "It wastes soap",
+        C: "It contains calcium which is good for teeth and bones",
+        D: "It forms scum"
+      },
+      answer: "C",
+      explanation: "Calcium in hard water helps build bones and teeth; it also tastes better to many people.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-071",
+      module: 3,
+      objective: {
+        code: "3.3.2",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "distinguish between hard and soft water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Scale (fur) in a kettle is formed when",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "temporary hard water is boiled",
+        B: "soft water is boiled",
+        C: "salt is added to water",
+        D: "soap is added to water"
+      },
+      answer: "A",
+      explanation: "Boiling decomposes calcium hydrogencarbonate to insoluble calcium carbonate.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-321",
+      module: 3,
+      objective: {
+        code: "3.3.2",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "distinguish between hard and soft water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Hard water can be softened by distillation because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the salts evaporate",
+        B: "the dissolved salts are left behind when the water evaporates",
+        C: "distillation adds soap",
+        D: "the water freezes"
+      },
+      answer: "B",
+      explanation: "Only pure water vapour passes into the condenser.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-322",
+      module: 3,
+      objective: {
+        code: "3.3.2",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "distinguish between hard and soft water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following causes hardness in water?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Dissolved calcium and magnesium compounds",
+        B: "Dissolved oxygen",
+        C: "Dissolved sugar",
+        D: "Suspended mud"
+      },
+      answer: "A",
+      explanation: "Ca\xB2\u207A and Mg\xB2\u207A ions react with soap.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-323",
+      module: 3,
+      objective: {
+        code: "3.3.2",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "distinguish between hard and soft water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Water in limestone areas such as parts of Jamaica and Barbados is often hard because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it is polluted",
+        B: "it contains salt from the sea",
+        C: "it is distilled",
+        D: "rain dissolves calcium compounds from the rocks"
+      },
+      answer: "D",
+      explanation: "Slightly acidic rain dissolves calcium carbonate.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-324",
+      module: 3,
+      objective: {
+        code: "3.3.2",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "distinguish between hard and soft water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A disadvantage of soft water is that it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "forms scale",
+        B: "wastes soap",
+        C: "may dissolve metals such as lead from pipes",
+        D: "forms scum"
+      },
+      answer: "C",
+      explanation: "Soft water can be slightly acidic.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-325",
+      module: 3,
+      objective: {
+        code: "3.3.2",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "distinguish between hard and soft water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Boiling removes temporary hardness because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "calcium sulphate evaporates",
+        B: "calcium hydrogencarbonate breaks down to insoluble calcium carbonate",
+        C: "soap is formed",
+        D: "the water becomes acidic"
+      },
+      answer: "B",
+      explanation: "The precipitate forms scale.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-529",
+      module: 3,
+      objective: {
+        code: "3.3.2",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "distinguish between hard and soft water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following methods removes permanent hardness?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Boiling",
+        B: "Filtering",
+        C: "Leaving it to stand",
+        D: "Adding washing soda"
+      },
+      answer: "D",
+      explanation: "Sodium carbonate precipitates calcium ions.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-072",
+      module: 3,
+      objective: {
+        code: "3.3.2",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "distinguish between hard and soft water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following shows the samples in order from SOFTEST to HARDEST?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M3-S-SOAP",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "C, B, A",
+        B: "A, B, C",
+        C: "B, A, C",
+        D: "A, C, B"
+      },
+      answer: "B",
+      explanation: "The more lather, the softer the water: A gave the most lather, C the least.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-073",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which of the following is a role of water in the human body?",
+      statements: [
+        "Transport of dissolved substances",
+        "Digestion of food",
+        "Excretion of waste"
+      ],
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "I and II only",
+        B: "I and III only",
+        C: "II and III only",
+        D: "I, II and III"
+      },
+      answer: "D",
+      explanation: "Water is a solvent for transport, is needed in digestion and removes wastes such as urea.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-074",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Farming fish in ponds or tanks on land is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "aquaculture",
+        B: "mariculture",
+        C: "hydroponics",
+        D: "trawling"
+      },
+      answer: "A",
+      explanation: "Aquaculture is the farming of aquatic organisms; mariculture is farming in the sea.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-075",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A family uses 0.4 m\xB3 of water each day. How much water does it use in 30 days?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "0.012 m\xB3",
+        B: "7.5 m\xB3",
+        C: "12 m\xB3",
+        D: "75 m\xB3"
+      },
+      answer: "C",
+      explanation: "0.4 \xD7 30 = 12 m\xB3.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-076",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following practices would help to CONSERVE water in the home?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Leaving the tap running while brushing teeth",
+        B: "Washing cars with a hose every day",
+        C: "Watering the lawn at midday",
+        D: "Fixing leaking pipes"
+      },
+      answer: "D",
+      explanation: "Leaks waste large amounts of water over time.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-077",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Water is used to generate electricity in",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "hydroelectric power stations",
+        B: "solar farms",
+        C: "wind farms",
+        D: "biogas plants"
+      },
+      answer: "A",
+      explanation: "The kinetic energy of falling water turns turbines.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-326",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Hydroponics is an agricultural use of water in which",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "fish are farmed in ponds",
+        B: "crops are sprayed",
+        C: "water is used to generate power",
+        D: "plants are grown in nutrient solutions without soil"
+      },
+      answer: "D",
+      explanation: "Water carries dissolved minerals to the roots.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-327",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Mariculture is the farming of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "crops in water",
+        B: "fish in ponds on land",
+        C: "marine organisms in the sea",
+        D: "cattle near the sea"
+      },
+      answer: "C",
+      explanation: "Examples include seaweed and oyster farming in the sea.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-328",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Water is used to put out most fires because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cools the burning material",
+        B: "adds oxygen",
+        C: "adds fuel",
+        D: "is flammable"
+      },
+      answer: "A",
+      explanation: "It removes heat.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-329",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A family uses 150 litres of water each day. How much water do they use in a 30-day month?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "180 litres",
+        B: "450 litres",
+        C: "4 500 litres",
+        D: "45 000 litres"
+      },
+      answer: "C",
+      explanation: "150 \xD7 30 = 4 500 litres.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-330",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following uses the MOST water in a typical home?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Flushing toilets and bathing",
+        B: "Brushing teeth with a cup",
+        C: "Drinking",
+        D: "Cooking rice"
+      },
+      answer: "A",
+      explanation: "Toilets and showers account for most household water use.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-530",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Water is used as a coolant in car engines because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "boils at a low temperature",
+        B: "is a good conductor of electricity",
+        C: "has a high specific heat capacity",
+        D: "is dense"
+      },
+      answer: "C",
+      explanation: "It absorbs a lot of heat for a small temperature rise.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-531",
+      module: 3,
+      objective: {
+        code: "3.3.3",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "explain the uses of water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is an INDUSTRIAL use of water?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Drinking",
+        B: "Generating steam in power stations",
+        C: "Bathing",
+        D: "Watering a kitchen garden"
+      },
+      answer: "B",
+      explanation: "Steam turns turbines.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-078",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Which fishing method uses a large cone-shaped net dragged behind a boat?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Long-lining",
+        B: "Trawling",
+        C: "Fish pots",
+        D: "Hand line"
+      },
+      answer: "B",
+      explanation: "Trawl nets are dragged through the water or along the sea bed.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-079",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Trawling can damage the environment because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "catches only large fish",
+        B: "uses no fuel",
+        C: "catches only one fish at a time",
+        D: "destroys the sea bed and catches many unwanted species"
+      },
+      answer: "D",
+      explanation: "Bottom trawling destroys habitats such as coral and catches juvenile fish and other bycatch.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-080",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Fish pots are traps made of",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "nylon lines with many hooks",
+        B: "large drifting nets",
+        C: "wire mesh or wood with a funnel-shaped entrance",
+        D: "spears"
+      },
+      answer: "C",
+      explanation: "Fish swim into the pot through a funnel and cannot find the way out.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-081",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Using nets with a larger mesh size helps to conserve fish stocks because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "more fish are caught",
+        B: "the nets are cheaper",
+        C: "the nets last longer",
+        D: "young fish can escape and grow to breed"
+      },
+      answer: "D",
+      explanation: "Letting juveniles escape allows the population to replace itself.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-331",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Long-lining is a method of fishing which uses",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "a large net dragged by a boat",
+        B: "wire traps",
+        C: "a long line with many baited hooks",
+        D: "spears"
+      },
+      answer: "C",
+      explanation: "Used to catch large fish such as tuna and marlin.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-332",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Fish farming (aquaculture) helps to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "destroy coral reefs",
+        B: "reduce pressure on wild fish stocks",
+        C: "increase bycatch",
+        D: "pollute rivers only"
+      },
+      answer: "B",
+      explanation: "Farmed fish supply food without overfishing wild stocks.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-333",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Spear fishing with scuba gear is banned in some countries because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "it can quickly reduce populations of reef fish",
+        B: "it is too slow",
+        C: "it catches only small fish",
+        D: "it is expensive"
+      },
+      answer: "A",
+      explanation: "Divers can target large breeding fish easily.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-334",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which fishing method produces the LEAST bycatch?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Trawling",
+        B: "Drift netting",
+        C: "Hand line",
+        D: "Long-lining"
+      },
+      answer: "C",
+      explanation: "A single hook and line catches one fish at a time.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-532",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "A fish pot is a",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "trap made of wire mesh or bamboo",
+        B: "large net pulled by a boat",
+        C: "line with many hooks",
+        D: "spear"
+      },
+      answer: "A",
+      explanation: "Fish swim in through a funnel and cannot escape.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-533",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Trawling is harmful to the environment because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "catches only large fish",
+        B: "damages the sea floor and catches unwanted species",
+        C: "uses no fuel",
+        D: "is very selective"
+      },
+      answer: "B",
+      explanation: "Heavy nets drag along the bottom.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-534",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Fishing nets with a large mesh size are recommended because they",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "catch more small fish",
+        B: "are cheaper",
+        C: "catch turtles",
+        D: "allow young fish to escape"
+      },
+      answer: "D",
+      explanation: "Young fish can grow and reproduce.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-535",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A seine net is used to catch fish",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "one at a time on a hook",
+        B: "by encircling a school of fish near the shore",
+        C: "by trapping them in pots",
+        D: "by spearing them"
+      },
+      answer: "B",
+      explanation: "The net is drawn around the school and pulled in.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-536",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Long-line fishing is used mainly to catch",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "shellfish on reefs",
+        B: "fish in rivers only",
+        C: "large fish such as tuna",
+        D: "seaweed"
+      },
+      answer: "C",
+      explanation: "Many baited hooks are set on one long line.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-537",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Using dynamite to catch fish is banned because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "kills many organisms and destroys reefs",
+        B: "catches too few fish",
+        C: "is too quiet",
+        D: "only kills large fish"
+      },
+      answer: "A",
+      explanation: "Blasting is destructive and indiscriminate.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-538",
+      module: 3,
+      objective: {
+        code: "3.3.4",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "describe the various methods used locally for fishing"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "A closed fishing season protects fish stocks by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "increasing pollution",
+        B: "allowing more boats",
+        C: "reducing the price of fish",
+        D: "allowing fish to breed"
+      },
+      answer: "D",
+      explanation: "Breeding populations are not disturbed.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-082",
+      module: 3,
+      objective: {
+        code: "3.3.5",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "evaluate the effects of water pollution on aquatic life"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Fertilisers washed into rivers and the sea cause algae to grow rapidly. This process is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "desalination",
+        B: "eutrophication",
+        C: "transpiration",
+        D: "coagulation"
+      },
+      answer: "B",
+      explanation: "Nitrates and phosphates cause algal blooms.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-083",
+      module: 3,
+      objective: {
+        code: "3.3.5",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "evaluate the effects of water pollution on aquatic life"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Fish in a pond affected by eutrophication die MAINLY because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "the water becomes too cold",
+        B: "the algae eat the fish",
+        C: "bacteria decomposing dead algae use up the oxygen in the water",
+        D: "the water becomes too clear"
+      },
+      answer: "C",
+      explanation: "Decomposers respire and remove dissolved oxygen, so fish suffocate.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-084",
+      module: 3,
+      objective: {
+        code: "3.3.5",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "evaluate the effects of water pollution on aquatic life"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "An oil spill at sea kills seabirds MAINLY because the oil",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "coats their feathers so they cannot fly or keep warm",
+        B: "makes the water too warm",
+        C: "increases the oxygen in the water",
+        D: "attracts predators"
+      },
+      answer: "A",
+      explanation: "Oiled feathers lose insulation and waterproofing; birds also swallow oil while preening.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-085",
+      module: 3,
+      objective: {
+        code: "3.3.5",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "evaluate the effects of water pollution on aquatic life"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Mangroves and wetlands should be protected because they",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "cause flooding",
+        B: "increase pollution",
+        C: "are nursery areas for young fish and protect coasts from erosion",
+        D: "produce oil"
+      },
+      answer: "C",
+      explanation: "Mangroves shelter young fish, filter pollutants and reduce storm damage.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-086",
+      module: 3,
+      objective: {
+        code: "3.3.5",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "evaluate the effects of water pollution on aquatic life"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Coral reefs are damaged by all of the following EXCEPT",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "sediment from soil erosion",
+        B: "sewage",
+        C: "rising sea temperatures",
+        D: "the presence of parrotfish"
+      },
+      answer: "D",
+      explanation: "Parrotfish are part of a healthy reef; they graze algae that could smother the coral.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-335",
+      module: 3,
+      objective: {
+        code: "3.3.5",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "evaluate the effects of water pollution on aquatic life"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Pesticides washed into the sea can harm marine life because they",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "build up in food chains and poison animals",
+        B: "add oxygen",
+        C: "increase coral growth",
+        D: "clean the water"
+      },
+      answer: "A",
+      explanation: "Pesticides accumulate at higher trophic levels.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-336",
+      module: 3,
+      objective: {
+        code: "3.3.5",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "evaluate the effects of water pollution on aquatic life"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Raw sewage discharged into the sea may cause",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "clearer water",
+        B: "more oxygen",
+        C: "algal blooms and spread of disease",
+        D: "fewer bacteria"
+      },
+      answer: "C",
+      explanation: "Sewage adds nutrients and pathogens.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-337",
+      module: 3,
+      objective: {
+        code: "3.3.5",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "evaluate the effects of water pollution on aquatic life"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Destruction of mangroves affects fisheries because mangroves",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "produce oil",
+        B: "cause erosion",
+        C: "block sunlight to the sea",
+        D: "are breeding and nursery grounds for many fish"
+      },
+      answer: "D",
+      explanation: "Young fish shelter among mangrove roots.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-338",
+      module: 3,
+      objective: {
+        code: "3.3.5",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "evaluate the effects of water pollution on aquatic life"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Fish kills in a river after a factory released hot water are MOST likely caused by",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "a decrease in dissolved oxygen",
+        B: "an increase in dissolved oxygen",
+        C: "a decrease in temperature",
+        D: "more food"
+      },
+      answer: "A",
+      explanation: "Warm water holds less oxygen (thermal pollution).",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-339",
+      module: 3,
+      objective: {
+        code: "3.3.5",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "evaluate the effects of water pollution on aquatic life"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Silt from soil erosion damages coral reefs because it",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "adds oxygen",
+        B: "feeds the coral",
+        C: "cools the water",
+        D: "blocks light and smothers the coral"
+      },
+      answer: "D",
+      explanation: "Corals need clear water for light.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-340",
+      module: 3,
+      objective: {
+        code: "3.3.5",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "evaluate the effects of water pollution on aquatic life"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "At which distance would fish be LEAST likely to survive?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M3-S-OXY",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "0 km",
+        B: "2 km",
+        C: "6 km",
+        D: "10 km"
+      },
+      answer: "B",
+      explanation: "Oxygen is lowest (2 mg per litre) at 2 km where bacteria decomposing sewage use most oxygen.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-341",
+      module: 3,
+      objective: {
+        code: "3.3.5",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "evaluate the effects of water pollution on aquatic life"
+      },
+      profile: "UK",
+      difficulty: 3,
+      stem: "The oxygen level recovers further downstream because",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M3-S-OXY",
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "more sewage is added",
+        B: "fish produce oxygen",
+        C: "the sewage has been broken down and oxygen dissolves from the air",
+        D: "the river flows uphill"
+      },
+      answer: "C",
+      explanation: "Less decomposition and mixing with air restore oxygen.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-087",
+      module: 3,
+      objective: {
+        code: "3.3.6",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "investigate methods of purifying water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Chlorine is added to water at a treatment plant in order to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "kill bacteria",
+        B: "remove hardness",
+        C: "remove large particles",
+        D: "add taste"
+      },
+      answer: "A",
+      explanation: "Chlorination disinfects the water.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-088",
+      module: 3,
+      objective: {
+        code: "3.3.6",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "investigate methods of purifying water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Alum is added during water treatment to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "kill bacteria",
+        B: "make small particles clump together and settle",
+        C: "soften the water",
+        D: "add fluoride"
+      },
+      answer: "B",
+      explanation: "Alum causes coagulation so suspended particles form larger clumps that settle.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-089",
+      module: 3,
+      objective: {
+        code: "3.3.6",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "investigate methods of purifying water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Removing salt from sea water to produce drinking water is called",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "chlorination",
+        B: "sedimentation",
+        C: "aeration",
+        D: "desalination"
+      },
+      answer: "D",
+      explanation: "Desalination uses distillation or reverse osmosis.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-090",
+      module: 3,
+      objective: {
+        code: "3.3.6",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "investigate methods of purifying water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Boiling water for several minutes makes it safe to drink because boiling",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "removes all dissolved salts",
+        B: "kills most microorganisms",
+        C: "removes permanent hardness",
+        D: "adds oxygen"
+      },
+      answer: "B",
+      explanation: "High temperature kills pathogens.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-091",
+      module: 3,
+      objective: {
+        code: "3.3.6",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "investigate methods of purifying water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Activated carbon (charcoal) is used in household water filters to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "remove unpleasant tastes and odours",
+        B: "add chlorine",
+        C: "increase hardness",
+        D: "kill all viruses"
+      },
+      answer: "A",
+      explanation: "Carbon adsorbs many organic chemicals that cause taste and smell.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-342",
+      module: 3,
+      objective: {
+        code: "3.3.6",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "investigate methods of purifying water"
+      },
+      profile: "KC",
+      difficulty: 2,
+      stem: "Filtration during water treatment removes",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "dissolved salts",
+        B: "bacteria completely",
+        C: "hardness",
+        D: "suspended solid particles"
+      },
+      answer: "D",
+      explanation: "Sand filters trap small suspended particles.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-343",
+      module: 3,
+      objective: {
+        code: "3.3.6",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "investigate methods of purifying water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Which of the following is the correct order of stages in treating river water for drinking?",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "Chlorination, sedimentation, filtration",
+        B: "Sedimentation, filtration, chlorination",
+        C: "Filtration, chlorination, sedimentation",
+        D: "Chlorination, filtration, sedimentation"
+      },
+      answer: "B",
+      explanation: "Large particles settle, fine particles are filtered, and then germs are killed.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-344",
+      module: 3,
+      objective: {
+        code: "3.3.6",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "investigate methods of purifying water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "Reverse osmosis is used in desalination plants to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "add fluoride",
+        B: "soften hard water only",
+        C: "add chlorine",
+        D: "remove salt from sea water"
+      },
+      answer: "D",
+      explanation: "High pressure forces water through a membrane that holds back salt.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-345",
+      module: 3,
+      objective: {
+        code: "3.3.6",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
+        text: "investigate methods of purifying water"
+      },
+      profile: "UK",
+      difficulty: 2,
+      stem: "During a water shortage after a hurricane, the SAFEST way to treat rain water for drinking is to",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: null,
+      optionColumns: null,
+      optionsAreSvg: false,
+      options: {
+        A: "add sugar",
+        B: "boil it for several minutes",
+        C: "freeze it",
+        D: "stir it"
+      },
+      answer: "B",
+      explanation: "Boiling kills pathogens.",
+      topic: 3
+    },
+    {
+      id: "IS-M3-P1-346",
+      module: 3,
+      objective: {
+        code: "3.3.6",
+        topic: 3,
+        topicTitle: "Water and the Aquatic Environment",
         text: "investigate methods of purifying water"
       },
       profile: "UK",
@@ -5626,1997 +7982,4 @@ cTitle: "Water and the Aquatic Environment",
       group: null,
       optionColumns: null,
       optionsAreSvg: false,
-      options: {
-        A: "reacts with the drink",
-        B: "is light, cheap and can be recycled",
-        C: "is magnetic",
-        D: "is very heavy"
-      },
-      answer: "B",
-      explanation: "Aluminium cans are light, do not rust and are easily recycled.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-178",
-      module: 3,
-      objective: {
-        code: "3.5.3",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Acidic foods such as tomatoes should NOT be cooked for long periods in aluminium pots because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "aluminium is a poor conductor",
-        B: "the pot will become magnetic",
-        C: "aluminium is too heavy",
-        D: "the acid reacts with the aluminium and it may dissolve into the food"
-      },
-      answer: "D",
-      explanation: "Acids attack the protective oxide layer and small amounts of aluminium may enter the food.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-179",
-      module: 3,
-      objective: {
-        code: "3.5.3",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Aluminium does not corrode easily in air because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "it is very unreactive",
-        B: "it is always painted",
-        C: "it forms a protective layer of aluminium oxide",
-        D: "it contains iron"
-      },
-      answer: "C",
-      explanation: "The thin oxide layer stops further reaction.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-435",
-      module: 3,
-      objective: {
-        code: "3.5.3",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Aluminium foil is used to wrap food because it",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "is magnetic",
-        B: "is light, can be shaped easily and reflects heat",
-        C: "rusts",
-        D: "is expensive"
-      },
-      answer: "B",
-      explanation: "Foil keeps food hot and is easily folded.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-436",
-      module: 3,
-      objective: {
-        code: "3.5.3",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Aluminium cooking pots should not be scoured with steel wool regularly because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "it removes the protective oxide layer",
-        B: "it makes the pot magnetic",
-        C: "it adds aluminium",
-        D: "it strengthens the pot"
-      },
-      answer: "A",
-      explanation: "Without the oxide layer, more aluminium may dissolve into food.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-437",
-      module: 3,
-      objective: {
-        code: "3.5.3",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "An advantage of aluminium cooking pots is that they",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "are very heavy",
-        B: "react with food",
-        C: "heat up quickly and evenly",
-        D: "rust"
-      },
-      answer: "C",
-      explanation: "Aluminium is a good conductor of heat.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-565",
-      module: 3,
-      objective: {
-        code: "3.5.3",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Aluminium pots should NOT be used to store acidic foods such as tomatoes because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the acid reacts with aluminium",
-        B: "aluminium makes the food cold",
-        C: "aluminium is too heavy",
-        D: "the food becomes too sweet"
-      },
-      answer: "A",
-      explanation: "Aluminium dissolves in acids, affecting food.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-566",
-      module: 3,
-      objective: {
-        code: "3.5.3",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the advantages and disadvantages of using cooking or canning utensils made of aluminium"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following is a DISADVANTAGE of aluminium cooking utensils?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "They are light.",
-        B: "They dent easily.",
-        C: "They conduct heat well.",
-        D: "They do not rust."
-      },
-      answer: "B",
-      explanation: "Aluminium is soft.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-180",
-      module: 3,
-      objective: {
-        code: "3.5.4",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the benefits of using alloys to make household items"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "An alloy is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "a pure metal",
-        B: "a compound of a metal and oxygen",
-        C: "a non-metal",
-        D: "a mixture of a metal with other elements"
-      },
-      answer: "D",
-      explanation: "Alloys are mixtures designed to improve properties.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-181",
-      module: 3,
-      objective: {
-        code: "3.5.4",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the benefits of using alloys to make household items"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Brass is an alloy of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "iron and carbon",
-        B: "copper and tin",
-        C: "copper and zinc",
-        D: "lead and tin"
-      },
-      answer: "C",
-      explanation: "Brass is copper and zinc.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-182",
-      module: 3,
-      objective: {
-        code: "3.5.4",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the benefits of using alloys to make household items"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Steel is an alloy of iron and",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "copper",
-        B: "carbon",
-        C: "zinc",
-        D: "lead"
-      },
-      answer: "B",
-      explanation: "Steel contains iron with a small amount of carbon; stainless steel also contains chromium and nickel.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-183",
-      module: 3,
-      objective: {
-        code: "3.5.4",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the benefits of using alloys to make household items"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Stainless steel is used to make cutlery because it",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "is hard and does not rust",
-        B: "is soft and rusts easily",
-        C: "is a poor conductor",
-        D: "has a low melting point"
-      },
-      answer: "A",
-      explanation: "Chromium in stainless steel prevents rusting.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-184",
-      module: 3,
-      objective: {
-        code: "3.5.4",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the benefits of using alloys to make household items"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Solder, an alloy of tin and lead, is used to join electrical wires because it",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "has a very high melting point",
-        B: "is an insulator",
-        C: "is magnetic",
-        D: "has a low melting point"
-      },
-      answer: "D",
-      explanation: "Solder melts easily and conducts electricity.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-438",
-      module: 3,
-      objective: {
-        code: "3.5.4",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the benefits of using alloys to make household items"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Bronze is an alloy of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "copper and zinc",
-        B: "copper and tin",
-        C: "iron and carbon",
-        D: "lead and tin"
-      },
-      answer: "B",
-      explanation: "Bronze is used for medals and statues.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-439",
-      module: 3,
-      objective: {
-        code: "3.5.4",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the benefits of using alloys to make household items"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Alloys are often harder than the pure metals they are made from because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the different-sized atoms stop the layers sliding over each other",
-        B: "they contain more of one metal",
-        C: "they are non-metals",
-        D: "they are softer"
-      },
-      answer: "A",
-      explanation: "Irregular arrangement of atoms makes alloys harder.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-440",
-      module: 3,
-      objective: {
-        code: "3.5.4",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the benefits of using alloys to make household items"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Brass is used for door handles and locks because it",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "rusts easily",
-        B: "is soft",
-        C: "is hard, attractive and resists corrosion",
-        D: "is magnetic"
-      },
-      answer: "C",
-      explanation: "Brass does not rust and looks like gold.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-441",
-      module: 3,
-      objective: {
-        code: "3.5.4",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the benefits of using alloys to make household items"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Electroplating a steel spoon with silver",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "makes it rust",
-        B: "makes it heavier than gold",
-        C: "removes the steel",
-        D: "gives an attractive, corrosion-resistant surface"
-      },
-      answer: "D",
-      explanation: "A thin layer of silver improves appearance and resistance.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-567",
-      module: 3,
-      objective: {
-        code: "3.5.4",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the benefits of using alloys to make household items"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Solder, used to join electrical wires, is an alloy chosen because it has a",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "high melting point",
-        B: "high density",
-        C: "low melting point",
-        D: "poor conductivity"
-      },
-      answer: "C",
-      explanation: "It melts easily with a soldering iron.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-185",
-      module: 3,
-      objective: {
-        code: "3.5.5",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "examine the conditions which cause rusting"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which of the following is the word equation for rusting?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Iron + water \u2192 iron + hydrogen",
-        B: "Iron + salt \u2192 rust + chlorine",
-        C: "Iron + oxygen + water \u2192 hydrated iron(III) oxide (rust)",
-        D: "Iron oxide + water \u2192 iron + oxygen"
-      },
-      answer: "C",
-      explanation: "Rust is hydrated iron(III) oxide.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-186",
-      module: 3,
-      objective: {
-        code: "3.5.5",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "examine the conditions which cause rusting"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Cars and burglar bars in coastal areas rust faster because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "there is less oxygen at the coast",
-        B: "the sun is weaker",
-        C: "sea air is dry",
-        D: "sea spray contains salt which speeds up rusting"
-      },
-      answer: "D",
-      explanation: "Salt (an electrolyte) speeds up the rusting reaction.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-187",
-      module: 3,
-      objective: {
-        code: "3.5.5",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "examine the conditions which cause rusting"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Rusting is described as an oxidation reaction because iron",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "loses oxygen",
-        B: "combines with nitrogen",
-        C: "combines with oxygen",
-        D: "melts"
-      },
-      answer: "C",
-      explanation: "Oxidation is the gain of oxygen.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-442",
-      module: 3,
-      objective: {
-        code: "3.5.5",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "examine the conditions which cause rusting"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following conditions would cause iron to rust FASTEST?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Dry desert air",
-        B: "Warm, humid, salty air",
-        C: "Cold dry air",
-        D: "Oil"
-      },
-      answer: "B",
-      explanation: "Water, oxygen, salt and warmth speed rusting.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-443",
-      module: 3,
-      objective: {
-        code: "3.5.5",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "examine the conditions which cause rusting"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Emissions from industrial plants speed up rusting because they contain",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "acidic gases such as sulphur dioxide",
-        B: "pure oxygen",
-        C: "helium",
-        D: "nitrogen only"
-      },
-      answer: "A",
-      explanation: "Acid in the air increases corrosion.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-444",
-      module: 3,
-      objective: {
-        code: "3.5.5",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "examine the conditions which cause rusting"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Rusting is a problem in the Caribbean because of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "cold winters",
-        B: "the warm, humid tropical climate and sea spray",
-        C: "lack of rain",
-        D: "snow"
-      },
-      answer: "B",
-      explanation: "Tropical climates accelerate corrosion.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-445",
-      module: 3,
-      objective: {
-        code: "3.5.5",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "examine the conditions which cause rusting"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Tarnishing of silver is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "a chemical reaction with substances in the air",
-        B: "a physical change",
-        C: "caused by light only",
-        D: "caused by magnetism"
-      },
-      answer: "A",
-      explanation: "Silver reacts with sulphur compounds to form black silver sulphide.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-446",
-      module: 3,
-      objective: {
-        code: "3.5.5",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "examine the conditions which cause rusting"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The mass of an iron nail INCREASES when it rusts because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "it loses iron",
-        B: "it combines with oxygen and water",
-        C: "rust is lighter",
-        D: "water evaporates"
-      },
-      answer: "B",
-      explanation: "Oxygen and water are added to the iron.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-188",
-      module: 3,
-      objective: {
-        code: "3.5.5",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "examine the conditions which cause rusting"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "In which test tube would the nail rust the MOST?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M3-S-RUST",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "A",
-        B: "B",
-        C: "C",
-        D: "D"
-      },
-      answer: "D",
-      explanation: "Water, air and salt are present; salt speeds up rusting.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-189",
-      module: 3,
-      objective: {
-        code: "3.5.5",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "examine the conditions which cause rusting"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "The nail in test tube B does not rust because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M3-S-RUST",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "there is no water",
-        B: "there is too much salt",
-        C: "there is no oxygen",
-        D: "the temperature is too high"
-      },
-      answer: "C",
-      explanation: "Boiling removes dissolved oxygen and the oil layer prevents air from dissolving again.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-190",
-      module: 3,
-      objective: {
-        code: "3.5.5",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "examine the conditions which cause rusting"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Test tubes B and C together show that rusting needs",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: "M3-S-RUST",
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "both oxygen and water",
-        B: "water only",
-        C: "oxygen only",
-        D: "salt"
-      },
-      answer: "A",
-      explanation: "No rust without oxygen (B) and no rust without water (C).",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-191",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Coating iron with a layer of zinc to prevent rusting is called",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "electroplating",
-        B: "galvanising",
-        C: "painting",
-        D: "alloying"
-      },
-      answer: "B",
-      explanation: "Galvanised zinc sheet is used for roofing.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-192",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Painting a gate prevents rusting because the paint",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "reacts with the iron",
-        B: "adds oxygen to the iron",
-        C: "makes the gate stronger",
-        D: "keeps out air and water"
-      },
-      answer: "D",
-      explanation: "It is a barrier between the metal and oxygen and water.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-193",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Tools are often stored with silica gel packets. The silica gel",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "adds oxygen",
-        B: "adds salt",
-        C: "absorbs moisture",
-        D: "heats the tools"
-      },
-      answer: "C",
-      explanation: "Silica gel is a desiccant (drying agent); without moisture, rusting cannot occur.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-194",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Bicycle chains are covered with oil or grease MAINLY to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "make them heavier",
-        B: "keep out air and water and reduce friction",
-        C: "add colour",
-        D: "conduct electricity"
-      },
-      answer: "B",
-      explanation: "Oil is a barrier and a lubricant.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-195",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Coating a metal object with a thin layer of another metal using electricity is called",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "electroplating",
-        B: "galvanising",
-        C: "painting",
-        D: "sacrificial protection"
-      },
-      answer: "A",
-      explanation: "Electroplating uses electrolysis, for example chromium on car parts.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-447",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Burglar bars and gates are often painted because paint",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "reacts with the iron",
-        B: "makes them heavier",
-        C: "conducts electricity",
-        D: "prevents air and water reaching the iron"
-      },
-      answer: "D",
-      explanation: "Paint is a protective barrier.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-448",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Galvanised iron sheets are used for roofing because the zinc coating",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "protects the iron from rusting, even if scratched",
-        B: "makes the roof heavier",
-        C: "reflects all light",
-        D: "is magnetic"
-      },
-      answer: "A",
-      explanation: "Zinc corrodes in preference to iron (sacrificial protection).",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-449",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Car bumpers used to be chromium-plated in order to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "reduce the weight",
-        B: "prevent rusting and give a shiny finish",
-        C: "increase friction",
-        D: "make them magnetic"
-      },
-      answer: "B",
-      explanation: "Chromium resists corrosion.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-450",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which method of rust prevention is used for food cans?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Painting",
-        B: "Galvanising with zinc",
-        C: "Coating steel with tin",
-        D: "Oiling"
-      },
-      answer: "C",
-      explanation: "Tin plating is non-toxic and resists corrosion.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-451",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Plastic coating on wire fences prevents rusting by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "keeping air and water away from the iron",
-        B: "reacting with oxygen",
-        C: "adding zinc",
-        D: "absorbing water"
-      },
-      answer: "A",
-      explanation: "A barrier method.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-568",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Silver jewellery tarnishes because silver reacts with",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "nitrogen",
-        B: "sulfur compounds in the air",
-        C: "water only",
-        D: "oxygen to form rust"
-      },
-      answer: "B",
-      explanation: "Black silver sulfide forms.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-569",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following prevents tarnishing of brass door handles?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Leaving them in damp air",
-        B: "Washing with salt water",
-        C: "Coating with clear lacquer",
-        D: "Scratching the surface"
-      },
-      answer: "C",
-      explanation: "Lacquer excludes air.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-570",
-      module: 3,
-      objective: {
-        code: "3.5.6",
-        topic: 5,
-        topicTitle: "Metals and Non-metals",
-        text: "discuss the methods used to reduce or prevent tarnishing of metals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Silver cutlery can be kept from tarnishing by",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "leaving it near eggs",
-        B: "washing it in salt water",
-        C: "keeping it in damp cupboards",
-        D: "storing it in airtight bags"
-      },
-      answer: "D",
-      explanation: "Excluding air and sulfur compounds reduces tarnish.",
-      topic: 5
-    },
-    {
-      id: "IS-M3-P1-196",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The MOST common solvent used in the home is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "kerosene",
-        B: "acetone",
-        C: "water",
-        D: "turpentine"
-      },
-      answer: "C",
-      explanation: "Water dissolves more substances than any other common liquid.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-197",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Bleach is used in the home to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "remove grease",
-        B: "kill germs and remove stains",
-        C: "soften fabrics",
-        D: "polish furniture"
-      },
-      answer: "B",
-      explanation: "Bleach (sodium hypochlorite) is a disinfectant and stain remover.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-198",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which chemical is BEST for removing nail polish?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Acetone",
-        B: "Water",
-        C: "Vinegar",
-        D: "Bleach"
-      },
-      answer: "A",
-      explanation: "Nail polish dissolves in acetone.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-199",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which chemical is used to remove oil-based paint from brushes?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Water",
-        B: "Vinegar",
-        C: "Turpentine",
-        D: "Baking soda"
-      },
-      answer: "C",
-      explanation: "Turpentine is a non-aqueous solvent which dissolves oil paint.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-200",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Antacids are used to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "kill bacteria",
-        B: "clean floors",
-        C: "remove rust",
-        D: "relieve indigestion by neutralising excess stomach acid"
-      },
-      answer: "D",
-      explanation: "Antacids are bases, such as magnesium hydroxide.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-201",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Bleach should NEVER be mixed with ammonia-based cleaners because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the mixture becomes too weak",
-        B: "a poisonous gas is produced",
-        C: "it turns into water",
-        D: "it becomes explosive salt"
-      },
-      answer: "B",
-      explanation: "They react to form toxic chloramine gases.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-202",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which of the following hazard symbols means that a substance is flammable?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: true,
-      options: {
-        A: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="toxic hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>toxic hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><circle cx="60" cy="48" r="16" fill="#000"/><circle cx="53" cy="46" r="4" fill="#fff"/><circle cx="67" cy="46" r="4" fill="#fff"/><line x1="38" y1="70" x2="82" y2="90" stroke-width="5"/><line x1="38" y1="90" x2="82" y2="70" stroke-width="5"/></g></svg>`,
-        B: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="flammable hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>flammable hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff" /><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5" /><g transform="translate(-3.18 -3.8) scale(0.27)"><path d="M220 315C167 338 139 294 160 251C156 278 179 278 170 241C169 214 190 194 188 169C210 183 215 205 216 221C234 193 216 164 225 132C238 159 263 170 263 198C282 192 278 174 281 166C306 195 298 221 309 240C323 259 324 290 296 311C274 329 245 330 220 315Z" fill="black" stroke="black" stroke-width="1" /><path d="M227 313C207 301 199 284 210 268C208 280 224 281 222 260C221 249 232 238 232 226C245 241 243 257 249 266C260 252 255 239 258 231C282 254 288 287 270 304C259 315 245 319 227 313Z" fill="white" stroke="black" stroke-width="1" /><line x1="170" y1="340" x2="304" y2="340" stroke="black" stroke-width="3" /></g></g></svg>`,
-        C: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="corrosive hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>corrosive hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><polygon points="40,30 52,30 50,50 42,50" fill="#fff"/><polygon points="68,30 80,30 78,50 70,50" fill="#fff"/><path d="M46,53 v6 M74,53 v6" fill="none" stroke-width="2"/><rect x="30" y="78" width="60" height="10" fill="#000"/><path d="M38,65 q4,8 8,0 q4,-8 8,0" fill="none" stroke-width="1.5"/></g></svg>`,
-        D: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="irritant hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>irritant hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><rect x="55" y="30" width="10" height="38" fill="#000" rx="3"/><circle cx="60" cy="82" r="6" fill="#000"/></g></svg>`
-      },
-      answer: "B",
-      explanation: "The flame symbol warns that the substance catches fire easily.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-203",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which hazard symbol would be found on a bottle of concentrated acid?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: true,
-      options: {
-        A: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="explosive hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>explosive hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><circle cx="60" cy="70" r="12" fill="#000"/><line x1="60" y1="54" x2="60" y2="40" stroke-width="2.5"/><line x1="71.3" y1="58.7" x2="81.2" y2="48.8" stroke-width="2.5"/><line x1="76" y1="70" x2="90" y2="70" stroke-width="2.5"/><line x1="71.3" y1="81.3" x2="81.2" y2="91.2" stroke-width="2.5"/><line x1="60" y1="86" x2="60" y2="100" stroke-width="2.5"/><line x1="48.7" y1="81.3" x2="38.8" y2="91.2" stroke-width="2.5"/><line x1="44" y1="70" x2="30" y2="70" stroke-width="2.5"/><line x1="48.7" y1="58.7" x2="38.8" y2="48.8" stroke-width="2.5"/></g></svg>`,
-        B: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="flammable hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>flammable hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff" /><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5" /><g transform="translate(-3.18 -3.8) scale(0.27)"><path d="M220 315C167 338 139 294 160 251C156 278 179 278 170 241C169 214 190 194 188 169C210 183 215 205 216 221C234 193 216 164 225 132C238 159 263 170 263 198C282 192 278 174 281 166C306 195 298 221 309 240C323 259 324 290 296 311C274 329 245 330 220 315Z" fill="black" stroke="black" stroke-width="1" /><path d="M227 313C207 301 199 284 210 268C208 280 224 281 222 260C221 249 232 238 232 226C245 241 243 257 249 266C260 252 255 239 258 231C282 254 288 287 270 304C259 315 245 319 227 313Z" fill="white" stroke="black" stroke-width="1" /><line x1="170" y1="340" x2="304" y2="340" stroke="black" stroke-width="3" /></g></g></svg>`,
-        C: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="toxic hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>toxic hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><circle cx="60" cy="48" r="16" fill="#000"/><circle cx="53" cy="46" r="4" fill="#fff"/><circle cx="67" cy="46" r="4" fill="#fff"/><line x1="38" y1="70" x2="82" y2="90" stroke-width="5"/><line x1="38" y1="90" x2="82" y2="70" stroke-width="5"/></g></svg>`,
-        D: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="corrosive hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>corrosive hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><polygon points="40,30 52,30 50,50 42,50" fill="#fff"/><polygon points="68,30 80,30 78,50 70,50" fill="#fff"/><path d="M46,53 v6 M74,53 v6" fill="none" stroke-width="2"/><rect x="30" y="78" width="60" height="10" fill="#000"/><path d="M38,65 q4,8 8,0 q4,-8 8,0" fill="none" stroke-width="1.5"/></g></svg>`
-      },
-      answer: "D",
-      explanation: "Corrosive substances damage skin and materials.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-204",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Buying household chemicals in bulk and using the recommended amount",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "saves money and reduces waste",
-        B: "increases pollution",
-        C: "makes the chemical stronger",
-        D: "is dangerous"
-      },
-      answer: "A",
-      explanation: "Economic use of household chemicals.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-452",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which household chemical is used as a disinfectant?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Baking powder",
-        B: "Table salt",
-        C: "Bleach",
-        D: "Vinegar"
-      },
-      answer: "C",
-      explanation: "Bleach kills microorganisms.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-453",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Baking powder is used in cake making to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "sweeten the cake",
-        B: "colour the cake",
-        C: "preserve the cake",
-        D: "make the cake rise by releasing carbon dioxide"
-      },
-      answer: "D",
-      explanation: "It reacts when heated or wet to release CO\u2082.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-454",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Ammonia solution is commonly used for",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "cooking",
-        B: "brushing teeth",
-        C: "cleaning glass and hard surfaces",
-        D: "treating burns"
-      },
-      answer: "C",
-      explanation: "Ammonia cuts grease on glass.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-455",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Methylated spirit is used to clean",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "glass and remove some ink stains",
-        B: "wounds on babies",
-        C: "food",
-        D: "aluminium pots"
-      },
-      answer: "A",
-      explanation: "It dissolves grease and some stains.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-456",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "An eco-friendly cleaning product is one which",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "contains phosphates",
-        B: "is biodegradable and less harmful to the environment",
-        C: "is flammable",
-        D: "is toxic to fish"
-      },
-      answer: "B",
-      explanation: "Eco-friendly products break down naturally.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-457",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which hazard symbol warns that a substance may explode?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: true,
-      options: {
-        A: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="flammable hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>flammable hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff" /><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5" /><g transform="translate(-3.18 -3.8) scale(0.27)"><path d="M220 315C167 338 139 294 160 251C156 278 179 278 170 241C169 214 190 194 188 169C210 183 215 205 216 221C234 193 216 164 225 132C238 159 263 170 263 198C282 192 278 174 281 166C306 195 298 221 309 240C323 259 324 290 296 311C274 329 245 330 220 315Z" fill="black" stroke="black" stroke-width="1" /><path d="M227 313C207 301 199 284 210 268C208 280 224 281 222 260C221 249 232 238 232 226C245 241 243 257 249 266C260 252 255 239 258 231C282 254 288 287 270 304C259 315 245 319 227 313Z" fill="white" stroke="black" stroke-width="1" /><line x1="170" y1="340" x2="304" y2="340" stroke="black" stroke-width="3" /></g></g></svg>`,
-        B: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="explosive hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>explosive hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><circle cx="60" cy="70" r="12" fill="#000"/><line x1="60" y1="54" x2="60" y2="40" stroke-width="2.5"/><line x1="71.3" y1="58.7" x2="81.2" y2="48.8" stroke-width="2.5"/><line x1="76" y1="70" x2="90" y2="70" stroke-width="2.5"/><line x1="71.3" y1="81.3" x2="81.2" y2="91.2" stroke-width="2.5"/><line x1="60" y1="86" x2="60" y2="100" stroke-width="2.5"/><line x1="48.7" y1="81.3" x2="38.8" y2="91.2" stroke-width="2.5"/><line x1="44" y1="70" x2="30" y2="70" stroke-width="2.5"/><line x1="48.7" y1="58.7" x2="38.8" y2="48.8" stroke-width="2.5"/></g></svg>`,
-        C: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="irritant hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>irritant hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><rect x="55" y="30" width="10" height="38" fill="#000" rx="3"/><circle cx="60" cy="82" r="6" fill="#000"/></g></svg>`,
-        D: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="toxic hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>toxic hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><circle cx="60" cy="48" r="16" fill="#000"/><circle cx="53" cy="46" r="4" fill="#fff"/><circle cx="67" cy="46" r="4" fill="#fff"/><line x1="38" y1="70" x2="82" y2="90" stroke-width="5"/><line x1="38" y1="90" x2="82" y2="70" stroke-width="5"/></g></svg>`
-      },
-      answer: "B",
-      explanation: "The exploding bomb symbol.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-458",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "The skull and crossbones hazard symbol means that a substance is",
-      statements: null,
-      after: null,
-      stimulus: {
-        lead: "to the following hazard symbol.",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="toxic hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>toxic hazard symbol</title><rect x="0" y="0" width="120" height="120" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5"/><circle cx="60" cy="48" r="16" fill="#000"/><circle cx="53" cy="46" r="4" fill="#fff"/><circle cx="67" cy="46" r="4" fill="#fff"/><line x1="38" y1="70" x2="82" y2="90" stroke-width="5"/><line x1="38" y1="90" x2="82" y2="70" stroke-width="5"/></g></svg>`,
-        table: null
-      },
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "flammable",
-        B: "corrosive",
-        C: "oxidising",
-        D: "toxic"
-      },
-      answer: "D",
-      explanation: "Toxic substances can cause death if swallowed, inhaled or absorbed.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-459",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Household chemicals should never be stored in soft drink bottles because",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "the bottles will melt",
-        B: "the chemicals become weaker",
-        C: "someone may drink them by mistake",
-        D: "it is expensive"
-      },
-      answer: "C",
-      explanation: "Accidental poisoning, especially of children.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-460",
-      module: 3,
-      objective: {
-        code: "3.6.1",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "discuss the uses of common household chemicals"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Hand sanitisers usually contain",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "alcohol",
-        B: "sugar",
-        C: "salt",
-        D: "bleach"
-      },
-      answer: "A",
-      explanation: "Alcohol (at least 60%) kills many microbes.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-205",
-      module: 3,
-      objective: {
-        code: "3.6.2",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "examine the properties of acids, bases and salts"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "A solution with a pH of 2 is",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "weakly acidic",
-        B: "strongly acidic",
-        C: "neutral",
-        D: "strongly alkaline"
-      },
-      answer: "B",
-      explanation: "pH below 7 is acidic; the lower the pH, the stronger the acid.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-206",
-      module: 3,
-      objective: {
-        code: "3.6.2",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "examine the properties of acids, bases and salts"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Which of the following household substances is alkaline?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Baking soda solution",
-        B: "Vinegar",
-        C: "Lime juice",
-        D: "Soft drink"
-      },
-      answer: "A",
-      explanation: "Baking soda (sodium hydrogencarbonate) solution has a pH of about 8-9.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-207",
-      module: 3,
-      objective: {
-        code: "3.6.2",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "examine the properties of acids, bases and salts"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "When an acid reacts with a base, the products are",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "hydrogen and oxygen",
-        B: "a salt and water",
-        C: "a salt and hydrogen",
-        D: "carbon dioxide only"
-      },
-      answer: "B",
-      explanation: "Acid + base \u2192 salt + water (neutralisation).",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-208",
-      module: 3,
-      objective: {
-        code: "3.6.2",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "examine the properties of acids, bases and salts"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A wasp sting is alkaline. Which of the following would BEST relieve the pain?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Baking soda",
-        B: "Soap solution",
-        C: "Vinegar",
-        D: "Toothpaste"
-      },
-      answer: "C",
-      explanation: "A weak acid (vinegar) neutralises the alkali.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-209",
-      module: 3,
-      objective: {
-        code: "3.6.2",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "examine the properties of acids, bases and salts"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Farmers add lime to soil that is too acidic. This is an example of",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "neutralisation",
-        B: "distillation",
-        C: "filtration",
-        D: "evaporation"
-      },
-      answer: "A",
-      explanation: "Lime is a base which neutralises acidic soil.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-210",
-      module: 3,
-      objective: {
-        code: "3.6.2",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "examine the properties of acids, bases and salts"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Litmus paper turns red in",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "alkalis",
-        B: "neutral solutions",
-        C: "all solutions",
-        D: "acids"
-      },
-      answer: "D",
-      explanation: "Blue litmus turns red in acids.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-461",
-      module: 3,
-      objective: {
-        code: "3.6.2",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "examine the properties of acids, bases and salts"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "An alkali is a base which",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "is always solid",
-        B: "dissolves in water",
-        C: "has a pH below 7",
-        D: "turns blue litmus red"
-      },
-      answer: "B",
-      explanation: "Soluble bases are alkalis, e.g. sodium hydroxide.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-462",
-      module: 3,
-      objective: {
-        code: "3.6.2",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "examine the properties of acids, bases and salts"
-      },
-      profile: "KC",
-      difficulty: 2,
-      stem: "Universal indicator turns green in a solution of pH",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "1",
-        B: "4",
-        C: "7",
-        D: "13"
-      },
-      answer: "C",
-      explanation: "Green indicates neutral.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-463",
-      module: 3,
-      objective: {
-        code: "3.6.2",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "examine the properties of acids, bases and salts"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "A student tested a household liquid with universal indicator and it turned purple. The liquid is MOST likely",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "vinegar",
-        B: "lemon juice",
-        C: "water",
-        D: "oven cleaner"
-      },
-      answer: "D",
-      explanation: "Purple shows a strong alkali (pH 13-14).",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-464",
-      module: 3,
-      objective: {
-        code: "3.6.2",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "examine the properties of acids, bases and salts"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Which of the following is a use of neutralisation in health?",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "Adding salt to food",
-        B: "Boiling water",
-        C: "Taking an antacid for indigestion",
-        D: "Freezing meat"
-      },
-      answer: "C",
-      explanation: "Antacids neutralise excess stomach acid.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-465",
-      module: 3,
-      objective: {
-        code: "3.6.2",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "examine the properties of acids, bases and salts"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "In cooking, baking soda is sometimes added to reduce the sourness of acidic foods because it",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "adds more acid",
-        B: "neutralises some of the acid",
-        C: "adds sugar",
-        D: "adds vitamins"
-      },
-      answer: "B",
-      explanation: "Baking soda is a weak base.",
-      topic: 6
-    },
-    {
-      id: "IS-M3-P1-466",
-      module: 3,
-      objective: {
-        code: "3.6.2",
-        topic: 6,
-        topicTitle: "Household Chemicals",
-        text: "examine the properties of acids, bases and salts"
-      },
-      profile: "UK",
-      difficulty: 2,
-      stem: "Sewage treatment plants may add lime to waste water in order to",
-      statements: null,
-      after: null,
-      stimulus: null,
-      group: null,
-      optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "neutralise a
+      opt

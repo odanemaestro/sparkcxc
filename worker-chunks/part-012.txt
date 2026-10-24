@@ -1,4 +1,1026 @@
-rOpeners = (low.match(/\b(?:some will say|some may say|some may argue|some people argue|others say|critics may argue|however|although|admittedly|on the other hand)\b/g) || []).length;
+may also reduce fuel use when commuters avoid long periods of slow-moving traffic.",
+          "Success depends on convenience. If the parking site feels unsafe, buses are infrequent or the total journey takes much longer than driving, commuters are unlikely to switch.",
+          "Good schemes therefore provide secure parking, clear schedules and frequent service during peak hours. Some also allow one ticket to cover both parking and the shuttle.",
+          "Park-and-ride is not a complete solution to congestion, but it can be useful when it fits into a wider transport plan that includes reliable public transport and safe walking routes."
+        ]
+      }, { wordLimit: 120, rubric: summaryRubric }),
+      task("EA-P2-E-M1-E", 1, "exposition", "Informative exposition", "Write a REPORT of approximately 250-300 words for your student council explaining the results below and recommending action.", {
+        situation: ["A survey of 420 students found that 46% travel by bus, 28% by private car, 18% walk and 8% use other methods.", "Thirty-seven percent of bus users reported arriving late at least once per week.", "The school gate is most congested between 7:35 a.m. and 7:50 a.m.", "Two nearby bus operators are willing to discuss adjusted arrival times."],
+        role: "You are the student council research officer."
+      }, { wordRange: [250, 300], format: "Report", rubric: expositionRubric }),
+      task("EA-P2-E-M2-S", 2, "summary", "Literary summary", "Read the extract. In NOT MORE THAN 120 words, summarise why Kareem wants to sell the radio and what changes his mind.", {
+        title: "Grandfather's Radio",
+        paragraphs: [
+          "Kareem considered the old radio useless. It occupied half a shelf, produced a faint hum and needed a careful tap before one speaker worked. When his mother suggested selling it at the community sale, he agreed immediately.",
+          "On Saturday morning he carried it outside and attached a price tag. An older man stopped, smiled and asked whether it still received the regional cricket broadcast. Kareem shrugged.",
+          "His grandfather, who had been arranging books nearby, answered instead. 'That radio carried the 1984 final into this house,' he said. Soon three neighbours were arguing cheerfully about who had shouted loudest that day.",
+          "Kareem plugged the radio into an extension cord. Static filled the yard, then a commentator's voice broke through. His grandfather became silent.",
+          "Kareem removed the price tag. 'Maybe we can sell the other things first,' he said."
+        ]
+      }, { wordLimit: 120, rubric: summaryRubric }),
+      task("EA-P2-E-M2-C1", 2, "literary", "Creative writing choice 1", "Write a short story of approximately 400-450 words ending with: 'The old photograph finally made sense.'", null, { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: literaryRubric }),
+      task("EA-P2-E-M2-C2", 2, "literary", "Creative writing choice 2", "Write a short story of approximately 400-450 words in which a broken object leads two people to discover something important about each other.", null, { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: literaryRubric }),
+      task("EA-P2-E-M3-S", 3, "summary", "Persuasive summary", "Read the persuasive extract. In NOT MORE THAN 120 words, summarise the writer's position, reasons and proposed limits.", {
+        title: "Keep Cash as an Option",
+        paragraphs: [
+          "Businesses should be encouraged to accept digital payments, but cash should remain an option for essential goods and services. A completely cashless system may be convenient for some customers while excluding others.",
+          "Digital payments can be fast, reduce the need to carry large sums and make record-keeping easier. Yet they depend on electricity, devices, networks and bank access. Service disruptions can leave customers unable to pay even when they have money available.",
+          "Older people, visitors and persons without reliable banking access may also be disadvantaged. For essential services such as transport, pharmacies and basic food shops, removing cash entirely creates unnecessary risk.",
+          "The sensible approach is choice. Businesses can promote secure digital payment while maintaining a reasonable cash option, especially for essential transactions."
+        ]
+      }, { wordLimit: 120, rubric: summaryRubric }),
+      task("EA-P2-E-M3-E", 3, "persuasive", "Persuasive speech", "Write a SPEECH of approximately 300-350 words to your class giving your views on the statement: 'Students should be allowed to use artificial intelligence tools for schoolwork if they explain how they used them.'", null, { wordRange: [300, 350], format: "Speech", rubric: persuasiveRubric })
+    ])
+  }),
+  Object.freeze({
+    id: "EA-P2-F",
+    title: "Practice Paper F",
+    description: "Health, education and community responsibility",
+    tasks: Object.freeze([
+      task("EA-P2-F-M1-S", 1, "summary", "Informative summary", "Read the article carefully. Write a summary in NOT MORE THAN 120 words in ONE paragraph.", {
+        title: "Making School Water Stations Work",
+        paragraphs: [
+          "Installing drinking-water stations at school seems simple, but keeping them useful requires planning. Schools often introduce them to reduce plastic bottle waste and make safe drinking water easier to access.",
+          "Location matters. A station hidden in one building may be ignored, while one placed near a busy corridor may create long queues. Maintenance is equally important because filters, taps and drains need regular attention.",
+          "Students are more likely to use the stations when they trust the water quality and when bottles can be filled quickly. Clear cleaning schedules and visible inspection records can build confidence.",
+          "Some schools combine the stations with reusable-bottle campaigns. This can reduce litter, but only if students can afford bottles or receive low-cost alternatives.",
+          "A successful programme therefore depends not only on buying equipment but also on sensible placement, maintenance, communication and fair access."
+        ]
+      }, { wordLimit: 120, rubric: summaryRubric }),
+      task("EA-P2-F-M1-E", 1, "exposition", "Informative exposition", "Write an ARTICLE of approximately 250-300 words for the school website explaining the proposed water-station programme below and how students can help it succeed.", {
+        situation: ["Three refill stations will be installed next month.", "Locations: canteen, science block and sports area.", "Filters will be checked monthly.", "Students should use reusable bottles where possible.", "The Environmental Club will monitor litter and report faults using a QR form."],
+        role: "You are the Environmental Club communications officer."
+      }, { wordRange: [250, 300], format: "Article", rubric: expositionRubric }),
+      task("EA-P2-F-M2-S", 2, "summary", "Literary summary", "Read the extract. In NOT MORE THAN 120 words, summarise the conflict faced by Priya and how she resolves it.", {
+        title: "The Team List",
+        paragraphs: [
+          "Priya had spent two weeks practising for the relay team. When the final list appeared, her name was missing. Her friend Dani was selected instead.",
+          "For the rest of lunch Priya barely spoke. She knew Dani had trained hard, but disappointment turned every congratulation she heard into an irritation.",
+          "After school, Coach Bennett asked Priya to help time the runners. She almost refused. Then she noticed Dani rubbing one ankle and trying not to limp.",
+          "Priya finished the timing sheet, walked over and showed Dani how she had been stretching before practice. 'It helped me,' she said.",
+          "Two days later the coach added Priya as reserve. She smiled at the list, but the better feeling came when Dani crossed the track and thanked her."
+        ]
+      }, { wordLimit: 120, rubric: summaryRubric }),
+      task("EA-P2-F-M2-C1", 2, "literary", "Creative writing choice 1", "Write a short story of approximately 400-450 words beginning: 'Everyone in the room heard the announcement except me.'", null, { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: literaryRubric }),
+      task("EA-P2-F-M2-C2", 2, "literary", "Creative writing choice 2", "Write a short story of approximately 400-450 words in which a competition produces an unexpected friendship.", null, { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: literaryRubric }),
+      task("EA-P2-F-M3-S", 3, "summary", "Persuasive summary", "Read the persuasive extract. In NOT MORE THAN 120 words, summarise the writer's argument and the conditions attached to the proposal.", {
+        title: "Teach First Aid to Every Student",
+        paragraphs: [
+          "Basic first-aid training should be part of secondary education. Students spend much of their day in schools, sports facilities and public spaces where minor injuries and emergencies can occur before a trained adult reaches the scene.",
+          "The goal is not to turn teenagers into medical professionals. It is to teach safe, limited actions: how to call for help, respond to choking, control simple bleeding and recognise when not to move an injured person.",
+          "Training should be practical and refreshed regularly. Schools could work with health agencies or certified organisations so that students learn current procedures rather than informal advice.",
+          "Time is always a concern, but a short annual session could fit into health, physical education or orientation programmes. Knowing what to do in the first few minutes of an emergency is a useful life skill, not an optional extra."
+        ]
+      }, { wordLimit: 120, rubric: summaryRubric }),
+      task("EA-P2-F-M3-E", 3, "persuasive", "Letter to the editor", "Write a LETTER TO THE EDITOR of approximately 300-350 words giving your views on the statement: 'Basic first-aid training should be compulsory for all secondary-school students.'", null, { wordRange: [300, 350], format: "Letter to the editor", rubric: persuasiveRubric })
+    ])
+  })
+]);
+
+// src/englishA/data/englishAPaper2Bank.js
+var ENGLISH_A_PAPER2_DURATION_SECONDS = 165 * 60;
+var ENGLISH_A_PAPER2_MODULES = Object.freeze({
+  1: "Informative Discourse",
+  2: "Literary Discourse",
+  3: "Persuasive Discourse"
+});
+var rubrics = Object.freeze({
+  summary: {
+    marks: 10,
+    criteria: [
+      "Select the essential ideas accurately.",
+      "Use concise continuous prose in your own words.",
+      "Organise the information logically.",
+      "Use clear Standard English with accurate grammar, spelling and punctuation."
+    ]
+  },
+  exposition: {
+    marks: 30,
+    criteria: [
+      "Use the required format and address the stated audience and purpose.",
+      "Select all relevant information from the stimulus.",
+      "Develop and organise ideas clearly and concisely.",
+      "Use an appropriate tone, register and vocabulary.",
+      "Use accurate Standard English, paragraphs, spelling and punctuation."
+    ]
+  },
+  literary: {
+    marks: 30,
+    criteria: [
+      "Use the stimulus or opening condition meaningfully.",
+      "Develop a coherent plot, setting, character and conflict.",
+      "Control point of view, pace and paragraphing.",
+      "Use effective descriptive and narrative language.",
+      "Use accurate Standard English; dialect may be used naturally in dialogue."
+    ]
+  },
+  persuasive: {
+    marks: 30,
+    criteria: [
+      "Take a clear position suited to the task and audience.",
+      "Develop relevant reasons with examples or evidence.",
+      "Organise the argument logically and address an opposing view where useful.",
+      "Use persuasive language and an appropriate register.",
+      "Use accurate Standard English, paragraphs, spelling and punctuation."
+    ]
+  }
+});
+function task2(id, module, kind, title, instructions, stimulus, extra = {}) {
+  return Object.freeze({ id, module, kind, title, instructions, stimulus, ...extra });
+}
+var englishAPaper2CoreSets = Object.freeze([
+  Object.freeze({
+    id: "EA-P2-A",
+    title: "Practice Paper A",
+    description: "Community, culture and responsible technology",
+    tasks: Object.freeze([
+      task2(
+        "EA-P2-A-M1-S",
+        1,
+        "summary",
+        "Informative summary",
+        "Read the article carefully. Write a summary in NOT MORE THAN 120 words in ONE paragraph. Use your own words as far as possible and include the main points.",
+        {
+          title: "Community Gardens: Small Spaces, Wider Benefits",
+          paragraphs: [
+            "Across several Caribbean towns, community gardens are appearing on unused lots beside schools, churches and housing schemes. Some began simply as attempts to grow seasoning and vegetables, but many have become wider community projects.",
+            "A well-run garden can reduce household spending by providing fresh produce close to home. It can also improve access to foods that may be expensive or difficult to find. Organisers stress, however, that a garden does not become productive merely because seeds are planted. Reliable water, suitable soil, regular maintenance and clear responsibility for shared tools are all necessary.",
+            "Schools that participate often use the plots for practical lessons. Students can measure growth, compare soil conditions and observe insects. Older residents sometimes contribute knowledge about planting seasons, composting and traditional crops, so the garden becomes a place where different generations work together.",
+            "There are challenges. Land may be temporary, volunteers may lose interest and theft can discourage members. Successful groups usually create a schedule, keep records and agree from the beginning how produce will be shared. Some also sell a small portion of the harvest to pay for seeds and repairs.",
+            "The greatest benefit may be social. People who once passed one another without speaking begin to plan, solve problems and celebrate harvests together. The garden therefore produces more than food: it can also strengthen a sense of responsibility for the neighbourhood."
+          ]
+        },
+        { wordLimit: 120, rubric: rubrics.summary }
+      ),
+      task2(
+        "EA-P2-A-M1-E",
+        1,
+        "exposition",
+        "Informative exposition",
+        "Study the situation, then write a FORMAL EMAIL of approximately 250-300 words to the school principal. Explain the problem, present the relevant information and recommend practical action.",
+        {
+          situation: [
+            "Students have complained that the school library closes at 3:00 p.m., although many students remain on campus until 4:30 p.m. for clubs and sports.",
+            "A student survey found that 68% of respondents would use the library after 3:00 p.m. at least twice per week.",
+            "The librarian is willing to remain until 4:30 p.m. on Tuesdays and Thursdays if one additional staff member is assigned.",
+            "The student council proposes a six-week trial and will help publicise the service and collect usage data."
+          ],
+          role: "You are the secretary of the student council."
+        },
+        { wordRange: [250, 300], format: "Formal email", rubric: rubrics.exposition }
+      ),
+      task2(
+        "EA-P2-A-M2-S",
+        2,
+        "summary",
+        "Literary summary",
+        "Read the literary extract. In NOT MORE THAN 120 words, summarise the change in Joel's attitude and the events that cause it.",
+        {
+          title: "The Last Bus",
+          paragraphs: [
+            "Joel had complained from the moment the bus left the terminal. The seat was too narrow, the rain too loud and the journey too slow. He had wanted his mother to send money for a taxi, but she had replied with one sentence: 'Take the bus and pay attention.'",
+            "At the third stop, an elderly man climbed aboard carrying two bags and a folded umbrella. No seat remained. Joel looked quickly through the wet window, pretending not to notice. Before he could settle back, a small girl across the aisle stood and offered her place.",
+            "The man thanked her and sat. Ten minutes later the bus stopped suddenly. One of the girl's schoolbooks slid beneath Joel's seat. He picked it up. On the cover was the name of the same primary school his mother had attended. Inside, the girl had written a list titled 'Things Grandma says I must never forget'. The first item read: Make room for people before you make excuses for yourself.",
+            "Joel stared at the sentence until the bus reached the next stop. Then he stood, lifted the man's bags and carried them to the door. When he returned to his seat, he sent his mother a message: 'I paid attention.'"
+          ]
+        },
+        { wordLimit: 120, rubric: rubrics.summary }
+      ),
+      task2(
+        "EA-P2-A-M2-C1",
+        2,
+        "literary",
+        "Creative writing choice 1",
+        "Write a short story of approximately 400-450 words that ends with the sentence: 'Only then did I understand why the light had been left on.'",
+        null,
+        { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: rubrics.literary }
+      ),
+      task2(
+        "EA-P2-A-M2-C2",
+        2,
+        "literary",
+        "Creative writing choice 2",
+        "Write a short story of approximately 400-450 words based on this situation: A student finds an old voice recording on a borrowed phone and must decide whether to listen to the rest of it.",
+        null,
+        { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: rubrics.literary }
+      ),
+      task2(
+        "EA-P2-A-M3-S",
+        3,
+        "summary",
+        "Persuasive summary",
+        "Read the persuasive extract. In NOT MORE THAN 120 words, summarise the writer's main arguments and proposed solution.",
+        {
+          title: "Give the Town Centre One Car-Free Evening",
+          paragraphs: [
+            "Our town centre should close its two busiest streets to private cars from 5:00 p.m. to 9:00 p.m. on the first Friday of each month. The proposal is not an attack on drivers. It is a trial that would give residents and businesses a chance to experience the centre differently.",
+            "At present, people often drive through the area without stopping. A car-free evening would allow restaurants to place tables outside, musicians to perform safely and families to move between shops without competing with traffic. Similar events elsewhere have increased foot traffic for small businesses.",
+            "Of course, transport must still work. Taxis, emergency vehicles and vehicles carrying persons with mobility needs should continue to have controlled access. Park-and-ride spaces could operate from the market grounds, with a shuttle every fifteen minutes.",
+            "Some shop owners fear lost sales. That concern deserves evidence, not guesswork. The council should therefore run the plan for three months, collect sales and traffic data, and then decide whether it should continue. A short, measured trial is more sensible than rejecting the idea without testing it."
+          ]
+        },
+        { wordLimit: 120, rubric: rubrics.summary }
+      ),
+      task2(
+        "EA-P2-A-M3-E",
+        3,
+        "persuasive",
+        "Persuasive essay",
+        "Write an essay of approximately 300-350 words giving your views on the statement: 'Secondary schools should require every student to complete community service before graduation.'",
+        null,
+        { wordRange: [300, 350], format: "Argumentative essay", rubric: rubrics.persuasive }
+      )
+    ])
+  }),
+  Object.freeze({
+    id: "EA-P2-B",
+    title: "Practice Paper B",
+    description: "Education, environment and community choices",
+    tasks: Object.freeze([
+      task2(
+        "EA-P2-B-M1-S",
+        1,
+        "summary",
+        "Informative summary",
+        "Read the article carefully. Write a summary in NOT MORE THAN 120 words in ONE paragraph, using your own words as far as possible.",
+        {
+          title: "Why Some Schools Are Rethinking Homework",
+          paragraphs: [
+            "Homework has long been used to give students extra practice, but schools are increasingly examining how much work is useful and what kind of work produces real learning. A large quantity of repetitive exercises may take time without improving understanding.",
+            "Teachers who redesign homework often focus on short tasks with a clear purpose. A mathematics teacher may assign three carefully chosen problems instead of twenty similar ones. An English teacher may ask students to annotate one paragraph closely rather than answer a long list of recall questions.",
+            "The home environment also matters. Students do not all have the same access to devices, quiet spaces, adult help or reliable internet. When homework depends heavily on these resources, marks may reflect circumstances rather than effort or ability.",
+            "This does not mean homework has no value. Reading, revision and unfinished classwork can strengthen independence. The strongest programmes explain why an assignment is being given, estimate how long it should take and allow teachers to adjust when many students struggle.",
+            "Schools that review homework policies therefore ask a simple question: does the task help learning enough to justify the time it requires?"
+          ]
+        },
+        { wordLimit: 120, rubric: rubrics.summary }
+      ),
+      task2(
+        "EA-P2-B-M1-E",
+        1,
+        "exposition",
+        "Informative exposition",
+        "Write a REPORT of approximately 250-300 words for your school's administration based on the information below. Include findings and practical recommendations.",
+        {
+          situation: [
+            "The school conducted a one-week waste audit.",
+            "Plastic drink bottles made up 41% of visible litter.",
+            "Only two recycling bins serve a campus of 900 students.",
+            "Most students interviewed said they would use clearly labelled recycling bins if these were near the canteen and main courtyard.",
+            "A local recycling company has offered weekly collection at no charge for a three-month trial."
+          ],
+          role: "You are a member of the Environmental Club."
+        },
+        { wordRange: [250, 300], format: "Report", rubric: rubrics.exposition }
+      ),
+      task2(
+        "EA-P2-B-M2-S",
+        2,
+        "summary",
+        "Literary summary",
+        "Read the extract. In NOT MORE THAN 120 words, summarise Marcia's problem, her response to it and what she finally learns.",
+        {
+          title: "The Recipe Book",
+          paragraphs: [
+            "Marcia had promised to prepare her aunt's coconut drops for Culture Day, but the old recipe book listed no oven temperature and no exact amount of milk. 'Your aunt cooked by looking,' her father said. That answer only irritated her.",
+            "Her first tray spread into one giant sheet. The second became hard enough to knock against the counter. With one hour left, Marcia wanted to buy pastries and tell everyone she had changed her mind.",
+            "Then her father placed a small bowl beside her. 'Taste the mixture before you bake it. Look at how it falls from the spoon. Your aunt showed me that much.'",
+            "Marcia slowed down. She added milk a little at a time, compared the texture with the memory of her aunt's baking and watched the first few drops carefully in the oven.",
+            "The final batch was uneven, but when her father tasted one he smiled. 'Not hers,' he said, 'but yours.' Marcia wrote the oven temperature and measurements in the margin of the old book."
+          ]
+        },
+        { wordLimit: 120, rubric: rubrics.summary }
+      ),
+      task2(
+        "EA-P2-B-M2-C1",
+        2,
+        "literary",
+        "Creative writing choice 1",
+        "Write a short story of approximately 400-450 words beginning with: 'The message was only four words long, but it changed the whole journey.'",
+        null,
+        { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: rubrics.literary }
+      ),
+      task2(
+        "EA-P2-B-M2-C2",
+        2,
+        "literary",
+        "Creative writing choice 2",
+        "Write a short story of approximately 400-450 words based on a picture you imagine showing an empty chair beneath a brightly lit stage.",
+        null,
+        { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: rubrics.literary }
+      ),
+      task2(
+        "EA-P2-B-M3-S",
+        3,
+        "summary",
+        "Persuasive summary",
+        "Read the persuasive extract. In NOT MORE THAN 120 words, summarise the writer's case and the safeguards proposed.",
+        {
+          title: "Phones Should Have a Place in Class - Not Run the Class",
+          paragraphs: [
+            "Schools should not treat every phone as either a perfect learning tool or an enemy. A sensible policy should allow teachers to use phones when they genuinely improve a lesson and require them to be put away at other times.",
+            "Phones can provide dictionaries, cameras, calculators, recording tools and quick access to reference material. They can also interrupt concentration, encourage secret messaging and make dishonest work easier.",
+            "A complete ban ignores useful technology, while unrestricted use places too much pressure on individual teachers. Schools should therefore set one clear rule: phones remain silent and stored unless a teacher explicitly authorises them for a stated activity.",
+            "Students who do not own suitable devices must never be disadvantaged. Any phone-based task should have a school-provided alternative. The aim is not to put more screens in front of students; it is to use a common tool deliberately rather than carelessly."
+          ]
+        },
+        { wordLimit: 120, rubric: rubrics.summary }
+      ),
+      task2(
+        "EA-P2-B-M3-E",
+        3,
+        "persuasive",
+        "Persuasive speech",
+        "Your youth club is debating whether public parks should have free Wi-Fi. Write a SPEECH of approximately 300-350 words presenting your position to the club.",
+        null,
+        { wordRange: [300, 350], format: "Speech", rubric: rubrics.persuasive }
+      )
+    ])
+  }),
+  Object.freeze({
+    id: "EA-P2-C",
+    title: "Practice Paper C",
+    description: "Work, transport and responsible public choices",
+    tasks: Object.freeze([
+      task2(
+        "EA-P2-C-M1-S",
+        1,
+        "summary",
+        "Informative summary",
+        "Read the article carefully. Write a summary in NOT MORE THAN 120 words in ONE paragraph.",
+        {
+          title: "Learning from a School Internship",
+          paragraphs: [
+            "Short internships can introduce secondary students to workplaces they may otherwise know only by name. A student interested in engineering may discover that the job involves writing reports and meeting clients as well as solving technical problems.",
+            "Useful placements are planned rather than improvised. Students need a supervisor, clear tasks and a chance to ask questions. Simply watching employees for a week gives limited insight. Better programmes allow students to complete small, safe tasks and reflect on what they observed.",
+            "Internships can also correct unrealistic expectations. Some students discover that a career they admired does not suit them, while others notice occupations they had never considered. Both outcomes are valuable because career decisions become better informed.",
+            "Transport, insurance and unequal access can make programmes difficult to organise. Schools may reduce these problems by partnering with nearby employers, rotating placements and including virtual workplace sessions where necessary.",
+            "The purpose of an internship is therefore not to turn a teenager into an employee. It is to provide structured exposure that helps the student ask better questions about future study and work."
+          ]
+        },
+        { wordLimit: 120, rubric: rubrics.summary }
+      ),
+      task2(
+        "EA-P2-C-M1-E",
+        1,
+        "exposition",
+        "Informative exposition",
+        "Write a NOTICE AND ACCOMPANYING ARTICLE of approximately 250-300 words for students explaining a new school-bus trial. Make the information easy to follow.",
+        {
+          situation: [
+            "The school will test two late buses for six weeks.",
+            "They leave at 4:45 p.m. on Tuesdays, Wednesdays and Thursdays.",
+            "Bus A serves Northside, Cedar Grove and Market Square.",
+            "Bus B serves Harbour Road, Hillview and Green Acres.",
+            "Students must register weekly by Monday at noon.",
+            "The trial will continue only if average usage reaches at least 20 students per bus."
+          ],
+          role: "You are the communications prefect."
+        },
+        { wordRange: [250, 300], format: "Notice and article", rubric: rubrics.exposition }
+      ),
+      task2(
+        "EA-P2-C-M2-S",
+        2,
+        "summary",
+        "Literary summary",
+        "Read the extract. In NOT MORE THAN 120 words, summarise what causes Andre's anxiety and how his sister helps him respond.",
+        {
+          title: "Before the Interview",
+          paragraphs: [
+            "Andre had answered the practice questions perfectly the night before. Yet outside the interview room, every sentence seemed to disappear from his mind. He stared at the polished door and imagined forgetting his own name.",
+            "His sister Talia sat beside him without offering advice. After a minute she asked, 'What colour is the wall?'",
+            "'What?'",
+            "'The wall.'",
+            "Andre frowned. 'Blue.'",
+            "'How many chairs?'",
+            "'Six.'",
+            "'What can you hear?'",
+            "He listened. A printer. Footsteps. Someone laughing two rooms away.",
+            "Talia nodded. 'Good. Now you're in this room instead of the disaster you invented in your head.'",
+            "When Andre's name was called, he still felt nervous, but the fear had become something smaller and more exact. He stood, straightened his folder and walked through the door."
+          ]
+        },
+        { wordLimit: 120, rubric: rubrics.summary }
+      ),
+      task2(
+        "EA-P2-C-M2-C1",
+        2,
+        "literary",
+        "Creative writing choice 1",
+        "Write a short story of approximately 400-450 words that includes the sentence: 'Nobody had noticed the second envelope.'",
+        null,
+        { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: rubrics.literary }
+      ),
+      task2(
+        "EA-P2-C-M2-C2",
+        2,
+        "literary",
+        "Creative writing choice 2",
+        "Write a short story of approximately 400-450 words in which a character must return something valuable before anyone realises it is missing.",
+        null,
+        { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: rubrics.literary }
+      ),
+      task2(
+        "EA-P2-C-M3-S",
+        3,
+        "summary",
+        "Persuasive summary",
+        "Read the persuasive extract. In NOT MORE THAN 120 words, summarise the reasons for the proposal and how the writer answers likely objections.",
+        {
+          title: "Start School Fifteen Minutes Later",
+          paragraphs: [
+            "Our secondary school should begin at 8:15 a.m. instead of 8:00 a.m. The change is small enough to manage but large enough to reduce the morning rush that affects students travelling from distant communities.",
+            "Buses often arrive within the same ten-minute period, creating congestion at the gate and leaving late students to hurry into assembly. A slightly later start would spread traffic and give students more realistic travel time.",
+            "Some people argue that the school day would then end later. It does not have to. Lunch could be shortened by five minutes and two transition periods by five minutes each, preserving the current dismissal time without reducing teaching time.",
+            "The school should test the change for one term and compare lateness, attendance and transport data with the previous term. If there is no improvement, the old schedule can return. A reversible trial based on evidence is better than continuing a problem simply because the timetable is familiar."
+          ]
+        },
+        { wordLimit: 120, rubric: rubrics.summary }
+      ),
+      task2(
+        "EA-P2-C-M3-E",
+        3,
+        "persuasive",
+        "Letter to the editor",
+        "Write a LETTER TO THE EDITOR of approximately 300-350 words giving your views on the statement: 'Local businesses should be required to provide paid work-experience places for secondary students.'",
+        null,
+        { wordRange: [300, 350], format: "Letter to the editor", rubric: rubrics.persuasive }
+      )
+    ])
+  })
+]);
+function revisedSummaryTask(task3) {
+  if (task3?.kind !== "summary") return task3;
+  const analysisPrompt = Number(task3.module) === 2 ? "Describe the setting of the extract." : "State the writer's purpose of the extract.";
+  const summaryPrompt = Number(task3.module) === 2 ? "In no more than 50 words, use THREE points to summarize the experiences of the main character or narrator in the extract. You must use your own words as far as possible." : "In no more than 50 words, use THREE points to summarize the writer's purpose. You must use your own words as far as possible.";
+  return Object.freeze({
+    ...task3,
+    instructions: `(a) ${analysisPrompt} (3 marks)
+
+(b) ${summaryPrompt} (7 marks)`,
+    analysisPrompt,
+    summaryPrompt,
+    wordLimit: 50,
+    rubric: Object.freeze({
+      marks: 10,
+      criteria: Object.freeze([
+        "Part (a): analysing the extract accurately \u2014 3 marks.",
+        "Part (b): THREE relevant summary points stated mainly in the candidate's own words \u2014 3 marks.",
+        "Part (b): language, expression, connectives, grammar and mechanics \u2014 4 marks.",
+        "The summary must not exceed 50 words."
+      ])
+    })
+  });
+}
+function revisedPaper2Task(task3) {
+  const summaryTask = revisedSummaryTask(task3);
+  if (summaryTask?.kind === "persuasive") {
+    return Object.freeze({
+      ...summaryTask,
+      instructions: String(summaryTask.instructions || "").replace("approximately 300-350 words", "approximately 250-300 words"),
+      wordRange: [250, 300],
+      rubric: Object.freeze({
+        marks: 30,
+        criteria: Object.freeze([
+          "P3 Evaluating and Creating \u2014 16 marks: clear position, relevant supporting details, awareness of audience, persuasive techniques, logical development and appropriate appeals.",
+          "P2 Analysing \u2014 7 marks: at least five paragraphs, logical sequencing, cohesion, effective introduction and conclusion.",
+          "P1 Understanding \u2014 7 marks: accurate Standard English, grammar, mechanics, paragraphing, register, tone and understanding of persuasive techniques.",
+          "A response under about 150 words is restricted to the low mark range in the specimen mark scheme."
+        ])
+      })
+    });
+  }
+  if (summaryTask?.kind === "exposition") {
+    return Object.freeze({
+      ...summaryTask,
+      instructions: String(summaryTask.instructions || "").replace(" of approximately 250-300 words", ""),
+      wordRange: null,
+      rubric: Object.freeze({
+        marks: 30,
+        criteria: Object.freeze([
+          "P1 Understanding \u2014 7 marks: relevance and clarity (3), accuracy, completeness and appropriateness (4).",
+          "P2 Analysing \u2014 7 marks: format and conventions (3), sense of audience (2), sequencing (2).",
+          "P3 Evaluating and Creating \u2014 16 marks: conciseness (3), coherence (2), structure and language (8), spelling and punctuation mechanics (3).",
+          "Heavy lifting from the stimulus can reduce the language mark."
+        ])
+      })
+    });
+  }
+  if (summaryTask?.kind === "literary") {
+    return Object.freeze({
+      ...summaryTask,
+      wordRange: [400, 450],
+      rubric: Object.freeze({
+        marks: 30,
+        criteria: Object.freeze([
+          "P3 Evaluating and Creating \u2014 16 marks: effective use of stimulus, plot, conflict, setting, point of view, characterisation, functional dialogue, sensory detail and lively diction.",
+          "P2 Analysing \u2014 7 marks: logical organisation, coherence and effective sequencing of events toward a suitable conclusion.",
+          "P1 Understanding \u2014 7 marks: accurate language, grammar and mechanics plus control of narrative elements.",
+          "A response under about 200 words is restricted to the low mark range in the specimen mark scheme."
+        ])
+      })
+    });
+  }
+  return summaryTask;
+}
+function revisedPaper2Set(set) {
+  return Object.freeze({
+    ...set,
+    tasks: Object.freeze(set.tasks.map(revisedPaper2Task))
+  });
+}
+var englishAPaper2Sets = Object.freeze([
+  ...englishAPaper2CoreSets,
+  ...englishAPaper2ExpansionSets
+].map(revisedPaper2Set));
+function buildEnglishAPaper2(setId) {
+  const set = englishAPaper2Sets.find((item2) => item2.id === setId) || englishAPaper2Sets[0];
+  return {
+    ...set,
+    requiredTaskIds: [
+      set.tasks.find((item2) => item2.id.endsWith("-M1-S"))?.id,
+      set.tasks.find((item2) => item2.id.endsWith("-M1-E"))?.id,
+      set.tasks.find((item2) => item2.id.endsWith("-M2-S"))?.id,
+      "M2-creative-choice",
+      set.tasks.find((item2) => item2.id.endsWith("-M3-S"))?.id,
+      set.tasks.find((item2) => item2.id.endsWith("-M3-E"))?.id
+    ].filter(Boolean)
+  };
+}
+
+// src/englishA/practice/englishAPaper2Grader.js
+var STOPWORDS = new Set("a an and are as at be been being but by can could did do does for from had has have he her hers him his i if in into is it its may might more most my no not of on one or our ours she should so than that the their theirs them then there these they this those to too us was we were what when where which who why will with would you your yours".split(" "));
+var CONNECTORS = ["however", "therefore", "because", "although", "furthermore", "moreover", "consequently", "for example", "for instance", "in addition", "on the other hand", "as a result", "first", "second", "finally"];
+var SENSORY = ["saw", "heard", "smell", "smelled", "taste", "tasted", "felt", "bright", "dark", "cold", "warm", "rough", "soft", "silent", "loud", "whisper", "shout", "glow"];
+var RESOLUTION = ["finally", "eventually", "at last", "in the end", "realised", "realized", "understood", "decided", "returned", "resolved"];
+var NARRATIVE = ["suddenly", "later", "before", "after", "when", "while", "then", "that morning", "that night", "the next day"];
+var FORM_MARKERS = {
+  "Formal email": ["subject:", "dear", "yours sincerely", "regards"],
+  "Formal letter": ["dear", "yours faithfully", "yours sincerely"],
+  "Letter to the editor": ["dear editor", "editor", "yours faithfully", "yours sincerely"],
+  "Report": ["report", "introduction", "findings", "recommendation", "recommendations"],
+  "Speech": ["good morning", "good afternoon", "members", "friends", "thank you", "audience"],
+  "Article": ["title", "headline", "readers", "we", "you"],
+  "Notice and article": ["notice", "date", "time", "students", "article"]
+};
+var clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+var round = (n) => Math.round(n * 10) / 10;
+var clean = (v) => String(v || "").replace(/\s+/g, " ").trim();
+var tokenise = (v) => clean(v).toLowerCase().match(/[a-z]+(?:'[a-z]+)?/g) || [];
+var countEnglishWords = (v) => (String(v || "").match(/[A-Za-z0-9]+(?:['’][A-Za-z]+)?(?:-[A-Za-z0-9]+(?:['’][A-Za-z]+)?)*/g) || []).length;
+var sentenceList = (v) => String(v || "").split(/[.!?]+/).map((s) => s.trim()).filter((s) => s.split(/\s+/).length >= 2);
+var paragraphList = (v) => String(v || "").split(/\n\s*\n|\n/).map((s) => s.trim()).filter(Boolean);
+var claimUnits = (v) => String(v || "").split(/[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)/).map((part2) => part2.trim()).filter(Boolean);
+function repeatedWritingEvidence(response) {
+  const sentences = claimUnits(response).map((line) => tokenise(line).join(" ")).filter((line) => line.split(" ").length >= 5);
+  const counts = /* @__PURE__ */ new Map();
+  sentences.forEach((line) => counts.set(line, (counts.get(line) || 0) + 1));
+  const repeated = [...counts.values()].reduce((sum, count) => sum + Math.max(0, count - 1), 0);
+  return {
+    total: sentences.length,
+    unique: counts.size,
+    repeatedShare: sentences.length ? repeated / sentences.length : 0
+  };
+}
+function repetitionCap(result, response) {
+  const repetition = repeatedWritingEvidence(response);
+  const count = countEnglishWords(response);
+  const max = count >= 100 && repetition.repeatedShare >= 0.4 ? 14 : count >= 100 && repetition.repeatedShare >= 0.2 ? 22 : null;
+  if (max === null) return { ...result, diagnostics: { ...result.diagnostics, repetition } };
+  if (result.score <= max) return {
+    ...result,
+    confidence: "low",
+    diagnostics: { ...result.diagnostics, repetition },
+    feedback: [...result.feedback || [], "Repeated statements limit demonstrated content development. The score remains a provisional estimate."]
+  };
+  const scale = max / result.score;
+  const dimensions = (result.dimensions || []).map((row) => ({ ...row, score: round(row.score * scale) }));
+  const newScore = round(dimensions.reduce((total, row) => total + row.score, 0));
+  if (newScore > max && dimensions.length) {
+    const last = dimensions[dimensions.length - 1];
+    last.score = round(Math.max(0, last.score - (newScore - max)));
+  }
+  return {
+    ...result,
+    score: Math.min(max, newScore),
+    dimensions,
+    confidence: "low",
+    diagnostics: { ...result.diagnostics, repetition },
+    feedback: [
+      ...result.feedback || [],
+      "Repeated sentences limit demonstrated development. SPARK has capped the provisional practice estimate."
+    ]
+  };
+}
+var countMatches = (value2, list) => list.filter((term) => clean(value2).toLowerCase().includes(term)).length;
+var uniqueRatio = (v) => {
+  const w = tokenise(v);
+  return w.length ? new Set(w).size / w.length : 0;
+};
+function stem(value2) {
+  let w = String(value2 || "").toLowerCase();
+  if (w.endsWith("ies") && w.length > 5) w = w.slice(0, -3) + "y";
+  else if (w.endsWith("ing") && w.length > 6) w = w.slice(0, -3);
+  else if (w.endsWith("ed") && w.length > 5) w = w.slice(0, -2);
+  else if (w.endsWith("es") && w.length > 5) w = w.slice(0, -2);
+  else if (w.endsWith("s") && w.length > 4) w = w.slice(0, -1);
+  return w;
+}
+function sourceText(stimulus) {
+  return [
+    ...stimulus?.paragraphs || [],
+    ...stimulus?.situation || [],
+    stimulus?.title || "",
+    stimulus?.role || ""
+  ].join(" ");
+}
+function keyTermsFromStimulus(stimulus) {
+  const freq = /* @__PURE__ */ new Map();
+  tokenise(sourceText(stimulus)).forEach((raw) => {
+    const w = stem(raw);
+    if (w.length < 4 || STOPWORDS.has(w)) return;
+    freq.set(w, (freq.get(w) || 0) + 1);
+  });
+  return [...freq.entries()].sort((a, b) => b[1] - a[1] || b[0].length - a[0].length).slice(0, 20).map(([w]) => w);
+}
+function sourceCoverage(stimulus, response) {
+  const terms = keyTermsFromStimulus(stimulus);
+  const candidate = new Set(tokenise(response).map(stem));
+  const matched = terms.filter((term) => candidate.has(term));
+  return { terms, matched, ratio: terms.length ? matched.length / terms.length : 0 };
+}
+var IDEA_EQUIVALENTS = Object.freeze({
+  quiet: ["calm", "peaceful"],
+  place: ["space", "area"],
+  places: ["spaces", "areas"],
+  reliable: ["dependable", "useful"],
+  books: ["book", "reading material", "reading materials"],
+  service: ["access", "connection"],
+  helps: ["supports", "assists", "enables"],
+  residents: ["people", "community", "users"],
+  schoolwork: ["homework", "school work", "studies"],
+  apply: ["application", "applications"],
+  jobs: ["job", "employment", "work"],
+  bring: ["connect", "join", "link"],
+  together: ["connect", "join", "link"],
+  build: ["strengthen", "develop", "improve"],
+  stronger: ["better", "improved", "regular"],
+  habits: ["habit", "routine", "routines"],
+  young: ["youth", "children", "students"],
+  people: ["persons", "residents", "community"]
+});
+function ideaTermPresent(candidateTokens, candidateText, term) {
+  if (candidateTokens.has(term)) return true;
+  const equivalents = IDEA_EQUIVALENTS[term] || [];
+  return equivalents.some((value2) => {
+    const normalized = stem(value2);
+    return candidateTokens.has(normalized) || candidateText.includes(String(value2).toLowerCase());
+  });
+}
+function sourceIdeaCoverage(stimulus, response) {
+  const rows = [...stimulus?.paragraphs || [], ...stimulus?.situation || []].filter(Boolean);
+  const units = claimUnits(response).filter((line) => tokenise(line).length >= 5);
+  const ideas = rows.map((line, index) => {
+    const terms = [...new Set(tokenise(line).map(stem).filter((w) => w.length >= 4 && !STOPWORDS.has(w)))];
+    const needed = Math.min(2, Math.max(1, Math.ceil(terms.length * 0.18)));
+    const best = units.map((unit) => {
+      const candidateText = clean(unit).toLowerCase();
+      const candidate = new Set(tokenise(unit).map(stem));
+      const matched = terms.filter((term) => ideaTermPresent(candidate, candidateText, term));
+      const negative = /\b(?:not|never|cannot|can't|doesn't|don't|isn't)\b/i;
+      const negated = negative.test(unit) && !negative.test(line);
+      return { matched, unit, valid: matched.length >= needed && !negated };
+    }).sort((a, b) => b.matched.length - a.matched.length)[0];
+    return {
+      index,
+      line,
+      matched: (best?.matched || []).slice(0, 6),
+      covered: Boolean(best?.valid),
+      evidence: best?.valid ? best.unit : ""
+    };
+  });
+  return { ideas, covered: ideas.filter((row) => row.covered).length, total: ideas.length };
+}
+function contradictorySourceSignals(stimulus, response) {
+  const low = clean(response).toLowerCase();
+  const negations = (low.match(/\b(?:not|never|no longer|cannot|can't|shouldn't|mustn't)\b/g) || []).length;
+  const coverage = sourceCoverage(stimulus, response);
+  return { count: negations && coverage.matched.length >= 2 ? negations : 0 };
+}
+function ngrams(value2, n = 5) {
+  const w = tokenise(value2).map(stem);
+  const set = /* @__PURE__ */ new Set();
+  for (let i = 0; i <= w.length - n; i++) set.add(w.slice(i, i + n).join(" "));
+  return set;
+}
+function copiedPhraseRatio(stimulus, response) {
+  const source2 = ngrams(sourceText(stimulus), 5);
+  const candidate = ngrams(response, 5);
+  if (!candidate.size || !source2.size) return 0;
+  let copied = 0;
+  candidate.forEach((item2) => {
+    if (source2.has(item2)) copied += 1;
+  });
+  return copied / candidate.size;
+}
+function situationCoverage(task3, response) {
+  const rows = (task3?.stimulus?.situation || []).map((line) => {
+    const terms = tokenise(line).map(stem).filter((w) => w.length >= 4 && !STOPWORDS.has(w));
+    const needed = Math.min(2, Math.max(1, Math.ceil(terms.length * 0.2)));
+    const evidence = claimUnits(response).map((unit) => {
+      const words2 = new Set(tokenise(unit).map(stem));
+      const matched = terms.filter((w) => words2.has(w));
+      return { unit, matched };
+    }).sort((a, b) => b.matched.length - a.matched.length)[0];
+    return {
+      line,
+      matched: (evidence?.matched || []).slice(0, 4),
+      covered: tokenise(evidence?.unit || "").length >= 5 && (evidence?.matched || []).length >= needed,
+      evidence: evidence?.unit || ""
+    };
+  });
+  return { rows, covered: rows.filter((r) => r.covered).length, total: rows.length };
+}
+function diagnostics(response) {
+  const w = tokenise(response);
+  const sentences = sentenceList(response);
+  const paras = paragraphList(response);
+  const repetition = repeatedWritingEvidence(response);
+  const avgSentence = sentences.length ? w.length / sentences.length : 0;
+  return {
+    wordCount: countEnglishWords(response),
+    sentenceCount: sentences.length,
+    paragraphCount: paras.length,
+    avgSentence,
+    longSentences: sentences.filter((s) => tokenise(s).length > 35).length,
+    veryShort: sentences.filter((s) => tokenise(s).length < 4).length,
+    lowercaseStarts: sentences.filter((s) => /^[a-z]/.test(s)).length,
+    repeatedPunct: (String(response).match(/[!?]{2,}|\.{4,}/g) || []).length,
+    diversity: uniqueRatio(response),
+    repetition
+  };
+}
+function languageBand(response, max = 7) {
+  const d = diagnostics(response);
+  if (d.wordCount < 20) return { score: 0, notes: ["The response is too short to demonstrate sustained language control."], diagnostics: d };
+  let score = max;
+  const notes = [];
+  if (d.diversity < 0.3) {
+    score -= 1;
+    notes.push("Vocabulary is repetitive. Vary word choice where it improves precision.");
+  }
+  if (d.avgSentence < 7 || d.avgSentence > 30) {
+    score -= 1;
+    notes.push("Sentence length needs more control and variety.");
+  }
+  if (d.longSentences >= 2) {
+    score -= 1;
+    notes.push("Several sentences are very long and may need clearer punctuation or division.");
+  }
+  if (d.veryShort >= Math.max(3, Math.ceil(d.sentenceCount * 0.3))) {
+    score -= 0.7;
+    notes.push("Frequent very short sentences make the writing choppy.");
+  }
+  if (d.lowercaseStarts > 0) {
+    score -= 0.5;
+    notes.push("Check sentence capitalisation.");
+  }
+  if (d.repeatedPunct > 0) {
+    score -= 0.3;
+    notes.push("Proofread repeated punctuation.");
+  }
+  if (d.wordCount >= 100 && d.repetition.repeatedShare >= 0.2) {
+    score -= d.repetition.repeatedShare >= 0.4 ? 3 : 1.5;
+    notes.push("Repeated sentences do not demonstrate additional language development.");
+  }
+  if (!notes.length) notes.push("Language is generally controlled, varied and readable.");
+  return { score: round(clamp(score, 0, max)), notes, diagnostics: d };
+}
+function formatEvidence(task3, response) {
+  const markers = FORM_MARKERS[task3?.format] || [];
+  const raw = String(response || "");
+  const low = clean(raw).toLowerCase();
+  const matched = new Set(markers.filter((m) => low.includes(m)));
+  const format = String(task3?.format || "").toLowerCase();
+  if (format === "report") {
+    if (/^\s*report\b/im.test(raw) || /\breport on\b/i.test(raw)) matched.add("report heading");
+    if (/^\s*to\s*:/im.test(raw)) matched.add("to:");
+    if (/^\s*from\s*:/im.test(raw)) matched.add("from:");
+    if (/^\s*date\s*:/im.test(raw)) matched.add("date:");
+    if (/^\s*subject\s*:/im.test(raw)) matched.add("subject:");
+    if (/^\s*\d+(?:\.\d+)?[.)]?\s+/m.test(raw)) matched.add("numbered sections");
+    if (/\bfindings?\b/i.test(raw)) matched.add("findings");
+    if (/\brecommendations?\b/i.test(raw)) matched.add("recommendations");
+    if (/\bconclusions?\b/i.test(raw)) matched.add("conclusion");
+  }
+  if (format === "speech") {
+    if (/\b(?:good morning|good afternoon|good evening|fellow members|friends|members)\b/i.test(raw)) matched.add("audience greeting");
+    if (/\b(?:thank you|i urge you|let us|vote yes|vote no)\b/i.test(raw)) matched.add("speech close");
+  }
+  return { markers, matched: [...matched] };
+}
+function wordRangePenalty(task3, response) {
+  const wc = countEnglishWords(response);
+  if (task3?.wordLimit) {
+    if (wc <= task3.wordLimit) return { factor: 1, wordCount: wc };
+    const over = (wc - task3.wordLimit) / task3.wordLimit;
+    return { factor: clamp(1 - over * 1.6, 0.35, 1), wordCount: wc };
+  }
+  if (task3?.wordRange) {
+    const [min, max] = task3.wordRange;
+    if (wc >= min && wc <= max) return { factor: 1, wordCount: wc };
+    if (wc < min) return { factor: clamp(wc / min, 0.35, 1), wordCount: wc };
+    return { factor: clamp(1 - (wc - max) / Math.max(100, max), 0.6, 1), wordCount: wc };
+  }
+  return { factor: 1, wordCount: wc };
+}
+function gradeAnalysisPart(task3, response) {
+  const low = clean(response).toLowerCase();
+  const coverage = sourceCoverage(task3?.stimulus, response);
+  if (!low) return { score: 0, evidence: [], feedback: "Part (a) was not answered." };
+  let typeSignal = 0;
+  if (Number(task3.module) === 2) {
+    const settingSignals = ["in ", "at ", "during", "morning", "afternoon", "evening", "night", "day", "school", "home", "town", "village", "road", "room", "centre", "center"];
+    typeSignal = Math.min(1.5, countMatches(" " + low, settingSignals) * 0.75);
+  } else if (Number(task3.module) === 3) {
+    typeSignal = /\b(persuade|convince|argue|urge|encourage|warn|discourage)\b/.test(low) ? 1.5 : 0.5;
+  } else {
+    typeSignal = /\b(inform|explain|describe|show|outline|educate|identify)\b/.test(low) ? 1.5 : 0.5;
+  }
+  const relevance = Math.min(1.5, coverage.matched.length * 0.5);
+  return {
+    score: round(clamp(typeSignal + relevance, 0, 3)),
+    evidence: coverage.matched.slice(0, 5),
+    feedback: Number(task3.module) === 2 ? "A strong answer identifies where/when the extract occurs and any important surrounding conditions." : "A strong answer states what the writer is trying to achieve and identifies the subject of that purpose."
+  };
+}
+function gradeSummary(task3, response, analysisResponse) {
+  const analysis = gradeAnalysisPart(task3, analysisResponse);
+  const coverage = sourceCoverage(task3?.stimulus, response);
+  const ideas = sourceIdeaCoverage(task3?.stimulus, response);
+  const contradictions = contradictorySourceSignals(task3?.stimulus, response);
+  const lang = languageBand(response, 4);
+  const copyRatio = copiedPhraseRatio(task3?.stimulus, response);
+  const length2 = wordRangePenalty(task3, response);
+  let understanding = ideas.total ? Math.min(3, ideas.covered) : round(clamp(coverage.ratio * 4.5, 0, 3));
+  if (countEnglishWords(response) < 15) understanding = Math.min(understanding, 1.5);
+  if (contradictions.count > 0) understanding = Math.min(understanding, 2);
+  let evaluating = lang.score;
+  if (copyRatio > 0.35) evaluating = Math.min(evaluating, 2);
+  else if (copyRatio > 0.2) evaluating = Math.min(evaluating, 3);
+  if (length2.factor < 1) evaluating = round(evaluating * length2.factor);
+  const score = round(clamp(analysis.score + understanding + evaluating, 0, 10));
+  const feedback = [
+    analysis.feedback,
+    ideas.total ? `Part (b) clearly represents ${ideas.covered} of ${ideas.total} distinct source idea blocks.` : `Part (b) covers ${coverage.matched.length} of ${coverage.terms.length} high-value source terms detected by SPARK.`,
+    `Summary word count: ${length2.wordCount}/${task3.wordLimit || 50}.`
+  ];
+  if (copyRatio > 0.2) feedback.push("Several phrases closely match the source. Paraphrase more of the summary in your own words.");
+  if (contradictions.count > 0) feedback.push("SPARK detected negation around source ideas, so content credit was capped rather than assuming those ideas were stated correctly.");
+  feedback.push(...lang.notes);
+  return {
+    score,
+    maxMarks: 10,
+    confidence: "medium-high",
+    dimensions: [
+      { id: "analysing", label: "P2 Analysing: Part (a)", score: analysis.score, max: 3, evidence: analysis.evidence },
+      { id: "understanding", label: "P1 Understanding: THREE distinct summary points", score: understanding, max: 3, evidence: ideas.total ? ideas.ideas.filter((row) => row.covered) : coverage.matched.slice(0, 6) },
+      { id: "evaluating", label: "P3 Evaluating & Creating: language and mechanics", score: evaluating, max: 4, evidence: lang.notes }
+    ],
+    feedback,
+    diagnostics: { ...lang.diagnostics, copyRatio: round(copyRatio), distinctSourceIdeas: ideas.covered, contradictionSignals: contradictions.count }
+  };
+}
+function gradeExposition(task3, response) {
+  const cov = situationCoverage(task3, response);
+  const lang = languageBand(response, 8);
+  const fmt = formatEvidence(task3, response);
+  const d = lang.diagnostics;
+  const connectors = countMatches(response, CONNECTORS);
+  const length2 = wordRangePenalty(task3, response);
+  const relevance = cov?.total ? Math.min(3, cov.covered / cov.total * 3) : 1.5;
+  const completeness = cov?.total ? Math.min(4, cov.covered / cov.total * 4) : 2;
+  const understanding = round(relevance + completeness);
+  const formatName = String(task3?.format || "").toLowerCase();
+  const formatMarks = formatName === "report" ? fmt.matched.length >= 7 ? 3 : fmt.matched.length >= 4 ? 2 : fmt.matched.length >= 2 ? 1 : 0 : fmt.markers.length ? Math.min(3, fmt.matched.length / Math.min(2, fmt.markers.length) * 3) : 2;
+  const audience = /\b(you|your|we|our|principal|manager|students|council|community|readers)\b/i.test(response) ? 2 : 1;
+  const structuredReport = formatName === "report" && fmt.matched.includes("numbered sections") && fmt.matched.includes("recommendations");
+  const sequencing = d.paragraphCount >= 3 && connectors >= 2 || structuredReport ? 2 : d.paragraphCount >= 2 ? 1 : 0;
+  let analysing = round(clamp(formatMarks + audience + sequencing, 0, 7));
+  const concision = round(clamp(3 * length2.factor, 0, 3));
+  const coherence = connectors >= 3 && d.paragraphCount >= 3 ? 2 : connectors >= 1 ? 1 : 0;
+  const mechanics = round(clamp(3 - (d.lowercaseStarts * 0.4 + d.repeatedPunct * 0.4 + d.longSentences * 0.2), 0, 3));
+  const language = round(clamp(lang.score * length2.factor, 0, 8));
+  let evaluating = round(clamp(concision + coherence + language + mechanics, 0, 16));
+  if (cov?.total && cov.covered === 0) {
+    analysing = Math.min(analysing, 3);
+    evaluating = Math.min(evaluating, 6);
+  } else if (cov?.total && cov.covered === 1) {
+    analysing = Math.min(analysing, 5);
+    evaluating = Math.min(evaluating, 10);
+  }
+  return {
+    score: round(understanding + analysing + evaluating),
+    maxMarks: 30,
+    confidence: cov?.total && cov.covered === 0 ? "low" : cov?.total ? "medium-high" : "medium",
+    dimensions: [
+      { id: "understanding", label: "P1 Understanding: relevance, clarity, accuracy and completeness", score: understanding, max: 7, evidence: cov?.rows || [] },
+      { id: "analysing", label: "P2 Analysing: format, audience and sequencing", score: analysing, max: 7, evidence: fmt.matched },
+      { id: "evaluating", label: "P3 Evaluating & Creating: concision, coherence, language and mechanics", score: evaluating, max: 16, evidence: lang.notes }
+    ],
+    feedback: [
+      cov?.total ? `${cov.covered}/${cov.total} stimulus points are clearly represented.` : "Check that every required stimulus point is used.",
+      `Format markers detected: ${fmt.matched.length ? fmt.matched.join(", ") : "none"}.`,
+      `Word count: ${d.wordCount}.`,
+      ...lang.notes
+    ],
+    diagnostics: d
+  };
+}
+function requiredLiteraryText(task3, response) {
+  const instructions = String(task3?.instructions || "");
+  const match = instructions.match(/\b(ends with(?: the sentence)?|beginning with|includes the sentence)\s*:\s*['“"]([^'”"]+)['”"]/i);
+  if (!match) return { required: false, fulfilled: true, type: "" };
+  const type = match[1].toLowerCase();
+  const normalise2 = (value2) => String(value2).toLowerCase().replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/\s+/g, " ").trim().replace(/^["']|["']$/g, "").replace(/[.?!]+$/, "");
+  const required = normalise2(match[2]);
+  const submission = normalise2(response);
+  const fulfilled = type.startsWith("ends with") ? submission.endsWith(required) : type === "beginning with" ? submission.startsWith(required) : submission.includes(required);
+  return { required: true, fulfilled, type };
+}
+var TOPIC_NOISE = new Set("write writing words word approximately essay speech letter statement position presenting based discuss about question answer following views view should student students youth club debate debating your their with after before from short story school schools required given on for whether topic task titled which".split(" "));
+function taskTopicalEvidence(task3, response) {
+  const instructions = String(task3?.instructions || "");
+  const terms = [...new Set(tokenise(instructions).map(stem).filter((word) => word.length >= 4 && !TOPIC_NOISE.has(word)))];
+  if (terms.length < 2) return { required: false, hits: [], terms };
+  const student = new Set(tokenise(response).map(stem));
+  const hits = terms.filter((word) => student.has(word));
+  return { required: true, terms, hits };
+}
+function supportedArgumentCount(response) {
+  const statements = claimUnits(response).filter((line) => tokenise(line).length >= 9);
+  const unique = /* @__PURE__ */ new Set();
+  for (const statement of statements) {
+    if (!/\b(?:because|since|for example|for instance|such as|this means|as a result|therefore|helps?|allows?|provides?|improves?|can reduce|can increase)\b/i.test(statement)) continue;
+    const signature = tokenise(statement).map(stem).join(" ");
+    unique.add(signature);
+  }
+  return unique.size;
+}
+function gradeLiterary(task3, response) {
+  const lang = languageBand(response, 7);
+  const d = lang.diagnostics;
+  const low = clean(response).toLowerCase();
+  const dialogue = (String(response).match(/[“"][^”"]+[”"]/g) || []).length;
+  const narrative = countMatches(response, NARRATIVE);
+  const sensory = countMatches(response, SENSORY);
+  const resolution = countMatches(response, RESOLUTION);
+  const promptTerms = tokenise(task3.instructions).map(stem).filter((w) => w.length >= 5 && !STOPWORDS.has(w)).slice(-12);
+  const candidate = new Set(tokenise(response).map(stem));
+  const promptHits = promptTerms.filter((w) => candidate.has(w)).length;
+  const length2 = wordRangePenalty(task3, response);
+  const literal = requiredLiteraryText(task3, response);
+  const promptUse = Math.min(4, 1 + promptHits * 0.8);
+  const storyElements = Math.min(6, (narrative >= 3 ? 2 : 1) + (resolution ? 1.5 : 0.5) + (dialogue ? 1.25 : 0.5) + (sensory >= 2 ? 1.25 : 0.5));
+  const development = Math.min(6, d.wordCount >= 300 ? 6 : d.wordCount >= 200 ? 4 : d.wordCount >= 120 ? 2 : 1);
+  let evaluating = round(clamp((promptUse + storyElements + development) * length2.factor, 0, 16));
+  if (!literal.fulfilled) evaluating = round(Math.min(evaluating * 0.65, 8));
+  let analysing = round(clamp((d.paragraphCount >= 5 ? 3 : d.paragraphCount >= 3 ? 2 : 1) + (narrative >= 4 ? 2 : narrative >= 2 ? 1 : 0) + (resolution ? 2 : 1), 0, 7));
+  if (!literal.fulfilled) analysing = Math.min(analysing, 5);
+  const understanding = round(clamp(lang.score, 0, 7));
+  const score = round(clamp(evaluating + analysing + understanding, 0, 30));
+  const feedback = [
+    ...literal.required && !literal.fulfilled ? ["The required story opening, ending, or quoted sentence was not included in the specified position."] : [],
+    promptHits ? "The response is visibly connected to the chosen stimulus." : "Make the required stimulus unmistakably central to the story.",
+    dialogue ? `Dialogue appears ${dialogue} time(s); make sure it develops character, action or atmosphere.` : "Dialogue is optional, but purposeful dialogue can help characterisation.",
+    sensory >= 2 ? "Sensory detail is used to build the scene." : "Use selective sensory detail to establish setting and atmosphere.",
+    resolution ? "A resolution/change signal is present." : "Make the conflict and ending feel causally connected rather than abrupt.",
+    d.wordCount < 200 ? "The specimen mark scheme caps very short stories (under about 200 words) at a low range. Develop the story further." : `Word count: ${d.wordCount}.`,
+    ...lang.notes
+  ];
+  return {
+    score,
+    maxMarks: 30,
+    confidence: "medium",
+    dimensions: [
+      { id: "evaluating", label: "P3 Evaluating & Creating: content and relevance of story", score: evaluating, max: 16 },
+      { id: "analysing", label: "P2 Analysing: organisation and sequencing", score: analysing, max: 7 },
+      { id: "understanding", label: "P1 Understanding: language, grammar, mechanics and narrative control", score: understanding, max: 7, evidence: lang.notes }
+    ],
+    feedback,
+    diagnostics: { ...d, literalRequirement: literal }
+  };
+}
+function persuasiveSignals(response) {
+  const raw = String(response || "");
+  const low = clean(raw).toLowerCase();
+  const paragraphs = paragraphList(raw);
+  const rhetorical = (raw.match(/\?/g) || []).length;
+  const directAddress = (low.match(/\b(?:you|your|we|our|us|fellow members|friends|members|community)\b/g) || []).length;
+  const calls = (low.match(/\b(?:i urge you|let us|join|support|reject|vote yes|vote no|act now|we must|we should)\b/g) || []).length;
+  const repetition = (low.match(/\bthink of\b/g) || []).length;
+  const counterOpeners = (low.match(/\b(?:some will say|some may say|some may argue|some people argue|others say|critics may argue|however|although|admittedly|on the other hand)\b/g) || []).length;
   const rebuttals = (low.match(/\b(?:i disagree|but|however|yet|that concern|this concern|in response|the answer is|does not|do not)\b/g) || []).length;
   const supportSignals = (low.match(/\b(?:because|for example|for instance|such as|think of|consider|according to|survey|data|evidence|cost|benefit|help|helps|allow|allows|give|gives|provide|provides|means|therefore|so that|as a result|in an emergency)\b/g) || []).length;
   const stance = /\b(?:i believe|i think|i support|i oppose|i stand firmly|in favour|in favor|against|should|should not|must|must not|in my view|my position)\b/.test(low);
@@ -26,7 +1048,7 @@ function gradePersuasive(task3, response) {
   const lang = languageBand(response, 7);
   const d = lang.diagnostics;
   const sig = persuasiveSignals(response);
-  const length = wordRangePenalty(task3, response);
+  const length2 = wordRangePenalty(task3, response);
   const topic2 = taskTopicalEvidence(task3, response);
   const developedReasons = supportedArgumentCount(response);
   const position = sig.stance ? 3 : 1;
@@ -34,7 +1056,7 @@ function gradePersuasive(task3, response) {
   const audience = Math.min(2, sig.directAddress >= 4 ? 2 : sig.directAddress ? 1.5 : 0.5);
   const opposition = sig.responseToOpposition ? 2 : sig.opposition ? 1 : 0;
   const devices = Math.min(4, (sig.rhetorical ? 1 : 0) + (sig.repetition >= 2 ? 1 : sig.repetition ? 0.5 : 0) + (sig.calls ? 1 : 0) + (sig.directAddress >= 4 ? 1 : 0));
-  let evaluating = round(clamp((position + support + audience + opposition + devices) * length.factor, 0, 16));
+  let evaluating = round(clamp((position + support + audience + opposition + devices) * length2.factor, 0, 16));
   if (!developedReasons) evaluating = Math.min(evaluating, 6);
   if (topic2.required && !topic2.hits.length) evaluating = Math.min(evaluating, 5);
   const structure = sig.paragraphs.length >= 5 ? 2 : sig.paragraphs.length >= 3 ? 1 : 0;
@@ -228,9 +1250,9 @@ var nearLine = (p, line, tol = 0.1) => {
   const d = v[0] * v[0] + v[1] * v[1], u = Math.max(0, Math.min(1, (w[0] * v[0] + w[1] * v[1]) / d));
   return Math.hypot(p[0] - a[0] - u * v[0], p[1] - a[1] - u * v[1]) <= tol;
 };
-function goodLabels(labels, funnel, filter, beaker) {
+function goodLabels(labels2, funnel, filter, beaker) {
   const valid = /* @__PURE__ */ new Set();
-  for (const l of labels) {
+  for (const l of labels2) {
     const p = l.to;
     if (l.name === "funnel" && funnel && [funnel.left, funnel.right].some((s) => nearLine(p, s, 0.055))) valid.add(l.name);
     if (l.name === "filter paper" && filter && [filter.left, filter.right].some((s) => nearLine(p, s, 0.055))) valid.add(l.name);
@@ -264,10 +1286,10 @@ function markSourceFiltrationDrawing(qid, pi, ii, item2, input, freehand = false
     criteria: []
   };
   const funnel = findFunnel(d.lines), paper = findFilter(d.lines, funnel), beaker = findBeaker(d.lines, funnel);
-  const labels = goodLabels(d.labels, funnel, paper, beaker);
+  const labels2 = goodLabels(d.labels, funnel, paper, beaker);
   const title = /\b(?:filtration|filtering|separating)\b/i.test(d.title) && /\b(?:mixture|sand|salt|apparatus|setup|set.up)\b/i.test(d.title);
   const neat = d.lines.length >= 7 && d.lines.length <= 25 && !freehand && d.labels.every((l) => !d.lines.some((s) => near(l.from, mid(s), 0.02))) && title;
-  const hits = [Boolean(funnel && paper), Boolean(beaker), labels >= 3, Boolean(neat)];
+  const hits = [Boolean(funnel && paper), Boolean(beaker), labels2 >= 3, Boolean(neat)];
   const score = hits.filter(Boolean).length;
   const blank = d.lines.length === 0 && d.labels.length === 0 && !d.title.trim();
   const uniqueLines = new Set(d.lines.map((s) => [s[0].join(","), s[1].join(",")].sort().join("|")));
@@ -294,7 +1316,7 @@ function markSourceFiltrationDrawing(qid, pi, ii, item2, input, freehand = false
       funnel: Boolean(funnel),
       filterPaper: Boolean(paper),
       beaker: Boolean(beaker),
-      correctLabels: labels,
+      correctLabels: labels2,
       appropriateTitle: title
     }
   };
@@ -608,10 +1630,10 @@ function characterize(pts) {
     const regular = all.every((d) => within(d, 0.13, 0.34)) && Math.max(...dx) / Math.min(...dx) < 1.35 && Math.max(...dy) / Math.min(...dy) < 1.35 && xs.length >= 3 && ys.length >= 3;
     if (regular) return { type: "regular" };
   }
-  const close = distances.filter((d) => d <= 0.285).length / pts.length;
+  const close2 = distances.filter((d) => d <= 0.285).length / pts.length;
   const xspan = Math.max(...pts.map((p) => p[0])) - Math.min(...pts.map((p) => p[0]));
   const yspan = Math.max(...pts.map((p) => p[1])) - Math.min(...pts.map((p) => p[1]));
-  if (close >= 0.8 && xspan >= 0.33 && yspan >= 0.33 && xspan <= 0.85 && yspan <= 0.85)
+  if (close2 >= 0.8 && xspan >= 0.33 && yspan >= 0.33 && xspan <= 0.85 && yspan <= 0.85)
     return { type: "irregular" };
   return { type: "ambiguous" };
 }
@@ -693,8 +1715,8 @@ var rowKnown = (kind, row) => {
 var topicPresent = (kind, s) => kind === "conductivity" ? /\b(?:copper|iron|aluminium|plastic|wood|graphite|material|conduct|lamp|electric)\w*\b/.test(s) : kind === "nutrients" ? /\b(?:food|nutrient|carbohydrate|protein|fat|energy|rice|yam|fish|pea|butter|ackee)\w*\b/.test(s) : /\b(?:metal|acid|react|bubble|iron|zinc|copper|magnesium)\w*\b/.test(s);
 function additionalTableSpec(qid, pi, ii, item2) {
   const spec = SPECS[qid + ":" + pi + ":" + ii];
-  const points = item2?.markScheme?.points || [];
-  const sourceGuard = spec?.kind === "conductivity" ? points.some((p) => /enclosed table listing all six materials/i.test(p)) : spec?.kind === "nutrients" ? points.some((p) => /carbohydrate.*supplies energy/i.test(p)) : spec?.kind === "metals" ? points.some((p) => /W.*many bubbles.*X.*some bubbles/i.test(p)) : false;
+  const points2 = item2?.markScheme?.points || [];
+  const sourceGuard = spec?.kind === "conductivity" ? points2.some((p) => /enclosed table listing all six materials/i.test(p)) : spec?.kind === "nutrients" ? points2.some((p) => /carbohydrate.*supplies energy/i.test(p)) : spec?.kind === "metals" ? points2.some((p) => /W.*many bubbles.*X.*some bubbles/i.test(p)) : false;
   return spec && sourceGuard && item2?.response?.type === "drawing" && Number(item2.marks) === spec.marks ? spec : null;
 }
 function gradeAdditionalTable(qid, pi, ii, item2, response, freehand = false) {
@@ -841,7 +1863,7 @@ function markSourceRustTable(questionId, partIndex, itemIndex, item2, tableRespo
     return Boolean(id) && validRow(id, row[1] || "");
   });
   const resolved = !ambiguous && !duplicates && (blank || absentTopic || knownTitle && knownHeaders && knownRows);
-  const labels = [
+  const labels2 = [
     "Suitable title",
     "Enclosed table with correct headings",
     "Test tube A: rusted",
@@ -856,7 +1878,7 @@ function markSourceRustTable(questionId, partIndex, itemIndex, item2, tableRespo
     provisional: !resolved,
     unassessedMarks: 0,
     confidence: resolved ? "high" : "low",
-    criteria: hits.map((earned, i) => ({ id: "rust-table-" + (i + 1), label: labels[i], marks: Number(earned), maxMarks: 1, earned }))
+    criteria: hits.map((earned, i) => ({ id: "rust-table-" + (i + 1), label: labels2[i], marks: Number(earned), maxMarks: 1, earned }))
   };
 }
 
@@ -1192,6 +2214,327 @@ var SCIENCE_TABLES = {
   "IS-M2-P2-22:1:0": [["maltose"], ["stomach"], ["fatty acids and glycerol"], ["small intestine", "duodenum"]],
   "IS-M3-P2-26:2:0": [["disinfectant", "stain remover", "whitening"], ["cooking", "pickling", "removing lime scale"], ["raising agent in baking", "antacid", "cleaning"]]
 };
+
+// src/integratedScience/practice/sourceFlowerMagnificationMarking.js
+var FLOWER_SOURCE_MAGNIFICATION_BASE = "IS-M1-P2-27:0:1";
+var positive = (x) => /^(?:\d+(?:\.\d+)?|\.\d+)$/.test(String(x ?? "").trim()) && Number(x) > 0 && Number.isFinite(Number(x));
+var close = (a, b) => Math.abs(a - b) <= Math.max(5e-3, Math.abs(b) * 5e-3);
+function markSourceFlowerMagnification(responses = {}, base = FLOWER_SOURCE_MAGNIFICATION_BASE) {
+  if (base !== FLOWER_SOURCE_MAGNIFICATION_BASE) return null;
+  const read3 = (k) => String(responses[base + ":" + k] ?? "").trim();
+  const drawing = read3("drawingHeightMm"), actual = read3("actualHeightMm");
+  const working = read3("magnificationWorking"), answer2 = read3("magnificationAnswer");
+  let measured = "";
+  try {
+    const evidence = JSON.parse(responses["IS-M1-P2-27:0:0:biologicalEvidence"] || "{}");
+    measured = String(evidence.measurementMm ?? "").trim();
+  } catch {
+  }
+  const matchesDrawing = positive(measured) && positive(drawing) && close(Number(drawing), Number(measured));
+  const hasDimensions = matchesDrawing && positive(actual);
+  const ratio = hasDimensions ? Number(drawing) / Number(actual) : null;
+  const workingText = working.toLowerCase().replace(/÷/g, "/").replace(/\bdivided\s+by\b/g, "/").replace(/^\s*(?:magnification|mag|m)\s*=\s*/, "").replace(/,/g, "").replace(/\s+/g, "");
+  const validExpression = workingText.match(/^(\d+(?:\.\d+)?|\.\d+)\/(\d+(?:\.\d+)?|\.\d+)(?:=(\d+(?:\.\d+)?|\.\d+))?$/);
+  const methodCorrect = Boolean(hasDimensions && validExpression && close(Number(validExpression[1]), Number(drawing)) && close(Number(validExpression[2]), Number(actual)) && (validExpression[3] === void 0 || close(Number(validExpression[3]), ratio)));
+  const displayed = answer2.match(/^[×xX]\s*(\d+(?:\.\d+)?|\.\d+)$/);
+  const answerCorrect = Boolean(hasDimensions && displayed && close(Number(displayed[1]), ratio));
+  const score = Number(methodCorrect) + Number(answerCorrect);
+  const complete = Boolean(matchesDrawing && hasDimensions && working && answer2);
+  return {
+    score,
+    maxMarks: 2,
+    sourceBiological: true,
+    sourceResolved: false,
+    provisional: true,
+    confidence: complete ? "medium" : "low",
+    reason: "The real drawing height and source specimen scale have not been independently verified.",
+    unassessedMarks: 2 - score,
+    visualEvidenceRequired: true,
+    criteria: [
+      { id: base + ":method", label: "Magnification = measured drawing height / actual height", marks: Number(methodCorrect), maxMarks: 1, earned: methodCorrect },
+      { id: base + ":answer", label: "Calculated magnification with \xD7", marks: Number(answerCorrect), maxMarks: 1, earned: answerCorrect }
+    ],
+    visualEvidence: {
+      drawingHeightMm: positive(drawing) ? Number(drawing) : null,
+      actualHeightMm: positive(actual) ? Number(actual) : null,
+      matchesDrawing,
+      methodCorrect,
+      answerCorrect,
+      externalPhysicalScaleVerified: false
+    }
+  };
+}
+
+// src/integratedScience/practice/sourceBiologicalDrawingMarking.js
+var STOMA = "IS-M1-P2-21:1:0";
+var FLOWER = "IS-M1-P2-27:0:0";
+var within2 = (v, hi) => typeof v === "number" && Number.isFinite(v) && v >= 0 && v <= hi;
+var length = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+var near2 = (a, b, t2) => Math.hypot(a[0] - b[0], a[1] - b[1]) <= t2;
+function points(raw) {
+  let data;
+  try {
+    data = typeof raw === "string" ? JSON.parse(raw) : raw;
+  } catch {
+    return [];
+  }
+  if (!Array.isArray(data) || data.length > 60) return [];
+  return data.filter((path) => Array.isArray(path) && path.length >= 2 && path.length <= 300 && path.every((p) => p && within2(p.x, 600) && within2(p.y, 300)));
+}
+function labels(raw) {
+  let data;
+  try {
+    data = typeof raw === "string" ? JSON.parse(raw) : raw;
+  } catch {
+    return null;
+  }
+  if (!data || typeof data !== "object" || Array.isArray(data) || !Array.isArray(data.labels)) return null;
+  const valid = (p) => Array.isArray(p) && p.length === 2 && p.every((x) => within2(x, 1));
+  if (data.labels.length > 18 || !data.labels.every((l) => l && typeof l.name === "string" && valid(l.from) && valid(l.to)))
+    return null;
+  return data;
+}
+function bounds(paths) {
+  const coords = paths.flat();
+  if (!coords.length) return null;
+  const xs = coords.map((p) => p.x), ys = coords.map((p) => p.y);
+  return { left: Math.min(...xs), right: Math.max(...xs), top: Math.min(...ys), bottom: Math.max(...ys) };
+}
+function clean2(paths) {
+  if (paths.length < 2 || paths.length > 24) return false;
+  const total = paths.reduce((sum, p) => sum + p.length, 0);
+  if (total < 20 || total > 1800) return false;
+  return paths.every((p) => {
+    const dist = p.slice(1).map((pt, i) => length(pt, p[i]));
+    return dist.every((d) => d > 0 && d < 45) && dist.reduce((n, d) => n + d, 0) > 16;
+  });
+}
+function intersects(a, b, c, d) {
+  const cross = (p, q, r) => (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]);
+  const ab1 = cross(a, b, c), ab2 = cross(a, b, d), cd1 = cross(c, d, a), cd2 = cross(c, d, b);
+  return ab1 * ab2 < -1e-6 && cd1 * cd2 < -1e-6;
+}
+function pointNearStrokes(point2, paths, tolerance = 25) {
+  const px = point2[0] * 600, py = point2[1] * 300;
+  return paths.some((path) => path.some((p) => Math.hypot(px - p.x, py - p.y) < tolerance));
+}
+function rulerLabels(evidence, paths) {
+  if (!evidence || evidence.labels.length < 3) return false;
+  const placements = evidence.labels;
+  const distinct = new Set(placements.map((l) => l.name));
+  if (distinct.size < 3 || !placements.every((l) => !near2(l.from, l.to, 0.065) && pointNearStrokes(l.to, paths))) return false;
+  return placements.every((l, i) => placements.every((r, j) => j <= i || !intersects(l.from, l.to, r.from, r.to)));
+}
+function stomaTitle(title) {
+  return /\b(?:stoma|stomata|stomatal)\b/i.test(title) && /\b(?:leaf|epidermis)\b/i.test(title) && /\b(?:surface|view)\b/i.test(title);
+}
+function magnificationReported(evidence, notes) {
+  const width = String(evidence?.measurementMm ?? "").trim();
+  if (!/^(?:\d+(?:\.\d+)?|\.\d+)$/.test(width) || Number(width) <= 0) return false;
+  const expected = Number(width) / 0.02;
+  const candidates = [...String(notes ?? "").matchAll(/[×xX]\s*(\d+(?:\.\d+)?)/g)];
+  return candidates.length === 1 && Math.abs(Number(candidates[0][1]) - expected) <= Math.max(0.05, expected * 5e-3);
+}
+function markSourceBiologicalDrawing(qid, partIndex, itemIndex, item2, responses = {}) {
+  const base = qid + ":" + partIndex + ":" + itemIndex;
+  const isStoma = base === STOMA, isFlower = base === FLOWER;
+  if (!isStoma && !isFlower) return null;
+  if (item2?.response?.type !== "drawing" || Number(item2.marks) !== (isStoma ? 7 : 6)) return null;
+  const paths = points(responses[base + ":strokes"]);
+  const evidence = labels(responses[base + ":biologicalEvidence"]);
+  const box = bounds(paths);
+  const contours = paths.filter((p) => {
+    if (p.length < 10 || length(p[0], p[p.length - 1]) > 18) return false;
+    const b = bounds([p]);
+    return b.right - b.left >= 26 && b.bottom - b.top >= 32;
+  });
+  const hasContours = contours.length >= (isStoma ? 2 : 3);
+  const tidy = hasContours && clean2(paths);
+  const large = Boolean(hasContours && box && box.right - box.left >= 210 && box.bottom - box.top >= 155);
+  const leaderLines = hasContours && rulerLabels(evidence, paths);
+  const hasDrawing = hasContours;
+  const scoreParts = isStoma ? [
+    { label: "Clean continuous lines, no shading", ok: tidy },
+    { label: "Large drawing", ok: large },
+    { label: "Correct stoma and guard cell structure", ok: false, unknown: true },
+    { label: "Correct anatomical proportions", ok: false, unknown: true },
+    { label: "Correctly placed anatomical labels", ok: false, unknown: true },
+    { label: "Appropriate title and surface view", ok: hasDrawing && stomaTitle(evidence?.title || "") },
+    { label: "Stated magnification agrees with measured width and 0.02 mm", ok: hasDrawing && magnificationReported(evidence, responses[base]) }
+  ] : [
+    { label: "Clean continuous lines, no shading", ok: tidy },
+    { label: "Large drawing", ok: large },
+    { label: "Main flower parts in the correct proportions", ok: false, unknown: true },
+    { label: "Correctly placed flower labels (first mark)", ok: false, unknown: true },
+    { label: "Correctly placed flower labels (second mark)", ok: false, unknown: true },
+    { label: "Ruled non-crossing leader lines", ok: leaderLines }
+  ];
+  const score = scoreParts.reduce((sum, p) => sum + Number(p.ok), 0);
+  return {
+    score,
+    maxMarks: isStoma ? 7 : 6,
+    unassessedMarks: scoreParts.length - score,
+    sourceBiological: true,
+    sourceResolved: false,
+    provisional: true,
+    visualEvidenceRequired: true,
+    reason: "Anatomical structures, label endpoints and physical drawing measurements still require verification.",
+    confidence: "low",
+    criteria: scoreParts.map((p, i) => ({
+      id: base + ":bio:" + i,
+      label: p.label,
+      marks: Number(p.ok),
+      maxMarks: 1,
+      earned: p.ok,
+      provisional: true
+    })),
+    visualEvidence: {
+      strokeCount: paths.length,
+      cleanContinuousLines: tidy,
+      large,
+      nonCrossingLabelLines: leaderLines,
+      title: stomaTitle(evidence?.title || ""),
+      shapeAndLabelTargetsIndependentlyVerified: false
+    }
+  };
+}
+
+// src/integratedScience/practice/ScienceBiologicalDrawingEvidence.jsx
+var import_react = __toESM(require_react());
+var SOURCES = {
+  "IS-M1-P2-21:1:0": {
+    title: "Stoma and guard cells",
+    names: ["guard cell", "stoma", "chloroplast", "nucleus"],
+    dimension: "width"
+  },
+  "IS-M1-P2-27:0:0": {
+    title: "Longitudinal flower section",
+    names: ["petal", "sepal", "anther", "filament", "stigma", "style", "ovary", "ovule", "receptacle"],
+    dimension: "height"
+  }
+};
+var normalizePoint = (p) => Array.isArray(p) && p.length === 2 && p.every((n) => typeof n === "number" && Number.isFinite(n) && n >= 0 && n <= 1);
+function biologicalDrawingSource(questionId, partIndex, itemIndex) {
+  return SOURCES[questionId + ":" + partIndex + ":" + itemIndex] || null;
+}
+function readBiologicalDrawingEvidence(raw, source2) {
+  const blank = { title: "", labels: [], measurementMm: "" };
+  if (!source2) return blank;
+  let data = raw;
+  try {
+    if (typeof raw === "string") data = JSON.parse(raw);
+  } catch {
+    return blank;
+  }
+  if (!data || typeof data !== "object") return blank;
+  return {
+    title: typeof data.title === "string" ? data.title.slice(0, 160) : "",
+    measurementMm: typeof data.measurementMm === "string" ? data.measurementMm.slice(0, 20) : "",
+    labels: Array.isArray(data.labels) ? data.labels.filter((l) => l && source2.names.includes(l.name) && normalizePoint(l.from) && normalizePoint(l.to)).slice(0, 18) : []
+  };
+}
+
+// src/integratedScience/practice/ScienceDrawingMagnificationEvidence.jsx
+var import_react2 = __toESM(require_react());
+var FIELDS = [
+  ["drawingHeightMm", "Measured height of your drawing (mm)"],
+  ["actualHeightMm", "Actual height of the specimen (mm)"],
+  ["magnificationWorking", "Your working"],
+  ["magnificationAnswer", "Your magnification (include \xD7)"]
+];
+function readMagnificationEvidence(base, responses = {}) {
+  return Object.fromEntries(FIELDS.map(([key]) => [key, String(responses[base + ":" + key] ?? "")]));
+}
+function magnificationEvidenceStatus(values) {
+  const draw = String(values?.drawingHeightMm ?? "").trim();
+  const actual = String(values?.actualHeightMm ?? "").trim();
+  const working = String(values?.magnificationWorking ?? "").trim();
+  const answer2 = String(values?.magnificationAnswer ?? "").trim();
+  const numeric = (s) => /^(?:\d+(?:\.\d+)?|\.\d+)$/.test(s) && Number(s) > 0 && Number.isFinite(Number(s));
+  const validNumbers = numeric(draw) && numeric(actual);
+  return {
+    complete: validNumbers && working.length > 0 && answer2.length > 0,
+    hasMeasurements: validNumbers,
+    hasWorking: working.length > 0,
+    hasAnswer: answer2.length > 0
+  };
+}
+function magnificationArithmeticEvidence(values) {
+  const status = magnificationEvidenceStatus(values);
+  if (!status.hasMeasurements) return { consistent: false, reviewRequired: true, reason: "missing-measurements" };
+  const drawing = Number(values.drawingHeightMm), actual = Number(values.actualHeightMm);
+  const expected = drawing / actual;
+  const answer2 = String(values.magnificationAnswer ?? "").trim().replace(/[×xX]/g, "").trim();
+  if (!/^(?:\d+(?:\.\d+)?|\.\d+)$/.test(answer2))
+    return { consistent: false, reviewRequired: true, reason: "invalid-answer" };
+  const given = Number(answer2);
+  const working = String(values.magnificationWorking ?? "").replace(/,/g, "");
+  const expression = working.replace(/÷/g, "/").replace(/\bdivided\s+by\b/gi, "/");
+  const operands2 = expression.match(/\d+(?:\.\d+)?/g) || [];
+  const hasWorking = expression.includes("/") && operands2.length >= 2 && Number(operands2[0]) === drawing && Number(operands2[1]) === actual && !/\bor\b/i.test(expression);
+  const consistent = hasWorking && Number.isFinite(expected) && Math.abs(given - expected) <= Math.max(5e-3, Math.abs(expected) * 5e-3);
+  return {
+    consistent,
+    calculatedMagnification: expected,
+    reviewRequired: true,
+    reason: consistent ? "requires-drawing-and-specimen-check" : "arithmetic-or-working-mismatch"
+  };
+}
+
+// src/integratedScience/practice/scienceBiologicalSourceEvidence.js
+var isPositive = (n) => /^(?:\d+(?:\.\d+)?|\.\d+)$/.test(String(n || "").trim()) && Number(n) > 0;
+var checkDrawing = (base, source2, responses) => {
+  const v = readBiologicalDrawingEvidence(responses[base + ":biologicalEvidence"], source2);
+  const hasStrokes = (() => {
+    try {
+      const a = JSON.parse(responses[base + ":strokes"] || "[]");
+      return Array.isArray(a) && a.some((s) => Array.isArray(s) && s.length >= 2);
+    } catch {
+      return false;
+    }
+  })();
+  const names2 = new Set(v.labels.map((l) => l.name));
+  const minLabels = source2.dimension === "width" ? 3 : 6;
+  const checks = {
+    drawn: hasStrokes,
+    title: v.title.trim().length >= 5,
+    leaderLines: v.labels.length >= minLabels && names2.size >= minLabels,
+    drawingMeasurement: isPositive(v.measurementMm)
+  };
+  return {
+    criterionId: base,
+    checks,
+    readyForVisualReview: Object.values(checks).every(Boolean),
+    sourceApproved: false,
+    reason: "independent-drawing-geometry-and-label-target-verification-required"
+  };
+};
+function biologicalSourceEvidenceReadiness(questionId, partIndex, itemIndex, responses = {}) {
+  const base = questionId + ":" + partIndex + ":" + itemIndex;
+  const source2 = biologicalDrawingSource(questionId, partIndex, itemIndex);
+  if (source2) return checkDrawing(base, source2, responses);
+  if (base === "IS-M1-P2-27:0:1") {
+    const fields = readMagnificationEvidence(base, responses);
+    const drawing = readBiologicalDrawingEvidence(
+      responses["IS-M1-P2-27:0:0:biologicalEvidence"],
+      biologicalDrawingSource("IS-M1-P2-27", 0, 0)
+    );
+    const arith = magnificationArithmeticEvidence(fields);
+    const checks = {
+      flowerDrawingMeasured: isPositive(drawing.measurementMm),
+      drawingHeightMatches: Number(fields.drawingHeightMm) > 0 && Number(fields.drawingHeightMm) === Number(drawing.measurementMm),
+      workingMatchesStudentValues: arith.consistent
+    };
+    return {
+      criterionId: base,
+      checks,
+      readyForVisualReview: Object.values(checks).every(Boolean),
+      sourceApproved: false,
+      reason: "physical-drawing-dimension-and-specimen-scale-verification-required"
+    };
+  }
+  return null;
+}
 
 // src/integratedScience/practice/scienceGraphRubrics.json
 var scienceGraphRubrics_default = {
@@ -2343,19 +3686,19 @@ function gradeScienceGraph(question2, partIndex, itemIndex, item2, responses, ax
   const input = String(responses[`${base}:points`] || "");
   const rawLines = input.split(/\n|;/).filter((line) => line.trim());
   const submitted = parseScienceGraphPoints(input);
-  const points = submitted.filter(Boolean);
+  const points2 = submitted.filter(Boolean);
   const seen = /* @__PURE__ */ new Set();
   let correct = 0;
-  points.forEach((point2) => {
+  points2.forEach((point2) => {
     const index = expected.findIndex((want) => Math.abs(point2.x - want.x) < 1e-7 && Math.abs(point2.y - want.y) < 1e-7);
     if (index >= 0 && !seen.has(index)) {
       seen.add(index);
       correct += 1;
     }
   });
-  const valid = rawLines.length === points.length && new Set(points.map((p) => `${p.x},${p.y}`)).size === points.length;
+  const valid = rawLines.length === points2.length && new Set(points2.map((p) => `${p.x},${p.y}`)).size === points2.length;
   const plottingMarks = Number(item2.marks) === 5 ? 2 : 0;
-  const earned = expected.length && valid && points.length <= expected.length ? correct === expected.length ? plottingMarks : correct >= Math.ceil(expected.length / 2) ? Math.min(1, plottingMarks) : 0 : 0;
+  const earned = expected.length && valid && points2.length <= expected.length ? correct === expected.length ? plottingMarks : correct >= Math.ceil(expected.length / 2) ? Math.min(1, plottingMarks) : 0 : 0;
   const axes = axisMatches(String(responses[`${base}:xLabel`] || ""), item2.response?.x || "") && axisMatches(String(responses[`${base}:yLabel`] || ""), item2.response?.y || "");
   const criteria = [
     { id: `${base}:plot`, label: "Correct plotted coordinates", marks: earned, maxMarks: plottingMarks, earned: earned === plottingMarks && plottingMarks > 0 },
@@ -2369,7 +3712,7 @@ function gradeScienceGraph(question2, partIndex, itemIndex, item2, responses, ax
     provisional: true,
     visualEvidenceRequired: true,
     unassessedMarks: Math.max(0, Number(item2.marks) - (expected.length ? plottingMarks : 0) - 1),
-    visualEvidence: { plottedPoints: points.length, correctPoints: correct },
+    visualEvidence: { plottedPoints: points2.length, correctPoints: correct },
     reason: "Coordinates and axis labels are checked automatically. Scale, construction and unsupported series remain unassessed by this graph editor."
   };
 }
@@ -2567,17 +3910,17 @@ var SYN = {
   concentrated: ["high concentration", "stronger solution"],
   permeable: ["selectively permeable", "semi permeable", "semipermeable"]
 };
-function clean2(value2) {
+function clean3(value2) {
   return String(value2 ?? "").toLowerCase().replace(/[–—−⁻₋]/g, "-").replace(/[×∗]/g, "*").replace(/÷/g, "/").replace(/[₀-₉]/g, (ch) => String("\u2080\u2081\u2082\u2083\u2084\u2085\u2086\u2087\u2088\u2089".indexOf(ch))).replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, (ch) => String("\u2070\xB9\xB2\xB3\u2074\u2075\u2076\u2077\u2078\u2079".indexOf(ch))).replace(/⁺/g, "+").replace(/(?<!\d)\.|\.(?!\d)/g, " ").replace(/[^a-z0-9.+/%°=^*()\-]+/g, " ").replace(/\s+/g, " ").trim();
 }
 var stem2 = (t2) => t2.replace(/(ing|ed|es|s)$/, "");
 function tokens(value2) {
-  return clean2(value2).split(" ").filter((t2) => t2 && t2.length > 1 && !STOP.has(t2));
+  return clean3(value2).split(" ").filter((t2) => t2 && t2.length > 1 && !STOP.has(t2));
 }
 function tokenPresent(text, token) {
-  const c = clean2(text), t2 = clean2(token);
+  const c = clean3(text), t2 = clean3(token);
   if ((" " + c + " ").includes(" " + t2 + " ")) return true;
-  if ((SYN[t2] || []).some((v) => (" " + c + " ").includes(" " + clean2(v) + " "))) return true;
+  if ((SYN[t2] || []).some((v) => (" " + c + " ").includes(" " + clean3(v) + " "))) return true;
   const wanted = stem2(t2);
   return tokens(c).some((v) => stem2(v) === wanted || v === t2.replace(/s$/, "") || t2 === v.replace(/s$/, ""));
 }
@@ -2598,13 +3941,13 @@ function alternatives(point2) {
   }
   return out.filter(Boolean);
 }
-var compact = (value2) => clean2(value2).replace(/\s+/g, "");
+var compact = (value2) => clean3(value2).replace(/\s+/g, "");
 function symbolPresent(response, reference) {
   const ref = compact(reference);
   if (!ref) return false;
   const body = [...ref].map((ch) => ch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("\\s*");
   const before = /^[0-9.]/.test(ref) ? "(?<![a-z0-9.])" : "(?<![a-z])";
-  return new RegExp(before + body + "(?![a-z0-9])").test(clean2(response));
+  return new RegExp(before + body + "(?![a-z0-9])").test(clean3(response));
 }
 var pointTokens = (value2) => tokens(String(value2).replace(/\b(?:form|type|kind)\s+of\s+/gi, "")).filter((t2) => !/^(mark|marks|one|two|three|four|five|six|any)$/.test(t2));
 function textMatch(response, reference, siblings = []) {
@@ -2644,11 +3987,11 @@ function chemistryFinalNumericEvidence(response) {
 }
 function pointLabel(reference) {
   const m = strip(reference).match(/^(.*[a-z][^=:]*?)\s*[=:]\s*[^=:]+$/i);
-  return m ? clean2(m[1]) : "";
+  return m ? clean3(m[1]) : "";
 }
 function labelledValues(response, label) {
   const words2 = label.split(" ").filter((w) => /[a-z]/.test(w));
-  const segments = String(response ?? "").split(/[;,\n]|(?<!\d)\.(?!\d)/).map(clean2).filter(Boolean);
+  const segments = String(response ?? "").split(/[;,\n]|(?<!\d)\.(?!\d)/).map(clean3).filter(Boolean);
   return segments.flatMap((segment) => {
     let at = segment.indexOf(label), from = at >= 0 ? at + label.length : -1;
     if (from < 0 && words2.length && words2.every((w) => segment.split(" ").some((t2) => t2 === w || t2.startsWith(w + "=")))) {
@@ -2753,22 +4096,22 @@ function ratioShown(response, ratio) {
 }
 function expressionShown(response, step) {
   const text = String(response ?? "").replace(/(\d),(?=\d{3}\b)/g, "$1");
-  const near2 = (a, b) => Math.abs(a - b) <= Math.max(1e-9, Math.abs(b) * 5e-3);
+  const near3 = (a, b) => Math.abs(a - b) <= Math.max(1e-9, Math.abs(b) * 5e-3);
   const expressions = [...text.matchAll(/[-+]?\d+(?:\.\d+)?(?:\s*[×x*\/÷+\-−]\s*\(?\s*[-+]?\d+(?:\.\d+)?\s*\)?)+/g)].map((m) => numbers(m[0].replace(/[×x*\/÷+()]/g, " ")));
-  if (expressions.some((got) => step.operands.every((o) => got.some((g) => near2(g, o))))) return true;
+  if (expressions.some((got) => step.operands.every((o) => got.some((g) => near3(g, o))))) return true;
   if (step.value === null) return false;
   const results = [...text.matchAll(/=\s*\$?\s*([-+]?\d+(?:\.\d+)?)/g)].map((m) => Number(m[1]));
-  return results.some((v) => near2(v, step.value));
+  return results.some((v) => near3(v, step.value));
 }
 function scienceMarkedPoints(item2) {
-  let points = (item2?.markScheme?.points || []).filter(Boolean).flatMap(chemistrySubPoints);
+  let points2 = (item2?.markScheme?.points || []).filter(Boolean).flatMap(chemistrySubPoints);
   const marks = Number(item2?.marks || 0);
   const total = (list) => list.reduce((n, p) => n + chemistryPointMarks(p), 0);
-  if (total(points) < marks) {
-    const split = points.flatMap((p) => /\(\s*\d/.test(p) ? [p] : String(p).split(/,\s+so\s+|;\s+(?=[a-z])/i).map((x) => x.trim()).filter(Boolean));
-    if (split.length > points.length && total(split) <= marks) points = split;
+  if (total(points2) < marks) {
+    const split = points2.flatMap((p) => /\(\s*\d/.test(p) ? [p] : String(p).split(/,\s+so\s+|;\s+(?=[a-z])/i).map((x) => x.trim()).filter(Boolean));
+    if (split.length > points2.length && total(split) <= marks) points2 = split;
   }
-  return points;
+  return points2;
 }
 function gradeSciencePointLines(base, item2, response) {
   return lineResult(base, item2, response);
@@ -2776,9 +4119,9 @@ function gradeSciencePointLines(base, item2, response) {
 var allocationNote = (point2) => /^\s*\d\s*marks?\s+(?:for|reactants)/i.test(String(point2 || ""));
 var withoutConditions = (text) => String(text).replace(/\s*\((?:[a-z][a-z ,]*)\)\s*$/i, "").trim();
 function chemistryEquationPoint(item2) {
-  const points = (item2?.markScheme?.points || []).filter(Boolean).filter((p) => !allocationNote(p));
-  if (points.length !== 1 || !/→|⟶|⇌/.test(points[0])) return null;
-  const text = withoutConditions(strip(points[0]));
+  const points2 = (item2?.markScheme?.points || []).filter(Boolean).filter((p) => !allocationNote(p));
+  if (points2.length !== 1 || !/→|⟶|⇌/.test(points2[0])) return null;
+  const text = withoutConditions(strip(points2[0]));
   return parseChemicalEquation(text) ? text : null;
 }
 function wordSpecies(side) {
@@ -2788,9 +4131,9 @@ function wordSpecies(side) {
   });
 }
 function wordEquationPoint(item2) {
-  const points = (item2?.markScheme?.points || []).filter(Boolean).filter((p) => !allocationNote(p));
-  if (points.length !== 1 || Number(item2?.marks) < 2) return null;
-  const text = withoutConditions(strip(points[0]));
+  const points2 = (item2?.markScheme?.points || []).filter(Boolean).filter((p) => !allocationNote(p));
+  if (points2.length !== 1 || Number(item2?.marks) < 2) return null;
+  const text = withoutConditions(strip(points2[0]));
   const sides = text.split(/\s*(?:→|⟶|->)\s*/);
   if (sides.length !== 2 || parseChemicalEquation(text) || !/[a-z]{3}/i.test(sides[0])) return null;
   const left2 = wordSpecies(sides[0]), right2 = wordSpecies(sides[1]);
@@ -2808,8 +4151,8 @@ function markWordEquation(response, spec) {
   return { parsed: true, left: side(l, spec.left), right: side(r, spec.right) };
 }
 function chemistryEstimatePoint(item2) {
-  const points = (item2?.markScheme?.points || []).filter(Boolean);
-  const head = strip(points[0] || "");
+  const points2 = (item2?.markScheme?.points || []).filter(Boolean);
+  const head = strip(points2[0] || "");
   const m = head.match(/^(?:about|approximately|approx\.?|roughly)\s+([\d.]+)(?:\s*[-–]\s*([\d.]+))?/i);
   if (!m) return null;
   const a = Number(m[1]), b = m[2] ? Number(m[2]) : null;
@@ -2818,7 +4161,7 @@ function chemistryEstimatePoint(item2) {
   return {
     low: b === null ? a - pad : Math.min(a, b),
     high: b === null ? a + pad : Math.max(a, b),
-    followThrough: points.some((p) => /consistent with/i.test(p))
+    followThrough: points2.some((p) => /consistent with/i.test(p))
   };
 }
 function lineResult(base, item2, response) {
@@ -2891,18 +4234,18 @@ function lineResult(base, item2, response) {
       ]
     };
   }
-  const points = scienceMarkedPoints(item2);
+  const points2 = scienceMarkedPoints(item2);
   const maxMarks = Math.max(0, Number(item2.marks || 0));
   const seen = /* @__PURE__ */ new Set();
-  const criteria = points.map((point2, index) => {
+  const criteria = points2.map((point2, index) => {
     const example = /^\s*(?:e\.g\.?|for example)\b/i.test(String(point2));
     const ratio = example ? null : ratioPoint(point2);
     const step = ratio || example ? null : expressionStep(point2);
     const refs = step || ratio ? [strip(point2)] : alternatives(point2);
     const expectedNums = step || ratio || example ? [] : numericExpected(point2);
     const numeric = expectedNums.length > 0;
-    const selected = refs.find((ref) => ratio ? ratioShown(response, ratio) : step ? expressionShown(response, step) : numeric ? numericMatch(response, expectedNums, point2) : textMatch(response, ref, points.filter((_, i) => i !== index).map(strip)));
-    const signature = selected ? clean2(strip(point2)) : "";
+    const selected = refs.find((ref) => ratio ? ratioShown(response, ratio) : step ? expressionShown(response, step) : numeric ? numericMatch(response, expectedNums, point2) : textMatch(response, ref, points2.filter((_, i) => i !== index).map(strip)));
+    const signature = selected ? clean3(strip(point2)) : "";
     const earned = Boolean(selected) && !seen.has(signature);
     if (earned) seen.add(signature);
     const value2 = chemistryPointMarks(point2);
@@ -2916,7 +4259,7 @@ function lineResult(base, item2, response) {
     };
   });
   const score = Math.min(maxMarks, criteria.reduce((sum, row) => sum + row.marks, 0));
-  const available = points.reduce((sum, point2) => sum + chemistryPointMarks(point2), 0);
+  const available = points2.reduce((sum, point2) => sum + chemistryPointMarks(point2), 0);
   const unresolved = String(response || "").trim() ? Math.max(0, maxMarks - Math.min(maxMarks, available)) : 0;
   return {
     score,
@@ -2947,22 +4290,22 @@ var SYNONYMS = Object.freeze({
   concentrated: ["high concentration", "stronger solution"],
   permeable: ["selectively permeable", "semi permeable", "semipermeable"]
 });
-function clean3(value2) {
+function clean4(value2) {
   return String(value2 ?? "").toLowerCase().replace(/[–—−]/g, "-").replace(/(?<!\d)\.|\.(?!\d)/g, " ").replace(/\//g, " ").replace(/[^a-z0-9.+/%°-]+/g, " ").replace(/\s+/g, " ").trim();
 }
 function tokens2(value2) {
-  return clean3(value2).split(" ").filter((token) => token && !STOPWORDS2.has(token) && token.length > 1);
+  return clean4(value2).split(" ").filter((token) => token && !STOPWORDS2.has(token) && token.length > 1);
 }
 function stem3(token) {
   return token.replace(/(ing|ed|es|s)$/, "");
 }
 function tokenPresent2(candidate, token) {
-  const c = clean3(candidate);
-  const t2 = clean3(token);
+  const c = clean4(candidate);
+  const t2 = clean4(token);
   if (!t2) return false;
   if ((" " + c + " ").includes(" " + t2 + " ")) return true;
   const variants = SYNONYMS[t2] || [];
-  if (variants.some((item2) => (" " + c + " ").includes(" " + clean3(item2) + " "))) return true;
+  if (variants.some((item2) => (" " + c + " ").includes(" " + clean4(item2) + " "))) return true;
   const wanted = stem3(t2);
   return tokens2(c).some((item2) => stem3(item2) === wanted || item2 === t2.replace(/s$/, "") || t2 === item2.replace(/s$/, ""));
 }
@@ -2994,7 +4337,11 @@ function labelResult(questionId, partIndex, itemIndex, item2, responses) {
 }
 function calculationResult(questionId, partIndex, itemIndex, item2, responses) {
   const base = `${questionId}:${partIndex}:${itemIndex}`;
-  return markScienceCalculation(base, item2, responses[base] || "");
+  const flower = markSourceFlowerMagnification(responses, base);
+  if (flower) return { ...flower, sourceEvidence: biologicalSourceEvidenceReadiness(questionId, partIndex, itemIndex, responses) };
+  const result = markScienceCalculation(base, item2, responses[base] || "");
+  const sourceEvidence = biologicalSourceEvidenceReadiness(questionId, partIndex, itemIndex, responses);
+  return sourceEvidence ? { ...result, sourceEvidence, provisional: true } : result;
 }
 var allocationNote2 = (point2) => /^\s*\(?accept\b/i.test(point2) || /^\s*\d\s*marks?\s+(?:for|each)\b/i.test(point2);
 function integratedScienceLineItem(item2) {
@@ -3005,18 +4352,18 @@ function integratedScienceLineItem(item2) {
 }
 var COUNT_WORDS = { two: 2, three: 3, four: 4, five: 5, six: 6 };
 function integratedScienceValueList(item2) {
-  const points = (item2?.markScheme?.points || []).filter((point2) => !allocationNote2(point2));
-  if (points.length !== 1) return null;
+  const points2 = (item2?.markScheme?.points || []).filter((point2) => !allocationNote2(point2));
+  if (points2.length !== 1) return null;
   const g = String(item2?.markScheme?.guidance || "").match(
     /^\s*(\d)\s*marks?\s+for\s+all\s+(\w+)(?:\s+correct)?\s*;\s*(\d)\s*marks?\s+for\s+(\w+)\s+or\s+(\w+)(?:\s+correct)?\s*\.?\s*$/i
   );
   if (!g) return null;
-  const entries = points[0].split(/,\s*/).map((s) => s.trim().match(/^([A-Za-z][A-Za-z ]*?)\s+(-?\d+(?:\.\d+)?)(?:\s*([A-Za-z°%]{1,3}))?$/));
+  const entries = points2[0].split(/,\s*/).map((s) => s.trim().match(/^([A-Za-z][A-Za-z ]*?)\s+(-?\d+(?:\.\d+)?)(?:\s*([A-Za-z°%]{1,3}))?$/));
   if (entries.length < 2 || entries.some((e) => !e)) return null;
   const all = COUNT_WORDS[g[2].toLowerCase()], lower = COUNT_WORDS[g[4].toLowerCase()], upper = COUNT_WORDS[g[5].toLowerCase()];
   if (all !== entries.length || !lower || !upper || lower > upper || upper >= all || Number(g[1]) !== Number(item2.marks)) return null;
-  const labels = entries.map((e) => e[1].toLowerCase());
-  if (new Set(labels).size !== labels.length || labels.some((a) => labels.some((b) => a !== b && b.includes(a)))) return null;
+  const labels2 = entries.map((e) => e[1].toLowerCase());
+  if (new Set(labels2).size !== labels2.length || labels2.some((a) => labels2.some((b) => a !== b && b.includes(a)))) return null;
   return {
     entries: entries.map((e) => ({ label: e[1], value: Number(e[2]), unit: e[3] || "" })),
     full: Number(g[1]),
@@ -3203,6 +4550,8 @@ function graphResult(questionId, partIndex, itemIndex, item2, responses) {
 }
 function drawingResult(questionId, partIndex, itemIndex, item2, responses) {
   const base = `${questionId}:${partIndex}:${itemIndex}`;
+  const biological = markSourceBiologicalDrawing(questionId, partIndex, itemIndex, item2, responses);
+  if (biological) return { ...biological, sourceEvidence: biologicalSourceEvidenceReadiness(questionId, partIndex, itemIndex, responses) };
   const strokesRaw = String(responses[`${base}:strokes`] || "[]");
   let strokes = [];
   try {
@@ -3220,6 +4569,7 @@ function drawingResult(questionId, partIndex, itemIndex, item2, responses) {
     confidence: "medium",
     provisional: true,
     visualEvidenceRequired: true,
+    sourceEvidence: biologicalSourceEvidenceReadiness(questionId, partIndex, itemIndex, responses),
     visualEvidence: { hasDrawing, strokeCount: detailedStrokes.length, pointCount: detailedStrokes.reduce((sum, stroke) => sum + stroke.length, 0) }
   };
 }
@@ -3367,1075 +4717,4 @@ var POB_PAPER2_ORIGINAL_01 = Object.freeze({
       "Three friends in St Catherine plan to produce and sell bottled sauces. They must choose an ownership structure, source finance and sell to local supermarkets.",
       [
         part("a", "Define the term entrepreneur.", 2, [[2, "A person who identifies an opportunity, organises resources and accepts business risks.", ["business organiser taking risk", "person starting and operating a business"]]], "An entrepreneur organises production and bears risk.", "knowledge"),
-        part("b", "State THREE factors the friends should investigate before starting the business.", 3, [[1, "Evidence of likely demand and competition."], [1, "Realistic costs and access to finance."], [1, "Health, registration, supplier or legal requirements."]], "They should study demand, start-up costs and the regulatory requirements.", "knowledge"),
-        part("c", "Explain TWO benefits and TWO limitations of operating as a partnership.", 4, [[1, "Pooling finance and skills."], [1, "Sharing work, responsibilities and decisions."], [1, "Potential disagreement or slower decisions."], [1, "Possible personal liability or difficult ownership continuity, depending on legal form."]], "Partners can pool money and expertise, but decisions may cause disputes and liability must be understood."),
-        part("d", "Explain TWO reasons for preparing a business plan before applying for finance.", 4, [[2, "A plan estimates demand and operating costs and shows whether the idea could be viable."], [2, "A plan sets out the team, repayment approach and risks for lenders or investors."]], "A plan helps the owners assess cash requirements and presents evidence to prospective lenders."),
-        part("e", "Recommend an ownership structure and justify your recommendation using THREE relevant factors.", 7, [[1, "Names a legally plausible business structure."], [2, "Explains liability and ownership implications."], [2, "Explains the effect on access to finance or management."], [2, "Connects the choice to this sauce business's scale, partners and expansion plans."]], "A registered company may suit a growing venture seeking separation of personal and business obligations, but a partnership may be cheaper initially. Credit any well-justified alternative.")
-      ]
-    ),
-    question(
-      2,
-      "Managing Contracts and People",
-      [2, 4],
-      "A small Caribbean events company agrees to provide catering and decorations for a wedding. A new manager causes confusion about responsibilities, and the supplier delivers late.",
-      [
-        part("a", "State TWO functions of management.", 2, [[1, "Any one valid management function: planning, organising, leading or controlling."], [1, "A second distinct valid management function."]], "Planning and organising are two management functions.", "knowledge"),
-        part("b", "Describe THREE pieces of information that should appear on a purchase order.", 3, [[1, "Names and contact details of the parties."], [1, "Quantity and description of goods or services."], [1, "Agreed prices, reference details or delivery terms."]], "The order should identify parties, goods and prices and delivery instructions."),
-        part("c", "Explain TWO likely sources of conflict at the company and propose a response to each.", 4, [[1, "Identifies unclear duties or conflicting instructions."], [1, "Offers role descriptions or a meeting to clarify responsibilities."], [1, "Identifies an additional genuine conflict cause, such as unfair workload."], [1, "Offers a fair resolution, such as negotiation or a grievance procedure."]], "Clear communication and fair conflict resolution can restore teamwork."),
-        part("d", "Explain how offer, acceptance and consideration could be shown by the catering agreement.", 5, [[2, "Identifies an offer containing an agreed service, price and date."], [1, "Shows clear acceptance of the offer."], [2, "Identifies exchanged value, such as the agreed payment for catering services."]], "A priced catering quotation accepted by the customer may establish an enforceable agreement, provided other requirements are met."),
-        part("e", "Recommend THREE actions the business should take after the late delivery and explain why each helps.", 6, [[2, "Communicate promptly with the customer and supplier and discuss an appropriate lawful remedy."], [2, "Review the delivery terms, evidence and documentation to establish obligations."], [2, "Create clearer schedules, supplier checks or backup arrangements to prevent recurrence."]], "The company should address the customer, document the breach and improve supplier controls.")
-      ]
-    ),
-    question(
-      3,
-      "Production and Marketing",
-      [5, 6],
-      "A Jamaican fruit drink company makes 300 bottles in 10 labour hours. It sells a bottle for J$250 and pays J$130 in variable costs per bottle. It wants to grow.",
-      [
-        part("a", "Define labour productivity and calculate bottles produced per labour hour.", 3, [[1, "Defines labour productivity as output per unit of labour input."], [1, "Correctly divides 300 by 10."], [1, "States 30 bottles per labour hour with correct unit."]], "300 \xF7 10 = 30 bottles per labour hour."),
-        part("b", "Name TWO elements of the marketing mix other than price.", 2, [[1, "Any one valid element other than price: product, place or promotion."], [1, "A second distinct valid element other than price."]], "Product and promotion are two elements of the four Ps.", "knowledge"),
-        part("c", "Calculate the contribution per bottle and explain its importance.", 4, [[1, "Correctly identifies selling price as J$250."], [1, "Correctly identifies variable cost as J$130."], [1, "Calculates J$120 per bottle."], [1, "Explains contribution helps meet fixed costs before profit."]], "Contribution per bottle = J$250 - J$130 = J$120."),
-        part("d", "Explain TWO advantages and TWO possible problems associated with expanding production.", 4, [[1, "An advantage such as spreading fixed costs or serving more customers."], [1, "A second distinct advantage such as better purchasing power."], [1, "A risk such as quality problems, cash shortages or extra management."], [1, "A second distinct risk connected to growth."]], "Growth may create economies of scale but can strain cash flow and quality."),
-        part("e", "Recommend a realistic marketing approach for the drink and justify THREE aspects of it.", 7, [[1, "Defines a relevant target market."], [2, "Explains a suitable product or packaging decision."], [2, "Explains pricing based on costs and customer value."], [2, "Justifies suitable placement and truthful promotion methods."]], "For example, target commuters with clearly labelled convenient bottles, fair prices, safe retail placement and sample promotions.")
-      ]
-    ),
-    question(
-      4,
-      "Moving Goods Through the Caribbean",
-      [6, 7],
-      "A distributor supplies chilled dairy products from a manufacturing plant to three islands. A storm delays shipping, and some retailers report damaged goods.",
-      [
-        part("a", "Define the term logistics.", 2, [[2, "Planning, controlling and coordinating movement or storage of goods and related information."]], "Logistics manages transport, handling, storage and delivery.", "knowledge"),
-        part("b", "Name THREE documents or records relevant to the transport or delivery of these goods.", 3, [[1, "One relevant transport or delivery document."], [1, "A second different relevant transport or delivery document."], [1, "A third different relevant transport or delivery document."]], "The distributor should use correct shipping and delivery paperwork.", "knowledge"),
-        part("c", "Explain TWO ways unreliable transport can harm the distributor.", 4, [[2, "Delays reduce product availability and may cause dissatisfied or lost customers."], [2, "Spoilage or damage increases waste, costs and potential claims."]], "Delayed or unsafe delivery affects sales, stock and reputation."),
-        part("d", "Explain THREE measures that could reduce future supply-chain risks.", 5, [[2, "Backup supplier or route plans with clear responsibilities."], [2, "Suitable temperature monitoring, packaging and cold-chain equipment."], [1, "Realistic forecasting, stock records or delivery tracking."]], "Maintain a cold chain, prepare contingency routes and track perishable shipments."),
-        part("e", "Evaluate the importance of information technology to this firm's supply chain.", 6, [[2, "Explains GPS and digital records for location and delivery tracking."], [2, "Explains inventory and temperature monitoring for avoiding shortages and spoilage."], [2, "Evaluates an implementation risk such as cost, security, connectivity or training."]], "ICT can improve visibility and customer service, but it needs reliable systems and proper controls.")
-      ]
-    ),
-    question(
-      5,
-      "Finance, Government and Technology",
-      [8, 9, 10],
-      "A small Jamaican manufacturer earns J$850,000 in revenue. Cost of sales is J$470,000 and operating expenses are J$260,000. It is considering export sales and a new computerised stock system.",
-      [
-        part("a", "Calculate the business's gross profit.", 3, [[1, "Identifies revenue J$850,000."], [1, "Identifies cost of sales J$470,000."], [1, "Subtracts correctly to obtain J$380,000."]], "Gross profit = J$850,000 - J$470,000 = J$380,000."),
-        part("b", "Calculate the simplified net profit after the stated operating expenses.", 3, [[1, "Starts with gross profit J$380,000."], [1, "Deducts operating expenses J$260,000."], [1, "Obtains J$120,000 and labels it correctly."]], "Net profit = J$380,000 - J$260,000 = J$120,000."),
-        part("c", "Distinguish between saving and investment and give ONE business-related example of each.", 4, [[1, "Saving prioritises holding funds for future use."], [1, "Investment uses funds to purchase an asset or opportunity for expected returns."], [1, "Example of liquid business savings."], [1, "Example of a productive investment such as new equipment."]], "Keeping an emergency bank balance is saving; buying production equipment is an investment."),
-        part("d", "Explain TWO economic reasons government might support this business's export plans.", 4, [[2, "Exports can bring foreign-exchange earnings to the economy."], [2, "Business development can support local jobs, taxes, production or diversified markets."]], "Export growth may generate foreign exchange and additional economic opportunities."),
-        part("e", "Evaluate TWO likely benefits and ONE possible risk of computerising inventory records.", 6, [[2, "More accurate or faster stock monitoring and reordering."], [2, "Better tracking can reduce stockouts or waste and support decisions."], [2, "Discusses a meaningful risk and control, such as data loss with backups or costs and training."]], "A stock system can improve efficiency but must have backups, data protection and trained users.")
-      ]
-    )
-  ]
-});
-
-// src/principlesOfBusiness/data/pobHistorical2026JanP2AuthoredScheme.js
-var pobHistorical2026JanP2AuthoredScheme_exports = {};
-__export(pobHistorical2026JanP2AuthoredScheme_exports, {
-  POB_2026_JAN_P2_AUTHORED_SCHEME: () => POB_2026_JAN_P2_AUTHORED_SCHEME,
-  verifyPob2026JanP2AuthoredScheme: () => verifyPob2026JanP2AuthoredScheme
-});
-
-// src/principlesOfBusiness/data/pobHistoricalScoringApproval.js
-var SOURCE_SHA256 = Object.freeze({
-  "P1_2002_MJ": "de82270a6909eec1b0a0319f4e36862f851784633ef727ca55a9fd71bbfb0038",
-  "P1_2003_MJ": "9ed7f0c7d46949cbb23b02f21dd2dbca4d9e948347ad0b239547979343607b0f",
-  "P1_2004_MJ": "01ebac983e9c49a3525db4cb5bfab7e84af10ea20d4f38caa0c6ef7dafe13e54",
-  "P1_2005_MJ": "9556b7657b5e0476cf7df58f5889df044b97b93449a06c5e02c5939250ef7f88",
-  "P1_2006_MJ": "1c3e40b028d2bd64f30c348f3db62a4a25b343f62dec5a401dbe43149c5057ea",
-  "P1_2007_MJ": "2cfaba690502f6c046983247e8559de46fac8dab1a544cc76c8a628d3978a5d6",
-  "P1_2008_MJ": "d3cb63fb5fd6da115f16e6ea9ef6a588785d48d59a416d6c676173050c636a9d",
-  "P1_2011_MJ": "d05f920e5f15537825fd6f919bedcf50480f3d207c1fd0e5aa61253d7b4b4085",
-  "P1_2012_MJ": "f4428c728d8c95ae28f59693ea8795ecb4e381328d889559ed1a66b69ef6d8ef",
-  "P1_2014_MJ": "f0192be41980bb1eb9a672997601e6a9eca95e22aa7f4e7ca77cfa713a16ba44",
-  "P1_2015_MJ": "2a121a0ef4a6d7c9b38771eb43a33cbec98b50e77378b585c90f76a10d7be0f7",
-  "P1_2016_MJ": "26ef3d9eb2968abba44ab80738f7e5f421c213ac507fff54d0c60c76d6e025e7",
-  "P1_2017_MJ": "bf573c0f0cefcff2d743a33b4f3502f59f99bb3aa56980de6d1d451951d21cff",
-  "P1_2018_MJ": "f3211d8598d621674f9156b235fd934d4ba3814d098824f8c9c169edc7ffb586",
-  "P1_2019_MJ": "5b95df8eaf522bad7684b01bad41b367f8652967715b3983f8c836c5ec93b4bc",
-  "P1_2020_JAN": "c2e107fc4efc1abb5c558e65d0f1c712683e5d95e5ed54d3edd6d32cb4edbf67",
-  "P1_2020_MJ": "b527d2a4a998ba63caeaa3a8f99ba88ab4feebc8b95d52b62c59bf1b87370e0e",
-  "P1_2021_MJ": "717b57abc9eabd5c4f24f1c952b327667d8c0e88dbbe86c4414c10989a36d3da",
-  "P1_2022_JAN": "eea5f45fd535925ea4c0d798d2f098cd996f5b21f417cb7279808c287a2ea1e0",
-  "P1_2023_JAN": "3074ee9e4b69da38efbc895ac82a37333d55f46a349053d336b2a111e320982a",
-  "P1_2024_MJ": "2757f10cae603a87d2116a76ba1dca9a6c8c3abdbfb6e51a8db1d610c3ebbd7f",
-  "P2_2005_MJ": "61d9462cc76071a2456395ef5e5fe347c8e345d3265092af06d40b1108f7e3d2",
-  "P2_2006_MJ": "a3ea8ac2739000ee6d6637ccc5620ee941684f7400985e53ff933d61437f713e",
-  "P2_2007_MJ": "261496a8749d2729734c6897bc8ffce176db974254d95e900bfdaf4b12510e65",
-  "P2_2008_MJ": "c1ef9a099b0edb2cf82fac344ebe011cfce418e26bf2caa05ecf9ebdc5a6531f",
-  "P2_2009_MJ": "4bc6ceb120bb5e9d9080b079724afaa3e788bc555370efc81b37856ec8531038",
-  "P2_2010_MJ": "da79e8f4c4a794b28eb9dc4d5e4c52ffe0b9e9a9034b539a740c01abfb551544",
-  "P2_2011_MJ": "d057339896f60e8f5d98fd25d3cd9cc82cb082e127509b73a109ed87cbb6c7b7",
-  "P2_2012_MJ": "9db83447de400716d5072299cefeea620d4166e853312028f15098611f297eeb",
-  "P2_2013_MJ": "bce8c32334373b83a73b92018f50721b3491854ac8e7d207bdb724723a8dd9d7",
-  "P2_2014_MJ": "5aa3ba2677ded0446daa97abb11a3d9f55e9df34418ec85ebd13a31a1bc928f6",
-  "P2_2015_MJ": "d47560a3966c538be5dd507da23d8d13eb3b9e2cb08c1ff9339867f446c108bf",
-  "P2_2016_MJ": "c74094f508db33d2a25b3c9ac89cb148fec331dce2f84b6ca11ffcc4c52f180f",
-  "P2_2017_MJ": "b36bbd04dc4fb1a3982763eaf10d0a22fd44cfe6ed36594f69caca6eee47bb9a",
-  "P2_2018_MJ": "d93ccbf4102186426f7326f789db4e8d3ca1b9a3a73aed63e5a360d0546f956f",
-  "P2_2019_JAN": "cdcdfdbb46cb5faff3867c42eb26e382ed10c3db36c4a5cd6d29d6f2ec50d5e1",
-  "P2_2019_MJ": "ce3455f587b74d669f3b446e21c96b98f51e28f891160d570d16896a0f27ae16",
-  "P2_2021_MJ": "62420537307ee53ba37c879f2d9b920645d65aa4bcf8c28cbe22453387e09a6c",
-  "P2_2022_JAN": "3f83fa985f2dbddc332abb627c85f3eceaf73c4a25dcdb7c3d834a2ff8ceff62",
-  "P2_2022_MJ": "2c2e6223ffe0f1473f068485db00ad2a240df9e4407e4235bb4ecf9e58a71982",
-  "P2_2023_JAN": "c9803bd124e97f4208f5317de9494f04412727c6dfdb6c0bf4447a42deaa4ace",
-  "P2_2023_MJ": "79ed3fa6c2ad12d802a4bfe5ddcd558a5c109980f398bba18f2ff3b1b3277049",
-  "P2_2024_JAN": "1bab67360b3d83e7c22c39ccb24318dd2320b156d6347f75980cba0c8d4968f3",
-  "P2_2024_MJ": "c70368e4d1beff0eeece2495db1ff2a657a4e9d3efdca74e8b6bbf7a5119d0f2",
-  "P2_2025_JAN": "3bf50ed41965c7f84efa8b321d235c38a5425b45216ed528ca7d6a1bf6f571cf",
-  "P2_2026_JAN": "0183bfa029cf71f60882ad8ad99295725006f00b429dc52ac57cb3e40e3d2581"
-});
-var POB_HISTORICAL_SCORING_OWNER_APPROVAL = Object.freeze({
-  authorizedOn: "2026-10-17",
-  sourcePdfCount: 46,
-  authorization: "prepare-all-46-historical-PDFs-for-SPARK-automatic-scoring",
-  grantedBy: "product-owner-in-conversation",
-  // Owner authorization is not academic verification or production deployment.
-  enablesUnverifiedScoring: false,
-  approvesPublicCourseRelease: false
-});
-function pobSourceSha256(filename) {
-  const match = /^CSEC_Principles_of_Business_(P[12]_\d{4}_(?:MJ|JAN))\.pdf$/.exec(filename || "");
-  return match ? SOURCE_SHA256[match[1]] || null : null;
-}
-
-// src/principlesOfBusiness/data/pobHistoricalInventory.js
-var p1 = [
-  [2002, "MJ", 9],
-  [2003, "MJ", 8],
-  [2004, "MJ", 8],
-  [2005, "MJ", 10],
-  [2006, "MJ", 8],
-  [2007, "MJ", 8],
-  [2008, "MJ", 8],
-  [2011, "MJ", 8],
-  [2012, "MJ", 9],
-  [2014, "MJ", 9],
-  [2015, "MJ", 9],
-  [2016, "MJ", 8],
-  [2017, "MJ", 10],
-  [2018, "MJ", 9],
-  [2019, "MJ", 15],
-  [2020, "JAN", 8],
-  [2020, "MJ", 9],
-  [2021, "MJ", 11],
-  [2022, "JAN", 9],
-  [2023, "JAN", 9],
-  [2024, "MJ", 11]
-];
-var p2 = [
-  [2005, "MJ", 5],
-  [2006, "MJ", 6],
-  [2007, "MJ", 6],
-  [2008, "MJ", 4],
-  [2009, "MJ", 4],
-  [2010, "MJ", 4],
-  [2011, "MJ", 4],
-  [2012, "MJ", 5],
-  [2013, "MJ", 5],
-  [2014, "MJ", 5],
-  [2015, "MJ", 16],
-  [2016, "MJ", 18],
-  [2017, "MJ", 16],
-  [2018, "MJ", 14],
-  [2019, "JAN", 14],
-  [2019, "MJ", 15],
-  [2021, "MJ", 16],
-  [2022, "JAN", 20],
-  [2022, "MJ", 13],
-  [2023, "JAN", 24],
-  [2023, "MJ", 17],
-  [2024, "JAN", 2],
-  [2024, "MJ", 16],
-  [2025, "JAN", 20],
-  [2026, "JAN", 6]
-];
-var item = (paper, [year, sitting, pages]) => {
-  const reclassified = paper === 1 && year === 2019 && sitting === "MJ";
-  const actualPaper = reclassified ? 2 : paper;
-  const filename = "CSEC_Principles_of_Business_P" + paper + "_" + year + "_" + sitting + ".pdf";
-  return Object.freeze({
-    id: "POB-P" + actualPaper + "-" + year + "-" + sitting + (reclassified ? "-ALT" : ""),
-    paper: actualPaper,
-    year,
-    sitting,
-    pages,
-    sourceArchivePaperLabel: paper,
-    reclassifiedFromPaper1: reclassified,
-    filename,
-    sourceSha256: pobSourceSha256(filename),
-    historical: true,
-    origin: "user-supplied",
-    // Permission to develop automated scoring, not answer verification or publication.
-    ownerAutoScoringAuthorized: true,
-    ownerScoringApprovalDate: POB_HISTORICAL_SCORING_OWNER_APPROVAL.authorizedOn,
-    sourcePaperMismatch: false,
-    filenamePaperMismatch: reclassified,
-    coverPaperNumber: reclassified ? 2 : null,
-    coverTestCode: reclassified ? "01240020" : null,
-    transcriptionStatus: "not-verified",
-    answerKeyStatus: "not-verified",
-    simulatorReady: false,
-    syllabusEra: year >= 2019 ? "2019-syllabus-era" : "historical-earlier-format",
-    note: reclassified ? "RECLASSIFIED as Paper 02: filename says P1 2019 MJ but source cover says Paper 02, test code 01240020. Alternate source copy, distinct from the other 2019 MJ Paper 02 PDF." : "Source PDF supplied in POB.zip. Questions and answers are not published until accurately transcribed and independently cross-checked against authoritative keys."
-  });
-};
-var POB_SUPPLIED_ARCHIVE = Object.freeze([
-  ...p1.map((row) => item(1, row)),
-  ...p2.map((row) => item(2, row))
-]);
-var POB_SOURCE_INVENTORY = Object.freeze({
-  paper1: p1.length,
-  paper2: p2.length,
-  total: POB_SUPPLIED_ARCHIVE.length,
-  mislabeledPaper1Sources: 1,
-  genuinePaper1SourceCount: 20,
-  actualPaper2SourceCount: 26,
-  pagesPaper1: p1.reduce((sum, x) => sum + x[2], 0),
-  pagesPaper2: p2.reduce((sum, x) => sum + x[2], 0),
-  actualPagesPaper1: p1.reduce((sum, x) => sum + x[2], 0) - 15,
-  actualPagesPaper2: p2.reduce((sum, x) => sum + x[2], 0) + 15,
-  ownerApprovedForFutureAutoScoring: POB_HISTORICAL_SCORING_OWNER_APPROVAL.sourcePdfCount,
-  syllabusFilename: "CSEC-Principles-of-Business-Syllabus-.pdf",
-  origin: "POB.zip"
-});
-
-// src/principlesOfBusiness/data/pobHistoricalScoringBatches.js
-var FIRST_FIFTEEN = Object.freeze([
-  ["POB-P1-2023-JAN", 9, 0, "mcq-60", "exam-booklet"],
-  ["POB-P2-2009-MJ", 4, 0, "choice-3-plus-1-plus-1", "exam-booklet"],
-  ["POB-P2-2010-MJ", 4, 0, "choice-3-plus-1-plus-1", "exam-booklet"],
-  ["POB-P2-2011-MJ", 4, 0, "choice-3-plus-1-plus-1", "exam-booklet"],
-  ["POB-P2-2012-MJ", 5, 0, "choice-3-plus-1-plus-1", "exam-booklet"],
-  ["POB-P2-2013-MJ", 5, 0, "choice-3-plus-1-plus-1", "exam-booklet"],
-  ["POB-P2-2014-MJ", 5, 0, "choice-3-plus-1-plus-1", "exam-booklet"],
-  ["POB-P2-2015-MJ", 16, 0, "choice-3-plus-1-plus-1", "exam-booklet"],
-  ["POB-P2-2016-MJ", 18, 0, "choice-3-plus-1-plus-1", "exam-booklet"],
-  ["POB-P2-2017-MJ", 16, 0, "all-five", "exam-booklet"],
-  ["POB-P2-2018-MJ", 14, 0, "all-five", "exam-booklet"],
-  ["POB-P2-2022-JAN", 20, 2, "all-five", "exam-booklet"],
-  ["POB-P2-2022-MJ", 13, 0, "all-five", "exam-booklet"],
-  ["POB-P2-2023-JAN", 24, 2, "all-five", "exam-booklet"],
-  // Two-page typed question transcript, not a complete CXC-printed paper.
-  ["POB-P2-2024-JAN", 2, 0, "unverified-instructions", "derivative-transcription"]
-]);
-var OTHER_BATCHES = Object.freeze([
-  Object.freeze([
-    "POB-P1-2002-MJ",
-    "POB-P1-2003-MJ",
-    "POB-P1-2004-MJ",
-    "POB-P1-2005-MJ",
-    "POB-P1-2006-MJ",
-    "POB-P1-2007-MJ",
-    "POB-P1-2008-MJ",
-    "POB-P1-2011-MJ",
-    "POB-P1-2012-MJ",
-    "POB-P1-2014-MJ",
-    "POB-P1-2015-MJ",
-    "POB-P1-2016-MJ",
-    "POB-P1-2017-MJ",
-    "POB-P1-2018-MJ",
-    "POB-P2-2019-MJ-ALT"
-  ]),
-  Object.freeze([
-    "POB-P1-2020-JAN",
-    "POB-P1-2020-MJ",
-    "POB-P1-2021-MJ",
-    "POB-P1-2022-JAN",
-    "POB-P1-2024-MJ",
-    "POB-P2-2005-MJ",
-    "POB-P2-2006-MJ",
-    "POB-P2-2007-MJ",
-    "POB-P2-2008-MJ",
-    "POB-P2-2019-JAN",
-    "POB-P2-2019-MJ",
-    "POB-P2-2021-MJ",
-    "POB-P2-2023-MJ",
-    "POB-P2-2024-MJ",
-    "POB-P2-2025-JAN"
-  ]),
-  Object.freeze(["POB-P2-2026-JAN"])
-]);
-var POB_HISTORICAL_SCORING_BATCHES = Object.freeze([
-  Object.freeze(FIRST_FIFTEEN.map(([id, pages, pagesNeedingImageReview, rule, sourceForm]) => {
-    const source2 = POB_SUPPLIED_ARCHIVE.find((row) => row.id === id);
-    if (!source2) throw new Error("Unknown POB batch source: " + id);
-    const lowTextPagesReviewed = id === "POB-P2-2022-JAN" ? [2, 19] : id === "POB-P2-2023-JAN" ? [2, 23] : [];
-    return Object.freeze({
-      id,
-      batch: 1,
-      paper: source2.paper,
-      filename: source2.filename,
-      sourceSha256: source2.sourceSha256,
-      pages,
-      pagesNeedingImageReview,
-      // Both 2022/2023 low-text pairs are non-question DO NOT WRITE pages.
-      lowTextPagesReviewed: Object.freeze(lowTextPagesReviewed),
-      remainingLowTextPagesToReview: pagesNeedingImageReview - lowTextPagesReviewed.length,
-      rule,
-      sourceForm,
-      ownerAuthorized: true,
-      // Even a verified cover is not a verified exam or scoring rubric.
-      fullPageVisualQA: false,
-      completeVerifiedAnswers: false,
-      fullCriterionRubricVerified: false,
-      calibrationPassed: false,
-      liveScoringApproved: false
-    });
-  })),
-  ...OTHER_BATCHES.map((ids, i) => Object.freeze(ids.map((id) => {
-    const source2 = POB_SUPPLIED_ARCHIVE.find((row) => row.id === id);
-    if (!source2) throw new Error("Unknown POB batch source: " + id);
-    return Object.freeze({
-      id,
-      batch: i + 2,
-      paper: source2.paper,
-      filename: source2.filename,
-      sourceSha256: source2.sourceSha256,
-      pages: source2.pages,
-      rule: "unverified-instructions",
-      sourceForm: "not-reviewed-in-this-batch",
-      fullPageVisualQA: false,
-      completeVerifiedAnswers: false,
-      fullCriterionRubricVerified: false,
-      calibrationPassed: false,
-      liveScoringApproved: false
-    });
-  })))
-]);
-var POB_HISTORICAL_SCORING_BATCH_COUNTS = Object.freeze(
-  POB_HISTORICAL_SCORING_BATCHES.map((group) => group.length)
-);
-var POB_HISTORICAL_FIRST_FIFTEEN = POB_HISTORICAL_SCORING_BATCHES[0];
-function validatePobHistoricalP2Selection(id, selectedNumbers) {
-  const laterCompulsory = /* @__PURE__ */ new Set([
-    "POB-P2-2019-JAN",
-    "POB-P2-2019-MJ",
-    "POB-P2-2021-MJ",
-    "POB-P2-2023-MJ",
-    "POB-P2-2024-MJ",
-    "POB-P2-2025-JAN",
-    "POB-P2-2026-JAN"
-  ]);
-  const reviewedLater = [
-    ...POB_HISTORICAL_SCORING_BATCHES[2],
-    ...POB_HISTORICAL_SCORING_BATCHES[3]
-  ].find(
-    (row) => row.id === id && row.paper === 2 && laterCompulsory.has(id)
-  );
-  const original = POB_HISTORICAL_FIRST_FIFTEEN.find((row) => row.id === id && row.paper === 2);
-  const paper = original || reviewedLater && {
-    ...reviewedLater,
-    rule: "all-five",
-    sourceForm: "exam-booklet"
-  };
-  if (!paper) return { valid: false, maximumMarks: 0, issue: "Unreviewed or unknown Paper 2 source." };
-  if (paper.rule === "unverified-instructions" || paper.sourceForm !== "exam-booklet")
-    return { valid: false, maximumMarks: 0, issue: "Original examination instructions require verification." };
-  if (!Array.isArray(selectedNumbers) || selectedNumbers.length !== 5 || selectedNumbers.some((n) => !Number.isInteger(n)) || new Set(selectedNumbers).size !== 5)
-    return { valid: false, maximumMarks: 0, issue: "Select five distinct numbered questions." };
-  const selected = new Set(selectedNumbers);
-  const valid = paper.rule === "all-five" ? [1, 2, 3, 4, 5].every((n) => selected.has(n)) : paper.rule === "choice-3-plus-1-plus-1" && [1, 2, 3].every((n) => selected.has(n)) && [4, 5].filter((n) => selected.has(n)).length === 1 && [6, 7].filter((n) => selected.has(n)).length === 1;
-  return valid ? { valid: true, maximumMarks: 100, issue: null } : { valid: false, maximumMarks: 0, issue: "Question choices conflict with this sitting's original instructions." };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2026JanP2AuthoredScheme.js
-var ROWS = Object.freeze([
-  [1, "a", "List three business careers.", "Accountant, marketing manager and financial analyst are three suitable careers. Other acceptable careers include business analyst, entrepreneur, human-resource manager, banker, economist, auditor and procurement officer.", ["1:Names one genuine career in business, not simply a business department", "1:Names a different recognised business career", "1:Names a third distinct business career"]],
-  [1, "b", "List three stakeholders involved in business activities.", "Customers, employees and suppliers are three stakeholders; owners, lenders, shareholders, government and communities are also correct distinct examples.", ["1:First genuine business stakeholder", "1:Second distinct stakeholder", "1:Third distinct stakeholder"]],
-  [1, "c.i", "Describe the production function of a business.", "The production department combines inputs such as labour and materials to create goods or deliver services; it schedules operations and monitors product quality.", ["1:Recognises conversion of inputs into goods or services", "1:Describes a real operational function such as scheduling production or quality control"]],
-  [1, "c.ii", "Describe research and development (R&D).", "Research and development tests and improves products, production methods and new ideas. It investigates consumer or technical needs and develops new or improved designs.", ["1:Describes investigation or research into product/process needs", "1:Describes developing or improving products, processes or technology"]],
-  [1, "d", "Define a code of ethics.", "A code of ethics is a documented set of principles and standards that guides acceptable and responsible business decisions and employee conduct.", ["1:Identifies formal written principles/standards", "1:Explains purpose of guiding ethical workplace or business behaviour"]],
-  [1, "e.i", "State two legal or ethical business practices.", "Employers should maintain legally safe working conditions and advertise products truthfully. Other valid distinct duties include honest tax reporting, non-discrimination, privacy protection, lawful disposal of waste and proper payment of workers.", ["1:First actual legal or ethical practice expected of business owners", "1:Second different valid practice"]],
-  [1, "e.ii", "Explain one negative effect of failing each practice stated in 1(e)(i).", "Unsafe premises may injure a worker, causing lost working time, legal compensation and costly penalties. Misleading advertising may trick consumers, resulting in complaints and reputational damage, refunds or regulatory action. The two effects must correspond to the two practices actually stated in part (i).", ["1:Connects FIRST practice from 1(e)(i) to specific non-compliance", "1:Explains FIRST real adverse stakeholder/business effect", "1:Develops credible consequence of FIRST effect", "1:Connects SECOND DISTINCT practice from 1(e)(i) to non-compliance", "1:Explains SECOND corresponding adverse effect", "1:Develops actual legal, financial or reputational consequence of SECOND effect"]],
-  [2, "a.i", "Define collateral.", "Collateral is an asset or property a borrower pledges to secure a loan, allowing the lender lawful recourse to the security if the borrower defaults.", ["1:Identifies owned asset/property pledged", "1:Connects security to borrowing and default protection"]],
-  [2, "a.ii", "List three examples of collateral.", "Land or a building, an owned motor vehicle, and a savings deposit or acceptable shares/bonds can be pledged, subject to lender criteria.", ["1:First realistic asset accepted by a lender as security", "1:Second different collateral asset", "1:Third distinct collateral asset"]],
-  [2, "b", "List three elements of a business plan.", "Executive summary, marketing plan and financial plan are three common elements. Production/operations plan, organisational/staffing plan and business description also qualify.", ["1:First actual section of a business plan", "1:Second distinct section", "1:Third distinct section"]],
-  [2, "c.i", "Outline two reasons Juan should conduct a feasibility study for a proposed fast-food business.", "A market study estimates customer demand and competing restaurants to avoid launching where customers are insufficient. A cost and cash-flow assessment evaluates whether expected revenue covers ingredients, rent and staff costs, helping Juan avoid an unprofitable investment.", ["1:Identifies first appropriate feasibility-study purpose", "1:Outlines how FIRST consideration informs fast-food launch viability", "1:Identifies SECOND distinct purpose such as financial or technical feasibility", "1:Outlines how SECOND consideration reduces the risk of failed investment"]],
-  [2, "c.ii", "Identify one primary and one secondary information source for Juan.", "Primary: Juan personally interviews potential customers or conducts his own questionnaire. Secondary: published population or household-spending statistics from a government statistical office, an industry report, or an existing business directory. Do not mark an existing report as first-hand primary data.", ["1:Correct original first-hand primary information source", "1:Correct already-published pre-existing secondary information source"]],
-  [2, "d", "Explain two location factors for Juan's fast-food business.", "A location near schools, offices or a busy road gives access to target customers and enough footfall for sales. Affordable rent with reliable road access and nearby food suppliers limits delivery costs and allows ingredients to arrive fresh. Local competition, zoning, safety and parking are other defensible distinct factors when developed.", ["1:Identifies first legitimate site-selection factor", "1:Explains its practical relationship to customer demand or operating costs", "1:Shows likely business outcome for Juan", "1:Identifies SECOND independent site-selection factor", "1:Explains how it affects fast-food operation, access or demand", "1:Connects SECOND factor to costs, quality or revenue"]],
-  [3, "a.i", "Identify two factors of production.", "Land/natural resources and labour are two factors. Capital and enterprise/entrepreneurship are equally acceptable distinct alternatives.", ["1:First genuine factor of production", "1:Second distinct factor"]],
-  [3, "a.ii", "Identify two major Caribbean natural resources.", "Bauxite and petroleum/natural gas are important Caribbean resources. Limestone, forests, fish and agricultural land are also acceptable.", ["1:First plausible natural resource found in the Caribbean", "1:Second distinct regional natural resource"]],
-  [3, "a.iii", "Name one industry arising from each resource in 3(a)(ii).", "Bauxite supports mining and alumina refining; petroleum supports oil extraction and refining. For different named resources, credit correctly linked industries, such as limestone to cement, forest to lumber, fish to fisheries or processing, and fertile land to farming.", ["1:Industry correctly linked to FIRST resource actually supplied in 3(a)(ii)", "1:Different or appropriately matched industry for SECOND resource named in 3(a)(ii)"]],
-  [3, "b.i", "Define subsistence-level production and give an example.", "Subsistence production makes just enough for a producer or household's own needs, rather than primarily for sale. Example: growing vegetables in a home garden to feed one's family.", ["1:Defines own household basic-needs production", "1:Gives realistic own-consumption example matched to the definition"]],
-  [3, "b.ii", "Define domestic-consumption level of production and give an example.", "Domestic consumption means producing goods and services for use or sale within the home country rather than export. Example: a local bakery supplying bread to nearby supermarkets and households.", ["1:Correct level for goods produced for the domestic national market", "1:Valid example supplying customers within the producing country"]],
-  [3, "c", "Differentiate production from productivity.", "Production is the total output of goods/services in a specified period, such as 1,000 blocks per day. Productivity measures that output relative to inputs, such as 10 blocks per worker-hour; total output can rise while efficiency declines if inputs grow faster.", ["1:Correct total output concept for production", "1:Demonstrates aggregate level or production example", "1:Correct output-per-unit-of-input concept for productivity", "1:Explains or demonstrates the distinction with an efficiency ratio or comparison"]],
-  [3, "d", "Explain two factors causing a shortage of construction workers in Cocoa Island during a building boom.", "A rapid surge in construction projects raises demand for masons, carpenters and electricians faster than the available trained workforce can grow, causing vacancies. Skilled tradespeople may emigrate for higher pay or more secure jobs overseas, reducing the local supply of experienced workers. Insufficient apprenticeships or poor conditions are other valid independent mechanisms.", ["1:Identifies first real labour-supply/demand shortage mechanism", "1:Explains why it affects construction workers in the boom scenario", "1:Develops consequence for available trained-worker supply or unfilled demand", "1:Identifies second DISTINCT cause such as migration, training or working conditions", "1:Explains how second cause limits recruitment/retention in construction", "1:Connects second cause to continued building-labour shortage"]],
-  [4, "a.i", "Define marketing.", "Marketing identifies consumer needs and develops, prices, promotes and distributes products to satisfy those needs while meeting organisational goals.", ["1:Identifying/anticipating customer wants and needs", "1:Process of satisfying those needs through product, price, promotion or distribution"]],
-  [4, "a.ii", "List four elements of the traditional marketing mix.", "Product, price, place (distribution) and promotion are the four traditional Ps.", ["1:Product", "1:Price", "1:Place/distribution", "1:Promotion"]],
-  [4, "b.i", "Describe branding.", "Branding creates a distinctive identity for a product or company, often through names, logos and design, so buyers recognise the offering and distinguish it from competitors.", ["1:Establishing recognisable identity for a good/business", "1:Explains differentiation or brand recognition/customer trust"]],
-  [4, "b.ii", "Identify two branding components other than colour.", "Brand name and logo/symbol are components other than colour. Typography, slogan/tagline and identifiable packaging design are also acceptable distinct options.", ["1:First valid recognisable brand component excluding colour", "1:Second different brand component excluding colour"]],
-  [4, "c.i", "Outline two factors when choosing packaging for a fruit-based non-dairy ice cream.", "The tub must be freezer-safe and food-grade, with a tight seal to protect the ice cream from contamination and temperature damage. Packaging size and unit cost should match consumer demand and the firm's price, and clear dairy-free ingredient/allergen labelling can support safe purchases.", ["1:First relevant ice-cream packaging consideration", "1:Explains direct effect on protection, safety, freshness or handling", "1:Second DISTINCT consideration such as cost, convenience, environment, size or labelling", "1:Outlines how second factor suits the non-dairy frozen dessert and target customers"]],
-  [4, "c.ii", "Explain two factors influencing consumers' response to the new ice cream.", "Taste and perceived quality influence repeat purchase: attractive flavours and texture encourage trial and loyalty, but a poor taste reduces sales. Price and affordability relative to competing frozen desserts affect willingness to buy; shoppers may choose the new product when its value seems attractive. Diet, lactose intolerance, vegan preferences and promotion may also be valid independent explanations.", ["1:Identifies first real product or consumer-response influence", "1:Explains its particular effect on new fruit-based non-dairy ice cream", "1:Develops logical effect on trial, repeat demand or substitution", "1:Identifies second DISTINCT factor such as price, diet, health, culture or promotion", "1:Explains second influence with appropriate customer reasoning", "1:Develops its independent effect on sales or willingness to buy"]],
-  [5, "a.i", "Define business technology.", "Business technology is the application of digital tools, equipment, software or technical systems to perform business activities and improve efficiency, communication or service delivery.", ["1:Identifies tools/systems or technological processes used by a firm", "1:Links their application to actual business operations or service"]],
-  [5, "a.ii", "Name two technologies and state how each has affected commercial-bank services.", "Automated teller machines (ATMs) use electronic self-service terminals to give customers cash and balance access beyond staffed counters. Mobile/internet banking apps let customers check balances, transfer funds and pay bills remotely at any hour. Debit cards, secure core-banking systems and electronic fund transfers are other appropriate distinct technology\u2013benefit pairs.", ["1:Names first genuine banking technology/form", "1:Describes a specific way FIRST technology changed a commercial bank's customer service", "1:Names second DISTINCT banking technology/form", "1:Describes a service improvement directly arising from SECOND technology"]],
-  [5, "b", "List four business productivity tools or specialist ICT applications.", "Word-processing software, spreadsheet software, database software and accounting applications are four examples. Also credit distinct presentation software, customer relationship management (CRM), point-of-sale software, enterprise resource planning (ERP), CAD, inventory-management tools and design software.", ["1:First valid business productivity tool or specialist ICT application", "1:Second distinct tool/application", "1:Third distinct tool/application", "1:Fourth distinct tool/application"]],
-  [5, "c.i", "Define e-commerce.", "E-commerce is the buying, selling and payment for goods or services using electronic networks, especially websites and mobile applications over the internet.", ["1:Identifies online/electronic commercial transactions", "1:Describes buying/selling goods or services via electronic networks"]],
-  [5, "c.ii", "Define e-business.", "E-business uses digital networks and technology throughout business operations, such as procurement, customer service, inventory, internal communication and online selling; e-commerce is one part of the broader concept.", ["1:Use of information/communications technology to run enterprise activities", "1:Recognises wider operations beyond only electronic purchase and sale"]],
-  [5, "d", "Explain one advantage and one disadvantage of online shopping for Caribbean consumers or economies.", "Online shopping expands choice and lets Caribbean consumers compare prices and order goods from home, saving travel time and reaching products unavailable locally. A drawback is extra overseas shipping, import taxes and delivery delays, which may eliminate the advertised price advantage; online fraud and data misuse, or pressure on local shops and jobs, are also relevant distinct disadvantages when properly explained.", ["1:Identifies one genuine advantage for a Caribbean consumer or economy", "1:Explains how shopping online creates the advantage", "1:Develops actual consumer or Caribbean business/economic outcome", "1:Identifies one genuine disadvantage, not simply a restatement of advantage", "1:Explains how the drawback affects online buyers or local enterprise", "1:Develops plausible financial, logistical, security or employment consequence"]]
-]);
-var POB_2026_JAN_P2_AUTHORED_SCHEME = Object.freeze({
-  id: "POB-P2-2026-JAN",
-  paper: 2,
-  year: 2026,
-  sitting: "JAN",
-  originalPrintedExamDate: "2026-01-08",
-  printedTestCode: null,
-  printedTestCodeVisuallyPresent: false,
-  sourceFilename: "CSEC_Principles_of_Business_P2_2026_JAN.pdf",
-  sourceSha256: "0183bfa029cf71f60882ad8ad99295725006f00b429dc52ac57cb3e40e3d2581",
-  sourcePages: 6,
-  originalPdfPagesReviewed: Object.freeze([1, 2, 3, 4, 5, 6]),
-  originalPdfTextLayerPresent: false,
-  sourceQuestionsVisuallyReviewed: true,
-  questionSetCompleteness: "five-compulsory",
-  timeLimitMinutes: 120,
-  questionsToAnswer: 5,
-  questionsOffered: 5,
-  maximumCandidateMarks: 100,
-  marksOffered: 100,
-  origin: "SPARK-internally-authored-not-published-CXC",
-  publishedCxcExaminerSchemeSupplied: false,
-  independentSourceOptionVerificationComplete: false,
-  semanticScoringCalibrated: false,
-  liveScoringApproved: false,
-  questions: Object.freeze([1, 2, 3, 4, 5].map((number) => Object.freeze({
-    number,
-    marks: 20,
-    parts: Object.freeze(ROWS.filter((r) => r[0] === number).map(([, id, sourceQuestion, modelAnswer, rawRules]) => Object.freeze({
-      id,
-      sourceQuestion,
-      sourcePdfPage: number + 1,
-      originalQuestionVisualRead: true,
-      modelAnswer,
-      marks: rawRules.reduce((sum, t2) => sum + Number(t2.slice(0, t2.indexOf(":"))), 0),
-      criteria: Object.freeze(rawRules.map((s) => {
-        const at = s.indexOf(":");
-        return Object.freeze({
-          marks: Number(s.slice(0, at)),
-          rule: s.slice(at + 1),
-          acceptedEquivalentIdeas: true,
-          sourceSchemeVerified: false,
-          authoredBySpark: true
-        });
-      }))
-    })))
-  })))
-});
-function verifyPob2026JanP2AuthoredScheme(paper = POB_2026_JAN_P2_AUTHORED_SCHEME) {
-  const issues = [], seen = /* @__PURE__ */ new Set();
-  let offered = 0, parts = 0, criterionMarks = 0;
-  const trusted = POB_SUPPLIED_ARCHIVE.find((p) => p.id === "POB-P2-2026-JAN");
-  if (!trusted || paper?.id !== trusted.id || trusted.paper !== 2 || paper.sourceSha256 !== trusted.sourceSha256 || paper.sourceFilename !== trusted.filename || paper.sourcePages !== trusted.pages)
-    issues.push("The six-page original source identity or SHA-256 has changed.");
-  if (!Array.isArray(paper?.questions) || paper.questions.length !== 5)
-    issues.push("All five compulsory questions required.");
-  for (const q of paper?.questions || []) {
-    if (!Number.isInteger(q.number) || q.number < 1 || q.number > 5 || seen.has(q.number))
-      issues.push("Duplicate or absent original question number.");
-    seen.add(q.number);
-    const ids = /* @__PURE__ */ new Set();
-    let marks = 0;
-    for (const p of q.parts || []) {
-      parts++;
-      marks += p.marks;
-      if (typeof p.id !== "string" || !p.id || ids.has(p.id)) issues.push("Repeated or invalid subpart.");
-      ids.add(p.id);
-      if (p.sourcePdfPage !== q.number + 1 || p.originalQuestionVisualRead !== true || typeof p.sourceQuestion !== "string" || p.sourceQuestion.length < 12)
-        issues.push("Printed source question absent or mismapped: " + q.number + ":" + p.id);
-      if (typeof p.modelAnswer !== "string" || p.modelAnswer.length < 75)
-        issues.push("Answer underdeveloped: " + q.number + ":" + p.id);
-      if (!Number.isInteger(p.marks) || p.marks < 1 || !Array.isArray(p.criteria) || p.criteria.length === 0 || p.criteria.reduce((n, c) => n + c.marks, 0) !== p.marks)
-        issues.push("Inconsistent subpart grading maximum: " + q.number + ":" + p.id);
-      if (p.criteria?.some((c) => !Number.isInteger(c.marks) || c.marks < 1 || !c.rule || c.sourceSchemeVerified !== false || c.authoredBySpark !== true))
-        issues.push("Incomplete SPARK-owned criterion or untrue source attribution.");
-      criterionMarks += p.criteria?.reduce((n, c) => n + c.marks, 0) || 0;
-    }
-    if (marks !== 20 || q.marks !== 20) issues.push("Original question does not total 20 marks: " + q.number);
-    offered += marks;
-  }
-  if (parts !== 32 || offered !== 100 || criterionMarks !== 100 || paper?.maximumCandidateMarks !== 100)
-    issues.push("Incorrect 32-part 100-mark historical source total.");
-  if (!validatePobHistoricalP2Selection(paper?.id, [1, 2, 3, 4, 5]).valid)
-    issues.push("Original 2026 five-compulsory selection rules are unavailable.");
-  if (paper?.liveScoringApproved !== false || paper?.publishedCxcExaminerSchemeSupplied !== false || paper?.semanticScoringCalibrated !== false)
-    issues.push("Internally authored responses cannot be passed off as official live student grades.");
-  return {
-    valid: issues.length === 0,
-    issues,
-    offeredMarks: offered,
-    partCount: parts,
-    criterionMarks,
-    liveApproved: false
-  };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2026JanP2RealPaper.js
-var SOURCE_CONTEXT = Object.freeze({
-  1: "Maria is a student at Happy Valley High School. She wants to pursue business education but is uncertain of the career choices in the field of business.",
-  2: "Juan wants to establish a fast-food business. He has been advised to conduct a feasibility study.",
-  3: "The construction industry in Cocoa Island is experiencing a boom but builders have reported a shortage of construction workers to meet the demand.",
-  4: "Flavourful Distribution Co. is about to launch a new fruit-based, non-dairy ice cream. However, the managers are undecided as to the most appropriate type of packaging for the new product.",
-  5: "In recent years, online shopping has increased significantly in the Caribbean."
-});
-var PRINTED = Object.freeze([
-  [1, "a", "List THREE careers in the field of business that Maria could pursue."],
-  [1, "b", "List THREE stakeholders involved in business activities."],
-  [1, "c.i", "Describe the functional area of a business known as Production."],
-  [1, "c.ii", "Describe the functional area of a business known as Research and development (R&D)."],
-  [1, "d", "Define the term 'code of ethics'."],
-  [1, "e.i", "State TWO legal and/or ethical practices that business owners are expected to adopt in the operations of a business."],
-  [1, "e.ii", "Explain ONE negative effect that could occur if a business fails to engage in EACH practice stated in (e) (i)."],
-  [2, "a.i", "Define the term 'collateral'."],
-  [2, "a.ii", "List THREE examples of collateral."],
-  [2, "b", "List THREE elements of a business plan."],
-  [2, "c.i", "Outline TWO reasons why it is important for Juan to conduct a feasibility study."],
-  [2, "c.ii", "Identify ONE primary and ONE secondary source of information that Juan could use when conducting the feasibility study. State the primary source and the secondary source separately."],
-  [2, "d", "Explain TWO factors Juan should consider when determining the location of his fast-food business."],
-  [3, "a.i", "Identify TWO factors of production."],
-  [3, "a.ii", "Identify TWO major natural resources of the Caribbean."],
-  [3, "a.iii", "Name ONE industry developed from EACH of the natural resources identified in (a) (ii)."],
-  [3, "b.i", "Define the level of production known as Subsistence and state ONE example of this level of production."],
-  [3, "b.ii", "Define the level of production known as Domestic consumption and state ONE example of this level of production."],
-  [3, "c", "Differentiate between 'production' and 'productivity'."],
-  [3, "d", "Explain TWO factors that may have contributed to the shortage of construction workers in Cocoa Island."],
-  [4, "a.i", "Define the term 'marketing'."],
-  [4, "a.ii", "List the FOUR elements of the traditional marketing mix."],
-  [4, "b.i", "Describe the marketing activity known as 'branding'."],
-  [4, "b.ii", "Colour is a critical component of a brand. Identify TWO other components that should be considered when creating a brand."],
-  [4, "c.i", "Outline TWO factors the firm should consider in determining the most suitable packaging for the new ice-cream product."],
-  [4, "c.ii", "Explain TWO factors that could influence consumers' response to Flavourful's new ice cream."],
-  [5, "a.i", "Define the term 'business technology'."],
-  [5, "a.ii", "Identify TWO forms of technology and state how EACH form has influenced the services offered by commercial banks to their customers."],
-  [5, "b", "List FOUR types of productivity tools and/or specialist ICT applications used in business operations."],
-  [5, "c.i", "Define the term E-commerce."],
-  [5, "c.ii", "Define the term E-business."],
-  [5, "d", "Explain ONE advantage and ONE disadvantage of online shopping to Caribbean citizens and/or Caribbean economies."]
-].map(([questionNumber, partId, prompt]) => Object.freeze({
-  questionNumber,
-  partId,
-  prompt,
-  sourcePdfPage: questionNumber + 1,
-  visuallyChecked: true
-})));
-var POB_2026_JAN_HISTORICAL_BANK_VERSION = "pob-historical-2026-jan-p2-v1";
-function buildPob2026JanHistoricalPaper() {
-  const source2 = POB_2026_JAN_P2_AUTHORED_SCHEME;
-  const byId = new Map(PRINTED.map((row) => [row.questionNumber + ":" + row.partId, row]));
-  return Object.freeze({
-    id: source2.id,
-    bankVersion: POB_2026_JAN_HISTORICAL_BANK_VERSION,
-    title: "CSEC Principles of Business \xB7 January 2026 \xB7 Paper 02",
-    paper: "02",
-    origin: "historical-cxc-source",
-    year: 2026,
-    sitting: "JAN",
-    sourceFilename: source2.sourceFilename,
-    sourceSha256: source2.sourceSha256,
-    testCode: null,
-    date: "2026-01-08",
-    timeLimitMinutes: 120,
-    questionCount: 5,
-    compulsory: true,
-    marks: 100,
-    maxMarks: 100,
-    liveScoringApproved: false,
-    gradingStatus: "internal-benchmark-only",
-    questions: Object.freeze(source2.questions.map((q) => Object.freeze({
-      id: source2.id + ":Q" + q.number,
-      number: q.number,
-      marks: q.marks,
-      title: "Question " + q.number,
-      context: SOURCE_CONTEXT[q.number],
-      sourcePdfPage: q.number + 1,
-      items: Object.freeze(q.parts.map((part2) => {
-        const original = byId.get(q.number + ":" + part2.id);
-        if (!original) throw new Error("Missing historical printed part " + q.number + ":" + part2.id);
-        return Object.freeze({
-          id: part2.id,
-          prompt: original.prompt,
-          sourcePdfPage: original.sourcePdfPage,
-          marks: part2.marks,
-          criteria: part2.criteria,
-          modelAnswer: part2.modelAnswer,
-          origin: "source-worded-spark-proposed-scheme",
-          sourceQuestionVisuallyChecked: true,
-          officialSchemeVerified: false
-        });
-      }))
-    })))
-  });
-}
-function verifyPob2026JanHistoricalPaper(paper = buildPob2026JanHistoricalPaper()) {
-  const issues = [], ids = /* @__PURE__ */ new Set(), source2 = POB_SUPPLIED_ARCHIVE.find((s) => s.id === "POB-P2-2026-JAN");
-  const draft = verifyPob2026JanP2AuthoredScheme();
-  if (!draft.valid) issues.push(...draft.issues);
-  if (paper?.id !== source2?.id || paper?.sourceSha256 !== source2?.sourceSha256 || paper?.sourceFilename !== source2?.filename)
-    issues.push("Historical paper source must match owner archive identity.");
-  if (paper?.bankVersion !== POB_2026_JAN_HISTORICAL_BANK_VERSION)
-    issues.push("Wrong historic server bundle version.");
-  if (paper?.timeLimitMinutes !== 120 || paper?.maxMarks !== 100 || paper?.questions?.length !== 5 || paper?.compulsory !== true)
-    issues.push("January 2026 Paper 02 must have five compulsory 20-mark questions in two hours.");
-  let total = 0, parts = 0;
-  for (const q of paper?.questions || []) {
-    if (q?.marks !== 20 || q?.context !== SOURCE_CONTEXT[q.number] || q?.sourcePdfPage !== q.number + 1) issues.push("Unverified question case or mark cap.");
-    let qMarks = 0;
-    for (const item2 of q.items || []) {
-      const original = PRINTED.find((p) => p.questionNumber === q.number && p.partId === item2.id);
-      const key = q.number + ":" + item2.id;
-      if (ids.has(key) || !original || item2.prompt !== original.prompt || item2.sourcePdfPage !== q.number + 1 || item2.sourceQuestionVisuallyChecked !== true || item2.officialSchemeVerified !== false)
-        issues.push("Missing, duplicated or altered printed question: " + key);
-      ids.add(key);
-      if (!Number.isInteger(item2.marks) || item2.marks <= 0 || !Array.isArray(item2.criteria) || item2.criteria.reduce((n, c) => n + c.marks, 0) !== item2.marks)
-        issues.push("Unbalanced source-dependent marking part: " + key);
-      qMarks += item2.marks;
-      total += item2.marks;
-      parts++;
-    }
-    if (qMarks !== 20) issues.push("Historical question does not total 20 marks: " + q.number);
-  }
-  if (parts !== 32 || ids.size !== 32 || total !== 100)
-    issues.push("January 2026 original must retain all 32 response parts and 100 marks.");
-  if (paper?.liveScoringApproved !== false || paper?.gradingStatus !== "internal-benchmark-only")
-    issues.push("Production release must not bypass semantic benchmark.");
-  return { valid: issues.length === 0, issues, partCount: parts, marks: total, scoredLive: false };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2026JanP2CalibrationPack.js
-var relationships = Object.freeze({
-  "1:e.ii": ["1:e.i"],
-  "3:a.iii": ["3:a.ii"]
-});
-var readResponse = (answers, key) => {
-  const value2 = answers[key];
-  if (value2 === void 0 || value2 === null) return "";
-  if (typeof value2 !== "string" || value2.length > 16e3) throw new Error("invalid_historical_response");
-  return value2.trim();
-};
-function buildPob2026JanHistoricalCalibrationPack({
-  bankVersion = POB_2026_JAN_HISTORICAL_BANK_VERSION,
-  responses = {}
-} = {}) {
-  if (bankVersion !== POB_2026_JAN_HISTORICAL_BANK_VERSION)
-    throw new Error("unsupported_historical_calibration_bank");
-  if (!responses || typeof responses !== "object" || Array.isArray(responses))
-    throw new Error("invalid_historical_responses");
-  const source2 = buildPob2026JanHistoricalPaper();
-  if (!verifyPob2026JanHistoricalPaper(source2).valid)
-    throw new Error("historical_source_not_verified");
-  const permitted = new Set(source2.questions.flatMap((q) => q.items.map((p) => q.id + ":" + p.id)));
-  const items = [], clean4 = {};
-  for (const q of source2.questions) for (const part2 of q.items) {
-    const id = q.id + ":" + part2.id;
-    const answer2 = readResponse(responses, id);
-    if (!answer2) continue;
-    clean4[id] = answer2;
-    const companions = relationships[q.number + ":" + part2.id] || [];
-    const responseKeys = [id];
-    for (const ref of companions) {
-      const companionId = source2.id + ":Q" + ref.replace(":", ":");
-      if (permitted.has(companionId)) {
-        const companion = readResponse(responses, companionId);
-        if (companion) {
-          clean4[companionId] = companion;
-          responseKeys.push(companionId);
-        }
-      }
-    }
-    items.push({
-      id,
-      maxMarks: part2.marks,
-      responseKeys,
-      prompt: part2.prompt,
-      context: q.context,
-      rubric: part2.criteria.map((c) => ({
-        marks: c.marks,
-        rule: c.rule,
-        alternatives: []
-      })),
-      constraints: {
-        subject: "principles-of-business",
-        paperId: source2.id,
-        sourcePage: part2.sourcePdfPage,
-        bankVersion: source2.bankVersion,
-        benchmarkOnly: true,
-        requiresLinkedAnswer: companions.length > 0
-      }
-    });
-  }
-  const rubricMaximum = items.reduce((total, item2) => total + item2.maxMarks, 0);
-  if (rubricMaximum > 100 || items.length > 32) throw new Error("historical_calibration_overflow");
-  return Object.freeze({
-    paperId: source2.id,
-    bankVersion: source2.bankVersion,
-    benchmarkOnly: true,
-    productionEligible: false,
-    items,
-    responses: clean4,
-    deterministicScore: 0,
-    maxMarks: 100,
-    unassessedMarks: 0,
-    baselineScore: 0,
-    sourceSha256: source2.sourceSha256
-  });
-}
-
-// src/principlesOfBusiness/data/pobJan2026ExaminerGuidance.js
-var POB_JAN2026_EXAMINER_GUIDANCE = Object.freeze({
-  "1:a": { alternatives: "Business analyst, auditor, accountant, marketer, HR manager, banker, insurance officer, procurement officer, financial analyst, entrepreneur.", pitfall: "Credit different actual careers, not repetitions or department names alone." },
-  "1:b": { alternatives: "Employees, suppliers, customers, shareholders, owners, creditors, government and affected communities.", pitfall: "Stakeholders must have a real interest in the business; do not double-credit a synonym for the same group." },
-  "1:c.i": { alternatives: "Converting labour, materials, capital or information into goods/services, planning workflow, monitoring output and quality.", pitfall: "Purchasing or selling alone is not a full description of the production function." },
-  "1:c.ii": { alternatives: "Investigating needs, experimenting and developing new or improved goods, services, designs and production processes.", pitfall: "Advertising a finished product is not research and development." },
-  "1:d": { alternatives: "Written ethical standards, principles or guidelines that shape responsible decisions, staff conduct and business practices.", pitfall: "A code of ethics is guidance on conduct, not simply a list of products or an employment contract." },
-  "1:e.i": { alternatives: "Accurate advertising, lawful tax compliance, safe work practices, non-discrimination, fair wage payment, consumer privacy and waste disposal.", pitfall: "Both duties must be different, legally or ethically defensible business practices." },
-  "1:e.ii": { alternatives: "Injuries and compensation from unsafe premises; complaints, refunds and reputational harm from false advertising; fines from tax evasion; lawsuits from discrimination.", pitfall: "Follow the actual TWO duties the candidate stated in 1(e)(i). A different practice cannot supply a linked consequence." },
-  "2:a.i": { alternatives: "Property or a valuable asset pledged as loan security, available to the lender subject to lawful default terms.", pitfall: "Interest, instalments and the loan amount are not collateral." },
-  "2:a.ii": { alternatives: "Land, houses, approved vehicles, savings deposits, negotiable securities or other assets the lender would accept as a pledge.", pitfall: "Three distinct eligible assets, not three descriptions of the same house or vehicle." },
-  "2:b": { alternatives: "Executive summary, business description, market study, marketing plan, operations plan, management plan, staffing plan, financial plan, risk analysis.", pitfall: "Name genuine plan sections; product/price/place/promotion are marketing-mix components, not automatically four different business-plan sections." },
-  "2:c.i": { alternatives: "Check demand, competition, startup costs, funding, expected cash flow, availability of premises/staff/equipment and likely profit.", pitfall: "Award identification and development of TWO separate viability purposes, tied to Juan's proposed restaurant." },
-  "2:c.ii": { alternatives: "Primary: first-hand interviews, own surveys or observational counts. Secondary: census tables, previously published industry reports, business directories.", pitfall: "A published report is secondary even if it reports original research undertaken by someone else." },
-  "2:d": { alternatives: "Customer traffic, access, nearby schools/offices, competitors, rent, delivery access, parking, zoning, safety, supplier proximity.", pitfall: "Develop TWO different location factors and explain their actual effect on a fast-food venture." },
-  "3:a.i": { alternatives: "Land or natural resources; labour; capital such as machinery and equipment; enterprise/entrepreneurship.", pitfall: "Distinct factors of production, not two variations of labour or equipment." },
-  "3:a.ii": { alternatives: "Bauxite, petroleum, natural gas, limestone, forests/timber, fish and fertile land are Caribbean natural resources.", pitfall: "Use resources plausibly found in the region and avoid synonyms for the same one." },
-  "3:a.iii": { alternatives: "Bauxite to alumina refining; petroleum to oil refining; limestone to cement; forests to sawmilling; fish to fish processing; fertile land to farming.", pitfall: "Link each industry to the TWO resources the candidate actually wrote in 3(a)(ii)." },
-  "3:b.i": { alternatives: "Small production for self or household consumption, such as gardening to feed a family.", pitfall: "Do not confuse subsistence production with producing mainly for sale to national customers." },
-  "3:b.ii": { alternatives: "Producing for sale/use in the home country, such as local bakeries supplying domestic supermarkets.", pitfall: "Domestic production may be commercial; it is not restricted to the producer's household." },
-  "3:c": { alternatives: "Production is output quantity. Productivity measures output per unit of labour, time, capital or other input; 100 units/10 worker-hours = 10 units per worker-hour.", pitfall: "More total output does not necessarily imply greater productivity; an input comparison is essential." },
-  "3:d": { alternatives: "Rapid demand surge, low supply of trained tradespeople, inadequate training/apprenticeships, emigration, poor work conditions or competing employment.", pitfall: "Two distinct causes, each showing why the construction boom creates unfilled vacancies." },
-  "4:a.i": { alternatives: "Identifying customers' needs and satisfying them through product development, pricing, distribution and communication.", pitfall: "Marketing is broader than promotion or advertising alone." },
-  "4:a.ii": { alternatives: "Product, price, place/distribution and promotion/marketing communications.", pitfall: "Exactly FOUR distinct traditional Ps; synonyms and repeats do not earn extra marks. Do not substitute extended service-marketing Ps." },
-  "4:b.i": { alternatives: "Developing and sustaining a unique identity with a brand name, logo, visual style or reputation that customers recognise.", pitfall: "Identity and distinction matter; simply having packaging is not the full concept of branding." },
-  "4:b.ii": { alternatives: "Brand name, logo, trademark/symbol, slogan, typography, recognisable package design.", pitfall: "Do NOT award colour, because the printed question explicitly excludes it; avoid repeated logo/symbol variants." },
-  "4:c.i": { alternatives: "Freezer-safe food-grade tub, hygiene, safe sealing, leak prevention, allergen/ingredient labels, portion size, packaging cost, convenience, environment.", pitfall: "Tie considerations to the non-dairy frozen dessert's safety, cold storage, cost or customer needs." },
-  "4:c.ii": { alternatives: "Taste/texture, affordability, non-dairy dietary preferences, quality, visibility, distribution, trust and promotion.", pitfall: "Explain how each factor affects trial, repeat purchase or sales, not merely name two influences." },
-  "5:a.i": { alternatives: "Business use of information systems, machines, applications, communications networks and automation to perform and improve work.", pitfall: "Naming a computer without explaining its business role is not a complete definition." },
-  "5:a.ii": { alternatives: "ATMs for 24-hour cash withdrawal; mobile banking for transfers/balance checks; electronic funds transfer for payments; debit cards for cashless purchases.", pitfall: "Pair TWO distinct technologies with the bank-service changes they cause; do not credit two names for the same technology." },
-  "5:b": { alternatives: "Word processors, spreadsheets, database managers, accounting software, presentation software, CRM, point-of-sale, inventory systems, ERP and CAD.", pitfall: "Four recognisably different types of ICT tools, not four brands of the same software category." },
-  "5:c.i": { alternatives: "Buying and selling goods/services electronically, including online orders and payments.", pitfall: "E-commerce is transaction-focused, not every internal digital process." },
-  "5:c.ii": { alternatives: "Using networked digital systems for purchasing, inventory, bookkeeping, employee work, customer support and online sales.", pitfall: "E-business is broader than e-commerce, not merely a different name for online shopping." },
-  "5:d": { alternatives: "Advantage: more choice, convenience, lower travel costs or price comparison. Disadvantage: delivery/import charges, delays, fraud, data leaks or lost local trade/jobs.", pitfall: "Credit one developed advantage AND one developed disadvantage with realistic Caribbean effects." }
-});
-
-// src/principlesOfBusiness/data/pobJan2026ExaminerMarking.js
-var distinctListParts = /* @__PURE__ */ new Set([
-  "1:a",
-  "1:b",
-  "1:e.i",
-  "2:a.ii",
-  "2:b",
-  "2:c.ii",
-  "3:a.i",
-  "3:a.ii",
-  "3:a.iii",
-  "4:a.ii",
-  "4:b.ii",
-  "5:b"
-]);
-function buildPobJan2026ExaminerPack({ responses = {} } = {}) {
-  const paper = buildPob2026JanHistoricalPaper();
-  const base = buildPob2026JanHistoricalCalibrationPack({ responses });
-  const sourceParts = paper.questions.flatMap((q) => q.items.map((part2) => ({
-    id: q.id + ":" + part2.id,
-    question: q.number,
-    part: part2.id,
-    maxMarks: part2.marks,
-    prompt: part2.prompt,
-    modelAnswer: part2.modelAnswer,
-    criteria: part2.criteria.map((c, index) => ({
-      id: q.id + ":" + part2.id + ":C" + (index + 1),
-      marks: c.marks,
-      rule: c.rule
-    }))
-  })));
-  const details = new Map(sourceParts.map((part2) => [part2.id, part2]));
-  const items = [];
-  for (const original of base.items) {
-    const part2 = details.get(original.id);
-    if (!part2) throw new Error("unknown_historical_part");
-    for (const [i, criterion] of part2.criteria.entries()) {
-      items.push({
-        id: criterion.id,
-        maxMarks: criterion.marks,
-        responseKeys: [...original.responseKeys],
-        prompt: original.prompt,
-        context: original.context,
-        exemplar: part2.modelAnswer,
-        acceptedAlternatives: POB_JAN2026_EXAMINER_GUIDANCE[part2.question + ":" + part2.part]?.alternatives || "",
-        commonConfusions: POB_JAN2026_EXAMINER_GUIDANCE[part2.question + ":" + part2.part]?.pitfall || "",
-        rubric: [{ marks: criterion.marks, rule: criterion.rule, alternatives: [] }],
-        constraints: {
-          ...original.constraints,
-          historicalExaminerMarking: true,
-          primaryResponseKey: part2.id,
-          partId: part2.id,
-          questionNumber: part2.question,
-          criterionNumber: i + 1,
-          criterionCount: part2.criteria.length,
-          requiresDistinctEvidence: distinctListParts.has(part2.question + ":" + part2.part),
-          distinctEvidenceGroup: distinctListParts.has(part2.question + ":" + part2.part) ? part2.id : null
-        }
-      });
-    }
-  }
-  if (items.some((i) => i.rubric.reduce((n, c) => n + c.marks, 0) !== i.maxMarks))
-    throw new Error("unbalanced_criterion");
-  if (items.reduce((n, i) => n + i.maxMarks, 0) > 100) throw new Error("historical_criterion_overflow");
-  return {
-    ...base,
-    items,
-    parts: sourceParts,
-    historicalPaperId: paper.id,
-    criterionLevel: true,
-    productionEligible: false
-  };
-}
-function summarizePobJan2026Marks(marking, pack) {
-  if (!pack?.criterionLevel || !Array.isArray(pack.parts)) throw new Error("examiner_pack_required");
-  if (!marking || !Array.isArray(marking.criteria)) throw new Error("examiner_marks_required");
-  const graded = new Map(marking.criteria.map((c) => [c.id, c]));
-  if (graded.size !== marking.criteria.length) throw new Error("duplicate_marked_criterion");
-  const parts = pack.parts.map((part2) => {
-    const criteria = part2.criteria.map((c) => graded.get(c.id) || null);
-    const blank = !String(pack.responses[part2.id] || "").trim();
-    const incomplete = criteria.some((c) => c === null);
-    const score = blank ? 0 : incomplete || criteria.some((c) => c.marks === null) ? null : criteria.reduce((n, c) => n + c.marks, 0);
-    const minMarks = criteria.reduce((n, c) => n + (c?.minMarks || 0), 0);
-    const maxPossibleMarks = blank ? 0 : criteria.reduce((n, c, i) => n + (c ? c.maxPossibleMarks : part2.criteria[i].marks), 0);
-    return {
-      id: part2.id,
-      question: part2.question,
-      prompt: part2.prompt,
-      modelAnswer: part2.modelAnswer,
-      maxMarks: part2.maxMarks,
-      marks: score,
-      minMarks,
-      maxPossibleMarks,
-      status: blank ? "blank" : score !== null ? "agreed" : incomplete ? "incomplete" : "uncertain",
-      criteria: part2.criteria.map((source2, index) => {
-        const awarded = criteria[index];
-        return {
-          id: source2.id,
-          rule: source2.rule,
-          maxMarks: source2.marks,
-          marks: blank ? 0 : awarded?.marks ?? (awarded ? null : 0),
-          minMarks: blank ? 0 : awarded?.minMarks ?? 0,
-          maxPossibleMarks: blank ? 0 : awarded?.maxPossibleMarks ?? source2.marks,
-          status: blank ? "blank" : awarded?.status || (awarded ? "uncertain" : "incomplete"),
-          feedback: blank ? "No answer submitted. No mark awarded." : awarded?.feedback || "This marking criterion has not been evaluated.",
-          evidence: awarded?.evidence || []
-        };
-      })
-    };
-  });
-  const expected = new Map(pack.items.map((i) => [i.id, i]));
-  for (const row of marking.criteria) if (!expected.has(row.id)) throw new Error("unexpected_marked_criterion");
-  const questions = [1, 2, 3, 4, 5].map((number) => {
-    const rows = parts.filter((p) => p.question === number);
-    return {
-      number,
-      maxMarks: 20,
-      score: rows.some((p) => p.marks === null) ? null : rows.reduce((n, p) => n + p.marks, 0),
-      minMarks: rows.reduce((n, p) => n + p.minMarks, 0),
-      maxPossibleMarks: rows.reduce((n, p) => n + p.maxPossibleMarks, 0)
-    };
-  });
-  return {
-    parts,
-    questions,
-    score: questions.some((q) => q.score === null) ? null : questions.reduce((n, q) => n + q.score, 0),
-    minScore: questions.reduce((n, q) => n + q.minMarks, 0),
-    maxScore: questions.reduce((n, q) => n + q.maxPossibleMarks, 0)
-  };
-}
-
-// src/principlesOfBusiness/data/pobDeterministicMarks.js
-var PREFIX = "POB-SPARK-P2-ORIGINAL-01-Q";
-var rules = Object.freeze({
-  [PREFIX + "2:a"]: { limit: 2, choices: [
-    { id: "planning", terms: ["planning", "plan"] },
-    { id: "organising", terms: ["organising", "organizing"] },
-    { id: "leading", terms: ["leading", "directing"] },
-    { id: "controlling", terms: ["controlling"] }
-  ] },
-  [PREFIX + "3:b"]: { limit: 2, choices: [
-    { id: "product", terms: ["product"] },
-    { id: "place", terms: ["place", "distribution"] },
-    { id: "promotion", terms: ["promotion", "advertising"] }
-  ] },
-  [PREFIX + "4:b"]: { limit: 3, choices: [
-    { id: "bill-of-lading", terms: ["bill of lading"] },
-    { id: "airway-bill", terms: ["airway bill", "air waybill", "air way bill"] },
-    { id: "delivery-or-consignment", terms: ["delivery note", "consignment note"] },
-    { id: "purchase-order", terms: ["purchase order"] },
-    { id: "invoice", terms: ["invoice", "commercial invoice"] }
-  ] }
-});
-function found(text, term) {
-  const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const pattern = new RegExp("(^|[^a-z0-9])" + escaped + "(?=$|[^a-z0-9])", "gi");
-  let match;
-  while (match = pattern.exec(text)) {
-    const preceding = text.slice(Math.max(0, match.index + match[1].length - 40), match.index + match[1].length);
-    if (!/(?:\bnot|\bno|\bnever|\bwithout)\s+(?:\w+\s+){0,2}$/.test(preceding)) return true;
-  }
-  return false;
-}
-function gradePobListingPart(partKey, response) {
-  const rule = rules[partKey];
-  if (!rule) return null;
-  const text = String(response || "").toLowerCase().replace(/\s+/g, " ").trim();
-  const identified = rule.choices.filter((choice) => choice.terms.some((term) => found(text, term))).map((c) => c.id);
-  const marks = Math.min(rule.limit, identified.length);
-  return { partKey, marks, maxMarks: rule.limit, identified, source: "strict-listing-v1", reliable: true };
-}
-var POB_DETERMINISTIC_LISTING_KEYS = Object.freeze(Object.keys(rules));
-
-// src/principlesOfBusiness/data/pobCalculationFeedback.js
-var POB_CALCULATION_TARGETS = Object.freeze({
-  "POB-SPARK-P2-ORIGINAL-01-Q3:a": { value: 30, unit: "bottles per labour hour", working: "300 \xF7 10 = 30 bottles per labour hour" },
-  "POB-SPARK-P2-ORIGINAL-01-Q3:c": { value: 120, unit: "J$ per bottle", working: "J$250 \u2212 J$130 = J$120 per bottle" },
-  "POB-SPARK-P2-ORIGINAL-01-Q5:a": { value: 38e4, unit: "J$", working: "J$850,000 \u2212 J$470,000 = J$380,000" },
-  "POB-SPARK-P2-ORIGINAL-01-Q5:b": { value: 12e4, unit: "J$", working: "J$380,000 \u2212 J$260,000 = J$120,000" }
-});
-var NUMERIC_TOKEN = /(?<![\w.])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?![\w])/g;
-function checkPobCalculation(partKey, response) {
-  const target = POB_CALCULATION_TARGETS[partKey];
-  if (!target) return null;
-  const answer2 = String(response || "").trim();
-  if (!answer2) return { status: "unanswered", message: "No calculation entered.", working: target.working };
-  const numbers2 = [...answer2.matchAll(NUMERIC_TOKEN)].map((match) => Number(match[0].replace(/,/g, "")));
-  const equals2 = (a, b) => Number.isFinite(a) && Math.abs(a - b) < 1e-8;
-  const labelled = [...answer2.matchAll(/(?:final answer|answer is|answer:|therefore|thus)\s*(?:is\s*)?(?:J\$|\$)?\s*([\d,]+(?:\.\d+)?)/gi)];
-  const labelledValue = labelled.length ? Number(labelled[labelled.length - 1][1].replace(/,/g, "")) : null;
-  const equations = [...answer2.matchAll(/=\s*(?:J\$|\$)?\s*([\d,]+(?:\.\d+)?)/g)];
-  const equationValue = equations.length ? Number(equations[equations.length - 1][1].replace(/,/g, "")) : null;
-  const stated = labelledValue !== null ? labelledValue : equationValue;
-  if (stated !== null && !equals2(stated, target.value)) {
-    return { status: "review-needed", message: "Your stated result does not match the expected answer. Check your working and final answer.", working: target.working };
-  }
-  if (stated !== null && equals2(stated, target.value)) {
-    return { status: "result-found", message: "Expected numerical result found. Your method, explanation and units still require assessment.", working: target.working };
-  }
-  if (numbers2.length === 1 && equals2(numbers2[0], target.value)) {
-    return { status: "result-found", message: "Expected numerical result found. Your method, explanation and units still require assessment.", working: target.working };
-  }
-  return { status: "review-needed", message: "A clear matching final result was not identified. Label your final answer and check the working.", working: target.working };
-}
-var POB_CALCULATION_RUBRIC_SIGNALS = Object.freeze({
-  "POB-SPARK-P2-ORIGINAL-01-Q3:a": Object.freeze({
-    operands: [300, 10],
-    operation: "/",
-    result: 30,
-    resultGuidance: "30 bottles per labour hour",
-    methodGuidance: "Show 300 \xF7 10 and define output per labour hour."
-  }),
-  "POB-SPARK-P2-ORIGINAL-01-Q3:c": Object.freeze({
-    operands: [250, 130],
-    operation: "-",
-    result: 120,
-    resultGuidance: "J$120 per bottle",
-    methodGuidance: "State selling price and variable cost, then subtract; contribution covers fixed costs before profit."
-  }),
-  "POB-SPARK-P2-ORIGINAL-01-Q5:a": Object.freeze({
-    operands: [85e4, 47e4],
-    operation: "-",
-    result: 38e4,
-    resultGuidance: "J$380,000 gross profit",
-    methodGuidance: "Identify sales revenue and cost of sales and subtract the latter."
-  }),
-  "POB-SPARK-P2-ORIGINAL-01-Q5:b": Object.freeze({
-    operands: [38e4, 26e4],
-    operation: "-",
-    result: 12e4,
-    resultGuidance: "J$120,000 simplified net profit",
-    methodGuidance: "Deduct operating expenses from gross profit."
-  })
-});
-var numberPattern = "(?:\\d{1,3}(?:,\\d{3})+|\\d+)(?:\\.\\d+)?";
-var rawToNumber = (value2) => Number(String(value2).replace(/,/g, ""));
-function inspectPobCalculationEvidence(partKey, response) {
-  const signal = POB_CALCULATION_RUBRIC_SIGNALS[partKey];
-  if (!signal) return null;
-  const answer2 = String(response || "").trim();
-  const result = checkPobCalculation(partKey, answer2);
-  const operation = signal.operation === "/" ? String.raw`(?:/|÷)` : String.raw`(?:-|−)`;
-  const expr = new RegExp("(" + numberPattern + ")\\s*" + operation + "\\s*(" + numberPattern + ")(?![\\w])", "g");
-  const workingShown = [...answer2.replace(/(?:J\$|\$)\s*(?=\d)/gi, "").matchAll(expr)].some((match) => rawToNumber(match[1]) === signal.operands[0] && rawToNumber(match[2]) === signal.operands[1]);
-  const finalCorrect = result.status === "result-found";
-  return {
-    status: result.status,
-    finalResultRecognised: finalCorrect,
-    expectedOperationShown: workingShown,
-    resultGuidance: signal.resultGuidance,
-    methodGuidance: signal.methodGuidance,
-    // A correct result and method together are evidence, not an automatic mark.
-    requiresFullRubricReview: true,
-    provisionalMarks: null,
-    message: result.message
-  };
-}
-
-// src/principlesOfBusiness/data/pobDeterministicCalculationMarks.js
-var P = "POB-SPARK-P2-ORIGINAL-01-Q";
-var rules2 = Object.freeze({
-  [P + "3:a"]: { criterionIndex: 2, value: 30, unit: /\b(?:bottles?)\s*(?:\/|per|each)\s*(?:labour\s*)?hours?\b/i },
-  [P + "3:c"]: { criterionIndex: 2, value: 120, unit: /\b(?:per|\/)\s*(?:bottle|unit)\b/i },
-  [P + "5:a"]: { criterionIndex: 2, value: 38e4, unit: /\b(?:gross\s+profit|profit)\b/i },
-  [P + "5:b"]: { criterionIndex: 2, value: 12e4, unit: /\b(?:net\s+profit|profit)\b/i }
-});
-var norm = (s) => String(s || "").toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, " ").trim();
-var NEGATED_RESULT = /(?:\bnot\s+(?:equal\s+to\s+|is\s+|the\s+answer\s+)?|\bincorrect\s+(?:is\s+)?|\bwrong\s+(?:is\s+)?|\bshould\s+not\s+be\s+)$/i;
-var TOKEN = /\b(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\b/g;
-var asNum = (v) => Number(v.replace(/,/g, ""));
-var equals = (a, b) => Number.isFinite(a) && Math.abs(a - b) < 1e-9;
-function gradePobCalculationResultPart(partKey, response) {
-  const rule = rules2[partKey];
-  if (!rule) return null;
-  const text = norm(response);
-  if (!text) return { partKey, assessedCriterionMarks: 0, criterionIndex: rule.criterionIndex, reason: "blank", source: "strict-calculation-result-v1" };
-  if (/\b(?:not|never)\b.{0,60}\b(?:30|120|380000|120000)\b/i.test(text) || /\b(?:incorrect|wrong|false)\b/i.test(text))
-    return { partKey, assessedCriterionMarks: null, criterionIndex: rule.criterionIndex, reason: "explicit-denial-or-contradiction", source: "strict-calculation-result-v1" };
-  const evidence = inspectPobCalculationEvidence(partKey, response);
-  if (!evidence?.expectedOperationShown || !evidence.finalResultRecognised)
-    return { partKey, assessedCriterionMarks: null, criterionIndex: rule.criterionIndex, reason: "method-and-result-not-both-confirmed", source: "strict-calculation-result-v1" };
-  if (!rule.unit.test(text)) return { partKey, assessedCriterionMarks: null, criterionIndex: rule.criterionIndex, reason: "unit-or-result-label-not-confirmed", source: "strict-calculation-result-v1" };
-  const matches = [...text.matchAll(TOKEN)];
-  const final = [...text.matchAll(/(?:final\s+answer|answer\s+is|answer:|thus|therefore|=)\s*(?:is\s*)?(?:j\$|\$)?\s*([\d,]+(?:\.\d+)?)/gi)];
-  const claimed = final.length ? asNum(final[final.length - 1][1]) : null;
-  if (claimed === null || !equals(claimed, rule.value))
-    return { partKey, assessedCriterionMarks: null, criterionIndex: rule.criterionIndex, reason: "explicit-final-result-required", source: "strict-calculation-result-v1" };
-  const finalIdx = final[final.length - 1].index;
-  if (NEGATED_RESULT.test(text.slice(Math.max(0, finalIdx - 52), finalIdx)))
-    return { partKey, assessedCriterionMarks: null, criterionIndex: rule.criterionIndex, reason: "negated-answer", source: "strict-calculation-result-v1" };
-  const lastNumber = matches[matches.length - 1];
-  if (lastNumber && lastNumber.index > finalIdx && !equals(asNum(lastNumber[0]), rule.value))
-    return { partKey, assessedCriterionMarks: null, criterionIndex: rule.criterionIndex, reason: "contradictory-later-number", source: "strict-calculation-result-v1" };
-  return {
-    partKey,
-    assessedCriterionMarks: 1,
-    criterionIndex: rule.criterionIndex,
-    reason: "explicit-operation-correct-final-and-context-label",
-    source: "strict-calculation-result-v1"
-  };
-}
-var POB_DETERMINISTIC_CALC_KEYS = Object.freeze(Object.keys(rules2));
-
-// src/principlesOfBusiness/data/pobHistorical2002MjP1AuthoredKey.js
-var pobHistorical2002MjP1AuthoredKey_exports = {};
-__export(pobHistorical2002MjP1AuthoredKey_exports, {
-  POB_2002_MJ_P1_AUTHORED_KEY: () => POB_2002_MJ_P1_AUTHORED_KEY,
-  verifyPob2002MjP1AuthoredKey: () => verifyPob2002MjP1AuthoredKey
-});
-var POB_2002_MJ_P1_AUTHORED_KEY = Object.freeze({
-  id: "POB-P1-2002-MJ",
-  paper: 1,
-  year: 2002,
-  sitting: "MJ",
-  sourceFilename: "CSEC_Principles_of_Business_P1_2002_MJ.pdf",
-  sourceSha256: "de82270a6909eec1b0a0319f4e36862f851784633ef727ca55a9fd71bbfb0038",
-  paperDurationMinutes: 90,
-  questionsOffered: 60,
-  originatedFrom: "SPARK-internal-academic-interpretation",
-  officialCxcAnswerKeySupplied: false,
-  completeVisualQA: false,
-  gradingCalibrationPassed: false,
-  
+        part("b", "State THREE factors the friends should investigate before starting the business.", 3, [[1, "Evidence of likely demand and competition."], [1, "Realistic costs and access to finance."], [1, "Health, registration, supplier or legal requirements."]], "They should study demand, start-up costs and the regulatory requirements.

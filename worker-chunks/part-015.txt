@@ -1,4 +1,616 @@
-1:Names appropriate formal line-and-staff organisational structure"]],
+vidence) issues.push("Unexplained dispute.");
+    } else if (item2.status !== "spark-authored-provisional" || !["A", "B", "C", "D"].includes(item2.proposedOption))
+      issues.push("Unproven key mapping.");
+  }
+  if (disputes.join(",") !== "33,52,55,56,57") issues.push("Known original ambiguity lost.");
+  if (key.liveScoringApproved !== false || key.officialHistoricalKeySupplied !== false)
+    issues.push("Provisional key cannot be presented as authenticated/live.");
+  return { valid: issues.length === 0, issues, disputes };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2022JanP1AuthoredKey.js
+var pobHistorical2022JanP1AuthoredKey_exports = {};
+__export(pobHistorical2022JanP1AuthoredKey_exports, {
+  POB_2022_JAN_P1_AUTHORED_KEY: () => POB_2022_JAN_P1_AUTHORED_KEY,
+  verifyPob2022JanP1AuthoredKey: () => verifyPob2022JanP1AuthoredKey
+});
+var POB_2022_JAN_P1_AUTHORED_KEY = Object.freeze({
+  id: "POB-P1-2022-JAN",
+  paper: 1,
+  year: 2022,
+  sitting: "JAN",
+  sourceFilename: "CSEC_Principles_of_Business_P1_2022_JAN.pdf",
+  sourceSha256: "eea5f45fd535925ea4c0d798d2f098cd996f5b21f417cb7279808c287a2ea1e0",
+  sourcePages: 9,
+  questionCount: 60,
+  originalTestCode: "01240010",
+  authorship: "SPARK-internal-model-not-published-CXC",
+  fullAcademicAdjudicationPassed: false,
+  gradeCalibrationPassed: false,
+  officialCxcKeySupplied: false,
+  liveScoringApproved: false,
+  entries: Object.freeze([
+    Object.freeze({ "number": 1, "pdfPage": 2, "proposedOption": "A", "explanation": "Private enterprises primarily operate to earn profit for their owners.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 2, "pdfPage": 2, "proposedOption": "A", "explanation": "Human resources normally recruits and develops appropriately qualified employees.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 3, "pdfPage": 2, "proposedOption": "B", "explanation": "A centrally planned economy places major economic resources under state ownership/control.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 4, "pdfPage": 2, "proposedOption": "A", "explanation": "An open cheque can be presented for cash, unlike a crossed cheque.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 5, "pdfPage": 2, "proposedOption": "A", "explanation": "A postdated cheque is written with a date later than its issue date.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 6, "pdfPage": 2, "proposedOption": "C", "explanation": "Trade unions principally advance the welfare and interests of their membership.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 7, "pdfPage": 2, "proposedOption": "A", "explanation": "Ethical waste disposal demonstrates corporate responsibility to society and the wider environment.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 8, "pdfPage": 2, "proposedOption": "B", "explanation": "An authoritarian leader makes decisions without consulting employees.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 9, "pdfPage": 3, "proposedOption": "C", "explanation": "Division of labour separates the tasks required to finish a productive job.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 10, "pdfPage": 3, "proposedOption": "A", "explanation": "Promoting a manager's relative ahead of a long-serving employee without merit illustrates unfair favouritism/nepotism.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 11, "pdfPage": 3, "proposedOption": "C", "explanation": "Granting paid time off to a worker can motivate good performance.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 12, "pdfPage": 3, "proposedOption": "D", "explanation": "Running an online bakery is a direct example of entrepreneurship.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 13, "pdfPage": 3, "proposedOption": "C", "explanation": "Collateral is most relevant to loans from a financial institution.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 14, "pdfPage": 3, "proposedOption": "A", "explanation": "A separate legal plan is not among the listed standard production, marketing and financial business-plan sections.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 15, "pdfPage": 3, "proposedOption": "A", "explanation": "A sole trader usually retains greatest direct individual control.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 16, "pdfPage": 3, "proposedOption": "D", "explanation": "Business design is the item not presented as a core feasibility-study financial or demand variable.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 17, "pdfPage": 3, "proposedOption": "D", "explanation": "A purchase order represents the buyer's offer to purchase the specified goods.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 18, "pdfPage": 4, "proposedOption": "B", "explanation": "Monthly insurance payments are called premiums.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 19, "pdfPage": 4, "proposedOption": "A", "explanation": "Breach and expiration of an agreed period can discharge contracts; offer and acceptance form a contract.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 20, "pdfPage": 4, "proposedOption": "C", "explanation": "A different proposed car price is a counteroffer, not unconditional acceptance.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 21, "pdfPage": 4, "proposedOption": "B", "explanation": "Craft supplies made at home exemplify small-scale cottage industry.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 22, "pdfPage": 4, "proposedOption": "D", "explanation": "Subsistence output serves the producer or family's personal use.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 23, "pdfPage": 4, "proposedOption": "D", "explanation": "Working capital funds day-to-day business expenses.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 24, "pdfPage": 4, "proposedOption": null, "explanation": "Increased productivity, specialisation, communication and capital spending can all arise as organisations grow; a unique least-likely answer cannot be justified without more context.", "academicStatus": "disputed", "sourceImageCompared": true, "disputeEvidence": "Question has no clearly unique least-likely effect of business growth." }),
+    Object.freeze({ "number": 25, "pdfPage": 4, "proposedOption": "D", "explanation": "Human resources means the people available to supply productive and professional services.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 26, "pdfPage": 5, "proposedOption": "C", "explanation": "Buying an upstream dye factory to secure scarf-making inputs is backward integration.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 27, "pdfPage": 5, "proposedOption": "D", "explanation": "Economies of scale reduce average unit cost as production expands.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 28, "pdfPage": 5, "proposedOption": "A", "explanation": "Distributing goods to sales outlets is a marketing/place function.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 29, "pdfPage": 5, "proposedOption": "B", "explanation": "The four Ps are product, price, promotion and place.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 30, "pdfPage": 5, "proposedOption": "A", "explanation": "Hire purchase is most often used for retail consumer purchases.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 31, "pdfPage": 5, "proposedOption": "B", "explanation": "A brand identifies a specific producer's goods.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 32, "pdfPage": 5, "proposedOption": "D", "explanation": "Price discrimination charges different prices for the same good/service to distinct customers or markets.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 33, "pdfPage": 5, "proposedOption": "D", "explanation": "Reducing retailer prices is a pricing tactic, not normally community public relations.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 34, "pdfPage": 6, "proposedOption": "C", "explanation": "Advertising communicates information about products, services or brands to potential buyers.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 35, "pdfPage": 6, "proposedOption": "C", "explanation": "Contractors are not normally a link in the manufacturer-wholesaler-retailer distribution chain.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 36, "pdfPage": 6, "proposedOption": "B", "explanation": "Heavy car parts can be shipped between islands by sea.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 37, "pdfPage": 6, "proposedOption": "D", "explanation": "A negotiable bill of lading can function as a document of title to imported goods.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 38, "pdfPage": 6, "proposedOption": "B", "explanation": "FedEx and DHL perform third-party transportation and logistics services.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 39, "pdfPage": 6, "proposedOption": "D", "explanation": "The full supply chain includes organisations and resources that move goods from suppliers to customers.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 40, "pdfPage": 6, "proposedOption": "A", "explanation": "GPS means Global Positioning System.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 41, "pdfPage": 6, "proposedOption": "D", "explanation": "An instruction to make fixed regular payments is a standing order.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 42, "pdfPage": 6, "proposedOption": "D", "explanation": "A plan allocating income to spending and savings is a budget.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 43, "pdfPage": 7, "proposedOption": "C", "explanation": "Commercial banks make small-business loans and accept customer deposits, but do not control overall monetary supply.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 44, "pdfPage": 7, "proposedOption": "A", "explanation": "Issuing national currency is a central-bank function.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 45, "pdfPage": 7, "proposedOption": "B", "explanation": "Repaying a loan's principal is not newly earned income.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 46, "pdfPage": 7, "proposedOption": "A", "explanation": "The central bank is generally government-owned/controlled.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 47, "pdfPage": 7, "proposedOption": "A", "explanation": "Financial assets expected to generate returns are investments.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 48, "pdfPage": 7, "proposedOption": "C", "explanation": "Education raises the efficiency and productive skill of workers.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 49, "pdfPage": 7, "proposedOption": "A", "explanation": "Income tax is direct; excise, purchase and customs duties are indirect.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 50, "pdfPage": 7, "proposedOption": "B", "explanation": "Currency stability is the listed economic objective of the state.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 51, "pdfPage": 8, "proposedOption": "A", "explanation": "Government grants to businesses or consumers are subsidies, unlike repayable loans.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 52, "pdfPage": 8, "proposedOption": "B", "explanation": "Recycling and water conservation (I and III) both protect the environment; deforestation does not.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 53, "pdfPage": 8, "proposedOption": "C", "explanation": "Customs duty is collected on goods entering the country.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 54, "pdfPage": 8, "proposedOption": "B", "explanation": "Higher standards of living indicate effective social and economic policies.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 55, "pdfPage": 8, "proposedOption": "D", "explanation": "Education and training that expand skills constitute human resource development.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 56, "pdfPage": 8, "proposedOption": "D", "explanation": "An MIS supports information flows and integrated management records but does not itself define changes to task procedures.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 57, "pdfPage": 8, "proposedOption": "C", "explanation": "Industrialisation can generate greater industrial waste, requiring waste-control measures.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 58, "pdfPage": 8, "proposedOption": null, "explanation": "All four printed options (deflation, higher income taxes, higher borrowing rates, and levies on employers) would generally suppress employment instead of directly reducing unemployment.", "academicStatus": "disputed", "sourceImageCompared": true, "disputeEvidence": "None of the listed policies is a defensible general unemployment reduction remedy." }),
+    Object.freeze({ "number": 59, "pdfPage": 9, "proposedOption": "B", "explanation": "International trade is the buying and selling of goods and services between countries.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null }),
+    Object.freeze({ "number": 60, "pdfPage": 9, "proposedOption": "B", "explanation": "Introducing technology can displace some unskilled production jobs.", "academicStatus": "spark-authored-provisional", "sourceImageCompared": true, "disputeEvidence": null })
+  ])
+});
+function verifyPob2022JanP1AuthoredKey(key = POB_2022_JAN_P1_AUTHORED_KEY) {
+  const problems = [], numbers2 = /* @__PURE__ */ new Set(), disputed = [];
+  const source2 = POB_SUPPLIED_ARCHIVE.find((s) => s.id === key?.id);
+  if (!source2 || source2.paper !== 1 || source2.sourceSha256 !== key.sourceSha256 || source2.filename !== key.sourceFilename)
+    problems.push("Original Jan 2022 PDF hash/filename mismatch.");
+  if (!Array.isArray(key?.entries) || key.entries.length !== 60)
+    return { valid: false, problems: [...problems, "Sixty original MCQ slots required."], disputed: [] };
+  for (const q of key.entries) {
+    if (!Number.isInteger(q.number) || q.number < 1 || q.number > 60 || numbers2.has(q.number))
+      problems.push("Duplicate or invalid MCQ number " + q.number);
+    numbers2.add(q.number);
+    if (!Number.isInteger(q.pdfPage) || q.pdfPage < 2 || q.pdfPage > 9)
+      problems.push("Source-page mapping invalid Q" + q.number);
+    if (!q.explanation || q.explanation.length < 32) problems.push("Missing reasoned explanation Q" + q.number);
+    if (q.academicStatus === "disputed") {
+      disputed.push(q.number);
+      if (!q.disputeEvidence || q.proposedOption !== null)
+        problems.push("Unresolved academic item must be NULL with evidence Q" + q.number);
+    } else if (q.academicStatus !== "spark-authored-provisional" || !["A", "B", "C", "D"].includes(q.proposedOption))
+      problems.push("Unexpected answer status Q" + q.number);
+  }
+  if (disputed.join(",") !== "24,58") problems.push("Known original question defects not disclosed.");
+  if (key.liveScoringApproved !== false || key.officialCxcKeySupplied !== false)
+    problems.push("Not a production academic certification.");
+  return { valid: problems.length === 0, problems, disputed };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2023JanP1AuthoredKey.js
+var pobHistorical2023JanP1AuthoredKey_exports = {};
+__export(pobHistorical2023JanP1AuthoredKey_exports, {
+  POB_2023_JAN_P1_AUTHORED_KEY: () => POB_2023_JAN_P1_AUTHORED_KEY,
+  verifyPob2023JanP1AuthoredKey: () => verifyPob2023JanP1AuthoredKey
+});
+var POB_2023_JAN_P1_AUTHORED_KEY = Object.freeze({
+  id: "POB-P1-2023-JAN",
+  year: 2023,
+  sitting: "JAN",
+  paper: 1,
+  testCode: "01240010",
+  sourceFilename: "CSEC_Principles_of_Business_P1_2023_JAN.pdf",
+  sourceSha256: "3074ee9e4b69da38efbc895ac82a37333d55f46a349053d336b2a111e320982a",
+  questionCount: 60,
+  timeLimitMinutes: 75,
+  origin: "spark-internally-derived",
+  officialCxcKeySupplied: false,
+  fullHistoricalQuestionTranscriptionVerified: false,
+  liveScoringApproved: false,
+  answerReviewNotes: Object.freeze({
+    4: "Check distinction between consumer goods and stationery used internally by a business.",
+    16: "Compare feasibility variables against syllabus wording to avoid overbroad interpretation.",
+    46: "Government ownership and the public sector have overlapping everyday meanings; intended answer is the more specific government.",
+    47: "Verify redistributive function of PAYE and national insurance in the relevant Caribbean context."
+  }),
+  entries: Object.freeze([
+    Object.freeze({ number: 1, sourcePdfPage: 2, answer: "B", explanation: "Mixed economies combine private enterprise with government activity and regulation." }),
+    Object.freeze({ number: 2, sourcePdfPage: 2, answer: "A", explanation: "Ethical waste disposal fulfils the firm's responsibility to society and the environment." }),
+    Object.freeze({ number: 3, sourcePdfPage: 2, answer: "A", explanation: "An open cheque permits over-the-counter cash withdrawal rather than requiring deposit into an account." }),
+    Object.freeze({ number: 4, sourcePdfPage: 2, answer: "C", explanation: "Stationery used by an accounts department is a business input, not a household consumption good." }),
+    Object.freeze({ number: 5, sourcePdfPage: 2, answer: "A", explanation: "Unlimited liability exposes a sole trader's personal assets to business debts." }),
+    Object.freeze({ number: 6, sourcePdfPage: 2, answer: "D", explanation: "Online communication supports prompt responses, detailed messages and retrievable written records." }),
+    Object.freeze({ number: 7, sourcePdfPage: 2, answer: "C", explanation: "Paid time off is an employee benefit that helps motivate workers." }),
+    Object.freeze({ number: 8, sourcePdfPage: 2, answer: "C", explanation: "Trade unions represent and advance the welfare and interests of their members." }),
+    Object.freeze({ number: 9, sourcePdfPage: 3, answer: "B", explanation: "An authoritarian leader makes decisions without consulting subordinates." }),
+    Object.freeze({ number: 10, sourcePdfPage: 3, answer: "A", explanation: "Preferential promotion of a manager's relative indicates unfair practices or nepotism." }),
+    Object.freeze({ number: 11, sourcePdfPage: 3, answer: "A", explanation: "Subsidised meals are fringe benefits, not wages or workers' compensation." }),
+    Object.freeze({ number: 12, sourcePdfPage: 3, answer: "D", explanation: "Operating an online bakery is running a business venture, unlike merely obtaining finance." }),
+    Object.freeze({ number: 13, sourcePdfPage: 3, answer: "B", explanation: "An entrepreneur combines and organises the factors of production." }),
+    Object.freeze({ number: 14, sourcePdfPage: 3, answer: "A", explanation: "Collateral gives the lender security that may be realised if the borrower defaults." }),
+    Object.freeze({ number: 15, sourcePdfPage: 3, answer: "D", explanation: "The executive summary outlines the main points of a business plan." }),
+    Object.freeze({ number: 16, sourcePdfPage: 4, answer: "D", explanation: "Market demand, target market and financial viability are feasibility factors; a complete business design is not the specific feasibility variable sought." }),
+    Object.freeze({ number: 17, sourcePdfPage: 4, answer: "B", explanation: "The periodic amount paid for insurance coverage is the premium." }),
+    Object.freeze({ number: 18, sourcePdfPage: 4, answer: "B", explanation: "Offering forty dollars instead of the fifty requested is a counteroffer." }),
+    Object.freeze({ number: 19, sourcePdfPage: 4, answer: "C", explanation: "Misrepresentation can vitiate a party's informed consent, making a contract voidable." }),
+    Object.freeze({ number: 20, sourcePdfPage: 4, answer: "A", explanation: "Breach and expiry by lapse of time can discharge an existing contract; offer and acceptance generally form one." }),
+    Object.freeze({ number: 21, sourcePdfPage: 4, answer: "D", explanation: "Building and construction are secondary production; the other options describe primary production." }),
+    Object.freeze({ number: 22, sourcePdfPage: 4, answer: "C", explanation: "Capital earns interest; labour wages, land rent and enterprise profit." }),
+    Object.freeze({ number: 23, sourcePdfPage: 4, answer: "A", explanation: "Sugar is processed from sugar cane and is not an unprocessed natural resource." }),
+    Object.freeze({ number: 24, sourcePdfPage: 4, answer: "D", explanation: "Economies of scale reduce average unit costs as output increases." }),
+    Object.freeze({ number: 25, sourcePdfPage: 5, answer: "B", explanation: "Labour comprises the physical and mental effort used in productive work." }),
+    Object.freeze({ number: 26, sourcePdfPage: 5, answer: "C", explanation: "Primary production obtains materials from natural resources through extraction, farming and related activity." }),
+    Object.freeze({ number: 27, sourcePdfPage: 5, answer: "B", explanation: "Small cottage industries typically use family labour and require modest investment, not mass production." }),
+    Object.freeze({ number: 28, sourcePdfPage: 5, answer: "C", explanation: "A loss leader is sold at an unusually low price to attract shoppers." }),
+    Object.freeze({ number: 29, sourcePdfPage: 5, answer: "D", explanation: "Merchandising covers product presentation and visual selling arrangements." }),
+    Object.freeze({ number: 30, sourcePdfPage: 5, answer: "B", explanation: "Distribution of goods to retail outlets forms part of marketing." }),
+    Object.freeze({ number: 31, sourcePdfPage: 5, answer: "D", explanation: "A market needs interacting buyers and sellers, not necessarily a physical place." }),
+    Object.freeze({ number: 32, sourcePdfPage: 5, answer: "C", explanation: "Advertising's primary function is to communicate product or service information." }),
+    Object.freeze({ number: 33, sourcePdfPage: 6, answer: "B", explanation: "Purchasing supplies is primarily procurement rather than a marketing manager's function." }),
+    Object.freeze({ number: 34, sourcePdfPage: 6, answer: "A", explanation: "The classic marketing mix is product, price, promotion and place." }),
+    Object.freeze({ number: 35, sourcePdfPage: 6, answer: "A", explanation: "GPS stands for Global Positioning System." }),
+    Object.freeze({ number: 36, sourcePdfPage: 6, answer: "D", explanation: "The conventional channel moves from manufacturer through wholesaler and retailer to consumer." }),
+    Object.freeze({ number: 37, sourcePdfPage: 6, answer: "B", explanation: "Carriers such as DHL and FedEx commonly operate as third-party logistics providers." }),
+    Object.freeze({ number: 38, sourcePdfPage: 6, answer: "D", explanation: "A negotiable bill of lading is issued by a carrier and may serve as a document of title." }),
+    Object.freeze({ number: 39, sourcePdfPage: 6, answer: "C", explanation: "Supply chains connect resources and organisations moving products from suppliers to users." }),
+    Object.freeze({ number: 40, sourcePdfPage: 6, answer: "B", explanation: "Sea freight suits heavy engines travelling between the islands of Barbados and Trinidad." }),
+    Object.freeze({ number: 41, sourcePdfPage: 6, answer: "C", explanation: "Commercial banks accept deposits and provide loans; control of money supply belongs to the central bank." }),
+    Object.freeze({ number: 42, sourcePdfPage: 7, answer: "C", explanation: "A standing order is an instruction to make recurring payments of fixed amounts." }),
+    Object.freeze({ number: 43, sourcePdfPage: 7, answer: "A", explanation: "Investments are income- or return-generating financial assets." }),
+    Object.freeze({ number: 44, sourcePdfPage: 7, answer: "A", explanation: "A central bank issues and manages a country's currency." }),
+    Object.freeze({ number: 45, sourcePdfPage: 7, answer: "D", explanation: "Budgeting plans expected earnings, saving and expenditure." }),
+    Object.freeze({ number: 46, sourcePdfPage: 7, answer: "A", explanation: "Central banks are generally established and controlled by the government." }),
+    Object.freeze({ number: 47, sourcePdfPage: 7, answer: "C", explanation: "PAYE income tax and national insurance support tax and social-protection arrangements associated with redistribution." }),
+    Object.freeze({ number: 48, sourcePdfPage: 7, answer: "D", explanation: "A stock exchange provides trading in securities already issued." }),
+    Object.freeze({ number: 49, sourcePdfPage: 7, answer: "D", explanation: "Chambers of commerce promote the interests of the business community." }),
+    Object.freeze({ number: 50, sourcePdfPage: 7, answer: "C", explanation: "Customs duty is a charge on goods entering a country." }),
+    Object.freeze({ number: 51, sourcePdfPage: 8, answer: "B", explanation: "Export licences help governments regulate the flow of exported goods." }),
+    Object.freeze({ number: 52, sourcePdfPage: 8, answer: "C", explanation: "Maintaining a stable national currency is an economic aim." }),
+    Object.freeze({ number: 53, sourcePdfPage: 8, answer: "C", explanation: "Outward migration of skilled labour can reduce a developing country's productive capacity." }),
+    Object.freeze({ number: 54, sourcePdfPage: 8, answer: "A", explanation: "Lower taxes can encourage enterprise and investment." }),
+    Object.freeze({ number: 55, sourcePdfPage: 8, answer: "C", explanation: "Labour-intensive production increases demand for workers." }),
+    Object.freeze({ number: 56, sourcePdfPage: 8, answer: "B", explanation: "Recycling and conserving water help the environment; deforestation does not." }),
+    Object.freeze({ number: 57, sourcePdfPage: 8, answer: "B", explanation: "Transaction-processing systems record everyday purchases and sales." }),
+    Object.freeze({ number: 58, sourcePdfPage: 9, answer: "D", explanation: "CARICOM fosters regional trade, cooperation and shared services." }),
+    Object.freeze({ number: 59, sourcePdfPage: 9, answer: "B", explanation: "Transactions involving goods and services across countries are international trade." }),
+    Object.freeze({ number: 60, sourcePdfPage: 9, answer: "D", explanation: "Loans and technical assistance support new local firms, jobs and output." })
+  ])
+});
+var verifyPob2023JanP1AuthoredKey = (paper = POB_2023_JAN_P1_AUTHORED_KEY) => {
+  const errors = [];
+  const rows = paper?.entries;
+  if (!Array.isArray(rows) || rows.length !== 60) return { valid: false, errors: ["Exactly sixty key entries required."] };
+  const unique = /* @__PURE__ */ new Set();
+  for (const [i, row] of rows.entries()) {
+    if (row.number !== i + 1 || unique.has(row.number)) errors.push("Missing/duplicate question " + (i + 1));
+    unique.add(row.number);
+    if (!["A", "B", "C", "D"].includes(row.answer)) errors.push("Invalid answer " + (i + 1));
+    if (typeof row.explanation !== "string" || row.explanation.length < 35) errors.push("Missing explanation " + (i + 1));
+    if (!Number.isInteger(row.sourcePdfPage) || row.sourcePdfPage < 2 || row.sourcePdfPage > 9)
+      errors.push("Invalid source page " + (i + 1));
+  }
+  if (paper.sourceSha256 !== "3074ee9e4b69da38efbc895ac82a37333d55f46a349053d336b2a111e320982a")
+    errors.push("Source SHA-256 mismatch.");
+  if (paper.officialCxcKeySupplied !== false || paper.liveScoringApproved !== false)
+    errors.push("Academic source and live grading flags must remain truthful.");
+  return { valid: errors.length === 0, errors };
+};
+
+// src/principlesOfBusiness/data/pobHistorical2024MjP1AuthoredKey.js
+var pobHistorical2024MjP1AuthoredKey_exports = {};
+__export(pobHistorical2024MjP1AuthoredKey_exports, {
+  POB_2024_MJ_P1_AUTHORED_KEY: () => POB_2024_MJ_P1_AUTHORED_KEY,
+  verifyPob2024MjP1AuthoredKey: () => verifyPob2024MjP1AuthoredKey
+});
+var POB_2024_MJ_P1_AUTHORED_KEY = Object.freeze({
+  id: "POB-P1-2024-MJ",
+  paper: 1,
+  year: 2024,
+  sitting: "MJ",
+  sourceFilename: "CSEC_Principles_of_Business_P1_2024_MJ.pdf",
+  sourceSha256: "2757f10cae603a87d2116a76ba1dca9a6c8c3abdbfb6e51a8db1d610c3ebbd7f",
+  originalPdfPages: 11,
+  printedTestCode: "01240010",
+  questionCount: 60,
+  sourceHasUnverifiedHandMarkedAnswers: true,
+  origin: "SPARK-independent-academic-draft",
+  officialCxcKeySupplied: false,
+  sourceAndOptionAcademicReleaseReviewComplete: false,
+  gradedAnswerBenchmarkPassed: false,
+  liveScoringApproved: false,
+  entries: Object.freeze([
+    Object.freeze({ "number": 1, "pdfPage": 2, "proposedOption": "B", "explanation": "Most Commonwealth Caribbean economies combine government involvement and private enterprise in a mixed economy.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 2, "pdfPage": 2, "proposedOption": "C", "explanation": "Legitimate and fairly conducted retrenchment is not automatically unethical; money laundering, tax evasion and false advertising are.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 3, "pdfPage": 2, "proposedOption": "B", "explanation": "The company board of directors normally establishes overarching business policy.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 4, "pdfPage": 2, "proposedOption": "C", "explanation": "Ease of setup and flexible working hours are sole-trader benefits; shared profits are not.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 5, "pdfPage": 2, "proposedOption": "B", "explanation": "Public-sector organisations chiefly serve the public rather than private shareholders.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 6, "pdfPage": 2, "proposedOption": "D", "explanation": "Laissez-faire managers let capable subordinates choose their own operational decisions.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 7, "pdfPage": 3, "proposedOption": "B", "explanation": "In the printed organisational chart, X reports above the CEO and corresponds to the board of directors.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 8, "pdfPage": 3, "proposedOption": "C", "explanation": "A staff suggestion box solicits practical ideas for improving workplace processes.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 9, "pdfPage": 3, "proposedOption": "A", "explanation": "Planning selects business objectives and procedures to reach them.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 10, "pdfPage": 4, "proposedOption": "A", "explanation": "A trade union seeks improved pay and work conditions on behalf of members; striking is a possible tactic rather than its main purpose.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 11, "pdfPage": 4, "proposedOption": "D", "explanation": "Inspiring, delegating and intelligent decision-making are all positive leadership behaviours.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 12, "pdfPage": 4, "proposedOption": "B", "explanation": "Entrepreneurs identify opportunities and bring together productive resources.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 13, "pdfPage": 4, "proposedOption": "C", "explanation": "A feasibility study examines practical viability of a business idea before investment.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 14, "pdfPage": 4, "proposedOption": "B", "explanation": "The business-opportunity portion assesses whether the business idea is viable.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 15, "pdfPage": 4, "proposedOption": "A", "explanation": "Cash or assets pledged as loan security constitute collateral.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 16, "pdfPage": 4, "proposedOption": "C", "explanation": "Paying applicable National Insurance contributions is a statutory business requirement.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 17, "pdfPage": 4, "proposedOption": "B", "explanation": "Policyholder payments for insurance coverage are premiums.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 18, "pdfPage": 5, "proposedOption": "B", "explanation": "The exchange of a completed car-washing service for money is a simple commercial contract.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 19, "pdfPage": 5, "proposedOption": "C", "explanation": "A specialty contract is traditionally executed as a formal deed, signed, sealed and delivered where required by law.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 20, "pdfPage": 5, "proposedOption": "D", "explanation": "One party simply changing their mind is not a legitimate discharge of contractual duties.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 21, "pdfPage": 5, "proposedOption": "B", "explanation": "Agriculture draws directly on land and natural resources and is primary/extractive production.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 22, "pdfPage": 5, "proposedOption": "C", "explanation": "Division of labour separates a larger job into specialised tasks.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 23, "pdfPage": 5, "proposedOption": "A", "explanation": "Productivity is the quantity of outputs relative to the input used.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 24, "pdfPage": 5, "proposedOption": "C", "explanation": "Sugar-cake making in a home workshop is representative of a cottage industry.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 25, "pdfPage": 5, "proposedOption": "D", "explanation": "A linkage exists when the output of one industry becomes another's production input.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 26, "pdfPage": 6, "proposedOption": "A", "explanation": "Using many farmworkers and little equipment is labour-intensive production.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 27, "pdfPage": 6, "proposedOption": "C", "explanation": "Plant and machinery are fixed capital used repeatedly in production.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 28, "pdfPage": 6, "proposedOption": "D", "explanation": "Advertising a named rival comparison is competitive advertising.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 29, "pdfPage": 6, "proposedOption": "A", "explanation": "Wholesalers, retailers and internet sales all distribute goods to customers.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 30, "pdfPage": 6, "proposedOption": null, "explanation": "Place of residence can influence whether goods can be purchased, so the 'least likely' ranking relative to price, quality and brand loyalty needs objective-specific adjudication.", "status": "academic-dispute", "disputeEvidence": "Place of residence affects product access, so it may influence consumer purchasing; no context-free unique least-likely factor.", "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 31, "pdfPage": 6, "proposedOption": "D", "explanation": "Packaging protects, preserves and promotes the good.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 32, "pdfPage": 6, "proposedOption": "A", "explanation": "Editorial space obtained without paying for advertising is publicity.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 33, "pdfPage": 6, "proposedOption": "C", "explanation": "Copyright protects an original artistic painting from unauthorised reproduction.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 34, "pdfPage": 7, "proposedOption": "B", "explanation": "Product, price, promotion and place together form the marketing mix.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 35, "pdfPage": 7, "proposedOption": "D", "explanation": "Transporting goods to suitable storage is logistics/wholesaling, not primarily a retailer's direct-sales function.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 36, "pdfPage": 7, "proposedOption": "C", "explanation": "DHL provides global parcel delivery and logistics.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 37, "pdfPage": 7, "proposedOption": "C", "explanation": "Logistics plans and manages movement, storage and transport of goods/resources from source to destination.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 38, "pdfPage": 7, "proposedOption": "A", "explanation": "A bill of lading can evidence title or ownership in goods carried internationally.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 39, "pdfPage": 7, "proposedOption": "D", "explanation": "The producer is the soft-drink manufacturer; the other options are different service occupations or retailers.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 40, "pdfPage": 7, "proposedOption": "B", "explanation": "Sea freight is suited to heavy car engines moving between Barbados and Trinidad.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 41, "pdfPage": 7, "proposedOption": "B", "explanation": "Repayment of borrowed loan principal is not newly earned income in a personal budget.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 42, "pdfPage": 8, "proposedOption": "D", "explanation": "Commercial banks accept public deposits and make loans; printing money and overall supply control are central-bank roles.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 43, "pdfPage": 8, "proposedOption": "A", "explanation": "Issuing national currency is a major central-bank function.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 44, "pdfPage": 8, "proposedOption": "C", "explanation": "Regular fixed monthly payments set up through a bank are a standing order.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 45, "pdfPage": 8, "proposedOption": "B", "explanation": "A bank safety deposit box secures important papers and jewellery.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 46, "pdfPage": 8, "proposedOption": "B", "explanation": "Shares in public companies may be traded on a recognised stock exchange, subject to listing.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 47, "pdfPage": 8, "proposedOption": "C", "explanation": "Chambers of commerce help member businesses find markets and commercial opportunities.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 48, "pdfPage": 8, "proposedOption": "B", "explanation": "Rising material living standards are a stronger broad policy-outcome measure than counts of policies or lower output.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 49, "pdfPage": 8, "proposedOption": "C", "explanation": "Income tax and corporation tax are direct taxes; purchase tax is imposed indirectly on expenditure.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 50, "pdfPage": 9, "proposedOption": "D", "explanation": "Progressive income taxation can collect higher rates from high earners to finance benefits for lower earners; option B is vague and overlaps the aim.", "status": "academic-dispute", "disputeEvidence": "Both a broad statement of better income distribution and the explicit higher tax rates for upper earners have some merit. D is economically more precise but B could be intended.", "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 51, "pdfPage": 9, "proposedOption": "A", "explanation": "Lower business taxes can stimulate company spending and investment.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 52, "pdfPage": 9, "proposedOption": "B", "explanation": "Subsidies can reduce producer operating costs and sometimes selling prices.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 53, "pdfPage": 9, "proposedOption": "D", "explanation": "A price control imposes a government legal limit on market prices.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 54, "pdfPage": 9, "proposedOption": "A", "explanation": "A tax refund is not itself one of the social services such as clinics, schooling or public transportation.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 55, "pdfPage": 9, "proposedOption": "B", "explanation": "Cross-border buying and selling of goods and services is international trade.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 56, "pdfPage": 9, "proposedOption": null, "explanation": "GNP equals GDP plus net primary income received from abroad, so the offered 'value produced by the country' describes GDP, not strictly GNP; the other choices also omit necessary components.", "status": "academic-dispute", "disputeEvidence": "No answer exactly defines GNP as resident national output plus net primary income from abroad; D describes GDP instead.", "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 57, "pdfPage": 9, "proposedOption": "D", "explanation": "Technical assistance and loans to new local firms build national productive capacity.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 58, "pdfPage": 10, "proposedOption": "A", "explanation": "CSME integration helps members coordinate trade policies through regional market arrangements.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 59, "pdfPage": 10, "proposedOption": "C", "explanation": "Population growth alone does not necessarily increase living standards per person without matching output growth.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true }),
+    Object.freeze({ "number": 60, "pdfPage": 10, "proposedOption": "A", "explanation": "Job losses caused by a downturn in the business cycle are cyclical unemployment.", "status": "spark-authored-provisional", "disputeEvidence": null, "markedUpCopyNotOfficial": true })
+  ])
+});
+function verifyPob2024MjP1AuthoredKey(key = POB_2024_MJ_P1_AUTHORED_KEY) {
+  const errors = [], seen = /* @__PURE__ */ new Set(), disputes = [];
+  const original = POB_SUPPLIED_ARCHIVE.find((s) => s.id === key?.id);
+  if (!original || original.paper !== 1 || original.sourceSha256 !== key.sourceSha256 || original.filename !== key.sourceFilename)
+    errors.push("Source fingerprint or original test ID mismatch.");
+  if (!Array.isArray(key?.entries) || key.entries.length !== 60)
+    return { valid: false, errors: [...errors, "Sixty original answers/slots expected."], disputes: [] };
+  for (const q of key.entries) {
+    if (!Number.isInteger(q.number) || q.number < 1 || q.number > 60 || seen.has(q.number))
+      errors.push("Invalid or repeated question number.");
+    seen.add(q.number);
+    if (!Number.isInteger(q.pdfPage) || q.pdfPage < 2 || q.pdfPage > 10)
+      errors.push("Wrong printed question source page: " + q.number);
+    if (!q.explanation || q.explanation.length < 32) errors.push("No explained answer: " + q.number);
+    if (q.status === "academic-dispute") {
+      disputes.push(q.number);
+      if (!q.disputeEvidence || q.number === 56 && q.proposedOption !== null)
+        errors.push("Academic ambiguity suppressed: " + q.number);
+    } else if (q.status !== "spark-authored-provisional" || !["A", "B", "C", "D"].includes(q.proposedOption))
+      errors.push("Wrong unverified answer mapping: " + q.number);
+  }
+  if (disputes.join(",") !== "30,50,56")
+    errors.push("Ambiguous original MCQs must remain under adjudication.");
+  if (key.liveScoringApproved !== false || key.officialCxcKeySupplied !== false)
+    errors.push("Never present owner red pen as CXC official or a live grade.");
+  return { valid: errors.length === 0, errors, disputes };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2005MjP2AuthoredScheme.js
+var pobHistorical2005MjP2AuthoredScheme_exports = {};
+__export(pobHistorical2005MjP2AuthoredScheme_exports, {
+  POB_2005_MJ_P2_AUTHORED_SCHEME: () => POB_2005_MJ_P2_AUTHORED_SCHEME,
+  verifyPob2005MjP2AuthoredScheme: () => verifyPob2005MjP2AuthoredScheme
+});
+
+// src/principlesOfBusiness/data/pobHistoricalBatch03SourceAudit.js
+var EVIDENCE = Object.freeze([
+  ["P1_2020_JAN", 8, 0, "c2e107fc4efc1abb5c558e65d0f1c712683e5d95e5ed54d3edd6d32cb4edbf67"],
+  ["P1_2020_MJ", 9, 9, "b527d2a4a998ba63caeaa3a8f99ba88ab4feebc8b95d52b62c59bf1b87370e0e"],
+  ["P1_2021_MJ", 11, 4, "717b57abc9eabd5c4f24f1c952b327667d8c0e88dbbe86c4414c10989a36d3da"],
+  ["P1_2022_JAN", 9, 9, "eea5f45fd535925ea4c0d798d2f098cd996f5b21f417cb7279808c287a2ea1e0"],
+  ["P1_2024_MJ", 11, 11, "2757f10cae603a87d2116a76ba1dca9a6c8c3abdbfb6e51a8db1d610c3ebbd7f"],
+  ["P2_2005_MJ", 5, 5, "61d9462cc76071a2456395ef5e5fe347c8e345d3265092af06d40b1108f7e3d2"],
+  ["P2_2006_MJ", 6, 5, "a3ea8ac2739000ee6d6637ccc5620ee941684f7400985e53ff933d61437f713e"],
+  ["P2_2007_MJ", 6, 6, "261496a8749d2729734c6897bc8ffce176db974254d95e900bfdaf4b12510e65"],
+  ["P2_2008_MJ", 4, 4, "c1ef9a099b0edb2cf82fac344ebe011cfce418e26bf2caa05ecf9ebdc5a6531f"],
+  ["P2_2019_JAN", 14, 13, "cdcdfdbb46cb5faff3867c42eb26e382ed10c3db36c4a5cd6d29d6f2ec50d5e1"],
+  ["P2_2019_MJ", 15, 15, "ce3455f587b74d669f3b446e21c96b98f51e28f891160d570d16896a0f27ae16"],
+  ["P2_2021_MJ", 16, 16, "62420537307ee53ba37c879f2d9b920645d65aa4bcf8c28cbe22453387e09a6c"],
+  ["P2_2023_MJ", 17, 17, "79ed3fa6c2ad12d802a4bfe5ddcd558a5c109980f398bba18f2ff3b1b3277049"],
+  ["P2_2024_MJ", 16, 16, "c70368e4d1beff0eeece2495db1ff2a657a4e9d3efdca74e8b6bbf7a5119d0f2"],
+  ["P2_2025_JAN", 20, 20, "3bf50ed41965c7f84efa8b321d235c38a5425b45216ed528ca7d6a1bf6f571cf"]
+]);
+var POB_HISTORICAL_BATCH03_SOURCE_QA = Object.freeze(EVIDENCE.map(([stem4, pages, lowTextPages, sourceSha256]) => {
+  const [sourcePaper, year, sitting] = stem4.split("_");
+  const id = "POB-" + sourcePaper + "-" + year + "-" + sitting;
+  const source2 = POB_SUPPLIED_ARCHIVE.find((p) => p.id === id);
+  if (!source2 || source2.filename !== "CSEC_Principles_of_Business_" + stem4 + ".pdf" || source2.pages !== pages || source2.sourceSha256 !== sourceSha256)
+    throw new Error("Unknown or mismatched historical source " + id);
+  let sittingRule = "not-verified";
+  if (source2.paper === 1) sittingRule = "paper-1-60-objective-items-pending-options-qa";
+  if (source2.paper === 2 && Number(year) >= 2019) sittingRule = "paper-2-five-compulsory-cover";
+  if (source2.paper === 2 && Number(year) <= 2007) sittingRule = "paper-2-section-I-2005-07-Q1-Q2-10-each-Q3-20-and-Q4-9-choose-3";
+  if (source2.paper === 2 && Number(year) === 2008) sittingRule = "paper-2-three-section-I-and-two-section-II-cover";
+  return Object.freeze({
+    id,
+    paper: source2.paper,
+    year: Number(year),
+    sitting,
+    filename: source2.filename,
+    pages,
+    sourceSha256,
+    lowTextPages,
+    allPagesHaveSelectableText: lowTextPages === 0,
+    sittingRule,
+    fullOriginalSourceVerified: false,
+    allQuestionWordingVerified: false,
+    officialCxcAnswerKeySupplied: false,
+    rubricAuthoredAndReviewed: false,
+    scoringCalibrated: false,
+    liveScoringApproved: false
+  });
+}));
+function validatePob2005to2007P2Selection(id, selectedQuestionNumbers) {
+  const source2 = POB_HISTORICAL_BATCH03_SOURCE_QA.find((x) => x.id === id && x.paper === 2);
+  if (!source2 || source2.year < 2005 || source2.year > 2007)
+    return { valid: false, maximumMarks: 0, issue: "Unsupported historic Paper 2 sitting." };
+  if (!Array.isArray(selectedQuestionNumbers) || selectedQuestionNumbers.length !== 6 || selectedQuestionNumbers.some((n) => !Number.isInteger(n)) || new Set(selectedQuestionNumbers).size !== 6)
+    return { valid: false, maximumMarks: 0, issue: "Must select six distinct questions." };
+  const chosen = new Set(selectedQuestionNumbers);
+  const valid = [1, 2, 3].every((n) => chosen.has(n)) && [[4, 5], [6, 7], [8, 9]].every((pair) => pair.filter((n) => chosen.has(n)).length === 1);
+  return valid ? { valid: true, maximumMarks: 100, offeredMarks: 160, issue: null } : { valid: false, maximumMarks: 0, issue: "Three compulsory and three correctly paired optional answers required." };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2005MjP2AuthoredScheme.js
+var ORIGINAL = Object.freeze([
+  [1, "a", "Government may require registration of business names and impose licence, zoning or public-health requirements before trading.", ["1:First lawful business-setup regulation", "1:Second distinct setup regulation"]],
+  [1, "b", "Limited identifies a company whose owners' liability is generally capped at unpaid amounts on their shares or their guarantee, not their entire private wealth.", ["1:Correct limitation of shareholder or member liability", "1:Explains effect on personal assets in ordinary debts"]],
+  [1, "c.i", "A memorandum of association is a company's constitutive document establishing its identity and its original stated structure or objects, subject to current national companies law.", ["1:Identifies founding constitutional document", "1:Explains scope of incorporation, identity, powers or aims"]],
+  [1, "c.ii", "Articles of association set internal company governance rules, including directors, meetings, voting and share procedures.", ["1:Defines internal management regulations", "1:Provides actual governance application"]],
+  [1, "c.iii", "A partnership agreement states how partners share contributions, profits, duties, decision-making and dissolution responsibilities.", ["1:Identifies agreement governing business partners", "1:Gives practical terms governed by agreement"]],
+  [2, "a", "Productivity is productive output per unit of input, for example garments produced per labour-hour.", ["1:Correct output-to-input concept", "1:Shows efficiency metric or output per worker hour"]],
+  [2, "b", "Capital consists of produced resources used in further production, including machinery, equipment and buildings; distinguish fixed capital from day-to-day finance when context requires.", ["1:Man-made productive resource or financial capital contextualised", "1:Gives a relevant productive example"]],
+  [2, "c", "Train employees to improve technique and reduce mistakes. Maintain or upgrade machinery to lower downtime and increase output per worker. Motivate workers through fair pay, recognition and safe conditions to reduce absenteeism and improve effort.", ["2:First distinct labour efficiency strategy with reason", "2:Second different developed strategy", "2:Third different developed strategy"]],
+  [3, "a", "Supply is the amount sellers are willing and able to offer for sale at a given price during a stated period, other things being equal.", ["1:Quantity sellers are able and willing to sell", "1:Given price and time conditions"]],
+  [3, "b", "Lower animal feed and transport costs make beef profitable at more quantities. Improved breeding/processing technology raises herd output. Producer subsidies or reduced production taxes lower costs and encourage greater beef supply.", ["2:First appropriate non-price factor causing rightward supply shift with explanation", "2:Second distinct supply-side factor developed", "2:Third distinct factor and mechanism"]],
+  [3, "c", "Lower income for families who consider ice cream normal can reduce purchases. Cooler weather reduces desire for ice cream. Growing preference for healthier snacks or lower-priced substitutes lowers demand at each existing ice cream price.", ["2:First correct non-own-price demand-shift factor and effect", "2:Second distinct demand-decreasing factor explained", "2:Third different demand-decreasing factor explained"]],
+  [3, "d", "Producers can reduce cheese output, making supply scarce and increasing price. More consumers buying cheese at each price increases demand and pressure on price. Buyers switching to cheaper substitutes lowers cheese demand, encouraging price reductions.", ["2:First valid deliberate producer/consumer shift and cheese price effect", "2:Second independent shift and mechanism", "2:Third separate influence on cheese pricing"]],
+  [4, "a", "An MIS collects, organises and presents timely business information to help managers plan, monitor performance, coordinate branches and make decisions.", ["1:Identifies collection/processing and presentation of information", "1:Links MIS to informed management decisions"]],
+  [4, "b.i", "Planning sets objectives, budgets and methods to coordinate future actions and achieve business targets.", ["1:Defines goal setting and future choices", "1:Explains resource or scheduling application"]],
+  [4, "b.ii", "Controlling compares actual results with planned performance and corrects deviations.", ["1:Identifies measuring performance against standards", "1:Explains taking corrective action"]],
+  [4, "b.iii", "Coordinating aligns departmental schedules and resource use so staff work towards common goals without duplication.", ["1:Aligns people or departments", "1:Explains integrated productive result"]],
+  [4, "c", "Growing from one shop to eight branches can strain managerial supervision and require much greater investment in stock, staff and systems.", ["2:First distinct expansion problem with explanation", "2:Second different expansion problem with realistic consequence"]],
+  [4, "d", "Personnel MIS may store staff attendance and leave balances to plan schedules; it may also track employees' skills and training needs to allocate courses.", ["2:First actual MIS workforce use with a sensible process", "2:Second distinct personnel MIS use explained"]],
+  [4, "e", "Branch-level sales and stock dashboards enable prompt informed purchasing decisions and reduce stockouts. Reliable shared records strengthen reporting and coordination between the head office and eight outlets.", ["2:First business-wide MIS benefit with mechanism", "2:Second separate benefit and management consequence"]],
+  [5, "a", "A business produces or acquires goods and services, sells/distributes them, and provides employment and income.", ["1:First genuine business function", "1:Second distinct function", "1:Third different function"]],
+  [5, "b", "A market economy relies mainly on private ownership while a planned economy uses public/state control of the principal productive resources. Market prices are guided by supply/demand, while planned prices/output are administered. Buyers' and firms' choice is normally broader in market systems than state-directed systems.", ["2:First valid developed market vs planned economy distinction", "2:Second DIFFERENT paired distinction", "2:Third DIFFERENT paired distinction"]],
+  [5, "c.i", "North Korea is an example commonly characterised as a centrally planned economy; descriptions must recognise the role of informal markets and changing policies.", ["1:Valid historically plausible predominantly planned economy country"]],
+  [5, "c.ii", "Jamaica is a mixed economy containing private enterprise and government provision/regulation.", ["1:Valid country with both public and private economic decisions"]],
+  [5, "d", "Internal communication can occur through staff emails, team meetings and posted written memos or circulars.", ["1:First internal communication method", "1:Second distinct method", "1:Third distinct method"]],
+  [5, "e.i", "A scheduled team meeting encourages immediate questions and clear shared decisions, but can require staff time and is ineffective when poorly chaired.", ["1:Meaningful feature/strength of one method listed in d", "1:Balanced assessment, limitation or clear effectiveness conclusion"]],
+  [5, "e.ii", "Good information flow prevents misunderstandings and mistakes, while helping departments coordinate schedules and resolve problems promptly.", ["2:First reason for effective organisational communication with explanation", "2:Second different reason with developed result"]],
+  [6, "a", "Diversification is expansion into a wider range of economic activities to reduce dependence on a narrow sector. Migration is the relocation of people from one place or country to another to settle or work.", ["2:Correct economic diversification definition", "2:Correct migration definition"]],
+  [6, "b", "Skilled employees may migrate for higher salaries, more secure professional career opportunities and access to education or better living conditions for their families.", ["2:First distinct skilled-migration motive with explanation", "2:Second different developed reason", "2:Third different reason explained"]],
+  [6, "c", "Government can offer competitive specialist pay and career ladders for professionals. It may invest in attractive working conditions, research equipment and continued specialist training to encourage retention.", ["2:First feasible skilled-labour retention action and rationale", "2:Second different action developed"]],
+  [6, "d", "Loss of technical specialists reduces the expertise available to launch new industries and train local workers. Skilled emigration may also constrain management capacity and innovation, leaving diversification projects unfinished or dependent on imported expertise.", ["3:First migration-to-diversification pathway and detailed consequence", "3:Second distinct pathway, such as skill shortages or weaker innovation, developed"]],
+  [7, "a", "Market research is planned collection/analysis of customer demand, competitors and market prices to decide whether, how and to whom to sell the new diaper brand.", ["1:Identifies information gathering and analysis", "1:Explains purpose for new diaper-product launch"]],
+  [7, "b", "Assess price and income of parents to remain affordable against competing brands. Research diaper absorbency, size, comfort and skin safety to provide genuine quality. Choose suitable retail outlets and reliable supply so families can buy regularly. Plan promotion through appropriate parent-focused channels while complying with truthful product advertising.", ["2:First distinct marketing consideration with practical diaper-launch effect", "2:Second separate consideration and effect", "2:Third distinct factor outlined", "2:Fourth different factor explained"]],
+  [7, "c", "Sales promotion is a short-term inducement, such as samples, coupons, discounts or bundled offers, intended to stimulate near-term purchases.", ["1:Correct short-term demand stimulation concept", "1:Gives relevant promotional mechanism"]],
+  [7, "d", "Provide sealed free sample packs so caregivers can check fit/absorbency before changing brands; this reduces the perceived risk of trying an unfamiliar product. Offer retailer and consumer coupons for repeat purchases, lowering effective trial price without permanently harming the brand's quality positioning.", ["4:First suitable specific sales-promotion method, implementation and convincing justification", "4:Second DISTINCT suitable method with explanation tied to diapers"]],
+  [8, "a.i", "Real economic growth means increases in inflation-adjusted national output or productive capacity. Economic development also involves broad improvements in health, education, poverty, equality and quality of life.", ["1:Correct real-output growth meaning", "1:Correct welfare/structural development meaning", "1:Explicitly contrasts output with broader living conditions"]],
+  [8, "a.ii", "High unemployment, persistent balance-of-payments deficits and heavy public debt are economic problems for Caribbean countries.", ["1:First plausible Caribbean economic problem", "1:Second different problem", "1:Third distinct problem"]],
+  [8, "b", "Investment in productive capital increases firms' output capacity. Skills training raises labour productivity. Access to new export markets expands demand and economies of scale for local firms.", ["2:First national-growth factor developed with mechanism", "2:Second distinct factor and mechanism", "2:Third different factor developed"]],
+  [8, "c", "Education helps produce skilled workers able to use new technologies and increases entrepreneurial knowledge needed to build productive firms.", ["2:First developed educational benefit for national development", "2:Second distinct education-to-development mechanism"]],
+  [8, "d", "FDI can open domestic factories and create jobs and supplier orders. It can also transfer technology, specialist skills and export-market access, helping local productivity and foreign-exchange earning.", ["2:First host-country FDI benefit and development mechanism", "2:Second distinct host-country benefit developed"]],
+  [9, "a.i", "Terms of trade compare an export price index with an import price index; balance of trade subtracts imported *goods value* from exported goods value. They are not the same measure.", ["1:Defines relative export/import price concept", "1:Defines goods exports minus goods imports", "1:Explains price-ratio vs value-balance distinction"]],
+  [9, "a.ii", "Goods exports US$24,000 million minus goods imports US$26,000 million = minus US$2,000 million: a merchandise-trade deficit.", ["1:Correct subtraction 24000\u221226000", "1:Correct \u22122000 US$ million deficit"]],
+  [9, "b", "Goods balance \u22122000 plus invisible services/net receipts (20000\u221215000)=+5000 gives a current-account balance of +3,000 US$ million, assuming there are no further income or transfer entries omitted by the source.", ["1:Correct goods balance of \u22122000 (US$M)", "1:Correct invisible balance of +5000 (US$M)", "1:Combines to +3000 (US$M) current-account surplus"]],
+  [9, "c", "A current-account surplus can result from selling more exported goods than imported goods or earning a positive net balance on services such as tourism; net factor income/transfer receipts can also contribute.", ["2:First mathematically coherent source of current-account surplus explained", "2:Second different source explained"]],
+  [9, "d.i", "The balance of payments records a country's transactions with the rest of the world during a period, including current, capital and financial accounts and reserve financing.", ["1:Identifies international transaction account", "1:Explains recording cross-border payments, receipts or financial flows"]],
+  [9, "d.ii", "External deficits may be financed with foreign borrowing or IMF assistance, by drawing down foreign currency reserves, and through new FDI/equity capital inflows. Correct accounting distinguishes funding sources from actions intended to reduce the underlying deficit.", ["2:First distinct legitimate external financing mechanism explained", "2:Second distinct external financing option developed", "2:Third separate appropriate financing mechanism"]]
+]);
+var POB_2005_MJ_P2_AUTHORED_SCHEME = Object.freeze({
+  id: "POB-P2-2005-MJ",
+  paper: 2,
+  year: 2005,
+  sitting: "MJ",
+  sourceFilename: "CSEC_Principles_of_Business_P2_2005_MJ.pdf",
+  sourceSha256: "61d9462cc76071a2456395ef5e5fe347c8e345d3265092af06d40b1108f7e3d2",
+  originalPagesVisuallyReviewed: Object.freeze([1, 2, 3, 4, 5]),
+  examSource: "original-user-PDF",
+  authorshipOrigin: "SPARK-original-marking-model",
+  publishedCxcSchemeSupplied: false,
+  verifiedDigitalQuestionBankComplete: false,
+  semanticScoringCalibrated: false,
+  liveScoringApproved: false,
+  offeredMarks: 160,
+  maximumCandidateMarks: 100,
+  questions: Object.freeze([1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => Object.freeze({
+    number,
+    marks: number <= 2 ? 10 : 20,
+    parts: Object.freeze(ORIGINAL.filter((r) => r[0] === number).map(([, partId, modelAnswer, rules3]) => Object.freeze({
+      id: partId,
+      modelAnswer,
+      marks: rules3.reduce((a, s) => a + Number(s.slice(0, s.indexOf(":"))), 0),
+      criteria: Object.freeze(rules3.map((raw) => {
+        const pos = raw.indexOf(":");
+        return Object.freeze({ marks: Number(raw.slice(0, pos)), rule: raw.slice(pos + 1), authoredBySpark: true, sourceSchemeVerified: false });
+      }))
+    })))
+  })))
+});
+function verifyPob2005MjP2AuthoredScheme(paper = POB_2005_MJ_P2_AUTHORED_SCHEME) {
+  const issues = [];
+  let offered = 0, parts = 0;
+  const seen = /* @__PURE__ */ new Set();
+  const approved = POB_SUPPLIED_ARCHIVE.find((p) => p.id === paper?.id);
+  if (!approved || approved.paper !== 2 || approved.sourceSha256 !== paper.sourceSha256 || approved.filename !== paper.sourceFilename)
+    issues.push("Source identity or digest does not match.");
+  if (!Array.isArray(paper?.questions) || paper.questions.length !== 9)
+    issues.push("Source must offer nine questions.");
+  for (const q of paper.questions || []) {
+    if (!Number.isInteger(q.number) || q.number < 1 || q.number > 9 || seen.has(q.number)) issues.push("Question count or order invalid.");
+    seen.add(q.number);
+    const ids = /* @__PURE__ */ new Set();
+    let total = 0;
+    for (const p of q.parts || []) {
+      parts++;
+      total += p.marks;
+      if (!p.id || ids.has(p.id)) issues.push("Repeated part ID.");
+      ids.add(p.id);
+      if (!p.modelAnswer || p.modelAnswer.length < 35) issues.push("Missing model answer.");
+      if (p.criteria?.reduce((sum, x) => sum + x.marks, 0) !== p.marks || p.criteria.some((x) => !x.rule || x.sourceSchemeVerified !== false))
+        issues.push("Part marks/criteria mismatch.");
+    }
+    if (total !== (q.number <= 2 ? 10 : 20)) issues.push("Wrong printed marks on Q" + q.number);
+    offered += total;
+  }
+  if (offered !== 160 || paper.maximumCandidateMarks !== 100 || !validatePob2005to2007P2Selection(paper.id, [1, 2, 3, 4, 6, 8]).valid)
+    issues.push("Offered or attempted total/choice pattern mismatch.");
+  if (paper.liveScoringApproved !== false || paper.publishedCxcSchemeSupplied !== false)
+    issues.push("Unsafe promotion of unverified academic scores.");
+  return { valid: issues.length === 0, issues, offeredMarks: offered, parts };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2006MjP2AuthoredScheme.js
+var pobHistorical2006MjP2AuthoredScheme_exports = {};
+__export(pobHistorical2006MjP2AuthoredScheme_exports, {
+  POB_2006_MJ_P2_AUTHORED_SCHEME: () => POB_2006_MJ_P2_AUTHORED_SCHEME,
+  verifyPob2006MjP2AuthoredScheme: () => verifyPob2006MjP2AuthoredScheme
+});
+
+// src/principlesOfBusiness/data/pobHistoricalEarlyP2AuthoredScheme.js
+function makePobEarlyP2AuthoredScheme({ year, sourceSha256, sourcePages, parts }) {
+  const id = "POB-P2-" + year + "-MJ";
+  const original = POB_SUPPLIED_ARCHIVE.find((x) => x.id === id);
+  if (!original || original.paper !== 2 || original.sourceSha256 !== sourceSha256 || original.pages !== sourcePages)
+    throw new Error("Original nine-question Paper 2 missing or fingerprint changed.");
+  const questions = Object.freeze([1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => Object.freeze({
+    number,
+    marks: number <= 2 ? 10 : 20,
+    parts: Object.freeze(parts.filter((r) => r[0] === number).map(([, partId, modelAnswer, rawCriteria]) => Object.freeze({
+      id: partId,
+      modelAnswer,
+      marks: rawCriteria.reduce((sum, s) => sum + Number(s.slice(0, s.indexOf(":"))), 0),
+      criteria: Object.freeze(rawCriteria.map((raw) => {
+        const at = raw.indexOf(":"), marks = Number(raw.slice(0, at)), rule = raw.slice(at + 1);
+        if (at < 1 || !Number.isInteger(marks) || marks < 1 || !rule.trim())
+          throw new Error("Malformed criterion " + number + ":" + partId);
+        return Object.freeze({ marks, rule, sourceSchemeVerified: false, authoredBySpark: true });
+      }))
+    })))
+  })));
+  return Object.freeze({
+    id,
+    paper: 2,
+    year,
+    sitting: "MJ",
+    sourceFilename: original.filename,
+    sourceSha256,
+    sourcePages,
+    questions,
+    offeredMarks: 160,
+    maximumCandidateMarks: 100,
+    examSelection: { compulsory: [1, 2, 3], chooseOneEach: [[4, 5], [6, 7], [8, 9]] },
+    origin: "SPARK-authored-not-CXC-published",
+    officialCxcSchemeSupplied: false,
+    completeDigitalSourceQuestionsVerified: false,
+    semanticScoringCalibrated: false,
+    liveScoringApproved: false
+  });
+}
+function verifyPobEarlyP2AuthoredScheme(paper) {
+  const issues = [], seen = /* @__PURE__ */ new Set();
+  let total = 0, parts = 0;
+  const source2 = POB_SUPPLIED_ARCHIVE.find((x) => x.id === paper?.id);
+  if (!source2 || source2.paper !== 2 || source2.sourceSha256 !== paper.sourceSha256 || source2.filename !== paper.sourceFilename)
+    issues.push("Source identity mismatch.");
+  if (!Array.isArray(paper?.questions) || paper.questions.length !== 9)
+    issues.push("Nine distinct source questions required.");
+  for (const q of paper?.questions || []) {
+    if (!Number.isInteger(q.number) || q.number < 1 || q.number > 9 || seen.has(q.number))
+      issues.push("Duplicated/invalid question.");
+    seen.add(q.number);
+    const ids = /* @__PURE__ */ new Set();
+    let subtotal = 0;
+    for (const p of q.parts || []) {
+      parts++;
+      subtotal += p.marks;
+      if (!p.id || ids.has(p.id)) issues.push("Duplicate part " + q.number + ":" + p.id);
+      ids.add(p.id);
+      if (!p.modelAnswer || p.modelAnswer.length < 25) issues.push("Missing model answer.");
+      if (!p.criteria?.length || p.criteria.reduce((s, c) => s + c.marks, 0) !== p.marks || p.criteria.some((c) => !c.rule || c.sourceSchemeVerified !== false))
+        issues.push("Incorrect mark allocation.");
+    }
+    if (subtotal !== (q.number <= 2 ? 10 : 20)) issues.push("Incorrect source marks Q" + q.number);
+    total += subtotal;
+  }
+  if (total !== 160 || paper?.maximumCandidateMarks !== 100 || !validatePob2005to2007P2Selection(paper?.id, [1, 2, 3, 4, 6, 8]).valid)
+    issues.push("Historical selection/maximum incorrect.");
+  if (paper?.liveScoringApproved !== false || paper?.officialCxcSchemeSupplied !== false)
+    issues.push("Not a released official CXC scheme.");
+  return { valid: issues.length === 0, issues, parts, offeredMarks: total };
+}
+
+// src/principlesOfBusiness/data/pobHistorical2006MjP2AuthoredScheme.js
+var ROWS2 = Object.freeze([
+  [1, "a", "John's father could make decisions quickly as sole owner and retain profits after meeting business expenses.", ["1:First genuine sole trader advantage", "1:Second distinct advantage"]],
+  [1, "b", "In a limited company John's personal exposure to company debts is generally limited to the unpaid value of his shares; the company also has a separate continuing legal identity to own assets and enter contracts.", ["2:First developed benefit of limited liability", "2:Second distinct company benefit explained"]],
+  [1, "c", "Growth often creates new departments and specialist manager posts, increasing layers of reporting. It also increases delegation, since the owner cannot supervise all locations or workers directly.", ["2:First distinct organisational-structure change and causal reason", "2:Second different development and explanation"]],
+  [2, "a", "Entrepreneurs identify market opportunities and coordinate labour, capital and land; they also bear the calculated business risk and innovate.", ["2:First distinct entrepreneurial function with action", "2:Second different developed function"]],
+  [2, "b", "Owners may prefer a small firm to keep direct personal control, avoid heavy expansion borrowing and retain close customer contact and flexibility.", ["2:First distinct small-business motive and explanation", "2:Second different developed reason", "2:Third independent reason explained"]],
+  [3, "a", "A personal loan provides a sum with agreed repayments; a credit card lets an approved holder buy now under revolving credit; a bank overdraft allows a current account to go into debit up to an approved limit.", ["2:First genuine bank credit method and its workings", "2:Second distinct bank credit facility explained", "2:Third different facility and process"]],
+  [3, "b", "The customer may need reliable regular income, a reasonable credit history and sufficient security, collateral or an acceptable guarantor according to the loan's terms.", ["1:First legitimate credit condition", "1:Second different condition", "1:Third distinct condition"]],
+  [3, "c", "Purr Chase can repay the bank by a standing-order transfer from an account, by cash deposits at the bank, or by a cheque or electronic bank transfer.", ["2:First genuine loan repayment method outlined", "2:Second different payment method and transaction detail", "2:Third different method outlined"]],
+  [3, "d", "The central bank can raise commercial-bank reserve requirements, limiting loanable funds. It can sell securities or tighten funding rates so banks have less liquidity or face higher lending costs.", ["2:First legitimate central bank credit-tightening method and mechanism", "2:Second distinct instrument and bank-lending effect"]],
+  [3, "e", "A credit union may provide consumer loans and other member credit facilities, subject to membership and lending criteria.", ["1:Valid nonbank provider of similar consumer credit"]],
+  [4, "a", "The source chart primarily shows a formal line-and-staff organisation: solid line authority from shareholders to directors to management, with a dashed relationship involving engineer and consultant.", ["1:Names appropriate formal line-and-staff organisational structure"]],
   [4, "b", "A formal organisation has deliberately assigned roles and a charted hierarchy; informal groups form socially from personal relations. Formal reporting is authorised through management, while informal communication develops naturally.", ["2:First correct formal versus informal organisational distinction", "2:Second different developed contrast"]],
   [4, "c.i", "Span of control is the number of subordinates reporting directly to a particular supervisor or manager.", ["1:Identifies number of workers supervised", "1:Specifies direct reporting to one manager"]],
   [4, "c.ii", "The marketing manager's direct span is two employees: Sales Supervisor North and Sales Supervisor South. The eight sales clerks report to those supervisors, not directly to the marketing manager.", ["1:Correct direct report count of two", "1:Correctly names both north and south sales supervisors"]],
@@ -889,559 +1501,4 @@ var POINTS3 = Object.freeze([
   [1, "a.i", "Entrepreneurship involves identifying an opportunity, organising resources for a business venture and accepting commercial risk.", ["1:Identifies venture creation or business opportunity", "1:Includes organising resources or risk-bearing"]],
   [1, "a.ii", "People establish businesses to earn profits, achieve independence, use their skills and serve unmet consumer needs.", ["1:First distinct plausible start-up motivation", "1:Second distinct motivation", "1:Third distinct motivation", "1:Fourth distinct motivation"]],
   [1, "b", "Potential business stakeholders include employees, customers, suppliers and lenders.", ["1:First distinct stakeholder", "1:Second distinct stakeholder", "1:Third distinct stakeholder", "1:Fourth distinct stakeholder"]],
-  [1, "c", "Janice may offer financial consultancy, helping clients budget and plan borrowing, and business-plan advisory services, helping entrepreneurs evaluate cash flow and loan applications.", ["2:First credible financial service with its specific task", "2:Second different relevant service with supporting description"]],
-  [1, "d", "Janice could create local employment and raise household income. She might offer financial-literacy workshops, improving residents' budgeting and business skills.", ["3:First distinct community benefit linked to economic or social effect", "3:Second distinct community benefit developed"]],
-  [2, "a", "Conflict resolution is identifying and settling a disagreement through fair, constructive discussion or other procedures.", ["1:Explains settling workplace disagreement", "1:Mentions constructive, negotiated or managed method"]],
-  [2, "b.i", "Poor communication leads to misunderstood instructions and expectations, causing mistakes or resentment.", ["1:Connects communication failures to misunderstanding", "1:Explains resulting conflict"]],
-  [2, "b.ii", "Underperformance forces colleagues to cover unfinished tasks and creates dissatisfaction over perceived unfair workload.", ["1:Identifies failure to achieve assigned work or targets", "1:Explains how this causes dispute"]],
-  [2, "b.iii", "Scarce resources such as staff, budgets or equipment cause departments to compete for limited access, creating conflict.", ["1:Describes resource constraints", "1:Links to competing needs or arguments"]],
-  [2, "c.i", "Work-to-rule means doing no more than the literal contractual duties and hours. Go-slow deliberately reduces the pace of work while employees stay on duty.", ["2:Correctly defines work-to-rule", "2:Contrasts intentional slowdown during ordinary work"]],
-  [2, "c.ii", "Mediation uses a neutral facilitator to help parties communicate and find a mutually acceptable settlement without a costly adversarial dispute.", ["1:First plausible benefit of mediation", "1:Different benefit, such as reduced cost, preserved relationships or confidentiality"]],
-  [2, "d.i", "Under an open-door policy, workers can approach managers to discuss concerns directly, allowing early, confidential attention before minor complaints escalate.", ["1:Explains open channel for worker concerns", "1:Describes management's response", "1:Connects process to better work relations"]],
-  [2, "d.ii", "An annual retreat creates time for staff and managers to interact, share goals and solve problems away from daily pressures, building trust and cooperation.", ["1:Defines relevant retreat activity", "1:Explains two-way participation or bonding", "1:Links to employee relations"]],
-  [3, "a.i", "Capital consists of human-made resources, including machinery and equipment, used to produce goods or services. A factory sewing machine is capital.", ["2:Defines productive man-made resource", "1:Correct relevant example"]],
-  [3, "a.ii", "Collateral is an asset pledged to secure repayment of a loan. A building offered as security is collateral.", ["2:Accurate pledged-security definition", "1:Appropriate real asset example"]],
-  [3, "b", "A credit union may offer lower interest rates, flexible member-focused loan terms and a share of surplus or member service rather than maximising outside shareholders' profits.", ["2:First distinct comparative borrowing advantage with context", "2:Second distinct advantage developed", "2:Third distinct advantage developed"]],
-  [3, "c", "Two business-plan elements are a marketing plan and a financial forecast.", ["1:First valid business plan element", "1:Second distinct element"]],
-  [3, "d.i", "The owner uses a business plan to set goals, allocate resources and measure progress or identify emerging risks.", ["1:Identifies planning goal or structure", "1:Explains operational or financial use", "1:Develops value to owner"]],
-  [3, "d.ii", "Investors use business plans to judge expected returns, costs, cash flow and the entrepreneur's risk-management approach before financing.", ["1:Identifies financing or due diligence purpose", "1:Explains projected viability or return", "1:Explains investor decision-making benefit"]],
-  [4, "a.i", "Monopoly, oligopoly and monopolistic competition are three recognised market structures.", ["1:First accurate market structure", "1:Second distinct structure", "1:Third distinct structure"]],
-  [4, "a.ii", "Retailing methods include supermarket shopping, online stores and vending machines.", ["1:First genuine retail selling method", "1:Second distinct method", "1:Third distinct method"]],
-  [4, "b", "Capital-intensive production uses relatively large investments in machinery and fewer workers per output unit; labour-intensive production depends more heavily on workers than automated capital.", ["2:Accurate capital-intensive description", "2:Accurate contrasting labour-intensive description"]],
-  [4, "c", "Branding distinguishes goods from competing products and helps buyers recognise and trust the producer, supporting customer loyalty.", ["2:First branding purpose explained", "2:Second distinct purpose explained"]],
-  [4, "d", "Protective packaging keeps goods clean and undamaged, reassuring customers about quality. Attractive, clearly labelled packages attract attention and communicate product identity or use.", ["3:First packaging marketing benefit developed", "3:Second distinct benefit with mechanism"]],
-  [5, "a.i", "Overdraft, trade credit and short-term bank loans are short-term financing sources.", ["1:First legitimate short-term source", "1:Second distinct source", "1:Third distinct source"]],
-  [5, "a.ii", "Long-term term loans, shares issued to investors and mortgage financing are long-term business finance sources.", ["1:First legitimate long-term source", "1:Second distinct source", "1:Third distinct source"]],
-  [5, "b", "Saving is income set aside for later consumption or emergencies, typically in liquid or low-risk accounts. Investment commits money to assets with expected returns and typically greater uncertainty or time horizon.", ["2:Explains saving as deferred consumption or money retained", "2:Explains investing as acquiring assets or opportunities for income and capital growth and distinguishes risk"]],
-  [5, "c", "Online investment platforms permit electronic purchase and sale of shares without visiting a broker. Online price data and company reports give investors faster research and monitoring.", ["2:First accurate Internet influence with benefit", "2:Second distinct influence with effect"]],
-  [5, "d", "Budgeting helps someone prioritise essential expenses and avoid spending beyond income, reducing debt. It also allocates regular savings towards large purchases or emergencies.", ["3:First personal budgeting benefit, how it works and effect", "3:Second distinct developed benefit"]],
-  [6, "a.i", "Consumer protection refers to legal and institutional safeguards for buyers against unsafe, unfair or misleading sales practices.", ["1:Protection of buyer interests or rights", "1:Explains harm prevented"]],
-  [6, "a.ii", "Public education and public healthcare are two social services governments provide.", ["1:First social service", "1:Second distinct service"]],
-  [6, "b.i", "Governments protect the environment by enforcing pollution limits on factories and fining illegal dumping, reducing contamination.", ["1:Identifies realistic environmental protection measure", "1:Explains public benefit or enforcement"]],
-  [6, "b.ii", "Governments maintain security through policing, defence and enforcement of laws, preventing violence and protecting residents.", ["1:Identifies valid security action", "1:Explains impact"]],
-  [6, "b.iii", "Governments attract investors by maintaining predictable commercial laws and protecting property rights so businesses face lower uncertainty.", ["1:Identifies credible investment-climate action", "1:Explains improved investment conditions"]],
-  [6, "c", "Laptops provide children access to digital learning materials and research beyond printed textbooks. Interactive educational software also permits practice, feedback and technology skills.", ["2:First distinct educational advantage described", "2:Second distinct advantage described"]],
-  [6, "d.i", "Taxation changes the cost of producing, importing or consuming goods and gives government a way to influence business behaviour, including incentives or excise taxes.", ["1:Identifies a real tax instrument", "1:Explains effect on firm decisions or incentives", "1:Connects to regulatory purpose"]],
-  [6, "d.ii", "Health and safety rules require firms to keep premises and goods safe, inspect compliance and face penalties for violations, protecting workers and consumers.", ["1:Identifies actual safety or health business requirement", "1:Explains inspections or enforcement", "1:Explains protective or operating consequence"]],
-  [7, "a.i", "Standard of living reflects people's access to material goods, services and living conditions, including housing and consumption.", ["1:Identifies quality or material level of life", "1:Gives indicator or context"]],
-  [7, "a.ii", "National income represents the total income earned from productive activities by a country's residents over a stated period.", ["1:Identifies aggregate factor income or earnings", "1:Connects to national production/residents and time"]],
-  [7, "b.i", "Secure, fairly paid employment enables individuals to afford food, services and savings; limited or poor-quality work lowers living standards.", ["1:Connects quality or availability of work to earnings or security", "1:Explains household welfare consequence"]],
-  [7, "b.ii", "Safe, affordable housing reduces financial pressure and poor health risk, allowing families to spend more on education and nutrition.", ["1:Identifies housing affordability or quality", "1:Explains its living-standard effect"]],
-  [7, "b.iii", "Affordable, high-quality health services treat illness early and lower medical hardship, helping people remain healthy and productive.", ["1:Identifies access to safe affordable healthcare", "1:Explains life or welfare benefit"]],
-  [7, "c", "The income approach adds payments to factors of production, including wages, rent, interest and profit. The output approach totals value added across industries to avoid double-counting intermediate goods.", ["2:Correct first national-income measurement approach and method", "2:Second different valid method explained"]],
-  [7, "d.i", "Privacy rights protect people's personal information, home life and freedom from arbitrary interference, supporting dignity, autonomy and safety.", ["1:Defines right to privacy correctly", "1:Explains how respecting privacy supports well-being", "1:Provides practical life consequence"]],
-  [7, "d.ii", "Right to education allows children and adults to gain knowledge and qualifications, widening jobs, income, civic participation and quality of life.", ["1:Identifies entitlement or access to education", "1:Explains skills or empowerment mechanism", "1:Links to life outcomes"]]
-]);
-var POB_2016_MJ_P2_AUTHORED_SCHEME = buildPobSevenQuestionAuthoredRubric({
-  year: 2016,
-  sourcePages: 18,
-  sourceSha256: "c74094f508db33d2a25b3c9ac89cb148fec331dce2f84b6ca11ffcc4c52f180f",
-  parts: POINTS3
-});
-var verifyPob2016MjP2AuthoredScheme = (paper = POB_2016_MJ_P2_AUTHORED_SCHEME) => verifyPobSevenQuestionAuthoredRubric(paper);
-
-// src/principlesOfBusiness/data/pobHistorical2017MjP2AuthoredScheme.js
-var pobHistorical2017MjP2AuthoredScheme_exports = {};
-__export(pobHistorical2017MjP2AuthoredScheme_exports, {
-  POB_2017_MJ_P2_AUTHORED_SCHEME: () => POB_2017_MJ_P2_AUTHORED_SCHEME,
-  verifyPob2017MjP2AuthoredScheme: () => verifyPob2017MjP2AuthoredScheme
-});
-
-// src/principlesOfBusiness/data/pobHistoricalFiveQuestionRubric.js
-function buildPobFiveQuestionAuthoredRubric({ year, sitting, sourceSha256, sourcePages, parts }) {
-  const id = "POB-P2-" + year + "-" + sitting;
-  const trusted = POB_SUPPLIED_ARCHIVE.find((p) => p.id === id);
-  if (!trusted || trusted.sourceSha256 !== sourceSha256 || trusted.pages !== sourcePages)
-    throw new Error("Unknown or source-mismatched historical P2 " + id);
-  const questions = Object.freeze([1, 2, 3, 4, 5].map((number) => Object.freeze({
-    number,
-    marks: 20,
-    parts: Object.freeze(parts.filter((r) => r[0] === number).map(([, partId, modelAnswer, rules3]) => Object.freeze({
-      id: partId,
-      modelAnswer,
-      marks: rules3.reduce((n, rule) => {
-        const i = rule.indexOf(":"), m = Number(rule.slice(0, i));
-        if (i < 1 || !Number.isInteger(m) || m < 1) throw new Error("Invalid rubric point " + partId);
-        return n + m;
-      }, 0),
-      criteria: Object.freeze(rules3.map((raw) => {
-        const k = raw.indexOf(":");
-        return Object.freeze({
-          marks: Number(raw.slice(0, k)),
-          rule: raw.slice(k + 1),
-          sourceSchemeVerified: false,
-          authoredBySpark: true
-        });
-      }))
-    })))
-  })));
-  return Object.freeze({
-    id,
-    paper: 2,
-    year,
-    sitting,
-    sourceFilename: trusted.filename,
-    sourceSha256,
-    sourcePages,
-    questionsOffered: 5,
-    questionsToAnswer: 5,
-    maximumCandidateMarks: 100,
-    origin: "spark-internally-authored-not-published-CXC",
-    officialCxcMarkingSchemeAvailable: false,
-    sourceQuestionsFullyTranscribed: false,
-    semanticScoringCalibrated: false,
-    liveScoringApproved: false,
-    questions
-  });
-}
-function verifyPobFiveQuestionAuthoredRubric(paper) {
-  const issues = [], seen = /* @__PURE__ */ new Set();
-  let offeredMarks = 0, parts = 0;
-  const trusted = POB_SUPPLIED_ARCHIVE.find((p) => p.id === paper?.id);
-  if (!trusted || paper?.sourceSha256 !== trusted.sourceSha256 || paper?.sourceFilename !== trusted.filename)
-    issues.push("Source filename or SHA-256 mismatch.");
-  if (!Array.isArray(paper?.questions) || paper.questions.length !== 5) issues.push("Must have five distinct questions.");
-  for (const q of paper?.questions || []) {
-    if (!Number.isInteger(q.number) || q.number < 1 || q.number > 5 || seen.has(q.number)) issues.push("Duplicate/invalid question.");
-    seen.add(q.number);
-    let total = 0;
-    const ids = /* @__PURE__ */ new Set();
-    for (const p of q.parts || []) {
-      parts++;
-      if (!p.id || ids.has(p.id)) issues.push("Duplicate/blank part ID.");
-      ids.add(p.id);
-      if (typeof p.modelAnswer !== "string" || p.modelAnswer.length < 25) issues.push("Missing model answer.");
-      if (!Number.isInteger(p.marks) || p.marks < 1 || p.criteria?.reduce((sum, c) => sum + c.marks, 0) !== p.marks)
-        issues.push("Incorrect part rubric total.");
-      if (p.criteria?.some((c) => !c.rule || c.sourceSchemeVerified !== false || c.authoredBySpark !== true))
-        issues.push("Rubric origin or rule inconsistent.");
-      total += p.marks || 0;
-    }
-    if (total !== 20) issues.push("Question does not total 20.");
-    offeredMarks += total;
-  }
-  if (offeredMarks !== 100 || paper?.maximumCandidateMarks !== 100) issues.push("Candidate max must be 100.");
-  if (paper?.liveScoringApproved !== false || paper?.officialCxcMarkingSchemeAvailable !== false)
-    issues.push("Uncalibrated internally-authored rubric cannot release/live.");
-  if (!validatePobHistoricalP2Selection(paper?.id, [1, 2, 3, 4, 5]).valid)
-    issues.push("Source selection rules missing.");
-  return { valid: issues.length === 0, issues, offeredMarks, parts };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2017MjP2AuthoredScheme.js
-var POINTS4 = Object.freeze([
-  [1, "a.i", "An enterprise is an organised business venture that provides goods or services for customers.", ["1:Business venture or undertaking", "1:Organisation of goods/services or commercial activity"]],
-  [1, "a.ii", "Entrepreneurship identifies opportunities, gathers resources and bears business risk to create or operate a venture.", ["1:Identifies new business creation or opportunity", "1:Organising factors or risk-taking"]],
-  [1, "b.i", "Economic benefits of a local firm include hiring residents and spending money with nearby suppliers. Social benefits include charitable sponsorship and training community members.", ["1:First distinct economic benefit", "1:Second economic benefit", "1:First genuine social benefit", "1:Second different social benefit"]],
-  [1, "b.ii", "Employees provide labour and skills needed for operations, while customers buy goods or services and give market feedback.", ["3:First real stakeholder named with a developed role in business", "3:Second DIFFERENT stakeholder named with developed role"]],
-  [1, "c", "Community firms may face the cost of recycling and safe disposal, which reduces short-term profit, and pressure to keep prices low while paying fair wages, making ethical commitments harder to finance.", ["3:First ethical-responsibility challenge and realistic consequence", "3:Second distinct challenge explained"]],
-  [2, "a.i", "Marketing managers research customer demand and organise promotions, while production managers schedule manufacturing and monitor quality or inputs.", ["1:First actual marketing function", "1:Second distinct marketing function", "1:First genuine production activity", "1:Second different production function"]],
-  [2, "a.ii", "Finance plans and controls money, budgets, payments and funding. HR recruits, trains, motivates and manages the workforce.", ["2:Accurately describes finance function", "2:Accurately distinguishes HR workforce function"]],
-  [2, "b.i", "Delegation transfers responsibility and appropriate authority for specified tasks to a subordinate while the manager retains ultimate accountability.", ["1:Describes assigning tasks or authority", "1:Explains subordinate responsibility or manager oversight"]],
-  [2, "b.ii", "Motivation encourages staff effort by recognising good work, offering fair rewards and meeting employee needs.", ["1:Explains stimulating worker effort", "1:Describes a realistic motivational method or result"]],
-  [2, "b.iii", "Coordinating aligns schedules and activities of people and departments so their separate tasks work towards the same goals.", ["1:Aligns different resources or activities", "1:Connects the effort to shared results"]],
-  [2, "c.i", "Managers protect customers by checking product safety and responding quickly to complaints, sustaining confidence and appropriate standards.", ["1:Names realistic customer obligation", "1:Explains management process", "1:Explains benefit to buyer or firm"]],
-  [2, "c.ii", "Managers protect employees through safe working conditions, fair wages and respectful handling of grievances, improving morale and retention.", ["1:Names valid employee obligation", "1:Explains concrete management action", "1:Explains resulting welfare or business benefit"]],
-  [3, "a.i", "Businesses use computers, point-of-sale systems and barcode scanners in their operations.", ["1:First real business technology", "1:Second different technology", "1:Third different technology"]],
-  [3, "a.ii", "E-commerce systems allow the business to reach customers outside its locality, while automation increases production or transaction capacity at lower unit cost.", ["2:First technology adoption and growth mechanism", "2:Second distinct technology growth mechanism"]],
-  [3, "b.i", "Small businesses produce or distribute local goods, create jobs and supply personalised services to customers.", ["1:First distinct small business function", "1:Second different function", "1:Third different function"]],
-  [3, "b.ii", "Growth may increase revenue and economies of scale, but may strain cash flow and complicate coordination across larger teams.", ["1:First realistic growth challenge", "1:Second distinct growth challenge", "1:First realistic growth benefit", "1:Second different growth benefit"]],
-  [3, "c", "As a business expands it normally adds departmental specialisation and managers, creating additional reporting levels. It can also delegate more decisions and formalise communication to coordinate operations across locations.", ["3:First distinct organisational structure change with causal reason", "3:Second distinct structure change and explanation"]],
-  [4, "a.i", "A brand name is a distinctive word or phrase that identifies a company's goods or services and separates them from competitors.", ["1:Identifies the name applied to a producer or product", "1:Explains differentiation and recognition"]],
-  [4, "a.ii", "Packaging can take the form of bottles and cardboard cartons.", ["1:First valid packaging form", "1:Second distinct packaging form"]],
-  [4, "a.iii", "Packaging protects goods during handling and communicates product information to buyers.", ["1:First distinct purpose", "1:Second distinct purpose"]],
-  [4, "b.i", "Demonstrative selling shows how a product works to make its benefit visible. Consultative selling asks about the buyer's needs and recommends a fitting solution.", ["2:First valid selling technique properly described", "2:Second DIFFERENT technique described"]],
-  [4, "b.ii", "Vendors can run a limited-time discount to attract price-sensitive shoppers and provide free samples so customers try goods before purchasing.", ["2:First specific sales-promotion method with explanation", "2:Second different method and effect"]],
-  [4, "c", "Copyright gives original creators control over reproduction or distribution, encouraging investment in creative products. Consumers should obtain lawful copies or licences, avoiding unauthorised downloads and supporting creator earnings.", ["3:Explains likely effect of copyright on producers, including rights and incentives", "3:Explains effect on consumers, including lawful use and consequences"]],
-  [5, "a", "Standard of living measures material conditions and available goods and services enjoyed by an individual or group.", ["1:Recognises material well-being or welfare level", "1:Includes access to goods, services or income"]],
-  [5, "b.i", "Factors indicating quality of life include life expectancy, education or literacy, and safety or freedom from crime.", ["1:First valid quality-of-life factor", "1:Second distinct factor", "1:Third distinct factor"]],
-  [5, "b.ii", "Factors showing standard of living include real per-capita income, housing quality and access to consumer goods or utilities.", ["1:First economic/material factor", "1:Second different material factor", "1:Third different material factor"]],
-  [5, "c", "A ministry can invest in technical and vocational education to improve labour skills and productivity, and introduce digital literacy programmes to prepare students for modern employment and entrepreneurship.", ["3:First education ministry programme and detailed growth or development mechanism", "3:Second distinct programme with educational and economic effect"]],
-  [5, "d", "The income approach adds wages, interest, rent and profits from production. The expenditure approach totals final domestic spending by households, firms, government and net exports.", ["3:First correctly named national income method with workings", "3:Second DIFFERENT method properly explained"]]
-]);
-var POB_2017_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
-  year: 2017,
-  sitting: "MJ",
-  sourcePages: 16,
-  sourceSha256: "b36bbd04dc4fb1a3982763eaf10d0a22fd44cfe6ed36594f69caca6eee47bb9a",
-  parts: POINTS4
-});
-var verifyPob2017MjP2AuthoredScheme = (paper = POB_2017_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
-
-// src/principlesOfBusiness/data/pobHistorical2018MjP2AuthoredScheme.js
-var pobHistorical2018MjP2AuthoredScheme_exports = {};
-__export(pobHistorical2018MjP2AuthoredScheme_exports, {
-  POB_2018_MJ_P2_AUTHORED_SCHEME: () => POB_2018_MJ_P2_AUTHORED_SCHEME,
-  verifyPob2018MjP2AuthoredScheme: () => verifyPob2018MjP2AuthoredScheme
-});
-var POINTS5 = Object.freeze([
-  [1, "a.i", "An organisational chart is a diagram showing employee positions, levels of authority and reporting relationships within an enterprise.", ["1:Identifies graphical representation of organisational positions", "1:Explains authority or reporting relationships"]],
-  [1, "a.ii", "Rules include placing the most senior role at the top and using clear, consistent lines to show reporting relationships without crossing unnecessarily.", ["1:First appropriate chart construction rule", "1:Second distinct rule"]],
-  [1, "b", "A correct simple line chart puts a managing director at the top, an operations manager on the second level and a supervisor reporting on the third level, with clear straight reporting lines.", ["1:Top level contains a clearly named senior manager", "1:Second level contains an appropriate named middle manager", "1:Third level contains one valid lower supervisory position", "1:Reporting lines follow an unambiguous top-down line chain"]],
-  [1, "c", "Human resource managers recruit employees, organise training and handle employee relations or grievances.", ["1:First recognised HR duty", "1:Second different duty", "1:Third different duty"]],
-  [1, "d.i", "Organisational conflict may arise from inadequate communication, unequal workloads and unfair promotions.", ["1:First plausible source of conflict", "1:Second different source", "1:Third different source"]],
-  [1, "d.ii", "Mediation lets a neutral party facilitate discussion and agreement. An established grievance process lets employees lodge complaints and receive a fair management response.", ["3:First distinct conflict-resolution approach, how it works and positive consequence", "3:Second distinct approach and explained process"]],
-  [2, "a", "Entrepreneurs need initiative, creativity, perseverance and willingness to take calculated risks.", ["1:First genuine entrepreneurial trait", "1:Second different trait", "1:Third distinct trait", "1:Fourth distinct trait"]],
-  [2, "b.i", "Accessing funds involves assessing start-up needs and raising capital through savings, approved credit or investors to finance the venture.", ["1:Explains identifying or obtaining business funding", "1:Shows resource or operating use"]],
-  [2, "b.ii", "Organising resources means identifying and combining labour, equipment, premises and materials so the enterprise can operate efficiently.", ["1:Explains acquiring or coordinating resources", "1:Connects to productive venture needs"]],
-  [2, "c", "The four steps are idea generation, estimating or organising resources, conducting market research and preparing a business plan for investors.", ["1:Correctly identifies idea generation", "1:Correctly identifies resource assessment", "1:Correctly identifies primary market research or feasibility research", "1:Correctly identifies drafting a business plan"]],
-  [2, "d", "The marketing department studies customer demand, sets promotional strategies and decides how products reach target buyers.", ["1:Names one valid functional business area", "1:Describes genuine duties of the same area"]],
-  [2, "e", "Planning helps managers budget staffing and inputs before production, avoiding expensive shortages. It also sets goals and deadlines so performance can be checked and problems corrected.", ["3:First distinct planning benefit, process and operational impact", "3:Second different benefit developed"]],
-  [3, "a.i", "Production means creating goods or providing services by transforming inputs into output for use or sale.", ["1:Identifies creation of goods or services", "1:Connects to resources, processes or outputs"]],
-  [3, "a.ii", "Productivity is the amount of output per unit of input, such as products made per labour hour.", ["1:Connects output to an input", "1:Gives efficiency or explicit per-input ratio"]],
-  [3, "b", "Available labour depends partly on the local working-age population and wage or working conditions offered by employers.", ["1:First factor that influences labour supply", "1:Second different relevant factor"]],
-  [3, "c", "Education and skills training make workers more accurate and efficient. Reliable modern equipment also enables employees to complete more output each hour.", ["2:First factor and how it changes productivity", "2:Second distinct factor with productivity mechanism"]],
-  [3, "d", "Subsistence production mainly meets the producers' own needs, whereas domestic production occurs within a country and may supply commercial or noncommercial markets.", ["2:Correct subsistence output concept and users", "2:Correct domestic geographical production concept, distinguished from subsistence"]],
-  [3, "e", "Technology can raise output per worker by automating repetitive steps and improving accuracy. An adverse effect is costly equipment or job displacement that strains finances or workforce relations.", ["3:Positive business impact and explanation", "3:Distinct negative business impact explained"]],
-  [4, "a", "Marketing activities include market research, pricing, advertising or promotion and product distribution.", ["1:First legitimate marketing activity", "1:Second distinct activity", "1:Third distinct activity", "1:Fourth distinct activity"]],
-  [4, "b", "Product decisions concern features and quality that satisfy customers, while price decisions set the selling charge to account for costs, value and competitive conditions.", ["2:First traditional marketing-mix element explained, not merely named", "2:Second distinct element outlined"]],
-  [4, "c.i", "Public relations uses planned communication, media events and community engagement to build a favourable reputation and relationships with the public.", ["1:Explains communicating image or reputation", "1:Gives valid public-relations activity or aim"]],
-  [4, "c.ii", "Sales promotion is a short-term incentive such as a coupon, sample or time-limited discount to stimulate purchase.", ["1:Explains time-limited extra inducement", "1:Example or credible purchase stimulus"]],
-  [4, "d.i", "Retailing means selling goods or services directly to final consumers for personal or household use.", ["1:Identifies selling to end consumer", "1:Explains final use rather than resale"]],
-  [4, "d.ii", "They can start a specialty mobile-phone shop for phones and repairs, run an online storefront shipping accessories or operate a market kiosk with low overhead and face-to-face sales.", ["2:First appropriate outlet type explained for phone accessories", "2:Second DISTINCT suitable type described", "2:Third different type described"]],
-  [5, "a.i", "CARICOM promotes cooperation and greater regional integration, including improving trade among participating Caribbean states.", ["1:States real CARICOM function"]],
-  [5, "a.ii", "The WTO helps establish international trade rules and settle disputes or negotiations between members.", ["1:States genuine WTO role"]],
-  [5, "b.i", "Governments can reduce unemployment by funding apprenticeships or vocational skills so workers qualify for available jobs.", ["1:Actionable appropriate unemployment policy", "1:Explains expected employment effect"]],
-  [5, "b.ii", "Governments can manage overpopulation pressures through voluntary family-planning education and reproductive-health services, allowing informed decisions.", ["1:Credible rights-respecting population policy", "1:Explains its effect"]],
-  [5, "b.iii", "Governments can reduce unwanted skilled emigration by expanding local skilled jobs and competitive career opportunities, encouraging people to remain.", ["1:Credible migration-related intervention", "1:Explains expected effect"]],
-  [5, "c", "Economic dualism is coexistence of modern high-productivity and traditional low-productivity sectors, often with unequal income and access to technology.", ["1:Contrasts modern and traditional economic activities", "1:Identifies productivity, income or technical divide"]],
-  [5, "d", "FDI brings funds for factories or services and transfers management skills or technology to local workers.", ["2:First FDI host-country benefit outlined with economic effect", "2:Second different benefit developed"]],
-  [5, "e", "A government can develop reliable roads, electricity and transport to reduce manufacturing costs and improve deliveries. It can also support technical training and affordable enterprise credit to improve output and investment.", ["3:First distinct manufacturing support policy and causal explanation", "3:Second different support policy explained"]]
-]);
-var POB_2018_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
-  year: 2018,
-  sitting: "MJ",
-  sourcePages: 14,
-  sourceSha256: "d93ccbf4102186426f7326f789db4e8d3ca1b9a3a73aed63e5a360d0546f956f",
-  parts: POINTS5
-});
-var verifyPob2018MjP2AuthoredScheme = (paper = POB_2018_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
-
-// src/principlesOfBusiness/data/pobHistorical2019JanP2AuthoredScheme.js
-var pobHistorical2019JanP2AuthoredScheme_exports = {};
-__export(pobHistorical2019JanP2AuthoredScheme_exports, {
-  POB_2019_JAN_P2_AUTHORED_SCHEME: () => POB_2019_JAN_P2_AUTHORED_SCHEME,
-  verifyPob2019JanP2AuthoredScheme: () => verifyPob2019JanP2AuthoredScheme
-});
-var PARTS2 = Object.freeze([
-  [1, "a", "Capital is human-made wealth used as a production input. Appropriate examples include supermarket refrigerators and checkout machines, factory equipment or premises.", ["2:Accurately defines capital as produced production resource", "1:First correct example", "1:Second DISTINCT example"]],
-  [1, "b", "Four sources of business start-up capital include personal savings, bank loans, credit-union finance and outside investor/share contributions.", ["1:First legitimate start-up capital source", "1:Second DISTINCT source", "1:Third DISTINCT source", "1:Fourth DISTINCT source"]],
-  [1, "c.i", "A partnership is a business structure in which two or more people jointly own and operate an enterprise, sharing its returns and responsibilities according to agreement.", ["1:Two or more co-owners", "1:Shared operation, rewards or responsibilities"]],
-  [1, "c.ii", "June may pool more money with a partner, enabling larger supermarket stock, and combine management skills and work responsibilities to improve business coverage.", ["2:First developed partnership benefit versus a sole trader", "2:Second DIFFERENT developed benefit"]],
-  [1, "c.iii", "June should sell accurately labelled safe products, use honest prices and advertising, and comply with fair employment and environmental obligations.", ["1:First distinct ethical business issue", "1:Second distinct issue", "1:Third distinct issue"]],
-  [1, "c.iv", "A feasibility study can show whether local shoppers will buy enough goods and whether forecast sales can cover stock, rent and wages. This helps June avoid investing in a supermarket that is not viable.", ["1:Identifies viability or risks of new business", "1:Shows relevant demand, location or costs research", "1:Links information to sound launch or loan decision"]],
-  [2, "a.i", "An invoice, receipt and purchase order are three types of documents used to support a firm's business transactions.", ["1:First genuine business document", "1:Second DIFFERENT document", "1:Third distinct document"]],
-  [2, "a.ii", "Documents provide proof of amounts owed or paid, support accurate accounts and tax records and help trace disputes, returns or fraud.", ["1:First real records purpose", "1:Second distinct purpose", "1:Third different purpose"]],
-  [2, "b", "Insurance covers risks that may or may not arise, such as fire or theft, while assurance traditionally concerns an event that eventually will occur, such as death, where timing rather than occurrence is uncertain.", ["2:Accurate insurance risk/contingency definition", "2:Explains contrasting assurance policy and eventual certainty concept"]],
-  [2, "c", "Motor vehicle insurance and property/fire insurance are two recognised categories of coverage.", ["1:First valid insurance policy type", "1:Second different type"]],
-  [2, "d", "Utmost good faith requires truthful disclosure of material facts by both sides of insurance. It prevents an insurer relying on misleading declarations and helps calculate appropriate cover.", ["1:Identifies one correct insurance principle", "1:Explains its actual meaning or practical implication"]],
-  [2, "e", "Insurance can finance replacement of fire-damaged stock, reducing business closure risk. Liability cover can meet eligible claims for injuries or damages, helping the firm maintain continuity and financial stability.", ["3:First distinct developed insurance benefit with suitable risk and causal effect", "3:Second distinct benefit explained"]],
-  [3, "a.i", "Cash payment settles the purchase immediately and may avoid credit interest; it can also allow customers to negotiate a prompt-payment discount.", ["1:First valid cash-purchase consumer advantage", "1:Second DISTINCT cash advantage"]],
-  [3, "a.ii", "Hire purchase allows the buyer to use a product immediately while spreading payment into instalments, potentially easing cash-flow pressure.", ["1:First genuine hire-purchase consumer advantage", "1:Second different benefit"]],
-  [3, "a.iii", "A layaway plan reserves the item while the buyer pays in stages; it avoids incurring revolving credit charges while building up enough funds.", ["1:First real layaway benefit", "1:Second distinct benefit"]],
-  [3, "b", "Consumer income influences affordability: higher disposable earnings can increase demand for a normal good, while reduced disposable income may favour cheaper substitutes.", ["1:Identifies a valid factor shaping consumer demand", "1:Explains the factor's effect on purchasing decision"]],
-  [3, "c", "Traditional distribution chain: producer/manufacturer \u2192 wholesaler \u2192 retailer \u2192 final consumer. A correct diagram has the four links in that order.", ["1:Producer/manufacturer in first box", "1:Wholesaler in second box", "1:Retailer in third box", "1:Consumer in final box"]],
-  [3, "d", "Goods distribution may suffer poor roads, transport delays, high freight costs and product spoilage or damage.", ["1:First real distribution problem", "1:Second DISTINCT problem", "1:Third different problem", "1:Fourth DISTINCT issue"]],
-  [3, "e.i", "A refrigerated van or chilled road truck moves fresh meat from processing plant to supermarket.", ["1:Road haulage in temperature-controlled transport"]],
-  [3, "e.ii", "A heavy goods truck or tipper lorry carries cement from factory to construction site.", ["1:Suitable heavy road freight"]],
-  [3, "e.iii", "A pipeline conveys oil from oilfield to refinery when geographically feasible; oil tanker transport may also be appropriate over water.", ["1:Suitable pipeline or dedicated oil tanker by actual route"]],
-  [3, "e.iv", "Bulk bauxite can be transported from mine to processing plant by rail or heavy haulage truck; conveyor systems also suit a nearby plant.", ["1:Suitable heavy bulk-mode transportation"]],
-  [4, "a", "A personal budget allocates expected earnings among essential bills, savings and discretionary costs to avoid spending more than income. It also reveals surplus money available for planned purchases and emergencies.", ["2:First developed personal budgeting advantage", "2:Second separate developed advantage"]],
-  [4, "b", "Commercial banks accept customer deposits in savings or current accounts, provide credit such as personal/enterprise loans, and process payments such as transfers or standing orders.", ["2:First genuine banking service described", "2:Second distinct service explained", "2:Third different service outlined"]],
-  [4, "c", "Central banks may issue national currency, influence monetary conditions and interest rates, supervise banks, and act as government banker or emergency lender to solvent financial institutions.", ["1:First correct central-bank role", "1:Second distinct role", "1:Third different role", "1:Fourth distinct role"]],
-  [4, "d.i", "Open-market operations involve central-bank purchases or sales of securities. Selling securities drains liquidity from the banking system and can constrain lending; purchasing adds reserves and can ease credit conditions.", ["1:Identifies central bank buying/selling securities", "1:Explains effect on reserves or liquidity", "1:Connects to commercial-bank credit activities"]],
-  [4, "d.ii", "A minimum liquid asset requirement obliges commercial banks to hold a specified proportion of deposits or liabilities in cash or easily sold assets, limiting excessive lending and improving ability to meet withdrawals.", ["1:Correct mandatory liquid-assets threshold concept", "1:Explains liquidity or funds available for lending", "1:Explains financial stability or repayment effect"]],
-  [5, "a.i", "A progressive tax takes a greater proportion of taxable income at higher income levels.", ["1:Relates tax to income", "1:Average or marginal rate increases as income grows"]],
-  [5, "a.ii", "A proportional tax charges the same percentage of taxable income across income levels; absolute payments may rise but the rate stays constant.", ["1:Same percentage income tax rate", "1:Contrasts higher monetary tax with constant percentage"]],
-  [5, "b", "Governments levy taxes to finance public services, to redistribute purchasing power or support low-income households, and to reduce harmful consumption or manage aggregate demand.", ["1:First real taxation rationale", "1:Second DISTINCT rationale", "1:Third DISTINCT rationale"]],
-  [5, "c", "Businesses are regulated through compulsory licensing and registration, enforced worker health-and-safety standards and product quality or consumer-protection legislation.", ["1:First valid state business regulation", "1:Second distinct regulation", "1:Third DIFFERENT measure"]],
-  [5, "d", "Consumer-protection agencies can investigate misleading advertising and require redress for unfair trade. Government standards inspectors can recall unsafe food/products and enforce clear labelling or safety requirements.", ["2:First developed government consumer-protection measure", "2:Second distinct developed measure"]],
-  [5, "e", "Publicly funded computer engineering courses improve residents' technical employability and access to better-paid work. Small appliance repair training also supports new local repair businesses, reducing spending on replacements and stimulating enterprise.", ["3:First training benefit with process and social/economic outcome", "3:Second DISTINCT training benefit explained"]]
-]);
-var POB_2019_JAN_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
-  year: 2019,
-  sitting: "JAN",
-  sourcePages: 14,
-  sourceSha256: "cdcdfdbb46cb5faff3867c42eb26e382ed10c3db36c4a5cd6d29d6f2ec50d5e1",
-  parts: PARTS2
-});
-var verifyPob2019JanP2AuthoredScheme = (paper = POB_2019_JAN_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
-
-// src/principlesOfBusiness/data/pobHistorical2019MjP2AuthoredScheme.js
-var pobHistorical2019MjP2AuthoredScheme_exports = {};
-__export(pobHistorical2019MjP2AuthoredScheme_exports, {
-  POB_2019_MJ_P2_AUTHORED_SCHEME: () => POB_2019_MJ_P2_AUTHORED_SCHEME,
-  verifyPob2019MjP2AuthoredScheme: () => verifyPob2019MjP2AuthoredScheme
-});
-
-// src/principlesOfBusiness/data/pobHistorical2019MjAltP2AuthoredScheme.js
-var pobHistorical2019MjAltP2AuthoredScheme_exports = {};
-__export(pobHistorical2019MjAltP2AuthoredScheme_exports, {
-  POB_2019_MJ_ALT_P2_AUTHORED_SCHEME: () => POB_2019_MJ_ALT_P2_AUTHORED_SCHEME,
-  verifyPob2019MjAltP2AuthoredScheme: () => verifyPob2019MjAltP2AuthoredScheme
-});
-var AUTHORED = Object.freeze([
-  [1, "a.i", "Stakeholder is an individual or group that can affect or be affected by a firm's activities.", ["1:Defines person, group or body with an interest in the business", "1:Explains their stake, influence, or exposure to business effects"]],
-  [1, "a.ii", "Employees and customers are two business stakeholders. Owners, suppliers, government, creditors and communities also qualify.", ["1:Names one genuine stakeholder", "1:Names a different legitimate stakeholder"]],
-  [1, "b", "Employees provide labour to operate the business; customers purchase its offerings and give feedback.", ["2:Describes the real function of FIRST named stakeholder, with a relevant business outcome", "2:Describes an accurate and distinct function of SECOND named stakeholder from a.ii"]],
-  [1, "c.i", "The marketing department researches buyer needs, runs advertisements and chooses promotion and distribution methods.", ["1:Identifies a genuine marketing activity", "1:Describes how that activity reaches or serves customers"]],
-  [1, "c.ii", "The finance department prepares budgets and manages cash flow, payments and sources of business funding.", ["1:Identifies genuine finance activity", "1:Describes how money, capital or financial reporting is handled"]],
-  [1, "c.iii", "The HR department hires employees, provides training and handles recruitment, development and employee relations.", ["1:Identifies genuine HR activity", "1:Describes how recruitment, training or employee relations work"]],
-  [1, "d", "A food seller should comply with product-safety regulations by ensuring meals are stored hygienically and labelled accurately. It should also conduct business honestly, such as avoiding misleading advertisements that promise unsupported health claims.", ["1:First distinct valid ethical or legal principle", "1:Explains how the FIRST principle should guide business decisions", "1:Gives a practical valid example of FIRST principle", "1:Second distinct principle", "1:Explains compliance or ethical behaviour for SECOND principle", "1:Gives relevant example of SECOND principle"]],
-  [2, "a.i", "Planning and controlling are recognised management functions. Organising, staffing and leading also qualify.", ["1:First genuine management function", "1:Different genuine management function"]],
-  [2, "a.ii", "Planning sets goals and chooses means to reach them; controlling checks actual results against targets and corrects deviations.", ["2:Accurately describes activities and purpose of FIRST function selected in a.i", "2:Accurately describes SECOND distinct named function selected in a.i"]],
-  [2, "b.i", "Management should pay workers fairly and on time, and maintain safe working conditions under labour law.", ["1:First genuine employer responsibility to employees", "1:Second distinct responsibility to employees"]],
-  [2, "b.ii", "Management should pay taxes lawfully owed and comply with licensing, regulatory and reporting requirements.", ["1:First genuine business obligation to government", "1:Second distinct government obligation"]],
-  [2, "c.i", "Teamwork is coordinated work by two or more people who combine efforts to achieve a shared objective.", ["1:Identifies collective effort of two or more people", "1:Identifies a shared organisational goal or coordinated result"]],
-  [2, "c.ii", "Teamwork combines diverse skills for better solutions, but coordination and disagreement can consume time.", ["1:Valid teamwork advantage", "1:Valid distinct teamwork disadvantage"]],
-  [2, "d", "Regular two-way staff meetings allow managers to explain policies and answer questions, preventing misunderstandings. A confidential employee feedback and grievance channel with documented responses lets workers raise issues safely and see how management has acted.", ["1:Identifies first workable communication improvement strategy", "1:Explains how the first strategy would operate within ABC Plastic Co.", "1:Explains expected communication outcome", "1:Identifies SECOND distinct strategy", "1:Explains its working process", "1:Links strategy to improved trust or employee-manager understanding"]],
-  [3, "a.i", "Production is the creation of goods and delivery of services by combining inputs through an economic process.", ["1:Identifies creating goods or services", "1:Describes combining productive resources or inputs"]],
-  [3, "a.ii", "Labour and land are two production factors other than capital. Enterprise/entrepreneurship is another acceptable factor.", ["1:Correct first non-capital factor", "1:Different correct non-capital factor"]],
-  [3, "b.i", "Capital is man-made wealth and productive assets, such as machinery, used to produce further goods and services.", ["1:Defines man-made productive resources", "1:Explains their use in further production"]],
-  [3, "b.ii", "Fixed capital is long-lived productive property such as a bottling machine; working capital funds circulating inventory and daily costs such as stock and cash.", ["1:Explains meaning of fixed long-term productive capital", "1:Provides appropriate fixed-capital example", "1:Explains meaning of working capital used in daily production or short-term operations", "1:Provides a fitting working-capital example"]],
-  [3, "c.i", "Growth can give customers a wider range of products or improved service because the company can afford new outlets and equipment.", ["1:Identifies real customer benefit of company growth", "1:Explains practical improvement for consumers"]],
-  [3, "c.ii", "Successful growth can support higher dividends and a stronger share price for shareholders, although returns are not guaranteed.", ["1:Identifies genuine potential shareholder benefit", "1:Explains the link between business expansion and shareholder return"]],
-  [3, "d", "Higher productivity lowers labour cost per unit, allowing more competitive prices or better profit margins. More output from the same workforce also improves ability to fill orders promptly, raising revenue or market share.", ["1:First legitimate productivity gain", "1:Explains how gains arise, e.g. output per worker or cost per unit", "1:Links to a competitive or financial advantage", "1:Second distinct productivity advantage", "1:Explains the mechanism of output gain", "1:Explains expected business performance result"]],
-  [4, "a", "Consumer associations educate buyers about rights and safe products and investigate complaints or advocate fair treatment and remedies.", ["2:First accurate consumer organisation function with practical purpose", "2:Second different accurate consumer organisation function developed"]],
-  [4, "b", "Prompt complaint handling strengthens customer loyalty and repeat purchases. Helpful assistance and accurate answers enhance reputation, encouraging positive referrals.", ["2:First different developed benefit of good customer service", "2:Second different developed benefit"]],
-  [4, "c.i", "A warranty is the manufacturer's or seller's promise to repair, replace or otherwise remedy covered defects under agreed conditions during a stated period.", ["1:Identifies product quality or defect promise subject to agreed period/terms", "1:Explains repair, replacement or other covered remedy"]],
-  [4, "c.ii", "A toll-free support number allows customers to contact a company without paying the call charge in the covered scheme, obtaining advice or assistance from a call centre.", ["1:Describes no-charge customer phone contact under the toll-free service", "1:Explains response to customer enquiries, complaints or assistance"]],
-  [4, "c.iii", "A customer suggestion box lets clients submit comments and improvement ideas for staff to review, helping the firm enhance service.", ["1:Identifies collection of customer feedback and ideas", "1:Explains how comments help improve business service or quality"]],
-  [4, "d", "Trademarks distinguish a firm's goods from competing brands, making its products recognisable and supporting repeat purchases. Trademark rights also help a firm challenge confusing imitation of its name or logo, protecting reputation and marketing investment.", ["1:First correct trademark benefit", "1:Explains mechanism such as distinct identification or customer trust", "1:Links to commercial outcome such as loyalty", "1:Second distinct trademark benefit", "1:Explains rights or anti-imitation mechanism", "1:Connects to a practical protection of business sales, goodwill or brand"]],
-  [5, "a", "ICT comprises digital and telecommunications tools used to collect, process, store and communicate information.", ["1:Correctly identifies information-processing technology", "1:Explains communication or data transmission use"]],
-  [5, "b", "Computer-aided design enables architects or manufacturers to create and alter accurate digital product plans before manufacturing, reducing redesign costs.", ["1:Identifies relevant CAD use for designing products, prototypes or patterns", "1:Explains accuracy, change speed or business benefit"]],
-  [5, "c", "A retail firm may offer customers nearby ATMs for convenient cash withdrawals, increasing visits; use an ATM to deposit cash or check balances where the banking service allows; and give customers extended self-service access to banking outside branch hours, lowering queues and transaction time.", ["1:First genuine ATM/ABM use", "1:Explains how it assists the business or its customers", "1:Second distinct ATM/ABM use", "1:Explains second effect or efficiency gain", "1:Third distinct ATM/ABM benefit", "1:Outlines commercial convenience, speed or access effect"]],
-  [5, "d", "Online sales allow firms to serve customers beyond their immediate town, increasing potential revenue. Automated websites can accept orders outside opening hours and reduce reliance on expensive physical shopfronts.", ["2:First distinct e-commerce performance benefit and mechanism", "2:Second distinct e-commerce benefit and mechanism"]],
-  [5, "e", "A business should ask permission and secure customers' personal information with access controls and safe retention, preventing privacy breaches. It should also use properly licensed software and respect copyright and intellectual property rights rather than copying protected material unlawfully.", ["1:First genuine ICT ethics principle", "1:Explains specific implementation of the first principle", "1:Links to lawful/fair outcome or prevention of harms", "1:Second distinct ICT ethics principle", "1:Explains practical compliance with the second principle", "1:Shows business and social consequences or benefit"]]
-]);
-var POB_2019_MJ_ALT_P2_AUTHORED_SCHEME = Object.freeze({
-  id: "POB-P2-2019-MJ-ALT",
-  year: 2019,
-  sitting: "MJ",
-  paper: 2,
-  sourceFilename: "CSEC_Principles_of_Business_P1_2019_MJ.pdf",
-  sourceSha256: "5b95df8eaf522bad7684b01bad41b367f8652967715b3983f8c836c5ec93b4bc",
-  originalFilenamePaper: 1,
-  actualCoverPaper: 2,
-  printedTestCode: "01240020",
-  scannedSourcePages: 15,
-  printedPageRange: "3\u201317",
-  timeLimitMinutes: 120,
-  questionsOffered: 5,
-  questionsToAnswer: 5,
-  candidateMaxMarks: 100,
-  rubricOrigin: "SPARK-internally-authored-not-CXC-official",
-  officialCxcMarkingSchemeAvailable: false,
-  visualOriginalRead: true,
-  endToEndRubricCalibrationPassed: false,
-  liveScoringApproved: false,
-  questions: Object.freeze([1, 2, 3, 4, 5].map((number) => Object.freeze({
-    number,
-    maxMarks: 20,
-    parts: Object.freeze(AUTHORED.filter((row) => row[0] === number).map(([, id, modelAnswer, rawRules]) => Object.freeze({
-      id,
-      modelAnswer,
-      marks: rawRules.reduce((sum, rule) => sum + Number(rule.slice(0, rule.indexOf(":"))), 0),
-      criteria: Object.freeze(rawRules.map((rule) => {
-        const colon = rule.indexOf(":");
-        return Object.freeze({
-          marks: Number(rule.slice(0, colon)),
-          rule: rule.slice(colon + 1),
-          sourceSchemeVerified: false,
-          authoredBySpark: true
-        });
-      }))
-    })))
-  })))
-});
-function verifyPob2019MjAltP2AuthoredScheme(paper = POB_2019_MJ_ALT_P2_AUTHORED_SCHEME) {
-  const issues = [], seen = /* @__PURE__ */ new Set();
-  let total = 0, parts = 0;
-  const original = POB_SUPPLIED_ARCHIVE.find((s) => s.id === paper?.id);
-  if (!original || original.paper !== 2 || original.reclassifiedFromPaper1 !== true || paper?.sourceSha256 !== original.sourceSha256 || paper.sourceFilename !== original.filename || paper.printedTestCode !== "01240020")
-    issues.push("Original Paper 02 cover, filename and SHA-256 mismatch.");
-  if (!Array.isArray(paper?.questions) || paper.questions.length !== 5)
-    issues.push("Five compulsory historical P2 questions required.");
-  for (const q of paper?.questions || []) {
-    if (!Number.isInteger(q.number) || q.number < 1 || q.number > 5 || seen.has(q.number))
-      issues.push("Invalid/repeated question number.");
-    seen.add(q.number);
-    const ids = /* @__PURE__ */ new Set();
-    let qm = 0;
-    for (const item2 of q.parts || []) {
-      parts++;
-      if (!item2.id || ids.has(item2.id)) issues.push("Duplicate part ID.");
-      ids.add(item2.id);
-      if (typeof item2.modelAnswer !== "string" || item2.modelAnswer.length < 35)
-        issues.push("Missing developed academic answer.");
-      if (!Array.isArray(item2.criteria) || item2.criteria.length === 0 || item2.criteria.reduce((sum, c) => sum + c.marks, 0) !== item2.marks)
-        issues.push("Incomplete or misallocated part marks.");
-      if (item2.criteria?.some((c) => !Number.isInteger(c.marks) || c.marks < 1 || typeof c.rule !== "string" || !c.rule.trim() || c.sourceSchemeVerified !== false))
-        issues.push("Invalid rubric or falsely certified examiner provenance.");
-      qm += item2.marks || 0;
-    }
-    if (qm !== 20) issues.push("Question mark total is not 20.");
-    total += qm;
-  }
-  if (total !== 100 || paper?.candidateMaxMarks !== 100) issues.push("Incorrect candidate maximum.");
-  if (paper?.liveScoringApproved !== false || paper?.officialCxcMarkingSchemeAvailable !== false || paper?.endToEndRubricCalibrationPassed !== false)
-    issues.push("Uncalibrated/unauthorised paper cannot be graded or called official.");
-  return { valid: issues.length === 0, issues, marks: total, parts };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2019MjP2AuthoredScheme.js
-var POB_2019_MJ_P2_AUTHORED_SCHEME = Object.freeze({
-  ...POB_2019_MJ_ALT_P2_AUTHORED_SCHEME,
-  id: "POB-P2-2019-MJ",
-  sourceFilename: "CSEC_Principles_of_Business_P2_2019_MJ.pdf",
-  sourceSha256: "ce3455f587b74d669f3b446e21c96b98f51e28f891160d570d16896a0f27ae16",
-  originalDuplicateArchiveId: "POB-P2-2019-MJ-ALT",
-  originalDuplicateArchiveSha256: "5b95df8eaf522bad7684b01bad41b367f8652967715b3983f8c836c5ec93b4bc",
-  equivalenceEvidence: "source cover/test code, page2/Q1 and page10/Q4 printed questions matched across independent scans",
-  scannedPages: 15,
-  officialCxcMarkingSchemeAvailable: false,
-  endToEndRubricCalibrationPassed: false,
-  liveScoringApproved: false
-});
-function verifyPob2019MjP2AuthoredScheme(paper = POB_2019_MJ_P2_AUTHORED_SCHEME) {
-  const issues = [], seen = /* @__PURE__ */ new Set();
-  let parts = 0, marks = 0;
-  const src = POB_SUPPLIED_ARCHIVE.find((x) => x.id === "POB-P2-2019-MJ");
-  const alt = POB_SUPPLIED_ARCHIVE.find((x) => x.id === "POB-P2-2019-MJ-ALT");
-  if (!src || src.paper !== 2 || src.sourceSha256 !== paper?.sourceSha256 || src.filename !== paper.sourceFilename)
-    issues.push("Official archive PDF name/fingerprint does not match.");
-  if (!alt || paper?.originalDuplicateArchiveSha256 !== alt.sourceSha256 || paper?.originalDuplicateArchiveId !== alt.id)
-    issues.push("Alternative source provenance invalid.");
-  if (!Array.isArray(paper?.questions) || paper.questions.length !== 5)
-    issues.push("Five source questions required.");
-  for (const q of paper.questions || []) {
-    if (!Number.isInteger(q.number) || q.number < 1 || q.number > 5 || seen.has(q.number))
-      issues.push("Wrong or duplicated number.");
-    seen.add(q.number);
-    let sum = 0;
-    const ids = /* @__PURE__ */ new Set();
-    for (const item2 of q.parts || []) {
-      parts++;
-      sum += item2.marks;
-      if (!item2.id || ids.has(item2.id)) issues.push("Repeated subpart.");
-      ids.add(item2.id);
-      if (!item2.modelAnswer || item2.modelAnswer.length < 30) issues.push("Missing model explanation.");
-      if (!item2.criteria?.length || item2.criteria.reduce((a, c) => a + c.marks, 0) !== item2.marks)
-        issues.push("Rubric maximum mismatch.");
-    }
-    if (sum !== 20) issues.push("Question is not 20 marks.");
-    marks += sum;
-  }
-  if (marks !== 100 || paper?.candidateMaxMarks !== 100)
-    issues.push("Wrong 100-mark candidate maximum.");
-  if (paper?.liveScoringApproved !== false || paper?.endToEndRubricCalibrationPassed !== false)
-    issues.push("No live grade until calibrated and verified.");
-  return { valid: issues.length === 0, issues, parts, marks };
-}
-
-// src/principlesOfBusiness/data/pobHistorical2021MjP2AuthoredScheme.js
-var pobHistorical2021MjP2AuthoredScheme_exports = {};
-__export(pobHistorical2021MjP2AuthoredScheme_exports, {
-  POB_2021_MJ_P2_AUTHORED_SCHEME: () => POB_2021_MJ_P2_AUTHORED_SCHEME,
-  verifyPob2021MjP2AuthoredScheme: () => verifyPob2021MjP2AuthoredScheme
-});
-var POINTS6 = Object.freeze([
-  [1, "a", "Valid instruments of exchange include coins, banknotes, cheques and credit/debit cards; bills of exchange, money orders or accepted electronic transfers may also be credited where source terminology supports them.", ["1:First genuine exchange instrument", "1:Second distinct instrument", "1:Third different instrument", "1:Fourth distinct instrument"]],
-  [1, "b", "Money is a common medium of exchange that removes the need to barter goods with a double coincidence of wants; it also acts as a unit of account so traders can quote and compare clear prices.", ["2:First function of money with trading benefit", "2:Second distinct function and concrete benefit"]],
-  [1, "c.i", "A sole proprietor has one owner who makes decisions and normally bears unlimited liability for the firm's debts.", ["1:One owner manages and controls decisions", "1:Unlimited personal liability or retained profits"]],
-  [1, "c.ii", "A public limited company has a separate legal personality and can invite investors to purchase transferable shares subject to applicable listing/securities law; owners normally have limited liability.", ["1:First valid public company characteristic", "1:Second distinct characteristic"]],
-  [1, "c.iii", "Co-operatives are member-owned mutual organisations and generally use democratic voting rather than control based only on amount of invested capital.", ["1:Member ownership/common benefit characteristic", "1:Democratic member decision-making or co-operative surplus distribution"]],
-  [1, "d", "Free market firms are more often privately owned and decide output based on expected demand and profit. Their selling prices reflect competition, supply and demand. Planned-economy firms follow stronger state production decisions and administered allocation/pricing.", ["2:First complete market-versus-planned economy comparison", "2:Second different paired comparison", "2:Third distinct paired comparison"]],
-  [2, "a", "Conflict may arise from unfair promotion, unclear instructions, unequal workloads or competition for scarce resources.", ["1:First genuine workplace conflict source", "1:Second distinct cause", "1:Third different cause", "1:Fourth different cause"]],
-  [2, "b", "Employees may organise a lawful strike, work-to-rule, go-slow, or collective bargaining/union demonstrations, depending on governing employment law.", ["1:First recognized industrial action/strategy", "1:Second distinct action", "1:Third different action", "1:Fourth different lawful tactic"]],
-  [2, "c.i", "A grievance procedure is an established step-by-step process for lodging workplace complaints, investigating them and reviewing management's response.", ["1:Recognises structured complaint mechanism", "1:Describes investigation/escalation or appeal"]],
-  [2, "c.ii", "Mediation uses an independent neutral person to help both sides communicate and voluntarily reach an agreement; the mediator normally does not impose an outcome.", ["1:Independent neutral facilitator", "1:Voluntary negotiated agreement and absence of binding imposition"]],
-  [2, "c.iii", "Arbitration refers a dispute to an agreed neutral arbitrator or panel that considers evidence and issues an award, which may be binding under the parties' agreement or applicable law.", ["1:Third-party dispute decision process", "1:Decision or award, potentially legally binding"]],
-  [2, "d", "Regular two-way meetings and transparent responses to worker concerns improve trust and reduce rumours. Fair appraisal and an established complaints procedure give employees voice and predictable treatment.", ["3:First distinct developed management-staff relationship strategy", "3:Second different credible strategy with expected benefit"]],
-  [3, "a", "Subsistence production meets the producer's or household's immediate needs with little surplus. Domestic-level production creates enough goods for wider use within the country, beyond merely self-sufficient household output.", ["2:Correct subsistence-level definition", "2:Correct contrasting domestic consumption level"]],
-  [3, "b", "Cottage industries often operate in homes on a small scale, use modest investment and depend on family labour or traditional handcraft skills.", ["1:First genuine cottage-industry feature", "1:Second distinct feature", "1:Third distinct feature"]],
-  [3, "c.i", "Small rural enterprises create jobs and household incomes, supply useful local services and allow farmers or artisans to sell community products.", ["1:First rural business function", "1:Second distinct function", "1:Third distinct function"]],
-  [3, "c.ii", "Advantages include flexible personal service and low overhead. Disadvantages include limited access to expansion finance and vulnerability to supply disruptions or stronger large competitors.", ["1:First distinct small-business advantage", "1:Second distinct advantage", "1:First legitimate disadvantage", "1:Second DIFFERENT disadvantage"]],
-  [3, "d", "Growth may require dedicated finance, HR and production departments and more managers, changing coordination and reporting lines. More output can create scale economies, but may increase inventory and require stricter scheduling or quality-control systems.", ["3:First developed internal business expansion effect with cause", "3:Second DISTINCT internal effect and consequence"]],
-  [4, "a.i", "Electronic commerce is buying or selling goods and services using digital networks and online transaction systems.", ["1:Explains electronic buying/selling", "1:Identifies internet or electronic network"]],
-  [4, "a.ii", "GPS is the Global Positioning System, using satellite signals to locate or track vehicles, deliveries or mobile devices.", ["1:Identifies global positioning satellite technology", "1:Describes real-time location/tracking use"]],
-  [4, "b", "Supply chains involve procurement of supplies, inventory storage, transport and distribution of products to buyers.", ["1:First valid supply-chain activity", "1:Second distinct activity", "1:Third different activity", "1:Fourth distinct activity"]],
-  [4, "c", "Effective supply chains can lower warehousing and freight costs, improve stock availability and make deliveries more reliable, reducing customer dissatisfaction.", ["2:First developed supply-chain advantage", "2:Second distinct advantage with reason", "2:Third different developed advantage"]],
-  [4, "d", "Optimised delivery schedules lower transport and fuel expenses, letting a firm offer competitive prices. Reliable on-time delivery and live tracking improve service quality, helping retain customers against rivals.", ["3:First credible logistics competitiveness mechanism and outcome", "3:Second different developed mechanism"]],
-  [5, "a", "Governments commonly provide public education, healthcare, sanitation and public housing or social assistance services to citizens.", ["1:First genuine social service", "1:Second distinct service", "1:Third different service", "1:Fourth different service"]],
-  [5, "b", "Government must maintain public safety and administer law and justice, while protecting basic rights and providing public infrastructure or essential services.", ["2:First distinct government obligation outlined", "2:Second different responsibility with explanatory detail"]],
-  [5, "c", "Government may develop local enterprise through small-business lending schemes, skills training and dependable transport/electricity infrastructure that reduce private costs.", ["2:First genuine government business-development programme and how it helps", "2:Second distinct programme described", "2:Third different development support mechanism"]],
-  [5, "d", "Education produces skilled workers who can use technology efficiently, improving output per worker. It can also develop entrepreneurial skills and research abilities, enabling new firms and higher-value regional products.", ["3:First education-to-growth causal mechanism", "3:Second different developed mechanism"]]
-]);
-var POB_2021_MJ_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
-  year: 2021,
-  sitting: "MJ",
-  sourcePages: 16,
-  sourceSha256: "62420537307ee53ba37c879f2d9b920645d65aa4bcf8c28cbe22453387e09a6c",
-  parts: POINTS6
-});
-var verifyPob2021MjP2AuthoredScheme = (paper = POB_2021_MJ_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
-
-// src/principlesOfBusiness/data/pobHistorical2022JanP2AuthoredScheme.js
-var pobHistorical2022JanP2AuthoredScheme_exports = {};
-__export(pobHistorical2022JanP2AuthoredScheme_exports, {
-  POB_2022_JAN_P2_AUTHORED_SCHEME: () => POB_2022_JAN_P2_AUTHORED_SCHEME,
-  verifyPob2022JanP2AuthoredScheme: () => verifyPob2022JanP2AuthoredScheme
-});
-var PARTS3 = Object.freeze([
-  [1, "a", "Jane may want independence, profit from her venture, an opportunity to use her skills and a way to fill unmet local consumer needs.", ["1:First valid entrepreneurial motive", "1:Second different motive", "1:Third different motive", "1:Fourth different motive"]],
-  [1, "b", "Entrepreneurs need initiative, perseverance and willingness to take calculated risks.", ["1:First genuine entrepreneurial characteristic", "1:Second distinct characteristic", "1:Third distinct characteristic"]],
-  [1, "c", "A feasibility study estimates customer demand, calculates likely finance and costs, and identifies major risks before investment.", ["1:First genuine feasibility-study purpose", "1:Second distinct purpose", "1:Third different purpose"]],
-  [1, "d", "Employees carry out production and customer service. Suppliers provide the goods, ingredients or materials needed to sell products.", ["2:First valid stakeholder correctly identified and role described", "2:Second DISTINCT stakeholder with genuine role described"]],
-  [1, "e", "Jane's venture could employ residents, earning wages which support households. She could also purchase from local suppliers and sponsor community skill training, increasing economic activity and social opportunity.", ["3:First distinct contribution to social or economic development, action and result", "3:Second distinct contribution developed"]],
-  [2, "a", "Business records provide proof of transactions, enable correct financial reporting and support compliance with taxation laws.", ["1:First genuine documentation purpose", "1:Second distinct purpose", "1:Third distinct purpose"]],
-  [2, "b.i", "A pro forma invoice presents proposed prices, quantities and terms before final sale or delivery, allowing buyers to plan finance or obtain import approvals.", ["1:Identifies advance quotation rather than final bill", "1:Explains transaction planning or finance purpose"]],
-  [2, "b.ii", "A purchase requisition is an internal request from an authorised employee or department for the purchasing team to obtain specified goods or services.", ["1:Defines internal purchase request", "1:Explains purchasing approval or procurement workflow"]],
-  [2, "c", "Motor vehicle, property/fire and marine cargo insurance are all non-life policies.", ["1:First genuine non-life insurance policy", "1:Second distinct type", "1:Third different type"]],
-  [2, "d", "Utmost good faith requires honest disclosure of material facts in the insurance contract. Indemnity seeks to restore the policyholder's financial position after insured loss without profit.", ["2:First genuine insurance principle accurately described", "2:Second distinct principle correctly described"]],
-  [2, "e", "Property insurance pays covered losses from fires or theft so a firm can replace damaged stock and continue trading. Liability insurance helps meet covered legal claims for injuries, reducing the firm's financial exposure.", ["3:First distinct insurance risk-reduction benefit and explanation", "3:Second distinct developed benefit"]],
-  [3, "a.i", "Public relations is planned communication and relationship-building designed to improve an organisation's reputation with its stakeholders.", ["1:Identifies planned favourable stakeholder communications", "1:Explains reputation or relationship purpose"]],
-  [3, "a.ii", "Common Caribbean PR activities include community sponsorship and press or media briefings.", ["1:First genuine public relations activity", "1:Second distinct PR activity"]],
-  [3, "b", "Community clean-up campaigns can remove waste and improve residents' health, while scholarship sponsorship supports learners and improves educational access.", ["2:First social/community benefit outlined and linked to a genuine PR activity", "2:Second DISTINCT benefit developed"]],
-  [3, "c", "Purchasing choices depend on income and purchasing power, family or cultural influence, and prices or perceived product value.", ["2:First consumer-behaviour factor and mechanism", "2:Second distinct factor with influence explained", "2:Third different factor explained"]],
-  [3, "d", "Consumer agencies can investigate misleading advertisements and require corrections or penalties, deterring dishonest sellers. Product-safety testing and public recall notices protect consumers from defective goods.", ["3:First consumer-protection action by state consumer body with mechanism and benefit", "3:Second different consumer-protection action explained"]],
-  [4, "a.i", "Logistics plans and coordinates movement, storage and delivery of goods and related information at the right place and time.", ["1:Identifies managing physical flow/storage or distribution", "1:Connects to delivery or related information and customer needs"]],
-  [4, "a.ii", "Supply chain operations coordinate sourcing, procurement, processing, warehousing and distribution from suppliers through final customers.", ["1:Identifies interconnected purchasing and production/distribution processes", "1:Identifies connected stakeholders or flows to customer"]],
-  [4, "b", "A bill of lading is commonly issued for sea freight and may function as a negotiable document of title under applicable terms. An air waybill covers air freight and is generally a non-negotiable cargo receipt, not a title document.", ["2:Correct sea versus air carriage distinction", "2:Correct bill-of-lading document-of-title versus generally non-negotiable air waybill distinction"]],
-  [4, "c", "Transport conveys raw materials to producers, moves finished goods to wholesalers and retailers, and extends the geographic market businesses can serve.", ["2:First real transportation role outlined", "2:Second distinct role and business outcome", "2:Third distinct role and effect"]],
-  [4, "d", "Bananas are perishable and may spoil if temperature-controlled shipping fails, causing rejection abroad. Port or customs delays and high freight costs can also reduce freshness and profits.", ["3:First distinct cross-border banana distribution problem and consequence", "3:Second different explained challenge"]],
-  [5, "a.i", "CARICOM supports economic cooperation and the removal of some trade barriers among participating member states.", ["1:First recognised CARICOM function", "1:Second distinct function"]],
-  [5, "a.ii", "CARICOM membership expands access to regional customers and strengthens cooperation or collective bargaining in international trade.", ["1:First genuine membership benefit", "1:Second distinct benefit"]],
-  [5, "b", "Foreign direct investment is a cross-border investment giving an overseas investor a lasting ownership interest and influence in a host-country business.", ["1:Foreign source of investment", "1:Lasting business ownership or control element"]],
-  [5, "c", "Investors may be attracted by regional market access, investment incentives, affordable skilled labour and valuable natural or tourism resources.", ["1:First realistic Caribbean foreign-investment motive", "1:Second distinct motive", "1:Third distinct motive", "1:Fourth different motive"]],
-  [5, "d", "Educated and technically trained workers increase firms' productivity and attractiveness to investors, helping reduce unemployment. Entrepreneurship and digital skills also help citizens develop businesses and reduce dependence on imports.", ["2:First distinct human resource development strategy and targeted CARICOM economic problem", "2:Second distinct strategy and credible effect"]],
-  [5, "e", "An automated shoe-cutting machine increases precision and pieces produced per hour. Computer-aided design also speeds pattern changes and reduces material waste, enabling higher output.", ["3:First technology application in shoe manufacturing with detailed output mechanism", "3:Second DISTINCT technology application and production advantage"]]
-]);
-var POB_2022_JAN_P2_AUTHORED_SCHEME = buildPobFiveQuestionAuthoredRubric({
-  year: 2022,
-  sitting: "JAN",
-  sourcePages: 20,
-  sourceSha256: "3f83fa985f2dbddc332abb627c85f3eceaf73c4a25dcdb7c3d834a2ff8ceff62",
-  parts: PARTS3
-});
-var verifyPob2022JanP2AuthoredScheme = (paper = POB_2022_JAN_P2_AUTHORED_SCHEME) => verifyPobFiveQuestionAuthoredRubric(paper);
-
-// src/principlesOfBusiness/data/pobHistorical2022MjP2AuthoredScheme.js
-var pobHistorical2022MjP2AuthoredScheme_exports = {};
-__export(pobHistorical2022MjP2AuthoredScheme_exports, {
-  POB_2022_MJ_P2_AUTHORED_SCHEME: () => POB_2022_MJ_P2_AUTHORED_SCHEME,
-  verifyPob2022MjP2AuthoredScheme: () => verifyPob2022MjP2AuthoredScheme
-});
-var PARTS4 = Object.freeze([
-  [1, "a.i", "Joanne needs primary data gathered directly from potential buyers and secondary data already collected in published reports or databases.", ["1:Identifies primary data", "1:Identifies secondary data"]],
-  [1, "a.ii", "Primary data may come from questionnaires to local customers, while secondary data may come from existing market research or government statistics.", ["1:Suitable source of primary firsthand data", "1:Suitable different source of secondary published data"]],
-  [1, "b", "Joanne may establish the shop to earn income, achieve self-employment, satisfy unmet demand and follow her interest in cosmetics.", ["1:First valid start-up motivation", "1:Second distinct motivation", "1:Third different motivation", "1:Fourth distinct motive"]],
-  [1, "c", "She should investigate demand with prospective buyers, prepare a workable business plan including costs and marketing, and arrange suitable financing or registration before trading.", ["2:First sound start-up step identified and clearly outlined", "2:Second different developed establishment step", "2:Third distinct practical step explained"]],
-  [1, "d", "Short-term plans help Joanne manage immediate cash and restocking needs, preventing shortages. Long-term planning helps her budget for expansion and build a stable customer base over several years.", ["3:Short-term planning benefit with explanation specific to operating shop", "3:Long-term planning benefit explained"]],
-  [2, "a.i", "A simple contract is an enforceable agreement formed through offer, acceptance, consideration and intention to create legal relations without the special formality of a deed.", ["1:Identifies legally binding ordinary agreement", "1:Explains offer/acceptance/consideration or distinction from formal deed"]],
-  [2, "a.ii", "Specialty contracts, strictly speaking, are formal contracts executed as deeds or under seal where local law requires, usually evidenced in writing and delivered with intention to bind; some historical teaching materials classify formal hire-purchase agreements in this category.", ["2:First recognised formal or written characteristic explained", "2:Second distinct characteristic, such as signature/execution or legally specified form", "2:Third distinct legal feature, such as special deed formalities or effect on enforceability, qualified by jurisdiction"]],
-  [2, "b.i", "An offer is a definite proposal to contract on specified terms, intended to become binding if accepted.", ["1:Definite terms or proposal", "1:Binding intention upon acceptance"]],
-  [2, "b.ii", "A counteroffer changes terms in response to an earlier offer. It generally rejects the original offer and proposes new terms requiring acceptance.", ["1:Explains offer on revised terms", "1:Explains original offer is displaced or needs renewed assent"]],
-  [2, "c", "Parties can discharge a contract by complete performance, when all agreed duties are fulfilled, ending their mutual obligations.", ["1:Identifies a recognised discharge method", "1:Describes how it operates"]],
-  [2, "d.i", "Mark and Doris appear to have acted at cross purposes as to the identity of the car, a mutual misunderstanding or mutual mistake about the subject matter rather than proven fraud.", ["1:Identifies mutual mistake or misunderstanding about contractual subject matter"]],
-  [2, 
+  [1, "c", "Janice may offer financial consultancy, helping clients budget and plan borrowing, and business-plan advisory services, helping entrepreneurs evaluate cash flow and loan applications.", ["2:First credible financial service with its specific t

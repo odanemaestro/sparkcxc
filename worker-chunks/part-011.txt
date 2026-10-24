@@ -1,4 +1,1620 @@
-      {
+oda solution / oven cleaner (1)",
+                  "Neutral: table salt solution (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain why a person suffering from indigestion could take baking soda (sodium hydrogencarbonate).",
+              marks: 2,
+              objective: "3.6.2",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Indigestion is caused by excess stomach acid (1)",
+                  "baking soda is a base/alkali which neutralises the acid (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State the name of the process in (a) (ii) and the general word equation for it.",
+              marks: 2,
+              objective: "3.6.2",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Neutralisation (1)",
+                  "Acid + base \u2192 salt + water (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "Figure 7 shows two hazard symbols found on household chemicals.",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" width="300" height="150" role="img" aria-label="Two hazard symbols"><title>Two hazard symbols</title><rect width="300" height="150" fill="#fff" /><g transform="translate(20,5)"><svg viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="flammable hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><rect x="0" y="0" width="120" height="120" fill="#fff" /><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5" /><g transform="translate(-3.18 -3.8) scale(0.27)"><path d="M220 315C167 338 139 294 160 251C156 278 179 278 170 241C169 214 190 194 188 169C210 183 215 205 216 221C234 193 216 164 225 132C238 159 263 170 263 198C282 192 278 174 281 166C306 195 298 221 309 240C323 259 324 290 296 311C274 329 245 330 220 315Z" fill="black" stroke="black" stroke-width="1" /><path d="M227 313C207 301 199 284 210 268C208 280 224 281 222 260C221 249 232 238 232 226C245 241 243 257 249 266C260 252 255 239 258 231C282 254 288 287 270 304C259 315 245 319 227 313Z" fill="white" stroke="black" stroke-width="1" /><line x1="170" y1="340" x2="304" y2="340" stroke="black" stroke-width="3" /></g></g></svg></g><g transform="translate(160,5)"><svg viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="corrosive hazard symbol" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><rect x="0" y="0" width="120" height="120" fill="#fff" /><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="60,5 115,60 60,115 5,60" fill="#fff" stroke-width="2.5" /><polygon points="40,30 52,30 50,50 42,50" fill="#fff" /><polygon points="68,30 80,30 78,50 70,50" fill="#fff" /><path d="M46,53 v6 M74,53 v6" fill="none" stroke-width="2" /><rect x="30" y="78" width="60" height="10" fill="#000" /><path d="M38,65 q4,8 8,0 q4,-8 8,0" fill="none" stroke-width="1.5" /></g></svg></g><text x="80" y="145" text-anchor="middle" font-family="Times New Roman, serif" font-size="14" font-weight="bold" style="stroke:none;fill:#000">A</text><text x="220" y="145" text-anchor="middle" font-family="Times New Roman, serif" font-size="14" font-weight="bold" style="stroke:none;fill:#000">B</text></svg>`,
+          figure: "Figure 7. Hazard symbols",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "State the meaning of symbols A and B.",
+              marks: 2,
+              objective: "3.6.1",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "labels",
+                keys: [
+                  "A",
+                  "B"
+                ]
+              },
+              markScheme: {
+                points: [
+                  "A - flammable (catches fire easily) (1)",
+                  "B - corrosive (burns skin/destroys materials) (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State TWO precautions for the safe storage of household chemicals.",
+              marks: 2,
+              objective: "3.6.1",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Keep out of reach of children",
+                  "Store in original labelled containers",
+                  "Keep flammable chemicals away from heat/flames",
+                  "Store in a cool, dry, ventilated place",
+                  "Never store in food or drink bottles",
+                  "Do not mix bleach with ammonia"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Distinguish between soapy and soapless detergents in terms of how they are made and how they behave in hard water.",
+              marks: 2,
+              objective: "3.6.7",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Soap is made from animal fats/vegetable oils and an alkali, while soapless detergents are made from petroleum products (1)",
+                  "soap forms scum in hard water, while soapless detergents do not (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Suggest ONE environmental problem caused by non-biodegradable detergents.",
+              marks: 2,
+              objective: "3.6.7",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "They are not broken down by bacteria, so foam builds up in rivers (1), reducing oxygen and harming aquatic life / phosphates cause eutrophication (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M3-P2-07",
+      module: 3,
+      kind: "practical",
+      title: "Density and flotation",
+      totalMarks: 20,
+      profileMarks: {
+        KC: 3,
+        UK: 9,
+        XS: 8
+      },
+      topics: [
+        {
+          topic: 3,
+          title: "Water and the Aquatic Environment"
+        }
+      ],
+      objectives: [
+        "3.3.7",
+        "3.3.9"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Students measured the mass and volume of different-sized pieces of the same type of wood. Their results are shown in Table 3.",
+          svg: null,
+          figure: null,
+          table: {
+            title: "TABLE 3: MASS AND VOLUME OF WOOD SAMPLES",
+            headers: [
+              "Mass/g",
+              "12",
+              "24",
+              "36",
+              "48",
+              "60"
+            ],
+            rows: [
+              [
+                "Volume/cm\xB3",
+                "20",
+                "40",
+                "60",
+                "80",
+                "100"
+              ]
+            ],
+            source: null
+          },
+          items: [
+            {
+              label: "(i)",
+              prompt: "On the grid provided, plot a graph of mass against volume. Draw the line of best fit.",
+              marks: 5,
+              objective: "3.3.7",
+              profile: {
+                XS: 5
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "graph",
+                height: 320,
+                x: "Volume/cm\xB3",
+                y: "Mass/g"
+              },
+              markScheme: {
+                points: [
+                  "Points (20,12) (40,24) (60,36) (80,48) (100,60) plotted",
+                  "Axes labelled with units",
+                  "Suitable scale",
+                  "Straight line of best fit through origin"
+                ],
+                guidance: "2 marks for correct plotting of points (all points = 2; at least half = 1); 1 mark for both axes labelled with units; 1 mark for an appropriate scale (at least 75% of the grid used); 1 mark for a smooth line/curve joining the points",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Calculate the density of the wood. Show your working.",
+              marks: 2,
+              objective: "3.3.7",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "calculation",
+                height: 110
+              },
+              markScheme: {
+                points: [
+                  "Density = mass \xF7 volume = 60 \xF7 100 (1)",
+                  "= 0.6 g/cm\xB3 (1)"
+                ],
+                guidance: "1 mark for correct substitution/working; 1 mark for correct answer with unit",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Predict whether the wood will float or sink in water (density 1.0 g/cm\xB3). Give a reason.",
+              marks: 2,
+              objective: "3.3.7",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "It will float (1)",
+                  "because its density (0.6 g/cm\xB3) is less than that of water (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iv)",
+              prompt: "Describe how the volume of an irregularly shaped stone could be measured.",
+              marks: 3,
+              objective: "3.3.7",
+              profile: {
+                XS: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "Partly fill a measuring cylinder with water and record the volume (1)",
+                  "gently lower the stone on a thread into the water until fully immersed and record the new volume (1)",
+                  "the difference between the two readings is the volume of the stone (1)"
+                ],
+                guidance: "1 mark each (accept displacement can method)",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "Figure 8 shows an egg placed in fresh water (X) and in a concentrated salt solution (Y).",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 235" width="440" height="235" role="img" aria-label="An egg placed in two liquids" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>An egg placed in two liquids</title><rect x="0" y="0" width="440" height="235" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="60,40 60,180 180,180 180,40" fill="none"/><line x1="60" y1="40" x2="55" y2="36"/><line x1="60" y1="60" x2="180" y2="60" stroke-width="0.9"/><ellipse cx="120" cy="150" rx="14" ry="18" fill="#fff"/><text x="120" y="205" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">X</text><text x="120" y="222" text-anchor="middle" fill="#000" stroke="none" font-size="11">fresh water</text><polyline points="250,40 250,180 370,180 370,40" fill="none"/><line x1="250" y1="40" x2="245" y2="36"/><line x1="250" y1="60" x2="370" y2="60" stroke-width="0.9"/><ellipse cx="310" cy="75" rx="14" ry="18" fill="#fff"/><text x="310" y="205" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="14">Y</text><text x="310" y="222" text-anchor="middle" fill="#000" stroke="none" font-size="11">concentrated salt solution</text></g></svg>`,
+          figure: "Figure 8. An egg in two liquids",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Explain why the egg floats in Y but sinks in X.",
+              marks: 3,
+              objective: "3.3.7",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "The salt solution is denser than fresh water (1)",
+                  "so it provides a greater upthrust for the same volume displaced (1)",
+                  "in Y the upthrust equals the weight of the egg so it floats; in X the upthrust is less than its weight (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State Archimedes' principle.",
+              marks: 2,
+              objective: "3.3.7",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "When an object is wholly or partly immersed in a fluid, it experiences an upthrust (1)",
+                  "equal to the weight of fluid displaced (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Explain why ships have Plimsoll lines painted on their hulls.",
+              marks: 2,
+              objective: "3.3.7",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "They show the maximum safe loading depth (1)",
+                  "which varies with water density (fresh/salt) and season, preventing overloading and sinking (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Name ONE water safety device and state how it helps to save lives.",
+              marks: 1,
+              objective: "3.3.9",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Life jacket/life raft/inflatable tube - keeps a person afloat"
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M3-P2-08",
+      module: 3,
+      kind: "structured",
+      title: "Skeleton, muscles, forces and momentum",
+      totalMarks: 15,
+      profileMarks: {
+        KC: 5,
+        UK: 10,
+        XS: 0
+      },
+      topics: [
+        {
+          topic: 4,
+          title: "Forces"
+        }
+      ],
+      objectives: [
+        "3.4.7",
+        "3.4.8",
+        "3.4.5",
+        "3.4.3",
+        "3.4.2"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Figure 9 shows the bones and muscles of the human arm.",
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540" role="img" aria-label="Bones and muscles of the human arm"><title>Bones and muscles of the human arm</title><rect width="900" height="540" fill="white" /><g fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" font-family="Arial, Helvetica, sans-serif"><path d="M620 124C650 126 684 142 696 169C709 208 686 279 660 338C645 372 629 395 610 411C616 391 625 366 634 337L672 190C680 167 664 147 642 143Z" fill="#f3f3f3" stroke="#111" stroke-width="1.7" /><path d="M681 172C688 214 662 294 636 358" fill="none" stroke="#111" stroke-width="0.72" /><path d="M689 187C692 231 666 307 635 369" fill="none" stroke="#111" stroke-width="0.72" /><path d="M684 216C677 270 652 336 628 382" fill="none" stroke="#111" stroke-width="0.72" /><path d="M594 57C612 51 631 57 638 73C646 91 636 113 620 124L605 119C617 110 626 95 624 83C622 73 614 69 605 72 M620 124C608 135 593 128 596 116C597 108 603 105 610 106" fill="white" stroke="#161616" stroke-width="1.4" /><path d="M663 71C681 65 698 78 701 94C704 111 687 123 680 139C673 155 674 177 668 198L618 364C612 383 624 396 619 412C615 430 591 438 576 427C561 417 564 397 573 382C589 355 594 328 601 301L634 171C638 154 639 140 636 124C632 102 641 78 663 71Z" fill="white" stroke="#161616" stroke-width="2.15" /><path d="M660 85C648 101 652 117 655 133C658 148 653 172 648 194L610 337 M580 397C590 388 605 392 610 404C615 416 602 425 590 421" fill="none" stroke="#161616" stroke-width="1.1" /><path d="M579 414C575 429 559 437 546 435C517 431 487 439 451 445L316 467C299 470 284 466 282 455C281 446 293 441 307 442L449 429C494 424 533 424 550 412C556 405 558 397 565 395C563 406 566 414 579 414Z" fill="white" stroke="#161616" stroke-width="1.85" /><path d="M545 405C557 403 566 410 563 418C559 427 548 428 541 420C527 424 502 428 476 432L322 455C310 457 300 452 300 444C301 435 314 430 324 433L473 420C500 417 522 415 537 411Z" fill="white" stroke="#161616" stroke-width="1.85" /><path d="M320 442C366 440 421 431 472 427 M311 457C355 451 397 447 442 442" fill="none" stroke="#161616" stroke-width="0.95" /><path d="M579 414C587 420 601 421 610 413 M540 411C547 417 555 418 563 415" fill="none" stroke="#161616" stroke-width="1" /><path d="M632 72C631 103 637 132 626 162 M604 116C615 127 624 149 627 166" fill="none" stroke="#161616" stroke-width="1.25" /><path d="M627 157C619 175 603 194 589 223C572 260 559 304 551 345C551 357 549 370 544 380C564 361 583 329 596 293C612 251 624 201 627 157Z" fill="#f3f3f3" stroke="#161616" stroke-width="1.7" /><path d="M544 380C536 395 521 409 505 418 M551 370C549 389 531 406 514 419" fill="none" stroke="#161616" stroke-width="1.3" /><path d="M621 174C603 211 578 279 552 354" fill="none" stroke="#161616" stroke-width="0.72" /><path d="M616 190C605 223 582 299 552 363" fill="none" stroke="#161616" stroke-width="0.72" /><path d="M608 210C596 246 574 313 550 370" fill="none" stroke="#161616" stroke-width="0.72" /><path d="M599 234C587 271 569 323 547 375" fill="none" stroke="#161616" stroke-width="0.72" /><path d="M587 264C574 300 561 339 546 377" fill="none" stroke="#161616" stroke-width="0.72" /><ellipse cx="296" cy="446" rx="8" ry="7" fill="white" stroke="#161616" stroke-width="1.1" /><ellipse cx="292" cy="459" rx="8" ry="6" fill="white" stroke="#161616" stroke-width="1.1" /><ellipse cx="281" cy="449" rx="7" ry="6" fill="white" stroke="#161616" stroke-width="1.1" /><path d="M282 443C264 448 250 449 232 444C214 440 199 431 192 415C189 409 187 398 183 395C177 400 180 416 185 427C191 443 200 455 217 461C239 471 266 468 285 459" fill="white" stroke="#161616" stroke-width="1.75" /><path d="M192 409C198 428 213 441 233 447C250 453 264 454 278 452 M186 425C196 445 214 455 232 457 M254 434C262 432 266 427 270 424C278 426 277 433 268 439L257 444" fill="none" stroke="#161616" stroke-width="1.1" /><path d="M610 404C600 415 588 420 579 414M615 410C602 426 586 430 575 420" fill="none" stroke="#111" stroke-width="1.3" /><path d="M590 252H395" fill="none" stroke="#111" stroke-width="1.1" /><text x="375" y="259" fill="#111" stroke="none" font-size="24" text-anchor="end" style="stroke:none;fill:#111">P</text><path d="M678 254H790" fill="none" stroke="#111" stroke-width="1.1" /><text x="810" y="261" fill="#111" stroke="none" font-size="24" text-anchor="start" style="stroke:none;fill:#111">Q</text><path d="M650 225L739 142H790" fill="none" stroke="#111" stroke-width="1.1" /><text x="810" y="149" fill="#111" stroke="none" font-size="24" text-anchor="start" style="stroke:none;fill:#111">R</text><path d="M430 428L415 493" fill="none" stroke="#111" stroke-width="1.1" /><text x="412" y="521" fill="#111" stroke="none" font-size="24" text-anchor="middle" style="stroke:none;fill:#111">S</text></g></svg>',
+          figure: "Figure 9. The human arm",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Identify the muscles labelled P and Q and the bone labelled R.",
+              marks: 3,
+              objective: "3.4.7",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "labels",
+                keys: [
+                  "P",
+                  "Q",
+                  "R"
+                ]
+              },
+              markScheme: {
+                points: [
+                  "P - biceps",
+                  "Q - triceps",
+                  "R - humerus"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain how the arm is straightened.",
+              marks: 2,
+              objective: "3.4.8",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "The triceps (Q) contracts while the biceps (P) relaxes (1)",
+                  "pulling on the forearm bones so the arm straightens at the elbow (hinge joint); the muscles work as an antagonistic pair (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State TWO functions of the skeleton.",
+              marks: 2,
+              objective: "3.4.7",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Support",
+                  "Protection of organs",
+                  "Movement",
+                  "Breathing (rib cage)",
+                  "Production of blood cells"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "A truck of mass 3 000 kg moving at 10 m/s collides with a stationary car of mass 1 000 kg. The two vehicles move off together.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Calculate the momentum of the truck before the collision.",
+              marks: 2,
+              objective: "3.4.5",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "calculation",
+                height: 110
+              },
+              markScheme: {
+                points: [
+                  "p = mv = 3 000 \xD7 10 (1)",
+                  "= 30 000 kg m/s (1)"
+                ],
+                guidance: "1 mark for correct substitution/working; 1 mark for correct answer with unit",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Calculate the velocity of the truck and car immediately after the collision.",
+              marks: 2,
+              objective: "3.4.5",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "calculation",
+                height: 110
+              },
+              markScheme: {
+                points: [
+                  "Total momentum after = 30 000 kg m/s = (3 000 + 1 000) \xD7 v (1)",
+                  "v = 7.5 m/s (1)"
+                ],
+                guidance: "1 mark for correct substitution/working; 1 mark for correct answer with unit",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Explain why double-decker buses carry passengers upstairs but luggage below.",
+              marks: 2,
+              objective: "3.4.3",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Heavy loads placed low keep the centre of gravity low (1)",
+                  "so the bus is more stable and less likely to topple when turning (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain why passengers should wear seat belts.",
+              marks: 2,
+              objective: "3.4.2",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "When a car stops suddenly, passengers continue to move forward because of inertia (Newton's first law) (1)",
+                  "the seat belt provides a force to stop them hitting the windscreen/dashboard (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M3-P2-09",
+      module: 3,
+      kind: "practical",
+      title: "States of matter and changes of state",
+      totalMarks: 20,
+      profileMarks: {
+        KC: 7,
+        UK: 7,
+        XS: 6
+      },
+      topics: [
+        {
+          topic: 6,
+          title: "Household Chemicals"
+        }
+      ],
+      objectives: [
+        "3.6.3"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Kemar heated crushed ice in a beaker and recorded the temperature every minute. His results are shown in Table 4.",
+          svg: null,
+          figure: null,
+          table: {
+            title: "TABLE 4: TEMPERATURE OF ICE BEING HEATED",
+            headers: [
+              "Time/min",
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8"
+            ],
+            rows: [
+              [
+                "Temperature/\xB0C",
+                "-10",
+                "0",
+                "0",
+                "0",
+                "20",
+                "40",
+                "60",
+                "80",
+                "95"
+              ]
+            ],
+            source: null
+          },
+          items: [
+            {
+              label: "(i)",
+              prompt: "On the grid provided, plot a graph of temperature against time. Join the points with straight lines.",
+              marks: 5,
+              objective: "3.6.3",
+              profile: {
+                XS: 5
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "graph",
+                height: 320,
+                x: "Time/min",
+                y: "Temperature/\xB0C"
+              },
+              markScheme: {
+                points: [
+                  "All nine points correctly plotted",
+                  "Axes labelled with units",
+                  "Suitable scale including negative values",
+                  "Points joined with straight lines"
+                ],
+                guidance: "2 marks for correct plotting of points (all points = 2; at least half = 1); 1 mark for both axes labelled with units; 1 mark for an appropriate scale (at least 75% of the grid used); 1 mark for a smooth line/curve joining the points",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain why the temperature remained constant between 1 and 3 minutes.",
+              marks: 3,
+              objective: "3.6.3",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "The ice was melting (changing state) (1)",
+                  "the heat energy supplied was used to overcome the forces of attraction between the particles (1)",
+                  "rather than to increase the kinetic energy of the particles, so the temperature did not rise (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State ONE source of error in Kemar's experiment.",
+              marks: 1,
+              objective: "3.6.3",
+              profile: {
+                XS: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Heat gained from the surroundings / uneven heating",
+                  "Not stirring the ice",
+                  "Thermometer touching the bottom of the beaker",
+                  "Parallax error in reading the thermometer"
+                ],
+                guidance: "Any one, 1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "Figure 10 shows the arrangement of particles in three states of matter.",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 145" width="420" height="145" role="img" aria-label="Particles in three states"><rect width="420" height="145" fill="#fff"/><g transform="translate(5,0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 110" width="130" height="110" role="img" aria-label="particles in a solid" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>particles in a solid</title><rect x="0" y="0" width="130" height="110" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="10" width="110" height="90" fill="#fff"/><circle cx="25" cy="25" r="8" fill="#fff"/><circle cx="25" cy="45" r="8" fill="#fff"/><circle cx="25" cy="65" r="8" fill="#fff"/><circle cx="25" cy="85" r="8" fill="#fff"/><circle cx="45" cy="25" r="8" fill="#fff"/><circle cx="45" cy="45" r="8" fill="#fff"/><circle cx="45" cy="65" r="8" fill="#fff"/><circle cx="45" cy="85" r="8" fill="#fff"/><circle cx="65" cy="25" r="8" fill="#fff"/><circle cx="65" cy="45" r="8" fill="#fff"/><circle cx="65" cy="65" r="8" fill="#fff"/><circle cx="65" cy="85" r="8" fill="#fff"/><circle cx="85" cy="25" r="8" fill="#fff"/><circle cx="85" cy="45" r="8" fill="#fff"/><circle cx="85" cy="65" r="8" fill="#fff"/><circle cx="85" cy="85" r="8" fill="#fff"/><circle cx="105" cy="25" r="8" fill="#fff"/><circle cx="105" cy="45" r="8" fill="#fff"/><circle cx="105" cy="65" r="8" fill="#fff"/><circle cx="105" cy="85" r="8" fill="#fff"/></g></svg></g><g transform="translate(145,0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 110" width="130" height="110" role="img" aria-label="particles in a liquid" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>particles in a liquid</title><rect x="0" y="0" width="130" height="110" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="10" width="110" height="90" fill="#fff"/><circle cx="24" cy="88" r="8" fill="#fff"/><circle cx="42" cy="86" r="8" fill="#fff"/><circle cx="60" cy="88" r="8" fill="#fff"/><circle cx="78" cy="86" r="8" fill="#fff"/><circle cx="96" cy="88" r="8" fill="#fff"/><circle cx="32" cy="70" r="8" fill="#fff"/><circle cx="50" cy="69" r="8" fill="#fff"/><circle cx="70" cy="71" r="8" fill="#fff"/><circle cx="89" cy="70" r="8" fill="#fff"/><circle cx="104" cy="72" r="8" fill="#fff"/><circle cx="40" cy="52" r="8" fill="#fff"/><circle cx="60" cy="53" r="8" fill="#fff"/><circle cx="80" cy="55" r="8" fill="#fff"/><circle cx="25" cy="55" r="8" fill="#fff"/></g></svg></g><g transform="translate(285,0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 110" width="130" height="110" role="img" aria-label="particles in a gas" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>particles in a gas</title><rect x="0" y="0" width="130" height="110" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="10" width="110" height="90" fill="#fff"/><circle cx="25" cy="25" r="8" fill="#fff"/><circle cx="80" cy="30" r="8" fill="#fff"/><circle cx="55" cy="60" r="8" fill="#fff"/><circle cx="100" cy="80" r="8" fill="#fff"/><circle cx="30" cy="85" r="8" fill="#fff"/><circle cx="95" cy="20" r="8" fill="#fff"/></g></svg></g><text x="70" y="135" text-anchor="middle" font-family="Times New Roman, serif" font-size="14" font-weight="bold">X</text><text x="210" y="135" text-anchor="middle" font-family="Times New Roman, serif" font-size="14" font-weight="bold">Y</text><text x="350" y="135" text-anchor="middle" font-family="Times New Roman, serif" font-size="14" font-weight="bold">Z</text></svg>`,
+          figure: "Figure 10. Arrangement of particles",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Identify the states of matter X, Y and Z.",
+              marks: 3,
+              objective: "3.6.3",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "labels",
+                keys: [
+                  "X",
+                  "Y",
+                  "Z"
+                ]
+              },
+              markScheme: {
+                points: [
+                  "X - solid",
+                  "Y - liquid",
+                  "Z - gas"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Compare the particles in a solid and a gas in terms of their movement and the forces of attraction between them.",
+              marks: 2,
+              objective: "3.6.3",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Solid particles only vibrate about fixed positions while gas particles move quickly and randomly in all directions (1)",
+                  "forces of attraction are strong in a solid and very weak in a gas (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Name the change of state in EACH of the following: water vapour forming droplets on a cold glass; moth balls getting smaller in a cupboard.",
+              marks: 2,
+              objective: "3.6.3",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Condensation (1)",
+                  "Sublimation (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State what is meant by 'plasma' and give ONE example.",
+              marks: 2,
+              objective: "3.6.3",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Plasma is the fourth state of matter - a very hot, ionised gas containing charged particles (1)",
+                  "e.g. lightning, the sun/stars, neon lights, plasma TV (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Explain why sweat evaporating from the skin has a cooling effect.",
+              marks: 2,
+              objective: "3.6.3",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "The particles with the most energy escape from the surface of the liquid (1)",
+                  "taking latent heat from the skin, so the skin cools (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M3-P2-10",
+      module: 3,
+      kind: "structured",
+      title: "Water pollution, fishing and diving",
+      totalMarks: 15,
+      profileMarks: {
+        KC: 4,
+        UK: 11,
+        XS: 0
+      },
+      topics: [
+        {
+          topic: 3,
+          title: "Water and the Aquatic Environment"
+        }
+      ],
+      objectives: [
+        "3.3.5",
+        "3.3.4",
+        "3.3.8",
+        "3.3.10"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Fishermen in a coastal village report a large number of dead fish after heavy rains washed fertiliser from nearby farms into the bay.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Name the process that results when fertilisers enter a body of water.",
+              marks: 1,
+              objective: "3.3.5",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Eutrophication"
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain how fertilisers washed into the bay lead to the death of fish.",
+              marks: 4,
+              objective: "3.3.5",
+              profile: {
+                UK: 4
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 8
+              },
+              markScheme: {
+                points: [
+                  "Nitrates/phosphates cause rapid growth of algae (algal bloom) (1)",
+                  "the algae block light so plants below die, and the algae themselves die (1)",
+                  "bacteria decompose the dead plants and algae (1)",
+                  "the bacteria use up the dissolved oxygen, so the fish suffocate (1)"
+                ],
+                guidance: "4 marks for a full explanation; 3 satisfactory; 2 partial; 1 limited",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State TWO other sources of water pollution.",
+              marks: 2,
+              objective: "3.3.5",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Oil spills",
+                  "Sewage",
+                  "Pesticides",
+                  "Industrial waste",
+                  "Plastics/garbage",
+                  "Sediment from erosion"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Describe ONE method of fishing used locally and state ONE disadvantage of it.",
+              marks: 2,
+              objective: "3.3.4",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "e.g. Trawling - a large net is dragged behind a boat (1); it damages the sea bed and catches unwanted species/young fish (1)",
+                  "Long-lining - a long line with many baited hooks (1); may catch turtles, sharks and birds as bycatch (1)",
+                  "Fish pots - wire traps with a funnel entrance (1); lost pots continue to trap fish (ghost fishing) (1)"
+                ],
+                guidance: "1 mark for description; 1 mark for disadvantage",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain how sonar helps fishermen.",
+              marks: 2,
+              objective: "3.3.8",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Sonar sends out pulses of sound which reflect off the sea bed or shoals of fish (1)",
+                  "the time taken for the echo to return shows the depth/position of the fish (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Explain why a scuba diver who returns to the surface too quickly may suffer from 'the bends'.",
+              marks: 3,
+              objective: "3.3.10",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "At depth the high pressure causes more nitrogen to dissolve in the blood (1)",
+                  "if the diver rises quickly the pressure falls rapidly (1)",
+                  "the nitrogen comes out of solution as bubbles in the blood and joints, causing pain (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State ONE way in which decompression sickness is treated.",
+              marks: 1,
+              objective: "3.3.10",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Placing the diver in a decompression (hyperbaric) chamber."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M3-P2-11",
+      module: 3,
+      kind: "practical",
+      title: "Mixtures and separation techniques",
+      totalMarks: 20,
+      profileMarks: {
+        KC: 4,
+        UK: 3,
+        XS: 13
+      },
+      topics: [
+        {
+          topic: 6,
+          title: "Household Chemicals"
+        }
+      ],
+      objectives: [
+        "3.6.5",
+        "3.6.1",
+        "3.6.4"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Samantha was given a mixture of sand, salt and water.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Outline the steps Samantha should use to obtain dry salt and dry sand from the mixture.",
+              marks: 4,
+              objective: "3.6.5",
+              profile: {
+                XS: 4
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 8
+              },
+              markScheme: {
+                points: [
+                  "Stir the mixture to make sure all the salt dissolves (1)",
+                  "Filter the mixture - the sand remains on the filter paper as residue (1)",
+                  "Wash and dry the sand (1)",
+                  "Evaporate the filtrate (salt solution) to dryness/crystallise to obtain the salt (1)"
+                ],
+                guidance: "1 mark each for any four steps in a logical order",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Draw a labelled diagram of the apparatus used for filtration.",
+              marks: 4,
+              objective: "3.6.5",
+              profile: {
+                XS: 4
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "drawing",
+                height: 240
+              },
+              markScheme: {
+                points: [
+                  "Funnel with filter paper drawn correctly (1)",
+                  "Beaker/flask to collect the filtrate (1)",
+                  "Labels: filter paper, residue, filtrate, funnel (any three) (1)",
+                  "Clean lines, drawn with a ruler, appropriate title (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "Figure 11 shows a chromatogram of three food colourings, X, Y and Z.",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 270" width="360" height="270" role="img" aria-label="A paper chromatogram" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>A paper chromatogram</title><rect x="0" y="0" width="360" height="270" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="120" y="20" width="120" height="220" fill="#fff"/><line x1="120" y1="200" x2="240" y2="200" stroke-width="0.8" stroke-dasharray="4 3"/><text x="250" y="204" text-anchor="start" fill="#000" stroke="none" font-size="11">start line</text><line x1="120" y1="45" x2="240" y2="45" stroke-width="0.8" stroke-dasharray="2 3"/><text x="250" y="49" text-anchor="start" fill="#000" stroke="none" font-size="11">solvent front</text><circle cx="150" cy="200" r="3" fill="#000" stroke-width="0.5"/><ellipse cx="150" cy="150" rx="7" ry="5" fill="#fff"/><ellipse cx="150" cy="90" rx="7" ry="5" fill="#fff"/><circle cx="180" cy="200" r="3" fill="#000" stroke-width="0.5"/><ellipse cx="180" cy="150" rx="7" ry="5" fill="#fff"/><circle cx="210" cy="200" r="3" fill="#000" stroke-width="0.5"/><ellipse cx="210" cy="120" rx="7" ry="5" fill="#fff"/><ellipse cx="210" cy="70" rx="7" ry="5" fill="#fff"/><text x="150" y="262" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="12">X</text><text x="180" y="262" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="12">Y</text><text x="210" y="262" text-anchor="middle" fill="#000" stroke="none" font-weight="bold" font-size="12">Z</text><line x1="110" y1="225" x2="250" y2="225" stroke-width="0.8"/></g></svg>`,
+          figure: "Figure 11. Paper chromatogram",
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Which food colouring contains the MOST dyes?",
+              marks: 1,
+              objective: "3.6.5",
+              profile: {
+                UK: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "X or Z (two dyes each) - accept either"
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Explain why the start line must be drawn in pencil and not ink.",
+              marks: 2,
+              objective: "3.6.5",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Ink contains dyes which would dissolve in the solvent and separate (1)",
+                  "which would mix with/confuse the results; pencil (graphite) does not dissolve (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State ONE everyday example of chromatography in the home.",
+              marks: 1,
+              objective: "3.6.5",
+              profile: {
+                KC: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Colours bleeding/running from clothes in the laundry."
+                ],
+                guidance: "1 mark",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "A student wants to find out which solvent is BEST for removing ballpoint ink stains from cotton cloth. She has water, methylated spirit, acetone and vinegar.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "State a suitable hypothesis.",
+              marks: 2,
+              objective: "3.6.1",
+              profile: {
+                XS: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Methylated spirit (an organic solvent) will remove ballpoint ink stains better than water, acetone or vinegar."
+                ],
+                guidance: "1 mark for a clearly stated hypothesis; 1 mark for a testable hypothesis",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State TWO variables which should be kept constant.",
+              marks: 2,
+              objective: "3.6.1",
+              profile: {
+                XS: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Size/age of the ink stain",
+                  "Type of cloth",
+                  "Volume of solvent",
+                  "Time of soaking/rubbing"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "State ONE safety precaution when using acetone.",
+              marks: 1,
+              objective: "3.6.1",
+              profile: {
+                XS: 1
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 2
+              },
+              markScheme: {
+                points: [
+                  "Keep away from flames (flammable)",
+                  "Use in a well-ventilated area",
+                  "Wear gloves/goggles"
+                ],
+                guidance: "Any one, 1 mark",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iv)",
+              prompt: "Distinguish between a solution and a suspension.",
+              marks: 3,
+              objective: "3.6.4",
+              profile: {
+                KC: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "In a solution the solute particles are dissolved and too small to be seen; in a suspension the particles are large and visible (1)",
+                  "a solution does not settle but a suspension settles on standing (1)",
+                  "a solution passes through filter paper completely, while the particles of a suspension are trapped (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "IS-M3-P2-12",
+      module: 3,
+      kind: "structured",
+      title: "Pollution, waste and materials",
+      totalMarks: 15,
+      profileMarks: {
+        KC: 2,
+        UK: 13,
+        XS: 0
+      },
+      topics: [
+        {
+          topic: 7,
+          title: "Pollutants and Environment"
+        },
+        {
+          topic: 5,
+          title: "Metals and Non-metals"
+        }
+      ],
+      objectives: [
+        "3.7.1",
+        "3.7.3",
+        "3.7.2",
+        "3.5.4",
+        "3.5.3"
+      ],
+      parts: [
+        {
+          label: "(a)",
+          context: "Community A is a farming village while Community B is next to an industrial estate with a landfill.",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "State ONE likely air pollutant in EACH community and its source.",
+              marks: 2,
+              objective: "3.7.1",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Community A: pesticide sprays / dust from ploughing / smoke from burning crop residue (1)",
+                  "Community B: sulphur dioxide/smoke from factories, methane or smoke from the landfill (1)"
+                ],
+                guidance: "1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "State TWO effects of air pollution on human health.",
+              marks: 2,
+              objective: "3.7.1",
+              profile: {
+                KC: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Asthma",
+                  "Bronchitis/respiratory infections",
+                  "Lung cancer",
+                  "Emphysema",
+                  "Allergies",
+                  "Eye irritation"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            },
+            {
+              label: "(iii)",
+              prompt: "Explain why burning plastics at the landfill is harmful.",
+              marks: 2,
+              objective: "3.7.3",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Burning plastics releases toxic gases such as dioxins (1)",
+                  "which cause respiratory illness and cancer and pollute the air (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(b)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Justify the importance of proper garbage collection and disposal in a community.",
+              marks: 3,
+              objective: "3.7.2",
+              profile: {
+                UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
+              },
+              markScheme: {
+                points: [
+                  "It prevents breeding of pests such as rats, flies and mosquitoes which spread disease (1)",
+                  "it prevents pollution of land, surface water and groundwater (1)",
+                  "it maintains the beauty of the area/tourism and prevents blocked drains and flooding (1)"
+                ],
+                guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
+                alternatives: null
+              }
+            },
+            {
+              label: "(ii)",
+              prompt: "Suggest TWO ways households can reduce the amount of waste they produce.",
+              marks: 2,
+              objective: "3.7.2",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Refuse unnecessary packaging/plastic bags",
+                  "Reuse containers",
+                  "Recycle plastic, glass and paper",
+                  "Compost kitchen waste",
+                  "Repair items instead of discarding"
+                ],
+                guidance: "Any two, 1 mark each",
+                alternatives: null
+              }
+            }
+          ]
+        },
+        {
+          label: "(c)",
+          context: "",
+          svg: null,
+          figure: null,
+          table: null,
+          items: [
+            {
+              label: "(i)",
+              prompt: "Explain why stainless steel is preferred to iron for making kitchen sinks.",
+              marks: 2,
+              objective: "3.5.4",
+              profile: {
+                UK: 2
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 4
+              },
+              markScheme: {
+                points: [
+                  "Stainless steel is an alloy containing chromium/nickel which does not rust (1)",
+                  "so it stays clean, hygienic and lasts longer than iron, which would rust in the wet conditions (1)"
+                ],
+                guidance: "2 marks for a full outline; 1 mark for a partial outline",
+                alternatives: null
+              }
+            },
+            {
               label: "(ii)",
               prompt: "State ONE advantage and ONE disadvantage of using aluminium cooking pots.",
               marks: 2,
@@ -4190,1026 +5806,4 @@ var englishAPaper2ExpansionSets = Object.freeze([
         title: "Why Some Commuters Choose Park-and-Ride",
         paragraphs: [
           "Park-and-ride systems allow drivers to leave their vehicles at designated sites and continue into busy town centres by bus or shuttle. They are usually introduced where traffic congestion and limited parking make central areas difficult to reach.",
-          "The system can reduce the number of vehicles entering the busiest streets, lower parking demand and make travel times more predictable. It may also reduce fuel use when commuters avoid long periods of slow-moving traffic.",
-          "Success depends on convenience. If the parking site feels unsafe, buses are infrequent or the total journey takes much longer than driving, commuters are unlikely to switch.",
-          "Good schemes therefore provide secure parking, clear schedules and frequent service during peak hours. Some also allow one ticket to cover both parking and the shuttle.",
-          "Park-and-ride is not a complete solution to congestion, but it can be useful when it fits into a wider transport plan that includes reliable public transport and safe walking routes."
-        ]
-      }, { wordLimit: 120, rubric: summaryRubric }),
-      task("EA-P2-E-M1-E", 1, "exposition", "Informative exposition", "Write a REPORT of approximately 250-300 words for your student council explaining the results below and recommending action.", {
-        situation: ["A survey of 420 students found that 46% travel by bus, 28% by private car, 18% walk and 8% use other methods.", "Thirty-seven percent of bus users reported arriving late at least once per week.", "The school gate is most congested between 7:35 a.m. and 7:50 a.m.", "Two nearby bus operators are willing to discuss adjusted arrival times."],
-        role: "You are the student council research officer."
-      }, { wordRange: [250, 300], format: "Report", rubric: expositionRubric }),
-      task("EA-P2-E-M2-S", 2, "summary", "Literary summary", "Read the extract. In NOT MORE THAN 120 words, summarise why Kareem wants to sell the radio and what changes his mind.", {
-        title: "Grandfather's Radio",
-        paragraphs: [
-          "Kareem considered the old radio useless. It occupied half a shelf, produced a faint hum and needed a careful tap before one speaker worked. When his mother suggested selling it at the community sale, he agreed immediately.",
-          "On Saturday morning he carried it outside and attached a price tag. An older man stopped, smiled and asked whether it still received the regional cricket broadcast. Kareem shrugged.",
-          "His grandfather, who had been arranging books nearby, answered instead. 'That radio carried the 1984 final into this house,' he said. Soon three neighbours were arguing cheerfully about who had shouted loudest that day.",
-          "Kareem plugged the radio into an extension cord. Static filled the yard, then a commentator's voice broke through. His grandfather became silent.",
-          "Kareem removed the price tag. 'Maybe we can sell the other things first,' he said."
-        ]
-      }, { wordLimit: 120, rubric: summaryRubric }),
-      task("EA-P2-E-M2-C1", 2, "literary", "Creative writing choice 1", "Write a short story of approximately 400-450 words ending with: 'The old photograph finally made sense.'", null, { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: literaryRubric }),
-      task("EA-P2-E-M2-C2", 2, "literary", "Creative writing choice 2", "Write a short story of approximately 400-450 words in which a broken object leads two people to discover something important about each other.", null, { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: literaryRubric }),
-      task("EA-P2-E-M3-S", 3, "summary", "Persuasive summary", "Read the persuasive extract. In NOT MORE THAN 120 words, summarise the writer's position, reasons and proposed limits.", {
-        title: "Keep Cash as an Option",
-        paragraphs: [
-          "Businesses should be encouraged to accept digital payments, but cash should remain an option for essential goods and services. A completely cashless system may be convenient for some customers while excluding others.",
-          "Digital payments can be fast, reduce the need to carry large sums and make record-keeping easier. Yet they depend on electricity, devices, networks and bank access. Service disruptions can leave customers unable to pay even when they have money available.",
-          "Older people, visitors and persons without reliable banking access may also be disadvantaged. For essential services such as transport, pharmacies and basic food shops, removing cash entirely creates unnecessary risk.",
-          "The sensible approach is choice. Businesses can promote secure digital payment while maintaining a reasonable cash option, especially for essential transactions."
-        ]
-      }, { wordLimit: 120, rubric: summaryRubric }),
-      task("EA-P2-E-M3-E", 3, "persuasive", "Persuasive speech", "Write a SPEECH of approximately 300-350 words to your class giving your views on the statement: 'Students should be allowed to use artificial intelligence tools for schoolwork if they explain how they used them.'", null, { wordRange: [300, 350], format: "Speech", rubric: persuasiveRubric })
-    ])
-  }),
-  Object.freeze({
-    id: "EA-P2-F",
-    title: "Practice Paper F",
-    description: "Health, education and community responsibility",
-    tasks: Object.freeze([
-      task("EA-P2-F-M1-S", 1, "summary", "Informative summary", "Read the article carefully. Write a summary in NOT MORE THAN 120 words in ONE paragraph.", {
-        title: "Making School Water Stations Work",
-        paragraphs: [
-          "Installing drinking-water stations at school seems simple, but keeping them useful requires planning. Schools often introduce them to reduce plastic bottle waste and make safe drinking water easier to access.",
-          "Location matters. A station hidden in one building may be ignored, while one placed near a busy corridor may create long queues. Maintenance is equally important because filters, taps and drains need regular attention.",
-          "Students are more likely to use the stations when they trust the water quality and when bottles can be filled quickly. Clear cleaning schedules and visible inspection records can build confidence.",
-          "Some schools combine the stations with reusable-bottle campaigns. This can reduce litter, but only if students can afford bottles or receive low-cost alternatives.",
-          "A successful programme therefore depends not only on buying equipment but also on sensible placement, maintenance, communication and fair access."
-        ]
-      }, { wordLimit: 120, rubric: summaryRubric }),
-      task("EA-P2-F-M1-E", 1, "exposition", "Informative exposition", "Write an ARTICLE of approximately 250-300 words for the school website explaining the proposed water-station programme below and how students can help it succeed.", {
-        situation: ["Three refill stations will be installed next month.", "Locations: canteen, science block and sports area.", "Filters will be checked monthly.", "Students should use reusable bottles where possible.", "The Environmental Club will monitor litter and report faults using a QR form."],
-        role: "You are the Environmental Club communications officer."
-      }, { wordRange: [250, 300], format: "Article", rubric: expositionRubric }),
-      task("EA-P2-F-M2-S", 2, "summary", "Literary summary", "Read the extract. In NOT MORE THAN 120 words, summarise the conflict faced by Priya and how she resolves it.", {
-        title: "The Team List",
-        paragraphs: [
-          "Priya had spent two weeks practising for the relay team. When the final list appeared, her name was missing. Her friend Dani was selected instead.",
-          "For the rest of lunch Priya barely spoke. She knew Dani had trained hard, but disappointment turned every congratulation she heard into an irritation.",
-          "After school, Coach Bennett asked Priya to help time the runners. She almost refused. Then she noticed Dani rubbing one ankle and trying not to limp.",
-          "Priya finished the timing sheet, walked over and showed Dani how she had been stretching before practice. 'It helped me,' she said.",
-          "Two days later the coach added Priya as reserve. She smiled at the list, but the better feeling came when Dani crossed the track and thanked her."
-        ]
-      }, { wordLimit: 120, rubric: summaryRubric }),
-      task("EA-P2-F-M2-C1", 2, "literary", "Creative writing choice 1", "Write a short story of approximately 400-450 words beginning: 'Everyone in the room heard the announcement except me.'", null, { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: literaryRubric }),
-      task("EA-P2-F-M2-C2", 2, "literary", "Creative writing choice 2", "Write a short story of approximately 400-450 words in which a competition produces an unexpected friendship.", null, { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: literaryRubric }),
-      task("EA-P2-F-M3-S", 3, "summary", "Persuasive summary", "Read the persuasive extract. In NOT MORE THAN 120 words, summarise the writer's argument and the conditions attached to the proposal.", {
-        title: "Teach First Aid to Every Student",
-        paragraphs: [
-          "Basic first-aid training should be part of secondary education. Students spend much of their day in schools, sports facilities and public spaces where minor injuries and emergencies can occur before a trained adult reaches the scene.",
-          "The goal is not to turn teenagers into medical professionals. It is to teach safe, limited actions: how to call for help, respond to choking, control simple bleeding and recognise when not to move an injured person.",
-          "Training should be practical and refreshed regularly. Schools could work with health agencies or certified organisations so that students learn current procedures rather than informal advice.",
-          "Time is always a concern, but a short annual session could fit into health, physical education or orientation programmes. Knowing what to do in the first few minutes of an emergency is a useful life skill, not an optional extra."
-        ]
-      }, { wordLimit: 120, rubric: summaryRubric }),
-      task("EA-P2-F-M3-E", 3, "persuasive", "Letter to the editor", "Write a LETTER TO THE EDITOR of approximately 300-350 words giving your views on the statement: 'Basic first-aid training should be compulsory for all secondary-school students.'", null, { wordRange: [300, 350], format: "Letter to the editor", rubric: persuasiveRubric })
-    ])
-  })
-]);
-
-// src/englishA/data/englishAPaper2Bank.js
-var ENGLISH_A_PAPER2_DURATION_SECONDS = 165 * 60;
-var ENGLISH_A_PAPER2_MODULES = Object.freeze({
-  1: "Informative Discourse",
-  2: "Literary Discourse",
-  3: "Persuasive Discourse"
-});
-var rubrics = Object.freeze({
-  summary: {
-    marks: 10,
-    criteria: [
-      "Select the essential ideas accurately.",
-      "Use concise continuous prose in your own words.",
-      "Organise the information logically.",
-      "Use clear Standard English with accurate grammar, spelling and punctuation."
-    ]
-  },
-  exposition: {
-    marks: 30,
-    criteria: [
-      "Use the required format and address the stated audience and purpose.",
-      "Select all relevant information from the stimulus.",
-      "Develop and organise ideas clearly and concisely.",
-      "Use an appropriate tone, register and vocabulary.",
-      "Use accurate Standard English, paragraphs, spelling and punctuation."
-    ]
-  },
-  literary: {
-    marks: 30,
-    criteria: [
-      "Use the stimulus or opening condition meaningfully.",
-      "Develop a coherent plot, setting, character and conflict.",
-      "Control point of view, pace and paragraphing.",
-      "Use effective descriptive and narrative language.",
-      "Use accurate Standard English; dialect may be used naturally in dialogue."
-    ]
-  },
-  persuasive: {
-    marks: 30,
-    criteria: [
-      "Take a clear position suited to the task and audience.",
-      "Develop relevant reasons with examples or evidence.",
-      "Organise the argument logically and address an opposing view where useful.",
-      "Use persuasive language and an appropriate register.",
-      "Use accurate Standard English, paragraphs, spelling and punctuation."
-    ]
-  }
-});
-function task2(id, module, kind, title, instructions, stimulus, extra = {}) {
-  return Object.freeze({ id, module, kind, title, instructions, stimulus, ...extra });
-}
-var englishAPaper2CoreSets = Object.freeze([
-  Object.freeze({
-    id: "EA-P2-A",
-    title: "Practice Paper A",
-    description: "Community, culture and responsible technology",
-    tasks: Object.freeze([
-      task2(
-        "EA-P2-A-M1-S",
-        1,
-        "summary",
-        "Informative summary",
-        "Read the article carefully. Write a summary in NOT MORE THAN 120 words in ONE paragraph. Use your own words as far as possible and include the main points.",
-        {
-          title: "Community Gardens: Small Spaces, Wider Benefits",
-          paragraphs: [
-            "Across several Caribbean towns, community gardens are appearing on unused lots beside schools, churches and housing schemes. Some began simply as attempts to grow seasoning and vegetables, but many have become wider community projects.",
-            "A well-run garden can reduce household spending by providing fresh produce close to home. It can also improve access to foods that may be expensive or difficult to find. Organisers stress, however, that a garden does not become productive merely because seeds are planted. Reliable water, suitable soil, regular maintenance and clear responsibility for shared tools are all necessary.",
-            "Schools that participate often use the plots for practical lessons. Students can measure growth, compare soil conditions and observe insects. Older residents sometimes contribute knowledge about planting seasons, composting and traditional crops, so the garden becomes a place where different generations work together.",
-            "There are challenges. Land may be temporary, volunteers may lose interest and theft can discourage members. Successful groups usually create a schedule, keep records and agree from the beginning how produce will be shared. Some also sell a small portion of the harvest to pay for seeds and repairs.",
-            "The greatest benefit may be social. People who once passed one another without speaking begin to plan, solve problems and celebrate harvests together. The garden therefore produces more than food: it can also strengthen a sense of responsibility for the neighbourhood."
-          ]
-        },
-        { wordLimit: 120, rubric: rubrics.summary }
-      ),
-      task2(
-        "EA-P2-A-M1-E",
-        1,
-        "exposition",
-        "Informative exposition",
-        "Study the situation, then write a FORMAL EMAIL of approximately 250-300 words to the school principal. Explain the problem, present the relevant information and recommend practical action.",
-        {
-          situation: [
-            "Students have complained that the school library closes at 3:00 p.m., although many students remain on campus until 4:30 p.m. for clubs and sports.",
-            "A student survey found that 68% of respondents would use the library after 3:00 p.m. at least twice per week.",
-            "The librarian is willing to remain until 4:30 p.m. on Tuesdays and Thursdays if one additional staff member is assigned.",
-            "The student council proposes a six-week trial and will help publicise the service and collect usage data."
-          ],
-          role: "You are the secretary of the student council."
-        },
-        { wordRange: [250, 300], format: "Formal email", rubric: rubrics.exposition }
-      ),
-      task2(
-        "EA-P2-A-M2-S",
-        2,
-        "summary",
-        "Literary summary",
-        "Read the literary extract. In NOT MORE THAN 120 words, summarise the change in Joel's attitude and the events that cause it.",
-        {
-          title: "The Last Bus",
-          paragraphs: [
-            "Joel had complained from the moment the bus left the terminal. The seat was too narrow, the rain too loud and the journey too slow. He had wanted his mother to send money for a taxi, but she had replied with one sentence: 'Take the bus and pay attention.'",
-            "At the third stop, an elderly man climbed aboard carrying two bags and a folded umbrella. No seat remained. Joel looked quickly through the wet window, pretending not to notice. Before he could settle back, a small girl across the aisle stood and offered her place.",
-            "The man thanked her and sat. Ten minutes later the bus stopped suddenly. One of the girl's schoolbooks slid beneath Joel's seat. He picked it up. On the cover was the name of the same primary school his mother had attended. Inside, the girl had written a list titled 'Things Grandma says I must never forget'. The first item read: Make room for people before you make excuses for yourself.",
-            "Joel stared at the sentence until the bus reached the next stop. Then he stood, lifted the man's bags and carried them to the door. When he returned to his seat, he sent his mother a message: 'I paid attention.'"
-          ]
-        },
-        { wordLimit: 120, rubric: rubrics.summary }
-      ),
-      task2(
-        "EA-P2-A-M2-C1",
-        2,
-        "literary",
-        "Creative writing choice 1",
-        "Write a short story of approximately 400-450 words that ends with the sentence: 'Only then did I understand why the light had been left on.'",
-        null,
-        { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: rubrics.literary }
-      ),
-      task2(
-        "EA-P2-A-M2-C2",
-        2,
-        "literary",
-        "Creative writing choice 2",
-        "Write a short story of approximately 400-450 words based on this situation: A student finds an old voice recording on a borrowed phone and must decide whether to listen to the rest of it.",
-        null,
-        { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: rubrics.literary }
-      ),
-      task2(
-        "EA-P2-A-M3-S",
-        3,
-        "summary",
-        "Persuasive summary",
-        "Read the persuasive extract. In NOT MORE THAN 120 words, summarise the writer's main arguments and proposed solution.",
-        {
-          title: "Give the Town Centre One Car-Free Evening",
-          paragraphs: [
-            "Our town centre should close its two busiest streets to private cars from 5:00 p.m. to 9:00 p.m. on the first Friday of each month. The proposal is not an attack on drivers. It is a trial that would give residents and businesses a chance to experience the centre differently.",
-            "At present, people often drive through the area without stopping. A car-free evening would allow restaurants to place tables outside, musicians to perform safely and families to move between shops without competing with traffic. Similar events elsewhere have increased foot traffic for small businesses.",
-            "Of course, transport must still work. Taxis, emergency vehicles and vehicles carrying persons with mobility needs should continue to have controlled access. Park-and-ride spaces could operate from the market grounds, with a shuttle every fifteen minutes.",
-            "Some shop owners fear lost sales. That concern deserves evidence, not guesswork. The council should therefore run the plan for three months, collect sales and traffic data, and then decide whether it should continue. A short, measured trial is more sensible than rejecting the idea without testing it."
-          ]
-        },
-        { wordLimit: 120, rubric: rubrics.summary }
-      ),
-      task2(
-        "EA-P2-A-M3-E",
-        3,
-        "persuasive",
-        "Persuasive essay",
-        "Write an essay of approximately 300-350 words giving your views on the statement: 'Secondary schools should require every student to complete community service before graduation.'",
-        null,
-        { wordRange: [300, 350], format: "Argumentative essay", rubric: rubrics.persuasive }
-      )
-    ])
-  }),
-  Object.freeze({
-    id: "EA-P2-B",
-    title: "Practice Paper B",
-    description: "Education, environment and community choices",
-    tasks: Object.freeze([
-      task2(
-        "EA-P2-B-M1-S",
-        1,
-        "summary",
-        "Informative summary",
-        "Read the article carefully. Write a summary in NOT MORE THAN 120 words in ONE paragraph, using your own words as far as possible.",
-        {
-          title: "Why Some Schools Are Rethinking Homework",
-          paragraphs: [
-            "Homework has long been used to give students extra practice, but schools are increasingly examining how much work is useful and what kind of work produces real learning. A large quantity of repetitive exercises may take time without improving understanding.",
-            "Teachers who redesign homework often focus on short tasks with a clear purpose. A mathematics teacher may assign three carefully chosen problems instead of twenty similar ones. An English teacher may ask students to annotate one paragraph closely rather than answer a long list of recall questions.",
-            "The home environment also matters. Students do not all have the same access to devices, quiet spaces, adult help or reliable internet. When homework depends heavily on these resources, marks may reflect circumstances rather than effort or ability.",
-            "This does not mean homework has no value. Reading, revision and unfinished classwork can strengthen independence. The strongest programmes explain why an assignment is being given, estimate how long it should take and allow teachers to adjust when many students struggle.",
-            "Schools that review homework policies therefore ask a simple question: does the task help learning enough to justify the time it requires?"
-          ]
-        },
-        { wordLimit: 120, rubric: rubrics.summary }
-      ),
-      task2(
-        "EA-P2-B-M1-E",
-        1,
-        "exposition",
-        "Informative exposition",
-        "Write a REPORT of approximately 250-300 words for your school's administration based on the information below. Include findings and practical recommendations.",
-        {
-          situation: [
-            "The school conducted a one-week waste audit.",
-            "Plastic drink bottles made up 41% of visible litter.",
-            "Only two recycling bins serve a campus of 900 students.",
-            "Most students interviewed said they would use clearly labelled recycling bins if these were near the canteen and main courtyard.",
-            "A local recycling company has offered weekly collection at no charge for a three-month trial."
-          ],
-          role: "You are a member of the Environmental Club."
-        },
-        { wordRange: [250, 300], format: "Report", rubric: rubrics.exposition }
-      ),
-      task2(
-        "EA-P2-B-M2-S",
-        2,
-        "summary",
-        "Literary summary",
-        "Read the extract. In NOT MORE THAN 120 words, summarise Marcia's problem, her response to it and what she finally learns.",
-        {
-          title: "The Recipe Book",
-          paragraphs: [
-            "Marcia had promised to prepare her aunt's coconut drops for Culture Day, but the old recipe book listed no oven temperature and no exact amount of milk. 'Your aunt cooked by looking,' her father said. That answer only irritated her.",
-            "Her first tray spread into one giant sheet. The second became hard enough to knock against the counter. With one hour left, Marcia wanted to buy pastries and tell everyone she had changed her mind.",
-            "Then her father placed a small bowl beside her. 'Taste the mixture before you bake it. Look at how it falls from the spoon. Your aunt showed me that much.'",
-            "Marcia slowed down. She added milk a little at a time, compared the texture with the memory of her aunt's baking and watched the first few drops carefully in the oven.",
-            "The final batch was uneven, but when her father tasted one he smiled. 'Not hers,' he said, 'but yours.' Marcia wrote the oven temperature and measurements in the margin of the old book."
-          ]
-        },
-        { wordLimit: 120, rubric: rubrics.summary }
-      ),
-      task2(
-        "EA-P2-B-M2-C1",
-        2,
-        "literary",
-        "Creative writing choice 1",
-        "Write a short story of approximately 400-450 words beginning with: 'The message was only four words long, but it changed the whole journey.'",
-        null,
-        { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: rubrics.literary }
-      ),
-      task2(
-        "EA-P2-B-M2-C2",
-        2,
-        "literary",
-        "Creative writing choice 2",
-        "Write a short story of approximately 400-450 words based on a picture you imagine showing an empty chair beneath a brightly lit stage.",
-        null,
-        { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: rubrics.literary }
-      ),
-      task2(
-        "EA-P2-B-M3-S",
-        3,
-        "summary",
-        "Persuasive summary",
-        "Read the persuasive extract. In NOT MORE THAN 120 words, summarise the writer's case and the safeguards proposed.",
-        {
-          title: "Phones Should Have a Place in Class - Not Run the Class",
-          paragraphs: [
-            "Schools should not treat every phone as either a perfect learning tool or an enemy. A sensible policy should allow teachers to use phones when they genuinely improve a lesson and require them to be put away at other times.",
-            "Phones can provide dictionaries, cameras, calculators, recording tools and quick access to reference material. They can also interrupt concentration, encourage secret messaging and make dishonest work easier.",
-            "A complete ban ignores useful technology, while unrestricted use places too much pressure on individual teachers. Schools should therefore set one clear rule: phones remain silent and stored unless a teacher explicitly authorises them for a stated activity.",
-            "Students who do not own suitable devices must never be disadvantaged. Any phone-based task should have a school-provided alternative. The aim is not to put more screens in front of students; it is to use a common tool deliberately rather than carelessly."
-          ]
-        },
-        { wordLimit: 120, rubric: rubrics.summary }
-      ),
-      task2(
-        "EA-P2-B-M3-E",
-        3,
-        "persuasive",
-        "Persuasive speech",
-        "Your youth club is debating whether public parks should have free Wi-Fi. Write a SPEECH of approximately 300-350 words presenting your position to the club.",
-        null,
-        { wordRange: [300, 350], format: "Speech", rubric: rubrics.persuasive }
-      )
-    ])
-  }),
-  Object.freeze({
-    id: "EA-P2-C",
-    title: "Practice Paper C",
-    description: "Work, transport and responsible public choices",
-    tasks: Object.freeze([
-      task2(
-        "EA-P2-C-M1-S",
-        1,
-        "summary",
-        "Informative summary",
-        "Read the article carefully. Write a summary in NOT MORE THAN 120 words in ONE paragraph.",
-        {
-          title: "Learning from a School Internship",
-          paragraphs: [
-            "Short internships can introduce secondary students to workplaces they may otherwise know only by name. A student interested in engineering may discover that the job involves writing reports and meeting clients as well as solving technical problems.",
-            "Useful placements are planned rather than improvised. Students need a supervisor, clear tasks and a chance to ask questions. Simply watching employees for a week gives limited insight. Better programmes allow students to complete small, safe tasks and reflect on what they observed.",
-            "Internships can also correct unrealistic expectations. Some students discover that a career they admired does not suit them, while others notice occupations they had never considered. Both outcomes are valuable because career decisions become better informed.",
-            "Transport, insurance and unequal access can make programmes difficult to organise. Schools may reduce these problems by partnering with nearby employers, rotating placements and including virtual workplace sessions where necessary.",
-            "The purpose of an internship is therefore not to turn a teenager into an employee. It is to provide structured exposure that helps the student ask better questions about future study and work."
-          ]
-        },
-        { wordLimit: 120, rubric: rubrics.summary }
-      ),
-      task2(
-        "EA-P2-C-M1-E",
-        1,
-        "exposition",
-        "Informative exposition",
-        "Write a NOTICE AND ACCOMPANYING ARTICLE of approximately 250-300 words for students explaining a new school-bus trial. Make the information easy to follow.",
-        {
-          situation: [
-            "The school will test two late buses for six weeks.",
-            "They leave at 4:45 p.m. on Tuesdays, Wednesdays and Thursdays.",
-            "Bus A serves Northside, Cedar Grove and Market Square.",
-            "Bus B serves Harbour Road, Hillview and Green Acres.",
-            "Students must register weekly by Monday at noon.",
-            "The trial will continue only if average usage reaches at least 20 students per bus."
-          ],
-          role: "You are the communications prefect."
-        },
-        { wordRange: [250, 300], format: "Notice and article", rubric: rubrics.exposition }
-      ),
-      task2(
-        "EA-P2-C-M2-S",
-        2,
-        "summary",
-        "Literary summary",
-        "Read the extract. In NOT MORE THAN 120 words, summarise what causes Andre's anxiety and how his sister helps him respond.",
-        {
-          title: "Before the Interview",
-          paragraphs: [
-            "Andre had answered the practice questions perfectly the night before. Yet outside the interview room, every sentence seemed to disappear from his mind. He stared at the polished door and imagined forgetting his own name.",
-            "His sister Talia sat beside him without offering advice. After a minute she asked, 'What colour is the wall?'",
-            "'What?'",
-            "'The wall.'",
-            "Andre frowned. 'Blue.'",
-            "'How many chairs?'",
-            "'Six.'",
-            "'What can you hear?'",
-            "He listened. A printer. Footsteps. Someone laughing two rooms away.",
-            "Talia nodded. 'Good. Now you're in this room instead of the disaster you invented in your head.'",
-            "When Andre's name was called, he still felt nervous, but the fear had become something smaller and more exact. He stood, straightened his folder and walked through the door."
-          ]
-        },
-        { wordLimit: 120, rubric: rubrics.summary }
-      ),
-      task2(
-        "EA-P2-C-M2-C1",
-        2,
-        "literary",
-        "Creative writing choice 1",
-        "Write a short story of approximately 400-450 words that includes the sentence: 'Nobody had noticed the second envelope.'",
-        null,
-        { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: rubrics.literary }
-      ),
-      task2(
-        "EA-P2-C-M2-C2",
-        2,
-        "literary",
-        "Creative writing choice 2",
-        "Write a short story of approximately 400-450 words in which a character must return something valuable before anyone realises it is missing.",
-        null,
-        { wordRange: [400, 450], choiceGroup: "M2-creative", rubric: rubrics.literary }
-      ),
-      task2(
-        "EA-P2-C-M3-S",
-        3,
-        "summary",
-        "Persuasive summary",
-        "Read the persuasive extract. In NOT MORE THAN 120 words, summarise the reasons for the proposal and how the writer answers likely objections.",
-        {
-          title: "Start School Fifteen Minutes Later",
-          paragraphs: [
-            "Our secondary school should begin at 8:15 a.m. instead of 8:00 a.m. The change is small enough to manage but large enough to reduce the morning rush that affects students travelling from distant communities.",
-            "Buses often arrive within the same ten-minute period, creating congestion at the gate and leaving late students to hurry into assembly. A slightly later start would spread traffic and give students more realistic travel time.",
-            "Some people argue that the school day would then end later. It does not have to. Lunch could be shortened by five minutes and two transition periods by five minutes each, preserving the current dismissal time without reducing teaching time.",
-            "The school should test the change for one term and compare lateness, attendance and transport data with the previous term. If there is no improvement, the old schedule can return. A reversible trial based on evidence is better than continuing a problem simply because the timetable is familiar."
-          ]
-        },
-        { wordLimit: 120, rubric: rubrics.summary }
-      ),
-      task2(
-        "EA-P2-C-M3-E",
-        3,
-        "persuasive",
-        "Letter to the editor",
-        "Write a LETTER TO THE EDITOR of approximately 300-350 words giving your views on the statement: 'Local businesses should be required to provide paid work-experience places for secondary students.'",
-        null,
-        { wordRange: [300, 350], format: "Letter to the editor", rubric: rubrics.persuasive }
-      )
-    ])
-  })
-]);
-function revisedSummaryTask(task3) {
-  if (task3?.kind !== "summary") return task3;
-  const analysisPrompt = Number(task3.module) === 2 ? "Describe the setting of the extract." : "State the writer's purpose of the extract.";
-  const summaryPrompt = Number(task3.module) === 2 ? "In no more than 50 words, use THREE points to summarize the experiences of the main character or narrator in the extract. You must use your own words as far as possible." : "In no more than 50 words, use THREE points to summarize the writer's purpose. You must use your own words as far as possible.";
-  return Object.freeze({
-    ...task3,
-    instructions: `(a) ${analysisPrompt} (3 marks)
-
-(b) ${summaryPrompt} (7 marks)`,
-    analysisPrompt,
-    summaryPrompt,
-    wordLimit: 50,
-    rubric: Object.freeze({
-      marks: 10,
-      criteria: Object.freeze([
-        "Part (a): analysing the extract accurately \u2014 3 marks.",
-        "Part (b): THREE relevant summary points stated mainly in the candidate's own words \u2014 3 marks.",
-        "Part (b): language, expression, connectives, grammar and mechanics \u2014 4 marks.",
-        "The summary must not exceed 50 words."
-      ])
-    })
-  });
-}
-function revisedPaper2Task(task3) {
-  const summaryTask = revisedSummaryTask(task3);
-  if (summaryTask?.kind === "persuasive") {
-    return Object.freeze({
-      ...summaryTask,
-      instructions: String(summaryTask.instructions || "").replace("approximately 300-350 words", "approximately 250-300 words"),
-      wordRange: [250, 300],
-      rubric: Object.freeze({
-        marks: 30,
-        criteria: Object.freeze([
-          "P3 Evaluating and Creating \u2014 16 marks: clear position, relevant supporting details, awareness of audience, persuasive techniques, logical development and appropriate appeals.",
-          "P2 Analysing \u2014 7 marks: at least five paragraphs, logical sequencing, cohesion, effective introduction and conclusion.",
-          "P1 Understanding \u2014 7 marks: accurate Standard English, grammar, mechanics, paragraphing, register, tone and understanding of persuasive techniques.",
-          "A response under about 150 words is restricted to the low mark range in the specimen mark scheme."
-        ])
-      })
-    });
-  }
-  if (summaryTask?.kind === "exposition") {
-    return Object.freeze({
-      ...summaryTask,
-      instructions: String(summaryTask.instructions || "").replace(" of approximately 250-300 words", ""),
-      wordRange: null,
-      rubric: Object.freeze({
-        marks: 30,
-        criteria: Object.freeze([
-          "P1 Understanding \u2014 7 marks: relevance and clarity (3), accuracy, completeness and appropriateness (4).",
-          "P2 Analysing \u2014 7 marks: format and conventions (3), sense of audience (2), sequencing (2).",
-          "P3 Evaluating and Creating \u2014 16 marks: conciseness (3), coherence (2), structure and language (8), spelling and punctuation mechanics (3).",
-          "Heavy lifting from the stimulus can reduce the language mark."
-        ])
-      })
-    });
-  }
-  if (summaryTask?.kind === "literary") {
-    return Object.freeze({
-      ...summaryTask,
-      wordRange: [400, 450],
-      rubric: Object.freeze({
-        marks: 30,
-        criteria: Object.freeze([
-          "P3 Evaluating and Creating \u2014 16 marks: effective use of stimulus, plot, conflict, setting, point of view, characterisation, functional dialogue, sensory detail and lively diction.",
-          "P2 Analysing \u2014 7 marks: logical organisation, coherence and effective sequencing of events toward a suitable conclusion.",
-          "P1 Understanding \u2014 7 marks: accurate language, grammar and mechanics plus control of narrative elements.",
-          "A response under about 200 words is restricted to the low mark range in the specimen mark scheme."
-        ])
-      })
-    });
-  }
-  return summaryTask;
-}
-function revisedPaper2Set(set) {
-  return Object.freeze({
-    ...set,
-    tasks: Object.freeze(set.tasks.map(revisedPaper2Task))
-  });
-}
-var englishAPaper2Sets = Object.freeze([
-  ...englishAPaper2CoreSets,
-  ...englishAPaper2ExpansionSets
-].map(revisedPaper2Set));
-function buildEnglishAPaper2(setId) {
-  const set = englishAPaper2Sets.find((item2) => item2.id === setId) || englishAPaper2Sets[0];
-  return {
-    ...set,
-    requiredTaskIds: [
-      set.tasks.find((item2) => item2.id.endsWith("-M1-S"))?.id,
-      set.tasks.find((item2) => item2.id.endsWith("-M1-E"))?.id,
-      set.tasks.find((item2) => item2.id.endsWith("-M2-S"))?.id,
-      "M2-creative-choice",
-      set.tasks.find((item2) => item2.id.endsWith("-M3-S"))?.id,
-      set.tasks.find((item2) => item2.id.endsWith("-M3-E"))?.id
-    ].filter(Boolean)
-  };
-}
-
-// src/englishA/practice/englishAPaper2Grader.js
-var STOPWORDS = new Set("a an and are as at be been being but by can could did do does for from had has have he her hers him his i if in into is it its may might more most my no not of on one or our ours she should so than that the their theirs them then there these they this those to too us was we were what when where which who why will with would you your yours".split(" "));
-var CONNECTORS = ["however", "therefore", "because", "although", "furthermore", "moreover", "consequently", "for example", "for instance", "in addition", "on the other hand", "as a result", "first", "second", "finally"];
-var SENSORY = ["saw", "heard", "smell", "smelled", "taste", "tasted", "felt", "bright", "dark", "cold", "warm", "rough", "soft", "silent", "loud", "whisper", "shout", "glow"];
-var RESOLUTION = ["finally", "eventually", "at last", "in the end", "realised", "realized", "understood", "decided", "returned", "resolved"];
-var NARRATIVE = ["suddenly", "later", "before", "after", "when", "while", "then", "that morning", "that night", "the next day"];
-var FORM_MARKERS = {
-  "Formal email": ["subject:", "dear", "yours sincerely", "regards"],
-  "Formal letter": ["dear", "yours faithfully", "yours sincerely"],
-  "Letter to the editor": ["dear editor", "editor", "yours faithfully", "yours sincerely"],
-  "Report": ["report", "introduction", "findings", "recommendation", "recommendations"],
-  "Speech": ["good morning", "good afternoon", "members", "friends", "thank you", "audience"],
-  "Article": ["title", "headline", "readers", "we", "you"],
-  "Notice and article": ["notice", "date", "time", "students", "article"]
-};
-var clamp = (n, min, max) => Math.max(min, Math.min(max, n));
-var round = (n) => Math.round(n * 10) / 10;
-var clean = (v) => String(v || "").replace(/\s+/g, " ").trim();
-var tokenise = (v) => clean(v).toLowerCase().match(/[a-z]+(?:'[a-z]+)?/g) || [];
-var countEnglishWords = (v) => (String(v || "").match(/[A-Za-z0-9]+(?:['’][A-Za-z]+)?(?:-[A-Za-z0-9]+(?:['’][A-Za-z]+)?)*/g) || []).length;
-var sentenceList = (v) => String(v || "").split(/[.!?]+/).map((s) => s.trim()).filter((s) => s.split(/\s+/).length >= 2);
-var paragraphList = (v) => String(v || "").split(/\n\s*\n|\n/).map((s) => s.trim()).filter(Boolean);
-var claimUnits = (v) => String(v || "").split(/[;\n]+|(?<=[!?])\s+|(?<!\d)\.\s+(?!\d)/).map((part2) => part2.trim()).filter(Boolean);
-function repeatedWritingEvidence(response) {
-  const sentences = claimUnits(response).map((line) => tokenise(line).join(" ")).filter((line) => line.split(" ").length >= 5);
-  const counts = /* @__PURE__ */ new Map();
-  sentences.forEach((line) => counts.set(line, (counts.get(line) || 0) + 1));
-  const repeated = [...counts.values()].reduce((sum, count) => sum + Math.max(0, count - 1), 0);
-  return {
-    total: sentences.length,
-    unique: counts.size,
-    repeatedShare: sentences.length ? repeated / sentences.length : 0
-  };
-}
-function repetitionCap(result, response) {
-  const repetition = repeatedWritingEvidence(response);
-  const count = countEnglishWords(response);
-  const max = count >= 100 && repetition.repeatedShare >= 0.4 ? 14 : count >= 100 && repetition.repeatedShare >= 0.2 ? 22 : null;
-  if (max === null) return { ...result, diagnostics: { ...result.diagnostics, repetition } };
-  if (result.score <= max) return {
-    ...result,
-    confidence: "low",
-    diagnostics: { ...result.diagnostics, repetition },
-    feedback: [...result.feedback || [], "Repeated statements limit demonstrated content development. The score remains a provisional estimate."]
-  };
-  const scale = max / result.score;
-  const dimensions = (result.dimensions || []).map((row) => ({ ...row, score: round(row.score * scale) }));
-  const newScore = round(dimensions.reduce((total, row) => total + row.score, 0));
-  if (newScore > max && dimensions.length) {
-    const last = dimensions[dimensions.length - 1];
-    last.score = round(Math.max(0, last.score - (newScore - max)));
-  }
-  return {
-    ...result,
-    score: Math.min(max, newScore),
-    dimensions,
-    confidence: "low",
-    diagnostics: { ...result.diagnostics, repetition },
-    feedback: [
-      ...result.feedback || [],
-      "Repeated sentences limit demonstrated development. SPARK has capped the provisional practice estimate."
-    ]
-  };
-}
-var countMatches = (value2, list) => list.filter((term) => clean(value2).toLowerCase().includes(term)).length;
-var uniqueRatio = (v) => {
-  const w = tokenise(v);
-  return w.length ? new Set(w).size / w.length : 0;
-};
-function stem(value2) {
-  let w = String(value2 || "").toLowerCase();
-  if (w.endsWith("ies") && w.length > 5) w = w.slice(0, -3) + "y";
-  else if (w.endsWith("ing") && w.length > 6) w = w.slice(0, -3);
-  else if (w.endsWith("ed") && w.length > 5) w = w.slice(0, -2);
-  else if (w.endsWith("es") && w.length > 5) w = w.slice(0, -2);
-  else if (w.endsWith("s") && w.length > 4) w = w.slice(0, -1);
-  return w;
-}
-function sourceText(stimulus) {
-  return [
-    ...stimulus?.paragraphs || [],
-    ...stimulus?.situation || [],
-    stimulus?.title || "",
-    stimulus?.role || ""
-  ].join(" ");
-}
-function keyTermsFromStimulus(stimulus) {
-  const freq = /* @__PURE__ */ new Map();
-  tokenise(sourceText(stimulus)).forEach((raw) => {
-    const w = stem(raw);
-    if (w.length < 4 || STOPWORDS.has(w)) return;
-    freq.set(w, (freq.get(w) || 0) + 1);
-  });
-  return [...freq.entries()].sort((a, b) => b[1] - a[1] || b[0].length - a[0].length).slice(0, 20).map(([w]) => w);
-}
-function sourceCoverage(stimulus, response) {
-  const terms = keyTermsFromStimulus(stimulus);
-  const candidate = new Set(tokenise(response).map(stem));
-  const matched = terms.filter((term) => candidate.has(term));
-  return { terms, matched, ratio: terms.length ? matched.length / terms.length : 0 };
-}
-var IDEA_EQUIVALENTS = Object.freeze({
-  quiet: ["calm", "peaceful"],
-  place: ["space", "area"],
-  places: ["spaces", "areas"],
-  reliable: ["dependable", "useful"],
-  books: ["book", "reading material", "reading materials"],
-  service: ["access", "connection"],
-  helps: ["supports", "assists", "enables"],
-  residents: ["people", "community", "users"],
-  schoolwork: ["homework", "school work", "studies"],
-  apply: ["application", "applications"],
-  jobs: ["job", "employment", "work"],
-  bring: ["connect", "join", "link"],
-  together: ["connect", "join", "link"],
-  build: ["strengthen", "develop", "improve"],
-  stronger: ["better", "improved", "regular"],
-  habits: ["habit", "routine", "routines"],
-  young: ["youth", "children", "students"],
-  people: ["persons", "residents", "community"]
-});
-function ideaTermPresent(candidateTokens, candidateText, term) {
-  if (candidateTokens.has(term)) return true;
-  const equivalents = IDEA_EQUIVALENTS[term] || [];
-  return equivalents.some((value2) => {
-    const normalized = stem(value2);
-    return candidateTokens.has(normalized) || candidateText.includes(String(value2).toLowerCase());
-  });
-}
-function sourceIdeaCoverage(stimulus, response) {
-  const rows = [...stimulus?.paragraphs || [], ...stimulus?.situation || []].filter(Boolean);
-  const units = claimUnits(response).filter((line) => tokenise(line).length >= 5);
-  const ideas = rows.map((line, index) => {
-    const terms = [...new Set(tokenise(line).map(stem).filter((w) => w.length >= 4 && !STOPWORDS.has(w)))];
-    const needed = Math.min(2, Math.max(1, Math.ceil(terms.length * 0.18)));
-    const best = units.map((unit) => {
-      const candidateText = clean(unit).toLowerCase();
-      const candidate = new Set(tokenise(unit).map(stem));
-      const matched = terms.filter((term) => ideaTermPresent(candidate, candidateText, term));
-      const negative = /\b(?:not|never|cannot|can't|doesn't|don't|isn't)\b/i;
-      const negated = negative.test(unit) && !negative.test(line);
-      return { matched, unit, valid: matched.length >= needed && !negated };
-    }).sort((a, b) => b.matched.length - a.matched.length)[0];
-    return {
-      index,
-      line,
-      matched: (best?.matched || []).slice(0, 6),
-      covered: Boolean(best?.valid),
-      evidence: best?.valid ? best.unit : ""
-    };
-  });
-  return { ideas, covered: ideas.filter((row) => row.covered).length, total: ideas.length };
-}
-function contradictorySourceSignals(stimulus, response) {
-  const low = clean(response).toLowerCase();
-  const negations = (low.match(/\b(?:not|never|no longer|cannot|can't|shouldn't|mustn't)\b/g) || []).length;
-  const coverage = sourceCoverage(stimulus, response);
-  return { count: negations && coverage.matched.length >= 2 ? negations : 0 };
-}
-function ngrams(value2, n = 5) {
-  const w = tokenise(value2).map(stem);
-  const set = /* @__PURE__ */ new Set();
-  for (let i = 0; i <= w.length - n; i++) set.add(w.slice(i, i + n).join(" "));
-  return set;
-}
-function copiedPhraseRatio(stimulus, response) {
-  const source2 = ngrams(sourceText(stimulus), 5);
-  const candidate = ngrams(response, 5);
-  if (!candidate.size || !source2.size) return 0;
-  let copied = 0;
-  candidate.forEach((item2) => {
-    if (source2.has(item2)) copied += 1;
-  });
-  return copied / candidate.size;
-}
-function situationCoverage(task3, response) {
-  const rows = (task3?.stimulus?.situation || []).map((line) => {
-    const terms = tokenise(line).map(stem).filter((w) => w.length >= 4 && !STOPWORDS.has(w));
-    const needed = Math.min(2, Math.max(1, Math.ceil(terms.length * 0.2)));
-    const evidence = claimUnits(response).map((unit) => {
-      const words2 = new Set(tokenise(unit).map(stem));
-      const matched = terms.filter((w) => words2.has(w));
-      return { unit, matched };
-    }).sort((a, b) => b.matched.length - a.matched.length)[0];
-    return {
-      line,
-      matched: (evidence?.matched || []).slice(0, 4),
-      covered: tokenise(evidence?.unit || "").length >= 5 && (evidence?.matched || []).length >= needed,
-      evidence: evidence?.unit || ""
-    };
-  });
-  return { rows, covered: rows.filter((r) => r.covered).length, total: rows.length };
-}
-function diagnostics(response) {
-  const w = tokenise(response);
-  const sentences = sentenceList(response);
-  const paras = paragraphList(response);
-  const repetition = repeatedWritingEvidence(response);
-  const avgSentence = sentences.length ? w.length / sentences.length : 0;
-  return {
-    wordCount: countEnglishWords(response),
-    sentenceCount: sentences.length,
-    paragraphCount: paras.length,
-    avgSentence,
-    longSentences: sentences.filter((s) => tokenise(s).length > 35).length,
-    veryShort: sentences.filter((s) => tokenise(s).length < 4).length,
-    lowercaseStarts: sentences.filter((s) => /^[a-z]/.test(s)).length,
-    repeatedPunct: (String(response).match(/[!?]{2,}|\.{4,}/g) || []).length,
-    diversity: uniqueRatio(response),
-    repetition
-  };
-}
-function languageBand(response, max = 7) {
-  const d = diagnostics(response);
-  if (d.wordCount < 20) return { score: 0, notes: ["The response is too short to demonstrate sustained language control."], diagnostics: d };
-  let score = max;
-  const notes = [];
-  if (d.diversity < 0.3) {
-    score -= 1;
-    notes.push("Vocabulary is repetitive. Vary word choice where it improves precision.");
-  }
-  if (d.avgSentence < 7 || d.avgSentence > 30) {
-    score -= 1;
-    notes.push("Sentence length needs more control and variety.");
-  }
-  if (d.longSentences >= 2) {
-    score -= 1;
-    notes.push("Several sentences are very long and may need clearer punctuation or division.");
-  }
-  if (d.veryShort >= Math.max(3, Math.ceil(d.sentenceCount * 0.3))) {
-    score -= 0.7;
-    notes.push("Frequent very short sentences make the writing choppy.");
-  }
-  if (d.lowercaseStarts > 0) {
-    score -= 0.5;
-    notes.push("Check sentence capitalisation.");
-  }
-  if (d.repeatedPunct > 0) {
-    score -= 0.3;
-    notes.push("Proofread repeated punctuation.");
-  }
-  if (d.wordCount >= 100 && d.repetition.repeatedShare >= 0.2) {
-    score -= d.repetition.repeatedShare >= 0.4 ? 3 : 1.5;
-    notes.push("Repeated sentences do not demonstrate additional language development.");
-  }
-  if (!notes.length) notes.push("Language is generally controlled, varied and readable.");
-  return { score: round(clamp(score, 0, max)), notes, diagnostics: d };
-}
-function formatEvidence(task3, response) {
-  const markers = FORM_MARKERS[task3?.format] || [];
-  const raw = String(response || "");
-  const low = clean(raw).toLowerCase();
-  const matched = new Set(markers.filter((m) => low.includes(m)));
-  const format = String(task3?.format || "").toLowerCase();
-  if (format === "report") {
-    if (/^\s*report\b/im.test(raw) || /\breport on\b/i.test(raw)) matched.add("report heading");
-    if (/^\s*to\s*:/im.test(raw)) matched.add("to:");
-    if (/^\s*from\s*:/im.test(raw)) matched.add("from:");
-    if (/^\s*date\s*:/im.test(raw)) matched.add("date:");
-    if (/^\s*subject\s*:/im.test(raw)) matched.add("subject:");
-    if (/^\s*\d+(?:\.\d+)?[.)]?\s+/m.test(raw)) matched.add("numbered sections");
-    if (/\bfindings?\b/i.test(raw)) matched.add("findings");
-    if (/\brecommendations?\b/i.test(raw)) matched.add("recommendations");
-    if (/\bconclusions?\b/i.test(raw)) matched.add("conclusion");
-  }
-  if (format === "speech") {
-    if (/\b(?:good morning|good afternoon|good evening|fellow members|friends|members)\b/i.test(raw)) matched.add("audience greeting");
-    if (/\b(?:thank you|i urge you|let us|vote yes|vote no)\b/i.test(raw)) matched.add("speech close");
-  }
-  return { markers, matched: [...matched] };
-}
-function wordRangePenalty(task3, response) {
-  const wc = countEnglishWords(response);
-  if (task3?.wordLimit) {
-    if (wc <= task3.wordLimit) return { factor: 1, wordCount: wc };
-    const over = (wc - task3.wordLimit) / task3.wordLimit;
-    return { factor: clamp(1 - over * 1.6, 0.35, 1), wordCount: wc };
-  }
-  if (task3?.wordRange) {
-    const [min, max] = task3.wordRange;
-    if (wc >= min && wc <= max) return { factor: 1, wordCount: wc };
-    if (wc < min) return { factor: clamp(wc / min, 0.35, 1), wordCount: wc };
-    return { factor: clamp(1 - (wc - max) / Math.max(100, max), 0.6, 1), wordCount: wc };
-  }
-  return { factor: 1, wordCount: wc };
-}
-function gradeAnalysisPart(task3, response) {
-  const low = clean(response).toLowerCase();
-  const coverage = sourceCoverage(task3?.stimulus, response);
-  if (!low) return { score: 0, evidence: [], feedback: "Part (a) was not answered." };
-  let typeSignal = 0;
-  if (Number(task3.module) === 2) {
-    const settingSignals = ["in ", "at ", "during", "morning", "afternoon", "evening", "night", "day", "school", "home", "town", "village", "road", "room", "centre", "center"];
-    typeSignal = Math.min(1.5, countMatches(" " + low, settingSignals) * 0.75);
-  } else if (Number(task3.module) === 3) {
-    typeSignal = /\b(persuade|convince|argue|urge|encourage|warn|discourage)\b/.test(low) ? 1.5 : 0.5;
-  } else {
-    typeSignal = /\b(inform|explain|describe|show|outline|educate|identify)\b/.test(low) ? 1.5 : 0.5;
-  }
-  const relevance = Math.min(1.5, coverage.matched.length * 0.5);
-  return {
-    score: round(clamp(typeSignal + relevance, 0, 3)),
-    evidence: coverage.matched.slice(0, 5),
-    feedback: Number(task3.module) === 2 ? "A strong answer identifies where/when the extract occurs and any important surrounding conditions." : "A strong answer states what the writer is trying to achieve and identifies the subject of that purpose."
-  };
-}
-function gradeSummary(task3, response, analysisResponse) {
-  const analysis = gradeAnalysisPart(task3, analysisResponse);
-  const coverage = sourceCoverage(task3?.stimulus, response);
-  const ideas = sourceIdeaCoverage(task3?.stimulus, response);
-  const contradictions = contradictorySourceSignals(task3?.stimulus, response);
-  const lang = languageBand(response, 4);
-  const copyRatio = copiedPhraseRatio(task3?.stimulus, response);
-  const length = wordRangePenalty(task3, response);
-  let understanding = ideas.total ? Math.min(3, ideas.covered) : round(clamp(coverage.ratio * 4.5, 0, 3));
-  if (countEnglishWords(response) < 15) understanding = Math.min(understanding, 1.5);
-  if (contradictions.count > 0) understanding = Math.min(understanding, 2);
-  let evaluating = lang.score;
-  if (copyRatio > 0.35) evaluating = Math.min(evaluating, 2);
-  else if (copyRatio > 0.2) evaluating = Math.min(evaluating, 3);
-  if (length.factor < 1) evaluating = round(evaluating * length.factor);
-  const score = round(clamp(analysis.score + understanding + evaluating, 0, 10));
-  const feedback = [
-    analysis.feedback,
-    ideas.total ? `Part (b) clearly represents ${ideas.covered} of ${ideas.total} distinct source idea blocks.` : `Part (b) covers ${coverage.matched.length} of ${coverage.terms.length} high-value source terms detected by SPARK.`,
-    `Summary word count: ${length.wordCount}/${task3.wordLimit || 50}.`
-  ];
-  if (copyRatio > 0.2) feedback.push("Several phrases closely match the source. Paraphrase more of the summary in your own words.");
-  if (contradictions.count > 0) feedback.push("SPARK detected negation around source ideas, so content credit was capped rather than assuming those ideas were stated correctly.");
-  feedback.push(...lang.notes);
-  return {
-    score,
-    maxMarks: 10,
-    confidence: "medium-high",
-    dimensions: [
-      { id: "analysing", label: "P2 Analysing: Part (a)", score: analysis.score, max: 3, evidence: analysis.evidence },
-      { id: "understanding", label: "P1 Understanding: THREE distinct summary points", score: understanding, max: 3, evidence: ideas.total ? ideas.ideas.filter((row) => row.covered) : coverage.matched.slice(0, 6) },
-      { id: "evaluating", label: "P3 Evaluating & Creating: language and mechanics", score: evaluating, max: 4, evidence: lang.notes }
-    ],
-    feedback,
-    diagnostics: { ...lang.diagnostics, copyRatio: round(copyRatio), distinctSourceIdeas: ideas.covered, contradictionSignals: contradictions.count }
-  };
-}
-function gradeExposition(task3, response) {
-  const cov = situationCoverage(task3, response);
-  const lang = languageBand(response, 8);
-  const fmt = formatEvidence(task3, response);
-  const d = lang.diagnostics;
-  const connectors = countMatches(response, CONNECTORS);
-  const length = wordRangePenalty(task3, response);
-  const relevance = cov?.total ? Math.min(3, cov.covered / cov.total * 3) : 1.5;
-  const completeness = cov?.total ? Math.min(4, cov.covered / cov.total * 4) : 2;
-  const understanding = round(relevance + completeness);
-  const formatName = String(task3?.format || "").toLowerCase();
-  const formatMarks = formatName === "report" ? fmt.matched.length >= 7 ? 3 : fmt.matched.length >= 4 ? 2 : fmt.matched.length >= 2 ? 1 : 0 : fmt.markers.length ? Math.min(3, fmt.matched.length / Math.min(2, fmt.markers.length) * 3) : 2;
-  const audience = /\b(you|your|we|our|principal|manager|students|council|community|readers)\b/i.test(response) ? 2 : 1;
-  const structuredReport = formatName === "report" && fmt.matched.includes("numbered sections") && fmt.matched.includes("recommendations");
-  const sequencing = d.paragraphCount >= 3 && connectors >= 2 || structuredReport ? 2 : d.paragraphCount >= 2 ? 1 : 0;
-  let analysing = round(clamp(formatMarks + audience + sequencing, 0, 7));
-  const concision = round(clamp(3 * length.factor, 0, 3));
-  const coherence = connectors >= 3 && d.paragraphCount >= 3 ? 2 : connectors >= 1 ? 1 : 0;
-  const mechanics = round(clamp(3 - (d.lowercaseStarts * 0.4 + d.repeatedPunct * 0.4 + d.longSentences * 0.2), 0, 3));
-  const language = round(clamp(lang.score * length.factor, 0, 8));
-  let evaluating = round(clamp(concision + coherence + language + mechanics, 0, 16));
-  if (cov?.total && cov.covered === 0) {
-    analysing = Math.min(analysing, 3);
-    evaluating = Math.min(evaluating, 6);
-  } else if (cov?.total && cov.covered === 1) {
-    analysing = Math.min(analysing, 5);
-    evaluating = Math.min(evaluating, 10);
-  }
-  return {
-    score: round(understanding + analysing + evaluating),
-    maxMarks: 30,
-    confidence: cov?.total && cov.covered === 0 ? "low" : cov?.total ? "medium-high" : "medium",
-    dimensions: [
-      { id: "understanding", label: "P1 Understanding: relevance, clarity, accuracy and completeness", score: understanding, max: 7, evidence: cov?.rows || [] },
-      { id: "analysing", label: "P2 Analysing: format, audience and sequencing", score: analysing, max: 7, evidence: fmt.matched },
-      { id: "evaluating", label: "P3 Evaluating & Creating: concision, coherence, language and mechanics", score: evaluating, max: 16, evidence: lang.notes }
-    ],
-    feedback: [
-      cov?.total ? `${cov.covered}/${cov.total} stimulus points are clearly represented.` : "Check that every required stimulus point is used.",
-      `Format markers detected: ${fmt.matched.length ? fmt.matched.join(", ") : "none"}.`,
-      `Word count: ${d.wordCount}.`,
-      ...lang.notes
-    ],
-    diagnostics: d
-  };
-}
-function requiredLiteraryText(task3, response) {
-  const instructions = String(task3?.instructions || "");
-  const match = instructions.match(/\b(ends with(?: the sentence)?|beginning with|includes the sentence)\s*:\s*['“"]([^'”"]+)['”"]/i);
-  if (!match) return { required: false, fulfilled: true, type: "" };
-  const type = match[1].toLowerCase();
-  const normalise2 = (value2) => String(value2).toLowerCase().replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/\s+/g, " ").trim().replace(/^["']|["']$/g, "").replace(/[.?!]+$/, "");
-  const required = normalise2(match[2]);
-  const submission = normalise2(response);
-  const fulfilled = type.startsWith("ends with") ? submission.endsWith(required) : type === "beginning with" ? submission.startsWith(required) : submission.includes(required);
-  return { required: true, fulfilled, type };
-}
-var TOPIC_NOISE = new Set("write writing words word approximately essay speech letter statement position presenting based discuss about question answer following views view should student students youth club debate debating your their with after before from short story school schools required given on for whether topic task titled which".split(" "));
-function taskTopicalEvidence(task3, response) {
-  const instructions = String(task3?.instructions || "");
-  const terms = [...new Set(tokenise(instructions).map(stem).filter((word) => word.length >= 4 && !TOPIC_NOISE.has(word)))];
-  if (terms.length < 2) return { required: false, hits: [], terms };
-  const student = new Set(tokenise(response).map(stem));
-  const hits = terms.filter((word) => student.has(word));
-  return { required: true, terms, hits };
-}
-function supportedArgumentCount(response) {
-  const statements = claimUnits(response).filter((line) => tokenise(line).length >= 9);
-  const unique = /* @__PURE__ */ new Set();
-  for (const statement of statements) {
-    if (!/\b(?:because|since|for example|for instance|such as|this means|as a result|therefore|helps?|allows?|provides?|improves?|can reduce|can increase)\b/i.test(statement)) continue;
-    const signature = tokenise(statement).map(stem).join(" ");
-    unique.add(signature);
-  }
-  return unique.size;
-}
-function gradeLiterary(task3, response) {
-  const lang = languageBand(response, 7);
-  const d = lang.diagnostics;
-  const low = clean(response).toLowerCase();
-  const dialogue = (String(response).match(/[“"][^”"]+[”"]/g) || []).length;
-  const narrative = countMatches(response, NARRATIVE);
-  const sensory = countMatches(response, SENSORY);
-  const resolution = countMatches(response, RESOLUTION);
-  const promptTerms = tokenise(task3.instructions).map(stem).filter((w) => w.length >= 5 && !STOPWORDS.has(w)).slice(-12);
-  const candidate = new Set(tokenise(response).map(stem));
-  const promptHits = promptTerms.filter((w) => candidate.has(w)).length;
-  const length = wordRangePenalty(task3, response);
-  const literal = requiredLiteraryText(task3, response);
-  const promptUse = Math.min(4, 1 + promptHits * 0.8);
-  const storyElements = Math.min(6, (narrative >= 3 ? 2 : 1) + (resolution ? 1.5 : 0.5) + (dialogue ? 1.25 : 0.5) + (sensory >= 2 ? 1.25 : 0.5));
-  const development = Math.min(6, d.wordCount >= 300 ? 6 : d.wordCount >= 200 ? 4 : d.wordCount >= 120 ? 2 : 1);
-  let evaluating = round(clamp((promptUse + storyElements + development) * length.factor, 0, 16));
-  if (!literal.fulfilled) evaluating = round(Math.min(evaluating * 0.65, 8));
-  let analysing = round(clamp((d.paragraphCount >= 5 ? 3 : d.paragraphCount >= 3 ? 2 : 1) + (narrative >= 4 ? 2 : narrative >= 2 ? 1 : 0) + (resolution ? 2 : 1), 0, 7));
-  if (!literal.fulfilled) analysing = Math.min(analysing, 5);
-  const understanding = round(clamp(lang.score, 0, 7));
-  const score = round(clamp(evaluating + analysing + understanding, 0, 30));
-  const feedback = [
-    ...literal.required && !literal.fulfilled ? ["The required story opening, ending, or quoted sentence was not included in the specified position."] : [],
-    promptHits ? "The response is visibly connected to the chosen stimulus." : "Make the required stimulus unmistakably central to the story.",
-    dialogue ? `Dialogue appears ${dialogue} time(s); make sure it develops character, action or atmosphere.` : "Dialogue is optional, but purposeful dialogue can help characterisation.",
-    sensory >= 2 ? "Sensory detail is used to build the scene." : "Use selective sensory detail to establish setting and atmosphere.",
-    resolution ? "A resolution/change signal is present." : "Make the conflict and ending feel causally connected rather than abrupt.",
-    d.wordCount < 200 ? "The specimen mark scheme caps very short stories (under about 200 words) at a low range. Develop the story further." : `Word count: ${d.wordCount}.`,
-    ...lang.notes
-  ];
-  return {
-    score,
-    maxMarks: 30,
-    confidence: "medium",
-    dimensions: [
-      { id: "evaluating", label: "P3 Evaluating & Creating: content and relevance of story", score: evaluating, max: 16 },
-      { id: "analysing", label: "P2 Analysing: organisation and sequencing", score: analysing, max: 7 },
-      { id: "understanding", label: "P1 Understanding: language, grammar, mechanics and narrative control", score: understanding, max: 7, evidence: lang.notes }
-    ],
-    feedback,
-    diagnostics: { ...d, literalRequirement: literal }
-  };
-}
-function persuasiveSignals(response) {
-  const raw = String(response || "");
-  const low = clean(raw).toLowerCase();
-  const paragraphs = paragraphList(raw);
-  const rhetorical = (raw.match(/\?/g) || []).length;
-  const directAddress = (low.match(/\b(?:you|your|we|our|us|fellow members|friends|members|community)\b/g) || []).length;
-  const calls = (low.match(/\b(?:i urge you|let us|join|support|reject|vote yes|vote no|act now|we must|we should)\b/g) || []).length;
-  const repetition = (low.match(/\bthink of\b/g) || []).length;
-  const counte
+          "The system can reduce the number of vehicles entering the busiest streets, lower parking demand and make travel times more predictable. It 
