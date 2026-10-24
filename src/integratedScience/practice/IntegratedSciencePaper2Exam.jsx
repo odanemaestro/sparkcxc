@@ -259,6 +259,12 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
   const bioEvidence=biological?readBiologicalDrawingEvidence(responses[base+":biologicalEvidence"],biologicalDrawingSource(questionId,partIndex,itemIndex)):null;
 
   const strokes=readStrokes(responses[`${base}:strokes`]);
+  const digitisedSpan=biological&&strokes.length?(()=>{
+    const pts=strokes.flat();if(!pts.length)return null;
+    const xs=pts.map(p=>p.x),ys=pts.map(p=>p.y);
+    return {width:((Math.max(...xs)-Math.min(...xs))*.4).toFixed(1),
+      height:((Math.max(...ys)-Math.min(...ys))*.4).toFixed(1)};
+  })():null;
   const updateStrokes=next=>onChange(`${base}:strokes`,JSON.stringify(next));
   const pointFromEvent=event=>{
     const box=svgRef.current?.getBoundingClientRect();
@@ -302,6 +308,7 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
       {strokes.map((stroke,index)=><polyline key={index} points={stroke.map(point=>`${point.x},${point.y}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>)}
       {bioEvidence?.labels.map((l,i)=><g key={"bio-label-"+i} pointerEvents="none"><line x1={l.from[0]*600} y1={l.from[1]*300} x2={l.to[0]*600} y2={l.to[1]*300} stroke="currentColor" strokeWidth="1.5"/><text x={l.from[0]*600} y={l.from[1]*300-5} textAnchor="middle" fontSize="12" fill="currentColor">{l.name}</text></g>)}
     </svg>
+    {biological&&<p className="is-p2-biological-instruction" aria-label="Calibrated digital drawing measurements">The original digital drawing area uses a 0.4 mm scale per drawing coordinate. {digitisedSpan?`Your drawing measures ${digitisedSpan.width} mm wide by ${digitisedSpan.height} mm high. Use these values in the measurement and magnification fields.`:"Draw the specimen to see its measured width and height."}</p>}
     {biological&&bioEvidence?.title?.trim()&&<p className="is-p2-biological-caption" style={{textAlign:"center",marginTop:8}} aria-label="Drawing title below diagram">{bioEvidence.title}</p>}
     {!disabled && <div className="is-p2-drawing-actions">
       <button type="button" className="is-exam-secondary" onClick={()=>updateStrokes(strokes.slice(0,-1))} disabled={!strokes.length}>Undo stroke</button>
