@@ -52,9 +52,13 @@ export function gradeOriginalMathematicsGraph({criterionId,source,part,response}
       config.pointLabels.join(",")!=="A,B")return null;
    // Two submitted points bearing the same label are ambiguous evidence.
    const labels=pts.filter(p=>p.label!==undefined).map(p=>p.label);
-   if(labels.some(x=>x!=="A"&&x!=="B")||new Set(labels).size!==labels.length)return null;
-   const score=expected.reduce((total,xy,i)=>
-     total+Number(pts.some(p=>p.label===["A","B"][i]&&near(p,xy,tol))),0);
+   if(labels.some(x=>x!=="A"&&x!=="B"))return null;
+   // Two different submissions with the same label compete for its B mark.
+   // The other accurately labelled point can still earn its independent B1.
+   const score=expected.reduce((total,xy,i)=>{
+     const hits=pts.filter(p=>p.label===["A","B"][i]);
+     return total+Number(hits.length===1&&near(hits[0],xy,tol));
+   },0);
    return {marks:score,resolved:true,method:"source-labelled-coordinate-plot-v1"};
  }
  const graphCriteria=schema.criteria;
