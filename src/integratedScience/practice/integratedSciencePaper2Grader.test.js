@@ -57,3 +57,15 @@ test("historical flower magnification credits independent student working provis
  expect(x.provisional).toBe(true);
  expect(x.sourceResolved).toBe(false);
 });
+
+test("historical biology drawings do not earn visual marks from descriptive text alone",()=>{
+ const spec=require("../data/integratedSciencePaper2Specs.json");
+ for(const [qid,pi,ii] of [["IS-M1-P2-21",1,0],["IS-M1-P2-27",0,0]]){
+  const item=spec[qid].parts[pi].items[ii];
+  const x=gradeIntegratedSciencePaper2Item({id:qid},pi,ii,item,{
+   [qid+":"+pi+":"+ii]:"This shows a stoma with guard cells, flower petals and labels."});
+  expect(x.score).toBe(0);
+  expect(x.sourceBiological).toBe(true);
+  expect(x.sourceResolved).toBe(false);
+ }
+});
