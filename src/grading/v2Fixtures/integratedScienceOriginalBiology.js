@@ -41,12 +41,12 @@ const stomaAnnotations=[
  annotation("nucleus",[75,220],[180,112])
 ];
 const flowerAnnotations=[
- annotation("petal",[60,45],[180,100]),
- annotation("sepal",[60,210],[222,215]),
+ annotation("petal",[60,45],[125,105]),
+ annotation("sepal",[60,210],[164,210]),
  annotation("anther",[60,95],[244,103]),
  annotation("stigma",[540,42],[300,70]),
  annotation("style",[540,135],[300,143]),
- annotation("ovary",[540,219],[300,215])
+ annotation("ovary",[540,219],[265,205])
 ];
 const bounding=paths=>{
  const points=paths.flat(),ys=points.map(p=>p.y),xs=points.map(p=>p.x);
