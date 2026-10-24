@@ -129,8 +129,8 @@ function drawingResult(base,responses){
  const g=geometry(base,responses[base+":strokes"]);
  const e=sourceEvidence(base,responses);
  if(!g){
-  // No strokes cannot provide drawing evidence, irrespective of typed notes.
-  if(!read(responses[base+":strokes"])?.length)return {score:0,resolved:true};
+  // A text-only answer must never be published as a final drawing mark.
+  // The existing source examiner retains provisional/advisory handling.
   return null;
  }
  if(!e)return null;
