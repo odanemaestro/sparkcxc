@@ -62,6 +62,12 @@ export function numericValue(raw){
  if(typeof raw!=="string"&&!finite(raw))return null;
  const s=String(raw).trim();
  if(!s||s.length>60)return null;
+ const mixed=/^([+-]?\d{1,8})\s+(\d{1,8})\s*\/\s*(\d{1,8})$/.exec(s);
+ if(mixed){
+  const w=Number(mixed[1]),n=Number(mixed[2]),d=Number(mixed[3]);
+  if(w===0||d===0||n===0||n>=d)return null;
+  return {value:(w<0?-1:1)*(Math.abs(w)+n/d),fraction:true,reduced:gcd(n,d)===1};
+ }
  const f=/^([+-]?\d{1,8})\s*\/\s*(\d{1,8})$/.exec(s);
  if(f){const n=Number(f[1]),d=Number(f[2]);return d>0?{value:n/d,fraction:true,reduced:gcd(Math.abs(n),d)===1}:null;}
  if(!/^[+-]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?$/.test(s))return null;
@@ -92,6 +98,6 @@ export function gradeThreeMarkNumericSource({criterionId,source,part,response}){
  const correct=!!submitted&&!!expected&&
   Math.abs(submitted.value-expected.value)<1e-9&&
   (!expected.fraction||(submitted.fraction&&submitted.reduced));
- if(correct&&!method)return null;
+ if(correct&&!method)return {marks:1,resolved:false,method:"source-MMA-unverified-method-v1"};
  return {marks:Number(method)*2+Number(correct),resolved:true,method:"source-MMA-numeric-v1"};
 }
