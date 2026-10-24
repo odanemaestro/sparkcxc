@@ -1,29 +1,20 @@
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
-import React, { useEffect, useState } from "react";
-import { readSparkHashRoute, subscribeSparkRoute } from "../../routing/sparkRoutingV270";
+import React, { useEffect } from "react";
+import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import EnglishAPaper1Exam from "./EnglishAPaper1Exam";
 import EnglishAPaper2Exam from "./EnglishAPaper2Exam";
 import { englishAPastPaperArchiveSummary } from "../data/englishAPastPaperArchive";
 import { englishAPaper2ArchiveSummary } from "../data/englishAPaper2Archive";
 import "./englishAExam.css";
 
-function englishAPracticeModeFromRoute() {
-  const requested=String(readSparkHashRoute().params.get("mode") || "").trim().toLowerCase();
-  return requested==="paper1" || requested==="paper2" ? requested : "home";
-}
+const practiceMode={decode:raw=>["paper1","paper2"].includes(raw)?raw:"home"};
 
 export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
-  const [mode,setMode] = useState(() => englishAPracticeModeFromRoute());
+  const [mode,setMode] = usePracticeRouteState("english-a","mode","home",practiceMode);
 
   useEffect(() => {
     window.scrollTo?.({top:0,left:0,behavior:"auto"});
   }, [mode]);
-
-  useEffect(() => subscribeSparkRoute(route => {
-    if (route.path !== "/practice/english-a") return;
-    const requested=String(route.params.get("mode") || "").trim().toLowerCase();
-    setMode(requested==="paper1" || requested==="paper2" ? requested : "home");
-  }), []);
 
   if (mode === "paper1") {
     return (

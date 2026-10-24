@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { useSavedPracticeState } from "../../routing/usePracticeRouteState";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import ProgressBar from "../../components/ui/ProgressBar";
 import { SOCIAL_STUDIES_SHORT_ANSWER_BANK } from "../data/socialStudiesShortAnswerBank";
@@ -17,15 +18,18 @@ function commandLabel(command){
   return String(command || "").replace(/^./,character=>character.toUpperCase());
 }
 
-export default function SocialStudiesShortAnswerPractice({ onExit, onComplete }){
-  const [sectionId,setSectionId]=useState("ALL");
-  const [started,setStarted]=useState(false);
-  const [questions,setQuestions]=useState([]);
-  const [index,setIndex]=useState(0);
-  const [response,setResponse]=useState("");
-  const [mark,setMark]=useState(null);
-  const [results,setResults]=useState([]);
-  const [finished,setFinished]=useState(false);
+export default function SocialStudiesShortAnswerPractice({ onExit, onComplete, userId }){
+  const prefix=`spark:social-studies:short-answer:${userId||"guest"}:`;
+  const [sectionId,setSectionId]=useSavedPracticeState(prefix+"section","ALL");
+  const [started,setStarted]=useSavedPracticeState(prefix+"started",false);
+  const [questions,setQuestions]=useSavedPracticeState(prefix+"questions",[],{
+    encode:rows=>rows.map(item=>item.id),decode:ids=>Array.isArray(ids)?ids.map(id=>SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id===id)).filter(Boolean).slice(0,10):[],
+  });
+  const [index,setIndex]=useSavedPracticeState(prefix+"index",0,{decode:raw=>Number.isInteger(raw)&&raw>=0&&raw<10?raw:0});
+  const [response,setResponse]=useSavedPracticeState(prefix+"response","");
+  const [mark,setMark]=useSavedPracticeState(prefix+"mark",null);
+  const [results,setResults]=useSavedPracticeState(prefix+"results",[]);
+  const [finished,setFinished]=useSavedPracticeState(prefix+"finished",false);
 
   const available=useMemo(
     ()=>sectionId==="ALL"

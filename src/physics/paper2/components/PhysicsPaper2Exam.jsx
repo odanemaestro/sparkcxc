@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { usePracticeRouteState } from "../../../routing/usePracticeRouteState";
 import { createPortal } from "react-dom";
 import MathText from "../../../practice/MathText";
 import Paper2ResponseInput from "../../../practice/Paper2ResponseInput";
@@ -329,7 +330,7 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
   const [currentIndex, setCurrentIndex] = useState(initialActive?.currentIndex || 0);
   const [responses, setResponses] = useState(initialActive?.responses || {});
   const [remaining, setRemaining] = useState(() => initialActive?.endsAt ? Math.max(0, Math.round((initialActive.endsAt - Date.now()) / 1000)) : PHYSICS_PAPER2_DURATION_MINUTES * 60);
-  const [libraryOpen, setLibraryOpen] = useState(!initialActive?.paperId);
+  const [libraryOpen, setLibraryOpen] = usePracticeRouteState("physics", "library", false, { path: "/practice/physics/paper-2" });
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
   const [showConstants, setShowConstants] = useState(false);
   const [serverResult, setServerResult] = useState(null);

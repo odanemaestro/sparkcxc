@@ -1,4 +1,4 @@
-import React,{useEffect,useMemo,useState} from "react";
+import React,{useEffect,useMemo} from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import ChemistryPaper1Exam,{CHEMISTRY_PAPER1_SOURCES} from "./ChemistryPaper1Exam";
@@ -7,12 +7,27 @@ import {CHEMISTRY_HISTORICAL_PAPERS,CHEMISTRY_PAPER2_PRACTICE_SETS} from "../dat
 import {CHEMISTRY_HISTORICAL_COVERAGE} from "../data/chemistryHistoricalCoverage";
 import {buildChemistryHistoricalExam} from "../data/chemistryHistoricalExam";
 import {CHEMISTRY_HISTORICAL_OPTION_RULES} from "../data/chemistryHistoricalPaperSelection";
+import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
 import "../../integratedScience/practice/integratedSciencePractice.css";
 import "./chemistryPractice.css";
 
 const timeLabel=(paper)=>paper==="paper1"?"75 minutes":"150 minutes";
 const titleLabel=(paper)=>paper==="paper1"?"Chemistry Paper 1":"Chemistry Paper 2";
 const goTop=()=>window.scrollTo?.({top:0,left:0,behavior:"instant"});
+const SUBJECT="chemistry";
+const modeCodec={decode:raw=>["paper1","paper2"].includes(raw)?`library-${raw}`:["home","library-paper1","library-paper2","paper1-exam","paper2-exam","historical-exam"].includes(raw)?raw:"home"};
+const sourceCodec={decode:raw=>[...CHEMISTRY_PAPER1_SOURCES,...Array.from({length:4},(_,i)=>`practice-0${i+1}`)].includes(raw)?raw:null,replace:true};
+const historicalCodec={decode:raw=>CHEMISTRY_HISTORICAL_PAPERS.some(paper=>paper.id===raw)?raw:null,replace:true};
+const setCodec={decode:raw=>/^\d+$/.test(raw)&&Number(raw)<CHEMISTRY_PAPER2_PRACTICE_SETS.length?Number(raw):0,replace:true};
+const optionsCodec={
+  decode:raw=>{
+    const input=JSON.parse(raw),result={};
+    Object.entries(CHEMISTRY_HISTORICAL_OPTION_RULES).forEach(([id,rule])=>{
+      if(rule.alternatives.includes(Number(input?.[id])))result[id]=Number(input[id]);
+    });
+    return result;
+  },encode:value=>JSON.stringify(value),replace:true,
+};
 
 function PaperCard({eyebrow,title,details,onClick,disabled=false,footer=null,indicator=null}){
   return <article className="chem-library-paper">
@@ -29,11 +44,10 @@ function PaperCard({eyebrow,title,details,onClick,disabled=false,footer=null,ind
   </article>;
 }
 
-function ChemistryPaperLibrary({paperType,onBack,onStartPaper1,onStartPaper2,onStartHistorical}){
-  const [tab,setTab]=useState("practice");
-  const [query,setQuery]=useState("");
-  const [session,setSession]=useState("all");
-  const [sectionC,setSectionC]=useState({});
+function ChemistryPaperLibrary({paperType,onBack,onStartPaper1,onStartPaper2,onStartHistorical,sectionC,setSectionC}){
+  const [tab,setTab]=usePracticeRouteState(SUBJECT,`${paperType}-tab`,"practice",{decode:raw=>raw==="historical"?raw:"practice"});
+  const [query,setQuery]=usePracticeRouteState(SUBJECT,`${paperType}-query`,"",{decode:raw=>raw.slice(0,100),replace:true});
+  const [session,setSession]=usePracticeRouteState(SUBJECT,`${paperType}-session`,"all",{decode:raw=>["January","May/June"].includes(raw)?raw:"all",replace:true});
   const coverage=useMemo(()=>Object.fromEntries(CHEMISTRY_HISTORICAL_COVERAGE.papers.map(row=>[row.sourceId,row])),[]);
   const isPaper1=paperType==="paper1";
   const pastPaperRows=useMemo(()=>isPaper1
@@ -130,18 +144,24 @@ function ChemistryPaperLibrary({paperType,onBack,onStartPaper1,onStartPaper2,onS
 }
 
 export default function ChemistryPracticeHub({supabase,userId,onBack}){
-  const [mode,setMode]=useState("home");
-  const [paper1Source,setPaper1Source]=useState(null);
-  const [paperIndex,setPaperIndex]=useState(0);
-  const [historicalPaper,setHistoricalPaper]=useState(null);
+  const [mode,setMode]=usePracticeRouteState(SUBJECT,"mode","home",modeCodec);
+  const [paper1Source,setPaper1Source]=usePracticeRouteState(SUBJECT,"paper1",null,sourceCodec);
+  const [paperIndex,setPaperIndex]=usePracticeRouteState(SUBJECT,"set",0,setCodec);
+  const [historicalSource,setHistoricalSource]=usePracticeRouteState(SUBJECT,"source",null,historicalCodec);
+  const [sectionC,setSectionC]=usePracticeRouteState(SUBJECT,"options",{},optionsCodec);
+  const historicalPaper=useMemo(()=>{
+    if(!historicalSource)return null;
+    const rule=CHEMISTRY_HISTORICAL_OPTION_RULES[historicalSource];
+    return buildChemistryHistoricalExam(historicalSource,sectionC[historicalSource]||rule?.alternatives?.[0]||null);
+  },[historicalSource,sectionC]);
   useEffect(()=>{goTop();},[mode,paper1Source,paperIndex,historicalPaper?.id]);
 
   const startPaper1=source=>{setPaper1Source(source);setMode("paper1-exam");};
   const startPaper2=index=>{setPaperIndex(index);setMode("paper2-exam");};
-  const startHistorical=paper=>{setHistoricalPaper(paper);setMode("historical-exam");};
+  const startHistorical=paper=>{setHistoricalSource(paper.sourceId);setMode("historical-exam");};
   if(mode==="library-paper1"||mode==="library-paper2")return <ChemistryPaperLibrary
     paperType={mode==="library-paper1"?"paper1":"paper2"} onBack={()=>setMode("home")}
-    onStartPaper1={startPaper1} onStartPaper2={startPaper2} onStartHistorical={startHistorical}/>;
+    onStartPaper1={startPaper1} onStartPaper2={startPaper2} onStartHistorical={startHistorical} sectionC={sectionC} setSectionC={setSectionC}/>;
   if(mode==="paper1-exam"&&paper1Source)return <ChemistryPaper1Exam key={paper1Source} sourceId={paper1Source}
     supabase={supabase} userId={userId} onBack={()=>setMode("library-paper1")}
     onChooseAnother={()=>setMode("library-paper1")}/>;

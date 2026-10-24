@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import {useSavedPracticeState} from "../../routing/usePracticeRouteState";
 import {GuidedStomaFigure,GuidedFlowerFigure} from "./ScienceGuidedDiagramPractice";
 import {guidedDiagramForSource,readGuidedDiagramAnswers} from "./scienceGuidedDiagramMarking";
 import {ADAPTED_BIOLOGY_P2_ID,ADAPTED_BIOLOGY_P2_RUBRIC,ADAPTED_BIOLOGY_P2_QUESTIONS,
@@ -6,10 +7,11 @@ import {ADAPTED_BIOLOGY_P2_ID,ADAPTED_BIOLOGY_P2_RUBRIC,ADAPTED_BIOLOGY_P2_QUEST
 
 const INPUT_STYLE={width:"100%",minWidth:0,minHeight:40,borderRadius:8,padding:"8px 12px",
  border:"1px solid var(--spark-border, #b9c7d9)",background:"var(--spark-surface, transparent)",color:"inherit"};
-export default function IntegratedScienceAdaptedPaper2Assessment({onExit}){
- const [stage,setStage]=useState("instructions");
- const [index,setIndex]=useState(0);
- const [answers,setAnswers]=useState({});
+export default function IntegratedScienceAdaptedPaper2Assessment({onExit,userId}){
+ const prefix=`spark:is:adapted-biology:${userId||"guest"}:`;
+ const [stage,setStage]=useSavedPracticeState(prefix+"stage","instructions",{decode:raw=>["instructions","exam","review"].includes(raw)?raw:"instructions"});
+ const [index,setIndex]=useSavedPracticeState(prefix+"index",0,{decode:raw=>Number.isInteger(raw)&&raw>=0&&raw<ADAPTED_BIOLOGY_P2_QUESTIONS.length?raw:0});
+ const [answers,setAnswers]=useSavedPracticeState(prefix+"answers",{});
  const question=ADAPTED_BIOLOGY_P2_QUESTIONS[index];
  const result=stage==="review"?gradeAdaptedBiologyPaper2(answers):null;
  const guide=question.id==="stoma-identification"

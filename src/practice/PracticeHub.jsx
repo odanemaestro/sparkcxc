@@ -40,7 +40,7 @@ function PracticeLazyBoundary({ label, children }) {
 }
 const PAPER1_ACTIVE_KEY = "spark-paper1-active-v1";
 const PAPER1_RESULTS_KEY = "spark-paper1-results-v1";
-const PAPER2_ACTIVE_KEY = "spark-paper2-active-v2";
+const PAPER2_ACTIVE_KEY = "spark-paper2-active-v52";
 const PAPER2_RESULTS_KEY = "spark-paper2-results-v2";
 
 function readJson(key, fallback) {

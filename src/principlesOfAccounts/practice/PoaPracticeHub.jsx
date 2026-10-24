@@ -24,6 +24,7 @@ import PoaHistoricalExam from "./PoaHistoricalExam";
 import { getPoaHistoricalPaper, getPoaPaperSource, POA_SPECIMEN_PAPERS } from "../data/poaHistoricalPapers";
 import { hasCompletePoaText } from "../data/poaPrintedPapers";
 import { PoaExamHeader, PoaQuestionNavigator } from "./PoaExamLayout";
+import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import "./poaPractice.css";
 import "./poaLayout.css";
 const CONFIG = Object.freeze({
@@ -34,6 +35,17 @@ const CONFIG = Object.freeze({
   source: "poa_original_paper1_v1",
   paperId: "POA-ORIGINAL-01-01",
   questions: POA_PAPER1.map((q) => ({ ...q, answer: "ABCD"[q.answerIndex] })),
+});
+const SUBJECT = "principles-of-accounts";
+const POA_VIEWS = new Set(["home", "library", "paper1", "paper2", "historical", "workspace"]);
+const POA_SOURCES = manifest.filter((s) => s.paper && !s.duplicateOf && hasCompletePoaText(getPoaHistoricalPaper(s.id)));
+const POA_SOURCE_BY_ID = new Map([
+  ...POA_SOURCES.map((s) => [s.id, s]),
+  ...POA_SPECIMEN_PAPERS.filter(hasCompletePoaText).map((p) => [p.id, getPoaPaperSource(p)]),
+]);
+const routeSelection = (allowed, fallback) => ({
+  decode: (raw) => allowed.includes(raw) ? raw : fallback,
+  replace: true,
 });
 const freshAttempt = () => ({
   phase: "instructions",
@@ -442,14 +454,26 @@ function Paper2Exam({ userId, supabase, onBack }) {
   );
 }
 export default function PoaPracticeHub({ userId, supabase, onBack }) {
-  const [mode, setMode] = useState("home"),
-    [source, setSource] = useState(null),
-    [libraryPaper, setLibraryPaper] = useState("1"),
-    [libraryTabs, setLibraryTabs] = useState({ 1: "practice", 2: "practice" }),
-    [filters, setFilters] = useState({
-      1: { year: "all", sitting: "all" },
-      2: { year: "all", sitting: "all" },
-    });
+  const [mode, setMode] = usePracticeRouteState(SUBJECT, "view", "home", {
+    decode: (raw) => POA_VIEWS.has(raw) ? raw : "home",
+  });
+  const [sourceId, setSourceId] = usePracticeRouteState(SUBJECT, "source", null, {
+    decode: (raw) => POA_SOURCE_BY_ID.has(raw) ? raw : null,
+    replace: true,
+  });
+  const [libraryPaper, setLibraryPaper] = usePracticeRouteState(SUBJECT, "paper", "1", routeSelection(["1", "2"], "1"));
+  const [tab1, setTab1] = usePracticeRouteState(SUBJECT, "tab1", "practice", routeSelection(["practice", "past"], "practice"));
+  const [tab2, setTab2] = usePracticeRouteState(SUBJECT, "tab2", "practice", routeSelection(["practice", "past"], "practice"));
+  const validYears = (paper) => ["all", ...POA_SOURCES.filter((s) => s.paper === paper).map((s) => String(s.year))];
+  const [year1, setYear1] = usePracticeRouteState(SUBJECT, "year1", "all", routeSelection(validYears("1"), "all"));
+  const [year2, setYear2] = usePracticeRouteState(SUBJECT, "year2", "all", routeSelection(validYears("2"), "all"));
+  const [sitting1, setSitting1] = usePracticeRouteState(SUBJECT, "session1", "all", routeSelection(["all", "JAN", "MJ"], "all"));
+  const [sitting2, setSitting2] = usePracticeRouteState(SUBJECT, "session2", "all", routeSelection(["all", "JAN", "MJ"], "all"));
+  const libraryTabs = { 1: tab1, 2: tab2 };
+  const filters = { 1: { year: year1, sitting: sitting1 }, 2: { year: year2, sitting: sitting2 } };
+  const source = POA_SOURCE_BY_ID.get(sourceId);
+  const openSource = (selected) => { setSourceId(selected.id); setMode("historical"); };
+  const setLibraryTab = (tab) => (libraryPaper === "1" ? setTab1 : setTab2)(tab);
   useEffect(() => {
     window.scrollTo?.({ top: 0, left: 0, behavior: "instant" });
   }, [mode, source?.id]);
@@ -474,7 +498,7 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
         onBack={() => setMode("library")}
       />
     );
-  if (source)
+  if (mode === "historical" && source)
     return (
       <PoaHistoricalExam
         key={source.id + userId}
@@ -482,14 +506,10 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
         paper={getPoaHistoricalPaper(source.id)}
         supabase={supabase}
         userId={userId}
-        onBack={() => setSource(null)}
+        onBack={() => setMode("library")}
       />
     );
-  const sources = manifest
-    .filter(
-      (s) =>
-        s.paper === libraryPaper && !s.duplicateOf && hasCompletePoaText(getPoaHistoricalPaper(s.id)),
-    )
+  const sources = POA_SOURCES.filter((s) => s.paper === libraryPaper)
     .sort((a, b) => b.year - a.year || a.sitting.localeCompare(b.sitting));
   if (mode === "workspace") return (
     <main className="poa-practice poa-practice-shell">
@@ -513,9 +533,10 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
       (filter.sitting === "all" || s.sitting === filter.sitting),
     );
     const specimens = POA_SPECIMEN_PAPERS.filter((p) => String(p.paper) === libraryPaper && hasCompletePoaText(p));
-    const updateFilter = (next) => setFilters((current) => ({
-      ...current, [libraryPaper]: { ...current[libraryPaper], ...next },
-    }));
+    const updateFilter = (next) => {
+      if (next.year !== undefined) (isPaper1 ? setYear1 : setYear2)(next.year);
+      if (next.sitting !== undefined) (isPaper1 ? setSitting1 : setSitting2)(next.sitting);
+    };
     return (
       <main className="poa-practice poa-practice-shell">
         <button type="button" className="poa-back" data-spark-action="nav" onClick={() => setMode("home")}>
@@ -530,8 +551,8 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
           </div>
         </header>
         <div className="poa-library-tabs" role="group" aria-label="Choose practice or past papers">
-          <button type="button" className={tab === "practice" ? "active" : ""} data-spark-action="nav" aria-pressed={tab === "practice"} onClick={() => setLibraryTabs((current) => ({ ...current, [libraryPaper]: "practice" }))}>Practice sets</button>
-          <button type="button" className={tab === "past" ? "active" : ""} data-spark-action="nav" aria-pressed={tab === "past"} onClick={() => setLibraryTabs((current) => ({ ...current, [libraryPaper]: "past" }))}>Past papers</button>
+          <button type="button" className={tab === "practice" ? "active" : ""} data-spark-action="nav" aria-pressed={tab === "practice"} onClick={() => setLibraryTab("practice")}>Practice sets</button>
+          <button type="button" className={tab === "past" ? "active" : ""} data-spark-action="nav" aria-pressed={tab === "past"} onClick={() => setLibraryTab("past")}>Past papers</button>
         </div>
         {tab === "practice" ? (
           <>
@@ -552,7 +573,7 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
                 <h3>Syllabus specimen paper</h3>
                 <p>Practise the specimen questions, then review your answers and worked solutions.</p>
                 <p className="poa-library-meta">Paper {libraryPaper} · {isPaper1 ? "Multiple choice" : "Structured questions"}</p>
-                <button type="button" className="secondary" data-spark-action="forward" onClick={() => setSource(getPoaPaperSource(specimen))}>
+                <button type="button" className="secondary" data-spark-action="forward" onClick={() => openSource(getPoaPaperSource(specimen))}>
                   Select specimen paper <ForwardArrowIcon />
                 </button>
               </article>)}
@@ -584,7 +605,7 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
                 <h3>{s.year} {s.sitting === "JAN" ? "January" : "May/June"}</h3>
                 <p className="poa-library-meta">Paper {libraryPaper} · {isPaper1 ? "Multiple choice" : "Structured questions"}</p>
                 <p>Read the original questions, save your answers and review your work when you finish.</p>
-                <button type="button" className="secondary" data-spark-action="forward" onClick={() => setSource(s)}>
+                <button type="button" className="secondary" data-spark-action="forward" onClick={() => openSource(s)}>
                   Select past paper <ForwardArrowIcon />
                 </button>
               </article>)}

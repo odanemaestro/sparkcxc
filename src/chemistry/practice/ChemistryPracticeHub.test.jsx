@@ -47,6 +47,13 @@ jest.mock("../data/chemistryHistoricalPaperSelection",()=>({
 }));
 
 describe("Chemistry practice home and matching paper libraries",()=>{
+  beforeEach(()=>window.history.replaceState(null,"","/#/practice/chemistry"));
+  test.each(["paper1","paper2"])("recommended %s routes open the matching library",mode=>{
+    window.history.replaceState(null,"",`/#/practice/chemistry?mode=${mode}`);
+    render(<ChemistryPracticeHub/>);
+    expect(screen.getByRole("button",{name:"Practice sets"})).toBeInTheDocument();
+    expect(screen.getByRole("heading",{level:1})).toHaveTextContent(mode==="paper1"?"Paper 1":"Paper 2");
+  });
   test("home shows one entry per paper, without duplicate Paper 2 set tiles",()=>{
     render(<ChemistryPracticeHub onBack={()=>{}}/>);
     expect(screen.getByRole("button",{name:/Chemistry Paper 1/})).toBeInTheDocument();
@@ -87,13 +94,17 @@ describe("Chemistry practice home and matching paper libraries",()=>{
   });
 
   test("Paper 2 past papers retain an explicit Section C choice",()=>{
-    render(<ChemistryPracticeHub onBack={()=>{}}/>);
+    const first=render(<ChemistryPracticeHub onBack={()=>{}}/>);
     fireEvent.click(screen.getByRole("button",{name:/Chemistry Paper 2/}));
     fireEvent.click(screen.getByRole("button",{name:"Past papers"}));
     expect(screen.queryByText("View paper details")).not.toBeInTheDocument();
     const option=screen.getByLabelText("Section C option");
     fireEvent.change(option,{target:{value:"7"}});
     fireEvent.click(screen.getByRole("button",{name:/Select paper/}));
+    expect(screen.getByText("Historical Paper 2: CHEM-P2-2008-MJ-OPTION-7")).toBeInTheDocument();
+    expect(window.location.hash).toContain("source=CHEM-P2-2008-MJ");
+    first.unmount();
+    render(<ChemistryPracticeHub onBack={()=>{}}/>);
     expect(screen.getByText("Historical Paper 2: CHEM-P2-2008-MJ-OPTION-7")).toBeInTheDocument();
   });
 });

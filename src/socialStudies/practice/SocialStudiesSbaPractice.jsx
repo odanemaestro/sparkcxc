@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { useSavedPracticeState } from "../../routing/usePracticeRouteState";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import {
   SOCIAL_STUDIES_SBA_GUIDE,
@@ -107,8 +108,8 @@ function SbaPresentationBuilder({item,index,onChange}){
   </div>;
 }
 
-export default function SocialStudiesSbaPractice({ onExit, onComplete }){
-  const [project,setProject]=useState({
+export default function SocialStudiesSbaPractice({ onExit, onComplete, userId }){
+  const [project,setProject]=useSavedPracticeState(`spark:social-studies:sba:${userId||"guest"}:project`,()=>({
     problem:"",
     reason:"",
     method:"",
@@ -124,8 +125,8 @@ export default function SocialStudiesSbaPractice({ onExit, onComplete }){
     implementation:"",
     reportText:"",
     presentationElements:[],
-  });
-  const [checked,setChecked]=useState(false);
+  }),{decode:(raw,fallback)=>raw&&typeof raw==="object"&&!Array.isArray(raw)?{...fallback,...raw}:fallback});
+  const [checked,setChecked]=useSavedPracticeState(`spark:social-studies:sba:${userId||"guest"}:checked`,false);
   const grade=useMemo(()=>gradeSocialStudiesSba(project),[project]);
 
   const setField=(field,value)=>{

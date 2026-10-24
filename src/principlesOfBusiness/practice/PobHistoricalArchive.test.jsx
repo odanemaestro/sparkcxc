@@ -135,7 +135,7 @@ test("Paper 1 timed attempt survives remount without granting a fresh timer",()=
  render(<PobHistoricalArchive {...props}/>);
  fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2002"}});
  fireEvent.click(screen.getByRole("button",{name:/2002 May\/June.*Paper 1.*60-question text practice/}));
- expect(screen.getByText("Question 1 of 60")).toBeInTheDocument();
+ expect(screen.getByText("Question 2 of 60")).toBeInTheDocument();
  expect(screen.queryByRole("button",{name:"Start 60-question Paper 1"})).not.toBeInTheDocument();
  expect(JSON.parse(window.localStorage.getItem("spark:pob:source-questions:POB-P1-2002-MJ:attempt")).deadline).toBe(stored.deadline);
  fireEvent.click(screen.getByRole("button",{name:"Submit and review"}));

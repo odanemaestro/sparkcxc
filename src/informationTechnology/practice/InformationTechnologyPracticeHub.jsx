@@ -4,7 +4,7 @@ import InformationTechnologyPaper2Exam from "./InformationTechnologyPaper2Exam";
 import InformationTechnologySbaCentre from "./InformationTechnologySbaCentre";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import "./informationTechnologyPractice.css";
-import { useInformationTechnologyPracticeRoute } from "../../routing/sparkRoutingV270";
+import { useInformationTechnologyPracticeRoute, writeSparkNestedRoute } from "../../routing/sparkRoutingV270";
 import { syncInformationTechnologyLocalProgress } from "../../subjects/subjectProgress";
 import { readServerExamV2Result } from "../../grading/serverExamAttempt";
 import { verifiedV2Display } from "../../grading/verifiedV2Display";
@@ -33,7 +33,11 @@ function readFirst(keys) {
 
 export default function InformationTechnologyPracticeHub({ onBack, supabase, userId, onActivity }) {
   const [mode, setMode] = useInformationTechnologyPracticeRoute(true);
-  const [fresh, setFresh] = useState(false);
+  const openPaper = (paperMode, instructions) => {
+    setMode(paperMode);
+    writeSparkNestedRoute(`/practice/information-technology/paper-${paperMode === "paper1" ? "1" : "2"}`,
+      instructions ? { screen: "instructions" } : {}, { replace: true });
+  };
   const [verifiedLatest, setVerifiedLatest] = useState(null);
   const [scoreRefresh, setScoreRefresh] = useState(0);
   const snapshot = useMemo(() => ({
@@ -64,8 +68,8 @@ export default function InformationTechnologyPracticeHub({ onBack, supabase, use
     }).catch(error => console.warn("IT local progress backfill failed", error));
   }, [supabase, userId]);
 
-  if (mode === "paper1") return <InformationTechnologyPaper1Exam startFresh={fresh} onActivity={onActivity} onExit={() => setMode("home")}/>;
-  if (mode === "paper2") return <InformationTechnologyPaper2Exam supabase={supabase} startFresh={fresh} onActivity={onActivity} onExit={() => setMode("home")}/>;
+  if (mode === "paper1") return <InformationTechnologyPaper1Exam userId={userId} onActivity={onActivity} onExit={() => setMode("home")}/>;
+  if (mode === "paper2") return <InformationTechnologyPaper2Exam userId={userId} supabase={supabase} onActivity={onActivity} onExit={() => setMode("home")}/>;
   if (mode === "sba") return <InformationTechnologySbaCentre userId={userId} onActivity={onActivity} onBack={() => setMode("home")}/>;
 
   return (
@@ -87,8 +91,8 @@ export default function InformationTechnologyPracticeHub({ onBack, supabase, use
           <p>Answer 60 multiple-choice questions in 1 hour 15 minutes. Every paper follows the required 35 / 15 / 10 section distribution and includes a mixture of text, tables, diagrams, spreadsheets, databases, flowcharts and code where appropriate.</p>
           <div className="it-practice-specs">9 full papers <span>·</span> 540 questions <span>·</span> 75 minutes</div>
           <div className="it-practice-actions">
-            {snapshot.p1Active?.paperId && <button className="it-practice-primary" type="button" onClick={() => { setFresh(false); setMode("paper1"); }}>Resume paper</button>}
-            <button className={snapshot.p1Active?.paperId ? "it-practice-secondary" : "it-practice-primary"} type="button" onClick={() => { setFresh(true); setMode("paper1"); }}>{snapshot.p1Active?.paperId ? "New paper instructions" : "View instructions"}</button>
+            {snapshot.p1Active?.paperId && <button className="it-practice-primary" type="button" onClick={() => openPaper("paper1", false)}>Resume paper</button>}
+            <button className={snapshot.p1Active?.paperId ? "it-practice-secondary" : "it-practice-primary"} type="button" onClick={() => openPaper("paper1", true)}>{snapshot.p1Active?.paperId ? "New paper instructions" : "View instructions"}</button>
           </div>
         </article>
 
@@ -99,8 +103,8 @@ export default function InformationTechnologyPracticeHub({ onBack, supabase, use
           <p>Answer four compulsory structured questions in 2 hours. Questions use realistic scenarios, worksheet extracts, database structures, network diagrams, algorithms and other stimulus material, followed by guided marking.</p>
           <div className="it-practice-specs">9 full papers <span>·</span> 36 structured questions <span>·</span> 90 marks</div>
           <div className="it-practice-actions">
-            {snapshot.p2Active?.paperId && <button className="it-practice-primary" type="button" onClick={() => { setFresh(false); setMode("paper2"); }}>Resume paper</button>}
-            <button className={snapshot.p2Active?.paperId ? "it-practice-secondary" : "it-practice-primary"} type="button" onClick={() => { setFresh(true); setMode("paper2"); }}>{snapshot.p2Active?.paperId ? "New paper instructions" : "View instructions"}</button>
+            {snapshot.p2Active?.paperId && <button className="it-practice-primary" type="button" onClick={() => openPaper("paper2", false)}>Resume paper</button>}
+            <button className={snapshot.p2Active?.paperId ? "it-practice-secondary" : "it-practice-primary"} type="button" onClick={() => openPaper("paper2", true)}>{snapshot.p2Active?.paperId ? "New paper instructions" : "View instructions"}</button>
           </div>
         </article>
 

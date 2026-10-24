@@ -28,6 +28,7 @@ const ACTIVE_KEY = "spark-paper2-active-v52";
 // SPARK_V541_EXAMINER_MARKING_INTEGRATION
 const USED_KEY = "spark-paper2-used-question-ids-v52";
 const RESULTS_KEY = "spark-paper2-results-v2";
+const reviewStorageKey = userId => `spark-paper2-review-v1:${userId || "guest"}`;
 
 function readJson(key, fallback) {
   try {
@@ -270,6 +271,7 @@ function totalPartCount(exam) {
 }
 
 export default function Paper2Exam({ onExit, startFresh = false, supabase, userId }) {
+  const reviewKey = reviewStorageKey(userId);
   const [exam, setExam] = useState(null);
   const [answers, setAnswers] = useState({});
   const [flags, setFlags] = useState([]);
@@ -319,13 +321,25 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
   }, [showNavigator]);
 
   useEffect(() => {
-    const saved = !startFresh ? readJson(ACTIVE_KEY, null) : null;
+    const active = !startFresh ? readJson(ACTIVE_KEY, null) : null;
+    const savedReview = !startFresh && !active ? readJson(reviewKey, null) : null;
+    const saved = active || (savedReview?.phase === "review" ? savedReview : null);
+    if (startFresh) localStorage.removeItem(reviewKey);
     if (saved?.exam?.questions?.length === 10 && validatePaper2Exam(saved.exam).valid) {
       setExam(saved.exam);
       setAnswers(saved.answers || {});
       setFlags(saved.flags || []);
       setCurrentIndex(Math.min(9, Math.max(0, saved.currentIndex || 0)));
-      setDeadline(saved.deadline || Date.now() + PAPER2_DURATION_SECONDS * 1000);
+      if (saved.phase === "review") {
+        submittedRef.current = true;
+        setSubmitted(true);
+        setTimedOut(Boolean(saved.timedOut));
+        setRemaining(Math.max(0, Math.min(PAPER2_DURATION_SECONDS, Number(saved.remaining) || 0)));
+        setReviewIndex(Math.min(9, Math.max(0, Number(saved.reviewIndex) || 0)));
+        setDeadline(saved.deadline || null);
+      } else {
+        setDeadline(saved.deadline || Date.now() + PAPER2_DURATION_SECONDS * 1000);
+      }
       setStarted(true);
       return;
     }
@@ -335,7 +349,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
     if (!validatePaper2Exam(fresh).valid) throw new Error("Paper 2 generation failed validation.");
     setExam(fresh);
     localStorage.removeItem(ACTIVE_KEY);
-  }, [startFresh]);
+  }, [startFresh, reviewKey]);
 
   useEffect(() => {
     if (!started || !deadline || submitted) return undefined;
@@ -349,6 +363,12 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
     if (!started || submitted || !exam || !deadline) return;
     writeJson(ACTIVE_KEY, { exam, answers, flags, currentIndex, deadline });
   }, [started, submitted, exam, answers, flags, currentIndex, deadline]);
+
+  useEffect(() => {
+    if (!submitted || !exam) return;
+    writeJson(reviewKey, { phase: "review", exam, answers, flags, currentIndex, deadline,
+      remaining, timedOut, reviewIndex });
+  }, [submitted, exam, answers, flags, currentIndex, deadline, remaining, timedOut, reviewIndex, reviewKey]);
 
   const current = exam?.questions?.[currentIndex];
   const flaggedSet = useMemo(() => new Set(flags), [flags]);
@@ -396,12 +416,14 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
     writeJson(RESULTS_KEY, [record, ...results].slice(0, 20));
     const attempt = paper2ResultToAttempt(record);
     void savePracticeExamAttempt({ supabase, userId, attempt }).catch(() => {});
+    writeJson(reviewKey, { phase: "review", exam, answers, flags, currentIndex, deadline,
+      remaining: wasTimedOut ? 0 : remaining, timedOut: wasTimedOut, reviewIndex: 0 });
     localStorage.removeItem(ACTIVE_KEY);
     setTimedOut(wasTimedOut);
     setSubmitted(true);
     setShowSubmit(false);
     setReviewIndex(0);
-  }, [exam, answers, remaining, completeIds, supabase, userId]);
+  }, [exam, answers, remaining, completeIds, supabase, userId, reviewKey, flags, currentIndex, deadline]);
 
   useEffect(() => {
     if (started && remaining === 0 && !submitted) finalize(true);
@@ -474,6 +496,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
     setReviewIndex(0);
     setActivePartKey(null);
     localStorage.removeItem(ACTIVE_KEY);
+    localStorage.removeItem(reviewKey);
   }
 
   if (!exam) {

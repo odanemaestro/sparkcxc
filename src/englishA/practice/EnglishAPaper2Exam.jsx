@@ -77,7 +77,6 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
   },[phase]);
 
   useEffect(() => {
-    if (phase === "library") return;
     saveState(userId,{phase,setId,answers,choiceId,currentIndex,endsAt,serverAttemptId,startedAt});
   },[answers,choiceId,currentIndex,endsAt,phase,setId,serverAttemptId,startedAt,userId]);
 

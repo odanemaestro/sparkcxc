@@ -15,11 +15,21 @@ function readSaved(id,userId){
    /^\d{1,2}$/.test(n)&&Number(n)>=1&&Number(n)<=60&&CHOICES.includes(a)));
  }catch{return {};}
 }
+function readSavedView(id,userId,count){
+ try{
+  const saved=JSON.parse(localStorage.getItem(storageKey(id,userId)+":view")||"null");
+  return {
+   position:Number.isInteger(saved?.position)&&saved.position>=0&&saved.position<count?saved.position:0,
+   submitted:saved?.submitted===true,
+  };
+ }catch{return {position:0,submitted:false};}
+}
 export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
  const source=useMemo(()=>fnhHistoricalPaper1Reader(sourceId),[sourceId]);
+ const savedView=useMemo(()=>readSavedView(sourceId,userId,source?.questions.length||0),[sourceId,userId,source]);
  const [selected,setSelected]=useState(()=>readSaved(sourceId,userId));
- const [position,setPosition]=useState(0);
- const [submitted,setSubmitted]=useState(false);
+ const [position,setPosition]=useState(()=>savedView.position);
+ const [submitted,setSubmitted]=useState(()=>savedView.submitted);
  const keys=useMemo(()=>fnhHistoricalPaper1PracticeKeys(sourceId),[sourceId]);
  const questions=source?.questions||[];
  const question=questions[position];
@@ -28,12 +38,15 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
  const correct=eligible.filter(q=>selected[q.number]===keys[q.number].answer).length;
  useEffect(()=>{
   setSelected(readSaved(sourceId,userId));
-  setPosition(0);
-  setSubmitted(false);
- },[sourceId,userId]);
+  setPosition(savedView.position);
+  setSubmitted(savedView.submitted);
+ },[sourceId,userId,savedView]);
  useEffect(()=>{
   try{localStorage.setItem(storageKey(sourceId,userId),JSON.stringify(selected));}catch{}
  },[sourceId,userId,selected]);
+ useEffect(()=>{
+  try{localStorage.setItem(storageKey(sourceId,userId)+":view",JSON.stringify({position,submitted}));}catch{}
+ },[sourceId,userId,position,submitted]);
  useEffect(()=>{
   try{window.scrollTo?.({top:0,left:0,behavior:"instant"});}catch{}
  },[sourceId,position]);

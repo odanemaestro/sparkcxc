@@ -1,4 +1,5 @@
 import React,{useEffect,useState} from "react";
+import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
 import {FNH_PRACTICAL_WORKBOOK,FNH_SBA_GUIDELINES} from "../data/fnhPracticalWorkbook";
 import "./fnhPractice.css";
 
@@ -7,7 +8,9 @@ export default function FnhPracticalWorkbook({userId,onBack}){
   const [entries,setEntries]=useState(()=>{
     try{return JSON.parse(localStorage.getItem(storageKey(userId))||"{}");}catch{return {};}
   });
-  const [selected,setSelected]=useState(FNH_PRACTICAL_WORKBOOK[0].id);
+  const [selected,setSelected]=usePracticeRouteState("food-nutrition-and-health","task",FNH_PRACTICAL_WORKBOOK[0].id,{
+    decode:raw=>FNH_PRACTICAL_WORKBOOK.some(item=>item.id===raw)?raw:FNH_PRACTICAL_WORKBOOK[0].id,
+  });
   const current=FNH_PRACTICAL_WORKBOOK.find(row=>row.id===selected)||FNH_PRACTICAL_WORKBOOK[0];
   const value=entries[current.id]||{notes:"",plannedDate:"",reflection:"",checks:{}};
   const update=(patch)=>setEntries(previous=>({...previous,[current.id]:{

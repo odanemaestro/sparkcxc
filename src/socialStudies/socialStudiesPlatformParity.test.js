@@ -245,10 +245,9 @@ describe("Social Studies platform parity", () => {
     const practice = read("practice/SocialStudiesPracticeHub.jsx");
     const flashcards = read("components/SocialStudiesFlashcardsPanel.jsx");
 
-    expect(practice).toContain("readSparkHashRoute");
-    expect(practice).toContain("subscribeSparkRoute");
-    expect(practice).toContain('route.path!=="/practice/social-studies"');
-    expect(practice).toContain('requestedMode==="sba" ? "sba" : "home"');
+    expect(practice).toContain("usePracticeRouteState");
+    expect(practice).toContain('usePracticeRouteState("social-studies","mode","home",practiceModeCodec)');
+    expect(practice).toContain('usePracticeRouteState("social-studies","section","A1",sectionCodec)');
     expect(flashcards).toContain("readSparkHashRoute");
     expect(flashcards).toContain("subscribeSparkRoute");
     expect(flashcards).toContain('route.path!=="/dashboard/flashcards/social-studies"');

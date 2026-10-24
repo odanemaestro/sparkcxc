@@ -1,4 +1,5 @@
 import React,{useEffect,useMemo,useRef,useState} from "react";
+import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {buildPobPaper1} from "../data/pobPaper1Original";
 import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT,verifyPobSpecimenCheckpoint} from "../data/pobCxcSpecimenP1Checkpoint";
@@ -324,13 +325,15 @@ const POB_2026_HISTORICAL_PREVIEW=buildPob2026JanHistoricalPaper();
 const POB_2026_HISTORICAL_PREVIEW_VALID=verifyPob2026JanHistoricalPaper(POB_2026_HISTORICAL_PREVIEW).valid;
 
 export default function PobPracticeHub({userId,supabase,onBack}){
- const [mode,setMode]=useState("home");
+ const [mode,setMode]=usePracticeRouteState(SUBJECT,"view","home",{
+   decode:raw=>["home","paper1","paper2","specimen","specimenFull","historical2026janp2","archive","sba"].includes(raw)?raw:"home",
+ });
  if(mode==="paper1")return <PobPaper1Exam userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="specimen"||mode==="specimenFull")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_FULL} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="paper2")return <PobPaper2Exam userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="historical2026janp2"&&POB_2026_HISTORICAL_PREVIEW_VALID)return <PobPaper2Exam paperOverride={POB_2026_HISTORICAL_PREVIEW} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="archive")return <PobHistoricalArchive userId={userId} supabase={supabase} onBack={()=>setMode("home")} onOpenJanuary2026={()=>setMode("historical2026janp2")}/>;
- if(mode==="sba")return <PobSbaWorkspace onBack={()=>setMode("home")}/>;
+ if(mode==="sba")return <PobSbaWorkspace userId={userId} onBack={()=>setMode("home")}/>;
  return <main className="pob-exam"><div className="pob-exam-shell">
    {onBack&&<div className="pob-exam-nav"><button type="button" onClick={onBack}>← Choose another subject</button></div>}
    <header className="pob-exam-card pob-exam-intro"><span className="pob-exam-kicker">SPARK CSEC PRINCIPLES OF BUSINESS</span>

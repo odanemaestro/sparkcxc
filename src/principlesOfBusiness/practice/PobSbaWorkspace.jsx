@@ -1,4 +1,5 @@
-import React,{useMemo,useState} from "react";
+import React,{useEffect,useMemo,useState} from "react";
+import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
 import {POB_SBA_SPEC,POB_SBA_PROJECT_IDEAS,evaluatePobSbaDraft} from "../data/pobSbaSpec";
 import "../components/pobLearningTools.css";
 import "./pobSbaWorkspace.css";
@@ -17,8 +18,17 @@ const exportText=(sections)=>{
   document.body.appendChild(link);link.click();link.remove();
  }finally{URL.revokeObjectURL(url);}
 };
-export default function PobSbaWorkspace({onBack}){
- const [sections,setSections]=useState(empty),[selected,setSelected]=useState("topic");
+export default function PobSbaWorkspace({onBack,userId}){
+ const draftKey=`spark:pob:sba-draft:${userId||"guest"}`;
+ const [sections,setSections]=useState(()=>{
+   try { const saved=JSON.parse(localStorage.getItem(draftKey)||"null");
+     return Object.fromEntries(POB_SBA_SPEC.researchStages.map(stage=>[stage.id,typeof saved?.[stage.id]==="string"?saved[stage.id]:""]));
+   } catch { return empty(); }
+ });
+ const [selected,setSelected]=usePracticeRouteState("principles-of-business","stage","topic",{
+   decode:raw=>POB_SBA_SPEC.researchStages.some(stage=>stage.id===raw)?raw:"topic",
+ });
+ useEffect(()=>{try{localStorage.setItem(draftKey,JSON.stringify(sections))}catch{}},[draftKey,sections]);
  const wordCount=useMemo(()=>POB_SBA_SPEC.researchStages
    .filter(x=>!["toc","bibliography"].includes(x.id))
    .reduce((n,x)=>n+countWords(sections[x.id]),0),[sections]);

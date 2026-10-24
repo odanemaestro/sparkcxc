@@ -304,6 +304,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
   const durationSeconds = Number(paper.durationSeconds || 0);
   const questionCount = paper.questions.length;
   const activeKey = csec2027ActiveKey(paper.letter, paper.modeKey);
+  const reviewKey = `${activeKey}:review:${userId || "guest"}`;
   const [answers, setAnswers] = useState({});
   const [flags, setFlags] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -323,17 +324,30 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
   useEffect(() => {
     if (startFresh) {
       localStorage.removeItem(activeKey);
+      localStorage.removeItem(reviewKey);
+      if (paper.modeKey === "module1") localStorage.removeItem(legacyCsec2027Module1ActiveKey(paper.letter));
       return;
     }
     let saved = readJson(activeKey, null);
+    const savedReview = !saved ? readJson(reviewKey, null) : null;
+    if (savedReview?.phase === "review" && savedReview.paperId === paper.paper_id) saved = savedReview;
     if (!saved && paper.modeKey === "module1") saved = readJson(legacyCsec2027Module1ActiveKey(paper.letter), null);
     if (!saved || (saved.paperId !== paper.paper_id && saved.paperId !== paper.sourcePaperId)) return;
     setAnswers(saved.answers || {});
     setFlags(saved.flags || []);
     setCurrentIndex(Math.min(questionCount - 1, Math.max(0, Number(saved.currentIndex || 0))));
-    setDeadline(saved.deadline || Date.now() + durationSeconds * 1000);
+    if (saved.phase === "review") {
+      submittedRef.current = true;
+      setSubmitted(true);
+      setTimedOut(Boolean(saved.timedOut));
+      setRemaining(Math.max(0, Math.min(durationSeconds, Number(saved.remaining) || 0)));
+      setReviewIndex(Math.min(questionCount - 1, Math.max(0, Number(saved.reviewIndex) || 0)));
+      setDeadline(saved.deadline || null);
+    } else {
+      setDeadline(saved.deadline || Date.now() + durationSeconds * 1000);
+    }
     setStarted(true);
-  }, [activeKey, durationSeconds, paper.letter, paper.modeKey, paper.paper_id, paper.sourcePaperId, questionCount, startFresh]);
+  }, [activeKey, reviewKey, durationSeconds, paper.letter, paper.modeKey, paper.paper_id, paper.sourcePaperId, questionCount, startFresh]);
 
   useEffect(() => {
     if (!started || submitted) return undefined;
@@ -371,6 +385,12 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
     if (!started || submitted || !deadline) return;
     writeJson(activeKey, { paperId: paper.paper_id, answers, flags, currentIndex, deadline });
   }, [activeKey, paper.paper_id, started, submitted, answers, flags, currentIndex, deadline]);
+
+  useEffect(() => {
+    if (!submitted) return;
+    writeJson(reviewKey, { phase: "review", paperId: paper.paper_id, answers, flags, currentIndex, deadline,
+      remaining, timedOut, reviewIndex });
+  }, [reviewKey, paper.paper_id, submitted, answers, flags, currentIndex, deadline, remaining, timedOut, reviewIndex]);
 
   const current = paper.questions[currentIndex];
   const completeIds = useMemo(() => paper.questions.filter(question => isQuestionComplete(question, answers)).map(question => question.question_id), [paper.questions, answers]);
@@ -418,12 +438,14 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
     writeJson(CSEC_2027_RESULTS_KEY, [record, ...results].slice(0, 60));
     void persistCsec2027Result({ supabase, userId, paper, record, grade })
       .catch(error => console.warn("Could not save 2027 Practice result:", error));
+    writeJson(reviewKey, { phase: "review", paperId: paper.paper_id, answers, flags, currentIndex, deadline,
+      remaining: wasTimedOut ? 0 : remaining, timedOut: wasTimedOut, reviewIndex: 0 });
     localStorage.removeItem(activeKey);
     setTimedOut(wasTimedOut);
     setSubmitted(true);
     setShowSubmit(false);
     setReviewIndex(0);
-  }, [activeKey, answers, completeIds.length, durationSeconds, paper, remaining, supabase, userId]);
+  }, [activeKey, reviewKey, answers, flags, currentIndex, deadline, completeIds.length, durationSeconds, paper, remaining, supabase, userId]);
 
   useEffect(() => {
     if (started && remaining === 0 && !submitted) finalize(true);

@@ -26,12 +26,18 @@ import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalPaperFormat,fnhHistoricalSimulatorRead
 import {FNH_PAPER1_PRACTICE_SETS} from "../data/fnhPaper1Bank";
 import {FNH_PAPER2_PRACTICE_SETS} from "../data/fnhPaper2Bank";
 import {fnhHistoricalPaper1Reader} from "../data/fnhHistoricalPaper1ReleaseGate";
+import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
 import "./fnhPractice.css";
 
 const scrollTop=()=>{try{window.scrollTo?.({top:0,left:0,behavior:"instant"});}catch{}};
+const SUBJECT="food-nutrition-and-health";
+const tabOptions={decode:raw=>raw==="past"?"past":"practice",replace:true};
 
 function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistorical,tab,onTabChange}){
-  const [year,setYear]=useState("all");
+  const [year,setYear]=usePracticeRouteState(SUBJECT,`year${paper}`,"all",{
+    decode:raw=>raw==="all"||FNH_SUPPLIED_ARCHIVE.some(source=>source.paper===paper&&String(source.year)===raw)?raw:"all",
+    replace:true,
+  });
   const isPaper1=paper===1;
   const years=FNH_SUPPLIED_ARCHIVE.filter(p=>p.paper===paper&&!(paper===1&&p.year===2021)).filter(p=>year==="all"||String(p.year)===year)
     .sort((a,b)=>b.year-a.year);
@@ -77,25 +83,25 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistori
 }
 
 export default function FnhPracticeHub({supabase,userId,onBack}){
-  // Keep the chosen FNH paper on refresh within this browser session.
-  // Exam answers and deadlines remain managed by the individual exam screens.
-  const sessionKey=`spark:fnh:practice-navigation:${userId||"guest"}`;
-  const savedNavigation=(()=>{
-    try{return JSON.parse(sessionStorage.getItem(sessionKey)||"null")||{};}catch{return {};}
-  })();
+  // The URL identifies the screen; answers and deadlines stay in each exam's storage.
   const allowedViews=new Set(["home","paper1","paper2","exam1","exam2","review-p1","workbook",
     ...[2005,2006,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2021,2022,2024,2026].map(year=>`historical-${year}-p2`)]);
-  const [view,setView]=useState(()=>allowedViews.has(savedNavigation.view)?savedNavigation.view:"home");
-  const [selectedPaper1Set,setSelectedPaper1Set]=useState(()=>Number(savedNavigation.selectedPaper1Set)||1);
-  const [selectedPaper2Set,setSelectedPaper2Set]=useState(()=>Number(savedNavigation.selectedPaper2Set)||1);
-  const [selectedHistoricalP1,setSelectedHistoricalP1]=useState(()=>savedNavigation.selectedHistoricalP1||null);
-  const [paperLibraryTabs,setPaperLibraryTabs]=useState(()=>savedNavigation.paperLibraryTabs||{1:"practice",2:"practice"});
-  useEffect(()=>{
-    try{sessionStorage.setItem(sessionKey,JSON.stringify({view,selectedPaper1Set,selectedPaper2Set,selectedHistoricalP1,paperLibraryTabs}));}catch{}
-  },[sessionKey,view,selectedPaper1Set,selectedPaper2Set,selectedHistoricalP1,paperLibraryTabs]);
+  const [view,setView]=usePracticeRouteState(SUBJECT,"view","home",{decode:raw=>allowedViews.has(raw)?raw:"home"});
+  const [selectedPaper1Set,setSelectedPaper1Set]=usePracticeRouteState(SUBJECT,"set1",1,{
+    decode:raw=>FNH_PAPER1_PRACTICE_SETS.some(set=>set.number===Number(raw))?Number(raw):1,replace:true,
+  });
+  const [selectedPaper2Set,setSelectedPaper2Set]=usePracticeRouteState(SUBJECT,"set2",1,{
+    decode:raw=>FNH_PAPER2_PRACTICE_SETS.some(set=>set.number===Number(raw))?Number(raw):1,replace:true,
+  });
+  const [selectedHistoricalP1,setSelectedHistoricalP1]=usePracticeRouteState(SUBJECT,"source",null,{
+    decode:raw=>fnhHistoricalPaper1Reader(raw)?raw:null,replace:true,
+  });
+  const [tab1,setTab1]=usePracticeRouteState(SUBJECT,"tab1","practice",tabOptions);
+  const [tab2,setTab2]=usePracticeRouteState(SUBJECT,"tab2","practice",tabOptions);
+  const paperLibraryTabs={1:tab1,2:tab2};
   useEffect(()=>{scrollTop();},[view]);
-  if(view==="paper1"||view==="paper2")return <FnhPaperLibrary paper={view==="paper1"?1:2}
-    tab={paperLibraryTabs[view==="paper1"?1:2]} onTabChange={next=>setPaperLibraryTabs(old=>({...old,[view==="paper1"?1:2]:next}))}
+  if(view==="paper1"||view==="paper2")return <FnhPaperLibrary key={view} paper={view==="paper1"?1:2}
+    tab={paperLibraryTabs[view==="paper1"?1:2]} onTabChange={view==="paper1"?setTab1:setTab2}
     onReviewHistorical={id=>{setSelectedHistoricalP1(id);setView("review-p1");}}
     onBack={()=>setView("home")} onStart={number=>{if(view==="paper1")setSelectedPaper1Set(number);else setSelectedPaper2Set(number);setView(view==="paper1"?"exam1":"exam2");}} onStartHistorical={id=>{if(id==="FNH-P2-2005-MJ")setView("historical-2005-p2");
     if(id==="FNH-P2-2006-MJ")setView("historical-2006-p2");

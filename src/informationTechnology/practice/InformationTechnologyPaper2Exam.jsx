@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
 import { preparePaper2ScorePublication } from "../../grading/scorePublication";
 import { startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
@@ -153,7 +154,11 @@ const IT_BANK_VERSION = "it-paper2-v1";
 const IT_RUBRIC_VERSION = "it-authored-rules-v1";
 const IT_GRADER_VERSION = "it-paper2-marker-v2";
 
-export default function InformationTechnologyPaper2Exam({ supabase, onExit, startFresh = false, onActivity }) {
+export default function InformationTechnologyPaper2Exam({ supabase, onExit, startFresh = false, onActivity, userId }) {
+  const reviewKey = `${ACTIVE_KEY}:review:${userId || "guest"}`;
+  const [screen, setScreen] = usePracticeRouteState("information-technology", "screen", "resume", {
+    path: "/practice/information-technology/paper-2", decode: raw => raw === "instructions" ? raw : "resume", replace: true,
+  });
   const [phase, setPhase] = useState("instructions");
   const [active, setActive] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -178,16 +183,18 @@ export default function InformationTechnologyPaper2Exam({ supabase, onExit, star
   },{}) : null;
 
   useEffect(() => {
-    if (startFresh) return;
-    const saved = readActive();
+    if (startFresh || screen === "instructions") return;
+    const saved = readActive() || readJson(reviewKey, null);
     if (!saved?.paperId || !bank.papers.some(item => item.id === saved.paperId)) return;
     setActive(saved);
     setAnswers(saved.answers || {});
     setFlags(saved.flags || {});
+    setGrading(saved.grading || null);
     setQuestionIndex(Math.min(saved.questionIndex || 0, 3));
     setRemaining(Math.max(0, DURATION - Math.floor((Date.now() - saved.startedAt) / 1000)));
-    setPhase(saved.phase === "marking" ? "exam" : (saved.phase || "exam"));
-  }, [startFresh]);
+    setPhase(["review", "marking"].includes(saved.phase) ? "marking" : (saved.phase || "exam"));
+    submittedRef.current = ["review", "marking", "result"].includes(saved.phase);
+  }, [startFresh, reviewKey]);
 
   useEffect(() => {
     if (phase !== "exam" || !active) return undefined;
@@ -210,6 +217,8 @@ export default function InformationTechnologyPaper2Exam({ supabase, onExit, star
   }
 
   async function start() {
+    setScreen("resume");
+    localStorage.removeItem(reviewKey);
     clearActive();
     setServerResult(null);
     const selected = choosePaper();
@@ -364,12 +373,13 @@ export default function InformationTechnologyPaper2Exam({ supabase, onExit, star
     } catch (error) {
       console.warn("IT Paper 2 progress was not synced", error);
     }
+    localStorage.setItem(reviewKey, JSON.stringify({ ...active, answers, flags, questionIndex, grading: result, phase: "result" }));
     clearActive();
     setGrading(result);
     setPhase("result");
   }
 
-  if (phase === "instructions") {
+  if (phase === "instructions" || screen === "instructions") {
     return (
       <main className="it-exam">
         <section className="it-exam-instructions it-instruction-sheet">

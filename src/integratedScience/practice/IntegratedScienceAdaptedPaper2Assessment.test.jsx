@@ -2,6 +2,8 @@ import React from "react";
 import {render,screen,fireEvent} from "@testing-library/react";
 import IntegratedScienceAdaptedPaper2Assessment from "./IntegratedScienceAdaptedPaper2Assessment";
 
+beforeEach(()=>localStorage.clear());
+
 test("adapted assessment is separately identified and hides marking answers until submission",()=>{
  const onExit=jest.fn();
  render(<IntegratedScienceAdaptedPaper2Assessment onExit={onExit}/>);
