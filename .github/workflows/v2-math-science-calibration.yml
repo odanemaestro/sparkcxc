@@ -134,6 +134,17 @@ jobs:
             throw Error("Original source frequency graph evidence incomplete");
           for(const record of ogiveRecords)
             console.log("V2_SOURCE_OGIVE_3_ITEM="+JSON.stringify(record));
+          const constructionIds=new Set(["p2-q3-v9::a","p2-q3-v10::a"]);
+          const constructionRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>constructionIds.has(r.criterionId));
+          if(constructionRecords.length!==2||
+             new Set(constructionRecords.map(r=>r.criterionId)).size!==2||
+             constructionRecords.some(r=>r.outcome!=="verified"||
+                r.provenance?.workingTreeDirty!==false||
+                !r.evidenceSha256||!r.sourceSha256||!r.criterionSha256))
+            throw Error("Original Mathematics Q3 ruler/compass evidence is unverified");
+          for(const record of constructionRecords)
+            console.log("V2_SOURCE_CONSTRUCTION_2_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));
