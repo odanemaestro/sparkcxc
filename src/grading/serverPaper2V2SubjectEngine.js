@@ -309,7 +309,18 @@ function mathPartCertain(result,specs,response,policy={},source={}){
    (exactSourceMethod&&kindOf(line,spec)==="M"&&
     checkTypes(spec.check).every(type=>mathWeakEvidence.has(type)));
   const kind=kindOf(line,spec);
-  if((kind==="A"||kind==="B")&&(spec.field||"answer")==="answer")return strong;
+  if((kind==="A"||kind==="B")&&(spec.field||"answer")==="answer"){
+   if(strong)return true;
+   // A correct, separately authored snippet makes the other independent
+   // written B rule inapplicable only when the candidate submitted that
+   // complete snippet, not an arbitrary paraphrase or keyword list.
+   if(kind==="B"&&written&&noWorking&&
+      candidateStatement!==normalizedStatement(source.answer)&&
+      result.marks<result.of&&result.criteria.some(other=>
+       other.awarded&&other.code!==line.code&&
+       isAuthoredStatement(byCode.get(other.code))))return true;
+   return false;
+  }
   return noWorking;
  });
 }
