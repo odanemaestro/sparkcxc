@@ -284,6 +284,18 @@ function mathPartCertain(result,specs,response,policy={},source={}){
  const fullMarks=result.marks===result.of;
  const writtenCertain=fullMarks&&certainWrittenMark({suggestedMarks:1,maxMarks:1,
   response:answerOf(response)+"\n"+workingOf(response),points:[String(source.answer??"")]}).resolved;
+ // An exact complete response to the registered source answer, already
+ // awarded EVERY mark by the grader, is a stronger canonical witness than
+ // fuzzy written reasoning. Do not use this for an incomplete response,
+ // manual-verification marks, provisional source marks, or competing answers.
+ const canonicalAnswer=String(source.answer??"").trim();
+ const canonicalAnswerMatch=canonicalAnswer.length>=5&&
+   answerOf(response).trim()===canonicalAnswer;
+ if(fullMarks&&canonicalAnswerMatch&&
+    specs.every(line=>line?.check?.type!=="manual-verification"&&
+      line?.provisional!==true&&line?.reviewRequired!==true)&&
+    result.criteria.every(line=>line.awarded===true))return true;
+
  // A complete source sentence is stronger evidence than a keyword match.
  const simplifyMathStatement=s=>String(s??'').trim().toLowerCase()
   .replace(/\s+/g,' ').replace(/[.!?]+$/,'');
