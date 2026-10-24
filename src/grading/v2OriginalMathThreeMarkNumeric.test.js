@@ -20,7 +20,12 @@ describe.each(THREE_MARK_NUMERIC_IDS)("Mathematics source MMA %s",id=>{
   expect(set.kind).toBe("structured");
   for(const f of set.fixtures){
    const result=grade({criterionId:id,source,part,response:f.response});
-   if(f.mustAbstain){expect(result).toBeNull();continue;}
+   if(f.mustAbstain){
+    if(f.response?.working===""&&f.response?.answer===part.answer)
+     expect(result).toMatchObject({marks:1,resolved:false});
+    else expect(result).toBeNull();
+    continue;
+   }
    expect(result).toMatchObject({marks:f.expect,resolved:true});
   }
  });
@@ -33,6 +38,15 @@ describe.each(THREE_MARK_NUMERIC_IDS)("Mathematics source MMA %s",id=>{
   expect(grade({criterionId:id,part,source,response:{answer:Infinity,working:part.solution}})).toBeNull();
   expect(grade({criterionId:id,part,source,response:{answer:part.answer,working:"unknown"}})).toBeNull();
  });
+});
+test("correct reduced mixed number is provisional without method, authoritative with source proof",()=>{
+ const id="p2-q1-v2::a",part=partFor(id),source=sourceFor(part);
+ expect(grade({criterionId:id,source,part,response:{answer:"1 4/5",working:""}}))
+  .toMatchObject({marks:1,resolved:false});
+ expect(grade({criterionId:id,source,part,response:{answer:"1 4/5",working:part.solution}}))
+  .toMatchObject({marks:3,resolved:true});
+ expect(grade({criterionId:id,source,part,response:{answer:"1 8/10",working:part.solution}}))
+  .toMatchObject({marks:2,resolved:true});
 });
 test("other parts receive no unverified authority",()=>{
  const part=partFor(THREE_MARK_NUMERIC_IDS[0]);
