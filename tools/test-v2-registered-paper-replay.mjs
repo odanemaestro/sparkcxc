@@ -75,7 +75,7 @@ try{
  grant execute on function auth.uid(),auth.jwt() to anon,authenticated,service_role;`);
  for(const name of migrations)
   await db.exec(fs.readFileSync("supabase/migrations/"+name,"utf8"));
- const papers=(await db.query(`select subject_id,paper_id,criteria
+ const papers=(await db.query(`select subject_id,paper_id,criteria,active,verification_status
  from spark_grading_private.rubrics_v2 order by subject_id,paper_id`)).rows;
  assert.equal(papers.length,67);
 
@@ -1505,7 +1505,21 @@ try{
  assert.equal(allowedText.size,50,"Fifty distinct original short-answer parts required");
  assert([...allowedText].every(id=>![allowedMethods,allowedSymbolic,allowedCalc,allowedMMA,allowedNumerics].some(set=>set.has(id))),
   "Original source grading cohorts cannot overlap");
- let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0,trustedTextCount=0;
+ const residualSrc=fs.readFileSync("src/grading/v2OriginalMathResidual48.js","utf8");
+ const residualHeader="export const ORIGINAL_RESIDUAL_48_IDS=Object.freeze(";
+ const residualPos=residualSrc.indexOf(residualHeader);
+ const residualEnd=residualSrc.indexOf(");",residualPos+residualHeader.length);
+ assert(residualPos>=0&&residualEnd>residualPos,"Residual Mathematics source list missing");
+ const allowedResidual48=new Set(JSON.parse(residualSrc.slice(residualPos+residualHeader.length,residualEnd)));
+ assert.equal(allowedResidual48.size,48,"Exactly 48 new Mathematics source proofs required");
+ const residualTablesSource=fs.readFileSync("src/grading/v2OriginalMathResidualTables48.js","utf8");
+ const residualTableIds=new Set([...residualTablesSource.matchAll(/^\s*"(p2-q[^"]+::[a-z]\d*)":\s*\[\[/gm)].map(m=>m[1]));
+ assert.equal(residualTableIds.size,15,"Fifteen keyed original Mathematics tables must be audited");
+ assert([...residualTableIds].every(id=>allowedResidual48.has(id)),"Unexpected unverified table part");
+
+ assert([...allowedResidual48].every(id=>![allowedText,allowedMethods,allowedSymbolic,allowedCalc,allowedMMA,allowedNumerics].some(set=>set.has(id))),
+  "Residual Mathematics source cohort overlaps previous verified batches");
+ let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0,trustedTextCount=0,trustedResidualCount=0;
  let manualCheckCount=0,manualPartCount=0;
  for(const paper of mathPaperRows){
   const cases=paper.criteria.filter(p=>p.sourceMarking?.criteria?.some(c=>
@@ -1554,13 +1568,33 @@ try{
     assert.equal(found.suggestedMarks,part.maxMarks,
      "Source calculation must retain its own allocation: "+part.id);
     trustedCalcCount++;
+   }else if(allowedResidual48.has(part.id)){
+    if(residualTableIds.has(part.id)){
+     // Free text is not keyed table evidence. The separate 12-case source suite
+     // verifies correct cells for all fifteen tables; pasted numbers abstain.
+     assert.equal(found.resolved,false,
+      "Unkeyed prose must not certify a Mathematics table: "+part.id);
+    }else{
+     assert.equal(found.resolved,true,
+      "New residual Maths source evidence did not resolve: "+part.id);
+     assert.equal(found.suggestedMarks,part.maxMarks,
+      "Residual Mathematics criterion changed mark ceiling: "+part.id);
+    }
+    trustedResidualCount++;
    }else{
     assert.equal(found.resolved,false,
      'Unapproved Mathematics method-check implied authority: '+part.id);
    }
   }
-  assert.equal(result.canPublishFinalScore,false,
-   'Manual-verification Mathematics draft cannot publish a final score: '+paper.paper_id);
+  // A complete mathematics calculation is not permission to publish. The
+  // database release gate still rejects every inactive, draft-version paper.
+  assert.equal(paper.active,false,
+   'An unapproved Mathematics paper must not become active: '+paper.paper_id);
+  assert.equal(paper.verification_status,'draft',
+   'Source-fixture checks cannot independently release Mathematics: '+paper.paper_id);
+  if(result.canPublishFinalScore)
+   assert(result.rows.every(r=>r.resolved),
+    'No Mathematics draft can claim mathematical completeness with an unresolved part');
  }
  assert.equal(trustedNumericCount,50,
   'Exactly fifty source-authorised M1/A1 methods must resolve');
@@ -1574,6 +1608,13 @@ try{
   'Exactly fifty new source-authored original method checks must resolve');
  assert.equal(trustedTextCount,50,
   'Exactly fifty source-authored original text questions must resolve');
+ // This loop deliberately replays only criteria containing manual-verification
+ // checks. The other nine members of the 48-part cohort have typed source
+ // checks and are exercised by the standalone 576-case verification matrix.
+ assert.equal(trustedResidualCount,39,
+  "All 39 previously manual Mathematics parts in this replay must resolve");
+ assert.equal(allowedResidual48.size-trustedResidualCount,9,
+  "The other nine source parts use existing typed checks");
  assert.equal(manualCheckCount,967,
   'The entire 967-check Mathematics manual-validation inventory must be retained');
  assert(manualPartCount>0);

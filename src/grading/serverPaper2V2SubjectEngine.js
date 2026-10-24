@@ -17,6 +17,7 @@ import {gradeSourceCalc50} from "./v2OriginalMathSourceCalculations50";
 import {gradeSourceSymbolic50} from "./v2OriginalMathSymbolic50";
 import {gradeOriginalSourceMethod50} from "./v2OriginalMathSourceMethods50";
 import {gradeOriginalText50} from "./v2OriginalMathText50";
+import {gradeOriginalMathResidual48} from "./v2OriginalMathResidual48";
 import {evaluatePoaSourceV2} from "../principlesOfAccounts/poaMarkingV2";
 import {evaluatePoaMethodsV2,POA_METHOD_SOURCE_FORMAT} from "../principlesOfAccounts/marking/poaMethodRegistry";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
@@ -216,6 +217,18 @@ function mathematics(rows,responses){
    throw new Error("Incomplete Mathematics marker");
   out.push(...selected.map((p,i)=>{
    const answer=responsesForQuestion[p.part.id];
+   const residual=gradeOriginalMathResidual48({
+    criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
+   });
+   // A source rule that abstains preserves existing CSEC M/A/B/ECF suggestions
+   // but MUST NOT promote uncertain legacy guesses into authoritative marks.
+   if(residual!==null){
+    if(residual.resolved===true)
+     return cap(p.row,residual.marks,residual.method,true);
+    const prior=blank(answer)?0:examination.parts[i].marks;
+    return cap(p.row,Math.max(residual.marks,prior),
+      residual.method+"-advisory-preserved",false);
+   }
    const originalText=gradeOriginalText50({
     criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
    });
