@@ -95,6 +95,19 @@ jobs:
             throw Error("12 new Mathematics source-verified criteria not proven");
           for(const record of nextRecords)
             console.log("V2_SOURCE_MATH_12_ITEM="+JSON.stringify(record));
+          // Historical manual table rubric rows are eligible ONLY after
+          // keyed, source-specific full/partial/wrong/equivalent/blank checks.
+          const sourceTableIds=new Set(["p2e-q5::a","p2f-q5::a","p2g-q5::a","p2h-q5::a","p2i-q5::a","p2j-q5::a","p2e-q7::a","p2f-q7::a","p2g-q7::a","p2h-q7::a","p2i-q7::a","p2j-q7::a","p2e-q8::a","p2g-q8::a","p2i-q8::a"]);
+          const sourceTableRows=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(record=>sourceTableIds.has(record.criterionId));
+          if(sourceTableRows.length!==15||
+             new Set(sourceTableRows.map(r=>r.criterionId)).size!==15||
+             sourceTableRows.some(r=>r.outcome!=="verified"||
+               r.provenance?.workingTreeDirty!==false||
+               !r.sourceSha256||!r.criterionSha256||!r.evidenceSha256))
+            throw Error("Do not approve unverified Mathematics source table evidence");
+          for(const record of sourceTableRows)
+            console.log("V2_SOURCE_TABLE_15_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));

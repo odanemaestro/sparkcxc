@@ -12,6 +12,7 @@ import {informationTechnologyFixtures} from "./v2Fixtures/informationTechnology"
 import {informationTechnologyPaper2RuleFor} from "../informationTechnology/practice/itPaper2Marking";
 import itPaper2Archive from "../informationTechnology/practice/itPaper2Data.json";
 import {mathematicsFixtures} from "./v2Fixtures/mathematics";
+import {mathematicsTableFixtures} from "./v2Fixtures/mathematicsTableCells";
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
 
 import {scienceFixtures,pointAnswer} from "./v2Fixtures/science";
@@ -83,6 +84,8 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
   return {...set,ruleId:"it:"+ctx.rule};
  }
  if(subjectId==="mathematics"){
+  const table=mathematicsTableFixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
+  if(table)return table;
   const set=mathematicsFixtures({criterion,part:mathPart(criterion.id),maxMarks:criterion.maxMarks});
   if(set.blocked)return set;
   return {...set,ruleId:"math:"+(criterion.sourceMarking?.criteria||[]).map(c=>c.code+"="+(c.check?.type||"?")).join(",")};

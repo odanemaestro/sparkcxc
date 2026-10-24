@@ -6,6 +6,7 @@
  * a reason to publish a final score. See rubric activation and lease gates.
  */
 import {PAPER2_QUESTION_BANK} from "../practice/paper2QuestionBank";
+import {gradeOriginalMathematicsTable} from "./v2OriginalMathTableScoring";
 import {evaluatePoaSourceV2} from "../principlesOfAccounts/poaMarkingV2";
 import {evaluatePoaMethodsV2,POA_METHOD_SOURCE_FORMAT} from "../principlesOfAccounts/marking/poaMethodRegistry";
 import {markQuestion} from "../practice/cxcMarking/markScheme";
@@ -203,14 +204,20 @@ function mathematics(rows,responses){
   });
   if(examination.parts.length!==selected.length)
    throw new Error("Incomplete Mathematics marker");
-  out.push(...byResult(selected.map(p=>p.row),
-   examination.parts.map((x,i)=>
-    // Follow-through from another part never earns marks on an empty part.
-    blank(responsesForQuestion[selected[i].part.id])?0:x.marks),
-   "existing-mathematics-MAB-ECF",
-   selected.map((p,i)=>blank(responsesForQuestion[p.part.id]) ||
-    mathPartCertain(examination.parts[i],p.part.criteria,responsesForQuestion[p.part.id],
-     p.part.markingPolicy,sourceMarking(p.row)))));
+  out.push(...selected.map((p,i)=>{
+   const answer=responsesForQuestion[p.part.id];
+   const structuredTable=gradeOriginalMathematicsTable({
+    criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
+   });
+   if(structuredTable!==null)
+    return cap(p.row,structuredTable.marks,structuredTable.method,true);
+   // Follow-through from another part never earns marks on an empty part.
+   const marks=blank(answer)?0:examination.parts[i].marks;
+   const resolved=blank(answer) ||
+    mathPartCertain(examination.parts[i],p.part.criteria,answer,
+      p.part.markingPolicy,sourceMarking(p.row));
+   return cap(p.row,marks,"existing-mathematics-MAB-ECF",resolved);
+  }));
  }
  return out;
 }
