@@ -53,6 +53,7 @@ export const ORIGINAL_RESIDUAL_48_IDS=Object.freeze([
   "p2-q4-v9::a",
   "p2-q4-v9::d"
 ]);
+import {gradeOriginalMathResidualTable48} from "./v2OriginalMathResidualTables48";
 const allowed=new Set(ORIGINAL_RESIDUAL_48_IDS);
 const obj=x=>x!==null&&typeof x==="object"&&!Array.isArray(x);
 const clean=s=>s.trim().toLowerCase().replace(/[−–—]/g,"-")
@@ -72,11 +73,13 @@ function sourceMatches(source,part){
  return typeof part.answer==="string"&&typeof part.solution==="string"&&
   part.answer.trim()!==""&&part.solution.trim()!==""&&
   source.answer===part.answer&&source.solution===part.solution&&
-  !["graph","construction","construction_triangle","drawing","table"].includes(part.responseSchema?.type);
+  !["graph","construction","construction_triangle","drawing"].includes(part.responseSchema?.type);
 }
 export function gradeOriginalMathResidual48({criterionId,source,part,response}){
  if(!allowed.has(criterionId)||!obj(source)||!obj(part)||!sourceMatches(source,part))
   return null;
+ if(part.responseSchema?.type==="table")
+  return gradeOriginalMathResidualTable48({criterionId,source,part,response});
  const method="source-original-residual-48-v1";
  if(!obj(response)||
   Object.keys(response).some(k=>k!=="answer"&&k!=="working")||
