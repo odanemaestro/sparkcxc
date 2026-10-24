@@ -15,8 +15,9 @@ test("historical drawings remain unresolved without independently verified anato
  expect(stoma.score).toBe(4);
  expect(stoma.unassessedMarks).toBe(3);
  expect(stoma.sourceResolved).toBe(false);
+ // Three unrelated ellipses are not a flower and earn no presentation marks.
  const flower=sample("IS-M1-P2-27:0:0",6,drawing,{title:"Flower",measurementMm:"105",labels:[]});
- expect(flower.score).toBe(2);
+ expect(flower.score).toBe(0);
  expect(flower.sourceResolved).toBe(false);
 });
 test("labels alone, empty submissions and spoofed title cannot prove biology",()=>{
@@ -39,4 +40,22 @@ test("large straight doodles are not credited as biological diagrams",()=>{
  const r=sample("IS-M1-P2-21:1:0",7,lines,{title:"Stoma leaf surface view",measurementMm:"60",labels:[]},"×3000");
  expect(r.score).toBe(0);
  expect(r.sourceResolved).toBe(false);
+});
+
+test("recognises student-authored flower composition without certifying anatomical labels",()=>{
+ const flower=[
+  loop(215,105,90,65),loop(385,105,90,65),
+  loop(222,210,58,29),loop(378,210,58,29),
+  loop(300,205,35,55)
+ ];
+ const grade=sample("IS-M1-P2-27:0:0",6,flower,{title:"Flower longitudinal section",measurementMm:"105",labels:[]});
+ expect(grade.score).toBe(2);
+ expect(grade.sourceResolved).toBe(false);
+ expect(grade.unassessedMarks).toBe(4);
+});
+test("unrelated circles do not count as a stoma",()=>{
+ const unrelated=[loop(140,65,50,33),loop(400,65,50,33),loop(300,225,36,50)];
+ const grade=sample("IS-M1-P2-21:1:0",7,unrelated,{title:"Stoma leaf surface view",measurementMm:"60",labels:[]},"×3000");
+ expect(grade.score).toBe(0);
+ expect(grade.sourceResolved).toBe(false);
 });
