@@ -591,3 +591,13 @@ test("original flower magnification grades method and final answer but never cer
  expect(wrong.rows[0].suggestedMarks).toBe(1);
  expect(wrong.rows[0].resolved).toBe(false);
 });
+
+test("neither historical biological drawing is published based only on student text",()=>{
+ for(const [id,max] of [["IS-M1-P2-21::(b)::(i)",7],["IS-M1-P2-27::(a)::(i)",6]]){
+  const v=example("integrated-science","is-fixed-source-pair-14",
+   [row(id,max,isSource(id))],{[id]:{answer:"stoma guard cells flower petals stigma"}});
+  expect(v.rows[0].suggestedMarks).toBe(0);
+  expect(v.rows[0].resolved).toBe(false);
+  expect(v.canPublishFinalScore).toBe(false);
+ }
+});
