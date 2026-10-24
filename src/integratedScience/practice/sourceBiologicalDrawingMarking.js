@@ -29,6 +29,39 @@ function bounds(paths){
  const xs=coords.map(p=>p.x),ys=coords.map(p=>p.y);
  return {left:Math.min(...xs),right:Math.max(...xs),top:Math.min(...ys),bottom:Math.max(...ys)};
 }
+// Reject unrelated clusters of closed loops before awarding any presentation marks.
+// This is an evidence filter, not independent certification of anatomy.
+function plausibleBiologicalContours(contours,isStoma){
+ const features=contours.map(path=>{
+  const b=bounds([path]);
+  return {b,cx:(b.left+b.right)/2,cy:(b.top+b.bottom)/2,
+   w:b.right-b.left,h:b.bottom-b.top};
+ });
+ if(isStoma){
+  for(const a of features)for(const b of features){
+   if(a===b||a.cx>=b.cx||a.w<35||b.w<35||a.h<75||b.h<75||
+      a.h/a.w<1.1||b.h/b.w<1.1||a.h/a.w>5||b.h/b.w>5||
+      Math.abs(a.cy-b.cy)>40||Math.abs(a.h-b.h)>65||
+      b.b.left-a.b.right<3||b.b.left-a.b.right>115)continue;
+   if(features.some(p=>p!==a&&p!==b&&p.cx>a.b.right&&p.cx<b.b.left&&
+     p.w>=10&&p.w<=90&&p.h>=40&&p.cy>Math.min(a.b.top,b.b.top)&&
+     p.cy<Math.max(a.b.bottom,b.b.bottom)))return true;
+  }
+  return false;
+ }
+ // Longitudinal flower: two upper petal outlines, two lower sepals and a
+ // central lower ovary outline, as separate, student-authored contours.
+ if(features.length<5)return false;
+ const all=bounds(contours),mx=(all.left+all.right)/2,my=(all.top+all.bottom)/2;
+ const petals=features.filter(p=>p.w>=65&&p.h>=55&&p.cy<my+8);
+ const sepals=features.filter(p=>p.w>=30&&p.h>=22&&p.cy>my+15);
+ const ovary=features.some(p=>Math.abs(p.cx-mx)<55&&p.cy>my&&
+  p.w>=25&&p.w<=95&&p.h>=42);
+ return petals.some(a=>petals.some(b=>a!==b&&
+   Math.abs(a.cx-b.cx)>=65&&a.cx<mx&&b.cx>mx))&&
+   sepals.some(a=>sepals.some(b=>a!==b&&
+    Math.abs(a.cx-b.cx)>=50&&a.cx<mx&&b.cx>mx))&&ovary;
+}
 function clean(paths){
  if(paths.length<2||paths.length>24)return false;
  const total=paths.reduce((sum,p)=>sum+p.length,0);
@@ -80,7 +113,7 @@ export function markSourceBiologicalDrawing(qid,partIndex,itemIndex,item,respons
   return b.right-b.left>=26&&b.bottom-b.top>=32;
  });
  // A few unrelated straight lines cannot stand in for a biological diagram.
- const hasContours=contours.length>=(isStoma?2:3);
+ const hasContours=plausibleBiologicalContours(contours,isStoma);
  const tidy=hasContours&&clean(paths);
  const large=Boolean(hasContours&&box&&(box.right-box.left)>=210&&(box.bottom-box.top)>=155);
  const leaderLines=hasContours&&rulerLabels(evidence,paths);

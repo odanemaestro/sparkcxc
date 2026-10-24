@@ -29,8 +29,12 @@ export function readBiologicalDrawingEvidence(raw,source){
  return {
   title:typeof data.title==="string"?data.title.slice(0,160):"",
   measurementMm:typeof data.measurementMm==="string"?data.measurementMm.slice(0,20):"",
-  labels:Array.isArray(data.labels)?data.labels.filter(l=>l&&source.names.includes(l.name)&&
-   normalizePoint(l.from)&&normalizePoint(l.to)).slice(0,18):[]
+  // Preserve the student's incorrect terms as assessment evidence.
+  // Filtering them out would silently erase wrong answers before marking.
+  labels:Array.isArray(data.labels)?data.labels.filter(l=>l&&typeof l.name==="string"&&
+   /^[A-Za-z][A-Za-z0-9 ()-]{0,44}$/.test(l.name.trim())&&
+   normalizePoint(l.from)&&normalizePoint(l.to)).slice(0,18)
+   .map(l=>({...l,name:l.name.trim()})):[]
  };
 }
 function locate(event){
@@ -61,10 +65,9 @@ export default function ScienceBiologicalDrawingEvidence({base,questionId,partIn
     onChange={e=>save({...evidence,title:e.target.value})}/>
   </label>
   <label>Label to place
-   <select disabled={disabled} value={name} onChange={e=>setName(e.target.value)}>
-    <option value="">Choose a label before drawing its line</option>
-    {source.names.map(n=><option key={n} value={n}>{n}</option>)}
-   </select>
+   <input type="text" disabled={disabled} value={name} maxLength={45}
+    placeholder="Write a structure name" onChange={e=>setName(e.target.value)}
+    autoComplete="off" />
   </label>
   {!sharedCanvas&&<svg className="is-p2-biological-annotation-canvas" viewBox="0 0 640 320" role="img"
    aria-label="Student placed biological label lines" onPointerDown={down} onPointerUp={up}

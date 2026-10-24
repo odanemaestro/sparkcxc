@@ -1,6 +1,6 @@
 import ScienceBiologicalDrawingEvidence,{readBiologicalDrawingEvidence,biologicalDrawingSource} from "./ScienceBiologicalDrawingEvidence";
 import ScienceDrawingMagnificationEvidence from "./ScienceDrawingMagnificationEvidence";
-import ScienceGuidedDiagramPractice,{ScienceGuidedMagnificationPractice} from "./ScienceGuidedDiagramPractice";
+import {ScienceGuidedMagnificationPractice} from "./ScienceGuidedDiagramPractice";
 import IntegratedScienceAdaptedPaper2Assessment from "./IntegratedScienceAdaptedPaper2Assessment";
 import ScienceFiltrationDrawingResponse from "./ScienceFiltrationDrawingResponse";
 import ScienceCircuitConstructionResponse from "./ScienceCircuitConstructionResponse";
@@ -255,7 +255,7 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
   const [drawMode,setDrawMode]=useState("draw");
   const [selectedLabel,setSelectedLabel]=useState("");
   const [labelStart,setLabelStart]=useState(null);
-  const [guidedMode,setGuidedMode]=useState(false);
+  
   const bioEvidence=biological?readBiologicalDrawingEvidence(responses[base+":biologicalEvidence"],biologicalDrawingSource(questionId,partIndex,itemIndex)):null;
 
   const strokes=readStrokes(responses[`${base}:strokes`]);
@@ -287,13 +287,8 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
     onChange(base+":biologicalEvidence",JSON.stringify({...bioEvidence,labels:[...bioEvidence.labels,{name:selectedLabel,from:labelStart,to:[point.x/600,point.y/300]}]}));
   };
   return <div className="is-p2-drawing-workspace">
-    {biological&&<div className="is-p2-drawing-actions">
-      <button type="button" className="is-exam-secondary" aria-pressed={guidedMode} onClick={()=>setGuidedMode(true)}>Alternative label practice (not original exam marks)</button>
-      <button type="button" className="is-exam-secondary" aria-pressed={!guidedMode} onClick={()=>setGuidedMode(false)}>Original freehand drawing</button>
-    </div>}
-    {biological&&guidedMode
-      ?<ScienceGuidedDiagramPractice base={base} questionId={questionId} partIndex={partIndex} itemIndex={itemIndex} responses={responses} onChange={onChange} disabled={disabled}/>
-      :<>
+    {biological&&<p className="is-p2-biological-instruction">Draw the requested specimen and attach your own labels and measurements. The adapted labelling assessment is available separately from the Paper 2 selection screen.</p>}
+    <>
 
     <ScienceDrawingTableResponse base={base} questionId={questionId} partIndex={partIndex} itemIndex={itemIndex} responses={responses} onChange={onChange} disabled={disabled}/>
     {((questionId==="IS-M1-P2-21"&&partIndex===1&&itemIndex===0)||(questionId==="IS-M1-P2-27"&&partIndex===0&&itemIndex===0))&&<ScienceBiologicalDrawingEvidence base={base} questionId={questionId} partIndex={partIndex} itemIndex={itemIndex} responses={responses} onChange={onChange} disabled={disabled} sharedCanvas selectedLabel={selectedLabel} onLabelChange={setSelectedLabel}/>}
@@ -314,7 +309,7 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
     </div>}
     <textarea disabled={disabled} rows={3} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)} placeholder="Add the labels and brief notes that belong on your drawing."/>
 
-      </>}
+      </>
   </div>;
 }
 
@@ -385,9 +380,8 @@ function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onCh
   }
 
   if(questionId==="IS-M1-P2-27"&&partIndex===0&&itemIndex===1&&type==="calculation")return <div className="is-p2-magnification-answer">
-    <ScienceGuidedMagnificationPractice base={base} responses={responses} onChange={onChange} disabled={disabled}/>
-    <details><summary>Original historical calculation using your own drawing</summary>
-      <ScienceDrawingMagnificationEvidence base={base} responses={responses} onChange={onChange} disabled={disabled}/>
+    <ScienceDrawingMagnificationEvidence base={base} responses={responses} onChange={onChange} disabled={disabled}/>
+    <details><summary>Optional additional working</summary>
       <textarea disabled={disabled} className="is-p2-calculation-response" rows={4} value={responses[base]||""} onChange={e=>onChange(base,e.target.value)} aria-label="Written magnification calculation"/>
     </details>
   </div>;
