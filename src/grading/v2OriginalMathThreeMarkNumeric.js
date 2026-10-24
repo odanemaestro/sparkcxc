@@ -97,7 +97,8 @@ export function gradeThreeMarkNumericSource({criterionId,source,part,response}){
  if(working.trim()&&!method)return null;
  const correct=!!submitted&&!!expected&&
   Math.abs(submitted.value-expected.value)<1e-9&&
-  (!expected.fraction||(submitted.fraction&&submitted.reduced));
+  (!submitted.fraction||submitted.reduced)&&
+  (!expected.fraction||submitted.fraction);
  if(correct&&!method)return {marks:1,resolved:false,method:"source-MMA-unverified-method-v1"};
  return {marks:Number(method)*2+Number(correct),resolved:true,method:"source-MMA-numeric-v1"};
 }
