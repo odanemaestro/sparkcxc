@@ -60,6 +60,20 @@ jobs:
                r.provenance?.workingTreeDirty!==false))
             throw Error("Six Mathematics source-bound approvals must pass and be clean");
           console.log("V2_MATH_REGISTERABLE_RECORDS="+JSON.stringify(mathRecords));
+          // Exact registered full working unlocked these 57 source-specific
+          // M/A/B partial-credit criteria. Export only clean, verified records
+          // for the existing private DB function to validate and register.
+          const bulkIds=new Set(["p2e-q2::b2","p2e-q6::a","p2e-q6::b","p2e-q6::d","p2e-q7::c","p2e-q8::d","p2e-q8::e","p2e-q9::a","p2e-q9::b","p2e-q9::c","p2f-q10::a2","p2f-q10::b","p2f-q2::a","p2f-q3::a","p2f-q4::c2","p2f-q6::b","p2f-q9::a","p2f-q9::b","p2f-q9::c","p2g-q2::b2","p2g-q6::a","p2g-q6::b","p2g-q6::d","p2g-q7::c","p2g-q8::d","p2g-q8::e","p2g-q9::a","p2g-q9::b","p2g-q9::c","p2h-q10::a2","p2h-q10::b","p2h-q2::a","p2h-q3::a","p2h-q4::c2","p2h-q6::b","p2h-q9::a","p2h-q9::b","p2h-q9::c","p2i-q2::b2","p2i-q6::a","p2i-q6::b","p2i-q6::d","p2i-q7::c","p2i-q8::d","p2i-q8::e","p2i-q9::a","p2i-q9::b","p2i-q9::c","p2j-q10::a2","p2j-q10::b","p2j-q2::a","p2j-q3::a","p2j-q4::c2","p2j-q6::b","p2j-q9::a","p2j-q9::b","p2j-q9::c"]);
+          const bulkRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>bulkIds.has(r.criterionId));
+          if(bulkRecords.length!==bulkIds.size||
+             bulkRecords.some(r=>r.outcome!=="verified"||
+                r.provenance?.workingTreeDirty!==false||
+                !r.evidenceSha256||!r.sourceSha256||!r.criterionSha256))
+            throw Error("Source-bound 57-criterion Mathematics batch was not fully verified");
+          console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
+          for(const record of bulkRecords)
+            console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));
           NODE
       - name: Upload complete evidence and failure reports
         if: always()
