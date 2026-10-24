@@ -83,6 +83,18 @@ jobs:
             throw Error("Geometry reasoning approval evidence is not complete");
           for(const record of geometryRecords)
             console.log("V2_GEOMETRY_APPROVAL_ITEM="+JSON.stringify(record));
+          // Source-authored currency, graph-profit and rearrangement checks.
+          // Export only the exact clean records actually passing the examiner.
+          const calibrationIds=new Set(["p2f-q1::b1","p2h-q1::b1","p2j-q1::b1","p2f-q8::c","p2h-q8::c","p2j-q8::c","p2f-q8::d","p2h-q8::d","p2j-q8::d","p2f-q2::c","p2h-q2::c","p2j-q2::c"]);
+          const nextRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>calibrationIds.has(r.criterionId));
+          if(nextRecords.length!==12||new Set(nextRecords.map(r=>r.criterionId)).size!==12||
+             nextRecords.some(r=>r.outcome!=="verified"||
+               r.provenance?.workingTreeDirty!==false||
+               !r.evidenceSha256||!r.sourceSha256||!r.criterionSha256))
+            throw Error("12 new Mathematics source-verified criteria not proven");
+          for(const record of nextRecords)
+            console.log("V2_SOURCE_MATH_12_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));
