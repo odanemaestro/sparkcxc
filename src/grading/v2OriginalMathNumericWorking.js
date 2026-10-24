@@ -98,6 +98,7 @@ export function gradeOriginalMathNumericWorking({criterionId,source,part,respons
  if(Object.keys(response).some(key=>!["answer","working"].includes(key)))return null;
  const a=response.answer,w=response.working??"";
  if((typeof a!=="number"&&typeof a!=="string")||
+    (typeof a==="number"&&!Number.isFinite(a))||
     typeof w!=="string"||w.length>1600)return null;
  const answer=String(a).trim();
  const working=w.trim();
