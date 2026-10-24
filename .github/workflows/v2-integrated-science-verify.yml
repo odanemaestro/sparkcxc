@@ -20,6 +20,12 @@ on:
       - "src/integratedScience/practice/ScienceGuidedDiagramPractice.test.jsx"
       - "src/integratedScience/practice/scienceGuidedDiagramMarking.js"
       - "src/integratedScience/practice/scienceGuidedDiagramMarking.test.js"
+      - "src/integratedScience/practice/sourceBiologicalDrawingMarking.js"
+      - "src/integratedScience/practice/sourceBiologicalDrawingMarking.test.js"
+      - "src/integratedScience/practice/sourceFlowerMagnificationMarking.js"
+      - "src/integratedScience/practice/sourceFlowerMagnificationMarking.test.js"
+      - "src/integratedScience/practice/scienceBiologicalSourceEvidence.js"
+      - "src/integratedScience/practice/scienceBiologicalSourceEvidence.test.js"
       - "src/integratedScience/practice/integratedScienceAdaptedPaper2.js"
       - "src/integratedScience/practice/integratedScienceAdaptedPaper2.test.js"
       - "src/integratedScience/practice/IntegratedScienceAdaptedPaper2Assessment.jsx"
@@ -66,7 +72,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Hypothesis regression tests
-        run: npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js ScienceDrawingTableResponse.test.jsx scienceAdditionalTableMarking.test.js scienceParticleDiagramMarking.test.js ScienceParticleDiagramResponse.test.jsx scienceCircuitSymbolMarking.test.js ScienceCircuitSymbolResponse.test.jsx scienceCircuitConstructionMarking.test.js ScienceCircuitConstructionResponse.test.jsx scienceFiltrationDrawingMarking.test.js ScienceFiltrationDrawingResponse.test.jsx ScienceDrawingMagnificationEvidence.test.jsx ScienceBiologicalDrawingEvidence.test.jsx ScienceGuidedDiagramPractice.test.jsx scienceGuidedDiagramMarking.test.js integratedScienceAdaptedPaper2.test.js IntegratedScienceAdaptedPaper2Assessment.test.jsx
+        run: npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js ScienceDrawingTableResponse.test.jsx scienceAdditionalTableMarking.test.js scienceParticleDiagramMarking.test.js ScienceParticleDiagramResponse.test.jsx scienceCircuitSymbolMarking.test.js ScienceCircuitSymbolResponse.test.jsx scienceCircuitConstructionMarking.test.js ScienceCircuitConstructionResponse.test.jsx scienceFiltrationDrawingMarking.test.js ScienceFiltrationDrawingResponse.test.jsx ScienceDrawingMagnificationEvidence.test.jsx ScienceBiologicalDrawingEvidence.test.jsx ScienceGuidedDiagramPractice.test.jsx scienceGuidedDiagramMarking.test.js sourceBiologicalDrawingMarking.test.js sourceFlowerMagnificationMarking.test.js scienceBiologicalSourceEvidence.test.js integratedScienceAdaptedPaper2.test.js IntegratedScienceAdaptedPaper2Assessment.test.jsx
         env:
           CI: true
       - name: Verify all registered Integrated Science criteria
