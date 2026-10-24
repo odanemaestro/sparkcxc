@@ -74,10 +74,17 @@ export function markSourceBiologicalDrawing(qid,partIndex,itemIndex,item,respons
  const paths=points(responses[base+":strokes"]);
  const evidence=labels(responses[base+":biologicalEvidence"]);
  const box=bounds(paths);
- const tidy=clean(paths);
- const large=Boolean(box&&(box.right-box.left)>=210&&(box.bottom-box.top)>=155);
- const leaderLines=rulerLabels(evidence,paths);
- const hasDrawing=paths.length>=2;
+ const contours=paths.filter(p=>{
+  if(p.length<10||length(p[0],p[p.length-1])>18)return false;
+  const b=bounds([p]);
+  return b.right-b.left>=26&&b.bottom-b.top>=32;
+ });
+ // A few unrelated straight lines cannot stand in for a biological diagram.
+ const hasContours=contours.length>=(isStoma?2:3);
+ const tidy=hasContours&&clean(paths);
+ const large=Boolean(hasContours&&box&&(box.right-box.left)>=210&&(box.bottom-box.top)>=155);
+ const leaderLines=hasContours&&rulerLabels(evidence,paths);
+ const hasDrawing=hasContours;
  const scoreParts=isStoma?[
   {label:"Clean continuous lines, no shading",ok:tidy},
   {label:"Large drawing",ok:large},
