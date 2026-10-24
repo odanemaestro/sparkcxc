@@ -167,7 +167,12 @@ jobs:
           // criteria whose real full-paper examiner resolved all adversarial
           // source cases and whose bundle/criterion digests are clean.
           const numericSource=fs.readFileSync("src/grading/v2OriginalMathNumericWorking.js","utf8");
-          const rawIds=/SOURCE_NUMERIC_TWO_MARK_IDS=Object\\.freeze\\((\\[[\\s\\S]*?\\])\\);/.exec(numericSource)?.[1];
+          const header="export const SOURCE_NUMERIC_TWO_MARK_IDS=Object.freeze(";
+          const pos=numericSource.indexOf(header);
+          if(pos<0)throw Error("Missing authoritative fifty-part list");
+          const end=numericSource.indexOf(");",pos+header.length);
+          if(end<0)throw Error("Missing end of fifty-part list");
+          const rawIds=numericSource.slice(pos+header.length,end);
           if(!rawIds)throw Error("Could not read authored 50-source allowlist");
           const numericIds=new Set(JSON.parse(rawIds));
           if(numericIds.size!==50)throw Error("Numeric batch must contain 50 unique original parts");
