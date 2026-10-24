@@ -220,8 +220,10 @@ function mathematics(rows,responses){
    const residual=gradeOriginalMathResidual48({
     criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
    });
-   if(residual!==null)
-    return cap(p.row,residual.marks,residual.method,residual.resolved===true);
+   // An abstention must preserve the existing provisional method/accuracy
+   // suggestion instead of replacing it with zero or bypassing CSEC ECF.
+   if(residual!==null&&residual.resolved===true)
+    return cap(p.row,residual.marks,residual.method,true);
    const originalText=gradeOriginalText50({
     criterionId:p.row.id,source:sourceMarking(p.row),part:p.part,response:answer
    });
