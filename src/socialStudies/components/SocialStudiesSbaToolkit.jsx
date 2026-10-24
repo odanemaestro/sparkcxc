@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import "../socialStudies.css";
 import "../socialStudiesToolkitTheme.css";
 
@@ -211,7 +212,10 @@ function WriteStation({onDone}){
 }
 
 export default function SocialStudiesSbaToolkit({onBack,onComplete}){
-  const [active,setActive]=useState("plan");
+  const [active,setActive]=usePracticeRouteState("social-studies","toolkitTab","plan",{
+    path:"/study/social-studies",
+    decode:raw=>STATIONS.some(([id])=>id===raw)?raw:"plan",
+  });
   const [done,setDone]=useState(new Set());
   const stationIds=STATIONS.map(item=>item[0]);
   const percent=Math.round(done.size/stationIds.length*100);
