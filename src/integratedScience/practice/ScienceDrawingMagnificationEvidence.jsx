@@ -57,7 +57,7 @@ export default function ScienceDrawingMagnificationEvidence({base,responses,onCh
  const values=readMagnificationEvidence(base,responses);
  return <fieldset className="is-p2-magnification-evidence" disabled={disabled}>
   <legend>Measurements from your drawing</legend>
-  <p>Record the measurements you used for your own calculation. The numbers in a worked example are not automatically the measurements of your drawing.</p>
+  <p>For this digitised Figure 6 question, the source reference specimen height is 60 mm. Use your own calibrated drawing height shown beside the canvas. Magnification = drawing height ÷ 60 mm.</p>
   <div className="is-p2-magnification-grid">
    {FIELDS.map(([name,label])=><label key={name}>
     <span>{label}</span>
