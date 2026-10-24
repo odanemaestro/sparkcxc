@@ -41,7 +41,13 @@ export function magnificationArithmeticEvidence(values){
   return {consistent:false,reviewRequired:true,reason:"invalid-answer"};
  const given=Number(answer);
  const working=String(values.magnificationWorking??"").replace(/,/g,"");
- const hasWorking=working.includes("/")||working.includes("÷")||/divided by/i.test(working);
+ // The submitted method must use the student's recorded dimensions,
+ // not merely contain an unrelated division sign.
+ const expression=working.replace(/÷/g,"/").replace(/\bdivided\s+by\b/gi,"/");
+ const operands=expression.match(/\d+(?:\.\d+)?/g)||[];
+ const hasWorking=expression.includes("/")&&operands.length>=2&&
+  Number(operands[0])===drawing&&Number(operands[1])===actual&&
+  !/\bor\b/i.test(expression);
  const consistent=hasWorking&&Number.isFinite(expected)&&Math.abs(given-expected)<=Math.max(.005,Math.abs(expected)*.005);
  return {consistent,calculatedMagnification:expected,reviewRequired:true,
   reason:consistent?"requires-drawing-and-specimen-check":"arithmetic-or-working-mismatch"};
