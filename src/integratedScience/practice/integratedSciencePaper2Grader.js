@@ -6,6 +6,7 @@ import {gradeAdditionalTable} from "./scienceAdditionalTableMarking";
 import {markSourceRustTable} from "./scienceRustTableMarking";
 import {markSourceHypothesis} from "./scienceHypothesisMarking";
 import { markScienceCalculation, SCIENCE_TABLES } from "./scienceStructuredMarking";
+import { biologicalSourceEvidenceReadiness } from "./scienceBiologicalSourceEvidence";
 import { gradeScienceGraph } from "./scienceGraphMarking";
 import { matchScienceWrittenEvidence } from "../../grading/scienceWrittenEvidence";
 import { sciencePointMarks, scienceSubPoints } from "../../grading/sciencePointMarks";
@@ -108,7 +109,9 @@ function labelResult(questionId,partIndex,itemIndex,item,responses){
 
 function calculationResult(questionId,partIndex,itemIndex,item,responses){
   const base=`${questionId}:${partIndex}:${itemIndex}`;
-  return markScienceCalculation(base,item,responses[base] || "");
+  const result=markScienceCalculation(base,item,responses[base] || "");
+  const sourceEvidence=biologicalSourceEvidenceReadiness(questionId,partIndex,itemIndex,responses);
+  return sourceEvidence?{...result,sourceEvidence,provisional:true}:result;
 }
 
 // Examiner notes ("1 mark for agent; 1 mark each for any two reasons") and
@@ -390,6 +393,7 @@ function drawingResult(questionId,partIndex,itemIndex,item,responses){
   const score=hasDrawing ? written.score : Math.min(written.score,Math.max(0,written.maxMarks-1));
   return {
     ...written,score,confidence:"medium",provisional:true,visualEvidenceRequired:true,
+    sourceEvidence:biologicalSourceEvidenceReadiness(questionId,partIndex,itemIndex,responses),
     visualEvidence:{hasDrawing,strokeCount:detailedStrokes.length,pointCount:detailedStrokes.reduce((sum,stroke)=>sum+stroke.length,0)},
   };
 }
