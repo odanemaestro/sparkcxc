@@ -21,6 +21,7 @@ import {CURATED_FNH} from "./v2Fixtures/fnhCurated";
 import {fnhPointValue,fnhDistinctPairs} from "../fnh/practice/fnhPaper2Marking";
 import INTEGRATED_SCIENCE_PAPER2_SPECS from "../integratedScience/data/integratedSciencePaper2Specs.json";
 import {integratedScienceStructuredFixtures} from "./v2Fixtures/integratedScience";
+import {originalBiologySourceFixtures} from "./v2Fixtures/integratedScienceOriginalBiology";
 import {integratedScienceHypothesisFixtures} from "./v2Fixtures/integratedScienceHypothesis";
 import {integratedScienceRustTableFixtures} from "./v2Fixtures/integratedScienceRustTable";
 import {additionalTableFixtures} from "./v2Fixtures/integratedScienceAdditionalTables";
@@ -131,6 +132,8 @@ export function fixturesForCriterion({subjectId,paperId,criterion}){
   const ii=pi<0?-1:question.parts[pi].items.findIndex(i=>i.label===itemLabel);
   if(ii<0)return {blocked:"criterion-not-found-in-source-bank"};
   const item=question.parts[pi].items[ii];
+  const biology=originalBiologySourceFixtures(criterion.id);
+  if(biology)return biology;
   const type=item.response?.type||"lines";
   const hypothesis=integratedScienceHypothesisFixtures(qid,item,criterion.maxMarks);
   if(hypothesis)return hypothesis;
