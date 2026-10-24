@@ -92,6 +92,8 @@ function lineGrade(part,source,response,id){
   !Array.isArray(schema.answerFields)||schema.answerFields.length!==2||
   checks[1].answers.length!==2)return null;
  if(!obj(response))return denied("line-unstructured");
+ if(Object.keys(response).some(k=>!["linePoints","answers"].includes(k)))
+  return denied("line-not-drawn");
  const lines=response.linePoints;
  if(lines!==undefined&&(!Array.isArray(lines)||lines.length!==2||
   lines.some(p=>!coord(p)||p.x<g.xMin||p.x>g.xMax||p.y<g.yMin||p.y>g.yMax)))
