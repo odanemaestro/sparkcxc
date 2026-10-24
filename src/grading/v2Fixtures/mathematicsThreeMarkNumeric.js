@@ -10,6 +10,7 @@ export function mathematicsThreeMarkNumericFixtures({criterion,part,maxMarks}){
  if(!answer||!solution)return {blocked:"missing-source-MMA-evidence"};
  const wrong=answer.includes("/")?"999/997":String(Number(answer)+37.31);
  const full={answer,working:solution};
+ const alternate=/correct to \d+ decimal places?/i.test(part.prompt||"")?" "+answer+" ":alternative(answer);
  return {kind:"structured",ruleId:"math:source-three-mark-MMA",sourceAnswer:full,
   alternatives:[{answer:alternative(answer),working:solution}],
   fixtures:[
