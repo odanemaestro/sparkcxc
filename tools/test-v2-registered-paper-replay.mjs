@@ -1449,7 +1449,7 @@ try{
  }
 
 
- // Only the fifty explicitly source-pinned M1/A1 numerical methods now
+ // Both independently verified groups of fifty numeric M/A source parts now
  // resolve from genuine authored working. All other source-manual drafts
  // remain provisional and no incomplete paper is authorised for release.
  const numericSource=fs.readFileSync("src/grading/v2OriginalMathNumericWorking.js","utf8");
@@ -1461,7 +1461,17 @@ try{
  const allowedNumerics=new Set(JSON.parse(
    numericSource.slice(numericStart+numericHeader.length,numericEnd)));
  assert.equal(allowedNumerics.size,50);
- let trustedNumericCount=0;
+ const mmaSource=fs.readFileSync("src/grading/v2OriginalMathThreeMarkNumeric.js","utf8");
+ const mmaHeader="export const THREE_MARK_NUMERIC_IDS=Object.freeze(";
+ const mmaStart=mmaSource.indexOf(mmaHeader);
+ assert(mmaStart>=0,"Trusted three-mark source list is missing");
+ const mmaEnd=mmaSource.indexOf(");",mmaStart+mmaHeader.length);
+ assert(mmaEnd>mmaStart,"Trusted three-mark source list is malformed");
+ const allowedMMA=new Set(JSON.parse(mmaSource.slice(mmaStart+mmaHeader.length,mmaEnd)));
+ assert.equal(allowedMMA.size,50);
+ assert([...allowedMMA].every(id=>!allowedNumerics.has(id)),
+  "Two-mark and three-mark source approval groups must not overlap");
+ let trustedNumericCount=0,trustedMMACount=0;
  let manualCheckCount=0,manualPartCount=0;
  for(const paper of mathPaperRows){
   const cases=paper.criteria.filter(p=>p.sourceMarking?.criteria?.some(c=>
@@ -1484,6 +1494,12 @@ try{
     assert.equal(found.resolved,true,'Source-authorised numeric method missing: '+part.id);
     assert.equal(found.suggestedMarks,2,'Incorrect two-mark M1/A1 score: '+part.id);
     trustedNumericCount++;
+   }else if(allowedMMA.has(part.id)){
+    assert.equal(found.resolved,true,
+     'Source-authorised M1/M2/A1 method missing: '+part.id);
+    assert.equal(found.suggestedMarks,3,
+     'Incorrect three-mark M1/M2/A1 score: '+part.id);
+    trustedMMACount++;
    }else{
     assert.equal(found.resolved,false,
      'Unapproved Mathematics method-check implied authority: '+part.id);
@@ -1494,8 +1510,10 @@ try{
  }
  assert.equal(trustedNumericCount,50,
   'Exactly fifty source-authorised M1/A1 methods must resolve');
+ assert.equal(trustedMMACount,50,
+  'Exactly fifty independently source-authorised M1/M2/A1 methods must resolve');
  assert.equal(manualCheckCount,967,
-  'The entire 969-check Mathematics manual-validation inventory must be retained');
+  'The entire 967-check Mathematics manual-validation inventory must be retained');
  assert(manualPartCount>0);
  const physicsGraphs=papers.filter(p=>p.subject_id==='physics').flatMap(p=>
   p.criteria.filter(c=>c.sourceMarking?.responseType==='graph' &&
