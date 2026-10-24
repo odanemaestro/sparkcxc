@@ -1,4 +1,5 @@
 import {ORIGINAL_RESIDUAL_48_IDS} from "../v2OriginalMathResidual48";
+import {RESIDUAL_ORIGINAL_TABLE_GROUPS} from "../v2OriginalMathResidualTables48";
 const allowed=new Set(ORIGINAL_RESIDUAL_48_IDS);
 const F=(cls,response,expect,note)=>({cls,response,expect,note});
 export function mathematicsOriginalResidual48Fixtures({criterion,part,maxMarks}){
@@ -12,9 +13,42 @@ export function mathematicsOriginalResidual48Fixtures({criterion,part,maxMarks})
   source.solution!==part.solution||typeof source.answer!=="string"||
   typeof source.solution!=="string"||!source.answer.trim()||
   !source.solution.trim()||
-  ["graph","construction","construction_triangle","drawing","table"]
+  ["graph","construction","construction_triangle","drawing"]
    .includes(part.responseSchema?.type))
   return {blocked:"residual-original-source-mismatch"};
+ const groups=RESIDUAL_ORIGINAL_TABLE_GROUPS[criterion.id];
+ if(part.responseSchema?.type==="table"){
+  if(!groups||groups.length!==maxMarks)return {blocked:"residual-source-table-mark-groups"};
+  const slots=part.responseSchema.rows.flat().filter(c=>c&&typeof c==="object"&&!Array.isArray(c)&&c.key);
+  const expected=Object.fromEntries(slots.map(c=>[c.key,String(c.answer)]));
+  if(groups.flat().some(k=>!Object.hasOwn(expected,k)))return {blocked:"residual-table-missing-source-cell"};
+  const numericEquivalent=Object.fromEntries(slots.map(c=>[c.key,Number(c.answer).toFixed(1)]));
+  const erroneous=Object.fromEntries(slots.map(c=>[c.key,String(Number(c.answer)+111)]));
+  const first=Object.fromEntries(groups[0].map(k=>[k,expected[k]]));
+  const last=Object.fromEntries(groups[groups.length-1].map(k=>[k,expected[k]]));
+  const wrongFirst={...first,[groups[0][0]]:String(Number(expected[groups[0][0]])+111)};
+  const full={cells:expected};
+  return {kind:"structured",ruleId:"math:source-original-keyed-table-48",
+   sourceAnswer:full,alternatives:[{cells:numericEquivalent}],
+   fixtures:[
+    F("full",full,maxMarks,"All answers occupy the correct labelled source cells"),
+    F("equivalent",{cells:numericEquivalent},maxMarks,"Equivalent numeric formatting"),
+    F("partial",{cells:first},1,"Only first complete source mark group"),
+    F("partial",{cells:last},1,"Only last complete source mark group"),
+    F("incorrect",{cells:erroneous},0,"Every keyed cell has incorrect value"),
+    F("blank",{cells:{}},0,"No submitted table entries"),
+    {...F("irrelevant",{answer:"banana"},null,"Unkeyed text cannot earn table marks"),mustAbstain:true},
+    {...F("competing",{cells:{...expected,[groups[0][0]]:expected[groups[0][0]]+" or 999"}},null,
+      "Contradictory values inside one source cell remain unresolved"),mustAbstain:true},
+    {...F("ceiling",{cells:{...expected,unknown:"999"}},null,
+      "Extra unsourced cell cannot create any marks"),mustAbstain:true},
+    {...F("working",{cells:{},working:"an alternative method"},null,
+      "Unsupported response shape stays provisional"),mustAbstain:true},
+    F("incorrect",{cells:wrongFirst},0,"Incorrect first required cell denies its group"),
+    F("partial",{cells:{...expected,[groups[0][0]]:""}},maxMarks-1,
+      "One missing required cell removes its mark without denying other groups")
+   ]};
+ }
  const answer=source.answer,working=source.solution;
  const complete={answer,working},partial=maxMarks-1;
  const bareOne=maxMarks===1;
