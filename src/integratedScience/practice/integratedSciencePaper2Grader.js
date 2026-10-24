@@ -6,6 +6,7 @@ import {gradeAdditionalTable} from "./scienceAdditionalTableMarking";
 import {markSourceRustTable} from "./scienceRustTableMarking";
 import {markSourceHypothesis} from "./scienceHypothesisMarking";
 import { markScienceCalculation, SCIENCE_TABLES } from "./scienceStructuredMarking";
+import {markSourceFlowerMagnification} from "./sourceFlowerMagnificationMarking";
 import { biologicalSourceEvidenceReadiness } from "./scienceBiologicalSourceEvidence";
 import { gradeScienceGraph } from "./scienceGraphMarking";
 import { matchScienceWrittenEvidence } from "../../grading/scienceWrittenEvidence";
@@ -109,6 +110,8 @@ function labelResult(questionId,partIndex,itemIndex,item,responses){
 
 function calculationResult(questionId,partIndex,itemIndex,item,responses){
   const base=`${questionId}:${partIndex}:${itemIndex}`;
+  const flower=markSourceFlowerMagnification(responses,base);
+  if(flower)return {...flower,sourceEvidence:biologicalSourceEvidenceReadiness(questionId,partIndex,itemIndex,responses)};
   const result=markScienceCalculation(base,item,responses[base] || "");
   const sourceEvidence=biologicalSourceEvidenceReadiness(questionId,partIndex,itemIndex,responses);
   return sourceEvidence?{...result,sourceEvidence,provisional:true}:result;
