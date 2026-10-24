@@ -104,6 +104,7 @@ export function markSourceBiologicalDrawing(qid,partIndex,itemIndex,item,respons
  const score=scoreParts.reduce((sum,p)=>sum+Number(p.ok),0);
  return {score,maxMarks:isStoma?7:6,unassessedMarks:scoreParts.length-score,
   sourceBiological:true,sourceResolved:false,provisional:true,visualEvidenceRequired:true,
+  reason:"Anatomical structures, label endpoints and physical drawing measurements still require verification.",
   confidence:"low",
   criteria:scoreParts.map((p,i)=>({id:base+":bio:"+i,label:p.label,marks:Number(p.ok),maxMarks:1,earned:p.ok,
    provisional:true})),
