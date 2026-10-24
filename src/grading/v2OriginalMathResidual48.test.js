@@ -53,3 +53,12 @@ test("unregistered question is never given residual authority",()=>{
  expect(gradeOriginalMathResidual48({...c,criterionId:"p2-q10-v9::z",
   response:{answer:c.part.answer,working:c.part.solution}})).toBeNull();
 });
+
+test.each([["p2-q8-v1::d","20"],["p2-q8-v2::d","23"]])(
+ "source y-axis intercept %s respects equivalent typed working",(id,y)=>{
+ const c=ctx(id);
+ expect(gradeOriginalMathResidual48({...c,response:{answer:"(0,"+y+")",working:"f(0) = "+y}}))
+   .toMatchObject({marks:2,resolved:true});
+ expect(gradeOriginalMathResidual48({...c,response:{answer:"("+y+",0)",working:"f(0) = "+y}}))
+   .not.toMatchObject({marks:2,resolved:true});
+});
