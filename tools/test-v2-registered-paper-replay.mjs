@@ -1536,7 +1536,16 @@ try{
  const allowedFinal18=new Set(JSON.parse(proof18.slice(proof18Pos+proof18Header.length,proof18End)));
  assert.equal(allowedFinal18.size,18);
  assert([...allowedFinal18].every(id=>![allowedNext29,allowedResidual48,allowedText,allowedMethods,allowedSymbolic,allowedCalc,allowedMMA,allowedNumerics].some(set=>set.has(id))),"Overlapping math verifier sources");
- let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0,trustedTextCount=0,trustedResidualCount=0,trustedNextMathCount=0,trustedFinal18Count=0;
+ const src11=fs.readFileSync("src/grading/v2MathFinal11.js","utf8");
+ const head11="export const MATH_FINAL_11_IDS=Object.freeze(";
+ const k11=src11.indexOf(head11),last11=src11.indexOf(");",k11+head11.length);
+ assert(k11>=0&&last11>k11,"Final Mathematics graph evidence list missing");
+ const allowedFinal11=new Set(JSON.parse(src11.slice(k11+head11.length,last11)));
+ assert.equal(allowedFinal11.size,11);
+ assert([...allowedFinal11].every(id=>![
+  allowedFinal18,allowedNext29,allowedResidual48,allowedText,allowedMethods,allowedSymbolic,
+  allowedCalc,allowedMMA,allowedNumerics].some(set=>set.has(id))),"Graph evidence overlaps previously approved proofs");
+ let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0,trustedSymbolicCount=0,trustedMethodsCount=0,trustedTextCount=0,trustedResidualCount=0,trustedNextMathCount=0,trustedFinal18Count=0,trustedFinal11NumericCount=0,trustedFinal11VisualCount=0;
  let manualCheckCount=0,manualPartCount=0;
  for(const paper of mathPaperRows){
   const cases=paper.criteria.filter(p=>p.sourceMarking?.criteria?.some(c=>
@@ -1607,6 +1616,17 @@ try{
     assert.equal(found.resolved,true,"Source-authored final proof not resolved: "+part.id);
     assert.equal(found.suggestedMarks,part.maxMarks,"Final Mathematics proof mark ceiling drift: "+part.id);
     trustedFinal18Count++;
+   }else if(allowedFinal11.has(part.id)){
+    if(part.id.endsWith("::c")||part.id.endsWith("::d")){
+     assert.equal(found.resolved,true,"Source-authorised graph reading missing: "+part.id);
+     assert.equal(found.suggestedMarks,part.maxMarks,
+      "Graph-based statistical reading changed its original marks: "+part.id);
+     trustedFinal11NumericCount++;
+    }else{
+     assert.equal(found.resolved,false,
+      "Unkeyed prose must never qualify as graph geometry: "+part.id);
+     trustedFinal11VisualCount++;
+    }
    }else{
     assert.equal(found.resolved,false,
      'Unapproved Mathematics method-check implied authority: '+part.id);
@@ -1637,6 +1657,8 @@ try{
  // This loop deliberately replays only criteria containing manual-verification
  // checks. The other nine members of the 48-part cohort have typed source
  // checks and are exercised by the standalone 576-case verification matrix.
+ assert.equal(trustedFinal11NumericCount,4,"Four graph-derived reading criteria require source working");
+ assert.equal(trustedFinal11VisualCount,6,"Six graph inputs require actual plotted geometry");
  assert.equal(trustedFinal18Count,1,"One manual-only reflection proof source must resolve");
  assert.equal(trustedNextMathCount,2,
   "Both registered original matrix-equation parts require source-proof authority");

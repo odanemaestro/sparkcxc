@@ -326,6 +326,21 @@ jobs:
             throw Error("Remaining 18 source proofs require passing evidence");
           for(const record of finalRecords)
             console.log("V2_MATH_FINAL_REASONING_ITEM="+JSON.stringify(record));
+          const lastSrc=fs.readFileSync("src/grading/v2MathFinal11.js","utf8");
+          const lastHdr="export const MATH_FINAL_11_IDS=Object.freeze(";
+          const lastI=lastSrc.indexOf(lastHdr),lastJ=lastSrc.indexOf(");",lastI+lastHdr.length);
+          if(lastI<0||lastJ<0)throw Error("Final Mathematics 11 cohort missing");
+          const lastIds=new Set(JSON.parse(lastSrc.slice(lastI+lastHdr.length,lastJ)));
+          const lastRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>lastIds.has(r.criterionId));
+          if(lastIds.size!==11||lastRecords.length!==11||
+            new Set(lastRecords.map(r=>r.criterionId)).size!==11||
+            lastRecords.some(r=>r.outcome!=="verified"||r.provenance?.workingTreeDirty!==false||
+              !r.criterionSha256||!r.sourceSha256||!r.evidenceSha256||
+              !Array.isArray(r.cases)||r.cases.length<12||r.cases.some(c=>!c.passed)))
+            throw Error("Final Mathematics graph criteria require verified source evidence");
+          for(const record of lastRecords)
+            console.log("V2_MATH_FINAL_11_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));
