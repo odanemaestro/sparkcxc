@@ -293,7 +293,7 @@ function mathPartCertain(result,specs,response,policy={},source={}){
  const isAuthoredStatement=spec=>spec?.check?.type==='written'&&
   exactCandidate.length>=18&&(
    approvedSentences.includes(exactCandidate)||
-   (spec.check.any||[]).some(t=>typeof t==='string'&&
+   (Array.isArray(spec.check.any)?spec.check.any:[]).some(t=>typeof t==='string'&&
     simplifyMathStatement(t).length>=18&&
     simplifyMathStatement(t)===exactCandidate));
  return result.criteria.every(line=>{
@@ -315,7 +315,7 @@ function mathPartCertain(result,specs,response,policy={},source={}){
    // written B rule inapplicable only when the candidate submitted that
    // complete snippet, not an arbitrary paraphrase or keyword list.
    if(kind==="B"&&written&&noWorking&&
-      candidateStatement!==normalizedStatement(source.answer)&&
+      exactCandidate!==simplifyMathStatement(source.answer)&&
       result.marks<result.of&&result.criteria.some(other=>
        other.awarded&&other.code!==line.code&&
        isAuthoredStatement(byCode.get(other.code))))return true;
