@@ -550,10 +550,18 @@ try{
  });
  assert.equal(p2fRich.examinedParts,42);
  assert.equal(p2fRich.maxMarks,100);
- for(const id of ['p2f-q4::a1','p2f-q5::a','p2f-q5::b','p2f-q7::a']){
+ // Source-verified table cells are now deterministic and authoritative.
+ for(const [id,expected] of [['p2f-q5::a',2],['p2f-q7::a',4]]){
   const part=p2fRich.rows.find(x=>x.criterionId===id);
-  assert.equal(part.suggestedMarks,0,'Unknown drawing/table artefact cannot earn automatic credit');
-  assert.equal(part.resolved,false,'Visual or structured artefact requires verified evaluator');
+  assert.equal(part.suggestedMarks,expected,'Keyed source table values earn original marks');
+  assert.equal(part.resolved,true,'Source-authored table criteria were independently verified');
+  assert.equal(part.method,'source-labelled-mathematics-table-v1');
+ }
+ // Construction and graph work remain provisional until geometry verification.
+ for(const id of ['p2f-q4::a1','p2f-q5::b']){
+  const part=p2fRich.rows.find(x=>x.criterionId===id);
+  assert.equal(part.suggestedMarks,0,'Unknown drawing/graph must not earn marks');
+  assert.equal(part.resolved,false,'Unverified visual evidence stays provisional');
  }
  assert.equal(p2fRich.canPublishFinalScore,false);
 
