@@ -96,7 +96,7 @@ function lineGrade(part,source,response,id){
   !Array.isArray(schema.answerFields)||schema.answerFields.length!==2||
   checks[1].answers.length!==2)return null;
  if(!obj(response))return denied("line-unstructured");
- if(Object.keys(response).some(k=>!["linePoints","answers"].includes(k)))
+ if(Object.keys(response).some(k=>!["linePoints","answerFields"].includes(k)))
   return denied("line-not-drawn");
  const lines=response.linePoints;
  if(lines!==undefined&&(!Array.isArray(lines)||lines.length!==2||
@@ -106,7 +106,7 @@ function lineGrade(part,source,response,id){
  const line=Array.isArray(lines)&&lines.length===2&&
   lines[0].x!==lines[1].x&&Math.abs(lines[0].x-lines[1].x)>=1&&
   lines.every(p=>close(p.y,target,tol));
- const ans=response.answers;
+ const ans=response.answerFields;
  if(ans!==undefined&&(!obj(ans)||Object.keys(ans).some(k=>!["x1","x2"].includes(k))))
   return denied("line-root-keys");
  const rootValues=ans&&[ans.x1,ans.x2].map(x=>x===""||x==null?NaN:Number(x));
