@@ -1469,9 +1469,17 @@ try{
  assert(mmaEnd>mmaStart,"Trusted three-mark source list is malformed");
  const allowedMMA=new Set(JSON.parse(mmaSource.slice(mmaStart+mmaHeader.length,mmaEnd)));
  assert.equal(allowedMMA.size,50);
+ const calcSource=fs.readFileSync("src/grading/v2OriginalMathSourceCalculations50.js","utf8");
+ const calcHeader="export const SOURCE_CALC_50_IDS=Object.freeze(";
+ const calcPos=calcSource.indexOf(calcHeader),calcEnd=calcSource.indexOf(");",calcPos+calcHeader.length);
+ assert(calcPos>=0&&calcEnd>calcPos,"Source-verified calculation list is malformed");
+ const allowedCalc=new Set(JSON.parse(calcSource.slice(calcPos+calcHeader.length,calcEnd)));
+ assert.equal(allowedCalc.size,50,"The new calculation cohort must contain exactly fifty parts");
+ assert([...allowedCalc].every(id=>!allowedNumerics.has(id)&&!allowedMMA.has(id)),
+  "No original Mathematics criterion can belong to two source cohorts");
  assert([...allowedMMA].every(id=>!allowedNumerics.has(id)),
   "Two-mark and three-mark source approval groups must not overlap");
- let trustedNumericCount=0,trustedMMACount=0;
+ let trustedNumericCount=0,trustedMMACount=0,trustedCalcCount=0;
  let manualCheckCount=0,manualPartCount=0;
  for(const paper of mathPaperRows){
   const cases=paper.criteria.filter(p=>p.sourceMarking?.criteria?.some(c=>
@@ -1500,6 +1508,11 @@ try{
     assert.equal(found.suggestedMarks,3,
      'Incorrect three-mark M1/M2/A1 score: '+part.id);
     trustedMMACount++;
+   }else if(allowedCalc.has(part.id)){
+    assert.equal(found.resolved,true,"Source calculation method must resolve: "+part.id);
+    assert.equal(found.suggestedMarks,part.maxMarks,
+     "Source calculation must retain its own allocation: "+part.id);
+    trustedCalcCount++;
    }else{
     assert.equal(found.resolved,false,
      'Unapproved Mathematics method-check implied authority: '+part.id);
@@ -1512,6 +1525,8 @@ try{
   'Exactly fifty source-authorised M1/A1 methods must resolve');
  assert.equal(trustedMMACount,50,
   'Exactly fifty independently source-authorised M1/M2/A1 methods must resolve');
+ assert.equal(trustedCalcCount,50,
+  'Exactly fifty additional source-authored original calculation methods must resolve');
  assert.equal(manualCheckCount,967,
   'The entire 967-check Mathematics manual-validation inventory must be retained');
  assert(manualPartCount>0);
