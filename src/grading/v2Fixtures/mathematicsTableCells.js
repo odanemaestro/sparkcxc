@@ -5,15 +5,24 @@
  */
 const F=(cls,response,expect,note)=>({cls,response,expect,note});
 const GROUPS={
- p2e:[["m2","m3"],["m4","p2"],["p3","p4"]],
- p2f:[["c3"],["c4"]],
- p2g:[["m2","m3"],["m4","p2"],["p3","p4"]],
- p2h:[["c3"],["c4"]],
- p2i:[["m2","m3"],["m4","p2"],["p3","p4"]],
- p2j:[["c3"],["c4"]]
+ "p2e-q5":[["m2","m3"],["m4","p2"],["p3","p4"]],
+ "p2f-q5":[["c3"],["c4"]],
+ "p2g-q5":[["m2","m3"],["m4","p2"],["p3","p4"]],
+ "p2h-q5":[["c3"],["c4"]],
+ "p2i-q5":[["m2","m3"],["m4","p2"],["p3","p4"]],
+ "p2j-q5":[["c3"],["c4"]],
+ "p2e-q7":[["d4"],["d5"],["d10"],["dn"]],
+ "p2f-q7":[["q4"],["r4"],["q10"],["r10"]],
+ "p2g-q7":[["d4"],["d5"],["d10"],["dn"]],
+ "p2h-q7":[["q4"],["r4"],["q10"],["r10"]],
+ "p2i-q7":[["d4"],["d5"],["d10"],["dn"]],
+ "p2j-q7":[["q4"],["r4"],["q10"],["r10"]],
+ "p2e-q8":[["y2"],["y4"]],
+ "p2g-q8":[["y2"],["y6"]],
+ "p2i-q8":[["y2"],["y4"]]
 };
 export function mathematicsTableFixtures({criterion,part,maxMarks}){
- const match=/^(p2[e-j])-q5::a$/.exec(criterion.id);
+ const match=/^(p2[e-j]-q(?:5|7|8))::a$/.exec(criterion.id);
  if(!match)return null;
  const group=GROUPS[match[1]];
  const schema=part?.responseSchema;
@@ -21,10 +30,10 @@ export function mathematicsTableFixtures({criterion,part,maxMarks}){
     !Array.isArray(schema.rows)||group.length!==maxMarks)return null;
  const slots=schema.rows.flat().filter(c=>c&&typeof c==="object"&&!Array.isArray(c)&&c.key);
  const correct=Object.fromEntries(slots.map(c=>[c.key,String(c.answer)]));
- const wrong=Object.fromEntries(slots.map(c=>[c.key,String(Number(c.answer)+111)]));
+ const wrong=Object.fromEntries(slots.map(c=>[c.key,c.key==="dn"?"n+999":String(Number(c.answer)+111)]));
  const first=Object.fromEntries(group[0].map(k=>[k,correct[k]]));
  const swapped=Object.fromEntries(Object.entries(correct).map(([k,v])=>[
-  k,Number.isInteger(Number(v))?Number(v).toFixed(1):Number(v).toFixed(2)
+  k,k==="dn"?String(v):Number.isInteger(Number(v))?Number(v).toFixed(1):Number(v).toFixed(2)
  ]));
  const full={cells:correct};
  return {kind:"structured",ruleId:"math:audited-source-table-cells",
