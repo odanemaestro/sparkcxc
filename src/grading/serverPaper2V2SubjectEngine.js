@@ -259,7 +259,7 @@ function mathPartCertain(result,specs,response,policy={},source={}){
  // worked solution is strong enough to resolve otherwise wording-based M
  // checks: arbitrary keywords, partial fragments and similar working abstain.
  // This does not certify written B marks or unawarded source methods.
- const normaliseWorking=s=>String(s??"").trim().replace(/\\s+/g," ");
+ const normaliseWorking=s=>String(s??"").trim().replace(/\s+/g," ");
  const registeredSolution=normaliseWorking(source.solution);
  const exactSourceMethod=registeredSolution.length>=40 &&
    !noWorking&&normaliseWorking(workingOf(response))===registeredSolution;
