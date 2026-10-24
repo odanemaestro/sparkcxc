@@ -255,7 +255,7 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
   const [drawMode,setDrawMode]=useState("draw");
   const [selectedLabel,setSelectedLabel]=useState("");
   const [labelStart,setLabelStart]=useState(null);
-  const [guidedMode,setGuidedMode]=useState(Boolean(biological));
+  const [guidedMode,setGuidedMode]=useState(false);
   const bioEvidence=biological?readBiologicalDrawingEvidence(responses[base+":biologicalEvidence"],biologicalDrawingSource(questionId,partIndex,itemIndex)):null;
 
   const strokes=readStrokes(responses[`${base}:strokes`]);
@@ -288,7 +288,7 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
   };
   return <div className="is-p2-drawing-workspace">
     {biological&&<div className="is-p2-drawing-actions">
-      <button type="button" className="is-exam-secondary" aria-pressed={guidedMode} onClick={()=>setGuidedMode(true)}>Label a ready-made diagram</button>
+      <button type="button" className="is-exam-secondary" aria-pressed={guidedMode} onClick={()=>setGuidedMode(true)}>Alternative label practice (not original exam marks)</button>
       <button type="button" className="is-exam-secondary" aria-pressed={!guidedMode} onClick={()=>setGuidedMode(false)}>Original freehand drawing</button>
     </div>}
     {biological&&guidedMode
@@ -307,6 +307,7 @@ function DrawingPad({base,questionId,partIndex,itemIndex,responses,onChange,disa
       {strokes.map((stroke,index)=><polyline key={index} points={stroke.map(point=>`${point.x},${point.y}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>)}
       {bioEvidence?.labels.map((l,i)=><g key={"bio-label-"+i} pointerEvents="none"><line x1={l.from[0]*600} y1={l.from[1]*300} x2={l.to[0]*600} y2={l.to[1]*300} stroke="currentColor" strokeWidth="1.5"/><text x={l.from[0]*600} y={l.from[1]*300-5} textAnchor="middle" fontSize="12" fill="currentColor">{l.name}</text></g>)}
     </svg>
+    {biological&&bioEvidence?.title?.trim()&&<p className="is-p2-biological-caption" style={{textAlign:"center",marginTop:8}} aria-label="Drawing title below diagram">{bioEvidence.title}</p>}
     {!disabled && <div className="is-p2-drawing-actions">
       <button type="button" className="is-exam-secondary" onClick={()=>updateStrokes(strokes.slice(0,-1))} disabled={!strokes.length}>Undo stroke</button>
       <button type="button" className="is-exam-secondary" onClick={()=>updateStrokes([])} disabled={!strokes.length}>Clear drawing</button>
@@ -410,7 +411,7 @@ function MarkScheme({ item, evaluation }) {
   return (
     <div className="is-p2-mark-scheme">
       <strong>SPARK marking review</strong>
-      {evaluation && <div className="is-p2-auto-score"><b>{evaluation.score}/{evaluation.maxMarks} marks</b><span>{evaluation.confidence === "high" ? "High-confidence structured check" : "Estimated from the authored marking points"}</span>{evaluation.unassessedMarks>0 && <span>{evaluation.unassessedMarks} marks remain unassessed. {evaluation.reason}</span>}</div>}
+      {evaluation && <div className="is-p2-auto-score"><b>{evaluation.score}/{evaluation.maxMarks} marks</b><span>{evaluation.sourceBiological ? "Provisional drawing evidence, not a final verified mark" : evaluation.confidence === "high" ? "High-confidence structured check" : "Estimated from the authored marking points"}</span>{evaluation.unassessedMarks>0 && <span>{evaluation.unassessedMarks} marks remain unassessed.</span>}{evaluation.reason&&<span>{evaluation.reason}</span>}</div>}
       {evaluation?.criteria?.length > 0 && <ul className="is-p2-auto-criteria">{evaluation.criteria.map(row => <li key={row.id}><b>{row.marks}/{row.maxMarks}</b> <IntegratedScienceText>{row.label}</IntegratedScienceText></li>)}</ul>}
       <ul>{(scheme.points || []).map((point,index) => <li key={index}><IntegratedScienceText>{point}</IntegratedScienceText></li>)}</ul>
       {scheme.guidance && <p><b>Guidance:</b> <IntegratedScienceText>{scheme.guidance}</IntegratedScienceText></p>}

@@ -9,6 +9,10 @@ on:
       - "src/integratedScience/practice/scienceParticleDiagramMarking.js"
       - "src/integratedScience/practice/scienceCircuitSymbolMarking.js"
       - "src/integratedScience/practice/scienceFiltrationDrawingMarking.js"
+      - "src/integratedScience/practice/integratedSciencePaper2Grader.js"
+      - "src/integratedScience/practice/sourceBiologicalDrawingMarking.js"
+      - "src/integratedScience/practice/sourceFlowerMagnificationMarking.js"
+      - "src/integratedScience/practice/scienceBiologicalSourceEvidence.js"
       - "src/integratedScience/practice/scienceHypothesisMarking.js"
       - "src/integratedScience/practice/scienceRustTableMarking.js"
       - "src/integratedScience/practice/scienceAdditionalTableMarking.js"
@@ -30,7 +34,7 @@ jobs:
       - run: npm ci
       - name: Check source examiners before staging
         run: |
-          npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js scienceAdditionalTableMarking.test.js scienceParticleDiagramMarking.test.js scienceCircuitSymbolMarking.test.js
+          npm test -- --watchAll=false --runInBand scienceHypothesisMarking.test.js scienceRustTableMarking.test.js scienceAdditionalTableMarking.test.js scienceParticleDiagramMarking.test.js scienceCircuitSymbolMarking.test.js sourceBiologicalDrawingMarking.test.js sourceFlowerMagnificationMarking.test.js
           node tools/v2-verify-all.mjs --subject integrated-science --out artifacts/v2-worker-stage
           node --input-type=module <<'NODE'
           import fs from "node:fs";

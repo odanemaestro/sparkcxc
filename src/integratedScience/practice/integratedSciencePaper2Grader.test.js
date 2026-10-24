@@ -42,3 +42,30 @@ test("accepts a calibrated, equivalent shorter scientific definition",()=>{
  const result=grade(1,["Heat is a form of energy (1)"],"Heat is energy.");
  expect(result.score).toBe(1);
 });
+
+test("historical flower magnification credits independent student working provisionally",()=>{
+ const base="IS-M1-P2-27:0:1",responses={
+  "IS-M1-P2-27:0:0:biologicalEvidence":JSON.stringify({title:"Longitudinal flower",measurementMm:"105",labels:[]}),
+  [base+":drawingHeightMm"]:"105",
+  [base+":actualHeightMm"]:"35",
+  [base+":magnificationWorking"]:"105 ÷ 35",
+  [base+":magnificationAnswer"]:"×3"
+ };
+ const item={marks:2,response:{type:"calculation"},markScheme:{points:["Magnification = drawing height / actual height","Correct magnification"]}};
+ const x=gradeIntegratedSciencePaper2Item({id:"IS-M1-P2-27"},0,1,item,responses);
+ expect(x.score).toBe(2);
+ expect(x.provisional).toBe(true);
+ expect(x.sourceResolved).toBe(false);
+});
+
+test("historical biology drawings do not earn visual marks from descriptive text alone",()=>{
+ const spec=require("../data/integratedSciencePaper2Specs.json");
+ for(const [qid,pi,ii] of [["IS-M1-P2-21",1,0],["IS-M1-P2-27",0,0]]){
+  const item=spec[qid].parts[pi].items[ii];
+  const x=gradeIntegratedSciencePaper2Item({id:qid},pi,ii,item,{
+   [qid+":"+pi+":"+ii]:"This shows a stoma with guard cells, flower petals and labels."});
+  expect(x.score).toBe(0);
+  expect(x.sourceBiological).toBe(true);
+  expect(x.sourceResolved).toBe(false);
+ }
+});

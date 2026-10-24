@@ -573,3 +573,31 @@ test("production IT P2-F accepts valid website reliability and developed algorit
   expect(grade.suggestedMarks<grade.maxMarks||grade.resolved===false).toBe(true);
  }
 });
+
+test("original flower magnification grades method and final answer but never certifies physical scale",()=>{
+ const id="IS-M1-P2-27::(a)::(ii)";
+ const sister="IS-M1-P2-27::(a)::(i)";
+ const values={
+  [sister]:{biologicalEvidence:JSON.stringify({title:"Longitudinal flower section",measurementMm:"105",labels:[]})},
+  [id]:{drawingHeightMm:"105",actualHeightMm:"35",magnificationWorking:"105 / 35",magnificationAnswer:"×3"}
+ };
+ const graded=example("integrated-science","is-fixed-source-pair-01",
+  [row(id,2,isSource(id))],values);
+ expect(graded.rows[0].suggestedMarks).toBe(2);
+ expect(graded.rows[0].resolved).toBe(false);
+ expect(graded.canPublishFinalScore).toBe(false);
+ const wrong=example("integrated-science","is-fixed-source-pair-01",
+  [row(id,2,isSource(id))],{...values,[id]:{...values[id],magnificationAnswer:"×4"}});
+ expect(wrong.rows[0].suggestedMarks).toBe(1);
+ expect(wrong.rows[0].resolved).toBe(false);
+});
+
+test("neither historical biological drawing is published based only on student text",()=>{
+ for(const [id,max] of [["IS-M1-P2-21::(b)::(i)",7],["IS-M1-P2-27::(a)::(i)",6]]){
+  const v=example("integrated-science","is-fixed-source-pair-14",
+   [row(id,max,isSource(id))],{[id]:{answer:"stoma guard cells flower petals stigma"}});
+  expect(v.rows[0].suggestedMarks).toBe(0);
+  expect(v.rows[0].resolved).toBe(false);
+  expect(v.canPublishFinalScore).toBe(false);
+ }
+});

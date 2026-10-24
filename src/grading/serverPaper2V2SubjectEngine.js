@@ -913,6 +913,13 @@ function integratedScience(rows,responses){
   const responseMap={};
   if(object(value))spreadStructured(responseMap,base,value);
   else if(value!==null)responseMap[base]=String(value);
+  // Drawing-based magnification is a two-part response: its measurements
+  // must match the student's separately submitted flower drawing.
+  if(row.id==="IS-M1-P2-27::(a)::(ii)"){
+   const drawing=read(responses,"IS-M1-P2-27::(a)::(i)");
+   if(object(drawing)&&Object.hasOwn(drawing,"biologicalEvidence"))
+    responseMap["IS-M1-P2-27:0:0:biologicalEvidence"]=drawing.biologicalEvidence;
+  }
   const type=src.item.response?.type||"lines";
   // The authored IS-M2-P2-05(a)(iii) scheme awards 1 mark for one
   // experimental error and 1 for its matching remedy (maximum 2).
@@ -939,6 +946,7 @@ function integratedScience(rows,responses){
   else if(examiner.sourceTable)resolved=examiner.sourceResolved===true;
   else if(examiner.sourceGeometry)resolved=examiner.sourceResolved===true;
   else if(examiner.sourceCircuit)resolved=examiner.sourceResolved===true;
+  else if(examiner.sourceBiological)resolved=examiner.sourceResolved===true;
   else if(type==="drawing"||integratedScienceGraphInText(src.item))resolved=false;
   else if(Number(examiner.unassessedMarks||0)>0)resolved=false;
   // Two names offered for one label ("anther or stigma") is a competing answer.
