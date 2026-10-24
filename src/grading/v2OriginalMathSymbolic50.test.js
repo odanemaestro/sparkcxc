@@ -11,11 +11,11 @@ const load=id=>{
  }))};
  return {criterionId:id,part,source};
 };
-test("fifty original source parts, 48 two marks and two three marks",()=>{
+test("fifty original source parts, 43 two marks and seven three marks",()=>{
  expect(SOURCE_SYMBOLIC_50_IDS).toHaveLength(50);
  expect(new Set(SOURCE_SYMBOLIC_50_IDS).size).toBe(50);
- expect(SOURCE_SYMBOLIC_50_IDS.filter(id=>load(id).part.marks===2)).toHaveLength(48);
- expect(SOURCE_SYMBOLIC_50_IDS.filter(id=>load(id).part.marks===3)).toHaveLength(2);
+ expect(SOURCE_SYMBOLIC_50_IDS.filter(id=>load(id).part.marks===2)).toHaveLength(43);
+ expect(SOURCE_SYMBOLIC_50_IDS.filter(id=>load(id).part.marks===3)).toHaveLength(7);
 });
 describe.each(SOURCE_SYMBOLIC_50_IDS)("Math original symbolic %s",id=>{
  const params=load(id);
