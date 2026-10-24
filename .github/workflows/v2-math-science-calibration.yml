@@ -310,6 +310,22 @@ jobs:
             throw Error("New source-bound Mathematics 29 criteria not fully verified");
           for(const record of next29Records)
             console.log("V2_MATH_NEXT_29_ITEM="+JSON.stringify(record));
+          const finalProof=fs.readFileSync("src/grading/v2MathFinalReasoning.js","utf8");
+          const finalHeader="export const MATH_FINAL_REASONING_IDS=Object.freeze(";
+          const finalStart=finalProof.indexOf(finalHeader);
+          const finalEnd=finalProof.indexOf(");",finalStart+finalHeader.length);
+          if(finalStart<0||finalEnd<0)throw Error("Final source proofs missing");
+          const finalIds=new Set(JSON.parse(finalProof.slice(finalStart+finalHeader.length,finalEnd)));
+          const finalRecords=JSON.parse(fs.readFileSync("artifacts/v2-math-calibration/evidence.json","utf8"))
+            .filter(r=>finalIds.has(r.criterionId));
+          if(finalIds.size!==18||finalRecords.length!==18||
+             new Set(finalRecords.map(r=>r.criterionId)).size!==18||
+             finalRecords.some(r=>r.outcome!=="verified"||r.provenance?.workingTreeDirty!==false||
+               !r.criterionSha256||!r.sourceSha256||!r.evidenceSha256||
+               !Array.isArray(r.cases)||r.cases.length<12||r.cases.some(c=>!c.passed)))
+            throw Error("Remaining 18 source proofs require passing evidence");
+          for(const record of finalRecords)
+            console.log("V2_MATH_FINAL_REASONING_ITEM="+JSON.stringify(record));
           console.log("V2_LARGE_MATH_VERIFIED_COUNT="+bulkRecords.length);
           for(const record of bulkRecords)
             console.log("V2_LARGE_MATH_EVIDENCE_ITEM="+JSON.stringify(record));
