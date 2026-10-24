@@ -210,14 +210,16 @@ export function useMathLessonRoute(sections) {
 
 export function useMathPracticeRoute(active = false) {
   const path = "/practice/mathematics";
+  const writingRef = useRef(false);
   const read = useCallback(() => {
     const route = readSparkHashRoute();
-    if (route.path !== path) return { mode: "home", examIntent: "resume" };
-    const rawMode = route.params.get("mode") || "home";
+    const aliases = { [`${path}/paper-1`]: "paper1", [`${path}/paper-2`]: "paper2", [`${path}/adaptive`]: "adaptive", [`${path}/2027`]: "2027" };
+    if (route.path !== path && !aliases[route.path]) return { mode: "home", examIntent: "resume" };
+    const rawMode = aliases[route.path] || route.params.get("mode") || "home";
     const rawIntent = route.params.get("intent") || "resume";
     return {
       mode: MATH_PRACTICE_MODES.has(rawMode) ? rawMode : "home",
-      examIntent: EXAM_INTENTS.has(rawIntent) ? rawIntent : "resume",
+      examIntent: examIntentForRoute(rawIntent),
     };
   }, []);
 
@@ -231,7 +233,9 @@ export function useMathPracticeRoute(active = false) {
     const values = next.mode === "home"
       ? {}
       : { mode: next.mode, intent: ["paper1", "paper2"].includes(next.mode) ? examIntentForRoute(next.examIntent) : null };
-    writeSparkNestedRoute(path, values, { replace });
+    writingRef.current = true;
+    try { writeSparkNestedRoute(path, values, { replace }); }
+    finally { writingRef.current = false; }
   }, []);
 
   const setMode = useCallback(nextValue => {
@@ -260,8 +264,15 @@ export function useMathPracticeRoute(active = false) {
     stateRef.current = next;
     setModeState(next.mode);
     setIntentState(next.examIntent);
+    const initialRoute = readSparkHashRoute();
+    if (initialRoute.path?.startsWith(`${path}/`)) {
+      const values = Object.fromEntries(initialRoute.params);
+      values.mode = next.mode;
+      if (["paper1", "paper2"].includes(next.mode)) values.intent = "resume";
+      writeSparkNestedRoute(path, values, { replace: true });
+    }
     return subscribeSparkRoute(route => {
-      if (route.path !== path) return;
+      if (route.path !== path || writingRef.current) return;
       const routed = read();
       stateRef.current = routed;
       setModeState(routed.mode);

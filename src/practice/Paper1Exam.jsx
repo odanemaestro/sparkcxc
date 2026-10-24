@@ -15,6 +15,7 @@ import "./practiceExam.css";
 const ACTIVE_KEY = "spark-paper1-active-v1";
 const USED_KEY = "spark-paper1-used-question-ids-v1";
 const RESULTS_KEY = "spark-paper1-results-v1";
+const reviewStorageKey = userId => `spark-paper1-review-v1:${userId || "guest"}`;
 
 function readJson(key, fallback) {
   try {
@@ -66,6 +67,7 @@ function Option({ letter, text, svg, selected, onSelect, reviewState }) {
 }
 
 export default function Paper1Exam({ onExit, startFresh = false, supabase, userId }) {
+  const reviewKey = reviewStorageKey(userId);
   const [bank, setBank] = useState([]);
   const [diagrams, setDiagrams] = useState({});
   const [exam, setExam] = useState(null);
@@ -122,7 +124,10 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
         setBank(questionBank);
         setDiagrams(diagramBank);
 
-        const saved = !startFresh ? readJson(ACTIVE_KEY, null) : null;
+        const active = !startFresh ? readJson(ACTIVE_KEY, null) : null;
+        const savedReview = !startFresh && !active ? readJson(reviewKey, null) : null;
+        const saved = active || (savedReview?.phase === "review" ? savedReview : null);
+        if (startFresh) localStorage.removeItem(reviewKey);
         if (saved?.questionIds?.length === 60) {
           const map = new Map(questionBank.map(q => [q.question_id, q]));
           const restored = saved.questionIds.map(id => map.get(id)).filter(Boolean);
@@ -137,7 +142,16 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
             setAnswers(saved.answers || {});
             setFlags(saved.flags || []);
             setCurrentIndex(Math.min(59, Math.max(0, saved.currentIndex || 0)));
-            setDeadline(saved.deadline || Date.now() + PAPER1_DURATION_SECONDS * 1000);
+            if (saved.phase === "review") {
+              submittedRef.current = true;
+              const usedSeconds = Math.max(0, Math.min(PAPER1_DURATION_SECONDS, Number(saved.usedSeconds) || 0));
+              setDeadline(saved.deadline || null);
+              setRemaining(PAPER1_DURATION_SECONDS - usedSeconds);
+              setResult({ ...scorePaper1(restored, saved.answers || {}), usedSeconds, timedOut: Boolean(saved.timedOut) });
+              setReviewIndex(Math.min(59, Math.max(0, Number(saved.reviewIndex) || 0)));
+            } else {
+              setDeadline(saved.deadline || Date.now() + PAPER1_DURATION_SECONDS * 1000);
+            }
             setStarted(true);
             setLoading(false);
             return;
@@ -163,7 +177,7 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
         setLoading(false);
       });
     return () => { alive = false; };
-  }, [startFresh]);
+  }, [startFresh, reviewKey]);
 
   useEffect(() => {
     if (!started || !deadline || result) return undefined;
@@ -199,11 +213,14 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
     writeJson(RESULTS_KEY, [completed, ...pastResults].slice(0, 20));
     const attempt = paper1ResultToAttempt(completed);
     void savePracticeExamAttempt({ supabase, userId, attempt }).catch(() => {});
+    writeJson(reviewKey, { phase: "review", id: exam.id, seed: exam.seed, templatePaper: exam.templatePaper,
+      questionIds: completed.questionIds, answers, flags, currentIndex, deadline,
+      usedSeconds, timedOut, reviewIndex: 0 });
     localStorage.removeItem(ACTIVE_KEY);
     setResult({ ...scored, usedSeconds, timedOut });
     setReviewIndex(0);
     setShowSubmit(false);
-  }, [exam, answers, remaining, supabase, userId]);
+  }, [exam, answers, remaining, supabase, userId, reviewKey, flags, currentIndex, deadline]);
 
   useEffect(() => {
     if (started && remaining === 0 && !result) finalize(true);
@@ -222,6 +239,13 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
       deadline,
     });
   }, [started, exam, answers, flags, currentIndex, deadline, result]);
+
+  useEffect(() => {
+    if (!result || !exam) return;
+    writeJson(reviewKey, { phase: "review", id: exam.id, seed: exam.seed, templatePaper: exam.templatePaper,
+      questionIds: exam.questions.map(question => question.question_id), answers, flags, currentIndex, deadline,
+      usedSeconds: result.usedSeconds, timedOut: result.timedOut, reviewIndex });
+  }, [result, exam, answers, flags, currentIndex, deadline, reviewIndex, reviewKey]);
 
   useEffect(() => {
     if (!started || result || showSubmit) return undefined;
@@ -288,6 +312,7 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
     setResult(null);
     setReviewIndex(0);
     localStorage.removeItem(ACTIVE_KEY);
+    localStorage.removeItem(reviewKey);
   }
 
   if (loading) {

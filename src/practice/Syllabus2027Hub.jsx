@@ -53,7 +53,7 @@ export default function Syllabus2027Hub({ onExit, supabase, userId }) {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [selectedPaper]);
   if (selectedPaper) {
-    return <Paper2027ModuleExam paper={selectedPaper} onExit={() => { setSelectedPaperId(null); setResults(allResults()); }} startFresh={startFresh} supabase={supabase} userId={userId} />;
+    return <Paper2027ModuleExam key={selectedPaper.paper_id} paper={selectedPaper} onExit={() => { setSelectedPaperId(null); setResults(allResults()); }} startFresh={startFresh} supabase={supabase} userId={userId} />;
   }
 
   return (

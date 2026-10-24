@@ -1,9 +1,10 @@
-import React,{useState} from "react";
+import React from "react";
 import GenericSubjectStudyView from "../../subjects/GenericSubjectStudyView";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {SOCIAL_STUDIES_COURSE} from "../data/socialStudiesCourse";
 import SocialStudiesLessonExtras from "./SocialStudiesLessonExtras";
 import SocialStudiesSbaToolkit from "./SocialStudiesSbaToolkit";
+import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
 import "../socialStudies.css";
 import "../socialStudiesSharedReader.css";
 
@@ -21,7 +22,9 @@ const subject={
 };
 
 export default function SocialStudiesSubjectView({supabase,userId,onBack,showToast}){
- const [toolkitOpen,setToolkitOpen]=useState(false);
+ const [toolkitOpen,setToolkitOpen]=usePracticeRouteState("social-studies","toolkit",false,{
+   path:"/study/social-studies",
+ });
  if(toolkitOpen){
   return <SocialStudiesSbaToolkit
    onBack={()=>{setToolkitOpen(false);window.scrollTo?.(0,0)}}

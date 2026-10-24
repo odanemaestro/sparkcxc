@@ -4,7 +4,6 @@ import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import ConfirmModal from "../../components/ui/ConfirmModal";
 import { startServerExamAttempt, submitServerExamAttempt, localExamDeadline, readServerExamV2Result, readServerExamClock } from "../../grading/serverExamAttempt";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
-import AccountingWorkspace from "../components/AccountingWorkspace";
 import PoaQuestionText from "./PoaQuestionText";
 import PoaDrawingPad from "./PoaDrawingPad";
 import { PoaExamHeader, PoaQuestionNavigator } from "./PoaExamLayout";
@@ -171,7 +170,6 @@ export default function PoaHistoricalExam({ source, paper, userId, supabase, onB
         {serverResult && <p role="status">{serverResult.status === "verified" && Number.isFinite(serverResult.score) && Number.isFinite(serverResult.maxMarks) ? `SPARK practice score: ${serverResult.score} / ${serverResult.maxMarks}` : serverResult.status === "not-eligible" ? "Your responses are saved. Grading is not available for this attempt." : "Your responses are saved. Your final score is still being checked."}</p>}
         <details><summary>Start another attempt</summary><p>Review your answers before starting again. A new attempt replaces this device’s saved attempt for this paper.</p><div className="poa-actions"><button type="button" data-spark-action="forward" disabled={busy} onClick={() => begin("practice")}>Start new practice</button><button type="button" data-spark-action="exam" disabled={busy} onClick={() => begin("timed")}>Start new timed practice</button></div></details>
       </section>}
-      {!isPaper1 && <details className="poa-lesson-tools"><summary>Open accounting tools</summary><AccountingWorkspace userId={userId}/></details>}
       </div><PoaQuestionNavigator label="Historical paper questions" currentId={String(question.number)}
         questions={paper.questions.map((q) => ({ id: String(q.number), label: `Question ${q.number}`,
           answered: isPaper1 ? !!attempt.responses[String(q.number)]?.answer : answerHasContent(attempt.responses[String(q.number)]), flagged: !!attempt.flags[q.number] }))}

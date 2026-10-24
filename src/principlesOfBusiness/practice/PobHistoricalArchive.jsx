@@ -1,4 +1,5 @@
 import React,{useEffect,useMemo,useRef,useState} from "react";
+import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {buildPobOwnerPaper2Bank} from "../data/pobPaper2OwnerSourceBank";
 import {reviewPobHistoricalPaper2} from "../data/pobHistoricalPaper2RubricReview";
@@ -32,13 +33,16 @@ const sourceMissing=(row,bank)=>row?.sourceQuestionPresent===false||
 const key=(id)=>"spark:pob:archive:answers:"+id;
 const read=id=>{try{return JSON.parse(window.localStorage.getItem(key(id))||"{}")}catch{return {}}};
 const save=(id,value)=>{try{window.localStorage.setItem(key(id),JSON.stringify(value))}catch{}};
+const viewKey=(id,userId)=>`spark:pob:archive:view:${userId||"guest"}:${id}`;
+const readView=(id,userId)=>{try{return JSON.parse(localStorage.getItem(viewKey(id,userId))||"null")||{}}catch{return {}}};
 
 function HistoricalPaper1({record,userId,supabase}){
  if(getPobHistoricalP1Source(record.id))return <PobHistoricalPaper1Preview record={record} userId={userId} supabase={supabase}/>;
  const mcqs=useMemo(()=>getMcqs(record.bank),[record]);
  const [answers,setAnswers]=useState(()=>read(record.id));
- const [submitted,setSubmitted]=useState(false);
- useEffect(()=>{setAnswers(read(record.id));setSubmitted(false)},[record.id]);
+ const [submitted,setSubmitted]=useState(()=>readView(record.id,userId).submitted===true);
+ useEffect(()=>{setAnswers(read(record.id));setSubmitted(readView(record.id,userId).submitted===true)},[record.id,userId]);
+ useEffect(()=>{try{localStorage.setItem(viewKey(record.id,userId),JSON.stringify({submitted}))}catch{}},[record.id,userId,submitted]);
  useEffect(()=>save(record.id,answers),[record.id,answers]);
  const gradable=mcqs.filter(q=>!sourceMissing(q,record.bank)&&answerChoice(q));
  const correct=gradable.filter(q=>answers[q.number]===answerChoice(q)).length;
@@ -81,15 +85,18 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
  const ownerBank=useMemo(()=>buildPobOwnerPaper2Bank(record.id,record.bank),[record.id,record.bank]);
  const paper=ownerBank||record.bank,questions=Array.isArray(paper.questions)?paper.questions:[];
  const [answers,setAnswers]=useState(()=>read(record.id));
- const [submitted,setSubmitted]=useState(false);
+ const savedView=useMemo(()=>readView(record.id,userId),[record.id,userId]);
+ const [submitted,setSubmitted]=useState(()=>savedView.submitted===true);
  const notificationAttempt=useRef(null);
- const [selected,setSelected]=useState(()=>defaultPobArchiveSelection(paper));
- const [serverAttemptId,setServerAttemptId]=useState(null);
+ const [selected,setSelected]=useState(()=>Array.isArray(savedView.selected)&&validatePobArchiveSelection(paper,savedView.selected)?savedView.selected:defaultPobArchiveSelection(paper));
+ const [serverAttemptId,setServerAttemptId]=useState(()=>typeof savedView.serverAttemptId==="string"?savedView.serverAttemptId:null);
  const [gradingBusy,setGradingBusy]=useState(false);
  const [gradingError,setGradingError]=useState("");
- useEffect(()=>{setAnswers(read(record.id));setSubmitted(false);
-   setSelected(defaultPobArchiveSelection(paper));setServerAttemptId(null);setGradingError("");
- },[record.id,paper]);
+ useEffect(()=>{setAnswers(read(record.id));setSubmitted(savedView.submitted===true);
+   setSelected(Array.isArray(savedView.selected)&&validatePobArchiveSelection(paper,savedView.selected)?savedView.selected:defaultPobArchiveSelection(paper));
+   setServerAttemptId(typeof savedView.serverAttemptId==="string"?savedView.serverAttemptId:null);setGradingError("");
+ },[record.id,paper,savedView]);
+ useEffect(()=>{try{localStorage.setItem(viewKey(record.id,userId),JSON.stringify({submitted,selected,serverAttemptId}))}catch{}},[record.id,userId,submitted,selected,serverAttemptId]);
  useEffect(()=>save(record.id,answers),[record.id,answers]);
  useEffect(()=>{
   if(!submitted||!userId||!supabase?.rpc||notificationAttempt.current===record.id)return;
@@ -224,11 +231,16 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
 }
 
 export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,userId}){
- const [kind,setKind]=useState("all"),[query,setQuery]=useState("");
+ const [kind,setKind]=usePracticeRouteState("principles-of-business","kind","all",{
+   decode:raw=>["all","1","2"].includes(raw)?raw:"all",replace:true,
+ });
+ const [query,setQuery]=usePracticeRouteState("principles-of-business","search","",{decode:raw=>raw.slice(0,120),replace:true});
  const records=useMemo(()=>POB_HISTORICAL_REVIEW_BANKS.slice().sort(sortPapers),[]);
  const filtered=records.filter(record=>(kind==="all"||record.paper===Number(kind))&&
    (record.label.toLowerCase().includes(query.toLowerCase())||record.id.toLowerCase().includes(query.toLowerCase())));
- const [selected,setSelected]=useState(null);
+ const [selected,setSelected]=usePracticeRouteState("principles-of-business","source",null,{
+   decode:raw=>getPobHistoricalReviewBank(raw)?raw:null,
+ });
  const record=getPobHistoricalReviewBank(selected);
  useEffect(()=>{try{window.scrollTo?.({top:0,behavior:"instant"})}catch{}},[selected]);
  return <main className="pob-exam"><div className="pob-exam-shell pob-archive">

@@ -49,9 +49,8 @@ describe("SPARK English A course V1", () => {
   test("English A exam recommendations open the requested paper directly", () => {
     expect(nextBestAction).toContain('params:{mode:"paper1"}');
     expect(nextBestAction).toContain('view:"practice-english-a"');
-    expect(englishAPracticeHub).toContain('englishAPracticeModeFromRoute');
-    expect(englishAPracticeHub).toContain('readSparkHashRoute().params.get("mode")');
-    expect(englishAPracticeHub).toContain('subscribeSparkRoute');
+    expect(englishAPracticeHub).toContain('usePracticeRouteState("english-a","mode","home",practiceMode)');
+    expect(englishAPracticeHub).toContain('["paper1","paper2"].includes(raw)');
   });
 
   test("migration publishes three syllabus modules and 29 syllabus-based lessons", () => {

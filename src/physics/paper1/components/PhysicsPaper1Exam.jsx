@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { usePracticeRouteState } from "../../../routing/usePracticeRouteState";
 import MathText from "../../../practice/MathText";
 import {
   PHYSICS_PAPER1_DURATION_MINUTES,
@@ -105,7 +106,7 @@ export default function PhysicsPaper1Exam({ userId, onBack, onActivity }) {
   const [answers, setAnswers] = useState(initialActive?.answers || {});
   const [flags, setFlags] = useState(initialActive?.flags || {});
   const [remaining, setRemaining] = useState(() => initialActive?.endsAt ? Math.max(0, Math.round((Number(initialActive.endsAt) - Date.now()) / 1000)) : PHYSICS_PAPER1_DURATION_MINUTES * 60);
-  const [libraryOpen, setLibraryOpen] = useState(!initialActive?.paperId);
+  const [libraryOpen, setLibraryOpen] = usePracticeRouteState("physics", "library", false, { path: "/practice/physics/paper-1" });
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
   const [showNavigator, setShowNavigator] = useState(false);
   const submissionGuardRef = useRef(Boolean(initialActive?.resultId));

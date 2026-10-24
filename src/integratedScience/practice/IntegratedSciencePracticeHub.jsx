@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useIntegratedSciencePracticeRoute } from "../../routing/sparkRoutingV270";
+import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import SparkLoader from "../../components/ui/SparkLoader";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import {
@@ -25,15 +26,15 @@ const MODULE_TITLES = {
 };
 
 function TopicBank({ supabase, userId, onBack }) {
-  const [moduleNumber,setModuleNumber] = useState(1);
+  const [moduleNumber,setModuleNumber] = usePracticeRouteState("integrated-science","module",1,{decode:raw=>[1,2,3].includes(Number(raw))?Number(raw):1,replace:true});
   const [moduleData,setModuleData] = useState(null);
   const [loading,setLoading] = useState(true);
   const [error,setError] = useState(null);
-  const [paper,setPaper] = useState("paper1");
-  const [topic,setTopic] = useState("all");
-  const [objective,setObjective] = useState("all");
-  const [paper2Kind,setPaper2Kind] = useState("all");
-  const [questionIndex,setQuestionIndex] = useState(0);
+  const [paper,setPaper] = usePracticeRouteState("integrated-science","paper","paper1",{decode:raw=>raw==="paper2"?raw:"paper1",replace:true});
+  const [topic,setTopic] = usePracticeRouteState("integrated-science","topic","all",{decode:raw=>/^\d{1,2}$/.test(raw)?raw:"all",replace:true});
+  const [objective,setObjective] = usePracticeRouteState("integrated-science","objective","all",{decode:raw=>/^[\w.-]{1,30}$/.test(raw)?raw:"all",replace:true});
+  const [paper2Kind,setPaper2Kind] = usePracticeRouteState("integrated-science","kind","all",{decode:raw=>["practical","structured"].includes(raw)?raw:"all",replace:true});
+  const [questionIndex,setQuestionIndex] = usePracticeRouteState("integrated-science","question",0,{decode:raw=>/^\d{1,5}$/.test(raw)?Number(raw):0,replace:true});
   const [answers,setAnswers] = useState({});
 
   useEffect(() => {
@@ -43,9 +44,6 @@ function TopicBank({ supabase, userId, onBack }) {
       .then(data => {
         if (cancelled) return;
         setModuleData(data);
-        setTopic("all");
-        setObjective("all");
-        setQuestionIndex(0);
         setLoading(false);
       })
       .catch(loadError => {
@@ -78,10 +76,7 @@ function TopicBank({ supabase, userId, onBack }) {
     [moduleData,objectiveCode,paper2Kind,topicNumber]
   );
 
-  useEffect(() => {
-    setObjective("all");
-    setQuestionIndex(0);
-  },[topic,paper,moduleNumber,paper2Kind]);
+  const resetQuestion=()=>{setObjective("all");setQuestionIndex(0);};
 
   const savePaper1Attempt = useCallback(async (question,letter) => {
     if (!question || !supabase || !userId) return;
@@ -119,6 +114,13 @@ function TopicBank({ supabase, userId, onBack }) {
     }
   },[supabase,userId]);
 
+  const rows = paper === "paper1" ? paper1 : paper2;
+  useEffect(()=>{
+    if(loading||!moduleData)return;
+    if(topic!=="all"&&!(moduleData.topics||[]).some(item=>String(item.topic)===topic)){setTopic("all");return;}
+    if(objective!=="all"&&!objectives.some(item=>item.code===objective)){setObjective("all");return;}
+    if(questionIndex>=rows.length&&questionIndex!==0)setQuestionIndex(0);
+  },[loading,moduleData,topic,objective,objectives,questionIndex,rows.length,setTopic,setObjective,setQuestionIndex]);
   if (error) {
     return (
       <main className="is-practice-shell">
@@ -130,7 +132,6 @@ function TopicBank({ supabase, userId, onBack }) {
     );
   }
 
-  const rows = paper === "paper1" ? paper1 : paper2;
   const current = rows[questionIndex] || null;
 
   return (
@@ -153,7 +154,7 @@ function TopicBank({ supabase, userId, onBack }) {
       <section className="is-bank-filters">
         <label>
           <span>Paper</span>
-          <select value={paper} onChange={event => setPaper(event.target.value)}>
+          <select value={paper} onChange={event => {setPaper(event.target.value);resetQuestion();}}>
             <option value="paper1">Paper 01 multiple choice</option>
             <option value="paper2">Paper 02 structured</option>
           </select>
@@ -161,7 +162,7 @@ function TopicBank({ supabase, userId, onBack }) {
 
         <label>
           <span>Module</span>
-          <select value={moduleNumber} onChange={event => setModuleNumber(Number(event.target.value))}>
+          <select value={moduleNumber} onChange={event => {setModuleNumber(Number(event.target.value));setTopic("all");resetQuestion();}}>
             {[1,2,3].map(number => (
               <option key={number} value={number}>Module {number}: {MODULE_TITLES[number]}</option>
             ))}
@@ -170,7 +171,7 @@ function TopicBank({ supabase, userId, onBack }) {
 
         <label>
           <span>Topic</span>
-          <select value={topic} onChange={event => setTopic(event.target.value)}>
+          <select value={topic} onChange={event => {setTopic(event.target.value);resetQuestion();}}>
             <option value="all">All topics</option>
             {(moduleData?.topics || []).map(item => (
               <option key={item.topic} value={item.topic}>{item.topic}. {item.title}</option>
@@ -180,7 +181,7 @@ function TopicBank({ supabase, userId, onBack }) {
 
         <label>
           <span>Specific objective</span>
-          <select value={objective} onChange={event => setObjective(event.target.value)}>
+          <select value={objective} onChange={event => {setObjective(event.target.value);setQuestionIndex(0);}}>
             <option value="all">All objectives</option>
             {objectives.map(item => (
               <option key={item.code} value={item.code}>{item.code} {item.text}</option>
@@ -191,7 +192,7 @@ function TopicBank({ supabase, userId, onBack }) {
         {paper === "paper2" && (
           <label>
             <span>Question type</span>
-            <select value={paper2Kind} onChange={event => setPaper2Kind(event.target.value)}>
+            <select value={paper2Kind} onChange={event => {setPaper2Kind(event.target.value);resetQuestion();}}>
               <option value="all">All types</option>
               <option value="practical">Practical / investigative</option>
               <option value="structured">Structured</option>

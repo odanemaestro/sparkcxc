@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import bank from "./itPaper1Data.json";
 import InformationTechnologyQuestionVisual from "./InformationTechnologyQuestionVisual";
 
@@ -53,7 +54,11 @@ function formatTime(seconds) {
   return `${minutes}:${String(secs).padStart(2, "0")}`;
 }
 
-export default function InformationTechnologyPaper1Exam({ onExit, startFresh = false, onActivity }) {
+export default function InformationTechnologyPaper1Exam({ onExit, startFresh = false, onActivity, userId }) {
+  const reviewKey = `${ACTIVE_KEY}:review:${userId || "guest"}`;
+  const [screen, setScreen] = usePracticeRouteState("information-technology", "screen", "resume", {
+    path: "/practice/information-technology/paper-1", decode: raw => raw === "instructions" ? raw : "resume", replace: true,
+  });
   const [phase, setPhase] = useState("instructions");
   const [active, setActive] = useState(null);
   const [index, setIndex] = useState(0);
@@ -68,12 +73,12 @@ export default function InformationTechnologyPaper1Exam({ onExit, startFresh = f
   const current = questions[index] || null;
 
   useEffect(() => {
-    if (startFresh) {
+    if (startFresh || screen === "instructions") {
       // Show the new-paper instruction sheet without destroying a resumable paper.
       // Existing progress is only replaced after the student presses Start Paper 1.
       return;
     }
-    const saved = readActive();
+    const saved = readActive() || readJson(reviewKey, null);
     if (!saved?.paperId || !bank.papers.some(item => item.id === saved.paperId)) return;
     setActive(saved);
     setAnswers(saved.answers || {});
@@ -81,7 +86,7 @@ export default function InformationTechnologyPaper1Exam({ onExit, startFresh = f
     setIndex(Math.min(saved.index || 0, 59));
     setRemaining(Math.max(0, DURATION - Math.floor((Date.now() - saved.startedAt) / 1000)));
     setPhase(saved.phase || "exam");
-  }, [startFresh]);
+  }, [startFresh, reviewKey]);
 
   useEffect(() => {
     if (phase !== "exam" || !active) return undefined;
@@ -104,6 +109,8 @@ export default function InformationTechnologyPaper1Exam({ onExit, startFresh = f
   }
 
   function start() {
+    setScreen("resume");
+    localStorage.removeItem(reviewKey);
     clearActive();
     const selected = choosePaper();
     const next = {
@@ -181,11 +188,12 @@ export default function InformationTechnologyPaper1Exam({ onExit, startFresh = f
     } catch (error) {
       console.warn("IT Paper 1 progress was not synced", error);
     }
+    localStorage.setItem(reviewKey, JSON.stringify({ ...active, answers, flags, index, phase: "result" }));
     clearActive();
     setPhase("result");
   }
 
-  if (phase === "instructions") {
+  if (phase === "instructions" || screen === "instructions") {
     return (
       <main className="it-exam">
         <section className="it-exam-instructions it-instruction-sheet">

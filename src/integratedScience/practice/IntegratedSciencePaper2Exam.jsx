@@ -8,6 +8,7 @@ import ScienceCircuitSymbolResponse from "./ScienceCircuitSymbolResponse";
 import ScienceParticleDiagramResponse from "./ScienceParticleDiagramResponse";
 import ScienceDrawingTableResponse from "./ScienceDrawingTableResponse";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import SparkLoader from "../../components/ui/SparkLoader";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
@@ -439,7 +440,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
       ? Math.max(0,Math.round((Number(initial.endsAt) - Date.now()) / 1000))
       : INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS
   );
-  const [adaptedOpen,setAdaptedOpen] = useState(false);
+  const [adaptedOpen,setAdaptedOpen] = usePracticeRouteState("integrated-science", "adapted", false);
   const [confirmSubmit,setConfirmSubmit] = useState(false);
   const [showExitConfirm,setShowExitConfirm] = useState(false);
   const submitGuard = useRef(Boolean(initial?.submittedAt));
@@ -675,7 +676,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     goTop();
   }
 
-  if(adaptedOpen&&!active?.questionIds?.length)return <IntegratedScienceAdaptedPaper2Assessment onExit={()=>setAdaptedOpen(false)}/>;
+  if(adaptedOpen&&!active?.questionIds?.length)return <IntegratedScienceAdaptedPaper2Assessment userId={userId} onExit={()=>setAdaptedOpen(false)}/>;
 
   if (!active?.questionIds?.length) {
     return (

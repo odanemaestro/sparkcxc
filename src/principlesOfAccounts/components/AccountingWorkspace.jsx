@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import {
   ACCOUNTS as BASE_ACCOUNTS,
   validateJournal,
@@ -459,7 +460,9 @@ export default function AccountingWorkspace({
 }) {
   const storageKey = `spark-poa-workspace-v1:${userId || "guest"}`;
   const [work, setWork] = useState(() => loadAccountingWork(storageKey)),
-    [tab, setTab] = useState("journal"),
+    [tab, setTab] = usePracticeRouteState("principles-of-accounts", "tool", "journal", {
+      decode: raw => ["journal", "ledger", "trial", "cashbook", "petty", "reconciliation", "depreciation", "ratios", "inventory", "payroll", "budgets", "sba"].includes(raw) ? raw : "journal",
+    }),
     [entry, setEntry] = useState({
       date: today(),
       description: "",

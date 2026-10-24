@@ -14,7 +14,7 @@ export default function PobHistoricalPaper1Preview({record,userId,supabase}){
  const ready=questions.length===60&&questions.every(q=>q.options.length===4);
  const [initialAttempt]=useState(()=>readAttempt(record.id));
  const [started,setStarted]=useState(()=>Boolean(initialAttempt));
- const [index,setIndex]=useState(0);
+ const [index,setIndex]=useState(()=>Number.isInteger(initialAttempt?.index)&&initialAttempt.index>=0&&initialAttempt.index<questions.length?initialAttempt.index:0);
  const recorded=React.useRef(new Set());
  const [responses,setResponses]=useState(()=>read(record.id));
  const [review,setReview]=useState(()=>Boolean(initialAttempt?.review||initialAttempt?.deadline<=Date.now()));
@@ -26,7 +26,7 @@ export default function PobHistoricalPaper1Preview({record,userId,supabase}){
   return()=>clearInterval(interval);
  },[started,review,deadline]);
  useEffect(()=>{try{localStorage.setItem(key(record.id),JSON.stringify(responses))}catch{}},[responses,record.id]);
- useEffect(()=>{try{if(deadline)localStorage.setItem(attemptKey(record.id),JSON.stringify({deadline,review}));else localStorage.removeItem(attemptKey(record.id))}catch{}},[deadline,review,record.id]);
+ useEffect(()=>{try{if(deadline)localStorage.setItem(attemptKey(record.id),JSON.stringify({deadline,review,index}));else localStorage.removeItem(attemptKey(record.id))}catch{}},[deadline,review,index,record.id]);
  useEffect(()=>{window.scrollTo?.({top:0,behavior:"instant"})},[index,review]);
  const current=questions[index];
  const correct=current;

@@ -5,7 +5,7 @@ import SocialStudiesSbaPractice from "./SocialStudiesSbaPractice";
 import ProgressBar from "../../components/ui/ProgressBar";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
-import { readSparkHashRoute, subscribeSparkRoute } from "../../routing/sparkRoutingV270";
+import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import {
   SOCIAL_STUDIES_COURSE,
   SOCIAL_STUDIES_LESSONS,
@@ -34,6 +34,18 @@ const RESEARCH_LESSONS=new Set([
 ]);
 const SOCIAL_STUDIES_SECTION_IDS=new Set(["A1","A2","B1","B2"]);
 const SOCIAL_STUDIES_PAPER2_DURATION_SECONDS=160*60;
+const SOCIAL_STUDIES_PAPER1_DURATION_SECONDS=75*60;
+const practiceModeCodec={decode:raw=>["home","shortAnswer","sba","paper1","paper2","quiz","results"].includes(raw)?raw:"home"};
+const sectionCodec={decode:raw=>SOCIAL_STUDIES_SECTION_IDS.has(raw)?raw:"A1",replace:true};
+const storedRead=key=>{try{return JSON.parse(localStorage.getItem(key)||"null");}catch{return null;}};
+const storedWrite=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));}catch{}};
+const quizKey=userId=>`spark:social-studies:quiz:${userId||"anonymous"}`;
+function readQuiz(userId){
+  const saved=storedRead(quizKey(userId));
+  if(!saved||!Array.isArray(saved.questionIds)||!saved.questionIds.length)return null;
+  const questions=saved.questionIds.map(id=>ALL_QUESTIONS.find(question=>question.id===id));
+  return questions.every(Boolean)?{...saved,questions}:null;
+}
 
 function socialStudiesPaper2StorageKey(userId){
   return `spark:social-studies:paper2:${userId || "anonymous"}`;
@@ -56,18 +68,6 @@ function saveSocialStudiesPaper2State(userId,state){
 }
 
 
-function socialStudiesPracticeRoute(){
-  const route=readSparkHashRoute();
-  if(route.path!=="/practice/social-studies") return {sectionId:"A1",mode:"home"};
-  const requested=String(route.params.get("section") || "").toUpperCase();
-  const sectionId=SOCIAL_STUDIES_SECTION_IDS.has(requested) ? requested : "A1";
-  const requestedMode=String(route.params.get("mode") || "").toLowerCase();
-  return {
-    sectionId,
-    mode:requestedMode==="sba" ? "sba" : "home",
-  };
-}
-
 function shuffled(items){
   const copy=[...items];
   for(let i=copy.length-1;i>0;i--){
@@ -77,14 +77,17 @@ function shuffled(items){
   return copy;
 }
 
-function QuizSession({ title, questions, onExit, onFinish }){
-  const [index,setIndex]=useState(0);
-  const [choice,setChoice]=useState(null);
-  const [checked,setChecked]=useState(false);
-  const [answers,setAnswers]=useState([]);
+function QuizSession({ title, questions, sessionId, userId, onExit, onFinish }){
+  const progressKey=`${quizKey(userId)}:progress`;
+  const [restored]=useState(()=>{const saved=storedRead(progressKey);return saved?.sessionId===sessionId?saved:null;});
+  const [index,setIndex]=useState(()=>Math.min(questions.length-1,Math.max(0,Number(restored?.index)||0)));
+  const [choice,setChoice]=useState(restored?.choice??null);
+  const [checked,setChecked]=useState(Boolean(restored?.checked));
+  const [answers,setAnswers]=useState(Array.isArray(restored?.answers)?restored.answers:[]);
   const current=questions[index];
   const score=answers.filter(item=>item.correct).length;
   const progress=Math.round(index/questions.length*100);
+  useEffect(()=>{storedWrite(progressKey,{sessionId,index,choice,checked,answers});},[progressKey,sessionId,index,choice,checked,answers]);
 
   if(!current) return null;
 
@@ -181,15 +184,24 @@ function formatTime(seconds){
     : `${minutes}:${String(secs).padStart(2,"0")}`;
 }
 
-function Paper1Exam({ onExit, onComplete }){
-  const [index,setIndex]=useState(0);
-  const [answers,setAnswers]=useState({});
-  const [submitted,setSubmitted]=useState(false);
-  const [timeLeft,setTimeLeft]=useState(75*60);
+function Paper1Exam({ onExit, onComplete, userId }){
+  const storageKey=`spark:social-studies:paper1:${userId||"anonymous"}`;
+  const [restored]=useState(()=>{
+    const saved=storedRead(storageKey);
+    return saved&&Number.isFinite(saved.endsAt)&&saved.endsAt>0?saved:null;
+  });
+  const [index,setIndex]=useState(()=>Math.min(SOCIAL_STUDIES_PAPER1.length-1,Math.max(0,Number(restored?.index)||0)));
+  const [answers,setAnswers]=useState(restored?.answers&&typeof restored.answers==="object"&&!Array.isArray(restored.answers)?restored.answers:{});
+  const [submitted,setSubmitted]=useState(Boolean(restored?.submitted));
+  const [endsAt,setEndsAt]=useState(()=>restored?.endsAt||Date.now()+SOCIAL_STUDIES_PAPER1_DURATION_SECONDS*1000);
+  const [timeLeft,setTimeLeft]=useState(()=>Math.max(0,Math.ceil((endsAt-Date.now())/1000)));
+  const submitGuard=useRef(Boolean(restored?.submitted));
   const current=SOCIAL_STUDIES_PAPER1[index];
+  useEffect(()=>{storedWrite(storageKey,{index,answers,submitted,endsAt});},[storageKey,index,answers,submitted,endsAt]);
 
   const finish=()=>{
-    if(submitted) return;
+    if(submitGuard.current) return;
+    submitGuard.current=true;
     setSubmitted(true);
     const score=SOCIAL_STUDIES_PAPER1.reduce((total,item)=>total+(answers[item.id]===item.answer ? 1 : 0),0);
     onComplete?.(score,SOCIAL_STUDIES_PAPER1.length,answers);
@@ -198,16 +210,15 @@ function Paper1Exam({ onExit, onComplete }){
 
   useEffect(()=>{
     if(submitted) return undefined;
-    if(timeLeft<=0){
-      setSubmitted(true);
-      const timedScore=SOCIAL_STUDIES_PAPER1.reduce((total,item)=>total+(answers[item.id]===item.answer ? 1 : 0),0);
-      onComplete?.(timedScore,SOCIAL_STUDIES_PAPER1.length,answers);
-      window.scrollTo?.(0,0);
-      return undefined;
-    }
-    const timer=window.setInterval(()=>setTimeLeft(value=>Math.max(0,value-1)),1000);
+    const tick=()=>{
+      const remaining=Math.max(0,Math.ceil((endsAt-Date.now())/1000));
+      setTimeLeft(remaining);
+      if(!remaining)finish();
+    };
+    tick();
+    const timer=window.setInterval(tick,1000);
     return ()=>window.clearInterval(timer);
-  },[submitted,timeLeft,answers,onComplete]);
+  },[submitted,endsAt,answers,onComplete]);
 
   const score=submitted
     ? SOCIAL_STUDIES_PAPER1.reduce((total,item)=>total+(answers[item.id]===item.answer ? 1 : 0),0)
@@ -232,6 +243,10 @@ function Paper1Exam({ onExit, onComplete }){
             <span className="ss-eyebrow">Paper 01 complete</span>
             <h1>{score}/60</h1>
             <p>{Math.round(score/60*100)}% correct. Review each item and its explanation below.</p>
+            <button type="button" className="ss-primary" onClick={()=>{
+              submitGuard.current=false;setIndex(0);setAnswers({});setSubmitted(false);
+              setEndsAt(Date.now()+SOCIAL_STUDIES_PAPER1_DURATION_SECONDS*1000);
+            }}>Start another Paper 01</button>
           </div>}
 
           <article className="ss-question-card ss-paper-question">
@@ -576,20 +591,21 @@ function Paper2Practice({ onExit, onComplete, userId }){
 }
 
 export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
-  const initialRoute=useMemo(()=>socialStudiesPracticeRoute(),[]);
-  const [mode,setMode]=useState(initialRoute.mode);
-  const [sectionId,setSectionId]=useState(initialRoute.sectionId);
-  const [session,setSession]=useState([]);
-  const [answers,setAnswers]=useState([]);
-  const [sessionTitle,setSessionTitle]=useState("");
-  const [practiceKind,setPracticeKind]=useState("section");
-
-  useEffect(()=>subscribeSparkRoute(route=>{
-    if(route.path!=="/practice/social-studies") return;
-    const requested=String(route.params.get("section") || "").toUpperCase();
-    if(SOCIAL_STUDIES_SECTION_IDS.has(requested)) setSectionId(requested);
-    if(String(route.params.get("mode") || "").toLowerCase()==="sba") setMode("sba");
-  }),[]);
+  const [mode,setMode]=usePracticeRouteState("social-studies","mode","home",practiceModeCodec);
+  const [sectionId,setSectionId]=usePracticeRouteState("social-studies","section","A1",sectionCodec);
+  const [restoredQuiz]=useState(()=>readQuiz(userId));
+  const [session,setSession]=useState(restoredQuiz?.questions||[]);
+  const [answers,setAnswers]=useState(restoredQuiz?.answers||[]);
+  const [sessionTitle,setSessionTitle]=useState(restoredQuiz?.title||"");
+  const [practiceKind,setPracticeKind]=useState(restoredQuiz?.kind||"section");
+  const [sessionId,setSessionId]=useState(restoredQuiz?.id||"");
+  useEffect(()=>{
+    if(!session.length)return;
+    storedWrite(quizKey(userId),{id:sessionId,questionIds:session.map(question=>question.id),answers,title:sessionTitle,kind:practiceKind});
+  },[userId,sessionId,session,answers,sessionTitle,practiceKind]);
+  useEffect(()=>{
+    if(["quiz","results"].includes(mode)&&!session.length)setMode("home");
+  },[mode,session.length,setMode]);
 
   const saveExamAttempt=async ({ paper, score=null, maxScore=null, sessionMode=null, timedOut=false, responses=null, startedAt=null })=>{
     const label=String(paper || "Practice");
@@ -662,6 +678,7 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
       title="SBA and research skills lab";
     }
     setSession(shuffled(pool).slice(0,count));
+    setSessionId(`${Date.now()}:${Math.random().toString(36).slice(2)}`);
     setSessionTitle(title);
     setPracticeKind(kind);
     setAnswers([]);
@@ -708,14 +725,17 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
   },[answers,session]);
 
   if(mode==="shortAnswer") return <SocialStudiesShortAnswerPractice
+    userId={userId}
     onExit={()=>setMode("home")}
     onComplete={(score,total)=>saveExamAttempt({paper:"Short-answer practice",score,maxScore:total})}
   />;
   if(mode==="sba") return <SocialStudiesSbaPractice
+    userId={userId}
     onExit={()=>setMode("home")}
     onComplete={(score,total)=>saveExamAttempt({paper:"SBA project checker",score,maxScore:total})}
   />;
   if(mode==="paper1") return <Paper1Exam
+    key={userId||"anonymous"} userId={userId}
     onExit={()=>setMode("home")}
     onComplete={(score,total)=>saveExamAttempt({paper:"Paper 01",score,maxScore:total})}
   />;
@@ -724,7 +744,7 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
     onExit={()=>setMode("home")}
     onComplete={(score,total,details={})=>saveExamAttempt({paper:"Paper 02",score,maxScore:total,sessionMode:details.sessionMode,timedOut:details.timedOut,responses:details.responses,startedAt:details.startedAt})}
   />;
-  if(mode==="quiz") return <QuizSession title={sessionTitle} questions={session} onExit={()=>setMode("home")} onFinish={finish}/>;
+  if(mode==="quiz"&&session.length) return <QuizSession key={sessionId} title={sessionTitle} questions={session} sessionId={sessionId} userId={userId} onExit={()=>setMode("home")} onFinish={finish}/>;
   if(mode==="results") return <Results title={sessionTitle} answers={answers} total={session.length} examPrompt={examPrompt} onAgain={()=>start(practiceKind,sectionId)} onHome={()=>setMode("home")}/>;
 
   return <main className="ss-practice-page">
