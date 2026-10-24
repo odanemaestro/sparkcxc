@@ -47,3 +47,30 @@ test("unknown keys, unsupported papers, tampered source schemes abstain",()=>{
   source:{criteria:ctx.source.criteria.map(x=>({...x,description:"replaced"}))},
   response:{cells:cells(ctx.part)}})).toBeNull();
 });
+
+
+test.each([
+ "p2e-q7","p2f-q7","p2g-q7","p2h-q7","p2i-q7","p2j-q7",
+ "p2e-q8","p2g-q8","p2i-q8"
+])("original %s source table grades exact labelled pattern or quadratic cells",qid=>{
+ const id=qid+"::a",ctx=get(id),expected=cells(ctx.part);
+ expect(gradeOriginalMathematicsTable({...ctx,criterionId:id,
+  response:{cells:expected}})).toMatchObject({marks:ctx.part.marks,resolved:true});
+ const firstKey=Object.keys(expected)[0];
+ expect(gradeOriginalMathematicsTable({...ctx,criterionId:id,
+  response:{cells:{[firstKey]:expected[firstKey]}}})).toMatchObject({marks:1,resolved:true});
+ const wrong=Object.fromEntries(Object.keys(expected).map(k=>
+  [k,k==="dn"?"n+999":"999"]));
+ expect(gradeOriginalMathematicsTable({...ctx,criterionId:id,
+  response:{cells:wrong}})).toMatchObject({marks:0,resolved:true});
+});
+
+test("source expression cell accepts equivalent nth-term forms, never answer lists",()=>{
+ const criterionId="p2e-q7::a",ctx=get(criterionId),original=cells(ctx.part);
+ expect(gradeOriginalMathematicsTable({...ctx,criterionId,
+  response:{cells:{...original,dn:"(n^2+n)/2"}}})).toMatchObject({marks:4,resolved:true});
+ expect(gradeOriginalMathematicsTable({...ctx,criterionId,
+  response:{cells:{...original,dn:"n(n+1)/2 or n+3"}}})).toBeNull();
+ expect(gradeOriginalMathematicsTable({...ctx,criterionId,
+  response:{cells:{...original,dn:"n+999"}}})).toMatchObject({marks:3,resolved:true});
+});
