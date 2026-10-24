@@ -7,6 +7,7 @@ import {markSourceRustTable} from "./scienceRustTableMarking";
 import {markSourceHypothesis} from "./scienceHypothesisMarking";
 import { markScienceCalculation, SCIENCE_TABLES } from "./scienceStructuredMarking";
 import {markSourceFlowerMagnification} from "./sourceFlowerMagnificationMarking";
+import {markSourceBiologicalDrawing} from "./sourceBiologicalDrawingMarking";
 import { biologicalSourceEvidenceReadiness } from "./scienceBiologicalSourceEvidence";
 import { gradeScienceGraph } from "./scienceGraphMarking";
 import { matchScienceWrittenEvidence } from "../../grading/scienceWrittenEvidence";
@@ -387,6 +388,8 @@ function graphResult(questionId,partIndex,itemIndex,item,responses){
 
 function drawingResult(questionId,partIndex,itemIndex,item,responses){
   const base=`${questionId}:${partIndex}:${itemIndex}`;
+  const biological=markSourceBiologicalDrawing(questionId,partIndex,itemIndex,item,responses);
+  if(biological)return {...biological,sourceEvidence:biologicalSourceEvidenceReadiness(questionId,partIndex,itemIndex,responses)};
   const strokesRaw=String(responses[`${base}:strokes`] || "[]");
   let strokes=[];
   try{const parsed=JSON.parse(strokesRaw);if(Array.isArray(parsed))strokes=parsed;}catch{}
