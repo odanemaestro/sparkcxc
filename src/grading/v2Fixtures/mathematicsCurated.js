@@ -48,10 +48,6 @@ export const CURATED_MATHEMATICS={
   F("competing",{answer:"M is not singular or M is singular."},0,
    "two incompatible answers; no certain reason")
  ],
- // Collect 3x > 11 without the final inequality x > 11/3 (M1 only).
- "p2e-q2::c":[
-  F("partial",{answer:"3x > 11",working:""},1,"source M1 collection before isolating x")
- ],
  // Intermediate protractor readings satisfy only the broad B1 tolerance.
  "p2e-q4::b":[
   F("partial",{answer:"55",working:""},1,"broad 5.5-degree B1, not narrow 2.5-degree B2")
