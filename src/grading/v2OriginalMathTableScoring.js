@@ -5,14 +5,24 @@
  * already expose individual, labelled cells. Never derive marks from a
  * student's prose or an unordered number list.
  */
+import {check} from "../practice/cxcMarking/checkers";
 const OWN=Object.prototype.hasOwnProperty;
 const GROUPS={
-  p2e:[["m2","m3"],["m4","p2"],["p3","p4"]],
-  p2f:[["c3"],["c4"]],
-  p2g:[["m2","m3"],["m4","p2"],["p3","p4"]],
-  p2h:[["c3"],["c4"]],
-  p2i:[["m2","m3"],["m4","p2"],["p3","p4"]],
-  p2j:[["c3"],["c4"]]
+ "p2e-q5":[["m2","m3"],["m4","p2"],["p3","p4"]],
+ "p2f-q5":[["c3"],["c4"]],
+ "p2g-q5":[["m2","m3"],["m4","p2"],["p3","p4"]],
+ "p2h-q5":[["c3"],["c4"]],
+ "p2i-q5":[["m2","m3"],["m4","p2"],["p3","p4"]],
+ "p2j-q5":[["c3"],["c4"]],
+ "p2e-q7":[["d4"],["d5"],["d10"],["dn"]],
+ "p2f-q7":[["q4"],["r4"],["q10"],["r10"]],
+ "p2g-q7":[["d4"],["d5"],["d10"],["dn"]],
+ "p2h-q7":[["q4"],["r4"],["q10"],["r10"]],
+ "p2i-q7":[["d4"],["d5"],["d10"],["dn"]],
+ "p2j-q7":[["q4"],["r4"],["q10"],["r10"]],
+ "p2e-q8":[["y2"],["y4"]],
+ "p2g-q8":[["y2"],["y6"]],
+ "p2i-q8":[["y2"],["y4"]]
 };
 const numberPattern=/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/;
 const plainObject=x=>Boolean(x)&&typeof x==="object"&&!Array.isArray(x);
@@ -26,7 +36,7 @@ const parseNumber=v=>{
 };
 
 export function gradeOriginalMathematicsTable({criterionId,source,part,response}){
- const match=/^(p2[e-j])-q5::a$/.exec(criterionId);
+ const match=/^(p2[e-j]-q(?:5|7|8))::a$/.exec(criterionId);
  if(!match)return null;
  const group=GROUPS[match[1]];
  const schema=part?.responseSchema;
@@ -47,15 +57,27 @@ export function gradeOriginalMathematicsTable({criterionId,source,part,response}
     group.some((g,i)=>rubric[i]?.marks!==1&&rubric[i]?.marks!==0)||
     rubric.reduce((n,c)=>n+c.marks,0)!==part.marks||
     group.length!==part.marks)return null;
+ const validCell=(key,value)=>{
+   if(String(value??"").trim()==="")return true;
+   if(key==="dn"){
+     const expr=String(value??"").trim();
+     return expr.length<=96&&/^[A-Za-z0-9+\\-*/^().\\s]+$/.test(expr)&&
+       !/\\b(?:or|either)\\b/i.test(expr);
+   }
+   return parseNumber(value)!==null;
+ };
+ const correctCell=(key)=>{
+   const submitted=OWN.call(response.cells,key)?response.cells[key]:null;
+   const expected=byKey.get(key).answer;
+   if(key==="dn")return validCell(key,submitted)&&
+     check(submitted,{type:"expression",value:String(expected)}).ok===true;
+   const got=parseNumber(submitted),want=parseNumber(expected);
+   return got!==null&&want!==null&&Math.abs(got-want)<=1e-8;
+ };
  const entries=Object.entries(response.cells);
- // Unexpected or duplicate fields can never be used as marking evidence.
- if(entries.some(([k,v])=>!byKey.has(k)||
-   (String(v??"").trim()!==""&&parseNumber(v)===null)))return null;
+ // Unexpected or malformed fields must not be certified by the source grader.
+ if(entries.some(([key,value])=>!byKey.has(key)||!validCell(key,value)))return null;
  const score=group.reduce((total,keys)=>
-   total+Number(keys.every(key=>{
-     const got=parseNumber(OWN.call(response.cells,key)?response.cells[key]:null);
-     const expected=parseNumber(byKey.get(key).answer);
-     return got!==null&&expected!==null&&Math.abs(got-expected)<=1e-8;
-   })),0);
+   total+Number(keys.every(correctCell)),0);
  return {marks:score,resolved:true,method:"source-labelled-mathematics-table-v1"};
 }
