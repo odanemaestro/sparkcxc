@@ -44,18 +44,18 @@ export function mathematicsFinal11Fixtures({criterion,part,maxMarks}){
   const linePoints=[{x:g.xMin,y},{x:g.xMax,y}];
   const wrongLine=[{x:g.xMin,y:0},{x:g.xMax,y:0}];
   const bad={x1:"0",x2:"0"},full={linePoints,answers};
-  const equivalent={linePoints:[...linePoints].reverse(),answers:{x1:answers.x2,x2:answers.x1}};
+  const equivalent={linePoints:[...linePoints].reverse(),answerFields:{x1:answers.x2,x2:answers.x1}};
   return {kind:"structured",ruleId:"math:final-11-line-intersections",
    sourceAnswer:full,alternatives:[equivalent],
    fixtures:[
     F("full",full,2,"horizontal construction plus ordered two roots"),
     F("equivalent",equivalent,2,"reverse line orientation and exchanged solutions"),
-    F("partial",{linePoints,answers:bad},1,"correct auxiliary line only"),
+    F("partial",{linePoints,answerFields:bad},1,"correct auxiliary line only"),
     F("partial",{linePoints:wrongLine,answers},1,"correct two roots without method line"),
-    F("incorrect",{linePoints:wrongLine,answers:bad},0,"wrong line and wrong roots"),
+    F("incorrect",{linePoints:wrongLine,answerFields:bad},0,"wrong line and wrong roots"),
     F("blank",{},0,"no constructed line or solutions"),
     F("irrelevant",{answer:"line drawn"},0,"prose cannot substitute for drawn line"),
-    F("competing",{linePoints,answers:{x1:answers.x1+" or 99",x2:answers.x2}},1,
+    F("competing",{linePoints,answerFields:{x1:answers.x1+" or 99",x2:answers.x2}},1,
       "contradictory root denies accuracy mark"),
     F("ceiling",full,2,"marks capped by original scheme"),
     {...F("working",{linePoints:[linePoints[0]],answers},null,"one coordinate is not a line"),mustAbstain:true},
