@@ -38,3 +38,63 @@ export function completePobSourceAnswer(paperId,partId,response){
  const normalize=s=>String(s).toLowerCase().replace(/[’‘]/g,"'").replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");
  return normalize(expected)===normalize(response);
 }
+
+/** Authored, deliberately incomplete answers with source-specific submark credit.
+ * Every unlisted/ambiguous response stays provisional. These are training cases,
+ * not an assertion that all equivalent student phrasing has been captured.
+ */
+export const POB_ORIGINAL_PARTIAL_EVIDENCE = Object.freeze({
+ "Q1:a": {answer:"An entrepreneur identifies opportunities and organises resources.",credit:[1]},
+ "Q1:b": {answer:"Research customer demand and estimate startup costs.",credit:[1,1,0]},
+ "Q1:c": {answer:"Partners pool capital and skills and share duties but might disagree about decisions.",credit:[1,1,1,0]},
+ "Q1:d": {answer:"The business plan estimates demand and running costs to test commercial viability.",credit:[2,0]},
+ "Q1:e": {answer:"I recommend a limited company because shareholders normally have limited liability and it can raise capital for expansion.",credit:[1,2,2,0]},
+ "Q2:a": {answer:"Planning is a function of management.",credit:[1,0]},
+ "Q2:b": {answer:"The order must name the buyer and seller and describe the goods and quantity.",credit:[1,1,0]},
+ "Q2:c": {answer:"Unclear duties cause disputes, so hold a meeting and define each worker's responsibilities.",credit:[1,1,0,0]},
+ "Q2:d": {answer:"The caterer offered decorations for a stated price and date and the customer accepted the quote.",credit:[2,1,0]},
+ "Q2:e": {answer:"Contact the customer and arrange a lawful remedy; review supplier and delivery records to document the breach.",credit:[2,2,0]},
+ "Q3:a": {answer:"Labour productivity is output per labour input. Divide 300 by 10.",credit:[1,1,0]},
+ "Q3:b": {answer:"Product is an element of the marketing mix.",credit:[1,0]},
+ "Q3:c": {answer:"The price is J$250 and variable cost is J$130, so contribution is J$120.",credit:[1,1,1,0]},
+ "Q3:d": {answer:"Growth spreads fixed costs, but extra production may strain cash flow.",credit:[1,0,1,0]},
+ "Q3:e": {answer:"Target commuters using convenient labelled bottles appropriate to their daily journeys.",credit:[1,2,0,0]},
+ "Q4:a": {answer:"Logistics plans and coordinates the transport of goods.",credit:[1]},
+ "Q4:b": {answer:"Use a bill of lading and a delivery note.",credit:[1,1,0]},
+ "Q4:c": {answer:"Shipping delays reduce sales and leave customers dissatisfied.",credit:[2,0]},
+ "Q4:d": {answer:"Plan backup delivery routes and monitor refrigerated storage temperatures.",credit:[2,2,0]},
+ "Q4:e": {answer:"Use GPS for delivery tracking and digital inventory to prevent stockouts.",credit:[2,2,0]},
+ "Q5:a": {answer:"Gross profit starts with J$850,000 of revenue less J$470,000 cost of sales.",credit:[1,1,0]},
+ "Q5:b": {answer:"Gross profit is J$380,000 and operating expenses are J$260,000.",credit:[1,1,0]},
+ "Q5:c": {answer:"Saving means retaining money for later use. Investment means using resources to earn returns.",credit:[1,1,0,0]},
+ "Q5:d": {answer:"Exports earn foreign exchange for the Jamaican economy.",credit:[2,0]},
+ "Q5:e": {answer:"Digital inventory improves stock monitoring and lowers the risk of stockouts.",credit:[2,2,0]}
+});
+
+const normaliseResponse=s=>String(s).toLowerCase().replace(/[’‘]/g,"'")
+ .replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");
+
+/** Resolve only exact, independently source-reviewed complete/partial/blank
+ * examples. Otherwise no trusted mark is determined.
+ */
+export function calibratedPobOriginalResponse(paperId,partId,response,criteria){
+ if(paperId!=="pob-original-paper2-01"||typeof response!=="string"||
+    !Array.isArray(criteria)||!criteria.length)return null;
+ const full=POB_ORIGINAL_FULL_EVIDENCE[partId];
+ const partial=POB_ORIGINAL_PARTIAL_EVIDENCE[partId];
+ const answer=normaliseResponse(response);
+ if(!answer)return null;
+ if(full && normaliseResponse(full)===answer)
+  return {credit:criteria.map(c=>c.marks),kind:"full"};
+ if(partial && normaliseResponse(partial.answer)===answer &&
+    partial.credit.length===criteria.length &&
+    partial.credit.every((marks,i)=>Number.isInteger(marks)&&marks>=0&&marks<=criteria[i].marks) &&
+    partial.credit.reduce((n,m)=>n+m,0)>0 &&
+    partial.credit.reduce((n,m)=>n+m,0)<criteria.reduce((n,c)=>n+c.marks,0))
+  return {credit:partial.credit,kind:"partial"};
+ // An explicit admission of having no answer is an unambiguous incorrect
+ // response. An actual alternative substantive answer is never inferred wrong.
+ if(new Set(["i do not know","i have no answer","no idea","i am not sure"]).has(answer))
+  return {credit:criteria.map(()=>0),kind:"incorrect"};
+ return null;
+}
