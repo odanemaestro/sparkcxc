@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React,{useState} from "react";
 import {fnhMarkStudyPractice,fnhPracticeAnswerText,fnhStudyPracticeForTopic} from "../data/fnhStudyPracticeBank";
 import "./fnhStudyPractice.css";
@@ -122,10 +124,10 @@ export default function FnhStudyPractice({topicId}){
   </div>
   <footer className="fnh-study-practice-footer">
     <button type="button" className="fnh-study-practice-secondary"
-      disabled={index===0} onClick={()=>changeQuestion(index-1)}>← Previous</button>
+      disabled={index===0} onClick={()=>changeQuestion(index-1)}><BackArrowIcon/> Previous</button>
     <span>{completed} of {questions.length} checked</span>
     {index<questions.length-1
-      ?<button type="button" className="fnh-study-practice-secondary" onClick={()=>changeQuestion(index+1)}>Next question →</button>
+      ?<button type="button" className="fnh-study-practice-secondary" onClick={()=>changeQuestion(index+1)}>Next question <ForwardArrowIcon/></button>
       :<button type="button" className="fnh-study-practice-secondary" onClick={resetAll}>Practise again ↻</button>}
   </footer>
  </section>;

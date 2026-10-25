@@ -75,6 +75,8 @@ import ScrollToTopButton from "./components/ui/ScrollToTopButton";
 import SparkLoader from "./components/ui/SparkLoader";
 import ReportQuestionButton from "./components/ui/ReportQuestionButton";
 import Icon from "./components/ui/Icon";
+import BackArrowIcon from "./components/ui/BackArrowIcon";
+import ForwardArrowIcon from "./components/ui/ForwardArrowIcon";
 import StudyCirclesPanel from "./components/studyCircles/StudyCirclesPanel";
 import NotificationCenter from "./components/notifications/NotificationCenter";
 import FlashcardsPanel from "./components/learning/FlashcardsPanel";
@@ -650,7 +652,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
       <Card style={{background:T.redLight,padding:28}}>
         <strong>Lesson unavailable</strong>
         <p style={{color:T.textMuted}}>This topic is not present in the curriculum data.</p>
-        <Btn onClick={onQuizStart}>Take practice quiz →</Btn>
+        <Btn onClick={onQuizStart}>Take practice quiz <ForwardArrowIcon /></Btn>
       </Card>
     );
   }
@@ -698,7 +700,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
                       style={{background:"none",border:`1.5px solid ${T.teal}`,color:T.teal,
                         padding:"8px 16px",borderRadius:6,fontSize:13,cursor:"pointer",
                         fontFamily:FB,fontWeight:500}}>
-                      Show full solution →
+                      Show full solution <ForwardArrowIcon />
                     </button>
                   ) : (
                     <div className="solution-reveal fade-in">
@@ -764,7 +766,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
       {/* Actions */}
       <div className="lesson-final-actions" style={{display:"flex",gap:12,flexWrap:"wrap",paddingTop:8}}>
         <Btn onClick={onQuizStart} style={{fontSize:15,padding:"14px 28px"}}>
-          Take practice quiz →
+          Take practice quiz <ForwardArrowIcon />
         </Btn>
         {!isCompleted && (
           <Btn onClick={onComplete} style={{fontSize:15,padding:"14px 28px"}}>
@@ -904,7 +906,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
               {topicName}
             </h2>
           </div>
-          <Btn v="outline" onClick={onBack} style={{fontSize:13,padding:"7px 14px"}}>← Back to lesson</Btn>
+          <Btn v="outline" onClick={onBack} style={{fontSize:13,padding:"7px 14px"}}><BackArrowIcon /> Back to lesson</Btn>
         </div>
         <Card style={{textAlign:"center",padding:36}}>
           <div style={{fontSize:32,marginBottom:10}} aria-hidden="true">🚧</div>
@@ -936,7 +938,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
             {questions.length} question{questions.length !== 1 ? "s" : ""} · Past-paper style · Show all working
           </div>
         </div>
-        <Btn v="outline" onClick={onBack} style={{fontSize:13,padding:"7px 14px"}}>← Back to lesson</Btn>
+        <Btn v="outline" onClick={onBack} style={{fontSize:13,padding:"7px 14px"}}><BackArrowIcon /> Back to lesson</Btn>
       </div>
 
       {/* Progress bar */}
@@ -1126,7 +1128,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
       {!submitted && allMCQAnswered && mcqCount > 0 && (
         <div style={{textAlign:"center",marginTop:8}}>
           <Btn onClick={submitAll} style={{fontSize:15,padding:"13px 28px"}}>
-            Submit and see results →
+            Submit and see results <ForwardArrowIcon />
           </Btn>
         </div>
       )}
@@ -1442,7 +1444,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
             style={{width:"100%",padding:"9px",borderRadius:6,background:"rgba(255,255,255,.06)",
               color:"rgba(255,255,255,.7)",fontSize:13,border:"1px solid rgba(255,255,255,.1)",
               cursor:"pointer",fontFamily:FB}}>
-            ← Dashboard
+            <BackArrowIcon /> Dashboard
           </button>
         </div>
       </div>
@@ -1517,7 +1519,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
             setInQuiz(false);
           }} style={{background:"none",border:`1.5px solid ${T.border}`,padding:"9px 16px",
             borderRadius:7,cursor:"pointer",fontSize:13,color:T.textMuted,fontFamily:FB}}>
-            ← Previous topic
+            <BackArrowIcon /> Previous topic
           </button>
           <button onClick={() => {
             if (!canGoNext || !nextTopicTarget) {
@@ -1530,7 +1532,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
             borderRadius:7,cursor:canGoNext?"pointer":"not-allowed",fontSize:13,
             color:canGoNext?"#fff":T.textMuted,fontFamily:FB,fontWeight:600,opacity:canGoNext?1:.78
           }}>
-            {!nextTopicTarget ? (currentTopicCompleted ? "Course complete ✓" : "Complete final lesson") : currentTopicCompleted ? "Next topic →" : "Complete lesson to continue"}
+            {!nextTopicTarget ? (currentTopicCompleted ? "Course complete ✓" : "Complete final lesson") : currentTopicCompleted ? <>Next topic <ForwardArrowIcon /></> : "Complete lesson to continue"}
           </button>
         </div>
       </div>
@@ -1835,13 +1837,13 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
       		{isTutor ? (
               <Btn v="amber" onClick={() => setView("dashboard")}
                 style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
-                Go to your dashboard →
+                Go to your dashboard <ForwardArrowIcon />
               </Btn>
             ) : user ? (
               <>
                 <Btn v="amber" onClick={() => setView("dashboard")}
                   style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
-                  Go to your dashboard →
+                  Go to your dashboard <ForwardArrowIcon />
                 </Btn>
                 {!isParent && (
                   <Btn v="ghost" onClick={() => setView("tutors")}
@@ -1854,7 +1856,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
               <>
                 <Btn v="amber" onClick={() => setView("auth")}
                   style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
-                  Start learning free →
+                  Start learning free <ForwardArrowIcon />
                 </Btn>
                 <Btn v="ghost" onClick={() => setView("tutors")}
                   style={{fontSize:15,padding:"13px 28px"}}>
@@ -2495,7 +2497,7 @@ const savedEmail = localStorage.getItem("spark_verification_email");
                 {loading ? "Sending…" : "Resend verification email"}
               </button>
             )}
-            <Btn onClick={submit} disabled={loading} full>{loading ? "Please wait…" : mode==="signup" ? role==="tutor" ? "Verify email to continue →" : "Create account" : "Log in"}</Btn>
+            <Btn onClick={submit} disabled={loading} full>{loading ? "Please wait…" : mode==="signup" ? role==="tutor" ? <>Verify email to continue <ForwardArrowIcon /></> : "Create account" : "Log in"}</Btn>
             <div style={{display:"flex",alignItems:"center",gap:10,margin:"18px 0",color:T.textMuted,fontSize:12}}><div style={{height:1,background:T.border,flex:1}}/><span>OR</span><div style={{height:1,background:T.border,flex:1}}/></div>
             <button className="spark-google-auth-button" onClick={continueWithGoogle} disabled={loading}
               style={{width:"100%",padding:"12px 24px",border:`1.5px solid ${T.border}`,borderRadius:T.rSm,
@@ -3128,8 +3130,8 @@ function SessionCalendar({ bookings, isTutor, user, studentReviews = [], onAccep
       <div className="session-calendar-card">
         <div className="session-calendar-toolbar">
           <div className="session-calendar-month">
-            <button className="calendar-icon-btn" aria-label="Previous month" onClick={() => moveMonth(-1)}>‹</button>
-            <button className="calendar-icon-btn" aria-label="Next month" onClick={() => moveMonth(1)}>›</button>
+            <button className="calendar-icon-btn" aria-label="Previous month" onClick={() => moveMonth(-1)}><BackArrowIcon size={16}/></button>
+            <button className="calendar-icon-btn" aria-label="Next month" onClick={() => moveMonth(1)}><ForwardArrowIcon size={16}/></button>
             <div className="session-calendar-month-title">{calendarMonthLabel(monthDate)}</div>
             <button className="calendar-today-btn" onClick={goToday}>Today</button>
           </div>
@@ -4704,7 +4706,7 @@ export function DashboardView({ user, profile, setView, showToast, hasTutorApp, 
               We don't have an application on file for you yet, so there's nothing to show here. Submit your
               application - it only takes a few minutes - and we'll review it within 3 business days.
             </p>
-            <Btn onClick={() => setView("become-tutor")}>Become a tutor →</Btn>
+            <Btn onClick={() => setView("become-tutor")}>Become a tutor <ForwardArrowIcon /></Btn>
           </Card>
         ) : (
         <>
@@ -5121,8 +5123,8 @@ export function DashboardView({ user, profile, setView, showToast, hasTutorApp, 
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,flexWrap:"wrap",marginBottom:20}}>
                   <div><div style={{fontSize:11,fontWeight:800,letterSpacing:".08em",textTransform:"uppercase",color:T.teal,marginBottom:4}}>CSEC Mathematics</div><h1 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,margin:0}}>Mathematics progress</h1></div>
                   <div className="spark-subject-progress-detail-actions">
-                    <button type="button" className="spark-dashboard-card-action" onClick={() => openSubject(subjectDashboardSummaries.find(subject => subject.id === "mathematics") || getSparkSubject(subjects, "mathematics"))}><span>Open subject</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></button>
-                    <button type="button" className="spark-dashboard-card-action spark-dashboard-card-action-secondary" onClick={() => { setStudentReportSubject("mathematics"); setStudentReportOpen(true); }}><span>View report</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></button>
+                    <button type="button" className="spark-dashboard-card-action" onClick={() => openSubject(subjectDashboardSummaries.find(subject => subject.id === "mathematics") || getSparkSubject(subjects, "mathematics"))}><span>Open subject</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ForwardArrowIcon/></span></button>
+                    <button type="button" className="spark-dashboard-card-action spark-dashboard-card-action-secondary" onClick={() => { setStudentReportSubject("mathematics"); setStudentReportOpen(true); }}><span>View report</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ForwardArrowIcon/></span></button>
                   </div>
                 </div>
                 <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:14,marginBottom:24}}>
@@ -5269,7 +5271,7 @@ export function DashboardView({ user, profile, setView, showToast, hasTutorApp, 
             {bookingsLoadError ? (
               <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>!</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>Couldn't load your bookings</div><p style={{color:T.textMuted,fontSize:14}}>Refresh the page to try again. If the problem continues, please contact support.</p></Card>
             ) : bookings.length === 0 ? (
-              <Card style={{textAlign:"center",padding:40}}><div className="spark-empty-calendar-icon" style={{marginBottom:12}}><Icon name="calendar" size={30}/></div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No sessions booked yet</div><p style={{color:T.textMuted,fontSize:14,marginBottom:20}}>Find a verified tutor and book your first session.</p><Btn onClick={() => setView("tutors")}>Find a tutor →</Btn></Card>
+              <Card style={{textAlign:"center",padding:40}}><div className="spark-empty-calendar-icon" style={{marginBottom:12}}><Icon name="calendar" size={30}/></div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No sessions booked yet</div><p style={{color:T.textMuted,fontSize:14,marginBottom:20}}>Find a verified tutor and book your first session.</p><Btn onClick={() => setView("tutors")}>Find a tutor <ForwardArrowIcon /></Btn></Card>
             ) : bookingView === "calendar" ? (
               <SessionCalendar bookings={bookings} isTutor={false} user={user} studentReviews={studentReviews} onCancel={setCancelTarget} onReview={setReviewTarget} onAccept={() => {}} onDecline={() => {}} />
             ) : (
@@ -5737,7 +5739,7 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               ))}
               {(reviews[t.id]||[]).length > 0 && (
                 <button className="review-list-link" onClick={() => setReviewTutor(t)}>
-                  View {(reviews[t.id]||[]).length} review{(reviews[t.id]||[]).length !== 1 ? "s" : ""} →
+                  View {(reviews[t.id]||[]).length} review{(reviews[t.id]||[]).length !== 1 ? "s" : ""} <ForwardArrowIcon />
                 </button>
               )}
               <div className="tutor-card-meta" style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14,
@@ -6619,13 +6621,13 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated, subje
         <section className="parent-section" data-notification-anchor="parent-family">
           <div className="section-heading parent-family-heading"><div><div className="section-kicker">YOUR FAMILY</div><h2>Children</h2></div><button className="cp-btn cp-btn-primary parent-connect-button" onClick={()=>document.getElementById("add-child")?.scrollIntoView({behavior:"smooth"})}>+ Connect a child</button></div>
           {children.length === 0 ? <div className="empty-parent"><div className="empty-icon">👨‍👩‍👧</div><h3>No child connected yet</h3><p>Ask your child to open their account and give you their private family code.</p></div> :
-            <div className="child-grid">{children.map(child => <button key={child.id} className={`child-card ${selectedChild?.id===child.id?"selected":""}`} onClick={()=>setSelectedChild(child)}><div className="child-avatar">{getInitials(child.name)}</div><div><strong>{child.name}</strong><span>Learning progress</span></div><span className="child-arrow" aria-hidden="true">›</span></button>)}</div>}
+            <div className="child-grid">{children.map(child => <button key={child.id} className={`child-card ${selectedChild?.id===child.id?"selected":""}`} onClick={()=>setSelectedChild(child)}><div className="child-avatar">{getInitials(child.name)}</div><div><strong>{child.name}</strong><span>Learning progress</span></div><span className="child-arrow" aria-hidden="true"><ForwardArrowIcon/></span></button>)}</div>}
         </section>
 
         {selectedChild && childData && <section className="parent-section">
           <div className="section-heading">
             <div><div className="section-kicker">LEARNING SNAPSHOT</div><h2>{selectedChild.name}'s progress</h2></div>
-            <button type="button" className="spark-dashboard-card-action" onClick={() => { setParentReportSubject(parentProgressSubject || "all"); setParentReportOpen(true); }}><span>View report</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></button>
+            <button type="button" className="spark-dashboard-card-action" onClick={() => { setParentReportSubject(parentProgressSubject || "all"); setParentReportOpen(true); }}><span>View report</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ForwardArrowIcon/></span></button>
           </div>
           <div className="parent-stat-grid">
             <div className="parent-stat"><strong>{parentAllSubjectsSummary.activeSubjects}</strong><span>Enrolled subjects</span></div>
@@ -8033,7 +8035,7 @@ function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false 
           </div>
           <div className="spark-role-cta-actions" style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Btn v="amber" onClick={() => setView(user ? "dashboard" : "auth")} style={{ background: T.amber }}>
-              {user ? "Go to your dashboard →" : "Start learning →"}
+              {user ? <>Go to your dashboard <ForwardArrowIcon /></> : <>Start learning <ForwardArrowIcon /></>}
             </Btn>
             {!user && !hasTutorApp && (
               <Btn v="ghost" onClick={() => setView("become-tutor")}>Become a tutor</Btn>
@@ -8128,7 +8130,7 @@ function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
 
         <div className="spark-about-role-cta" style={{ textAlign: "center" }}>
           <Btn onClick={() => setView(user ? "dashboard" : "auth")} style={{ fontSize: 15, padding: "13px 28px" }}>
-            {user ? "Go to your dashboard →" : "Start learning for free →"}
+            {user ? <>Go to your dashboard <ForwardArrowIcon /></> : <>Start learning for free <ForwardArrowIcon /></>}
           </Btn>
         </div>
       </div>
@@ -8928,7 +8930,7 @@ const validateApplication = () => validateStep1() || validateStep2() || validate
               {tutorApp.status === "pending" && "Your tutor account is set up and your application is under review. Tutor dashboard tools will unlock after approval. We will contact you within 3 business days."}
             </p>
             {tutorApp.status === "approved" && (
-              <Btn onClick={() => setView("dashboard")}>Go to dashboard →</Btn>
+              <Btn onClick={() => setView("dashboard")}>Go to dashboard <ForwardArrowIcon /></Btn>
             )}
           </Card>
         </div>
@@ -9016,7 +9018,7 @@ const validateApplication = () => validateStep1() || validateStep2() || validate
               const error = validateStep1();
               if (error) { showToast(error, "error"); return; }
               setStep(2);
-            }} full>Continue →</Btn>
+            }} full>Continue <ForwardArrowIcon /></Btn>
           </div>
         )}
 
@@ -9061,12 +9063,12 @@ const validateApplication = () => validateStep1() || validateStep2() || validate
               </div>
             </div>
             <div className="tutor-apply-actions" style={{ display: "flex", gap: 10 }}>
-              <Btn v="outline" onClick={() => setStep(1)} style={{ flex: 1, justifyContent: "center" }}>← Back</Btn>
+              <Btn v="outline" onClick={() => setStep(1)} style={{ flex: 1, justifyContent: "center" }}><BackArrowIcon /> Back</Btn>
               <Btn onClick={() => {
                 const error = validateStep2();
                 if (error) { showToast(error, "error"); return; }
                 setStep(3);
-              }} style={{ flex: 2, justifyContent: "center" }}>Continue →</Btn>
+              }} style={{ flex: 2, justifyContent: "center" }}>Continue <ForwardArrowIcon /></Btn>
             </div>
           </div>
         )}
@@ -9091,9 +9093,9 @@ const validateApplication = () => validateStep1() || validateStep2() || validate
               </div>
             </Card>
             <div className="tutor-apply-actions" style={{ display: "flex", gap: 10 }}>
-              <Btn v="outline" onClick={() => setStep(2)} style={{ flex: 1, justifyContent: "center" }}>← Back</Btn>
+              <Btn v="outline" onClick={() => setStep(2)} style={{ flex: 1, justifyContent: "center" }}><BackArrowIcon /> Back</Btn>
               <Btn onClick={submitApplication} disabled={loading} style={{ flex: 2, justifyContent: "center" }}>
-                {loading ? "Submitting…" : "Submit application →"}
+                {loading ? "Submitting…" : <>Submit application <ForwardArrowIcon /></>}
               </Btn>
             </div>
           </div>

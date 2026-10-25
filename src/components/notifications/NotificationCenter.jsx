@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { supabase } from "../../lib/supabaseClient";
 import { setSparkAppBadge } from "../../lib/pushNotifications";
 import Icon from "../ui/Icon";
+import ForwardArrowIcon from "../ui/ForwardArrowIcon";
 import "./notificationCenter.css";
 import { getNotificationRoute } from "./notificationRouting";
 import PushNotificationSettings from "./PushNotificationSettings";
@@ -564,7 +565,7 @@ export default function NotificationCenter({ user, profile, setView }) {
                         <p>{notification.message}</p>
                         <div className="notification-meta-row">
                           <time dateTime={notification.created_at}>{relativeTime(notification.created_at)}</time>
-                          {label && <span className="notification-action-label">{label} →</span>}
+                          {label && <span className="notification-action-label">{label} <ForwardArrowIcon size={14} className="spark-nav-arrow"/></span>}
                         </div>
                       </div>
                     </article>

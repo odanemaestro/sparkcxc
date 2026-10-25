@@ -1,3 +1,4 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React, { useMemo, useState } from 'react';
 import MathText from '../../practice/MathText';
 import { PHYSICS_FORMULA_LIST, physicsFormulaStats } from './physicsFormulaList.mjs';
@@ -31,7 +32,7 @@ export default function PhysicsFormulaList({ onBack, inModal = false }) {
     <div className={inModal ? 'physics-resource-shell physics-resource-shell-modal' : 'physics-resource-shell'}>
       <header className={inModal ? 'physics-resource-hero physics-resource-hero-modal' : 'physics-resource-hero'}>
         <div>
-          {!inModal && onBack && <button type="button" className="physics-resource-back" onClick={onBack}>← Back to Physics</button>}
+          {!inModal && onBack && <button type="button" className="physics-resource-back" onClick={onBack}><BackArrowIcon/> Back to Physics</button>}
           <span className="physics-resource-eyebrow">CSEC Physics revision aid</span>
           <h1>Physics Formula List</h1>
           <p>Review equations, relationships, direction rules, symbols and units by syllabus section. Learn when each relationship applies, not only the symbols.</p>

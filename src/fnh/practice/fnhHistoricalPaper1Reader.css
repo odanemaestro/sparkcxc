@@ -26,7 +26,7 @@
 .fnh-source-reader .fnh-source-reader-nav-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
 .fnh-source-reader .fnh-source-reader-nav-grid button{height:38px;min-width:0;border:1px solid var(--fnh-border);border-radius:8px;background:var(--fnh-card);color:var(--fnh-ink);cursor:pointer;font-weight:700;font-size:12px}
 .fnh-source-reader .fnh-source-reader-nav-grid button.answered{border:2px solid var(--fnh-accent)}
-.fnh-source-reader .fnh-source-reader-nav-grid button.active{background:var(--fnh-accent);color:#fff}
+.fnh-source-reader .fnh-source-reader-nav-grid button.active{background:var(--fnh-accent);color:var(--fnh-on-accent,#fff)}
 .fnh-source-reader button:focus-visible,.fnh-source-reader input:focus-visible{outline:3px solid var(--fnh-accent);outline-offset:3px}
 @media(max-width:800px){.fnh-source-reader .fnh-source-reader-layout{grid-template-columns:1fr}.fnh-source-reader .fnh-source-reader-navigator{position:static;order:-1}.fnh-source-reader .fnh-source-reader-nav-grid{grid-template-columns:repeat(10,minmax(0,1fr))}}
 @media(max-width:540px){.fnh-source-reader .fnh-source-reader-nav-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.fnh-source-reader .fnh-source-reader-overline{display:grid}.fnh-source-reader .fnh-source-reader-options label{padding:11px}.fnh-source-reader .fnh-source-reader-navigation{display:grid;grid-template-columns:1fr 1fr}.fnh-source-reader .fnh-source-reader-navigation .fnh-primary{grid-column:1/-1}}

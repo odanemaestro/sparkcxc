@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import SparkLoader from "../../components/ui/SparkLoader";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
@@ -213,7 +215,7 @@ export default function IntegratedSciencePaper1Exam({ supabase, userId, onBack }
           <header className="is-exam-library-hero">
             <div>
               <button type="button" className="is-exam-primary is-exam-back" onClick={onBack}>
-                <span aria-hidden="true">{"\u2190"}</span>
+                <span aria-hidden="true"><BackArrowIcon/></span>
                 Integrated Science practice
               </button>
               <span className="is-exam-eyebrow">CSEC INTEGRATED SCIENCE PAPER 01</span>
@@ -245,7 +247,7 @@ export default function IntegratedSciencePaper1Exam({ supabase, userId, onBack }
       <main className="is-exam-root">
         <div className="is-exam-shell">
           <button type="button" className="is-exam-primary is-exam-page-back" onClick={onBack}>
-            <span aria-hidden="true">{"\u2190"}</span>
+            <span aria-hidden="true"><BackArrowIcon/></span>
             Back to practice
           </button>
 
@@ -388,7 +390,7 @@ export default function IntegratedSciencePaper1Exam({ supabase, userId, onBack }
 
             <footer className="is-exam-footer">
               <button type="button" className="is-exam-primary" disabled={currentIndex === 0} onClick={() => goTo(currentIndex - 1)}>
-                <span aria-hidden="true">{"\u2190"}</span>
+                <span aria-hidden="true"><BackArrowIcon/></span>
                 Previous
               </button>
 
@@ -397,7 +399,7 @@ export default function IntegratedSciencePaper1Exam({ supabase, userId, onBack }
               {currentIndex < 59 ? (
                 <button type="button" className="is-exam-primary" onClick={() => goTo(currentIndex + 1)}>
                   Next question
-                  <span aria-hidden="true">{"\u2192"}</span>
+                  <span aria-hidden="true"><ForwardArrowIcon/></span>
                 </button>
               ) : !review ? (
                 <button type="button" className="is-exam-primary" onClick={() => setConfirmSubmit(true)}>Submit paper</button>
@@ -419,7 +421,7 @@ export default function IntegratedSciencePaper1Exam({ supabase, userId, onBack }
             {review && (
               <div className="is-exam-result-actions">
                 <button type="button" className="is-exam-primary" onClick={onBack}>
-                  <span aria-hidden="true">{"\u2190"}</span>
+                  <span aria-hidden="true"><BackArrowIcon/></span>
                   Back to Integrated Science practice
                 </button>
                 <button type="button" className="is-exam-primary" onClick={startAnother}>Start another Paper 1</button>

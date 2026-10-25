@@ -1,3 +1,4 @@
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React, { useEffect, useMemo, useState } from "react";
 
 function Card({ title, children }) {
@@ -41,7 +42,7 @@ function ChoiceChallenge({ title, prompt, options, answer, explanation, nextLabe
     </div>
     <div className="it-lab-actions">
       <button type="button" className="it-primary" disabled={choice == null} onClick={() => setChecked(true)}>Check</button>
-      {onNext && <button type="button" className="it-lab-next" onClick={onNext}>{nextLabel || "Next challenge"} <span aria-hidden="true">→</span></button>}
+      {onNext && <button type="button" className="it-lab-next" onClick={onNext}>{nextLabel || "Next challenge"} <span aria-hidden="true"><ForwardArrowIcon/></span></button>}
     </div>
     {checked && <p className={`it-feedback ${correct ? "ok" : "bad"}`} role="status"><strong>{correct ? "Correct." : "Try again."}</strong> {explanation}</p>}
   </Card>;

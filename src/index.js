@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import './sparkInteraction.css';
+import './sparkLearningControls.css';
 import ErrorBoundary from './components/ErrorBoundary';
 import reportWebVitals from './reportWebVitals';
 import { registerSparkServiceWorker } from './lib/pushNotifications';

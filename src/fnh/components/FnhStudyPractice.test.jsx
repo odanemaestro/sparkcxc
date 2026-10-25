@@ -24,7 +24,7 @@ describe("FNH formative study-note practice interactions",()=>{
  });
  test("multi-select requires exactly the complete correct set",()=>{
   render(<FnhStudyPractice topicId="diet-basics"/>);
-  fireEvent.click(screen.getByRole("button",{name:"Next question →"}));
+  fireEvent.click(screen.getByRole("button",{name:"Next question"}));
   expect(screen.getByText("SELECT ALL THAT APPLY")).toBeInTheDocument();
   fireEvent.click(screen.getByRole("checkbox",{name:/Include a variety of food groups/}));
   fireEvent.click(screen.getByRole("button",{name:"Check my answer"}));
@@ -57,11 +57,18 @@ describe("FNH formative study-note practice interactions",()=>{
  });
  test("students can move between unanswered questions and reset their local study practice",()=>{
   render(<FnhStudyPractice topicId="community-food-security"/>);
-  fireEvent.click(screen.getByRole("button",{name:"Next question →"}));
-  fireEvent.click(screen.getByRole("button",{name:"Next question →"}));
+  const previous=screen.getByRole("button",{name:"Previous"});
+  const next=screen.getByRole("button",{name:"Next question"});
+  expect(previous).toBeDisabled();
+  for(const button of [previous,next]){
+    expect(button.querySelector("svg")).toHaveAttribute("aria-hidden","true");
+    expect(button.querySelector("svg")).toHaveAttribute("focusable","false");
+  }
+  fireEvent.click(next);
+  fireEvent.click(screen.getByRole("button",{name:"Next question"}));
   fireEvent.click(screen.getByRole("button",{name:"Practise again ↻"}));
   expect(screen.getByText("Question 1")).toBeInTheDocument();
   expect(screen.getByText("0 of 3 checked")).toBeInTheDocument();
-  expect(screen.getByRole("button",{name:"← Previous"})).toBeDisabled();
+  expect(screen.getByRole("button",{name:"Previous"})).toBeDisabled();
  });
 });

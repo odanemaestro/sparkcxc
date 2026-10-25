@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React,{useState} from "react";
 import {useSavedPracticeState} from "../../routing/usePracticeRouteState";
 import {GuidedStomaFigure,GuidedFlowerFigure} from "./ScienceGuidedDiagramPractice";
@@ -26,7 +28,7 @@ export default function IntegratedScienceAdaptedPaper2Assessment({onExit,userId}
  const exit=()=>{if(onExit)onExit();};
  return <main className="is-exam-root">
   <div className="is-exam-shell">
-   <button type="button" className="is-exam-secondary is-exam-page-back" onClick={exit}>← Back to Paper 2 selection</button>
+   <button type="button" className="is-exam-secondary is-exam-page-back" onClick={exit}><BackArrowIcon/> Back to Paper 2 selection</button>
    <header className="is-exam-library-hero">
     <div>
      <span className="is-exam-eyebrow">SPARK · ADAPTED PAPER 02</span>
@@ -74,9 +76,9 @@ export default function IntegratedScienceAdaptedPaper2Assessment({onExit,userId}
     </div>}
     <div className="is-exam-library-actions" style={{display:"flex",flexWrap:"wrap",gap:12}}>
      <button type="button" className="is-exam-secondary" disabled={index===0}
-      onClick={()=>setIndex(i=>Math.max(0,i-1))}>Previous question</button>
+      onClick={()=>setIndex(i=>Math.max(0,i-1))}><BackArrowIcon/> Previous question</button>
      {index<ADAPTED_BIOLOGY_P2_QUESTIONS.length-1
-      ?<button type="button" className="is-exam-primary" onClick={()=>setIndex(i=>i+1)}>Next question</button>
+      ?<button type="button" className="is-exam-primary" onClick={()=>setIndex(i=>i+1)}>Next question <ForwardArrowIcon/></button>
       :<button type="button" className="is-exam-primary" onClick={()=>setStage("review")}>Submit adapted assessment</button>}
     </div>
    </section>}
@@ -95,7 +97,7 @@ export default function IntegratedScienceAdaptedPaper2Assessment({onExit,userId}
     })}
     <div className="is-exam-library-actions" style={{display:"flex",flexWrap:"wrap",gap:12}}>
      <button type="button" className="is-exam-primary" onClick={()=>{setAnswers({});setIndex(0);setStage("instructions");}}>Try another attempt</button>
-     <button type="button" className="is-exam-secondary" onClick={exit}>Back to Paper 2 selection</button>
+     <button type="button" className="is-exam-secondary" onClick={exit}><BackArrowIcon/> Back to Paper 2 selection</button>
     </div>
    </section>}
   </div>

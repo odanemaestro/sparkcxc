@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useIntegratedSciencePracticeRoute } from "../../routing/sparkRoutingV270";
 import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
@@ -138,7 +140,7 @@ function TopicBank({ supabase, userId, onBack }) {
     <main className="is-practice-shell">
       <div className="is-practice-top-actions">
         <button type="button" className="is-back-button" onClick={onBack}>
-          <span aria-hidden="true">{"\u2190"}</span>
+          <span aria-hidden="true"><BackArrowIcon/></span>
           Back to practice modes
         </button>
       </div>
@@ -265,7 +267,7 @@ export default function IntegratedSciencePracticeHub({ supabase, userId, onBack 
       <div className="is-practice-home-shell">
         <div className="is-practice-top-actions">
           <button type="button" className="is-back-button" onClick={onBack}>
-            <span aria-hidden="true">{"\u2190"}</span>
+            <span aria-hidden="true"><BackArrowIcon/></span>
             Back
           </button>
         </div>
@@ -294,7 +296,7 @@ export default function IntegratedSciencePracticeHub({ supabase, userId, onBack 
                 <span>automatic marking and answer review</span>
               </small>
             </span>
-            <span className="is-practice-section-arrow" aria-hidden="true">{"\u2192"}</span>
+            <span className="is-practice-section-arrow" aria-hidden="true"><ForwardArrowIcon/></span>
           </button>
 
           <button type="button" className="is-practice-section-card" onClick={() => setMode("paper2")}>
@@ -314,7 +316,7 @@ export default function IntegratedSciencePracticeHub({ supabase, userId, onBack 
                 <span>practical/investigative questions included</span>
               </small>
             </span>
-            <span className="is-practice-section-arrow" aria-hidden="true">{"\u2192"}</span>
+            <span className="is-practice-section-arrow" aria-hidden="true"><ForwardArrowIcon/></span>
           </button>
 
           <button type="button" className="is-practice-section-card" onClick={() => setMode("topic")}>
@@ -330,7 +332,7 @@ export default function IntegratedSciencePracticeHub({ supabase, userId, onBack 
                 <span>filter by module, topic and specific objective</span>
               </small>
             </span>
-            <span className="is-practice-section-arrow" aria-hidden="true">{"\u2192"}</span>
+            <span className="is-practice-section-arrow" aria-hidden="true"><ForwardArrowIcon/></span>
           </button>
         </section>
 

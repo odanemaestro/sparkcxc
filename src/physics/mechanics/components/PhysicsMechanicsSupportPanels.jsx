@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../../components/ui/ForwardArrowIcon";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MathText from "../../../practice/MathText";
 import PhysicsFlashcardVisual from "../../components/PhysicsFlashcardVisual";
@@ -25,9 +27,7 @@ function ChangeSubjectButton({ onClick }) {
   if (!onClick) return null;
   return (
     <button type="button" className="pm-btn secondary pm-change-subject-btn" onClick={onClick}>
-      <svg className="pm-change-subject-icon" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
-        <path d="M12.5 5.5 8 10l4.5 4.5M8 10h8" />
-      </svg>
+      <BackArrowIcon className="pm-change-subject-icon"/>
       <span>Change subject</span>
     </button>
   );
@@ -231,9 +231,9 @@ export function PhysicsMechanicsFlashcardsPanel({ onChangeSubject }) {
             )}
           </button>
           <div className="pm-flashcard-nav-row">
-            <button type="button" className="pm-btn secondary" disabled={index === 0} onClick={() => moveCard("previous")}>← Previous</button>
+            <button type="button" className="pm-btn secondary" disabled={index === 0} onClick={() => moveCard("previous")}><BackArrowIcon/> Previous</button>
             <div className="pm-flashcard-progress-dots" aria-hidden="true"><span style={{ width: `${((index + 1) / cards.length) * 100}%` }} /></div>
-            <button type="button" className="pm-btn" disabled={index >= cards.length - 1} onClick={() => moveCard("next")}>Next card →</button>
+            <button type="button" className="pm-btn" disabled={index >= cards.length - 1} onClick={() => moveCard("next")}>Next card <ForwardArrowIcon/></button>
           </div>
         </div>
       )}

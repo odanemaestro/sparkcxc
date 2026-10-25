@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import Icon from "../ui/Icon";
+import ForwardArrowIcon from "../ui/ForwardArrowIcon";
 import { dashboardAchievementMeta } from "./dashboardAchievementMeta";
 import { formatRelativeDay, listWithMore } from "../../learning/studentHomeModel";
 
@@ -54,7 +55,7 @@ export default function StudentDashboardSupportCards({
       <div className="ssh-support-block" id="ssh-upcoming" tabIndex={-1} aria-labelledby="ssh-upcoming-title">
         <div className="ssh-support-head">
           <h2 id="ssh-upcoming-title" className="ssh-eyebrow">UPCOMING TUTORING</h2>
-          {onOpenBookings && <button type="button" className="ssh-text-btn" onClick={onOpenBookings}><span>My bookings</span><Icon name="chevronRight" size={15}/></button>}
+          {onOpenBookings && <button type="button" className="ssh-text-btn" onClick={onOpenBookings}><span>My bookings</span><ForwardArrowIcon size={15}/></button>}
         </div>
         {session ? (
           <div className="ssh-session">
@@ -91,7 +92,7 @@ export default function StudentDashboardSupportCards({
       <div className="ssh-support-block" aria-labelledby="ssh-achievements-title">
         <div className="ssh-support-head">
           <h2 id="ssh-achievements-title" className="ssh-eyebrow">RECENT ACHIEVEMENTS</h2>
-          {onOpenProgress && <button type="button" className="ssh-text-btn" onClick={onOpenProgress} aria-label="View all progress"><span>View all</span><Icon name="chevronRight" size={15}/></button>}
+          {onOpenProgress && <button type="button" className="ssh-text-btn" onClick={onOpenProgress} aria-label="View all progress"><span>View all</span><ForwardArrowIcon size={15}/></button>}
         </div>
         {recentAchievements.length ? (
           <ul className="ssh-activity">

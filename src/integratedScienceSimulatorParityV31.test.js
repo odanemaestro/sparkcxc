@@ -57,11 +57,11 @@ describe("Integrated Science simulator parity and encoding V3.1", () => {
     });
   });
 
-  test("separators and arrows use ASCII-safe entities or unicode escapes", () => {
+  test("separators use entities and navigation uses the shared SVG arrows", () => {
     expect(hub).toContain("&middot;");
-    expect(hub).toContain('{"\\u2192"}');
+    expect(hub).toContain("<ForwardArrowIcon");
     expect(p1).toContain("&middot;");
-    expect(p1).toContain('{"\\u2190"}');
+    expect(p1).toContain("<BackArrowIcon");
     expect(p2).toContain("&middot;");
   });
 });

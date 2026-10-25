@@ -23,7 +23,7 @@ test("adapted assessment is separately identified and hides marking answers unti
  fireEvent.click(screen.getByRole("button",{name:"Submit adapted assessment"}));
  expect(screen.getByRole("status").textContent).toContain("4/12 marks");
  expect(screen.getByText(/does not replace a historical drawing mark/i)).toBeTruthy();
- fireEvent.click(screen.getByRole("button",{name:"Back to Paper 2 selection"}));
+ fireEvent.click(screen.getAllByRole("button",{name:"Back to Paper 2 selection"})[0]);
  expect(onExit).toHaveBeenCalledTimes(1);
 });
 test("students can review earlier questions and start a fresh independent attempt",()=>{

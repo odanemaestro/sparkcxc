@@ -1,3 +1,4 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React,{useEffect,useMemo,useState} from "react";
 import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
 import {POB_SBA_SPEC,POB_SBA_PROJECT_IDEAS,evaluatePobSbaDraft} from "../data/pobSbaSpec";
@@ -36,7 +37,7 @@ export default function PobSbaWorkspace({onBack,userId}){
  const field=POB_SBA_SPEC.researchStages.find(x=>x.id===selected)||POB_SBA_SPEC.researchStages[0];
  return <main className="pob-sba-workspace">
   <div className="pob-sba-shell">
-    {onBack&&<button type="button" className="pob-sba-back" onClick={onBack}>← Back to Principles of Business practice</button>}
+    {onBack&&<button type="button" className="pob-sba-back" onClick={onBack}><BackArrowIcon/> Back to Principles of Business practice</button>}
     <header className="pob-sba-header">
       <span>CSEC PRINCIPLES OF BUSINESS · SCHOOL-BASED ASSESSMENT</span>
       <h1>Business research workspace</h1>
