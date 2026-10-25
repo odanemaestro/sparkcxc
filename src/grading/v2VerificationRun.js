@@ -49,6 +49,7 @@ import {CURATED_IS} from "./v2Fixtures/integratedScienceCurated";
 import {poaOriginalFixtures} from "./v2Fixtures/principlesOfAccountsOriginal";
 import {poaMethodFixtures} from "./v2Fixtures/principlesOfAccountsMethods";
 import {pobOriginalSourceFixtures} from "./v2Fixtures/principlesOfBusinessOriginal";
+import {socialOriginalSourceFixtures} from "./v2Fixtures/socialStudiesOriginal";
 import {physicsFixtures} from "./v2Fixtures/physics";
 import {CURATED_PHYSICS} from "./v2Fixtures/physicsCurated";
 import physicsSource1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
@@ -86,6 +87,7 @@ function itContext(paperId,criterionId){
 
 /** Returns {kind, fixtures, sourceAnswer, alternatives, ruleId} or {blocked}. */
 export function fixturesForCriterion({subjectId,paperId,criterion}){
+ if(subjectId==="social-studies")return socialOriginalSourceFixtures({paperId,criterion});
  if(subjectId==="principles-of-business")return pobOriginalSourceFixtures({paperId,criterion});
  if(subjectId==="principles-of-accounts"){
   if(criterion.sourceFormat==="poa-method-question-v1")return poaMethodFixtures({paperId,criterion});
