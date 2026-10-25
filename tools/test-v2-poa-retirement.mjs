@@ -27,7 +27,8 @@ try{
     disable trigger rubrics_v2_requires_criterion_approval`);
   try {
    await db.exec(`update spark_grading_private.rubrics_v2
-    set active=true,verification_status='verified'
+    set active=true,verification_status='verified',
+        verified_by='source-verified-ci-fixture',verified_at=now()
     where subject_id='principles-of-accounts'
     and paper_id='poa-specimen-2-2017--q-1-2-3-4-5'
     and rubric_version='poa-source-methods-v1'`);
