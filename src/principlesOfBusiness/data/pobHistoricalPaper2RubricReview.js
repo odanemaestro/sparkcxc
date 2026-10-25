@@ -1,3 +1,4 @@
+import {completePobSourceAnswer} from "./pobOriginalVerifiedResponses";
 import {gradePobP2VisualTask,getPobP2VisualTask} from "./pobHistoricalPaper2Visual";
 import {gradePobHistoricalArithmetic,matchPobWrittenEvidence} from "./pobHistoricalPaper2Evidence";
 import {gradePobDevelopedPart,getPobDevelopedTask,POB_DEVELOPED_SUBCRITERIA_VERSION} from "./pobHistoricalDevelopedMarking";
@@ -30,7 +31,8 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
    const visualTask=getPobP2VisualTask(paper.id,id);
    const visual=valid&&visualTask&&raw?.kind===visualTask.kind
     ?gradePobP2VisualTask(paper.id,id,raw):null;
-   const sameAsGuide=Boolean(!visualTask&&response&&valid&&normalize(response)===normalize(part.modelAnswer));
+   const completeSource=Boolean(!visualTask&&response&&valid&&
+    completePobSourceAnswer(paper.id,id,response));
    const arithmetic=!visualTask&&valid&&response?gradePobHistoricalArithmetic(paper.id,id,response):null;
    const developedTask=getPobDevelopedTask(paper.id,id);
    const developed=valid&&developedTask&&criteria.length===developedTask.maxDistinct&&
@@ -45,12 +47,12 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
      criteria.every(c=>c.marks===1)&&maxMarks===2&&response
      ?gradePobFoundationalPart(paper.id,id,response):null;
    const blank=visual?visual.blank:!raw||typeof raw==="string"&&!response;
-   const evidenced=!visualTask&&!sameAsGuide&&!arithmetic&&!developed&&!demandPrice&&!foundational&&response&&valid
+   const evidenced=!visualTask&&!completeSource&&!arithmetic&&!developed&&!demandPrice&&!foundational&&response&&valid
     ?matchPobWrittenEvidence(response,part.modelAnswer,criteria):null;
    let assessed,confirmed,status;
    if(blank){assessed=criteria.map(()=>0);status="unanswered";}
    else if(visual){assessed=criteria.map((_,i)=>visual.criteria[i]?.marks??null);status="diagram-verified";}
-   else if(sameAsGuide){assessed=criteria.map(c=>c.marks);status="verified-model-match";}
+   else if(completeSource){assessed=criteria.map(c=>c.marks);status="verified-complete-source-answer";}
    else if(arithmetic){assessed=criteria.map((c,i)=>arithmetic.criteria[i]?c.marks:0);status="calculation-verified";}
    else if(developed){
     assessed=criteria.map((_,i)=>developed.criteria[i]?.marks??null);
@@ -81,7 +83,7 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
    // Exact arithmetic and diagram checkers explicitly resolve every
    // criterion, including known incorrect results. Only open prose and
    // structurally invalid rubrics keep undetermined marks pending.
-   const determined=Boolean(valid&&(visual||arithmetic||sameAsGuide||
+   const determined=Boolean(valid&&(visual||arithmetic||completeSource||
      developed?.assessedMarks!==null&&Boolean(developed)||
      demandPrice?.assessedMarks!==null&&Boolean(demandPrice)||
      foundational?.assessedMarks!==null&&Boolean(foundational)));
