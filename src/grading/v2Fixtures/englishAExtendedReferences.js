@@ -102,6 +102,14 @@ const storyPlots=Object.freeze({
  E:{opening:"The old photograph lay beneath the clock.",lead:"Kareem",setting:"his grandfather's workshop",problem:"his family planned to sell a worn wooden boat without knowing why his grandfather refused to discuss it",effort:"He repaired an old drawer, found a photograph with a handwritten date and asked his grandmother about the people beside the shore",discovery:"The boat had carried rescued neighbours to safety in a historic flood, and his grandfather had been too modest to tell the story",ending:"The old photograph finally made sense."},
  F:{opening:"Everyone in the room heard the announcement except me.",lead:"Priya",setting:"the crowded school auditorium",problem:"she was absorbed in her notes and missed an unexpected change to the debate competition's order",effort:"She watched her teammates, requested the revised schedule and prepared a different opening argument without blaming the organisers",discovery:"When her name was called, she faced the audience with a calmer speech and helped a nervous teammate complete the next round",ending:"For the first time, Priya valued listening as much as speaking."}
 });
+const alternatePlots=Object.freeze({
+ A:{opening:"The borrowed phone vibrated twice in her hand.",lead:"Alana",setting:"the school's reading room",problem:"a recording on the borrowed phone seemed to contain a private message intended for another student",effort:"She stopped playback, contacted the teacher who loaned the device and asked how to find the owner without listening further",discovery:"The owner confirmed it contained an old family message and thanked her for returning the phone without invading their privacy",ending:"That afternoon she learned that curiosity is not always permission."},
+ B:{opening:"An empty chair waited beneath the brightly lit stage.",lead:"Jada",setting:"the school auditorium",problem:"the principal's guest speaker had not arrived and an award presentation was about to start",effort:"She checked the printed programme, spoke with the organisers and suggested an honest explanation to the audience",discovery:"The guest had been helping a stranded student outside and entered just as the audience stood to welcome them",ending:"The chair was empty only because somebody had chosen to help first."},
+ C:{opening:"The golden bracelet looked painfully bright in his palm.",lead:"Amari",setting:"the sports centre after the evening rehearsal",problem:"he found a valuable bracelet in an empty changing room and feared he would be accused of stealing it",effort:"He photographed its location, asked a coach to accompany him and placed it in the centre's secure lost-property register",discovery:"Its owner was a nervous young performer who thought the keepsake had disappeared forever",ending:"Amari felt lighter when he realised that returning it mattered more than receiving praise."},
+ D:{opening:"The bicycle chain broke beside the deserted road.",lead:"Ravi",setting:"a hillside community after a school fundraiser",problem:"he had to deliver medicine before closing time but could not repair the bicycle on his own",effort:"He called for advice, secured his bag and accepted help from the classmate he had argued with earlier",discovery:"Their disagreement seemed less important when the classmate helped him reach the pharmacy safely and on time",ending:"He offered a genuine apology and asked whether they could begin again."},
+ E:{opening:"The cracked radio was still warm when she lifted it.",lead:"Nadine",setting:"her uncle's small workshop",problem:"the family radio failed during preparations for a community gathering and her uncle blamed her for touching it",effort:"She asked him to show her the wiring, listened to his explanation and admitted that she had moved the loose power cable",discovery:"They discovered both had kept listening to the old broadcasts because they remembered the same relative",ending:"The repair restored the sound, but the conversation repaired something more important."},
+ F:{opening:"The final score had surprised everyone in the hall.",lead:"Talia",setting:"a parish interschool debate competition",problem:"she lost the close debate and initially resented the student whose team had beaten hers",effort:"She congratulated the other speaker, compared their arguments and volunteered to help prepare a joint practice session",discovery:"Her rival had been equally nervous and shared the same ambition to represent their district fairly",ending:"The unexpected friendship became the best prize that competition offered."}
+});
 const paragraphs=s=>String(s||"").trim().split(/\n\s*\n/).filter(Boolean);
 function expositionAnswer(letter,task){
  const plan=exposition[letter];
@@ -115,8 +123,8 @@ function persuasiveAnswer(letter){
  const p=positions[letter];
  return [p.intro,p.why,p.value,p.counter,p.end].join("\n\n");
 }
-function literaryAnswer(letter){
- const p=storyPlots[letter],lead=p.lead,theme=p.problem;
+function literaryAnswer(letter,choice="C1"){
+ const p=choice==="C2"?alternatePlots[letter]:storyPlots[letter],lead=p.lead,theme=p.problem;
  const initial=p.opening.endsWith(".")?p.opening:p.opening+".";
  const opening=letter==="A"?"I saw "+p.opening.toLowerCase()+" as I hurried towards "+p.setting+".":initial;
  const sections=[
@@ -133,10 +141,10 @@ export const ENGLISH_A_EXTENDED_REFERENCES=Object.freeze(Object.fromEntries(
  englishAPaper2Sets.flatMap(set=>{
   const letter=set.id.replace("EA-P2-","");
   return set.tasks.filter(t=>t.id===set.id+"-M1-E"||
-   t.id===set.id+"-M2-C1"||t.id===set.id+"-M3-E")
+   (t.id===set.id+"-M2-C1"||t.id===set.id+"-M2-C2")||t.id===set.id+"-M3-E")
    .map(t=>[t.id,Object.freeze({
     response:t.kind==="exposition"?expositionAnswer(letter,t):
-     t.kind==="literary"?literaryAnswer(letter):persuasiveAnswer(letter),
+     t.kind==="literary"?literaryAnswer(letter,t.id.endsWith("-C2")?"C2":"C1"):persuasiveAnswer(letter),
     kind:t.kind,taskId:t.id
    })]);
  })
