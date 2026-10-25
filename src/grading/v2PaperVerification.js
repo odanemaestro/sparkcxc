@@ -21,7 +21,13 @@ const pick=(cases,cls)=>cases.find(c=>c.cls===cls&&c.passed&&c.resolved&&exact(c
 // support both formats without weakening any mark or resolution checks.
 const responseOf=(id,f)=>f.responses??
  (f.response&&typeof f.response==="object"&&!Array.isArray(f.response)&&
-  Object.hasOwn(f.response,id)?f.response:{[id]:f.response});
+  (Object.hasOwn(f.response,id)||
+   // A Social Studies essay is one student response scored against distinct
+   // content and organisation source criteria. The fixture evidence therefore
+   // carries the shared essay key, not either artificial component key.
+   (/::(?:content|organisation)$/.test(id)&&
+     Object.hasOwn(f.response,id.split("::")[0])))
+   ?f.response:{[id]:f.response});
 
 function scenario(name,{subjectId,paperId,criteria},plan,{mustPublish}){
  const responses={};const expected=new Map();const tolerant=new Map();
@@ -81,7 +87,44 @@ function scenario(name,{subjectId,paperId,criteria},plan,{mustPublish}){
  */
 export function verifyPaper(paper,casesById){
  const ids=paper.criteria.map(c=>c.id);
- const plan=fn=>new Map(ids.map((id,i)=>[id,fn(casesById.get(id)||[],i,id)]));
+ const plan=fn=>{
+  const cases=new Map(ids.map((id,i)=>[id,fn(casesById.get(id)||[],i,id)]));
+  if(paper.subjectId!=="social-studies")return cases;
+  // Two essay components inspect one submitted essay. Do not construct
+  // impossible full/incorrect or partial/full responses simultaneously.
+  // Linked (c)(ii) explanations likewise depend on the candidate's (c)(i).
+  const paired=new Set();
+  const groups=[];
+  for(const id of ids){
+   const essay=/^(.*)::(?:content|organisation)$/.exec(id);
+   if(essay){
+    if(!paired.has(essay[1])){
+     groups.push([essay[1]+"::content",essay[1]+"::organisation"]);
+     paired.add(essay[1]);
+    }
+    continue;
+   }
+   if(id.endsWith("::(c) (ii)")){
+    groups.push([id.replace("::(c) (ii)","::(c) (i)"),id]);
+   }
+  }
+  for(const pair of groups){
+   if(!pair.every(id=>cases.has(id)))continue;
+   const entries=pair.map(id=>cases.get(id));
+   if(entries.some(x=>!x)){for(const id of pair)cases.set(id,null);continue;}
+   const cls=entries[0].cls===entries[1].cls&&
+    entries[0].cls!=="partial"?entries[0].cls:
+     entries.some(x=>x.cls==="incorrect")?"incorrect":"full";
+   for(const id of pair){
+    const matching=(casesById.get(id)||[]).find(f=>
+      f.cls===cls&&f.passed&&
+      (cls!=="full"&&cls!=="incorrect"||f.resolved));
+    if(!matching)throw new Error("Missing coherent Social Studies "+cls+" witness: "+id);
+    cases.set(id,matching);
+   }
+  }
+  return cases;
+ };
  // A source graphical method fixture embeds the *same question's* plotted
  // graph to verify it alone. Whole-script cases instead choose one actual
  // graph answer and independently choose its dependent method answers.
