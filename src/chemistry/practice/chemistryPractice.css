@@ -682,7 +682,7 @@ body[data-theme="dark"] .chem-p1-session .chem-p1-exam-header span,
   opacity:1!important;
 }
 .chem-practice-shell .chem-library-entry-arrow {
-  color:var(--chem-accent);
+  color:var(--chem-ink,var(--spark-ink));
   font-size:22px;
   text-align:right;
 }

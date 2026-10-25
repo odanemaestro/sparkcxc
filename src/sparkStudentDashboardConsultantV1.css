@@ -101,8 +101,8 @@
   height:26px;
   display:grid;
   place-items:center;
-  border-radius:50%;
-  background:rgba(255,255,255,.14);
+  border-radius:0;
+  background:transparent;
 }
 .spark-consultant-forward{
   width:17px;

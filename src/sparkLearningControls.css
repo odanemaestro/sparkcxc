@@ -83,7 +83,7 @@ html body input[type="file"]:disabled,
 html body input[type="file"]:disabled::file-selector-button { cursor: not-allowed; opacity: .6; }
 
 /* Scope geometry to the shared navigation icons, never examination diagrams or carets. */
-svg.spark-nav-arrow {
+svg.spark-navigation-icon {
   display: inline-block;
   flex-shrink: 0;
   vertical-align: middle;

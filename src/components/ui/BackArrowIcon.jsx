@@ -3,7 +3,7 @@ import React from "react";
 export default function BackArrowIcon({ size = 18, className = "" }) {
   return (
     <svg
-      className={`spark-nav-arrow ${className}`.trim()}
+      className={`spark-navigation-icon ${className}`.trim()}
       width={size}
       height={size}
       viewBox="0 0 20 20"
