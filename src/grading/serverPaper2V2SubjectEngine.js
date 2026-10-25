@@ -224,6 +224,12 @@ function mathematics(rows,responses){
    throw new Error("Incomplete Mathematics marker");
   out.push(...selected.map((p,i)=>{
    const answer=responsesForQuestion[p.part.id];
+   // An actually unsubmitted Mathematics part has no evidence to award.
+   // Resolve it as zero *before* consulting advisory graph/text/ECF graders.
+   // A submitted wrong or incomplete answer is NOT blank and must still
+   // satisfy its exact source verification rules.
+   if(blank(answer))
+    return cap(p.row,0,"existing-mathematics-MAB-ECF",true);
    const final11=gradeMathFinal11({criterionId:p.row.id,source:sourceMarking(p.row),
     part:p.part,maxMarks:p.row.maxMarks,response:answer});
    if(final11!==null){
