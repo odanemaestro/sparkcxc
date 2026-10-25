@@ -151,7 +151,7 @@ export default function IntegratedSciencePaper1Exam({ supabase, userId, onBack }
           <div className="is-empty-bank">
             <h1>Paper 01 could not be loaded.</h1>
             <p>{loadError.message}</p>
-            <button type="button" className="is-exam-primary" onClick={onBack}>Back to practice</button>
+            <button type="button" className="is-exam-primary" onClick={onBack}><BackArrowIcon/> Back to practice</button>
           </div>
         </div>
       </main>

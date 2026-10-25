@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import FnhNavArrow from "./FnhNavArrow";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
@@ -123,8 +125,8 @@ export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1,histor
               <div className="fnh-review-explanation"><strong>Explanation</strong><p>{current.explanation}</p><small>Syllabus objective: {current.objectiveCode}</small></div>
             </section>}
             <div className="fnh-question-actions">
-              <button type="button" className="fnh-outline" disabled={index===0} onClick={()=>change({index:index-1})}>Previous</button>
-              <button type="button" className="fnh-outline" disabled={index===total-1} onClick={()=>change({index:index+1})}>Next</button>
+              <button type="button" className="fnh-outline" disabled={index===0} onClick={()=>change({index:index-1})}><BackArrowIcon/> Previous</button>
+              <button type="button" className="fnh-outline" disabled={index===total-1} onClick={()=>change({index:index+1})}>Next <ForwardArrowIcon/></button>
               {exam&&<button type="button" className="fnh-primary" onClick={()=>setModal("submit")}>Submit Paper 1</button>}
               {review&&<button type="button" className="fnh-primary" onClick={()=>setModal("restart")}>Start new attempt</button>}
             </div>

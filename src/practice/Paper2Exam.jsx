@@ -1,3 +1,4 @@
+import ForwardArrowIcon from "../components/ui/ForwardArrowIcon";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MathText from "./MathText";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
@@ -665,17 +666,17 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
             })}
           </div>
           <div className="paper2-review-nav">
-            <button type="button" disabled={reviewIndex === 0} onClick={() => setReviewIndex(index => Math.max(0, index - 1))}>Previous</button>
+            <button type="button" disabled={reviewIndex === 0} onClick={() => setReviewIndex(index => Math.max(0, index - 1))}><BackArrowIcon/> Previous</button>
             <div className="paper-review-number-group">{exam.questions.map((question, index) => {
               const questionGrade = grade.perQuestion[question.question_id];
               return <button type="button" key={question.question_id} title={`${questionGrade.score}/${question.marks} marks`} className={`${index === reviewIndex ? "active " : ""}${questionGrade.score === question.marks ? "marked" : ""}`} onClick={() => setReviewIndex(index)}>{question.question_number}</button>;
             })}</div>
-            <button type="button" disabled={reviewIndex === 9} onClick={() => setReviewIndex(index => Math.min(9, index + 1))}>Next</button>
+            <button type="button" disabled={reviewIndex === 9} onClick={() => setReviewIndex(index => Math.min(9, index + 1))}>Next <ForwardArrowIcon/></button>
           </div>
         </section>
 
         <div className="paper-result-actions">
-          <button type="button" className="practice-secondary" onClick={onExit}>Back to Practice</button>
+          <button type="button" className="practice-secondary" onClick={onExit}><BackArrowIcon/> Back to Practice</button>
           <button type="button" className="practice-primary" onClick={startAnother}>Start another Paper 2</button>
         </div>
       </main>
@@ -811,9 +812,9 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
           <div className="paper2-auto-save"><span>✓</span> Answers save automatically on this device.</div>
 
           <div className="paper-question-actions paper2-question-actions">
-            <button type="button" disabled={currentIndex === 0} onClick={() => setCurrentIndex(index => Math.max(0, index - 1))}>Previous</button>
+            <button type="button" disabled={currentIndex === 0} onClick={() => setCurrentIndex(index => Math.max(0, index - 1))}><BackArrowIcon/> Previous</button>
             <div className="paper-answer-state">{completeIds.length} of {PAPER2_QUESTION_COUNT} complete · {partsAnswered}/{partsTotal} answer fields filled</div>
-            <button type="button" className="paper-next" disabled={currentIndex === PAPER2_QUESTION_COUNT - 1} onClick={() => setCurrentIndex(index => Math.min(PAPER2_QUESTION_COUNT - 1, index + 1))}>Next question</button>
+            <button type="button" className="paper-next" disabled={currentIndex === PAPER2_QUESTION_COUNT - 1} onClick={() => setCurrentIndex(index => Math.min(PAPER2_QUESTION_COUNT - 1, index + 1))}>Next question <ForwardArrowIcon/></button>
           </div>
         </section>
 

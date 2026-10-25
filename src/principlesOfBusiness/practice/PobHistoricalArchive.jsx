@@ -257,7 +257,7 @@ export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,
    {record.id==="POB-P2-2024-JAN"&&<p>Only a two-page typed transcription was supplied for this sitting; it is not the full original printed booklet.</p>}
   </div>
   {record.paper===1?<HistoricalPaper1 key={record.id} record={record} userId={userId} supabase={supabase}/>:<HistoricalPaper2 key={record.id} record={record} onOpenJanuary2026={onOpenJanuary2026} supabase={supabase} userId={userId}/>}
-  <button type="button" className="secondary pob-archive-return" onClick={()=>setSelected(null)}>Back to all 46 historical papers</button>
+  <button type="button" className="secondary pob-archive-return" onClick={()=>setSelected(null)}><BackArrowIcon/> Back to all 46 historical papers</button>
   </>:<>
     <div className="pob-archive-toolbar"><label htmlFor="pob-archive-search">Find a historical sitting
       <input id="pob-archive-search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search by year or paper…"/>

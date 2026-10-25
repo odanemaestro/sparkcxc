@@ -56,7 +56,7 @@ describe("SPARK V5.3.9K7.5.5 Tutor verification before application", () => {
   });
 
   test("Tutor signup CTA accurately says verification comes first", () => {
-    expect(app).toContain("Verify email to continue →");
+    expect(app).toContain("Verify email to continue <ForwardArrowIcon");
   });
 
   test("handoff supports pre_application and legacy submit_application stages", () => {

@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import bank from "./itPaper1Data.json";
@@ -227,7 +229,7 @@ export default function InformationTechnologyPaper1Exam({ onExit, startFresh = f
           </section>
 
           <div className="it-practice-actions it-instruction-actions">
-            <button className="it-practice-secondary" type="button" onClick={onExit}>Back to IT Practice</button>
+            <button className="it-practice-secondary" type="button" onClick={onExit}><BackArrowIcon/> Back to IT Practice</button>
             <button className="it-practice-primary" type="button" onClick={start}>Start Paper 1</button>
           </div>
         </section>
@@ -245,7 +247,7 @@ export default function InformationTechnologyPaper1Exam({ onExit, startFresh = f
           <div className="it-practice-eyebrow">{paper.title} complete</div>
           <h1>{score}/60</h1>
           <p>{Math.round((score / 60) * 100)}%</p>
-          <button className="it-practice-primary" type="button" onClick={onExit}>Back to IT Practice</button>
+          <button className="it-practice-primary" type="button" onClick={onExit}><BackArrowIcon/> Back to IT Practice</button>
         </section>
         <section className="it-review-list">
           {questions.map((item, questionIndex) => {
@@ -285,7 +287,7 @@ export default function InformationTechnologyPaper1Exam({ onExit, startFresh = f
           <span>Question {index + 1} of 60 · {paper.title}</span>
         </div>
         <div className="it-exam-top-actions">
-          <button type="button" className="it-exit-paper" onClick={() => setShowExit(true)}>Exit paper</button>
+          <button type="button" className="it-exit-paper" onClick={() => setShowExit(true)}><BackArrowIcon/> Exit paper</button>
           <div className={remaining < 300 ? "it-timer urgent" : "it-timer"}>{formatTime(remaining)}</div>
         </div>
       </header>
@@ -347,9 +349,9 @@ export default function InformationTechnologyPaper1Exam({ onExit, startFresh = f
           </div>
 
           <div className="it-exam-actions">
-            <button className="it-practice-secondary" type="button" disabled={index === 0} onClick={() => go(index - 1)}>Previous</button>
+            <button className="it-practice-secondary" type="button" disabled={index === 0} onClick={() => go(index - 1)}><BackArrowIcon/> Previous</button>
             {index < 59
-              ? <button className="it-practice-primary" type="button" onClick={() => go(index + 1)}>Next</button>
+              ? <button className="it-practice-primary" type="button" onClick={() => go(index + 1)}>Next <ForwardArrowIcon/></button>
               : <button className="it-practice-primary" type="button" onClick={() => submit(false)}>Submit paper</button>}
           </div>
           {index < 59 && <button type="button" className="it-submit-link" onClick={() => submit(false)}>Submit paper now</button>}

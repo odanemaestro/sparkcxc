@@ -93,6 +93,12 @@ svg.spark-nav-arrow {
   stroke-linejoin: round;
   pointer-events: none;
 }
+.it-exam-layout > *, .it-question-nav, .it-question-grid, .it-p2-nav {
+  min-width: 0;
+  max-width: 100%;
+}
+.it-exam { overflow-x: clip; }
+.it-scenario { min-width: 0; max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; }
 
 :is(.practice-hub, .paper-start-shell, .paper-exam-shell, .paper-results-shell,
   .phy-p1-root, .phy-p2-root, .it-practice-hub, .it-exam, .is-practice-shell,

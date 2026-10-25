@@ -917,7 +917,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
             We haven't written CXC-style practice questions for "{topicName}" yet. Review the
             lesson content above in the meantime, and check back soon.
           </p>
-          <Btn onClick={onBack}>Back to lesson</Btn>
+          <Btn onClick={onBack}><BackArrowIcon/> Back to lesson</Btn>
         </Card>
       </div>
     );
@@ -966,7 +966,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
              "Read the lesson again, then try the questions again."}
           </div>
           <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap"}}>
-            <Btn v="outline" onClick={onBack}>Back to lesson</Btn>
+            <Btn v="outline" onClick={onBack}><BackArrowIcon/> Back to lesson</Btn>
             <Btn onClick={() => { setAnswers({}); setRevealed({}); setSubmitted(false); setScore(0); }}>
               Try again
             </Btn>
@@ -1580,7 +1580,7 @@ function SubjectEnrollmentRequiredView({ subjectName = "", onManageSubjects, onB
         </p>
         <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
           <Btn onClick={onManageSubjects}>Manage my subjects</Btn>
-          {onBack && <Btn v="outline" onClick={onBack}>Back</Btn>}
+          {onBack && <Btn v="outline" onClick={onBack}><BackArrowIcon/> Back</Btn>}
         </div>
       </Card>
     </main>
@@ -2389,7 +2389,7 @@ const savedEmail = localStorage.getItem("spark_verification_email");
             {err && <div className="spark-form-error spark-form-error--block" role="alert">{err}</div>}
             <Btn onClick={resendVerification} disabled={loading} full>{loading ? "Sending…" : "Resend verification email"}</Btn>
             <button onClick={() => { setVerificationSent(false); setMode("login"); setErr(null); setMessage(null); }}
-              style={{width:"100%",marginTop:10,padding:10,border:"none",background:"transparent",color:T.teal,cursor:"pointer",fontFamily:FB,fontWeight:600}}>
+              style={{width:"100%",marginTop:10,padding:10,border:"none",background:"transparent",color:T.teal,cursor:"pointer",fontFamily:FB,fontWeight:600}}><BackArrowIcon/>{" "}
               Back to log in
             </button>
           </>
@@ -2428,7 +2428,7 @@ const savedEmail = localStorage.getItem("spark_verification_email");
               {loading ? "Please wait…" : resetStage === "email" ? "Send verification code" : resetStage === "code" ? "Verify code" : "Update password"}
             </Btn>
             {resetStage === "code" && <button onClick={sendResetCode} disabled={loading} style={{width:"100%",marginTop:10,padding:9,border:"none",background:"transparent",color:T.teal,cursor:"pointer",fontFamily:FB,fontSize:13}}>Resend code</button>}
-            <button onClick={() => { switchMode("login"); }} style={{width:"100%",marginTop:8,padding:9,border:"none",background:"transparent",color:T.textMuted,cursor:"pointer",fontFamily:FB,fontSize:13}}>Back to log in</button>
+            <button onClick={() => { switchMode("login"); }} style={{width:"100%",marginTop:8,padding:9,border:"none",background:"transparent",color:T.textMuted,cursor:"pointer",fontFamily:FB,fontSize:13}}><BackArrowIcon/> Back to log in</button>
           </>
         ) : (
           <>
@@ -6858,7 +6858,7 @@ function GooglePendingAccountSetupView({ user, pending, onComplete, onSignOut })
               {saving ? "Creating account…" : `Continue as ${selectedRole.charAt(0).toUpperCase()+selectedRole.slice(1)}`}
             </Btn>
             <button type="button" disabled={saving} onClick={() => { setChoosingRole(false); setError(null); }}
-              style={{width:"100%",marginTop:12,border:"none",background:"transparent",color:T.teal,fontFamily:FB,fontSize:13,fontWeight:600,cursor:"pointer"}}>
+              style={{width:"100%",marginTop:12,border:"none",background:"transparent",color:T.teal,fontFamily:FB,fontSize:13,fontWeight:600,cursor:"pointer"}}><BackArrowIcon/>{" "}
               Back
             </button>
           </>
@@ -9112,7 +9112,7 @@ const validateApplication = () => validateStep1() || validateStep2() || validate
               Thanks for applying, {form.name.split(" ")[0]}. Our team will review your application and get back to you within 3 business days at the email address you provided.
             </p>
             <div className="tutor-apply-success-actions" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Btn onClick={() => setView("home")}>Back to home</Btn>
+              <Btn onClick={() => setView("home")}><BackArrowIcon/> Back to home</Btn>
               <Btn v="outline" onClick={() => setView("tutors")}>Browse other tutors</Btn>
             </div>
           </div>

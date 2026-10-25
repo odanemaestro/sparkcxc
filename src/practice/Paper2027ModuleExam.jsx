@@ -1,3 +1,4 @@
+import ForwardArrowIcon from "../components/ui/ForwardArrowIcon";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MathText from "./MathText";
@@ -607,14 +608,14 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
             })}
           </div>
           <div className="paper2-review-nav paper2027-review-nav">
-            <button type="button" disabled={reviewIndex === 0} onClick={() => setReviewIndex(index => Math.max(0, index - 1))}>Previous</button>
+            <button type="button" disabled={reviewIndex === 0} onClick={() => setReviewIndex(index => Math.max(0, index - 1))}><BackArrowIcon/> Previous</button>
             <div className="paper-review-number-group">{paper.questions.map((question, index) => <button type="button" key={question.question_id} className={`${index === reviewIndex ? "active " : ""}${grade.perQuestion[question.question_id].score === question.marks ? "marked" : ""}`} onClick={() => setReviewIndex(index)}>{question.question_number}</button>)}</div>
-            <button type="button" disabled={reviewIndex === questionCount - 1} onClick={() => setReviewIndex(index => Math.min(questionCount - 1, index + 1))}>Next</button>
+            <button type="button" disabled={reviewIndex === questionCount - 1} onClick={() => setReviewIndex(index => Math.min(questionCount - 1, index + 1))}>Next <ForwardArrowIcon/></button>
           </div>
         </section>
 
         <div className="paper-result-actions">
-          <button type="button" className="practice-secondary" onClick={onExit}>Back to 2027 Practice</button>
+          <button type="button" className="practice-secondary" onClick={onExit}><BackArrowIcon/> Back to 2027 Practice</button>
         </div>
       </main>
     );
@@ -726,9 +727,9 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
 
           <div className="paper2-auto-save"><span>✓</span> Answers save automatically on this device.</div>
           <div className="paper-question-actions paper2027-question-actions">
-            <button type="button" className="practice-secondary" disabled={currentIndex === 0} onClick={() => goToQuestion(currentIndex - 1)}>Previous</button>
+            <button type="button" className="practice-secondary" disabled={currentIndex === 0} onClick={() => goToQuestion(currentIndex - 1)}><BackArrowIcon/> Previous</button>
             <span className="paper-answer-state">{isQuestionComplete(current, answers) ? "Question complete" : "Complete all parts when you can"}</span>
-            <button type="button" className="practice-primary" disabled={currentIndex === questionCount - 1} onClick={() => goToQuestion(currentIndex + 1)}>Next question</button>
+            <button type="button" className="practice-primary" disabled={currentIndex === questionCount - 1} onClick={() => goToQuestion(currentIndex + 1)}>Next question <ForwardArrowIcon/></button>
           </div>
         </section>
 

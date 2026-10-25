@@ -1,3 +1,4 @@
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
@@ -165,8 +166,8 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
           </section>;
         })}</div>
         {review&&workedByQuestion[String(question.number)]&&<details className="fnh-p2-worked-reference"><summary>Full worked answers and accepted examples for Question {question.number}</summary><p className="fnh-p2-worked-preformatted">{workedByQuestion[String(question.number)]}</p><small>Supplementary worked examples provided for practice. Use the existing mark-by-mark rubric to award credit. Other valid answers may earn marks; this reference does not automatically grade writing.</small></details>}
-        <div className="fnh-question-actions"><button type="button" className="fnh-outline" disabled={visible[0]?.number===question.number} onClick={()=>nextQuestion(-1)}>Previous</button>
-          <button type="button" className="fnh-outline" disabled={visible[visible.length-1]?.number===question.number} onClick={()=>nextQuestion(1)}>Next</button>
+        <div className="fnh-question-actions"><button type="button" className="fnh-outline" disabled={visible[0]?.number===question.number} onClick={()=>nextQuestion(-1)}><BackArrowIcon/> Previous</button>
+          <button type="button" className="fnh-outline" disabled={visible[visible.length-1]?.number===question.number} onClick={()=>nextQuestion(1)}>Next <ForwardArrowIcon/></button>
           {exam&&<button type="button" className="fnh-primary" onClick={()=>setModal((attempt.partB||[]).length===2?"submit":"select")}>Submit Paper 2</button>}
           {review&&<button type="button" className="fnh-primary" onClick={()=>setModal("restart")}>Start another attempt</button>}
         </div>
