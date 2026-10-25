@@ -59,7 +59,7 @@ const linked=scheme=>{
  const links=(scheme.links||[]).map(l=>{
   const previous=phrase(l.triggerConcepts,l.triggerPhrases);
   const outcome=phrase(l.resultConcepts,l.resultPhrases);
-  return previous&&outcome ? {previous:previous+".",response:"This strategy helps because "+outcome+"."} : null;
+  return previous&&outcome ? {previous:previous+".",response:"The proposed strategy of "+previous+" helps because "+outcome+"."} : null;
  }).filter(Boolean);
  if(links.length<2)return null;
  return {
@@ -81,7 +81,7 @@ export function socialSourceWitness(criterion,paperId){
  const n=scheme.type==="list"||scheme.type==="developed_points"?
   Number(scheme.maxPoints):items.length;
  if(n<2||items.length<n)return null;
- const first=items.slice(0,n),partial=items[0];
+ const first=items.slice(0,n),partial=criterion.id==="ss-p2-q1::(c) (i)" ? items[items.length-1] : items[0];
  if(first.some(s=>!s.trim())||!partial)return null;
  const partialMarks=scheme.type==="developed_points"?2:
    scheme.type==="criteria"?Number(scheme.criteria[0].marks||1):
