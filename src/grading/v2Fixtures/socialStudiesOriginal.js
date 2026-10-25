@@ -70,9 +70,9 @@ const linked=scheme=>{
  };
 };
 
-export function socialSourceWitness(criterion){
+export function socialSourceWitness(criterion,paperId){
  const scheme=criterion?.sourceMarking?.marking;
- if(!scheme || !["ss-p2-original-A","ss-p2-original-B","ss-p2-original-C"].some(id=>id===criterion.paperId))
+ if(!scheme || !["ss-p2-original-A","ss-p2-original-B","ss-p2-original-C"].some(id=>id===paperId))
   return null;
  if(scheme.maxMarks!==criterion.maxMarks||scheme.maxMarks<=1)return null;
  if(scheme.type==="linked_development")return linked(scheme);
@@ -96,8 +96,8 @@ export function socialSourceWitness(criterion){
  };
 }
 
-export function knownSocialSourceMarks({criterion,response,previousResponse=""}){
- const witness=socialSourceWitness(criterion);
+export function knownSocialSourceMarks({paperId,criterion,response,previousResponse=""}){
+ const witness=socialSourceWitness(criterion,paperId);
  if(!witness||typeof response!=="string")return null;
  const candidate=normal(response);
  if(!candidate)return 0;
@@ -110,4 +110,45 @@ export function knownSocialSourceMarks({criterion,response,previousResponse=""})
  if(candidate===normal(witness.partial.response)&&expectedBefore(witness.partial))
   return witness.marksPartial;
  return null;
+}
+
+const F=(cls,response,expect,note,options={})=>({cls,response,expect,note,...options});
+export function socialOriginalSourceFixtures({paperId,criterion}){
+ if(!["ss-p2-original-A","ss-p2-original-B","ss-p2-original-C"].includes(paperId)||
+    criterion.sourceFormat!=="social-studies-paper2"||
+    !criterion.id.startsWith("ss-p2-")||
+    !criterion.sourceMarking?.marking)
+  return {blocked:"not-a-source-structured-Social-Studies-original"};
+ const witness=socialSourceWitness(criterion,paperId);
+ if(!witness)return {blocked:"no-distinct-source-approved-witness"};
+ const linked=criterion.sourceMarking.marking.type==="linked_development";
+ const parent=criterion.id.replace("::(c) (ii)","::(c) (i)");
+ if(linked&&parent===criterion.id)return {blocked:"linked-criterion-has-no-source-parent"};
+ const wrap=w=>linked?{[criterion.id]:w.response,[parent]:w.previous}:{[criterion.id]:w.response};
+ const complete=wrap(witness.full),partial=wrap(witness.partial);
+ const withText=(cls,response,expected,note,opts={})=>linked?
+   F(cls,null,expected,note,{responses:typeof response==="string"?{[criterion.id]:response}:response,...opts}):
+   F(cls,typeof response==="string"?response:response[criterion.id],expected,note,opts);
+ const fullText=witness.full.response;
+ return {kind:"structured",ruleId:"social-original-48-source-20261024",
+  sourceAnswer:complete,alternatives:[wrap({...witness.full,response:fullText.toUpperCase()})],
+  fixtures:[
+   withText("full",complete,criterion.maxMarks,"All distinct source-described points",{mustResolve:true}),
+   withText("equivalent",wrap({...witness.full,response:fullText.toUpperCase()}),criterion.maxMarks,
+     "Equivalent case for the same complete source statements",{mustResolve:true}),
+   withText("partial",partial,witness.marksPartial,"First authored source point only",{mustResolve:true}),
+   withText("incorrect","I do not know",0,"Unambiguous absence of a substantive answer",{mustResolve:true}),
+   withText("blank","",0,"No candidate answer",{mustResolve:true}),
+   withText("irrelevant","Clouds are moving over the mountain.",0,"Off-topic content must abstain",{mustAbstain:true}),
+   withText("ceiling",linked?{...complete,[criterion.id]:fullText+"\n"+fullText}:fullText+"\n"+fullText,
+     {min:0,max:criterion.maxMarks},"Duplicate points cannot add credit",{mustAbstain:true}),
+   withText("competing",linked?{...complete,[criterion.id]:fullText+" I do not believe this."}:fullText+" I do not believe this.",
+     {min:0,max:criterion.maxMarks},"Conflicting conclusion must abstain",{mustAbstain:true}),
+   withText("contradiction",linked?{...complete,[criterion.id]:"It is false that "+fullText}:"It is false that "+fullText,
+     {min:0,max:criterion.maxMarks},"Explicitly negated correct statement must abstain",{mustAbstain:true}),
+   withText("keyword-list","family society community government population resources development",0,
+     "Keywords alone never prove the part",{mustAbstain:true}),
+   ...(linked?[withText("follow-through",wrap({...witness.full,previous:""}),0,
+     "Full explanation without source-linked prior strategy stays provisional",{mustAbstain:true})]:[])
+  ]};
 }
