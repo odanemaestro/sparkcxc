@@ -32,7 +32,7 @@ jobs:
           const blocked=summary.filter(r=>r.outcome!=="verified");
           console.log("ENGLISH_SUMMARY_COUNTS="+JSON.stringify({
            total:records.length,summaries:summary.length,verified:verified.length,
-           otherWritingStillBlocked:essays.filter(r=>r.outcome!=="verified").length,
+           extendedWritingVerified:essays.filter(r=>r.outcome==="verified").length,
            failures:blocked.map(r=>({id:r.paperId+"/"+r.criterionId,
              outcome:r.outcome,blocker:r.blocker,uncommitted:r.uncommittedClasses,
              failed:r.failures,
@@ -41,7 +41,7 @@ jobs:
              }))}))
           }));
           if(records.length!==72||summary.length!==36||essays.length!==36||
-             verified.length!==36||essays.some(r=>r.outcome==="verified")||
+             verified.length!==36||essays.some(r=>r.outcome!=="verified")||
              verified.some(r=>r.provenance?.workingTreeDirty!==false||
               !r.evidenceSha256||!r.sourceSha256||!r.criterionSha256||
               r.cases?.some(c=>!c.passed)))
