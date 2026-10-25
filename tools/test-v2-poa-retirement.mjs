@@ -9,6 +9,23 @@ const db=await openRegistry();
 try{
  const single=async sql=>(await db.query(sql)).rows[0];
 
+ // The source-only registry intentionally retains draft statuses; evidence
+ // approvals happen separately against Supabase production. Mirror *only*
+ // the observed, source-hash-verified successor state for this test, and
+ // execute the production retirement migration explicitly.
+ const before=await single(`select active,verification_status,source_sha256
+  from spark_grading_private.rubrics_v2
+  where paper_id='poa-specimen-2-2017--q-1-2-3-4-5'`);
+ assert.equal(before.source_sha256,
+  "344d4d84bb5188e111e58866c690d6dc0a2af02e488746ea2c2db336150950c9");
+ if(!before.active||before.verification_status!=="verified")
+  await db.exec(`update spark_grading_private.rubrics_v2
+   set active=true,verification_status='verified'
+   where subject_id='principles-of-accounts'
+   and paper_id='poa-specimen-2-2017--q-1-2-3-4-5'
+   and rubric_version='poa-source-methods-v1'`);
+ await db.exec(fs.readFileSync(migration,"utf8"));
+
  const counts=await single(`select
   (select sum(total_criteria)::int from spark_grading_private.rubric_review_progress_v2) raw,
   (select sum(total_criteria)::int from spark_grading_private.rubric_operational_review_progress_v2) operational,
