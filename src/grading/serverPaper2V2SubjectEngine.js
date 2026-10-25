@@ -46,6 +46,7 @@ import {gradeChemistryPaper2Item,chemistryPointIsNumeric,chemistryPointMarks,che
 import {CHEMISTRY_PAPER2_PRACTICE_SETS} from "../chemistry/data/chemistryPaper2Bank";
 import {readScienceGraph,graphPoints} from "../integratedScience/practice/scienceGraphModel";
 import {gradeEnglishAPaper2Response} from "../englishA/practice/englishAPaper2Grader";
+import {knownEnglishSummaryMark} from "./v2Fixtures/englishASummary";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
 import {gradeFnhWrittenPart,fnhDistinctPairs} from "../fnh/practice/fnhPaper2Marking";
 import {gradeIntegratedSciencePaper2Item,integratedSciencePoints,integratedScienceLineItem,
@@ -63,7 +64,7 @@ import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Orig
 // joins this set only once its resolution policy is covered by the
 // criterion verification matrix (src/grading/v2CriterionVerifier.js).
 const resolutionPolicySubjects=new Set(["information-technology","mathematics","chemistry","food-nutrition-and-health",
- "integrated-science","physics","principles-of-accounts","principles-of-business","social-studies"]);
+ "integrated-science","physics","principles-of-accounts","principles-of-business","social-studies","english-a"]);
 const subjectIds=new Set([
  "mathematics","physics","information-technology","chemistry","english-a",
  "food-nutrition-and-health","integrated-science","social-studies","principles-of-business","principles-of-accounts"
@@ -1145,12 +1146,11 @@ function integratedScience(rows,responses){
   return cap(row,examiner.score,"existing-integrated-science-evidence",resolved);
  });
 }
-function english(rows,responses){
- const known=new Map();
- for(const pack of englishAPaper2Sets){
-  const built=buildEnglishAPaper2(pack.id);
-  for(const task of built.tasks||[])if(!known.has(task.id))known.set(task.id,task);
- }
+function english(rows,responses,paperId){
+ const setId=paperId.replace(/-C[12]$/,"");
+ const taskSet=englishAPaper2Sets.find(pack=>pack.id===setId);
+ if(!taskSet)throw new Error("Unknown registered English A source paper "+paperId);
+ const known=new Map(buildEnglishAPaper2(taskSet.id).tasks.map(task=>[task.id,task]));
  return rows.map(row=>{
   const task=known.get(row.id);
   if(!task||task.rubric?.marks!==row.maxMarks)
@@ -1158,12 +1158,18 @@ function english(rows,responses){
   const answer=read(responses,row.id);
   const analysis=read(responses,row.id+":analysis");
   const result=gradeEnglishAPaper2Response(task,text(answer),text(analysis));
-  // A short, off-topic, or low-confidence response is not independently
-  // verified evidence. Keep uncertain content unresolved, not a final zero.
+  // An automated English writing estimate is NOT an independently verified
+  // examiner grade. Only an exact source-authored calibration response for
+  // an actual summary part can be safely authoritative at this stage.
   const unsupported=(result.diagnostics?.wordCount??0)<20 ||
     result.confidence==="low";
-  return cap(row,unsupported?0:result.score,"existing-english-a-analytic-rubric",
-    blank(answer)&&blank(analysis));
+  const provisional=unsupported?0:result.score;
+  const certified=task.kind==="summary"?
+    knownEnglishSummaryMark({paperId,criterion:row,
+      response:text(answer),analysisResponse:text(analysis)}):null;
+  return cap(row,provisional,"existing-english-a-analytic-rubric",
+    (blank(answer)&&blank(analysis))||
+    (certified!==null&&certified===provisional));
  });
 }
 function fnh(rows,responses){
@@ -1284,7 +1290,7 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
   case "physics":rows=physics(criteria,responses,paperId);break;
   case "information-technology":rows=it(criteria,responses,paperId);break;
   case "chemistry":rows=chemistry(criteria,responses,paperId);break;
-  case "english-a":rows=english(criteria,responses);break;
+  case "english-a":rows=english(criteria,responses,paperId);break;
   case "food-nutrition-and-health":rows=fnh(criteria,responses);break;
   case "integrated-science":rows=integratedScience(criteria,responses);break;
   case "principles-of-business":rows=pob(criteria,responses,paperId);break;

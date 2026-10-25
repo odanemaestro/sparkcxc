@@ -1,0 +1,83 @@
+name: V2 English A 36 source-summary verification
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/grading/**"
+      - "src/englishA/**"
+      - "tools/v2-verify-all.mjs"
+      - ".github/workflows/v2-english-summary-verify.yml"
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Verify registered English A source criteria with the actual V2 examiner
+        run: node tools/v2-verify-all.mjs --subject english-a --out artifacts/v2-english-summary
+      - name: Require exactly 36 verified summary criteria
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const records=JSON.parse(fs.readFileSync("artifacts/v2-english-summary/evidence.json","utf8"));
+          const summary=records.filter(r=>r.criterionId.endsWith("-S"));
+          const essays=records.filter(r=>!r.criterionId.endsWith("-S"));
+          const verified=summary.filter(r=>r.outcome==="verified");
+          const blocked=summary.filter(r=>r.outcome!=="verified");
+          console.log("ENGLISH_SUMMARY_COUNTS="+JSON.stringify({
+           total:records.length,summaries:summary.length,verified:verified.length,
+           otherWritingStillBlocked:essays.filter(r=>r.outcome!=="verified").length,
+           failures:blocked.map(r=>({id:r.paperId+"/"+r.criterionId,
+             outcome:r.outcome,blocker:r.blocker,uncommitted:r.uncommittedClasses,
+             failed:r.failures,
+             cases:r.cases?.filter(c=>!c.passed).map(c=>({
+              cls:c.cls,expect:c.expect,marks:c.marks,resolved:c.resolved
+             }))}))
+          }));
+          if(records.length!==72||summary.length!==36||essays.length!==36||
+             verified.length!==36||essays.some(r=>r.outcome==="verified")||
+             verified.some(r=>r.provenance?.workingTreeDirty!==false||
+              !r.evidenceSha256||!r.sourceSha256||!r.criterionSha256||
+              r.cases?.some(c=>!c.passed)))
+            throw Error("English A summary V2 calibration is not completely verified");
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: english-a-source-summary-evidence
+          path: artifacts/v2-english-summary/
+          if-no-files-found: error
+  export:
+    needs: verify
+    if: always()
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        paperGroup: [A, B, C, D, E, F]
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: english-a-source-summary-evidence
+          path: artifacts/v2-english-summary/
+      - name: Export six validated source-hashed summary criteria
+        env:
+          PAPER_GROUP: ${{ matrix.paperGroup }}
+        run: |
+          node <<'NODE'
+          const fs=require("fs");
+          const records=JSON.parse(fs.readFileSync("artifacts/v2-english-summary/evidence.json","utf8"));
+          const group=records.filter(r=>r.paperId.startsWith("EA-P2-"+process.env.PAPER_GROUP+"-")&&
+            r.criterionId.endsWith("-S"));
+          if(group.length!==6||group.some(r=>r.outcome!=="verified"||
+            r.provenance?.workingTreeDirty!==false||!r.sourceSha256||
+            !r.criterionSha256||!r.evidenceSha256||
+            r.cases?.some(c=>!c.passed)))throw Error("Do not export unverified English A criteria");
+          for(const record of group)console.log("ENGLISH_REGISTER_ITEM="+JSON.stringify(record));
+          NODE
