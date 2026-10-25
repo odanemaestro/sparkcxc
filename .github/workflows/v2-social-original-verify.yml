@@ -1,0 +1,57 @@
+name: V2 Social Studies 48-part source verification
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/grading/**"
+      - "src/socialStudies/**"
+      - "tools/v2-verify-all.mjs"
+      - ".github/workflows/v2-social-original-verify.yml"
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Verify all Social Studies source criteria against real V2 server grader
+        run: node tools/v2-verify-all.mjs --subject social-studies --out artifacts/v2-social-original
+      - name: Report every structured criterion and enforce all 48
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const records=JSON.parse(fs.readFileSync("artifacts/v2-social-original/evidence.json","utf8"));
+          const structured=records.filter(r=>!r.criterionId.endsWith("::content")&&!r.criterionId.endsWith("::organisation"));
+          const verified=structured.filter(r=>r.outcome==="verified");
+          for(const record of structured){
+           if(record.outcome==="verified"){
+            console.log("SOCIAL_V2_REGISTERABLE_ITEM="+JSON.stringify(record));
+           } else {
+            console.log("SOCIAL_V2_BLOCKED="+JSON.stringify({
+             criterionId:record.criterionId,outcome:record.outcome,blocker:record.blocker,
+             missingClasses:record.missingClasses,uncommittedClasses:record.uncommittedClasses,
+             failures:record.failures,
+             failingCases:record.cases?.filter(c=>!c.passed).map(c=>({
+              cls:c.cls,marks:c.marks,expect:c.expect,resolved:c.resolved,failures:c.failures
+             }))
+            }));
+           }
+          }
+          console.log("SOCIAL_V2_RESULT_COUNT="+verified.length+"/"+structured.length);
+          if(structured.length!==48||verified.length!==48||
+             verified.some(r=>r.provenance?.workingTreeDirty!==false||
+              !r.sourceSha256||!r.criterionSha256||!r.evidenceSha256||
+              r.cases?.some(x=>!x.passed)))
+           throw Error("Unverified source-bound Social Studies criteria remain");
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: social-v2-source-48-evidence
+          path: artifacts/v2-social-original/
+          if-no-files-found: error
