@@ -33,6 +33,7 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
     ?gradePobP2VisualTask(paper.id,id,raw):null;
    const sourceCalibration=valid&&!visualTask&&response
     ?calibratedPobOriginalResponse(paper.id,id,response,criteria):null;
+   const legacyGuide=paper.id!=="pob-original-paper2-01"&&valid&&!visualTask&&response&&normalize(response)===normalize(part.modelAnswer);
    const arithmetic=!visualTask&&valid&&response?gradePobHistoricalArithmetic(paper.id,id,response):null;
    const developedTask=getPobDevelopedTask(paper.id,id);
    const developed=valid&&developedTask&&criteria.length===developedTask.maxDistinct&&
@@ -47,11 +48,12 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
      criteria.every(c=>c.marks===1)&&maxMarks===2&&response
      ?gradePobFoundationalPart(paper.id,id,response):null;
    const blank=visual?visual.blank:!raw||typeof raw==="string"&&!response;
-   const evidenced=!visualTask&&!sourceCalibration&&!arithmetic&&!developed&&!demandPrice&&!foundational&&response&&valid
+   const evidenced=!visualTask&&!sourceCalibration&&!legacyGuide&&!arithmetic&&!developed&&!demandPrice&&!foundational&&response&&valid
     ?matchPobWrittenEvidence(response,part.modelAnswer,criteria):null;
    let assessed,confirmed,status;
    if(blank){assessed=criteria.map(()=>0);status="unanswered";}
    else if(visual){assessed=criteria.map((_,i)=>visual.criteria[i]?.marks??null);status="diagram-verified";}
+   else if(legacyGuide){assessed=criteria.map(c=>c.marks);status="verified-model-match";}
    else if(sourceCalibration){
     assessed=sourceCalibration.credit;
     status=sourceCalibration.kind==="full"?"verified-complete-source-answer":
@@ -87,7 +89,7 @@ export function reviewPobHistoricalPaper2(answers={},paper,selectedQuestions=[])
    // Exact arithmetic and diagram checkers explicitly resolve every
    // criterion, including known incorrect results. Only open prose and
    // structurally invalid rubrics keep undetermined marks pending.
-   const determined=Boolean(valid&&(visual||arithmetic||sourceCalibration||
+   const determined=Boolean(valid&&(visual||arithmetic||sourceCalibration||legacyGuide||
      developed?.assessedMarks!==null&&Boolean(developed)||
      demandPrice?.assessedMarks!==null&&Boolean(demandPrice)||
      foundational?.assessedMarks!==null&&Boolean(foundational)));
