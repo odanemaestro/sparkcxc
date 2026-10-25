@@ -15,7 +15,13 @@ const tasks=new Map(englishAPaper2Sets.flatMap(set=>set.tasks.map(t=>[t.id,t])))
 const canonical=s=>String(s??"").replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();
 const admission=new Set(["i do not know","i have no answer","no idea","i am not sure"]);
 const score=(t,answer)=>gradeEnglishAPaper2Response(t,answer);
-const part=answer=>String(answer||"").split(/\n\s*\n/)[0]?.trim()||"";
+const part=answer=>{
+ const paragraphs=String(answer||"").split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
+ // Skip bare letter greetings, headings and report metadata. A meaningful
+ // truncated answer must itself demonstrate some source-writing evidence.
+ return paragraphs.find(p=>countEnglishWords(p)>=32)||
+  paragraphs.slice(0,2).join("\n\n");
+};
 export const ENGLISH_A_EXTENDED_V2_VERSION="english-original-extended-36-source-20261024";
 export function englishExtendedCalibration({paperId,criterion}){
  const id=criterion?.id,task=tasks.get(id),ref=ENGLISH_A_EXTENDED_REFERENCES[id],src=criterion?.sourceMarking;
