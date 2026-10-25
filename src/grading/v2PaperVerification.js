@@ -144,8 +144,15 @@ export function verifyPaper(paper,casesById){
  // canonical downstream answer in the partial script. The source ECF rules,
  // not a manually curated list of failing paper IDs, decide which parts.
  const ecfDependent=id=>{
-  if(paper.subjectId!=="physics")return false;
   const row=paper.criteria.find(c=>c.id===id);
+  if(paper.subjectId==="mathematics"){
+   // An ECF subpart depends on the candidate's actual earlier working;
+   // an isolated wrong/partial fixture must not be combined with an
+   // independently selected, possibly contradictory preceding answer.
+   return (row?.sourceMarking?.criteria||[]).some(c=>
+    Array.isArray(c?.ecf?.uses)&&c.ecf.uses.length>0);
+  }
+  if(paper.subjectId!=="physics")return false;
   const [questionId,partId]=id.split("::");
   return (row?.sourceMarking?.criteria||[]).some(c=>
    physicsPaper2FollowThroughSources(questionId,partId,c.code).length>0);
@@ -156,7 +163,8 @@ export function verifyPaper(paper,casesById){
    ?pick(c,"blank"):pick(c,"incorrect")),{mustPublish:true}),
   scenario("blank-script",paper,new Map(),{mustPublish:true}),
   scenario("partial-marks",paper,plan((c,i,id)=>ecfDependent(id)
-   ?pick(c,"full"):pick(c,"partial")??pick(c,"full")),{mustPublish:true}),
+   ?pick(c,paper.subjectId==="mathematics"?"blank":"full")
+   :pick(c,"partial")??pick(c,"full")),{mustPublish:true}),
   scenario("mixed",paper,plan((c,i,id)=>graphIds.has(id)?pick(c,"full"):
    ecfDependent(id)?pick(c,"blank"):
    [pick(c,"full"),pick(c,"incorrect"),pick(c,"partial")??pick(c,"blank")][i%3]),{mustPublish:true}),
