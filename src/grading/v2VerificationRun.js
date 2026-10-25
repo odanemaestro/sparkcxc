@@ -51,6 +51,7 @@ import {poaMethodFixtures} from "./v2Fixtures/principlesOfAccountsMethods";
 import {pobOriginalSourceFixtures} from "./v2Fixtures/principlesOfBusinessOriginal";
 import {socialOriginalSourceFixtures} from "./v2Fixtures/socialStudiesOriginal";
 import {socialEssaySourceFixtures} from "./v2Fixtures/socialStudiesEssays";
+import {englishSummaryFixtures} from "./v2Fixtures/englishASummary";
 import {physicsFixtures} from "./v2Fixtures/physics";
 import {CURATED_PHYSICS} from "./v2Fixtures/physicsCurated";
 import physicsSource1 from "../physics/paper2/data/spark-phy-p02-practice-1.json";
@@ -88,6 +89,7 @@ function itContext(paperId,criterionId){
 
 /** Returns {kind, fixtures, sourceAnswer, alternatives, ruleId} or {blocked}. */
 export function fixturesForCriterion({subjectId,paperId,criterion}){
+ if(subjectId==="english-a")return englishSummaryFixtures({paperId,criterion});
  if(subjectId==="social-studies")return criterion.sourceFormat==="social-studies-essay"
   ?socialEssaySourceFixtures({paperId,criterion})
   :socialOriginalSourceFixtures({paperId,criterion});
