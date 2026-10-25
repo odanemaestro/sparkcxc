@@ -1,0 +1,35 @@
+name: V2 POA legacy specimen retirement
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "supabase/migrations/20261025035500_v2_retire_legacy_poa_specimen_draft.sql"
+      - "tools/test-v2-poa-retirement.mjs"
+      - "tools/v2-registry.mjs"
+      - ".github/workflows/v2-poa-retirement-audit.yml"
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Verify preservation of historical 22-part rubric in isolated Postgres
+        run: node tools/test-v2-poa-retirement.mjs
+      - name: Confirm remaining 570 Accounts source parts still verify
+        run: |
+          node tools/v2-verify-all.mjs --subject principles-of-accounts --out artifacts/poa-retirement
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const s=JSON.parse(fs.readFileSync("artifacts/poa-retirement/summary.json","utf8"));
+          const a=s.bySubject["principles-of-accounts"];
+          if(a?.criteria!==592||a.verified!==570||a.blocked!==22||
+             a.failed!==0||s.papers.verified!==95)
+           throw Error("Retirement must preserve all 570 approved source methods and all 22 legacy audit criteria");
+          console.log("POA_OPERATIONAL_VERIFIED=570; POA_HISTORICAL_RETIRED=22");
+          NODE
