@@ -499,7 +499,7 @@ test("POB affirmative model-answer denials never gain provisional or authoritati
  const first=rows.find(x=>x.id==="POB-SPARK-P2-ORIGINAL-01-Q1::a");
  expect(first).toBeTruthy();
  const positive=example("principles-of-business",paper.id,rows,{
-  [first.id]:first.sourceMarking.modelAnswer
+  [first.id]:"An entrepreneur identifies a business opportunity, organises people and other resources to produce goods or services and takes the financial risks of the business."
  });
  expect(positive.rows.find(x=>x.criterionId===first.id)?.suggestedMarks).toBe(first.maxMarks);
  for(const text of [
