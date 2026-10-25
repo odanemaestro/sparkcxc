@@ -68,10 +68,10 @@ export const SOCIAL_ESSAY_SOURCE_RESPONSES=Object.freeze(Object.fromEntries(
   full:completeEssay(id),
   // One concrete rubric point only. No inferred essay structure.
   contentPartial:sourcePhrase(
-   SOCIAL_STUDIES_ESSAY_SCHEMES[id].components[0].scheme.points?.[0]?.concepts||
-   SOCIAL_STUDIES_ESSAY_SCHEMES[id].components[0].scheme.groups?.[0]?.concepts||[],
-   SOCIAL_STUDIES_ESSAY_SCHEMES[id].components[0].scheme.points?.[0]?.phrases||
-   SOCIAL_STUDIES_ESSAY_SCHEMES[id].components[0].scheme.groups?.[0]?.phrases||[]),
+   SOCIAL_STUDIES_ESSAY_SCHEMES[id].components[id==="ss-p2-q6"?1:0].scheme.points?.[0]?.concepts||
+   SOCIAL_STUDIES_ESSAY_SCHEMES[id].components[id==="ss-p2-q6"?1:0].scheme.groups?.[0]?.concepts||[],
+   SOCIAL_STUDIES_ESSAY_SCHEMES[id].components[id==="ss-p2-q6"?1:0].scheme.points?.[0]?.phrases||
+   SOCIAL_STUDIES_ESSAY_SCHEMES[id].components[id==="ss-p2-q6"?1:0].scheme.groups?.[0]?.phrases||[]),
   // Two coherent paragraphs without the required topic-specific introduction
   // or subject evidence. This witnesses basic structural credit only.
   organisationPartial:"There are important matters in a community that deserve careful"+
