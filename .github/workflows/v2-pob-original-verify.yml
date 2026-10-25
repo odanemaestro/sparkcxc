@@ -1,0 +1,54 @@
+name: V2 POB original source verification
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/grading/**"
+      - "src/principlesOfBusiness/**"
+      - "tools/v2-verify-all.mjs"
+      - "supabase/migrations/**"
+      - ".github/workflows/v2-pob-original-verify.yml"
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Verify 25 original POB criteria against source registry
+        run: node tools/v2-verify-all.mjs --subject principles-of-business --out artifacts/v2-pob-original
+      - name: Audit evidence and print approval candidates
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const dir="artifacts/v2-pob-original";
+          const s=JSON.parse(fs.readFileSync(dir+"/summary.json"));
+          const records=JSON.parse(fs.readFileSync(dir+"/evidence.json"));
+          const papers=JSON.parse(fs.readFileSync(dir+"/papers.json"));
+          if(records.length!==25||s.bySubject["principles-of-business"]?.verified!==25||
+             s.rehearsal.criteriaRejectedCount!==0||
+             s.rehearsal.criteriaInserted!==25||
+             s.rehearsal.papersInserted!==1||
+             s.rehearsal.papersRejected.length!==0||
+             s.rehearsal.releaseRejected.length!==0||
+             papers.length!==1||papers[0].outcome!=="verified"||
+             records.some(r=>r.outcome!=="verified"||
+               r.provenance?.workingTreeDirty!==false||
+               !r.sourceSha256||!r.criterionSha256||!r.evidenceSha256||
+               r.cases.some(x=>!x.passed)))
+            throw Error("POB V2 source evidence does not qualify for approval");
+          console.log("POB_V2_CANDIDATES_VERIFIED=25");
+          for(const record of records)
+            console.log("POB_V2_REGISTERABLE_ITEM="+JSON.stringify(record));
+          console.log("POB_V2_PAPER_EVIDENCE="+JSON.stringify(papers[0]));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v2-pob-original-25-source-evidence
+          path: artifacts/v2-pob-original/
+          if-no-files-found: error
