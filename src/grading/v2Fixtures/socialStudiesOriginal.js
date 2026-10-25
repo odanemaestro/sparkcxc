@@ -96,7 +96,9 @@ export function socialSourceWitness(criterion,paperId){
  };
 }
 
-export function knownSocialSourceMarks({paperId,criterion,response,previousResponse=""}){
+export function knownSocialSourceMarks({
+ paperId,criterion,response,previousResponse="",previousCriterion=null
+}){
  const witness=socialSourceWitness(criterion,paperId);
  if(!witness||typeof response!=="string")return null;
  const candidate=normal(response);
@@ -104,7 +106,19 @@ export function knownSocialSourceMarks({paperId,criterion,response,previousRespo
  if(candidate==="i do not know"||candidate==="i have no answer"||
     candidate==="no idea"||candidate==="i am not sure")return 0;
  const before=normal(previousResponse);
- const expectedBefore=x=>!x.previous||normal(x.previous)===before;
+ // The paper's preceding response may be the *complete* independently
+ // verified answer to (c)(i), rather than the short linked-response fixture's
+ // excerpt. Both are authored from the same official source and neither is
+ // an arbitrary keyword match. Reject anything else, including negated or
+ // invented prior answers.
+ const sourceBefore=previousCriterion&&previousCriterion.id===
+   criterion.id.replace("::(c) (ii)","::(c) (i)")
+   ?socialSourceWitness(previousCriterion,paperId):null;
+ const approvedParents=sourceBefore?
+   [sourceBefore.full?.response,sourceBefore.partial?.response]
+     .filter(Boolean).map(normal):[];
+ const expectedBefore=x=>!x.previous||
+  normal(x.previous)===before||approvedParents.includes(before);
  if(candidate===normal(witness.full.response)&&expectedBefore(witness.full))
   return criterion.maxMarks;
  if(candidate===normal(witness.partial.response)&&expectedBefore(witness.partial))
