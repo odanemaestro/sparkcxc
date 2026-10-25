@@ -1227,6 +1227,7 @@ function social(rows,responses,paperId){
    // the preceding part. Resolve that preceding answer using the source's
    // zero-based part index, not the candidate's answer text or a guess.
    let context={};
+   let previousCriterion=null;
    if(sm.marking.type==="linked_development"){
     const sourceQuestionId=row.id.split("::")[0];
     const siblings=rows.filter(c=>c.id.startsWith(sourceQuestionId+"::"));
@@ -1235,11 +1236,13 @@ function social(rows,responses,paperId){
     if(!Number.isSafeInteger(previousIndex)||previousIndex<0||
        previousIndex>=currentIndex)
      throw new Error("Invalid Social Studies source follow-through index "+row.id);
-    context={previousResponse:text(read(responses,siblings[previousIndex].id))};
+    previousCriterion=siblings[previousIndex];
+    context={previousResponse:text(read(responses,previousCriterion.id))};
    }
    const result=gradeSocialStudiesShortAnswer(raw,sm.marking,context);
    const calibrated=knownSocialSourceMarks({paperId,criterion:row,
-    response:raw,previousResponse:context.previousResponse||""});
+    response:raw,previousResponse:context.previousResponse||"",
+    previousCriterion});
    return cap(row,result.marks,"existing-social-studies-concepts",
     blank(raw)||(calibrated!==null&&calibrated===result.marks));
   }
