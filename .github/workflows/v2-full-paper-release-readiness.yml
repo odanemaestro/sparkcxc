@@ -29,3 +29,40 @@ jobs:
           name: v2-full-paper-readiness
           path: artifacts/v2-all-paper-readiness/
           retention-days: 14
+
+  export:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        paper_group: ["EA-P2-A", "EA-P2-B", "EA-P2-C", "EA-P2-D", "EA-P2-E", "EA-P2-F", "pob-original-paper2-01"]
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: v2-full-paper-readiness
+          path: artifacts/v2-all-paper-readiness/
+      - name: Export source-hashed eligible paper records for gated release
+        env:
+          PAPER_GROUP: ${{ matrix.paper_group }}
+        run: |
+          node <<'NODE'
+          const fs=require("fs");
+          const dir="artifacts/v2-all-paper-readiness";
+          const recs=JSON.parse(fs.readFileSync(dir+"/papers.json","utf8"));
+          const audit=JSON.parse(fs.readFileSync(dir+"/paper-release-readiness.json","utf8"));
+          const group=process.env.PAPER_GROUP;
+          const wanted=audit.papers.filter(p=>p.canRelease&&
+           (group.startsWith("EA-")?p.paperId.startsWith(group+"-"):p.paperId===group));
+          if(wanted.length!==(group.startsWith("EA-")?2:1))throw Error("Unexpected paper count for "+group);
+          for(const w of wanted){
+           const r=recs.find(x=>x.subjectId===w.subjectId&&x.paperId===w.paperId);
+           if(!r||r.outcome!=="verified"||
+             r.scenarios?.length!==9||r.scenarios.some(s=>!s.passed)||
+             r.provenance?.workingTreeDirty!==false||
+             !r.sourceSha256||!r.evidenceSha256||
+             !r.verificationMethod||!r.expectedTotalMarks)throw Error("Paper not verified: "+w.paperId);
+           console.log("SPARK_V2_RELEASE_PAPER="+JSON.stringify(r));
+          }
+          NODE
