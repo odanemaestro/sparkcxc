@@ -19,6 +19,8 @@ jobs:
           node-version: "24"
           cache: npm
       - run: npm ci
+      - name: Verify English A client release RPC in isolated PostgreSQL
+        run: node tools/test-v2-english-release-rpc.mjs
       - name: Run source-specific verification and actual full-paper replay
         run: node tools/v2-verify-all.mjs --out artifacts/v2-all-paper-readiness
       - name: Audit all 32 remaining release candidates
