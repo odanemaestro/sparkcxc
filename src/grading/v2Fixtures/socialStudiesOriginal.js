@@ -20,6 +20,15 @@ const pointWord=p=>phrase(p.concepts,p.phrases);
 const effectWord=p=>phrase(p.developmentConcepts,p.developmentPhrases);
 const normal=s=>normalizeSocialStudiesText(s).replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");
 const distinct=(xs)=>[...new Set(xs.filter(Boolean))];
+// Each pair is printed in the registered source marking: part (c)(i) must
+// describe both strategies that part (c)(ii) develops. Choosing the first
+// two source alternatives can otherwise construct an invalid full script.
+const FOLLOW_THROUGH_SOURCE_PAIRS=Object.freeze({
+ "ss-p2-q1::(c) (i)":["financial-counselling","family-meetings"],
+ "ss-p2-q2::(c) (i)":["civic","registration"],
+ "ss-p2-b-q4::(c) (i)":["buy","culture"],
+ "ss-p2-c-q2::(c) (i)":["publish","redress"]
+});
 const piece=(p,i,type)=>{
  if(type==="developed_points"){
   const base=pointWord(p),development=effectWord(p);
@@ -81,7 +90,17 @@ export function socialSourceWitness(criterion,paperId){
  const n=scheme.type==="list"||scheme.type==="developed_points"?
   Number(scheme.maxPoints):items.length;
  if(n<2||items.length<n)return null;
- const first=items.slice(0,n),partial=["ss-p2-q1::(c) (i)","ss-p2-c-q3::(a)"].includes(criterion.id) ? items[items.length-1] : items[0];
+ const exactIds=FOLLOW_THROUGH_SOURCE_PAIRS[criterion.id];
+ const first=exactIds
+  ?exactIds.map(id=>{
+    const p=(scheme.points||[]).find(p=>p.id===id);
+    return p?piece(p,0,scheme.type):"";
+   })
+  :items.slice(0,n);
+ if(exactIds&&(first.length!==n||first.some(x=>!x)))
+  return null;
+ const partial=["ss-p2-q1::(c) (i)","ss-p2-c-q3::(a)"].includes(criterion.id)
+  ?items[items.length-1]:first[0];
  if(first.some(s=>!s.trim())||!partial)return null;
  const partialMarks=scheme.type==="developed_points"?2:
    scheme.type==="criteria"?Number(scheme.criteria[0].marks||1):
@@ -119,19 +138,6 @@ export function knownSocialSourceMarks({
      .filter(Boolean).map(normal):[];
  const expectedBefore=x=>!x.previous||
   normal(x.previous)===before||approvedParents.includes(before);
- if(["ss-p2-q1::(c) (ii)","ss-p2-q2::(c) (ii)",
-     "ss-p2-b-q4::(c) (ii)","ss-p2-c-q2::(c) (ii)"].includes(criterion.id)&&before){
-  console.warn("SOCIAL_LINKED_SOURCE_DEBUG="+JSON.stringify({
-   id:criterion.id,priorLength:before.length,
-   prior:before.slice(0,200),
-   expectedParent:normal(witness.full.previous).slice(0,200),
-   allowedParent:approvedParents.map(z=>z.slice(0,200)),
-   candidateMatchesFull:candidate===normal(witness.full.response),
-   candidateMatchesPartial:candidate===normal(witness.partial.response),
-   parentType:previousCriterion?.sourceMarking?.marking?.type,
-   parentId:previousCriterion?.id
-  }));
- }
  if(candidate===normal(witness.full.response)&&expectedBefore(witness.full))
   return criterion.maxMarks;
  if(candidate===normal(witness.partial.response)&&expectedBefore(witness.partial))
