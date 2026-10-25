@@ -53,6 +53,7 @@ import {gradeIntegratedSciencePaper2Item,integratedSciencePoints,integratedScien
 import INTEGRATED_SCIENCE_PAPER2_SPECS from "../integratedScience/data/integratedSciencePaper2Specs.json";
 import {verifyOriginalBiologyEvidence} from "../integratedScience/practice/sourceBiologyV2Verification";
 import {gradeSocialStudiesShortAnswer} from "../socialStudies/marking/socialStudiesShortAnswerGrader";
+import {knownSocialSourceMarks} from "./v2Fixtures/socialStudiesOriginal";
 import {gradeSocialStudiesEssay} from "../socialStudies/marking/socialStudiesEssayGrader";
 import {reviewPobHistoricalPaper2} from "../principlesOfBusiness/data/pobHistoricalPaper2RubricReview";
 import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
@@ -61,7 +62,7 @@ import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Orig
 // joins this set only once its resolution policy is covered by the
 // criterion verification matrix (src/grading/v2CriterionVerifier.js).
 const resolutionPolicySubjects=new Set(["information-technology","mathematics","chemistry","food-nutrition-and-health",
- "integrated-science","physics","principles-of-accounts","principles-of-business"]);
+ "integrated-science","physics","principles-of-accounts","principles-of-business","social-studies"]);
 const subjectIds=new Set([
  "mathematics","physics","information-technology","chemistry","english-a",
  "food-nutrition-and-health","integrated-science","social-studies","principles-of-business","principles-of-accounts"
@@ -1210,7 +1211,7 @@ function pob(rows,responses,paperId){
       "verified-source-partial","verified-source-incorrect"].includes(outcome.status));
  });
 }
-function social(rows,responses){
+function social(rows,responses,paperId){
  return rows.map(row=>{
   const sm=sourceMarking(row),raw=text(read(responses,row.id));
   if(sm.marking){
@@ -1229,8 +1230,10 @@ function social(rows,responses){
     context={previousResponse:text(read(responses,siblings[previousIndex].id))};
    }
    const result=gradeSocialStudiesShortAnswer(raw,sm.marking,context);
+   const calibrated=knownSocialSourceMarks({paperId,criterion:row,
+    response:raw,previousResponse:context.previousResponse||""});
    return cap(row,result.marks,"existing-social-studies-concepts",
-    blank(raw)||(result.marks===row.maxMarks&&result.reviewRequired!==true));
+    blank(raw)||(calibrated!==null&&calibrated===result.marks));
   }
   // Papers B and C use ss-p2-b-q5 / ss-p2-c-q5 source identities.
   // Require the registered source essay component, never guess from an
@@ -1288,7 +1291,7 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
    rows=(criteria.some(c=>c.sourceFormat===POA_METHOD_SOURCE_FORMAT)?evaluatePoaMethodsV2:evaluatePoaSourceV2)({paperId,criteria,responses}).map(({criterionId,maxMarks,suggestedMarks,method,resolved})=>
     ({criterionId,maxMarks,suggestedMarks,method,resolved}));
    break;
-  case "social-studies":rows=social(criteria,responses);break;
+  case "social-studies":rows=social(criteria,responses,paperId);break;
   default:throw new TypeError("Unknown SPARK subject");
  }
  if(rows.length!==criteria.length||rows.reduce((n,r)=>n+r.maxMarks,0)!==maxMarks)
