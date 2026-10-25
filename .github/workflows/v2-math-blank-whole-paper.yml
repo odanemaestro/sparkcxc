@@ -1,0 +1,80 @@
+name: V2 Mathematics blank-answer paper replay
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/grading/serverPaper2V2SubjectEngine.js"
+      - ".github/workflows/v2-math-blank-whole-paper.yml"
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Run all Mathematics criteria and all 16 real paper replays
+        run: node tools/v2-verify-all.mjs --subject mathematics --out artifacts/math-missing-zero
+      - name: Verify no Maths criterion regressions and report every paper blocker
+        run: |
+          node <<'NODE'
+          const fs=require("fs");
+          const dir="artifacts/math-missing-zero";
+          const s=JSON.parse(fs.readFileSync(dir+"/summary.json","utf8"));
+          const papers=JSON.parse(fs.readFileSync(dir+"/papers.json","utf8"));
+          const source=s.bySubject.mathematics;
+          const ready=papers.filter(p=>p.outcome==="verified");
+          const blocked=papers.filter(p=>p.outcome!=="verified");
+          for(const p of blocked)console.log("MATH_REPLAY_BLOCKER="+JSON.stringify({
+           paper:p.paperId,outcome:p.outcome,
+           failures:p.scenarios?.filter(x=>!x.passed).map(s=>({
+            scenario:s.name,details:s.failures?.slice(0,9)
+           }))}));
+          console.log("MATH_WHOLE_PAPER_READY="+JSON.stringify({
+           total:papers.length,ready:ready.length,blocked:blocked.length,
+           verifiedCriteria:source?.verified,failedCriteria:source?.failed,
+           rehearsalRejected:s.rehearsal.criteriaRejectedCount
+          }));
+          if(papers.length!==16||source?.verified!==640||
+             source?.failed!==0||s.rehearsal.criteriaRejectedCount!==0||
+             ready.length<13||ready.some(p=>p.scenarios?.length!==9||
+             p.scenarios.some(s=>!s.passed)||!p.evidenceSha256))
+           throw Error("Math source grading or full-paper replay incomplete");
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: maths-16-paper-replay
+          path: artifacts/math-missing-zero/
+  export:
+    needs: verify
+    if: always()
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        group: ["original", "later"]
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: maths-16-paper-replay
+          path: artifacts/math-missing-zero/
+      - name: Export source-hashed whole-paper release evidence
+        env:
+          GROUP: ${{ matrix.group }}
+        run: |
+          node <<'NODE'
+          const fs=require("fs");
+          const papers=JSON.parse(fs.readFileSync("artifacts/math-missing-zero/papers.json","utf8"));
+          const ready=papers.filter(p=>p.outcome==="verified"&&
+            (process.env.GROUP==="original"?p.paperId.startsWith("original-"):!p.paperId.startsWith("original-")));
+          for(const p of ready){
+           if(!p.evidenceSha256||!p.sourceSha256||p.scenarios?.length!==9||
+             p.scenarios?.some(s=>!s.passed)||p.provenance?.workingTreeDirty!==false)
+            throw Error("Invalid math release witness");
+           console.log("MATH_PAPER_RELEASE_RECORD="+JSON.stringify(p));
+          }
+          NODE
