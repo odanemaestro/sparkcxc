@@ -61,7 +61,7 @@ import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Orig
 // joins this set only once its resolution policy is covered by the
 // criterion verification matrix (src/grading/v2CriterionVerifier.js).
 const resolutionPolicySubjects=new Set(["information-technology","mathematics","chemistry","food-nutrition-and-health",
- "integrated-science","physics","principles-of-accounts"]);
+ "integrated-science","physics","principles-of-accounts","principles-of-business"]);
 const subjectIds=new Set([
  "mathematics","physics","information-technology","chemistry","english-a",
  "food-nutrition-and-health","integrated-science","social-studies","principles-of-business","principles-of-accounts"
@@ -1206,7 +1206,8 @@ function pob(rows,responses,paperId){
   const raw=read(responses,row.id,"Q"+m[1]+":"+m[2]);
   const denied=directlyDeniesSourcePoint(raw,source);
   return cap(row,denied?0:outcome.confirmedMarks,"existing-POB-subcriterion-evidence",
-    !denied && outcome.unresolvedMarks===0);
+    !denied && ["unanswered","verified-complete-source-answer",
+      "verified-source-partial","verified-source-incorrect"].includes(outcome.status));
  });
 }
 function social(rows,responses){
