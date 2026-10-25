@@ -695,18 +695,26 @@ try{
   subjectId:'mathematics',paperId:'original-v1',
   criteria:srcQ(question),responses
  });
+ const assertOtherPartsBlankZero=(result,answeredId)=>{
+  const unanswered=result.rows.filter(row=>row.criterionId!==answeredId);
+  assert(unanswered.length>0,"Question must have other mark-bearing parts");
+  assert(unanswered.every(row=>row.resolved&&row.suggestedMarks===0),
+   "Unsubmitted parts must earn exactly zero with verified source evidence");
+  assert.equal(result.canPublishFinalScore,result.rows.every(row=>row.resolved),
+   "Only every source-resolved part permits publication");
+ };
  const q7Wrong=gradeNew(7,{'p2-q7-v1::c':{answer:'-15'}});
  assert.equal(q7Wrong.rows.find(r=>r.criterionId==='p2-q7-v1::c').suggestedMarks,0,
   'Reject the negative root as an invalid design number');
  const q7Right=gradeNew(7,{'p2-q7-v1::c':{answer:'11',working:'(n+15)(n-11)=0'}});
  assert(q7Right.rows.find(r=>r.criterionId==='p2-q7-v1::c').suggestedMarks>0);
- assert.equal(q7Right.canPublishFinalScore,false);
+ assertOtherPartsBlankZero(q7Right,'p2-q7-v1::c');
  const q8Wrong=gradeNew(8,{'p2-q8-v1::d':{answer:'(20,0)'}});
  assert.equal(q8Wrong.rows.find(r=>r.criterionId==='p2-q8-v1::d').suggestedMarks,0,
   'Coordinate order matters on the y-axis intercept');
  const q8Right=gradeNew(8,{'p2-q8-v1::d':{answer:'(0,20)',working:'f(0)=20'}});
  assert(q8Right.rows.find(r=>r.criterionId==='p2-q8-v1::d').suggestedMarks>0);
- assert.equal(q8Right.canPublishFinalScore,false);
+ assertOtherPartsBlankZero(q8Right,'p2-q8-v1::d');
  const q9Wrong=gradeNew(9,{'p2-q9-v1::b3':{answer:'193'}});
  assert.equal(q9Wrong.rows.find(r=>r.criterionId==='p2-q9-v1::b3').suggestedMarks,0,
   'Bearing 193 is not the correct 093');
@@ -714,7 +722,7 @@ try{
   answer:'093',working:'tan(QPR)=120/90 = 53.13; 40+53.13=93.13'
  }});
  assert(q9Right.rows.find(r=>r.criterionId==='p2-q9-v1::b3').suggestedMarks>0);
- assert.equal(q9Right.canPublishFinalScore,false);
+ assertOtherPartsBlankZero(q9Right,'p2-q9-v1::b3');
  const q10Wrong=gradeNew(10,{'p2-q10-v1::d':{answer:'3, 2'}});
  assert.equal(q10Wrong.rows.find(r=>r.criterionId==='p2-q10-v1::d').suggestedMarks,0,
   'Swapped matrix-solution x/y values must not earn marks');
@@ -722,7 +730,7 @@ try{
   answer:'2, 3',working:'M inverse times [13,17] = [2,3]'
  }});
  assert(q10Right.rows.find(r=>r.criterionId==='p2-q10-v1::d').suggestedMarks>0);
- assert.equal(q10Right.canPublishFinalScore,false);
+ assertOtherPartsBlankZero(q10Right,'p2-q10-v1::d');
  const q3Wrong=gradeNew(3,{'p2-q3-v1::a':{answer:'a translation by (0, -2)'}});
  assert.equal(q3Wrong.rows.find(r=>r.criterionId==='p2-q3-v1::a').suggestedMarks,0);
  const q3Right=gradeNew(3,{'p2-q3-v1::a':{
