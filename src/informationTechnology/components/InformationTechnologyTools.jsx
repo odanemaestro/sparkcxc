@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React, { useEffect, useMemo, useState } from "react";
 
 function Card({ title, children }) {
@@ -41,7 +43,7 @@ function ChoiceChallenge({ title, prompt, options, answer, explanation, nextLabe
     </div>
     <div className="it-lab-actions">
       <button type="button" className="it-primary" disabled={choice == null} onClick={() => setChecked(true)}>Check</button>
-      {onNext && <button type="button" className="it-lab-next" onClick={onNext}>{nextLabel || "Next challenge"} <span aria-hidden="true">→</span></button>}
+      {onNext && <button type="button" className="it-lab-next" onClick={onNext}>{nextLabel || "Next challenge"} <span aria-hidden="true"><ForwardArrowIcon/></span></button>}
     </div>
     {checked && <p className={`it-feedback ${correct ? "ok" : "bad"}`} role="status"><strong>{correct ? "Correct." : "Try again."}</strong> {explanation}</p>}
   </Card>;
@@ -405,7 +407,7 @@ function FlowTraceLab() {
     <label className="it-single-control">Test mark<input type="number" min="0" max="100" value={mark} onChange={event => setMark(Number(event.target.value))}/></label>
     <p className="it-feedback">Path taken: <strong>{mark >= 50 ? "Yes → PASS" : "No → FAIL"}</strong></p>
     <div className="it-trace-table"><div><strong>COUNT</strong><strong>TOTAL</strong></div>{rows.slice(0, step + 1).map((row, index) => <div key={index}><span>{row.count}</span><span>{row.total}</span></div>)}</div>
-    <div className="it-choice-row"><button type="button" onClick={() => setStep(Math.max(0, step - 1))}>Previous</button><button type="button" onClick={() => setStep(Math.min(rows.length - 1, step + 1))}>Step</button><button type="button" onClick={() => setStep(0)}>Reset</button></div>
+    <div className="it-choice-row"><button type="button" onClick={() => setStep(Math.max(0, step - 1))}><BackArrowIcon/> Previous</button><button type="button" onClick={() => setStep(Math.min(rows.length - 1, step + 1))}>Step</button><button type="button" onClick={() => setStep(0)}>Reset</button></div>
   </Card>;
 }
 

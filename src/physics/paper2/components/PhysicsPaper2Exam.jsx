@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../../components/ui/ForwardArrowIcon";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { usePracticeRouteState } from "../../../routing/usePracticeRouteState";
 import { createPortal } from "react-dom";
@@ -272,7 +274,7 @@ function PhysicsConstantsModal({ onClose }) {
 
 function PhysicsPaper2Instructions({ paper, onBack, onBegin, onShowConstants }) {
   return <main className="phy-p2-root"><div className="phy-p2-shell">
-    <button type="button" className="phy-p2-primary phy-p2-back" onClick={onBack}><span aria-hidden="true">{"\u2190"}</span> Paper 2 library</button>
+    <button type="button" className="phy-p2-primary phy-p2-back" onClick={onBack}><span aria-hidden="true"><BackArrowIcon/></span> Paper 2 library</button>
     <section className="phy-p2-instructions-card">
       <div className="phy-p2-eyebrow">CSEC Physics · Paper 02</div>
       <h1>{physicsPaper2PaperName(paper)}</h1>
@@ -305,7 +307,7 @@ function PhysicsPaper2Instructions({ paper, onBack, onBegin, onShowConstants }) 
 function PaperLibrary({ userId, active, onResume, onStart, onBack }) {
   const results = readPhysicsPaper2Results(userId);
   return <main className="phy-p2-root"><div className="phy-p2-shell">
-    <header className="phy-p2-library-hero"><div><button type="button" className="phy-p2-primary phy-p2-back" onClick={onBack}><span aria-hidden="true">{"\u2190"}</span> Physics practice</button><div className="phy-p2-eyebrow">CSEC Physics Paper 02</div><h1>Paper 2 Simulator</h1><p>Choose one of four complete 100-mark practice papers. Each paper contains six compulsory questions and runs for 2 hours 30 minutes.</p></div><div className="phy-p2-hero-spec"><strong>4</strong><span>complete papers</span><strong>150</strong><span>minutes</span><strong>100</strong><span>marks</span></div></header>
+    <header className="phy-p2-library-hero"><div><button type="button" className="phy-p2-primary phy-p2-back" onClick={onBack}><span aria-hidden="true"><BackArrowIcon/></span> Physics practice</button><div className="phy-p2-eyebrow">CSEC Physics Paper 02</div><h1>Paper 2 Simulator</h1><p>Choose one of four complete 100-mark practice papers. Each paper contains six compulsory questions and runs for 2 hours 30 minutes.</p></div><div className="phy-p2-hero-spec"><strong>4</strong><span>complete papers</span><strong>150</strong><span>minutes</span><strong>100</strong><span>marks</span></div></header>
     {active?.paperId && getPhysicsPaper2Paper(active.paperId) && <section className="phy-p2-resume-card"><div><span className="phy-p2-eyebrow">IN PROGRESS</span><h2>{physicsPaper2PaperName(getPhysicsPaper2Paper(active.paperId))}</h2><p>{active.phase === "review" ? "Your paper is submitted and the result is saved. Continue your answer review." : active.phase === "instructions" ? "Your paper is selected. Review the instructions before the timer starts." : "Your answers and remaining time are saved on this device."}</p></div><button type="button" className="phy-p2-primary" onClick={onResume}>{active.phase === "review" ? "Continue review" : active.phase === "instructions" ? "View instructions" : "Resume paper"}</button></section>}
     <section className="phy-p2-paper-grid">{PHYSICS_PAPER2_PAPERS.map(paper => {
       const coverage = physicsPaper2MarkingCoverage(paper);
@@ -564,7 +566,7 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
 
   return <main className="phy-p2-root"><div className="phy-p2-shell">
     <header className="phy-p2-exam-head">
-      <div><button type="button" className="phy-p2-primary phy-p2-back" onClick={() => setLibraryOpen(true)}><span aria-hidden="true">{"\u2190"}</span> Paper 2 library</button><span className="phy-p2-eyebrow">CSEC Physics · Paper 02</span><h1>{physicsPaper2PaperName(paper)}</h1><p>{phase === "review" ? "Mark-scheme review" : `${answeredParts}/${totalParts} parts have a recorded response`}</p></div>
+      <div><button type="button" className="phy-p2-primary phy-p2-back" onClick={() => setLibraryOpen(true)}><span aria-hidden="true"><BackArrowIcon/></span> Paper 2 library</button><span className="phy-p2-eyebrow">CSEC Physics · Paper 02</span><h1>{physicsPaper2PaperName(paper)}</h1><p>{phase === "review" ? "Mark-scheme review" : `${answeredParts}/${totalParts} parts have a recorded response`}</p></div>
       <div className="phy-p2-header-tools"><button type="button" className="phy-p2-constants-control" onClick={() => setShowConstants(true)}>Physical Constants</button><div className={`phy-p2-timer ${remaining <= 600 && phase === "exam" ? "warning" : ""}`}><span>{phase === "review" ? "Submitted" : "Time remaining"}</span><strong>{phase === "review" ? "REVIEW" : formatTime(remaining)}</strong></div></div>
     </header>
 
@@ -636,8 +638,8 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
       </>}
     </article>
 
-    <footer className="phy-p2-exam-footer"><button type="button" className="phy-p2-primary" disabled={currentIndex === 0} onClick={() => { setCurrentIndex(index => Math.max(0, index - 1)); window.scrollTo?.({ top: 0, behavior: "smooth" }); }}><span aria-hidden="true">{"\u2190"}</span> Previous</button><span>Question {currentIndex + 1} of {paper.questions.length}</span>{currentIndex < paper.questions.length - 1 ? <button type="button" className="phy-p2-primary" onClick={() => { setCurrentIndex(index => Math.min(paper.questions.length - 1, index + 1)); window.scrollTo?.({ top: 0, behavior: "smooth" }); }}>Next question <span aria-hidden="true">{"\u2192"}</span></button> : phase === "exam" ? <button type="button" className="phy-p2-primary" onClick={() => setShowSubmitConfirm(true)}>Submit paper</button> : <button type="button" className="phy-p2-secondary" disabled>Review complete</button>}</footer>
-    {phase === "review" && <div className="phy-p2-result-actions"><button type="button" className="phy-p2-primary phy-p2-back-practice" onClick={onBack}><span aria-hidden="true">{"\u2190"}</span><span>Back to Physics practice</span></button><button type="button" className="phy-p2-primary" disabled={Boolean(active?.serverAttemptId)&&
+    <footer className="phy-p2-exam-footer"><button type="button" className="phy-p2-primary" disabled={currentIndex === 0} onClick={() => { setCurrentIndex(index => Math.max(0, index - 1)); window.scrollTo?.({ top: 0, behavior: "smooth" }); }}><span aria-hidden="true"><BackArrowIcon/></span> Previous</button><span>Question {currentIndex + 1} of {paper.questions.length}</span>{currentIndex < paper.questions.length - 1 ? <button type="button" className="phy-p2-primary" onClick={() => { setCurrentIndex(index => Math.min(paper.questions.length - 1, index + 1)); window.scrollTo?.({ top: 0, behavior: "smooth" }); }}>Next question <span aria-hidden="true"><ForwardArrowIcon/></span></button> : phase === "exam" ? <button type="button" className="phy-p2-primary" onClick={() => setShowSubmitConfirm(true)}>Submit paper</button> : <button type="button" className="phy-p2-secondary" disabled>Review complete</button>}</footer>
+    {phase === "review" && <div className="phy-p2-result-actions"><button type="button" className="phy-p2-primary phy-p2-back-practice" onClick={onBack}><span aria-hidden="true"><BackArrowIcon/></span><span>Back to Physics practice</span></button><button type="button" className="phy-p2-primary" disabled={Boolean(active?.serverAttemptId)&&
       active.serverSubmissionStatus!=="confirmed"&&active.serverSubmissionStatus!=="not-eligible"}
       onClick={startAnotherPaper}>Start another Paper 2</button></div>}
     {showConstants && <PhysicsConstantsModal onClose={() => setShowConstants(false)}/>}

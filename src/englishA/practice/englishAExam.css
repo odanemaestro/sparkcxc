@@ -205,8 +205,8 @@ body[data-theme="dark"] .ea-p2-instruction-choice button,
 
 /* Same quiet outlined navigation control across English A paper screens. */
 .ea-practice-back,.ea-practice-back.is-exam-page-back{
-  background:var(--spark-surface,#fff);
-  color:var(--spark-text,#132c53);
+  background:var(--spark-paper,#fff);
+  color:var(--spark-ink,#132c53);
   border:1px solid var(--spark-border,#d8e3f0);
   box-shadow:none;
   min-height:44px;

@@ -1,5 +1,6 @@
 import React, { useId, useMemo } from "react";
 import Icon from "../ui/Icon";
+import ForwardArrowIcon from "../ui/ForwardArrowIcon";
 import Modal from "../ui/Modal";
 import { rewardLevelForPoints, weeklyAchievementBadges, weeklyScoreBreakdown } from "../../rewards/sparkRewards";
 
@@ -105,7 +106,7 @@ export default function SparkOfTheWeekSpotlight({ rewards }) {
             <div className="ssh-spotlight-actions">
               <button type="button" className="ssh-text-btn ssh-spotlight-link" onClick={() => setShowLeaders?.(true)}>
                 <span>Weekly leaders</span>
-                <Icon name="arrowRight" size={16} />
+                <ForwardArrowIcon size={16}/>
               </button>
             </div>
 

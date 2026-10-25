@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react';
+import BackArrowIcon from '../../../components/ui/BackArrowIcon';
+import ForwardArrowIcon from '../../../components/ui/ForwardArrowIcon';
 import { usePhysicsSubjectRoute } from '../../../routing/sparkRoutingV270';
 import PhysicsMechanicsSection from '../../mechanics/components/PhysicsMechanicsSection';
 import PhysicsCourseLessons from './PhysicsCourseLessons';
@@ -11,18 +13,6 @@ import PhysicsFormulaList from '../../resources/PhysicsFormulaList.jsx';
 import { physicsFullCourseStats } from '../fullCourseIndex.mjs';
 import './physicsSubjectView.css';
 import '../../../subjects/sparkSpecializedStudyPolish.css';
-
-const SectionArrowIcon = () => (
-  <svg className="psv-section-arrow-icon" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
-    <path d="M6 14L14 6M8 6h6v6" />
-  </svg>
-);
-
-const BackArrowIcon = () => (
-  <svg className="psv-back-arrow-icon" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
-    <path d="M12.5 5.5 8 10l4.5 4.5M8 10h8" />
-  </svg>
-);
 
 const SECTION_META = Object.freeze({
   A: { title:'Mechanics', detail:'Lessons, interactive labs, practical notebooks, flashcards, topic tests and the Mechanics checkpoint.', accent:'A' },
@@ -66,7 +56,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
       <div className="psv-shell">
         <header className="psv-hero">
           <div>
-            {onBack && <button type="button" className="psv-back" onClick={onBack}><BackArrowIcon/><span>Back</span></button>}
+            {onBack && <button type="button" className="psv-back" onClick={onBack}><BackArrowIcon className="psv-back-arrow-icon"/><span>Back</span></button>}
             <div className="psv-eyebrow">CSEC Physics</div>
             <h1>Choose a section</h1>
             <p>Work through the Physics syllabus by section, or open the SPARK Workbook and Formula List for focused revision.</p>
@@ -87,7 +77,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
               <span>25 topics · 189 objectives</span>
               <small>Study notes, exam focus, formulae, worked examples, data skills, practical work, quick checks and objective-by-objective guidance.</small>
             </span>
-            <span className="psv-section-arrow" aria-hidden="true"><SectionArrowIcon/></span>
+            <span className="psv-section-arrow" aria-hidden="true"><ForwardArrowIcon className="psv-section-arrow-icon"/></span>
           </button>
           <button type="button" className="psv-section-card" onClick={() => setSection('FORMULAE')}>
             <span className="psv-section-code">Æ’</span>
@@ -97,7 +87,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
               <span>64 equations, relationships and direction rules</span>
               <small>Search by topic, quantity, symbol or unit. Includes magnetic direction rules and the conditions attached to key relationships.</small>
             </span>
-            <span className="psv-section-arrow" aria-hidden="true"><SectionArrowIcon/></span>
+            <span className="psv-section-arrow" aria-hidden="true"><ForwardArrowIcon className="psv-section-arrow-icon"/></span>
           </button>
         </section>
 
@@ -113,7 +103,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
                   <span>{sectionStats.topics} topics · {sectionStats.objectives} objectives</span>
                   <small>{meta.detail}</small>
                 </span>
-                <span className="psv-section-arrow" aria-hidden="true"><SectionArrowIcon/></span>
+                <span className="psv-section-arrow" aria-hidden="true"><ForwardArrowIcon className="psv-section-arrow-icon"/></span>
               </button>
             );
           })}

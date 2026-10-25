@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React,{useEffect,useMemo,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {buildPobHistoricalP1Exam} from "../data/pobHistoricalPaper1Batch1Exam";
@@ -69,8 +71,8 @@ export default function PobHistoricalPaper1Preview({record,userId,supabase}){
            <small>SPARK-authored academic guidance, not a verified CXC score.</small>
          </div>}
          <div className="pob-exam-controls">
-           <button type="button" className="secondary" disabled={index===0} onClick={()=>setIndex(i=>i-1)}>Previous</button>
-           <button type="button" className="pob-primary" disabled={index===59} onClick={()=>setIndex(i=>i+1)}>Next question</button>
+           <button type="button" className="secondary" disabled={index===0} onClick={()=>setIndex(i=>i-1)}><BackArrowIcon/> Previous</button>
+           <button type="button" className="pob-primary" disabled={index===59} onClick={()=>setIndex(i=>i+1)}>Next question <ForwardArrowIcon/></button>
          </div>
        </article>
        <aside className="pob-exam-card pob-exam-navigator">
@@ -82,7 +84,7 @@ export default function PobHistoricalPaper1Preview({record,userId,supabase}){
            :<button type="button" className="pob-primary pob-exam-submit" onClick={()=>{setResponses({});setIndex(0);setReview(false);setStarted(false);setDeadline(0);setRemaining(paper.timeLimitMinutes*60)}}>Try again</button>}
        </aside>
      </div>
-     <button type="button" className="secondary" onClick={()=>setStarted(false)}>Back to paper details</button>
+     <button type="button" className="secondary" onClick={()=>setStarted(false)}><BackArrowIcon/> Back to paper details</button>
    </>}
  </section>;
 }

@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../../components/ui/ForwardArrowIcon";
 import React, { useEffect, useMemo, useState } from "react";
 import { importBasicPptx } from "../models/officeImports.mjs";
 import { makePptx } from "../models/officeExports.mjs";
@@ -143,7 +145,7 @@ export default function PresentationLab({ lab, userId, completed, onBack, onComp
           <label className="itv2-footer-field">Footer<input aria-label="Presentation footer" value={footer} onChange={event => setFooter(event.target.value)} placeholder="Technology Project · 2026"/></label>
         </section>
       </div>
-      {showMode && <div className="itv2-slide-show" role="dialog" aria-modal="true" aria-label="Slide show"><SlideCanvas slide={showSlide} theme={theme} footer={footer} heading/><nav aria-label="Slide show controls"><button type="button" onClick={() => navigateShow(-1)} disabled={showIndex === 0}><ArrowLeftIcon/> <span>Previous</span></button><span>{showIndex + 1} / {slides.length}</span><button type="button" onClick={() => navigateShow(1)} disabled={showIndex === slides.length - 1}><span>Next</span> <ArrowRightIcon/></button><button type="button" onClick={() => setShowMode(false)}>End show</button></nav></div>}
+      {showMode && <div className="itv2-slide-show" role="dialog" aria-modal="true" aria-label="Slide show"><SlideCanvas slide={showSlide} theme={theme} footer={footer} heading/><nav aria-label="Slide show controls"><button type="button" onClick={() => navigateShow(-1)} disabled={showIndex === 0}><BackArrowIcon/> <ArrowLeftIcon/> <span>Previous</span></button><span>{showIndex + 1} / {slides.length}</span><button type="button" onClick={() => navigateShow(1)} disabled={showIndex === slides.length - 1}><span>Next</span> <ArrowRightIcon/> <ForwardArrowIcon/></button><button type="button" onClick={() => setShowMode(false)}>End show</button></nav></div>}
     </div>
   </LabFrame>;
 }

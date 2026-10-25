@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import Icon from "../ui/Icon";
+import ForwardArrowIcon from "../ui/ForwardArrowIcon";
 
 function clampPercent(value) {
   const n = Number(value);
@@ -23,14 +24,6 @@ function greeting() {
   if (hour < 12) return "Good morning";
   if (hour < 17) return "Good afternoon";
   return "Good evening";
-}
-
-function ForwardArrow() {
-  return (
-    <svg className="spark-consultant-forward" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-      <path d="M5 10h9M10.5 5.5 15 10l-4.5 4.5" />
-    </svg>
-  );
 }
 
 export default function StudentDashboardHero({
@@ -80,7 +73,7 @@ export default function StudentDashboardHero({
           <button type="button" className="spark-consultant-primary" onClick={activate}>
             <span className="spark-consultant-primary-icon" aria-hidden="true"><Icon name="featureBook" size={18}/></span>
             <span>{actionLabel}</span>
-            <ForwardArrow />
+            <ForwardArrowIcon className="spark-consultant-forward" size={20}/>
           </button>
           {recommendation && onManageSubjects && (
             <button type="button" className="spark-consultant-secondary" onClick={onManageSubjects}>

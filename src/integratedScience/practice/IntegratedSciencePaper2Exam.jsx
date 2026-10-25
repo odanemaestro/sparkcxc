@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import ScienceBiologicalDrawingEvidence,{readBiologicalDrawingEvidence,biologicalDrawingSource} from "./ScienceBiologicalDrawingEvidence";
 import ScienceDrawingMagnificationEvidence from "./ScienceDrawingMagnificationEvidence";
 import {ScienceGuidedMagnificationPractice} from "./ScienceGuidedDiagramPractice";
@@ -599,7 +601,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
           <div className="is-empty-bank">
             <h1>Paper 02 could not be loaded.</h1>
             <p>{loadError.message}</p>
-            <button type="button" className="is-exam-primary" onClick={onBack}>Back to practice</button>
+            <button type="button" className="is-exam-primary" onClick={onBack}><BackArrowIcon/> Back to practice</button>
           </div>
         </div>
       </main>
@@ -685,7 +687,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
           <header className="is-exam-library-hero">
             <div>
               <button type="button" className="is-exam-primary is-exam-back" onClick={onBack}>
-                <span aria-hidden="true">{"\u2190"}</span>
+                <span aria-hidden="true"><BackArrowIcon/></span>
                 Integrated Science practice
               </button>
               <span className="is-exam-eyebrow">CSEC INTEGRATED SCIENCE PAPER 02</span>
@@ -718,7 +720,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
       <main className="is-exam-root">
         <div className="is-exam-shell">
           <button type="button" className="is-exam-primary is-exam-page-back" onClick={onBack}>
-            <span aria-hidden="true">{"\u2190"}</span>
+            <span aria-hidden="true"><BackArrowIcon/></span>
             Back to practice
           </button>
 
@@ -869,7 +871,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
         <footer className="is-exam-footer">
           <button type="button" className="is-exam-primary" disabled={currentIndex === 0} onClick={() => goTo(currentIndex - 1)}>
-            <span aria-hidden="true">{"\u2190"}</span>
+            <span aria-hidden="true"><BackArrowIcon/></span>
             Previous
           </button>
 
@@ -878,7 +880,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
           {currentIndex < 5 ? (
             <button type="button" className="is-exam-primary" onClick={() => goTo(currentIndex + 1)}>
               Next question
-              <span aria-hidden="true">{"\u2192"}</span>
+              <span aria-hidden="true"><ForwardArrowIcon/></span>
             </button>
           ) : !review ? (
             <button type="button" className="is-exam-primary" onClick={() => setConfirmSubmit(true)}>Submit paper</button>
@@ -890,7 +892,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
         {review && (
           <div className="is-exam-result-actions">
             <button type="button" className="is-exam-primary" onClick={onBack}>
-              <span aria-hidden="true">{"\u2190"}</span>
+              <span aria-hidden="true"><BackArrowIcon/></span>
               Back to Integrated Science practice
             </button>
             <button type="button" className="is-exam-primary" onClick={startAnother}>Start another Paper 2</button>

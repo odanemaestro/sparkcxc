@@ -1,3 +1,4 @@
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React, { createContext, useContext, useMemo, useState } from "react";
 import "./chemistryInteractiveLab.css";
 
@@ -66,7 +67,7 @@ function SeparationLab({onComplete}){
     <p>Choose a method for each mixture. Correctly separate all five mixtures to record the activity. <b>{solved.length} / 5 solved</b></p>
     <p><b>Mixture:</b> {item.mix}</p>
     <div className="chem-choice-grid">{options.map(option=><button type="button" key={option} aria-pressed={choice===option} className={choice===option?"selected":""} onClick={()=>{setChoice(option);setChecked(false)}}>{option}</button>)}</div>
-    <div className="chem-lab-actions"><button type="button" className="chem-lab-check-action" onClick={()=>{setChecked(true);if(choice===item.answer)setSolved(previous=>previous.includes(index)?previous:[...previous,index])}} disabled={!choice}>Check</button><button type="button" className="chem-lab-next-action" onClick={()=>{setIndex((index+1)%separationCases.length);setChoice("");setChecked(false)}}>Next mixture</button></div>
+    <div className="chem-lab-actions"><button type="button" className="chem-lab-check-action" onClick={()=>{setChecked(true);if(choice===item.answer)setSolved(previous=>previous.includes(index)?previous:[...previous,index])}} disabled={!choice}>Check</button><button type="button" className="chem-lab-next-action" onClick={()=>{setIndex((index+1)%separationCases.length);setChoice("");setChecked(false)}}>Next mixture <ForwardArrowIcon/></button></div>
     {checked&&<div role="status"><p className={choice===item.answer?"chem-ok":"chem-no"}>{choice===item.answer?"Correct. ":`Try ${item.answer}. `}{item.why}</p>{choice===item.answer&&<p className="chem-observation">{["Residue: sand on the filter paper. Filtrate: water in the receiver.","Concentrate the solution, cool it, then filter and dry the salt crystals.","Collect the ethanol-rich fraction first; the higher-boiling water remains longer.","Drain the lower water layer first, then collect the oil separately.","Separated dye spots appear above the solvent baseline."][index]}</p>}</div>}
   </LabFrame>;
 }

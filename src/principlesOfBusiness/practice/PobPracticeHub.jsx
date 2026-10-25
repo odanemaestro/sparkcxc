@@ -1,3 +1,5 @@
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
@@ -114,7 +116,7 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
  const finish=()=>{update({phase:"review",submittedAt:Date.now(),reason:"student"});setConfirm(false)};
  const restart=()=>{setAttempt(startState(paper.id));setConfirm(false)};
  return <main className="pob-exam"><div className="pob-exam-shell">
-   <div className="pob-exam-nav"><button type="button" onClick={onBack}>← Practice home</button><span>CSEC PRINCIPLES OF BUSINESS · PAPER 01</span></div>
+   <div className="pob-exam-nav"><button type="button" onClick={onBack}><BackArrowIcon/> Practice home</button><span>CSEC PRINCIPLES OF BUSINESS · PAPER 01</span></div>
    {attempt.phase==="instructions"?<section className="pob-exam-card pob-exam-intro">
      <span className="pob-exam-kicker">{isSpecimen?(maxScore===60?"CXC OFFICIAL SPECIMEN · FULL 60-QUESTION PRACTICE":"CXC OFFICIAL SPECIMEN · TEN-QUESTION CHECKPOINT"):"SPARK ORIGINAL PRACTICE"}</span>
      <h1>{isSpecimen?paper.title:"Paper 1: Multiple-choice examination"}</h1>
@@ -152,9 +154,9 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
            {current.sourceKeyAcademicReview&&<p role="note"><strong>CXC source-key review:</strong> {current.keyConcern}</p>}
          </div>}
          <div className="pob-exam-controls">
-           <button type="button" className="secondary" disabled={index===0} onClick={()=>update({index:index-1})}>Previous</button>
+           <button type="button" className="secondary" disabled={index===0} onClick={()=>update({index:index-1})}><BackArrowIcon/> Previous</button>
            {!review&&<button type="button" className="secondary" aria-pressed={!!attempt.flags[current.id]} onClick={()=>update({flags:{...attempt.flags,[current.id]:!attempt.flags[current.id]}})}>{attempt.flags[current.id]?"Unflag":"Flag for review"}</button>}
-           <button type="button" className="pob-primary" disabled={index===questions.length-1} onClick={()=>update({index:index+1})}>Next question</button>
+           <button type="button" className="pob-primary" disabled={index===questions.length-1} onClick={()=>update({index:index+1})}>Next question <ForwardArrowIcon/></button>
          </div>
        </article>
        <aside className="pob-exam-card pob-exam-navigator">
@@ -255,7 +257,7 @@ export function PobPaper2Exam({onBack,userId,supabase,paperOverride=null}){
  },[historical,review,userId,supabase,attempt.attemptId,answered,paper.id,paper.title]);
  const finish=()=>{update({phase:"review",submittedAt:Date.now()});setConfirm(false)};
  return <main className="pob-exam"><div className="pob-exam-shell">
-  <div className="pob-exam-nav"><button type="button" onClick={onBack}>← Practice home</button><span>CSEC PRINCIPLES OF BUSINESS · PAPER 02</span></div>
+  <div className="pob-exam-nav"><button type="button" onClick={onBack}><BackArrowIcon/> Practice home</button><span>CSEC PRINCIPLES OF BUSINESS · PAPER 02</span></div>
   {attempt.phase==="instructions"?<section className="pob-exam-card pob-exam-intro">
    <span className="pob-exam-kicker">{historical?"HISTORICAL CXC SOURCE · UNSCORED PREVIEW":"SPARK ORIGINAL STRUCTURED PRACTICE"}</span><h1>{historical?paper.title:"Paper 2: Business decisions"}</h1>
    <p>Five compulsory 20-mark questions, 100 marks, 2 hours. Read each business scenario carefully and use complete sentences, calculations and relevant Caribbean examples.</p>
@@ -305,8 +307,8 @@ export function PobPaper2Exam({onBack,userId,supabase,paperOverride=null}){
        </details>}
      </div>;
    })}
-   <div className="pob-exam-controls"><button type="button" className="secondary" disabled={question.number===1} onClick={()=>update({index:question.number-2})}>Previous</button>
-   <button type="button" className="pob-primary" disabled={question.number===5} onClick={()=>update({index:question.number})}>Next question</button></div>
+   <div className="pob-exam-controls"><button type="button" className="secondary" disabled={question.number===1} onClick={()=>update({index:question.number-2})}><BackArrowIcon/> Previous</button>
+   <button type="button" className="pob-primary" disabled={question.number===5} onClick={()=>update({index:question.number})}>Next question <ForwardArrowIcon/></button></div>
    {!review&&<button type="button" className="pob-primary pob-exam-submit" onClick={()=>setConfirm(true)}>Submit Paper 2</button>}
    {review&&<div className="pob-retry-actions"><button type="button" className="secondary" onClick={()=>setAttempt(startState(paper.id))}>Start another attempt</button></div>}
    </section>
@@ -335,7 +337,7 @@ export default function PobPracticeHub({userId,supabase,onBack}){
  if(mode==="archive")return <PobHistoricalArchive userId={userId} supabase={supabase} onBack={()=>setMode("home")} onOpenJanuary2026={()=>setMode("historical2026janp2")}/>;
  if(mode==="sba")return <PobSbaWorkspace userId={userId} onBack={()=>setMode("home")}/>;
  return <main className="pob-exam"><div className="pob-exam-shell">
-   {onBack&&<div className="pob-exam-nav"><button type="button" onClick={onBack}>← Choose another subject</button></div>}
+   {onBack&&<div className="pob-exam-nav"><button type="button" onClick={onBack}><BackArrowIcon/> Choose another subject</button></div>}
    <header className="pob-exam-card pob-exam-intro"><span className="pob-exam-kicker">SPARK CSEC PRINCIPLES OF BUSINESS</span>
      <h1>Practise business thinking</h1><p>Take a full timed practice paper, work through business scenarios or plan your SBA research. Original questions are clearly labelled. The January 2026 historical Paper 2 supports experimental AI-assisted marking, and the wider historical archive includes eleven 60-question Paper 1 sittings, written-answer guidance and references for incomplete sources.</p></header>
    <div className="pob-practice-options">

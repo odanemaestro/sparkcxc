@@ -43,7 +43,7 @@ describe('Information Technology back button consistency',()=>{
     const studyJs=read('components/InformationTechnologySubjectView.jsx');
     const labsHome=read('labs/InformationTechnologyPracticalLabs.jsx');
     const labFrame=read('labs/components/LabFrame.jsx');
-    expect(studyJs).toContain('<BackIcon/>');
+    expect(studyJs).toContain('<BackArrowIcon/>');
     expect(labsHome).toContain('<ArrowLeftIcon/>');
     expect(labFrame).toContain('<ArrowLeftIcon/>');
   });

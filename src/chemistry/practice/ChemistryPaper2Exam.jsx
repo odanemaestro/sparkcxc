@@ -1,3 +1,4 @@
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React, {useCallback,useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
@@ -266,7 +267,7 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
   const qEval=result.questions[current];
   return <main className="is-exam-root chem-p2-root"><div className="is-exam-shell">
     <header className="is-exam-head">
-      <div><button type="button" className="is-exam-primary is-exam-back" onClick={()=>submitted?onBack():setConfirmExit(true)}>Exit</button><span className="is-exam-eyebrow">CSEC CHEMISTRY · PAPER 02</span><h1>{paper.title}</h1><p>{submitted?"Answer review":`Question ${current+1} of ${paper.questions.length}`} · {q.totalMarks} marks</p></div>
+      <div><button type="button" className="is-exam-primary is-exam-back" onClick={()=>submitted?onBack():setConfirmExit(true)}><BackArrowIcon/> Exit</button><span className="is-exam-eyebrow">CSEC CHEMISTRY · PAPER 02</span><h1>{paper.title}</h1><p>{submitted?"Answer review":`Question ${current+1} of ${paper.questions.length}`} · {q.totalMarks} marks</p></div>
       <div className={`is-exam-timer ${remaining<=900&&!submitted?"warning":""}`}><span>{submitted?"Submitted":"Time remaining"}</span><strong>{submitted?"REVIEW":timeText(remaining)}</strong></div>
     </header>
 
@@ -278,10 +279,10 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
 
     <PaperQuestion question={q} responses={responses} onChange={update} disabled={submitted} evaluation={qEval}/>
 
-    <div className="chem-p2-exam-footer"><div className="is-exam-bottom-nav"><button type="button" className="is-exam-secondary" disabled={current===0} onClick={()=>{setCurrent(v=>Math.max(0,v-1));goTop();}}>Previous</button><span>Question {current+1} of {paper.questions.length}</span><button type="button" className="is-exam-secondary" disabled={current===paper.questions.length-1} onClick={()=>{setCurrent(v=>Math.min(paper.questions.length-1,v+1));goTop();}}>Next</button></div>
+    <div className="chem-p2-exam-footer"><div className="is-exam-bottom-nav"><button type="button" className="is-exam-secondary" disabled={current===0} onClick={()=>{setCurrent(v=>Math.max(0,v-1));goTop();}}><BackArrowIcon/> Previous</button><span>Question {current+1} of {paper.questions.length}</span><button type="button" className="is-exam-secondary" disabled={current===paper.questions.length-1} onClick={()=>{setCurrent(v=>Math.min(paper.questions.length-1,v+1));goTop();}}>Next <ForwardArrowIcon/></button></div>
 
     {!submitted&&<div className="chem-p2-submit-row"><button type="button" className="is-exam-primary" onClick={()=>setConfirmSubmit(true)}>Submit Paper 02</button></div>}
-    {submitted&&<div className="chem-p2-submit-row"><button type="button" className="is-exam-primary" onClick={restart}>Retake this paper</button><button type="button" className="is-exam-secondary" onClick={onBack}>Choose another paper</button></div>}
+    {submitted&&<div className="chem-p2-submit-row"><button type="button" className="is-exam-primary" onClick={restart}>Retake this paper</button><button type="button" className="is-exam-secondary" onClick={onBack}><BackArrowIcon/> Choose another paper</button></div>}
     </div>
 
     {confirmExit&&<div className="chem-exam-modal-layer" role="presentation">

@@ -1,3 +1,4 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React,{useEffect,useState} from "react";
 import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
 import {FNH_PRACTICAL_WORKBOOK,FNH_SBA_GUIDELINES} from "../data/fnhPracticalWorkbook";
@@ -19,7 +20,7 @@ export default function FnhPracticalWorkbook({userId,onBack}){
   useEffect(()=>{try{localStorage.setItem(storageKey(userId),JSON.stringify(entries));}catch{}},[entries,userId]);
   const prepared=FNH_PRACTICAL_WORKBOOK.filter(row=>entries[row.id]?.notes?.trim()).length;
   return <main className="fnh-exam fnh-workbook"><div className="fnh-exam-container">
-    <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={onBack}>← Back to FNH practice</button></div>
+    <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={onBack}><BackArrowIcon/> Back to FNH practice</button></div>
     <header className="fnh-exam-card fnh-library-hero">
       <small>FOOD, NUTRITION AND HEALTH · PRACTICAL SKILLS</small>
       <h1>SBA practical workbook</h1>

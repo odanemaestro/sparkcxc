@@ -1,3 +1,4 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import MathText from '../../practice/MathText';
 import { PHYSICS_STUDY_UPGRADES } from '../course/physicsStudyUpgrade.mjs';
@@ -57,7 +58,7 @@ export default function PhysicsWorkbook({ onBack, onOpenSection }) {
       <div className="physics-resource-shell">
         <header className="physics-resource-hero">
           <div>
-            {onBack && <button type="button" className="physics-resource-back" onClick={onBack}>← Back to Physics</button>}
+            {onBack && <button type="button" className="physics-resource-back" onClick={onBack}><BackArrowIcon/> Back to Physics</button>}
             <span className="physics-resource-eyebrow">SPARK CSEC Physics</span>
             <h1>Physics Workbook</h1>
             <p>Work through the CSEC Physics syllabus topic by topic, with focused notes, examination guidance, worked examples, data skills, practical work and quick checks.</p>

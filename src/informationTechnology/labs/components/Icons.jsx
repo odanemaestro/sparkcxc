@@ -1,4 +1,6 @@
 import React from "react";
+import BackArrowIcon from "../../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../../components/ui/ForwardArrowIcon";
 
 function IconBase({ children, size = 18, className = "", ...props }) {
   return (
@@ -21,12 +23,12 @@ function IconBase({ children, size = 18, className = "", ...props }) {
   );
 }
 
-export function ArrowLeftIcon(props) {
-  return <IconBase {...props}><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></IconBase>;
+export function ArrowLeftIcon({className="",...props}) {
+  return <BackArrowIcon {...props} className={`itv2-icon ${className}`.trim()}/>;
 }
 
-export function ArrowRightIcon(props) {
-  return <IconBase {...props}><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></IconBase>;
+export function ArrowRightIcon({className="",...props}) {
+  return <ForwardArrowIcon {...props} className={`itv2-icon ${className}`.trim()}/>;
 }
 
 export function ArrowUpRightIcon(props) {

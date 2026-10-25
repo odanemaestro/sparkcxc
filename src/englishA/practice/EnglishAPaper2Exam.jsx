@@ -380,7 +380,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
   return (
     <main className="is-exam-root"><div className="is-exam-shell is-exam-paper-shell">
       <header className="is-exam-head">
-        <div><button type="button" className="is-exam-primary is-exam-back" onClick={onBack}>Exit</button><span className="is-exam-eyebrow">CSEC ENGLISH A · PAPER 02</span><h1>{paper.title}</h1><p>{answeredCount}/6 required responses started</p></div>
+        <div><button type="button" className="is-exam-primary is-exam-back" onClick={onBack}><BackArrowIcon/> Exit</button><span className="is-exam-eyebrow">CSEC ENGLISH A · PAPER 02</span><h1>{paper.title}</h1><p>{answeredCount}/6 required responses started</p></div>
         <div className="is-exam-timer"><span>Time remaining</span><strong>{formatTime(remaining)}</strong></div>
       </header>
 
