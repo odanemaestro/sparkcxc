@@ -47,6 +47,7 @@ import {CHEMISTRY_PAPER2_PRACTICE_SETS} from "../chemistry/data/chemistryPaper2B
 import {readScienceGraph,graphPoints} from "../integratedScience/practice/scienceGraphModel";
 import {gradeEnglishAPaper2Response} from "../englishA/practice/englishAPaper2Grader";
 import {knownEnglishSummaryMark} from "./v2Fixtures/englishASummary";
+import {knownEnglishExtendedMark} from "./v2Fixtures/englishAExtended";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
 import {gradeFnhWrittenPart,fnhDistinctPairs} from "../fnh/practice/fnhPaper2Marking";
 import {gradeIntegratedSciencePaper2Item,integratedSciencePoints,integratedScienceLineItem,
@@ -1164,9 +1165,9 @@ function english(rows,responses,paperId){
   const unsupported=(result.diagnostics?.wordCount??0)<20 ||
     result.confidence==="low";
   const provisional=unsupported?0:result.score;
-  const certified=task.kind==="summary"?
-    knownEnglishSummaryMark({paperId,criterion:row,
-      response:text(answer),analysisResponse:text(analysis)}):null;
+  const certified=(task.kind==="summary"?knownEnglishSummaryMark:
+     knownEnglishExtendedMark)({paperId,criterion:row,
+      response:text(answer),analysisResponse:text(analysis)});
   return cap(row,provisional,"existing-english-a-analytic-rubric",
     (blank(answer)&&blank(analysis))||
     (certified!==null&&certified===provisional));
