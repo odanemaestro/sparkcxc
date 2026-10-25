@@ -1,0 +1,70 @@
+name: V2 Social Studies linked full-paper replay
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/grading/**"
+      - ".github/workflows/v2-social-full-paper-linked.yml"
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Replay all Social Studies source and complete paper cases
+        run: node tools/v2-verify-all.mjs --subject social-studies --out artifacts/social-linked-papers
+      - name: Require all 60 criteria and all 3 full papers passing
+        run: |
+          node <<'NODE'
+          const fs=require("fs");
+          const dir="artifacts/social-linked-papers";
+          const s=JSON.parse(fs.readFileSync(dir+"/summary.json","utf8"));
+          const p=JSON.parse(fs.readFileSync(dir+"/papers.json","utf8"));
+          const subject=s.bySubject["social-studies"];
+          const failures=p.filter(x=>x.outcome!=="verified");
+          console.log("SOCIAL_FULL_PAPER_COUNTS="+JSON.stringify({
+           total:p.length,ready:p.length-failures.length,
+           verifiedCriteria:subject?.verified,
+           fail:failures.map(x=>({paper:x.paperId,
+             scenarios:x.scenarios?.filter(s=>!s.passed).map(s=>({
+              name:s.name,details:s.failures?.slice(0,10)
+             }))}))
+          }));
+          if(subject?.verified!==60||subject.failed!==0||
+             p.length!==3||failures.length||
+             s.rehearsal.criteriaRejectedCount||
+             s.rehearsal.papersRejected.length||
+             s.rehearsal.releaseRejected.length)
+           throw Error("Social Studies paper-level release remains blocked");
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: social-full-paper-source-evidence
+          path: artifacts/social-linked-papers/
+  export:
+    needs: verify
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: social-full-paper-source-evidence
+          path: artifacts/social-linked-papers/
+      - name: Export only all three approved paper source records
+        run: |
+          node <<'NODE'
+          const fs=require("fs");
+          const a=JSON.parse(fs.readFileSync("artifacts/social-linked-papers/papers.json","utf8"));
+          if(a.length!==3||a.some(p=>p.outcome!=="verified"||
+             p.scenarios?.length!==9||p.scenarios.some(s=>!s.passed)||
+             p.provenance?.workingTreeDirty!==false||!p.evidenceSha256||!p.sourceSha256))
+            throw Error("Do not export provisional papers");
+          for(const paper of a)console.log("SOCIAL_FULL_PAPER_RELEASE="+JSON.stringify(paper));
+          NODE
