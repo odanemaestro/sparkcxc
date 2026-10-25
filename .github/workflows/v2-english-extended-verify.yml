@@ -1,0 +1,83 @@
+name: V2 English A extended 36 source verification
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/grading/**"
+      - "src/englishA/**"
+      - "tools/v2-verify-all.mjs"
+      - ".github/workflows/v2-english-extended-verify.yml"
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Verify English A's 72 criteria against actual V2 marking engine
+        run: node tools/v2-verify-all.mjs --subject english-a --out artifacts/v2-english-extended
+      - name: Require all 36 newly verified source-backed extended tasks
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const records=JSON.parse(fs.readFileSync("artifacts/v2-english-extended/evidence.json","utf8"));
+          const extended=records.filter(r=>!r.criterionId.endsWith("-S"));
+          const summaries=records.filter(r=>r.criterionId.endsWith("-S"));
+          const verified=extended.filter(r=>r.outcome==="verified");
+          const failure=extended.filter(r=>r.outcome!=="verified");
+          console.log("ENGLISH_EXTENDED_COUNT="+JSON.stringify({
+           total:records.length,extended:extended.length,verified:verified.length,
+           summaries:summaries.filter(r=>r.outcome==="verified").length,
+           failed:failure.map(r=>({paperId:r.paperId,id:r.criterionId,blocker:r.blocker,
+            uncommitted:r.uncommittedClasses,failures:r.failures,
+            wrongCases:r.cases?.filter(c=>!c.passed).map(c=>({
+              cls:c.cls,marks:c.marks,expect:c.expect,resolved:c.resolved
+            }))}))
+          }));
+          if(records.length!==72||extended.length!==36||
+             summaries.length!==36||verified.length!==36||
+             summaries.some(r=>r.outcome!=="verified")||
+             verified.some(r=>r.provenance?.workingTreeDirty!==false||
+              !r.sourceSha256||!r.criterionSha256||!r.evidenceSha256||
+              r.cases?.some(c=>!c.passed)))
+            throw Error("English A extended source verification incomplete");
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: english-a-extended-source-evidence
+          path: artifacts/v2-english-extended/
+          if-no-files-found: error
+  export:
+    needs: verify
+    if: always()
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        paperGroup: [A, B, C, D, E, F]
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: english-a-extended-source-evidence
+          path: artifacts/v2-english-extended/
+      - name: Export six validated extended source criteria
+        env:
+          PAPER_GROUP: ${{ matrix.paperGroup }}
+        run: |
+          node <<'NODE'
+          const fs=require("fs");
+          const all=JSON.parse(fs.readFileSync("artifacts/v2-english-extended/evidence.json","utf8"));
+          const parts=all.filter(r=>r.paperId.startsWith("EA-P2-"+process.env.PAPER_GROUP+"-")&&
+           !r.criterionId.endsWith("-S"));
+          if(parts.length!==6||parts.some(r=>r.outcome!=="verified"||
+            r.provenance?.workingTreeDirty!==false||!r.sourceSha256||
+            !r.criterionSha256||!r.evidenceSha256||r.cases?.some(c=>!c.passed)))
+           throw Error("Incomplete English A extended source approvals");
+          for(const record of parts)console.log("ENGLISH_EXTENDED_REGISTER_ITEM="+JSON.stringify(record));
+          NODE
