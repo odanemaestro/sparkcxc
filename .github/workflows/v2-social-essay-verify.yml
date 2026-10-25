@@ -28,6 +28,18 @@ jobs:
           const all=JSON.parse(fs.readFileSync("artifacts/v2-social-essay/evidence.json","utf8"));
           const essays=all.filter(r=>r.criterionId.endsWith("::content")||r.criterionId.endsWith("::organisation"));
           const failures=essays.filter(r=>r.outcome!=="verified");
+          const papers=JSON.parse(fs.readFileSync("artifacts/v2-social-essay/papers.json","utf8"));
+          const failedPapers=papers.filter(p=>p.outcome!=="verified");
+          console.log("SOCIAL_PAPER_REPLAY="+JSON.stringify({verified:papers.length-failedPapers.length,
+           total:papers.length,failed:failedPapers.map(p=>({
+            id:p.paperId,unverified:p.unverifiedCriteria,
+            scenarios:p.scenarios?.filter(s=>!s.passed).map(s=>({
+             name:s.name,failures:s.failures
+            }))
+           }))}));
+          if(papers.length!==3||failedPapers.length)
+           throw Error("No Social Studies paper can be released without nine correct whole-paper scenarios");
+
           console.log("SOCIAL_ESSAYS_COUNTS="+JSON.stringify({
            total:essays.length,verified:essays.length-failures.length,
            blocked:failures.map(r=>({
