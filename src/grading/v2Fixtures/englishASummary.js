@@ -14,7 +14,7 @@ import {ENGLISH_A_SUMMARY_REFERENCE} from "./englishASummaryReferences";
 
 const tasksById=new Map(englishAPaper2Sets.flatMap(set=>set.tasks.map(task=>[task.id,task])));
 const key=value=>String(value??"").replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();
-const phraseAnswer=answer=>String(answer||"").split(/(?<=[.!?])\s+/)[0]?.trim()||"";
+const phraseAnswer=answer=>{\n const sentences=String(answer||"").split(/(?<=[.!?])\\s+/);\n return (sentences[0]?.trim().split(/\\s+/).length>=20?sentences[0]:sentences.slice(0,2).join(" ")).trim();\n};
 const grade=(task,answer,analysis="")=>gradeEnglishAPaper2Response(task,answer,analysis);
 const noIdea=new Set(["i do not know","i have no answer","no idea","i am not sure"]);
 
