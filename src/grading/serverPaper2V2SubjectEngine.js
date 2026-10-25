@@ -54,6 +54,7 @@ import INTEGRATED_SCIENCE_PAPER2_SPECS from "../integratedScience/data/integrate
 import {verifyOriginalBiologyEvidence} from "../integratedScience/practice/sourceBiologyV2Verification";
 import {gradeSocialStudiesShortAnswer} from "../socialStudies/marking/socialStudiesShortAnswerGrader";
 import {knownSocialSourceMarks} from "./v2Fixtures/socialStudiesOriginal";
+import {knownSocialEssayMarks} from "./v2Fixtures/socialStudiesEssays";
 import {gradeSocialStudiesEssay} from "../socialStudies/marking/socialStudiesEssayGrader";
 import {reviewPobHistoricalPaper2} from "../principlesOfBusiness/data/pobHistoricalPaper2RubricReview";
 import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
@@ -1258,7 +1259,9 @@ function social(rows,responses,paperId){
    if(result.status==="unavailable"||!finite(suggested)||
       !Number.isFinite(expected)||expected!==row.maxMarks)
     throw new Error("Unmapped social studies essay");
-   return cap(row,suggested,"existing-social-studies-essay",blank(answer));
+   const calibrated=knownSocialEssayMarks({paperId,criterion:row,response:answer});
+   return cap(row,suggested,"existing-social-studies-essay",
+    blank(answer)||(calibrated!==null&&calibrated===suggested));
   }
   if(blank(raw))return cap(row,0,"existing-social-studies-blank",true);
   throw new Error("Unmapped social studies source mark "+row.id);
