@@ -1,0 +1,77 @@
+name: V2 Social Studies essay source verification
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/grading/**"
+      - "src/socialStudies/**"
+      - "tools/v2-verify-all.mjs"
+      - ".github/workflows/v2-social-essay-verify.yml"
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Verify real V2 essay examiner against source-specific cases
+        run: node tools/v2-verify-all.mjs --subject social-studies --out artifacts/v2-social-essay
+      - name: Report essay verdicts and reject missing evidence
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const all=JSON.parse(fs.readFileSync("artifacts/v2-social-essay/evidence.json","utf8"));
+          const essays=all.filter(r=>r.criterionId.endsWith("::content")||r.criterionId.endsWith("::organisation"));
+          const failures=essays.filter(r=>r.outcome!=="verified");
+          console.log("SOCIAL_ESSAYS_COUNTS="+JSON.stringify({
+           total:essays.length,verified:essays.length-failures.length,
+           blocked:failures.map(r=>({
+             id:r.criterionId,blocker:r.blocker,failures:r.failures,
+             missing:r.missingClasses,uncommitted:r.uncommittedClasses,
+             cases:r.cases?.filter(c=>!c.passed).map(c=>({
+              cls:c.cls,expect:c.expect,marks:c.marks,resolved:c.resolved
+             }))
+           }))
+          }));
+          if(essays.length!==12||failures.length||essays.some(r=>
+             r.provenance?.workingTreeDirty!==false||!r.sourceSha256||
+             !r.criterionSha256||!r.evidenceSha256||r.cases?.some(c=>!c.passed)))
+            throw Error("Do not release unverified Social Studies essay source criteria");
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: social-essay-source-evidence
+          path: artifacts/v2-social-essay/
+          if-no-files-found: error
+  export:
+    needs: verify
+    if: always()
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        paper: ["ss-p2-original-A", "ss-p2-original-B", "ss-p2-original-C"]
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: social-essay-source-evidence
+          path: artifacts/v2-social-essay/
+      - name: Emit exact source-hashed production approval candidates
+        env:
+          PAPER_ID: ${{ matrix.paper }}
+        run: |
+          node <<'NODE'
+          const fs=require("fs");
+          const all=JSON.parse(fs.readFileSync("artifacts/v2-social-essay/evidence.json","utf8"));
+          const rows=all.filter(r=>r.paperId===process.env.PAPER_ID&&
+           (r.criterionId.endsWith("::content")||r.criterionId.endsWith("::organisation")));
+          if(rows.length!==4||rows.some(r=>r.outcome!=="verified"||
+             r.provenance?.workingTreeDirty!==false||!r.evidenceSha256||
+             r.cases?.some(c=>!c.passed)))throw Error("Essay review not fully verified");
+          for(const record of rows)console.log("SOCIAL_ESSAY_REGISTER_ITEM="+JSON.stringify(record));
+          NODE
