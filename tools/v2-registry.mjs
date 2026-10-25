@@ -18,7 +18,10 @@ const prelude=`create schema auth;create table auth.users(id uuid primary key);
 // Production-only infrastructure (vault/cron scheduling, notifications) is
 // excluded: PGlite has no pg_cron or vault and it does not touch rubrics.
 const excluded=new Set([
- "20261019193000_marking_v2_vault_scheduled_worker.sql"
+ "20261019193000_marking_v2_vault_scheduled_worker.sql",
+ // Retirement describes verified production approvals and is replayed separately
+ // by tests after their isolated staging rubrics reach the same state.
+ "20261025035500_v2_retire_legacy_poa_specimen_draft.sql"
 ]);
 const accountsCourseMigration="20261021090000_principles_of_accounts_course_draft.sql";
 
