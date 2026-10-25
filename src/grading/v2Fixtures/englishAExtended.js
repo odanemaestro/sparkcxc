@@ -33,7 +33,15 @@ export function englishExtendedCalibration({paperId,criterion}){
     wordCount>700||countEnglishWords(partial)<28||
     fullScore.confidence==="low"||fullScore.score<8||fullScore.score>30||
     partialScore.confidence==="low"||partialScore.score<1||
-    partialScore.score>=fullScore.score)return null;
+    partialScore.score>=fullScore.score){
+  console.warn("ENGLISH_SOURCE_CALIBRATION_BLOCKED="+JSON.stringify({
+   id,paperId,kind:task.kind,words:wordCount,
+   partialWords:countEnglishWords(partial),full:fullScore.score,
+   partial:partialScore.score,fullConfidence:fullScore.confidence,
+   partialConfidence:partialScore.confidence
+  }));
+  return null;
+ }
  return Object.freeze({task,response,partial,fullScore:fullScore.score,
   partialScore:partialScore.score});
 }
