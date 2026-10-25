@@ -119,6 +119,16 @@ export function knownSocialSourceMarks({
      .filter(Boolean).map(normal):[];
  const expectedBefore=x=>!x.previous||
   normal(x.previous)===before||approvedParents.includes(before);
+ if(candidate===normal(witness.full.response)&&!expectedBefore(witness.full)&&
+    before.length>30&&
+    ["ss-p2-q1::(c) (ii)","ss-p2-q2::(c) (ii)",
+     "ss-p2-b-q4::(c) (ii)","ss-p2-c-q2::(c) (ii)"].includes(criterion.id))
+  console.warn("SOCIAL_LINKED_SOURCE_DEBUG="+JSON.stringify({
+   id:criterion.id,prior:before,required:normal(witness.full.previous),
+   verifiedParentAnswers:approvedParents,
+   parentType:previousCriterion?.sourceMarking?.marking?.type,
+   parentId:previousCriterion?.id
+  }));
  if(candidate===normal(witness.full.response)&&expectedBefore(witness.full))
   return criterion.maxMarks;
  if(candidate===normal(witness.partial.response)&&expectedBefore(witness.partial))
