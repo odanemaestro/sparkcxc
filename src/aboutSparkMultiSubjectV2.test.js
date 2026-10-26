@@ -23,6 +23,27 @@ describe("About SPARK multi-subject update", () => {
     expect(registry).toContain('PRINCIPLES_OF_ACCOUNTS: "principles-of-accounts"');
   });
 
+  test("the about counts recalculate from registered and enabled subjects rather than fixed numbers", () => {
+    const {getSparkSubjectRegistry, enabledSparkSubjects} = require("./subjects/subjectRegistry");
+    const registered = getSparkSubjectRegistry({physicsEnabled:true})
+      .filter(subject => subject.capabilities?.study !== false);
+    const enabled = enabledSparkSubjects(registered);
+    expect(registered).toHaveLength(10);
+    expect(enabled).toHaveLength(8);
+    const preview = registered.map(subject =>
+      subject.id === "food-nutrition-and-health" || subject.id === "principles-of-accounts"
+        ? {...subject, enabled:true}
+        : subject
+    );
+    expect(enabledSparkSubjects(preview)).toHaveLength(10);
+    expect(about).toContain("const registeredSubjects = SPARK_SUBJECTS.filter");
+    expect(about).toContain("const availableSubjects = enabledSparkSubjects(registeredSubjects)");
+    expect(about).toContain("const unavailableSubjectCount = registeredSubjects.length - availableSubjects.length");
+    expect(about).toContain("{availableSubjects.length} of {registeredSubjects.length}");
+    expect(about).toContain("{unavailableSubjectCount > 0");
+    expect(about).not.toMatch(/<strong>8 of 10<\\/strong>/);
+  });
+
   test("reflects SPARK's evolution without Mathematics-only facts or misleading claims", () => {
     for(const phrase of [
       "It began with Mathematics", "multi-subject learning platform",
