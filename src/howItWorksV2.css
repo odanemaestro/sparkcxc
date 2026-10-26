@@ -1,0 +1,229 @@
+/* SPARK How It Works V2: accessible, multi-subject public learning guide. */
+.spark-how-page {
+  background: var(--spark-bg, #f7f9fc);
+  color: var(--spark-ink, #102a56);
+}
+.spark-how-page .spark-how-hero {
+  padding: clamp(48px, 7vw, 76px) 24px 58px;
+  text-align: center;
+}
+.spark-how-eyebrow, .spark-how-kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.spark-how-eyebrow { color: #70e8d8; margin-bottom: 14px; }
+.spark-how-hero h1 {
+  font-family: "Crimson Pro", Georgia, serif;
+  font-size: clamp(36px, 5.5vw, 54px);
+  letter-spacing: -.035em;
+  line-height: 1.06;
+  margin: 0 auto 15px;
+  font-weight: 700;
+}
+.spark-how-hero > p {
+  max-width: 625px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-size: clamp(15px, 2.2vw, 17px);
+  color: rgba(255,255,255,.8);
+}
+.spark-how-hero-points {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 26px auto 0;
+  max-width: 900px;
+}
+.spark-how-hero-points span {
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.07);
+  border-radius: 999px;
+  padding: 9px 15px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255,255,255,.94);
+}
+.spark-how-content {
+  width: min(100%, 1170px);
+  margin: 0 auto;
+  padding: 52px 26px 72px;
+}
+.spark-how-section { margin-bottom: 62px; }
+.spark-how-section-heading { max-width: 780px; margin-bottom: 24px; }
+.spark-how-kicker { color: var(--spark-teal-dark, #0c8076); margin-bottom: 9px; }
+.spark-how-section-heading h2 {
+  font-family: "Crimson Pro", Georgia, serif;
+  color: var(--spark-ink, #102a56);
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.14;
+  letter-spacing: -.02em;
+  margin: 0 0 10px;
+}
+.spark-how-section-heading > p {
+  margin: 0;
+  color: var(--spark-text-muted, #64748b);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.spark-how-subject-section {
+  border: 1px solid var(--spark-border, #e1e7ee);
+  background: var(--spark-paper, #fff);
+  border-radius: 24px;
+  padding: clamp(22px, 4vw, 32px);
+}
+.spark-how-subject-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+.spark-how-subject-list li {
+  color: var(--spark-ink, #102a56);
+  background: var(--spark-muted, #f1f5fa);
+  border: 1px solid var(--spark-border, #e1e7ee);
+  border-radius: 11px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+.spark-how-step-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr));
+  gap: 15px;
+}
+.spark-how-step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 22px;
+  background: var(--spark-paper, #fff);
+  border: 1px solid var(--spark-border, #e1e7ee);
+  border-radius: 17px;
+  min-width: 0;
+}
+.spark-how-step-number {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--spark-navy-mid, #102a56);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: .04em;
+}
+.spark-how-step-card h3 {
+  color: var(--spark-ink, #102a56);
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.35;
+  margin: 0 0 7px;
+}
+.spark-how-step-card p {
+  color: var(--spark-text-muted, #64748b);
+  font-size: 13.5px;
+  line-height: 1.65;
+  margin: 0;
+}
+.spark-how-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.spark-how-audience-panel {
+  padding: 25px;
+  border: 1px solid var(--spark-border, #e1e7ee);
+  background: var(--spark-paper, #fff);
+  border-radius: 22px;
+  min-width: 0;
+}
+.spark-how-audience-panel > h3 {
+  font: 700 25px/1.2 "Crimson Pro", Georgia, serif;
+  color: var(--spark-ink, #102a56);
+  margin: 0 0 18px;
+}
+.spark-how-step-grid-compact { grid-template-columns: 1fr; gap: 12px; }
+.spark-how-step-grid-compact .spark-how-step-card {
+  padding: 15px;
+  background: var(--spark-bg, #f7f9fc);
+  border-radius: 13px;
+}
+.spark-how-step-grid-compact .spark-how-step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  font-size: 11px;
+}
+.spark-how-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+  gap: 16px;
+}
+.spark-how-faq-card { min-width: 0; }
+.spark-how-faq-card h3 {
+  margin: 0 0 10px;
+  color: var(--spark-ink, #102a56);
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.4;
+}
+.spark-how-faq-card p {
+  margin: 0;
+  color: var(--spark-text-muted, #64748b);
+  font-size: 13.5px;
+  line-height: 1.68;
+}
+.spark-how-page .spark-how-cta {
+  border-radius: 22px;
+  padding: clamp(23px, 4vw, 34px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+}
+.spark-how-cta h2 {
+  color: #fff;
+  font: 700 26px/1.2 "Crimson Pro", Georgia, serif;
+  margin: 0 0 6px;
+}
+.spark-how-cta p {
+  color: rgba(255,255,255,.83);
+  line-height: 1.6;
+  max-width: 550px;
+  margin: 0;
+  font-size: 14px;
+}
+.spark-how-cta .spark-role-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+@media (max-width: 720px) {
+  .spark-how-content { padding: 34px 17px 50px; }
+  .spark-how-section { margin-bottom: 44px; }
+  .spark-how-audience-grid { grid-template-columns: minmax(0, 1fr); }
+  .spark-how-audience-panel { padding: 18px; }
+  .spark-how-page .spark-how-hero { padding: 44px 18px 40px; }
+  .spark-how-step-card { padding: 17px; }
+}
+@media (max-width: 430px) {
+  .spark-how-hero-points { gap: 7px; }
+  .spark-how-hero-points span { padding: 8px 10px; font-size: 11px; }
+  .spark-how-subject-list li { font-size: 12px; padding: 9px 11px; }
+  .spark-how-page .spark-how-cta { align-items: stretch; }
+  .spark-how-cta .spark-role-cta-actions { width: 100%; }
+  .spark-how-cta .spark-role-cta-actions > button { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spark-how-page * { scroll-behavior: auto; }
+}
