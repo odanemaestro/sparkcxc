@@ -36,14 +36,14 @@ describe("SPARK V5.5.2 dashboard polish integration", () => {
     expect(source).toContain('className="spark-flashcard-answer spark-flashcard-math"');
   });
 
-  test("student and parent overview cards use the shared forward-arrow action", () => {
+  test("student and parent overview cards use the slanted-arrow drill-in action", () => {
     const student = read("components/learning/StudentOverviewIntelligence.jsx");
     const parent = read("components/learning/ParentOverviewIntelligence.jsx");
     expect(student).toContain("spark-dashboard-card-action-icon");
-    expect(student).toContain("<ForwardArrowIcon");
+    expect(student).toContain('viewBox="0 0 20 20"');
     expect(student).not.toContain(">↗</span>");
     expect(parent).toContain("spark-dashboard-card-action-icon");
-    expect(parent).toContain("<ForwardArrowIcon");
+    expect(parent).toContain('viewBox="0 0 20 20"');
     expect(parent).not.toContain(">↗</span>");
   });
 

@@ -1,4 +1,3 @@
-import ForwardArrowIcon from "../components/ui/ForwardArrowIcon";
 // ============================================================================
 // Adaptive CSEC Mathematics practice screen
 // Done by: Odane Robinson
@@ -591,7 +590,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
                 <summary>Common mistakes</summary>
                 <ul>{q.common_mistakes?.map((m, i) => <MathText as="li" prose className="adaptive-mistake-math" key={i}>{m}</MathText>)}</ul>
               </details>
-              <button onClick={next}>Next question <ForwardArrowIcon/></button>
+              <button onClick={next}>Next question</button>
             </>
           )}
 

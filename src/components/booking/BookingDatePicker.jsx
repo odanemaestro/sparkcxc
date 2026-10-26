@@ -1,7 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import BackArrowIcon from "../ui/BackArrowIcon";
-import ForwardArrowIcon from "../ui/ForwardArrowIcon";
 import "./bookingDatePicker.css";
 
 const pad = value => String(value).padStart(2, "0");
@@ -178,7 +176,7 @@ export default function BookingDatePicker({
           disabled={previousDisabled}
           onClick={() => moveMonth(-1)}
         >
-          <BackArrowIcon/>
+          ‹
         </button>
         <strong>{monthLabel(month)}</strong>
         <button
@@ -187,7 +185,7 @@ export default function BookingDatePicker({
           aria-label="Next month"
           onClick={() => moveMonth(1)}
         >
-          <ForwardArrowIcon/>
+          ›
         </button>
       </div>
 

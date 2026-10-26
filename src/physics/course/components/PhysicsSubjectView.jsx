@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import BackArrowIcon from '../../../components/ui/BackArrowIcon';
-import ForwardArrowIcon from '../../../components/ui/ForwardArrowIcon';
 import { usePhysicsSubjectRoute } from '../../../routing/sparkRoutingV270';
 import PhysicsMechanicsSection from '../../mechanics/components/PhysicsMechanicsSection';
 import PhysicsCourseLessons from './PhysicsCourseLessons';
@@ -13,6 +12,12 @@ import PhysicsFormulaList from '../../resources/PhysicsFormulaList.jsx';
 import { physicsFullCourseStats } from '../fullCourseIndex.mjs';
 import './physicsSubjectView.css';
 import '../../../subjects/sparkSpecializedStudyPolish.css';
+
+const SectionArrowIcon = () => (
+  <svg className="psv-section-arrow-icon" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+    <path d="M6 14L14 6M8 6h6v6" />
+  </svg>
+);
 
 const SECTION_META = Object.freeze({
   A: { title:'Mechanics', detail:'Lessons, interactive labs, practical notebooks, flashcards, topic tests and the Mechanics checkpoint.', accent:'A' },
@@ -77,7 +82,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
               <span>25 topics · 189 objectives</span>
               <small>Study notes, exam focus, formulae, worked examples, data skills, practical work, quick checks and objective-by-objective guidance.</small>
             </span>
-            <span className="psv-section-arrow" aria-hidden="true"><ForwardArrowIcon className="psv-section-arrow-icon"/></span>
+            <span className="psv-section-arrow" aria-hidden="true"><SectionArrowIcon/></span>
           </button>
           <button type="button" className="psv-section-card" onClick={() => setSection('FORMULAE')}>
             <span className="psv-section-code">Æ’</span>
@@ -87,7 +92,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
               <span>64 equations, relationships and direction rules</span>
               <small>Search by topic, quantity, symbol or unit. Includes magnetic direction rules and the conditions attached to key relationships.</small>
             </span>
-            <span className="psv-section-arrow" aria-hidden="true"><ForwardArrowIcon className="psv-section-arrow-icon"/></span>
+            <span className="psv-section-arrow" aria-hidden="true"><SectionArrowIcon/></span>
           </button>
         </section>
 
@@ -103,7 +108,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
                   <span>{sectionStats.topics} topics · {sectionStats.objectives} objectives</span>
                   <small>{meta.detail}</small>
                 </span>
-                <span className="psv-section-arrow" aria-hidden="true"><ForwardArrowIcon className="psv-section-arrow-icon"/></span>
+                <span className="psv-section-arrow" aria-hidden="true"><SectionArrowIcon/></span>
               </button>
             );
           })}

@@ -12,7 +12,7 @@ describe("IT practical labs integration hardening", () => {
   const programming = read("labs", "labs", "ProgrammingLab.jsx");
 
   test("lab navigation uses SVG icons instead of emoji-prone arrow glyphs", () => {
-    expect(hub).toContain("ForwardArrowIcon");
+    expect(hub).toContain("ArrowUpRightIcon");
     expect(hub).toContain("ArrowLeftIcon");
     expect(hub).not.toContain(">↗<");
     expect(frame).toContain("ArrowLeftIcon");

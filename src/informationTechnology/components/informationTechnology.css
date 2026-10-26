@@ -709,7 +709,7 @@ body[data-theme="dark"] .it-answer-toggle:hover{
 .it-practical-labs-arrow{
   display:grid;
   place-items:center;
-  color:inherit;
+  color:#0d8069;
 }
 .it-practical-labs-arrow .it-open-arrow-icon{
   width:22px;

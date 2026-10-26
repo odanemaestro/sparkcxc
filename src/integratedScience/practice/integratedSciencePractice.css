@@ -56,7 +56,7 @@ html[data-theme="dark"] .is-p2-mark-scheme,body[data-theme="dark"] .is-p2-mark-s
 .is-practice-section-card:hover{border-color:var(--spark-teal,#0d9488);transform:translateY(-1px)}
 .is-practice-section-code{display:grid;place-items:center;width:58px;height:58px;border-radius:15px;background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73);font-size:21px;font-weight:900}
 .is-practice-section-copy{display:grid;gap:4px}.is-practice-section-copy>span{font-size:10px;font-weight:900;letter-spacing:.055em;color:var(--spark-teal-dark,#087f73)}.is-practice-section-copy strong{font-size:19px}.is-practice-section-copy small{font-size:13px;line-height:1.55;color:var(--spark-text-muted,#627d98)}
-.is-practice-section-arrow{font-size:24px;color:inherit}
+.is-practice-section-arrow{font-size:24px;color:var(--spark-teal,#0d9488)}
 .is-practice-exam-note{padding:17px 19px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:13px;background:var(--spark-bg,#f7fafc)}.is-practice-exam-note p{margin:6px 0 0;line-height:1.6;color:var(--spark-text-muted,#627d98)}
 @media(max-width:560px){.is-practice-section-card{grid-template-columns:50px 1fr;gap:12px;padding:15px}.is-practice-section-code{width:44px;height:44px;font-size:16px}.is-practice-section-arrow{display:none}.is-practice-section-copy strong{font-size:16px}}
 
@@ -92,7 +92,7 @@ html[data-theme="dark"] .is-p2-mark-scheme,body[data-theme="dark"] .is-p2-mark-s
   place-items:center;
   font-size:24px;
   line-height:1;
-  color:inherit;
+  color:var(--spark-teal,#0d9488);
 }
 @media(max-width:560px){
   .is-practice-top-actions .is-back-button{width:auto}

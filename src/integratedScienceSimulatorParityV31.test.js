@@ -57,9 +57,9 @@ describe("Integrated Science simulator parity and encoding V3.1", () => {
     });
   });
 
-  test("separators use entities and navigation uses the shared SVG arrows", () => {
+  test("separators and card arrows stay encoding-safe; back navigation uses SVG", () => {
     expect(hub).toContain("&middot;");
-    expect(hub).toContain("<ForwardArrowIcon");
+    expect(hub).toContain('{"\\u2192"}');
     expect(p1).toContain("&middot;");
     expect(p1).toContain("<BackArrowIcon");
     expect(p2).toContain("&middot;");

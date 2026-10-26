@@ -43,8 +43,8 @@ describe("Subject flashcard wording sync and IT SVG arrows", () => {
     const view = source("informationTechnology/components/InformationTechnologySubjectView.jsx");
     const css = source("informationTechnology/components/informationTechnology.css");
     expect(view).not.toContain("↗");
-    expect(view).toContain('import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon"');
-    expect(view).toContain('<ForwardArrowIcon className="it-open-arrow-icon"/>');
+    expect(view).toContain("function OpenArrowIcon()");
+    expect(view).toContain("<OpenArrowIcon/>");
     expect(css).toContain("SPARK IT MOBILE SVG NAV ARROWS V1");
     expect(css).toContain(".it-open-arrow-icon");
   });

@@ -313,7 +313,7 @@ export default function SocialStudiesSbaPractice({ onExit, onComplete, userId })
 
       <div className="ss-sba-actions">
         <button type="button" className="ss-primary" onClick={markProject}>Check project against rubric</button>
-        <button type="button" className="ss-secondary" onClick={onExit}><BackArrowIcon/> Back to Social Studies practice</button>
+        <button type="button" className="ss-secondary" onClick={onExit}>Back to Social Studies practice</button>
       </div>
     </div>
   </main>;

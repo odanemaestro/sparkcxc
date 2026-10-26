@@ -1,5 +1,4 @@
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
-import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
@@ -257,7 +256,7 @@ export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,
    {record.id==="POB-P2-2024-JAN"&&<p>Only a two-page typed transcription was supplied for this sitting; it is not the full original printed booklet.</p>}
   </div>
   {record.paper===1?<HistoricalPaper1 key={record.id} record={record} userId={userId} supabase={supabase}/>:<HistoricalPaper2 key={record.id} record={record} onOpenJanuary2026={onOpenJanuary2026} supabase={supabase} userId={userId}/>}
-  <button type="button" className="secondary pob-archive-return" onClick={()=>setSelected(null)}><BackArrowIcon/> Back to all 46 historical papers</button>
+  <button type="button" className="secondary pob-archive-return" onClick={()=>setSelected(null)}>Back to all 46 historical papers</button>
   </>:<>
     <div className="pob-archive-toolbar"><label htmlFor="pob-archive-search">Find a historical sitting
       <input id="pob-archive-search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search by year or paper…"/>
@@ -269,7 +268,7 @@ export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,
     <p className="pob-archive-small">{filtered.length} source papers shown. Select any sitting to view its practice answers and marking guidance.</p>
     <div className="pob-archive-list">{filtered.map(record=><button key={record.id} className="pob-archive-tile" type="button" onClick={()=>setSelected(record.id)}>
       <span><strong>{record.label}</strong><small>{record.source.pages} pages · {getPobHistoricalP1Source(record.id)?(record.id==="POB-P1-2023-JAN"?"Full 60-question source paper":"60-question text practice · review pending"):record.id==="POB-P2-2009-MJ"?"Complete source-written Paper 2":record.paper===1?"Answer-key reference · source text incomplete":"Written answers and mark schemes"}</small></span>
-      <span className="pob-archive-arrow" aria-hidden="true"><ForwardArrowIcon/></span>
+      <span className="pob-archive-arrow" aria-hidden="true">→</span>
     </button>)}</div>
   </>}
  </div></main>;

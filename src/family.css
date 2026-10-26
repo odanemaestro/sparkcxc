@@ -17,7 +17,7 @@
 .child-card:hover{border-color:#0D9488;transform:translateY(-1px);box-shadow:0 6px 16px rgba(16,42,86,.08)}
 .child-card.selected{border:2px solid #0D9488;background:#F0FDFA}
 .child-avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#0D9488;color:#fff;font-weight:800;flex-shrink:0}
-.child-card strong{display:block;font-size:14px}.child-card span:not(.child-arrow){display:block;font-size:12px;color:#64748B;margin-top:3px}.child-arrow{margin-left:auto;font-size:18px;color:var(--spark-ink)}
+.child-card strong{display:block;font-size:14px}.child-card span:not(.child-arrow){display:block;font-size:12px;color:#64748B;margin-top:3px}.child-arrow{margin-left:auto;font-size:18px;color:#0D9488}
 .mastery-pill{background:#E7F7F5;color:#087F78;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:800;white-space:nowrap}
 .parent-stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
 .parent-stat{border:1px solid #E4E9F0;border-radius:13px;padding:17px;background:#FBFCFE}.parent-stat strong{display:block;font-family:Georgia,serif;font-size:25px;color:#102A56}.parent-stat span{display:block;font-size:11px;color:#64748B;margin-top:3px}

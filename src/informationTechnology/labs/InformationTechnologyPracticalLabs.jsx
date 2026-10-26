@@ -2,8 +2,7 @@ import React, { lazy, Suspense, useMemo, useState } from "react";
 import { INFORMATION_TECHNOLOGY_PRACTICAL_LABS } from "./labCatalog";
 import { readLabCompletion, writeLabCompletion } from "./labProgress";
 import { useInformationTechnologyLabRoute } from "../../routing/sparkRoutingV270";
-import { ArrowLeftIcon } from "./components/Icons";
-import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
+import { ArrowLeftIcon, ArrowUpRightIcon } from "./components/Icons";
 import "./informationTechnologyLabs.css";
 
 const WordLab = lazy(() => import("./labs/WordLab"));
@@ -96,7 +95,7 @@ export default function InformationTechnologyPracticalLabs({ userId, onBack, onA
                   <span>{lab.description}</span>
                   <em>{lab.outcomes.join(" · ")}</em>
                 </span>
-                <span className="itv2-card-arrow" aria-hidden="true"><ForwardArrowIcon className="itv2-icon"/></span>
+                <span className="itv2-card-arrow" aria-hidden="true"><ArrowUpRightIcon/></span>
               </button>
             );
           })}

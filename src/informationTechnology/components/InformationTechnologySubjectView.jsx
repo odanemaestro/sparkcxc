@@ -1,6 +1,4 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import BackArrowIcon from "../../components/ui/BackArrowIcon";
-import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import course from "../course/itCourseData.json";
 import InformationTechnologyTools from "./InformationTechnologyTools";
 import InformationTechnologyVisuals from "./InformationTechnologyVisuals";
@@ -11,6 +9,18 @@ import objectiveCoverage from "../course/itObjectiveCoverage.json";
 import "./informationTechnology.css";
 import "../../subjects/sparkSpecializedStudyPolish.css";
 
+function BackIcon() {
+  return <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M15 10H5m0 0 4-4m-4 4 4 4"/></svg>;
+}
+
+
+function OpenArrowIcon() {
+  return (
+    <svg className="it-open-arrow-icon" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+      <path d="M4 10h12m0 0-4-4m4 4-4 4"/>
+    </svg>
+  );
+}
 const LESSON_STEPS = [
   { id: "learn", label: "Learn" },
   { id: "see", label: "See it" },
@@ -307,7 +317,7 @@ function TopicLesson({ topic, onBack, completed = false, onToggleComplete, onAct
   return (
     <main className="it-subject-view">
       <div className="it-shell">
-        <button type="button" className="it-back" onClick={onBack} data-spark-action="nav"><BackArrowIcon/><span>Back to section</span></button>
+        <button type="button" className="it-back" onClick={onBack} data-spark-action="nav"><BackIcon/><span>Back to section</span></button>
 
         <header className="it-topic-hero">
           <div className="it-eyebrow">CSEC Information Technology · Section {topic.section}</div>
@@ -439,7 +449,7 @@ function SectionView({ section, onBack, onOpenTopic }) {
   return (
     <main className="it-subject-view">
       <div className="it-shell">
-        <button type="button" className="it-back" onClick={onBack} data-spark-action="nav"><BackArrowIcon/><span>All sections</span></button>
+        <button type="button" className="it-back" onClick={onBack} data-spark-action="nav"><BackIcon/><span>All sections</span></button>
         <header className="it-section-hero">
           <div className="it-eyebrow">Section {section.id}</div>
           <h1>{section.title}</h1>
@@ -456,7 +466,7 @@ function SectionView({ section, onBack, onOpenTopic }) {
                 <span>{topic.purpose}</span>
                 <em>Objectives {topic.objectives}</em>
               </span>
-              <span className="it-open-arrow" aria-hidden="true"><ForwardArrowIcon className="it-open-arrow-icon"/></span>
+              <span className="it-open-arrow" aria-hidden="true"><OpenArrowIcon/></span>
             </button>
           ))}
         </div>
@@ -526,7 +536,7 @@ export default function InformationTechnologySubjectView({ onBack, userId, onAct
       <div className="it-shell">
         <header className="it-hero">
           <div>
-            {onBack && <button type="button" className="it-back" onClick={onBack} data-spark-action="nav"><BackArrowIcon/><span>Back</span></button>}
+            {onBack && <button type="button" className="it-back" onClick={onBack} data-spark-action="nav"><BackIcon/><span>Back</span></button>}
             <div className="it-eyebrow">CSEC Information Technology</div>
             <h1>Choose a section</h1>
             <p>Learn the theory, see how it works and practise with SPARK tools built around the current CSEC Information Technology syllabus.</p>
@@ -546,7 +556,7 @@ export default function InformationTechnologySubjectView({ onBack, userId, onAct
               <strong>SPARK Practical Labs</strong>
               <p>Work inside interactive Word, Excel, Access, PowerPoint, web-design and programming simulators. Complete real tasks and record them in your progress.</p>
             </span>
-            <span className="it-practical-labs-arrow" aria-hidden="true"><ForwardArrowIcon className="it-open-arrow-icon"/></span>
+            <span className="it-practical-labs-arrow" aria-hidden="true"><OpenArrowIcon/></span>
           </button>
         </section>
 
@@ -561,7 +571,7 @@ export default function InformationTechnologySubjectView({ onBack, userId, onAct
                   <strong>{sectionItem.title}</strong>
                   <span>{topicCount} topics · {sectionItem.objectives} objectives</span>
                 </span>
-                <span className="it-open-arrow" aria-hidden="true"><ForwardArrowIcon className="it-open-arrow-icon"/></span>
+                <span className="it-open-arrow" aria-hidden="true"><OpenArrowIcon/></span>
               </button>
             );
           })}
