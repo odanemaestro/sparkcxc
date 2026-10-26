@@ -126,6 +126,7 @@ import "./sparkGoogleAuthButtonV1.css";
 import "./sparkSubjectLeaveModalV272.css";
 import "./sparkStudentDashboardConsultantV1.css";
 import "./sparkStudentHomeV1.css";
+import "./howItWorksV2.css";
 import "./subjects/sparkSpecializedStudyPolish.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
@@ -7934,115 +7935,139 @@ if (loading || authenticatedRolePending) {
 
 // ─── HOW IT WORKS ────────────────────────────────────────────────────────────
 function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
+  // Show current published subjects. Do not list draft courses as live.
+  const availableSubjects = enabledSparkSubjects(SPARK_SUBJECTS)
+    .filter(subject => subject.capabilities?.study !== false)
+    .map(subject => ({ id: subject.id, name: subject.shortName || subject.name }));
+
   const studentSteps = [
-    ["1", "Sign up free", "Create your account and choose the subject you want to study. No credit card, no trial period."],
-    ["2", "Follow the syllabus", "Every topic on the CXC CSEC syllabus has its own lesson. Work through them in order, or jump to the topics you need most."],
-    ["3", "Read the lesson", "Each lesson covers the concept, worked examples you reveal yourself, key facts to memorise, and common mistakes to avoid."],
-    ["4", "Practice after every topic", "Complete CSEC-style questions at the end of each topic, using the same question types and level of difficulty."],
-    ["5", "Take section exams", "After finishing all topics in a section, take the section exam. This is structured like a real CXC section."],
-    ["6", "Sit the full final paper", "Complete a full examination under timed conditions using the required section and question structure."],
-    ["7", "Book a tutor if needed", "Book a live session with a verified tutor when you need additional help with a topic."],
+    ["01", "Choose your subjects", "Create an account, select the CSEC subjects you are taking and set your study goals. Your dashboard brings them together in one place."],
+    ["02", "Understand each topic", "Work through clear syllabus-based notes, examples and activities. Some subjects also include interactive diagrams, labs and practical exercises."],
+    ["03", "Build confidence with practice", "Try topic questions, review flashcards and revisit difficult ideas. You can study at your own pace rather than jumping straight into a full exam."],
+    ["04", "Prepare for Paper 1 and Paper 2", "Practise multiple-choice and structured or written questions in the formats offered for your subjects. Use timed simulations to get used to examination conditions."],
+    ["05", "Review your answers", "See scores, corrections and explanations where marking is supported. Some written or diagram-based answers may need additional checking before a final result is available."],
+    ["06", "Follow your progress", "See your activity and performance across subjects, identify topics that need attention and use your dashboard's suggested next steps to decide what to study."],
+    ["07", "Study together or get extra help", "Join a Study Circle to learn with others, and browse tutors when you would benefit from a live session with someone who teaches your subject."],
+  ];
+  const parentSteps = [
+    ["01", "Connect with your child", "Use a parent account and link your child's learning profile to follow their work in SPARK."],
+    ["02", "Understand their progress", "See study activity, subject progress and available examination reports in one place, not just Mathematics results."],
+    ["03", "Support their next step", "Use the information to discuss goals, recognise improvement and help them focus on topics where they need more practice."],
+  ];
+  const tutorSteps = [
+    ["01", "Apply to become a tutor", "Share the subjects you teach, your qualifications and your proposed rates."],
+    ["02", "Complete verification", "SPARK reviews tutor applications and may request supporting information before making a profile available to students."],
+    ["03", "Manage your availability", "Choose the times you can teach and receive booking notifications when students request a session."],
+    ["04", "Teach and build your reputation", "Arrange your online lesson using your preferred video platform. Students can leave a rating and review after a completed session."],
+  ];
+  const faqs = [
+    ["Which CSEC subjects can I study?", "SPARK supports multiple CSEC subjects, not only Mathematics. The subject list above shows the courses currently enabled. Your dashboard shows the ones available to your account."],
+    ["What is the difference between Paper 1 and Paper 2?", "Paper 1 usually focuses on multiple-choice questions. Paper 2 includes structured, practical or written responses depending on the subject. SPARK offers subject-specific practice and timed simulations."],
+    ["Does SPARK mark every answer automatically?", "Many objective questions are checked automatically, with feedback and explanations. For Paper 2, automatic marking depends on the question type and verified grading support. Some responses may remain provisional until they can be checked reliably."],
+    ["What if I do not understand a topic?", "Go back to the lesson, review flashcards or try another practice question. You can also use Study Circles or find a tutor for additional support."],
+    ["How does SPARK know what I should study next?", "Your recorded lesson and practice activity helps SPARK show your progress, highlight weaker areas and suggest a next step. You can still choose what you want to study."],
+    ["Can parents monitor learning?", "Yes. Parent accounts can view linked learners' study activity and available subject progress and examination reports."],
+    ["Do the questions come from CXC past papers?", "SPARK combines source-based examination practice with original CSEC-style questions and simulations. The selection varies by subject. SPARK is an independent study platform, not CXC itself."],
+    ["Can I create an account for free?", "You can sign up without entering credit card details. The tools and courses you can use depend on what is currently available to your account."],
   ];
 
-  const tutorSteps = [
-    ["1", "Apply online", "Submit your application with your qualifications, subjects, and rate. Our team reviews every application before approval."],
-    ["2", "Get verified", "We may request qualification documents. Your profile remains under review until verification is complete, usually within 3 business days."],
-    ["3", "Set your availability", "Control your own schedule. Mark which days and times you're available each week. Change it whenever you need to."],
-    ["4", "Get booked by students", "Students find you in the marketplace and book directly. You receive a notification with 24 hours notice before each session."],
-    ["5", "Conduct the session", "Use a video link of your choice, such as Zoom, Google Meet or Teams. You control the session environment."],
-    ["6", "Get reviewed", "After every completed session, students leave a star rating and a written review. Your reputation grows with every booking."],
-  ];
+  const stepGrid = (steps, type) => (
+    <div className={"spark-how-step-grid spark-how-step-grid-" + type}>
+      {steps.map(([n, title, desc]) => (
+        <article key={n} className="spark-how-step-card">
+          <span className="spark-how-step-number" aria-hidden="true">{n}</span>
+          <div>
+            <h3>{title}</h3>
+            <p>{desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
 
   return (
-    <div className="how-page" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-      {/* Hero */}
-      <div className="how-hero" style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "56px 28px 48px", textAlign: "center", flexShrink: 0 }}>
-        <h1 style={{ fontFamily: FD, fontSize: "clamp(28px,4vw,40px)", fontWeight: 700, margin: "0 0 12px", letterSpacing:"-0.01em" }}>
-          How SPARK works
-        </h1>
-        <p style={{ fontSize: 16, color: "rgba(255,255,255,.8)", maxWidth: 520, margin: "0 auto" }}>
-          See how students, parents and tutors use SPARK.
-        </p>
-      </div>
-
-      <div className="how-page-content" style={{ maxWidth: 1100, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
-        {/* Two-column steps */}
-        <div className="marketing-grid responsive-grid how-steps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))", gap: 48, marginBottom: 52 }}>
-          {/* Students */}
-          <div>
-            <h2 style={{ fontFamily: FD, fontSize: 26, fontWeight: 700, color: T.ink, marginBottom: 24 }}>For students</h2>
-            {studentSteps.map(([n, title, desc]) => (
-              <div key={n} className="how-step" style={{ display: "flex", gap: 14, marginBottom: 22 }}>
-                <div style={{ width: 34, height: 34, borderRadius: "50%", background: `linear-gradient(135deg,${T.teal},${T.tealDark})`, color: "#fff", boxShadow: T.shadowSm,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontWeight: 700, fontSize: 14, flexShrink: 0 }}>{n}</div>
-                <div>
-                  <div style={{ fontWeight: 600, color: T.ink, fontSize: 15, marginBottom: 4 }}>{title}</div>
-                  <div style={{ fontSize: 13.5, color: T.textMuted, lineHeight: 1.6 }}>{desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Tutors */}
-          <div>
-            <h2 style={{ fontFamily: FD, fontSize: 26, fontWeight: 700, color: T.ink, marginBottom: 24 }}>For tutors</h2>
-            {tutorSteps.map(([n, title, desc]) => (
-              <div key={n} className="how-step" style={{ display: "flex", gap: 14, marginBottom: 22 }}>
-                <div style={{ width: 34, height: 34, borderRadius: "50%", background: `linear-gradient(135deg,${T.amber},#B45309)`, color: "#fff", boxShadow: T.shadowSm,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontWeight: 700, fontSize: 14, flexShrink: 0 }}>{n}</div>
-                <div>
-                  <div style={{ fontWeight: 600, color: T.ink, fontSize: 15, marginBottom: 4 }}>{title}</div>
-                  <div style={{ fontSize: 13.5, color: T.textMuted, lineHeight: 1.6 }}>{desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+    <div className="how-page spark-how-page" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+      <header className="spark-how-hero" style={{ background: "linear-gradient(135deg," + T.navyDeep + "," + T.navyMid + ")", color: "#fff" }}>
+        <span className="spark-how-eyebrow">Your CSEC study companion</span>
+        <h1>How SPARK works</h1>
+        <p>Learn, practise and track your progress across your CSEC subjects, with extra support when you need it.</p>
+        <div className="spark-how-hero-points" aria-label="The SPARK learning journey">
+          <span>Learn the topic</span>
+          <span>Practise exam questions</span>
+          <span>Know what to work on next</span>
         </div>
+      </header>
 
-        {/* FAQ */}
-        <div style={{ marginBottom: 48 }}>
-          <h2 style={{ fontFamily: FD, fontSize: 24, fontWeight: 700, color: T.ink, marginBottom: 24 }}>Common questions</h2>
-          <div className="responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 16 }}>
-            {[
-              ["Do I need to pay to use SPARK?", "No. The content-subscription line launches free. We'll introduce paid tiers for advanced features, but core lesson content and quizzes will always have a free tier."],
-              ["Do tutors need to be on the platform to teach?", "No. Tutors use a video service of their choice, such as Zoom, Google Meet or Teams. SPARK manages the booking."],
-              ["Are the practice questions from actual CXC past papers?", "Paper 2 practice questions are original and follow the wording, topic coverage and level of CSEC Mathematics papers. Paper 1 uses the question bank provided for the practice examination."],
-              ["Which subjects are available?", "Open My subjects to see the subjects currently available on your account. New subjects will appear there as they are released."],
-              ["Can schools use SPARK?", "Yes. School licensing is one of the three platform lines. Email schools@sparkcxc.com to discuss group access for your institution."],
-              ["How does weak topic detection work?", "Every quiz answer you submit is recorded. The platform compares your accuracy per topic against your overall average and flags topics where you're consistently scoring below 60%. These appear in your dashboard under 'Needs work'."],
-            ].map(([q, a]) => (
-              <Card key={q}>
-                <div style={{ fontFamily: FD, fontSize: 16, fontWeight: 600, color: T.ink, marginBottom: 8 }}>{q}</div>
-                <div style={{ fontSize: 13.5, color: T.textMuted, lineHeight: 1.6 }}>{a}</div>
+      <main className="spark-how-content">
+        <section className="spark-how-section spark-how-subject-section" aria-labelledby="spark-how-subjects-title">
+          <div className="spark-how-section-heading">
+            <span className="spark-how-kicker">More than Mathematics</span>
+            <h2 id="spark-how-subjects-title">Prepare for the subjects you actually take</h2>
+            <p>Choose from SPARK's currently available CSEC courses. Each subject brings its own notes, question formats and study tools.</p>
+          </div>
+          <ul className="spark-how-subject-list" aria-label="Currently available CSEC subjects">
+            {availableSubjects.map(subject => <li key={subject.id}>{subject.name}</li>)}
+          </ul>
+        </section>
+
+        <section className="spark-how-section" aria-labelledby="spark-how-students-title">
+          <div className="spark-how-section-heading">
+            <span className="spark-how-kicker">Your study journey</span>
+            <h2 id="spark-how-students-title">For students</h2>
+            <p>From your first lesson to examination practice, SPARK helps you make progress one topic at a time.</p>
+          </div>
+          {stepGrid(studentSteps, "student")}
+        </section>
+
+        <section className="spark-how-section" aria-labelledby="spark-how-community-title">
+          <div className="spark-how-section-heading">
+            <span className="spark-how-kicker">Support beyond studying alone</span>
+            <h2 id="spark-how-community-title">For parents and tutors</h2>
+            <p>Families can follow learning, while tutors can connect with students who need additional help.</p>
+          </div>
+          <div className="spark-how-audience-grid">
+            <div className="spark-how-audience-panel">
+              <h3>For parents</h3>
+              {stepGrid(parentSteps, "compact")}
+            </div>
+            <div className="spark-how-audience-panel">
+              <h3>For tutors</h3>
+              {stepGrid(tutorSteps, "compact")}
+            </div>
+          </div>
+        </section>
+
+        <section className="spark-how-section" aria-labelledby="spark-how-faq-title">
+          <div className="spark-how-section-heading">
+            <span className="spark-how-kicker">Good to know</span>
+            <h2 id="spark-how-faq-title">Common questions</h2>
+          </div>
+          <div className="spark-how-faq-grid">
+            {faqs.map(([question, answer]) => (
+              <Card key={question} className="spark-how-faq-card">
+                <h3>{question}</h3>
+                <p>{answer}</p>
               </Card>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Role-aware continuation CTA. Every signed-in role has a useful next action. */}
-        <div className="spark-role-cta" style={{ background: `linear-gradient(135deg,${T.teal},${T.tealDark})`, borderRadius: T.rMd,
-          padding: 30, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 20,
-          boxShadow: "0 12px 32px rgba(13,148,136,.28)" }}>
+        <section className="spark-role-cta spark-how-cta" aria-label="Start using SPARK"
+          style={{ background: "linear-gradient(135deg," + T.navyDeep + "," + T.navyMid + ")" }}>
           <div>
-            <h3 style={{ fontFamily: FD, fontSize: 20, fontWeight: 700, color: "#fff", margin: "0 0 6px" }}>
-              {user ? "Ready to continue?" : "Ready to start?"}
-            </h3>
-            <p style={{ color: "rgba(255,255,255,.85)", fontSize: 14, margin: 0 }}>
-              {user ? "Continue from your dashboard." : "Create your free account. No credit card required."}
-            </p>
+            <h2>{user ? "Pick up where you left off" : "Ready to start learning?"}</h2>
+            <p>{user ? "Your subjects, study activity and next steps are waiting on your dashboard." : "Create your account and choose the CSEC subjects you want to work on."}</p>
           </div>
-          <div className="spark-role-cta-actions" style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <div className="spark-role-cta-actions">
             <Btn v="amber" onClick={() => setView(user ? "dashboard" : "auth")} style={{ background: T.amber }}>
               {user ? "Go to your dashboard →" : "Start learning →"}
             </Btn>
-            {!user && !hasTutorApp && (
+            {!user && !hasTutorApp && !isParent && (
               <Btn v="ghost" onClick={() => setView("become-tutor")}>Become a tutor</Btn>
             )}
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
       <Footer setView={setView} hasTutorApp={hasTutorApp} isParent={isParent} />
     </div>
   );
