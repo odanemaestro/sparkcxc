@@ -41,7 +41,7 @@ describe("About SPARK multi-subject update", () => {
     expect(about).toContain("const unavailableSubjectCount = registeredSubjects.length - availableSubjects.length");
     expect(about).toContain("{availableSubjects.length} of {registeredSubjects.length}");
     expect(about).toContain("{unavailableSubjectCount > 0");
-    expect(about).not.toMatch(/<strong>8 of 10<\\/strong>/);
+    expect(about).not.toContain("<strong>8 of 10</strong>");
   });
 
   test("reflects SPARK's evolution without Mathematics-only facts or misleading claims", () => {
