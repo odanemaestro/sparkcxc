@@ -7899,8 +7899,8 @@ if (loading || authenticatedRolePending) {
       {view === "tutors"       && <TutorsView user={session?.user} profile={profile} tutorApp={tutorApp} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
 
 
-      {view === "how-it-works" && <HowItWorksView setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"} user={session?.user} isTutor={!!session?.user && (profile?.role === "tutor" || !!tutorApp)}/>}
-	  {view === "about"        && <AboutView setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"} user={session?.user} isTutor={!!session?.user && (profile?.role === "tutor" || !!tutorApp)}/>}
+      {view === "how-it-works" && <HowItWorksView subjects={runtimeSparkSubjects} catalogLoaded={appCatalogLoaded} catalogAvailable={appCatalogAvailable} setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"} user={session?.user} isTutor={!!session?.user && (profile?.role === "tutor" || !!tutorApp)}/>}
+	  {view === "about"        && <AboutView subjects={runtimeSparkSubjects} catalogLoaded={appCatalogLoaded} catalogAvailable={appCatalogAvailable} setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"} user={session?.user} isTutor={!!session?.user && (profile?.role === "tutor" || !!tutorApp)}/>}
 	  {view === "contact"      && <ContactView setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
 	  {view === "privacy"      && <PrivacyView setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
 	  {view === "become-tutor" && (
@@ -7935,11 +7935,13 @@ if (loading || authenticatedRolePending) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ─── HOW IT WORKS ────────────────────────────────────────────────────────────
-function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
-  // Show current published subjects. Do not list draft courses as live.
-  const availableSubjects = enabledSparkSubjects(SPARK_SUBJECTS)
-    .filter(subject => subject.capabilities?.study !== false)
-    .map(subject => ({ id: subject.id, name: subject.shortName || subject.name }));
+function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false, subjects = [], catalogLoaded = false, catalogAvailable = false }) {
+  // Match the database-backed live subject picker; never use stale built-in flags.
+  const availableSubjects = catalogLoaded && catalogAvailable
+    ? subjects.filter(subject => subject.enabled !== false
+      && subject.status === "live" && subject.capabilities?.study !== false)
+      .map(subject => ({ id: subject.id, name: subject.shortName || subject.name }))
+    : [];
 
   const studentSteps = [
     ["01", "Choose your subjects", "Create an account, select the CSEC subjects you are taking and set your study goals. Your dashboard brings them together in one place."],
@@ -8009,6 +8011,9 @@ function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false 
           <ul className="spark-how-subject-list" aria-label="Currently available CSEC subjects">
             {availableSubjects.map(subject => <li key={subject.id}>{subject.name}</li>)}
           </ul>
+          {!(catalogLoaded && catalogAvailable) && (
+            <p role="status">Live course information is temporarily unavailable.</p>
+          )}
         </section>
 
         <section className="spark-how-section" aria-labelledby="spark-how-students-title">
@@ -8075,10 +8080,13 @@ function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false 
 }
 
 // ─── ABOUT ────────────────────────────────────────────────────────────────────
-function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
-  const registeredSubjects = SPARK_SUBJECTS.filter(subject => subject.capabilities?.study !== false);
-  const availableSubjects = enabledSparkSubjects(registeredSubjects);
-  const unavailableSubjectCount = registeredSubjects.length - availableSubjects.length;
+function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false, subjects = [], catalogLoaded = false, catalogAvailable = false }) {
+  // Use the same live Supabase catalog as the student's subject selection.
+  // The legacy built-in registry still has stale flags for two live courses.
+  const availableSubjects = catalogLoaded && catalogAvailable
+    ? subjects.filter(subject => subject.enabled !== false
+      && subject.status === "live" && subject.capabilities?.study !== false)
+    : [];
   const subjectNames = availableSubjects.map(subject => ({
     id: subject.id,
     name: subject.shortName || subject.name,
@@ -8118,11 +8126,11 @@ function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
           </div>
           <div className="spark-about-overview" aria-label="SPARK at a glance">
             <div className="spark-about-overview-item">
-              <strong>{availableSubjects.length} of {registeredSubjects.length}</strong>
-              <span>CSEC subjects currently available</span>
-              <p>{unavailableSubjectCount > 0
-                ? `${unavailableSubjectCount} additional ${unavailableSubjectCount === 1 ? "subject is" : "subjects are"} registered but not yet enabled.`
-                : "All registered CSEC subjects are now available."}</p>
+              <strong>{catalogLoaded && catalogAvailable ? availableSubjects.length : "—"}</strong>
+              <span>Currently available CSEC subjects</span>
+              <p>{catalogLoaded && catalogAvailable
+                ? "Live course information is updated from SPARK's subject catalogue."
+                : "Live course information is temporarily unavailable."}</p>
             </div>
             <div className="spark-about-overview-item">
               <strong>Paper 1 &amp; 2</strong>
@@ -8141,7 +8149,9 @@ function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
           <div className="spark-about-section-heading">
             <span className="spark-about-kicker">Not just Mathematics</span>
             <h2 id="spark-about-subjects-title">More subjects. More ways to learn.</h2>
-            <p>Every subject is different, so the way you study should be different too. Explore the {availableSubjects.length} CSEC {availableSubjects.length === 1 ? "subject" : "subjects"} currently available in SPARK.</p>
+            <p>Every subject is different, so the way you study should be different too. {catalogLoaded && catalogAvailable
+              ? `Explore all ${availableSubjects.length} CSEC ${availableSubjects.length === 1 ? "course" : "courses"} currently live in SPARK.`
+              : "Explore SPARK's CSEC courses as soon as the live catalogue is available."}</p>
           </div>
           <ul className="spark-about-subject-list" aria-label="Available SPARK subjects">
             {subjectNames.map(subject => <li key={subject.id}>{subject.name}</li>)}
