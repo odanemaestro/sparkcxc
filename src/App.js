@@ -127,6 +127,7 @@ import "./sparkSubjectLeaveModalV272.css";
 import "./sparkStudentDashboardConsultantV1.css";
 import "./sparkStudentHomeV1.css";
 import "./howItWorksV2.css";
+import "./aboutSparkV2.css";
 import "./subjects/sparkSpecializedStudyPolish.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
@@ -8075,90 +8076,125 @@ function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false 
 
 // ─── ABOUT ────────────────────────────────────────────────────────────────────
 function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
-  const totalTopics = SYLLABUS_SECTIONS.reduce((a, s) => a + s.topics.length, 0);
+  const availableSubjects = enabledSparkSubjects(SPARK_SUBJECTS)
+    .filter(subject => subject.capabilities?.study !== false);
+  const subjectNames = availableSubjects.map(subject => ({
+    id: subject.id,
+    name: subject.shortName || subject.name,
+  }));
+  const principles = [
+    ["Built around CSEC", "Our courses follow the subjects, topics and skills students need for their Caribbean examinations. Study tools and question types are adapted to each subject."],
+    ["More than past papers", "A good exam result starts with understanding. SPARK combines lessons, worked examples, flashcards, topic practice and exam simulations so students can learn before they test themselves."],
+    ["Clear, useful feedback", "Show students where they are doing well and where they need more practice. We use automated marking where it is supported, and we do not present unverified written answers as final scores."],
+    ["Learn at your pace", "Students can revisit lessons, try questions again and choose what to study next. Their dashboard helps organise their progress across subjects."],
+    ["Made for the Caribbean", "SPARK uses familiar examples and practical situations from Caribbean life wherever they help explain a topic, instead of assuming students are following a foreign curriculum."],
+    ["Support beyond the screen", "Study Circles, linked parent accounts and subject tutors give learners ways to get encouragement, track progress and ask for help."],
+  ];
+  const audience = [
+    ["Students", "Find your CSEC subjects, build understanding topic by topic, practise for Paper 1 and Paper 2, and see what to work on next."],
+    ["Parents", "Stay connected to your child's learning through linked accounts, subject progress and available assessment results."],
+    ["Tutors", "Share your expertise, manage your availability and connect with students who need extra help in your subject."],
+  ];
 
   return (
-    <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-      <div className="about-hero" style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "52px 28px 44px", flexShrink: 0 }}>
-        <div className="about-hero-inner">
-          <h1 className="about-hero-title" style={{ fontFamily: FD, fontSize: "clamp(28px,4vw,40px)", fontWeight: 700, margin: "0 0 8px" }}>
-            About SPARK
-          </h1>
-          <p className="about-hero-kicker" style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.04em", color: "#5EEAD4", textTransform: "uppercase", margin: "0 0 14px" }}>
-            Student Platform for Assistance, Resources &amp; Knowledge
-          </p>
-          <p className="about-hero-copy" style={{ fontSize: 16, color: "rgba(255,255,255,.8)", margin: 0 }}>
-            Built by educators who grew up doing CSEC exams. Designed for the students who are sitting them now.
-          </p>
-        </div>
-      </div>
+    <div className="spark-about-page" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+      <header className="spark-about-hero"
+        style={{ background: "linear-gradient(135deg," + T.navyDeep + "," + T.navyMid + ")", color: "#fff" }}>
+        <span className="spark-about-eyebrow">Student Platform for Assistance, Resources &amp; Knowledge</span>
+        <h1>About SPARK</h1>
+        <p>One place to learn, practise and grow across your CSEC subjects.</p>
+        <span className="spark-about-hero-support">Created for Caribbean students and the people helping them succeed.</span>
+      </header>
 
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
-        {/* Story + stats */}
-        <div className="marketing-grid responsive-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, marginBottom: 52, alignItems: "start" }}>
-          <div>
-            <h2 style={{ fontFamily: FD, fontSize: 26, fontWeight: 700, color: T.ink, marginBottom: 16 }}>Why we built this</h2>
-            <p style={{ fontSize: 15, color: T.inkSoft, lineHeight: 1.8, marginBottom: 14 }}>
-              Many students need more than past papers and solution videos. SPARK combines syllabus-based lessons, timed practice, progress tracking and access to tutors in one place.
-            </p>
-            <p style={{ fontSize: 15, color: T.inkSoft, lineHeight: 1.8, marginBottom: 14 }}>
-              SPARK was built to close that gap. Not by taking a US or UK curriculum platform and relabelling it. By building directly from the official CXC syllabus, with content that is mapped to exactly what CXC tests, exactly how CXC marks it, in language that Caribbean students and teachers actually use.
-            </p>
-            <p style={{ fontSize: 15, color: T.inkSoft, lineHeight: 1.8 }}>
-              Every lesson maps to a specific objective in the official syllabus. Every practice question is written from scratch, modelled on real past papers. Every tutor is vetted before going live. Nothing on this platform is borrowed from somewhere else and relabelled.
-            </p>
+      <main className="spark-about-content">
+        <section className="spark-about-intro" aria-labelledby="spark-about-why">
+          <div className="spark-about-story">
+            <span className="spark-about-kicker">Why SPARK exists</span>
+            <h2 id="spark-about-why">Learning should not stop at past papers</h2>
+            <p>Getting ready for CSEC can feel overwhelming. There are topics to understand, subjects to balance and exam questions to practise. Students often have to piece together notes, past papers and extra help from different places.</p>
+            <p>SPARK brings these parts of studying together. It began with Mathematics, but has grown into a multi-subject learning platform with lessons, revision tools, examination practice and progress tracking for CSEC students.</p>
+            <p>Our aim is simple: help students understand what they are learning, practise with confidence and know where to focus their efforts next.</p>
           </div>
-          <div>
-            <Card style={{ borderLeft: `3px solid ${T.teal}`, marginBottom: 16 }}>
-              <div style={{ fontFamily: FD, fontSize: 36, fontWeight: 700, color: T.ink }}>39%</div>
-              <div style={{ fontSize: 12, color: T.textMuted, marginBottom: 8 }}>Regional CSEC Mathematics pass rate, 2025</div>
-              <div style={{ fontSize: 14, color: T.inkSoft, lineHeight: 1.55 }}>
-                That means 61 out of every 100 students who sat the exam did not pass. SPARK is built to change that number.
-              </div>
-            </Card>
-            <Card style={{ borderLeft: `3px solid ${T.amber}`, marginBottom: 16 }}>
-              <div style={{ fontFamily: FD, fontSize: 36, fontWeight: 700, color: T.ink }}>{totalTopics}</div>
-              <div style={{ fontSize: 12, color: T.textMuted, marginBottom: 8 }}>Syllabus topics at launch</div>
-              <div style={{ fontSize: 14, color: T.inkSoft, lineHeight: 1.55 }}>
-                Every specific objective from all 10 sections of the CSEC Mathematics syllabus is included.
-              </div>
-            </Card>
-            <Card style={{ borderLeft: `3px solid ${T.purple}` }}>
-              <div style={{ fontFamily: FD, fontSize: 36, fontWeight: 700, color: T.ink }}>27</div>
-              <div style={{ fontSize: 12, color: T.textMuted, marginBottom: 8 }}>Past paper years used to model questions</div>
-              <div style={{ fontSize: 14, color: T.inkSoft, lineHeight: 1.55 }}>
-                CXC Mathematics past papers from 2000 to 2026 were analysed to understand question style, difficulty, and mark allocation before writing each original question.
-              </div>
-            </Card>
+          <div className="spark-about-overview" aria-label="SPARK at a glance">
+            <div className="spark-about-overview-item">
+              <strong>{availableSubjects.length}</strong>
+              <span>Currently available CSEC subjects</span>
+              <p>New courses and study tools are introduced as they are ready.</p>
+            </div>
+            <div className="spark-about-overview-item">
+              <strong>Paper 1 &amp; 2</strong>
+              <span>Exam-focused practice</span>
+              <p>Subject-specific multiple-choice, structured and written questions, with timed simulations where supported.</p>
+            </div>
+            <div className="spark-about-overview-item">
+              <strong>One dashboard</strong>
+              <span>Your learning in one place</span>
+              <p>Follow study activity, assessment results and suggested next steps across your enrolled subjects.</p>
+            </div>
           </div>
-        </div>
+        </section>
 
-        {/* Principles */}
-        <h2 style={{ fontFamily: FD, fontSize: 24, fontWeight: 700, color: T.ink, marginBottom: 20 }}>
-          What we stand for
-        </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: 16, marginBottom: 48 }}>
-          {[
-            ["Syllabus-first", "Every piece of content maps to a specific objective in the official CXC syllabus. We don't add content that isn't tested. We don't leave out content that is."],
-            ["Original questions", "Every practice question is written from scratch. Same style and difficulty as the real exam, entirely different numbers and scenarios. No copyright issues, no lazy reproduction."],
-            ["Honest about difficulty", "We don't tell students the exam is easy. We tell them exactly where they're struggling and give them more practice there."],
-            ["Regional by design", "Designed for students preparing for Caribbean secondary examinations."],
-            ["No video dependency", "Lessons are written, interactive, and self-paced. Students in areas with limited connectivity or data can study the full lesson without a video loading."],
-            ["Tutor quality over quantity", "Every tutor is reviewed and verified before going live. A smaller list of excellent tutors is more useful than a large list of unvetted ones."],
-          ].map(([title, desc]) => (
-            <Card key={title} className="hl">
-              <div style={{ fontFamily: FD, fontSize: 17, fontWeight: 600, color: T.ink, marginBottom: 8 }}>{title}</div>
-              <div style={{ fontSize: 13.5, color: T.textMuted, lineHeight: 1.6 }}>{desc}</div>
-            </Card>
-          ))}
-        </div>
+        <section className="spark-about-section spark-about-subjects" aria-labelledby="spark-about-subjects-title">
+          <div className="spark-about-section-heading">
+            <span className="spark-about-kicker">Not just Mathematics</span>
+            <h2 id="spark-about-subjects-title">More subjects. More ways to learn.</h2>
+            <p>Every subject is different, so the way you study should be different too. Explore the CSEC courses currently enabled in SPARK.</p>
+          </div>
+          <ul className="spark-about-subject-list" aria-label="Available SPARK subjects">
+            {subjectNames.map(subject => <li key={subject.id}>{subject.name}</li>)}
+          </ul>
+          <p className="spark-about-subject-note">The lessons, question banks and interactive activities available may vary by subject.</p>
+        </section>
 
-        <div className="spark-about-role-cta" style={{ textAlign: "center" }}>
-          <Btn onClick={() => setView(user ? "dashboard" : "auth")} style={{ fontSize: 15, padding: "13px 28px" }}>
-            {user ? "Go to your dashboard →" : "Start learning for free →"}
-          </Btn>
-        </div>
-      </div>
+        <section className="spark-about-section" aria-labelledby="spark-about-principles-title">
+          <div className="spark-about-section-heading">
+            <span className="spark-about-kicker">How we approach learning</span>
+            <h2 id="spark-about-principles-title">What makes SPARK different</h2>
+            <p>We want students to have useful tools, clear guidance and honest feedback, not just more questions to answer.</p>
+          </div>
+          <div className="spark-about-principles-grid">
+            {principles.map(([title, description]) => (
+              <Card key={title} className="spark-about-principle-card">
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section className="spark-about-section" aria-labelledby="spark-about-people-title">
+          <div className="spark-about-section-heading">
+            <span className="spark-about-kicker">Learning works better together</span>
+            <h2 id="spark-about-people-title">Built for students, parents and tutors</h2>
+          </div>
+          <div className="spark-about-audience-grid">
+            {audience.map(([title, description]) => (
+              <article key={title} className="spark-about-audience-card">
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="spark-about-independence" aria-label="About our CXC relationship">
+          SPARK is an independent Caribbean education platform. We are not CXC, and our practice tools are not official CXC examination results.
+        </section>
+
+        <section className="spark-about-cta" aria-label="Start learning with SPARK"
+          style={{ background: "linear-gradient(135deg," + T.navyDeep + "," + T.navyMid + ")" }}>
+          <div>
+            <h2>{user ? "Ready for your next topic?" : "Your next study session starts here"}</h2>
+            <p>{user ? "Continue with your subjects and next steps." : "Choose your subjects and start learning at your own pace."}</p>
+          </div>
+          <div className="spark-about-cta-actions">
+            <Btn v="amber" onClick={() => setView(user ? "dashboard" : "auth")} style={{ background: T.amber }}>
+              {user ? "Go to your dashboard →" : "Get started →"}
+            </Btn>
+            <Btn v="ghost" onClick={() => setView("how-it-works")}>See how SPARK works</Btn>
+          </div>
+        </section>
+      </main>
       <Footer setView={setView} hasTutorApp={hasTutorApp} isParent={isParent} />
     </div>
   );
