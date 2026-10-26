@@ -1931,12 +1931,12 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
           </h2>
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:20}}>
             {[
-              ["featureBook",`${totalTopics} syllabus topics`,"Every specific objective from all 10 sections of the CSEC Mathematics syllabus has its own written lesson.",T.teal,T.tealLight],
-              ["featurePencil","Past-paper style questions","Questions modelled directly on CXC past papers from 2010–2015. Same structure, same difficulty, different numbers.",T.amber,T.amberLight],
-              ["featureVerifiedTutor","Verified tutors","Vetted, student-rated tutors by subject. See rates, read reviews, book directly.",T.purple,T.purpleLight],
-              ["featureAnalytics","Weak topic detection","Every quiz answer is tracked. The platform flags your weakest topics automatically.",T.emerald,T.emeraldLight],
-              ["featureExam","Section & final exams","After each section, a structured exam. Then a full final paper with Section A, B and C.",T.red,T.redLight],
-              ["featureLesson","Interactive lessons","Lessons include key facts, examples, common errors and solutions for self-checking.",T.teal,T.tealLight],
+              ["featureBook","Multiple CSEC subjects","Study Mathematics, sciences, business subjects, English A and more. Choose from the courses currently available in SPARK.",T.teal,T.tealLight],
+              ["featurePencil","Paper 1 & Paper 2 practice","Prepare with multiple-choice, structured and written questions, plus timed exam simulations where supported.",T.amber,T.amberLight],
+              ["featureVerifiedTutor","Verified tutors","Find tutors by subject, see their profiles and reviews, and book additional support when you need it.",T.purple,T.purpleLight],
+              ["featureAnalytics","Progress and next steps","See progress across your subjects, spot topics that need attention and use suggested next steps.",T.emerald,T.emeraldLight],
+              ["featureExam","Review your exam work","Check answers, corrections and explanations. Some written or practical responses may need extra verification.",T.red,T.redLight],
+              ["featureLesson","Lessons, flashcards and labs","Build understanding with clear notes, revision cards and interactive activities suited to each subject.",T.teal,T.tealLight],
             ].map(([icon, title, desc, accent, accentBg]) => (
               <div key={title} className="hl"
                 style={{background:T.paper,border:`1px solid ${T.border}`,borderRadius:T.rMd,padding:24,
