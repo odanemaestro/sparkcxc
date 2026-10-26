@@ -1,0 +1,232 @@
+/* About SPARK V2: multi-subject positioning, accessible on mobile/tablet/desktop. */
+.spark-about-page {
+  background: var(--spark-bg, #f7f9fc);
+  color: var(--spark-ink, #102a56);
+}
+.spark-about-hero {
+  text-align: center;
+  padding: clamp(50px, 7vw, 76px) 20px 56px;
+}
+.spark-about-eyebrow, .spark-about-kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.spark-about-eyebrow { color: #6ee7d6; margin-bottom: 15px; }
+.spark-about-hero h1 {
+  font-family: "Crimson Pro", Georgia, serif;
+  font-size: clamp(36px, 5.5vw, 54px);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.08;
+  margin: 0 0 15px;
+}
+.spark-about-hero > p {
+  margin: 0 auto;
+  max-width: 700px;
+  color: rgba(255,255,255,.92);
+  font-size: clamp(16px, 2.2vw, 20px);
+  line-height: 1.6;
+}
+.spark-about-hero-support {
+  display: block;
+  max-width: 640px;
+  margin: 13px auto 0;
+  color: rgba(255,255,255,.7);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.spark-about-content {
+  width: min(100%, 1150px);
+  margin: 0 auto;
+  padding: 52px 26px 72px;
+}
+.spark-about-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(290px, .8fr);
+  gap: clamp(22px, 4.5vw, 64px);
+  align-items: start;
+  margin-bottom: 62px;
+}
+.spark-about-kicker {
+  color: var(--spark-teal-dark, #117d75);
+  margin-bottom: 10px;
+}
+.spark-about-story h2,
+.spark-about-section-heading h2 {
+  margin: 0 0 16px;
+  font-family: "Crimson Pro", Georgia, serif;
+  color: var(--spark-ink, #102a56);
+  font-size: clamp(27px, 3.2vw, 36px);
+  line-height: 1.16;
+  letter-spacing: -.02em;
+}
+.spark-about-story p {
+  color: var(--spark-text-muted, #64748b);
+  line-height: 1.8;
+  font-size: 14.5px;
+  margin: 0 0 15px;
+}
+.spark-about-overview {
+  padding: 23px 26px;
+  border-radius: 23px;
+  border: 1px solid var(--spark-border, #e1e7ee);
+  background: var(--spark-paper, #fff);
+}
+.spark-about-overview-item {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--spark-border, #e1e7ee);
+}
+.spark-about-overview-item:first-child { padding-top: 2px; }
+.spark-about-overview-item:last-child { border-bottom: 0; padding-bottom: 2px; }
+.spark-about-overview-item strong {
+  display: block;
+  font-family: "Crimson Pro", Georgia, serif;
+  font-size: clamp(30px, 3vw, 39px);
+  color: var(--spark-ink, #102a56);
+  line-height: 1.2;
+  letter-spacing: -.025em;
+}
+.spark-about-overview-item span {
+  display: block;
+  margin-top: 3px;
+  font-size: 13px;
+  font-weight: 750;
+  color: var(--spark-ink, #102a56);
+}
+.spark-about-overview-item p {
+  font-size: 12.5px;
+  color: var(--spark-text-muted, #64748b);
+  line-height: 1.6;
+  margin: 6px 0 0;
+}
+.spark-about-section { margin-bottom: 62px; }
+.spark-about-section-heading { max-width: 780px; margin-bottom: 22px; }
+.spark-about-section-heading h2 { margin-bottom: 10px; }
+.spark-about-section-heading p {
+  margin: 0;
+  color: var(--spark-text-muted, #64748b);
+  line-height: 1.7;
+  font-size: 14.5px;
+}
+.spark-about-subjects {
+  padding: clamp(22px, 4vw, 33px);
+  border: 1px solid var(--spark-border, #e1e7ee);
+  background: var(--spark-paper, #fff);
+  border-radius: 23px;
+}
+.spark-about-subject-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+.spark-about-subject-list li {
+  background: var(--spark-muted, #f1f5fa);
+  border: 1px solid var(--spark-border, #e1e7ee);
+  color: var(--spark-ink, #102a56);
+  font-weight: 750;
+  font-size: 13px;
+  line-height: 1.4;
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+.spark-about-subject-note {
+  color: var(--spark-text-muted, #64748b);
+  font-size: 12.5px;
+  line-height: 1.6;
+  margin: 15px 0 0;
+}
+.spark-about-principles-grid,
+.spark-about-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.spark-about-principle-card { min-width: 0; }
+.spark-about-principle-card h3,
+.spark-about-audience-card h3 {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 760;
+  color: var(--spark-ink, #102a56);
+  margin: 0 0 8px;
+}
+.spark-about-principle-card p,
+.spark-about-audience-card p {
+  font-size: 13.5px;
+  color: var(--spark-text-muted, #64748b);
+  line-height: 1.68;
+  margin: 0;
+}
+.spark-about-audience-card {
+  border: 1px solid var(--spark-border, #e1e7ee);
+  border-radius: 18px;
+  background: var(--spark-paper, #fff);
+  padding: 23px;
+  min-width: 0;
+}
+.spark-about-independence {
+  margin: 0 0 28px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--spark-text-muted, #64748b);
+}
+.spark-about-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 22px;
+  padding: clamp(23px, 4vw, 35px);
+}
+.spark-about-cta h2 {
+  font: 700 clamp(23px, 2.5vw, 28px)/1.2 "Crimson Pro", Georgia, serif;
+  color: #fff;
+  margin: 0 0 8px;
+}
+.spark-about-cta p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255,255,255,.8);
+  margin: 0;
+}
+.spark-about-cta-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+@media (max-width: 850px) {
+  .spark-about-intro { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .spark-about-overview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .spark-about-overview-item,
+  .spark-about-overview-item:first-child,
+  .spark-about-overview-item:last-child { border-bottom: 0; padding: 0; }
+  .spark-about-principles-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .spark-about-hero { padding: 43px 18px 41px; }
+  .spark-about-content { padding: 35px 17px 52px; }
+  .spark-about-intro, .spark-about-section { margin-bottom: 45px; }
+  .spark-about-overview { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .spark-about-overview-item,
+  .spark-about-overview-item:first-child,
+  .spark-about-overview-item:last-child {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--spark-border, #e1e7ee);
+  }
+  .spark-about-overview-item:last-child { border-bottom: 0; }
+  .spark-about-principles-grid, .spark-about-audience-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 13px;
+  }
+  .spark-about-subject-list li { padding: 9px 11px; font-size: 12px; }
+  .spark-about-cta { align-items: stretch; }
+  .spark-about-cta-actions { width: 100%; }
+  .spark-about-cta-actions > button { flex: 1 1 auto; }
+}
