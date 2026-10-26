@@ -1,4 +1,3 @@
-import ForwardArrowIcon from "../ui/ForwardArrowIcon";
 import React from "react";
 import Card from "../ui/Card";
 import Icon from "../ui/Icon";
@@ -8,7 +7,7 @@ import { recommendationForAudience } from "../../learning/nextBestActionV2";
 function DashboardCardAction({ label, onClick }) {
   return (
     <button type="button" className="spark-dashboard-card-action" onClick={onClick}>
-      <span>{label}</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ForwardArrowIcon size={20}/></span>
+      <span>{label}</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span>
     </button>
   );
 }

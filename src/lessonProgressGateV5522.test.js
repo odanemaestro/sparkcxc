@@ -8,8 +8,8 @@ describe("SPARK V5.5.2.2 mobile arrows and lesson progression", () => {
     const student = read("components/learning/StudentOverviewIntelligence.jsx");
     const parent = read("components/learning/ParentOverviewIntelligence.jsx");
     const css = read("learningIntelligence.css");
-    expect(student).toContain("<ForwardArrowIcon");
-    expect(parent).toContain("<ForwardArrowIcon");
+    expect(student).toContain('viewBox="0 0 20 20"');
+    expect(parent).toContain('viewBox="0 0 20 20"');
     expect(student).not.toContain(">↗</span>");
     expect(parent).not.toContain(">↗</span>");
     expect(css).toContain(".spark-dashboard-card-action-icon svg");

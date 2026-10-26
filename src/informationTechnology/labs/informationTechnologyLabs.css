@@ -148,7 +148,7 @@ html[data-theme="dark"] .itv2-notes,body[data-theme="dark"] .itv2-notes,html[dat
 .itv2-icon{display:block;flex:0 0 auto}
 .itv2-back{gap:7px}
 .itv2-back .itv2-icon{width:17px;height:17px}
-.itv2-card-arrow{display:grid;place-items:center;width:34px;height:34px;border-radius:0;background:transparent;color:inherit;align-self:start}
+.itv2-card-arrow{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:rgba(13,128,105,.09);color:var(--itv2-green);align-self:start}
 .itv2-card-arrow .itv2-icon{width:18px;height:18px}
 .itv2-lab-card-copy{min-width:0}
 .itv2-lab-card-copy strong,.itv2-lab-card-copy>span,.itv2-lab-card-copy em{overflow-wrap:anywhere}

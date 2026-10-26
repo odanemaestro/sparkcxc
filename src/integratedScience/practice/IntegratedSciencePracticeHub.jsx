@@ -1,5 +1,4 @@
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
-import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useIntegratedSciencePracticeRoute } from "../../routing/sparkRoutingV270";
 import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
@@ -128,7 +127,7 @@ function TopicBank({ supabase, userId, onBack }) {
       <main className="is-practice-shell">
         <div className="is-empty-bank">
           <p>{error.message}</p>
-          <button type="button" onClick={onBack}><BackArrowIcon/> Back to practice</button>
+          <button type="button" onClick={onBack}>Back to practice</button>
         </div>
       </main>
     );
@@ -213,9 +212,9 @@ function TopicBank({ supabase, userId, onBack }) {
               <span>matching questions</span>
             </div>
             <div>
-              <button type="button" disabled={questionIndex <= 0} onClick={() => setQuestionIndex(index => Math.max(0,index - 1))}><BackArrowIcon/> Previous</button>
+              <button type="button" disabled={questionIndex <= 0} onClick={() => setQuestionIndex(index => Math.max(0,index - 1))}>Previous</button>
               <span>{rows.length ? questionIndex + 1 : 0} / {rows.length}</span>
-              <button type="button" disabled={questionIndex >= rows.length - 1} onClick={() => setQuestionIndex(index => Math.min(rows.length - 1,index + 1))}>Next <ForwardArrowIcon/></button>
+              <button type="button" disabled={questionIndex >= rows.length - 1} onClick={() => setQuestionIndex(index => Math.min(rows.length - 1,index + 1))}>Next</button>
               <button type="button" disabled={!rows.length} onClick={() => setQuestionIndex(Math.floor(Math.random() * rows.length))}>Random</button>
             </div>
           </section>
@@ -296,7 +295,7 @@ export default function IntegratedSciencePracticeHub({ supabase, userId, onBack 
                 <span>automatic marking and answer review</span>
               </small>
             </span>
-            <span className="is-practice-section-arrow" aria-hidden="true"><ForwardArrowIcon/></span>
+            <span className="is-practice-section-arrow" aria-hidden="true">{"\u2192"}</span>
           </button>
 
           <button type="button" className="is-practice-section-card" onClick={() => setMode("paper2")}>
@@ -316,7 +315,7 @@ export default function IntegratedSciencePracticeHub({ supabase, userId, onBack 
                 <span>practical/investigative questions included</span>
               </small>
             </span>
-            <span className="is-practice-section-arrow" aria-hidden="true"><ForwardArrowIcon/></span>
+            <span className="is-practice-section-arrow" aria-hidden="true">{"\u2192"}</span>
           </button>
 
           <button type="button" className="is-practice-section-card" onClick={() => setMode("topic")}>
@@ -332,7 +331,7 @@ export default function IntegratedSciencePracticeHub({ supabase, userId, onBack 
                 <span>filter by module, topic and specific objective</span>
               </small>
             </span>
-            <span className="is-practice-section-arrow" aria-hidden="true"><ForwardArrowIcon/></span>
+            <span className="is-practice-section-arrow" aria-hidden="true">{"\u2192"}</span>
           </button>
         </section>
 

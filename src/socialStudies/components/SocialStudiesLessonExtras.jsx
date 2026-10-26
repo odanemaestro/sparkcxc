@@ -1,4 +1,3 @@
-import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React,{useEffect,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import SocialStudiesInteractiveActivity from "./SocialStudiesInteractiveActivity";
@@ -29,7 +28,7 @@ function QuickCheck({questions=[],onComplete}){
   {!checked?<button className="ss-primary" type="button" disabled={choice===null} onClick={()=>{setChecked(true);if(correct)setScore(n=>n+1)}}>Check answer</button>:
    <div className={`ss-inline-answer ${correct?"correct":"wrong"}`} role="status">
     <strong>{correct?"Correct.":"Not quite."}</strong> {question.explanation}
-    <button className="ss-primary" type="button" onClick={next}>{last?"Finish check":"Next question"}{!last&&<> <ForwardArrowIcon/></>}</button>
+    <button className="ss-primary" type="button" onClick={next}>{last?"Finish check":"Next question"}</button>
    </div>}
  </div>;
 }

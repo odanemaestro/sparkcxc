@@ -1,4 +1,3 @@
-import ForwardArrowIcon from "../ui/ForwardArrowIcon";
 import React, { useMemo } from "react";
 import Card from "../ui/Card";
 import ProgressBar from "../ui/ProgressBar";
@@ -57,7 +56,7 @@ export default function SubjectProgressDetail({
   return <div className="spark-subject-progress-detail">
     <div className="spark-subject-progress-detail-head">
       <div><span className="section-kicker">{subject?.name || "Subject"}</span><h1>{subject?.shortName || subject?.name || "Subject"} progress</h1><p>{detailDescription}</p></div>
-      <div className="spark-subject-progress-detail-actions">{canOpenSubject && <button type="button" className="spark-dashboard-card-action" onClick={() => onOpenSubject(subject)}><span>Open subject</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ForwardArrowIcon size={20}/></span></button>}{onOpenReport && <button type="button" className="spark-dashboard-card-action" onClick={() => onOpenReport(subject)}><span>View report</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ForwardArrowIcon size={20}/></span></button>}</div>
+      <div className="spark-subject-progress-detail-actions">{canOpenSubject && <button type="button" className="spark-dashboard-card-action" onClick={() => onOpenSubject(subject)}><span>Open subject</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></button>}{onOpenReport && <button type="button" className="spark-dashboard-card-action" onClick={() => onOpenReport(subject)}><span>View report</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></button>}</div>
     </div>
 
     <div className="spark-subject-progress-metrics">

@@ -280,8 +280,8 @@ export default function EnglishAPaper1Exam({ supabase, userId, onBack }) {
       <div className="is-exam-shell is-exam-paper-shell">
         <header className="is-exam-head">
           <div>
-            {!review && <button type="button" className="is-exam-primary is-exam-back" onClick={() => setShowExitConfirm(true)}><BackArrowIcon/> Exit</button>}
-            {review && <button type="button" className="is-exam-primary is-exam-back" onClick={onBack}><BackArrowIcon/> English A practice</button>}
+            {!review && <button type="button" className="is-exam-primary is-exam-back" onClick={() => setShowExitConfirm(true)}>Exit</button>}
+            {review && <button type="button" className="is-exam-primary is-exam-back" onClick={onBack}>English A practice</button>}
             <span className="is-exam-eyebrow">CSEC ENGLISH A <Separator /> PAPER 01</span>
             <h1>English A Paper 1</h1>
             <p>
