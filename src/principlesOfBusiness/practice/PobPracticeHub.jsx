@@ -1,4 +1,3 @@
-import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
@@ -154,9 +153,9 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
            {current.sourceKeyAcademicReview&&<p role="note"><strong>CXC source-key review:</strong> {current.keyConcern}</p>}
          </div>}
          <div className="pob-exam-controls">
-           <button type="button" className="secondary" disabled={index===0} onClick={()=>update({index:index-1})}><BackArrowIcon/> Previous</button>
+           <button type="button" className="secondary" disabled={index===0} onClick={()=>update({index:index-1})}>Previous</button>
            {!review&&<button type="button" className="secondary" aria-pressed={!!attempt.flags[current.id]} onClick={()=>update({flags:{...attempt.flags,[current.id]:!attempt.flags[current.id]}})}>{attempt.flags[current.id]?"Unflag":"Flag for review"}</button>}
-           <button type="button" className="pob-primary" disabled={index===questions.length-1} onClick={()=>update({index:index+1})}>Next question <ForwardArrowIcon/></button>
+           <button type="button" className="pob-primary" disabled={index===questions.length-1} onClick={()=>update({index:index+1})}>Next question</button>
          </div>
        </article>
        <aside className="pob-exam-card pob-exam-navigator">
@@ -307,8 +306,8 @@ export function PobPaper2Exam({onBack,userId,supabase,paperOverride=null}){
        </details>}
      </div>;
    })}
-   <div className="pob-exam-controls"><button type="button" className="secondary" disabled={question.number===1} onClick={()=>update({index:question.number-2})}><BackArrowIcon/> Previous</button>
-   <button type="button" className="pob-primary" disabled={question.number===5} onClick={()=>update({index:question.number})}>Next question <ForwardArrowIcon/></button></div>
+   <div className="pob-exam-controls"><button type="button" className="secondary" disabled={question.number===1} onClick={()=>update({index:question.number-2})}>Previous</button>
+   <button type="button" className="pob-primary" disabled={question.number===5} onClick={()=>update({index:question.number})}>Next question</button></div>
    {!review&&<button type="button" className="pob-primary pob-exam-submit" onClick={()=>setConfirm(true)}>Submit Paper 2</button>}
    {review&&<div className="pob-retry-actions"><button type="button" className="secondary" onClick={()=>setAttempt(startState(paper.id))}>Start another attempt</button></div>}
    </section>

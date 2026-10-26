@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "../components/ui/Card";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
-import ForwardArrowIcon from "../components/ui/ForwardArrowIcon";
 import { T, FD, FB } from "../theme";
 import "./subjectSelection.css";
 
@@ -66,7 +65,7 @@ export default function SubjectSelectionView({
                 <span className="spark-subject-selection-status">Overview</span>
                 <h2>All subjects</h2>
                 <p>Review your learning activity across every subject you use in SPARK.</p>
-                <div className="spark-subject-selection-action"><span>Open all progress</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ForwardArrowIcon size={20}/></span></div>
+                <div className="spark-subject-selection-action"><span>Open all progress</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></div>
               </div>
             </button>
           </Card>}
@@ -90,7 +89,7 @@ export default function SubjectSelectionView({
                   <p>{subjectMeta(subject, capability)}</p>
                   <div className="spark-subject-selection-action">
                     <span>Open {subject.shortName}</span>
-                    <span className="spark-dashboard-card-action-icon" aria-hidden="true"><ForwardArrowIcon size={20}/></span>
+                    <span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span>
                   </div>
                 </div>
               </button>

@@ -1,4 +1,3 @@
-import ForwardArrowIcon from "../components/ui/ForwardArrowIcon";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MathText from "./MathText";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
@@ -321,7 +320,7 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
   }
 
   if (error) {
-    return <main className="paper-loading"><h1>Paper 1 is unavailable</h1><p>{error}</p><button className="practice-primary" onClick={onExit}><BackArrowIcon/> Back to Practice</button></main>;
+    return <main className="paper-loading"><h1>Paper 1 is unavailable</h1><p>{error}</p><button className="practice-primary" onClick={onExit}>Back to Practice</button></main>;
   }
 
   if (!started && exam && !result) {
@@ -423,16 +422,16 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
           </div>
 
           <div className="paper-review-controls">
-            <button type="button" disabled={reviewIndex === 0} onClick={() => setReviewIndex(i => Math.max(0, i - 1))}><BackArrowIcon/> Previous</button>
+            <button type="button" disabled={reviewIndex === 0} onClick={() => setReviewIndex(i => Math.max(0, i - 1))}>Previous</button>
             <div className="paper-review-dots">
               {result.rows.map((r, i) => <button key={r.question.question_id} className={`${i === reviewIndex ? "active " : ""}${r.correct ? "correct" : "incorrect"}`} onClick={() => setReviewIndex(i)} aria-label={`Review question ${i + 1}`}>{i + 1}</button>)}
             </div>
-            <button type="button" disabled={reviewIndex === 59} onClick={() => setReviewIndex(i => Math.min(59, i + 1))}>Next <ForwardArrowIcon/></button>
+            <button type="button" disabled={reviewIndex === 59} onClick={() => setReviewIndex(i => Math.min(59, i + 1))}>Next</button>
           </div>
         </section>
 
         <div className="paper-result-actions">
-          <button type="button" className="practice-secondary" onClick={onExit}><BackArrowIcon/> Back to Practice</button>
+          <button type="button" className="practice-secondary" onClick={onExit}>Back to Practice</button>
           <button type="button" className="practice-primary" onClick={startAnother}>Start another Paper 1</button>
         </div>
       </main>
@@ -492,9 +491,9 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
           </div>
 
           <div className="paper-question-actions">
-            <button type="button" className="paper-prev" disabled={currentIndex === 0} onClick={() => setCurrentIndex(i => Math.max(0, i - 1))}><BackArrowIcon/> Previous</button>
+            <button type="button" className="paper-prev" disabled={currentIndex === 0} onClick={() => setCurrentIndex(i => Math.max(0, i - 1))}>Previous</button>
             <div className="paper-answer-state">{selected ? `Answer ${selected} selected` : "No answer selected"}</div>
-            <button type="button" className="paper-next" disabled={currentIndex === 59} onClick={() => setCurrentIndex(i => Math.min(59, i + 1))}>Next question <ForwardArrowIcon/></button>
+            <button type="button" className="paper-next" disabled={currentIndex === 59} onClick={() => setCurrentIndex(i => Math.min(59, i + 1))}>Next question</button>
           </div>
         </section>
 

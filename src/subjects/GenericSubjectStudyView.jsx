@@ -231,11 +231,11 @@ export function GenericLessonContent({
       {isFnh && <nav className="spark-fnh-reading-nav" aria-label="Jump to a part of this lesson">
         <span className="spark-fnh-reading-nav-label">In this lesson</span>
         <div className="spark-fnh-reading-nav-links">
-          <button type="button" onClick={()=>jumpTo("fnh-lesson-notes")}>Read notes <ForwardArrowIcon/></button>
-          {hasFnhMedia&&<button type="button" onClick={()=>jumpTo("fnh-lesson-visuals")}>See visuals <ForwardArrowIcon/></button>}
-          {models.length>0&&<button type="button" onClick={()=>jumpTo("fnh-lesson-explore")}>Explore <ForwardArrowIcon/></button>}
-          <button type="button" onClick={()=>jumpTo("fnh-lesson-practice")}>Quick practice <ForwardArrowIcon/></button>
-          <button type="button" onClick={()=>jumpTo("fnh-lesson-reflect")}>Written response <ForwardArrowIcon/></button>
+          <button type="button" onClick={()=>jumpTo("fnh-lesson-notes")}>Read notes <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
+          {hasFnhMedia&&<button type="button" onClick={()=>jumpTo("fnh-lesson-visuals")}>See visuals <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
+          {models.length>0&&<button type="button" onClick={()=>jumpTo("fnh-lesson-explore")}>Explore <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
+          <button type="button" onClick={()=>jumpTo("fnh-lesson-practice")}>Quick practice <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
+          <button type="button" onClick={()=>jumpTo("fnh-lesson-reflect")}>Written response <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
         </div>
       </nav>}
 
@@ -738,7 +738,7 @@ export default function GenericSubjectStudyView({
             <h1>This subject is not available for learners.</h1>
             <p>It may still be a draft, disabled, or no longer published.</p>
             <div className="spark-generic-empty-actions">
-              {onBack && <button type="button" onClick={onBack}><BackArrowIcon/> Back to Study</button>}
+              {onBack && <button type="button" onClick={onBack}>Back to Study</button>}
               {onManageSubjects && (
                 <button type="button" className="secondary" onClick={onManageSubjects}>
                   My subjects
@@ -768,7 +768,7 @@ export default function GenericSubjectStudyView({
             <span className="section-kicker">COURSE LOAD ERROR</span>
             <h1>We could not open {subject.shortName || subject.name}.</h1>
             <p>{error?.message || "The course structure could not be loaded."}</p>
-            {onBack && <button type="button" onClick={onBack}><BackArrowIcon/> Back to Study</button>}
+            {onBack && <button type="button" onClick={onBack}>Back to Study</button>}
           </Card>
         </div>
       </main>
@@ -792,7 +792,7 @@ export default function GenericSubjectStudyView({
           <div className="spark-generic-study-hero-actions">
             {courseActions}
             {onBack && (
-              <button type="button" onClick={onBack}><BackArrowIcon/> Back</button>
+              <button type="button" onClick={onBack}>Back</button>
             )}
           </div>
         </header>
@@ -820,7 +820,7 @@ export default function GenericSubjectStudyView({
               catalog, but no learner topics are available yet.
             </p>
             {onBack && (
-              <button type="button" onClick={onBack}><BackArrowIcon/> Choose another subject</button>
+              <button type="button" onClick={onBack}>Choose another subject</button>
             )}
           </Card>
         ) : (

@@ -1,4 +1,3 @@
-import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import SocialStudiesShortAnswerPractice from "./SocialStudiesShortAnswerPractice";
@@ -141,7 +140,7 @@ function QuizSession({ title, questions, sessionId, userId, onExit, onFinish }){
           : <div className={`ss-question-feedback ${choice===current.answer ? "correct" : "wrong"}`}>
               <strong>{choice===current.answer ? "Correct." : `Answer: ${String.fromCharCode(65+current.answer)}.`}</strong>
               <p>{current.explanation}</p>
-              <button type="button" className="ss-primary" onClick={next}>{index===questions.length-1 ? "See results" : "Next question"} <ForwardArrowIcon/></button>
+              <button type="button" className="ss-primary" onClick={next}>{index===questions.length-1 ? "See results" : "Next question"}</button>
             </div>}
       </article>
       <div className="ss-practice-foot">Progress {progress}%</div>
@@ -161,7 +160,7 @@ function Results({ title, answers, total, onAgain, onHome, examPrompt }){
         <ProgressBar value={score} max={total}/>
         <div className="ss-results-actions">
           <button type="button" className="ss-primary" onClick={onAgain}>Try another set</button>
-          <button type="button" className="ss-secondary" onClick={onHome}><BackArrowIcon/> Back to Social Studies practice</button>
+          <button type="button" className="ss-secondary" onClick={onHome}>Back to Social Studies practice</button>
         </div>
       </section>
       {examPrompt && <section className="ss-panel ss-exam-panel">
@@ -276,10 +275,10 @@ function Paper1Exam({ onExit, onComplete, userId }){
               <p>{current.explanation}</p>
             </div>}
             <div className="ss-paper-actions">
-              <button type="button" className="ss-secondary" disabled={index===0} onClick={()=>{setIndex(value=>value-1);window.scrollTo?.(0,0);}}><BackArrowIcon/> Previous</button>
+              <button type="button" className="ss-secondary" disabled={index===0} onClick={()=>{setIndex(value=>value-1);window.scrollTo?.(0,0);}}>Previous</button>
               {!submitted && index===59
                 ? <button type="button" className="ss-primary" onClick={finish}>Submit Paper 01</button>
-                : <button type="button" className="ss-primary" disabled={index===59} onClick={()=>{setIndex(value=>value+1);window.scrollTo?.(0,0);}}>Next <ForwardArrowIcon/></button>}
+                : <button type="button" className="ss-primary" disabled={index===59} onClick={()=>{setIndex(value=>value+1);window.scrollTo?.(0,0);}}>Next</button>}
             </div>
           </article>
         </section>
@@ -560,10 +559,10 @@ function Paper2Practice({ onExit, onComplete, userId }){
           </div>}
 
           <div className="ss-paper-actions">
-            <button type="button" className="ss-secondary" disabled={index===0} onClick={()=>{setIndex(value=>value-1);window.scrollTo?.(0,0);}}><BackArrowIcon/> Previous</button>
+            <button type="button" className="ss-secondary" disabled={index===0} onClick={()=>{setIndex(value=>value-1);window.scrollTo?.(0,0);}}>Previous</button>
             {index===5
               ? <button type="button" className="ss-primary" disabled={completed} onClick={()=>finish(false)}>{completed ? "Paper 02 complete" : sessionMode==="timed" ? "Submit Paper 02" : "Finish guided practice"}</button>
-              : <button type="button" className="ss-primary" onClick={()=>{setIndex(value=>value+1);window.scrollTo?.(0,0);}}>Next question <ForwardArrowIcon/></button>}
+              : <button type="button" className="ss-primary" onClick={()=>{setIndex(value=>value+1);window.scrollTo?.(0,0);}}>Next question</button>}
           </div>
         </article>
 

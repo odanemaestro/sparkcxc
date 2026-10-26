@@ -125,7 +125,7 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
     <div className="fnh-source-reader-nav-head"><h2>Questions</h2>
      <span>{answered}/{questions.length} selected</span></div>
     <button type="button" className="fnh-outline" disabled={answered===questions.length}
-     onClick={nextUnanswered}>Next unanswered <ForwardArrowIcon/></button>
+     onClick={nextUnanswered}>Next unanswered</button>
     <div className="fnh-source-reader-nav-grid">
      {questions.map((q,i)=><button type="button" key={q.number}
       className={(i===position?"active ":"")+(selected[q.number]?"answered":"")}

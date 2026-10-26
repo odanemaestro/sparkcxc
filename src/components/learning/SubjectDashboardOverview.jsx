@@ -94,6 +94,10 @@ function subjectInsight(summaries, learnerName = "") {
     : "Focus on " + (weakest?.shortName || weakest?.name || "the subject with the most learning left") + " next.";
 }
 
+function ActionArrow() {
+  return <svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg>;
+}
+
 
 const SINGULAR_METRIC_LABELS = Object.freeze({
   assessments: "assessment",
@@ -174,7 +178,7 @@ function SubjectHomeRow({ subject, status, onOpenSubject, onOpenPractice, onOpen
           )}
           {onOpenProgress && (
             <button type="button" className="ssh-text-btn" onClick={() => onOpenProgress(subject)}>
-              <span>View progress</span><ForwardArrowIcon size={15}/>
+              <span>View progress</span><Icon name="chevronRight" size={15} />
             </button>
           )}
         </div>
@@ -348,11 +352,11 @@ export default function SubjectDashboardOverview({
                 <div className="spark-subject-card-actions">
                   {canPractice ? (
                     <button type="button" className="spark-dashboard-card-action" onClick={() => onOpenPractice(subject)}>
-                      <span>Practise</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ForwardArrowIcon size={20}/></span>
+                      <span>Practise</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ActionArrow /></span>
                     </button>
                   ) : canStudy ? (
                     <button type="button" className="spark-dashboard-card-action" onClick={() => onOpenSubject(subject)}>
-                      <span>Continue</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ForwardArrowIcon size={20}/></span>
+                      <span>Continue</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ActionArrow /></span>
                     </button>
                   ) : null}
                   {onOpenProgress && (
@@ -371,7 +375,7 @@ export default function SubjectDashboardOverview({
             <span className="spark-feature-icon compact"><Icon name="subjects" size={19}/></span>
             <div><h3>Choose your subjects</h3><p>Enroll in the subjects you want to study and SPARK will build your dashboard around them.</p></div>
           </div>
-          {onManageSubjects && <button type="button" className="spark-dashboard-card-action" onClick={onManageSubjects}><span>Choose my subjects</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ForwardArrowIcon size={20}/></span></button>}
+          {onManageSubjects && <button type="button" className="spark-dashboard-card-action" onClick={onManageSubjects}><span>Choose my subjects</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><ActionArrow /></span></button>}
         </Card>
       )}
 

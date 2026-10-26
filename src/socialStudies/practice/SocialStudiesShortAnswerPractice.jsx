@@ -1,4 +1,3 @@
-import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React, { useMemo, useState } from "react";
 import { useSavedPracticeState } from "../../routing/usePracticeRouteState";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
@@ -95,7 +94,7 @@ export default function SocialStudiesShortAnswerPractice({ onExit, onComplete, u
           <ProgressBar value={score} max={maxScore}/>
           <div className="ss-results-actions">
             <button type="button" className="ss-primary" onClick={begin}>Try another set</button>
-            <button type="button" className="ss-secondary" onClick={onExit}><BackArrowIcon/> Back to Social Studies practice</button>
+            <button type="button" className="ss-secondary" onClick={onExit}>Back to Social Studies practice</button>
           </div>
         </section>
 
@@ -208,7 +207,7 @@ export default function SocialStudiesShortAnswerPractice({ onExit, onComplete, u
                 <strong>Accepted answer directions include</strong>
                 <ul>{current.modelPoints.map(point=><li key={point}>{point}</li>)}</ul>
               </div>
-              <button type="button" className="ss-primary" onClick={next}>{index===questions.length-1 ? "See results" : "Next question"} <ForwardArrowIcon/></button>
+              <button type="button" className="ss-primary" onClick={next}>{index===questions.length-1 ? "See results" : "Next question"}</button>
             </section>}
       </article>
     </div>

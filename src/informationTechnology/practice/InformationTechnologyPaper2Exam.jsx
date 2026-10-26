@@ -1,5 +1,3 @@
-import BackArrowIcon from "../../components/ui/BackArrowIcon";
-import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
@@ -423,7 +421,7 @@ export default function InformationTechnologyPaper2Exam({ supabase, onExit, star
           </section>
 
           <div className="it-practice-actions it-instruction-actions">
-            <button className="it-practice-secondary" type="button" onClick={onExit}><BackArrowIcon/> Back to IT Practice</button>
+            <button className="it-practice-secondary" type="button" onClick={onExit}>Back to IT Practice</button>
             <button className="it-practice-primary" type="button" onClick={start}>Start Paper 2</button>
           </div>
         </section>
@@ -448,7 +446,7 @@ export default function InformationTechnologyPaper2Exam({ supabase, onExit, star
             <div><span>Productivity Tools</span><strong>{displayedProfiles ? displayedProfiles["Productivity Tools"] : result.profiles["Productivity Tools"]}/30</strong></div>
             <div><span>Problem-Solving & Programming</span><strong>{displayedProfiles ? displayedProfiles["Problem-Solving and Programming"] : result.profiles["Problem-Solving and Programming"]}/25</strong></div>
           </div>
-          <button className="it-practice-primary" type="button" onClick={onExit}><BackArrowIcon/> Back to IT Practice</button>
+          <button className="it-practice-primary" type="button" onClick={onExit}>Back to IT Practice</button>
         </section>
       </main>
     );
@@ -519,7 +517,7 @@ export default function InformationTechnologyPaper2Exam({ supabase, onExit, star
           <span>Question {question.number} of 4 · {question.totalMarks} marks · {paper.title}</span>
         </div>
         <div className="it-exam-top-actions">
-          <button type="button" className="it-exit-paper" onClick={() => setShowExit(true)}><BackArrowIcon/> Exit paper</button>
+          <button type="button" className="it-exit-paper" onClick={() => setShowExit(true)}>Exit paper</button>
           <div className={remaining < 600 ? "it-timer urgent" : "it-timer"}>{formatTime(remaining)}</div>
         </div>
       </header>
@@ -573,9 +571,9 @@ export default function InformationTechnologyPaper2Exam({ supabase, onExit, star
           </div>
 
           <div className="it-exam-actions">
-            <button className="it-practice-secondary" type="button" disabled={questionIndex === 0} onClick={() => go(questionIndex - 1)}><BackArrowIcon/> Previous</button>
+            <button className="it-practice-secondary" type="button" disabled={questionIndex === 0} onClick={() => go(questionIndex - 1)}>Previous</button>
             {questionIndex < 3
-              ? <button className="it-practice-primary" type="button" onClick={() => go(questionIndex + 1)}>Next <ForwardArrowIcon/></button>
+              ? <button className="it-practice-primary" type="button" onClick={() => go(questionIndex + 1)}>Next</button>
               : <button className="it-practice-primary" type="button" onClick={() => beginMarking(false)}>Submit paper</button>}
           </div>
           {questionIndex < 3 && <button type="button" className="it-submit-link" onClick={() => beginMarking(false)}>Submit paper now</button>}
