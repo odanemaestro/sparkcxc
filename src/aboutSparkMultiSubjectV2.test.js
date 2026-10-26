@@ -12,7 +12,8 @@ describe("About SPARK multi-subject update", () => {
   test("About page reads the current live subject registry", () => {
     expect(start).toBeGreaterThan(0);
     expect(end).toBeGreaterThan(start);
-    expect(about).toContain("enabledSparkSubjects(SPARK_SUBJECTS)");
+    expect(about).toContain("const availableSubjects = catalogLoaded && catalogAvailable");
+    expect(app).toContain("<AboutView subjects={runtimeSparkSubjects} catalogLoaded={appCatalogLoaded} catalogAvailable={appCatalogAvailable}");
     expect(about).toContain("subject.capabilities?.study !== false");
     expect(about).toContain("availableSubjects.length");
     expect(about).toContain("spark-about-subject-list");
@@ -23,24 +24,34 @@ describe("About SPARK multi-subject update", () => {
     expect(registry).toContain('PRINCIPLES_OF_ACCOUNTS: "principles-of-accounts"');
   });
 
-  test("the about counts recalculate from registered and enabled subjects rather than fixed numbers", () => {
-    const {getSparkSubjectRegistry, enabledSparkSubjects} = require("./subjects/subjectRegistry");
-    const registered = getSparkSubjectRegistry({physicsEnabled:true})
+  test("live catalogue overrides outdated local draft flags and updates automatically", () => {
+    const {getSparkSubjectRegistry} = require("./subjects/subjectRegistry");
+    const {runtimeSubjectCatalog} = require("./subjects/subjectCatalog");
+    const base = getSparkSubjectRegistry({physicsEnabled:true});
+    expect(base).toHaveLength(10);
+    // Live database currently marks every registered subject as enabled/live.
+    // Reproduce the returned catalog shape, not the stale built-in flags.
+    const productionRows = base.map(subject => ({
+      id: subject.id, name: subject.name, short_name: subject.shortName,
+      enabled: true, status: "live", sort_order: subject.sortOrder,
+      capabilities: subject.capabilities,
+    }));
+    const live = runtimeSubjectCatalog(base,productionRows,{catalogAvailable:true})
       .filter(subject => subject.capabilities?.study !== false);
-    const enabled = enabledSparkSubjects(registered);
-    expect(registered).toHaveLength(10);
-    expect(enabled).toHaveLength(8);
-    const preview = registered.map(subject =>
-      subject.id === "food-nutrition-and-health" || subject.id === "principles-of-accounts"
-        ? {...subject, enabled:true}
-        : subject
+    expect(live).toHaveLength(10);
+    expect(live.map(x => x.id)).toEqual(expect.arrayContaining([
+      "food-nutrition-and-health", "principles-of-accounts"
+    ]));
+    const afterUnpublish = productionRows.map(row =>
+      row.id === "principles-of-accounts" ? {...row,enabled:false,status:"draft"} : row
     );
-    expect(enabledSparkSubjects(preview)).toHaveLength(10);
-    expect(about).toContain("const registeredSubjects = SPARK_SUBJECTS.filter");
-    expect(about).toContain("const availableSubjects = enabledSparkSubjects(registeredSubjects)");
-    expect(about).toContain("const unavailableSubjectCount = registeredSubjects.length - availableSubjects.length");
-    expect(about).toContain("{availableSubjects.length} of {registeredSubjects.length}");
-    expect(about).toContain("{unavailableSubjectCount > 0");
+    const revised = runtimeSubjectCatalog(base,afterUnpublish,{catalogAvailable:true})
+      .filter(subject => subject.capabilities?.study !== false);
+    expect(revised).toHaveLength(9);
+    expect(about).toContain("const availableSubjects = catalogLoaded && catalogAvailable");
+    expect(about).toContain("subject.status === \"live\"");
+    expect(about).toContain("availableSubjects.length : \"—\"");
+    expect(about).not.toContain("const registeredSubjects = SPARK_SUBJECTS");
     expect(about).not.toContain("<strong>8 of 10</strong>");
   });
 
