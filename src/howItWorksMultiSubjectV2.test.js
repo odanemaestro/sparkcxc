@@ -14,7 +14,9 @@ const home = app.slice(homeStart, homeEnd);
 describe("How It Works reflects the multi-subject SPARK platform", () => {
   test("dedicated How It Works page uses the live subject registry, not a hardcoded mathematics count", () => {
     expect(start).toBeGreaterThan(0);
-    expect(how).toContain("enabledSparkSubjects(SPARK_SUBJECTS)");
+    expect(how).toContain("const availableSubjects = catalogLoaded && catalogAvailable");
+    expect(app).toContain("<HowItWorksView subjects={runtimeSparkSubjects} catalogLoaded={appCatalogLoaded} catalogAvailable={appCatalogAvailable}");
+    expect(how).toContain("subject.status === \"live\"");
     expect(how).toContain("subject.capabilities?.study !== false");
     expect(how).toContain("spark-how-subject-list");
     expect(how).toContain("Currently available CSEC subjects");
