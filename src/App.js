@@ -8076,8 +8076,9 @@ function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false 
 
 // ─── ABOUT ────────────────────────────────────────────────────────────────────
 function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
-  const availableSubjects = enabledSparkSubjects(SPARK_SUBJECTS)
-    .filter(subject => subject.capabilities?.study !== false);
+  const registeredSubjects = SPARK_SUBJECTS.filter(subject => subject.capabilities?.study !== false);
+  const availableSubjects = enabledSparkSubjects(registeredSubjects);
+  const unavailableSubjectCount = registeredSubjects.length - availableSubjects.length;
   const subjectNames = availableSubjects.map(subject => ({
     id: subject.id,
     name: subject.shortName || subject.name,
@@ -8117,9 +8118,11 @@ function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
           </div>
           <div className="spark-about-overview" aria-label="SPARK at a glance">
             <div className="spark-about-overview-item">
-              <strong>{availableSubjects.length}</strong>
-              <span>Currently available CSEC subjects</span>
-              <p>New courses and study tools are introduced as they are ready.</p>
+              <strong>{availableSubjects.length} of {registeredSubjects.length}</strong>
+              <span>CSEC subjects currently available</span>
+              <p>{unavailableSubjectCount > 0
+                ? `${unavailableSubjectCount} additional ${unavailableSubjectCount === 1 ? "subject is" : "subjects are"} registered but not yet enabled.`
+                : "All registered CSEC subjects are now available."}</p>
             </div>
             <div className="spark-about-overview-item">
               <strong>Paper 1 &amp; 2</strong>
@@ -8138,7 +8141,7 @@ function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
           <div className="spark-about-section-heading">
             <span className="spark-about-kicker">Not just Mathematics</span>
             <h2 id="spark-about-subjects-title">More subjects. More ways to learn.</h2>
-            <p>Every subject is different, so the way you study should be different too. Explore the CSEC courses currently enabled in SPARK.</p>
+            <p>Every subject is different, so the way you study should be different too. Explore the {availableSubjects.length} CSEC {availableSubjects.length === 1 ? "subject" : "subjects"} currently available in SPARK.</p>
           </div>
           <ul className="spark-about-subject-list" aria-label="Available SPARK subjects">
             {subjectNames.map(subject => <li key={subject.id}>{subject.name}</li>)}
