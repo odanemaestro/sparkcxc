@@ -1,4 +1,6 @@
 import FnhNavArrow from "./FnhNavArrow";
+import { isSparkNativeApp } from "../../lib/nativeRuntime";
+import NativeBackButton from "../../components/native/NativeBackButton";
 import React,{useEffect,useState} from "react";
 import FnhPaper1Exam from "./FnhPaper1Exam";
 import FnhHistoricalPaper1Reader from "./FnhHistoricalPaper1Reader";
@@ -145,7 +147,7 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
   if(view==="historical-2026-p2")return <FnhHistorical2026Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="workbook")return <FnhPracticalWorkbook userId={userId} onBack={()=>setView("home")}/>;
   return <main className="fnh-exam fnh-practice-home"><div className="fnh-exam-container">
-    <div className="fnh-exam-top"><button className="fnh-outline" type="button" onClick={onBack}><FnhNavArrow direction="left"/> Back to practice</button></div>
+    <div className="fnh-exam-top">{isSparkNativeApp() ? <NativeBackButton onClick={onBack} label="Back to subjects"/> : <button className="fnh-outline" type="button" onClick={onBack}><FnhNavArrow direction="left"/> Back to practice</button>}</div>
     <header className="fnh-exam-card fnh-library-hero"><small>CSEC FOOD, NUTRITION AND HEALTH</small><h1>Choose an examination paper</h1><p>Practise Caribbean food and nutrition knowledge, food safety, meal planning and practical decision-making in a CSEC-style test.</p></header>
     <section className="fnh-library-choices" aria-label="Choose Food Nutrition and Health examination">
       <button type="button" onClick={()=>setView("paper1")}>
