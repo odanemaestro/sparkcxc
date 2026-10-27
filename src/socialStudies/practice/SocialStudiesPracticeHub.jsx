@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import { isSparkNativeApp } from "../../lib/nativeRuntime";
+import NativeBackButton from "../../components/native/NativeBackButton";
 import SocialStudiesShortAnswerPractice from "./SocialStudiesShortAnswerPractice";
 import SocialStudiesSbaPractice from "./SocialStudiesSbaPractice";
 import ProgressBar from "../../components/ui/ProgressBar";
@@ -750,12 +752,13 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
   return <main className="ss-practice-page">
     <div className="ss-practice-shell">
       <header className="ss-practice-hero">
+        {isSparkNativeApp() && <NativeBackButton onClick={onBack} label="Back to subjects" />}
         <div>
           <span className="ss-eyebrow">CSEC Social Studies practice</span>
           <h1>Practise the thinking CXC actually tests.</h1>
           <p>Use topic practice for recall and application, the challenge for mixed revision, or the research lab for source, questionnaire and data skills.</p>
         </div>
-        <button type="button" className="ss-back" onClick={onBack}><BackArrowIcon/><span>Change subject</span></button>
+        {!isSparkNativeApp() && <button type="button" className="ss-back" onClick={onBack}><BackArrowIcon/><span>Change subject</span></button>}
       </header>
 
       <section className="ss-practice-modes">
