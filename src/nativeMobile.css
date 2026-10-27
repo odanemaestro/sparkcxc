@@ -958,3 +958,53 @@ html.spark-native-app .spark-generic-study-hero.has-native-back > .spark-generic
     .it-subject-view .it-hero h1
   ) { font-size: 19px !important; line-height: 1.27 !important; }
 }
+
+
+/* Compact left chevrons on the remaining primary practice launchers. */
+@media(max-width:720px) {
+  html.spark-native-app :is(
+    .fnh-practice-home .fnh-exam-top,
+    .pob-exam .pob-exam-nav
+  ) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 0 5px -7px;
+    padding: 0;
+  }
+  html.spark-native-app .poa-practice-shell > .spark-native-back-button {
+    margin: 0 0 6px -7px;
+  }
+  html.spark-native-app :is(
+    .fnh-practice-home .fnh-library-hero,
+    .poa-practice-shell > .poa-library-header,
+    .pob-exam .pob-exam-intro
+  ) {
+    padding: 8px 0 14px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  html.spark-native-app :is(
+    .fnh-practice-home .fnh-library-hero,
+    .poa-practice-shell > .poa-library-header,
+    .pob-exam .pob-exam-intro
+  ) h1 {
+    font-family: inherit !important;
+    font-size: 21px !important;
+    line-height: 1.28 !important;
+    font-weight: 720 !important;
+    letter-spacing: -.02em !important;
+    margin: 0 !important;
+  }
+  html.spark-native-app :is(
+    .fnh-practice-home .fnh-library-hero,
+    .poa-practice-shell > .poa-library-header,
+    .pob-exam .pob-exam-intro
+  ) p { display: none !important; }
+  html.spark-native-app :is(
+    .fnh-practice-home .fnh-library-hero,
+    .pob-exam .pob-exam-intro
+  ) :is(small, .pob-exam-kicker) { display: none !important; }
+}
