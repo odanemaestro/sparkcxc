@@ -3,6 +3,8 @@ import InformationTechnologyPaper1Exam from "./InformationTechnologyPaper1Exam";
 import InformationTechnologyPaper2Exam from "./InformationTechnologyPaper2Exam";
 import InformationTechnologySbaCentre from "./InformationTechnologySbaCentre";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import { isSparkNativeApp } from "../../lib/nativeRuntime";
+import NativeBackButton from "../../components/native/NativeBackButton";
 import "./informationTechnologyPractice.css";
 import { useInformationTechnologyPracticeRoute, writeSparkNestedRoute } from "../../routing/sparkRoutingV270";
 import { syncInformationTechnologyLocalProgress } from "../../subjects/subjectProgress";
@@ -75,12 +77,13 @@ export default function InformationTechnologyPracticeHub({ onBack, supabase, use
   return (
     <main className="it-practice-hub">
       <section className="it-practice-hero">
+        {isSparkNativeApp() && <NativeBackButton onClick={onBack} label="Back to subjects" />}
         <div>
           <div className="it-practice-eyebrow">CSEC Information Technology practice</div>
           <h1>Practise under examination conditions.</h1>
           <p>Prepare for Paper 01 and Paper 02, or work through the SBA Centre with guided projects, clear steps and original SPARK reference examples.</p>
         </div>
-        <button className="it-practice-back" data-spark-action="nav" type="button" onClick={onBack}><BackArrowIcon/><span>Change subject</span></button>
+        {!isSparkNativeApp() && <button className="it-practice-back" data-spark-action="nav" type="button" onClick={onBack}><BackArrowIcon/><span>Change subject</span></button>}
       </section>
 
       <section className="it-practice-mode-grid it-practice-mode-grid-three">
