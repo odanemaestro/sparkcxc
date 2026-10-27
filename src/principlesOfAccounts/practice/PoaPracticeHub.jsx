@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import { isSparkNativeApp } from "../../lib/nativeRuntime";
+import NativeBackButton from "../../components/native/NativeBackButton";
 import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import ConfirmModal from "../../components/ui/ConfirmModal";
 import FnhPaper1Exam from "../../fnh/practice/FnhPaper1Exam";
@@ -618,9 +620,9 @@ export default function PoaPracticeHub({ userId, supabase, onBack }) {
   }
   return (
     <main className="poa-practice poa-practice-shell">
-      <button type="button" className="poa-back" data-spark-action="nav" onClick={onBack}>
+      {isSparkNativeApp() ? <NativeBackButton onClick={onBack} label="Back to subjects"/> : <button type="button" className="poa-back" data-spark-action="nav" onClick={onBack}>
         <BackArrowIcon /> Back to practice subjects
-      </button>
+      </button>}
       <header className="poa-library-header">
         <h1>Principles of Accounts practice</h1>
         <p>Choose Paper 1 or Paper 2 for practice sets, past papers and an answer review.</p>
