@@ -222,3 +222,13 @@ Test on Android 17 / API 37 in the Pixel emulator:
 6. Test the Android back gesture, dark mode, 320px viewport and device font scaling.
 
 The native Android device still needs manual validation before production release.
+
+## Left-chevron navigation pass
+
+All primary native Study and Practice launchers use a consistent left-aligned 19dp chevron in a minimum 44x44dp touch target. The icon has a screen-reader label naming the destination, no visible Back text, and an explicit callback. This applies to shared subject selection, Mathematics, generic course lessons, Physics, IT, Integrated Science, English A, Social Studies, Chemistry, FNH, POA and POB root practice screens. On section and lesson screens, IT also uses the same component.
+
+- The chevron is always on the leading left edge of the content and normally beside a 21sp heading.
+- Long practice introductions and decorative kickers are hidden on native launchers only.
+- Existing browser-only Back buttons remain in place.
+- Exam **Exit** and **Submit** actions retain explicit wording to prevent accidental data loss.
+- Test keyboard, VoiceOver/TalkBack, Android back gesture, and nested route transitions on a real device before release.
