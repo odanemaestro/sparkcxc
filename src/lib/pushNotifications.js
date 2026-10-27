@@ -1,4 +1,5 @@
 import { supabase } from "./supabaseClient";
+import { isSparkNativeApp } from "./nativeRuntime";
 
 export const DEFAULT_NOTIFICATION_PREFERENCES = Object.freeze({
   push_enabled: false,
@@ -72,11 +73,12 @@ export function isIOSDevice() {
 
 export function isStandaloneWebApp() {
   if (typeof window === "undefined" || typeof navigator === "undefined") return false;
-  return window.matchMedia?.("(display-mode: standalone)")?.matches === true || navigator.standalone === true;
+  return isSparkNativeApp() || window.matchMedia?.("(display-mode: standalone)")?.matches === true || navigator.standalone === true;
 }
 
 export function isPushSupported() {
   return typeof window !== "undefined"
+    && !isSparkNativeApp()
     && "serviceWorker" in navigator
     && "PushManager" in window
     && "Notification" in window;
@@ -99,7 +101,7 @@ export function getPushCapability() {
 }
 
 export async function registerSparkServiceWorker() {
-  if (typeof navigator === "undefined" || !("serviceWorker" in navigator)) return null;
+  if (isSparkNativeApp() || typeof navigator === "undefined" || !("serviceWorker" in navigator)) return null;
   const swUrl = `${process.env.PUBLIC_URL || ""}/sw.js`;
   try {
     const registration = await navigator.serviceWorker.register(swUrl);
