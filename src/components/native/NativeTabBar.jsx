@@ -13,6 +13,7 @@ const TABS = [
 ];
 
 export function activeNativeTab(view, hash) {
+  if (view === "home") return "dashboard";
   if (view !== "dashboard") return view;
   return String(hash || "").startsWith("#/dashboard/progress") ? "progress" : "dashboard";
 }
