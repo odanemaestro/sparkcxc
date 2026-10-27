@@ -801,3 +801,65 @@ html.spark-native-app .spark-native-student-shell :is(.paper-start-shell, .paper
     border-radius: 11px;
   }
 }
+
+
+/* Study and section navigation: chevron to the left of each native title. */
+html.spark-native-app .spark-generic-study-hero.has-native-back {
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 5px;
+  margin-left: -7px;
+}
+html.spark-native-app .spark-generic-study-hero.has-native-back > .spark-native-back-button {
+  grid-column: 1;
+  grid-row: 1;
+}
+html.spark-native-app .spark-generic-study-hero.has-native-back > .spark-generic-study-hero-copy {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+}
+html.spark-native-app .spark-generic-study-hero.has-native-back > .spark-generic-study-hero-actions {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-left: 7px;
+  flex-wrap: wrap;
+}
+html.spark-native-app .spark-generic-study-hero.has-native-back > .spark-generic-study-mark { display: none; }
+@media(max-width: 720px) {
+  html.spark-native-app .physics-subject-view .psv-hero > div:first-child,
+  html.spark-native-app .it-subject-view .it-hero > div:first-child {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 0 5px;
+    align-items: center;
+    margin-left: -7px;
+  }
+  html.spark-native-app .physics-subject-view .psv-hero .spark-native-back-button,
+  html.spark-native-app .it-subject-view .it-hero .spark-native-back-button {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  html.spark-native-app .physics-subject-view .psv-hero h1,
+  html.spark-native-app .it-subject-view .it-hero h1 {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    min-width: 0;
+    font-size: 21px;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-card,
+  html.spark-native-app .it-subject-view .it-section-card {
+    min-height: 64px;
+    padding-block: 11px;
+  }
+  html.spark-native-app .it-subject-view .it-shell > .spark-native-back-button {
+    margin-left: -7px;
+  }
+  html.spark-native-app .it-subject-view :is(.it-topic-hero, .it-section-hero) h1 {
+    font-size: 21px !important;
+    line-height: 1.28 !important;
+    font-family: inherit !important;
+    letter-spacing: -.02em;
+  }
+}
