@@ -28,7 +28,7 @@ jobs:
       - name: Install existing SPARK dependencies
         run: npm ci
       - name: Verify native runtime and student navigation
-        run: npm test -- --watch=false --runInBand src/lib/nativeRuntime.test.js src/lib/nativeStudentLayout.test.js src/components/native/NativeTabBar.test.jsx
+        run: npm test -- --watch=false --runInBand src/lib/nativeRuntime.test.js src/lib/nativeStudentLayout.test.js src/components/native/NativeTabBar.test.jsx src/components/native/NativeSubjectPicker.test.jsx
       - name: Build native web assets
         run: npm run mobile:build
       - name: Verify relative bundle paths
