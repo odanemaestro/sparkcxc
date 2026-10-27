@@ -1,4 +1,6 @@
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import { isSparkNativeApp } from "../../lib/nativeRuntime";
+import NativeBackButton from "../../components/native/NativeBackButton";
 import React, { useEffect } from "react";
 import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import EnglishAPaper1Exam from "./EnglishAPaper1Exam";
@@ -40,6 +42,7 @@ export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
     <main className="ea-practice-shell">
       <div className="ea-practice-home">
         <header className="ea-practice-hero">
+          {isSparkNativeApp() && <NativeBackButton onClick={onBack} label="Back to subjects" />}
           <div>
             <span className="ea-practice-eyebrow">CSEC ENGLISH A PRACTICE</span>
             <h1>Choose a practice mode</h1>
@@ -49,9 +52,9 @@ export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
               language and skill demands of your supplied CSEC archives.
             </p>
           </div>
-          <button type="button" className="ea-practice-back" onClick={onBack}>
+          {!isSparkNativeApp() && <button type="button" className="ea-practice-back" onClick={onBack}>
             <BackArrowIcon/> Back
-          </button>
+          </button>}
         </header>
 
         <div className="ea-practice-mode-grid">
