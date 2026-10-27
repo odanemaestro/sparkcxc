@@ -571,3 +571,124 @@ html.spark-native-app .spark-generic-outline-topics button {
     flex-wrap: wrap;
   }
 }
+
+/* Additional course-section launchers: Physics and IT receive the same native
+   compact-directory treatment without altering subject content or routes. */
+@media (max-width: 720px) {
+  html.spark-native-app .physics-subject-view .psv-shell,
+  html.spark-native-app .it-subject-view .it-shell {
+    width: calc(100% - 28px);
+    padding: 14px 0 calc(40px + env(safe-area-inset-bottom, 0px));
+    max-width: 680px;
+    margin-inline: auto;
+  }
+  html.spark-native-app .physics-subject-view .psv-hero,
+  html.spark-native-app .it-subject-view .it-hero {
+    display: block;
+    padding: 0 0 16px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  html.spark-native-app .physics-subject-view .psv-hero h1,
+  html.spark-native-app .it-subject-view .it-hero h1 {
+    margin: 8px 0 0;
+    font-family: inherit;
+    font-size: 23px;
+    line-height: 1.2;
+    font-weight: 730;
+    letter-spacing: -.02em;
+  }
+  html.spark-native-app .physics-subject-view .psv-hero p,
+  html.spark-native-app .physics-subject-view .psv-eyebrow,
+  html.spark-native-app .physics-subject-view .psv-stats,
+  html.spark-native-app .physics-subject-view .psv-note,
+  html.spark-native-app .it-subject-view .it-hero p,
+  html.spark-native-app .it-subject-view .it-eyebrow,
+  html.spark-native-app .it-subject-view .it-stats,
+  html.spark-native-app .it-subject-view .it-explore-note {
+    display: none;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-grid,
+  html.spark-native-app .it-subject-view .it-section-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-card,
+  html.spark-native-app .it-subject-view .it-section-card,
+  html.spark-native-app .it-subject-view .it-practical-labs-launch > button {
+    display: flex;
+    align-items: center;
+    min-height: 70px;
+    gap: 12px;
+    border: 1px solid var(--spark-border);
+    border-radius: 14px;
+    background: var(--spark-paper);
+    color: var(--spark-ink);
+    box-shadow: none;
+    padding: 12px 13px;
+    text-align: left;
+    transform: none;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-code,
+  html.spark-native-app .it-subject-view .it-section-code,
+  html.spark-native-app .it-subject-view .it-practical-labs-mark {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    flex: 0 0 34px;
+    border-radius: 10px;
+    background: var(--spark-muted);
+    color: var(--spark-ink);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 720;
+    padding: 0;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-copy,
+  html.spark-native-app .it-subject-view .it-section-copy {
+    flex: 1;
+    min-width: 0;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-copy strong,
+  html.spark-native-app .it-subject-view .it-section-copy strong,
+  html.spark-native-app .it-subject-view .it-practical-labs-launch strong {
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.3;
+    font-weight: 650;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-status,
+  html.spark-native-app .physics-subject-view .psv-section-copy small,
+  html.spark-native-app .it-subject-view .it-section-copy small,
+  html.spark-native-app .it-subject-view .it-practical-labs-launch small,
+  html.spark-native-app .it-subject-view .it-practical-labs-launch p {
+    display: none;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-copy > span:not(.psv-section-status),
+  html.spark-native-app .it-subject-view .it-section-copy > span {
+    display: block;
+    font-size: 12px;
+    line-height: 1.3;
+    color: var(--spark-text-muted);
+    margin-top: 3px;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-arrow svg,
+  html.spark-native-app .it-subject-view .it-open-arrow svg,
+  html.spark-native-app .it-subject-view .it-practical-labs-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+  html.spark-native-app .physics-subject-view .psv-back,
+  html.spark-native-app .it-subject-view .it-back {
+    min-height: 44px;
+    font-size: 12px;
+    border-radius: 11px;
+  }
+}
