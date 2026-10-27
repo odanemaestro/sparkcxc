@@ -112,6 +112,7 @@ import { friendlyErrorMessage } from "./lib/errorMessages";
 import { computeStudyStreak } from "./lib/studyStreak";
 import { getExamPerformanceStatus } from "./lib/examPerformance";
 import { isSparkNativeApp } from "./lib/nativeRuntime";
+import { getNativeStudentLayout } from "./lib/nativeStudentLayout";
 import NativeTabBar from "./components/native/NativeTabBar";
 import { detachCurrentPushAssociation, restorePushAssociation } from "./lib/pushNotifications";
 import "./family.css";
@@ -7692,17 +7693,18 @@ if (loading || authenticatedRolePending) {
   }
 
   const navProps = { setView, user: session?.user, profile, onLogout: handleLogout, liveStats, hasTutorApp: hideTutorApplyLink, tutorApp, view, themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode };
-  const nativeStudentApp = isSparkNativeApp()
-    && !!session
-    && profile?.role === "student"
-    && tutorApp?.status !== "approved";
-  const showNativeStudentTabs = nativeStudentApp
-    && ["dashboard", "study", "practice"].includes(view);
-  // Native student learning screens use their own back controls and the
-  // bottom app navigation. Only utility/public screens keep the website nav.
-  const hideWebsiteHeader = nativeStudentApp
-    && (["dashboard", "study", "practice", "lesson", "physics", "information-technology", "social-studies", "generic-study"].includes(view)
-      || view.startsWith("practice-"));
+  // A native student never sees the website navbar. Main app destinations
+  // use bottom tabs, while lesson/exam workspaces keep task-specific controls.
+  const {
+    student: nativeStudentApp,
+    hideWebsiteHeader,
+    showBottomTabs: showNativeStudentTabs,
+  } = getNativeStudentLayout({
+    native: isSparkNativeApp(),
+    signedIn: Boolean(session),
+    role: profile?.role,
+    view,
+  });
 
   const nativeStudentNavigate = destination => {
     if (destination === "dashboard" || destination === "progress" || destination.startsWith("dashboard:")) {
