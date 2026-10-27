@@ -1,5 +1,7 @@
 import React,{useEffect,useMemo} from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import { isSparkNativeApp } from "../../lib/nativeRuntime";
+import NativeBackButton from "../../components/native/NativeBackButton";
 import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import ChemistryPaper1Exam,{CHEMISTRY_PAPER1_SOURCES} from "./ChemistryPaper1Exam";
 import ChemistryPaper2Exam from "./ChemistryPaper2Exam";
@@ -174,7 +176,9 @@ export default function ChemistryPracticeHub({supabase,userId,onBack}){
 
   return <main className="is-practice-shell chem-practice-shell chem-practice-home">
     <div className="chem-library-container">
-      <button type="button" className="chem-library-back" onClick={onBack}><BackArrowIcon/> Back to practice</button>
+      {isSparkNativeApp()
+        ? <NativeBackButton onClick={onBack} label="Back to subjects" />
+        : <button type="button" className="chem-library-back" onClick={onBack}><BackArrowIcon/> Back to practice</button>}
       <header className="chem-library-hero">
         <span className="chem-library-eyebrow">CSEC CHEMISTRY</span>
         <h1>Chemistry practice exams</h1>
