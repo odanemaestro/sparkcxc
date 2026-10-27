@@ -1,4 +1,6 @@
 import React from "react";
+import { isSparkNativeApp } from "../lib/nativeRuntime";
+import NativeSubjectPicker from "../components/native/NativeSubjectPicker";
 import Card from "../components/ui/Card";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
 import { T, FD, FB } from "../theme";
@@ -41,6 +43,21 @@ export default function SubjectSelectionView({
   allOption = false,
   onSelectAll,
 }) {
+  if (isSparkNativeApp()) {
+    return (
+      <NativeSubjectPicker
+        subjects={subjects}
+        capability={capability}
+        title={title}
+        onSelect={onSelect}
+        onBack={onBack}
+        embedded={embedded}
+        allOption={allOption}
+        onSelectAll={onSelectAll}
+      />
+    );
+  }
+
   return (
     <section className={`spark-subject-selection${embedded ? " embedded" : ""}`}>
       <div className="spark-subject-selection-inner">
