@@ -1,0 +1,115 @@
+/* SPARK native subject directory.
+   Replaces web marketing cards only inside the Capacitor mobile app. */
+.spark-native-course-picker {
+  width: 100%;
+  min-height: 0;
+  max-width: 680px;
+  margin-inline: auto;
+  padding: 20px 16px calc(100px + env(safe-area-inset-bottom, 0px));
+  background: var(--spark-bg);
+  color: var(--spark-ink);
+}
+.spark-native-course-picker.is-embedded {
+  padding: 10px 0 24px;
+  background: transparent;
+}
+.spark-native-course-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+}
+.spark-native-course-heading h1 {
+  margin: 0;
+  color: var(--spark-ink);
+  font-size: 25px;
+  font-weight: 730;
+  line-height: 1.2;
+  letter-spacing: -.03em;
+}
+.spark-native-course-count {
+  display: block;
+  font-size: 12px;
+  margin-top: 3px;
+  color: var(--spark-text-muted);
+}
+.spark-native-course-back {
+  appearance: none;
+  border: 0;
+  border-radius: 12px;
+  background: var(--spark-muted);
+  color: var(--spark-ink);
+  padding: 8px 14px;
+  min-height: 44px;
+  font-size: 13px;
+  font-weight: 650;
+}
+.spark-native-course-list {
+  overflow: hidden;
+  background: var(--spark-paper);
+  border-radius: 16px;
+  border: 1px solid var(--spark-border);
+}
+.spark-native-course-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  width: 100%;
+  min-height: 66px;
+  border: 0;
+  border-bottom: 1px solid var(--spark-border-soft);
+  background: transparent;
+  color: var(--spark-ink);
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+.spark-native-course-row:last-child { border-bottom: 0; }
+.spark-native-course-row:active { background: var(--spark-muted); }
+.spark-native-course-row:focus-visible {
+  outline: 3px solid var(--spark-teal);
+  outline-offset: -3px;
+}
+.spark-native-course-mark {
+  display: grid;
+  place-items: center;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--spark-muted);
+  color: var(--spark-ink);
+  font-size: 12px;
+  font-weight: 760;
+  letter-spacing: -.02em;
+}
+.spark-native-course-mark.is-all { color: var(--spark-teal-dark); background: var(--spark-teal-surface); }
+.spark-native-course-title {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+.spark-native-course-chevron {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  color: var(--spark-text-muted);
+}
+.spark-native-course-empty {
+  font-size: 14px;
+  color: var(--spark-text-muted);
+  margin: 0;
+  padding: 20px 16px;
+}
+@media (min-width: 700px) {
+  .spark-native-course-picker { padding-top: 30px; }
+  .spark-native-course-list { display: grid; grid-template-columns: 1fr 1fr; }
+  .spark-native-course-row:nth-child(odd) { border-right: 1px solid var(--spark-border-soft); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spark-native-course-row { transition: none !important; }
+}
