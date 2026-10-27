@@ -1,0 +1,40 @@
+name: SPARK mobile foundation
+
+on:
+  pull_request:
+    paths:
+      - 'mobile/**'
+      - 'tools/build-mobile.mjs'
+      - 'src/lib/nativeRuntime*'
+      - 'src/lib/pushNotifications.js'
+      - 'src/index.js'
+      - 'package.json'
+      - '.github/workflows/mobile-foundation.yml'
+  workflow_dispatch:
+
+jobs:
+  mobile-web-and-android-scaffold:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install existing SPARK dependencies
+        run: npm ci
+      - name: Verify native detection
+        run: npm test -- --watch=false --runInBand src/lib/nativeRuntime.test.js
+      - name: Build native web assets
+        run: npm run mobile:build
+      - name: Verify relative bundle paths
+        run: |
+          node --input-type=module -e 'import fs from "node:fs";const html=fs.readFileSync("build/index.html","utf8");if(html.includes("/sparkcxc/assets/")||!html.includes("./assets/"))process.exit(1)'
+      - name: Install Capacitor dependencies
+        run: npm install --prefix mobile --no-audit --no-fund
+      - name: Generate Android native project
+        working-directory: mobile
+        run: npx cap add android
+      - name: Sync Android web assets
+        working-directory: mobile
+        run: npx cap sync android
