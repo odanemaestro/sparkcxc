@@ -29,3 +29,12 @@ test("empty state remains accessible", () => {
   render(<NativeSubjectPicker subjects={[]} capability="flashcards" />);
   expect(screen.getByText("No subjects here yet.")).toBeTruthy();
 });
+
+test("embedded subject picker has a left chevron that returns to previous screen", () => {
+  const onBack = jest.fn();
+  render(<NativeSubjectPicker subjects={subjects} capability="study" embedded onBack={onBack}/>);
+  const back = screen.getByRole("button", {name:"Back to previous screen"});
+  expect(back.textContent).toBe("");
+  fireEvent.click(back);
+  expect(onBack).toHaveBeenCalledTimes(1);
+});
