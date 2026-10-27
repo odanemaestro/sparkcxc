@@ -8,23 +8,17 @@
   background: var(--spark-bg);
   color: var(--spark-ink);
 }
-.spark-native-math-heading { margin-bottom: 22px; }
-.spark-native-math-back {
-  display: inline-flex;
+.spark-native-math-heading {
+  display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 2px;
-  background: transparent;
-  border: 0;
-  color: var(--spark-teal-dark);
-  padding: 0 8px 0 0;
-  min-height: 44px;
-  font-size: 13px;
-  font-weight: 650;
+  gap: 6px;
+  min-height: 52px;
+  margin: 0 0 19px -7px;
 }
+.spark-native-math-heading-copy { min-width: 0; flex: 1; }
 .spark-native-math-heading h1 {
-  margin: 6px 0 3px;
-  font-size: 24px;
+  margin: 0 0 2px;
+  font-size: 21px;
   line-height: 1.2;
   font-weight: 730;
   letter-spacing: -.025em;
