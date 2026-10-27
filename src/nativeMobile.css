@@ -428,3 +428,23 @@ html.spark-native-app .spark-native-more-logout strong {
     to { transform: translateY(0); opacity: 1; }
   }
 }
+
+
+/* Native student chrome guarantee.
+   CSS acts as a second guard if a nested screen renders its own web nav.
+   Keep public marketing and parent/tutor experiences untouched. */
+html.spark-native-app .spark-app-root.spark-native-student-shell > nav.spark-nav,
+html.spark-native-app .spark-app-root.spark-native-student-shell > .spark-nav {
+  display: none !important;
+}
+html.spark-native-app .spark-app-root.spark-native-student-shell .dash-sidebar {
+  display: none !important;
+}
+html.spark-native-app .spark-app-root.spark-native-student-shell .dash-layout {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+@media (max-width: 720px) {
+  html.spark-native-app .spark-app-root.spark-native-student-shell .app-scroll-panel {
+    scroll-padding-top: 12px;
+  }
+}
