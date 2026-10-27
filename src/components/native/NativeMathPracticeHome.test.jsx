@@ -26,7 +26,7 @@ test("navigation to subjects, adaptive and 2027 stays available", () => {
   const onAdaptive = jest.fn();
   const on2027 = jest.fn();
   render(<NativeMathPracticeHome onBack={onBack} onAdaptive={onAdaptive} on2027={on2027}/>);
-  fireEvent.click(screen.getByRole("button", {name:"Subjects"}));
+  fireEvent.click(screen.getByRole("button", {name:"Back to subjects"}));
   fireEvent.click(screen.getByRole("button", {name:/Adaptive practice/}));
   fireEvent.click(screen.getByRole("button", {name:/2027 syllabus/}));
   expect(onBack).toHaveBeenCalledTimes(1);
