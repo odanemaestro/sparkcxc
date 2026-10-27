@@ -8,6 +8,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import reportWebVitals from './reportWebVitals';
 import { registerSparkServiceWorker } from './lib/pushNotifications';
 import { isSparkNativeApp } from './lib/nativeRuntime';
+import './nativeMobile.css';
 
 if (isSparkNativeApp()) document.documentElement.classList.add('spark-native-app');
 
