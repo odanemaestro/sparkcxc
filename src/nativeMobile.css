@@ -692,3 +692,29 @@ html.spark-native-app .spark-generic-outline-topics button {
     border-radius: 11px;
   }
 }
+
+
+/* Android 15-17 and iPhone edge-to-edge system bars.
+   Capacitor SystemBars injects valid env() values on modern WebView and
+   falls back to native decor padding on old Android WebViews. */
+html.spark-native-app .spark-app-root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+html.spark-native-app .spark-app-root > nav.spark-nav {
+  padding-top: 0 !important;
+}
+html.spark-native-app .spark-native-tabs {
+  padding-bottom: calc(4px + env(safe-area-inset-bottom, 0px));
+}
+html.spark-native-app .spark-native-student-shell :is(.paper-start-shell, .paper2-start-shell, .paper-results-shell) h1 {
+  font-size: 24px !important;
+  line-height: 1.2 !important;
+  letter-spacing: -.02em;
+}
+@media (max-width: 720px) {
+  html.spark-native-app .spark-native-student-shell :is(.paper-start-shell, .paper2-start-shell, .paper-results-shell) {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
