@@ -111,6 +111,8 @@ import {
 import { friendlyErrorMessage } from "./lib/errorMessages";
 import { computeStudyStreak } from "./lib/studyStreak";
 import { getExamPerformanceStatus } from "./lib/examPerformance";
+import { isSparkNativeApp } from "./lib/nativeRuntime";
+import NativeTabBar from "./components/native/NativeTabBar";
 import { detachCurrentPushAssociation, restorePushAssociation } from "./lib/pushNotifications";
 import "./family.css";
 import "./responsive.css";
@@ -7690,9 +7692,13 @@ if (loading || authenticatedRolePending) {
   }
 
   const navProps = { setView, user: session?.user, profile, onLogout: handleLogout, liveStats, hasTutorApp: hideTutorApplyLink, tutorApp, view, themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode };
+  const showNativeStudentTabs = isSparkNativeApp()
+    && !!session
+    && profile?.role === "student"
+    && ["dashboard", "study", "practice"].includes(view);
 
   return (
-    <div className="spark-app-root" style={{minHeight:"100vh",display:"flex",flexDirection:"column",background:T.bg,color:T.ink}}>
+    <div className={`spark-app-root${showNativeStudentTabs ? " spark-native-tabs-visible" : ""}`} style={{minHeight:"100vh",display:"flex",flexDirection:"column",background:T.bg,color:T.ink}}>
       <GlobalStyles/>
       <Nav {...navProps}/>
       {view === "home"         && <HomeView setView={setView} liveStats={liveStats} hasTutorApp={hideTutorApplyLink} user={session?.user} profile={profile} tutorApp={tutorApp} isParent={profile?.role === "parent"}/>}
@@ -7924,6 +7930,7 @@ if (loading || authenticatedRolePending) {
           Please <span style={{color:T.teal,cursor:"pointer"}} onClick={() => setView("login")}>sign in</span> to continue.
         </div>
       )}
+      {showNativeStudentTabs && <NativeTabBar view={view} onNavigate={setView}/>}
       <Toast msg={toast} onDismiss={dismissToast}/>
       <ScrollToTopButton raised={!!toast}/>
     </div>
