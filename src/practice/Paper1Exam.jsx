@@ -57,7 +57,7 @@ function createSeed() {
 function Option({ letter, text, svg, selected, onSelect, reviewState }) {
   const reviewClass = reviewState === "correct" ? " is-correct" : reviewState === "wrong" ? " is-wrong" : "";
   return (
-    <button type="button" className={`paper-option${selected ? " is-selected" : ""}${reviewClass}`} onClick={onSelect} disabled={Boolean(reviewState)}>
+    <button type="button" className={`paper-option${selected ? " is-selected" : ""}${reviewClass}`} onClick={onSelect} aria-pressed={selected} disabled={Boolean(reviewState)}>
       <span className="paper-option-letter">{letter}</span>
       <span className="paper-option-content">
         {svg ? <SvgFigure svg={svg} className="paper-option-svg" /> : <MathText>{text}</MathText>}
@@ -524,6 +524,12 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
           <button type="button" className="paper-submit-side" onClick={() => setShowSubmit(true)}>Submit paper</button>
         </aside>
       </div>
+
+      <nav className="spark-native-exam-footer" aria-label="Paper 1 question navigation">
+        <button type="button" disabled={currentIndex === 0} onClick={() => setCurrentIndex(index => Math.max(0, index - 1))}>Previous</button>
+        <span aria-live="polite">{currentIndex + 1} of 60</span>
+        <button className="spark-native-exam-next" type="button" disabled={currentIndex === 59} onClick={() => setCurrentIndex(index => Math.min(59, index + 1))}>Next</button>
+      </nav>
 
       {showNavigator && (
         <div className="paper-nav-drawer-backdrop" role="presentation" onMouseDown={() => setShowNavigator(false)}>
