@@ -1008,3 +1008,51 @@ html.spark-native-app .spark-generic-study-hero.has-native-back > .spark-generic
     .pob-exam .pob-exam-intro
   ) :is(small, .pob-exam-kicker) { display: none !important; }
 }
+
+
+/* Place the leading chevron beside, not above, the subject's current title. */
+@media(max-width:720px) {
+  html.spark-native-app .is-practice-home-shell:has(> .is-practice-top-actions .spark-native-back-button),
+  html.spark-native-app .chem-library-container:has(> .spark-native-back-button),
+  html.spark-native-app .poa-practice-shell:has(> .spark-native-back-button),
+  html.spark-native-app .fnh-practice-home .fnh-exam-container:has(> .fnh-exam-top .spark-native-back-button),
+  html.spark-native-app .pob-exam-shell:has(> .pob-exam-nav .spark-native-back-button) {
+    display: grid !important;
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: 5px;
+    align-items: center;
+  }
+  html.spark-native-app .is-practice-home-shell > .is-practice-top-actions,
+  html.spark-native-app .chem-library-container > .spark-native-back-button,
+  html.spark-native-app .poa-practice-shell > .spark-native-back-button,
+  html.spark-native-app .fnh-practice-home .fnh-exam-container > .fnh-exam-top,
+  html.spark-native-app .pob-exam-shell > .pob-exam-nav {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    margin: 0 0 10px -7px;
+    padding: 0;
+  }
+  html.spark-native-app .is-practice-home-shell > .is-practice-hero,
+  html.spark-native-app .chem-library-container > .chem-library-hero,
+  html.spark-native-app .poa-practice-shell > .poa-library-header,
+  html.spark-native-app .fnh-practice-home .fnh-exam-container > .fnh-library-hero,
+  html.spark-native-app .pob-exam-shell > .pob-exam-intro {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    margin: 0 0 10px;
+    padding: 0 !important;
+  }
+  html.spark-native-app .is-practice-home-shell > :not(.is-practice-top-actions):not(.is-practice-hero),
+  html.spark-native-app .chem-library-container:has(> .spark-native-back-button) > :not(.spark-native-back-button):not(.chem-library-hero),
+  html.spark-native-app .poa-practice-shell:has(> .spark-native-back-button) > :not(.spark-native-back-button):not(.poa-library-header),
+  html.spark-native-app .fnh-practice-home .fnh-exam-container:has(> .fnh-exam-top .spark-native-back-button) > :not(.fnh-exam-top):not(.fnh-library-hero),
+  html.spark-native-app .pob-exam-shell:has(> .pob-exam-nav .spark-native-back-button) > :not(.pob-exam-nav):not(.pob-exam-intro) {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+  html.spark-native-app .is-practice-home-shell > .is-practice-hero h1 {
+    margin: 0 !important;
+  }
+}
