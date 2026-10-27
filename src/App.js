@@ -6894,6 +6894,22 @@ function GoogleOAuthGateErrorView({ message, onRetry, onSignOut }) {
 
 export default function App() {
   const [view, setViewState] = useState(() => viewFromBrowserHash());
+  // Native tab visibility tracks nested exam routes, not only top-level view.
+  // Mathematics hub shows navigation; live timed papers keep the screen focused.
+  const [nativeRouteHash, setNativeRouteHash] = useState(() =>
+    typeof window !== "undefined" ? window.location.hash : "");
+  useEffect(() => {
+    if (!isSparkNativeApp()) return undefined;
+    const sync = () => setNativeRouteHash(window.location.hash || "");
+    window.addEventListener("spark:routechange", sync);
+    window.addEventListener("hashchange", sync);
+    window.addEventListener("popstate", sync);
+    return () => {
+      window.removeEventListener("spark:routechange", sync);
+      window.removeEventListener("hashchange", sync);
+      window.removeEventListener("popstate", sync);
+    };
+  }, []);
   const { themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode } = useThemeMode();
   const viewRef = useRef(view);
   const [session, setSession] = useState(null);
@@ -7704,6 +7720,7 @@ if (loading || authenticatedRolePending) {
     signedIn: Boolean(session),
     role: profile?.role,
     view,
+    routeHash: nativeRouteHash,
   });
 
   const nativeStudentNavigate = destination => {
