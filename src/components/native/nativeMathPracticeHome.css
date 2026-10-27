@@ -1,0 +1,157 @@
+/* Mathematics native launcher. No web-style hero or large promo cards. */
+.spark-native-math-practice {
+  width: 100%;
+  max-width: 680px;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 16px 16px calc(100px + env(safe-area-inset-bottom, 0px));
+  background: var(--spark-bg);
+  color: var(--spark-ink);
+}
+.spark-native-math-heading { margin-bottom: 22px; }
+.spark-native-math-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+  background: transparent;
+  border: 0;
+  color: var(--spark-teal-dark);
+  padding: 0 8px 0 0;
+  min-height: 44px;
+  font-size: 13px;
+  font-weight: 650;
+}
+.spark-native-math-heading h1 {
+  margin: 6px 0 3px;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 730;
+  letter-spacing: -.025em;
+}
+.spark-native-math-heading > p {
+  margin: 0;
+  color: var(--spark-text-muted);
+  font-size: 13px;
+}
+.spark-native-practice-section { margin: 0 0 25px; }
+.spark-native-practice-section h2 {
+  margin: 0 0 11px;
+  font-size: 16px;
+  font-weight: 710;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+.spark-native-exam-list,
+.spark-native-practice-links,
+.spark-native-practice-results {
+  border: 1px solid var(--spark-border);
+  background: var(--spark-paper);
+  border-radius: 15px;
+  overflow: hidden;
+}
+.spark-native-exam-row {
+  padding: 16px 14px;
+  border-bottom: 1px solid var(--spark-border-soft);
+}
+.spark-native-exam-row:last-child,
+.spark-native-practice-action:last-child,
+.spark-native-practice-result:last-child { border-bottom: 0; }
+.spark-native-exam-row-main {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.spark-native-exam-monogram {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--spark-muted);
+  color: var(--spark-ink);
+  font-size: 15px;
+  font-weight: 760;
+}
+.spark-native-exam-row h3 {
+  margin: 0 0 3px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.spark-native-exam-row p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--spark-text-muted);
+}
+.spark-native-exam-actions {
+  display: flex;
+  gap: 8px;
+  margin: 13px 0 0 45px;
+}
+.spark-native-exam-actions button {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 11px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid var(--spark-border);
+}
+.spark-native-exam-primary {
+  background: #102955;
+  color: #fff;
+  border-color: #102955 !important;
+}
+.spark-native-exam-secondary {
+  background: var(--spark-paper);
+  color: var(--spark-ink);
+}
+.spark-native-practice-action,
+.spark-native-practice-result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 66px;
+  padding: 12px 15px;
+  border: 0;
+  border-bottom: 1px solid var(--spark-border-soft);
+  background: transparent;
+  color: var(--spark-ink);
+  text-align: left;
+}
+.spark-native-practice-action:active { background: var(--spark-muted); }
+.spark-native-practice-action > span { display: grid; gap: 3px; }
+.spark-native-practice-action strong { font-size: 15px; font-weight: 650; }
+.spark-native-practice-action small { font-size: 12px; color: var(--spark-text-muted); }
+.spark-native-practice-action svg { flex: 0 0 17px; color: var(--spark-text-muted); }
+.spark-native-practice-result { min-height: 50px; font-size: 14px; }
+.spark-native-practice-result strong { font-size: 15px; font-variant-numeric: tabular-nums; }
+.spark-native-practice-details {
+  margin: 0;
+  color: var(--spark-text-muted);
+  font-size: 13px;
+}
+.spark-native-practice-details summary {
+  color: var(--spark-ink);
+  font-size: 13px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-weight: 650;
+  cursor: pointer;
+}
+.spark-native-practice-details p { margin: 5px 0 12px; line-height: 1.6; }
+.spark-native-math-practice button:focus-visible,
+.spark-native-math-practice summary:focus-visible {
+  outline: 3px solid var(--spark-teal);
+  outline-offset: 3px;
+}
+@media(min-width: 700px) {
+  .spark-native-math-practice { padding-top: 25px; }
+}
