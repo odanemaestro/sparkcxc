@@ -19,12 +19,21 @@ export const NATIVE_FOCUSED_VIEWS = Object.freeze(new Set([
   "practice-principles-of-business",
 ]));
 
-export function getNativeStudentLayout({ native = false, signedIn = false, role = null, view = "home" } = {}) {
+export function isNativeMathPracticeLanding(routeHash = "") {
+  // Tab navigation on the subject launcher, focus-only navigation in exams.
+  const match = String(routeHash).trim().match(/^#\/practice\/mathematics(?:\?([^#]*))?$/);
+  if (!match) return false;
+  const mode = new URLSearchParams(match[1] || "").get("mode");
+  return !mode || mode === "home";
+}
+
+export function getNativeStudentLayout({ native = false, signedIn = false, role = null, view = "home", routeHash = "" } = {}) {
   const student = Boolean(native && signedIn && role === "student");
+  const mathLanding = view === "practice-math" && isNativeMathPracticeLanding(routeHash);
   return {
     student,
     hideWebsiteHeader: student,
-    showBottomTabs: student && !NATIVE_FOCUSED_VIEWS.has(view),
-    focused: student && NATIVE_FOCUSED_VIEWS.has(view),
+    showBottomTabs: student && (mathLanding || !NATIVE_FOCUSED_VIEWS.has(view)),
+    focused: student && NATIVE_FOCUSED_VIEWS.has(view) && !mathLanding,
   };
 }
