@@ -173,3 +173,27 @@ Bottom navigation stays available on top-level and utility screens. It disappear
 - Capacitor runtime detection: `src/lib/nativeRuntime.js`.
 - Build: `npm run mobile:build` then `npm --prefix mobile run android:sync`.
 - Keep navigation changes native-scoped until user/device acceptance.
+
+## Mobile Study/Practice directory implementation (October 27, 2026)
+
+A native `NativeSubjectPicker` replaces the shared website-sized subject cards only when running under Capacitor.
+
+- Screen heading: one word (Study, Practice, Flashcards or Progress), with one small count line.
+- Each subject: a single 66dp minimum tap row, 34dp neutral monogram, subject name and 16dp chevron.
+- No redundant Available pill, duplicated Open action, paragraph description or marketing kicker.
+- Categories and subject IDs remain sourced from the live registered/enrolled subject list. The native picker never invents or unlocks a subject.
+- Full syllabus details remain inside the destination course.
+- iOS/Android browser versions retain their existing responsive web treatment, isolated from Capacitor-only UI.
+
+Subject detail follow-through:
+- Shared generic course screens reduce the large catalogue header to a compact course name while retaining progress, outline, published lessons and marking.
+- Physics and IT root section launchers follow compact app rows on phones. Workbooks, formula sheets and practical labs retain dedicated entries.
+- Icons: 20dp primary tab icons, 16dp list chevrons, 34dp subject monograms. All controls keep at least 44-48dp tap height.
+
+Grounding references:
+- Apple HIG Tab bars: https://developer.apple.com/design/human-interface-guidelines/tab-bars
+- Apple HIG Layout: https://developer.apple.com/design/human-interface-guidelines/layout
+- Android layout and navigation patterns: https://developer.android.com/design/ui/mobile/guides/layout-and-content/layout-and-nav-patterns
+- Duolingo's core tab redesign rationale: https://blog.duolingo.com/core-tabs-redesign/
+
+Verification: native picker selection, empty state and overview routing have unit tests. `npm run mobile:build` and Android sync are checked in the Mobile Foundation GitHub workflow. Test a physical device before publishing.
