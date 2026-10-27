@@ -285,3 +285,146 @@ html.spark-native-app .spark-native-exam-footer { display: none; }
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Native Student Shell V2: app navigation replaces persistent website header
+   and dashboard's horizontal section strip on the three main student hubs. */
+html.spark-native-app .spark-native-student-shell .dash-layout {
+  grid-template-columns: minmax(0, 1fr) !important;
+  min-width: 0;
+  width: 100%;
+}
+html.spark-native-app .spark-native-student-shell .dash-layout > .dash-sidebar {
+  display: none !important;
+}
+html.spark-native-app .spark-native-student-shell .dash-layout > .app-scroll-panel {
+  min-width: 0;
+}
+html.spark-native-app .spark-native-tabs {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+html.spark-native-app .spark-native-tab {
+  min-width: 0;
+  padding: 5px 0;
+  font-size: 11px;
+}
+html.spark-native-app .spark-native-more-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1450;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(8, 26, 61, .52);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+html.spark-native-app .spark-native-more-sheet {
+  width: 100%;
+  max-height: min(88dvh, 760px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 24px 24px 0 0;
+  background: var(--spark-paper);
+  color: var(--spark-ink);
+  padding: 10px 18px calc(24px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -15px 60px rgba(0, 0, 0, .20);
+}
+html.spark-native-app .spark-native-more-handle {
+  width: 40px;
+  height: 5px;
+  border-radius: 999px;
+  margin: 0 auto 16px;
+  background: var(--spark-border-strong);
+}
+html.spark-native-app .spark-native-more-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+html.spark-native-app .spark-native-more-head h2 {
+  font-size: 24px !important;
+  font-weight: 760;
+  margin: 0;
+  letter-spacing: -.03em;
+}
+html.spark-native-app .spark-native-more-head p {
+  font-size: 13px;
+  margin: 2px 0 0;
+  color: var(--spark-text-muted);
+}
+html.spark-native-app .spark-native-more-close {
+  min-width: 44px;
+  min-height: 44px;
+  border: none;
+  border-radius: 50%;
+  color: var(--spark-ink);
+  background: var(--spark-muted);
+  font-size: 28px;
+  line-height: 1;
+}
+html.spark-native-app .spark-native-more-list {
+  display: flex;
+  flex-direction: column;
+}
+html.spark-native-app .spark-native-more-item,
+html.spark-native-app .spark-native-more-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 60px;
+  width: 100%;
+  padding: 12px 4px;
+  text-align: left;
+  border: 0;
+  border-bottom: 1px solid var(--spark-border-soft);
+  color: var(--spark-ink);
+  background: transparent;
+}
+html.spark-native-app .spark-native-more-item > span:first-child,
+html.spark-native-app .spark-native-more-row > span:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+html.spark-native-app .spark-native-more-item strong,
+html.spark-native-app .spark-native-more-row strong {
+  font-size: 15px;
+  font-weight: 690;
+}
+html.spark-native-app .spark-native-more-item small,
+html.spark-native-app .spark-native-more-row small {
+  font-size: 12px;
+  color: var(--spark-text-muted);
+  line-height: 1.4;
+}
+html.spark-native-app .spark-native-more-item > span:last-child {
+  color: var(--spark-text-muted);
+  font-size: 26px;
+  font-weight: 400;
+}
+html.spark-native-app .spark-native-more-row > :last-child {
+  flex: 0 0 auto;
+}
+html.spark-native-app .spark-native-more-logout strong {
+  color: var(--spark-red);
+}
+@media (max-width: 720px) {
+  html.spark-native-app .spark-native-student-shell .dash-layout > .app-scroll-panel {
+    padding: 12px 14px 24px !important;
+    overflow-x: hidden !important;
+  }
+  html.spark-native-app .spark-native-more-sheet { max-height: 85dvh; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.spark-native-app .spark-native-more-sheet {
+    animation: spark-native-more-in 220ms cubic-bezier(.32,.72,0,1) both;
+  }
+  @keyframes spark-native-more-in {
+    from { transform: translateY(18px); opacity: .6; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+}
