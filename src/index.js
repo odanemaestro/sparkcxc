@@ -7,6 +7,9 @@ import './sparkLearningControls.css';
 import ErrorBoundary from './components/ErrorBoundary';
 import reportWebVitals from './reportWebVitals';
 import { registerSparkServiceWorker } from './lib/pushNotifications';
+import { isSparkNativeApp } from './lib/nativeRuntime';
+
+if (isSparkNativeApp()) document.documentElement.classList.add('spark-native-app');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
