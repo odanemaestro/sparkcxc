@@ -1,4 +1,5 @@
 import React from "react";
+import NativeBackButton from "./NativeBackButton";
 import "./nativeSubjectPicker.css";
 
 const subjectMarks = Object.freeze({
@@ -40,13 +41,11 @@ export default function NativeSubjectPicker({
   return (
     <section className={`spark-native-course-picker${embedded ? " is-embedded" : ""}`} aria-label={heading}>
       <header className="spark-native-course-heading">
-        <div>
+        {embedded && onBack && <NativeBackButton onClick={onBack} label="Back to previous screen"/>}
+        <div className="spark-native-course-heading-copy">
           <h1>{heading}</h1>
           <span className="spark-native-course-count">{count} {count === 1 ? "subject" : "subjects"}</span>
         </div>
-        {embedded && onBack && (
-          <button type="button" className="spark-native-course-back" onClick={onBack}>Back</button>
-        )}
       </header>
       <div className="spark-native-course-list">
         {allOption && (
