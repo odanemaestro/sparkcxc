@@ -1,4 +1,6 @@
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import { isSparkNativeApp } from "../../lib/nativeRuntime";
+import NativeBackButton from "../../components/native/NativeBackButton";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {usePracticeRouteState} from "../../routing/usePracticeRouteState";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
@@ -336,7 +338,7 @@ export default function PobPracticeHub({userId,supabase,onBack}){
  if(mode==="archive")return <PobHistoricalArchive userId={userId} supabase={supabase} onBack={()=>setMode("home")} onOpenJanuary2026={()=>setMode("historical2026janp2")}/>;
  if(mode==="sba")return <PobSbaWorkspace userId={userId} onBack={()=>setMode("home")}/>;
  return <main className="pob-exam"><div className="pob-exam-shell">
-   {onBack&&<div className="pob-exam-nav"><button type="button" onClick={onBack}><BackArrowIcon/> Choose another subject</button></div>}
+   {onBack&&<div className="pob-exam-nav">{isSparkNativeApp() ? <NativeBackButton onClick={onBack} label="Back to subjects"/> : <button type="button" onClick={onBack}><BackArrowIcon/> Choose another subject</button>}</div>}
    <header className="pob-exam-card pob-exam-intro"><span className="pob-exam-kicker">SPARK CSEC PRINCIPLES OF BUSINESS</span>
      <h1>Practise business thinking</h1><p>Take a full timed practice paper, work through business scenarios or plan your SBA research. Original questions are clearly labelled. The January 2026 historical Paper 2 supports experimental AI-assisted marking, and the wider historical archive includes eleven 60-question Paper 1 sittings, written-answer guidance and references for incomplete sources.</p></header>
    <div className="pob-practice-options">
