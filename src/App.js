@@ -7692,15 +7692,33 @@ if (loading || authenticatedRolePending) {
   }
 
   const navProps = { setView, user: session?.user, profile, onLogout: handleLogout, liveStats, hasTutorApp: hideTutorApplyLink, tutorApp, view, themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode };
-  const showNativeStudentTabs = isSparkNativeApp()
+  const nativeStudentApp = isSparkNativeApp()
     && !!session
     && profile?.role === "student"
+    && tutorApp?.status !== "approved";
+  const showNativeStudentTabs = nativeStudentApp
     && ["dashboard", "study", "practice"].includes(view);
+  // Native student learning screens use their own back controls and the
+  // bottom app navigation. Only utility/public screens keep the website nav.
+  const hideWebsiteHeader = nativeStudentApp
+    && (["dashboard", "study", "practice", "lesson", "physics", "information-technology", "social-studies", "generic-study"].includes(view)
+      || view.startsWith("practice-"));
+
+  const nativeStudentNavigate = destination => {
+    if (destination === "dashboard" || destination === "progress" || destination.startsWith("dashboard:")) {
+      const section = destination === "progress" ? "progress"
+        : destination.startsWith("dashboard:") ? destination.slice("dashboard:".length) : "overview";
+      setView("dashboard");
+      writeDashboardSectionToBrowserHash(section);
+      return;
+    }
+    setView(destination);
+  };
 
   return (
-    <div className={`spark-app-root${showNativeStudentTabs ? " spark-native-tabs-visible" : ""}`} style={{minHeight:"100vh",display:"flex",flexDirection:"column",background:T.bg,color:T.ink}}>
+    <div className={`spark-app-root${nativeStudentApp ? " spark-native-student-shell" : ""}${showNativeStudentTabs ? " spark-native-tabs-visible" : ""}`} style={{minHeight:"100vh",display:"flex",flexDirection:"column",background:T.bg,color:T.ink}}>
       <GlobalStyles/>
-      <Nav {...navProps}/>
+      {!hideWebsiteHeader && <Nav {...navProps}/>}
       {view === "home"         && <HomeView setView={setView} liveStats={liveStats} hasTutorApp={hideTutorApplyLink} user={session?.user} profile={profile} tutorApp={tutorApp} isParent={profile?.role === "parent"}/>}
       {/* key={view} forces a fresh mount when switching between the "auth"
           and "login" routes, so AuthView's internal mode state re-reads
@@ -7930,7 +7948,18 @@ if (loading || authenticatedRolePending) {
           Please <span style={{color:T.teal,cursor:"pointer"}} onClick={() => setView("login")}>sign in</span> to continue.
         </div>
       )}
-      {showNativeStudentTabs && <NativeTabBar view={view} onNavigate={setView}/>}
+      {showNativeStudentTabs && (
+        <NativeTabBar
+          view={view}
+          onNavigate={nativeStudentNavigate}
+          user={session.user}
+          profile={profile}
+          onLogout={handleLogout}
+          themeMode={themeMode}
+          resolvedTheme={resolvedTheme}
+          setThemeMode={setThemeMode}
+        />
+      )}
       <Toast msg={toast} onDismiss={dismissToast}/>
       <ScrollToTopButton raised={!!toast}/>
     </div>
