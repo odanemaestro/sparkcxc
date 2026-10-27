@@ -197,3 +197,28 @@ Grounding references:
 - Duolingo's core tab redesign rationale: https://blog.duolingo.com/core-tabs-redesign/
 
 Verification: native picker selection, empty state and overview routing have unit tests. `npm run mobile:build` and Android sync are checked in the Mobile Foundation GitHub workflow. Test a physical device before publishing.
+
+## Practice screen compactness + navigation (October 27, 2026)
+
+A native Mathematics practice launcher replaces the desktop-scale `PracticeHub` hero, overly large 60/02 icons, repeated paragraphs, and verbose exam cards.
+
+- Header: Mathematics (24px), subtle Practice caption and 44px back-to-subjects action.
+- Full papers: Paper 1 (60 questions, 90 minutes) and Paper 2 (10 questions, 160 minutes) in grouped compact rows.
+- Active attempts offer **Resume** and **Start new** separately; new sessions remain explicitly chosen.
+- Adaptive and 2027 practice are smaller single-action list rows.
+- Latest scores are visible only when results exist, no invented data.
+- Detailed exam descriptions are tucked under an accessible About these exams disclosure.
+- The existing website keeps its full descriptions, and the same route functions and grading implementations remain unchanged.
+- Other subject practice launchers receive native-only 23px headings, 18px option titles and smaller card padding while retaining all modes.
+- Capacitor 8 SystemBars is configured for Android edge-to-edge safe-area correction and `viewport-fit=cover`. App root uses safe-area top padding, so content no longer starts underneath a camera cutout or Android system status bar.
+- Bottom tabs appear on the Mathematics practice *launcher* and disappear for active Paper 1/Paper 2/adaptive/2027 sessions. During exams, task controls and Exit remain visible. React listens to nested route changes so navigation state stays synchronized.
+
+Test on Android 17 / API 37 in the Pixel emulator:
+1. Verify content does not overlap the system status bar/camera cutout.
+2. Go Practice → Mathematics. Confirm the compact title, two paper rows and 5 tabs.
+3. Start a Paper 1. Check tabs disappear, timer and question navigator remain visible.
+4. Exit to Maths practice. Confirm tabs return, Resume option appears and attempt is preserved.
+5. Open the Subjects back action and return to the subject list.
+6. Test the Android back gesture, dark mode, 320px viewport and device font scaling.
+
+The native Android device still needs manual validation before production release.
