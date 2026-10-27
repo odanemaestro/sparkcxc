@@ -448,3 +448,126 @@ html.spark-native-app .spark-app-root.spark-native-student-shell .dash-layout {
     scroll-padding-top: 12px;
   }
 }
+
+
+/* SPARK mobile compact chrome and study surfaces, 2026-10-27. */
+html.spark-native-app .spark-native-tabs {
+  min-height: calc(62px + env(safe-area-inset-bottom, 0px));
+  padding-top: 5px;
+  padding-bottom: calc(4px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -2px 12px rgba(15,37,87,.035);
+}
+html.spark-native-app .spark-native-tab {
+  min-height: 50px;
+  padding: 5px 0 3px;
+  gap: 3px;
+  border-radius: 11px;
+  font-size: 10px;
+  font-weight: 620;
+}
+html.spark-native-app .spark-native-tab svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.8px;
+}
+html.spark-native-app .spark-native-tabs-visible {
+  padding-bottom: calc(67px + env(safe-area-inset-bottom, 0px));
+}
+
+/* The detailed generic course page should open directly into learning rather
+   than reintroducing a giant syllabus promotional hero. */
+html.spark-native-app .spark-generic-study-shell {
+  width: calc(100% - 28px);
+  padding-top: 12px;
+  padding-bottom: calc(44px + env(safe-area-inset-bottom, 0px));
+}
+html.spark-native-app .spark-generic-study-hero {
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  padding: 4px 0 10px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  align-items: center;
+}
+html.spark-native-app .spark-generic-study-mark,
+html.spark-native-app .spark-generic-study-hero-copy > .section-kicker,
+html.spark-native-app .spark-generic-study-hero-copy > p {
+  display: none;
+}
+html.spark-native-app .spark-generic-study-hero-copy h1 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 720;
+  letter-spacing: -.025em;
+  font-family: inherit;
+}
+html.spark-native-app .spark-generic-study-hero-actions {
+  grid-column: 2;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+html.spark-native-app .spark-generic-study-hero-actions button {
+  padding: 7px 11px;
+  min-height: 44px;
+  width: auto;
+  background: var(--spark-muted);
+  border: 1px solid var(--spark-border);
+  color: var(--spark-ink);
+  border-radius: 11px;
+  font-size: 12px;
+  font-weight: 650;
+}
+html.spark-native-app .spark-generic-progress-card {
+  margin: 8px 0 14px;
+  padding: 12px 14px;
+  gap: 8px;
+  border-radius: 13px;
+  box-shadow: none;
+}
+html.spark-native-app .spark-generic-lesson,
+html.spark-native-app .spark-generic-outline {
+  box-shadow: none;
+  border-radius: 14px;
+}
+html.spark-native-app .spark-generic-outline { padding: 8px 12px; }
+html.spark-native-app .spark-generic-outline-head {
+  border-bottom: 0;
+  padding-bottom: 6px;
+}
+html.spark-native-app .spark-generic-outline-heading-copy span { font-size: 14px; }
+html.spark-native-app .spark-generic-outline-heading-copy strong { font-size: 11px; }
+html.spark-native-app .spark-generic-outline-toggle {
+  min-height: 44px;
+  padding-inline: 12px;
+  font-size: 12px;
+}
+html.spark-native-app .spark-generic-lesson { padding: 18px 16px; }
+html.spark-native-app .spark-generic-lesson-head h2 {
+  font-family: inherit;
+  font-size: 21px;
+  line-height: 1.28;
+  font-weight: 710;
+}
+html.spark-native-app .spark-generic-lesson-body p,
+html.spark-native-app .spark-generic-lesson-body li {
+  font-size: 15px;
+  line-height: 1.62;
+}
+html.spark-native-app .spark-generic-outline-topics button {
+  min-height: 48px;
+  font-size: 13px;
+}
+@media (max-width: 420px) {
+  html.spark-native-app .spark-generic-study-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  html.spark-native-app .spark-generic-study-hero-actions {
+    grid-column: 1;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
