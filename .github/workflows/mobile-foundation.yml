@@ -8,6 +8,9 @@ on:
       - 'src/lib/nativeRuntime*'
       - 'src/lib/pushNotifications.js'
       - 'src/index.js'
+      - 'src/App.js'
+      - 'src/nativeMobile.css'
+      - 'src/components/native/**'
       - 'package.json'
       - '.github/workflows/mobile-foundation.yml'
   workflow_dispatch:
@@ -23,8 +26,8 @@ jobs:
           cache: npm
       - name: Install existing SPARK dependencies
         run: npm ci
-      - name: Verify native detection
-        run: npm test -- --watch=false --runInBand src/lib/nativeRuntime.test.js
+      - name: Verify native runtime and student navigation
+        run: npm test -- --watch=false --runInBand src/lib/nativeRuntime.test.js src/components/native/NativeTabBar.test.jsx
       - name: Build native web assets
         run: npm run mobile:build
       - name: Verify relative bundle paths
