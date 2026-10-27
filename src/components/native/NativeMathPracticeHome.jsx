@@ -1,16 +1,9 @@
 import React from "react";
+import NativeBackButton from "./NativeBackButton";
 import "./nativeMathPracticeHome.css";
 
 const paperOneReady = active => active?.questionIds?.length === 60;
 const paperTwoReady = active => active?.exam?.questions?.length === 10;
-
-function ArrowLeft() {
-  return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="m15 18-6-6 6-6" />
-    </svg>
-  );
-}
 
 function ExamRow({ type, title, detail, active, onResume, onStart }) {
   return (
@@ -75,12 +68,11 @@ export default function NativeMathPracticeHome({
   return (
     <main className="spark-native-math-practice">
       <header className="spark-native-math-heading">
-        <button type="button" className="spark-native-math-back" onClick={onBack}>
-          <ArrowLeft />
-          <span>Subjects</span>
-        </button>
-        <h1>Mathematics</h1>
-        <p>Practice</p>
+        <NativeBackButton onClick={onBack} label="Back to subjects"/>
+        <div className="spark-native-math-heading-copy">
+          <h1>Mathematics</h1>
+          <p>Practice</p>
+        </div>
       </header>
       <section className="spark-native-practice-section" aria-labelledby="spark-native-full-papers">
         <h2 id="spark-native-full-papers">Full papers</h2>
