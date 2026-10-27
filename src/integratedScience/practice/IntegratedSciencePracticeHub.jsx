@@ -1,4 +1,6 @@
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import { isSparkNativeApp } from "../../lib/nativeRuntime";
+import NativeBackButton from "../../components/native/NativeBackButton";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useIntegratedSciencePracticeRoute } from "../../routing/sparkRoutingV270";
 import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
@@ -265,10 +267,12 @@ export default function IntegratedSciencePracticeHub({ supabase, userId, onBack 
     <main className="is-practice-shell">
       <div className="is-practice-home-shell">
         <div className="is-practice-top-actions">
-          <button type="button" className="is-back-button" onClick={onBack}>
-            <span aria-hidden="true"><BackArrowIcon/></span>
-            Back
-          </button>
+          {isSparkNativeApp()
+            ? <NativeBackButton onClick={onBack} label="Back to subjects" />
+            : <button type="button" className="is-back-button" onClick={onBack}>
+                <span aria-hidden="true"><BackArrowIcon/></span>
+                Back
+              </button>}
         </div>
 
         <header className="is-practice-hero">
