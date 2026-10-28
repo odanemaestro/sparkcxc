@@ -38,3 +38,45 @@ test("embedded subject picker has a left chevron that returns to previous screen
   fireEvent.click(back);
   expect(onBack).toHaveBeenCalledTimes(1);
 });
+
+beforeEach(() => window.localStorage.clear());
+
+test("a previously opened enrolled subject appears once at the top", () => {
+  const onSelect = jest.fn();
+  const props = { subjects, capability: "study", userId: "student-1", onSelect };
+  const first = render(<NativeSubjectPicker {...props} />);
+  fireEvent.click(screen.getByRole("button", { name: "Open Physics" }));
+  expect(onSelect).toHaveBeenCalledWith(subjects[1]);
+  first.unmount();
+
+  render(<NativeSubjectPicker {...props} />);
+  expect(screen.getByRole("heading", { name: "Recently opened" })).toBeTruthy();
+  expect(screen.getAllByRole("button", { name: "Open Physics" })).toHaveLength(1);
+  const recentGroup = screen.getByRole("heading", { name: "Recently opened" }).nextElementSibling;
+  expect(recentGroup.querySelector("button")?.getAttribute("aria-label")).toBe("Open Physics");
+});
+
+test("recent subject never leaks to another student or capability", () => {
+  const props = { subjects, capability: "study", userId: "student-1", onSelect: jest.fn() };
+  const first = render(<NativeSubjectPicker {...props} />);
+  fireEvent.click(screen.getByRole("button", { name: "Open Physics" }));
+  first.unmount();
+
+  const otherUser = render(<NativeSubjectPicker {...props} userId="student-2" />);
+  expect(screen.queryByRole("heading", { name: "Recently opened" })).toBeNull();
+  otherUser.unmount();
+
+  render(<NativeSubjectPicker {...props} capability="practice" />);
+  expect(screen.queryByRole("heading", { name: "Recently opened" })).toBeNull();
+});
+
+test("hidden or unenrolled subjects are never restored into the recent row", () => {
+  const props = { subjects, capability: "study", userId: "student-1", onSelect: jest.fn() };
+  const first = render(<NativeSubjectPicker {...props} />);
+  fireEvent.click(screen.getByRole("button", { name: "Open Physics" }));
+  first.unmount();
+
+  render(<NativeSubjectPicker {...props} subjects={subjects.slice(0,1)} />);
+  expect(screen.queryByRole("heading", { name: "Recently opened" })).toBeNull();
+  expect(screen.queryByRole("button", { name: "Open Physics" })).toBeNull();
+});
