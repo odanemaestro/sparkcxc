@@ -21,7 +21,7 @@ test("native tabs navigate between the five student destinations", () => {
 
 test("progress dashboard route lights up the progress tab", () => {
   expect(activeNativeTab("dashboard", "#/dashboard/progress")).toBe("progress");
-  expect(activeNativeTab("dashboard", "#/dashboard/subjects")).toBe("dashboard");
+  expect(activeNativeTab("dashboard", "#/dashboard/subjects")).toBe("more");
   expect(activeNativeTab("practice", "#/dashboard/progress")).toBe("practice");
 });
 
