@@ -5,6 +5,8 @@ import { getSparkSubjectRegistry, subjectsForCapability } from "../subjects/subj
 import { syncLocalPracticeResults } from "./persistence";
 import SparkLoader from "../components/ui/SparkLoader";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
+import { isSparkNativeApp } from "../lib/nativeRuntime";
+import NativeMathPracticeHome from "../components/native/NativeMathPracticeHome";
 import "./practiceExam.css";
 
 const AdaptivePractice = lazy(() => import("../adaptive/AdaptivePractice"));
@@ -96,6 +98,7 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
       title="Choose a subject"
       description="Select the CSEC subject you want to practise. Each subject only shows assessment modes supported by its current content."
       capability="practice"
+      userId={userId}
       subjects={practiceSubjects}
       onSelect={item => {
         setMode("home");
@@ -247,6 +250,26 @@ if (mode === "adaptive") {
         <Syllabus2027Hub onExit={() => setMode("home")} supabase={supabase} userId={userId} />
       </PracticeLazyBoundary>
     );
+  }
+
+  // Native Mathematics launcher: preserve the same routes, active attempts,
+  // timing and server grading, but avoid a website-sized marketing screen.
+  if (isSparkNativeApp()) {
+    const openPaper = (paper, intent) => {
+      setExamIntent(intent);
+      setMode(paper);
+    };
+    return <NativeMathPracticeHome
+      paper1Active={paper1Active}
+      paper2Active={paper2Active}
+      paper1Latest={paper1Latest}
+      paper2Latest={paper2Latest}
+      onBack={() => { setMode("home"); setView?.("practice"); }}
+      onPaper1={intent => openPaper("paper1", intent)}
+      onPaper2={intent => openPaper("paper2", intent)}
+      onAdaptive={() => setMode("adaptive")}
+      on2027={() => setMode("2027")}
+    />;
   }
 
   return (

@@ -1,0 +1,1058 @@
+/* SPARK native mobile experience v1.
+   All overrides are scoped to Capacitor. The GitHub Pages site is unchanged. */
+html.spark-native-app {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+html.spark-native-app body,
+html.spark-native-app button,
+html.spark-native-app input,
+html.spark-native-app select,
+html.spark-native-app textarea,
+html.spark-native-app h1,
+html.spark-native-app h2,
+html.spark-native-app h3,
+html.spark-native-app h4 {
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", system-ui, sans-serif !important;
+}
+html.spark-native-app body { font-size: 16px; line-height: 1.5; }
+html.spark-native-app :is(button, [role="button"], a, input, select, textarea) { touch-action: manipulation; }
+html.spark-native-app :is(input, select, textarea) { font-size: 16px !important; }
+html.spark-native-app :is(button, [role="button"]):focus-visible {
+  outline: 3px solid var(--spark-teal);
+  outline-offset: 2px;
+}
+html.spark-native-app :is(button, [role="button"]):active:not(:disabled) { filter: brightness(.96); }
+
+/* Stable native tab strip on the three student hubs only. */
+html.spark-native-app .spark-native-tabs-visible {
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+}
+html.spark-native-app .spark-native-tabs {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 900;
+  min-height: calc(68px + env(safe-area-inset-bottom, 0px));
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  padding: 7px max(12px, env(safe-area-inset-left, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-right, 0px));
+  background: var(--spark-paper);
+  border-top: 1px solid var(--spark-border);
+  box-shadow: 0 -4px 22px rgba(15, 37, 87, .08);
+}
+html.spark-native-app .spark-native-tab {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--spark-text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 54px;
+  border-radius: 12px;
+  font-weight: 650;
+  font-size: 11px;
+  letter-spacing: .01em;
+}
+html.spark-native-app .spark-native-tab svg { flex: none; }
+html.spark-native-app .spark-native-tab.is-active {
+  color: var(--spark-teal-dark);
+  background: var(--spark-teal-surface);
+}
+html.spark-native-app[data-theme="dark"] .spark-native-tab.is-active {
+  color: var(--spark-teal);
+}
+
+/* Remove redundant web navigation on active native Mathematics Paper 1.
+   Exam exit, timer, questions sheet and Submit stay accessible in the exam UI. */
+html.spark-native-app .spark-app-root:has(.paper-exam-shell) > .spark-nav {
+  display: none !important;
+}
+html.spark-native-app .paper-exam-shell {
+  background: var(--spark-bg);
+  color: var(--spark-ink);
+  min-height: 100dvh;
+}
+html.spark-native-app .paper-exam-shell .paper-question-card,
+html.spark-native-app .paper-exam-shell .paper-exam-header,
+html.spark-native-app .paper-exam-shell .paper-option {
+  background: var(--spark-paper);
+  color: var(--spark-ink);
+}
+html.spark-native-app .paper-exam-shell .paper-question-copy {
+  color: var(--spark-ink);
+  line-height: 1.52;
+}
+html.spark-native-app .paper-exam-shell .paper-option-content {
+  font-size: 16px;
+  line-height: 1.5;
+}
+html.spark-native-app .paper-exam-shell .paper-option {
+  transition: background .14s ease, border-color .14s ease;
+}
+html.spark-native-app .paper-exam-shell .paper-option:active:not(:disabled) { transform: scale(.99); }
+html.spark-native-app .paper-exam-shell .paper-option.is-selected {
+  background: var(--spark-teal-surface);
+  border: 2px solid var(--spark-teal);
+  box-shadow: 0 0 0 1px var(--spark-teal-light);
+}
+html.spark-native-app .paper-exam-shell .paper-option.is-selected .paper-option-letter {
+  color: #fff;
+  background: #0b766f;
+}
+html.spark-native-app .paper-exam-shell .paper-option-letter {
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+}
+html.spark-native-app .paper-exam-shell .paper-exit,
+html.spark-native-app .paper-exam-shell .paper-nav-toggle,
+html.spark-native-app .paper-exam-shell .paper-flag {
+  min-height: 44px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+html.spark-native-app .paper-exam-shell .paper-timer strong {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .01em;
+}
+html.spark-native-app .spark-native-exam-footer { display: none; }
+
+@media (max-width: 720px) {
+  html.spark-native-app .spark-nav-inner {
+    min-height: 56px;
+    padding: 6px 12px;
+  }
+  html.spark-native-app .spark-menu-button { min-height: 44px; min-width: 44px; }
+  html.spark-native-app .spark-brand { font-size: 18px; }
+  html.spark-native-app .spark-mobile-menu .spark-nav-link { min-height: 48px; }
+  html.spark-native-app .paper-exam-shell .paper-exam-header {
+    top: 0;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    column-gap: 8px;
+    row-gap: 0;
+    min-height: 66px;
+    padding: 8px 12px;
+    box-shadow: none;
+    border-bottom: 1px solid var(--spark-border);
+  }
+  html.spark-native-app .paper-exam-shell .paper-exam-brand {
+    grid-column: 1;
+    min-width: 0;
+  }
+  html.spark-native-app .paper-exam-shell .paper-exam-brand > div { display: none; }
+  html.spark-native-app .paper-exam-shell .paper-timer {
+    grid-column: 2;
+    min-width: 0;
+    justify-self: center;
+    padding: 3px 7px;
+    border: 0;
+    background: transparent;
+    text-align: center;
+  }
+  html.spark-native-app .paper-exam-shell .paper-timer strong {
+    font-size: 21px;
+    line-height: 1.1;
+  }
+  html.spark-native-app .paper-exam-shell .paper-timer span {
+    font-size: 10px;
+    letter-spacing: .055em;
+  }
+  html.spark-native-app .paper-exam-shell .paper-header-actions {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+  }
+  html.spark-native-app .paper-exam-shell .paper-nav-toggle {
+    min-height: 44px;
+    padding-inline: 9px;
+    white-space: nowrap;
+    font-size: 12px;
+  }
+  html.spark-native-app .paper-exam-shell .paper-progress-line {
+    top: 66px;
+    height: 4px;
+  }
+  html.spark-native-app .paper-exam-shell .paper-exam-layout {
+    padding: 12px 12px calc(128px + env(safe-area-inset-bottom, 0px));
+    gap: 12px;
+  }
+  html.spark-native-app .paper-exam-shell .paper-question-card {
+    padding: 18px 15px 22px;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(15, 37, 87, .04);
+  }
+  html.spark-native-app .paper-exam-shell .paper-question-topline {
+    gap: 10px;
+    padding-bottom: 15px;
+  }
+  html.spark-native-app .paper-exam-shell .paper-question-number {
+    font-size: 13px;
+    letter-spacing: .015em;
+  }
+  html.spark-native-app .paper-exam-shell .paper-question-count { font-size: 13px; }
+  html.spark-native-app .paper-exam-shell .paper-question-copy {
+    font-size: 19px;
+    margin: 22px 0;
+    overflow-wrap: anywhere;
+  }
+  html.spark-native-app .paper-exam-shell .paper-options,
+  html.spark-native-app .paper-exam-shell .paper-options.has-option-figures {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 11px;
+  }
+  html.spark-native-app .paper-exam-shell .paper-option {
+    min-height: 60px;
+    padding: 13px;
+    border-radius: 15px;
+    gap: 12px;
+    font-size: 16px;
+    box-shadow: none;
+  }
+  html.spark-native-app .paper-exam-shell .paper-option-content .spark-math {
+    font-size: 17px;
+  }
+  html.spark-native-app .paper-exam-shell .paper-question-actions { display: none; }
+  html.spark-native-app .paper-exam-shell .spark-native-exam-footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 500;
+    min-height: calc(76px + env(safe-area-inset-bottom, 0px));
+    padding: 10px 14px calc(12px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--spark-border);
+    background: var(--spark-paper);
+    box-shadow: 0 -4px 18px rgba(8,26,61,.06);
+  }
+  html.spark-native-app .paper-exam-shell .spark-native-exam-footer button {
+    min-height: 50px;
+    border: 1px solid var(--spark-border-strong);
+    border-radius: 14px;
+    color: var(--spark-ink);
+    background: var(--spark-muted);
+    padding: 8px 12px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  html.spark-native-app .paper-exam-shell .spark-native-exam-footer button:disabled {
+    opacity: .42;
+  }
+  html.spark-native-app .paper-exam-shell .spark-native-exam-footer .spark-native-exam-next {
+    color: #fff;
+    background: #0F2557;
+    border-color: #0F2557;
+  }
+  html.spark-native-app[data-theme="dark"] .paper-exam-shell .spark-native-exam-footer .spark-native-exam-next {
+    background: #315594;
+    border-color: #315594;
+  }
+  html.spark-native-app .paper-exam-shell .spark-native-exam-footer > span {
+    color: var(--spark-text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  html.spark-native-app .paper-nav-drawer {
+    border-radius: 24px 24px 0 0;
+    max-height: 85dvh;
+    padding-bottom: max(24px, env(safe-area-inset-bottom, 0px));
+  }
+  html.spark-native-app .paper-nav-drawer-head > button { min-height: 48px; min-width: 48px; }
+  html.spark-native-app .paper-navigator-drawer-panel .paper-nav-grid button {
+    min-height: 48px;
+    font-size: 13px;
+  }
+  html.spark-native-app .paper-submit-modal {
+    border-radius: 24px;
+    padding: 24px 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.spark-native-app .paper-exam-shell *,
+  html.spark-native-app .spark-native-tabs * {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+
+/* Native Student Shell V2: app navigation replaces persistent website header
+   and dashboard's horizontal section strip on the three main student hubs. */
+html.spark-native-app .spark-native-student-shell .dash-layout {
+  grid-template-columns: minmax(0, 1fr) !important;
+  min-width: 0;
+  width: 100%;
+}
+html.spark-native-app .spark-native-student-shell .dash-layout > .dash-sidebar {
+  display: none !important;
+}
+html.spark-native-app .spark-native-student-shell .dash-layout > .app-scroll-panel {
+  min-width: 0;
+}
+html.spark-native-app .spark-native-tabs {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+html.spark-native-app .spark-native-tab {
+  min-width: 0;
+  padding: 5px 0;
+  font-size: 11px;
+}
+html.spark-native-app .spark-native-more-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1450;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(8, 26, 61, .52);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+html.spark-native-app .spark-native-more-sheet {
+  width: 100%;
+  max-height: min(88dvh, 760px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 24px 24px 0 0;
+  background: var(--spark-paper);
+  color: var(--spark-ink);
+  padding: 10px 18px calc(24px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -15px 60px rgba(0, 0, 0, .20);
+}
+html.spark-native-app .spark-native-more-handle {
+  width: 40px;
+  height: 5px;
+  border-radius: 999px;
+  margin: 0 auto 16px;
+  background: var(--spark-border-strong);
+}
+html.spark-native-app .spark-native-more-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+html.spark-native-app .spark-native-more-head h2 {
+  font-size: 24px !important;
+  font-weight: 760;
+  margin: 0;
+  letter-spacing: -.03em;
+}
+html.spark-native-app .spark-native-more-head p {
+  font-size: 13px;
+  margin: 2px 0 0;
+  color: var(--spark-text-muted);
+}
+html.spark-native-app .spark-native-more-close {
+  min-width: 44px;
+  min-height: 44px;
+  border: none;
+  border-radius: 50%;
+  color: var(--spark-ink);
+  background: var(--spark-muted);
+  font-size: 28px;
+  line-height: 1;
+}
+html.spark-native-app .spark-native-more-list {
+  display: flex;
+  flex-direction: column;
+}
+html.spark-native-app .spark-native-more-item,
+html.spark-native-app .spark-native-more-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 60px;
+  width: 100%;
+  padding: 12px 4px;
+  text-align: left;
+  border: 0;
+  border-bottom: 1px solid var(--spark-border-soft);
+  color: var(--spark-ink);
+  background: transparent;
+}
+html.spark-native-app .spark-native-more-item > span:first-child,
+html.spark-native-app .spark-native-more-row > span:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+html.spark-native-app .spark-native-more-item strong,
+html.spark-native-app .spark-native-more-row strong {
+  font-size: 15px;
+  font-weight: 690;
+}
+html.spark-native-app .spark-native-more-item small,
+html.spark-native-app .spark-native-more-row small {
+  font-size: 12px;
+  color: var(--spark-text-muted);
+  line-height: 1.4;
+}
+html.spark-native-app .spark-native-more-item > span:last-child {
+  color: var(--spark-text-muted);
+  font-size: 26px;
+  font-weight: 400;
+}
+html.spark-native-app .spark-native-more-row > :last-child {
+  flex: 0 0 auto;
+}
+html.spark-native-app .spark-native-more-logout strong {
+  color: var(--spark-red);
+}
+@media (max-width: 720px) {
+  html.spark-native-app .spark-native-student-shell .dash-layout > .app-scroll-panel {
+    padding: 12px 14px 24px !important;
+    overflow-x: hidden !important;
+  }
+  html.spark-native-app .spark-native-more-sheet { max-height: 85dvh; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.spark-native-app .spark-native-more-sheet {
+    animation: spark-native-more-in 220ms cubic-bezier(.32,.72,0,1) both;
+  }
+  @keyframes spark-native-more-in {
+    from { transform: translateY(18px); opacity: .6; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+}
+
+
+/* Native student chrome guarantee.
+   CSS acts as a second guard if a nested screen renders its own web nav.
+   Keep public marketing and parent/tutor experiences untouched. */
+html.spark-native-app .spark-app-root.spark-native-student-shell > nav.spark-nav,
+html.spark-native-app .spark-app-root.spark-native-student-shell > .spark-nav {
+  display: none !important;
+}
+html.spark-native-app .spark-app-root.spark-native-student-shell .dash-sidebar {
+  display: none !important;
+}
+html.spark-native-app .spark-app-root.spark-native-student-shell .dash-layout {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+@media (max-width: 720px) {
+  html.spark-native-app .spark-app-root.spark-native-student-shell .app-scroll-panel {
+    scroll-padding-top: 12px;
+  }
+}
+
+
+/* SPARK mobile compact chrome and study surfaces, 2026-10-27. */
+html.spark-native-app .spark-native-tabs {
+  min-height: calc(62px + env(safe-area-inset-bottom, 0px));
+  padding-top: 5px;
+  padding-bottom: calc(4px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -2px 12px rgba(15,37,87,.035);
+}
+html.spark-native-app .spark-native-tab {
+  min-height: 50px;
+  padding: 5px 0 3px;
+  gap: 3px;
+  border-radius: 11px;
+  font-size: 10px;
+  font-weight: 620;
+}
+html.spark-native-app .spark-native-tab svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.8px;
+}
+html.spark-native-app .spark-native-tabs-visible {
+  padding-bottom: calc(67px + env(safe-area-inset-bottom, 0px));
+}
+
+/* The detailed generic course page should open directly into learning rather
+   than reintroducing a giant syllabus promotional hero. */
+html.spark-native-app .spark-generic-study-shell {
+  width: calc(100% - 28px);
+  padding-top: 12px;
+  padding-bottom: calc(44px + env(safe-area-inset-bottom, 0px));
+}
+html.spark-native-app .spark-generic-study-hero {
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  padding: 4px 0 10px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  align-items: center;
+}
+html.spark-native-app .spark-generic-study-mark,
+html.spark-native-app .spark-generic-study-hero-copy > .section-kicker,
+html.spark-native-app .spark-generic-study-hero-copy > p {
+  display: none;
+}
+html.spark-native-app .spark-generic-study-hero-copy h1 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 720;
+  letter-spacing: -.025em;
+  font-family: inherit;
+}
+html.spark-native-app .spark-generic-study-hero-actions {
+  grid-column: 2;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+html.spark-native-app .spark-generic-study-hero-actions button {
+  padding: 7px 11px;
+  min-height: 44px;
+  width: auto;
+  background: var(--spark-muted);
+  border: 1px solid var(--spark-border);
+  color: var(--spark-ink);
+  border-radius: 11px;
+  font-size: 12px;
+  font-weight: 650;
+}
+html.spark-native-app .spark-generic-progress-card {
+  margin: 8px 0 14px;
+  padding: 12px 14px;
+  gap: 8px;
+  border-radius: 13px;
+  box-shadow: none;
+}
+html.spark-native-app .spark-generic-lesson,
+html.spark-native-app .spark-generic-outline {
+  box-shadow: none;
+  border-radius: 14px;
+}
+html.spark-native-app .spark-generic-outline { padding: 8px 12px; }
+html.spark-native-app .spark-generic-outline-head {
+  border-bottom: 0;
+  padding-bottom: 6px;
+}
+html.spark-native-app .spark-generic-outline-heading-copy span { font-size: 14px; }
+html.spark-native-app .spark-generic-outline-heading-copy strong { font-size: 11px; }
+html.spark-native-app .spark-generic-outline-toggle {
+  min-height: 44px;
+  padding-inline: 12px;
+  font-size: 12px;
+}
+html.spark-native-app .spark-generic-lesson { padding: 18px 16px; }
+html.spark-native-app .spark-generic-lesson-head h2 {
+  font-family: inherit;
+  font-size: 21px;
+  line-height: 1.28;
+  font-weight: 710;
+}
+html.spark-native-app .spark-generic-lesson-body p,
+html.spark-native-app .spark-generic-lesson-body li {
+  font-size: 15px;
+  line-height: 1.62;
+}
+html.spark-native-app .spark-generic-outline-topics button {
+  min-height: 48px;
+  font-size: 13px;
+}
+@media (max-width: 420px) {
+  html.spark-native-app .spark-generic-study-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  html.spark-native-app .spark-generic-study-hero-actions {
+    grid-column: 1;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+/* Additional course-section launchers: Physics and IT receive the same native
+   compact-directory treatment without altering subject content or routes. */
+@media (max-width: 720px) {
+  html.spark-native-app .physics-subject-view .psv-shell,
+  html.spark-native-app .it-subject-view .it-shell {
+    width: calc(100% - 28px);
+    padding: 14px 0 calc(40px + env(safe-area-inset-bottom, 0px));
+    max-width: 680px;
+    margin-inline: auto;
+  }
+  html.spark-native-app .physics-subject-view .psv-hero,
+  html.spark-native-app .it-subject-view .it-hero {
+    display: block;
+    padding: 0 0 16px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  html.spark-native-app .physics-subject-view .psv-hero h1,
+  html.spark-native-app .it-subject-view .it-hero h1 {
+    margin: 8px 0 0;
+    font-family: inherit;
+    font-size: 23px;
+    line-height: 1.2;
+    font-weight: 730;
+    letter-spacing: -.02em;
+  }
+  html.spark-native-app .physics-subject-view .psv-hero p,
+  html.spark-native-app .physics-subject-view .psv-eyebrow,
+  html.spark-native-app .physics-subject-view .psv-stats,
+  html.spark-native-app .physics-subject-view .psv-note,
+  html.spark-native-app .it-subject-view .it-hero p,
+  html.spark-native-app .it-subject-view .it-eyebrow,
+  html.spark-native-app .it-subject-view .it-stats,
+  html.spark-native-app .it-subject-view .it-explore-note {
+    display: none;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-grid,
+  html.spark-native-app .it-subject-view .it-section-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-card,
+  html.spark-native-app .it-subject-view .it-section-card,
+  html.spark-native-app .it-subject-view .it-practical-labs-launch > button {
+    display: flex;
+    align-items: center;
+    min-height: 70px;
+    gap: 12px;
+    border: 1px solid var(--spark-border);
+    border-radius: 14px;
+    background: var(--spark-paper);
+    color: var(--spark-ink);
+    box-shadow: none;
+    padding: 12px 13px;
+    text-align: left;
+    transform: none;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-code,
+  html.spark-native-app .it-subject-view .it-section-code,
+  html.spark-native-app .it-subject-view .it-practical-labs-mark {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    flex: 0 0 34px;
+    border-radius: 10px;
+    background: var(--spark-muted);
+    color: var(--spark-ink);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 720;
+    padding: 0;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-copy,
+  html.spark-native-app .it-subject-view .it-section-copy {
+    flex: 1;
+    min-width: 0;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-copy strong,
+  html.spark-native-app .it-subject-view .it-section-copy strong,
+  html.spark-native-app .it-subject-view .it-practical-labs-launch strong {
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.3;
+    font-weight: 650;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-status,
+  html.spark-native-app .physics-subject-view .psv-section-copy small,
+  html.spark-native-app .it-subject-view .it-section-copy small,
+  html.spark-native-app .it-subject-view .it-practical-labs-launch small,
+  html.spark-native-app .it-subject-view .it-practical-labs-launch p {
+    display: none;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-copy > span:not(.psv-section-status),
+  html.spark-native-app .it-subject-view .it-section-copy > span {
+    display: block;
+    font-size: 12px;
+    line-height: 1.3;
+    color: var(--spark-text-muted);
+    margin-top: 3px;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-arrow svg,
+  html.spark-native-app .it-subject-view .it-open-arrow svg,
+  html.spark-native-app .it-subject-view .it-practical-labs-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+  html.spark-native-app .physics-subject-view .psv-back,
+  html.spark-native-app .it-subject-view .it-back {
+    min-height: 44px;
+    font-size: 12px;
+    border-radius: 11px;
+  }
+}
+
+
+/* Android 15-17 and iPhone edge-to-edge system bars.
+   Capacitor SystemBars injects valid env() values on modern WebView and
+   falls back to native decor padding on old Android WebViews. */
+html.spark-native-app .spark-app-root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+html.spark-native-app .spark-app-root > nav.spark-nav {
+  padding-top: 0 !important;
+}
+html.spark-native-app .spark-native-tabs {
+  padding-bottom: calc(4px + env(safe-area-inset-bottom, 0px));
+}
+html.spark-native-app .spark-native-student-shell :is(.paper-start-shell, .paper2-start-shell, .paper-results-shell) h1 {
+  font-size: 24px !important;
+  line-height: 1.2 !important;
+  letter-spacing: -.02em;
+}
+@media (max-width: 720px) {
+  html.spark-native-app .spark-native-student-shell :is(.paper-start-shell, .paper2-start-shell, .paper-results-shell) {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* Shared phone-scale typography for other subject practice launchers.
+   Applies to the mode-chooser only, not questions or results. */
+@media (max-width: 720px) {
+  html.spark-native-app :is(
+    .it-practice-hero,
+    .is-practice-hero,
+    .ss-practice-hero,
+    .ea-practice-hero,
+    .chem-library-hero,
+    .fnh-library-hero,
+    .poa-library-header,
+    .pob-exam-intro
+  ) h1 {
+    font-family: inherit !important;
+    font-size: 23px !important;
+    font-weight: 720 !important;
+    line-height: 1.22 !important;
+    letter-spacing: -.025em !important;
+  }
+  html.spark-native-app :is(
+    .it-practice-hero,
+    .is-practice-hero,
+    .ss-practice-hero,
+    .ea-practice-hero,
+    .chem-library-hero,
+    .fnh-library-hero,
+    .pob-exam-intro
+  ) p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    max-width: 47ch;
+  }
+  html.spark-native-app :is(
+    .it-practice-mode-card,
+    .ea-practice-card,
+    .ss-practice-modes > article,
+    .pob-practice-options > article
+  ) h2 {
+    font-family: inherit !important;
+    font-size: 18px !important;
+    font-weight: 690 !important;
+    line-height: 1.3 !important;
+    letter-spacing: -.015em !important;
+  }
+  html.spark-native-app :is(
+    .it-practice-mode-card,
+    .ea-practice-card,
+    .ss-practice-modes > article,
+    .pob-practice-options > article
+  ) {
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    padding: 16px !important;
+  }
+  html.spark-native-app .it-practice-mode-icon {
+    width: auto;
+    min-width: 40px;
+    height: 34px;
+    min-height: 34px;
+    padding-inline: 8px;
+    border-radius: 10px;
+    box-shadow: none;
+    font-family: inherit;
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+  html.spark-native-app :is(
+    .it-practice-primary,
+    .it-practice-secondary,
+    .ea-practice-primary,
+    .ss-primary,
+    .pob-primary,
+    .it-practice-back,
+    .ea-practice-back,
+    .ss-back
+  ) {
+    min-height: 44px;
+    font-family: inherit;
+    font-size: 13px;
+    border-radius: 11px;
+  }
+}
+
+
+/* Study and section navigation: chevron to the left of each native title. */
+html.spark-native-app .spark-generic-study-hero.has-native-back {
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 5px;
+  margin-left: -7px;
+}
+html.spark-native-app .spark-generic-study-hero.has-native-back > .spark-native-back-button {
+  grid-column: 1;
+  grid-row: 1;
+}
+html.spark-native-app .spark-generic-study-hero.has-native-back > .spark-generic-study-hero-copy {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+}
+html.spark-native-app .spark-generic-study-hero.has-native-back > .spark-generic-study-hero-actions {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-left: 7px;
+  flex-wrap: wrap;
+}
+html.spark-native-app .spark-generic-study-hero.has-native-back > .spark-generic-study-mark { display: none; }
+@media(max-width: 720px) {
+  html.spark-native-app .physics-subject-view .psv-hero > div:first-child,
+  html.spark-native-app .it-subject-view .it-hero > div:first-child {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 0 5px;
+    align-items: center;
+    margin-left: -7px;
+  }
+  html.spark-native-app .physics-subject-view .psv-hero .spark-native-back-button,
+  html.spark-native-app .it-subject-view .it-hero .spark-native-back-button {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  html.spark-native-app .physics-subject-view .psv-hero h1,
+  html.spark-native-app .it-subject-view .it-hero h1 {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    min-width: 0;
+    font-size: 21px;
+  }
+  html.spark-native-app .physics-subject-view .psv-section-card,
+  html.spark-native-app .it-subject-view .it-section-card {
+    min-height: 64px;
+    padding-block: 11px;
+  }
+  html.spark-native-app .it-subject-view .it-shell > .spark-native-back-button {
+    margin-left: -7px;
+  }
+  html.spark-native-app .it-subject-view :is(.it-topic-hero, .it-section-hero) h1 {
+    font-size: 21px !important;
+    line-height: 1.28 !important;
+    font-family: inherit !important;
+    letter-spacing: -.02em;
+  }
+}
+
+
+/* Consistent page hierarchy on native Study and Practice destinations.
+   A single 19px left chevron sits beside a 21px title. No large top hero. */
+@media (max-width: 720px) {
+  html.spark-native-app :is(
+    .it-practice-hero,
+    .ea-practice-hero,
+    .ss-practice-hero
+  ):has(> .spark-native-back-button) {
+    display: grid !important;
+    grid-template-columns: 44px minmax(0, 1fr);
+    align-items: center;
+    gap: 0 5px;
+    padding: 0 0 14px !important;
+    margin: 0 0 12px -7px !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  html.spark-native-app :is(
+    .it-practice-hero,
+    .ea-practice-hero,
+    .ss-practice-hero
+  ) > .spark-native-back-button { grid-column: 1; grid-row: 1; }
+  html.spark-native-app :is(
+    .it-practice-hero,
+    .ea-practice-hero,
+    .ss-practice-hero
+  ) > div:first-of-type {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+  html.spark-native-app :is(
+    .it-practice-hero,
+    .ea-practice-hero,
+    .ss-practice-hero
+  ) h1 {
+    font-family: inherit !important;
+    font-size: 21px !important;
+    line-height: 1.25 !important;
+    letter-spacing: -.02em !important;
+    margin: 0 !important;
+  }
+  html.spark-native-app :is(
+    .it-practice-hero,
+    .ea-practice-hero,
+    .ss-practice-hero
+  ) :is(.it-practice-eyebrow, .ea-practice-eyebrow, .ss-eyebrow, p) {
+    display: none !important;
+  }
+  html.spark-native-app .is-practice-top-actions {
+    justify-content: flex-start;
+    padding-left: 0;
+  }
+  html.spark-native-app .is-practice-hero h1 {
+    font-family: inherit !important;
+    font-size: 21px !important;
+    margin: 0 !important;
+  }
+  html.spark-native-app .is-practice-hero :is(span,p) {
+    display: none !important;
+  }
+  html.spark-native-app .chem-library-container > .spark-native-back-button {
+    margin-left: -7px;
+    margin-bottom: 4px;
+  }
+  html.spark-native-app .chem-library-hero h1 {
+    font-family: inherit !important;
+    font-size: 21px !important;
+    line-height: 1.3 !important;
+    letter-spacing: -.02em;
+  }
+  html.spark-native-app .chem-library-hero :is(.chem-library-eyebrow,p) {
+    display: none !important;
+  }
+  html.spark-native-app :is(.it-topic-hero, .it-section-hero) {
+    padding-top: 3px !important;
+  }
+  html.spark-native-app :is(.it-topic-hero,.it-section-hero) > .it-eyebrow {
+    font-size: 11px !important;
+  }
+}
+/* Native screen titles always remain visible at small sizes, with no clipping. */
+@media(max-width: 360px) {
+  html.spark-native-app :is(
+    .spark-generic-study-hero-copy h1,
+    .spark-native-math-heading h1,
+    .spark-native-course-heading h1,
+    .physics-subject-view .psv-hero h1,
+    .it-subject-view .it-hero h1
+  ) { font-size: 19px !important; line-height: 1.27 !important; }
+}
+
+
+/* Compact left chevrons on the remaining primary practice launchers. */
+@media(max-width:720px) {
+  html.spark-native-app :is(
+    .fnh-practice-home .fnh-exam-top,
+    .pob-exam .pob-exam-nav
+  ) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 0 5px -7px;
+    padding: 0;
+  }
+  html.spark-native-app .poa-practice-shell > .spark-native-back-button {
+    margin: 0 0 6px -7px;
+  }
+  html.spark-native-app :is(
+    .fnh-practice-home .fnh-library-hero,
+    .poa-practice-shell > .poa-library-header,
+    .pob-exam .pob-exam-intro
+  ) {
+    padding: 8px 0 14px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  html.spark-native-app :is(
+    .fnh-practice-home .fnh-library-hero,
+    .poa-practice-shell > .poa-library-header,
+    .pob-exam .pob-exam-intro
+  ) h1 {
+    font-family: inherit !important;
+    font-size: 21px !important;
+    line-height: 1.28 !important;
+    font-weight: 720 !important;
+    letter-spacing: -.02em !important;
+    margin: 0 !important;
+  }
+  html.spark-native-app :is(
+    .fnh-practice-home .fnh-library-hero,
+    .poa-practice-shell > .poa-library-header,
+    .pob-exam .pob-exam-intro
+  ) p { display: none !important; }
+  html.spark-native-app :is(
+    .fnh-practice-home .fnh-library-hero,
+    .pob-exam .pob-exam-intro
+  ) :is(small, .pob-exam-kicker) { display: none !important; }
+}
+
+
+/* Place the leading chevron beside, not above, the subject's current title. */
+@media(max-width:720px) {
+  html.spark-native-app .is-practice-home-shell:has(> .is-practice-top-actions .spark-native-back-button),
+  html.spark-native-app .chem-library-container:has(> .spark-native-back-button),
+  html.spark-native-app .poa-practice-shell:has(> .spark-native-back-button),
+  html.spark-native-app .fnh-practice-home .fnh-exam-container:has(> .fnh-exam-top .spark-native-back-button),
+  html.spark-native-app .pob-exam-shell:has(> .pob-exam-nav .spark-native-back-button) {
+    display: grid !important;
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: 5px;
+    align-items: center;
+  }
+  html.spark-native-app .is-practice-home-shell > .is-practice-top-actions,
+  html.spark-native-app .chem-library-container > .spark-native-back-button,
+  html.spark-native-app .poa-practice-shell > .spark-native-back-button,
+  html.spark-native-app .fnh-practice-home .fnh-exam-container > .fnh-exam-top,
+  html.spark-native-app .pob-exam-shell > .pob-exam-nav {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    margin: 0 0 10px -7px;
+    padding: 0;
+  }
+  html.spark-native-app .is-practice-home-shell > .is-practice-hero,
+  html.spark-native-app .chem-library-container > .chem-library-hero,
+  html.spark-native-app .poa-practice-shell > .poa-library-header,
+  html.spark-native-app .fnh-practice-home .fnh-exam-container > .fnh-library-hero,
+  html.spark-native-app .pob-exam-shell > .pob-exam-intro {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    margin: 0 0 10px;
+    padding: 0 !important;
+  }
+  html.spark-native-app .is-practice-home-shell > :not(.is-practice-top-actions):not(.is-practice-hero),
+  html.spark-native-app .chem-library-container:has(> .spark-native-back-button) > :not(.spark-native-back-button):not(.chem-library-hero),
+  html.spark-native-app .poa-practice-shell:has(> .spark-native-back-button) > :not(.spark-native-back-button):not(.poa-library-header),
+  html.spark-native-app .fnh-practice-home .fnh-exam-container:has(> .fnh-exam-top .spark-native-back-button) > :not(.fnh-exam-top):not(.fnh-library-hero),
+  html.spark-native-app .pob-exam-shell:has(> .pob-exam-nav .spark-native-back-button) > :not(.pob-exam-nav):not(.pob-exam-intro) {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+  html.spark-native-app .is-practice-home-shell > .is-practice-hero h1 {
+    margin: 0 !important;
+  }
+}

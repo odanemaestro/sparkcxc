@@ -1,0 +1,26 @@
+{
+  "name": "spark-mobile",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Native Android and iOS host for the existing SPARK web build",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "android:init": "cap add android",
+    "ios:init": "cap add ios",
+    "android:sync": "cap sync android",
+    "ios:sync": "cap sync ios",
+    "android:open": "cap open android",
+    "ios:open": "cap open ios",
+    "doctor": "cap doctor"
+  },
+  "dependencies": {
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/ios": "^8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "appId": "com.sparkcxc.app",
+  "appName": "SPARK",
+  "webDir": "../build",
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "cover",
+      "style": "DARK"
+    }
+  }
+}

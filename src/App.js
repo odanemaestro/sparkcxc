@@ -111,6 +111,9 @@ import {
 import { friendlyErrorMessage } from "./lib/errorMessages";
 import { computeStudyStreak } from "./lib/studyStreak";
 import { getExamPerformanceStatus } from "./lib/examPerformance";
+import { isSparkNativeApp } from "./lib/nativeRuntime";
+import { getNativeStudentLayout } from "./lib/nativeStudentLayout";
+import NativeTabBar from "./components/native/NativeTabBar";
 import { detachCurrentPushAssociation, restorePushAssociation } from "./lib/pushNotifications";
 import "./family.css";
 import "./responsive.css";
@@ -1550,7 +1553,7 @@ function studySubjectsForNavigation(subjects = []) {
   );
 }
 
-function StudySubjectHub({ setView, subjects = [], onManageSubjects, onOpenSubject }) {
+function StudySubjectHub({ setView, subjects = [], onManageSubjects, onOpenSubject, userId }) {
   const studySubjects = studySubjectsForNavigation(subjects);
   if (!studySubjects.length) {
     return <SubjectEnrollmentRequiredView onManageSubjects={onManageSubjects} onBack={() => setView("dashboard")} />;
@@ -1560,6 +1563,7 @@ function StudySubjectHub({ setView, subjects = [], onManageSubjects, onOpenSubje
     title="Choose a subject"
     description="Select one of your enrolled subjects to study. Each subject keeps its own learning path and progress."
     capability="study"
+    userId={userId}
     subjects={studySubjects}
     onSelect={subject => onOpenSubject ? onOpenSubject(subject) : setView(subject.studyView)}
     onBack={() => setView("dashboard")}
@@ -6891,6 +6895,22 @@ function GoogleOAuthGateErrorView({ message, onRetry, onSignOut }) {
 
 export default function App() {
   const [view, setViewState] = useState(() => viewFromBrowserHash());
+  // Native tab visibility tracks nested exam routes, not only top-level view.
+  // Mathematics hub shows navigation; live timed papers keep the screen focused.
+  const [nativeRouteHash, setNativeRouteHash] = useState(() =>
+    typeof window !== "undefined" ? window.location.hash : "");
+  useEffect(() => {
+    if (!isSparkNativeApp()) return undefined;
+    const sync = () => setNativeRouteHash(window.location.hash || "");
+    window.addEventListener("spark:routechange", sync);
+    window.addEventListener("hashchange", sync);
+    window.addEventListener("popstate", sync);
+    return () => {
+      window.removeEventListener("spark:routechange", sync);
+      window.removeEventListener("hashchange", sync);
+      window.removeEventListener("popstate", sync);
+    };
+  }, []);
   const { themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode } = useThemeMode();
   const viewRef = useRef(view);
   const [session, setSession] = useState(null);
@@ -7690,11 +7710,35 @@ if (loading || authenticatedRolePending) {
   }
 
   const navProps = { setView, user: session?.user, profile, onLogout: handleLogout, liveStats, hasTutorApp: hideTutorApplyLink, tutorApp, view, themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode };
+  // A native student never sees the website navbar. Main app destinations
+  // use bottom tabs, while lesson/exam workspaces keep task-specific controls.
+  const {
+    student: nativeStudentApp,
+    hideWebsiteHeader,
+    showBottomTabs: showNativeStudentTabs,
+  } = getNativeStudentLayout({
+    native: isSparkNativeApp(),
+    signedIn: Boolean(session),
+    role: profile?.role,
+    view,
+    routeHash: nativeRouteHash,
+  });
+
+  const nativeStudentNavigate = destination => {
+    if (destination === "dashboard" || destination === "progress" || destination.startsWith("dashboard:")) {
+      const section = destination === "progress" ? "progress"
+        : destination.startsWith("dashboard:") ? destination.slice("dashboard:".length) : "overview";
+      setView("dashboard");
+      writeDashboardSectionToBrowserHash(section);
+      return;
+    }
+    setView(destination);
+  };
 
   return (
-    <div className="spark-app-root" style={{minHeight:"100vh",display:"flex",flexDirection:"column",background:T.bg,color:T.ink}}>
+    <div className={`spark-app-root${nativeStudentApp ? " spark-native-student-shell" : ""}${showNativeStudentTabs ? " spark-native-tabs-visible" : ""}`} style={{minHeight:"100vh",display:"flex",flexDirection:"column",background:T.bg,color:T.ink}}>
       <GlobalStyles/>
-      <Nav {...navProps}/>
+      {!hideWebsiteHeader && <Nav {...navProps}/>}
       {view === "home"         && <HomeView setView={setView} liveStats={liveStats} hasTutorApp={hideTutorApplyLink} user={session?.user} profile={profile} tutorApp={tutorApp} isParent={profile?.role === "parent"}/>}
       {/* key={view} forces a fresh mount when switching between the "auth"
           and "login" routes, so AuthView's internal mode state re-reads
@@ -7730,7 +7774,7 @@ if (loading || authenticatedRolePending) {
       {view === "study" && session && profile?.role === "student" && (
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Loading your subjects" />
-          : <StudySubjectHub setView={setView} subjects={appStudentEnrolledSubjects} onManageSubjects={openMySubjects} onOpenSubject={openStudentSubject}/>
+          : <StudySubjectHub setView={setView} userId={session.user.id} subjects={appStudentEnrolledSubjects} onManageSubjects={openMySubjects} onOpenSubject={openStudentSubject}/>
       )}
       {view === "lesson" && session && profile?.role === "student" && (
         appSubjectAccessPending
@@ -7923,6 +7967,18 @@ if (loading || authenticatedRolePending) {
         <div style={{flex:1,padding:"4rem",textAlign:"center",color:T.textMuted}}>
           Please <span style={{color:T.teal,cursor:"pointer"}} onClick={() => setView("login")}>sign in</span> to continue.
         </div>
+      )}
+      {showNativeStudentTabs && (
+        <NativeTabBar
+          view={view}
+          onNavigate={nativeStudentNavigate}
+          user={session.user}
+          profile={profile}
+          onLogout={handleLogout}
+          themeMode={themeMode}
+          resolvedTheme={resolvedTheme}
+          setThemeMode={setThemeMode}
+        />
       )}
       <Toast msg={toast} onDismiss={dismissToast}/>
       <ScrollToTopButton raised={!!toast}/>

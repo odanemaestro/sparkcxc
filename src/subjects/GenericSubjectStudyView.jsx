@@ -1,5 +1,7 @@
 import ForwardArrowIcon from "../components/ui/ForwardArrowIcon";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
+import { isSparkNativeApp } from "../lib/nativeRuntime";
+import NativeBackButton from "../components/native/NativeBackButton";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import SparkLoader from "../components/ui/SparkLoader";
 import Card from "../components/ui/Card";
@@ -778,7 +780,8 @@ export default function GenericSubjectStudyView({
   return (
     <main className={`spark-generic-study ${subjectId==="food-nutrition-and-health"?"spark-fnh-study":subjectId?"spark-editorial-study":""} ${focusReading?"spark-fnh-focus-reading":""}`}>
       <div className="spark-generic-study-shell">
-        <header className="spark-generic-study-hero">
+        <header className={`spark-generic-study-hero${isSparkNativeApp() && onBack ? " has-native-back" : ""}`}>
+          {isSparkNativeApp() && onBack && <NativeBackButton onClick={onBack} label="Back to subjects"/>}
           <div className="spark-generic-study-mark" aria-hidden="true">
             {subject.mark || subject.shortName?.slice(0,2) || "â€¢"}
           </div>
@@ -791,7 +794,7 @@ export default function GenericSubjectStudyView({
 
           <div className="spark-generic-study-hero-actions">
             {courseActions}
-            {onBack && (
+            {!isSparkNativeApp() && onBack && (
               <button type="button" onClick={onBack}>Back</button>
             )}
           </div>

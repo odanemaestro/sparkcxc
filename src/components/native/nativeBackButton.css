@@ -1,0 +1,35 @@
+/* Shared compact native chevron. Full 44dp target around a 19dp symbol. */
+html.spark-native-app .spark-native-back-button {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--spark-ink, #102a43);
+  box-shadow: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+html.spark-native-app .spark-native-back-button svg {
+  display: block;
+  width: 19px;
+  height: 19px;
+  stroke-width: 2;
+}
+html.spark-native-app .spark-native-back-button:active:not(:disabled) {
+  background: var(--spark-muted, #edf2f7);
+}
+html.spark-native-app .spark-native-back-button:focus-visible {
+  outline: 3px solid var(--spark-teal, #0d9488);
+  outline-offset: 2px;
+}
+html.spark-native-app .spark-native-back-button:disabled { opacity: .4; }

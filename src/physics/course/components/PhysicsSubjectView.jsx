@@ -1,5 +1,7 @@
 import React, { useMemo } from 'react';
 import BackArrowIcon from '../../../components/ui/BackArrowIcon';
+import { isSparkNativeApp } from '../../../lib/nativeRuntime';
+import NativeBackButton from '../../../components/native/NativeBackButton';
 import { usePhysicsSubjectRoute } from '../../../routing/sparkRoutingV270';
 import PhysicsMechanicsSection from '../../mechanics/components/PhysicsMechanicsSection';
 import PhysicsCourseLessons from './PhysicsCourseLessons';
@@ -61,7 +63,9 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
       <div className="psv-shell">
         <header className="psv-hero">
           <div>
-            {onBack && <button type="button" className="psv-back" onClick={onBack}><BackArrowIcon className="psv-back-arrow-icon"/><span>Back</span></button>}
+            {onBack && (isSparkNativeApp()
+              ? <NativeBackButton onClick={onBack} label="Back to subjects"/>
+              : <button type="button" className="psv-back" onClick={onBack}><BackArrowIcon className="psv-back-arrow-icon"/><span>Back</span></button>)}
             <div className="psv-eyebrow">CSEC Physics</div>
             <h1>Choose a section</h1>
             <p>Work through the Physics syllabus by section, or open the SPARK Workbook and Formula List for focused revision.</p>
