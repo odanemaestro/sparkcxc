@@ -15,8 +15,14 @@ const TABS = [
 export function activeNativeTab(view, hash) {
   if (view === "home") return "dashboard";
   if (view === "practice-math") return "practice";
+  if (view === "tutors") return "more";
   if (view !== "dashboard") return view;
-  return String(hash || "").startsWith("#/dashboard/progress") ? "progress" : "dashboard";
+  const path = String(hash || "").split("?")[0];
+  const section = path.match(/^#\/dashboard\/([^/]+)/)?.[1] || "overview";
+  if (section === "progress") return "progress";
+  return ["subjects", "flashcards", "circles", "bookings", "sessions"].includes(section)
+    ? "more"
+    : "dashboard";
 }
 
 function TabIcon({ name }) {
@@ -43,6 +49,7 @@ export default function NativeTabBar({ view, onNavigate, user, profile, onLogout
   const [moreOpen, setMoreOpen] = useState(false);
   const [routeHash, setRouteHash] = useState(() => typeof window === "undefined" ? "" : window.location.hash);
   const closeRef = useRef(null);
+  const sheetRef = useRef(null);
   const moreButtonRef = useRef(null);
   const activeTab = activeNativeTab(view, routeHash);
 
@@ -67,7 +74,23 @@ export default function NativeTabBar({ view, onNavigate, user, profile, onLogout
     document.body.style.overflow = "hidden";
     closeRef.current?.focus({ preventScroll: true });
     const onKeyDown = event => {
-      if (event.key === "Escape") setMoreOpen(false);
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setMoreOpen(false);
+      }
+      if (event.key !== "Tab" || !sheetRef.current) return;
+      const controls = [...sheetRef.current.querySelectorAll('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+        .filter(element => element.getClientRects().length || element === document.activeElement);
+      if (!controls.length) return;
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && (document.activeElement === first || !sheetRef.current.contains(document.activeElement))) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !sheetRef.current.contains(document.activeElement))) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => {
@@ -90,7 +113,7 @@ export default function NativeTabBar({ view, onNavigate, user, profile, onLogout
             key={tab.id}
             type="button"
             ref={tab.id === "more" ? moreButtonRef : undefined}
-            className={`spark-native-tab${(tab.id === "more" ? moreOpen : activeTab === tab.id) ? " is-active" : ""}`}
+            className={`spark-native-tab${(tab.id === "more" ? (moreOpen || activeTab === "more") : activeTab === tab.id) ? " is-active" : ""}`}
             aria-current={tab.id !== "more" && activeTab === tab.id ? "page" : undefined}
             aria-haspopup={tab.id === "more" ? "dialog" : undefined}
             aria-expanded={tab.id === "more" ? moreOpen : undefined}
@@ -109,7 +132,7 @@ export default function NativeTabBar({ view, onNavigate, user, profile, onLogout
         <div className="spark-native-more-backdrop" onPointerDown={event => {
           if (event.target === event.currentTarget) setMoreOpen(false);
         }}>
-          <section className="spark-native-more-sheet" role="dialog" aria-modal="true" aria-labelledby="spark-native-more-title">
+          <section ref={sheetRef} className="spark-native-more-sheet" role="dialog" aria-modal="true" aria-labelledby="spark-native-more-title">
             <div className="spark-native-more-handle" aria-hidden="true" />
             <div className="spark-native-more-head">
               <div>
