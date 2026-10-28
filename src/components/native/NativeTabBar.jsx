@@ -80,7 +80,7 @@ export default function NativeTabBar({ view, onNavigate, user, profile, onLogout
       }
       if (event.key !== "Tab" || !sheetRef.current) return;
       const controls = [...sheetRef.current.querySelectorAll('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
-        .filter(element => element.getClientRects().length || element === document.activeElement);
+        .filter(element => !element.closest('[hidden], [aria-hidden="true"]'));
       if (!controls.length) return;
       const first = controls[0];
       const last = controls[controls.length - 1];
