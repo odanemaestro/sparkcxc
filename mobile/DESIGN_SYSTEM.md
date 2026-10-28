@@ -232,3 +232,29 @@ All primary native Study and Practice launchers use a consistent left-aligned 19
 - Existing browser-only Back buttons remain in place.
 - Exam **Exit** and **Submit** actions retain explicit wording to prevent accidental data loss.
 - Test keyboard, VoiceOver/TalkBack, Android back gesture, and nested route transitions on a real device before release.
+
+## Project mobile UI skill and October 2026 Study refinements
+
+The owner's attached `mobile-app-ui-design-skill(1).zip` informed this pass. A project-scoped skill is now installed under `.agents/skills/mobile-app-ui-design/`, with SPARK-specific guidance and a mobile QA checklist. Future development assistants can use the same rules without reinterpreting screenshots.
+
+### Study and Practice recent-subject shortcut
+
+- After selecting a subject, its ID is remembered locally for the signed-in student and the specific task (Study or Practice).
+- On reopening the subject picker, a single 64px `Recently opened` row appears above the other enrolled subjects. The same subject is not duplicated in the list.
+- Existing enrollment and live catalogue filtering remain authoritative. A subject removed from the enrolled list never appears from device history.
+- No text claims a lesson was completed or progress synchronized across devices. This is simply last opened.
+- Other students on the same device get their own independent subject preference. Without a known user ID, the shortcut is disabled.
+- Storage failures are nonfatal. The underlying subject picker remains usable when private storage is unavailable.
+
+### More navigation and keyboard accessibility
+
+- Visiting Flashcards, My subjects, Study Circles, Bookings or Tutors selects the More bottom destination instead of highlighting Home.
+- The More sheet traps Tab and Shift+Tab focus inside the dialog, closes with Escape and returns focus to its trigger.
+- Android system Back and iOS swipe-to-dismiss still require physical-device verification. Do not claim native Back event integration without testing.
+
+### Verification
+
+- `NativeSubjectPicker` tests: no duplicated recent subject, capability/user isolation, un-enrolled subject not restored.
+- `recentSubject` tests: storage unavailable and invalid identity inputs.
+- `NativeTabBar` tests: correct active destination, Escape dismissal and focus cycling.
+- GitHub Actions Mobile Foundation builds the native web bundle and syncs the Android project.
