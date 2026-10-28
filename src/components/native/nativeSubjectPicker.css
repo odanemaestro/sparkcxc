@@ -104,3 +104,25 @@
 @media (prefers-reduced-motion: reduce) {
   .spark-native-course-row { transition: none !important; }
 }
+
+/* Skill-guided recency: one small shortcut, no duplicate course row. */
+.spark-native-course-recent { margin-bottom: 18px; }
+.spark-native-course-recent h2 {
+  margin: 0 0 9px 2px;
+  color: var(--spark-text-muted);
+  font-size: 12px;
+  font-weight: 680;
+  line-height: 1.4;
+}
+.spark-native-course-row.is-recent { min-height: 64px; }
+.spark-native-course-row.is-recent .spark-native-course-mark {
+  background: var(--spark-teal-surface);
+  color: var(--spark-teal-dark);
+}
+html[data-theme="dark"] .spark-native-course-row.is-recent .spark-native-course-mark {
+  color: var(--spark-teal);
+}
+@media(max-width:360px) {
+  .spark-native-course-row { gap: 10px; padding-inline: 12px; }
+  .spark-native-course-title { font-size: 14px; }
+}
