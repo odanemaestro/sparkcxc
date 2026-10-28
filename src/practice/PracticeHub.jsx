@@ -98,6 +98,7 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
       title="Choose a subject"
       description="Select the CSEC subject you want to practise. Each subject only shows assessment modes supported by its current content."
       capability="practice"
+      userId={userId}
       subjects={practiceSubjects}
       onSelect={item => {
         setMode("home");
