@@ -42,6 +42,7 @@ export default function SubjectSelectionView({
   embedded = false,
   allOption = false,
   onSelectAll,
+  userId,
 }) {
   if (isSparkNativeApp()) {
     return (
@@ -54,6 +55,7 @@ export default function SubjectSelectionView({
         embedded={embedded}
         allOption={allOption}
         onSelectAll={onSelectAll}
+        userId={userId}
       />
     );
   }
