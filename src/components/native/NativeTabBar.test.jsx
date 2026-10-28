@@ -36,3 +36,33 @@ test("account actions remain available in More", () => {
   fireEvent.click(screen.getByRole("button", { name:/Log out/ }));
   expect(onLogout).toHaveBeenCalledTimes(1);
 });
+
+test("More remains the active destination for flashcards and bookings", () => {
+  expect(activeNativeTab("dashboard", "#/dashboard/flashcards")).toBe("more");
+  expect(activeNativeTab("dashboard", "#/dashboard/bookings")).toBe("more");
+  expect(activeNativeTab("dashboard", "#/dashboard/subjects")).toBe("more");
+  expect(activeNativeTab("tutors", "#/tutors")).toBe("more");
+  expect(activeNativeTab("dashboard", "#/dashboard")).toBe("dashboard");
+});
+
+test("Escape dismisses the More sheet and restores the trigger", () => {
+  render(<NativeTabBar view="dashboard" onNavigate={() => {}} />);
+  const more = screen.getByRole("button", { name: "More" });
+  fireEvent.click(more);
+  expect(screen.getByRole("dialog", { name: "More" })).toBeTruthy();
+  fireEvent.keyDown(window, { key: "Escape" });
+  expect(screen.queryByRole("dialog", { name: "More" })).toBeNull();
+  expect(document.activeElement).toBe(more);
+});
+
+test("Tab from the last More control loops back to Close", () => {
+  render(<NativeTabBar view="dashboard" onNavigate={() => {}} />);
+  fireEvent.click(screen.getByRole("button", { name: "More" }));
+  const close = screen.getByRole("button", { name: "Close More menu" });
+  const logout = screen.getByRole("button", { name: /Log out/ });
+  logout.focus();
+  fireEvent.keyDown(window, { key: "Tab" });
+  expect(document.activeElement).toBe(close);
+  fireEvent.keyDown(window, { key: "Tab", shiftKey: true });
+  expect(document.activeElement).toBe(logout);
+});
