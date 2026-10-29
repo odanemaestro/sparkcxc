@@ -1,0 +1,1315 @@
+{
+  "paperId": "OA-P1-2024-MJ",
+  "reviewDate": "2026-10-27",
+  "reviewMethod": "Visual comparison with all supplied scanned question pages (PDF pages 2–13). Line wrapping normalized; printed wording, four choices and required source context retained. No answer key was supplied or inferred.",
+  "items": [
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 1,
+      "sourcePage": 2,
+      "stem": "Employees in a large organization are MOST likely to have",
+      "options": [
+        "very close supervision",
+        "limited career prospects",
+        "a high degree of specialization",
+        "direct contact with management"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 2,
+      "sourcePage": 2,
+      "stem": "The science of outfitting the workplace to meet the needs of employees is known as",
+      "options": [
+        "networking",
+        "ergonomics",
+        "telecommuting",
+        "social responsibility"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 3,
+      "sourcePage": 2,
+      "stem": "Which of the following is the MOST appropriate medium for communicating between offices?",
+      "options": [
+        "Beeper",
+        "Pocket pager",
+        "Telephone extension",
+        "Public address system"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 4,
+      "sourcePage": 2,
+      "stem": "A clerk in a small organization feels that some improvements should be made to the filing system. What is the MOST appropriate action for him to take?",
+      "options": [
+        "Discuss his ideas with the general manager.",
+        "Make the changes he feels are necessary.",
+        "Discuss his ideas with the supervisor.",
+        "Continue with the old system until he is asked for an opinion."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 5,
+      "sourcePage": 2,
+      "stem": "Which of the following is NOT a characteristic of registered mail?",
+      "options": [
+        "Offers proof of postage",
+        "Facilitates safe delivery of mail",
+        "Normally sent by second-class mail",
+        "Offers compensation for loss or damage"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 6,
+      "sourcePage": 2,
+      "stem": "A caller to a business asked to speak to a manager only. What type of call should the operator make?",
+      "options": [
+        "Person-to-person",
+        "Conference",
+        "Personal",
+        "House"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 7,
+      "sourcePage": 2,
+      "stem": "A customer called and enquired about a letter which had been sent to the firm a month ago. However, the letter could not be found. To determine if the letter was received, the mail clerk should refer to the",
+      "options": [
+        "mailing list",
+        "mail register",
+        "postage book",
+        "correspondence digest"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 8,
+      "sourcePage": 2,
+      "stem": "Which of the following pieces of equipment is used to arrange the pages of a document in order?",
+      "options": [
+        "Jogger",
+        "Collator",
+        "Duplicator",
+        "Franking machine"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 9,
+      "sourcePage": 3,
+      "stem": "The person who received the phone call and recorded the message is",
+      "options": [
+        "J. Ben",
+        "R. Smith",
+        "M. Santos",
+        "W. Daniel"
+      ],
+      "contextText": "Item 9 refers to the following document.",
+      "table": {
+        "title": "TELEPHONE MESSAGE FORM",
+        "columns": [
+          "Field",
+          "Details"
+        ],
+        "rows": [
+          [
+            "To",
+            "R. Smith"
+          ],
+          [
+            "From",
+            "J. Ben"
+          ],
+          [
+            "ORGANIZATION",
+            "Ben & Sons Ltd"
+          ],
+          [
+            "PHONE",
+            "1-888-245-8888"
+          ],
+          [
+            "MESSAGE",
+            "The new shipment of office chairs will arrive by 11:30 a.m. on Friday\nCall M. Santos for further information."
+          ],
+          [
+            "Date",
+            "11 April 2022"
+          ],
+          [
+            "Time",
+            "1400 hours"
+          ]
+        ],
+        "details": [
+          "W. Daniel"
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 10,
+      "sourcePage": 3,
+      "stem": "Which of the following is an optional section in a résumé?",
+      "options": [
+        "Education",
+        "Contact information",
+        "List of academic awards",
+        "Skills and work experience"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 11,
+      "sourcePage": 3,
+      "stem": "What is the MOST appropriate action to be taken?",
+      "options": [
+        "Write another letter of application.",
+        "Write a letter to follow up on the application.",
+        "Email the human resource officer to schedule an interview.",
+        "Telephone the receptionist at the firm and request an update."
+      ],
+      "contextText": "Three months have passed since you applied for a job at a large firm. You have only received a letter of acknowledgement."
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 12,
+      "sourcePage": 3,
+      "stem": "Paul is applying for a job at a local bank. Which of the following statements describes his curriculum vitae?",
+      "options": [
+        "An extended list of his dossier and interests",
+        "A brief account of his life history and work experience",
+        "An outline of the curriculum covered at the secondary-school level",
+        "A comprehensive report on his vital scores obtained during a course of study"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 13,
+      "sourcePage": 3,
+      "stem": "You work in the records management department of a large firm. In what order should you file correspondence from the following three clients?\n\nI. Erin Wolf\nII. Arthur Woolford\nIII. Myrtle Woolworth",
+      "options": [
+        "II, III, I",
+        "II, I, III",
+        "I, II, III",
+        "III, II, I"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 14,
+      "sourcePage": 4,
+      "stem": "The accounts department has requested a file from the central filing department. Which of the following actions should the file clerk take?\n\nI. Find out if the file is available.\nII. Ask the person receiving the file to sign for it.\nIII. Complete an 'out' sheet and place it in the file.",
+      "options": [
+        "I only",
+        "I and II only",
+        "I and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 15,
+      "sourcePage": 4,
+      "stem": "Which of the following would be MOST suitable for storing inactive soft copies of files?",
+      "options": [
+        "External hard drive",
+        "Suspension folder",
+        "Accordion folder",
+        "Storage box"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 16,
+      "sourcePage": 4,
+      "stem": "In which of the following situations is cross-referencing NOT needed?",
+      "options": [
+        "The name of a supplier is changed.",
+        "A female customer has a name change through marriage.",
+        "A piece of correspondence relates to more than one name.",
+        "A document is to be placed under a special name for easy retrieval."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 17,
+      "sourcePage": 4,
+      "stem": "An advantage of centralized filing is that",
+      "options": [
+        "it takes less time to retrieve files",
+        "more space and equipment are required",
+        "all records are stored and managed in one place",
+        "all records are stored and managed in each department"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 18,
+      "sourcePage": 4,
+      "stem": "What is the MOST suitable action to take?",
+      "options": [
+        "Contact the client; apologize and inform him/her that the appointment has been cancelled.",
+        "Cancel the old appointment date and time in the employer's diary.",
+        "Arrange a new appointment and inform the client of the change.",
+        "Write a letter to the client advising him/her of the cancellation."
+      ],
+      "contextText": "You are a receptionist and your employer has asked you to cancel his appointment with an important client."
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 19,
+      "sourcePage": 5,
+      "stem": "Which of the following services would usually be offered to customers who have fixed deposit accounts at a commercial bank?\n\nI. Permission to write cheques on the accounts\nII. Withdrawals on demand with interest earned\nIII. Higher interest rates than those offered on savings accounts",
+      "options": [
+        "I only",
+        "III only",
+        "I and II only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 20,
+      "sourcePage": 5,
+      "stem": "An executive has to attend an overseas meeting and will have to make reference to correspondence on file. The MOST appropriate procedure which should be used by the secretary to allow the executive to have the relevant information is to give him",
+      "options": [
+        "a summary of the correspondence",
+        "copies of the correspondence from the file",
+        "the relevant file and ask him to sign for it",
+        "the correspondence from the file and ask him to sign for it"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 21,
+      "sourcePage": 5,
+      "stem": "A visitor to an office wishes to see a senior executive. He asks to be introduced as 'AG'. The receptionist should respond by",
+      "options": [
+        "telling the executive that AG is there to see him",
+        "refusing to contact the executive until the visitor gives his name",
+        "sending the visitor to see the executive without giving the executive his name",
+        "explaining that she is required by the company to record the names of visitors"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 22,
+      "sourcePage": 5,
+      "stem": "In a meeting, which of the following persons would be allowed a casting vote?",
+      "options": [
+        "Treasurer",
+        "Secretary",
+        "Chairman",
+        "Convenor"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 23,
+      "sourcePage": 6,
+      "stem": "On 30 April, the firm received a voucher for $16.50 for the purchase of car headlights. In which analysis column of the petty cash book would this entry be made?",
+      "options": [
+        "Postage",
+        "Travelling",
+        "Stationery",
+        "Miscellaneous"
+      ],
+      "contextText": "Items 23 and 24 refer to the following petty cash book.",
+      "table": {
+        "title": "Petty cash book",
+        "columns": [
+          "Amt Rec'd",
+          "Date",
+          "Details",
+          "Total $",
+          "Stationery $",
+          "Postage $",
+          "Travelling $",
+          "Misc $"
+        ],
+        "rows": [
+          [
+            "$100.00",
+            "1 March",
+            "Imprest",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "3 March",
+            "Milk and tea",
+            "10.00",
+            "",
+            "",
+            "",
+            "10.00"
+          ],
+          [
+            "",
+            "8 March",
+            "Envelopes and labels",
+            "7.50",
+            "7.50",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "12 March",
+            "Registered mail",
+            "6.00",
+            "",
+            "6.00",
+            "",
+            ""
+          ],
+          [
+            "",
+            "20 March",
+            "Taxi fare",
+            "17.00",
+            "",
+            "",
+            "17.00",
+            ""
+          ],
+          [
+            "",
+            "24 March",
+            "Stamps",
+            "15.00",
+            "",
+            "15.00",
+            "",
+            ""
+          ],
+          [
+            "",
+            "28 March",
+            "Writing pads",
+            "12.00",
+            "12.00",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "28 March",
+            "Coffee and filters",
+            "10.00",
+            "",
+            "",
+            "",
+            "10.00"
+          ],
+          [
+            "",
+            "Total",
+            "",
+            "77.50",
+            "19.50",
+            "21.00",
+            "17.00",
+            "20.00"
+          ],
+          [
+            "",
+            "31 March",
+            "Bal c/d",
+            "22.50",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ],
+        "details": []
+      }
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 24,
+      "sourcePage": 6,
+      "stem": "What sum of money is required to restore the imprest as at 1 April?",
+      "options": [
+        "$22.50",
+        "$77.50",
+        "$100.00",
+        "$122.50"
+      ],
+      "contextText": "Items 23 and 24 refer to the following petty cash book.",
+      "table": {
+        "title": "Petty cash book",
+        "columns": [
+          "Amt Rec'd",
+          "Date",
+          "Details",
+          "Total $",
+          "Stationery $",
+          "Postage $",
+          "Travelling $",
+          "Misc $"
+        ],
+        "rows": [
+          [
+            "$100.00",
+            "1 March",
+            "Imprest",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "3 March",
+            "Milk and tea",
+            "10.00",
+            "",
+            "",
+            "",
+            "10.00"
+          ],
+          [
+            "",
+            "8 March",
+            "Envelopes and labels",
+            "7.50",
+            "7.50",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "12 March",
+            "Registered mail",
+            "6.00",
+            "",
+            "6.00",
+            "",
+            ""
+          ],
+          [
+            "",
+            "20 March",
+            "Taxi fare",
+            "17.00",
+            "",
+            "",
+            "17.00",
+            ""
+          ],
+          [
+            "",
+            "24 March",
+            "Stamps",
+            "15.00",
+            "",
+            "15.00",
+            "",
+            ""
+          ],
+          [
+            "",
+            "28 March",
+            "Writing pads",
+            "12.00",
+            "12.00",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "28 March",
+            "Coffee and filters",
+            "10.00",
+            "",
+            "",
+            "",
+            "10.00"
+          ],
+          [
+            "",
+            "Total",
+            "",
+            "77.50",
+            "19.50",
+            "21.00",
+            "17.00",
+            "20.00"
+          ],
+          [
+            "",
+            "31 March",
+            "Bal c/d",
+            "22.50",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ],
+        "details": []
+      }
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 25,
+      "sourcePage": 7,
+      "stem": "Which of the following records would show an employee's duties, grade and salary?\n\nI. The employment contract\nII. The job specifications\nIII. The company manual",
+      "options": [
+        "I and II only",
+        "I and III only",
+        "II and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 26,
+      "sourcePage": 7,
+      "stem": "Within a meeting context, a proposal that action be taken is known as",
+      "options": [
+        "a motion",
+        "an agenda",
+        "a casting vote",
+        "an amendment"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 27,
+      "sourcePage": 7,
+      "stem": "A member of staff could not remember what decision was taken on a particular subject at the last meeting. Which of the following records should she refer to for the information?",
+      "options": [
+        "Notice",
+        "Agenda",
+        "Minutes",
+        "Chairman's agenda"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 28,
+      "sourcePage": 7,
+      "stem": "What is the purpose of maintaining a reception register in an organization?",
+      "options": [
+        "Locating the names of persons who attend functions of the organization",
+        "Recording the names of persons who did not make an appointment",
+        "Identifying the firms which conduct business with the organization",
+        "Recording the number of persons who visit the organization"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 29,
+      "sourcePage": 7,
+      "stem": "Which of the following terms is used to describe a committee which has been set up to deal with a specific matter?",
+      "options": [
+        "Central",
+        "Ad hoc",
+        "General",
+        "Administrative"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 30,
+      "sourcePage": 7,
+      "stem": "In what order should the following items on an agenda be arranged?\n\nI. Any other business\nII. Minutes of the last meeting\nIII. Apologies\nIV. Matters arising",
+      "options": [
+        "I, III, II, IV",
+        "II, IV, I, III",
+        "III, II, IV, I",
+        "IV, I, III, II"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 31,
+      "sourcePage": 7,
+      "stem": "One important personal quality of an efficient receptionist is",
+      "options": [
+        "suitable grooming",
+        "the ability to type",
+        "excellent memory",
+        "mathematical ability"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 32,
+      "sourcePage": 7,
+      "stem": "A businessman is travelling to a country where the time is one hour ahead of the time in his country. If the plane departs at 12:00 noon and the flight takes one hour and fifteen minutes, what time will it be when he arrives at his destination?",
+      "options": [
+        "0215 hours",
+        "1215 hours",
+        "1315 hours",
+        "1415 hours"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 33,
+      "sourcePage": 8,
+      "stem": "Your employer wishes to hold a meeting in the staff room on 18 June at 8:00 a.m. Which of the following documents should be prepared and distributed prior to the meeting?",
+      "options": [
+        "Motion",
+        "Recommendations",
+        "Notice and agenda",
+        "Apologies and agenda"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 34,
+      "sourcePage": 8,
+      "stem": "A visa is used to permit",
+      "options": [
+        "entry into a specific territory for an agreed period",
+        "emigrants to stay for a long time in a foreign country",
+        "immigrants to stay for a long time in a foreign country",
+        "entry into a foreign country to work for a certain period"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 35,
+      "sourcePage": 8,
+      "stem": "Which of the following is LEAST likely to be found on personnel records?",
+      "options": [
+        "Employment history",
+        "Training certificates",
+        "Employee handbook",
+        "Disciplinary correspondence"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 36,
+      "sourcePage": 8,
+      "stem": "The human resource clerk has been asked to review a list of job applicants and to select those who meet the necessary requirements for a job. This process is referred to as",
+      "options": [
+        "shortlisting",
+        "eliminating",
+        "downsizing",
+        "interviewing"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 37,
+      "sourcePage": 8,
+      "stem": "Credit cards are used instead of cash when travelling abroad because they",
+      "options": [
+        "have greater value than cash",
+        "offer greater security than cash",
+        "are preferred to cash in foreign countries",
+        "give the traveller a high status rating in the foreign country"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 38,
+      "sourcePage": 8,
+      "stem": "There is a growing feeling among staff that concerns regarding their general welfare are being overlooked by management. What is the FIRST action the staff should take in an effort to improve the situation?",
+      "options": [
+        "Take industrial action.",
+        "Bring the matter to the attention of the trade union.",
+        "Request a meeting with the head of the organization.",
+        "Request a meeting with the human resource manager."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 39,
+      "sourcePage": 8,
+      "stem": "The schedule above shows that the aircraft will stop in Antigua (ANU) on its way to Jamaica (KIN) from Barbados (BGI). How long will the aircraft be on the ground in Antigua?",
+      "options": [
+        "3 hours 5 minutes",
+        "4 hours 25 minutes",
+        "5 hours 30 minutes",
+        "7 hours 30 minutes"
+      ],
+      "contextText": "Item 39 refers to the following extract from an airline schedule.",
+      "table": {
+        "title": "From Barbados to Jamaica",
+        "columns": [
+          "Date",
+          "Airport",
+          "Departure",
+          "Arrival",
+          "Airport"
+        ],
+        "rows": [
+          [
+            "Thursday 14 July 2021",
+            "BGI",
+            "3:00 p.m.",
+            "4:25 p.m.",
+            "ANU"
+          ],
+          [
+            "Thursday 14 July 2021",
+            "ANU",
+            "7:30 p.m.",
+            "8:30 p.m.",
+            "KIN"
+          ]
+        ],
+        "details": []
+      }
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 40,
+      "sourcePage": 9,
+      "stem": "Some firms offer a programme which aims to assist new employees in becoming familiar with their jobs. This programme is referred to as",
+      "options": [
+        "an induction",
+        "a recruitment",
+        "an evaluation",
+        "a performance"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 41,
+      "sourcePage": 9,
+      "stem": "Which of the following procedures should be used for the distribution of a purchase order?\n\nI. Send the top copy to the supplier.\nII. Put a carbon copy in the purchase order file.\nIII. Send the carbon copy to the accounts department of the buyer.",
+      "options": [
+        "II only",
+        "I and II only",
+        "II and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 42,
+      "sourcePage": 9,
+      "stem": "An employee works for 30 hours per week at a rate of $10 per hour. If he pays 8% of his gross wage as PAYE, then his net wage is",
+      "options": [
+        "$262",
+        "$276",
+        "$292",
+        "$324"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 43,
+      "sourcePage": 9,
+      "stem": "Caring Caterers Limited has received its first bank statement for the year. Karen, the owner, notices two columns of figures which indicate monies deposited and withdrawn. These columns are called",
+      "options": [
+        "debit and credit",
+        "savings and loans",
+        "income and expense",
+        "payments and accruals"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 44,
+      "sourcePage": 9,
+      "stem": "Requests for raw materials at a company are usually very tardy. To which manager should the clerk direct a complaint about the lateness of these requests?",
+      "options": [
+        "Sales",
+        "Accounts",
+        "Purchases",
+        "Human resource"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 45,
+      "sourcePage": 9,
+      "stem": "At the beginning of the year, a firm employs 50 persons. During the year, ten of these persons leave the firm. Which of the following represents the labour turnover?",
+      "options": [
+        "25%",
+        "20%",
+        "10%",
+        "5%"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 46,
+      "sourcePage": 10,
+      "stem": "The person, Mr Bruce Hall, to whom the cheque is made out, is called the",
+      "options": [
+        "banker",
+        "acceptee",
+        "payee",
+        "payer"
+      ],
+      "contextText": "Items 46 and 47 refer to the following document.",
+      "table": {
+        "title": "LINGO BANK LTD",
+        "columns": [
+          "Field",
+          "Details"
+        ],
+        "rows": [
+          [
+            "Address",
+            "LINGO BLVD\nLINGO"
+          ],
+          [
+            "No.",
+            "001"
+          ],
+          [
+            "Date",
+            "21 Sept. 2021"
+          ],
+          [
+            "Pay to the order of",
+            "Mr Bruce Hall"
+          ],
+          [
+            "the sum of",
+            "one hundred and fifty dollars"
+          ],
+          [
+            "Amount",
+            "$150"
+          ],
+          [
+            "Signature",
+            "Joan Wilpaymor"
+          ]
+        ],
+        "details": [
+          "A/C Payee Only is printed diagonally between two parallel lines.",
+          "Counterfoil: No. 001; 21/9/2021; In favour of B. Hall; $150."
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 47,
+      "sourcePage": 10,
+      "stem": "On 2 October 2021, Mr Hall attempted to cash the cheque above at his bank, Savings Bank Ltd. His request was denied because",
+      "options": [
+        "the cheque was postdated",
+        "his account was overdrawn",
+        "it was an open cheque",
+        "it was a crossed cheque"
+      ],
+      "contextText": "Items 46 and 47 refer to the following document.",
+      "table": {
+        "title": "LINGO BANK LTD",
+        "columns": [
+          "Field",
+          "Details"
+        ],
+        "rows": [
+          [
+            "Address",
+            "LINGO BLVD\nLINGO"
+          ],
+          [
+            "No.",
+            "001"
+          ],
+          [
+            "Date",
+            "21 Sept. 2021"
+          ],
+          [
+            "Pay to the order of",
+            "Mr Bruce Hall"
+          ],
+          [
+            "the sum of",
+            "one hundred and fifty dollars"
+          ],
+          [
+            "Amount",
+            "$150"
+          ],
+          [
+            "Signature",
+            "Joan Wilpaymor"
+          ]
+        ],
+        "details": [
+          "A/C Payee Only is printed diagonally between two parallel lines.",
+          "Counterfoil: No. 001; 21/9/2021; In favour of B. Hall; $150."
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 48,
+      "sourcePage": 10,
+      "stem": "The document which gives a description of items offered for sale is the",
+      "options": [
+        "order",
+        "enquiry",
+        "quotation",
+        "catalogue"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 49,
+      "sourcePage": 10,
+      "stem": "The term 'minimum level' on a stock card refers to the",
+      "options": [
+        "lowest balance of stock allowed",
+        "amount allowed to the manager",
+        "smallest batch that can be bought",
+        "least amount of stock a business can afford"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 50,
+      "sourcePage": 11,
+      "stem": "What is the 20% overhead charge?",
+      "options": [
+        "$140",
+        "$182",
+        "$222",
+        "$266"
+      ],
+      "contextText": "Items 50 and 51 refer to the following document.",
+      "table": {
+        "title": "Zina's Upholstery",
+        "columns": [
+          "Materials needed / Labour required",
+          "Cost $"
+        ],
+        "rows": [
+          [
+            "Fabric",
+            "600"
+          ],
+          [
+            "Sponge",
+            "250"
+          ],
+          [
+            "Thread",
+            "60"
+          ],
+          [
+            "Stitcher",
+            "200"
+          ],
+          [
+            "Total cost of labour",
+            "200"
+          ],
+          [
+            "Add 20% for overheads",
+            ""
+          ],
+          [
+            "Total cost of job",
+            ""
+          ]
+        ],
+        "details": [
+          "Customer's name: [blank]",
+          "Job: 12 cushions",
+          "Job no.: 170",
+          "Time required to complete job: 2 days"
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 51,
+      "sourcePage": 11,
+      "stem": "The TOTAL cost of the job is",
+      "options": [
+        "$111",
+        "$910",
+        "$1 110",
+        "$1 332"
+      ],
+      "contextText": "Items 50 and 51 refer to the following document.",
+      "table": {
+        "title": "Zina's Upholstery",
+        "columns": [
+          "Materials needed / Labour required",
+          "Cost $"
+        ],
+        "rows": [
+          [
+            "Fabric",
+            "600"
+          ],
+          [
+            "Sponge",
+            "250"
+          ],
+          [
+            "Thread",
+            "60"
+          ],
+          [
+            "Stitcher",
+            "200"
+          ],
+          [
+            "Total cost of labour",
+            "200"
+          ],
+          [
+            "Add 20% for overheads",
+            ""
+          ],
+          [
+            "Total cost of job",
+            ""
+          ]
+        ],
+        "details": [
+          "Customer's name: [blank]",
+          "Job: 12 cushions",
+          "Job no.: 170",
+          "Time required to complete job: 2 days"
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 52,
+      "sourcePage": 12,
+      "stem": "Which of the following documents is issued by the petty cashier as a record of purchase and issue of cash to a member of staff?",
+      "options": [
+        "Invoice",
+        "Voucher",
+        "Cash bill",
+        "Statement"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 53,
+      "sourcePage": 12,
+      "stem": "Assuming that there are no further transactions, what would be the opening balance on the account on 1 February?",
+      "options": [
+        "$105",
+        "$155",
+        "$195",
+        "$285"
+      ],
+      "contextText": "Item 53 refers to the following transactions which occurred during the month of January 2023.",
+      "table": {
+        "title": "January 2023 transactions",
+        "columns": [
+          "Date",
+          "Details",
+          "Description",
+          "Debit ($)",
+          "Credit ($)",
+          "Balance ($)"
+        ],
+        "rows": [
+          [
+            "1 January",
+            "Balance",
+            "",
+            "",
+            "",
+            "150"
+          ],
+          [
+            "3 January",
+            "Interest",
+            "",
+            "",
+            "5",
+            ""
+          ],
+          [
+            "5 January",
+            "Withdrawal",
+            "ATM",
+            "140",
+            "",
+            ""
+          ],
+          [
+            "12 January",
+            "Cheque",
+            "13572",
+            "",
+            "200",
+            ""
+          ],
+          [
+            "15 January",
+            "Cheque",
+            "87431",
+            "50",
+            "",
+            ""
+          ],
+          [
+            "27 January",
+            "Service charge",
+            "",
+            "10",
+            "",
+            ""
+          ]
+        ],
+        "details": []
+      }
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 54,
+      "sourcePage": 12,
+      "stem": "The term 'reorder level' is used for goods",
+      "options": [
+        "requisitioned when the stock level reaches its lowest point",
+        "requested when stock is almost finished",
+        "ordered when stock level is finished",
+        "ordered on a daily basis"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 55,
+      "sourcePage": 12,
+      "stem": "Which of the following types of discounts is given specifically for prompt settlement of an account within a given period?",
+      "options": [
+        "Trade",
+        "Sales",
+        "Bulk",
+        "Cash"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 56,
+      "sourcePage": 13,
+      "stem": "Which is the BEST method of processing inventory data?",
+      "options": [
+        "Manual",
+        "Physical",
+        "Electronic",
+        "Mechanical"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 57,
+      "sourcePage": 13,
+      "stem": "How many hours did Gary spend at the office?",
+      "options": [
+        "43",
+        "45",
+        "46",
+        "48"
+      ],
+      "contextText": "Item 57 refers to the following clock card which shows the times of arrival and departure for an employee.\n\nNOTE: The clock card makes no provision for a lunch hour from Monday to Friday.",
+      "table": {
+        "title": "CLOCK CARD",
+        "columns": [
+          "Day",
+          "In",
+          "Out",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Monday",
+            "7:30",
+            "4:30",
+            ""
+          ],
+          [
+            "Tuesday",
+            "7:30",
+            "6:30",
+            ""
+          ],
+          [
+            "Wednesday",
+            "8:00",
+            "6:00",
+            ""
+          ],
+          [
+            "Thursday",
+            "7:30",
+            "4:30",
+            ""
+          ],
+          [
+            "Friday",
+            "7:30",
+            "4:30",
+            ""
+          ]
+        ],
+        "details": [
+          "Employee: Gary Watson",
+          "No.: 00401",
+          "Period: 1–6 June 2021"
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 58,
+      "sourcePage": 13,
+      "stem": "What is the benefit of having insurance coverage during the transportation of goods?",
+      "options": [
+        "Compensates the businessperson in case of a loss",
+        "Prevents the driver from selling the goods",
+        "Ensures goods are not stolen",
+        "Prevents accidents"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 59,
+      "sourcePage": 13,
+      "stem": "A manifest is a document which shows\n\nI. a listing of travellers on board a vessel\nII. a summary of the cargo a vessel is carrying\nIII. the cost of insurance and freight of the goods on board a vessel",
+      "options": [
+        "I only",
+        "II only",
+        "I and II only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2024-MJ",
+      "number": 60,
+      "sourcePage": 13,
+      "stem": "What is the cost per unit?",
+      "options": [
+        "$4",
+        "$6",
+        "$10",
+        "$13"
+      ],
+      "contextText": "P. Hawk has a manufacturing business. His raw materials cost $1900. Rates and rent total $2000 and factory wages amount to $2500. The number of units produced is 640."
+    }
+  ]
+}

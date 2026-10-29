@@ -22,7 +22,7 @@ import {mapEnglishAPaper2,mapIntegratedSciencePaper2} from "./paper2AdditionalAd
 import {mapSocialStudiesPaper2} from "./paper2RemainingAdaptersV2";
 import {mapPobPaper2Manifest} from "./pobPaper2ManifestAdapterV2";
 
-test("every one of the nine real subjects has its source bank, grader and V2 adapter checked in",()=>{
+test("every configured Paper 2 subject has its source bank, grader and V2 adapter checked in",()=>{
  const audited=auditPaper2SubjectSourceInventory();
  expect(audited.pass).toBe(true);
  expect(audited.issues).toEqual([]);

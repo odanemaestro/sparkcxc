@@ -1,3 +1,4 @@
+import {evaluateOaSourceV2} from "../officeAdministration/oaMarkingV2";
 /**
  * Shared SPARK deterministic subject examiner integration for private Paper 2 V2.
  *
@@ -65,10 +66,10 @@ import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Orig
 // joins this set only once its resolution policy is covered by the
 // criterion verification matrix (src/grading/v2CriterionVerifier.js).
 const resolutionPolicySubjects=new Set(["information-technology","mathematics","chemistry","food-nutrition-and-health",
- "integrated-science","physics","principles-of-accounts","principles-of-business","social-studies","english-a"]);
+ "integrated-science","physics","principles-of-accounts","principles-of-business","social-studies","english-a","office-administration"]);
 const subjectIds=new Set([
  "mathematics","physics","information-technology","chemistry","english-a",
- "food-nutrition-and-health","integrated-science","social-studies","principles-of-business","principles-of-accounts"
+ "food-nutrition-and-health","integrated-science","social-studies","principles-of-business","principles-of-accounts","office-administration"
 ]);
 const finite=n=>typeof n==="number"&&Number.isFinite(n);
 const object=x=>x&&typeof x==="object"&&!Array.isArray(x);
@@ -1304,6 +1305,9 @@ export function evaluateExistingSubjectPaper2V2({subjectId,paperId,criteria,resp
   case "food-nutrition-and-health":rows=fnh(criteria,responses);break;
   case "integrated-science":rows=integratedScience(criteria,responses);break;
   case "principles-of-business":rows=pob(criteria,responses,paperId);break;
+  case "office-administration":
+   rows=evaluateOaSourceV2({paperId,criteria,responses}).map(({criterionId,maxMarks,suggestedMarks,method,resolved})=>({criterionId,maxMarks,suggestedMarks,method,resolved}));
+   break;
   case "principles-of-accounts":
    // Subject review diagnostics stay out of the strict five-field private
    // worker protocol validated by spark_v2_complete_subject_job.

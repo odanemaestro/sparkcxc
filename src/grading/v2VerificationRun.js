@@ -1,3 +1,4 @@
+import {oaSourceFixtures} from "../officeAdministration/oaMarkingV2";
 /**
  * One complete V2 criterion verification run over every registered paper.
  *
@@ -90,6 +91,7 @@ function itContext(paperId,criterionId){
 
 /** Returns {kind, fixtures, sourceAnswer, alternatives, ruleId} or {blocked}. */
 export function fixturesForCriterion({subjectId,paperId,criterion}){
+ if(subjectId==="office-administration")return oaSourceFixtures({paperId,criterion});
  if(subjectId==="english-a")return criterion.sourceMarking?.kind==="summary"
   ?englishSummaryFixtures({paperId,criterion}):englishExtendedFixtures({paperId,criterion});
  if(subjectId==="social-studies")return criterion.sourceFormat==="social-studies-essay"
