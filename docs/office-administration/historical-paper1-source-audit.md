@@ -18,7 +18,7 @@ Review dates: 28–29 October 2026. All 23 supplied sources retain their origina
 | 2012 | 46 | 21 | 0 | 47 |
 | 2013 | 58 | 54 | 0 | 13 |
 | 2015 | 51 | 41 | 0 | 26 |
-| 2016 | 48 | 40 | 0 | 26 |
+| 2016 | 58 | 58 | 58 | 2 |
 | 2017 | 60 | 60 | 60 | 0 |
 | 2018 | 60 | 60 | 60 | 0 |
 | 2019 | 60 | 60 | 60 | 0 |
@@ -43,3 +43,5 @@ The 2023 and 2024 source covers were separately checked on 29 October 2026; both
 The 2018 paper was compared with all ten supplied question pages on 29 October 2026 (60 questions). Missing boundaries/choices and truncated wording are repaired. The invoice and flight schedule are native text; the organizational chart uses the original rule layer and visually checked selectable labels in a tight crop. Its coloured answer annotations are excluded from native question wording and never treated as an official key. The supplied source begins at printed page 2; its missing cover does not receive a fabricated verified duration.
 
 The 2017 paper was compared with all ten supplied pages on 29 October 2026 (60 questions; the cover confirms 75 minutes). Its message form, transaction statement, stock table, purchase order, job-cost form and clock card are native text/tables. Printed dates, the 5/10 N/30 terms, choice order and blank totals are retained; the different 2017/2019 form values are not homogenized.
+
+The 2016 paper has 58 visually checked questions from its 12 supplied pages (75 minutes confirmed on the cover). Questions 23 and 27 remain unresolved: page 5 begins at their list/choices, with the stems clipped from the original embedded JPEG as well as the rendered PDF. The source SHA-256 still matches the manifest. The malformed page tree yields zero pages in pdfplumber but 12 pages in pypdf; the existing source pipeline already uses pypdf for page counts. Printed dates, the flight ticket, cheque, account statement and confectionery order were checked; clipped question numbers were recovered by their visible sequence, without inventing missing stems.

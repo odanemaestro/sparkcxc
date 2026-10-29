@@ -17,9 +17,11 @@ The supplied ZIP contains 23 historical Paper 1 and 21 historical Paper 2 PDFs, 
 
 The 2017, 2018, 2019, 2020, 2021, 2023, 2024 and 2025 Paper 1 papers have all 480 questions visually compared with their scans, including the register, stock record, petty-cash, invoice, inventory and costing tables. The 2024 May–June Paper 2 has six questions/17 response parts compared with the scan, including its franking, job description, action sheet, cheque, invoice and memorandum. The 2025 Paper 2 has all six questions/19 response parts compared with its scanned pages; its CV, index card, email, payroll and purchase requisition use native editable fields/tables. Safety illustrations retain their original colours. The source layout and exam response view are distinct presentations of the same supplied material.
 
+A further 58 questions from 2016 are visually checked. The embedded source image itself clips the stems of questions 23 and 27; those positions stay unresolved without invented wording. The paper is not marked fully reviewed.
+
 The positioned page assets retain their separate unverified OCR status; checking native question text does not silently approve the page-layer OCR.
 
-The older historical archive is **not release-approved**. At this checkpoint Paper 1 has 1,189 detected question boundaries across 1,380 positions; 191 numbered positions still require source review. Context-dependent or uncertain transcriptions remain explicitly flagged internally. The 1996 scan itself cuts text off at the right edge; extracting its embedded source image confirms that the missing edge is not merely a renderer crop. No wording has been invented to fill those gaps. Older Paper 2 forms and OCR wording also need further native-layout review.
+The older historical archive is **not release-approved**. At this checkpoint Paper 1 has 1,199 detected question boundaries across 1,380 positions; 181 numbered positions still require source review. Context-dependent or uncertain transcriptions remain explicitly flagged internally. The 1996 scan itself cuts text off at the right edge; extracting its embedded source image confirms that the missing edge is not merely a renderer crop. No wording has been invented to fill those gaps. Older Paper 2 forms and OCR wording also need further native-layout review.
 
 No official historical answer keys/schemes were supplied. Historical Paper 1 answers are unscored; historical Paper 2 contains labelled SPARK guidance rather than fabricated official marking. The 54 worked examples and 400 approach notes are distinct from the official specimen scheme and from the calibrated original Paper 2 rubrics.
 
@@ -66,3 +68,5 @@ Regression checkpoint: 212 relevant Jest suites covered 3,529 tests. The only fa
 Responsive confirmation: an isolated Chromium preview passed at 1440px and 390px, in light/dark exam views. Paper 1 restored its route, current question and flag after reload; Paper 2 restored its current question and an edited payroll cell. No outer-page overflow or browser exceptions were found. This local preview uses a fixture identity and no live authentication, so it does not replace the hosted HTTP checks.
 
 Latest focused verification: 13 Office Administration/catalogue Jest suites / 90 tests passed, all 16 staging packaging/authentication/authorization Node tests passed, and the production build passed. The saved draft commit d02a51fd also passed all 11 GitHub workflows. The 2018 chart and 2020 document layouts passed separate 1440px/390px Chromium checks.
+
+The subsequent partial 2016 source recovery passed both focused exam/source suites (18 tests), the production build and a 1440px/390px browser document check. Its two physically clipped stems stay unresolved.

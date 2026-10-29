@@ -1,5 +1,6 @@
 import historicalText from './oaHistoricalPaper1Text.json';
 import reviewedItems from './oaHistoricalPaper1ReviewedItems.json';
+import reviewed2016 from './oaHistoricalPaper1Reviewed2016.json';
 import reviewed2017 from './oaHistoricalPaper1Reviewed2017.json';
 import reviewed2018 from './oaHistoricalPaper1Reviewed2018.json';
 import reviewed2019 from './oaHistoricalPaper1Reviewed2019.json';
@@ -12,7 +13,7 @@ import { OA_HISTORICAL_PAPER1S, OA_SPECIMEN_PAPER1 } from './oaHistoricalPaper1'
 
 const years = [1995, 1996, 1997, 2000, 2001, 2002, 2003, 2007, 2009, 2010, 2011, 2012, 2013, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023, 2024, 2025];
 const historicalQuestions = historicalText.flatMap(paper => paper.questions);
-const reviewedIds = new Set([...reviewedItems.items,...reviewed2023.items,...reviewed2024.items,...reviewed2021.items,...reviewed2020.items,...reviewed2019.items,...reviewed2018.items,...reviewed2017.items].map(item => item.paperId + '-q' + String(item.number).padStart(2, '0')));
+const reviewedIds = new Set([...reviewedItems.items,...reviewed2023.items,...reviewed2024.items,...reviewed2021.items,...reviewed2020.items,...reviewed2019.items,...reviewed2018.items,...reviewed2017.items,...reviewed2016.items].map(item => item.paperId + '-q' + String(item.number).padStart(2, '0')));
 
 describe('Office Administration historical Paper 1 source integrity', () => {
   test('runtime imports all 23 real historical sources and the separately audited specimen', () => {
@@ -70,7 +71,7 @@ describe('Office Administration historical Paper 1 source integrity', () => {
     expect(historicalQuestions.filter(q => !q.sourceQuestionNumberDetected).length).toBeLessThanOrEqual(206);
     expect(historicalQuestions.filter(q => q.options.length === 4).length).toBeGreaterThan(682);
     expect(historicalQuestions.filter(q => q.requiresSourcePage).length).toBeLessThan(698);
-    expect(historicalQuestions.filter(q => q.transcriptionVerified)).toHaveLength(480);
+    expect(historicalQuestions.filter(q => q.transcriptionVerified)).toHaveLength(538);
     historicalText.forEach(paper => {
       expect(paper.extractedQuestionCount).toBe(paper.questions.filter(q => q.sourceQuestionNumberDetected).length);
       expect(paper.sourceReviewSlotCount).toBe(paper.questions.filter(q => !q.sourceQuestionNumberDetected).length);
@@ -94,10 +95,10 @@ describe('Office Administration historical Paper 1 source integrity', () => {
     });
     const paper1995 = historicalText.find(paper => paper.year === 1995);
     expect(paper1995.questions.every(q => q.sourcePage > 1)).toBe(true);
-    // The bare 50 in the 2016 stock/transaction table is not question 50.
-    const q50 = historicalText.find(paper => paper.year === 2016).questions[49];
-    expect(q50.sourceQuestionNumberDetected).toBe(false);
-    expect(q50.stem).toBe('');
+    // The clipped 2016 question 23 stem is never inferred from its surviving list.
+    const clipped = historicalText.find(paper => paper.year === 2016).questions[22];
+    expect(clipped.sourceQuestionNumberDetected).toBe(false);
+    expect(clipped.stem).toBe('');
   });
 
   test('the 60 visually checked 2025 items preserve wording and source tables without enabling marks', () => {
@@ -156,6 +157,16 @@ describe('Office Administration historical Paper 1 source integrity', () => {
     expect(p.questions[55].table.rows).toContainEqual(['Add 20% for Overheads','']);
     expect(p.questions[57].options).toEqual(['$4','$6','$10','$13']);
     for(const number of [29,47,54,56,57])expect(p.questions[number-1].tableBeforeStem).toBe(true);
+  });
+
+  test('keeps the two physically clipped 2016 stems unresolved after reviewing readable items',()=>{
+    const p=historicalText.find(p=>p.year===2016);
+    expect(reviewed2016.items).toHaveLength(58);
+    expect(p).toMatchObject({reviewedQuestionCount:58,transcriptionVerified:false,sourceReviewRequiredCount:2,durationMinutes:75,durationVerified:true});
+    expect(p.questions.filter(q=>!q.transcriptionVerified).map(q=>q.number)).toEqual([23,27]);
+    expect(p.questions[49]).toMatchObject({sourcePage:10,transcriptionVerified:true});
+    expect(p.questions[49].stem).toContain('COD means');
+    expect(p.questions[49].options).toEqual(['Cash on due date','Cash on delivery','Cash on demand','Cash on deposit']);
   });
 
   test('official specimen conflict remains separate and excluded from scoring', () => {
