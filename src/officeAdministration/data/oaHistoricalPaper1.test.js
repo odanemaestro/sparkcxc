@@ -1,5 +1,6 @@
 import historicalText from './oaHistoricalPaper1Text.json';
 import reviewedItems from './oaHistoricalPaper1ReviewedItems.json';
+import reviewed2015 from './oaHistoricalPaper1Reviewed2015.json';
 import reviewed2016 from './oaHistoricalPaper1Reviewed2016.json';
 import reviewed2017 from './oaHistoricalPaper1Reviewed2017.json';
 import reviewed2018 from './oaHistoricalPaper1Reviewed2018.json';
@@ -13,7 +14,7 @@ import { OA_HISTORICAL_PAPER1S, OA_SPECIMEN_PAPER1 } from './oaHistoricalPaper1'
 
 const years = [1995, 1996, 1997, 2000, 2001, 2002, 2003, 2007, 2009, 2010, 2011, 2012, 2013, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023, 2024, 2025];
 const historicalQuestions = historicalText.flatMap(paper => paper.questions);
-const reviewedIds = new Set([...reviewedItems.items,...reviewed2023.items,...reviewed2024.items,...reviewed2021.items,...reviewed2020.items,...reviewed2019.items,...reviewed2018.items,...reviewed2017.items,...reviewed2016.items].map(item => item.paperId + '-q' + String(item.number).padStart(2, '0')));
+const reviewedIds = new Set([...reviewedItems.items,...reviewed2023.items,...reviewed2024.items,...reviewed2021.items,...reviewed2020.items,...reviewed2019.items,...reviewed2018.items,...reviewed2017.items,...reviewed2016.items,...reviewed2015.items].map(item => item.paperId + '-q' + String(item.number).padStart(2, '0')));
 
 describe('Office Administration historical Paper 1 source integrity', () => {
   test('runtime imports all 23 real historical sources and the separately audited specimen', () => {
@@ -71,7 +72,7 @@ describe('Office Administration historical Paper 1 source integrity', () => {
     expect(historicalQuestions.filter(q => !q.sourceQuestionNumberDetected).length).toBeLessThanOrEqual(206);
     expect(historicalQuestions.filter(q => q.options.length === 4).length).toBeGreaterThan(682);
     expect(historicalQuestions.filter(q => q.requiresSourcePage).length).toBeLessThan(698);
-    expect(historicalQuestions.filter(q => q.transcriptionVerified)).toHaveLength(538);
+    expect(historicalQuestions.filter(q => q.transcriptionVerified)).toHaveLength(598);
     historicalText.forEach(paper => {
       expect(paper.extractedQuestionCount).toBe(paper.questions.filter(q => q.sourceQuestionNumberDetected).length);
       expect(paper.sourceReviewSlotCount).toBe(paper.questions.filter(q => !q.sourceQuestionNumberDetected).length);
@@ -127,7 +128,7 @@ describe('Office Administration historical Paper 1 source integrity', () => {
     expect(paper.questions[59].options[3]).toBe('Order forms are used externally while requisition forms are used internally.');
   });
 
-  test.each([reviewed2017, reviewed2018, reviewed2019, reviewed2020, reviewed2021, reviewed2023, reviewed2024])('uses the complete source-checked recent paper $paperId', reviewed => {
+  test.each([reviewed2015, reviewed2017, reviewed2018, reviewed2019, reviewed2020, reviewed2021, reviewed2023, reviewed2024])('uses the complete source-checked recent paper $paperId', reviewed => {
     const paper=historicalText.find(p=>p.id===reviewed.paperId);
     expect(reviewed.items).toHaveLength(60);
     expect(paper).toMatchObject({durationMinutes:reviewed.durationMinutes,durationVerified:reviewed.durationVerified});
