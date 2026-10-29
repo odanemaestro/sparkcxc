@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 COVER_YEARS={1995,1997,2007,2009,2010,2011,2016,2017,2019,2020,2021,2023,2024,2025}
 FOOTER=re.compile(r'(?:01237\d{3}|000901|GO\s+ON\s+TO\s+THE\s+NEXT|END\s+OF\s+TEST|All rights reserved|Copyright)',re.I)
 METADATA=[r for r in json.loads((ROOT/'public/office-administration/manifest.json').read_text(encoding='utf8')) if r['id'].startswith('OA-P1-')]
-REVIEWED_SETS=[json.loads((ROOT/'src/officeAdministration/data'/name).read_text(encoding='utf8')) for name in ['oaHistoricalPaper1ReviewedItems.json','oaHistoricalPaper1Reviewed2023.json','oaHistoricalPaper1Reviewed2024.json','oaHistoricalPaper1Reviewed2021.json','oaHistoricalPaper1Reviewed2020.json','oaHistoricalPaper1Reviewed2019.json']]
+REVIEWED_SETS=[json.loads((ROOT/'src/officeAdministration/data'/name).read_text(encoding='utf8')) for name in ['oaHistoricalPaper1ReviewedItems.json','oaHistoricalPaper1Reviewed2023.json','oaHistoricalPaper1Reviewed2024.json','oaHistoricalPaper1Reviewed2021.json','oaHistoricalPaper1Reviewed2020.json','oaHistoricalPaper1Reviewed2019.json','oaHistoricalPaper1Reviewed2018.json','oaHistoricalPaper1Reviewed2017.json']]
 def rows(words):
     out=[]
     for w in sorted(words,key=lambda w:(w.get('linecy',w['y']+w['height']/2),w['x'])):
