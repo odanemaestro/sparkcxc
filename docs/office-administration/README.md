@@ -80,3 +80,10 @@ The subsequent complete Office Administration, About SPARK and generic subject c
 The 2022 Paper 2 recovery passed three focused source/document/exam suites (15 tests), the production build and 1440px/390px browser checks. Original fixed indexing/date cells stay read-only, editable destination cells survive refresh, and two-column forms fit within a mobile screen. Wider response grids retain keyboard-accessible scrolling. The subsequent 2021 review brings historical Paper 2 to four fully checked papers (2021, 2022, 2024 May–June and 2025); 17 older papers still require native transcription review.
 
 The 2021 Paper 2 recovery passed the three focused source/document/exam suites (16 tests), production build and 1440px/390px browser checks. Mail-room and email responses, plus delivery quantities, survive refresh; printed candidate X marks and the cheque discrepancies remain unchanged. Delivery totals stay blank for students to calculate.
+
+
+The 30 October archive checkpoint adds full native reviews for January 2024 and 2017–2019 Paper 2: eight papers are checked, with 13 remaining. It includes source-shaped editable organization boxes, message checkboxes, payroll, credit note, cash books, reconciliation and delivery forms. Browser refresh and contained mobile scrolling were checked. The entire historical archive must be completed before publication, as requested. See the source audit for preserved source discrepancies and page-by-page coverage.
+
+The subsequent 2016 May–June review brings Paper 2 to nine fully checked papers, with 12 remaining. All 22 pages / 27 parts were visually checked, including seven-question choice, stock control, FIFO/average-cost and reconciliation forms. The entire archive remains the launch requirement.
+
+Validation for the nine-paper checkpoint: 14 course/catalogue/About suites, 108 tests passed; production build passed. Chromium desktop/mobile checks cover the five newly reviewed papers, native forms and refresh persistence.

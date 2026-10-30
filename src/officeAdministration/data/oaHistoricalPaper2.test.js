@@ -77,7 +77,7 @@ it('links every historical question, response part and guidance item to the supp
 it('distinguishes SPARK guidance from an unavailable official historical scheme',()=>{
  let worked=0,approaches=0;
  for(const paper of OA_HISTORICAL_PAPER2S){
-  expect(paper).toMatchObject({officialKeyAvailable:false,answerKeyVerified:false,officialMarkSchemeAvailable:false,markingStatus:'spark-guidance',transcriptionVerified:['OA-P2-2021-MJ','OA-P2-2022-MJ','OA-P2-2024-MJ','OA-P2-2025-MJ'].includes(paper.id)});
+  expect(paper).toMatchObject({officialKeyAvailable:false,answerKeyVerified:false,officialMarkSchemeAvailable:false,markingStatus:'spark-guidance',transcriptionVerified:['OA-P2-2016-MJ','OA-P2-2017-MJ','OA-P2-2018-MJ','OA-P2-2019-MJ','OA-P2-2024-JAN','OA-P2-2021-MJ','OA-P2-2022-MJ','OA-P2-2024-MJ','OA-P2-2025-MJ'].includes(paper.id)});
   for(const part of paper.questions.flatMap(q=>q.parts)){
    expect(part.guidance.length).toBeGreaterThan(30);
    expect(part.markingGuidance).toMatchObject({author:'SPARK',official:false,sourceId:paper.id,maxMarks:part.marks});
@@ -159,4 +159,43 @@ it('preserves the 2021 printed interview selections, cheque discrepancies and de
  const skills=p.questions[4].parts[2].responseTables[0];expect(skills.rows[3]).toEqual(['Literacy','']);
  const delivery=p.questions[5].parts[2];expect(delivery.sourcePages).toEqual([18,19]);expect(delivery.table.rows).toContainEqual(['Order No','R 1256.']);expect(delivery.table.rows).toContainEqual(['Terms','5% trade discount\n10% VAT']);expect(delivery.responseTables[0].rows).toEqual([['','Bag of balloons','B12','150.00',''],['','Box of party hats','H24','392.00',''],['','Whistle','W32','1.10','']]);
  expect(delivery.responseTables[0].editable).toEqual([[0,0],[0,4],[1,0],[1,4],[2,0],[2,4]]);
+});
+
+it('keeps the January 2024 source chart, given example and reconciliation balances',()=>{
+ const p=byId('OA-P2-2024-JAN');expect(p.transcriptionVerified).toBe(true);expect(p.questions.flatMap(q=>q.parts)).toHaveLength(18);
+ const jobs=p.questions[0].parts[2];expect(jobs.responseTables[0].rows[0]).toEqual(['Liaises between the customers and the company','Customer service clerk']);expect(jobs.responseTables[0].editable.every(([r])=>r>0)).toBe(true);
+ expect(jobs.responseDiagram.nodes).toHaveLength(9);expect(jobs.responseDiagram.nodes.filter(n=>n.fixed===undefined)).toHaveLength(8);expect(jobs.responseDiagram.lines).toHaveLength(6);expect(jobs.responseDiagram.sourceGeometry.page).toBe(7);
+ const message=p.questions[1].parts[2];expect(message.fields.filter(f=>f.kind==='checkbox').map(f=>f.label)).toEqual(['Called','Please Call','Will Call Back','Urgent']);
+ const travel=p.questions[2].parts[2];expect(travel.table.rows).toContainEqual(['Accommodation Package for FOUR Nights','Ocean view','$900','in total']);expect(travel.responseTables[0].rows.every(r=>r[1]===''&&r[2]==='')).toBe(true);
+ const bank=p.questions[4].parts[2].responseTables[0];expect(bank.rows[0]).toEqual(['Balance as per Cash Book','','300.00']);expect(bank.rows).toContainEqual(['Balance as per Bank Statement','','330.00']);expect(bank.editable.every(([r])=>bank.rows[r][0]==='')).toBe(true);expect(new Set(bank.columnLabels).size).toBe(3);
+ const advice=p.questions[5].parts[2];expect(advice.responseTables[0].rows).toHaveLength(4);expect(advice.responseTables[0].rows.flat().every(v=>v==='')).toBe(true);expect(advice.table.rows).toContainEqual(['Telephone','(246) 271-4100']);expect(advice.sourcePages).toEqual([22,23]);
+});
+it('retains the checked 2018 and 2019 forms without filling source blanks or resolving printed discrepancies',()=>{
+ const old=byId('OA-P2-2018-MJ'),later=byId('OA-P2-2019-MJ');
+ for(const p of [old,later]){expect(p.transcriptionVerified).toBe(true);expect(p.questions.every(q=>q.parts.every(p=>p.promptVerified&&p.layoutVerified))).toBe(true);}
+ const register=old.questions[2].parts[2];expect(register.responseTables[0].rows).toEqual([['','','','','']]);expect(register.fields[0].position).toBe('after');
+ const reconciliation=old.questions[4].parts[2];expect(reconciliation.tables[0].rows[4]).toContain('April 31');expect(reconciliation.tables[1].rows.every(row=>row[4]==='')).toBe(true);
+ expect(reconciliation.responseTables[0].columnLabels).toHaveLength(6);expect(new Set(reconciliation.responseTables[0].columnLabels).size).toBe(6);
+ expect(reconciliation.responseTables[0].rows[0][1]).toBe('Balance b/d');expect(reconciliation.responseTables[0].editable).not.toContainEqual([0,1]);
+ const memo=later.questions[0].parts[2];expect(memo.table.rows[0]).toEqual(['All Clerical Staff','Mr Roger Byles, Director of Administration']);
+ const job=later.questions[3].parts[1];expect(job.table.rows[0]).toEqual(['Human Resource Clerk','Human Resource']);expect(job.fields.map(f=>f.label)).toContain('Vacation Leave');
+ const cash=later.questions[4].parts[2];expect(cash.prompt).toContain('$120.00');expect(cash.responseTables[0].rows[0][0]).toBe('150 00');expect(cash.responseTables[0].rows).toHaveLength(16);expect(cash.responseTables[0].editable).not.toContainEqual([0,0]);expect(cash.table.rows[2].slice(1)).toEqual(['$35.00','$13.00','$12.25','$15.00']);
+ expect(old.questions[3].parts.map(p=>p.marks)).toEqual([3,3,9]);
+});
+it('keeps the 2017 payroll, credit note, cheque and delivery sheet as unfilled source forms',()=>{
+ const paper=byId('OA-P2-2017-MJ');expect(paper.transcriptionVerified).toBe(true);expect(paper.questions.flatMap(q=>q.parts)).toHaveLength(24);
+ const d=paper.questions[3].parts[3];expect(d.responseTables[0].rows.slice(0,2).map(r=>r.slice(0,2))).toEqual([['Tom Brown','780'],['Joan Gray','900']]);expect(d.responseTables[0].editable).not.toContainEqual([0,1]);expect(d.responseTables[1].title).toContain('CN 05');expect(d.responseTables[2].rows).toHaveLength(4);
+ const cash=paper.questions[4].parts[2].responseTables[0];expect(cash.rows[0][0]).toBe('500.00');expect(cash.rows[2][7]).toBe('130.00');expect(cash.merges).toEqual([{row:0,col:0,rowSpan:9}]);
+ const cheque=paper.questions[4].parts[3];expect(cheque.table.rows[0]).toEqual(['Main Street\nKingstown','20 November 2016']);expect(cheque.fields.map(f=>f.label)).toContain('Signature');
+ const delivery=paper.questions[5].parts[3];expect(delivery.fields.map(f=>f.label)).toContain('Distance from Twickenham Gardens to Kingston — miles plus return');expect(delivery.responseTables[0].rows).toEqual([['','','',''],['','','','']]);
+ expect(paper.questions[2].parts[3].prompt).toContain('Sunday 10 July');
+});
+it('retains the 2016 cash/stock discrepancies and source cells while leaving computations to students',()=>{
+ const paper=byId('OA-P2-2016-MJ');expect(paper.transcriptionVerified).toBe(true);expect(paper.questions.flatMap(q=>q.parts)).toHaveLength(27);
+ const message=paper.questions[0].parts[3];expect(message.prompt).toContain('Mesha-Gay');expect(message.prompt).toContain('Mesha-Gray');expect(message.fields.map(f=>f.label)).toEqual(['TO','FROM','ORGANIZATION','ADDRESS','PHONE','EXT','MESSAGE','Message Taken By']);
+ const records=paper.questions[4].parts[2].tables;expect(records[0].rows[0]).toEqual(['2015','','','','2016','','','']);expect(records[1].rows[3]).toEqual(['22 July','Cheque deposit','','$600','$800']);
+ const cash=paper.questions[4].parts[3].responseTables[0];expect(cash.rows).toHaveLength(5);expect(new Set(cash.columnLabels).size).toBe(8);
+ const stock=paper.questions[5].parts[2];expect(stock.tables[0].rows[2]).toEqual(['24','Notepads 8” × 4” (White)']);expect(stock.responseTables[0].rows[1].slice(6)).toEqual(['36','5 Apr.','','A663','13 Apr.']);expect(stock.responseTables[0].editable).not.toContainEqual([1,6]);expect(stock.fields[0].label).toBe('Unit');
+ const fifo=paper.questions[6].parts[3].responseTables[0];expect(fifo.rows[5]).toEqual(['October','','15 @ $20 each','','']);expect(fifo.rows[7][4]).toBe('');
+ const average=paper.questions[6].parts[4].responseTables[0];expect(average.rows[1][1]).toBe('20 @ $22.25 each');expect(average.rows[3].slice(3)).toEqual(['','','']);
 });

@@ -1,0 +1,1190 @@
+{
+  "paperId": "OA-P2-2017-MJ",
+  "reviewDate": "2026-10-30",
+  "reviewMethod": "Visual comparison with all 19 supplied PDF pages, including the sideways petty cash form and original payroll, credit note, cheque and destination sheet.",
+  "questions": {
+    "OA-P2-2017-MJ::1": {
+      "sourcePage": 2,
+      "sourcePages": [
+        2,
+        3,
+        4
+      ],
+      "layoutSourcePages": [
+        2,
+        3,
+        4
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2017-MJ::2": {
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        6,
+        7
+      ],
+      "layoutSourcePages": [
+        5,
+        6,
+        7
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2017-MJ::3": {
+      "sourcePage": 8,
+      "sourcePages": [
+        8,
+        9,
+        10
+      ],
+      "layoutSourcePages": [
+        8,
+        9,
+        10
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2017-MJ::4": {
+      "sourcePage": 11,
+      "sourcePages": [
+        11,
+        12,
+        13
+      ],
+      "layoutSourcePages": [
+        11,
+        12,
+        13
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2017-MJ::5": {
+      "sourcePage": 14,
+      "sourcePages": [
+        14,
+        15,
+        16
+      ],
+      "layoutSourcePages": [
+        14,
+        15,
+        16
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2017-MJ::6": {
+      "sourcePage": 17,
+      "sourcePages": [
+        17,
+        18,
+        19
+      ],
+      "layoutSourcePages": [
+        17,
+        18,
+        19
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    }
+  },
+  "parts": {
+    "OA-P2-2017-MJ::1::q1-a": {
+      "prompt": "Identify TWO forms of visual communication and for EACH, state its purpose.",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true,
+      "fields": [
+        {
+          "label": "Visual communication 1",
+          "kind": "text"
+        },
+        {
+          "label": "Purpose 1",
+          "kind": "text"
+        },
+        {
+          "label": "Visual communication 2",
+          "kind": "text"
+        },
+        {
+          "label": "Purpose 2",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2017-MJ::1::q1-b": {
+      "prompt": "Explain what is meant by the term ‘vertical flow of information’.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::1::q1-c": {
+      "prompt": "Briefly describe how decisions are made in a decentralized business structure.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::1::q1-d": {
+      "prompt": "Assume you are M Jennings of 7 Pineapple Grove, Potter’s Village, Antigua, who presently\nworks with Kirwan’s Manufacturing Co. Ltd at 6 Daisy Crescent, St John’s, Antigua, as a\npurchasing clerk. A few months ago you applied to the University of the West Indies, Cave\nHill, Barbados to pursue a degree programme in Business Education and were accepted by the\ninstitution to start your studies at the beginning of the school year in August.\nWrite a letter of resignation to Mr Ted Roye, the human resource officer, in the space provided\nbelow.\n(7 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3,
+        4
+      ],
+      "layoutSourcePages": [
+        3,
+        4
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2017-MJ::2::q2-a": {
+      "prompt": "List THREE services that a telephone company provides.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::2::q2-b": {
+      "prompt": "State any TWO procedures to be followed when receiving parcels in an office.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::2::q2-c": {
+      "prompt": "State TWO examples of intellectual property.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::2::q2-d": {
+      "prompt": "As a senior student, you are required to research and make a presentation at your Business\nEducation Club meeting on the culture of the work situation/environment. You consider the\nfollowing factors:\nTime management\nSocial interaction\nApplication of knowledge and skills\nDesirable attitude\nUsing the outline below, recommend TWO practices for EACH of the factors listed that may\nassist students in preparing for the world of work.",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        7
+      ],
+      "layoutSourcePages": [
+        6,
+        7
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "Preparing for the world of work",
+          "columns": [
+            "Factors",
+            "Practices which may assist students in preparing for the world of work"
+          ],
+          "rows": [
+            [
+              "Time management",
+              ""
+            ],
+            [
+              "Social Interaction",
+              ""
+            ],
+            [
+              "Application of knowledge and skills",
+              ""
+            ],
+            [
+              "Desirable attitude",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Time management",
+            "Social Interaction",
+            "Application of knowledge and skills",
+            "Desirable attitude"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2017-MJ::3::q3-a": {
+      "prompt": "Define any TWO of the following terms that are associated with business meetings:",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true,
+      "fields": [
+        {
+          "label": "Proposal",
+          "kind": "text"
+        },
+        {
+          "label": "Postpone",
+          "kind": "text"
+        },
+        {
+          "label": "Resolution",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2017-MJ::3::q3-b": {
+      "prompt": "The personal assistant, in making air travel reservations for an executive, needs to ask a\nnumber of questions such as, ‘which airline is preferred’ to ensure that arrangements are done\nto the executive’s satisfaction.\nState THREE other questions that should be asked before making travel arrangements for an\nexecutive.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::3::q3-c": {
+      "prompt": "There are times when appointments have to be cancelled or rescheduled.\nSuggest TWO actions a receptionist should take to ensure that clients are not inconvenienced\nwhen appointments have to be rescheduled.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::3::q3-d": {
+      "prompt": "The following information is given to you to prepare an itinerary for Mrs Donna Chang,\nsenior sales officer, who will be travelling over the period 10–12 July 2017.\n— Sunday 10 July, Mrs Chang will leave home at 0600 hours on Marley’s taxi #34. Check\nin at Caribbean Airlines desk, Norman Manley International Airport at 0645 hours.\nDepart flight CA 414 to Grantley Adams International Airport, Barbados at 0845 hours.\nEstimated time of arrival (ETA) at Grantley Adams 1145 hours. Take taxi to Bridgeport\nHotel, Christ Church. Confirmation of booking attached. Meals booked. Quotation\nprepared for OJM Industry Ltd. Rest of day free.\n— Monday 11 July, Breakfast meeting at hotel at 0700 hours with Mr S. Mace, local\ncompany representative. Notes attached for discussion prior to meetings. At 0830\nhours, meeting at regional office with sales department representatives. Agenda\nattached. Luncheon at Sandale Hotel at 1200 hours hosted by the Kiwanians. Transport\nby company car. 1400 hours meeting at Sandale hotel in the conference room with client\nSKR Manufacturing Ltd. Correspondence attached in portfolio. 1630 hours return to\nhotel by taxi.\n— Tuesday 12 July at 0700 hours, depart hotel by taxi to Grantley Adams airport, 0730\nhours check-in at CA desk; 0930 depart Grantley Adams CA 415 to Norman Manley;\n1230 hours estimated time of arrival, Jamaica, to be met by company car.\nUsing an appropriate format, prepare the itinerary for Mrs Donna Chang in the spaces provided\nbelow and on page 12.\n(8 marks)",
+      "promptVerified": true,
+      "sourcePage": 9,
+      "sourcePages": [
+        9,
+        10
+      ],
+      "layoutSourcePages": [
+        9,
+        10
+      ],
+      "layoutVerified": true,
+      "documentTitle": "ITINERARY",
+      "fields": [
+        {
+          "label": "Itinerary",
+          "kind": "text",
+          "rows": 18
+        }
+      ]
+    },
+    "OA-P2-2017-MJ::4::q4-a": {
+      "prompt": "The Factories Act is legislation used to regulate working conditions.\nState TWO provisions of this Act.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 11,
+      "sourcePages": [
+        11
+      ],
+      "layoutSourcePages": [
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::4::q4-b": {
+      "prompt": "State TWO external factors that may influence employee turnover.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 11,
+      "sourcePages": [
+        11
+      ],
+      "layoutSourcePages": [
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::4::q4-c": {
+      "prompt": "A spreadsheet is one of the software packages often used in an accounts office.\nGive TWO uses of a spreadsheet.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 11,
+      "sourcePages": [
+        11
+      ],
+      "layoutSourcePages": [
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::4::q4-d": {
+      "prompt": "(i) Tom Brown and Joan Gray, two employees of York Sugar Factory, are paid gross\nwages of $780 and $900 respectively for Week 4. Income tax is charged at 15 per\ncent and National Insurance at 10 per cent.\nComplete the following payroll sheet to calculate the net pay for each of the employees.\nShow all working. (5 marks)\n\n(ii) On 30 April 2017, Sam Desdemoine of 21 Rose Lane, Falmouth, Jamaica, placed an\norder (#20) to Big Joe’s Juice Complex, 15 Farm Road, Lucea, Hanover, for 10 cases\nof apple juice but only received 8 cases.\nComplete the credit note below to be sent to the purchaser for the $500 refund. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 12,
+      "sourcePages": [
+        12,
+        13
+      ],
+      "layoutSourcePages": [
+        12,
+        13
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "York Sugar Factory — Payroll Sheet — Week 4",
+          "columns": [
+            "Name",
+            "Gross Pay ($)",
+            "Income Tax ($)",
+            "National Insurance ($)",
+            "Total Deduction ($)",
+            "Net Pay ($)"
+          ],
+          "rows": [
+            [
+              "Tom Brown",
+              "780",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Joan Gray",
+              "900",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Total",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Tom Brown",
+            "Joan Gray",
+            "Total"
+          ],
+          "editable": [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              5
+            ]
+          ]
+        },
+        {
+          "title": "CREDIT NOTE — CN 05",
+          "columns": [
+            "",
+            ""
+          ],
+          "columnLabels": [
+            "Field",
+            "Answer"
+          ],
+          "rows": [
+            [
+              "",
+              ""
+            ],
+            [
+              "Date",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "Order #",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Heading and address",
+            "Date",
+            "Recipient and address",
+            "Order number"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Credit note items",
+          "columns": [
+            "QUANTITY",
+            "DESCRIPTION",
+            "AMOUNT"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(i) Payroll working",
+          "kind": "text",
+          "position": "after",
+          "rows": 6
+        }
+      ]
+    },
+    "OA-P2-2017-MJ::5::q5-a": {
+      "prompt": "(i) State the meaning of the term ‘errors and omissions excepted (E & OE)’ as used on\npurchases and sales documents.\n(2 marks)\n(ii) Differentiate between ‘cash on delivery’ and ‘cash with order’.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 14,
+      "sourcePages": [
+        14
+      ],
+      "layoutSourcePages": [
+        14
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::5::q5-b": {
+      "prompt": "State TWO factors that must be considered before selecting a supplier of goods and services\nfor a business.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 14,
+      "sourcePages": [
+        14
+      ],
+      "layoutSourcePages": [
+        14
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::5::q5-c": {
+      "prompt": "The following is an extract of an incomplete petty cash book. You are required to use the Imprest System to complete the analysis/extension columns and balance the account on 30 April 2017.",
+      "promptVerified": true,
+      "sourcePage": 15,
+      "sourcePages": [
+        15
+      ],
+      "layoutSourcePages": [
+        15
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "Petty Cash Book",
+          "columns": [
+            "Cash Received ($)",
+            "Date 2017",
+            "Details",
+            "Voucher No.",
+            "Totals ($)",
+            "Stationery",
+            "Postage",
+            "Travel"
+          ],
+          "rows": [
+            [
+              "500.00",
+              "",
+              "Cash",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "1 April",
+              "Office paper",
+              "10",
+              "260.00",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "15 April",
+              "Taxi fare",
+              "11",
+              "130.00",
+              "",
+              "",
+              "130.00"
+            ],
+            [
+              "",
+              "25 April",
+              "Stamps",
+              "12",
+              "50.00",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "Total for the month",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "merges": [
+            {
+              "row": 0,
+              "col": 0,
+              "rowSpan": 9
+            }
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              6,
+              5
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              7,
+              1
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              7,
+              3
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              7,
+              5
+            ],
+            [
+              7,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              8,
+              1
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              8,
+              3
+            ],
+            [
+              8,
+              4
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "preserveGiven": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2017-MJ::5::q5-d": {
+      "prompt": "The following information is given to an accounts clerk to fill out a cheque for a weekly paid\nemployee.\nAmount to be paid: $2501.50\nDrawer: George Barrett\nPayee: Orinthia Brown\nUse the draft provided below to complete the cheque.",
+      "promptVerified": true,
+      "sourcePage": 16,
+      "sourcePages": [
+        16
+      ],
+      "layoutSourcePages": [
+        16
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Bank of County",
+        "columns": [
+          "Address",
+          "Date"
+        ],
+        "rows": [
+          [
+            "Main Street\nKingstown",
+            "20 November 2016"
+          ]
+        ]
+      },
+      "documentTitle": "Cheque",
+      "fields": [
+        {
+          "label": "Pay to the order of",
+          "kind": "text"
+        },
+        {
+          "label": "The sum of",
+          "kind": "text"
+        },
+        {
+          "label": "Amount $",
+          "kind": "text"
+        },
+        {
+          "label": "Signature",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2017-MJ::6::q6-a": {
+      "prompt": "Identify ONE type of service offered by EACH of the following financial institutions:",
+      "promptVerified": true,
+      "sourcePage": 17,
+      "sourcePages": [
+        17
+      ],
+      "layoutSourcePages": [
+        17
+      ],
+      "layoutVerified": true,
+      "fields": [
+        {
+          "label": "Cambio/bureau de change",
+          "kind": "text"
+        },
+        {
+          "label": "Investment company",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2017-MJ::6::q6-b": {
+      "prompt": "State TWO duties of a clerk in the customer service department.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 17,
+      "sourcePages": [
+        17
+      ],
+      "layoutSourcePages": [
+        17
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::6::q6-c": {
+      "prompt": "The functions of the corporate communications clerk include promoting, maintaining and\nimproving the corporate image of the company.\nList TWO tasks performed by the clerk in carrying out this role.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 17,
+      "sourcePages": [
+        17
+      ],
+      "layoutSourcePages": [
+        17
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2017-MJ::6::q6-d": {
+      "prompt": "White’s Manufacturing Co. Ltd, 168 Spanish Town Road, Kingston, Jamaica, are manufacturers\nof school and work uniforms in various colours and styles. On 10 June 2017, Mr Shawn\nMcCarthy is scheduled to make uniform deliveries to several customers. He drives a Toyota\nHiace pick-up van, licenses DB 18670. He is assigned a Mr John Harris as his assistant on\nthe delivery routes.\nThe customers for whom deliveries are to be made are: Mace Corporation located at 56\nWashington Boulevard, Kingston — an order for 60 work jump suits; 30 yellow and the\nremainder orange. A delivery is to be made to Stanford and Samuel Brothers Limited whose\noffice is located at 129 Twickenham Gardens in Spanish Town, 14 miles outside of Kingston\n— an order for 30 men’s black pants and 20 blue shirts.\nAfter each delivery the assistant makes comments in the required column on the destination\nsheet, indicating whether the delivery was made, and any issues encountered during delivery.\nOn the destination sheet provided below and on page 21, fill in the appropriate information\ngiven above that would enable safe and prompt delivery of the goods ordered. The sheet is to\nbe signed by the supervisor, Mr Jordan Rich.",
+      "promptVerified": true,
+      "sourcePage": 18,
+      "sourcePages": [
+        18,
+        19
+      ],
+      "layoutSourcePages": [
+        18,
+        19
+      ],
+      "layoutVerified": true,
+      "fields": [
+        {
+          "label": "Heading and address",
+          "kind": "text"
+        },
+        {
+          "label": "Class of Vehicle",
+          "kind": "text"
+        },
+        {
+          "label": "Date",
+          "kind": "text"
+        },
+        {
+          "label": "Registration No.",
+          "kind": "text"
+        },
+        {
+          "label": "Delivery Date",
+          "kind": "text"
+        },
+        {
+          "label": "Driver’s Name",
+          "kind": "text"
+        },
+        {
+          "label": "Destinations",
+          "kind": "text"
+        },
+        {
+          "label": "Assistant’s Name",
+          "kind": "text"
+        },
+        {
+          "label": "Distance from Twickenham Gardens to Kingston — miles plus return",
+          "kind": "text"
+        },
+        {
+          "label": "Signature — Supervisor",
+          "kind": "text",
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "DESTINATION SHEET",
+          "columns": [
+            "Customers’ Name",
+            "Type of Uniforms",
+            "Quantity and Colours",
+            "Comments"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}
