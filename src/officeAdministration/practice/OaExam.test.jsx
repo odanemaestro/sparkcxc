@@ -27,3 +27,13 @@ test('old Paper 2 requires six chosen questions and keeps original question numb
  render(<OaExam paper={{id:'OA-P2-old',paper:2,title:'Historical Paper 2',questions,requiredQuestionCount:6,selectionRules:{compulsory:[1,2,3,4],optional:[5,6,7,8],choose:2},totalMarks:90,durationMinutes:120}} userId="qa"/>);
  expect(screen.getByRole('button',{name:'Start examination'})).toBeDisabled();fireEvent.click(screen.getByRole('checkbox',{name:'Question 5'}));fireEvent.click(screen.getByRole('checkbox',{name:'Question 8'}));fireEvent.click(screen.getByRole('button',{name:'Start examination'}));fireEvent.click(screen.getByRole('button',{name:'Question 8, unanswered'}));expect(screen.getByRole('heading',{name:/Question 8/})).toBeInTheDocument();expect(screen.queryByRole('button',{name:/accounting tools|Export/i})).not.toBeInTheDocument();
 });
+
+test('source charts keep their printed position and can be reached by keyboard on narrow screens',()=>{
+ const chartPaper={...p1,questions:[{...p1.questions[0],contextText:'Item 1 refers to the diagram below.',figure:'office-administration/figures/chart.png',figureAlt:'Original sales chart',figureWidth:960,figureBeforeStem:true}]};
+ render(<OaExam paper={chartPaper} userId="qa"/>);fireEvent.click(screen.getByRole('button',{name:'Start examination'}));
+ const chart=screen.getByRole('img',{name:'Original sales chart'});const stem=screen.getByText('Which document?');
+ expect(chart.compareDocumentPosition(stem)&Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+ expect(screen.getByRole('region',{name:'Original sales chart'})).toHaveAttribute('tabindex','0');
+ expect(screen.getByText('Item 1 refers to the diagram below.')).toBeInTheDocument();
+ expect(screen.getAllByRole('radio')).toHaveLength(4);expect(screen.queryByRole('textbox')).not.toBeInTheDocument();
+});

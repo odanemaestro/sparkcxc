@@ -15,7 +15,7 @@ This branch adds Office Administration to SPARK’s existing Study, Practice, fl
 
 The supplied ZIP contains 23 historical Paper 1 and 21 historical Paper 2 PDFs, plus the syllabus/specimens. The app stores native question text and recreates source pages with positioned, selectable SVG text and a separate illustration/rule layer. It does not embed PDFs or put an accounting workspace inside exams.
 
-The 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024 and 2025 Paper 1 papers have all 540 questions visually compared with their scans, including the register, stock record, petty-cash, invoice, inventory and costing tables. The 2024 May–June Paper 2 has six questions/17 response parts compared with the scan, including its franking, job description, action sheet, cheque, invoice and memorandum. The 2025 Paper 2 has all six questions/19 response parts compared with its scanned pages; its CV, index card, email, payroll and purchase requisition use native editable fields/tables. Safety illustrations retain their original colours. The source layout and exam response view are distinct presentations of the same supplied material.
+The 2012, 2013, 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024 and 2025 Paper 1 papers have all 660 questions visually compared with their scans, including the register, stock record, petty-cash, invoice, inventory and costing tables. The 2024 May–June Paper 2 has six questions/17 response parts compared with the scan, including its franking, job description, action sheet, cheque, invoice and memorandum. The 2025 Paper 2 has all six questions/19 response parts compared with its scanned pages; its CV, index card, email, payroll and purchase requisition use native editable fields/tables. Safety illustrations retain their original colours. The source layout and exam response view are distinct presentations of the same supplied material.
 
 A further 58 questions from 2016 are visually checked. The embedded source image itself clips the stems of questions 23 and 27; those positions stay unresolved without invented wording. The paper is not marked fully reviewed.
 
@@ -72,3 +72,7 @@ Latest focused verification: 13 Office Administration/catalogue Jest suites / 90
 The subsequent partial 2016 source recovery passed both focused exam/source suites (18 tests), the production build and a 1440px/390px browser document check. Its two physically clipped stems stay unresolved.
 
 The subsequent 2015 recovery passed the two focused source/exam suites (19 tests), the production build and a 1440px/390px stock-record check; the original stock movements and invoice date/name are retained.
+
+The 2012/2013 recovery passed the two focused source/exam suites (22 tests), the production build, and 1440px/390px source-layout checks. All 120 questions were compared with the supplied pages; source contexts, cheque dates/names, stock figures and literal flight dates are preserved. The two original 2012 charts appear before their questions and scroll within narrow screens without page overflow. Historical Paper 1 now has 718 visually checked questions, including the 58 readable 2016 items.
+
+The subsequent complete Office Administration, About SPARK and generic subject catalogue check passed 14 suites / 98 tests. GitHub’s eleven workflows passed the preceding draft snapshot; the latest source recovery is sent through the same checks.

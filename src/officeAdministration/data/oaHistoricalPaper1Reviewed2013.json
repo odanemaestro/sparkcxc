@@ -1,0 +1,907 @@
+{
+  "paperId": "OA-P1-2013-MJ",
+  "reviewDate": "2026-10-29",
+  "reviewMethod": "Visual comparison with all supplied question pages; native selectable text and tables. Handwritten headings are excluded from question wording.",
+  "durationMinutes": null,
+  "durationVerified": false,
+  "items": [
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 1,
+      "sourcePage": 1,
+      "stem": "In a sole trader business, the decision of what to purchase is usually made by the",
+      "options": [
+        "cashier",
+        "proprietor",
+        "stock control clerk",
+        "purchasing manager"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 2,
+      "sourcePage": 1,
+      "stem": "Matchbox Ltd is structured so that each department has control over its own mail, typing, photocopying and filing. This method of organizing office functions is described as",
+      "options": [
+        "functional",
+        "centralised",
+        "decentralised",
+        "divisionalised"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 3,
+      "sourcePage": 1,
+      "stem": "In a letter, the attention line appears",
+      "options": [
+        "after the date",
+        "before the date",
+        "after the subject",
+        "before the salutation"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 4,
+      "sourcePage": 1,
+      "stem": "You are a clerk in a small organization and you are accountable to your supervisor who is the secretary. You feel that some improvements can be made in the filing system. Which of the following would be the MOST appropriate step for you to take?",
+      "options": [
+        "Discuss your ideas with a colleague.",
+        "Discuss your ideas with the secretary.",
+        "Make the changes you feel are necessary.",
+        "Continue with the old system until you are asked for an opinion."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 5,
+      "sourcePage": 1,
+      "stem": "Which of the following pieces of computer hardware is an output device?",
+      "options": [
+        "CPU",
+        "Mouse",
+        "Monitor",
+        "Keyboard"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 6,
+      "sourcePage": 1,
+      "stem": "Dissemination of information in a company may BEST be described as",
+      "options": [
+        "ensuring that information is safe",
+        "collecting all information in the office",
+        "getting information from all departments",
+        "distributing information to all departments"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 7,
+      "sourcePage": 1,
+      "stem": "You have been asked to arrange a telephone call which will allow employees in several different locations to speak to each other without a face-to-face meeting. Which of the following types of telephone calls should be used?",
+      "options": [
+        "Collect",
+        "Toll free",
+        "Fixed time",
+        "Conference"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 8,
+      "sourcePage": 1,
+      "stem": "The MAJOR difference between the operator-assisted call and the direct call is that the operator-assisted call",
+      "options": [
+        "is timed",
+        "incurs an additional fee",
+        "is monitored by the operator",
+        "has to be paid for immediately"
+      ],
+      "contextText": "Item 8 refers to the situation below.\n\nThe secretary of Brands International was having difficulty placing a direct overseas call, so she asked the operator to place the call for her. She wanted to speak to Mr John King. The operator was successful in placing the call."
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 9,
+      "sourcePage": 2,
+      "stem": "Which of the following is NOT a characteristic of registered mail?",
+      "options": [
+        "It offers proof of postage.",
+        "It facilitates safe delivery of mail.",
+        "It is normally sent by second-class mail.",
+        "It offers compensation for loss or damage up to a specified amount."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 10,
+      "sourcePage": 2,
+      "stem": "Which of the following pieces of equipment may be used for stamping mail?",
+      "options": [
+        "Jogger",
+        "Collator",
+        "Duplicator",
+        "Franking machine"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 11,
+      "sourcePage": 2,
+      "stem": "A customer called and enquired about a letter which had been sent to the firm a month ago. However, the letter could not be found. To determine if the letter was received, the mail clerk should refer to the",
+      "options": [
+        "mailing list",
+        "mail register",
+        "postage book",
+        "correspondence digest"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 12,
+      "sourcePage": 2,
+      "stem": "You are travelling to a destination where the time is one hour ahead of your departure time. If your plane departs at 12:00 noon and your flight takes one hour and fifteen minutes, at what time would you arrive at your destination?",
+      "options": [
+        "0215 hours",
+        "1215 hours",
+        "1315 hours",
+        "1415 hours"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 13,
+      "sourcePage": 2,
+      "stem": "To maintain efficient records management, documents are filed in chronological order. In this system, files are arranged according to",
+      "options": [
+        "dates",
+        "topics",
+        "numbers",
+        "companies"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 14,
+      "sourcePage": 2,
+      "stem": "The correct procedure for a receptionist to follow when introducing a visitor is to announce the person’s",
+      "options": [
+        "name only",
+        "title and company only",
+        "company, title and name",
+        "name, title and company"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 15,
+      "sourcePage": 2,
+      "stem": "You work in the records management department of a large firm. In what order should you file correspondence from the following four clients?\n\nI. Arthur Woolford\nII. Erin Wolf\nIII. Myrtle Woolworth\nIV. M. Woolworth",
+      "options": [
+        "I, II, IV, III",
+        "II, I, IV, III",
+        "III, I, II, IV",
+        "III, I, IV, II"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 16,
+      "sourcePage": 3,
+      "stem": "The accounts department has requested a file from the central filing department. Which of the following actions should the file clerk take?\n\nI. Find out if the file is available.\nII. Complete an ‘out’ sheet and place it in the file.\nIII. Ask the person receiving the file to sign for it.",
+      "options": [
+        "I only",
+        "I and II only",
+        "I and III only",
+        "I, II, III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 17,
+      "sourcePage": 3,
+      "stem": "The form indicated above is an example of",
+      "options": [
+        "an absent card",
+        "an index card",
+        "a minute sheet",
+        "a cross-referencing sheet"
+      ],
+      "contextText": "Item 17 refers to the following form.",
+      "tableBeforeStem": true,
+      "table": {
+        "columns": [
+          "Date\ntaken",
+          "Folder\nnumber\nor name",
+          "Taken\nby",
+          "Date\nreturned"
+        ],
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 18,
+      "sourcePage": 3,
+      "stem": "Which of the following would be MOST suitable for storing inactive files?",
+      "options": [
+        "Box files",
+        "Microfilm",
+        "Accordion files",
+        "Suspension folders"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 19,
+      "sourcePage": 3,
+      "stem": "Which of the following services would usually be offered to customers who have fixed deposit accounts at a commercial bank?\n\nI. Higher interest rate than that offered on savings accounts\nII. Withdrawals on demand with interest earned\nIII. Permission to write cheques on the accounts",
+      "options": [
+        "I only",
+        "II only",
+        "I and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 20,
+      "sourcePage": 3,
+      "stem": "The Joy High School wants to build a new canteen and has received promotional material from several firms. In order to select the MOST suitable firm for the job, the school should invite firms to send",
+      "options": [
+        "tenders",
+        "price lists",
+        "catalogues",
+        "statements"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 21,
+      "sourcePage": 3,
+      "stem": "The term 'cross-referencing' refers to documents that are filed",
+      "options": [
+        "as inactive",
+        "as miscellaneous",
+        "under the same heading",
+        "under different headings"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 22,
+      "sourcePage": 3,
+      "stem": "For which of the following reasons would the chairman of the board of a company normally postpone a meeting?",
+      "options": [
+        "Two of the directors of the company are absent.",
+        "The secretary has misplaced the list of members.",
+        "The chairman's agenda has not been prepared.",
+        "The number of persons needed to form a quorum is not present."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 23,
+      "sourcePage": 4,
+      "stem": "Travellers cheques are used instead of cash when travelling abroad because they",
+      "options": [
+        "have a greater value than cash",
+        "will be replaced by the bank if lost",
+        "are preferred to cash in foreign countries",
+        "give the traveller a higher status rating in the foreign country"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 24,
+      "sourcePage": 4,
+      "stem": "As a supervisor, you are expected to assess workers for a merit award. Which of the following should NOT be taken into consideration?",
+      "options": [
+        "Salary scale",
+        "Personal qualities",
+        "Punctuality and regularity",
+        "Initiative in solving problems"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 25,
+      "sourcePage": 4,
+      "stem": "Which of the following records would show an employee's duties, grade and salary?\nI. The employment contract\nII. The job specifications\nIII. The company manual",
+      "options": [
+        "I and II only",
+        "I and III only",
+        "II and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 26,
+      "sourcePage": 4,
+      "stem": "Some firms offer a programme which aims to assist new employees in becoming familiar with their jobs. This programme is referred to as",
+      "options": [
+        "an appraisal",
+        "an induction",
+        "a deployment",
+        "a recruitment"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 27,
+      "sourcePage": 4,
+      "stem": "Which of the following is the BEST method of payment for purchasing a box of paper clips for a company?",
+      "options": [
+        "Cash",
+        "Cheque",
+        "Credit card",
+        "Money order"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 28,
+      "sourcePage": 4,
+      "stem": "Which of the following terms is used to describe a committee which has been set up to deal with a specific matter?",
+      "options": [
+        "Ad hoc",
+        "Central",
+        "General",
+        "Administrative"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 29,
+      "sourcePage": 5,
+      "stem": "How many reams must be ordered on 23 April to restore stock to maximum?",
+      "options": [
+        "20",
+        "30",
+        "45",
+        "50"
+      ],
+      "tableBeforeStem": true,
+      "table": {
+        "columns": [
+          "DATE",
+          "DETAILS",
+          "RECEIVED",
+          "ISSUED",
+          "BALANCE"
+        ],
+        "rows": [
+          [
+            "1 March",
+            "",
+            "",
+            "",
+            "45"
+          ],
+          [
+            "8 March",
+            "Sales Department",
+            "",
+            "10",
+            "35"
+          ],
+          [
+            "10 March",
+            "Typing Pool",
+            "",
+            "12",
+            "23"
+          ],
+          [
+            "10 March",
+            "A.S. Bounty & Sons Ltd.",
+            "25",
+            "",
+            "48"
+          ],
+          [
+            "1 April",
+            "Purchasing Department",
+            "",
+            "8",
+            "40"
+          ],
+          [
+            "12 April",
+            "Typing Pool",
+            "",
+            "10",
+            "30"
+          ],
+          [
+            "23 April",
+            "Personnel Department",
+            "",
+            "10",
+            "20"
+          ]
+        ]
+      },
+      "contextText": "Item 29 refers to the table below which shows information on a stationery stock card.\nMaximum: 50 reams\nMinimum: 20 reams"
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 30,
+      "sourcePage": 5,
+      "stem": "At a meeting held on 25 April 2013, the appointment of a secretary was discussed. Which of the following documents should be consulted to obtain the information that was discussed at the meeting so that follow-up actions can be taken?",
+      "options": [
+        "The Notice",
+        "The Agenda",
+        "The Minutes",
+        "The Chairman’s Agenda"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 31,
+      "sourcePage": 5,
+      "stem": "At the end of a meeting, the chairperson has suggested that unfinished business be discussed at another meeting. The meeting has therefore been",
+      "options": [
+        "altered",
+        "amended",
+        "postponed",
+        "adjourned"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 32,
+      "sourcePage": 6,
+      "stem": "At the Annual General Meeting of Verona Enterprises, an equal number of votes were cast for and against a motion. What action should the chairperson take to break the tie?",
+      "options": [
+        "Adjourn the meeting.",
+        "Exercise his/her casting vote.",
+        "Ask the members to vote again.",
+        "Ask the members to ratify the motion."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 33,
+      "sourcePage": 6,
+      "stem": "Mrs Kay purchased a new stove on hire purchase from New & Used Appliances Ltd. She wants to authorize her bank to make monthly payments. Which of the following services should she use?",
+      "options": [
+        "Debit order",
+        "Money order",
+        "Standing order",
+        "Credit transfer"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 34,
+      "sourcePage": 6,
+      "stem": "Which of the following functions is NOT performed by the Human Resources department?",
+      "options": [
+        "Preparing job cards",
+        "Arranging training",
+        "Providing welfare facilities",
+        "Shortlisting job applications"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 35,
+      "sourcePage": 6,
+      "stem": "Clare Lee is paid a basic wage of $8.00 per hour for a 40-hour week and $9.60 per hour for overtime work. Last week Clare worked 48 hours. What was her total wage for the week?",
+      "options": [
+        "$ 76.80",
+        "$320.00",
+        "$396.80",
+        "$760.00"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 36,
+      "sourcePage": 6,
+      "stem": "Which of the following would be recorded as a motion in the minutes of a meeting?",
+      "options": [
+        "An alteration to a resolution",
+        "An amendment to the minutes",
+        "A formal proposal made by a member",
+        "An addition to a resolution after it has been passed"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 37,
+      "sourcePage": 6,
+      "stem": "In a cash book, all monies received are indicated as a",
+      "options": [
+        "credit",
+        "deposit",
+        "credit entry",
+        "debit entry"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 38,
+      "sourcePage": 6,
+      "stem": "At the beginning of the year, a firm employs 50 persons. During the year, ten of them leave the firm. Which of the following represents the labour turnover?",
+      "options": [
+        "5%",
+        "10%",
+        "20%",
+        "25%"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 39,
+      "sourcePage": 6,
+      "stem": "The job an employee has been doing is no longer required by the organization. The employee is said to be",
+      "options": [
+        "retrained",
+        "re-graded",
+        "reassigned",
+        "redundant"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 40,
+      "sourcePage": 7,
+      "stem": "Which of the following is LIKELY to cause a high labour turnover?\nI. Effective labour relations\nII. Inadequate pay and conditions of work\nIII. Limited opportunities for showing initiative",
+      "options": [
+        "I only",
+        "I and III only",
+        "II and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 41,
+      "sourcePage": 7,
+      "stem": "What should a clerk do if the number of items being delivered is less than that shown on the delivery note?",
+      "options": [
+        "Reprimand the delivery agent and refuse to accept delivery.",
+        "Return the goods and ask for urgent delivery of the correct order.",
+        "Accept the delivery and ask the company to send the outstanding items.",
+        "Write the shortage on the delivery note before signing for receipt of the goods."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 42,
+      "sourcePage": 7,
+      "stem": "Which of the following documents is sent by the seller when the customer has been undercharged?",
+      "options": [
+        "Enquiry",
+        "Invoice",
+        "Debit note",
+        "Quotation"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 43,
+      "sourcePage": 7,
+      "stem": "An audit is a system used",
+      "options": [
+        "in computerised accounting",
+        "to record accounting procedures",
+        "in the daily checking of accounting records",
+        "for the periodic checking of accounting records"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 44,
+      "sourcePage": 7,
+      "stem": "Which of the following details is NOT included on the cash disbursement sheet used in petty cash?",
+      "options": [
+        "The unused balance",
+        "A summary of the funds spent",
+        "The date on which the money was paid",
+        "The name of the person receiving the funds"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 45,
+      "sourcePage": 7,
+      "stem": "Which of the following deductions can be made from wages without obtaining permission from the employee?\nI. Income tax\nII. National insurance\nIII. Company health scheme",
+      "options": [
+        "I and II only",
+        "I and III only",
+        "II and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 46,
+      "sourcePage": 7,
+      "stem": "A customer who has credit facilities from a firm should expect to receive a record of payments and purchases made each month on",
+      "options": [
+        "an invoice",
+        "an advice note",
+        "a statement of account",
+        "a reconciliation statement"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 47,
+      "sourcePage": 7,
+      "stem": "Within what maximum period of time should a cheque be presented for payment?",
+      "options": [
+        "Fourteen days",
+        "Four weeks",
+        "Six months",
+        "One year"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 48,
+      "sourcePage": 8,
+      "stem": "A sum of money given to a cashier at the start of a day to make change is called",
+      "options": [
+        "a float",
+        "a refund",
+        "a deposit",
+        "an imprest"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 49,
+      "sourcePage": 8,
+      "stem": "Three months have passed since you applied for a job at a large firm. You have only received a letter of acknowledgement. What is the MOST appropriate action to be taken?",
+      "options": [
+        "Write another letter of application.",
+        "Write a letter to follow up the application.",
+        "Telephone your friend who works with the firm.",
+        "Visit the company and ask to see the Human Resource Officer."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 50,
+      "sourcePage": 8,
+      "stem": "One function of the factory office is to",
+      "options": [
+        "assemble goods for despatch",
+        "purchase and manufacture goods",
+        "organize the production processes",
+        "establish links with reputable suppliers"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 51,
+      "sourcePage": 8,
+      "stem": "The term ‘carriage paid’ means that the",
+      "options": [
+        "price quoted does not include overseas transport",
+        "carrier must be paid before the goods are delivered",
+        "price quoted includes delivery to the customer's door",
+        "carrier must be paid by the purchaser before the goods can be despatched"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 52,
+      "sourcePage": 8,
+      "stem": "An unsolicited letter of application may be written when",
+      "options": [
+        "a job is advertised in the newspaper",
+        "a company advertises for a vacancy",
+        "a company's application form is made available",
+        "an application is sent enquiring about a vacancy"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 53,
+      "sourcePage": 9,
+      "stem": "The term ‘E & OE’ on the invoice indicates that",
+      "options": [
+        "Mr Lee should not regard this document as a request for payment.",
+        "Garden Supplies & Plant Care Services can later correct any error made when preparing the bill.",
+        "Garden Supplies & Plant Care Services may not have included all the items that Mr Lee ordered.",
+        "Mr Lee can hold Garden Supplies & Plant Care Services to the terms of sale as shown on the invoice."
+      ],
+      "table": {
+        "title": "GARDEN SUPPLIES & PLANT CARE SERVICES",
+        "columns": [
+          "Qty",
+          "Description",
+          "Unit\n$",
+          "Total\n$"
+        ],
+        "rows": [
+          [
+            "1",
+            "Model G - Lawn Mower",
+            "556.00",
+            "556.00"
+          ],
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ],
+        "details": [
+          "Terms: 25% discount if paid within 7 days",
+          "10% within 14 days",
+          "N/30",
+          "E & O E"
+        ]
+      },
+      "tableBeforeStem": true,
+      "contextText": "Items 53–54 refer to the following invoice:\nNo. 198\nGARDEN SUPPLIES & PLANT CARE SERVICES\n21 Happy Street\nBushey Park\nTo: Mr D Lee\n50 New Lane\nMountain View\n10 May 2013\nYour Order No: 483"
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 54,
+      "sourcePage": 9,
+      "stem": "How much should Mr Lee pay if the bill is settled on 16 May?",
+      "options": [
+        "$255.60",
+        "$339.00",
+        "$417.00",
+        "$556.00"
+      ],
+      "table": {
+        "title": "GARDEN SUPPLIES & PLANT CARE SERVICES",
+        "columns": [
+          "Qty",
+          "Description",
+          "Unit\n$",
+          "Total\n$"
+        ],
+        "rows": [
+          [
+            "1",
+            "Model G - Lawn Mower",
+            "556.00",
+            "556.00"
+          ],
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ],
+        "details": [
+          "Terms: 25% discount if paid within 7 days",
+          "10% within 14 days",
+          "N/30",
+          "E & O E"
+        ]
+      },
+      "tableBeforeStem": true,
+      "contextText": "Items 53–54 refer to the following invoice:\nNo. 198\nGARDEN SUPPLIES & PLANT CARE SERVICES\n21 Happy Street\nBushey Park\nTo: Mr D Lee\n50 New Lane\nMountain View\n10 May 2013\nYour Order No: 483"
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 55,
+      "sourcePage": 10,
+      "stem": "There is a growing feeling among staff that concerns over their general welfare are being overlooked by management. What is the FIRST action that should be taken by staff to address the situation?",
+      "options": [
+        "Take industrial action.",
+        "Bring the matter to the attention of the trade union.",
+        "Request a meeting with the head of the organization.",
+        "Request a meeting with the human resource manager."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 56,
+      "sourcePage": 10,
+      "stem": "An employee’s gross earnings was $182.80. His statutory deductions totalled $22.00 and voluntary deductions totalled $9.80. How much was his net pay?",
+      "options": [
+        "$151.00",
+        "$160.80",
+        "$173.00",
+        "$214.60"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 57,
+      "sourcePage": 10,
+      "stem": "Which of the following forms should be used to report an incident in which an employee was injured?",
+      "options": [
+        "Claims",
+        "Accident report",
+        "Employee liability",
+        "Accident and insurance"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 58,
+      "sourcePage": 10,
+      "stem": "The schedule above shows that the aircraft will stop in Antigua (ANU) on its way to Jamaica (KIN) from Barbados (BGI). How long will the aircraft be on the ground in Antigua?",
+      "options": [
+        "3 hours 5 minutes",
+        "4 hours 25 minutes",
+        "5 hours 30 minutes",
+        "7 hours 30 minutes"
+      ],
+      "tableBeforeStem": true,
+      "table": {
+        "title": "From Barbados to Jamaica",
+        "columns": [
+          "Date",
+          "Airport",
+          "Departure Time",
+          "Arrival Time",
+          "Airport"
+        ],
+        "rows": [
+          [
+            "Thursday\n14 July 2013",
+            "BGI",
+            "3:00 p.m.",
+            "4:25 p.m.",
+            "ANU"
+          ],
+          [
+            "",
+            "ANU",
+            "7:30 p.m.",
+            "8:30 p.m.",
+            "KIN"
+          ]
+        ],
+        "merges": [
+          {
+            "row": 0,
+            "col": 0,
+            "rowSpan": 2
+          }
+        ]
+      },
+      "contextText": "Item 58 refers to the following extract from an airline schedule."
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 59,
+      "sourcePage": 11,
+      "stem": "P. Hawk has a manufacturing business. His raw materials cost $1 900. Rates and rent total $2 000, and factory wages amount to $2 500. The number of units produced is 640. What is the cost of ONE unit?",
+      "options": [
+        "$ 4",
+        "$ 6",
+        "$10",
+        "$13"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2013-MJ",
+      "number": 60,
+      "sourcePage": 11,
+      "stem": "A letter of acceptance is sent when a person",
+      "options": [
+        "receives salary through the bank",
+        "plans to attend an interview for a job",
+        "agrees to take up an offer for appointment",
+        "receives original documents sent with an application"
+      ]
+    }
+  ]
+}

@@ -15,8 +15,8 @@ Review dates: 28–29 October 2026. All 23 supplied sources retain their origina
 | 2009 | 52 | 30 | 0 | 33 |
 | 2010 | 51 | 32 | 0 | 33 |
 | 2011 | 51 | 39 | 0 | 30 |
-| 2012 | 46 | 21 | 0 | 47 |
-| 2013 | 58 | 54 | 0 | 13 |
+| 2012 | 60 | 60 | 60 | 0 |
+| 2013 | 60 | 60 | 60 | 0 |
 | 2015 | 60 | 60 | 60 | 0 |
 | 2016 | 58 | 58 | 58 | 2 |
 | 2017 | 60 | 60 | 60 | 0 |
@@ -28,7 +28,7 @@ Review dates: 28–29 October 2026. All 23 supplied sources retain their origina
 | 2024 | 60 | 60 | 60 | 0 |
 | 2025 | 60 | 60 | 60 | 0 |
 
-The 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024 and 2025 papers each have 60 visually checked native questions. Their schedules, invoices, registers, cheque wording, petty cash, stock and costing tables remain selectable text. All other records retain their individual unverified/source-required flags. The 1996 scan clips part of its right edge in the original embedded image; missing wording has not been invented.
+The 2012, 2013, 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024 and 2025 papers each have 60 visually checked native questions. Their schedules, invoices, registers, cheque wording, petty cash, stock and costing tables remain selectable text. All other records retain their individual unverified/source-required flags. The 1996 scan clips part of its right edge in the original embedded image; missing wording has not been invented.
 
 The official syllabus specimen is separately audited in `../office-administration-specimen-paper1-audit.md`; its disputed item 60 stays excluded from scoring.
 
@@ -47,3 +47,7 @@ The 2017 paper was compared with all ten supplied pages on 29 October 2026 (60 q
 The 2016 paper has 58 visually checked questions from its 12 supplied pages (75 minutes confirmed on the cover). Questions 23 and 27 remain unresolved: page 5 begins at their list/choices, with the stems clipped from the original embedded JPEG as well as the rendered PDF. The source SHA-256 still matches the manifest. The malformed page tree yields zero pages in pdfplumber but 12 pages in pypdf; the existing source pipeline already uses pypdf for page counts. Printed dates, the flight ticket, cheque, account statement and confectionery order were checked; clipped question numbers were recovered by their visible sequence, without inventing missing stems.
 
 The 2015 paper was compared with all ten supplied question pages on 29 October 2026 (60 questions). The native statement, petty cash, stock record, FIFO table, invoice, job-cost form and airline schedule preserve their printed values. The stock record issues 50 on 5 September and ends at 45; the invoice reads Bushey Park and 10 May 2013. Those details are not copied from later reused forms. The source begins at printed page 2, so the duration remains unverified without an invented cover. Handwritten margin notes are omitted from native questions.
+
+The 2013 paper was compared with all eleven supplied question pages on 29 October 2026 (60 questions). Its filing out-sheet, stationery stock card, invoice and airline schedule are native text/tables. The invoice keeps No. 198, Bushey Park, 10 May 2013 and the printed discount terms. The schedule retains Thursday / 14 July 2013 exactly as printed. The source starts at printed page 2, so the cover duration remains unverified. Handwritten headings are excluded from question wording.
+
+The 2012 paper was compared with all ten supplied question pages on 29 October 2026 (60 questions). Its purchasing-clerk document, two cheque forms, stock card and LIFO table use native selectable text. Its organizational chart and bar chart are bounded source crops, retaining the original reporting/advisory lines and plotted bars without redrawing data. The source hash is verified before extracting them; source regions are recorded with their questions. Copying streaks are part of the source illustration. The cover is absent, so duration remains unverified.

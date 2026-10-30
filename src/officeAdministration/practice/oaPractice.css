@@ -11,3 +11,5 @@
 @media(max-width:1000px){.oa-practice .oa-exam-layout{grid-template-columns:minmax(0,1fr)}.oa-practice .oa-exam-layout>.poa-exam-navigator{grid-column:1;grid-row:1}.oa-practice .oa-exam-layout>.oa-answer-sheet{grid-column:1;grid-row:2}.oa-practice button.poa-navigation-toggle{display:inline-flex}}
 .oa-document-stacked{grid-template-columns:minmax(0,1fr)}.oa-response-table table{min-width:620px}.oa-response-table td{min-width:100px;vertical-align:top}.oa-response-table td textarea{min-width:90px;border-radius:6px;padding:8px;font-size:16px}.oa-part-prompt{white-space:pre-line}
 .oa-document-fields>.oa-response-table{grid-column:1/-1;margin:0}.oa-document-fields>.oa-response-table td{font-weight:400}
+
+.oa-figure-scroll{max-width:100%;overflow:auto;overscroll-behavior:contain;margin:18px 0;background:#fff}.oa-figure-scroll .oa-question-figure{display:block;width:var(--oa-figure-width);max-width:100%;min-width:min(var(--oa-figure-width),600px);height:auto;margin:0}.oa-figure-scroll:focus-visible{outline:3px solid var(--poa-accent);outline-offset:3px}
