@@ -1,3 +1,4 @@
+import reviewed2022MJ from './oaHistoricalPaper2Reviewed2022MJ.json';
 import reviewed2024MJ from './oaHistoricalPaper2Reviewed2024MJ.json';
 const fields=labels=>labels.map(label=>({label,kind:'text'}));
 const blankGrid=(title,columns,rows,numeric=false)=>({title,columns,rows:Array.from({length:rows},()=>columns.map(()=>'')),editable:Array.from({length:rows},(_,r)=>columns.map((_,c)=>[r,c])).flat(),numeric});
@@ -53,3 +54,6 @@ OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS['OA-P2-2025-MJ::5']={stem:'All business or
 
 Object.assign(OA_HISTORICAL_PAPER2_PART_LAYOUTS,reviewed2024MJ.parts);
 Object.assign(OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS,reviewed2024MJ.questions);
+
+Object.assign(OA_HISTORICAL_PAPER2_PART_LAYOUTS,reviewed2022MJ.parts);
+Object.assign(OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS,reviewed2022MJ.questions);

@@ -344,7 +344,7 @@ export const OA_HISTORICAL_PAPER2S = Object.freeze(sourceRecords.map(source => {
    'Use the forms, tables and diagrams provided with the question. Label each answer with its original question and part number.'
   ],
   questions:questions.map(question => ({...question,...OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS[source.id+'::'+question.number], sourceAsset:source.sourceAsset,
-   provenance:{sourceId:source.id,filename:source.filename,sha256:source.sha256,pdfPages:question.sourcePages,originalQuestionNumber:question.number,kind:'supplied-examination-question'},
+   provenance:{sourceId:source.id,filename:source.filename,sha256:source.sha256,pdfPages:OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS[source.id+'::'+question.number]?.sourcePages||question.sourcePages,originalQuestionNumber:question.number,kind:'supplied-examination-question'},
    parts:question.parts.map(part => {
     const layout=OA_HISTORICAL_PAPER2_PART_LAYOUTS[source.id+'::'+question.number+'::'+part.id]||{};
     const pages=layout.layoutSourcePages||part.sourcePages;

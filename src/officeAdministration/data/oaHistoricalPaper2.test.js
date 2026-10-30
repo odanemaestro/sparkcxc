@@ -77,7 +77,7 @@ it('links every historical question, response part and guidance item to the supp
 it('distinguishes SPARK guidance from an unavailable official historical scheme',()=>{
  let worked=0,approaches=0;
  for(const paper of OA_HISTORICAL_PAPER2S){
-  expect(paper).toMatchObject({officialKeyAvailable:false,answerKeyVerified:false,officialMarkSchemeAvailable:false,markingStatus:'spark-guidance',transcriptionVerified:['OA-P2-2024-MJ','OA-P2-2025-MJ'].includes(paper.id)});
+  expect(paper).toMatchObject({officialKeyAvailable:false,answerKeyVerified:false,officialMarkSchemeAvailable:false,markingStatus:'spark-guidance',transcriptionVerified:['OA-P2-2022-MJ','OA-P2-2024-MJ','OA-P2-2025-MJ'].includes(paper.id)});
   for(const part of paper.questions.flatMap(q=>q.parts)){
    expect(part.guidance.length).toBeGreaterThan(30);
    expect(part.markingGuidance).toMatchObject({author:'SPARK',official:false,sourceId:paper.id,maxMarks:part.marks});
@@ -134,4 +134,18 @@ it('preserves the reviewed 2024 source figures and editable documents',()=>{
  expect(p.questions[4].parts[1].table.details).toContain('Trade Discount 10%');
  expect(p.questions[4].parts[1].table.details).toContain('Quantity Discount 5%');
  expect(p.questions[5].parts[2].fields.map(f=>f.label)).toEqual(['TO','FROM','CC','DATE','SUBJECT','Message']);
+});
+
+it('retains the 2022 source notes, itineraries, printed dates and blank calculations',()=>{
+ const p=byId('OA-P2-2022-MJ');expect(p.transcriptionVerified).toBe(true);expect(p.questions.flatMap(q=>q.parts)).toHaveLength(19);
+ expect(p.questions.every(q=>q.parts.every(part=>part.promptVerified&&part.layoutVerified))).toBe(true);
+ const indexing=p.questions[0].parts[2].responseTables[0];expect(indexing.rows[0]).toEqual(['Allay','Marie','Rose']);expect(indexing.editable.every(([r])=>r>0)).toBe(true);
+ const notes=p.questions[1].parts[3].table;expect(notes.rows).toContainEqual(['Tomas Browne','Mable Gray - called to say she could not attend']);expect(JSON.stringify(notes)).toContain('Winston Lowe offered to print the tickets');
+ const travel=p.questions[2].parts[2];expect(travel.tables[0].rows[0]).toEqual(['JV235\nDepart','Barbados\nat 5:11 p.m.','','Dinner\nincluded','US$860']);expect(travel.tables[1].rows[2]).toEqual(['VJ198\nDepart','','Miami\nat 6:18 a.m.','Breakfast\nincluded','US$480']);
+ const statement=p.questions[3].parts[2];expect(statement.table.details).toContain('Terms: 10% within 30 days');expect(statement.prompt).toContain('before 30 June 2022');expect(statement.responseTables[0].rows.flat().every(v=>v==='')).toBe(true);
+ const invoice=p.questions[4].parts[2].responseTables[0];expect(invoice.rows[0]).toEqual(['5','Ergonomic\noffice chair','EC1','$670','']);expect(invoice.editable).toEqual([[0,4],[1,4],[2,4]]);
+ const delivery=p.questions[5].parts[2];expect(delivery.sourcePages).toEqual([20,21,22]);expect(p.questions[5].provenance.pdfPages).toEqual([19,20,21,22]);
+ const header=delivery.responseTables[0];expect(header.rows[1]).toEqual(['Date','5 May 2022']);expect(header.rows[3]).toEqual(['Delivery date','6 May 2022']);expect(header.editable.every(([r])=>r!==1&&r!==3)).toBe(true);
+ expect(delivery.responseTables[1].rows).toHaveLength(3);expect(delivery.responseTables[1].rows.flat().every(v=>v==='')).toBe(true);
+ expect(JSON.stringify(p.questions.flatMap(q=>q.parts))).not.toMatch(/TNUOCCA|NOTHING HAS BEEN OMITTED/);
 });
