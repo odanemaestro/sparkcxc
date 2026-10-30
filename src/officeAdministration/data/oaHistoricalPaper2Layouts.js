@@ -1,3 +1,4 @@
+import reviewed2021MJ from './oaHistoricalPaper2Reviewed2021MJ.json';
 import reviewed2022MJ from './oaHistoricalPaper2Reviewed2022MJ.json';
 import reviewed2024MJ from './oaHistoricalPaper2Reviewed2024MJ.json';
 const fields=labels=>labels.map(label=>({label,kind:'text'}));
@@ -57,3 +58,6 @@ Object.assign(OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS,reviewed2024MJ.questions);
 
 Object.assign(OA_HISTORICAL_PAPER2_PART_LAYOUTS,reviewed2022MJ.parts);
 Object.assign(OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS,reviewed2022MJ.questions);
+
+Object.assign(OA_HISTORICAL_PAPER2_PART_LAYOUTS,reviewed2021MJ.parts);
+Object.assign(OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS,reviewed2021MJ.questions);

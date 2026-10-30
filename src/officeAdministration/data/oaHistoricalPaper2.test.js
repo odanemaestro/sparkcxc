@@ -77,7 +77,7 @@ it('links every historical question, response part and guidance item to the supp
 it('distinguishes SPARK guidance from an unavailable official historical scheme',()=>{
  let worked=0,approaches=0;
  for(const paper of OA_HISTORICAL_PAPER2S){
-  expect(paper).toMatchObject({officialKeyAvailable:false,answerKeyVerified:false,officialMarkSchemeAvailable:false,markingStatus:'spark-guidance',transcriptionVerified:['OA-P2-2022-MJ','OA-P2-2024-MJ','OA-P2-2025-MJ'].includes(paper.id)});
+  expect(paper).toMatchObject({officialKeyAvailable:false,answerKeyVerified:false,officialMarkSchemeAvailable:false,markingStatus:'spark-guidance',transcriptionVerified:['OA-P2-2021-MJ','OA-P2-2022-MJ','OA-P2-2024-MJ','OA-P2-2025-MJ'].includes(paper.id)});
   for(const part of paper.questions.flatMap(q=>q.parts)){
    expect(part.guidance.length).toBeGreaterThan(30);
    expect(part.markingGuidance).toMatchObject({author:'SPARK',official:false,sourceId:paper.id,maxMarks:part.marks});
@@ -148,4 +148,15 @@ it('retains the 2022 source notes, itineraries, printed dates and blank calculat
  const header=delivery.responseTables[0];expect(header.rows[1]).toEqual(['Date','5 May 2022']);expect(header.rows[3]).toEqual(['Delivery date','6 May 2022']);expect(header.editable.every(([r])=>r!==1&&r!==3)).toBe(true);
  expect(delivery.responseTables[1].rows).toHaveLength(3);expect(delivery.responseTables[1].rows.flat().every(v=>v==='')).toBe(true);
  expect(JSON.stringify(p.questions.flatMap(q=>q.parts))).not.toMatch(/TNUOCCA|NOTHING HAS BEEN OMITTED/);
+});
+
+it('preserves the 2021 printed interview selections, cheque discrepancies and delivery blanks',()=>{
+ const p=byId('OA-P2-2021-MJ');expect(p.transcriptionVerified).toBe(true);expect(p.questions.flatMap(q=>q.parts)).toHaveLength(17);
+ expect(p.questions.every(q=>q.parts.every(part=>part.promptVerified&&part.layoutVerified))).toBe(true);
+ const mail=p.questions[0].parts[1].responseTables[0];expect(mail.rows.map(r=>r[0])).toEqual(['Franking machine','Parcel scale','Collating machine','Sealing machine']);expect(mail.editable).toEqual([[0,1],[1,1],[2,1],[3,1]]);
+ const message=p.questions[0].parts[2];expect(message.tables[2].rows).toEqual([['Mr Mark James','X','Ms Michelle Isidore','X'],['Miss Elisa Williams','X','Miss Diandra Brown',''],['Mrs Chandra Paul','','Mr Chad Henry','X']]);expect(JSON.stringify(message.tables)).toContain('PB@Accounts.com');expect(message.fields.map(f=>f.label)).toEqual(['FROM','DATE','TO','SUBJECT','Message']);
+ const cheque=p.questions[3].parts[0];expect(cheque.prompt).toContain('Susanne Tomlinson');expect(cheque.table.rows).toContainEqual(['Pay to the order of','Susanna Tomlinson']);expect(cheque.table.rows).toContainEqual(['Date','28 December 2000']);expect(cheque.table.rows).toContainEqual(['Amount in figures','$500.00']);expect(cheque.table.rows).toContainEqual(['the sum of','five thousand and fifty Dollars']);expect(cheque.table.rows).toContainEqual(['Signature','']);
+ const skills=p.questions[4].parts[2].responseTables[0];expect(skills.rows[3]).toEqual(['Literacy','']);
+ const delivery=p.questions[5].parts[2];expect(delivery.sourcePages).toEqual([18,19]);expect(delivery.table.rows).toContainEqual(['Order No','R 1256.']);expect(delivery.table.rows).toContainEqual(['Terms','5% trade discount\n10% VAT']);expect(delivery.responseTables[0].rows).toEqual([['','Bag of balloons','B12','150.00',''],['','Box of party hats','H24','392.00',''],['','Whistle','W32','1.10','']]);
+ expect(delivery.responseTables[0].editable).toEqual([[0,0],[0,4],[1,0],[1,4],[2,0],[2,4]]);
 });
