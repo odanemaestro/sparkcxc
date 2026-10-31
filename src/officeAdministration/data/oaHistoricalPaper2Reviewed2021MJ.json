@@ -1,0 +1,822 @@
+{
+  "paperId": "OA-P2-2021-MJ",
+  "reviewDate": "2026-10-29",
+  "reviewMethod": "Visual comparison with every supplied PDF page (19 pages), including native question wording, fixed source figures and blank response forms.",
+  "questions": {
+    "OA-P2-2021-MJ::1": {
+      "sourcePages": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "sourcePage": 2,
+      "layoutSourcePages": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2021-MJ::2": {
+      "sourcePages": [
+        7,
+        8
+      ],
+      "sourcePage": 7,
+      "layoutSourcePages": [
+        7,
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2021-MJ::3": {
+      "sourcePages": [
+        9,
+        10
+      ],
+      "sourcePage": 9,
+      "layoutSourcePages": [
+        9,
+        10
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2021-MJ::4": {
+      "sourcePages": [
+        11,
+        12,
+        13
+      ],
+      "sourcePage": 11,
+      "layoutSourcePages": [
+        11,
+        12,
+        13
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2021-MJ::5": {
+      "sourcePages": [
+        14,
+        15,
+        16
+      ],
+      "sourcePage": 14,
+      "layoutSourcePages": [
+        14,
+        15,
+        16
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2021-MJ::6": {
+      "sourcePages": [
+        17,
+        18,
+        19
+      ],
+      "sourcePage": 17,
+      "layoutSourcePages": [
+        17,
+        18,
+        19
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2021-MJ::1::q1-a": {
+      "prompt": "State FOUR factors which might influence the selection of an effective communication medium.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        2
+      ],
+      "sourcePages": [
+        2
+      ],
+      "sourcePage": 2
+    },
+    "OA-P2-2021-MJ::1::q1-b": {
+      "prompt": "For EACH of the following pieces of equipment, state how it may be used for processing outgoing mail.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        3
+      ],
+      "sourcePages": [
+        3
+      ],
+      "sourcePage": 3,
+      "responseTables": [
+        {
+          "title": "Mail room equipment",
+          "columns": [
+            "Equipment",
+            "Use in the Mail Room"
+          ],
+          "rows": [
+            [
+              "Franking machine",
+              ""
+            ],
+            [
+              "Parcel scale",
+              ""
+            ],
+            [
+              "Collating machine",
+              ""
+            ],
+            [
+              "Sealing machine",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Franking machine",
+            "Parcel scale",
+            "Collating machine",
+            "Sealing machine"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2021-MJ::1::q1-c": {
+      "prompt": "On 10 May 2021, Miss Aliya Henderson received the following message.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        4,
+        5,
+        6
+      ],
+      "sourcePages": [
+        4,
+        5,
+        6
+      ],
+      "sourcePage": 4,
+      "tables": [
+        {
+          "title": "MESSAGE FOR",
+          "columns": [
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "Received by",
+              "Cheryl Doraville (Receptionist)"
+            ],
+            [
+              "Miss",
+              "Aliya Henderson – Administrative Clerk"
+            ],
+            [
+              "From",
+              "Mr James Charles – Human Resource Manager (HRM)"
+            ],
+            [
+              "Of",
+              "Caribbean Stores, St James, Barbados"
+            ]
+          ]
+        },
+        {
+          "title": "Message details",
+          "columns": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "Telephoned",
+              "X",
+              "Please call",
+              ""
+            ],
+            [
+              "Wants to see you",
+              "",
+              "Will call again",
+              ""
+            ],
+            [
+              "Called to see you",
+              "",
+              "Urgent",
+              "X"
+            ]
+          ],
+          "details": [
+            "Re: Interviews for the position of accounts clerk",
+            "Miss Henderson",
+            "• The HRM has requested that you email Mr Peter Brown, the accountant, reminding him of the interviews. His email address is PB@Accounts.com.\n• Mrs Nicole Francois (bursar) has agreed to be part of the interview panel.\n• Only the candidates with an (X) by their names will be interviewed (See the list below.)"
+          ]
+        },
+        {
+          "title": "Candidates",
+          "columns": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "Mr Mark James",
+              "X",
+              "Ms Michelle Isidore",
+              "X"
+            ],
+            [
+              "Miss Elisa Williams",
+              "X",
+              "Miss Diandra Brown",
+              ""
+            ],
+            [
+              "Mrs Chandra Paul",
+              "",
+              "Mr Chad Henry",
+              "X"
+            ]
+          ],
+          "details": [
+            "• The interviews should be scheduled one hour apart.\n• Interviews will be held two weeks from today’s date and start at 10 a.m.\n• Interviews will be held in the company’s conference room.\n• The interviews will be conducted alphabetically, by last name.",
+            "Assume that you are Miss Henderson. Use the following form to prepare the email as requested. The email should include all the relevant information, including the time of EACH interview."
+          ]
+        }
+      ],
+      "documentTitle": "Email",
+      "fields": [
+        {
+          "label": "FROM",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "DATE",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "TO",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "SUBJECT",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Message",
+          "kind": "text",
+          "rows": 8
+        }
+      ],
+      "sourceFormNotes": "The original Mr and Mrs titles are crossed out; Miss is retained. The X marks are printed selection data, not answer annotations."
+    },
+    "OA-P2-2021-MJ::2::q2-a": {
+      "prompt": "Define EACH of the following terms, as they relate to information management.\n\n(i) Archiving (2 marks)\n\n(ii) Batch processing (2 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        7
+      ],
+      "sourcePages": [
+        7
+      ],
+      "sourcePage": 7
+    },
+    "OA-P2-2021-MJ::2::q2-b": {
+      "prompt": "Explain EACH of the following characteristics of an effective records management system.\n\n(i) Security (2 marks)\n\n(ii) Expansion (2 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        7
+      ],
+      "sourcePages": [
+        7
+      ],
+      "sourcePage": 7
+    },
+    "OA-P2-2021-MJ::2::q2-c": {
+      "prompt": "After graduation, Imani Boothe sent out several applications for a clerical position. She was fortunate to receive two job offers at the same time. One job was from a large, international organization located more than twenty miles away from her residence, while the other was from a small business enterprise one mile away from her residence. Outline THREE factors Imani should consider before deciding on which job to accept.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        8
+      ],
+      "sourcePages": [
+        8
+      ],
+      "sourcePage": 8
+    },
+    "OA-P2-2021-MJ::3::q3-a": {
+      "prompt": "One of the corporate records that a company is required to maintain, by law, is the register of shareholders. State THREE other records that a company is required to maintain.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        9
+      ],
+      "sourcePages": [
+        9
+      ],
+      "sourcePage": 9
+    },
+    "OA-P2-2021-MJ::3::q3-b": {
+      "prompt": "Suggest FOUR activities that the secretary to the board of directors might perform after a general meeting.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        9
+      ],
+      "sourcePages": [
+        9
+      ],
+      "sourcePage": 9
+    },
+    "OA-P2-2021-MJ::3::q3-c": {
+      "prompt": "(i) The general manager, Mr Charles Knox, is planning to travel to Europe to the first annual general meeting of the Global Group of Companies. He informed the travel agent that the only document that he has so far is his national identification card.\n\nAssume that you are the travel agent. Recommend THREE travel documents that might be required for travel to Europe, describing the purpose of each. (6 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        10
+      ],
+      "sourcePages": [
+        10
+      ],
+      "sourcePage": 10,
+      "documentTitle": "Travel documents",
+      "fieldLayout": "stacked",
+      "fields": [
+        {
+          "label": "Document 1",
+          "kind": "text"
+        },
+        {
+          "label": "Purpose 1",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "Document 2",
+          "kind": "text"
+        },
+        {
+          "label": "Purpose 2",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "Document 3",
+          "kind": "text"
+        },
+        {
+          "label": "Purpose 3",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "(ii) Mr Knox booked a seaside suite at one of the modern hotels in Europe. Advise Mr Knox of TWO advantages of paying for his accommodation by credit card. (2 marks)",
+          "kind": "text",
+          "rows": 5
+        }
+      ],
+      "subpartMarks": [
+        {
+          "label": "(i)",
+          "marks": 6
+        },
+        {
+          "label": "(ii)",
+          "marks": 2
+        }
+      ]
+    },
+    "OA-P2-2021-MJ::4::q4-a": {
+      "prompt": "(i) Explain the term ‘crossed cheque’. (2 marks)\n\n(ii) On 12 May 2021, Susanne Tomlinson received the cheque shown below as a birthday gift.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        11
+      ],
+      "sourcePages": [
+        11
+      ],
+      "sourcePage": 11,
+      "table": {
+        "title": "Cheque",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "Number",
+            "347"
+          ],
+          [
+            "Date",
+            "28 December 2000"
+          ],
+          [
+            "Pay to the order of",
+            "Susanna Tomlinson"
+          ],
+          [
+            "Amount in figures",
+            "$500.00"
+          ],
+          [
+            "the sum of",
+            "five thousand and fifty Dollars"
+          ],
+          [
+            "Signature",
+            ""
+          ],
+          [
+            "Printed code",
+            "745677 347"
+          ]
+        ],
+        "details": [
+          "When she attempted to cash the cheque she was told that she could not receive the funds.",
+          "Outline TWO reasons why the bank denied her access to the funds. (4 marks)"
+        ]
+      },
+      "documentTitle": "Cheque questions",
+      "fields": [
+        {
+          "label": "(i) Crossed cheque",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "(ii) Reasons the bank denied access to the funds",
+          "kind": "text",
+          "rows": 6
+        }
+      ],
+      "sourceFormNotes": "The different names, old date, conflicting amounts and blank signature are part of the source task and remain unchanged.",
+      "subpartMarks": [
+        {
+          "label": "(i)",
+          "marks": 2
+        },
+        {
+          "label": "(ii)",
+          "marks": 4
+        }
+      ]
+    },
+    "OA-P2-2021-MJ::4::q4-b": {
+      "prompt": "Mr Lucas Sydney, a human resource manager, identified the reasons why persons chose to leave a permanent job after several years of employment as\n\n• poor working conditions\n• low job satisfaction\n• limited training opportunities\n• low salary.\n\nBritany Boyce, a human resource clerk, was asked to assist the department in addressing these reasons.\n\nAssume that you are Britany. Using the following form, write a memorandum to the human resource manager outlining ONE way in which the company could address EACH of the reasons given above.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        12,
+        13
+      ],
+      "sourcePages": [
+        12,
+        13
+      ],
+      "sourcePage": 12,
+      "documentTitle": "MEMORANDUM",
+      "fields": [
+        {
+          "label": "TO",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "DATE (Current date)",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "FROM",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "SUBJECT",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Message",
+          "kind": "text",
+          "rows": 8
+        }
+      ]
+    },
+    "OA-P2-2021-MJ::5::q5-a": {
+      "prompt": "Define the term ‘quotation’ as used in the procurement department.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        14
+      ],
+      "sourcePages": [
+        14
+      ],
+      "sourcePage": 14
+    },
+    "OA-P2-2021-MJ::5::q5-b": {
+      "prompt": "Describe EACH of the following types of discounts offered in the sales and marketing department.\n\n(i) Loyalty cards (2 marks)\n\n(ii) Goods on consignment (2 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        14
+      ],
+      "sourcePages": [
+        14
+      ],
+      "sourcePage": 14
+    },
+    "OA-P2-2021-MJ::5::q5-c": {
+      "prompt": "(i) Michael Maragh, a clerk employed in the sales, marketing and customer service department has completed a training course and acquired new skills.\n\nDescribe how EACH of the skills listed below would enhance the work of the department. (8 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        15,
+        16
+      ],
+      "sourcePages": [
+        15,
+        16
+      ],
+      "sourcePage": 15,
+      "responseTables": [
+        {
+          "title": "Skills and benefits",
+          "columns": [
+            "Skill",
+            "Benefit to the Department"
+          ],
+          "rows": [
+            [
+              "Proficiency in data entry",
+              ""
+            ],
+            [
+              "Use of productivity tools",
+              ""
+            ],
+            [
+              "Knowledge of organizational tools",
+              ""
+            ],
+            [
+              "Literacy",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Proficiency in data entry",
+            "Use of productivity tools",
+            "Knowledge of organizational tools",
+            "Literacy"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(ii) Assume you are Mr Maragh, state ONE benefit, other than acquiring new skills, of participating in training activities. (1 mark)",
+          "kind": "text",
+          "rows": 4,
+          "position": "after"
+        }
+      ],
+      "subpartMarks": [
+        {
+          "label": "(i)",
+          "marks": 8
+        },
+        {
+          "label": "(ii)",
+          "marks": 1
+        }
+      ]
+    },
+    "OA-P2-2021-MJ::6::q6-a": {
+      "prompt": "State TWO reasons for preparing a job card.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        17
+      ],
+      "sourcePages": [
+        17
+      ],
+      "sourcePage": 17
+    },
+    "OA-P2-2021-MJ::6::q6-b": {
+      "prompt": "Outline TWO duties that are performed in the operations office that contribute to the efficiency of a business.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        17
+      ],
+      "sourcePages": [
+        17
+      ],
+      "sourcePage": 17
+    },
+    "OA-P2-2021-MJ::6::q6-c": {
+      "prompt": "On 19 May 2021, Décor and Things ordered the following goods from Party Creations:\n\n• 2 bags of balloons\n• 1 box of party hats\n• 80 whistles\n\nSancha Peters, the clerk in the despatch office, was asked to prepare the delivery note to accompany the goods.\n\nThe delivery will be made by Mr John Gomez on 25 May 2021 and will be received by Mr Tommy Felicien, the purchasing manager at Décor and Things.\n\nUsing the form on page 21, complete the delivery note.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        18,
+        19
+      ],
+      "sourcePages": [
+        18,
+        19
+      ],
+      "sourcePage": 18,
+      "table": {
+        "title": "PARTY CREATIONS",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "Address",
+            "Cherry Street\nKingstown"
+          ],
+          [
+            "To (printed address)",
+            "Décor and Things\nOrange Grove\nKingstown"
+          ],
+          [
+            "Order No",
+            "R 1256."
+          ],
+          [
+            "Terms",
+            "5% trade discount\n10% VAT"
+          ]
+        ]
+      },
+      "documentTitle": "DELIVERY NOTE",
+      "fields": [
+        {
+          "label": "To",
+          "kind": "text"
+        },
+        {
+          "label": "Date (Current date)",
+          "kind": "text"
+        },
+        {
+          "label": "Delivered by",
+          "kind": "text"
+        },
+        {
+          "label": "Received in good condition — Date",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "Customer Signature",
+          "kind": "text",
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Goods delivered",
+          "columns": [
+            "Quantity",
+            "Description",
+            "Cat No.",
+            "Unit Price $",
+            "Total $"
+          ],
+          "rows": [
+            [
+              "",
+              "Bag of balloons",
+              "B12",
+              "150.00",
+              ""
+            ],
+            [
+              "",
+              "Box of party hats",
+              "H24",
+              "392.00",
+              ""
+            ],
+            [
+              "",
+              "Whistle",
+              "W32",
+              "1.10",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Bag of balloons",
+            "Box of party hats",
+            "Whistle"
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              4
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

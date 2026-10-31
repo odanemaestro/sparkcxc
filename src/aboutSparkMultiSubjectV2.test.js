@@ -28,10 +28,10 @@ describe("About SPARK multi-subject update", () => {
     const {getSparkSubjectRegistry} = require("./subjects/subjectRegistry");
     const {runtimeSubjectCatalog} = require("./subjects/subjectCatalog");
     const base = getSparkSubjectRegistry({physicsEnabled:true});
-    expect(base).toHaveLength(10);
-    // Live database currently marks every registered subject as enabled/live.
-    // Reproduce the returned catalog shape, not the stale built-in flags.
-    const productionRows = base.map(subject => ({
+    expect(base.find(subject=>subject.id==="office-administration")).toMatchObject({enabled:false,status:"draft"});
+    // Existing published courses are live; Office Administration remains a draft.
+    // Reproduce the returned catalog rows rather than promoting local draft flags.
+    const productionRows = base.filter(subject=>subject.id!=="office-administration").map(subject => ({
       id: subject.id, name: subject.name, short_name: subject.shortName,
       enabled: true, status: "live", sort_order: subject.sortOrder,
       capabilities: subject.capabilities,
@@ -42,6 +42,14 @@ describe("About SPARK multi-subject update", () => {
     expect(live.map(x => x.id)).toEqual(expect.arrayContaining([
       "food-nutrition-and-health", "principles-of-accounts"
     ]));
+    expect(live.map(subject=>subject.id)).not.toContain("office-administration");
+    const office=base.find(subject=>subject.id==="office-administration");
+    const afterOfficePublish=runtimeSubjectCatalog(base,[...productionRows,{
+      id:office.id,name:office.name,short_name:office.shortName,enabled:true,status:"live",
+      sort_order:office.sortOrder,capabilities:office.capabilities,
+    }],{catalogAvailable:true}).filter(subject=>subject.capabilities?.study!==false);
+    expect(afterOfficePublish).toHaveLength(live.length+1);
+    expect(afterOfficePublish.map(subject=>subject.id)).toContain("office-administration");
     const afterUnpublish = productionRows.map(row =>
       row.id === "principles-of-accounts" ? {...row,enabled:false,status:"draft"} : row
     );

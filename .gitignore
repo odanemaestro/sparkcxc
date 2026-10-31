@@ -47,3 +47,6 @@ supabase/functions/_shared/server-marker-v2-checksum.mjs
 supabase/functions/_shared/server-marker-v2*
 supabase/functions/mark-paper2-v2-shadow/server-marker-v2*.mjs
 .v2-verify-runner.mjs
+
+# Python caches from paper preparation
+tools/__pycache__/

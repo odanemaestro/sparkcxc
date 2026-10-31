@@ -9,6 +9,7 @@ export const SPARK_SUBJECT_IDS = Object.freeze({
   FOOD_NUTRITION_AND_HEALTH: "food-nutrition-and-health",
   PRINCIPLES_OF_BUSINESS: "principles-of-business",
   PRINCIPLES_OF_ACCOUNTS: "principles-of-accounts",
+  OFFICE_ADMINISTRATION: "office-administration",
 });
 
 const BASE_SUBJECTS = Object.freeze({
@@ -242,6 +243,14 @@ const BASE_SUBJECTS = Object.freeze({
     capabilities:Object.freeze({study:true,practice:true,flashcards:true,progress:true,paper1:true,paper2:true,adaptive:false,structured:true,labs:true,sba:true}),
     stats:Object.freeze({sections:11,topics:33,objectives:106,flashcards:66}),
   }),
+  officeAdministration: Object.freeze({
+    stats:Object.freeze({sections:11,topics:39,objectives:80,flashcards:119}),
+    id:"office-administration", name:"CSEC Office Administration", shortName:"Office Administration",
+    qualification:"CSEC",mark:"OA",description:"Understand the modern office, practise office procedures and prepare for CSEC with clear lessons and full examination practice.",
+    enabled:false,status:"draft",sortOrder:51,implementation:"generic",studyView:"study",
+    routes:Object.freeze({study:"/study/office-administration",practice:"/practice/office-administration",flashcards:"/dashboard/flashcards/office-administration",progress:"/dashboard/progress"}),
+    capabilities:Object.freeze({study:true,practice:true,flashcards:true,progress:true,paper1:true,paper2:true,adaptive:false,structured:true,labs:true,sba:true}),
+  }),
   informationTechnology: Object.freeze({
     id: "information-technology",
     name: "CSEC Information Technology",
@@ -373,7 +382,7 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       flashcards:Number(principlesOfBusiness.flashcards||119)
     }
   };
-  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, integratedScienceSubject, socialStudiesSubject, chemistrySubject, foodNutritionAndHealthSubject, pobSubject, BASE_SUBJECTS.principlesOfAccounts, englishASubject]);
+  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, integratedScienceSubject, socialStudiesSubject, chemistrySubject, foodNutritionAndHealthSubject, pobSubject, BASE_SUBJECTS.principlesOfAccounts, englishASubject, BASE_SUBJECTS.officeAdministration]);
 }
 
 export function enabledSparkSubjects(subjects) {

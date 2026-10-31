@@ -1,0 +1,981 @@
+{
+  "paperId": "OA-P1-2016-MJ",
+  "reviewDate": "2026-10-29",
+  "reviewMethod": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables.",
+  "durationMinutes": 75,
+  "durationVerified": true,
+  "items": [
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 1,
+      "sourcePage": 2,
+      "stem": "A large office space with many employees working in the same area is referred to as",
+      "options": [
+        "cellular",
+        "enclosed",
+        "extended",
+        "open-plan"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 2,
+      "sourcePage": 2,
+      "stem": "When typing, filing and mailing functions are performed in each department of an organization, the office is described as",
+      "options": [
+        "centralized",
+        "specialized",
+        "decentralized",
+        "individualized"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 3,
+      "sourcePage": 2,
+      "stem": "Which of the following may be regarded as advantages of centralization?\n\nI. Urgency of work\nII. Confidentiality of work\nIII. Standardization of work\nIV. Even distribution of work",
+      "options": [
+        "I and IV only",
+        "III and IV only",
+        "I, II and III only",
+        "II, III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 4,
+      "sourcePage": 2,
+      "stem": "In which of the following situations would the relationship between employees be described as 'vertical'?",
+      "options": [
+        "One is senior to the other.",
+        "Each has a similar status in the firm.",
+        "One job is more important than the other.",
+        "One has been employed longer than the other."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 5,
+      "sourcePage": 2,
+      "stem": "The science of fitting the workplace to meet the needs of the employees is known as",
+      "options": [
+        "networking",
+        "ergonomics",
+        "telecommuting",
+        "social responsibility"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 6,
+      "sourcePage": 2,
+      "stem": "Which of the following means of communication is the MOST efficient way of informing 100 members of staff of new rules regarding the use of office telephones?",
+      "options": [
+        "Staff meeting",
+        "Individual letters",
+        "Notice on the bulletin board",
+        "Memorandum sent by email"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 7,
+      "sourcePage": 2,
+      "stem": "In an office where large quantities of printed materials have to be cut to size, it would be MOST useful to have access to a",
+      "options": [
+        "guillotine",
+        "letter opener",
+        "sharp-edged knife",
+        "large pair of scissors"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 8,
+      "sourcePage": 2,
+      "stem": "By asking to speak to Mr King only, the call placed was a",
+      "options": [
+        "house call",
+        "personal call",
+        "conference call",
+        "person-to-person call"
+      ],
+      "contextText": "Item 8 refers to the following situation.\n\nThe secretary of Brands International was having difficulty placing a direct overseas call, so she asked the operator to place the call for her. She wanted to speak to Mr John King only. The operator was successful in placing the call."
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 9,
+      "sourcePage": 3,
+      "stem": "Which of the following telephone calls would be MOST suitable for personnel in several different locations to speak to each other without leaving their respective locations?",
+      "options": [
+        "Collect",
+        "Toll free",
+        "Fixed time",
+        "Conference"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 10,
+      "sourcePage": 3,
+      "stem": "Which of the following is NOT a characteristic of registered mail?",
+      "options": [
+        "It offers proof of postage.",
+        "It facilitates safe delivery of mail.",
+        "It is normally sent by second-class mail.",
+        "It offers compensation for loss or damage up to a specified amount."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 11,
+      "sourcePage": 3,
+      "stem": "Which of the following pieces of equipment is used to arrange the pages of a document in order?",
+      "options": [
+        "Jogger",
+        "Collator",
+        "Franking",
+        "Duplicator"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 12,
+      "sourcePage": 3,
+      "stem": "An organizational chart BEST shows the",
+      "options": [
+        "lines of responsibility and the inter-relationship of each department",
+        "order in which work should be carried out in an organization",
+        "the different departments within an organization",
+        "position of employees in an organization"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 13,
+      "sourcePage": 3,
+      "stem": "A confidential letter addressed to the employer is received in a torn condition. The mail clerk should",
+      "options": [
+        "return the letter to the mail department",
+        "refuse to accept the envelope from the mail department",
+        "put the letter into a new envelope and take it to his/her employer",
+        "attach a note to the envelope and deliver by hand to his/her employer"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 14,
+      "sourcePage": 3,
+      "stem": "Three months have passed since you applied for a job at a large firm. You have only received a letter of acknowledgement. What is the MOST appropriate action to be taken?",
+      "options": [
+        "Write another letter of application.",
+        "Write a letter to follow up on the application.",
+        "Telephone your friend who works with the firm.",
+        "Visit the company and ask to see the human resource officer."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 15,
+      "sourcePage": 3,
+      "stem": "A letter of acceptance is sent when a person",
+      "options": [
+        "receives original documents sent with an application",
+        "agrees to take up an offer for appointment",
+        "plans to attend an interview for a job",
+        "receives salary through the bank"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 16,
+      "sourcePage": 4,
+      "stem": "Which of the following guidelines should be followed during a job interview?\n\nI. Be pleasant and alert.\nII. Be courteous when answering questions.\nIII. Maintain eye contact with the interviewer.\nIV. Avoid giving one-word answers.",
+      "options": [
+        "I and IV only",
+        "I, II and III only",
+        "I, II and IV only",
+        "I, II, III and IV"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 17,
+      "sourcePage": 4,
+      "stem": "If an interviewee is interested in having information about promotional opportunities during an interview, which of the following steps should be taken?",
+      "options": [
+        "Ask about such opportunities in a follow-up letter after the interview.",
+        "Visit the office and question the employees.",
+        "Assume that promotion will be automatic.",
+        "Ask about such opportunities before the close of the interview."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 18,
+      "sourcePage": 4,
+      "stem": "Filing through the use of microfilming is valuable for the storage of",
+      "options": [
+        "official records which are frequently used",
+        "passport-sized photographs of staff members",
+        "information which must be kept for many years",
+        "customers' accounts from which statements are to be made"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 19,
+      "sourcePage": 4,
+      "stem": "Which of the following situations would cause a file to be classified as inactive?",
+      "options": [
+        "A supplier now sells a wider range of goods.",
+        "The organization has stopped buying from a particular supplier.",
+        "A company with which the organization deals has changed its name.",
+        "A company with which the organization deals has changed its business address."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 20,
+      "sourcePage": 4,
+      "stem": "An executive is called to a meeting and as such is unable to keep a 3:00 p.m. appointment with a client in his office. What action MUST the receptionist take?",
+      "options": [
+        "Write the client, apologize and ask him to suggest an alternative date.",
+        "When the client arrives, apologize and offer him another appointment.",
+        "Telephone the client, apologize and suggest the time for a new appointment.",
+        "When the client arrives, apologize and suggest that he might wish to see someone else."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 21,
+      "sourcePage": 4,
+      "stem": "The correct indexing title of a file for Peter Kenneth Jaundoo A.A. S.C., LLB is",
+      "options": [
+        "Peter K Jaundoo A.A. SC (LLB)",
+        "Jaundoo, Peter Kenneth (A.A. S.C., LLB)",
+        "P.K. Jaundoo (A.A). (S.C.) (LLB)",
+        "Jaundoo, Peter K, (AA S.C. LLB)"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 22,
+      "sourcePage": 4,
+      "stem": "When a file has been requisitioned, the name of the borrower should be recorded on",
+      "options": [
+        "a call card",
+        "an out card",
+        "an index card",
+        "a card indicator"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 24,
+      "sourcePage": 5,
+      "stem": "A tickler file is used to remind the receptionist so that he/she",
+      "options": [
+        "does not overlook a matter",
+        "takes his/her break on time",
+        "answers the phone promptly",
+        "records the appointments of the executive"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 25,
+      "sourcePage": 5,
+      "stem": "Before starting to set up appointments, a secretary should first thoroughly familiarize herself with the",
+      "options": [
+        "pattern of her boss’ workday",
+        "method of recording appointments",
+        "correct procedure for greeting callers",
+        "extension numbers for each member of staff"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 26,
+      "sourcePage": 5,
+      "stem": "At a meeting on 25 November 2015, discussions were held concerning the appointment of a secretary. What document should be consulted to obtain the information that was discussed at the meeting so that follow-up actions can be taken?",
+      "options": [
+        "Agenda for the meeting",
+        "Minutes of the meeting",
+        "Notice of the meeting",
+        "Chairman’s Agenda"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 28,
+      "sourcePage": 5,
+      "stem": "If the number of persons required to form a quorum is NOT present, the meeting must be",
+      "options": [
+        "conducted as an extraordinary meeting",
+        "conducted as a subcommittee",
+        "adjourned",
+        "postponed"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 29,
+      "sourcePage": 5,
+      "stem": "Which of the following items of business is NOT discussed at an annual general meeting?",
+      "options": [
+        "Declaration of dividends",
+        "Election of directors and auditors",
+        "Making arrangements for a very important person",
+        "Presentation and adoption of the company's reports"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 30,
+      "sourcePage": 5,
+      "stem": "In what order should the following items on an agenda be arranged?\n\nI. Any other business\nII. Minutes of the last meeting\nIII. Apologies\nIV. Matters arising",
+      "options": [
+        "I, III, II, IV",
+        "II, IV, I, III",
+        "III, II, IV, I",
+        "IV, I, III, II"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 31,
+      "sourcePage": 6,
+      "stem": "At the annual general meeting of Verona Enterprises, an equal number of votes was cast for and against a motion. What action should the chairperson take to break the tie?",
+      "options": [
+        "Exercise his casting vote.",
+        "Ask the members to vote again.",
+        "Adjourn the meeting to another date.",
+        "Ask the members to ratify the motion."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 32,
+      "sourcePage": 6,
+      "stem": "The clerk responsible for making travel arrangements for a staff member forgot to make a hotel reservation. The officer was due to depart at 10:30 a.m. for Martinique. The error was discovered at 9:30 a.m. on the same day. What should the clerk do to solve the problem?\n\nI. Contact the officer at the local airport and inform him of the error.\nII. Leave matters as they are.\nIII. Call the hotel, explain the situation and make the reservation.",
+      "options": [
+        "I and II only",
+        "I and III only",
+        "II and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 33,
+      "sourcePage": 6,
+      "stem": "Traveller’s cheques are used instead of cash when travelling abroad because they",
+      "options": [
+        "give the traveller a higher status rating in the foreign country",
+        "are preferred to cash in foreign countries",
+        "will be replaced by the bank if lost",
+        "have a greater value than cash"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 34,
+      "sourcePage": 7,
+      "stem": "The departure time of the flight is",
+      "options": [
+        "0830 hours",
+        "1200 hours",
+        "1330 hours",
+        "1400 hours"
+      ],
+      "contextText": "From: Grand Cayman, Cayman Islands\nDepart Owen Roberts Intl. Airport (Check-in time 1100 hours)\nARR Barbados\nVia Jamaica\n\nCheck in is two and a half hours before departure",
+      "tableBeforeStem": true,
+      "table": {
+        "columns": [
+          "From ↔ To",
+          "Days",
+          "Depart",
+          "Arrive",
+          "Flight No.",
+          "Aircraft"
+        ],
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            "",
+            "AJ452",
+            "747"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 35,
+      "sourcePage": 7,
+      "stem": "It takes four hours flying time from Grand Cayman to Barbados, and Barbados is one hour ahead of Grand Cayman. If a flight leaves Grand Cayman at 0830 hours and stops over in Jamaica for 40 minutes, what will be the time in Barbados when the flight arrives?",
+      "options": [
+        "1230 hrs",
+        "1310 hrs",
+        "1330 hrs",
+        "1410 hrs"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 36,
+      "sourcePage": 7,
+      "stem": "One of the MOST important functions of the human resource department is",
+      "options": [
+        "attending to the welfare of employees",
+        "ensuring proper communication",
+        "receiving visitors to the firm",
+        "introducing new employees"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 37,
+      "sourcePage": 7,
+      "stem": "In which of the following situations is cross-referencing NOT needed?",
+      "options": [
+        "The name of a supplier is changed.",
+        "A female customer has a name change through marriage.",
+        "A piece of correspondence relates to more than one name.",
+        "A document is to be placed under a special name for easy retrieval."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 38,
+      "sourcePage": 7,
+      "stem": "An executive is on a business trip in another Caribbean territory and urgently requires additional money. The BEST way to send money to him/her is by",
+      "options": [
+        "electronic money transfer",
+        "international bank draft",
+        "credit transfer",
+        "debit transfer"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 39,
+      "sourcePage": 8,
+      "stem": "The term ‘imprest’ means",
+      "options": [
+        "a special sum in the bank",
+        "money set aside for petty cash purposes",
+        "a fixed amount of money budgeted by a cabinet",
+        "a fixed amount of money used for bulk purchases"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 40,
+      "sourcePage": 8,
+      "stem": "The human resource clerk has been asked to go through a list of job applicants and select those who meet the necessary requirements for a job. This process is referred to as",
+      "options": [
+        "interviewing",
+        "shortlisting",
+        "downsizing",
+        "elimination"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 41,
+      "sourcePage": 8,
+      "stem": "Which of the following would have a MAJOR effect on labour turnover?",
+      "options": [
+        "Appraisal report",
+        "Staff development",
+        "Working conditions",
+        "Terms of employment"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 42,
+      "sourcePage": 8,
+      "stem": "The above document is BEST described as a job",
+      "options": [
+        "description",
+        "specification",
+        "performance",
+        "advertisement"
+      ],
+      "contextText": "Item 42 refers to the following document.",
+      "tableBeforeStem": true,
+      "table": {
+        "columns": [
+          "RECEPTIONIST"
+        ],
+        "rows": [
+          [
+            "JOB SUMMARY\nResponsible for dealing with visitors to the firm.\nPerforms other office-related duties."
+          ],
+          [
+            "WORK INCLUDES:\nReceiving and screening visitors\nMaintaining the receptionist register\nOperating a switchboard"
+          ],
+          [
+            "MINIMUM QUALIFICATIONS:\n5 CSEC subjects (including English A)"
+          ],
+          [
+            "KNOWLEDGE AND SKILLS\nBasic computer application\nOperation of switchboard"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 43,
+      "sourcePage": 8,
+      "stem": "Which of the following BEST describes the purpose of the petty cash fund?",
+      "options": [
+        "To reduce clerical work",
+        "To store cash efficiently",
+        "For prevention of theft by employees",
+        "For making small payments conveniently"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 44,
+      "sourcePage": 8,
+      "stem": "In a cash book, all monies received are indicated as a",
+      "options": [
+        "credit",
+        "deposit",
+        "credit entry",
+        "debit entry"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 45,
+      "sourcePage": 9,
+      "stem": "The person, Mr Bruce Hall, to whom the cheque is made out, is called the",
+      "options": [
+        "payee",
+        "payer",
+        "banker",
+        "acceptee"
+      ],
+      "contextText": "Items 45–46 refer to the following diagram.",
+      "table": {
+        "title": "Cheque and counterfoil",
+        "columns": [
+          "Counterfoil",
+          "Cheque"
+        ],
+        "rows": [
+          [
+            "No 001",
+            "LINGO BANK LTD\nLINGO BLVD\nLINGO\nNo 001\nA/C Payee Only"
+          ],
+          [
+            "21/9/2015",
+            "Sept. 21, 2015"
+          ],
+          [
+            "In favour of\nB. Hall",
+            "Pay to the order of Mr Bruce Hall"
+          ],
+          [
+            "$150",
+            "the sum of one hundred and fifty dollars\n$150"
+          ],
+          [
+            "",
+            "Joan Wilpaymor"
+          ]
+        ]
+      },
+      "tableBeforeStem": true
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 46,
+      "sourcePage": 9,
+      "stem": "On 2 October 2015, Mr Hall attempted to cash the above cheque at his bank, Savings Banks Ltd. His request was denied because",
+      "options": [
+        "it was a crossed cheque",
+        "the cheque was postdated",
+        "his account was overdrawn",
+        "he did not possess any form of identification"
+      ],
+      "contextText": "Items 45–46 refer to the following diagram.",
+      "table": {
+        "title": "Cheque and counterfoil",
+        "columns": [
+          "Counterfoil",
+          "Cheque"
+        ],
+        "rows": [
+          [
+            "No 001",
+            "LINGO BANK LTD\nLINGO BLVD\nLINGO\nNo 001\nA/C Payee Only"
+          ],
+          [
+            "21/9/2015",
+            "Sept. 21, 2015"
+          ],
+          [
+            "In favour of\nB. Hall",
+            "Pay to the order of Mr Bruce Hall"
+          ],
+          [
+            "$150",
+            "the sum of one hundred and fifty dollars\n$150"
+          ],
+          [
+            "",
+            "Joan Wilpaymor"
+          ]
+        ]
+      },
+      "tableBeforeStem": true
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 47,
+      "sourcePage": 9,
+      "stem": "What is the first step that a businessman should take if his cash book and bank statement show a difference of $20?",
+      "options": [
+        "Reconcile his bank statement with his cash book.",
+        "Regard the $20 as interest on his current account.",
+        "Inform the bank that an error has been made on his account.",
+        "Write a cheque for $20 to balance his statement with the bank."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 48,
+      "sourcePage": 10,
+      "stem": "Assuming that there are no further transactions, the opening balance on the account on 1 February will be",
+      "options": [
+        "$105",
+        "$155",
+        "$195",
+        "$285"
+      ],
+      "contextText": "Item 48 refers to the following transactions which occurred during the month of January 2015.",
+      "tableBeforeStem": true,
+      "table": {
+        "columns": [
+          "Date",
+          "Details",
+          "Description",
+          "Debit ($)",
+          "Credit ($)",
+          "Balance ($)"
+        ],
+        "rows": [
+          [
+            "1 January",
+            "Balance",
+            "",
+            "",
+            "",
+            "150"
+          ],
+          [
+            "3 January",
+            "Interest",
+            "",
+            "",
+            "5",
+            ""
+          ],
+          [
+            "5 January",
+            "Withdrawal",
+            "ATM",
+            "140",
+            "",
+            ""
+          ],
+          [
+            "12 January",
+            "Cheque",
+            "13572",
+            "",
+            "200",
+            ""
+          ],
+          [
+            "15 January",
+            "Cheque",
+            "87431",
+            "50",
+            "",
+            ""
+          ],
+          [
+            "27 January",
+            "Service charge",
+            "",
+            "10",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 49,
+      "sourcePage": 10,
+      "stem": "Mrs Kay purchased a new stove on hire purchase from New & Used Appliances Ltd. She wants to authorize her bank to make monthly payments. Which of the following services can she use?",
+      "options": [
+        "Debit order",
+        "Money order",
+        "Credit transfer",
+        "Standing order"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 50,
+      "sourcePage": 10,
+      "stem": "The company at which you are employed uses a COD system for selling goods.\n\nCOD means",
+      "options": [
+        "Cash on due date",
+        "Cash on delivery",
+        "Cash on demand",
+        "Cash on deposit"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 51,
+      "sourcePage": 10,
+      "stem": "Which of the following should the purchasing manager and staff consider when ordering goods?\n\nI. Packaging\nII. Urgency\nIII. Quality\nIV. Cost",
+      "options": [
+        "I, II, III only",
+        "I, III, IV only",
+        "II, III, IV only",
+        "I, II, III, IV"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 52,
+      "sourcePage": 11,
+      "stem": "What is the TOTAL cost of this order?",
+      "options": [
+        "$900",
+        "$3 000",
+        "$3 500",
+        "$4 000"
+      ],
+      "contextText": "Items 52–53 refer to the following form.\n\nNo. 105\nThe Confectioner’s Shop\n25 Sweet Garden\nHappy Park\nTel/Fax 775-5843\n\nOrder No: 888/10\n8 March 2016\n\nJodella’s Sweet Tooth\nPO Box 989\nPOS Trinidad\n\nYour Reference: Quotation 259",
+      "table": {
+        "columns": [
+          "Code",
+          "Quantity",
+          "Description",
+          "Unit Price\n$"
+        ],
+        "rows": [
+          [
+            "G21",
+            "5 cases",
+            "Gummy Bears",
+            "100"
+          ],
+          [
+            "C5",
+            "10 cases",
+            "Caramel Creams",
+            "200"
+          ],
+          [
+            "N25",
+            "10 cases",
+            "Nut Crackers",
+            "100"
+          ]
+        ],
+        "details": [
+          "Delivery: Carriage paid",
+          "Terms: 25% discount on total bill if paid within 7 days/N30",
+          "E & OE"
+        ]
+      },
+      "tableBeforeStem": true
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 53,
+      "sourcePage": 11,
+      "stem": "If the bill is settled on or before 14 March, how much should Jodella pay?",
+      "options": [
+        "$875",
+        "$2 625",
+        "$3 500",
+        "$3 875"
+      ],
+      "contextText": "Items 52–53 refer to the following form.\n\nNo. 105\nThe Confectioner’s Shop\n25 Sweet Garden\nHappy Park\nTel/Fax 775-5843\n\nOrder No: 888/10\n8 March 2016\n\nJodella’s Sweet Tooth\nPO Box 989\nPOS Trinidad\n\nYour Reference: Quotation 259",
+      "table": {
+        "columns": [
+          "Code",
+          "Quantity",
+          "Description",
+          "Unit Price\n$"
+        ],
+        "rows": [
+          [
+            "G21",
+            "5 cases",
+            "Gummy Bears",
+            "100"
+          ],
+          [
+            "C5",
+            "10 cases",
+            "Caramel Creams",
+            "200"
+          ],
+          [
+            "N25",
+            "10 cases",
+            "Nut Crackers",
+            "100"
+          ]
+        ],
+        "details": [
+          "Delivery: Carriage paid",
+          "Terms: 25% discount on total bill if paid within 7 days/N30",
+          "E & OE"
+        ]
+      },
+      "tableBeforeStem": true
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 54,
+      "sourcePage": 12,
+      "stem": "What is the closing stock at the end of May using the LIFO method?",
+      "options": [
+        "$200.00",
+        "$212.50",
+        "$225.00",
+        "$390.00"
+      ],
+      "contextText": "Item 54 refers to the following information on the movement of stock over a three-month period.",
+      "tableBeforeStem": true,
+      "table": {
+        "columns": [
+          "Month",
+          "Receipts",
+          "Issues"
+        ],
+        "rows": [
+          [
+            "January",
+            "15 @ $45",
+            ""
+          ],
+          [
+            "March",
+            "15 @ $40",
+            ""
+          ],
+          [
+            "May",
+            "",
+            "25"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 55,
+      "sourcePage": 12,
+      "stem": "Which of the following departments should prepare a quotation in response to an enquiry?",
+      "options": [
+        "Sales",
+        "Accounts",
+        "Purchases",
+        "Advertising"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 56,
+      "sourcePage": 12,
+      "stem": "Which of the following types of discount is given specifically for prompt settlement of an account within a given period?",
+      "options": [
+        "Trade",
+        "Sales",
+        "Cash",
+        "Bulk"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 57,
+      "sourcePage": 12,
+      "stem": "What should the despatch clerk do if the number of items being delivered is fewer than that shown on the delivery note?",
+      "options": [
+        "Reprimand the delivery agent and refuse to accept delivery.",
+        "Return the goods and ask for urgent delivery of the correct order.",
+        "Accept the delivery and ask the company to send the outstanding items.",
+        "Write the shortage on the delivery note before signing for receipt of the items."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 58,
+      "sourcePage": 12,
+      "stem": "A printed pamphlet which describes goods for sale is called a",
+      "options": [
+        "leaflet",
+        "price list",
+        "catalogue",
+        "sales enquiry"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 59,
+      "sourcePage": 12,
+      "stem": "Which of the following documents would a salesman use to prepare goods for despatch to a customer?",
+      "options": [
+        "Invoice",
+        "Voucher",
+        "Purchase order",
+        "Purchase requisition"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 60,
+      "sourcePage": 12,
+      "stem": "Which of the following cards is LEAST likely to be used in the factory office?",
+      "options": [
+        "Bin",
+        "Job",
+        "Cost",
+        "Time"
+      ]
+    }
+  ],
+  "sourceLimitations": [
+    {
+      "number": 23,
+      "page": 5,
+      "issue": "The embedded source image begins at the Roman-numeral list; the question stem is clipped."
+    },
+    {
+      "number": 27,
+      "page": 5,
+      "issue": "The embedded source image begins at the answer choices; the question stem is clipped."
+    }
+  ]
+}

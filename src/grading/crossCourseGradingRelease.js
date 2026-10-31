@@ -10,7 +10,7 @@ export const CROSS_COURSE_GRADING_AUDIT_VERSION="1.0.0";
 export const PAPER2_GRADING_SUBJECTS=Object.freeze([
   "chemistry","english-a","food-nutrition-and-health",
   "information-technology","integrated-science","mathematics",
-  "physics","principles-of-business","principles-of-accounts","social-studies"
+  "physics","principles-of-business","principles-of-accounts","social-studies","office-administration"
 ]);
 export const OFFICIAL_CXC_RULE_SUBJECTS=Object.freeze([
   "english-a","information-technology","integrated-science",

@@ -1,0 +1,1209 @@
+{
+  "paperId": "OA-P2-2024-JAN",
+  "reviewDate": "2026-10-29",
+  "reviewMethod": "Visual comparison with all 23 supplied PDF pages; native text, source-shaped editable organization chart and source forms. Printed fixed values and blanks are retained.",
+  "questions": {
+    "OA-P2-2024-JAN::1": {
+      "sourcePages": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "sourcePage": 4,
+      "layoutSourcePages": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2024-JAN::2": {
+      "sourcePages": [
+        8,
+        9
+      ],
+      "sourcePage": 8,
+      "layoutSourcePages": [
+        8,
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2024-JAN::3": {
+      "sourcePages": [
+        11,
+        12,
+        13
+      ],
+      "sourcePage": 11,
+      "layoutSourcePages": [
+        11,
+        12,
+        13
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2024-JAN::4": {
+      "sourcePages": [
+        14,
+        15,
+        16
+      ],
+      "sourcePage": 14,
+      "layoutSourcePages": [
+        14,
+        15,
+        16
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2024-JAN::5": {
+      "sourcePages": [
+        17,
+        18,
+        19
+      ],
+      "sourcePage": 17,
+      "layoutSourcePages": [
+        17,
+        18,
+        19
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2024-JAN::6": {
+      "sourcePages": [
+        21,
+        22,
+        23
+      ],
+      "sourcePage": 21,
+      "layoutSourcePages": [
+        21,
+        22,
+        23
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2024-JAN::1::q1-a": {
+      "prompt": "State TWO desirable skills that a clerk working in the general office of an organization should possess.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        4
+      ],
+      "sourcePages": [
+        4
+      ],
+      "sourcePage": 4
+    },
+    "OA-P2-2024-JAN::1::q1-b": {
+      "prompt": "XYZ International employs over 200 persons and its offices occupy four floors in a large building.\n\n(i) State TWO benefits of working with a large organization. (2 marks)\n\n(ii) XYZ International currently has a records management system for each floor of the organization.\n\nOutline ONE reason why XYZ International should consider a centralized records management system. (2 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        5
+      ],
+      "sourcePages": [
+        5
+      ],
+      "sourcePage": 5
+    },
+    "OA-P2-2024-JAN::1::q1-c": {
+      "prompt": "Computer and Supplies Inc. has been in operation for two years and employs a chief executive officer, a receptionist and an office attendant. The business is expanding and six additional employees are required.\n\n(i) Using the list below, complete the table by filling in the position that corresponds to EACH job description. The first position has been inserted for you. (2 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        6,
+        7
+      ],
+      "sourcePages": [
+        6,
+        7
+      ],
+      "sourcePage": 6,
+      "table": {
+        "title": "Positions",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "Accountant",
+            "Administrative assistant"
+          ],
+          [
+            "Customer service clerk",
+            "Human resource clerk"
+          ],
+          [
+            "Human resource manager",
+            "Sales manager"
+          ],
+          [
+            "Marketing manager",
+            "Purchasing clerk"
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "Job descriptions",
+          "columns": [
+            "Job Description",
+            "Job Title"
+          ],
+          "rows": [
+            [
+              "Liaises between the customers and the company",
+              "Customer service clerk"
+            ],
+            [
+              "Manages the finances of the company",
+              ""
+            ],
+            [
+              "Develops training programmes for staff",
+              ""
+            ],
+            [
+              "Maintains the database of personnel records",
+              ""
+            ],
+            [
+              "Develops marketing strategies",
+              ""
+            ],
+            [
+              "Assists the CEO with general office functions",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              5,
+              1
+            ]
+          ]
+        }
+      ],
+      "responseDiagram": {
+        "title": "Organization chart",
+        "prompt": "(ii) Complete the organization chart below to show the positions of the other EIGHT employees at Computer and Supplies Inc. (7 marks)",
+        "viewBox": [
+          50,
+          124,
+          495,
+          430
+        ],
+        "sourceGeometry": {
+          "page": 7,
+          "units": "PDF points"
+        },
+        "lines": [
+          [
+            [
+              366.676,
+              160.671
+            ],
+            [
+              366.676,
+              412.53
+            ]
+          ],
+          [
+            [
+              150.952,
+              225.681
+            ],
+            [
+              366.676,
+              225.681
+            ]
+          ],
+          [
+            [
+              102.421,
+              225.681
+            ],
+            [
+              102.421,
+              412.53
+            ]
+          ],
+          [
+            [
+              244.364,
+              289.475
+            ],
+            [
+              492.88,
+              289.475
+            ]
+          ],
+          [
+            [
+              244.364,
+              289.475
+            ],
+            [
+              244.364,
+              412.53
+            ]
+          ],
+          [
+            [
+              102.421,
+              323.491
+            ],
+            [
+              170.705,
+              323.491
+            ],
+            [
+              170.705,
+              517.569
+            ]
+          ]
+        ],
+        "nodes": [
+          {
+            "x": 317.757,
+            "y": 126.655,
+            "width": 98.37,
+            "height": 68.031,
+            "fixed": "Chief Executive\nOfficer"
+          },
+          {
+            "x": 53.236,
+            "y": 191.496,
+            "width": 98.37,
+            "height": 68.031,
+            "label": "Box 1 (upper left)"
+          },
+          {
+            "x": 194.477,
+            "y": 255.46,
+            "width": 98.37,
+            "height": 68.031,
+            "label": "Box 2 (middle left)"
+          },
+          {
+            "x": 318.022,
+            "y": 255.46,
+            "width": 98.37,
+            "height": 68.031,
+            "label": "Box 3 (middle centre)"
+          },
+          {
+            "x": 443.694,
+            "y": 255.46,
+            "width": 98.37,
+            "height": 68.031,
+            "label": "Box 4 (middle right)"
+          },
+          {
+            "x": 53.412,
+            "y": 378.514,
+            "width": 98.37,
+            "height": 68.031,
+            "label": "Box 5 (lower left)"
+          },
+          {
+            "x": 194.477,
+            "y": 378.514,
+            "width": 98.37,
+            "height": 68.031,
+            "label": "Box 6 (lower middle)"
+          },
+          {
+            "x": 318.022,
+            "y": 378.514,
+            "width": 98.37,
+            "height": 68.031,
+            "label": "Box 7 (lower right)"
+          },
+          {
+            "x": 121.519,
+            "y": 483.553,
+            "width": 98.37,
+            "height": 68.031,
+            "label": "Box 8 (bottom)"
+          }
+        ]
+      }
+    },
+    "OA-P2-2024-JAN::2::q2-a": {
+      "prompt": "A damaged package was received by the clerk in the mailroom. State THREE procedures for dealing with the damaged package.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        8
+      ],
+      "sourcePages": [
+        8
+      ],
+      "sourcePage": 8
+    },
+    "OA-P2-2024-JAN::2::q2-b": {
+      "prompt": "Outline ONE benefit of using EACH of the following sources to advertise information about job opportunities.\n\n(i) Company website (2 marks)\n\n(ii) Local newspaper (2 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        8
+      ],
+      "sourcePages": [
+        8
+      ],
+      "sourcePage": 8
+    },
+    "OA-P2-2024-JAN::2::q2-c": {
+      "prompt": "On 02 January 2024, at 8:36 a.m., Mr Rhoden Smith, the principal of Regent High School, called for Mrs John of Ace Computers. The principal’s contact numbers are 952-4078 (office) and 405-2811 (mobile).\n\nSince Mrs John was not in office, the principal would like her to contact him as soon as possible to discuss an issue with recently purchased laptops which were delivered without power cables. Mr Smith will be in office until 4:00 p.m.\n\nAssume you are Terry Lake, the receptionist at Ace Computers. Record the details of the call on the message sheet below.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        9
+      ],
+      "sourcePages": [
+        9
+      ],
+      "sourcePage": 9,
+      "documentTitle": "MESSAGE SHEET",
+      "fields": [
+        {
+          "label": "Message For",
+          "kind": "text"
+        },
+        {
+          "label": "Date",
+          "kind": "text"
+        },
+        {
+          "label": "Time of call",
+          "kind": "text"
+        },
+        {
+          "label": "Name of Caller (Ms Mrs Mr)",
+          "kind": "text"
+        },
+        {
+          "label": "Of",
+          "kind": "text"
+        },
+        {
+          "label": "Telephone",
+          "kind": "text"
+        },
+        {
+          "label": "Mobile Number",
+          "kind": "text"
+        },
+        {
+          "label": "Called",
+          "kind": "checkbox"
+        },
+        {
+          "label": "Please Call",
+          "kind": "checkbox"
+        },
+        {
+          "label": "Will Call Back",
+          "kind": "checkbox"
+        },
+        {
+          "label": "Urgent",
+          "kind": "checkbox"
+        },
+        {
+          "label": "Message",
+          "kind": "text",
+          "rows": 6
+        },
+        {
+          "label": "Taken by",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2024-JAN::3::q3-a": {
+      "prompt": "State THREE reasons why organizations convene general meetings.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        11
+      ],
+      "sourcePages": [
+        11
+      ],
+      "sourcePage": 11
+    },
+    "OA-P2-2024-JAN::3::q3-b": {
+      "prompt": "Explain the role of EACH of the following personnel at a general meeting.\n\n(i) Chairperson (2 marks)\n\n(ii) Proxy (2 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        11
+      ],
+      "sourcePages": [
+        11
+      ],
+      "sourcePage": 11
+    },
+    "OA-P2-2024-JAN::3::q3-c": {
+      "prompt": "Mr Glen Charles has been invited to attend a conference in Europe in March 2024. The flyer below provides information on the registration, accommodation, meals and tours that will be included in the conference activities.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        12,
+        13
+      ],
+      "sourcePages": [
+        12,
+        13
+      ],
+      "sourcePage": 12,
+      "sourceVisual": {
+        "page": 12,
+        "region": [
+          253,
+          178,
+          170,
+          90
+        ],
+        "description": "Hotel photograph in the conference flyer."
+      },
+      "table": {
+        "title": "AEP EDUCATIONAL CONFERENCE 2024",
+        "columns": [
+          "Activity",
+          "Option",
+          "Cost",
+          "Basis"
+        ],
+        "rows": [
+          [
+            "Conference Registration",
+            "Platinum",
+            "$300",
+            ""
+          ],
+          [
+            "",
+            "Regular",
+            "$120",
+            ""
+          ],
+          [
+            "Accommodation Package for FOUR Nights",
+            "Ocean view",
+            "$900",
+            "in total"
+          ],
+          [
+            "",
+            "Garden view",
+            "$700",
+            "in total"
+          ],
+          [
+            "Meals",
+            "À la carte",
+            "$200",
+            "daily"
+          ],
+          [
+            "",
+            "Buffet",
+            "$150",
+            "daily"
+          ],
+          [
+            "Tours",
+            "Island Tour",
+            "$220",
+            "per person"
+          ],
+          [
+            "",
+            "Safari",
+            "$180",
+            "per person"
+          ]
+        ],
+        "details": [
+          "All prices are quoted in US dollars.",
+          "Management has approved a budget of US $2 000 to cover the trip. Mr Charles will spend four nights at the hotel and will be provided with US $50 per night to cover incidentals.",
+          "Assume you are the administrative clerk. Use the travel expense form below to select the options for EACH activity and, hence, determine the TOTAL cost of the trip."
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "Travel Expense Form",
+          "columns": [
+            "Item",
+            "Description",
+            "Cost ($)"
+          ],
+          "rows": [
+            [
+              "Registration",
+              "",
+              ""
+            ],
+            [
+              "Accommodation",
+              "",
+              ""
+            ],
+            [
+              "Meals",
+              "",
+              ""
+            ],
+            [
+              "Tour",
+              "",
+              ""
+            ],
+            [
+              "Incidentals",
+              "",
+              ""
+            ],
+            [
+              "TOTAL",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              5,
+              2
+            ]
+          ],
+          "merges": [
+            {
+              "row": 5,
+              "col": 0,
+              "colSpan": 2,
+              "align": "center"
+            }
+          ]
+        }
+      ]
+    },
+    "OA-P2-2024-JAN::4::q4-a": {
+      "prompt": "State TWO types of leave, other than vacation leave, that employees are normally entitled to take.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        14
+      ],
+      "sourcePages": [
+        14
+      ],
+      "sourcePage": 14
+    },
+    "OA-P2-2024-JAN::4::q4-b": {
+      "prompt": "The employees of Selection Enterprises have complained to the workers’ union that they are not happy working with the company. Outline TWO initiatives that the human resource department could implement to improve job satisfaction.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        14
+      ],
+      "sourcePages": [
+        14
+      ],
+      "sourcePage": 14
+    },
+    "OA-P2-2024-JAN::4::q4-c": {
+      "prompt": "Best Books International is a bookstore located at 24 Brooksville Avenue, New York 10012. Best Books exports books and magazines worldwide. The national library, whose headquarters is in Coral Drive, Bridgetown, Barbados, is interested in increasing the number of West Indian novels available in the library. The library needs information such as the books that are available, terms and conditions of sale, payment options and the most suitable way of delivering the order. Assume you are Ms Charon Freeman, the purchasing clerk. Write a letter of inquiry to Best Books International requesting the relevant information needed to order suitable novels for the library.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        15,
+        16
+      ],
+      "sourcePages": [
+        15,
+        16
+      ],
+      "sourcePage": 15,
+      "answerType": "document"
+    },
+    "OA-P2-2024-JAN::5::q5-a": {
+      "prompt": "State TWO functions of the customer service department.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        17
+      ],
+      "sourcePages": [
+        17
+      ],
+      "sourcePage": 17
+    },
+    "OA-P2-2024-JAN::5::q5-b": {
+      "prompt": "Outline TWO steps that a company should take to prepare for an audit.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        17
+      ],
+      "sourcePages": [
+        17
+      ],
+      "sourcePage": 17
+    },
+    "OA-P2-2024-JAN::5::q5-c": {
+      "prompt": "Tobias Stationeries has recently received a statement from its bank. However, as the accounts clerk, you have noticed that there are some differences between the cash book and the bank statement.\n\nUse the information below to prepare the bank reconciliation statement for Tobias Stationeries as at 31 December 2023. Start with the ‘Balance as per Cash Book’.\n\nChecks showed that the following were reasons for the differences.\n\n• Bank charges of $75 were not entered in the cash book.\n• Dividends of $150 were received by the bank on the company’s behalf.\n• Cash amounting to $200 was lodged into the company’s account after the statement was prepared.\n• No entry was made in the cash book for the standing order of $90.\n• A cheque for $180 was drawn for a customer, E. Exeter, but the customer has not yet presented the cheque to the bank.\n• Bank interest of $65 was credited by the bank but not entered in the cash book.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        18,
+        19
+      ],
+      "sourcePages": [
+        18,
+        19
+      ],
+      "sourcePage": 18,
+      "responseTables": [
+        {
+          "title": "Tobias Stationeries — Bank Reconciliation Statement — As at 31 December 2023",
+          "columns": [
+            "",
+            "$",
+            "$"
+          ],
+          "columnLabels": [
+            "Description",
+            "Amount — first column",
+            "Amount — second column"
+          ],
+          "rows": [
+            [
+              "Balance as per Cash Book",
+              "",
+              "300.00"
+            ],
+            [
+              "ADD",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "LESS",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "Balance as per Bank Statement",
+              "",
+              "330.00"
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              8,
+              1
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              9,
+              0
+            ],
+            [
+              9,
+              1
+            ],
+            [
+              9,
+              2
+            ],
+            [
+              10,
+              0
+            ],
+            [
+              10,
+              1
+            ],
+            [
+              10,
+              2
+            ],
+            [
+              11,
+              0
+            ],
+            [
+              11,
+              1
+            ],
+            [
+              11,
+              2
+            ],
+            [
+              12,
+              0
+            ],
+            [
+              12,
+              1
+            ],
+            [
+              12,
+              2
+            ],
+            [
+              13,
+              0
+            ],
+            [
+              13,
+              1
+            ],
+            [
+              13,
+              2
+            ],
+            [
+              15,
+              0
+            ],
+            [
+              15,
+              1
+            ],
+            [
+              15,
+              2
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2024-JAN::6::q6-a": {
+      "prompt": "Describe ONE way in which the corporate communications department can improve the image of the company.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        21
+      ],
+      "sourcePages": [
+        21
+      ],
+      "sourcePage": 21
+    },
+    "OA-P2-2024-JAN::6::q6-b": {
+      "prompt": "Explain the purpose of EACH of the following documents in the transport office.\n\n(i) Destination sheet (2 marks)\n\n(ii) Certificate of origin (2 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        21
+      ],
+      "sourcePages": [
+        21
+      ],
+      "sourcePage": 21
+    },
+    "OA-P2-2024-JAN::6::q6-c": {
+      "prompt": "On 04 January 2024, Stationery Designs placed an order with Office Equipment Limited. The details of the order are given below.\n\n• 5 reams of legal-sized paper and 10 boxes of pens were ordered.\n• Each ream of paper costs $40 and each box of pens costs $15.\n• The goods are to be delivered to Mr John Wells at 18 Kingstown, St Vincent. He can be contacted at (784) 134-3030.\n• The order, C1000, was dispatched three days after the order was made.\n• A late order for one Canon MP240 printer @ $300 was called in and was shipped with the original order by express mail.\n• Stationery Designs is located at Lucas Bay, Kingstown, St Vincent. The email address is designs@king.com and the office number is (784) 134-3000.\n• The agreed terms of sale were 10% 10 days, 5% 20 days Net 30.\n• Payment was received on 11 January 2024.\n\nAssume you are the clerk in the dispatch office. Complete the advice note on page 23 to inform the customer that the goods have been dispatched.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        22,
+        23
+      ],
+      "sourcePages": [
+        22,
+        23
+      ],
+      "sourcePage": 22,
+      "table": {
+        "title": "OFFICE EQUIPMENT LIMITED",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "Address",
+            "34 St Lucia Road, Barbados"
+          ],
+          [
+            "Email Address",
+            "supplies@carib.com"
+          ],
+          [
+            "Telephone",
+            "(246) 271-4100"
+          ]
+        ],
+        "details": [
+          "Reliable Service Throughout the Caribbean"
+        ]
+      },
+      "documentTitle": "ADVICE NOTE",
+      "fields": [
+        {
+          "label": "Dispatch Date",
+          "kind": "text"
+        },
+        {
+          "label": "Order No.",
+          "kind": "text"
+        },
+        {
+          "label": "Shipped Via",
+          "kind": "text"
+        },
+        {
+          "label": "Customer Information",
+          "kind": "text"
+        },
+        {
+          "label": "Terms",
+          "kind": "text"
+        },
+        {
+          "label": "Total",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "Discount",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "Total Less Discount",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "Deliver to",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "Telephone",
+          "kind": "text",
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Dispatched goods",
+          "columns": [
+            "Quantity",
+            "Description",
+            "Unit Price ($)",
+            "Total ($)"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

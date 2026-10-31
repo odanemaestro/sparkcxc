@@ -1,3 +1,5 @@
+import {OA_PAPER2S} from "../officeAdministration/data/oaPaper2";
+import {gradeOaPaper2Part} from "../officeAdministration/oaMarkingV2";
 import {auditPaper2MarkBounds,auditCrossCourseCalibration,
   PAPER2_GRADING_SUBJECTS} from "./crossCourseGradingRelease";
 import {runCxcOfficialCalibration} from "./cxcOfficialPaper2Calibration";
@@ -35,7 +37,10 @@ const fnhPart={marks:1,modelPoints:["Diet means the usual foods and drinks consu
 const fnh=(answer)=>gradeFnhWrittenPart(fnhPart,answer).confirmedMarks;
 const pob=(answer)=>gradePobHistoricalArithmetic("POB-P2-2005-MJ","Q9:a.ii",answer).marks;
 
+const oaNumeric=OA_PAPER2S[0].questions[4].parts[2];
+const oa=answer=>gradeOaPaper2Part(oaNumeric,answer).marks;
 const fixtures=[
+  ["office-administration",oa,1,"Ordinary pay: 40 x 120 = 4800","Ordinary pay: 4900","oa-source-rubric-v2-2026-10-26"],
   ["principles-of-accounts",answer=>reviewPoaPaper2V2({'POA-Q1::1':{answer}}).candidateMarks,1,"116000","115000","poa-original-criteria-v1"],
   ["chemistry",chem,1, "Ions move through solution.","Ions never move through solution.",CHEMISTRY_P2_GRADER_VERSION],
   ["integrated-science",sci,1,"Heat increases evaporation.","Heat does not increase evaporation.",INTEGRATED_SCIENCE_P2_GRADER_VERSION],

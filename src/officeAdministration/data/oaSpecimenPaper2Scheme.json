@@ -1,0 +1,792 @@
+{
+  "paperId": "OA-P2-SPECIMEN-2024",
+  "id": "OA-P2-SPECIMEN-2024-MS",
+  "title": "CXC specimen 2024 · Paper 2 · Key and mark scheme",
+  "sourceType": "official-mark-scheme",
+  "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+  "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+  "sourcePdfPages": 169,
+  "sourcePages": [
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142
+  ],
+  "questionPages": [
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120
+  ],
+  "reviewOnly": true,
+  "officialMarkSchemeVerified": true,
+  "transcriptionMethod": "native PDF text checked against rendered pages",
+  "parts": {
+    "q1-a": {
+      "id": "q1-a",
+      "marks": 2,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Regularity\nPunctuality\nPositive work ethic\nConfidentiality\nWillingness\nConfidence",
+      "guidance": "One mark each for any TWO correct responses.",
+      "allocation": [
+        {
+          "marks": 2,
+          "rule": "One mark each for any TWO correct attributes."
+        }
+      ],
+      "sourcePages": [
+        127
+      ],
+      "profile": "Knowledge and comprehension",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          127
+        ],
+        "originalQuestionNumber": 1,
+        "originalPartLabel": "a",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q1-b": {
+      "id": "q1-b",
+      "marks": 6,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Open plan\n1. Accommodates a greater number of staff in the same space.\n2. Equipment and resources can be readily shared among the staff members.\n3. Interpersonal skills are enhanced and team building skills are developed.\n4. Encourages shared tasks and responsibilities.\n5. Promotes easier supervision of work and employees.\n6. Provides more flexibility for arrangement of workstation and equipment.\nCellular\n1. Suitable for top-level officials because of the privacy it provides.\n2. Creates an atmosphere for greater productivity because of fewer distractions and disturbances.\n3. Provides more security for the placement of documents/hardware/software/personal belongings.\nVirtual\n1. Less time is spent commuting/travelling from the office to work and back.\n2. Decrease in operational cost for the business.\n3. Employees can work flexible hours.",
+      "guidance": "One mark each for any TWO correct responses for EACH arrangement.",
+      "allocation": [
+        {
+          "marks": 2,
+          "rule": "Open plan: one mark each for any TWO correct benefits."
+        },
+        {
+          "marks": 2,
+          "rule": "Cellular: one mark each for any TWO correct benefits."
+        },
+        {
+          "marks": 2,
+          "rule": "Virtual: one mark each for any TWO correct benefits."
+        }
+      ],
+      "sourcePages": [
+        128
+      ],
+      "profile": "Knowledge and comprehension",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          128
+        ],
+        "originalQuestionNumber": 1,
+        "originalPartLabel": "b",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q1-c": {
+      "id": "q1-c",
+      "marks": 7,
+      "modelAnswerSource": "official",
+      "modelAnswer": "EMAIL\nTO: principal@browns.edu\nSUBJECT: Purchase of additional devices\nGood morning Mrs Brown\nThe student council has indicated that it would like to publish a monthly newsletter, with assistance from the school. However, to make this project possible, we would need to acquire additional equipment as detailed below.\nMulti-function printer: This device would incorporate functions such as colour printing, scanning, collating and stapling. The students would be able to produce hundreds of printed copies of the newsletter in a relatively short time using a single machine.\nDigital camera: This would allow the capture of still images for use in the newsletter. The images that are needed can be easily transferred to the computer where the newsletter is being compiled while the others can be discarded. Further, if the newsletter is shared electronically, video clips may also be captured with the camera.\nTablet: The tablet may be used by the students to record information “on the go” since it is small and easy to carry. They would be able to conduct interviews, write reports and articles while moving around the school environment. This would eliminate the necessity to write on paper and then transfer to a computer.\nI hope that the school can acquire these resources to assist the students.\nTomas Field\nSchool Clerk",
+      "guidance": "Appropriate introductory and closing statements: 1 mark. A clear description of each device: 2 marks each (3 × 2); a partial description: 1 mark each.",
+      "allocation": [
+        {
+          "marks": 1,
+          "rule": "Appropriate introductory and closing statements."
+        },
+        {
+          "marks": 2,
+          "rule": "Clear description of the multi-function printer; 1 mark for a partial description."
+        },
+        {
+          "marks": 2,
+          "rule": "Clear description of the digital camera; 1 mark for a partial description."
+        },
+        {
+          "marks": 2,
+          "rule": "Clear description of the tablet; 1 mark for a partial description."
+        }
+      ],
+      "sourcePages": [
+        129
+      ],
+      "profile": "Application",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          129
+        ],
+        "originalQuestionNumber": 1,
+        "originalPartLabel": "c",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q2-a": {
+      "id": "q2-a",
+      "marks": 3,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Perceptual bias\nCultural bias\nPersonal bias\nLanguage and semantics\nLiteracy skills\nTime constraints",
+      "guidance": "One mark each for any THREE correct responses.",
+      "allocation": [
+        {
+          "marks": 3,
+          "rule": "One mark each for any THREE correct barriers."
+        }
+      ],
+      "sourcePages": [
+        130
+      ],
+      "profile": "Knowledge and comprehension",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          130
+        ],
+        "originalQuestionNumber": 2,
+        "originalPartLabel": "a",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q2-b": {
+      "id": "q2-b",
+      "marks": 4,
+      "modelAnswerSource": "official",
+      "modelAnswer": "The information on the business will always be relevant. As the information on the business needs to be revised, the website could easily be updated without having to reprint material or discard flyers that are outdated.\nThe website will reach the intended target audience, not only in the same city or country, but globally. In this way more persons will be informed of the services which are offered.\nThe website could provide information on the operation of the business as well as other related information such as available products and nail care. The site might even allow for booking of appointments online.\nThe developer of the website could ensure that key words are included in the coding so that the website would be visible to users of sites offering similar products and services. This would increase the traffic to the site.",
+      "guidance": "Two marks each for any TWO clear explanations (2 × 2). One mark for each partial response (2 × 1).",
+      "allocation": [
+        {
+          "marks": 2,
+          "rule": "First clearly explained benefit; 1 mark for a partial response."
+        },
+        {
+          "marks": 2,
+          "rule": "Second clearly explained benefit; 1 mark for a partial response."
+        }
+      ],
+      "sourcePages": [
+        130
+      ],
+      "profile": "Knowledge and comprehension",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          130
+        ],
+        "originalQuestionNumber": 2,
+        "originalPartLabel": "b",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q2-c": {
+      "id": "q2-c",
+      "marks": 8,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Megabytes Limited\n19 Palmer’s Crescent\nThe Valley\nAnguilla\n(Current date)\nMr Derek Wales\n10 Highway Drive\nThe Valley\nAnguilla\nDear Mr Wales\nI hereby acknowledge receipt of your application for the post of receptionist at Megabytes Limited. We are in the process of reviewing all applications sent to our company and will certainly communicate with you within the next two weeks.\nThank you for the interest shown in employment with our company.\nYour sincerely\nAmber Black\nHuman Resource Manager",
+      "guidance": "Award one mark for EACH of the eight elements listed in the official allocation.",
+      "allocation": [
+        {
+          "marks": 1,
+          "rule": "Company’s address/return address in correct position."
+        },
+        {
+          "marks": 1,
+          "rule": "Date in correct position according to style used."
+        },
+        {
+          "marks": 1,
+          "rule": "Applicant’s address in correct position."
+        },
+        {
+          "marks": 1,
+          "rule": "Matching salutation and complimentary close."
+        },
+        {
+          "marks": 1,
+          "rule": "Acknowledging receipt of application for post of receptionist."
+        },
+        {
+          "marks": 1,
+          "rule": "Action/s taken by company."
+        },
+        {
+          "marks": 1,
+          "rule": "Appropriate closing paragraph."
+        },
+        {
+          "marks": 1,
+          "rule": "Correct name/position for signature."
+        }
+      ],
+      "sourcePages": [
+        131
+      ],
+      "profile": "Application",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          131
+        ],
+        "originalQuestionNumber": 2,
+        "originalPartLabel": "c",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      },
+      "sourceNotes": [
+        "The printed model uses “Your sincerely”; the allocation requires a matching salutation and complimentary close."
+      ]
+    },
+    "q3-a": {
+      "id": "q3-a",
+      "marks": 3,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Casting vote: A vote that the chairperson is authorized to make when there is an equal number of votes for and against a motion.\nBy-laws: A company’s internal rules which provide guidelines on how the organization should operate.\nVerbatim: Using exactly the same words - a word-for-word report of a speech.",
+      "guidance": "One mark for each correct response.",
+      "allocation": [
+        {
+          "marks": 1,
+          "rule": "Correct definition of casting vote."
+        },
+        {
+          "marks": 1,
+          "rule": "Correct definition of by-laws."
+        },
+        {
+          "marks": 1,
+          "rule": "Correct definition of verbatim."
+        }
+      ],
+      "sourcePages": [
+        132
+      ],
+      "profile": "Knowledge and comprehension",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          132
+        ],
+        "originalQuestionNumber": 3,
+        "originalPartLabel": "a",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q3-b": {
+      "id": "q3-b",
+      "marks": 4,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Send the meeting invitation and credentials.\nEmail all documents required for the meeting.\nConfirm the availability of the participants.\nRemind participants to identify an appropriate location where they will sign in to the meeting.\nAdvise the participants to ensure that there is access to Internet connectivity as well as the required software to participate in the meeting.",
+      "guidance": "One mark each for any FOUR correct responses.",
+      "allocation": [
+        {
+          "marks": 4,
+          "rule": "One mark each for any FOUR correct functions before a virtual meeting."
+        }
+      ],
+      "sourcePages": [
+        132
+      ],
+      "profile": "Knowledge and comprehension",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          132
+        ],
+        "originalQuestionNumber": 3,
+        "originalPartLabel": "b",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q3-c": {
+      "id": "q3-c",
+      "marks": 8,
+      "modelAnswerSource": "official",
+      "modelAnswer": "NOTICE OF MEETING\nThe Annual General Meeting will be held on 15 November 2024 in the conference room at the credit union’s headquarters in Castries, St Lucia. The meeting will commence at 3 p.m.\nThe new board of directors will be elected at this meeting. The financial report will also be presented.\nAGENDA\n1. Welcome and opening remarks\n2. Apologies for absence\n3. Minutes of previous meeting\n4. Matters arising\n5. Reports\n6. Any other business\n7. Date and time of next meeting\n8. Adjournment\nAdam Clarke\nSecretary",
+      "guidance": "Heading: 1 mark; introductory sentence: 1; main purpose: 1; date and time: 1; venue: 1; agenda items in correct order with 7-8 items: 2 (4-6 items: 1); appropriate signature: 1.",
+      "allocation": [
+        {
+          "marks": 1,
+          "rule": "Heading: Notice of meeting."
+        },
+        {
+          "marks": 1,
+          "rule": "Introductory sentence."
+        },
+        {
+          "marks": 1,
+          "rule": "Sentence stating main purpose."
+        },
+        {
+          "marks": 1,
+          "rule": "Date and time."
+        },
+        {
+          "marks": 1,
+          "rule": "Venue."
+        },
+        {
+          "marks": 2,
+          "rule": "Agenda items in correct order, with 7-8 items listed; 1 mark for 4-6 items."
+        },
+        {
+          "marks": 1,
+          "rule": "Appropriate signature."
+        }
+      ],
+      "sourcePages": [
+        133
+      ],
+      "profile": "Application",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          133
+        ],
+        "originalQuestionNumber": 3,
+        "originalPartLabel": "c",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q4-a": {
+      "id": "q4-a",
+      "marks": 2,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Failure to comply with rules of the organization\nFrequent absence\nHabitual lateness\nDrug abuse or drunkenness on the job\nTheft from the organization\nHarassment of co-workers\nMisuse of company tools, equipment or property",
+      "guidance": "One mark each for any TWO correct responses.",
+      "allocation": [
+        {
+          "marks": 2,
+          "rule": "One mark each for any TWO correct reasons for disciplinary procedures."
+        }
+      ],
+      "sourcePages": [
+        134
+      ],
+      "profile": "Knowledge and comprehension",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          134
+        ],
+        "originalQuestionNumber": 4,
+        "originalPartLabel": "a",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q4-b": {
+      "id": "q4-b",
+      "marks": 4,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Working conditions - If the physical environment is not satisfactory the employees would not feel comfortable. There needs to be adequate workspace, ventilation and consideration for the health and safety of the workers.\nLow salary - The rate at which the employees are paid should be comparable to the pay offered by other companies for similar jobs or positions. If the salary is the same or higher than the average rate, staff will be want to remain with the organization.\nInadequate fringe benefits - In addition to the basic equipment required to perform their tasks, employees could be provided with benefits such as health insurance, use of laptops and cell phones and, where appropriate, company vehicles.\nLack of training opportunities - Employees should be provided with opportunities to further their studies and improve their knowledge/skills required to perform the job. This could be provided as on-the-job training or professional development with recognized institutions.",
+      "guidance": "Two marks each for a clear description of any TWO factors (2 × 2). One mark for a partial description.",
+      "allocation": [
+        {
+          "marks": 2,
+          "rule": "First internal factor clearly described; 1 mark for a partial description."
+        },
+        {
+          "marks": 2,
+          "rule": "Second internal factor clearly described; 1 mark for a partial description."
+        }
+      ],
+      "sourcePages": [
+        134
+      ],
+      "profile": "Knowledge and comprehension",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          134
+        ],
+        "originalQuestionNumber": 4,
+        "originalPartLabel": "b",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q4-c": {
+      "id": "q4-c",
+      "marks": 9,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Job Summary\nWill assist with compiling and maintaining employee records and other daily operations of the department.\nDuties and responsibilities\n1. Preparing/maintaining employees’ files with personnel records\n2. Processing personnel records/storing them in appropriate file format\n3. Processing applications for leave\n4. Drafting routine letters\n5. Responding to requests for information on vacancies\n6. Preparing for interviews\n7. Assisting with the functions of the human resource office\nSkills\n1. Computer literacy\n2. Proficiency in the use of productivity tools\n3. Effective communication\n4. Time management\n5. Analytical\n6. Problem-solving\n7. Literacy\n8. Numeracy\n9. Filing\nQualifications\nFour passes at CSEC General Proficiency level: English A, EDPM, Office Administration and one other subject\nAttributes\n1. Confidentiality\n2. Tolerance\n3. Patience\n4. Initiative\n5. Tact",
+      "guidance": "Appropriate job summary: 1 mark. Any TWO duties/responsibilities: 2; any TWO skills: 2; any TWO qualifications: 2 (include at least one subject from the business cognate); any TWO attributes: 2.",
+      "allocation": [
+        {
+          "marks": 1,
+          "rule": "Appropriate job summary."
+        },
+        {
+          "marks": 2,
+          "rule": "One mark each for any TWO duties and responsibilities."
+        },
+        {
+          "marks": 2,
+          "rule": "One mark each for any TWO skills."
+        },
+        {
+          "marks": 2,
+          "rule": "One mark each for any TWO qualifications; include at least one subject from the business cognate."
+        },
+        {
+          "marks": 2,
+          "rule": "One mark each for any TWO attributes."
+        }
+      ],
+      "sourcePages": [
+        135,
+        136
+      ],
+      "profile": "Application",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          135,
+          136
+        ],
+        "originalQuestionNumber": 4,
+        "originalPartLabel": "c",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q5-a": {
+      "id": "q5-a",
+      "marks": 2,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Ex Works - the cost of the goods only; the purchaser must arrange and pay for the transport and delivery.\n5/10 - represents a 5 percent discount when payment is made to the supplier within 10 days of the credit sale.",
+      "guidance": "One mark for each correct response.",
+      "allocation": [
+        {
+          "marks": 1,
+          "rule": "Correct meaning of Ex works."
+        },
+        {
+          "marks": 1,
+          "rule": "Correct meaning of 5/10."
+        }
+      ],
+      "sourcePages": [
+        137
+      ],
+      "profile": "Knowledge and comprehension",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          137
+        ],
+        "originalQuestionNumber": 5,
+        "originalPartLabel": "a",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q5-b": {
+      "id": "q5-b",
+      "marks": 4,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Improves Efficiency - The JIT model reduces the costs of procuring, managing and storing excess raw materials and inventory. This results in a higher inventory turnover which in turn prevents inventory from sitting in the warehouse for too long and becoming obsolete.\nIncreases Productivity - JIT inventory management increases productivity by reducing the time and resources required for manufacturing. This ensures faster production and shorter production runs.\nOptimizes Production - JIT inventory management can eliminate bottlenecks and delays across the entire production cycle, by reducing product defects and automating processes. Shorter production cycles enable on-time deliveries and increased customer satisfaction.\nReduces Costs - As it requires very low inventory levels, JIT inventory reduces the working capital required for inventory purchases as well as storage costs. The business can purchase raw material only when needed so that any available cash can be better utilized.\nImproves Quality - JIT inventory management involves having fewer items moving on the shop floor at any given time. This allows management to focus on optimizing processes and building high-quality products. High-quality products with fewer defects improve customer satisfaction and reduce wastage.",
+      "guidance": "Two marks each for any TWO reasons clearly described (2 × 2). One mark each for a partial description.",
+      "allocation": [
+        {
+          "marks": 2,
+          "rule": "First JIT reason clearly described; 1 mark for a partial description."
+        },
+        {
+          "marks": 2,
+          "rule": "Second JIT reason clearly described; 1 mark for a partial description."
+        }
+      ],
+      "sourcePages": [
+        138
+      ],
+      "profile": "Knowledge and comprehension",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          138
+        ],
+        "originalQuestionNumber": 5,
+        "originalPartLabel": "b",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q5-c": {
+      "id": "q5-c",
+      "marks": 9,
+      "modelAnswerSource": "official",
+      "modelAnswer": "(i) Number of units in stock January: $875.00 ÷ $35 = 25.\n(ii) Total value of stock in March: $875 + (10 × $36) = $1235.00.\n(iii) Average cost per unit in March: $1235 ÷ 35 = $35.29.\nKnowing that 10 units were received in March: 35 - 25 = 10; multiply 10 × $36, then add to $875.\n(iv) Units in stock in June: 35 - 8 = 27.\n(v) Total value of stock in June: 27 × $35.40 = $955.80.",
+      "guidance": "(i): 2 marks (division: 1; answer: 1). (ii) and (iii): 5 marks (units received: 1; multiply 10 × $36: 1; add to $875: 1; total value $1235: 1; average cost $35.29: 1). (iv) and (v): 2 marks (27 units: 1; value $955.80: 1).",
+      "allocation": [
+        {
+          "marks": 1,
+          "rule": "(i) Divide $875.00 by $35."
+        },
+        {
+          "marks": 1,
+          "rule": "(i) Correct answer: 25 units."
+        },
+        {
+          "marks": 1,
+          "rule": "March units received: 35 - 25 = 10."
+        },
+        {
+          "marks": 1,
+          "rule": "Multiply 10 × $36."
+        },
+        {
+          "marks": 1,
+          "rule": "Add the cost of receipts to $875."
+        },
+        {
+          "marks": 1,
+          "rule": "(ii) Correct total stock value: $1235."
+        },
+        {
+          "marks": 1,
+          "rule": "(iii) $1235 ÷ 35 = $35.29."
+        },
+        {
+          "marks": 1,
+          "rule": "(iv) 35 - 8 = 27 units."
+        },
+        {
+          "marks": 1,
+          "rule": "(v) 27 × $35.40 = $955.80."
+        }
+      ],
+      "sourcePages": [
+        139
+      ],
+      "profile": "Application",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          139
+        ],
+        "originalQuestionNumber": 5,
+        "originalPartLabel": "c",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      },
+      "expectedEntries": {
+        "i": 25,
+        "ii": 1235,
+        "iii": 35.29,
+        "iv": 27,
+        "v": 955.8
+      },
+      "sourceNotes": [
+        "The question and official scheme print a June unit cost of $35.40, although the March average calculated in the same scheme is $35.29. These printed values are preserved; the June official answer is $955.80 using the supplied $35.40."
+      ],
+      "sourceErrata": [
+        {
+          "kind": "inconsistent-source-values",
+          "questionPdfPage": 117,
+          "schemePdfPage": 139,
+          "detail": "March average is $35.29; June rate is printed as $35.40. Preserve both source values and the official June answer of $955.80."
+        }
+      ]
+    },
+    "q6-a": {
+      "id": "q6-a",
+      "marks": 3,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Literacy and numeracy\nEffective communication\nProficiency in the use of productivity tools\nProficiency in the use of organizational tools\nProficiency in the use of reference tools\nFiling\nData entry",
+      "guidance": "One mark each for any THREE correct responses.",
+      "allocation": [
+        {
+          "marks": 3,
+          "rule": "One mark each for any THREE correct sales clerk skills."
+        }
+      ],
+      "sourcePages": [
+        140
+      ],
+      "profile": "Knowledge and comprehension",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          140
+        ],
+        "originalQuestionNumber": 6,
+        "originalPartLabel": "a",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q6-b": {
+      "id": "q6-b",
+      "marks": 3,
+      "modelAnswerSource": "official",
+      "modelAnswer": "High quality management systems\nWaste and errors kept at a minimum\nSafe environment for employees\nHigh level of productivity\nCost of production controlled\nFrequent internal audits\nProduction process open for continued improvement\nSafe products guaranteed\nFair business practices conducted\nFree and fair global trading practices\nTrusted brand\nLegal requirements for trading observed",
+      "guidance": "One mark each for any THREE correct responses.",
+      "allocation": [
+        {
+          "marks": 3,
+          "rule": "One mark each for any THREE other conditions in the printed scheme."
+        }
+      ],
+      "sourcePages": [
+        140
+      ],
+      "profile": "Knowledge and comprehension",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          140
+        ],
+        "originalQuestionNumber": 6,
+        "originalPartLabel": "b",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q6-c": {
+      "id": "q6-c",
+      "marks": 3,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Request proof of purchase from Green’s Computing.\nDocument the issue being experienced.\nCheck that the laptop has not been tampered with.\nAdvise the customer that the issue will be addressed in a timely manner.\nAsk the technician to check the laptop.\nProvide the customer with a signed note to indicate that the laptop has been returned.\nLiaise with the supervisor to determine the appropriate compensation.",
+      "guidance": "One mark each for any THREE correct responses.",
+      "allocation": [
+        {
+          "marks": 3,
+          "rule": "One mark each for any THREE correct customer service actions."
+        }
+      ],
+      "sourcePages": [
+        141
+      ],
+      "profile": "Application",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          141
+        ],
+        "originalQuestionNumber": 6,
+        "originalPartLabel": "c",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    },
+    "q6-d": {
+      "id": "q6-d",
+      "marks": 6,
+      "modelAnswerSource": "official",
+      "modelAnswer": "Task: Test hardware components of the computer to ensure that they are functioning as they should and meet the required market specifications.\nJustification: This would ensure that any system defects can be identified early before the equipment is offered for sale. The customer would purchase a product that is of a high standard.\nTask: Ensure that all required accessories are included in the package.\nJustification: The customer would receive all the components needed for the computer to function optimally.\nTask: Verify that the system software has been installed, as well as any additional software requested by the client.\nJustification: The customer would receive a computer that is ready to use and perform the necessary functions.\nTask: Conduct performance tests on the computer by completing simple tasks.\nJustification: The technician would be aware of how the computer performs and whether the time taken to complete given tasks is satisfactory.\nTask: Examine the product to remove external flaws or marks.\nJustification: The customer would receive a product that looks new and in good condition.",
+      "guidance": "One mark each for any THREE checks listed (3 × 1 = 3). One mark each for any THREE reasons given (3 × 1 = 3).",
+      "allocation": [
+        {
+          "marks": 3,
+          "rule": "(i) One mark each for any THREE appropriate checks."
+        },
+        {
+          "marks": 3,
+          "rule": "(ii) One mark each for any THREE appropriate justifications."
+        }
+      ],
+      "sourcePages": [
+        142
+      ],
+      "profile": "Application",
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          142
+        ],
+        "originalQuestionNumber": 6,
+        "originalPartLabel": "d",
+        "kind": "official-specimen-mark-scheme",
+        "attributionScope": "mark-scheme-pages",
+        "reviewOnly": true
+      }
+    }
+  }
+}

@@ -1,0 +1,642 @@
+[
+  {
+    "code": "OA1.1",
+    "section": 1,
+    "number": 1,
+    "title": "describe the role and functions of the office in business activities",
+    "sourcePage": 12,
+    "syllabusPage": 8
+  },
+  {
+    "code": "OA1.2",
+    "section": 1,
+    "number": 2,
+    "title": "describe how office structure and activity may be organised according to the characteristics of a business",
+    "sourcePage": 12,
+    "syllabusPage": 8
+  },
+  {
+    "code": "OA1.3",
+    "section": 1,
+    "number": 3,
+    "title": "compare different types of office arrangements",
+    "sourcePage": 13,
+    "syllabusPage": 9
+  },
+  {
+    "code": "OA1.4",
+    "section": 1,
+    "number": 4,
+    "title": "examine the ergonomics of the office as it relates to comfort, health and safety issues",
+    "sourcePage": 13,
+    "syllabusPage": 9
+  },
+  {
+    "code": "OA1.5",
+    "section": 1,
+    "number": 5,
+    "title": "describe the contribution of various types of resources to the office environment",
+    "sourcePage": 13,
+    "syllabusPage": 9
+  },
+  {
+    "code": "OA1.6",
+    "section": 1,
+    "number": 6,
+    "title": "discuss the factors to consider when selecting different types of resources for the office environment",
+    "sourcePage": 14,
+    "syllabusPage": 10
+  },
+  {
+    "code": "OA1.7",
+    "section": 1,
+    "number": 7,
+    "title": "propose desirable skills, attitudes and attributes of office personnel",
+    "sourcePage": 14,
+    "syllabusPage": 10
+  },
+  {
+    "code": "OA1.8",
+    "section": 1,
+    "number": 8,
+    "title": "assess the value of good human relationships to office efficiency",
+    "sourcePage": 15,
+    "syllabusPage": 11
+  },
+  {
+    "code": "OA2.1",
+    "section": 2,
+    "number": 1,
+    "title": "assess the contribution of the reception desk to the welfare of the organisation",
+    "sourcePage": 17,
+    "syllabusPage": 13
+  },
+  {
+    "code": "OA2.2",
+    "section": 2,
+    "number": 2,
+    "title": "identify the duties, responsibilities and attributes of a receptionist",
+    "sourcePage": 17,
+    "syllabusPage": 13
+  },
+  {
+    "code": "OA2.3",
+    "section": 2,
+    "number": 3,
+    "title": "describe proper techniques for receiving and relaying messages by telephone",
+    "sourcePage": 18,
+    "syllabusPage": 14
+  },
+  {
+    "code": "OA2.4",
+    "section": 2,
+    "number": 4,
+    "title": "manage appointments for an executive using electronic or manual systems",
+    "sourcePage": 18,
+    "syllabusPage": 14
+  },
+  {
+    "code": "OA2.5",
+    "section": 2,
+    "number": 5,
+    "title": "explain the importance and use of electronic and manual reminder systems",
+    "sourcePage": 19,
+    "syllabusPage": 15
+  },
+  {
+    "code": "OA3.1",
+    "section": 3,
+    "number": 1,
+    "title": "describe the various channels of communication used in the office",
+    "sourcePage": 21,
+    "syllabusPage": 17
+  },
+  {
+    "code": "OA3.2",
+    "section": 3,
+    "number": 2,
+    "title": "discuss factors affecting the selection of communication channel",
+    "sourcePage": 23,
+    "syllabusPage": 19
+  },
+  {
+    "code": "OA3.3",
+    "section": 3,
+    "number": 3,
+    "title": "discuss the barriers to effective communication",
+    "sourcePage": 23,
+    "syllabusPage": 19
+  },
+  {
+    "code": "OA3.4",
+    "section": 3,
+    "number": 4,
+    "title": "select appropriate types and sizes of stationery for a variety of uses",
+    "sourcePage": 23,
+    "syllabusPage": 19
+  },
+  {
+    "code": "OA3.5",
+    "section": 3,
+    "number": 5,
+    "title": "select relevant sources of information",
+    "sourcePage": 24,
+    "syllabusPage": 20
+  },
+  {
+    "code": "OA3.6",
+    "section": 3,
+    "number": 6,
+    "title": "assess the importance of services offered by telecommunication providers",
+    "sourcePage": 24,
+    "syllabusPage": 20
+  },
+  {
+    "code": "OA3.7",
+    "section": 3,
+    "number": 7,
+    "title": "describe the services available for dispatching mail",
+    "sourcePage": 24,
+    "syllabusPage": 20
+  },
+  {
+    "code": "OA3.8",
+    "section": 3,
+    "number": 8,
+    "title": "outline procedures for sending and receiving parcels",
+    "sourcePage": 25,
+    "syllabusPage": 21
+  },
+  {
+    "code": "OA3.9",
+    "section": 3,
+    "number": 9,
+    "title": "examine procedures for dealing with incoming and outgoing mail in large and small offices",
+    "sourcePage": 25,
+    "syllabusPage": 21
+  },
+  {
+    "code": "OA4.1",
+    "section": 4,
+    "number": 1,
+    "title": "define terms associated with business meetings",
+    "sourcePage": 28,
+    "syllabusPage": 24
+  },
+  {
+    "code": "OA4.2",
+    "section": 4,
+    "number": 2,
+    "title": "prepare documents associated with meetings",
+    "sourcePage": 29,
+    "syllabusPage": 25
+  },
+  {
+    "code": "OA4.3",
+    "section": 4,
+    "number": 3,
+    "title": "discuss the roles and functions of personnel associated with meetings",
+    "sourcePage": 29,
+    "syllabusPage": 25
+  },
+  {
+    "code": "OA4.4",
+    "section": 4,
+    "number": 4,
+    "title": "differentiate among the various types of meetings",
+    "sourcePage": 29,
+    "syllabusPage": 25
+  },
+  {
+    "code": "OA4.5",
+    "section": 4,
+    "number": 5,
+    "title": "organise different types of meetings virtually and face to face",
+    "sourcePage": 30,
+    "syllabusPage": 26
+  },
+  {
+    "code": "OA4.6",
+    "section": 4,
+    "number": 6,
+    "title": "discuss basic legal requirements of Annual General Meetings",
+    "sourcePage": 30,
+    "syllabusPage": 26
+  },
+  {
+    "code": "OA4.7",
+    "section": 4,
+    "number": 7,
+    "title": "outline the follow-up procedures related to decisions made at meetings",
+    "sourcePage": 30,
+    "syllabusPage": 26
+  },
+  {
+    "code": "OA5.1",
+    "section": 5,
+    "number": 1,
+    "title": "outline procedures for making travel arrangements",
+    "sourcePage": 32,
+    "syllabusPage": 28
+  },
+  {
+    "code": "OA5.2",
+    "section": 5,
+    "number": 2,
+    "title": "discuss the importance of various travel documents",
+    "sourcePage": 33,
+    "syllabusPage": 29
+  },
+  {
+    "code": "OA5.3",
+    "section": 5,
+    "number": 3,
+    "title": "outline the types of information and services required for travel",
+    "sourcePage": 33,
+    "syllabusPage": 29
+  },
+  {
+    "code": "OA5.4",
+    "section": 5,
+    "number": 4,
+    "title": "explain the importance of time zones",
+    "sourcePage": 33,
+    "syllabusPage": 29
+  },
+  {
+    "code": "OA5.5",
+    "section": 5,
+    "number": 5,
+    "title": "determine monetary instruments for use during travel",
+    "sourcePage": 33,
+    "syllabusPage": 29
+  },
+  {
+    "code": "OA6.1",
+    "section": 6,
+    "number": 1,
+    "title": "describe the duties of a records and information management clerk",
+    "sourcePage": 35,
+    "syllabusPage": 31
+  },
+  {
+    "code": "OA6.2",
+    "section": 6,
+    "number": 2,
+    "title": "describe the characteristics of a records and information management system",
+    "sourcePage": 35,
+    "syllabusPage": 31
+  },
+  {
+    "code": "OA6.3",
+    "section": 6,
+    "number": 3,
+    "title": "analyse the different types of records and information management systems",
+    "sourcePage": 36,
+    "syllabusPage": 32
+  },
+  {
+    "code": "OA6.4",
+    "section": 6,
+    "number": 4,
+    "title": "maintain a record and information management system",
+    "sourcePage": 36,
+    "syllabusPage": 32
+  },
+  {
+    "code": "OA6.5",
+    "section": 6,
+    "number": 5,
+    "title": "outline the methods and procedures for dealing with inactive files",
+    "sourcePage": 37,
+    "syllabusPage": 33
+  },
+  {
+    "code": "OA6.6",
+    "section": 6,
+    "number": 6,
+    "title": "describe the main legal stipulations governing access to and retention of documents",
+    "sourcePage": 37,
+    "syllabusPage": 33
+  },
+  {
+    "code": "OA6.7",
+    "section": 6,
+    "number": 7,
+    "title": "discuss the use of manual and electronic resources required for records and information management",
+    "sourcePage": 38,
+    "syllabusPage": 34
+  },
+  {
+    "code": "OA6.8",
+    "section": 6,
+    "number": 8,
+    "title": "differentiate between centralised and decentralised records and information management systems",
+    "sourcePage": 38,
+    "syllabusPage": 34
+  },
+  {
+    "code": "OA7.1",
+    "section": 7,
+    "number": 1,
+    "title": "describe the functions and importance of the Human Resource Management office",
+    "sourcePage": 41,
+    "syllabusPage": 37
+  },
+  {
+    "code": "OA7.2",
+    "section": 7,
+    "number": 2,
+    "title": "examine the duties and attributes of a clerk in the Human Resource Management office",
+    "sourcePage": 42,
+    "syllabusPage": 38
+  },
+  {
+    "code": "OA7.3",
+    "section": 7,
+    "number": 3,
+    "title": "identify sources of information on job opportunities",
+    "sourcePage": 43,
+    "syllabusPage": 39
+  },
+  {
+    "code": "OA7.4",
+    "section": 7,
+    "number": 4,
+    "title": "outline factors to be considered when seeking employment",
+    "sourcePage": 43,
+    "syllabusPage": 39
+  },
+  {
+    "code": "OA7.5",
+    "section": 7,
+    "number": 5,
+    "title": "prepare documents required for employment",
+    "sourcePage": 43,
+    "syllabusPage": 39
+  },
+  {
+    "code": "OA7.6",
+    "section": 7,
+    "number": 6,
+    "title": "prepare other types of documents",
+    "sourcePage": 44,
+    "syllabusPage": 40
+  },
+  {
+    "code": "OA7.7",
+    "section": 7,
+    "number": 7,
+    "title": "explain factors to be considered when preparing for a job interview",
+    "sourcePage": 44,
+    "syllabusPage": 40
+  },
+  {
+    "code": "OA7.8",
+    "section": 7,
+    "number": 8,
+    "title": "demonstrate knowledge of the requirements of the work environment",
+    "sourcePage": 44,
+    "syllabusPage": 40
+  },
+  {
+    "code": "OA7.9",
+    "section": 7,
+    "number": 9,
+    "title": "discuss the benefits of legislation related to workers’ welfare",
+    "sourcePage": 45,
+    "syllabusPage": 41
+  },
+  {
+    "code": "OA7.10",
+    "section": 7,
+    "number": 10,
+    "title": "discuss the factors that contribute to employee/labour turnover in an organisation",
+    "sourcePage": 45,
+    "syllabusPage": 41
+  },
+  {
+    "code": "OA8.1",
+    "section": 8,
+    "number": 1,
+    "title": "describe the role and functions of the accounts office",
+    "sourcePage": 49,
+    "syllabusPage": 45
+  },
+  {
+    "code": "OA8.2",
+    "section": 8,
+    "number": 2,
+    "title": "describe the duties and attributes of a clerk in the accounts office",
+    "sourcePage": 50,
+    "syllabusPage": 46
+  },
+  {
+    "code": "OA8.3",
+    "section": 8,
+    "number": 3,
+    "title": "prepare simple documents in the accounts office",
+    "sourcePage": 50,
+    "syllabusPage": 46
+  },
+  {
+    "code": "OA8.4",
+    "section": 8,
+    "number": 4,
+    "title": "use hardware and software resources applicable to the accounts office",
+    "sourcePage": 50,
+    "syllabusPage": 46
+  },
+  {
+    "code": "OA8.5",
+    "section": 8,
+    "number": 5,
+    "title": "differentiate among types of Financial Institutions",
+    "sourcePage": 51,
+    "syllabusPage": 47
+  },
+  {
+    "code": "OA8.6",
+    "section": 8,
+    "number": 6,
+    "title": "outline the procedures for making and receiving different types of payments",
+    "sourcePage": 51,
+    "syllabusPage": 47
+  },
+  {
+    "code": "OA8.7",
+    "section": 8,
+    "number": 7,
+    "title": "differentiate among types of cheques",
+    "sourcePage": 52,
+    "syllabusPage": 48
+  },
+  {
+    "code": "OA8.8",
+    "section": 8,
+    "number": 8,
+    "title": "interpret entries in a bank statement and a cash book",
+    "sourcePage": 52,
+    "syllabusPage": 48
+  },
+  {
+    "code": "OA8.9",
+    "section": 8,
+    "number": 9,
+    "title": "reconcile bank and cash book entries and balances",
+    "sourcePage": 52,
+    "syllabusPage": 48
+  },
+  {
+    "code": "OA8.10",
+    "section": 8,
+    "number": 10,
+    "title": "prepare petty cash records",
+    "sourcePage": 53,
+    "syllabusPage": 49
+  },
+  {
+    "code": "OA9.1",
+    "section": 9,
+    "number": 1,
+    "title": "describe the functions of the procurement and inventory management office",
+    "sourcePage": 55,
+    "syllabusPage": 51
+  },
+  {
+    "code": "OA9.2",
+    "section": 9,
+    "number": 2,
+    "title": "interpret terms and abbreviations used in purchasing documents and literature",
+    "sourcePage": 56,
+    "syllabusPage": 52
+  },
+  {
+    "code": "OA9.3",
+    "section": 9,
+    "number": 3,
+    "title": "describe the duties and attributes of a clerk in the purchasing department",
+    "sourcePage": 56,
+    "syllabusPage": 52
+  },
+  {
+    "code": "OA9.4",
+    "section": 9,
+    "number": 4,
+    "title": "explain the factors influencing the purchasing of goods and services",
+    "sourcePage": 57,
+    "syllabusPage": 53
+  },
+  {
+    "code": "OA9.5",
+    "section": 9,
+    "number": 5,
+    "title": "discuss the procedures for purchasing goods and acquiring services",
+    "sourcePage": 57,
+    "syllabusPage": 53
+  },
+  {
+    "code": "OA9.6",
+    "section": 9,
+    "number": 6,
+    "title": "prepare documents used in the purchase of goods and services",
+    "sourcePage": 57,
+    "syllabusPage": 53
+  },
+  {
+    "code": "OA9.7",
+    "section": 9,
+    "number": 7,
+    "title": "discuss the importance of inventory management",
+    "sourcePage": 58,
+    "syllabusPage": 54
+  },
+  {
+    "code": "OA9.8",
+    "section": 9,
+    "number": 8,
+    "title": "maintain stock records using manual and electronic methods",
+    "sourcePage": 58,
+    "syllabusPage": 54
+  },
+  {
+    "code": "OA10.1",
+    "section": 10,
+    "number": 1,
+    "title": "explain the functions of the sales, marketing and customer service offices",
+    "sourcePage": 61,
+    "syllabusPage": 57
+  },
+  {
+    "code": "OA10.2",
+    "section": 10,
+    "number": 2,
+    "title": "analyse the duties of a clerk in the sales, marketing and customer service offices",
+    "sourcePage": 62,
+    "syllabusPage": 58
+  },
+  {
+    "code": "OA10.3",
+    "section": 10,
+    "number": 3,
+    "title": "describe the skills required by a clerk in the sales, marketing and customer services offices",
+    "sourcePage": 63,
+    "syllabusPage": 59
+  },
+  {
+    "code": "OA10.4",
+    "section": 10,
+    "number": 4,
+    "title": "prepare documents used in sales and marketing",
+    "sourcePage": 64,
+    "syllabusPage": 60
+  },
+  {
+    "code": "OA10.5",
+    "section": 10,
+    "number": 5,
+    "title": "outline the functions of the Corporate Communications Clerk",
+    "sourcePage": 64,
+    "syllabusPage": 60
+  },
+  {
+    "code": "OA10.6",
+    "section": 10,
+    "number": 6,
+    "title": "distinguish among the different types of incentives",
+    "sourcePage": 64,
+    "syllabusPage": 60
+  },
+  {
+    "code": "OA11.1",
+    "section": 11,
+    "number": 1,
+    "title": "explain the functions of the operations, dispatch and transport office",
+    "sourcePage": 66,
+    "syllabusPage": 62
+  },
+  {
+    "code": "OA11.2",
+    "section": 11,
+    "number": 2,
+    "title": "explain the duties of a clerk in the operations, dispatch and transport offices",
+    "sourcePage": 67,
+    "syllabusPage": 63
+  },
+  {
+    "code": "OA11.3",
+    "section": 11,
+    "number": 3,
+    "title": "interpret information on documents used in operations, dispatch and transport",
+    "sourcePage": 68,
+    "syllabusPage": 64
+  },
+  {
+    "code": "OA11.4",
+    "section": 11,
+    "number": 4,
+    "title": "prepare documents used in operations, dispatch and transport",
+    "sourcePage": 69,
+    "syllabusPage": 65
+  }
+]

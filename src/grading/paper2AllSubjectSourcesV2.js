@@ -1,5 +1,5 @@
 /**
- * Verified file-level source inventory for all nine SPARK Paper 2 subjects.
+ * Verified file-level source inventory for all configured SPARK Paper 2 subjects.
  * Authored banks/graders exist; file presence is NOT server rubric approval.
  *
  * Do not use this manifest to seed active database rubrics or to award marks.
@@ -10,6 +10,11 @@ import {PAPER2_GRADING_SUBJECTS} from "./crossCourseGradingRelease";
 export const PAPER2_V2_SOURCE_INVENTORY_VERSION="paper2-all-subjects-source-inventory-v1";
 
 export const PAPER2_V2_SOURCE_INVENTORY=Object.freeze([
+ {subjectId:"office-administration",
+  source:"src/officeAdministration/data/oaPaper2.js",
+  marker:"src/officeAdministration/oaMarkingV2.js",
+  adapter:"oaPaper2Criteria",
+  scheme:"part.criteria / sourceMarking.criteria"},
  {subjectId:"principles-of-accounts",
   source:"src/principlesOfAccounts/data/poaPaper2.js",
   marker:"src/principlesOfAccounts/poaMarkingV2.js",
