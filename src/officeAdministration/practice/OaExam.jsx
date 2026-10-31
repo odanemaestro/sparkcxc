@@ -24,7 +24,7 @@ function DataTable({table}){
  if(!table)return null;
  const covered=(r,c)=>table.merges?.some(m=>r>=m.row&&r<m.row+(m.rowSpan||1)&&c>=m.col&&c<m.col+(m.colSpan||1)&&(r!==m.row||c!==m.col));
  return <div className="oa-data-table" tabIndex={0} role="region" aria-label={table.title||'Question data table'}><table style={{minWidth:Math.max(360,table.columns.length*110)}}>{table.title&&<caption>{table.title}</caption>}
-  <thead><tr>{table.columns.map((column,c)=><th key={c} scope="col" style={{whiteSpace:'pre-line'}}>{column}</th>)}</tr></thead>
+  {table.columns.some(Boolean)&&<thead><tr>{table.columns.map((column,c)=><th key={c} scope="col" style={{whiteSpace:'pre-line'}}>{column}</th>)}</tr></thead>}
   <tbody>{table.rows.map((row,r)=><tr key={r}>{row.map((value,c)=>{
    if(covered(r,c))return null;
    const merge=table.merges?.find(m=>m.row===r&&m.col===c);

@@ -58,3 +58,8 @@ test('the 2017 cash book preserves its merged imprest cell and printed travel en
  expect(rows[0].querySelectorAll('td')).toHaveLength(8);expect(rows[1].querySelectorAll('td')).toHaveLength(7);
  expect(screen.getByRole('textbox',{name:/Cash Received/})).toHaveValue('');
 });
+test('reviewed document fields have independent saved labels',()=>{
+ for(const part of Object.values(OA_HISTORICAL_PAPER2_PART_LAYOUTS)){
+  const labels=oaPartResponseFields(part).map(f=>f.label);expect(new Set(labels).size).toBe(labels.length);
+ }
+});

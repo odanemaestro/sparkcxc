@@ -77,7 +77,7 @@ it('links every historical question, response part and guidance item to the supp
 it('distinguishes SPARK guidance from an unavailable official historical scheme',()=>{
  let worked=0,approaches=0;
  for(const paper of OA_HISTORICAL_PAPER2S){
-  expect(paper).toMatchObject({officialKeyAvailable:false,answerKeyVerified:false,officialMarkSchemeAvailable:false,markingStatus:'spark-guidance',transcriptionVerified:['OA-P2-2016-MJ','OA-P2-2017-MJ','OA-P2-2018-MJ','OA-P2-2019-MJ','OA-P2-2024-JAN','OA-P2-2021-MJ','OA-P2-2022-MJ','OA-P2-2024-MJ','OA-P2-2025-MJ'].includes(paper.id)});
+  expect(paper).toMatchObject({officialKeyAvailable:false,answerKeyVerified:false,officialMarkSchemeAvailable:false,markingStatus:'spark-guidance',transcriptionVerified:['OA-P2-2012-MJ','OA-P2-2013-MJ','OA-P2-2014-MJ','OA-P2-2015-MJ','OA-P2-2016-JAN','OA-P2-2016-MJ','OA-P2-2017-MJ','OA-P2-2018-MJ','OA-P2-2019-MJ','OA-P2-2024-JAN','OA-P2-2021-MJ','OA-P2-2022-MJ','OA-P2-2024-MJ','OA-P2-2025-MJ'].includes(paper.id)});
   for(const part of paper.questions.flatMap(q=>q.parts)){
    expect(part.guidance.length).toBeGreaterThan(30);
    expect(part.markingGuidance).toMatchObject({author:'SPARK',official:false,sourceId:paper.id,maxMarks:part.marks});
@@ -198,4 +198,44 @@ it('retains the 2016 cash/stock discrepancies and source cells while leaving com
  const stock=paper.questions[5].parts[2];expect(stock.tables[0].rows[2]).toEqual(['24','Notepads 8” × 4” (White)']);expect(stock.responseTables[0].rows[1].slice(6)).toEqual(['36','5 Apr.','','A663','13 Apr.']);expect(stock.responseTables[0].editable).not.toContainEqual([1,6]);expect(stock.fields[0].label).toBe('Unit');
  const fifo=paper.questions[6].parts[3].responseTables[0];expect(fifo.rows[5]).toEqual(['October','','15 @ $20 each','','']);expect(fifo.rows[7][4]).toBe('');
  const average=paper.questions[6].parts[4].responseTables[0];expect(average.rows[1][1]).toBe('20 @ $22.25 each');expect(average.rows[3].slice(3)).toEqual(['','','']);
+});
+it('restores every January 2016 appointment time, denomination and invoice rate from the scan',()=>{
+ const paper=byId('OA-P2-2016-JAN');expect(paper.transcriptionVerified).toBe(true);expect(paper.questions.flatMap(q=>q.parts)).toHaveLength(21);
+ expect(paper.questions[1].sourcePages).toEqual([4,6,7]);expect(paper.questions[1].parts[1].prompt).toContain('State ONE characteristic');
+ const appointments=paper.questions[2].parts[2];expect(appointments.table.rows[2]).toEqual(['11:00','','','','']);expect(appointments.responseTables[0].rows.map(r=>r[0])).toEqual(['9:00','9:30','10:00','10:30','10:40','11:00','11:30','12:00','12:30','1:00','1:45','2:00']);expect(appointments.responseTables[0].rows.every(r=>r.slice(1).every(v=>v===''))).toBe(true);
+ const cash=paper.questions[4].parts[2].responseTables;expect(cash[0].rows.map(r=>r[1])).toEqual(['10','10','10','30']);expect(cash[0].editable).not.toContainEqual([0,1]);expect(cash[1].rows.slice(0,5).map(r=>r[2])).toEqual(['500','100','50','20','10']);expect(cash[1].editable).not.toContainEqual([0,2]);
+ const invoice=paper.questions[6].parts[2];expect(invoice.prompt).toContain('Add 15% VAT');expect(invoice.prompt).toContain('1A Barbuda Crescent');expect(invoice.responseTables[0].rows[5]).toEqual(['','15% VAT','','']);expect(invoice.responseTables[0].rows[6]).toEqual(['','','TOTAL','']);expect(invoice.responseTables[0].rows[7][0]).toBe('E & OE');
+});
+
+it('retains the checked 2015 invoice, purchase order blanks and conflicting advice-note dates',()=>{
+ const paper=byId('OA-P2-2015-MJ');expect(paper.transcriptionVerified).toBe(true);expect(paper.questions.flatMap(q=>q.parts)).toHaveLength(29);
+ expect(paper.questions[2].sourcePages).toEqual([6,7,8]);expect(paper.questions[4].sourcePages).toEqual([11,12,13]);
+ const invoice=paper.questions[3].parts[3];expect(invoice.table.rows).toContainEqual(['Terms','5%/10/N30']);expect(invoice.responseTables[0].rows).toHaveLength(4);expect(invoice.responseTables[0].rows.flat().every(v=>v==='')).toBe(true);expect(invoice.fields[0].position).toBe('after');
+ const order=paper.questions[4].parts[3];expect(order.documentTitle).toContain('Order No. 101');expect(order.responseTables[0].rows).toEqual([['','','',''],['TOTAL','','','']]);expect(order.responseTables[0].editable).not.toContainEqual([1,0]);expect(order.fields.map(f=>f.label)).toContain('Prepared by');
+ const advice=paper.questions[6].parts[2].table;expect(advice.rows).toContainEqual(['Date','June 08, 2014']);expect(advice.rows).toContainEqual(['Dated','October 02, 2014']);expect(advice.rows).toContainEqual(['Despatch details','1 carton\nAir 6/10/14']);
+ expect(JSON.stringify(paper.questions.flatMap(q=>q.parts))).not.toMatch(/\*01237020\d+\*|NOTHING HAS BEEN OMITTED/);
+});
+
+it('preserves 2014 detached forms, printed bank place names and stock-card year discrepancy',()=>{
+ const paper=byId('OA-P2-2014-MJ');expect(paper.transcriptionVerified).toBe(true);expect(paper.questions.flatMap(q=>q.parts)).toHaveLength(24);expect(paper.questions[2].sourcePages).toEqual([3]);
+ const appraisal=paper.questions[3].parts[2];expect(appraisal.tables[1].rows.map(r=>r[1])).toEqual(['1','2','3','4','1','2','2']);expect(appraisal.tables[1].merges).toEqual([{row:0,col:2,rowSpan:7}]);expect(appraisal.fields.map(f=>f.label)).toContain('H — Date');
+ const cash=paper.questions[4].parts[2];expect(cash.sourcePages).toEqual([6,9,10]);expect(cash.prompt).toContain('Kingstown');expect(cash.responseTables[1].title).toContain('KINGSTON');expect(cash.responseTables[0].rows.every(r=>r.slice(1).every(v=>v===''))).toBe(true);expect(cash.responseTables[1].rows.map(r=>r[2]).slice(0,11)).toEqual(['1000','500','100','50','20','10','5','.50','.25','.10','.05']);
+ const stock=paper.questions[5].parts[2].responseTables[0];expect(stock.rows[0][3]).toBe('5 boxes containing 100 per box');expect(stock.rows[6][0]).toBe('___ June 2013');expect(stock.editable).not.toContainEqual([0,3]);expect(stock.rows.slice(1).every(r=>r[3]==='')).toBe(true);
+ const invoice=paper.questions[6].parts[2];expect(invoice.sourcePages).toEqual([8,12]);expect(invoice.table.details).toContain('23 June 2014');expect(invoice.responseTables[0].rows).toHaveLength(5);expect(invoice.responseTables[0].merges).toEqual([{row:4,col:0,colSpan:4}]);expect(invoice.fields.every(f=>f.value===undefined)).toBe(true);
+});
+
+it('retains the 2013 cheque identity, signed voucher data and native advice-note insert',()=>{
+ const paper=byId('OA-P2-2013-MJ');expect(paper.transcriptionVerified).toBe(true);expect(paper.questions.flatMap(q=>q.parts)).toHaveLength(26);expect(paper.questions[3].sourcePages).toEqual([4]);
+ const cheque=paper.questions[4].parts[2];expect(cheque.sourcePages).toEqual([5,9]);expect(cheque.table.rows[0]).toEqual(['20','Reams Legal-Size Paper','200','4 000']);expect(cheque.tables[0].title).toBe('Cheque No. 1000');expect(cheque.tables[0].rows).toContainEqual(['A/C No.','1562370']);
+ const petty=paper.questions[5].parts[2];expect(petty.sourcePages).toEqual([6,10,11]);expect(petty.table.rows[3]).toEqual(['4','30 May 2013','Envelopes\nMasking Tape','$15.00\n$10.00','Ed Donley','Ali Brown']);expect(petty.responseTables[0].rows).toHaveLength(13);expect(petty.responseTables[0].rows[0].slice(0,4)).toEqual(['120','00','1 May','To Imprest']);expect(petty.responseTables[0].editable).not.toContainEqual([0,0]);
+ const advice=paper.questions[7].parts[2];expect(advice.sourcePages).toEqual([8,12]);expect(advice.fields.map(f=>f.label)).toContain('Received by');expect(advice.responseTables[0].rows).toEqual([['','','']]);expect(paper.questions[6].parts[2].prompt).toContain('Mr Harry Duggam');
+});
+
+it('retains 2012 given names, literal February dates and contradictory stock descriptions',()=>{
+ const paper=byId('OA-P2-2012-MJ');expect(paper.transcriptionVerified).toBe(true);expect(paper.questions.flatMap(q=>q.parts)).toHaveLength(23);
+ const indexing=paper.questions[0].parts[2].responseTables[0];expect(indexing.rows[3][0]).toBe('Jascinth Stone-Cummings');expect(indexing.editable.every(([,c])=>c>0)).toBe(true);
+ const appointments=paper.questions[2].parts[1];expect(appointments.sourcePages).toEqual([4,11]);expect(appointments.responseTables[0].rows).toHaveLength(5);expect(appointments.responseTables[0].rows.flat().every(v=>v==='')).toBe(true);
+ const bank=paper.questions[4].parts[2];expect(bank.tables[0].rows[1][0]).toBe('29 Feb 2011');expect(bank.tables[1].rows[2]).toEqual(['29 Feb 2011','Deposit','','$500.00','$720.00']);
+ const stock=paper.questions[5].parts[2];expect(stock.sourcePages).toEqual([6,7,9]);expect(stock.table.rows[0].slice(0,3)).toEqual(['AC-DC','','AC DC Motors']);expect(stock.responseTables[0].details).toContain('Item: Cell Phone Cases');expect(stock.responseTables[0].rows.map(r=>r[0])).toEqual(['5 September','17 October','20 October','21 November','22 November','10 December']);expect(stock.responseTables[0].rows.every(r=>r.slice(1).every(v=>v===''))).toBe(true);expect(stock.responseTables[1].rows).toHaveLength(3);
+ const advice=paper.questions[7].parts[2];expect(advice.sourcePages).toEqual([8,10]);expect(advice.prompt).toContain('Patrica Peterson');expect(advice.fields.map(f=>f.label)).toContain('Order No.');expect(advice.responseTables[0].rows).toEqual([['','','','']]);
 });

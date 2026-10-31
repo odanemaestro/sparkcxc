@@ -87,3 +87,8 @@ The 30 October archive checkpoint adds full native reviews for January 2024 and 
 The subsequent 2016 May–June review brings Paper 2 to nine fully checked papers, with 12 remaining. All 22 pages / 27 parts were visually checked, including seven-question choice, stock control, FIFO/average-cost and reconciliation forms. The entire archive remains the launch requirement.
 
 Validation for the nine-paper checkpoint: 14 course/catalogue/About suites, 108 tests passed; production build passed. Chromium desktop/mobile checks cover the five newly reviewed papers, native forms and refresh persistence.
+
+
+The subsequent January 2016 and 2012–2015 review brings Paper 2 to fourteen fully checked papers, with seven (2005–2011) remaining. All 75 supplied pages / 123 response parts were visually checked, including detached forms, appointment times, denominations, appraisals, invoices, FIFO and stock cards. Printed date/place/item discrepancies remain intact. The clock-time response parser was fixed and independently tested; all five papers passed desktop/mobile refresh checks. Historical Paper 1 remains at 718 checked questions. No production publication has been performed.
+
+Validation for the fourteen-paper checkpoint: 15 course/catalogue/About suites and 116 tests passed; four focused source/document/exam/response suites and 32 tests passed; production build passed. The previous remote draft snapshot passed all eleven GitHub workflows.

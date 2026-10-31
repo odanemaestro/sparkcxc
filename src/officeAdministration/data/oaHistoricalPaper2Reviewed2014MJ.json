@@ -1,0 +1,1411 @@
+{
+  "paperId": "OA-P2-2014-MJ",
+  "reviewDate": "2026-10-30",
+  "reviewMethod": "Visual comparison with all 12 supplied PDF pages, including four detached answer inserts; native wording and forms retain the printed dates, amounts and unfilled response cells. Obvious omitted terminal glyphs restored for legibility.",
+  "questions": {
+    "OA-P2-2014-MJ::1": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::2": {
+      "stem": "",
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::3": {
+      "stem": "",
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::4": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4,
+        5
+      ],
+      "layoutSourcePages": [
+        4,
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::5": {
+      "stem": "",
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        9,
+        10
+      ],
+      "layoutSourcePages": [
+        6,
+        9,
+        10
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::6": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        11
+      ],
+      "layoutSourcePages": [
+        7,
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::7": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        8,
+        12
+      ],
+      "layoutSourcePages": [
+        7,
+        8,
+        12
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2014-MJ::1::q1-a": {
+      "prompt": "Name TWO channels of oral communication. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::1::q1-b": {
+      "prompt": "List THREE ways in which communication can flow in an organization. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::1::q1-c": {
+      "prompt": "State the information that is obtained from EACH of the following reference sources:\n(i) Thesaurus (1 mark)\n(ii) Maps (1 mark)\n(iii) Post office guide (1 mark)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::1::q1-d": {
+      "prompt": "Superior Software Company Ltd of 20 Westmore Crescent, St Johns, Antigua, requires a clerical assistant immediately. As the senior clerk, you are given the following information to draft an advertisement for the Sunday Herald.\n• Interested persons may submit résumé on or before 31 May 2014, via email to www.supesoftco.com, or by mail to: PO Box 101, 20 Westmore Crescent, St Johns, ANTIGUA.\n• We need an energetic, organized and technically-oriented person to perform general office duties, word processing and spreadsheet software applications.\n• Knowledge of basic accounts and a foreign language are necessary.\n• Competence in oral and audio-visual communication would be an asset. Draft the advertisement in your answer booklet, organizing it in an appropriate format, for insertion in the Sunday Herald. (7 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2014-MJ::2::q2-a": {
+      "prompt": "List THREE statutory provisions which are designed for employee protection at the workplace. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::2::q2-b": {
+      "prompt": "State TWO factors that are used to determine the period for retaining records in the office (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::2::q2-c": {
+      "prompt": "List TWO duties of a records management clerk. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::2::q2-d": {
+      "prompt": "Assume you are Collie Narine who resides at 17 Main Street, Santa Cruz, Trinidad. For the past two years you have been working at Raja’s Auto Supplies Company at 8 Main Street in Santa Cruz, Trinidad, as an accounting clerk. During the last couple of months, you have applied to the University of the West Indies, Mona, Kingston, Jamaica, to pursue a degree programme in Business Management. You have been accepted to begin your studies in September. Write the letter of resignation you would send to your employer. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2014-MJ::3::q3-a": {
+      "prompt": "State the meaning and function of a ‘tickler reminder system’. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::3::q3-b": {
+      "prompt": "List THREE duties that a receptionist is required to perform on a daily basis. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::3::q3-c": {
+      "prompt": "Ed Browne says he is attending the board meeting as an ‘ex officio member’. Explain Ed’s statement. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::3::q3-d": {
+      "prompt": "(i) As a new employee in your organization, you notice that attendance at the monthly departmental meetings has been decreasing. You suggest to your supervisor that the following points can help to improve attendance:\n• Being on time\n• Having an agenda\n• Maintaining focus\n• Being prepared\n• Greeting/welcoming staff State how EACH of the points listed above could contribute to a successful meeting. (5 marks)\n(ii) Assume that you are a resident of Barbados and that you intend to travel to Antigua, Jamaica and England during your upcoming vacation. You are informed that Antigua shares the same time zone as Barbados, Jamaica is one hour behind Barbados while England is five hours ahead of Barbados. If it is 5:30 p.m. in Barbados, what time will it be on the 24-hour clock in the following countries?\na) Antigua (1 mark)\nb) Jamaica (1 mark)\nc) England (1 mark)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::4::q4-a": {
+      "prompt": "(i) List TWO specialized functions, other than maintaining confidentiality, which are performed by the human resource clerk. (2 marks)\n(ii) In the conduct of regular duties, the human resource clerk will have to ‘keep information confidential’ Give TWO types of employee information that must be kept confidential by the human resource clerk. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::4::q4-b": {
+      "prompt": "Explain the importance of any TWO of the following concepts to the success of a business entity:\n• Collection of accounts\n• Credit control\n• Audit (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::4::q4-c": {
+      "prompt": "The following represents an appraisal for Ann Wisdom, who is employed in the Human Resource Department at Superior Stationery Ltd, 6 Hope Avenue, St. Andrew.\n\n(i) For EACH of the sections labelled A, B, C, D, E, F, G and H, write the likely responses in your answer booklet which could complete the performance appraisal for Ann Wisdom. (6 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true,
+      "tables": [
+        {
+          "title": "Superior Stationery Ltd — APPRAISAL",
+          "columns": [
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "Address",
+              "6 Hope Avenue\nSt Andrew"
+            ],
+            [
+              "Employee",
+              "Ann Wisdom"
+            ],
+            [
+              "Department",
+              "HR"
+            ],
+            [
+              "Supervisor",
+              "Oliver Hugh"
+            ],
+            [
+              "Date of Hire",
+              "2 Jan. 2013"
+            ],
+            [
+              "Date of Last Review",
+              "29 March 2013"
+            ],
+            [
+              "Date of Review",
+              "29 June 2013"
+            ]
+          ],
+          "details": [
+            "Rating System: 4 = Excellent; 3 = Good; 2 = Satisfactory; 1 = Needs Improvement"
+          ]
+        },
+        {
+          "title": "Performance ratings",
+          "columns": [
+            "Description",
+            "Rating",
+            "Comment"
+          ],
+          "rows": [
+            [
+              "Quality of work",
+              "1",
+              "A"
+            ],
+            [
+              "Quantity of work",
+              "2",
+              ""
+            ],
+            [
+              "Attendance",
+              "3",
+              ""
+            ],
+            [
+              "Team spirit",
+              "4",
+              ""
+            ],
+            [
+              "Organizational skills",
+              "1",
+              ""
+            ],
+            [
+              "Job knowledge/expertise",
+              "2",
+              ""
+            ],
+            [
+              "Attitude",
+              "2",
+              ""
+            ]
+          ],
+          "merges": [
+            {
+              "row": 0,
+              "col": 2,
+              "rowSpan": 7
+            }
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "A — Comment",
+          "kind": "text"
+        },
+        {
+          "label": "B — Overall Performance Rating",
+          "kind": "text"
+        },
+        {
+          "label": "C — Areas of Strength",
+          "kind": "text"
+        },
+        {
+          "label": "D — Areas that need Improvement",
+          "kind": "text"
+        },
+        {
+          "label": "E — Supervisor’s signature",
+          "kind": "text"
+        },
+        {
+          "label": "F — Date",
+          "kind": "text"
+        },
+        {
+          "label": "G — Employee’s signature",
+          "kind": "text"
+        },
+        {
+          "label": "H — Date",
+          "kind": "text"
+        },
+        {
+          "label": "(ii) State THREE ways in which an appraisal serves as an effective tool in managing the performance of an employee whose appraisal results are unsatisfactory. (3 marks)",
+          "kind": "text",
+          "position": "after",
+          "rows": 5
+        }
+      ]
+    },
+    "OA-P2-2014-MJ::5::q5-a": {
+      "prompt": "State TWO functions of the Procurement and Inventory Management Office. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::5::q5-b": {
+      "prompt": "Explain the difference between a ‘standing order’ and a ‘letter of credit’. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::5::q5-c": {
+      "prompt": "Assume you are the payroll clerk at Bujmars and Associates Ltd and that you are responsible for preparing cash pay packets for weekly paid employees. In order for you to prepare the pay packets, you must have the correct denominations. On the week ending Friday 30 May 2014, the pay packets for weekly employees are as follows:\n\nOn the forms provided as inserts:\n\n(i) Prepare a Currency Memorandum for the employees by giving the highest currency at all times possible. You must ensure that EACH employee gets at least ONE $500.00 note. (6 marks)\n\n(ii) Prepare a Cash Summary for the National Commercial Bank at King Street, Kingstown, for the amount to be paid to the employees. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        9,
+        10
+      ],
+      "layoutSourcePages": [
+        6,
+        9,
+        10
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Weekly pay packets",
+        "columns": [
+          "Name",
+          "Net Pay Amount ($)"
+        ],
+        "rows": [
+          [
+            "1. Sasha Thomas",
+            "2 010.25"
+          ],
+          [
+            "2. Rajesh Maraj",
+            "2 400.75"
+          ],
+          [
+            "3. Karla Burns",
+            "3 005.15"
+          ],
+          [
+            "4. Paul Deans",
+            "1 490.30"
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "CURRENCY MEMORANDUM",
+          "columns": [
+            "Name",
+            "$1 000",
+            "$500",
+            "$100",
+            "$50",
+            "$20",
+            "$10",
+            "$5",
+            ".50",
+            ".25",
+            ".10",
+            ".05",
+            "TOTAL $"
+          ],
+          "rows": [
+            [
+              "Sasha Thomas",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Rajesh Maraj",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Karla Burns",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Paul Deans",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "TOTAL",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              0,
+              12
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              9
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              1,
+              11
+            ],
+            [
+              1,
+              12
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              11
+            ],
+            [
+              2,
+              12
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              3,
+              12
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              4,
+              10
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              4,
+              12
+            ]
+          ],
+          "rowLabels": [
+            "Sasha Thomas",
+            "Rajesh Maraj",
+            "Karla Burns",
+            "Paul Deans",
+            "TOTAL"
+          ],
+          "numeric": true
+        },
+        {
+          "title": "CASH SUMMARY — NATIONAL COMMERCIAL BANK, KING STREET, KINGSTON",
+          "columns": [
+            "",
+            "×",
+            "$",
+            "=",
+            ""
+          ],
+          "columnLabels": [
+            "Quantity",
+            "Multiply",
+            "Denomination",
+            "Equals",
+            "Amount"
+          ],
+          "rows": [
+            [
+              "",
+              "×",
+              "1000",
+              "=",
+              ""
+            ],
+            [
+              "",
+              "×",
+              "500",
+              "=",
+              ""
+            ],
+            [
+              "",
+              "×",
+              "100",
+              "=",
+              ""
+            ],
+            [
+              "",
+              "×",
+              "50",
+              "=",
+              ""
+            ],
+            [
+              "",
+              "×",
+              "20",
+              "=",
+              ""
+            ],
+            [
+              "",
+              "×",
+              "10",
+              "=",
+              ""
+            ],
+            [
+              "",
+              "×",
+              "5",
+              "=",
+              ""
+            ],
+            [
+              "",
+              "×",
+              ".50",
+              "=",
+              ""
+            ],
+            [
+              "",
+              "×",
+              ".25",
+              "=",
+              ""
+            ],
+            [
+              "",
+              "×",
+              ".10",
+              "=",
+              ""
+            ],
+            [
+              "",
+              "×",
+              ".05",
+              "=",
+              ""
+            ],
+            [
+              "TOTAL AMOUNT $",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              8,
+              4
+            ],
+            [
+              9,
+              0
+            ],
+            [
+              9,
+              4
+            ],
+            [
+              10,
+              0
+            ],
+            [
+              10,
+              4
+            ],
+            [
+              11,
+              4
+            ]
+          ],
+          "rowLabels": [
+            "Denomination 1000",
+            "Denomination 500",
+            "Denomination 100",
+            "Denomination 50",
+            "Denomination 20",
+            "Denomination 10",
+            "Denomination 5",
+            "Denomination .50",
+            "Denomination .25",
+            "Denomination .10",
+            "Denomination .05",
+            "Total"
+          ],
+          "merges": [
+            {
+              "row": 11,
+              "col": 0,
+              "colSpan": 4,
+              "align": "right"
+            }
+          ],
+          "numeric": true
+        }
+      ]
+    },
+    "OA-P2-2014-MJ::6::q6-a": {
+      "prompt": "State TWO factors that can influence the procedures for purchasing goods and acquiring services in the Procurement and Inventory Management Office. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::6::q6-b": {
+      "prompt": "The Marketing, Sales and Customer Service Department is responsible for various duties in the organization. Identify TWO duties of the clerk in EACH of the following offices\n(i) Sales (2 marks)\n(ii) Marketing (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::6::q6-c": {
+      "prompt": "(i) Use the form, given as an insert, to calculate and complete the stock card for Glow Head Phones at AAA Company Ltd. (7 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        11
+      ],
+      "layoutSourcePages": [
+        7,
+        11
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "STOCK CARD",
+          "columns": [
+            "DATE",
+            "RECEIVED",
+            "ISSUED",
+            "BALANCE"
+          ],
+          "rows": [
+            [
+              "1 June 2012",
+              "",
+              "",
+              "5 boxes containing 100 per box"
+            ],
+            [
+              "4 June 2012",
+              "6 boxes containing 100 per box – [Invoice # 391]\nSupplier – Taylor & Taylor Ltd.",
+              "",
+              ""
+            ],
+            [
+              "5 June 2012",
+              "",
+              "4 boxes containing 100 per box\nIssued to the Accounts Department\n[Requisition # 219]",
+              ""
+            ],
+            [
+              "7 June 2012",
+              "",
+              "3 boxes containing 100 per box\nIssued to the Human Resource Department\n[Requisition # 220]",
+              ""
+            ],
+            [
+              "10 June 2012",
+              "",
+              "2 boxes containing 100 per box\nIssued to Sales Office\n[Requisition # 221]",
+              ""
+            ],
+            [
+              "14 June 2012",
+              "",
+              "1 boxes containing 100 per box\nIssued to Sales Department\n[Requisition # 223]",
+              ""
+            ],
+            [
+              "___ June 2013",
+              "Closing balance (last day of the month)",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              6,
+              0
+            ]
+          ],
+          "preserveGiven": [
+            [
+              6,
+              0
+            ]
+          ],
+          "rowLabels": [
+            "1 June 2012",
+            "4 June 2012",
+            "5 June 2012",
+            "7 June 2012",
+            "10 June 2012",
+            "14 June 2012",
+            "Closing balance"
+          ],
+          "merges": [
+            {
+              "row": 6,
+              "col": 1,
+              "colSpan": 2
+            }
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(ii) Your company has decided to change from a manual recording system of stock control to an electronic method. Most staff members are resisting this change. Outline TWO ways in which the electronic method of stock control can benefit your organization. (2 marks)",
+          "kind": "text",
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2014-MJ::7::q7-a": {
+      "prompt": "State TWO functions of EACH of the following offices:\n(i) Operations (2 marks)\n(ii) Despatch (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::7::q7-b": {
+      "prompt": "Listed below are two documents used in the Operations, Despatch and Transport Department. State the purpose of EACH document:\n(i) Destination sheet (1 mark)\n(ii) Advice note (1 mark)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2014-MJ::7::q7-c": {
+      "prompt": "TMBT Enterprises is a newly established wholesale company which specializes in manufacturing and exporting trendy men, women and children’s polo shirts globally. Frank and James Enterprises, Port of Spain, Trinidad, issued the following order two weeks ago.\n\nThe goods are ready for shipment. Terms and conditions are stipulated as cash on delivery and errors and omissions excepted.\n\nUse the form, provided as an insert, to calculate and write the required information on Invoice #7. Use today’s date. (9 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8,
+        12
+      ],
+      "layoutSourcePages": [
+        8,
+        12
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "ORDER",
+        "columns": [
+          "QUANTITY",
+          "DESCRIPTION",
+          "UNIT PRICE"
+        ],
+        "rows": [
+          [
+            "20 boxes",
+            "Ladies’ polo (black and red)",
+            "$210.00"
+          ],
+          [
+            "10 boxes",
+            "Men’s polo (green and brown)",
+            "$250.00"
+          ],
+          [
+            "5 boxes",
+            "Boys’ polo (white only)",
+            "$100.00"
+          ],
+          [
+            "10 boxes",
+            "Girls’ polo (pink and purple)",
+            "$120.00"
+          ]
+        ],
+        "details": [
+          "TO: TMBT Enterprises\nHigh Street\nGreenfield\nSt Vincent",
+          "23 June 2014",
+          "Please supply the following: COD",
+          "Order carries a 15% VAT charge on the subtotal"
+        ]
+      },
+      "documentTitle": "INVOICE",
+      "fields": [
+        {
+          "label": "Invoice To",
+          "kind": "text"
+        },
+        {
+          "label": "From",
+          "kind": "text"
+        },
+        {
+          "label": "Date",
+          "kind": "text"
+        },
+        {
+          "label": "Invoice No.",
+          "kind": "text"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Invoice items",
+          "columns": [
+            "QUANTITY",
+            "DESCRIPTION",
+            "UNIT PRICE",
+            "TOTAL"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              0
+            ]
+          ],
+          "merges": [
+            {
+              "row": 4,
+              "col": 0,
+              "colSpan": 4
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1132 @@
+{
+  "paperId": "OA-P2-2016-JAN",
+  "reviewDate": "2026-10-30",
+  "reviewMethod": "Visual comparison with all 20 supplied PDF pages, including duplicate page 5 and extra-space pages; all question prompts retranscribed and forms rebuilt as native text.",
+  "questions": {
+    "OA-P2-2016-JAN::1": {
+      "sourcePage": 2,
+      "sourcePages": [
+        2,
+        3
+      ],
+      "layoutSourcePages": [
+        2,
+        3
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2016-JAN::2": {
+      "sourcePage": 4,
+      "sourcePages": [
+        4,
+        6,
+        7
+      ],
+      "layoutSourcePages": [
+        4,
+        6,
+        7
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2016-JAN::3": {
+      "sourcePage": 8,
+      "sourcePages": [
+        8,
+        9,
+        10
+      ],
+      "layoutSourcePages": [
+        8,
+        9,
+        10
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2016-JAN::4": {
+      "sourcePage": 11,
+      "sourcePages": [
+        11,
+        12
+      ],
+      "layoutSourcePages": [
+        11,
+        12
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2016-JAN::5": {
+      "sourcePage": 13,
+      "sourcePages": [
+        13,
+        14
+      ],
+      "layoutSourcePages": [
+        13,
+        14
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2016-JAN::6": {
+      "sourcePage": 15,
+      "sourcePages": [
+        15,
+        16
+      ],
+      "layoutSourcePages": [
+        15,
+        16
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2016-JAN::7": {
+      "sourcePage": 17,
+      "sourcePages": [
+        17,
+        18
+      ],
+      "layoutSourcePages": [
+        17,
+        18
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    }
+  },
+  "parts": {
+    "OA-P2-2016-JAN::1::q1-a": {
+      "prompt": "(i) State TWO office support functions of the centralized office. (2 marks)\n\n(ii) State TWO disadvantages of using the centralized office system. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::1::q1-b": {
+      "prompt": "An organization is structured according to levels of staff. Describe EACH of the following levels of staff:\n(i) Superior\n(ii) Assistant\n(iii) Co-worker\n(iv) Subordinate\n(4 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::1::q1-c": {
+      "prompt": "Reid and Co. Ltd just started its operations and had to decide on the type of office layout to implement. The company implemented the traditional office layout.\n\nSuggest THREE ways in which the traditional office layout could promote effective monitoring and supervision at the company. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::1::q1-d": {
+      "prompt": "Explain how the effectiveness of an organization can be increased through the following electronic channels of communication:\n(i) Telecommuting\n(ii) Telemarketing\n(4 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::2::q2-a": {
+      "prompt": "Suggest TWO cultures that are observed in EACH of the following:\n(i) A school\n(ii) A business organization\n(4 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::2::q2-b": {
+      "prompt": "State ONE characteristic of EACH of the following information management data systems:\n(i) Batch processing\n(ii) Data input\n(iii) Archiving\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::2::q2-c": {
+      "prompt": "Sienna Hepburn, who lives at 24 Highfield Close, Kingston 6, Jamaica, applied to Myers and Mason Manufacturing Co., 16 Kranston Avenue, Kingston 10, Jamaica, for the position of accounts clerk. The post was advertised in the Jamaica Daily Globe on Sunday 2 January 2016. In her excitement, Sienna mailed the application immediately to Mr Richard Richmond, the human resource manager. It is now three weeks and she has had no response.\n\nAssume you are Sienna Hepburn, write a letter to the organization enquiring about the progress of the application. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        7
+      ],
+      "layoutSourcePages": [
+        6,
+        7
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2016-JAN::3::q3-a": {
+      "prompt": "State the function of EACH of the following:\n(i) A tickler file\n(ii) An out sheet\n(iii) A card indicator\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::3::q3-b": {
+      "prompt": "State FOUR ways in which a receptionist can maintain positive interpersonal relationships between an organization and the public. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::3::q3-c": {
+      "prompt": "Kathryn Ramlal was recently employed as a receptionist at Grey’s Medical Complex. She was asked to cancel the following appointments made for 4 January 2016.\n\nThe nurse in charge asked Kathryn to reschedule all these appointments to 11 January 2016; rescheduling all the morning appointments for the afternoon session, and the afternoon for the morning session. The reason given was that Dr Michelle White would not be available in the afternoon session on 4 January and Dr Green agreed to switch times with her on 11 January. Dr Green also made his appointments in error, as his office will be closed on 4 January.\n\n(i) Rescheduling the appointments can cause negative feelings between the nurse and clients. Recommend FOUR suitable ways in which the nurse could communicate the changes to the clients to resolve the rescheduling problem satisfactorily. (4 marks)\n\n(ii) On the appointment sheet provided on page 11, reschedule the appointments made for 11 January 2016 as outlined in the scenario. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 9,
+      "sourcePages": [
+        9,
+        10
+      ],
+      "layoutSourcePages": [
+        9,
+        10
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "4 January 2016 — APPOINTMENT BOOK",
+        "columns": [
+          "Time",
+          "First Name",
+          "Last Name",
+          "Telephone No.",
+          "Doctor"
+        ],
+        "rows": [
+          [
+            "9:00",
+            "Ian",
+            "McGregor",
+            "242-2240",
+            "Ian Green"
+          ],
+          [
+            "10:40",
+            "Sonia",
+            "Brown",
+            "383-1127",
+            "Ian Green"
+          ],
+          [
+            "11:00",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "12:00",
+            "Janet",
+            "Hawthorn",
+            "243-1414",
+            "Michelle White"
+          ],
+          [
+            "1:45",
+            "Geraldine",
+            "Thompson",
+            "383-1719",
+            "Michelle White"
+          ]
+        ]
+      },
+      "documentTitle": "APPOINTMENT BOOK — Grey’s Medical Complex",
+      "fields": [
+        {
+          "label": "(i) Recommendations",
+          "kind": "text"
+        },
+        {
+          "label": "Date",
+          "kind": "text"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Appointment Book for Question 3 (c) (ii)",
+          "columns": [
+            "Time",
+            "First Name",
+            "Last Name",
+            "Telephone No.",
+            "Doctor"
+          ],
+          "rows": [
+            [
+              "9:00",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "9:30",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "10:00",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "10:30",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "10:40",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "11:00",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "11:30",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "12:00",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "12:30",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "1:00",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "1:45",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "2:00",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "9:00",
+            "9:30",
+            "10:00",
+            "10:30",
+            "10:40",
+            "11:00",
+            "11:30",
+            "12:00",
+            "12:30",
+            "1:00",
+            "1:45",
+            "2:00"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              7,
+              1
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              7,
+              3
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              8,
+              1
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              8,
+              3
+            ],
+            [
+              8,
+              4
+            ],
+            [
+              9,
+              1
+            ],
+            [
+              9,
+              2
+            ],
+            [
+              9,
+              3
+            ],
+            [
+              9,
+              4
+            ],
+            [
+              10,
+              1
+            ],
+            [
+              10,
+              2
+            ],
+            [
+              10,
+              3
+            ],
+            [
+              10,
+              4
+            ],
+            [
+              11,
+              1
+            ],
+            [
+              11,
+              2
+            ],
+            [
+              11,
+              3
+            ],
+            [
+              11,
+              4
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2016-JAN::4::q4-a": {
+      "prompt": "(i) Define the terms ‘quorum’ and ‘ad hoc’ as they relate to meetings.\nQuorum\nAd hoc\n(2 marks)\n\n(ii) State TWO protocols that are followed during meetings. (2 marks)\n\n(iii) Identify TWO duties to be performed by the secretary before the meeting date. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 11,
+      "sourcePages": [
+        11
+      ],
+      "layoutSourcePages": [
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::4::q4-b": {
+      "prompt": "Sashanna Alexander won a trip to Trinidad and Tobago for being the most outstanding customer service employee at Moulton Car Rental Ltd. The company made a tentative booking for her to stay at a five-star hotel and offered to pay all expenses for the trip including the air fare and a rental car. She was allowed US$3,000 spending money in traveller’s cheques.\n\n(i) Sashanna decides to take her trip at the beginning of February and has just short time in which to make the final arrangements. The company had done most of the planning but she now has to complete the final arrangements.\nUsing the information provided above, prepare a checklist of FIVE outstanding actions that Sashanna must take to complete her travel arrangements. (5 marks)\n\n(ii) Assume you are Sashanna, share FOUR experiences you had which show the benefits of using the traveller’s cheques while on your trip. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 12,
+      "sourcePages": [
+        12
+      ],
+      "layoutSourcePages": [
+        12
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::5::q5-a": {
+      "prompt": "State TWO roles of the procurement office. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 13,
+      "sourcePages": [
+        13
+      ],
+      "layoutSourcePages": [
+        13
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::5::q5-b": {
+      "prompt": "Give the meaning of EACH of the following terms:\nCost, insurance and freight (CIF)\nFree on board (FOB)\n(4 marks)",
+      "promptVerified": true,
+      "sourcePage": 13,
+      "sourcePages": [
+        13
+      ],
+      "layoutSourcePages": [
+        13
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::5::q5-c": {
+      "prompt": "David Kingsley is the payroll clerk at Brydson & Sons Co. Ltd. He is responsible for the payroll of three employees. The monthly payroll for these staff members is as follows:\nJuliett Butler — $8,550\nGarney Green — $10,000\nBeverly Williams — $9,840\n\n(i) David has to prepare a currency memorandum for the three employees. Each employee must receive 10 five-hundred dollar bills. The remaining amounts should be paid using the next highest denominations. Complete the form provided below to show the disbursement of cash to these employees. (5 marks)\n\n(ii) Complete the cash summary sheet below to be taken to the bank to withdraw the exact amount of cash needed to pay employees. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 13,
+      "sourcePages": [
+        13,
+        14
+      ],
+      "layoutSourcePages": [
+        13,
+        14
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "Currency Memorandum",
+          "columns": [
+            "Name",
+            "$500",
+            "$100",
+            "$50",
+            "$20",
+            "$10",
+            "Total Cash"
+          ],
+          "rows": [
+            [
+              "Juliett Butler",
+              "10",
+              "",
+              "",
+              "",
+              "",
+              "$8,550"
+            ],
+            [
+              "Garney Green",
+              "10",
+              "",
+              "",
+              "",
+              "",
+              "$10,000"
+            ],
+            [
+              "Beverly Williams",
+              "10",
+              "",
+              "",
+              "",
+              "",
+              "$9,840"
+            ],
+            [
+              "TOTAL",
+              "30",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Juliett Butler",
+            "Garney Green",
+            "Beverly Williams",
+            "TOTAL"
+          ],
+          "editable": [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              6
+            ]
+          ]
+        },
+        {
+          "title": "Cash Summary Sheet",
+          "columns": [
+            "No. of Notes",
+            "",
+            "Notes ($)",
+            "Total Cash ($)"
+          ],
+          "columnLabels": [
+            "No. of Notes",
+            "Multiply",
+            "Notes ($)",
+            "Total Cash ($)"
+          ],
+          "rows": [
+            [
+              "",
+              "×",
+              "500",
+              ""
+            ],
+            [
+              "",
+              "×",
+              "100",
+              ""
+            ],
+            [
+              "",
+              "×",
+              "50",
+              ""
+            ],
+            [
+              "",
+              "×",
+              "20",
+              ""
+            ],
+            [
+              "",
+              "×",
+              "10",
+              ""
+            ],
+            [
+              "Total",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "500",
+            "100",
+            "50",
+            "20",
+            "10",
+            "Total"
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              5,
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2016-JAN::6::q6-a": {
+      "prompt": "State TWO duties that a clerk in the customer services department is required to perform. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 15,
+      "sourcePages": [
+        15
+      ],
+      "layoutSourcePages": [
+        15
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::6::q6-b": {
+      "prompt": "One of the functions of the transport office is to collect relevant documents from the despatch office.\n\n(i) Identify TWO of those documents other than the destination sheet. (2 marks)\n\n(ii) Explain the purpose of a destination sheet. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 15,
+      "sourcePages": [
+        15
+      ],
+      "layoutSourcePages": [
+        15
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::6::q6-c": {
+      "prompt": "(i) Bujmar Manufacturing Co. Ltd created a line of sportswear for the 100-strong Caribbean track team to the Olympics, with colours that reflect the spirit and pride of Caribbean people.\n\nAs the marketing clerk, compose an advertising gimmick, not exceeding 25 words, that reflects the spirit and pride of the Caribbean and its people. (5 marks)\n\n(ii) Create a brand name that represents the Caribbean and its people for the line of sportswear. (1 mark)\n\n(iii) What THREE precautions could Bujmar Manufacturing Co. Ltd put in place to ensure the safe movement of the sportswear to the team’s headquarters? (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 15,
+      "sourcePages": [
+        15,
+        16
+      ],
+      "layoutSourcePages": [
+        15,
+        16
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::7::q7-a": {
+      "prompt": "State THREE items of information that are found on a customs form. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 17,
+      "sourcePages": [
+        17
+      ],
+      "layoutSourcePages": [
+        17
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::7::q7-b": {
+      "prompt": "List THREE key responsibilities of the operations office. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 17,
+      "sourcePages": [
+        17
+      ],
+      "layoutSourcePages": [
+        17
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-JAN::7::q7-c": {
+      "prompt": "(i) The following information was sent from Superior Office Supplies, 10 Duke Street, St John’s, Antigua, to Mr Richard Dillard, 1A Barbuda Crescent, St John’s, Antigua.\n\nDate: 2 January 2016\nInvoice No. 50\nOrder No. 11\nDelivered by company truck\nTo supply: 3 four-drawer filing cabinets at $800 each\n6 ergonomic office chairs at $300 each\nLess 12½% quantity discount\nAdd 15% VAT\nE & OE\n\nUse the form provided on page 19 to complete the invoice. (7 marks)\n\n(ii) What would be the consequence if the term ‘E & OE’ was omitted from the invoice? (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 17,
+      "sourcePages": [
+        17,
+        18
+      ],
+      "layoutSourcePages": [
+        17,
+        18
+      ],
+      "layoutVerified": true,
+      "documentTitle": "INVOICE",
+      "fields": [
+        {
+          "label": "Heading and address",
+          "kind": "text"
+        },
+        {
+          "label": "No.",
+          "kind": "text"
+        },
+        {
+          "label": "To",
+          "kind": "text"
+        },
+        {
+          "label": "Date",
+          "kind": "text"
+        },
+        {
+          "label": "Order No.",
+          "kind": "text"
+        },
+        {
+          "label": "Delivered by",
+          "kind": "text"
+        },
+        {
+          "label": "(ii) Consequence of omitting E & OE",
+          "kind": "text",
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Invoice items",
+          "columns": [
+            "Quantity",
+            "Description",
+            "Unit Price ($)",
+            "Total ($)"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "12½% quantity discount",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "15% VAT",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "TOTAL",
+              ""
+            ],
+            [
+              "E & OE",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "merges": [
+            {
+              "row": 7,
+              "col": 0,
+              "colSpan": 4
+            }
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              6,
+              3
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

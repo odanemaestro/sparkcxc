@@ -85,3 +85,20 @@ All 22 supplied pages and 27 parts across seven questions were checked. Nine his
 The source deliberately retains Mesha-Gay / Mesha-Gray, the cash-book debit year 2015 against credit year 2016, statement deposit $600 against cash receipt $700, the stock card’s 1 / 4 / 7 April dates alongside 5 / 13 April order dates, and the different June unit costs in the two valuation tables. The PDF has omitted terminal glyphs in common words (for example offic, fil, confir and FIFO first-in-first-ou); the native wording restores those obvious letters for legibility. No substantive question, date or amount is inferred or silently corrected.
 
 Focused tests and Chromium checks at 1440px / 390px passed. Debit/credit entries, stock quantities, selections and closing-stock answers survive refresh. Printed stock levels and earlier valuations remain fixed; calculated totals stay blank.
+
+
+## January 2016 and 2012–2015 native reviews — 30 October 2026
+
+All supplied pages were visually checked for January 2016 (20 pages / 21 parts), 2015 (20 / 29), 2014 (12 / 24), 2013 (12 / 26), and 2012 (11 / 23). Fourteen historical Paper 2 papers are now fully reviewed; seven remain (2005–2011). The entire historical archive remains the user's launch requirement.
+
+January 2016 retains all twelve appointment times, the given ten $500 notes per employee and denomination totals, and the invoice's 12½% discount / 15% VAT. The duplicate question page and extra-space pages are excluded from question provenance. Sunday 2 January 2016 is retained as printed.
+
+The 2015 invoice keeps Invoice #100, 5%/10/N30 and four blank item rows. Purchase Order 101 retains its unruled multiline entry area, fixed TOTAL label and prepared-by space. The advice note deliberately retains June 08, 2014 against the October 02, 2014 order date and 6/10/14 despatch date. No early-payment amount or purchase-order total is prefilled.
+
+The 2014 appraisal preserves seven printed ratings, the merged A comment area and sections B–H. Four detached inserts are attached to their actual questions. The currency memorandum includes all eleven denominations; its cash summary retains KINGSTON while the prompt says Kingstown. The stock card keeps June 2012 transaction dates and the printed closing date ___ June 2013. Invoice #7 keeps its four blank item rows and full-width final answer area.
+
+The 2013 cheque retains No. 1000, MIDTOWN BANK LTD and A/C No. 1562370. The four vouchers retain the given Ed Donley / Ali Brown signatures and the combined envelopes / masking-tape voucher. Its thirteen-row cash book keeps the separate 120 / 00 imprest cells, 1 May and To Imprest; the advice note uses the supplied unruled entry area.
+
+The 2012 appointments retain all received details without supplying converted or sorted times. The bank records keep 29 Feb 2011. The FIFO source describes AC-DC / AC DC Motors while its detached answer sheet says Item: Cell Phone Cases; both are retained. The indexing names, three-row dish-washing stock card and advice note retain source labels and blank answers.
+
+Chromium desktop (1440px) and mobile (390px) checks passed for the five papers. Native answers, including multiline order entries, survive refresh without outer-page overflow or browser exceptions. The appointment check found a real parser defect: field labels containing a colon, such as 9:00, were truncated on read-back. The parser now matches complete known field names, with regression checks for clock times, multiline values, legacy labels and overlapping prefixes. Tall unruled source areas retain enough lines for entry; tables without printed headers no longer display an empty header band. Historical official schemes and score publication remain unavailable.

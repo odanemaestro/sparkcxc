@@ -1,3 +1,8 @@
+import reviewed2012MJ from './oaHistoricalPaper2Reviewed2012MJ.json';
+import reviewed2013MJ from './oaHistoricalPaper2Reviewed2013MJ.json';
+import reviewed2014MJ from './oaHistoricalPaper2Reviewed2014MJ.json';
+import reviewed2015MJ from './oaHistoricalPaper2Reviewed2015MJ.json';
+import reviewed2016JAN from './oaHistoricalPaper2Reviewed2016JAN.json';
 import reviewed2016MJ from './oaHistoricalPaper2Reviewed2016MJ.json';
 import reviewed2017MJ from './oaHistoricalPaper2Reviewed2017MJ.json';
 import reviewed2018MJ from './oaHistoricalPaper2Reviewed2018MJ.json';
@@ -81,3 +86,18 @@ Object.assign(OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS,reviewed2017MJ.questions);
 
 Object.assign(OA_HISTORICAL_PAPER2_PART_LAYOUTS,reviewed2016MJ.parts);
 Object.assign(OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS,reviewed2016MJ.questions);
+
+Object.assign(OA_HISTORICAL_PAPER2_PART_LAYOUTS,reviewed2016JAN.parts);
+Object.assign(OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS,reviewed2016JAN.questions);
+
+Object.assign(OA_HISTORICAL_PAPER2_PART_LAYOUTS,reviewed2015MJ.parts);
+Object.assign(OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS,reviewed2015MJ.questions);
+
+Object.assign(OA_HISTORICAL_PAPER2_PART_LAYOUTS,reviewed2014MJ.parts);
+Object.assign(OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS,reviewed2014MJ.questions);
+
+Object.assign(OA_HISTORICAL_PAPER2_PART_LAYOUTS,reviewed2013MJ.parts);
+Object.assign(OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS,reviewed2013MJ.questions);
+
+Object.assign(OA_HISTORICAL_PAPER2_PART_LAYOUTS,reviewed2012MJ.parts);
+Object.assign(OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS,reviewed2012MJ.questions);
