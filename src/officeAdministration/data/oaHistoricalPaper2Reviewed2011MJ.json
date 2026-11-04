@@ -1,0 +1,1053 @@
+{
+  "paperId": "OA-P2-2011-MJ",
+  "reviewDate": "2026-11-04",
+  "reviewMethod": "Visual comparison with all 10 supplied PDF pages, including the detached message and job-card forms. Printed values were retained and omitted terminal glyphs repaired for legibility.",
+  "questions": {
+    "OA-P2-2011-MJ::1": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::2": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2,
+        3
+      ],
+      "layoutSourcePages": [
+        2,
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::3": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::4": {
+      "stem": "",
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        9
+      ],
+      "layoutSourcePages": [
+        5,
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::5": {
+      "stem": "",
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::6": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::7": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        8
+      ],
+      "layoutSourcePages": [
+        7,
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::8": {
+      "stem": "",
+      "sourcePage": 8,
+      "sourcePages": [
+        8,
+        10
+      ],
+      "layoutSourcePages": [
+        8,
+        10
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2011-MJ::1::q1-a": {
+      "prompt": "The labour laws of most Caribbean countries include the right to freedom of association and assembly.\n(i) Identify ONE other right included in the labour laws of any Caribbean country. (1 mark)\n(ii) Identify TWO desirable attitudes that employees should demonstrate in the workplace. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::1::q1-b": {
+      "prompt": "Phoenix Distributors is moving to newer premises and would like to reduce the number of files that it now stores\n(i) State ONE way in which Phoenix Distributors may dispose of EACH of the following types of files\na) Non-confidential\nb) Confidential (2 marks)\n(ii) Identify TWO types of files which are usually archived (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::1::q1-c": {
+      "prompt": "Your name is Pat Brown. You reside at Soufriere, St Lucia. You submitted an application to Phoenix Distributors for the post of Clerical Assistant I. More than six months have passed and you have not received a response. You feel you may have a better chance now that they have expanded. Write an appropriate follow-up letter to Mrs Penny Wise, The Director, Human Resource Division, Phoenix Distributors, Gros Islet, St Lucia. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2011-MJ::2::q2-a": {
+      "prompt": "As a receptionist at a small firm, your duties include managing and maintaining the reception area, receiving and filing business cards and operating a switchboard.\n(i) State TWO practices which would assist in keeping the reception area tidy. (2 marks)\n(ii) It is common practice for each visitor to the office to leave a business card with the receptionist. Identify TWO items of information that may be found on a business card. (2 marks)\n(iii) The temporary receptionist continues to use inappropriate words and phrases when using the telephone. Copy and complete the table below by suggesting professional alternatives to each of the unprofessional responses given by the temporary receptionist. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2,
+        3
+      ],
+      "layoutSourcePages": [
+        2,
+        3
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "Telephone responses",
+          "columns": [
+            "Unprofessional Phrase",
+            "Professional Alternative"
+          ],
+          "rows": [
+            [
+              "a) Hello, Hi",
+              ""
+            ],
+            [
+              "b) What you want?",
+              ""
+            ],
+            [
+              "c) I eh hear what you say",
+              ""
+            ],
+            [
+              "d) Wait a minute, ok?",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "rowLabels": [
+            "Hello, Hi",
+            "What you want?",
+            "I eh hear what you say",
+            "Wait a minute, ok?"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(i) Practices for keeping the reception area tidy",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "(ii) Information found on a business card",
+          "kind": "text",
+          "rows": 3
+        }
+      ]
+    },
+    "OA-P2-2011-MJ::2::q2-b": {
+      "prompt": "Two popular reminder systems in use in the office are the tickler system and the diary.\n(i) Describe, using THREE points, how a tickler system works. (3 marks)\n(ii) Copy the diary sheet shown below in your answer booklet and complete it showing the diary entries recorded by the receptionist for EACH of the following activities.\n- Mr Jones’ visit with Mr Lake was postponed to Friday, 22 July 2011 at 2.00 p.m.\n- Pests B Gone Ltd will be returning at 8.00 a.m. on 22 July 2011 to spray the ground floor. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true,
+      "documentTitle": "DIARY",
+      "fields": [
+        {
+          "label": "(i) How a tickler system works",
+          "kind": "text",
+          "rows": 5
+        },
+        {
+          "label": "Date",
+          "kind": "text",
+          "rows": 2
+        },
+        {
+          "label": "Notes",
+          "kind": "text",
+          "rows": 4,
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Diary entries",
+          "columns": [
+            "Time",
+            "Entry"
+          ],
+          "rows": [
+            [
+              "0800",
+              ""
+            ],
+            [
+              "0900",
+              ""
+            ],
+            [
+              "1000",
+              ""
+            ],
+            [
+              "1100",
+              ""
+            ],
+            [
+              "1200",
+              ""
+            ],
+            [
+              "1300",
+              ""
+            ],
+            [
+              "1400",
+              ""
+            ],
+            [
+              "1500",
+              ""
+            ],
+            [
+              "1600",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              7,
+              1
+            ],
+            [
+              8,
+              1
+            ]
+          ],
+          "rowLabels": [
+            "0800",
+            "0900",
+            "1000",
+            "1100",
+            "1200",
+            "1300",
+            "1400",
+            "1500",
+            "1600"
+          ]
+        }
+      ]
+    },
+    "OA-P2-2011-MJ::3::q3-a": {
+      "prompt": "Organizations normally engage in the functions of collecting and processing data and producing and distributing goods and services.\n(i) Explain what is meant by EACH of the following:\na) Collecting data\nb) Processing data\nc) Producing goods (3 marks)\n(ii) Differentiate between ‘goods’ and ‘services’. (2 marks)\n(iii) State TWO reasons for preserving information in an organization. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::3::q3-b": {
+      "prompt": "You are Shirley Weese, the supervisor of an Information Technology department. Your neighbour, Mr Jade Pryce, works in the same department and is your good friend. However, you have noticed that he is often late for work and, on some days, does little or no work.\n(i) Write a memo to be e-mailed to Mr Pryce expressing your disappointment with his conduct at the workplace and stating the impact of his frequent lateness on the achievement of goals in the department. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true,
+      "fields": [
+        {
+          "label": "(i) Memo",
+          "kind": "text",
+          "rows": 8
+        },
+        {
+          "label": "(ii) State TWO actions that you as the supervisor should take and TWO actions that Mr Pryce should take to improve the efficiency of the department. (4 marks)",
+          "kind": "text",
+          "rows": 5,
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2011-MJ::4::q4-a": {
+      "prompt": "State ONE example of EACH of the following methods of communication:\n(i) Oral\n(ii) Electronic\n(iii) Visual\n(iv) Written (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::4::q4-b": {
+      "prompt": "State THREE items of information that should be given to the hotel reservations clerk when making hotel reservations. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::4::q4-c": {
+      "prompt": "(i) You are Olay Reid and you attended a meeting on 20 April 2011. While you were away, a message from Evelyn Thames of the Examinations Council, 10 Main Street, St. Michael, Barbados, Telephone: 246-207-1733 was received by the secretary, Ms Grace Powell, at 10:00 a.m.\n\nThe message states that your travel itinerary has been prepared and will be sent to you shortly. You will be traveling on West Indian Airlines 615 which will depart from Kingston, Jamaica at 2:00 p.m. on 6 December 2011. However, you should present yourself at the check-in counter with your passport at least 2 hours before your flight time. Ms Thames says that your travel will be processed in the usual manner by the airline. You should bear in mind that although your airline reservation has been confirmed, it is your responsibility to check with the airline, preferably the day prior to your departure, to ascertain whether there has been any change to your booking. You will return to Jamaica from Barbados on West Indian Airlines 616 on 10 December 2011.\n\nUse the Message Form provided on the enclosed sheet to record the RELEVANT points of the message. (6 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        9
+      ],
+      "layoutSourcePages": [
+        5,
+        9
+      ],
+      "layoutVerified": true,
+      "documentTitle": "MESSAGE FORM",
+      "responseTables": [
+        {
+          "title": "Message form",
+          "columns": [
+            "",
+            ""
+          ],
+          "columnLabels": [
+            "Field",
+            "Entry"
+          ],
+          "rows": [
+            [
+              "To",
+              ""
+            ],
+            [
+              "From",
+              ""
+            ],
+            [
+              "Organization",
+              "Examinations Council"
+            ],
+            [
+              "Address",
+              "10 Main Street"
+            ],
+            [
+              "",
+              "St Michael"
+            ],
+            [
+              "",
+              "Barbados"
+            ],
+            [
+              "Phone",
+              "246-207-1733"
+            ],
+            [
+              "Message",
+              ""
+            ],
+            [
+              "Message taken by",
+              ""
+            ],
+            [
+              "Date",
+              ""
+            ],
+            [
+              "Time",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "To",
+            "From",
+            "Organization",
+            "Address",
+            "Parish",
+            "Country",
+            "Phone",
+            "Message",
+            "Message taken by",
+            "Date",
+            "Time"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              7,
+              1
+            ],
+            [
+              8,
+              1
+            ],
+            [
+              9,
+              1
+            ],
+            [
+              10,
+              1
+            ]
+          ],
+          "inputRows": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            8,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(ii) State TWO actions that Ms Powell may take to ensure the accuracy of the message. (2 marks)",
+          "kind": "text",
+          "rows": 4,
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2011-MJ::5::q5-a": {
+      "prompt": "List TWO attributes of an accounts clerk. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::5::q5-b": {
+      "prompt": "State how the Accounts Office of a manufacturing firm interacts with the following offices\n(i) Factory\n(ii) Human Resource\n(iii) Transport (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::5::q5-c": {
+      "prompt": "The following information was included in a quotation submitted for furniture items: Orders in excess of $4 000.00 are allowed a discount of 12½%\n(i) Calculate the trade discount for a purchase of $6 000.00. (2 marks) An additional discount of 10% is available for accounts paid within one month of the due date\n(ii) Calculate the cash discount. (2 marks)\n(iii) If the account is settled one week before the due date, what price will a customer pay for the furniture? (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::5::q5-d": {
+      "prompt": "There are several internal factors that may contribute to the high labour turnover in an organization.\n(i) List ONE such internal factor. (1 mark)\n(ii) Suggest THREE measures that an organization may adopt to remedy the situation. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::6::q6-a": {
+      "prompt": "Two functions of the human resource department are administering performance appraisals and training. For EACH of these functions, state TWO activities that should be completed by the department in performing these functions. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::6::q6-b": {
+      "prompt": "State TWO actions an employer may take to discipline employees. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::6::q6-c": {
+      "prompt": "(i) The employer has a responsibility to provide for the health, safety and welfare of the employees at the workplace. Copy the following table in your answer booklet and for EACH of these aspects, outline TWO benefits that an employee may derive from these statutory provisions. The first example of each aspect is done for you (6 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "Benefits from statutory provision",
+          "columns": [
+            "Aspect",
+            "Benefits from statutory provision"
+          ],
+          "rows": [
+            [
+              "Health",
+              "eg adequate workspace for each employee\n1.\n2."
+            ],
+            [
+              "Safety",
+              "eg warning notices posted in places considered to be dangerous\n1.\n2."
+            ],
+            [
+              "Welfare",
+              "eg adequate and sanitary washroom\n1.\n2."
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ]
+          ],
+          "preserveGiven": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ]
+          ],
+          "rowLabels": [
+            "Health",
+            "Safety",
+            "Welfare"
+          ],
+          "inputRows": [
+            4,
+            4,
+            4
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(ii) A clerk in the human resource office is assisting with short-listing applicants for the interview. State THREE actions that the clerk should carry out to ensure that the process of short-listing applicants is fair. (3 marks)",
+          "kind": "text",
+          "rows": 5,
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2011-MJ::7::q7-a": {
+      "prompt": "Identify FOUR duties of a clerk in the accounts office. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::7::q7-b": {
+      "prompt": "Write any ONE of the following abbreviations in full and explain what it means.\n(i) C.O.D\n(ii) E & OE (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::7::q7-c": {
+      "prompt": "(i) The table below shows the pay advice for Anne Hart for the first week in December 2010. Use the information provided in the table to calculate the weekly\na) gross pay\nb) net pay (4 marks)\n\n(ii) Ms Hart was also given a commission of 20% of her net pay. Calculate her TOTAL net salary for that week. (2 marks)\n\n(iii) Copy the cheque below in your answer booklet and complete it to show the TOTAL salary paid to Anne Hart for that week. The cheque should be signed by Mr Dave Watts, the Accountant. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        8
+      ],
+      "layoutSourcePages": [
+        7,
+        8
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Pay advice",
+        "columns": [
+          "Hourly Rate of Pay",
+          "Basic Hours Worked",
+          "Total Overtime Pay",
+          "National Insurance Deductions from Gross Pay"
+        ],
+        "rows": [
+          [
+            "$15.00",
+            "40",
+            "$180.00",
+            "$39.00"
+          ]
+        ]
+      },
+      "tables": [
+        {
+          "title": "Bank of Bristol — Cheque No. 120",
+          "columns": [
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "Bank address",
+              "Silver Spring, Fairview"
+            ],
+            [
+              "Pay to the order of",
+              "Anne Hart"
+            ],
+            [
+              "",
+              "512 77-44 40 20 01"
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(i) a) Gross pay",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "(i) b) Net pay",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "(ii) TOTAL net salary",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "(iii) Cheque date",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "The sum of (dollars)",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Amount in figures ($)",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Signature",
+          "kind": "text",
+          "rows": 3
+        }
+      ]
+    },
+    "OA-P2-2011-MJ::8::q8-a": {
+      "prompt": "List THREE duties of a clerk in the factory office (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::8::q8-b": {
+      "prompt": "Identify THREE documents, other than the job card, that are used in the factory office. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2011-MJ::8::q8-c": {
+      "prompt": "You are Paula Kelly, a clerk in the factory office of Hi-Fashion Limited. Sally Burke is your Supervisor and Peter Kim is the Factory Manager. The factory has just completed Job No. 12 which comprised 40 dozen white, size 10 school shirts.\n\nThe following materials and labour were required to complete this job.\n\nMaterial: 500 metres white cotton\n160 dozens white buttons\n100 spools white cotton thread\n\nLabour: 3 cutters @ $20.00 per hour for 5 hours\n10 stitchers @ $25.00 per hour for 20 hours\n3 packers @ $18.00 per hour for 4 hours\n\nUse the form provided to complete Job Card #15. Assume it was prepared by the factory clerk on 17 September, approved by the supervisor on 18 September and inspected by the factory manager on 25 September. (9 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8,
+        10
+      ],
+      "layoutSourcePages": [
+        8,
+        10
+      ],
+      "layoutVerified": true,
+      "documentTitle": "JOB CARD — Card No. 15",
+      "fields": [
+        {
+          "label": "Job No.",
+          "kind": "text",
+          "rows": 2
+        },
+        {
+          "label": "Date",
+          "kind": "text",
+          "rows": 2
+        },
+        {
+          "label": "Job Description",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "Workers employed",
+          "kind": "text",
+          "rows": 2
+        },
+        {
+          "label": "Time taken to complete job",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "Approved by",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "Date approved",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "Inspected by",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "Date inspected",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "Prepared by (Factory Office Clerk)",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "Date prepared",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Material used",
+          "columns": [
+            "Quantity",
+            "Description"
+          ],
+          "rows": [
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Workers employed",
+          "columns": [
+            "Number",
+            "Type",
+            "Rate of pay"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

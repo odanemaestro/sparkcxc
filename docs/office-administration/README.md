@@ -92,3 +92,6 @@ Validation for the nine-paper checkpoint: 14 course/catalogue/About suites, 108 
 The subsequent January 2016 and 2012–2015 review brings Paper 2 to fourteen fully checked papers, with seven (2005–2011) remaining. All 75 supplied pages / 123 response parts were visually checked, including detached forms, appointment times, denominations, appraisals, invoices, FIFO and stock cards. Printed date/place/item discrepancies remain intact. The clock-time response parser was fixed and independently tested; all five papers passed desktop/mobile refresh checks. Historical Paper 1 remains at 718 checked questions. No production publication has been performed.
 
 Validation for the fourteen-paper checkpoint: 15 course/catalogue/About suites and 116 tests passed; four focused source/document/exam/response suites and 32 tests passed; production build passed. The previous remote draft snapshot passed all eleven GitHub workflows.
+
+
+The 4 November checkpoint adds the checked 2010 and 2011 Paper 2 texts, diagrams and detached forms. Sixteen historical Paper 2 papers are fully reviewed and five remain. The updated course tests passed all 118 cases in 15 suites. The production build and desktop/mobile browser checks passed. The preceding draft passed all eleven GitHub workflows.

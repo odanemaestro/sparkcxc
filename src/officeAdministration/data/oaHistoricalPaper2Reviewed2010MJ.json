@@ -1,0 +1,1213 @@
+{
+  "paperId": "OA-P2-2010-MJ",
+  "reviewDate": "2026-11-04",
+  "reviewMethod": "Visual comparison with all 11 supplied PDF pages. All prompts retranscribed, both diagrams checked and detached inserts rebuilt as editable text.",
+  "questions": {
+    "OA-P2-2010-MJ::1": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::2": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2,
+        3
+      ],
+      "layoutSourcePages": [
+        2,
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::3": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::4": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::5": {
+      "stem": "",
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        9
+      ],
+      "layoutSourcePages": [
+        5,
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::6": {
+      "stem": "",
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        10
+      ],
+      "layoutSourcePages": [
+        6,
+        10
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::7": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        11
+      ],
+      "layoutSourcePages": [
+        7,
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::8": {
+      "stem": "",
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2010-MJ::1::q1-a": {
+      "prompt": "(i) Identify THREE channels, other than the consumer, that a manufacturer or producer may use to distribute his goods and services. (3 marks)\n\n(ii) State TWO roles that the office should perform in the exchange of goods and services. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::1::q1-b": {
+      "prompt": "Copy the organization chart below in your answer booklet and complete it to show the positions for a general manager, a secretary and an administrative assistant. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true,
+      "responseDiagram": {
+        "title": "Organization chart",
+        "viewBox": [
+          460,
+          597,
+          441,
+          197
+        ],
+        "sourceGeometry": {
+          "page": 2,
+          "units": "rendered pixels"
+        },
+        "lines": [
+          [
+            [
+              764,
+              653
+            ],
+            [
+              764,
+              696
+            ],
+            [
+              720,
+              696
+            ]
+          ],
+          [
+            [
+              593,
+              713
+            ],
+            [
+              593,
+              739
+            ]
+          ]
+        ],
+        "nodes": [
+          {
+            "x": 639,
+            "y": 611,
+            "width": 246,
+            "height": 42,
+            "label": "Top box"
+          },
+          {
+            "x": 473,
+            "y": 671,
+            "width": 247,
+            "height": 42,
+            "label": "Middle box"
+          },
+          {
+            "x": 473,
+            "y": 739,
+            "width": 247,
+            "height": 42,
+            "label": "Bottom box"
+          }
+        ],
+        "minWidth": 465
+      }
+    },
+    "OA-P2-2010-MJ::1::q1-c": {
+      "prompt": "In her application letter to Hi-Tech Solutions Co. Ltd, Shauna Lee stated that she possessed excellent “literacy, word-processing, time management and problem-solving” skills.\n\nFor EACH of the skills listed above, state TWO ways in which Shauna Lee could contribute to efficiency in the organization. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::2::q2-a": {
+      "prompt": "(i) State THREE techniques that an employee should display in answering the company’s telephone. (3 marks)\n\n(ii) List THREE types of information that may be found in the telephone directory. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::2::q2-b": {
+      "prompt": "(i) State ONE reason why knowledge of time zones is important in business. (1 mark)\n\n(ii) The table below lists THREE countries which are either behind in hours (indicated by the minus sign (−), or ahead, (indicated by the plus sign (+) of Greenwich Mean Time.\n\nCopy the information given in the table above in your answer booklet and calculate the time for the THREE countries when it is 12 noon in England, using the 12-hour clock. (3 marks)\n\n(iii) Copy the following information in your answer booklet and determine the time on the 24-hour clock. (5 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true,
+      "fields": [
+        {
+          "label": "(i) Reason why knowledge of time zones is important",
+          "kind": "text",
+          "rows": 3
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Time in the three countries",
+          "columns": [
+            "Countries",
+            "Behind or Ahead",
+            "Time on 12-hour clock"
+          ],
+          "rows": [
+            [
+              "Delhi, India",
+              "+05.5 hours",
+              ""
+            ],
+            [
+              "Kinston, Jamaica",
+              "−05 hours",
+              ""
+            ],
+            [
+              "Tokyo, Japan",
+              "+09 hours",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Delhi, India",
+            "Kinston, Jamaica",
+            "Tokyo, Japan"
+          ],
+          "editable": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        {
+          "title": "Time conversion",
+          "columns": [
+            "12-hour clock",
+            "24-hour clock"
+          ],
+          "rows": [
+            [
+              "12:00 noon",
+              ""
+            ],
+            [
+              "12:00 midnight",
+              ""
+            ],
+            [
+              "12:01 p.m.",
+              ""
+            ],
+            [
+              "1:00 a.m.",
+              ""
+            ],
+            [
+              "1:00 p.m.",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "12:00 noon",
+            "12:00 midnight",
+            "12:01 p.m.",
+            "1:00 a.m.",
+            "1:00 p.m."
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2010-MJ::3::q3-a": {
+      "prompt": "(i) State TWO reasons for preserving records in a business. (2 marks)\n\n(ii) Identify TWO means by which data may be preserved. (2 marks)\n\n(iii) Copy the information below in your answer booklet and for EACH duty, give ONE task that the records management clerk is expected to perform. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true,
+      "fields": [
+        {
+          "label": "(i) Reasons for preserving records",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "(ii) Means of preserving data",
+          "kind": "text",
+          "rows": 3
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Records management duties",
+          "columns": [
+            "Duties",
+            "Tasks to be performed"
+          ],
+          "rows": [
+            [
+              "Preparing documents",
+              ""
+            ],
+            [
+              "Managing documents",
+              ""
+            ],
+            [
+              "Retrieving documents",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Preparing documents",
+            "Managing documents",
+            "Retrieving documents"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2010-MJ::3::q3-b": {
+      "prompt": "Arrange the following list of names as they would appear in an alphabetical filing system.\n\nOlga Read\nAmy Reed\nO. Read\nA. Reide\nA. Reede\nO. Reade\nA. Reid\nO. Reed (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::4::q4-a": {
+      "prompt": "(i) State ONE follow-up activity of a meeting that should be performed by the chairperson. (1 mark)\n\n(ii) State THREE reasons for sending copies of minutes of the previous meeting to members ahead of the next meeting day. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::4::q4-b": {
+      "prompt": "List THREE items of business that may be included on the agenda of a meeting. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::4::q4-c": {
+      "prompt": "As a new employee in the organization, you notice that each week, attendance at meetings seems to be dwindling.\n\nDraft a memo to all members of staff explaining the problem. Suggest FOUR actions that can be taken to deal with the poor attendance at meetings. The memo will be signed by the general manager. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2010-MJ::5::q5-a": {
+      "prompt": "(i) State TWO reasons for the human resource management office to conduct an induction programme. (2 marks)\n\n(ii) State TWO purposes for appraising employees in an organization. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::5::q5-b": {
+      "prompt": "Identify TWO duties of the purchasing clerk. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::5::q5-c": {
+      "prompt": "(i) You are Shirley Showers, a data entry clerk. You informed your supervisor, Mrs Olivia Grange, that you will require the following items in the next two days. Mr Bigga Henry is the stores clerk.\n\n• 2 reams A4 copy paper\n• 6 black deskjet cartridges\n• 100 D6 brown envelopes\n• 1 gross HB pencils\n\nUse the form provided to request the items. The requisition number is 101. (5 marks)\n\n(ii) As data entry clerk, you are asked to print 250 copies of a four-page annual newsletter for the company, immediately. You, therefore, need to order 3 reams of A4 copy paper at a cost of $100.00 per ream from Chin Lees Stationery Ltd, 5 Savana Road, Grenada.\n\nUse the Order form provided to ensure that the paper required is supplied to you on the same day. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        9
+      ],
+      "layoutSourcePages": [
+        5,
+        9
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "DEPARTMENTAL STOCK REQUISITION",
+          "columns": [
+            "",
+            ""
+          ],
+          "columnLabels": [
+            "Label",
+            "Entry"
+          ],
+          "rows": [
+            [
+              "To",
+              ""
+            ],
+            [
+              "No.",
+              ""
+            ],
+            [
+              "Date",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "To",
+            "No.",
+            "Date"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Please supply the following item(s)",
+          "columns": [
+            "Quantity",
+            "Description"
+          ],
+          "rows": [
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Requisition approvals",
+          "columns": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "columnLabels": [
+            "Label",
+            "Name",
+            "Label",
+            "Department or date"
+          ],
+          "rows": [
+            [
+              "Requested by",
+              "",
+              "Department",
+              ""
+            ],
+            [
+              "Authorized by",
+              "",
+              "Date",
+              ""
+            ],
+            [
+              "Received by",
+              "",
+              "Date",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Requested by",
+            "Authorized by",
+            "Received by"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "title": "ORDER FORM",
+          "columns": [
+            "",
+            ""
+          ],
+          "columnLabels": [
+            "Label",
+            "Entry"
+          ],
+          "rows": [
+            [
+              "To",
+              ""
+            ],
+            [
+              "Date",
+              ""
+            ],
+            [
+              "Quotation #",
+              "10"
+            ]
+          ],
+          "rowLabels": [
+            "To",
+            "Date",
+            "Quotation #"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Please supply the following C.O.D.",
+          "columns": [
+            "Quantity",
+            "Particulars",
+            "Unit Price",
+            "Total"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ]
+          ],
+          "inputRows": [
+            6
+          ]
+        }
+      ]
+    },
+    "OA-P2-2010-MJ::6::q6-a": {
+      "prompt": "(i) List THREE items of information that the accounts clerk will place on an employee’s Pay Advice. (3 marks)\n\n(ii) State THREE reasons usually considered for paying an employee by cheque. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::6::q6-b": {
+      "prompt": "You are Seeta Roopria, petty cashier, who has been handling small cash transactions for the marketing division of the Starlet Electrical Company, 148 Taylor Drive, Belmont, St. Kitts.\n\nUse the Petty Cash Book form provided to record the following information. You are required to balance the book and restore the imprest on June 01.\n\nMay 01 Petty cash brought forward $300.00 (9 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        10
+      ],
+      "layoutSourcePages": [
+        6,
+        10
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Petty cash transactions",
+        "columns": [
+          "Date",
+          "Details",
+          "Amount"
+        ],
+        "rows": [
+          [
+            "May 06",
+            "Paid postage – PCV #1",
+            "$20.00"
+          ],
+          [
+            "May 08",
+            "Bought stationery – PCV #2",
+            "$10.00"
+          ],
+          [
+            "May 09",
+            "Paid travel expenses – PCV #3",
+            "$30.00"
+          ],
+          [
+            "May 11",
+            "Paid office expenses – PCV #4",
+            "$25.00"
+          ],
+          [
+            "May 13",
+            "Paid window cleaner – PCV #5",
+            "$40.00"
+          ],
+          [
+            "May 15",
+            "Bought sundry items – PCV #6",
+            "$30.00"
+          ],
+          [
+            "May 21",
+            "Paid for small office supplies – PCV #7",
+            "$35.00"
+          ],
+          [
+            "May 22",
+            "Bought stamps – PCV #8",
+            "$10.00"
+          ],
+          [
+            "May 24",
+            "Paid for stenopad – PCV #9",
+            "$15.00"
+          ],
+          [
+            "May 31",
+            "Paid taxi fare – PCV #10",
+            "$20.00"
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "Petty Cash Book",
+          "columns": [
+            "Amount",
+            "Date",
+            "Details",
+            "Fo/PCV",
+            "TOTAL",
+            "Postage",
+            "Stationery",
+            "Travel Expenses",
+            "Office Expenses",
+            "Sundries"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              0,
+              9
+            ]
+          ],
+          "inputRows": [
+            16
+          ]
+        }
+      ]
+    },
+    "OA-P2-2010-MJ::7::q7-a": {
+      "prompt": "(i) State ONE function of EACH of the following pieces of equipment used in Sales and Marketing:\n\n• Fax machine\n• Computer\n• Answering machine (3 marks)\n\n(ii) Apart from the pieces of equipment mentioned in 7 (a) (i) above, identify THREE machines used in the sales office. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::7::q7-b": {
+      "prompt": "Top-Brand Stationery Supplies Ltd, of 15 Hanover Street, Kingstown, St Vincent, is a large retailer of hardcover notebooks. On June 03, Studywise Agencies, of 20 Ballater Drive, Kingston 10, Jamaica, ordered 500 hardcover notebooks at $10.00 each. Top-Brand Stationery offers a trade discount of 20% for orders above 400 notebooks. The company also offers a cash discount of 10% for all accounts settled within 20 days. The net amount of the invoice is due within 30 days of the invoice date to avoid a late fee of 1% of the total amount of the order.\n\nYou are required to:\n\n(i) Use the form provided to prepare the invoice to reflect the sales transactions. (5 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        11
+      ],
+      "layoutSourcePages": [
+        7,
+        11
+      ],
+      "layoutVerified": true,
+      "documentTitle": "SALES INVOICE — No. TBSS220",
+      "fields": [
+        {
+          "label": "Seller",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "TO",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "TERMS",
+          "kind": "text",
+          "rows": 2
+        },
+        {
+          "label": "DATE",
+          "kind": "text",
+          "rows": 2
+        },
+        {
+          "label": "(ii) Calculate, showing all working, how much Studywise Agencies is expected to pay if the invoice is paid by June 15. (2 marks)",
+          "kind": "text",
+          "rows": 5,
+          "position": "after"
+        },
+        {
+          "label": "(iii) Calculate, showing all working, the amount Studywise Agencies should pay if the bill is settled on July 15. (2 marks)",
+          "kind": "text",
+          "rows": 5,
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Sales invoice items",
+          "columns": [
+            "Quantity",
+            "Description",
+            "Unit Price $",
+            "Total $"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ]
+          ],
+          "inputRows": [
+            10
+          ],
+          "details": [
+            "E & OE"
+          ]
+        }
+      ]
+    },
+    "OA-P2-2010-MJ::8::q8-a": {
+      "prompt": "(i) List THREE specific duties performed by a clerk in a factory office. (3 marks)\n\n(ii) State THREE ways in which a factory office can ensure that goods are completed on schedule. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2010-MJ::8::q8-b": {
+      "prompt": "There are documents that move between the factory office and the despatch and transport office.",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true,
+      "fields": [
+        {
+          "label": "(i) Identify FOUR documents that move in BOTH directions between the factory office and the despatch and transport office. (4 marks)",
+          "kind": "text",
+          "rows": 5,
+          "position": "after"
+        },
+        {
+          "label": "(ii) State THREE ways in which the factory office and the despatch and transport office may depend on each other for the efficient operation of the business. (3 marks)",
+          "kind": "text",
+          "rows": 5,
+          "position": "after"
+        },
+        {
+          "label": "(iii) Explain TWO problems that may arise if both departments are unable to co-ordinate their activities. (2 marks)",
+          "kind": "text",
+          "rows": 5,
+          "position": "after"
+        }
+      ],
+      "documentTitle": "Factory and despatch offices",
+      "responseDiagram": {
+        "title": "Document flow between offices",
+        "description": "Four numbered arrows connect the Factory Office and the Despatch and Transport Office. Arrows 1 and 2 point down to Despatch and Transport. Arrows 3 and 4 point up to the Factory Office.",
+        "minWidth": 280,
+        "viewBox": [
+          462,
+          444,
+          449,
+          339
+        ],
+        "sourceGeometry": {
+          "page": 8,
+          "units": "rendered pixels"
+        },
+        "lines": [
+          [
+            [
+              487,
+              543
+            ],
+            [
+              536,
+              696
+            ]
+          ],
+          [
+            [
+              528,
+              686
+            ],
+            [
+              536,
+              696
+            ],
+            [
+              537,
+              683
+            ]
+          ],
+          [
+            [
+              567,
+              543
+            ],
+            [
+              616,
+              695
+            ]
+          ],
+          [
+            [
+              608,
+              685
+            ],
+            [
+              616,
+              695
+            ],
+            [
+              617,
+              682
+            ]
+          ],
+          [
+            [
+              739,
+              684
+            ],
+            [
+              788,
+              529
+            ]
+          ],
+          [
+            [
+              780,
+              539
+            ],
+            [
+              788,
+              529
+            ],
+            [
+              789,
+              542
+            ]
+          ],
+          [
+            [
+              819,
+              683
+            ],
+            [
+              869,
+              528
+            ]
+          ],
+          [
+            [
+              861,
+              538
+            ],
+            [
+              869,
+              528
+            ],
+            [
+              870,
+              541
+            ]
+          ]
+        ],
+        "nodes": [
+          {
+            "x": 474,
+            "y": 456,
+            "width": 424,
+            "height": 61,
+            "fixed": "FACTORY OFFICE"
+          },
+          {
+            "x": 475,
+            "y": 710,
+            "width": 424,
+            "height": 60,
+            "fixed": "DESPATCH AND TRANSPORT OFFICE"
+          },
+          {
+            "x": 484,
+            "y": 589,
+            "width": 25,
+            "height": 34,
+            "fixed": "1",
+            "frameless": true
+          },
+          {
+            "x": 565,
+            "y": 589,
+            "width": 25,
+            "height": 34,
+            "fixed": "2",
+            "frameless": true
+          },
+          {
+            "x": 735,
+            "y": 589,
+            "width": 25,
+            "height": 34,
+            "fixed": "3",
+            "frameless": true
+          },
+          {
+            "x": 815,
+            "y": 589,
+            "width": 25,
+            "height": 34,
+            "fixed": "4",
+            "frameless": true
+          }
+        ]
+      }
+    }
+  }
+}

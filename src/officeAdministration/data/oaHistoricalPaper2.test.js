@@ -77,7 +77,7 @@ it('links every historical question, response part and guidance item to the supp
 it('distinguishes SPARK guidance from an unavailable official historical scheme',()=>{
  let worked=0,approaches=0;
  for(const paper of OA_HISTORICAL_PAPER2S){
-  expect(paper).toMatchObject({officialKeyAvailable:false,answerKeyVerified:false,officialMarkSchemeAvailable:false,markingStatus:'spark-guidance',transcriptionVerified:['OA-P2-2012-MJ','OA-P2-2013-MJ','OA-P2-2014-MJ','OA-P2-2015-MJ','OA-P2-2016-JAN','OA-P2-2016-MJ','OA-P2-2017-MJ','OA-P2-2018-MJ','OA-P2-2019-MJ','OA-P2-2024-JAN','OA-P2-2021-MJ','OA-P2-2022-MJ','OA-P2-2024-MJ','OA-P2-2025-MJ'].includes(paper.id)});
+  expect(paper).toMatchObject({officialKeyAvailable:false,answerKeyVerified:false,officialMarkSchemeAvailable:false,markingStatus:'spark-guidance',transcriptionVerified:['OA-P2-2010-MJ','OA-P2-2011-MJ','OA-P2-2012-MJ','OA-P2-2013-MJ','OA-P2-2014-MJ','OA-P2-2015-MJ','OA-P2-2016-JAN','OA-P2-2016-MJ','OA-P2-2017-MJ','OA-P2-2018-MJ','OA-P2-2019-MJ','OA-P2-2024-JAN','OA-P2-2021-MJ','OA-P2-2022-MJ','OA-P2-2024-MJ','OA-P2-2025-MJ'].includes(paper.id)});
   for(const part of paper.questions.flatMap(q=>q.parts)){
    expect(part.guidance.length).toBeGreaterThan(30);
    expect(part.markingGuidance).toMatchObject({author:'SPARK',official:false,sourceId:paper.id,maxMarks:part.marks});
@@ -109,7 +109,7 @@ it('attributes detached answer sheets to their questions rather than appending t
  for(const [id,number,page] of expected){
   const q=byId(id).questions[number-1];
   expect(q.sourcePages).toContain(page);expect(q.sourceForms.some(form=>form.pdfPage===page)).toBe(true);
-  expect(q.parts.some(part=>part.prompt.includes(`PDF page ${page}`))).toBe(true);
+  expect(q.parts.some(part=>part.prompt.includes(`PDF page ${page}`)||(part.responseTables?.length&&part.sourcePages.includes(page)))).toBe(true);
  }
  for(const paper of OA_HISTORICAL_PAPER2S.filter(p=>p.year<=2010)){
   expect(paper.questions[7].fullText).not.toMatch(/END\s*OF\s*TEST/i);
@@ -238,4 +238,52 @@ it('retains 2012 given names, literal February dates and contradictory stock des
  const bank=paper.questions[4].parts[2];expect(bank.tables[0].rows[1][0]).toBe('29 Feb 2011');expect(bank.tables[1].rows[2]).toEqual(['29 Feb 2011','Deposit','','$500.00','$720.00']);
  const stock=paper.questions[5].parts[2];expect(stock.sourcePages).toEqual([6,7,9]);expect(stock.table.rows[0].slice(0,3)).toEqual(['AC-DC','','AC DC Motors']);expect(stock.responseTables[0].details).toContain('Item: Cell Phone Cases');expect(stock.responseTables[0].rows.map(r=>r[0])).toEqual(['5 September','17 October','20 October','21 November','22 November','10 December']);expect(stock.responseTables[0].rows.every(r=>r.slice(1).every(v=>v===''))).toBe(true);expect(stock.responseTables[1].rows).toHaveLength(3);
  const advice=paper.questions[7].parts[2];expect(advice.sourcePages).toEqual([8,10]);expect(advice.prompt).toContain('Patrica Peterson');expect(advice.fields.map(f=>f.label)).toContain('Order No.');expect(advice.responseTables[0].rows).toEqual([['','','','']]);
+});
+
+it('retains 2011 diary times, fixed message details, cheque identifiers and separate job numbers',()=>{
+ const paper=byId('OA-P2-2011-MJ');
+ expect(paper.transcriptionVerified).toBe(true);
+ const diary=paper.questions[1].parts[1].responseTables[0];
+ expect(diary.rows.map(row=>row[0])).toEqual(['0800','0900','1000','1100','1200','1300','1400','1500','1600']);
+ expect(diary.rows.every(row=>row[1]==='')).toBe(true);
+ const message=paper.questions[3].parts[2];
+ expect(message.sourcePages).toEqual([5,9]);
+ expect(message.responseTables[0].rows[2]).toEqual(['Organization','Examinations Council']);
+ expect(message.responseTables[0].rows[6]).toEqual(['Phone','246-207-1733']);
+ expect(message.responseTables[0].editable).not.toContainEqual([6,1]);
+ expect(message.prompt).toContain('West Indian Airlines 616');
+ const cheque=paper.questions[6].parts[2];
+ expect(cheque.table.rows[0]).toEqual(['$15.00','40','$180.00','$39.00']);
+ expect(cheque.tables[0].title).toContain('Cheque No. 120');
+ expect(cheque.tables[0].rows).toContainEqual(['Pay to the order of','Anne Hart']);
+ const job=paper.questions[7].parts[2];
+ expect(job.sourcePages).toEqual([8,10]);
+ expect(job.prompt).toContain('Job No. 12');
+ expect(job.documentTitle).toContain('Card No. 15');
+ expect(job.responseTables.map(table=>table.rows.length)).toEqual([4,4]);
+ expect(job.responseTables.every(table=>table.rows.flat().every(value=>value===''))).toBe(true);
+});
+
+it('retains the 2010 chart, literal time inputs and detached forms without filling student answers',()=>{
+ const paper=byId('OA-P2-2010-MJ');expect(paper.transcriptionVerified).toBe(true);
+ const chart=paper.questions[0].parts[1].responseDiagram;
+ expect(chart.nodes.map(node=>node.label)).toEqual(['Top box','Middle box','Bottom box']);
+ expect(chart.lines).toHaveLength(2);
+ const time=paper.questions[1].parts[1].responseTables;
+ expect(time[0].rows[1]).toEqual(['Kinston, Jamaica','−05 hours','']);
+ expect(time[1].rows.map(row=>row[0])).toEqual(['12:00 noon','12:00 midnight','12:01 p.m.','1:00 a.m.','1:00 p.m.']);
+ const requisition=paper.questions[4].parts[2];
+ expect(requisition.responseTables[1].rows).toHaveLength(4);
+ expect(requisition.responseTables[3].rows[2]).toEqual(['Quotation #','10']);
+ expect(requisition.responseTables[3].editable).not.toContainEqual([2,1]);
+ const cash=paper.questions[5].parts[1];expect(cash.table.rows).toHaveLength(10);
+ expect(cash.table.rows[9]).toEqual(['May 31','Paid taxi fare – PCV #10','$20.00']);
+ expect(cash.responseTables[0].rows).toEqual([Array(10).fill('')]);
+ const invoice=paper.questions[6].parts[1];expect(invoice.documentTitle).toContain('TBSS220');
+ expect(invoice.responseTables[0].details).toContain('E & OE');
+ expect(invoice.fields.at(-1).label).toContain('July 15');
+ const flow=paper.questions[7].parts[1].responseDiagram;
+ expect(flow.sourceGeometry.page).toBe(8);
+ expect(flow.nodes.map(node=>node.fixed)).toEqual(['FACTORY OFFICE','DESPATCH AND TRANSPORT OFFICE','1','2','3','4']);
+ expect(flow.lines).toHaveLength(8);
 });

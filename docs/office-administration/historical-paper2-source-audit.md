@@ -102,3 +102,14 @@ The 2013 cheque retains No. 1000, MIDTOWN BANK LTD and A/C No. 1562370. The four
 The 2012 appointments retain all received details without supplying converted or sorted times. The bank records keep 29 Feb 2011. The FIFO source describes AC-DC / AC DC Motors while its detached answer sheet says Item: Cell Phone Cases; both are retained. The indexing names, three-row dish-washing stock card and advice note retain source labels and blank answers.
 
 Chromium desktop (1440px) and mobile (390px) checks passed for the five papers. Native answers, including multiline order entries, survive refresh without outer-page overflow or browser exceptions. The appointment check found a real parser defect: field labels containing a colon, such as 9:00, were truncated on read-back. The parser now matches complete known field names, with regression checks for clock times, multiline values, legacy labels and overlapping prefixes. Tall unruled source areas retain enough lines for entry; tables without printed headers no longer display an empty header band. Historical official schemes and score publication remain unavailable.
+
+
+## 2010 and 2011 native reviews — 4 November 2026
+
+All 21 supplied pages and 42 parts were checked, bringing the verified Paper 2 inventory to 16 of 21. The five remaining papers are 2005–2009.
+
+The 2010 organization chart keeps its three blank boxes and two source connectors. The separate document-flow diagram reproduces the four arrows and their numbered labels as selectable text and vector lines. Time tables retain the printed Kinston, Jamaica and +05.5 hours. The detached requisition and order forms keep their correct question association, printed Quotation #10, and four requisition rows. The sideways petty cash book keeps ten blank writing columns and the ten supplied transactions remain separate source data. The sales invoice keeps No. TBSS220, the E & OE line and separate June 15 and July 15 calculations.
+
+The 2011 diary keeps its nine printed 24-hour times and blank entries. The attached message form retains the printed organization, address and phone number. The cheque keeps Bank of Bristol, No. 120, the given Anne Hart payee and the printed identifying numbers. Job No. 12 and Card No. 15 remain separate, with four blank rows each for material and labour.
+
+Chromium at 1440px and 390px verified saved diagram, time, diary, message, order, cash-book, invoice and job-card entries after refresh. Wide tables and diagrams remain scrollable inside the question. The full course/catalogue/About check passed 15 suites and 118 tests. The production build passed.
