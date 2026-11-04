@@ -96,4 +96,4 @@ Validation for the fourteen-paper checkpoint: 15 course/catalogue/About suites a
 
 The 4 November checkpoint adds the checked 2010 and 2011 Paper 2 texts, diagrams and detached forms. Sixteen historical Paper 2 papers are fully reviewed and five remain. The updated course tests passed all 118 cases in 15 suites. The production build and desktop/mobile browser checks passed. The preceding draft passed all eleven GitHub workflows.
 
-All 21 historical Paper 2 papers are now source-checked. The final 2005–2009 batch restores the remaining forms, tables, stock-control symbol and drawing responses. The full Office Administration archive remains the launch requirement. Paper 1 has 718 checked questions, with older papers still under review.
+All 21 historical Paper 2 papers are now source-checked. The final 2005–2009 batch restores the remaining forms, tables, stock-control symbol and drawing responses. The full Office Administration archive remains the launch requirement. Paper 1 has 778 checked questions, including all 60 from the 2011 paper. Older papers remain under review.
