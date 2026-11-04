@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 COVER_YEARS={1995,1997,2007,2009,2010,2011,2016,2017,2019,2020,2021,2023,2024,2025}
 FOOTER=re.compile(r'(?:01237\d{3}|000901|GO\s+ON\s+TO\s+THE\s+NEXT|END\s+OF\s+TEST|All rights reserved|Copyright)',re.I)
 METADATA=[r for r in json.loads((ROOT/'public/office-administration/manifest.json').read_text(encoding='utf8')) if r['id'].startswith('OA-P1-')]
-REVIEWED_SETS=[json.loads((ROOT/'src/officeAdministration/data'/name).read_text(encoding='utf8')) for name in ['oaHistoricalPaper1ReviewedItems.json','oaHistoricalPaper1Reviewed2023.json','oaHistoricalPaper1Reviewed2024.json','oaHistoricalPaper1Reviewed2021.json','oaHistoricalPaper1Reviewed2020.json','oaHistoricalPaper1Reviewed2019.json','oaHistoricalPaper1Reviewed2018.json','oaHistoricalPaper1Reviewed2017.json','oaHistoricalPaper1Reviewed2016.json','oaHistoricalPaper1Reviewed2015.json','oaHistoricalPaper1Reviewed2013.json','oaHistoricalPaper1Reviewed2012.json','oaHistoricalPaper1Reviewed2011.json','oaHistoricalPaper1Reviewed2010.json']]
+REVIEWED_SETS=[json.loads((ROOT/'src/officeAdministration/data'/name).read_text(encoding='utf8')) for name in ['oaHistoricalPaper1ReviewedItems.json','oaHistoricalPaper1Reviewed2023.json','oaHistoricalPaper1Reviewed2024.json','oaHistoricalPaper1Reviewed2021.json','oaHistoricalPaper1Reviewed2020.json','oaHistoricalPaper1Reviewed2019.json','oaHistoricalPaper1Reviewed2018.json','oaHistoricalPaper1Reviewed2017.json','oaHistoricalPaper1Reviewed2016.json','oaHistoricalPaper1Reviewed2015.json','oaHistoricalPaper1Reviewed2013.json','oaHistoricalPaper1Reviewed2012.json','oaHistoricalPaper1Reviewed2011.json','oaHistoricalPaper1Reviewed2010.json','oaHistoricalPaper1Reviewed2009.json','oaHistoricalPaper1Reviewed2007.json','oaHistoricalPaper1Reviewed1996.json','oaHistoricalPaper1Reviewed2003.json']]
 def rows(words):
     out=[]
     for w in sorted(words,key=lambda w:(w.get('linecy',w['y']+w['height']/2),w['x'])):
@@ -186,6 +186,22 @@ def finalize(record,pages,qs,picked):
         q.update({k:v for k,v in item.items() if k!='paperId'})
         q.update({'question':q['stem'],'explanation':'Review your choices alongside the printed paper. No verified answer key was supplied.','sourceTextScope':'reviewed-question-with-context','sourcePages':[q['sourcePage']],'sourceText':'\n'.join([q.get('contextText',''),q['stem']]+[f"({letter}) {value}" for letter,value in zip('ABCD',q['options'])]),'transcriptionMethod':'visual-source-review','transcriptionVerified':True,'sourcePageVerified':True,'transcriptionStatus':'source-reviewed','requiresSourcePage':False,'sourceQuestionNumberDetected':True,'sourcePageLocationStatus':'verified-on-source-image','transcriptionIssues':[],'optionLabelsRecovered':list('ABCD'),'reviewDate':reviewed['reviewDate'],'provenance':{'sourceId':record['id'],'filename':record['filename'],'sha256':record['sha256'],'page':q['sourcePage'],'method':reviewed['reviewMethod']}})
         if q.get('table'):q['sourceText']+='\n'+json.dumps(q['table'],ensure_ascii=False)
+    for clipped in reviewed.get('clippedItems', []):
+        number, page = clipped['number'], clipped['sourcePage']
+        page_data = dict(pages)[page]
+        source_text = '\n'.join(line.get('text', ' '.join(word['text'] for word in line['words'])) for line in page_data['lines'])
+        detected[number].update({
+            'stem': '', 'question': '', 'options': [], 'optionLabelsRecovered': [],
+            'sourcePage': page, 'sourcePages': [page], 'sourcePageVerified': True,
+            'sourcePageLocationStatus': 'verified-on-source-image', 'sourceQuestionNumberDetected': True,
+            'sourceText': f'[Source PDF page {page}]\n{source_text}', 'sourceTextScope': 'full-source-pages',
+            'transcriptionMethod': 'visual-source-review-slot', 'transcriptionVerified': False,
+            'transcriptionStatus': 'source-required', 'requiresSourcePage': True,
+            'transcriptionIssues': ['The supplied scan clips or obscures some of the printed wording.'],
+            'reviewDate': reviewed['reviewDate'],
+            'provenance': {'sourceId': record['id'], 'filename': record['filename'], 'sha256': record['sha256'],
+                           'page': page, 'method': reviewed['reviewMethod']},
+        })
     recovered=sum(q['sourceQuestionNumberDetected'] for q in detected.values())
     verified_paper=all(q['transcriptionVerified'] for q in detected.values())
     title=f"{record['year']} {'May–June' if record['sitting']=='MJ' else 'January'} · Paper 1"

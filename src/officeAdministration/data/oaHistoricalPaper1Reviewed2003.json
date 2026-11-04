@@ -1,0 +1,754 @@
+{
+  "paperId": "OA-P1-2003-MJ",
+  "reviewDate": "2026-11-04",
+  "reviewMethod": "Visual comparison with all nine supplied question pages. Preserved the invoice date and printed terms. The supplied source begins at printed page 2.",
+  "durationMinutes": null,
+  "durationVerified": false,
+  "items": [
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 1,
+      "sourcePage": 1,
+      "stem": "Which of the following documents gives information on the lines of authority in a company?",
+      "options": [
+        "Organisation chart",
+        "Director’s report",
+        "List of directors",
+        "Job description"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 2,
+      "sourcePage": 1,
+      "stem": "In the business of a sole trader the decision of what to purchase is usually made by the",
+      "options": [
+        "stock control clerk",
+        "purchasing manager",
+        "proprietor",
+        "cashier"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 3,
+      "sourcePage": 1,
+      "stem": "In an office where large quantities of printed materials have to be cut to size, it would be MOST useful to have access to a",
+      "options": [
+        "sharp-edged knife",
+        "large pair of scissors",
+        "guillotine",
+        "letter opener"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 4,
+      "sourcePage": 1,
+      "stem": "Your immediate supervisor has asked you to get some information and bring it to his office promptly. You have all that is required, but another senior executive is now with him. What is the best course of action for you to take?",
+      "options": [
+        "Wait until he is free and take it in to him",
+        "Slip quietly into his office and try to attract his attention",
+        "Knock on his door and ask him if he would like to have it now",
+        "Obtain permission on his extension to take in the information"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 5,
+      "sourcePage": 1,
+      "stem": "Which of the following are likely to be at a high level if there are good interpersonal relationships between the supervisor and their employees?\n\nI. Production\nII. Staff morale\nIII. Staff welfare\nIV. Labour turnover",
+      "options": [
+        "I and II only",
+        "I and III only",
+        "II and III only",
+        "II and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 6,
+      "sourcePage": 1,
+      "stem": "In business a memorandum is used",
+      "options": [
+        "for short letters",
+        "in place of post-cards",
+        "for internal communication",
+        "as a memory aid"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 7,
+      "sourcePage": 1,
+      "stem": "Which of the following should be used to obtain postage rates?",
+      "options": [
+        "Post Office Guide",
+        "Ready Reckoner",
+        "ABC Shipping Guide",
+        "Franking Machine"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 8,
+      "sourcePage": 1,
+      "stem": "Which of the following procedures is NOT proper telephone etiquette?",
+      "options": [
+        "Answer the telephone as soon as it rings.",
+        "Thank the customer for calling.",
+        "Allow the person who called to end the conversation.",
+        "Answer the phone with a cheery “hello”."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 9,
+      "sourcePage": 2,
+      "stem": "A PBX system is used to facilitate",
+      "options": [
+        "oral communication",
+        "written communication",
+        "retrieval of documents",
+        "storage of documents"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 10,
+      "sourcePage": 2,
+      "stem": "The maintenance foreman of an organization usually has to be moving around the building and is thus seldom in the office. Which of the following instruments should he have to facilitate office contact with him?",
+      "options": [
+        "Extension telephone",
+        "Intercom",
+        "A paging device",
+        "A telerest"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 11,
+      "sourcePage": 2,
+      "stem": "Which of the following machines would provide the MOST effective service for companies which frequently require immediate despatch and receipt of written information?",
+      "options": [
+        "Telex",
+        "Telefax",
+        "Teleprinter",
+        "Computer"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 12,
+      "sourcePage": 2,
+      "stem": "A customer called about a letter which had been sent to the firm a month ago. However, the letter could not be found. To which of the following should the mail clerk refer, to determine if it were received?",
+      "options": [
+        "Correspondence digest",
+        "Mail register",
+        "Postage book",
+        "Mailing list"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 13,
+      "sourcePage": 2,
+      "stem": "When the mail instruction ‘poste restante’ is used it indicates that the mail is to be",
+      "options": [
+        "returned to the sender if undelivered",
+        "sent by special delivery",
+        "collected from the post office",
+        "dispatched immediately"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 14,
+      "sourcePage": 2,
+      "stem": "Which of the following are advantages of a franking machine?\n\nI. There is no need to keep large quantities of stamps.\nII. Less money is spent on postage.\nIII. A record is made of where the mail is being sent.\nIV. Stamps do not have to be pasted on to the envelopes.",
+      "options": [
+        "I and II only",
+        "I and IV only",
+        "II and III only",
+        "III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 15,
+      "sourcePage": 2,
+      "stem": "Which of the following items received in the mail MUST be recorded in the Remittances Book?\n\nI. A receipt\nII. A cheque\nIII. A money order\nIV. A bank statement",
+      "options": [
+        "I and IV only",
+        "II and III only",
+        "II, III and IV only",
+        "I, II, III and IV"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 16,
+      "sourcePage": 2,
+      "stem": "You have been asked to make copies of reports for different members of staff. They have indicated the dates and times by which they would like to have the copies. Which of the following procedures should you use to ensure that staff members receive their reports on time?",
+      "options": [
+        "Deal with all work in the order received.",
+        "Arrange all work in order of requested priority and work in that order.",
+        "Do shorter and simpler tasks first.",
+        "Deal with the requests from the senior officers first."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 17,
+      "sourcePage": 3,
+      "stem": "Which of the following is NOT an advantage of the decimal numeric filing system?",
+      "options": [
+        "It allows for removal of files for transfer.",
+        "Divisions are possible.",
+        "There is little possibility of overcrowding in the files.",
+        "It has unlimited expansion."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 18,
+      "sourcePage": 3,
+      "stem": "For what purpose should a tickler file be used?",
+      "options": [
+        "Keeping temporary records",
+        "Serving as a reminder",
+        "Storing confidential information",
+        "Keeping permanent records"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 19,
+      "sourcePage": 3,
+      "stem": "When a file has been requisitioned, important information about the loan of the file should be recorded on a/an",
+      "options": [
+        "index card",
+        "out card",
+        "card indicator",
+        "guide card"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 20,
+      "sourcePage": 3,
+      "stem": "In which order should the following names be filed?\n\nI. Capt. Richard P. Dundee\nII. The Dundee Cake Co\nIII. Dundee and Dandee Ltd\nIV. James Dundee & Sons",
+      "options": [
+        "I, II, III, IV",
+        "I, III, IV, II",
+        "II, III, IV, I",
+        "III, IV, II, I"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 21,
+      "sourcePage": 3,
+      "stem": "To find a file in a numerical filing system one must FIRST refer to the",
+      "options": [
+        "visible index",
+        "index cards",
+        "strip index",
+        "routing slip"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 22,
+      "sourcePage": 3,
+      "stem": "A job specification gives the",
+      "options": [
+        "general description of the duties which are to be performed",
+        "list of qualifications and skills required for performing the job",
+        "identification of tasks and specific times required for performing a job",
+        "evaluation of a job to determine the wages for its performance"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 23,
+      "sourcePage": 3,
+      "stem": "A file clerk in a new organisation has been handed a bundle of documents and asked to set up the filing system. Which of the following items of supplies are required?\n\nI. Dividers\nII. Out cards\nIII. File jackets\nIV. Cross-reference sheets",
+      "options": [
+        "I and IV only",
+        "II and III only",
+        "II, III and IV only",
+        "I, II, III and IV"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 24,
+      "sourcePage": 3,
+      "stem": "Mr. Smith, a valued customer, visits the office a day before his scheduled appointment because he is in the area. What should the receptionist do?",
+      "options": [
+        "Suggest to Mr. Smith that he sees someone else.",
+        "Tell Mr Smith that the person he is to see is out.",
+        "Remind Mr Smith politely of the date of his appointment.",
+        "Find out if the person with whom Mr Smith has the appointment can see him."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 25,
+      "sourcePage": 3,
+      "stem": "Which of the following is used to record information about visitors to a firm?",
+      "options": [
+        "A tickler file",
+        "A schedule of activities",
+        "A reception register",
+        "A business card"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 26,
+      "sourcePage": 4,
+      "stem": "An urgently required piece of equipment was delivered to the office in a damaged condition. Which of the following actions should the receptionist take?",
+      "options": [
+        "Refuse to accept it on the grounds that the item is damaged.",
+        "Make a note of the damage on the delivery note, sign it, and inform the supervisor of the damage.",
+        "Phone the supplier, report the damage, and follow his or her advice.",
+        "Sign the delivery note and at the first opportunity inform the supervisor of the damage."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 27,
+      "sourcePage": 4,
+      "stem": "Assume that you are employed as a receptionist and an executive tells you at the beginning of the day that he will be unable to keep a 3:00 p.m. appointment with a client in his office. What action MUST you take?",
+      "options": [
+        "Write the client, apologize and ask him to suggest an alternative date.",
+        "When the client arrives, apologize and offer him another appointment.",
+        "When the client arrives apologize and suggest that he might wish to see someone else.",
+        "Telephone the client, apologize and suggest the time for a new appointment."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 28,
+      "sourcePage": 4,
+      "stem": "Which of the following actions should be taken at a meeting if the same number of persons who voted for a motion voted against the motion?",
+      "options": [
+        "A member will submit a closure.",
+        "The motion will ‘lie on the table’.",
+        "The meeting will have to be adjourned.",
+        "The chairman will be allowed a casting vote."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 29,
+      "sourcePage": 4,
+      "stem": "A term used to describe a committee which has been set up to deal with a specific matter",
+      "options": [
+        "ad hoc",
+        "central",
+        "general",
+        "administrative"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 30,
+      "sourcePage": 4,
+      "stem": "As secretary of your school club, which of the following actions should you take AFTER a meeting?\n\nI. Prepare the minutes of the meeting just concluded.\nII. Draft the agenda for the next meeting.\nIII. Ensure that decisions taken at the meeting are carried out.\nIV. Change any motions made if necessary.",
+      "options": [
+        "I and II only",
+        "I and III only",
+        "II and III only",
+        "II and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 31,
+      "sourcePage": 4,
+      "stem": "What FINAL action MUST be taken before the minutes of a board meeting can be declared an accurate record of the matters discussed at the meeting?",
+      "options": [
+        "A draft of the minutes must be seen by the chairman before they are circulated.",
+        "A draft of the minutes must be circulated to all members for their comments.",
+        "The minutes must be compared with the chairman’s agenda.",
+        "The minutes must be confirmed at the next board meeting."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 32,
+      "sourcePage": 4,
+      "stem": "The term ‘matters arising thereon’ on an agenda provides for discussion of topics",
+      "options": [
+        "listed on the agenda",
+        "which members want to add",
+        "related to the minutes",
+        "on correspondence presented"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 33,
+      "sourcePage": 5,
+      "stem": "Minutes of meetings are important because they provide",
+      "options": [
+        "detailed information on the items listed on the agenda",
+        "the exact wording of all discussions",
+        "a plan for the meeting",
+        "a record of all matters discussed"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 34,
+      "sourcePage": 5,
+      "stem": "Which of the following items of information could be obtained from an airline schedule?\n\nI. The cost of fares for the airline\nII. The flight number of the airline for a particular route at a specified time\nIII. The identification of the aircraft used by an airline\nIV. The times at which the airline flies to and from different airports",
+      "options": [
+        "I, II and III only",
+        "I, II and IV only",
+        "I, III and IV only",
+        "II, III, and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 35,
+      "sourcePage": 5,
+      "stem": "You are travelling with TT$1 650. If this amount is converted to EC$1 = TT$3.00, it will be equivalent to",
+      "options": [
+        "$495.50",
+        "$500.00",
+        "$500.50",
+        "$550.00"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 36,
+      "sourcePage": 5,
+      "stem": "In the Caribbean, travellers’ cheques may be purchased from a/an",
+      "options": [
+        "commercial bank",
+        "airline office",
+        "travel agent",
+        "hotel"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 37,
+      "sourcePage": 5,
+      "stem": "Which of the following services is NOT provided for by the Human Resources office?",
+      "options": [
+        "Health and safety",
+        "Education and training",
+        "Induction and orientation",
+        "Production and maintenance"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 38,
+      "sourcePage": 5,
+      "stem": "Which one of the following statements applies to contracts of employment?",
+      "options": [
+        "They are not binding on employee or employer.",
+        "They are binding on employee and employer.",
+        "They are binding on employer only.",
+        "They are binding on employee only."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 39,
+      "sourcePage": 5,
+      "stem": "Which of the following records would show an employee’s duties, grade and salary?\n\nI. The employment contract\nII. The job specification\nIII. The company manual",
+      "options": [
+        "I and II only",
+        "I and III only",
+        "II and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 40,
+      "sourcePage": 5,
+      "stem": "Which of the following duties would be carried out by a clerk, who works in the Human Resource department of an organisation?\n\nI. Recruitment of new staff\nII. Drawing up contracts of employment\nIII. Receiving articles for the company’s magazine\nIV. Recording information on staff record cards",
+      "options": [
+        "I and III only",
+        "II and III only",
+        "III and IV only",
+        "I, III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 41,
+      "sourcePage": 6,
+      "stem": "Which of the following deductions can be made from wages without obtaining permission from the employee?\n\nI. Company health scheme\nII. National insurance\nIII. Income tax\nIV. Union dues",
+      "options": [
+        "I and II only",
+        "II and III only",
+        "I, II and III only",
+        "I, II, III and IV"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 42,
+      "sourcePage": 6,
+      "stem": "A customer who has credit facilities by a firm should expect to receive a record of payments and purchases made each month on a/an",
+      "options": [
+        "invoice",
+        "advice note",
+        "statement of account",
+        "reconciliation statement"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 43,
+      "sourcePage": 6,
+      "stem": "Which of the following bank services should a company use to pay specified personal bills each month?\n\nI. Ask the bank to act as an executor\nII. Use standing order facilities\nIII. Ask the bank to pay the creditors on demand\nIV. Lodge post-dated cheques for creditors with the bank",
+      "options": [
+        "I and II only",
+        "II and III only",
+        "III and IV only",
+        "IV and I only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 44,
+      "sourcePage": 6,
+      "stem": "Your employer has received an urgent request for $70 from a sales representative who is out of town. Which of the following means of payment would allow the salesman to receive the money quickly?",
+      "options": [
+        "Money order",
+        "Standing order",
+        "Postal order",
+        "Telegraphic Money order"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 45,
+      "sourcePage": 6,
+      "stem": "To pay his account in cash, a customer tenders:\n\nFive – $20.00 bills\nThree – $10.00 bills\nTen – $5.00 bills\nNine – $1.00 bills\nTwenty – 5¢ pieces\n\nWhat sum of money does the customer pay?",
+      "options": [
+        "$189.00",
+        "$190.00",
+        "$191.00",
+        "$195.00"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 46,
+      "sourcePage": 6,
+      "stem": "In the cash book, all monies received are indicated as a",
+      "options": [
+        "credit entry",
+        "debit entry",
+        "deposit account",
+        "credit account"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 47,
+      "sourcePage": 6,
+      "stem": "A petty cashier whose Imprest is $100, has $20 cash in her tin. If she has four petty cash vouchers for $15, $25, $10 and $15, what is the amount of money NOT accounted for?",
+      "options": [
+        "$15",
+        "$20",
+        "$35",
+        "$80"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 48,
+      "sourcePage": 6,
+      "stem": "The term ‘carriage paid’ means that the",
+      "options": [
+        "carrier must be paid by the purchaser before the goods can be despatched",
+        "price quoted does not include overseas transport",
+        "carrier must be paid before the goods are delivered",
+        "price quoted includes delivery to the customer’s door"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 49,
+      "sourcePage": 7,
+      "stem": "The Joy High School wants to build a new canteen. In order to select the MOST suitable firm for the job, the school should invite firms to send",
+      "options": [
+        "price lists",
+        "catalogues",
+        "statements",
+        "tenders"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 50,
+      "sourcePage": 7,
+      "stem": "Which of the following sets of information is NOT required when preparing purchasing requisitions?",
+      "options": [
+        "Date, reference, quantity",
+        "Description, department, signature",
+        "Transport, tax, arrival time",
+        "Sender, catalogue number, supplier"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 51,
+      "sourcePage": 7,
+      "stem": "What is the correct action to be taken by a receptionist who has run low on stationery?",
+      "options": [
+        "Send immediately to suppliers for a further order.",
+        "Ask the Petty Cashier for money to buy stationery.",
+        "Complete a requisition and hand it to the stock clerk.",
+        "Buy the stationery at her expense and make a claim later."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 52,
+      "sourcePage": 7,
+      "stem": "In a sales transaction the correct sequence for the flow of documents between the purchaser and the supplier is",
+      "options": [
+        "order, quotation, inquiry, invoice",
+        "inquiry, order, quotation, invoice",
+        "order, inquiry, invoice, quotation",
+        "inquiry, quotation, order, invoice"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 53,
+      "sourcePage": 7,
+      "stem": "A sum of money given to a cashier at the start of a day to make change is called",
+      "options": [
+        "a deposit",
+        "an imprest",
+        "a float",
+        "a refund"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 54,
+      "sourcePage": 7,
+      "stem": "Which of the following terms of sale would BEST influence retailers to buy some articles in large quantities?",
+      "options": [
+        "2% Cash discount",
+        "2% Trade discount",
+        "Cash on delivery",
+        "2% discount on sale prices"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 55,
+      "sourcePage": 7,
+      "stem": "The function of the factory office is to",
+      "options": [
+        "assemble goods for despatch",
+        "purchase and manufacture goods",
+        "organise the production processes",
+        "establish links with reputable suppliers"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 56,
+      "sourcePage": 7,
+      "stem": "A person who was dismissed from a previous job, is now requested to give on the application form for another job, the reason for leaving the last place of employment. It is best to",
+      "options": [
+        "answer ‘not applicable’",
+        "ignore the question",
+        "give the correct reason",
+        "make a reasonable excuse"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 57,
+      "sourcePage": 8,
+      "stem": "The letters ‘E. & O.E.’ on the invoice indicate that",
+      "options": [
+        "Mr. Lee should not regard this document as a request for payment",
+        "Garden Supplies & Plant Care Services can correct any error made when preparing the bill",
+        "Mr. Lee can hold Garden Supplies & Plant Care Services to the terms of sale as shown on the invoice",
+        "Garden Supplies & Plant Care Services may not have included all the items that Mr. Lee ordered"
+      ],
+      "contextText": "Item 57 refers to the following invoice:\n\nNo. 198\nGARDEN SUPPLIES & PLANT CARE SERVICES\n21 Happy Street\nBushey Park\n\nTo: Mr. D Lee\n50 New Lane\nMountain View\n\n10th May, 1993\nYour Order No: 483.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Invoice",
+        "columns": [
+          "Qyt",
+          "Description",
+          "Unit",
+          "Total"
+        ],
+        "rows": [
+          [
+            "1",
+            "Model C - Lawn Mower",
+            "$556.00",
+            "$556.00"
+          ]
+        ],
+        "details": [
+          "Terms: 25% Discount if paid within 7 days",
+          "10% within 14 days",
+          "N/30",
+          "E. & O. E"
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 58,
+      "sourcePage": 9,
+      "stem": "Mr. Johnson, the supervisor of BLT Manufacturing Co. Ltd is responsible for all staff records in the workshop at the factory. For which of the following he is NOT responsible?\n\ni. Costing of the finished product\nii. Preparing duty and holiday roster\niii. Preparing Accident report\niv. Submitting recommendations on Staff promotion",
+      "options": [
+        "i only",
+        "i and ii only",
+        "ii and iii only",
+        "All of the above"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 59,
+      "sourcePage": 9,
+      "stem": "Which of the following would be the accepted sequence of the paragraphs below in writing a letter of application:\n\ni. request for an interview\nii. give proof of qualification\niii. state source, experience and interest in position\niv. give references",
+      "options": [
+        "i, iv, ii, iii",
+        "ii, i, iii, iv",
+        "iii, ii, iv, i",
+        "iv, iii, ii, i"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2003-MJ",
+      "number": 60,
+      "sourcePage": 9,
+      "stem": "Marilyn Gordon was told about the vacancy of Production Secretary to the Manager in a large firm. Who should she address her letter of application to?",
+      "options": [
+        "The General Manager",
+        "The Production Manager",
+        "The Personnel Manager",
+        "The Labour Officer"
+      ]
+    }
+  ]
+}

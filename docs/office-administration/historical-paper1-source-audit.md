@@ -5,14 +5,14 @@ Review dates: 28 October–4 November 2026. All 23 supplied sources retain their
 | Year | Question boundaries recovered | Four-choice sets | Visually checked questions | Source-dependent positions |
 |---|---:|---:|---:|---:|
 | 1995 | 38 | 19 | 0 | 43 |
-| 1996 | 43 | 23 | 0 | 42 |
+| 1996 | 60 | 55 | 55 | 5 |
 | 1997 | 35 | 21 | 0 | 46 |
 | 2000 | 49 | 44 | 0 | 22 |
 | 2001 | 46 | 23 | 0 | 41 |
 | 2002 | 41 | 24 | 0 | 44 |
-| 2003 | 48 | 18 | 0 | 45 |
-| 2007 | 52 | 29 | 0 | 32 |
-| 2009 | 52 | 30 | 0 | 33 |
+| 2003 | 60 | 60 | 60 | 0 |
+| 2007 | 60 | 60 | 60 | 0 |
+| 2009 | 60 | 60 | 60 | 0 |
 | 2010 | 60 | 60 | 60 | 0 |
 | 2011 | 60 | 60 | 60 | 0 |
 | 2012 | 60 | 60 | 60 | 0 |
@@ -28,7 +28,7 @@ Review dates: 28 October–4 November 2026. All 23 supplied sources retain their
 | 2024 | 60 | 60 | 60 | 0 |
 | 2025 | 60 | 60 | 60 | 0 |
 
-The 2010, 2011, 2012, 2013, 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024 and 2025 papers each have 60 visually checked native questions. Their schedules, invoices, registers, cheque wording, petty cash, stock and costing tables remain selectable text. All other records retain their individual unverified/source-required flags. The 1996 scan clips part of its right edge in the original embedded image; missing wording has not been invented.
+The 2003, 2007, 2009, 2010, 2011, 2012, 2013, 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024 and 2025 papers each have 60 visually checked native questions. Their schedules, invoices, registers, cheque wording, petty cash, stock and costing tables remain selectable text. All other records retain their individual unverified/source-required flags. The 1996 scan clips part of its right edge in the original embedded image; missing wording has not been invented.
 
 The official syllabus specimen is separately audited in `../office-administration-specimen-paper1-audit.md`; its disputed item 60 stays excluded from scoring.
 
@@ -55,3 +55,11 @@ The 2012 paper was compared with all ten supplied question pages on 29 October 2
 The 2011 paper was compared with all ten supplied PDF pages on 4 November 2026. Its cover confirms 75 minutes. All 60 items have four selectable choices. The salary information, purchasing clerk document, bank transactions, petty cash extract and flight schedule use native text. The flight date remains Thursday 14 July 2010 as printed. Chromium desktop and mobile viewport checks verified the native tables and choice persistence after refresh.
 
 The 2010 paper was compared with all twelve supplied PDF pages on 4 November 2026. Its cover confirms 75 minutes. All 60 items have four selectable choices. The filing form, purchasing clerk document, crossed cheque and job costing document are native tables. The organization chart, sales diagram and drawer illustration are verified crops of the supplied PDF. The costing totals remain blank as printed. Chromium desktop and mobile viewport checks verified the figure layout and answer persistence after refresh.
+
+The 2009 paper was compared with all eleven supplied pages on 4 November 2026. The cover confirms 75 minutes. The salary slip, travel schedule, credit note, crossed cheque and bank transactions are selectable text. Printed choice order, blank balances and cheque number 0011775 are retained. Handwritten notes and answer marks are excluded from the native paper.
+
+The 2007 paper was compared with all nine supplied pages. The cover confirms 75 minutes. Item 17’s printed number is faint. The full item is present between items 16 and 18, and the choices are preserved in source order.
+
+The 2003 paper was compared with all nine supplied question pages. The invoice retains No. 198, Bushey Park, 10th May, 1993, order 483 and the three printed discount terms. The source begins on printed page 2. Its cover duration remains unverified.
+
+The 1996 paper was checked across all eight supplied question pages. Fifty-five questions are readable and have complete native text. Items 5–8 on PDF page 1 and item 21 on PDF page 3 have clipped or obscured wording. Their source pages and question numbers are verified, and OCR fragments are excluded from their answer choices. The cover is absent. The organization chart labels and the People’s Bank cheque are selectable.

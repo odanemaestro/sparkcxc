@@ -1,0 +1,1052 @@
+{
+  "paperId": "OA-P1-2009-MJ",
+  "reviewDate": "2026-11-04",
+  "reviewMethod": "Visual comparison of all eleven supplied PDF pages, including cover, stems, choices, and document data. Handwritten annotations excluded.",
+  "durationMinutes": 75,
+  "durationVerified": true,
+  "items": [
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 1,
+      "sourcePage": 2,
+      "stem": "In the business of a sole trader the decision of what to purchase is usually made by the",
+      "options": [
+        "cashier",
+        "proprietor",
+        "stock control clerk",
+        "purchasing manager"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 2,
+      "sourcePage": 2,
+      "stem": "An application for the position of despatch clerk was addressed to the company. To whom should the mail clerk send this application?",
+      "options": [
+        "Shipping supervisor",
+        "Marketing manager",
+        "Administrative officer",
+        "Human resource manager"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 3,
+      "sourcePage": 2,
+      "stem": "Your immediate supervisor has asked you to get some information and bring it to his office promptly. You have all that is required, but another senior executive is now with him. Which of the following is the BEST course of action for you to take?",
+      "options": [
+        "Wait until he is free and take it in to him.",
+        "Slip quietly into his office and try to attract his attention.",
+        "Knock on his door and ask him if he would like to have it now.",
+        "Obtain permission on his extension to take in the information."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 4,
+      "sourcePage": 2,
+      "stem": "In an office where large quantities of printed materials have to be cut to size, it would be MOST useful to have access to a",
+      "options": [
+        "guillotine",
+        "letter opener",
+        "sharp-edged knife",
+        "large pair of scissors"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 5,
+      "sourcePage": 2,
+      "stem": "A person who completes forms, types simple correspondence and attends to the petty cash in a small office is usually referred to as",
+      "options": [
+        "a mail clerk",
+        "a clerk-typist",
+        "a stenographer",
+        "an audio-typist"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 6,
+      "sourcePage": 2,
+      "stem": "The employee is also given a travel allowance of $200.00. What is his net pay?",
+      "options": [
+        "$1,378.00",
+        "$1,578.50",
+        "$1,762.00",
+        "$1,962.00"
+      ],
+      "contextText": "The following information was on the salary slip of an employee:",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Salary slip",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "Gross Pay",
+            "$1,570.00"
+          ],
+          [
+            "PAYE",
+            "$115.00"
+          ],
+          [
+            "NIS",
+            "$43.00"
+          ],
+          [
+            "Pension",
+            "$33.50"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 7,
+      "sourcePage": 2,
+      "stem": "The maintenance foreman of an organization usually moves around the building and is thus seldom in the office. Which of the following instruments should he have to facilitate office contact with him?",
+      "options": [
+        "Intercom",
+        "A telerest",
+        "A paging device",
+        "Extension telephone"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 8,
+      "sourcePage": 3,
+      "stem": "A draft of revised procedures for handling mail is to be prepared and submitted to the office manager. Which of the following formats should be used?",
+      "options": [
+        "Note",
+        "Report",
+        "Letter",
+        "Statement"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 9,
+      "sourcePage": 3,
+      "stem": "Which of the following is NOT a characteristic of registered mail?",
+      "options": [
+        "It offers proof of postage.",
+        "It facilitates safe delivery of mail.",
+        "It is normally sent by second-class mail.",
+        "It offers compensation for loss or damage up to a specified amount."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 10,
+      "sourcePage": 3,
+      "stem": "A clerk in the human resource department overhears that a friend in another department who reports late for work every day is to be given a warning and notice of dismissal if his punctuality does not improve. What should the clerk do?",
+      "options": [
+        "Warn him of the action to be taken by the human resource department.",
+        "Drop hints of action to be taken against late comers.",
+        "Avoid him until the matter is resolved.",
+        "Do not say anything and leave him to receive the official letter."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 11,
+      "sourcePage": 3,
+      "stem": "You are travelling to a country which is one hour ahead of your time. If your plane departs at 12.00 noon and your flight takes one hour and fifteen minutes, at what time will you arrive at your destination?",
+      "options": [
+        "1415 hours",
+        "1315 hours",
+        "1215 hours",
+        "0215 hours"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 12,
+      "sourcePage": 3,
+      "stem": "Which of the following means of communication is MOST efficient to inform 100 members of staff of new rules regarding the use of office telephones?",
+      "options": [
+        "Staff meeting",
+        "Individual letters",
+        "Notice on the bulletin board",
+        "Circular memorandum to departments"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 13,
+      "sourcePage": 3,
+      "stem": "A confidential letter addressed to your employer is received in a torn condition. You should",
+      "options": [
+        "return the letter to the mail department",
+        "attach a note to the envelope and deliver by hand to your employer",
+        "put the letter into a new envelope and take it to your employer",
+        "refuse to accept the envelope from the mail department"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 14,
+      "sourcePage": 4,
+      "stem": "The standard check-in time for all flights is 3 hours before departure of the flight. What is the check-in time for BW264 departing Kingston to Heathrow on 29 November?",
+      "options": [
+        "1000 hrs",
+        "1720 hrs",
+        "1100 hrs",
+        "1400 hrs"
+      ],
+      "contextText": "Items 14–15 refer to the following travel schedule.\n\nKingston: Jamaica\nAPT: Norman Manley International (KIN) 11 m/s/17.5km\nLondon UK: LHR - Heathrow, LGW - Gatwick",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Travel schedule",
+        "columns": [
+          "DATE",
+          "FROM",
+          "DAYS OF SERVICE",
+          "DEP.",
+          "ARR.",
+          "FLIGHT NO."
+        ],
+        "rows": [
+          [
+            "25 November",
+            "Norman Manley Int’l (KIN)",
+            "3",
+            "0015 KIN",
+            "1255 LGW",
+            "BW264"
+          ],
+          [
+            "26 November",
+            "Norman Manley Int’l (KIN)",
+            "1",
+            "1725 KIN",
+            "1020 LHR",
+            "BW262"
+          ],
+          [
+            "26 November",
+            "Norman Manley Int’l (KIN)",
+            "6",
+            "1730 KIN",
+            "1020 LHR",
+            "BA265"
+          ],
+          [
+            "29 November",
+            "Norman Manley Int’l (KIN)",
+            "1",
+            "1700 KIN",
+            "2300 LHR",
+            "BW264"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 15,
+      "sourcePage": 4,
+      "stem": "What is the day of service for flight BW262?",
+      "options": [
+        "Sunday",
+        "Tuesday",
+        "Wednesday",
+        "Friday"
+      ],
+      "contextText": "Items 14–15 refer to the following travel schedule.\n\nKingston: Jamaica\nAPT: Norman Manley International (KIN) 11 m/s/17.5km\nLondon UK: LHR - Heathrow, LGW - Gatwick",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Travel schedule",
+        "columns": [
+          "DATE",
+          "FROM",
+          "DAYS OF SERVICE",
+          "DEP.",
+          "ARR.",
+          "FLIGHT NO."
+        ],
+        "rows": [
+          [
+            "25 November",
+            "Norman Manley Int’l (KIN)",
+            "3",
+            "0015 KIN",
+            "1255 LGW",
+            "BW264"
+          ],
+          [
+            "26 November",
+            "Norman Manley Int’l (KIN)",
+            "1",
+            "1725 KIN",
+            "1020 LHR",
+            "BW262"
+          ],
+          [
+            "26 November",
+            "Norman Manley Int’l (KIN)",
+            "6",
+            "1730 KIN",
+            "1020 LHR",
+            "BA265"
+          ],
+          [
+            "29 November",
+            "Norman Manley Int’l (KIN)",
+            "1",
+            "1700 KIN",
+            "2300 LHR",
+            "BW264"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 16,
+      "sourcePage": 4,
+      "stem": "To which of the following departments should the mail clerk send incoming invoices?\n\nI. Accounts\nII. Sales\nIII. Purchases\nIV. Administration",
+      "options": [
+        "I and II only",
+        "I and III only",
+        "II and IV only",
+        "III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 17,
+      "sourcePage": 5,
+      "stem": "The accounts department has requested information from the central filing department. Which of the following actions should the file clerk take?\n\nI. Act on a written request from the accounts department.\nII. Complete an ‘out’ sheet and place it in the file.\nIII. Ask the person receiving the information to sign for it.\nIV. Send the file with a request for it to be returned in an hour’s time.",
+      "options": [
+        "I and IV only",
+        "I, II and III only",
+        "I, III and IV only",
+        "II, III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 18,
+      "sourcePage": 5,
+      "stem": "Which of the following characteristics is the MOST important when choosing a filing system?",
+      "options": [
+        "Easy to operate",
+        "Capability of expansion",
+        "Availability of filing equipment and supplies",
+        "Suitability for the nature of the business"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 19,
+      "sourcePage": 5,
+      "stem": "On which of the following types of envelopes is the receiver’s address NOT placed?",
+      "options": [
+        "Linen",
+        "Window",
+        "Official",
+        "Post Office preferred"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 20,
+      "sourcePage": 5,
+      "stem": "For what purpose should a complimentary slip be used?",
+      "options": [
+        "Accepting an invitation",
+        "Congratulating the recipient",
+        "Acknowledging receipt of payment",
+        "Accompanying enclosures sent without a letter"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 21,
+      "sourcePage": 5,
+      "stem": "A ‘follow-up file’ refers to a file containing papers to be",
+      "options": [
+        "put in an officer’s in-tray",
+        "sorted and put away by the file clerk",
+        "brought up for action at a later date",
+        "given to management outlining action taken"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 22,
+      "sourcePage": 5,
+      "stem": "Filing through the use of microfilming is valuable for the storage of",
+      "options": [
+        "passport sized photographs of staff members",
+        "information which must be kept for many years",
+        "official records which are frequently used",
+        "customers accounts from which statements are to be made"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 23,
+      "sourcePage": 5,
+      "stem": "A tickler file should be used to",
+      "options": [
+        "Serve as a reminder",
+        "Keep temporary records",
+        "Keep permanent records",
+        "Store confidential information"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 24,
+      "sourcePage": 5,
+      "stem": "Which of the following is the MOST appropriate order for completing the tasks?",
+      "options": [
+        "I, IV, III and II",
+        "I, II, IV and III",
+        "II, III, I and IV",
+        "II, I, IV and III"
+      ],
+      "contextText": "Item 24 refers to the following tasks\n\nI. Morning post\nII. Remainder of filing from yesterday\nIII. Copying of documents needed for 2 p.m.\nIV. Report to finish by 12 noon"
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 25,
+      "sourcePage": 6,
+      "stem": "Which of the following items should a receptionist keep for reference in the reception area?\n\nI. Organization chart\nII. Flow chart showing product movement\nIII. Alphabetical index for numerical filing\nIV. Index of callers’ cards",
+      "options": [
+        "I only",
+        "II only",
+        "I and IV only",
+        "II and III only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 26,
+      "sourcePage": 6,
+      "stem": "The correct procedure for a receptionist to use when introducing a visitor is to announce the person’s",
+      "options": [
+        "name",
+        "name and company",
+        "name, company and title",
+        "name, title and company"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 27,
+      "sourcePage": 6,
+      "stem": "Before starting to set up appointments, a secretary should first thoroughly familiarise herself with which of the following?",
+      "options": [
+        "The pattern of her boss’ work day",
+        "The correct procedure for greeting callers",
+        "The method of recording appointments",
+        "The extension numbers for each member of staff"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 28,
+      "sourcePage": 6,
+      "stem": "Which of the following items of business are NOT discussed at an annual general meeting?",
+      "options": [
+        "Declaration of dividends",
+        "Making arrangements for a very important person",
+        "Election of directors and auditors",
+        "Presentation and adoption of the company’s reports and accounts for the previous year"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 29,
+      "sourcePage": 6,
+      "stem": "An ex-officio committee member is one who",
+      "options": [
+        "is appointed by a majority vote",
+        "votes on behalf of an absent member",
+        "attends meetings by virtue of an office",
+        "manages the proceedings of the meeting"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 30,
+      "sourcePage": 6,
+      "stem": "When there is an equal number of votes ‘for’ and ‘against’ a motion the Chairman should",
+      "options": [
+        "cast a vote",
+        "drop the motion",
+        "recount the votes",
+        "amend the motion"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 31,
+      "sourcePage": 6,
+      "stem": "At a meeting held on November 25, 2008, discussions were held concerning the appointment of a secretary. What document should be consulted to obtain the information that was discussed at the meeting so that follow-up actions can be taken?",
+      "options": [
+        "The Chairman’s Agenda",
+        "The Notice of the meeting",
+        "The Minutes of the meeting",
+        "The Agenda for the meeting"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 32,
+      "sourcePage": 6,
+      "stem": "At a meeting the Chairperson has suggested that unfinished business be discussed at another meeting. The meeting has therefore been",
+      "options": [
+        "altered",
+        "amended",
+        "postponed",
+        "adjourned"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 33,
+      "sourcePage": 7,
+      "stem": "Traveller’s cheques should be countersigned",
+      "options": [
+        "before taking it to the person accepting payment or cashing it",
+        "as soon as it is issued",
+        "in the presence of the person accepting payment or cashing it",
+        "at the hotel before taking it to the person accepting payment or cashing it"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 34,
+      "sourcePage": 7,
+      "stem": "Your employer is on a business trip in another Caribbean territory and urgently requires additional money. The BEST way to send money to her is by",
+      "options": [
+        "international bank draft",
+        "credit transfer",
+        "debit transfer",
+        "electronic money transfer"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 35,
+      "sourcePage": 7,
+      "stem": "Which of the following is used by Caribbean businessmen who travel between various English-speaking Caribbean countries?",
+      "options": [
+        "Visa",
+        "Passport",
+        "National identification card",
+        "Smallpox immunisation certificate"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 36,
+      "sourcePage": 7,
+      "stem": "Which of the following describes an FAP meal plan?",
+      "options": [
+        "No meals",
+        "Continental breakfast",
+        "Breakfast and dinner only",
+        "Breakfast, lunch and dinner"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 37,
+      "sourcePage": 8,
+      "stem": "The amount of $1,008.00 represents money owed",
+      "options": [
+        "to Carry Supplies",
+        "to Compact Office Supplies",
+        "on 02-09-08",
+        "on 12-09-08"
+      ],
+      "contextText": "Item 37 refers to the credit note below.\n\nFrom: Carry Supplies, High Street, P-O-S\nDate: 12-09-08\nFax: 001-22-5915\nRef.: Inv. #770\nDd: 02-09-08\nTo: Compact Office Services, Main Road, Couva",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Credit note",
+        "columns": [
+          "Quantity",
+          "Description",
+          "Unit Price ($)",
+          "Cost"
+        ],
+        "rows": [
+          [
+            "",
+            "The following goods were returned:",
+            "",
+            ""
+          ],
+          [
+            "2",
+            "Damaged pedestal chairs (wheels broken)",
+            "560.00",
+            "1,120.00"
+          ],
+          [
+            "",
+            "Lost 10% Trade Discount",
+            "",
+            "112.00"
+          ],
+          [
+            "",
+            "Total",
+            "",
+            "$1,008.00"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 38,
+      "sourcePage": 8,
+      "stem": "ONE of the MOST important functions of a Human Resource Department is",
+      "options": [
+        "receiving visitors to the firm",
+        "ensuring proper communication",
+        "introduction of new employees",
+        "attending to the welfare of employees"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 39,
+      "sourcePage": 8,
+      "stem": "There is a growing feeling among staff, that concerns over their general welfare are being overlooked by management. What is the FIRST action which should be taken by staff to improve the situation?",
+      "options": [
+        "Request a meeting with the human resource manager.",
+        "Take industrial action.",
+        "Bring the matter to the attention of the Trade Union.",
+        "Request a meeting with the head of the organization."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 40,
+      "sourcePage": 9,
+      "stem": "A document outlining the major tasks for a job is known as a",
+      "options": [
+        "job contract",
+        "job description",
+        "job evaluation",
+        "job specification"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 41,
+      "sourcePage": 9,
+      "stem": "Clare Lee is paid a basic wage of $8.00 per hour for a 40-hour week and $9.60 per hour for overtime work. Last week Clare worked 48 hours. What was her total wage for the week?",
+      "options": [
+        "$76.80",
+        "$320.00",
+        "$396.80",
+        "$760.00"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 42,
+      "sourcePage": 9,
+      "stem": "The drawer of the cheque in the figure above is",
+      "options": [
+        "G Diaz",
+        "Trade Merchants Ltd.",
+        "Hyland General Bank",
+        "Trade Merchants Bank"
+      ],
+      "contextText": "Item 42 refers to the following cheque.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Hyland General Bank",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "",
+            "Main Road\nChaguanas"
+          ],
+          [
+            "D/Mth/Yr",
+            "12/09/2008"
+          ],
+          [
+            "Pay to the order of:",
+            "Trade Merchants Ltd."
+          ],
+          [
+            "",
+            "Seven Hundred — xx Dollars"
+          ],
+          [
+            "",
+            "$700.00"
+          ],
+          [
+            "0011775",
+            "G Diaz"
+          ]
+        ],
+        "details": [
+          "Two diagonal lines cross the face of the cheque."
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 43,
+      "sourcePage": 9,
+      "stem": "A junior employee has to leave the office to travel out of town on Company’s business. The transportation cost is $8.00. How should the employee obtain this amount?",
+      "options": [
+        "Obtain a voucher from the petty cashier, fill it out and present it to her for payment.",
+        "Pay the transportation cost from personal money and request the money from her supervisor on her return.",
+        "Request the money in writing from her supervisor who will write up a cheque for the amount.",
+        "Fill out a voucher, get approval from her supervisor and present it to the petty cashier for payment."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 44,
+      "sourcePage": 9,
+      "stem": "Which of the following sources can a NEW employee use to familiarise himself with the organization?",
+      "options": [
+        "Personal files",
+        "Company secretary",
+        "Company manual",
+        "Contract of Employment"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 45,
+      "sourcePage": 10,
+      "stem": "The diagram shown above is an example of a",
+      "options": [
+        "cash book",
+        "summary sheet",
+        "bank reconciliation statement",
+        "statement of account"
+      ],
+      "contextText": "Items 45–46 refer to the following transactions which occurred on Account Number 346/987/010.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Account Number 346/987/010",
+        "columns": [
+          "Date",
+          "Details",
+          "Description",
+          "Debits",
+          "Credits",
+          "Balance"
+        ],
+        "rows": [
+          [
+            "1 Jan",
+            "Balance",
+            "",
+            "",
+            "",
+            "150.00"
+          ],
+          [
+            "3 Jan",
+            "Interest",
+            "",
+            "",
+            "5.00",
+            ""
+          ],
+          [
+            "5 Jan",
+            "Withdrawal",
+            "ATM",
+            "140.00",
+            "",
+            ""
+          ],
+          [
+            "12 Jan",
+            "Cheque",
+            "13572",
+            "",
+            "200.00",
+            ""
+          ],
+          [
+            "15 Jan",
+            "Cheque",
+            "87431",
+            "50.00",
+            "",
+            ""
+          ],
+          [
+            "27 Jan",
+            "Service charge",
+            "",
+            "10.00",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 46,
+      "sourcePage": 10,
+      "stem": "Assuming that there are no further transactions, the opening balance on the account on February 01 will be",
+      "options": [
+        "$105.00",
+        "$155.00",
+        "$195.00",
+        "$285.00"
+      ],
+      "contextText": "Items 45–46 refer to the following transactions which occurred on Account Number 346/987/010.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Account Number 346/987/010",
+        "columns": [
+          "Date",
+          "Details",
+          "Description",
+          "Debits",
+          "Credits",
+          "Balance"
+        ],
+        "rows": [
+          [
+            "1 Jan",
+            "Balance",
+            "",
+            "",
+            "",
+            "150.00"
+          ],
+          [
+            "3 Jan",
+            "Interest",
+            "",
+            "",
+            "5.00",
+            ""
+          ],
+          [
+            "5 Jan",
+            "Withdrawal",
+            "ATM",
+            "140.00",
+            "",
+            ""
+          ],
+          [
+            "12 Jan",
+            "Cheque",
+            "13572",
+            "",
+            "200.00",
+            ""
+          ],
+          [
+            "15 Jan",
+            "Cheque",
+            "87431",
+            "50.00",
+            "",
+            ""
+          ],
+          [
+            "27 Jan",
+            "Service charge",
+            "",
+            "10.00",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 47,
+      "sourcePage": 10,
+      "stem": "Which of the following computer software programs is BEST suited for an accounts department?",
+      "options": [
+        "Graphics",
+        "PowerPoint",
+        "Spreadsheets",
+        "Microsoft Word"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 48,
+      "sourcePage": 10,
+      "stem": "Which of the following BEST describes the purpose of the petty cash fund?",
+      "options": [
+        "For prevention of theft by employees",
+        "For making small payments conveniently",
+        "To reduce clerical work",
+        "To store cash efficiently"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 49,
+      "sourcePage": 10,
+      "stem": "Which of the following sets of information is NOT required when preparing purchasing requisitions?",
+      "options": [
+        "Date, reference, quantity",
+        "Description, department, signature",
+        "Transport, tax, arrival time",
+        "Sender, catalogue number, supplier"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 50,
+      "sourcePage": 10,
+      "stem": "The term ‘minimum level’ on the stock card refers to the",
+      "options": [
+        "least amount of stock a business can afford",
+        "lowest balance of stock allowed",
+        "smallest batch that can be bought",
+        "amount allowed to the manager"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 51,
+      "sourcePage": 11,
+      "stem": "Which of the following does NOT apply to the stock record card?",
+      "options": [
+        "It shows information relating to the maximum quantity of stock kept.",
+        "It is used to keep stock from falling below a required minimum.",
+        "Each stockroom item is recorded on a separate form.",
+        "An inventory can replace this form since it gives the same information."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 52,
+      "sourcePage": 11,
+      "stem": "Which of the following is the BEST method of processing inventory data?",
+      "options": [
+        "Manual",
+        "Mechanical",
+        "Electronic",
+        "Physical"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 53,
+      "sourcePage": 11,
+      "stem": "One important reason for controlling stock is to",
+      "options": [
+        "provide goods of a high quality",
+        "ensure that adequate supplies are always available",
+        "restrict the items in which the company deals",
+        "ensure that the company offers the same goods as other firms"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 54,
+      "sourcePage": 11,
+      "stem": "A planning master for factory work includes details of the",
+      "options": [
+        "production process",
+        "training process",
+        "distribution process",
+        "stock re-order levels"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 55,
+      "sourcePage": 11,
+      "stem": "The factory office is responsible for planning and organizing the",
+      "options": [
+        "costs of production",
+        "marketing of goods",
+        "production processes",
+        "contracts of employment of the workers"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 56,
+      "sourcePage": 11,
+      "stem": "Which of the following forms of transport is BEST suited to distributing perishable goods locally?",
+      "options": [
+        "Trucks",
+        "Pick-up vans",
+        "Air-conditioned cars",
+        "Cold-storage vehicles"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 57,
+      "sourcePage": 11,
+      "stem": "To cover transported goods from any risk, the despatch and transport office usually obtains a",
+      "options": [
+        "bill of lading",
+        "certificate of origin",
+        "certificate of insurance",
+        "customs declaration form"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 58,
+      "sourcePage": 11,
+      "stem": "An unsolicited letter of application may be written when",
+      "options": [
+        "a job is advertised in the newspaper",
+        "a company advertises for a vacancy",
+        "a company’s application form is made available",
+        "an application is sent enquiring about a vacancy"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 59,
+      "sourcePage": 11,
+      "stem": "Follow-up letters are sent after an application when",
+      "options": [
+        "no reply is received",
+        "there is no vacancy",
+        "one year has elapsed",
+        "another job has been accepted"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2009-MJ",
+      "number": 60,
+      "sourcePage": 11,
+      "stem": "Which of the following is an example of a fringe benefit?",
+      "options": [
+        "Promotion offers",
+        "Training opportunities",
+        "Holiday arrangements",
+        "Use of company vehicle"
+      ]
+    }
+  ]
+}
