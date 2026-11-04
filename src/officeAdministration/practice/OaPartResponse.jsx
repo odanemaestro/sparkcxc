@@ -1,11 +1,29 @@
+import PoaDrawingPad from '../../principlesOfAccounts/practice/PoaDrawingPad';
 import OaResponseDiagram,{oaDiagramFieldLabel} from './OaResponseDiagram';
 import React from 'react';
 import {oaFormValues,oaFormResponse} from './oaResponses';
 const editable=(table,row,col)=>table.editable?.some(([r,c])=>r===row&&c===col);
 export function oaResponseTableLabel(table,row,col){return `${table.title} · ${table.rowLabels?.[row]||`Row ${row+1}`} · ${table.columnLabels?.[col]||table.columns[col]}`;}
-export function oaPartResponseFields(part){return [...(part.fields||[]),...(part.responseDiagram?.nodes||[]).filter(node=>node.fixed===undefined).map(node=>({label:oaDiagramFieldLabel(part.responseDiagram,node),kind:'text'})),...(part.responseTables||[]).flatMap(table=>table.rows.flatMap((row,r)=>row.flatMap((_,c)=>editable(table,r,c)?[{label:oaResponseTableLabel(table,r,c),kind:table.numeric?'numeric':'text'}]:[])))];}
+const drawingLabels=part=>part.graphPaper
+ ? ['Comparative graph strokes','Comparative graph notes']
+ : ['Diagram strokes','Diagram notes'];
+
+export function oaPartResponseFields(part) {
+ const diagramFields=(part.responseDiagram?.nodes||[])
+  .filter(node=>node.fixed===undefined)
+  .map(node=>({label:oaDiagramFieldLabel(part.responseDiagram,node),kind:'text'}));
+ const tableFields=(part.responseTables||[]).flatMap(table=>table.rows.flatMap((row,r)=>
+  row.flatMap((_,c)=>editable(table,r,c)
+   ? [{label:oaResponseTableLabel(table,r,c),kind:table.numeric?'numeric':'text'}]
+   : [])));
+ const drawingFields=part.graphPaper||part.freeDrawing
+  ? drawingLabels(part).map(label=>({label,kind:'text'}))
+  : [];
+ return [...(part.fields||[]),...diagramFields,...tableFields,...drawingFields];
+}
 export default function OaPartResponse({part,value,onChange,review,busy,labelId}){
  const fields=oaPartResponseFields(part),values=oaFormValues(value,fields);
+ const [strokesLabel,notesLabel]=drawingLabels(part);
  const change=(label,next)=>onChange(oaFormResponse({...values,[label]:next},fields));
  if(!fields.length)return <textarea aria-labelledby={labelId} rows={part.answerType==='document'?10:5} value={value} readOnly={review} disabled={busy} onChange={e=>onChange(e.target.value)}/>;
  const fieldNode=field=>field.kind==='checkbox'?<label key={field.label} className="oa-document-checkbox"><input type="checkbox" checked={values[field.label]==='Yes'} disabled={review||busy} onChange={e=>change(field.label,e.target.checked?'Yes':'')}/><span>{field.label}</span></label>:<label key={field.label}><span>{field.label}{field.unit?` (${field.unit})`:''}</span><textarea rows={field.rows||(field.kind==='numeric'?2:3)} inputMode={field.kind==='numeric'?'decimal':undefined} value={values[field.label]||''} readOnly={review} disabled={busy} onChange={e=>change(field.label,e.target.value)}/></label>;
@@ -18,6 +36,15 @@ export default function OaPartResponse({part,value,onChange,review,busy,labelId}
  return <td key={c} rowSpan={merge?.rowSpan} colSpan={merge?.colSpan} style={merge?.align?{textAlign:merge.align}:undefined}>{editable(table,r,c)?<>{table.preserveGiven?.some(([row,col])=>row===r&&col===c)&&cell}<textarea aria-label={oaResponseTableLabel(table,r,c)} inputMode={table.numeric?'decimal':undefined} rows={table.inputRows?.[r]||2} value={values[oaResponseTableLabel(table,r,c)]||''} readOnly={review} disabled={busy} onChange={e=>change(oaResponseTableLabel(table,r,c),e.target.value)}/></>:cell}</td>;
  })}</tr>)}</tbody></table>{table.details?.map((detail,i)=><p key={i}>{detail}</p>)}</div>)}
  {part.responseDiagram&&<OaResponseDiagram diagram={part.responseDiagram} values={values} onChange={change} review={review} busy={busy}/>}
+ {(part.graphPaper||part.freeDrawing)&&<PoaDrawingPad
+  graphPaper={part.graphPaper} drawingLabel="Diagram drawing area" disabled={review||busy}
+  response={{parts:{'drawing:strokes':values[strokesLabel]||'','drawing:notes':values[notesLabel]||''}}}
+  onChange={({parts})=>onChange(oaFormResponse({
+   ...values,
+   [strokesLabel]:parts['drawing:strokes'],
+   [notesLabel]:parts['drawing:notes'],
+  },fields))}
+ />}
  {(part.fields||[]).filter(f=>f.position==='after').map(fieldNode)}
  </fieldset>;
 }

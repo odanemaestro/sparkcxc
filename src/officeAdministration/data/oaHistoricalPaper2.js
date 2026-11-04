@@ -340,7 +340,7 @@ export const OA_HISTORICAL_PAPER2S = Object.freeze(sourceRecords.map(source => {
    `This paper consists of ${questions.length===8?'EIGHT':questions.length===7?'SEVEN':'SIX'} questions.`,
    choose ? `Answer ALL questions in SECTION I and any ${choose===2?'TWO':'THREE'} questions in SECTION II.` : 'Answer ALL SIX questions.',
    'The six questions you answer carry 90 marks. Each question carries 15 marks.',
-   'You have 2 hours. You may use a silent, non-programmable calculator.',
+   source.year <= 2007 ? 'You have 2 hours.' : 'You have 2 hours. You may use a silent, non-programmable calculator.',
    'Use the forms, tables and diagrams provided with the question. Label each answer with its original question and part number.'
   ],
   questions:questions.map(question => ({...question,...OA_HISTORICAL_PAPER2_QUESTION_LAYOUTS[source.id+'::'+question.number], sourceAsset:source.sourceAsset,

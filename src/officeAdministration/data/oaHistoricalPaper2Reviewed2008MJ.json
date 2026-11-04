@@ -1,0 +1,1051 @@
+{
+  "paperId": "OA-P2-2008-MJ",
+  "reviewDate": "2026-11-04",
+  "reviewMethod": "Visual comparison with all nine supplied PDF pages. The advertisement, checklist, wage forms and stock and job records were restored as native text. The question 7 symbol uses the original illustration.",
+  "questions": {
+    "OA-P2-2008-MJ::1": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::2": {
+      "stem": "",
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::3": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::4": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::5": {
+      "stem": "",
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        9
+      ],
+      "layoutSourcePages": [
+        5,
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::6": {
+      "stem": "",
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::7": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::8": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        8
+      ],
+      "layoutSourcePages": [
+        7,
+        8
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2008-MJ::1::q1-a": {
+      "prompt": "One method of distributing information is through e-mail messages. State TWO other ways in which information is distributed\n(i) within an organisation. (2 marks)\n(ii) to customers. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::1::q1-b": {
+      "prompt": "List THREE basic skills that are required of a general office clerk in a modern office. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::1::q1-c": {
+      "prompt": "Assume that you are Massey Sam, office assistant. You received a voice mail from Mr. Fitz, office manager, who is overseas. He asked you to send e-mail messages to all managers to inform them that the weekly meeting has been postponed. In addition, they must forward their departmental reports to him via e-mail by 30 June 2008.\n\nCompose an e-mail message to be sent to all managers as requested by the office manager. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2008-MJ::2::q2-a": {
+      "prompt": "Give the meaning of the following terms:\n(i) Telephone etiquette (2 marks)\n(ii) 'Smile with your voice' (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::2::q2-b": {
+      "prompt": "List THREE categories of information contained in a telephone directory. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::2::q2-c": {
+      "prompt": "Assume that you are Julia Murray of 128 Melrose Lane, Roseau, Dominica. Write a letter of application in response to the following advertisement that appeared in the Daily Record, on 20 May, 2008. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true,
+      "answerType": "document",
+      "table": {
+        "title": "VACANCY",
+        "columns": [
+          ""
+        ],
+        "rows": [
+          [
+            "Applications are invited from suitably qualified persons to fill the position of\nGENERAL OFFICE CLERK\nat\nMODERN INFO SYSTEMS LTD"
+          ],
+          [
+            "Applicants must have:\nGeneral Education – at least 5 CXC General Proficiency subjects including Office Administration\nAn effective command of the English Language"
+          ],
+          [
+            "Applications with proof of qualifications and two recent references should reach\nThe Human Resource Manager,\nModern Info Systems Ltd.,\nNew Village,\nP.O. Box 513,\nRoseau, Dominica\nNO LATER THAN 10 July, 2008."
+          ]
+        ]
+      }
+    },
+    "OA-P2-2008-MJ::3::q3-a": {
+      "prompt": "Define EACH of the following terms that relate to meetings:\n(i) Adjourn (2 marks)\n(ii) Motion (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::3::q3-b": {
+      "prompt": "Identify THREE reasons why departmental meetings are important to staff. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::3::q3-c": {
+      "prompt": "The Office Improvement Committee at your workplace is developing a Procedures Manual that will be used to train new employees in customer relations. You have been asked to develop a checklist of steps for the manual. Indicate SIX steps to be followed when screening and receiving visitors.\n(i) In your answer booklet, use the format given below to develop the checklist. (6 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "CHECKLIST",
+          "columns": [
+            "Did the employee?",
+            "Yes",
+            "No"
+          ],
+          "rows": [
+            [
+              "1.",
+              "",
+              ""
+            ],
+            [
+              "2.",
+              "",
+              ""
+            ],
+            [
+              "3.",
+              "",
+              ""
+            ],
+            [
+              "4.",
+              "",
+              ""
+            ],
+            [
+              "5.",
+              "",
+              ""
+            ],
+            [
+              "6.",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ],
+          "preserveGiven": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(ii) Write brief instructions for using the checklist. (2 marks)",
+          "kind": "text",
+          "rows": 5,
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2008-MJ::4::q4-a": {
+      "prompt": "Identify THREE stages in the information cycle of a records management system. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::4::q4-b": {
+      "prompt": "List FOUR types of supplies used in the storage of records. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::4::q4-c": {
+      "prompt": "You have been assigned the task of organising some files for the human resource department of your company. Following is the list of potential providers:\nThe National Training Agency\nSt. Joseph's Employment Agency\nFirst Class Trainers\nC & S Trainers\nArrange the files of these providers in the correct order for:\n(i) indexing (4 marks)\n(ii) filing (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::5::q5-a": {
+      "prompt": "State THREE situations in the workplace that may result in the need for disciplinary action by the human resource department. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::5::q5-b": {
+      "prompt": "List THREE pieces of information that are included in a Contract of Employment. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::5::q5-c": {
+      "prompt": "On 30 April, 2008 the Payroll Clerk at Saithy’s Hardware visited the bank and withdrew money from Account No. 540673LT to pay wages to the following persons:\n\nWhen the clerk returned to the office he prepared a wage package for each employee.\n\nUse the form provided to complete:\n\n(i) The wage cash analysis sheet provided. Use the highest denomination in each case. (6 marks)\n\n(ii) The signed withdrawal slip provided for the total sum of money to be withdrawn. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        9
+      ],
+      "layoutSourcePages": [
+        5,
+        9
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Wages",
+        "columns": [
+          "NAMES",
+          "WAGE AMOUNTS"
+        ],
+        "rows": [
+          [
+            "Barry Hart",
+            "$375.00"
+          ],
+          [
+            "Perry Lewis",
+            "$249.00"
+          ],
+          [
+            "Ricky Ali",
+            "$400.00"
+          ],
+          [
+            "Henry Tidd",
+            "$195.00"
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "CASH ANALYSIS",
+          "columns": [
+            "NOTES",
+            "CASH",
+            ""
+          ],
+          "columnLabels": [
+            "Notes",
+            "Cash",
+            "Last column"
+          ],
+          "rows": [
+            [
+              "× $100",
+              "",
+              ""
+            ],
+            [
+              "× $20",
+              "",
+              ""
+            ],
+            [
+              "× $10",
+              "",
+              ""
+            ],
+            [
+              "× $1",
+              "",
+              ""
+            ],
+            [
+              "COINS",
+              "",
+              ""
+            ],
+            [
+              "TOTAL",
+              "",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "× $100",
+            "× $20",
+            "× $10",
+            "× $1",
+            "COINS",
+            "TOTAL"
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ]
+          ],
+          "preserveGiven": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          "numeric": true
+        },
+        {
+          "title": "WITHDRAWAL SLIP — ALGERIAN BANK",
+          "columns": [
+            "",
+            ""
+          ],
+          "columnLabels": [
+            "Label",
+            "Entry"
+          ],
+          "rows": [
+            [
+              "ACCOUNT NUMBER",
+              ""
+            ],
+            [
+              "Date",
+              "30 April, 2008"
+            ],
+            [
+              "Branch",
+              "Belmopan"
+            ],
+            [
+              "NAME",
+              "Saithy’s Hardware"
+            ],
+            [
+              "DEBIT the above mentioned account with the sum of (DOLLARS)",
+              ""
+            ],
+            [
+              "Sign here",
+              "Troy Campbell"
+            ],
+            [
+              "TOTAL DEBIT ($)",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "ACCOUNT NUMBER",
+            "Date",
+            "Branch",
+            "NAME",
+            "DEBIT the above mentioned account with the sum of (DOLLARS)",
+            "Sign here",
+            "TOTAL DEBIT ($)"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              6,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2008-MJ::6::q6-a": {
+      "prompt": "State THREE functions of the sales clerk in engaging in customer follow-up. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::6::q6-b": {
+      "prompt": "The facsimile, answering machine and risograph are pieces of equipment that are used in an organisation. Select any ONE of these and state THREE ways in which it contributes to efficiency in the sales and marketing office. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::6::q6-c": {
+      "prompt": "The information below relates to the stock record of Harding Stationers Ltd. Calculate the value of the closing stock at May 31, 2008, using the Last In First Out (LIFO) method of stock valuation. You are required to show workings in your answer booklet. (9 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "Harding Stationers Ltd. — Stock Record Card",
+          "columns": [
+            "DATE",
+            "RECEIVED",
+            "DATE",
+            "SOLD",
+            "REMAINING STOCK",
+            "TOTAL VALUE"
+          ],
+          "columnLabels": [
+            "Received date",
+            "Received",
+            "Sold date",
+            "Sold",
+            "Remaining stock",
+            "Total value"
+          ],
+          "rows": [
+            [
+              "May 3",
+              "25 @ $40. each",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "May 14",
+              "10 @ $45. each",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "May 15",
+              "5 @ $45. each",
+              "",
+              ""
+            ],
+            [
+              "May 27",
+              "40 @ $50. each",
+              "May 31",
+              "10 @ $50.",
+              "",
+              ""
+            ],
+            [
+              "Closing stock",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              5
+            ]
+          ],
+          "details": [
+            "Ruled Paper, Coloured",
+            "Maximum Level: 200 reams",
+            "Minimum Level: 50 reams"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "Show your workings",
+          "kind": "text",
+          "rows": 7,
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2008-MJ::7::q7-a": {
+      "prompt": "(i) Name the symbol shown below. (1 mark)\n\n(ii) State TWO ways in which the above symbol is used in stock control. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true,
+      "figure": "office-administration/figures/OA-P2-2008-MJ-Q07.png",
+      "figureAlt": "Vertical lines of different widths above the digits 6 9 7 5 384.",
+      "figureWidth": 196,
+      "figureSourceRegion": {
+        "page": 7,
+        "x": 476,
+        "y": 267,
+        "width": 203,
+        "height": 215,
+        "scaleTo": 1800
+      },
+      "figureVerified": true
+    },
+    "OA-P2-2008-MJ::7::q7-b": {
+      "prompt": "Identify THREE documents that are used in the purchasing procedure. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::7::q7-c": {
+      "prompt": "As an employee of the promotions and marketing department of New Age Products Inc., you have been asked to develop a new portfolio of promotional strategies for the latest cellular telephone on the market called 'Hi Life'. Your competitors are offering free phones and 1000 minutes of free talk time.\n(i) State FOUR promotional activities that may be organised by New Age Products Inc., for the launch of the cellular telephone. (4 marks)\n(ii) Prepare an advertisement on any media for example radio, television, print, for the cellular telephone to inform buyers about its latest technology, size, appearance, availability and price. (5 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true,
+      "fields": [
+        {
+          "label": "(i) Promotional activities",
+          "kind": "text",
+          "rows": 5
+        },
+        {
+          "label": "(ii) Advertisement",
+          "kind": "text",
+          "rows": 8
+        }
+      ]
+    },
+    "OA-P2-2008-MJ::8::q8-a": {
+      "prompt": "Identify THREE functions of the factory office. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::8::q8-b": {
+      "prompt": "List THREE documents used when sending air freight to another country. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2008-MJ::8::q8-c": {
+      "prompt": "The production manager at Fit Right Garments Ltd. has to make decisions based on the production cost of ONE sports t-shirt. She prepares the Job Cost Card shown below.\n\n(i) In your answer booklet, show the procedure used to calculate EACH of the following:\na) Total costs (1 mark)\nb) Factory overheads at 20% (1 mark)\nc) Total costs of job (1 mark)\nd) Cost per unit (2 marks)\n\n(ii) The production manager plans to sell the t-shirts at $10.00 each. Calculate whether there will be a profit or loss at this price, and if so, how much. (2 marks)\n\n(iii) State TWO reasons for the production manager’s liaising with the accounts department on this job. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true,
+      "tables": [
+        {
+          "title": "FIT RIGHT GARMENTS LTD. — JOB COST CARD",
+          "columns": [
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "Job No.",
+              "321"
+            ],
+            [
+              "Number of Units",
+              "600"
+            ],
+            [
+              "Job Title",
+              "Sports t-shirts"
+            ],
+            [
+              "Description",
+              "Crew neck cotton t-shirts assorted colours and sizes"
+            ]
+          ]
+        },
+        {
+          "title": "Cost record",
+          "columns": [
+            "DATE",
+            "REF",
+            "PARTICULARS",
+            "UNIT",
+            "UNIT COST",
+            "COST"
+          ],
+          "rows": [
+            [
+              "MAY 31, 2006",
+              "TS 500",
+              "",
+              "",
+              "$",
+              "$"
+            ],
+            [
+              "",
+              "",
+              "Material",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "Stretch cotton",
+              "300 metres",
+              "5.00",
+              "1500.00"
+            ],
+            [
+              "",
+              "",
+              "Cotton thread",
+              "40 reels",
+              "2.00 each",
+              "80.00"
+            ],
+            [
+              "",
+              "",
+              "Stretch collars",
+              "600",
+              ".50 each",
+              "300.00"
+            ],
+            [
+              "",
+              "",
+              "Fabric dye",
+              "20 boxes",
+              "2.00 each",
+              "40.00"
+            ],
+            [
+              "",
+              "",
+              "Labour",
+              "50 hours",
+              "20.00",
+              "1000.00"
+            ],
+            [
+              "",
+              "",
+              "Total Costs",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "Factory overheads",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "Add: 20%",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "Total costs of job",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "COST PER UNIT",
+              "",
+              "",
+              ""
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(i) a) Total costs",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "(i) b) Factory overheads at 20%",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "(i) c) Total costs of job",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "(i) d) Cost per unit",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "(ii) Profit or loss",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "(iii) Reasons for liaising with the accounts department",
+          "kind": "text",
+          "rows": 4
+        }
+      ]
+    }
+  }
+}

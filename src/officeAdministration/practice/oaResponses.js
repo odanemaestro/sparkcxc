@@ -2,7 +2,7 @@ export function oaFormValues(value,fields){
  const labels=[...new Set(fields.map(f=>f.label).filter(Boolean))].sort((a,b)=>b.length-a.length),result={};let current=null;
  for(const line of String(value||'').split('\n')){
   const content=line.trimStart(),label=labels.find(label=>content.startsWith(label+':'));
-  if(label){current=label;result[current]=content.slice(label.length+1).trim();}
+  if(label){current=label;result[current]=content.slice(label.length+1).replace(/^ /,'');}
   else if(current)result[current]+='\n'+line;
  }
  return result;

@@ -77,7 +77,7 @@ it('links every historical question, response part and guidance item to the supp
 it('distinguishes SPARK guidance from an unavailable official historical scheme',()=>{
  let worked=0,approaches=0;
  for(const paper of OA_HISTORICAL_PAPER2S){
-  expect(paper).toMatchObject({officialKeyAvailable:false,answerKeyVerified:false,officialMarkSchemeAvailable:false,markingStatus:'spark-guidance',transcriptionVerified:['OA-P2-2010-MJ','OA-P2-2011-MJ','OA-P2-2012-MJ','OA-P2-2013-MJ','OA-P2-2014-MJ','OA-P2-2015-MJ','OA-P2-2016-JAN','OA-P2-2016-MJ','OA-P2-2017-MJ','OA-P2-2018-MJ','OA-P2-2019-MJ','OA-P2-2024-JAN','OA-P2-2021-MJ','OA-P2-2022-MJ','OA-P2-2024-MJ','OA-P2-2025-MJ'].includes(paper.id)});
+  expect(paper).toMatchObject({officialKeyAvailable:false,answerKeyVerified:false,officialMarkSchemeAvailable:false,markingStatus:'spark-guidance',transcriptionVerified:true});
   for(const part of paper.questions.flatMap(q=>q.parts)){
    expect(part.guidance.length).toBeGreaterThan(30);
    expect(part.markingGuidance).toMatchObject({author:'SPARK',official:false,sourceId:paper.id,maxMarks:part.marks});
@@ -105,7 +105,7 @@ it('keeps the repaired source boundaries, duplicated scan and image-only final t
 });
 
 it('attributes detached answer sheets to their questions rather than appending them to question 8',()=>{
- const expected=[['OA-P2-2005-MJ',5,9],['OA-P2-2006-MJ',2,8],['OA-P2-2006-MJ',5,9],['OA-P2-2007-MJ',6,9],['OA-P2-2007-MJ',7,10],['OA-P2-2008-MJ',5,9],['OA-P2-2009-MJ',7,9],['OA-P2-2009-MJ',6,10],['OA-P2-2010-MJ',5,9],['OA-P2-2010-MJ',6,10],['OA-P2-2010-MJ',7,11]];
+ const expected=[['OA-P2-2005-MJ',5,9],['OA-P2-2005-MJ',8,10],['OA-P2-2006-MJ',2,8],['OA-P2-2006-MJ',5,9],['OA-P2-2006-MJ',8,10],['OA-P2-2007-MJ',6,9],['OA-P2-2007-MJ',7,10],['OA-P2-2008-MJ',5,9],['OA-P2-2009-MJ',7,9],['OA-P2-2009-MJ',6,10],['OA-P2-2010-MJ',5,9],['OA-P2-2010-MJ',6,10],['OA-P2-2010-MJ',7,11]];
  for(const [id,number,page] of expected){
   const q=byId(id).questions[number-1];
   expect(q.sourcePages).toContain(page);expect(q.sourceForms.some(form=>form.pdfPage===page)).toBe(true);
@@ -286,4 +286,74 @@ it('retains the 2010 chart, literal time inputs and detached forms without filli
  expect(flow.sourceGeometry.page).toBe(8);
  expect(flow.nodes.map(node=>node.fixed)).toEqual(['FACTORY OFFICE','DESPATCH AND TRANSPORT OFFICE','1','2','3','4']);
  expect(flow.lines).toHaveLength(8);
+});
+
+it('retains the 2009 reminder date, cheque identity and distinct job and card entries',()=>{
+ const paper=byId('OA-P2-2009-MJ');
+ expect(paper.transcriptionVerified).toBe(true);
+ const reminder=paper.questions[2].parts[2];
+ expect(reminder.table.rows).toEqual([['Name','Hilda Coates'],['Date','June 01, 2009']]);
+ expect(reminder.responseTables[0].rows).toEqual([['',''],['',''],['',''],['','']]);
+ const cheque=paper.questions[4].parts[1];
+ expect(cheque.prompt).toContain('Wil Paymar');
+ expect(cheque.table.title).toContain('Cheque 01');
+ expect(cheque.fields[0]).toEqual({label:'Cross the cheque',kind:'checkbox'});
+ const stock=paper.questions[5].parts[1];
+ expect(stock.sourcePages).toEqual([6,10]);
+ expect(stock.prompt).toContain('order No. 10AI');
+ expect(stock.responseTables[1].rows.map(row=>row[0])).toEqual(['September 5','October 17','October 20','November 21','November 22','December 10']);
+ expect(stock.responseTables[1].editable.every(([,c])=>c>0)).toBe(true);
+ const job=paper.questions[6].parts[2];
+ expect(job.sourcePages).toEqual([7,9]);
+ expect(job.prompt).toContain('job No. 100');
+ expect(job.prompt).toContain('Job Card #50');
+ expect(job.fields.slice(0,2).map(field=>field.label)).toEqual(['Job No.','Card No.']);
+ const advice=paper.questions[7].parts[2];
+ expect(advice.sourcePages).toEqual([7,8]);
+ expect(advice.responseTables[0].columns).toEqual(['Quantity','Item','Description']);
+ expect(advice.fields.map(field=>field.label)).toContain('Received by');
+});
+
+it('retains the 2008 fixed withdrawal signature, stock movement date and cost-card figures',()=>{
+ const paper=byId('OA-P2-2008-MJ');
+ expect(paper.transcriptionVerified).toBe(true);
+ const advert=paper.questions[1].parts[2];
+ expect(advert.table.rows[0][0]).toContain('GENERAL OFFICE CLERK');
+ expect(advert.table.rows[2][0]).toContain('NO LATER THAN 10 July, 2008.');
+ const checklist=paper.questions[2].parts[2].responseTables[0];
+ expect(checklist.rows).toHaveLength(6);
+ expect(checklist.editable.every(([,c])=>c===0)).toBe(true);
+ const cash=paper.questions[4].parts[2];
+ expect(cash.sourcePages).toEqual([5,9]);
+ expect(cash.responseTables[1].rows).toContainEqual(['Sign here','Troy Campbell']);
+ expect(cash.responseTables[1].editable).not.toContainEqual([5,1]);
+ expect(cash.responseTables[0].rows.map(row=>row[0])).toEqual(['× $100','× $20','× $10','× $1','COINS','TOTAL']);
+ const stock=paper.questions[5].parts[2].responseTables[0];
+ expect(stock.rows[3]).toEqual(['May 27','40 @ $50. each','May 31','10 @ $50.','','']);
+ const symbol=paper.questions[6].parts[0];expect(symbol.figureSourceRegion.page).toBe(7);
+ expect(symbol.figureVerified).toBe(true);
+ expect(symbol.figure).toMatch(/OA-P2-2008-MJ-Q07\.png$/);
+ const cost=paper.questions[7].parts[2].tables;
+ expect(cost[0].rows).toContainEqual(['Number of Units','600']);
+ expect(cost[1].rows[0]).toEqual(['MAY 31, 2006','TS 500','','','$','$']);
+ expect(cost[1].rows[6]).toEqual(['','','Labour','50 hours','20.00','1000.00']);
+});
+
+it('preserves the 2007 name discrepancy, signed-report space and graph source data',()=>{
+ const paper=byId('OA-P2-2007-MJ');expect(paper.transcriptionVerified).toBe(true);
+ const index=paper.questions[2].parts[1];
+ expect(index.responseTables[0].rows[2][0]).toBe('Mary Samson-Hill');
+ expect(index.fields[0].label).toContain('Mary Sampson-Hill');
+ const checklist=paper.questions[3].parts[3].responseTables[0];
+ expect(checklist.rows[0]).toEqual(['What are my personal wishes?','To work in an office','✓','']);
+ expect(checklist.editable.every(([r])=>r===1)).toBe(true);
+ const graph=paper.questions[4].parts[2];
+ expect(graph.graphPaper).toBe(true);expect(graph.table.rows[2]).toEqual(['Days lost due to industrial disputes','130','10']);
+ const fifo=paper.questions[5].parts[2];
+ expect(fifo.sourcePages).toEqual([7,9]);expect(fifo.responseTables[0].rows).toHaveLength(7);
+ const accident=paper.questions[6].parts[2];
+ expect(accident.sourcePages).toEqual([7,10]);
+ expect(accident.table.rows).toContainEqual(['Address','62 Harper Valley']);
+ expect(accident.table.rows).toContainEqual(['e-mail','Bronsonfurniture@dyson.com']);
+ expect(accident.responseTables[0].editable).toEqual([]);
 });

@@ -19,3 +19,5 @@
 .oa-document-fields label.oa-document-checkbox{display:flex;align-items:center;gap:10px;min-height:44px}.oa-document-checkbox input{width:20px;height:20px;margin:0;accent-color:var(--poa-accent);flex:0 0 auto}
 
 .oa-diagram-label{border:0;background:transparent}.oa-diagram-label>span{padding:0}
+
+.oa-document-fields>.poa-drawing-pad{grid-column:1/-1;margin:0}

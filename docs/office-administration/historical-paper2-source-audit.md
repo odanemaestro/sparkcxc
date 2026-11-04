@@ -113,3 +113,11 @@ The 2010 organization chart keeps its three blank boxes and two source connector
 The 2011 diary keeps its nine printed 24-hour times and blank entries. The attached message form retains the printed organization, address and phone number. The cheque keeps Bank of Bristol, No. 120, the given Anne Hart payee and the printed identifying numbers. Job No. 12 and Card No. 15 remain separate, with four blank rows each for material and labour.
 
 Chromium at 1440px and 390px verified saved diagram, time, diary, message, order, cash-book, invoice and job-card entries after refresh. Wide tables and diagrams remain scrollable inside the question. The full course/catalogue/About check passed 15 suites and 118 tests. The production build passed.
+
+## 2005–2009 native reviews — 4 November 2026
+
+All 21 supplied historical Paper 2 papers have been checked against the page images. The final batch covered 49 source pages. The 2005 paper retains the printed Office Procedures title in its source view. Its Terrace Mills cheque appears after the paper under the printed label 8(b)(ii) and belongs with the payment task in 8(c)(ii). The organization chart has a blank drawing area, and requisition number 10 is fixed. The 2006 paper restores the time-zone table, opening petty cash entry of $250.00, and the cost analysis card with printed overheads. The 2005–2007 covers give a two-hour duration without a calculator instruction.
+
+The 2007 comparative graph preserves the supplied data and provides blank graph paper. The 2008 stock-control symbol is an original crop because the bars are part of the question. The 2009 forms preserve the printed reminder date and separate job and card numbers. Answer cells in these forms begin blank where the source leaves them blank.
+
+Chromium desktop and mobile viewport checks covered refresh, drawing persistence, printed values and contained scrolling for the final five papers. The course, catalogue, About and shared Accounts checks passed 130 tests in 16 suites. The production build passed.

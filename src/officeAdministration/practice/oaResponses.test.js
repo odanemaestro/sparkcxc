@@ -8,3 +8,9 @@ test('reads existing plain response records and prefers the complete known field
  const fields=[{label:'Date'},{label:'Date: delivery'},{label:'Notes'}];
  expect(oaFormValues('Date: 4 January\nDate: delivery: 11 January\nNotes: Keep source dates\nSecond line',fields)).toEqual({Date:'4 January','Date: delivery':'11 January',Notes:'Keep source dates\nSecond line'});
 });
+
+test('preserves a typed trailing space in a controlled response field',()=>{
+ const fields=[{label:'Message'},{label:'Date'}];
+ const values={Message:'The report ',Date:'4 November'};
+ expect(oaFormValues(oaFormResponse(values,fields),fields)).toEqual(values);
+});
