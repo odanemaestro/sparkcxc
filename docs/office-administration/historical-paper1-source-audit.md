@@ -5,10 +5,10 @@ Review dates: 28 October–4 November 2026. All 23 supplied sources retain their
 | Year | Question boundaries recovered | Four-choice sets | Visually checked questions | Source-dependent positions |
 |---|---:|---:|---:|---:|
 | 1995 | 38 | 19 | 0 | 43 |
-| 1996 | 60 | 55 | 55 | 5 |
+| 1996 | 60 | 60 | 60 | 0 |
 | 1997 | 35 | 21 | 0 | 46 |
-| 2000 | 49 | 44 | 0 | 22 |
-| 2001 | 46 | 23 | 0 | 41 |
+| 2000 | 60 | 60 | 60 | 0 |
+| 2001 | 60 | 60 | 60 | 0 |
 | 2002 | 60 | 60 | 60 | 0 |
 | 2003 | 60 | 60 | 60 | 0 |
 | 2007 | 60 | 60 | 60 | 0 |
@@ -28,7 +28,7 @@ Review dates: 28 October–4 November 2026. All 23 supplied sources retain their
 | 2024 | 60 | 60 | 60 | 0 |
 | 2025 | 60 | 60 | 60 | 0 |
 
-The 2002, 2003, 2007, 2009, 2010, 2011, 2012, 2013, 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024 and 2025 papers each have 60 visually checked native questions. Their schedules, invoices, registers, cheque wording, petty cash, stock and costing tables remain selectable text. All other records retain their individual unverified/source-required flags. The 1996 scan clips part of its right edge in the original embedded image; missing wording has not been invented.
+The 1996, 2000, 2001, 2002, 2003, 2007, 2009, 2010, 2011, 2012, 2013, 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024 and 2025 papers each have 60 visually checked native questions. Their schedules, invoices, registers, cheque wording, petty cash, stock and costing tables remain selectable text. All other records retain their individual unverified/source-required flags. The clipped right edge in the 1996 scan was reviewed against other supplied papers as documented below.
 
 The official syllabus specimen is separately audited in `../office-administration-specimen-paper1-audit.md`; its disputed item 60 stays excluded from scoring.
 
@@ -62,6 +62,10 @@ The 2007 paper was compared with all nine supplied pages. The cover confirms 75 
 
 The 2003 paper was compared with all nine supplied question pages. The invoice retains No. 198, Bushey Park, 10th May, 1993, order 483 and the three printed discount terms. The source begins on printed page 2. Its cover duration remains unverified.
 
-The 1996 paper was checked across all eight supplied question pages. Fifty-five questions are readable and have complete native text. Items 5–8 on PDF page 1 and item 21 on PDF page 3 have clipped or obscured wording. Their source pages and question numbers are verified, and OCR fragments are excluded from their answer choices. The cover is absent. The organization chart labels and the People’s Bank cheque are selectable.
+The 1996 paper was checked across all eight supplied question pages. The clipped endings at items 5 and 8 were corroborated by 2003 items 12 and 8, item 6 by the exact repeat at 2000 item 16, also cross-checked against 2001 item 16 and 2009 item 8, and item 7 by 2002 item 9. Visible 1996 wording and choice order take precedence, including “business” in item 8 and “formats” in item 6. Item 21 retains the readable “statuto” followed by “deductions”, with the last letters of “statutory” restored. The organization chart labels and the People’s Bank cheque remain selectable. The cover is absent.
 
 The 2002 paper was compared with all eight supplied question pages. The weekly hours table for item 45 retains the day abbreviations and all six printed hour values. Chromium desktop and mobile viewport checks verified the selectable table and answer persistence. The supplied scan begins at printed page 2, so the cover duration remains unverified.
+
+The 2001 paper was checked across all nine supplied question pages. The visible fragments of item 10’s clipped opening line and its complete answer choices match the repeat at item 7 on the 2000 paper’s first PDF page. The stock record card, price list and invoice remain selectable. The 2001 cover is absent.
+
+The 2000 paper was checked across all ten supplied question pages, including the sideways final page. Its weekly hours and stationery stock card remain selectable, with printed dates, values and blanks preserved. The copy begins at printed page 2. A handwritten time annotation appears on that page, so the original cover duration remains unverified.

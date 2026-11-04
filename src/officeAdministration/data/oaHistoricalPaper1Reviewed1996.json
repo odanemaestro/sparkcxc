@@ -1,7 +1,7 @@
 {
   "paperId": "OA-P1-1996-MJ",
   "reviewDate": "2026-11-04",
-  "reviewMethod": "Visual comparison with all eight supplied question pages. Items 5–8 and 21 are excluded from the review because part of the wording is clipped or obscured by the scan edge. The supplied source starts at printed page 2.",
+  "reviewMethod": "Visual comparison with all eight supplied question pages. At the clipped right edge, items 5–8 use visible text cross-checked against repeats in the 2000, 2001, 2002, 2003 and 2009 papers. Item 21’s obscured ending is completed from the visible word fragment “statuto” before “deductions”. The supplied source starts at printed page 2.",
   "durationMinutes": null,
   "durationVerified": false,
   "items": [
@@ -51,6 +51,54 @@
         "there is an enclosure",
         "the address is a post office",
         "stamping is done through franking"
+      ]
+    },
+    {
+      "paperId": "OA-P1-1996-MJ",
+      "number": 5,
+      "sourcePage": 1,
+      "stem": "A customer called about a letter which had been sent to the firm a month ago. However, the letter could not be found. To which of the following should the mail clerk refer, to determine if it were received?",
+      "options": [
+        "Correspondence digest",
+        "Mail register",
+        "Postage book",
+        "Mailing list"
+      ]
+    },
+    {
+      "paperId": "OA-P1-1996-MJ",
+      "number": 6,
+      "sourcePage": 1,
+      "stem": "A draft of revised procedures for handling mail is to be prepared and submitted to the Office Manager. Which of the following formats should be used?",
+      "options": [
+        "Letter",
+        "Report",
+        "Statement",
+        "Note"
+      ]
+    },
+    {
+      "paperId": "OA-P1-1996-MJ",
+      "number": 7,
+      "sourcePage": 1,
+      "stem": "On receipt of an incoming letter, the mail clerk’s first action should be to",
+      "options": [
+        "hand it to the supervisor",
+        "route it correctly",
+        "code it",
+        "date-stamp it"
+      ]
+    },
+    {
+      "paperId": "OA-P1-1996-MJ",
+      "number": 8,
+      "sourcePage": 1,
+      "stem": "Which of the following procedures is NOT proper business telephone etiquette?",
+      "options": [
+        "Answer the telephone as soon as it rings.",
+        "Thank the customer for calling.",
+        "Allow the person who called to end the conversation.",
+        "Answer the phone with a cheery “hello”."
       ]
     },
     {
@@ -195,6 +243,18 @@
         "I, III and IV only",
         "II and III only",
         "III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-1996-MJ",
+      "number": 21,
+      "sourcePage": 3,
+      "stem": "Which of the following is/are statutory deductions?\n\nI. Charitable donations\nII. Income tax payments\nIII. Company’s medical insurance\nIV. Union dues",
+      "options": [
+        "II only",
+        "II and IV only",
+        "III and IV only",
+        "I, II, III and IV"
       ]
     },
     {
@@ -770,28 +830,6 @@
         "Write a letter thanking the personnel officer but declining the offer of the job.",
         "Decide that if the company does not hear from you, they will know you are not taking the job."
       ]
-    }
-  ],
-  "clippedItems": [
-    {
-      "number": 5,
-      "sourcePage": 1
-    },
-    {
-      "number": 6,
-      "sourcePage": 1
-    },
-    {
-      "number": 7,
-      "sourcePage": 1
-    },
-    {
-      "number": 8,
-      "sourcePage": 1
-    },
-    {
-      "number": 21,
-      "sourcePage": 3
     }
   ]
 }
