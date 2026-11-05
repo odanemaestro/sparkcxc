@@ -14,7 +14,7 @@ const root=__dirname;
 const read=relative=>fs.readFileSync(path.join(root,relative),"utf8");
 
 describe("SPARK all-subject completeness audit V1",()=>{
-  test("all eight production subjects exist in the built-in registry",()=>{
+  test("all production subjects exist in the built-in registry",()=>{
     const subjects=getSparkSubjectRegistry({physicsEnabled:true}).filter(subject=>subject.status==="live");
     expect(subjects.map(subject=>subject.id)).toEqual([
       "mathematics",
@@ -25,6 +25,7 @@ describe("SPARK all-subject completeness audit V1",()=>{
       "chemistry",
       "principles-of-business",
       "english-a",
+      "office-administration",
     ]);
     subjects.forEach(subject=>{
       expect(subject.routes.study).toBeTruthy();

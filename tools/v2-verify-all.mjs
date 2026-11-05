@@ -33,7 +33,8 @@ const bundleSha256=fs.readFileSync("supabase/functions/_shared/server-marker-v2.
 const fixtureFiles=fs.readdirSync("src/grading/v2Fixtures").sort();
 const calibrationFiles=fs.readdirSync("src/principlesOfAccounts/calibration").filter(f=>f.endsWith(".js")).sort();
 const fixtureSha256=sha256([...fixtureFiles.map(f=>fs.readFileSync("src/grading/v2Fixtures/"+f,"utf8")),
- ...calibrationFiles.map(f=>fs.readFileSync("src/principlesOfAccounts/calibration/"+f,"utf8"))].join("\n"));
+ ...calibrationFiles.map(f=>fs.readFileSync("src/principlesOfAccounts/calibration/"+f,"utf8")),
+ ...["src/officeAdministration/data/oaPaper2.js","src/officeAdministration/oaMarkingV2.js"].map(f=>fs.readFileSync(f,"utf8"))].join("\n"));
 let gitCommit="unknown";
 try{gitCommit=execSync("git rev-parse HEAD").toString().trim();}catch{}
 const dirty=execSync("git status --porcelain src supabase tools").toString().trim().length>0;

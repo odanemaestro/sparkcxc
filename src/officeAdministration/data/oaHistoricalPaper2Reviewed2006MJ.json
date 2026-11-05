@@ -1,0 +1,2113 @@
+{
+  "paperId": "OA-P2-2006-MJ",
+  "reviewDate": "2026-11-04",
+  "reviewMethod": "Visually checked all ten supplied PDF pages. Rebuilt the time-zone table, petty cash book and cost analysis card with fixed printed entries and blank response cells.",
+  "questions": {
+    "OA-P2-2006-MJ::1": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::2": {
+      "stem": "",
+      "sourcePage": 3,
+      "sourcePages": [
+        3,
+        8
+      ],
+      "layoutSourcePages": [
+        3,
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::3": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::4": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::5": {
+      "stem": "",
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        9
+      ],
+      "layoutSourcePages": [
+        5,
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::6": {
+      "stem": "",
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::7": {
+      "stem": "",
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::8": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        10
+      ],
+      "layoutSourcePages": [
+        7,
+        10
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2006-MJ::1::q1-a": {
+      "prompt": "Identify TWO duties of EACH of the following positions in the Administration Office:\n• Clerk typist\n• Secretary (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::1::q1-b": {
+      "prompt": "List THREE activities performed in the office which support the production of goods and services in a business organisation. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::1::q1-c": {
+      "prompt": "Management of Total Supplies is considering the centralization of reprographic services within the company. They have asked you, Edwise Gyf, General Office Clerk, to make comments on the proposed policy change.\n\nWrite a memorandum to the Office Administrator providing FOUR justifications for OR against the idea. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true,
+      "answerType": "document",
+      "documentTitle": "Memorandum",
+      "fields": [
+        {
+          "label": "To",
+          "kind": "text"
+        },
+        {
+          "label": "From",
+          "kind": "text"
+        },
+        {
+          "label": "Date",
+          "kind": "text"
+        },
+        {
+          "label": "Subject",
+          "kind": "text"
+        },
+        {
+          "label": "Message",
+          "kind": "textarea"
+        }
+      ]
+    },
+    "OA-P2-2006-MJ::2::q2-a": {
+      "prompt": "List THREE types of information which can be found in trade journals. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::2::q2-b": {
+      "prompt": "Identify TWO means of communication, and give ONE example of EACH. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::2::q2-c": {
+      "prompt": "Brenman’s International Company has its head office in San Francisco, California. The company has branch offices in Kingston, Jamaica; Port-of-Spain, Trinidad; and London, England. Office hours are 8:00 a.m. to 5:00 p.m. local time in each city.\n\nUsing the information in the table below:\n(i) Calculate the times in London, San Francisco and Port-of-Spain that correspond to the times calls are made from Kingston, Jamaica. Indicate the times using the 24-hour clock. (3 marks)\n(ii) State the implications of contacting office staff in EACH city from the Kingston office at the times indicated in (i) above. (3 marks)\n(iii) Calculate a suitable period of time, during office hours in Kingston, Jamaica when the four cities can be linked for a conference call. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3,
+        8
+      ],
+      "layoutSourcePages": [
+        3,
+        8
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "Time-zone table",
+          "columns": [
+            "Time in Kingston, Jamaica",
+            "Name of city called",
+            "Local time in city called (24-hour clock)",
+            "Implications for contacting office staff"
+          ],
+          "rows": [
+            [
+              "3:00 p.m.",
+              "London (5 hours ahead)",
+              "",
+              ""
+            ],
+            [
+              "8:30 a.m.",
+              "San Francisco (2 hours behind)",
+              "",
+              ""
+            ],
+            [
+              "4:20 p.m.",
+              "Port-of-Spain (1 hour ahead)",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(iii) Conference call period",
+          "kind": "text",
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2006-MJ::3::q3-a": {
+      "prompt": "(i) Identify THREE pieces of information that an immigration officer can obtain from a passport. (3 marks)\n(ii) Identify TWO documents that are required when applying for a visa to enter the United States of America. (2 marks)\n(iii) State TWO services provided by travel agencies. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::3::q3-b": {
+      "prompt": "State the actions that you should take in EACH of the following situations.\n(i) A customer would like to gain access to his wife’s personal chequing account. (3 marks)\n(ii) Your supervisor has asked you to inform a new employee about ways to safeguard confidential information. (3 marks)\n(iii) You have observed your co-worker leaking customer information to the media. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::4::q4-a": {
+      "prompt": "List THREE reasons why a receptionist should make use of a diary. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::4::q4-b": {
+      "prompt": "(i) Give TWO reasons why the alphabetical filing system is important. (2 marks)\n(ii) State ONE way a company involved in exporting may use geographical filing. (1 mark)\n(iii) List ONE type of document which is best filed under a numerical system. (1 mark)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::4::q4-c": {
+      "prompt": "Listed below are some of the companies with whom you do frequent business.\n\n• Sagicor\n• Woolsworths\n• First Caribbean International Bank\n• Price Waterhouse Coopers\n• The Ship Inn\n• Elliot Mortley & Sons\n• Percy King Auto Parts\n• Sparks Catering Services\n\nArrange the names in order for filing in an alphabetical system. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::5::q5-a": {
+      "prompt": "(i) State TWO ways in which the employer benefits from issuing protective clothing and gear to employees. (2 marks)\n(ii) List TWO ways in which an employee benefits from workmen’s compensation when injury occurs on a company’s premises. (2 marks)\n(iii) At M&J Company Ltd. the statistics show that employees often leave the job within two years of employment. List TWO possible reasons for the high labour turnover in the company. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::5::q5-b": {
+      "prompt": "Use the PETTY CASH BOOK form provided to post the following transactions. (5 marks)\n\nBalance the cash book as at May 31, 2006 and restore the imprest. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        9
+      ],
+      "layoutSourcePages": [
+        5,
+        9
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Transactions",
+        "columns": [
+          "Date",
+          "Details",
+          "Totals $",
+          "Totals ¢"
+        ],
+        "rows": [
+          [
+            "May 2",
+            "Cash",
+            "",
+            ""
+          ],
+          [
+            "6",
+            "Fares",
+            "35",
+            "50"
+          ],
+          [
+            "11",
+            "Refreshments",
+            "55",
+            "00"
+          ],
+          [
+            "14",
+            "Paper and cards",
+            "18",
+            "25"
+          ],
+          [
+            "19",
+            "Motor oil",
+            "21",
+            "00"
+          ],
+          [
+            "25",
+            "Envelopes",
+            "19",
+            "00"
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "PETTY CASH BOOK",
+          "details": [
+            "CR. · DR."
+          ],
+          "columns": [
+            "Cash Received $",
+            "Cash Received ¢",
+            "Date",
+            "Details",
+            "Voucher No.",
+            "Totals $",
+            "Totals ¢",
+            "Postage $",
+            "Postage ¢",
+            "Travel $",
+            "Travel ¢",
+            "Stationery $",
+            "Stationery ¢",
+            "Miscellaneous $",
+            "Miscellaneous ¢"
+          ],
+          "rows": [
+            [
+              "250",
+              "00",
+              "May 2",
+              "Cash",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              0,
+              12
+            ],
+            [
+              0,
+              13
+            ],
+            [
+              0,
+              14
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              9
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              1,
+              11
+            ],
+            [
+              1,
+              12
+            ],
+            [
+              1,
+              13
+            ],
+            [
+              1,
+              14
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              11
+            ],
+            [
+              2,
+              12
+            ],
+            [
+              2,
+              13
+            ],
+            [
+              2,
+              14
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              3,
+              12
+            ],
+            [
+              3,
+              13
+            ],
+            [
+              3,
+              14
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              4,
+              10
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              4,
+              12
+            ],
+            [
+              4,
+              13
+            ],
+            [
+              4,
+              14
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              5,
+              12
+            ],
+            [
+              5,
+              13
+            ],
+            [
+              5,
+              14
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              6,
+              5
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              6,
+              12
+            ],
+            [
+              6,
+              13
+            ],
+            [
+              6,
+              14
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              7,
+              1
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              7,
+              3
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              7,
+              5
+            ],
+            [
+              7,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              7,
+              8
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              7,
+              11
+            ],
+            [
+              7,
+              12
+            ],
+            [
+              7,
+              13
+            ],
+            [
+              7,
+              14
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              8,
+              1
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              8,
+              3
+            ],
+            [
+              8,
+              4
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              8,
+              11
+            ],
+            [
+              8,
+              12
+            ],
+            [
+              8,
+              13
+            ],
+            [
+              8,
+              14
+            ],
+            [
+              9,
+              0
+            ],
+            [
+              9,
+              1
+            ],
+            [
+              9,
+              2
+            ],
+            [
+              9,
+              3
+            ],
+            [
+              9,
+              4
+            ],
+            [
+              9,
+              5
+            ],
+            [
+              9,
+              6
+            ],
+            [
+              9,
+              7
+            ],
+            [
+              9,
+              8
+            ],
+            [
+              9,
+              9
+            ],
+            [
+              9,
+              10
+            ],
+            [
+              9,
+              11
+            ],
+            [
+              9,
+              12
+            ],
+            [
+              9,
+              13
+            ],
+            [
+              9,
+              14
+            ],
+            [
+              10,
+              0
+            ],
+            [
+              10,
+              1
+            ],
+            [
+              10,
+              2
+            ],
+            [
+              10,
+              3
+            ],
+            [
+              10,
+              4
+            ],
+            [
+              10,
+              5
+            ],
+            [
+              10,
+              6
+            ],
+            [
+              10,
+              7
+            ],
+            [
+              10,
+              8
+            ],
+            [
+              10,
+              9
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              10,
+              11
+            ],
+            [
+              10,
+              12
+            ],
+            [
+              10,
+              13
+            ],
+            [
+              10,
+              14
+            ],
+            [
+              11,
+              0
+            ],
+            [
+              11,
+              1
+            ],
+            [
+              11,
+              2
+            ],
+            [
+              11,
+              3
+            ],
+            [
+              11,
+              4
+            ],
+            [
+              11,
+              5
+            ],
+            [
+              11,
+              6
+            ],
+            [
+              11,
+              7
+            ],
+            [
+              11,
+              8
+            ],
+            [
+              11,
+              9
+            ],
+            [
+              11,
+              10
+            ],
+            [
+              11,
+              11
+            ],
+            [
+              11,
+              12
+            ],
+            [
+              11,
+              13
+            ],
+            [
+              11,
+              14
+            ],
+            [
+              12,
+              0
+            ],
+            [
+              12,
+              1
+            ],
+            [
+              12,
+              2
+            ],
+            [
+              12,
+              3
+            ],
+            [
+              12,
+              4
+            ],
+            [
+              12,
+              5
+            ],
+            [
+              12,
+              6
+            ],
+            [
+              12,
+              7
+            ],
+            [
+              12,
+              8
+            ],
+            [
+              12,
+              9
+            ],
+            [
+              12,
+              10
+            ],
+            [
+              12,
+              11
+            ],
+            [
+              12,
+              12
+            ],
+            [
+              12,
+              13
+            ],
+            [
+              12,
+              14
+            ],
+            [
+              13,
+              0
+            ],
+            [
+              13,
+              1
+            ],
+            [
+              13,
+              2
+            ],
+            [
+              13,
+              3
+            ],
+            [
+              13,
+              4
+            ],
+            [
+              13,
+              5
+            ],
+            [
+              13,
+              6
+            ],
+            [
+              13,
+              7
+            ],
+            [
+              13,
+              8
+            ],
+            [
+              13,
+              9
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              13,
+              11
+            ],
+            [
+              13,
+              12
+            ],
+            [
+              13,
+              13
+            ],
+            [
+              13,
+              14
+            ],
+            [
+              14,
+              0
+            ],
+            [
+              14,
+              1
+            ],
+            [
+              14,
+              2
+            ],
+            [
+              14,
+              3
+            ],
+            [
+              14,
+              4
+            ],
+            [
+              14,
+              5
+            ],
+            [
+              14,
+              6
+            ],
+            [
+              14,
+              7
+            ],
+            [
+              14,
+              8
+            ],
+            [
+              14,
+              9
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              14,
+              11
+            ],
+            [
+              14,
+              12
+            ],
+            [
+              14,
+              13
+            ],
+            [
+              14,
+              14
+            ],
+            [
+              15,
+              0
+            ],
+            [
+              15,
+              1
+            ],
+            [
+              15,
+              2
+            ],
+            [
+              15,
+              3
+            ],
+            [
+              15,
+              4
+            ],
+            [
+              15,
+              5
+            ],
+            [
+              15,
+              6
+            ],
+            [
+              15,
+              7
+            ],
+            [
+              15,
+              8
+            ],
+            [
+              15,
+              9
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              15,
+              11
+            ],
+            [
+              15,
+              12
+            ],
+            [
+              15,
+              13
+            ],
+            [
+              15,
+              14
+            ],
+            [
+              16,
+              0
+            ],
+            [
+              16,
+              1
+            ],
+            [
+              16,
+              2
+            ],
+            [
+              16,
+              3
+            ],
+            [
+              16,
+              4
+            ],
+            [
+              16,
+              5
+            ],
+            [
+              16,
+              6
+            ],
+            [
+              16,
+              7
+            ],
+            [
+              16,
+              8
+            ],
+            [
+              16,
+              9
+            ],
+            [
+              16,
+              10
+            ],
+            [
+              16,
+              11
+            ],
+            [
+              16,
+              12
+            ],
+            [
+              16,
+              13
+            ],
+            [
+              16,
+              14
+            ],
+            [
+              17,
+              0
+            ],
+            [
+              17,
+              1
+            ],
+            [
+              17,
+              2
+            ],
+            [
+              17,
+              3
+            ],
+            [
+              17,
+              4
+            ],
+            [
+              17,
+              5
+            ],
+            [
+              17,
+              6
+            ],
+            [
+              17,
+              7
+            ],
+            [
+              17,
+              8
+            ],
+            [
+              17,
+              9
+            ],
+            [
+              17,
+              10
+            ],
+            [
+              17,
+              11
+            ],
+            [
+              17,
+              12
+            ],
+            [
+              17,
+              13
+            ],
+            [
+              17,
+              14
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              18,
+              1
+            ],
+            [
+              18,
+              2
+            ],
+            [
+              18,
+              3
+            ],
+            [
+              18,
+              4
+            ],
+            [
+              18,
+              5
+            ],
+            [
+              18,
+              6
+            ],
+            [
+              18,
+              7
+            ],
+            [
+              18,
+              8
+            ],
+            [
+              18,
+              9
+            ],
+            [
+              18,
+              10
+            ],
+            [
+              18,
+              11
+            ],
+            [
+              18,
+              12
+            ],
+            [
+              18,
+              13
+            ],
+            [
+              18,
+              14
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2006-MJ::6::q6-a": {
+      "prompt": "Identify THREE ways in which the computer can be used to increase the efficiency of the Sales Department. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::6::q6-b": {
+      "prompt": "In today’s market place, businesses accept either a debit or a credit card. State ONE similarity and TWO differences between these types of cards. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::6::q6-c": {
+      "prompt": "Some answering machines are programmed to operate without manual assistance. State FIVE advantages of this to the organization, and THREE disadvantages of the system. (9 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::7::q7-a": {
+      "prompt": "Give the meaning of the following terms as used in trading documents:\n(i) Free on Board (2 marks)\n(ii) Ex Works (2 marks)\n(iii) Cost, Insurance and Freight (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::7::q7-b": {
+      "prompt": "Kai Marquis, a graduate from Alma Mata High School has designed a line of clothing which he thinks will be appropriate for the youth. He has used fabrics such as cottons and linens which are natural and light. Many of the styles are appropriate for street wear, relaxing, graduation and other formal occasions, and they are affordably priced.\n\nHe has asked your company Knocking Threads Ltd. to adopt and market the line for him. Your manager has asked you to draft the press release for marketing this new product.\n\nIn not more than 50 words, prepare the draft press release which will attract the attention of potential buyers. (9 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2006-MJ::8::q8-a": {
+      "prompt": "Identify THREE tasks that are typically performed by a clerk in the factory office in the preparation of a shift roster. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::8::q8-b": {
+      "prompt": "The clerk in the Dispatch and Transport Office must liaise with the Sales Department. Give THREE benefits of this interaction in the dispatch of goods. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2006-MJ::8::q8-c": {
+      "prompt": "Following is the Planning Master prepared by the Supervisor of the production process at Mi Belle Robe Ltd. for two jobs, A and B, to be produced.\n\n(i) Use the information in the Planning Master to complete the Cost Analysis Sheet provided for the two jobs. You must show the total cost of materials used, machines, tools and equipment, and labour. (5 marks)\n(ii) Calculate the total cost of producing Jobs A and B. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        10
+      ],
+      "layoutSourcePages": [
+        7,
+        10
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "PLANNING MASTER",
+        "details": [
+          "MI BELLE ROBE LTD. · ST LUCIA",
+          "For Week Ending July 30, 2006",
+          "Comments:",
+          "Materials are costed at $2.00 per yard",
+          "Machines @ $1,000.00 per week",
+          "Tools @ $100.00 per week each",
+          "Equipment @ $100.00 per week each",
+          "Labour @ $500.00 per week, per person"
+        ],
+        "columns": [
+          "Item",
+          "Quantity",
+          "Materials",
+          "Machines",
+          "Tools",
+          "Equipment",
+          "Time",
+          "Workers"
+        ],
+        "rows": [
+          [
+            "A",
+            "100",
+            "50 yards",
+            "Pressing",
+            "Binder",
+            "Lathe",
+            "1 week",
+            "5"
+          ],
+          [
+            "B",
+            "100",
+            "100 yards",
+            "Moulding",
+            "",
+            "Dryer",
+            "1 week",
+            "10"
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "Cost Analysis Card",
+          "details": [
+            "MI BELLE ROBE INC. · ST LUCIA"
+          ],
+          "columns": [
+            "Product",
+            "Materials $",
+            "Machines $",
+            "Tools $",
+            "Equipment $",
+            "Labour $",
+            "Overheads $",
+            "Total Cost $"
+          ],
+          "rows": [
+            [
+              "A",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "500.00",
+              ""
+            ],
+            [
+              "B",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "1,000.00",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "A",
+            "B"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "numeric": true
+        }
+      ]
+    }
+  }
+}

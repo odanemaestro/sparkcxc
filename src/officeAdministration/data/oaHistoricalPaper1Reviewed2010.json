@@ -1,0 +1,1083 @@
+{
+  "paperId": "OA-P1-2010-MJ",
+  "reviewDate": "2026-11-04",
+  "reviewMethod": "Visual comparison of all twelve supplied PDF pages, including the cover, all question and option boundaries, printed forms, and three original diagram crops.",
+  "durationMinutes": 75,
+  "durationVerified": true,
+  "items": [
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 1,
+      "sourcePage": 2,
+      "stem": "A clerk in the human resource department overhears that a friend in another department who reports late for work every day is to be given a warning and notice of dismissal if his punctuality does not improve. What should the clerk do?",
+      "options": [
+        "Avoid him until the matter is resolved.",
+        "Drop hints of action to be taken against late comers.",
+        "Do not say anything and leave him to receive the official letter.",
+        "Warn him of the action to be taken by the human resource department."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 2,
+      "sourcePage": 2,
+      "stem": "The proprietors of James Co Ltd are the",
+      "options": [
+        "Clerks",
+        "Directors",
+        "Managers",
+        "Shareholders"
+      ],
+      "contextText": "Items 2–3 refer to the following organizational chart of James Co Ltd.",
+      "figure": "office-administration/figures/OA-P1-2010-MJ-Q02.png",
+      "figureAlt": "Organizational chart with labeled positions and solid and broken lines. Solid lines descend from Shareholders to Board of Directors, then General Manager, then Advertising Manager, Human Resource Manager, Financial Manager and Company Secretary. Those four roles connect respectively to Advertising Clerks, Human Resource Clerks, Accounts Clerk and Office Manager. Broken lines leave the Human Resource Manager box towards Accounts Clerk and Office Manager.",
+      "figureWidth": 680,
+      "figureBeforeStem": true,
+      "figureVerified": true,
+      "figureSourceRegion": {
+        "page": 2,
+        "x": 214,
+        "y": 649,
+        "width": 980,
+        "height": 775,
+        "scaleTo": 2000
+      }
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 3,
+      "sourcePage": 2,
+      "stem": "What type of organization do the broken lines in the organizational chart of James Co Ltd represent?",
+      "options": [
+        "Matrix",
+        "Functional",
+        "Committee",
+        "Line and Staff"
+      ],
+      "contextText": "Items 2–3 refer to the following organizational chart of James Co Ltd.",
+      "figure": "office-administration/figures/OA-P1-2010-MJ-Q02.png",
+      "figureAlt": "Organizational chart with labeled positions and solid and broken lines. Solid lines descend from Shareholders to Board of Directors, then General Manager, then Advertising Manager, Human Resource Manager, Financial Manager and Company Secretary. Those four roles connect respectively to Advertising Clerks, Human Resource Clerks, Accounts Clerk and Office Manager. Broken lines leave the Human Resource Manager box towards Accounts Clerk and Office Manager.",
+      "figureWidth": 680,
+      "figureBeforeStem": true,
+      "figureVerified": true,
+      "figureSourceRegion": {
+        "page": 2,
+        "x": 214,
+        "y": 649,
+        "width": 980,
+        "height": 775,
+        "scaleTo": 2000
+      }
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 4,
+      "sourcePage": 3,
+      "stem": "Which of the following pieces of computer hardware is an output device?",
+      "options": [
+        "CPU",
+        "Mouse",
+        "Monitor",
+        "Keyboard"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 5,
+      "sourcePage": 3,
+      "stem": "Which of the following attributes is NOT required of all beginning office workers?",
+      "options": [
+        "Punctuality",
+        "Leadership qualities",
+        "A pleasant disposition",
+        "Ability to calculate accurately"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 6,
+      "sourcePage": 3,
+      "stem": "The term ‘span of control’ refers to the",
+      "options": [
+        "lines of communication between the manager and his/her subordinates",
+        "effective number of subordinates the manager can supervise efficiently",
+        "manager’s influence, right or power to perform a particular task",
+        "system of grading management and subordinates on different levels"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 7,
+      "sourcePage": 3,
+      "stem": "Where is the subject line placed in a letter?",
+      "options": [
+        "Before the date",
+        "After the address",
+        "After the salutation",
+        "Before the salutation"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 8,
+      "sourcePage": 3,
+      "stem": "The diagram shown above is a",
+      "options": [
+        "bar chart",
+        "line graph",
+        "pictogram",
+        "histogram"
+      ],
+      "contextText": "Items 8–9 refer to the diagram below.",
+      "figure": "office-administration/figures/OA-P1-2010-MJ-Q08.png",
+      "figureAlt": "Sales (000s) appear on the vertical axis from 0 to 80. Separate filled rectangles rise from the January, February, March, April, May and June positions. April is highest and February lowest.",
+      "figureWidth": 510,
+      "figureBeforeStem": true,
+      "figureVerified": true,
+      "figureSourceRegion": {
+        "page": 3,
+        "x": 734,
+        "y": 292,
+        "width": 554,
+        "height": 414,
+        "scaleTo": 2000
+      }
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 9,
+      "sourcePage": 3,
+      "stem": "The means of communication illustrated in the above diagram is known as",
+      "options": [
+        "oral communication",
+        "visual communication",
+        "written communication",
+        "electronic communication"
+      ],
+      "contextText": "Items 8–9 refer to the diagram below.",
+      "figure": "office-administration/figures/OA-P1-2010-MJ-Q08.png",
+      "figureAlt": "Sales (000s) appear on the vertical axis from 0 to 80. Separate filled rectangles rise from the January, February, March, April, May and June positions. April is highest and February lowest.",
+      "figureWidth": 510,
+      "figureBeforeStem": true,
+      "figureVerified": true,
+      "figureSourceRegion": {
+        "page": 3,
+        "x": 734,
+        "y": 292,
+        "width": 554,
+        "height": 414,
+        "scaleTo": 2000
+      }
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 10,
+      "sourcePage": 3,
+      "stem": "In which of the following situations would the relationship between employees be described as a ‘vertical’ relationship?",
+      "options": [
+        "Each has a similar status in the firm.",
+        "One is more senior to the other.",
+        "One has been employed longer than the other.",
+        "One job is more important than the other."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 11,
+      "sourcePage": 3,
+      "stem": "A PBX system is used to facilitate",
+      "options": [
+        "oral communication",
+        "storage of documents",
+        "retrieval of documents",
+        "written communication"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 12,
+      "sourcePage": 4,
+      "stem": "The MAJOR difference between the operator assisted call and the direct call would be that the operator assisted call would",
+      "options": [
+        "be timed",
+        "incur an additional fee",
+        "be monitored by the operator",
+        "have to be paid for immediately"
+      ],
+      "contextText": "Items 12–13 refer to the situation below.\n\nThe secretary of Brands International was having difficulty placing a direct overseas call, so she asked the operator to place the call for her. She wanted to speak to Mr John King only. The operator was successful in placing the call."
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 13,
+      "sourcePage": 4,
+      "stem": "By asking to speak to Mr King only, the call placed was a",
+      "options": [
+        "house call",
+        "personal call",
+        "conference call",
+        "person to person call"
+      ],
+      "contextText": "Items 12–13 refer to the situation below.\n\nThe secretary of Brands International was having difficulty placing a direct overseas call, so she asked the operator to place the call for her. She wanted to speak to Mr John King only. The operator was successful in placing the call."
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 14,
+      "sourcePage": 4,
+      "stem": "Which of the following machines is used to secure packages or parcels?",
+      "options": [
+        "Sealing",
+        "Collating",
+        "Stamping",
+        "Franking"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 15,
+      "sourcePage": 4,
+      "stem": "Ms Jan Brown is the marketing specialist of Bath Soaps. She wants to send a sample questionnaire about a product, manufactured by the company, to the public. Which of the following types of postal services should she use?",
+      "options": [
+        "Express mail",
+        "Registered letter",
+        "Business reply service",
+        "Special delivery service"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 16,
+      "sourcePage": 4,
+      "stem": "Which service does the Post Office provide to firms which enables them to collect mail outside of normal delivery times?",
+      "options": [
+        "Poste restante",
+        "Post office box",
+        "Redirection of mail",
+        "Accelerated surface post"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 17,
+      "sourcePage": 4,
+      "stem": "A file is said to be inactive when",
+      "options": [
+        "it is of no further use",
+        "it has not been released for filing",
+        "it has been withdrawn for reference purposes",
+        "the correspondence is too little to open a new file"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 18,
+      "sourcePage": 4,
+      "stem": "Which of the following considerations is LEAST important when choosing a filing system?",
+      "options": [
+        "Easy to operate",
+        "Capability of expansion",
+        "Availability of filing equipment and supplies",
+        "Suitability for the nature of the business"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 19,
+      "sourcePage": 4,
+      "stem": "Which of the following activities would be the responsibility of the supervisor of records management?\n\nI. Classifying records\nII. Controlling the filing system\nIII. Protecting records\nIV. Deleting records no longer needed",
+      "options": [
+        "I only",
+        "II only",
+        "I, II and III only",
+        "I, II, III and IV"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 20,
+      "sourcePage": 5,
+      "stem": "Suspension filing is",
+      "options": [
+        "correspondence being held in a temporary file",
+        "file folders hanging from a rail in a filing cabinet",
+        "the action of removing a folder from the filing cabinet",
+        "collection and storage of files being done at specified times"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 21,
+      "sourcePage": 5,
+      "stem": "When a file has been requested, important information about the loan of the file should be recorded on",
+      "options": [
+        "an out card",
+        "a guide card",
+        "an index card",
+        "a card indicator"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 22,
+      "sourcePage": 5,
+      "stem": "The form indicated above is an example of",
+      "options": [
+        "an index card",
+        "an absent card",
+        "a minute sheet",
+        "a cross-referencing sheet"
+      ],
+      "contextText": "Item 22 refers to the following form.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Form",
+        "columns": [
+          "Date taken",
+          "Folder number or name",
+          "Taken by",
+          "Date returned"
+        ],
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 23,
+      "sourcePage": 5,
+      "stem": "In the diagram above, a drawer of a filing cabinet, the number ① indicates",
+      "options": [
+        "drawer guides",
+        "primary guides",
+        "file title guides",
+        "secondary guides"
+      ],
+      "contextText": "Item 23 refers to the following diagram.",
+      "figure": "office-administration/figures/OA-P1-2010-MJ-Q23.png",
+      "figureAlt": "Drawing of a filing cabinet drawer with tabs N, MAY, M and MB. The circled number 1 points to the M - P label on the front of the drawer.",
+      "figureWidth": 610,
+      "figureBeforeStem": true,
+      "figureVerified": true,
+      "figureSourceRegion": {
+        "page": 5,
+        "x": 644,
+        "y": 285,
+        "width": 710,
+        "height": 455,
+        "scaleTo": 2000
+      }
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 24,
+      "sourcePage": 5,
+      "stem": "The term cross-referencing refers to files that are filed under",
+      "options": [
+        "inactive filing",
+        "the same heading",
+        "different headings",
+        "miscellaneous filing"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 25,
+      "sourcePage": 5,
+      "stem": "The receptionist MUST ensure that the reception area is tidy at all times because",
+      "options": [
+        "it is his/her responsibility",
+        "visitors will feel comfortable",
+        "visitors can move more freely",
+        "it gives a good impression of the firm"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 26,
+      "sourcePage": 5,
+      "stem": "One of the duties of an accounts clerk is",
+      "options": [
+        "completing invoices for goods",
+        "preparing debit and credit notes",
+        "preparing contracts of employment",
+        "directing workers to the payroll clerk"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 27,
+      "sourcePage": 6,
+      "stem": "The BEST location for a receptionist’s desk is near to the",
+      "options": [
+        "manager’s office",
+        "records department",
+        "entrance of the building",
+        "busiest part of the building"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 28,
+      "sourcePage": 6,
+      "stem": "The term ‘verbatim minutes’ refers to",
+      "options": [
+        "a record prepared in the present tense",
+        "a detailed recording to the chairman’s remarks",
+        "an extract of important proceedings in the minutes",
+        "an exact wording of the proceedings at the meeting"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 29,
+      "sourcePage": 6,
+      "stem": "If the number of persons required to form a quorum is NOT present, the meeting must be",
+      "options": [
+        "postponed",
+        "adjourned",
+        "conducted as a subcommittee",
+        "conducted as an extraordinary meeting"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 30,
+      "sourcePage": 6,
+      "stem": "Which of the following terms is used to describe a committee which has been set up to deal with a specific matter?",
+      "options": [
+        "Ad hoc",
+        "Central",
+        "General",
+        "Administrative"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 31,
+      "sourcePage": 6,
+      "stem": "All of the following items of business are discussed at an annual general meeting EXCEPT",
+      "options": [
+        "declaration of dividends",
+        "election of directors and auditors",
+        "making arrangements for a very important person",
+        "presentation and adoption of the company’s reports and accounts for the previous year"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 32,
+      "sourcePage": 6,
+      "stem": "At a meeting the chairperson suggested that unfinished business be discussed at another meeting. The meeting has therefore been",
+      "options": [
+        "altered",
+        "amended",
+        "adjourned",
+        "postponed"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 33,
+      "sourcePage": 6,
+      "stem": "The clerk responsible for making travel arrangements for a staff member omitted to make a hotel reservation. The officer was due to depart at 10:30 am for Martinique. The error was discovered at 10:00 am on the same day. Which of the following actions should the clerk take to solve the problem?\n\nI. Leave matters as they are.\nII. Make arrangements to explain the problem to the officer on his arrival in Martinique.\nIII. Contact the officer at the local airport and inform him of the error.\nIV. Call the hotel, explain the situation and make the reservation.",
+      "options": [
+        "I only",
+        "III only",
+        "II and IV only",
+        "III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 34,
+      "sourcePage": 7,
+      "stem": "It is important to keep an attendance register at meetings to",
+      "options": [
+        "prepare name cards for members",
+        "ascertain the arrival times of members",
+        "arrange the seating accommodation for members",
+        "ensure a permanent record of members present"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 35,
+      "sourcePage": 7,
+      "stem": "An executive has to attend an overseas meeting and will have to make reference to correspondence on file. Which of the following procedures would BEST be used to allow him to have the relevant information?",
+      "options": [
+        "Make copies of the correspondence.",
+        "Make a summary of the correspondence.",
+        "Give him the relevant files and ask him to sign for them.",
+        "Give him the correspondence from the files and ask him to sign for it."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 36,
+      "sourcePage": 7,
+      "stem": "A manufacturing company is required to provide all of the following statutory provisions for the protection of its employees EXCEPT",
+      "options": [
+        "safety shoes",
+        "injury allowance",
+        "protective clothing",
+        "housing allowance."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 37,
+      "sourcePage": 7,
+      "stem": "Shortlisting of applications is carried out",
+      "options": [
+        "when making the list of applicants to be interviewed",
+        "after the applicants have been interviewed",
+        "as applications for an advertised post are received",
+        "when preparing personal record cards for new employees"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 38,
+      "sourcePage": 7,
+      "stem": "Some firms offer a programme which aims to assist new employees in becoming familiar with their jobs. This programme is referred to as",
+      "options": [
+        "an appraisal",
+        "an induction",
+        "a deployment",
+        "a recruitment"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 39,
+      "sourcePage": 8,
+      "stem": "The document above is an example of a",
+      "options": [
+        "job analysis",
+        "job description",
+        "job specification",
+        "personnel specification"
+      ],
+      "contextText": "Item 39 refers to the following document.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Purchasing Clerk",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "TITLE:",
+            "Purchasing Clerk"
+          ],
+          [
+            "DEPARTMENT:",
+            "Purchasing"
+          ],
+          [
+            "HOURS OF WORK:",
+            "8.00am - 4.00 pm, Monday - Friday"
+          ],
+          [
+            "RESPONSIBLE TO:",
+            "Purchasing Assistant"
+          ],
+          [
+            "JOB SUMMARY:",
+            "To assist in the procurement of goods and services for the company"
+          ],
+          [
+            "DUTIES:",
+            "1. Preparation and processing of purchasing requisitions\n2. Maintaining stock records\n3. Maintaining a database on suppliers"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 40,
+      "sourcePage": 8,
+      "stem": "Which of the following sequences should be used when planning interview appointments?\n\nI. Inform each applicant of the date and time of the interview.\nII. Give the receptionist the names of applicants and the time each is expected.\nIII. Plan that each interview lasts at least half an hour.\nIV. Make a note of the exact time set for each applicant.",
+      "options": [
+        "I, II, III, IV",
+        "II, III, IV, I",
+        "III, IV, I, II",
+        "IV, I, II, III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 41,
+      "sourcePage": 8,
+      "stem": "‘Int’ in the debit column of a bank statement refers to interest",
+      "options": [
+        "owed to the bank",
+        "paid to the creditor",
+        "deducted by the bank",
+        "deposited by a creditor"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 42,
+      "sourcePage": 9,
+      "stem": "Which of the following is a statutory deduction?",
+      "options": [
+        "Income tax",
+        "Standing orders",
+        "Saving schemes",
+        "Credit union dues"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 43,
+      "sourcePage": 9,
+      "stem": "A customer who has credit facilities by a firm should expect to receive a record of payments and purchases made each month on",
+      "options": [
+        "an invoice",
+        "an advice note",
+        "a statement of account",
+        "a reconciliation statement"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 44,
+      "sourcePage": 9,
+      "stem": "The above cheque is payable to",
+      "options": [
+        "anyone who presents it",
+        "the person who has endorsed it",
+        "anyone with an account at the bank",
+        "the account of the person named on the cheque"
+      ],
+      "contextText": "Item 44 refers to the diagram below.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "MUTUAL TRUST BANK LTD",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "",
+            "10 High Street\nPort-of-Spain, Trinidad"
+          ],
+          [
+            "Crossed",
+            "A/C PAYEE ONLY"
+          ],
+          [
+            "Date",
+            "30 May 2009"
+          ],
+          [
+            "Pay:",
+            "Joan Grant"
+          ],
+          [
+            "",
+            "Three hundred dollars"
+          ],
+          [
+            "",
+            "$300"
+          ],
+          [
+            "032581",
+            "J Robinson"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 45,
+      "sourcePage": 9,
+      "stem": "To pay his account in cash, a customer tendered:\n\n5 - $20.00 bills\n3 - $10.00 bills\n10 - $5.00 bills\n9 - $1.00 bills\n20 - 5¢ pieces\n\nWhat sum of money did the customer pay?",
+      "options": [
+        "$189.00",
+        "$190.00",
+        "$191.00",
+        "$195.00"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 46,
+      "sourcePage": 9,
+      "stem": "What steps should a businessman take if his cash book and bank statement show a difference of $20.00?",
+      "options": [
+        "Reconcile his bank statement with his cash book.",
+        "Regard the $20.00 as interest on his current account.",
+        "Inform the bank that an error has been made in his account.",
+        "Write a cheque for $20.00 to balance his statement with the bank."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 47,
+      "sourcePage": 9,
+      "stem": "When cash is paid from the chief cashier to the petty cashier, the transaction should be recorded as\n\nI. debit in cash book\nII. credit in cash book\nIII. debit in petty cash book\nIV. credit in petty cash book",
+      "options": [
+        "I only",
+        "I and III only",
+        "II and III only",
+        "II and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 48,
+      "sourcePage": 10,
+      "stem": "The maximum level recorded on the stock card helps the accounting clerk to",
+      "options": [
+        "allow sufficient funds for an item",
+        "control the amount used on an item",
+        "maintain good communication with stores",
+        "ensure the amount to be ordered is not exceeded"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 49,
+      "sourcePage": 10,
+      "stem": "The term ‘minimum level’ on the stock card refers to the",
+      "options": [
+        "smallest batch that can be bought",
+        "lowest balance of stock allowed",
+        "amount allowed to the manager",
+        "least amount of stock a business can afford"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 50,
+      "sourcePage": 10,
+      "stem": "What should a clerk do if the number of items being delivered is less than that shown on the delivery note?",
+      "options": [
+        "Reprimand the delivery agent and refuse to accept delivery.",
+        "Return the goods and ask for urgent delivery of the correct order.",
+        "Accept the delivery and ask the company to send the outstanding items.",
+        "Write the shortage on the delivery note before signing for receipt of the goods."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 51,
+      "sourcePage": 10,
+      "stem": "The Joy High School wants to build a new canteen and has received promotional material from several firms. In order to select the most suitable firm for the job, the school should invite firms to send",
+      "options": [
+        "tenders",
+        "price lists",
+        "catalogues",
+        "statements"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 52,
+      "sourcePage": 10,
+      "stem": "A person who was dismissed from a previous job is filling out an application form for another job. He is required to state the reason for leaving the last place of employment. It is best to",
+      "options": [
+        "ignore the question",
+        "answer ‘not applicable’",
+        "give the correct reason",
+        "make a reasonable excuse"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 53,
+      "sourcePage": 10,
+      "stem": "A Personal Data Sheet should be",
+      "options": [
+        "posted under separate cover",
+        "attached to the letter of application",
+        "taken along with certificates to the interview",
+        "given to the receptionist on the day of the interview"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 54,
+      "sourcePage": 10,
+      "stem": "If a seller requires new goods to be paid for in advance, s/he sends the customer",
+      "options": [
+        "an invoice",
+        "an advice note",
+        "a delivery note",
+        "a pro forma invoice"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 55,
+      "sourcePage": 10,
+      "stem": "Which of the following forms should be used to report an incident in which an employee was injured?",
+      "options": [
+        "Claims Form",
+        "Accident Report Form",
+        "Employee Liability Form",
+        "Accident and Insurance Form"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 56,
+      "sourcePage": 11,
+      "stem": "The document above is an example of a",
+      "options": [
+        "job card",
+        "cost card",
+        "time card",
+        "record card"
+      ],
+      "contextText": "Items 56–58 refer to the following document.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Job No. 170",
+        "columns": [
+          "",
+          "Cost $"
+        ],
+        "rows": [
+          [
+            "CUSTOMER’S NAME:",
+            "Zina’s Upholstery"
+          ],
+          [
+            "JOB:",
+            "Twelve (12) Cushions"
+          ],
+          [
+            "TIME REQUIRED TO COMPLETE JOB:",
+            "Two (2) days"
+          ],
+          [
+            "MATERIALS NEEDED:",
+            ""
+          ],
+          [
+            "Fabric",
+            "600.00"
+          ],
+          [
+            "Sponge",
+            "250.00"
+          ],
+          [
+            "Thread",
+            "60.00"
+          ],
+          [
+            "LABOUR REQUIRED:",
+            ""
+          ],
+          [
+            "Stitcher",
+            "200.00"
+          ],
+          [
+            "Total Cost of Labour",
+            "200.00"
+          ],
+          [
+            "Add 20% for Overhead",
+            ""
+          ],
+          [
+            "Total Cost of Job",
+            ""
+          ],
+          [
+            "Cost per unit =",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 57,
+      "sourcePage": 11,
+      "stem": "The total cost of the job is",
+      "options": [
+        "$710.00",
+        "$910.00",
+        "$1,110.00",
+        "$1,332.00"
+      ],
+      "contextText": "Items 56–58 refer to the following document.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Job No. 170",
+        "columns": [
+          "",
+          "Cost $"
+        ],
+        "rows": [
+          [
+            "CUSTOMER’S NAME:",
+            "Zina’s Upholstery"
+          ],
+          [
+            "JOB:",
+            "Twelve (12) Cushions"
+          ],
+          [
+            "TIME REQUIRED TO COMPLETE JOB:",
+            "Two (2) days"
+          ],
+          [
+            "MATERIALS NEEDED:",
+            ""
+          ],
+          [
+            "Fabric",
+            "600.00"
+          ],
+          [
+            "Sponge",
+            "250.00"
+          ],
+          [
+            "Thread",
+            "60.00"
+          ],
+          [
+            "LABOUR REQUIRED:",
+            ""
+          ],
+          [
+            "Stitcher",
+            "200.00"
+          ],
+          [
+            "Total Cost of Labour",
+            "200.00"
+          ],
+          [
+            "Add 20% for Overhead",
+            ""
+          ],
+          [
+            "Total Cost of Job",
+            ""
+          ],
+          [
+            "Cost per unit =",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 58,
+      "sourcePage": 11,
+      "stem": "The 20% overhead charge is",
+      "options": [
+        "$140.00",
+        "$182.00",
+        "$222.00",
+        "$266.40"
+      ],
+      "contextText": "Items 56–58 refer to the following document.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Job No. 170",
+        "columns": [
+          "",
+          "Cost $"
+        ],
+        "rows": [
+          [
+            "CUSTOMER’S NAME:",
+            "Zina’s Upholstery"
+          ],
+          [
+            "JOB:",
+            "Twelve (12) Cushions"
+          ],
+          [
+            "TIME REQUIRED TO COMPLETE JOB:",
+            "Two (2) days"
+          ],
+          [
+            "MATERIALS NEEDED:",
+            ""
+          ],
+          [
+            "Fabric",
+            "600.00"
+          ],
+          [
+            "Sponge",
+            "250.00"
+          ],
+          [
+            "Thread",
+            "60.00"
+          ],
+          [
+            "LABOUR REQUIRED:",
+            ""
+          ],
+          [
+            "Stitcher",
+            "200.00"
+          ],
+          [
+            "Total Cost of Labour",
+            "200.00"
+          ],
+          [
+            "Add 20% for Overhead",
+            ""
+          ],
+          [
+            "Total Cost of Job",
+            ""
+          ],
+          [
+            "Cost per unit =",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 59,
+      "sourcePage": 12,
+      "stem": "It is now three months since you have applied for a job at a large firm and you have only received a letter of acknowledgement. What action should you now take in an effort to obtain the job?",
+      "options": [
+        "Write another letter of application.",
+        "Write a letter to follow up the application.",
+        "Telephone your friend who works with the firm.",
+        "Visit the company and ask to see the human resource manager."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2010-MJ",
+      "number": 60,
+      "sourcePage": 12,
+      "stem": "A letter of acceptance is sent when a person",
+      "options": [
+        "receives salary through the bank",
+        "plans to attend an interview for a job",
+        "agrees to take up an offer of appointment",
+        "receives original documents which were sent with an application"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1152 @@
+{
+  "paperId": "OA-P2-2019-MJ",
+  "reviewDate": "2026-10-30",
+  "reviewMethod": "Visual comparison with all 18 supplied PDF pages; original fixed text and blank response forms retained.",
+  "questions": {
+    "OA-P2-2019-MJ::1": {
+      "sourcePage": 2,
+      "sourcePages": [
+        2,
+        3,
+        4
+      ],
+      "layoutSourcePages": [
+        2,
+        3,
+        4
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2019-MJ::2": {
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        6,
+        7
+      ],
+      "layoutSourcePages": [
+        5,
+        6,
+        7
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2019-MJ::3": {
+      "sourcePage": 8,
+      "sourcePages": [
+        8,
+        9
+      ],
+      "layoutSourcePages": [
+        8,
+        9
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2019-MJ::4": {
+      "sourcePage": 10,
+      "sourcePages": [
+        10,
+        11,
+        12
+      ],
+      "layoutSourcePages": [
+        10,
+        11,
+        12
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2019-MJ::5": {
+      "sourcePage": 13,
+      "sourcePages": [
+        13,
+        14,
+        15
+      ],
+      "layoutSourcePages": [
+        13,
+        14,
+        15
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2019-MJ::6": {
+      "sourcePage": 16,
+      "sourcePages": [
+        16,
+        17,
+        18
+      ],
+      "layoutSourcePages": [
+        16,
+        17,
+        18
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    }
+  },
+  "parts": {
+    "OA-P2-2019-MJ::1::q1-a": {
+      "prompt": "Identify FOUR barriers to effective communication.\n(4 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2019-MJ::1::q1-b": {
+      "prompt": "List FOUR functions of the office in business activities.\n(4 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2019-MJ::1::q1-c": {
+      "prompt": "(i) Harry and Byles Ltd has been in operation for the past two years. At its annual\nretreat it was agreed that fostering good relationships with colleagues would\nsignificantly contribute to the ongoing success of the business.\nIdentify THREE measures that could be taken to contribute to better working\nrelationships among colleagues.\n(3 marks)\n(ii) You are secretary to Mr Roger Byles, director of administration, and he has\ninstructed you to draft a memorandum to all clerical staff informing them of the\nupcoming automation of mailing functions scheduled to begin on 17 June 2019.\nThere will be a meeting for all clerical staff on 29 May 2019 at 2 p.m., in the main\nconference room, to introduce the use of collating, folding and sealing machines.\nAll are expected to attend.\nThe secretary is to include TWO advantages of using these different machines.\nToday’s date is to be inserted.\nWrite the memorandum using the template below.",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3,
+        4
+      ],
+      "layoutSourcePages": [
+        3,
+        4
+      ],
+      "layoutVerified": true,
+      "documentTitle": "MEMORANDUM",
+      "fieldLayout": "stacked",
+      "table": {
+        "title": "MEMORANDUM",
+        "columns": [
+          "TO",
+          "FROM"
+        ],
+        "rows": [
+          [
+            "All Clerical Staff",
+            "Mr Roger Byles, Director of Administration"
+          ]
+        ]
+      },
+      "fields": [
+        {
+          "label": "(i) Measures for better working relationships",
+          "kind": "text"
+        },
+        {
+          "label": "DATE (Today’s date)",
+          "kind": "text"
+        },
+        {
+          "label": "SUBJECT",
+          "kind": "text"
+        },
+        {
+          "label": "Memorandum",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2019-MJ::2::q2-a": {
+      "prompt": "State THREE advantages of using the computer instead of microfilm to enhance the\ngeneral and specialized office work in the modern office.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2019-MJ::2::q2-b": {
+      "prompt": "List FOUR factors which should be considered when seeking employment.\n(4 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2019-MJ::2::q2-c": {
+      "prompt": "Melissa Jackman has been employed as a human resource clerk for the last five years\nwith Thomas and Brady Company Ltd, which is located at 200 Kings Court, Kingston,\nJamaica. She recently applied for an administrative assistant position at another company\nand was successful in securing that coveted job. Consequently, Melissa needs to write a\nletter of resignation to her current employer, giving adequate notice. Her resignation is\neffective as of 30 June 2019. Melissa should write the resignation letter to Mrs Monica\nSylverman, the human resource manager. Melissa resides at 100 Martin Place, Emerald\nCity, Spanish Town, St Catherine.\nCompose a resignation letter dated 31 May 2019 using the information above and any\nother relevant details.\n(8 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        7
+      ],
+      "layoutSourcePages": [
+        6,
+        7
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2019-MJ::3::q3-a": {
+      "prompt": "Assume you have been hired as the new receptionist at Michilen Manufacturing Co. Ltd.\nState THREE ways in which you, as the new receptionist, should deal with unscheduled\nvisitors to the office.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2019-MJ::3::q3-b": {
+      "prompt": "You are responsible for planning the firm’s annual general meeting. There are two\nattendees who have been designated ex-officio members.\n(i) State TWO responsibilities of the ex-officio members at that general meeting.\n(2 marks)\n(ii) State TWO important features of a hotel you should consider when making\nreservations for staff members travelling overseas on business.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2019-MJ::3::q3-c": {
+      "prompt": "Yanique Brooks was elected as the new secretary for the Students Upward Rising Club at\nthe Goldenrule High School located at 50 Robin Circle, Kingston. Members of the club\nare final year students planning for graduation.\nDraft a notice and agenda of a meeting scheduled to be held at the school, in Club Meeting\nRoom 5 on 1 June 2019 at 3:00 p.m. for all executive members of the club. Ensure that the\nagenda includes the topic, school leaving updates and any other necessary information.\n(8 marks)",
+      "promptVerified": true,
+      "sourcePage": 9,
+      "sourcePages": [
+        9
+      ],
+      "layoutSourcePages": [
+        9
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2019-MJ::4::q4-a": {
+      "prompt": "(i) State TWO staff evaluation/appraisal criteria that might be used for employee\nperformance assessment throughout an organization.\n(2 marks)\n(ii) Define the term ‘induction’ as used by human resource professionals.\n(2 marks)\n(iii) State TWO types of staff welfare facilities that might be provided by an\norganization to ensure the well-being of its employees.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 10,
+      "sourcePages": [
+        10,
+        11
+      ],
+      "layoutSourcePages": [
+        10,
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2019-MJ::4::q4-b": {
+      "prompt": "Sharona Belfonte was recently successful at an interview for the position of junior\nhuman resource supervisor with a newly established firm, Henderson and Biggerman\nCo. Ltd. The firm is in the process of drafting various documents for the human resource\ndepartment and Sharona is expected to contribute.\nSharona is asked to assist in drafting a job description for a human resource clerk who\nis under the supervision of the administrative manager. The clerk will be paid $4000 –\n$5000 per month.\nComplete the form provided below with the relevant information needed for a suitable\njob description for a human resource clerk. Be sure to use the current date. Marks will\nalso be awarded for the appropriateness of the content that you provide.",
+      "promptVerified": true,
+      "sourcePage": 11,
+      "sourcePages": [
+        11,
+        12
+      ],
+      "layoutSourcePages": [
+        11,
+        12
+      ],
+      "layoutVerified": true,
+      "documentTitle": "JOB DESCRIPTION",
+      "fieldLayout": "stacked",
+      "table": {
+        "title": "JOB DESCRIPTION",
+        "columns": [
+          "Job Title",
+          "Department"
+        ],
+        "rows": [
+          [
+            "Human Resource Clerk",
+            "Human Resource"
+          ]
+        ]
+      },
+      "fields": [
+        {
+          "label": "Salary Level",
+          "kind": "text"
+        },
+        {
+          "label": "Reports To",
+          "kind": "text"
+        },
+        {
+          "label": "Vacation Leave",
+          "kind": "text"
+        },
+        {
+          "label": "Benefits",
+          "kind": "text"
+        },
+        {
+          "label": "Job Summary (TWO points required)",
+          "kind": "text"
+        },
+        {
+          "label": "Duties and Responsibilities (TWO points required.)",
+          "kind": "text"
+        },
+        {
+          "label": "Current Date",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2019-MJ::5::q5-a": {
+      "prompt": "As part of a work experience programme in high school, students are assigned to work in\nthe accounts office of a firm, as accounts clerks.\n(i) State TWO functions of the accounts office that may be observed by a student on\nthe work experience programme.\n(2 marks)\n(ii) State TWO duties an accounts clerk is likely to be assigned.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 13,
+      "sourcePages": [
+        13
+      ],
+      "layoutSourcePages": [
+        13
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2019-MJ::5::q5-b": {
+      "prompt": "Your schoolmate has been assigned to work in the purchasing department.\nExplain why integrity is one of the attributes required of a clerk in the purchasing\ndepartment.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 13,
+      "sourcePages": [
+        13
+      ],
+      "layoutSourcePages": [
+        13
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2019-MJ::5::q5-c": {
+      "prompt": "Samples of four petty cash vouchers are shown below.\n\n(i) Record the transactions above in the petty cash book provided on page 17. Total all columns and balance the petty cash book at the end of the month, restoring the imprest to the beginning balance of $120.00. (7 marks)\n\n(ii) List TWO possible outcomes of not having petty cash funds. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 14,
+      "sourcePages": [
+        14,
+        15
+      ],
+      "layoutSourcePages": [
+        14,
+        15
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Petty Cash Vouchers",
+        "columns": [
+          "",
+          "No. 1",
+          "No. 2",
+          "No. 3",
+          "No. 4"
+        ],
+        "rows": [
+          [
+            "Date",
+            "5 March 2019",
+            "12 March 2019",
+            "20 March 2019",
+            "28 March 2019"
+          ],
+          [
+            "Required for",
+            "Cleaning supplies",
+            "Stamps",
+            "First-aid equipment",
+            "Envelopes"
+          ],
+          [
+            "Amount",
+            "$35.00",
+            "$13.00",
+            "$12.25",
+            "$15.00"
+          ],
+          [
+            "Signature",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Passed by",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "PETTY CASH BOOK",
+          "columns": [
+            "Cash Received $",
+            "Date (2019)",
+            "Details",
+            "Voucher No.",
+            "Total $",
+            "Postage $",
+            "Travel $",
+            "Stationery $",
+            "Sundries $"
+          ],
+          "rows": [
+            [
+              "150 00",
+              "3 March",
+              "Cash",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "4 March",
+              "1 ream paper",
+              "005",
+              "13 25",
+              "",
+              "",
+              "13 25",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "18 March",
+              "Taxi fare",
+              "008",
+              "45 00",
+              "",
+              "45 00",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "Balance c/d",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "150 00",
+              "",
+              "",
+              "",
+              "150 00",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "1 April",
+              "Balance b/d",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "1 April",
+              "Cash",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "details": [
+            "Dr: Cash Received. Cr: analysed payments."
+          ],
+          "editable": [
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              6,
+              5
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              7,
+              1
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              7,
+              3
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              7,
+              5
+            ],
+            [
+              7,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              7,
+              8
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              8,
+              1
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              8,
+              3
+            ],
+            [
+              8,
+              4
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ],
+            [
+              9,
+              0
+            ],
+            [
+              9,
+              1
+            ],
+            [
+              9,
+              3
+            ],
+            [
+              9,
+              4
+            ],
+            [
+              9,
+              5
+            ],
+            [
+              9,
+              6
+            ],
+            [
+              9,
+              7
+            ],
+            [
+              9,
+              8
+            ],
+            [
+              10,
+              1
+            ],
+            [
+              10,
+              2
+            ],
+            [
+              10,
+              3
+            ],
+            [
+              10,
+              5
+            ],
+            [
+              10,
+              6
+            ],
+            [
+              10,
+              7
+            ],
+            [
+              10,
+              8
+            ],
+            [
+              11,
+              0
+            ],
+            [
+              11,
+              3
+            ],
+            [
+              11,
+              4
+            ],
+            [
+              11,
+              5
+            ],
+            [
+              11,
+              6
+            ],
+            [
+              11,
+              7
+            ],
+            [
+              11,
+              8
+            ],
+            [
+              12,
+              0
+            ],
+            [
+              12,
+              3
+            ],
+            [
+              12,
+              4
+            ],
+            [
+              12,
+              5
+            ],
+            [
+              12,
+              6
+            ],
+            [
+              12,
+              7
+            ],
+            [
+              12,
+              8
+            ],
+            [
+              13,
+              0
+            ],
+            [
+              13,
+              1
+            ],
+            [
+              13,
+              2
+            ],
+            [
+              13,
+              3
+            ],
+            [
+              13,
+              4
+            ],
+            [
+              13,
+              5
+            ],
+            [
+              13,
+              6
+            ],
+            [
+              13,
+              7
+            ],
+            [
+              13,
+              8
+            ],
+            [
+              14,
+              0
+            ],
+            [
+              14,
+              1
+            ],
+            [
+              14,
+              2
+            ],
+            [
+              14,
+              3
+            ],
+            [
+              14,
+              4
+            ],
+            [
+              14,
+              5
+            ],
+            [
+              14,
+              6
+            ],
+            [
+              14,
+              7
+            ],
+            [
+              14,
+              8
+            ],
+            [
+              15,
+              0
+            ],
+            [
+              15,
+              1
+            ],
+            [
+              15,
+              2
+            ],
+            [
+              15,
+              3
+            ],
+            [
+              15,
+              4
+            ],
+            [
+              15,
+              5
+            ],
+            [
+              15,
+              6
+            ],
+            [
+              15,
+              7
+            ],
+            [
+              15,
+              8
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(ii) TWO possible outcomes",
+          "kind": "text",
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2019-MJ::6::q6-a": {
+      "prompt": "You are the marketing clerk for a large company.\nState THREE duties you must perform to help keep the marketing office running\nefficiently.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 16,
+      "sourcePages": [
+        16
+      ],
+      "layoutSourcePages": [
+        16
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2019-MJ::6::q6-b": {
+      "prompt": "Identify THREE functions in the transport office which the clerk is likely to perform.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 16,
+      "sourcePages": [
+        16
+      ],
+      "layoutSourcePages": [
+        16
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2019-MJ::6::q6-c": {
+      "prompt": "Your firm has suffered major negative publicity in recent months.\nDescribe THREE ways in which the upkeep of the company’s website can help to solve the\nproblem of a negative corporate image.\n(6 marks)",
+      "promptVerified": true,
+      "sourcePage": 17,
+      "sourcePages": [
+        17
+      ],
+      "layoutSourcePages": [
+        17
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2019-MJ::6::q6-d": {
+      "prompt": "Keeping customers happy also impacts on the corporate image of an organization.\nRecommend THREE actions that can be taken to maximize customer satisfaction.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 18,
+      "sourcePages": [
+        18
+      ],
+      "layoutSourcePages": [
+        18
+      ],
+      "layoutVerified": true
+    }
+  }
+}

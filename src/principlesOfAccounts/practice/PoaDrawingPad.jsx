@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useId, useRef, useState } from "react";
 
 function readStrokes(value) {
   try {
@@ -8,7 +8,8 @@ function readStrokes(value) {
   } catch { return []; }
 }
 
-export default function PoaDrawingPad({ response, onChange, disabled }) {
+export default function PoaDrawingPad({ response, onChange, disabled, graphPaper = false, drawingLabel = "Accounts diagram drawing area" }) {
+  const gridId = useId();
   const ref = useRef(null), active = useRef(false), previous = useRef(null);
   const [canUndo, setCanUndo] = useState(false);
   const strokes = readStrokes(response.parts?.["drawing:strokes"]);
@@ -39,12 +40,20 @@ export default function PoaDrawingPad({ response, onChange, disabled }) {
     if (Math.hypot(at[0] - last[0], at[1] - last[1]) < 1) return;
     update(paths.map((stroke, i) => i === paths.length - 1 ? [...stroke, at] : stroke));
   };
-  return <section className="poa-drawing-pad" aria-label="Diagram answer">
-    <h3>Your diagram</h3><p>Draw with a mouse, pen or finger. Add any labels or a written description below.</p>
-    <svg ref={ref} viewBox="0 0 800 420" role="img" aria-label="Accounts diagram drawing area" onPointerDown={start} onPointerMove={move} onPointerUp={() => { active.current = false; }} onPointerCancel={() => { active.current = false; }}>
+  return <section className="poa-drawing-pad" aria-label={graphPaper ? "Graph answer" : "Diagram answer"}>
+    <h3>{graphPaper ? "Your graph" : "Your diagram"}</h3><p>Draw with a mouse, pen or finger. Add any labels or a written description below.</p>
+    <svg ref={ref} viewBox="0 0 800 420" role="img" aria-label={graphPaper ? "Graph drawing area" : drawingLabel} onPointerDown={start} onPointerMove={move} onPointerUp={() => { active.current = false; }} onPointerCancel={() => { active.current = false; }}>
+      {graphPaper && <>
+        <defs>
+          <pattern id={gridId} width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M 20 0 H 0 V 20" fill="none" stroke="var(--poa-line)" strokeWidth="1.5"/>
+          </pattern>
+        </defs>
+        <rect width="800" height="420" fill={`url(#${gridId})`}/>
+      </>}
       {strokes.map((stroke, i) => stroke.length === 1 ? <circle key={i} cx={stroke[0][0]} cy={stroke[0][1]} r="1.2" fill="currentColor"/> : <polyline key={i} points={stroke.map((at) => at.join(",")).join(" ")} fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>)}
     </svg>
     {!disabled && <div className="poa-actions"><button type="button" className="secondary" disabled={!canUndo && !strokes.length} onClick={() => { update(previous.current || strokes.slice(0, -1)); previous.current = null; setCanUndo(false); }}>Undo</button><button type="button" className="secondary" disabled={!strokes.length} onClick={() => { previous.current = strokes; setCanUndo(true); update([]); }}>Clear drawing</button></div>}
-    <label>Diagram labels or description<textarea rows={4} disabled={disabled} value={response.parts?.["drawing:notes"] || ""} onChange={(e) => onChange({ ...response, parts: { ...response.parts, "drawing:notes": e.target.value } })}/></label>
+    <label>{graphPaper ? "Graph labels or description" : "Diagram labels or description"}<textarea rows={4} disabled={disabled} value={response.parts?.["drawing:notes"] || ""} onChange={(e) => onChange({ ...response, parts: { ...response.parts, "drawing:notes": e.target.value } })}/></label>
   </section>;
 }

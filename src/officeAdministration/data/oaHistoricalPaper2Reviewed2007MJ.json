@@ -1,0 +1,1069 @@
+{
+  "paperId": "OA-P2-2007-MJ",
+  "reviewDate": "2026-11-04",
+  "reviewMethod": "Visual comparison with all 10 supplied PDF pages. Native prompts, tables, FIFO and accident-report inserts checked. The comparative graph has a blank graph-paper answer area.",
+  "questions": {
+    "OA-P2-2007-MJ::1": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::2": {
+      "stem": "",
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::3": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::4": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4,
+        5
+      ],
+      "layoutSourcePages": [
+        4,
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::5": {
+      "stem": "",
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::6": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        9
+      ],
+      "layoutSourcePages": [
+        7,
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::7": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        10
+      ],
+      "layoutSourcePages": [
+        7,
+        10
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::8": {
+      "stem": "",
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2007-MJ::1::q1-a": {
+      "prompt": "(i) Give TWO reasons for the deployment of staff in an organisation. (2 marks)\n(ii) State TWO ways in which an employee may benefit from deployment. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::1::q1-b": {
+      "prompt": "List THREE physical objects that can contribute to ergonomics in the office. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::1::q1-c": {
+      "prompt": "You believe that your co-workers need to display positive attitudes in the workplace. Copy the table below in your answer booklet. Under EACH type of responsibility, state ONE activity that indicates how EACH of the positive attitudes listed can be demonstrated. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "Key positive attitudes",
+          "columns": [
+            "Key Positive Attitudes",
+            "Employee’s Responsibility",
+            "Employer’s Responsibility"
+          ],
+          "rows": [
+            [
+              "Team-spirit and cooperation",
+              "",
+              ""
+            ],
+            [
+              "Honesty",
+              "",
+              ""
+            ],
+            [
+              "Politeness",
+              "",
+              ""
+            ],
+            [
+              "Punctuality and regularity",
+              "",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Team-spirit and cooperation",
+            "Honesty",
+            "Politeness",
+            "Punctuality and regularity"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2007-MJ::2::q2-a": {
+      "prompt": "(i) Give ONE advantage and ONE disadvantage of using electronic mail (e-mail) as a means of communication in business. (2 marks)\n(ii) List THREE examples of visual forms of communication. (3 marks)\n(iii) State TWO barriers to effective communication. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::2::q2-b": {
+      "prompt": "You are Greta, the receptionist, at Ambit Marketing Services where an upgraded voice messaging system has been installed on the switchboard.\n\nMs. Chin, the Office Administrator, left the following note on your desk.\n\nDraft a message for the new voice messaging system using the instructions given in the note. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true,
+      "answerType": "document",
+      "table": {
+        "title": "Greta:",
+        "columns": [
+          ""
+        ],
+        "rows": [
+          [
+            "Please draft a message for the new voice messaging system. Organise the following information in the message so that when customers call they will hear it."
+          ],
+          [
+            "Instructions to record a message\nAction that will be taken by Ambit Marketing System\nName of the Company\nReason for recording a message\nThanking the caller\nA greeting"
+          ]
+        ]
+      }
+    },
+    "OA-P2-2007-MJ::3::q3-a": {
+      "prompt": "(i) List FOUR steps in the information cycle of an information management system. (4 marks)\n(ii) Identify THREE types of information that will be found in the records management system in a school. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::3::q3-b": {
+      "prompt": "(i) Copy the following table in your answer booklet. Use the format provided to write EACH of the following names in the boxes to show the correct indexing order. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "UNIT",
+          "columns": [
+            "Names",
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "rows": [
+            [
+              "Grenada Labour Surveys Department",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "The Daily Review, Jamaica",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Mary Samson-Hill",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Bank of the Caribbean",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Grenada Labour Surveys Department",
+            "The Daily Review, Jamaica",
+            "Mary Samson-Hill",
+            "Bank of the Caribbean"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(ii) Prepare the cross-reference sheet for Mary Sampson-Hill. (1 mark)",
+          "kind": "text",
+          "rows": 3,
+          "position": "after"
+        },
+        {
+          "label": "(iii) Arrange the THREE remaining names in alphabetical order. (3 marks)",
+          "kind": "text",
+          "rows": 4,
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2007-MJ::4::q4-a": {
+      "prompt": "State THREE ways in which employees, while working in reception and hospitality, could portray a positive image of the business. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::4::q4-b": {
+      "prompt": "Identify TWO categories of visitors to the Reception and Hospitality area. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::4::q4-c": {
+      "prompt": "List TWO steps that should be followed by the receptionist when cancelling an appointment. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::4::q4-d": {
+      "prompt": "Read the following advertisement which appeared in the Daily Spectrum Newspaper.\n\nUse the headings in the following table to develop a checklist of FOUR factors and considerations to help you make a decision about applying for the position. An example is done for you. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Office Assistant",
+        "columns": [
+          ""
+        ],
+        "rows": [
+          [
+            "Are you willing to take the challenge?"
+          ],
+          [
+            "A promising new organisation is seeking to fill a vacancy in its Marketing Customer Relations Division. The prospective candidate must have a vibrant personality and should be a hard-working team player. Competence in word processing skills and proficiency in oral and written communication will be an asset. Excellent salary and benefit package."
+          ],
+          [
+            "Address applications to the Human Resource Manager, 481 Haskins Road, Georgetown, Guyana."
+          ],
+          [
+            "Closing date for receipt of applications is June 30, 2007."
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "Checklist",
+          "columns": [
+            "Factors",
+            "Considerations",
+            "Yes",
+            "No"
+          ],
+          "rows": [
+            [
+              "What are my personal wishes?",
+              "To work in an office",
+              "✓",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Example",
+            "Your factors"
+          ],
+          "editable": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "inputRows": [
+            2,
+            8
+          ]
+        }
+      ]
+    },
+    "OA-P2-2007-MJ::5::q5-a": {
+      "prompt": "Identify THREE criteria that employers may use for short listing applicants for a job. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::5::q5-b": {
+      "prompt": "State THREE possible reasons for the dismissal of an employee from a job. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::5::q5-c": {
+      "prompt": "The human resource department of a service business provided the following data for the management report.\n\n(i) Given that there are 200 working days in a year, how many working days could be expected of the number of employees in 2005 and 2006? (2 marks)\n\n(ii) What percentage of working days was lost in each year? (4 marks)\n\n(iii) Draw the comparative graph to show the relationship between THE DAYS OF WORK LOST for the two years. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Staff employment",
+        "columns": [
+          "STAFF EMPLOYMENT",
+          "2005",
+          "2006"
+        ],
+        "rows": [
+          [
+            "Number of employees on staff",
+            "200",
+            "200"
+          ],
+          [
+            "Unauthorised sick leave",
+            "500",
+            "400"
+          ],
+          [
+            "Days lost due to industrial disputes",
+            "130",
+            "10"
+          ],
+          [
+            "Authorised sick leave",
+            "170",
+            "190"
+          ],
+          [
+            "Staff terminated",
+            "20",
+            "5"
+          ],
+          [
+            "Staff hired",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "fields": [
+        {
+          "label": "(i) Expected working days",
+          "kind": "text",
+          "rows": 4
+        },
+        {
+          "label": "(ii) Percentage of working days lost",
+          "kind": "text",
+          "rows": 4
+        }
+      ],
+      "graphPaper": true
+    },
+    "OA-P2-2007-MJ::6::q6-a": {
+      "prompt": "State THREE factors that the purchasing manager of a business should consider when ordering goods. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::6::q6-b": {
+      "prompt": "Give THREE reasons for keeping control of stock in a business. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::6::q6-c": {
+      "prompt": "The computer system at Marine Supplies Company Ltd updates its records when items are sold or placed on the shelves.\n\nAs purchasing clerk you use the record of transactions to prepare a quarterly report on the value of stock.\n\nOn the form provided, use the information in the table below to calculate the value of inventory using the FIFO method of stock valuation. (9 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        9
+      ],
+      "layoutSourcePages": [
+        7,
+        9
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Record of Transactions — For period May – August, 2007",
+        "columns": [
+          "RECEIPTS/PURCHASES",
+          "",
+          "ISSUES",
+          ""
+        ],
+        "rows": [
+          [
+            "AC-DC Motors",
+            "",
+            "AC-DC Motors",
+            ""
+          ],
+          [
+            "2007",
+            "",
+            "2007",
+            ""
+          ],
+          [
+            "May 5",
+            "5 @ $2 000",
+            "June 21",
+            "2"
+          ],
+          [
+            "June 17",
+            "3 @ $3 000",
+            "July 22",
+            "1"
+          ],
+          [
+            "July 21",
+            "2 @ $3 500",
+            "August 31",
+            "3"
+          ],
+          [
+            "August 10",
+            "2 @ $5 000",
+            "—",
+            "—"
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "MARINE SUPPLIES COMPANY — Record of Transactions FIFO Method",
+          "columns": [
+            "DATE",
+            "RECEIPTS",
+            "ISSUES",
+            "BALANCE",
+            "VALUE $"
+          ],
+          "rows": [
+            [
+              "May 5",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "June 17",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "June 21",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "July 21",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "July 22",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "August 10",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "August 31",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "May 5",
+            "June 17",
+            "June 21",
+            "July 21",
+            "July 22",
+            "August 10",
+            "August 31"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              6,
+              4
+            ]
+          ],
+          "details": [
+            "Purchasing Department",
+            "For Period May – August 2007",
+            "Item: AC-DC MOTORS"
+          ]
+        }
+      ]
+    },
+    "OA-P2-2007-MJ::7::q7-a": {
+      "prompt": "State TWO duties performed by clerical staff in the factory office. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::7::q7-b": {
+      "prompt": "List FOUR documents used in the despatch and transport of goods. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::7::q7-c": {
+      "prompt": "An accident occurred in the factory of Bronson Office Furniture Manufacturers Ltd. at 1500 hours on May 5, 2007. Mr Harry Khan was lifting planks of wood when they fell on his left foot. The Emergency Health Services ambulance was called and he was taken to the St Mary’s Hospital. This was the tenth accident for the year.\n\nOn the form provided, complete the accident report form so that the factory manager will sign it on his return to the office. (9 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        10
+      ],
+      "layoutSourcePages": [
+        7,
+        10
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "BRONSON OFFICE FURNITURE MANUFACTURERS LTD",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "Address",
+            "62 Harper Valley"
+          ],
+          [
+            "Phone",
+            "868-235-7786"
+          ],
+          [
+            "e-mail",
+            "Bronsonfurniture@dyson.com"
+          ]
+        ]
+      },
+      "documentTitle": "ACCIDENT REPORT",
+      "fields": [
+        {
+          "label": "Accident No.",
+          "kind": "text",
+          "rows": 2
+        },
+        {
+          "label": "Name of Employee",
+          "kind": "text",
+          "rows": 2
+        },
+        {
+          "label": "Date",
+          "kind": "text",
+          "rows": 2
+        },
+        {
+          "label": "Time",
+          "kind": "text",
+          "rows": 2
+        },
+        {
+          "label": "Description of Accident",
+          "kind": "text",
+          "rows": 8
+        },
+        {
+          "label": "Action Taken",
+          "kind": "text",
+          "rows": 2
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Production Manager",
+          "columns": [
+            ""
+          ],
+          "rows": [
+            [
+              ""
+            ]
+          ],
+          "editable": []
+        }
+      ]
+    },
+    "OA-P2-2007-MJ::8::q8-a": {
+      "prompt": "List THREE factors that must be considered when organising promotional activities for a specific target market. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::8::q8-b": {
+      "prompt": "Identify THREE persons that the marketing clerk may work with to generate suitable packaging designs to promote their products. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2007-MJ::8::q8-c": {
+      "prompt": "Walter and Chris work for the same company. Use the information provided below to calculate:\n\n(i) their gross pay; and\n(ii) net wages for one week. (9 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Walter and Chris — Pay details",
+        "columns": [
+          "NAMES",
+          "HOURLY RATE OF PAY",
+          "BASIC HOURS WORKED",
+          "OVERTIME AT TIME AND A HALF",
+          "COMMISSION EARNED",
+          "NATIONAL INSURANCE DEDUCTIONS FROM GROSS PAY"
+        ],
+        "rows": [
+          [
+            "Walter",
+            "$10.00",
+            "40",
+            "5 hours",
+            "2% of $50,000",
+            "5%"
+          ],
+          [
+            "Chris",
+            "$20.00",
+            "39",
+            "7 hours",
+            "–",
+            "5%"
+          ]
+        ]
+      },
+      "fields": [
+        {
+          "label": "(i) Gross pay",
+          "kind": "text",
+          "rows": 6
+        },
+        {
+          "label": "(ii) Net wages for one week",
+          "kind": "text",
+          "rows": 6
+        }
+      ]
+    }
+  }
+}

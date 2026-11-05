@@ -1,0 +1,1368 @@
+{
+  "paperId": "OA-P2-2022-MJ",
+  "reviewDate": "2026-10-29",
+  "reviewMethod": "Visual comparison with all 22 supplied pages, including handwritten-style source notes and sideways forms; native question text and editable forms.",
+  "questions": {
+    "OA-P2-2022-MJ::1": {
+      "sourcePages": [
+        2,
+        3
+      ],
+      "sourcePage": 2,
+      "layoutSourcePages": [
+        2,
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2022-MJ::2": {
+      "sourcePages": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "sourcePage": 5,
+      "layoutSourcePages": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2022-MJ::3": {
+      "sourcePages": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourcePage": 9,
+      "layoutSourcePages": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2022-MJ::4": {
+      "sourcePages": [
+        13,
+        14,
+        15
+      ],
+      "sourcePage": 13,
+      "layoutSourcePages": [
+        13,
+        14,
+        15
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2022-MJ::5": {
+      "sourcePages": [
+        16,
+        17
+      ],
+      "sourcePage": 16,
+      "layoutSourcePages": [
+        16,
+        17
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2022-MJ::6": {
+      "sourcePages": [
+        19,
+        20,
+        21,
+        22
+      ],
+      "sourcePage": 19,
+      "layoutSourcePages": [
+        19,
+        20,
+        21,
+        22
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2022-MJ::1::q1-a": {
+      "prompt": "A job description provides valuable information to the applicant. Apart from the job title, identify FOUR other items of information that would be found in a job description.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        2
+      ],
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ]
+    },
+    "OA-P2-2022-MJ::1::q1-b": {
+      "prompt": "State FOUR reasons why it is important to have a well written résumé when applying for a job.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        2
+      ],
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ]
+    },
+    "OA-P2-2022-MJ::1::q1-c": {
+      "prompt": "(i) The list below provides the names of persons who applied for positions in an organization.\n\n• Marie Rose Allay\n• Mr R. Al\n• H. D. Alley\n• Dr O. Ali\n\nRewrite the names in the correct indexing order. The first name has been inserted. (3 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        3
+      ],
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "responseTables": [
+        {
+          "title": "Indexing Order (Surnames first)",
+          "columns": [
+            "Unit 1",
+            "Unit 2",
+            "Unit 3"
+          ],
+          "rows": [
+            [
+              "Allay",
+              "Marie",
+              "Rose"
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ],
+          "details": [
+            "(ii) The following list of applicants has already been indexed. Arrange the names in alphabetical filing order.\n• J. M. Simmons\n• Shani A. McIntosh\n• Giselle P. O’Toole\n• Anna S. Mayers-Hamilton\n(4 marks)"
+          ]
+        },
+        {
+          "title": "Alphabetical Filing Order",
+          "columns": [
+            "Unit 1",
+            "Unit 2",
+            "Unit 3"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        }
+      ],
+      "subpartMarks": [
+        {
+          "label": "(i)",
+          "marks": 3
+        },
+        {
+          "label": "(ii)",
+          "marks": 4
+        }
+      ]
+    },
+    "OA-P2-2022-MJ::2::q2-a": {
+      "prompt": "A main function of the office in an organization is to disseminate information. Identify THREE channels of communication by which information can be disseminated.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        5
+      ],
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ]
+    },
+    "OA-P2-2022-MJ::2::q2-b": {
+      "prompt": "State TWO ways in which photocopying documents in a central location could be advantageous to an organization.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        5
+      ],
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ]
+    },
+    "OA-P2-2022-MJ::2::q2-c": {
+      "prompt": "State TWO items of information found in the notice of a meeting.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        5
+      ],
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ]
+    },
+    "OA-P2-2022-MJ::2::q2-d": {
+      "prompt": "A general meeting of the student council of First Class Centre was held on Wednesday, 4 May 2022. The following notes were written during the meeting.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        6,
+        7,
+        8
+      ],
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        7,
+        8
+      ],
+      "table": {
+        "title": "Notes from meeting",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "Meeting was held in the Business department meeting room. Started at 3:00 pm",
+            ""
+          ],
+          [
+            "Meeting ended at 5 pm; will meet again on Wed 18 May 2022 at the same time",
+            ""
+          ],
+          [
+            "A thank you letter was received regarding donations to the Place of Safety Children’s Home",
+            ""
+          ],
+          [
+            "Register",
+            ""
+          ],
+          [
+            "Tomas Browne",
+            "Mable Gray - called to say she could not attend"
+          ],
+          [
+            "Dahlia Heaven - Chair",
+            "Winston Lowe"
+          ],
+          [
+            "Khalil Mohammed",
+            "Nadia White"
+          ],
+          [
+            "The Chair performed her usual duties at the beginning of the meeting.",
+            ""
+          ],
+          [
+            "Outstanding information from the previous meeting was read - the report for the first quarter was sent to the principal",
+            ""
+          ],
+          [
+            "Many relevant discussions took place about the annual fair - cost of posters to advertise the fair; sample posters were submitted; location of fair finalized; agreed to cost of admission to fair",
+            ""
+          ],
+          [
+            "Members were asked if they had anything else to contribute to the discussions. Winston Lowe offered to print the tickets for the fair.",
+            ""
+          ]
+        ],
+        "merges": [
+          {
+            "row": 0,
+            "col": 0,
+            "colSpan": 2
+          },
+          {
+            "row": 1,
+            "col": 0,
+            "colSpan": 2
+          },
+          {
+            "row": 2,
+            "col": 0,
+            "colSpan": 2
+          },
+          {
+            "row": 3,
+            "col": 0,
+            "colSpan": 2
+          },
+          {
+            "row": 7,
+            "col": 0,
+            "colSpan": 2
+          },
+          {
+            "row": 8,
+            "col": 0,
+            "colSpan": 2
+          },
+          {
+            "row": 9,
+            "col": 0,
+            "colSpan": 2
+          },
+          {
+            "row": 10,
+            "col": 0,
+            "colSpan": 2
+          }
+        ],
+        "details": [
+          "Using suitable headings, write the minutes of the meeting from the notes given on page 8."
+        ]
+      },
+      "answerType": "document"
+    },
+    "OA-P2-2022-MJ::3::q3-a": {
+      "prompt": "State FOUR attributes that a receptionist should possess.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        9
+      ],
+      "sourcePage": 9,
+      "sourcePages": [
+        9
+      ]
+    },
+    "OA-P2-2022-MJ::3::q3-b": {
+      "prompt": "In large organizations, management sometimes assigns employees to work in different departments within the same organization. State THREE reasons why management may take this action.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        9
+      ],
+      "sourcePage": 9,
+      "sourcePages": [
+        9
+      ]
+    },
+    "OA-P2-2022-MJ::3::q3-c": {
+      "prompt": "Andrea Gayle, who resides in Barbados, was invited to a conference in Washington DC. The conference is scheduled to commence on Monday, 6 June at 1:00 p.m.\n\nTwo travel itineraries, Option A and Option B, for the flight from Barbados to Washington DC are shown below.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        10,
+        11,
+        12
+      ],
+      "sourcePage": 10,
+      "sourcePages": [
+        10,
+        11,
+        12
+      ],
+      "tables": [
+        {
+          "title": "Option A",
+          "columns": [
+            "",
+            "Sunday, 5 June",
+            "Monday, 6 June",
+            "In-flight service",
+            "Cost"
+          ],
+          "rows": [
+            [
+              "JV235\nDepart",
+              "Barbados\nat 5:11 p.m.",
+              "",
+              "Dinner\nincluded",
+              "US$860"
+            ],
+            [
+              "Arrive",
+              "Miami\nat 9:11 p.m.",
+              "",
+              "",
+              ""
+            ],
+            [
+              "JV238\nDepart",
+              "Miami\nat 11:15 p.m.",
+              "",
+              "Sandwich with\ncoffee/tea/juice\nincluded",
+              "US$550"
+            ],
+            [
+              "Arrive",
+              "",
+              "Washington DC\nat 1:15 a.m.",
+              "",
+              ""
+            ]
+          ],
+          "merges": [
+            {
+              "row": 0,
+              "col": 2,
+              "rowSpan": 2
+            },
+            {
+              "row": 0,
+              "col": 3,
+              "rowSpan": 2
+            },
+            {
+              "row": 0,
+              "col": 4,
+              "rowSpan": 2
+            },
+            {
+              "row": 2,
+              "col": 3,
+              "rowSpan": 2
+            },
+            {
+              "row": 2,
+              "col": 4,
+              "rowSpan": 2
+            }
+          ]
+        },
+        {
+          "title": "Option B",
+          "columns": [
+            "",
+            "Sunday, 5 June",
+            "Monday, 6 June",
+            "In-flight service",
+            "Cost"
+          ],
+          "rows": [
+            [
+              "VJ195\nDepart",
+              "Barbados\nat 10:10 a.m.",
+              "",
+              "Snacks available\nfor purchase",
+              "US$650"
+            ],
+            [
+              "Arrive",
+              "Miami\nat 2:15 p.m.",
+              "",
+              "",
+              ""
+            ],
+            [
+              "VJ198\nDepart",
+              "",
+              "Miami\nat 6:18 a.m.",
+              "Breakfast\nincluded",
+              "US$480"
+            ],
+            [
+              "Arrive",
+              "",
+              "Washington DC\nat 8:20 a.m.",
+              "",
+              ""
+            ]
+          ],
+          "merges": [
+            {
+              "row": 0,
+              "col": 2,
+              "rowSpan": 2
+            },
+            {
+              "row": 0,
+              "col": 3,
+              "rowSpan": 2
+            },
+            {
+              "row": 0,
+              "col": 4,
+              "rowSpan": 2
+            },
+            {
+              "row": 2,
+              "col": 1,
+              "rowSpan": 2
+            },
+            {
+              "row": 2,
+              "col": 3,
+              "rowSpan": 2
+            },
+            {
+              "row": 2,
+              "col": 4,
+              "rowSpan": 2
+            }
+          ],
+          "details": [
+            "Assume you are Kabir Patel, the travel clerk. Prepare a memorandum to Ms Gayle explaining TWO benefits of EACH option."
+          ]
+        }
+      ],
+      "documentTitle": "MEMORANDUM",
+      "fields": [
+        {
+          "label": "TO",
+          "kind": "text"
+        },
+        {
+          "label": "DATE (Current date)",
+          "kind": "text"
+        },
+        {
+          "label": "FROM",
+          "kind": "text"
+        },
+        {
+          "label": "SUBJECT",
+          "kind": "text"
+        },
+        {
+          "label": "Message",
+          "kind": "text",
+          "rows": 8
+        }
+      ]
+    },
+    "OA-P2-2022-MJ::4::q4-a": {
+      "prompt": "Suggest TWO functions of the human resource office.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        13
+      ],
+      "sourcePage": 13,
+      "sourcePages": [
+        13
+      ]
+    },
+    "OA-P2-2022-MJ::4::q4-b": {
+      "prompt": "Outline TWO factors that might contribute to high employee turnover in an organization.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        13
+      ],
+      "sourcePage": 13,
+      "sourcePages": [
+        13
+      ]
+    },
+    "OA-P2-2022-MJ::4::q4-c": {
+      "prompt": "Mega Stores Limited provides goods and services to O & M Enterprises located at 101 Brunswick Street, Spanish Town. The following transactions took place during May 2022.\n\n2 May: Balance on account was $2 500.00\n\nO & M Enterprises made the following payments:\n6 May: Cheque #101 $750.00\n9 May: Cheque #102 $250.00\n\n16 May: Issued Credit Note #10 ($45.00) for the return of defective goods\n20 May: Issued Invoice #25 for items purchased, valued at $1 800.00\n23 May: Issued Invoice #26 for items purchased, valued at $1 200.00\n\nA 10% special discount is given if payment is made before 30 June 2022.\n\n(i) Use the form provided on page 17 to prepare a Statement of Account for O & M Enterprises. (7 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        14,
+        15
+      ],
+      "sourcePage": 14,
+      "sourcePages": [
+        14,
+        15
+      ],
+      "table": {
+        "title": "STATEMENT OF ACCOUNT",
+        "columns": [
+          "Mega Stores Limited"
+        ],
+        "rows": [
+          [
+            "101 Sovereign Centre"
+          ],
+          [
+            "Kingston 5"
+          ],
+          [
+            "Tel.: 876 965 3040"
+          ]
+        ],
+        "details": [
+          "Terms: 10% within 30 days"
+        ]
+      },
+      "documentTitle": "STATEMENT OF ACCOUNT",
+      "fields": [
+        {
+          "label": "To",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Date (Current date)",
+          "kind": "text"
+        },
+        {
+          "label": "(ii) Using the terms provided on the statement, calculate the amount that O & M Enterprises would be required to pay if the account is settled before 15 June 2022. (Show all working.) (2 marks)",
+          "kind": "text",
+          "position": "after",
+          "rows": 6
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Statement entries",
+          "columns": [
+            "DATE",
+            "DETAILS",
+            "DR",
+            "CR",
+            "BALANCE"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              5,
+              4
+            ]
+          ]
+        }
+      ],
+      "sourceFormNotes": "The original body has unruled columns; six editable entry rows accommodate its six given transactions. No calculated values are prefilled.",
+      "subpartMarks": [
+        {
+          "label": "(i)",
+          "marks": 7
+        },
+        {
+          "label": "(ii)",
+          "marks": 2
+        }
+      ]
+    },
+    "OA-P2-2022-MJ::5::q5-a": {
+      "prompt": "Explain EACH of the following terms as they relate to the purchasing of goods.\n\n(i) CIF (cost, insurance and freight) (2 marks)\n\n(ii) E & OE (errors and omissions excepted) (2 marks)",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        16
+      ],
+      "sourcePage": 16,
+      "sourcePages": [
+        16
+      ]
+    },
+    "OA-P2-2022-MJ::5::q5-b": {
+      "prompt": "Differentiate between the terms ‘quantity discount’ and ‘cash discount’.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        16
+      ],
+      "sourcePage": 16,
+      "sourcePages": [
+        16
+      ]
+    },
+    "OA-P2-2022-MJ::5::q5-c": {
+      "prompt": "(i) Bali’s Construction Co. Ltd purchased five chairs from Office Max and received the following invoice.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        17
+      ],
+      "sourcePage": 17,
+      "sourcePages": [
+        17
+      ],
+      "documentTitle": "INVOICE #900",
+      "responseTables": [
+        {
+          "title": "INVOICE #900",
+          "columns": [
+            "Quantity",
+            "Description",
+            "Cat. No.",
+            "Unit Price",
+            "Total ($)"
+          ],
+          "rows": [
+            [
+              "5",
+              "Ergonomic\noffice chair",
+              "EC1",
+              "$670",
+              ""
+            ],
+            [
+              "1",
+              "Paper\nshredder",
+              "PS5",
+              "$450",
+              ""
+            ],
+            [
+              "TOTAL COST OF ITEMS",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "merges": [
+            {
+              "row": 2,
+              "col": 0,
+              "colSpan": 4,
+              "align": "right"
+            }
+          ],
+          "editable": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "details": [
+            "Terms: Add 15% VAT",
+            "Calculate the final amount that Bali’s Construction Co. Ltd will have to pay. (5 marks)"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "Calculation and final amount",
+          "kind": "text",
+          "position": "after",
+          "rows": 5
+        },
+        {
+          "label": "(ii) After three days, one of the new chairs malfunctioned. Explain TWO actions that the customer service clerk at Office Max should take to ensure that the complaints are addressed effectively. (4 marks)",
+          "kind": "text",
+          "position": "after",
+          "rows": 6
+        }
+      ],
+      "subpartMarks": [
+        {
+          "label": "(i)",
+          "marks": 5
+        },
+        {
+          "label": "(ii)",
+          "marks": 4
+        }
+      ]
+    },
+    "OA-P2-2022-MJ::6::q6-a": {
+      "prompt": "Suggest THREE functions of the operations office.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        19
+      ],
+      "sourcePage": 19,
+      "sourcePages": [
+        19
+      ]
+    },
+    "OA-P2-2022-MJ::6::q6-b": {
+      "prompt": "State THREE duties of a clerk in a despatch office.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        19
+      ],
+      "sourcePage": 19,
+      "sourcePages": [
+        19
+      ]
+    },
+    "OA-P2-2022-MJ::6::q6-c": {
+      "prompt": "(i) Assume you are Jalisa Bacchus, a clerk for the despatch and transport office at Eco Friendly Supplies Limited. Mr Shane Denny, the supervisor, sent you the following email outlining the deliveries to be made.",
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-29",
+      "layoutSourcePages": [
+        20,
+        21,
+        22
+      ],
+      "sourcePage": 20,
+      "sourcePages": [
+        20,
+        21,
+        22
+      ],
+      "table": {
+        "title": "EMAIL",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "TO",
+            "JBacchus@hotmail.com"
+          ],
+          [
+            "SUBJECT",
+            "Deliveries"
+          ],
+          [
+            "DATE",
+            "5 May 2022"
+          ],
+          [
+            "Jalisa",
+            ""
+          ],
+          [
+            "An order for 100 black garbage bags was received from BJ Plumbing, located on River Street, and Woody’s Pizzeria — the restaurant on Church Street — ordered 150 pizza boxes (12 inch).",
+            ""
+          ],
+          [
+            "Ask Cindy Bieber to take the orders in the minivan, GL 297. Romario Greene can accompany her. The businesses, both 8 km away, are on adjacent streets in Roseau.",
+            ""
+          ],
+          [
+            "The deliveries are to be made tomorrow. The pizza boxes must be delivered before 11 a.m.",
+            ""
+          ],
+          [
+            "Regards\nMr Denny",
+            ""
+          ]
+        ],
+        "merges": [
+          {
+            "row": 3,
+            "col": 0,
+            "colSpan": 2
+          },
+          {
+            "row": 4,
+            "col": 0,
+            "colSpan": 2
+          },
+          {
+            "row": 5,
+            "col": 0,
+            "colSpan": 2
+          },
+          {
+            "row": 6,
+            "col": 0,
+            "colSpan": 2
+          },
+          {
+            "row": 7,
+            "col": 0,
+            "colSpan": 2
+          }
+        ],
+        "details": [
+          "Using the details provided in the email, complete the Destination Sheet on page 23. (6 marks)"
+        ]
+      },
+      "documentTitle": "DESTINATION SHEET — Eco Friendly Supplies Ltd, Main Street, Santa Cruz",
+      "responseTables": [
+        {
+          "title": "Vehicle and delivery details",
+          "columns": [
+            "Details",
+            "Entry"
+          ],
+          "rows": [
+            [
+              "Class of vehicle",
+              ""
+            ],
+            [
+              "Date",
+              "5 May 2022"
+            ],
+            [
+              "Vehicle registration number",
+              ""
+            ],
+            [
+              "Delivery date",
+              "6 May 2022"
+            ],
+            [
+              "Driver’s name",
+              ""
+            ],
+            [
+              "Destination",
+              ""
+            ],
+            [
+              "Mate’s name",
+              ""
+            ],
+            [
+              "Distance",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "Class of vehicle",
+            "Date",
+            "Vehicle registration number",
+            "Delivery date",
+            "Driver’s name",
+            "Destination",
+            "Mate’s name",
+            "Distance"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              7,
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Deliveries",
+          "columns": [
+            "Customer’s Name",
+            "Customer’s Address",
+            "Type of Goods",
+            "Quantity and Description",
+            "Comments"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "Supervisor",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "(ii) While preparing the order for delivery, Ms Bacchus recognized that there were only 90 pizza boxes in stock. Describe the most appropriate action to be taken by Ms Bacchus. (3 marks)",
+          "kind": "text",
+          "position": "after",
+          "rows": 6
+        }
+      ],
+      "subpartMarks": [
+        {
+          "label": "(i)",
+          "marks": 6
+        },
+        {
+          "label": "(ii)",
+          "marks": 3
+        }
+      ]
+    }
+  }
+}

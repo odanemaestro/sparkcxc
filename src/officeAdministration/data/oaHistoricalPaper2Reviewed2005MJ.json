@@ -1,0 +1,997 @@
+{
+  "paperId": "OA-P2-2005-MJ",
+  "reviewDate": "2026-11-04",
+  "reviewMethod": "Visually checked all ten supplied PDF pages. Rebuilt the cards and statements as text and the requisition and cheque as editable forms. The supplied cheque header points to 8(b)(ii), while the cheque task is 8(c)(ii).",
+  "questions": {
+    "OA-P2-2005-MJ::1": {
+      "stem": "The department in which you are a purchasing clerk consists of a general manager and her secretary; an accountant/buyer who reports to the general manager. The purchasing clerk, accounts clerk and payroll clerk are all in the same salary range. The secretary coordinates the duties of the office attendant.",
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::2": {
+      "stem": "You were asked to assist the manager who will be travelling to a meeting overseas. In making the accommodation arrangements with the hotel, it is important that the communication be in a written format.",
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::3": {
+      "stem": "After a successful interview you received the following letter:\n\nWAREHOUSING LTD\nMatherson Avenue, Fallaway, St. Vincent\n\nJune 15, 2005\n\nJade Hackshaw\n27 Cedar Hill\nSoufriere\nSt. Vincent\n\nDear Jade\n\nI am pleased to offer you a position with WAREHOUSING LTD as an Inventory Clerk in the Stores Department as of July 1, 2005.\n\nYou will report directly to Mr. Matthew, the Warehouse Manager, at 8:00 a.m. Your appointment is at Grade III on the salary scale. Your gross salary will be EC$24 000 annually. You will be paid on a monthly basis. In addition you will be entitled to sixteen (16) days paid annual vacation leave.\n\nI am confident that you will make an excellent addition to the firm, and therefore I bid you welcome.\n\nShould you have any questions, please do not hesitate to call me.\n\nSincerely,\n\nPetra Joinville\n\nHuman Resource Manager",
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true,
+      "preserveStemLines": true
+    },
+    "OA-P2-2005-MJ::4": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::5": {
+      "stem": "",
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        9
+      ],
+      "layoutSourcePages": [
+        5,
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::6": {
+      "stem": "",
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        6
+      ],
+      "layoutSourcePages": [
+        5,
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::7": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::8": {
+      "stem": "",
+      "sourcePage": 8,
+      "sourcePages": [
+        8,
+        10
+      ],
+      "layoutSourcePages": [
+        8,
+        10
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2005-MJ::1::q1-a": {
+      "prompt": "Draw an organization chart to show the relationships in the department. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true,
+      "documentTitle": "Organization chart",
+      "freeDrawing": true
+    },
+    "OA-P2-2005-MJ::1::q1-b": {
+      "prompt": "Minutes must be taken at each departmental meeting.\n\n(i) List THREE details that must be included in the minutes. (3 marks)\n(ii) Identify FOUR follow-up activities that must be completed BEFORE the minutes are circulated to members. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::2::q2-a": {
+      "prompt": "List THREE ways of sending the written communication to the hotel. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::2::q2-b": {
+      "prompt": "List FOUR payment systems the manager may use to pay for transactions overseas. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::2::q2-c": {
+      "prompt": "Your firm has just hired a switchboard operator who has to be trained. Your supervisor knows that you have studied communication in your Office Procedures classes and has asked for your assistance.\n\nPrepare a list of EIGHT points that will assist the operator to effectively manage telephone calls. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::3::q3-a": {
+      "prompt": "Write a letter of acceptance in response to the offer. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2005-MJ::3::q3-b": {
+      "prompt": "List FOUR skills that an inventory clerk would need to perform competently in the job. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::3::q3-c": {
+      "prompt": "Explain the importance of an Out Card placed in a file, to someone who wants to borrow that file. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::4::q4-a": {
+      "prompt": "Describe the procedure the receptionist should follow in EACH of the situations listed below:\n\n(i) Making appointments for a client to meet with an executive. (4 marks)\n(ii) Receiving letters and parcels (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::4::q4-b": {
+      "prompt": "In your answer booklet arrange the following business cards\n\n(i) In alphabetical order (4 marks)\n(ii) By subject (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true,
+      "tables": [
+        {
+          "title": "WAREHOUSING LTD",
+          "columns": [
+            ""
+          ],
+          "rows": [
+            [
+              "125 Maple Street"
+            ],
+            [
+              "Kingston 7, JA"
+            ],
+            [
+              "John Evans"
+            ],
+            [
+              "STORAGE SPACE"
+            ],
+            [
+              "SALES & RENTALS"
+            ],
+            [
+              "Tel: 876-928-3617"
+            ],
+            [
+              "Fax: 876-123-4564"
+            ],
+            [
+              "E-mail: warehouse@WAR.org"
+            ]
+          ]
+        },
+        {
+          "title": "DYNAMIC WORKPLACE INC",
+          "columns": [
+            ""
+          ],
+          "rows": [
+            [
+              "16 Trendy Avenue"
+            ],
+            [
+              "Kingstown, St. Vincent"
+            ],
+            [
+              "RESEARCH CONSULTANTS"
+            ],
+            [
+              "Tel: 756-721-7717"
+            ],
+            [
+              "Fax: 756-485-2361"
+            ],
+            [
+              "E-mail: dynawo@DYN.Net.SV"
+            ]
+          ]
+        },
+        {
+          "title": "MODERN OFFICE LTD",
+          "columns": [
+            ""
+          ],
+          "rows": [
+            [
+              "2 Bayview Towers"
+            ],
+            [
+              "Lands End, St. Lucia"
+            ],
+            [
+              "OFFICE SUPPLIES"
+            ],
+            [
+              "Tel: 758-452-4386"
+            ],
+            [
+              "Fax: 758-468-4302"
+            ],
+            [
+              "E-mail: modof@SLU.net"
+            ]
+          ]
+        },
+        {
+          "title": "WILLIS OFFICE SUPPLIES LTD",
+          "columns": [
+            ""
+          ],
+          "rows": [
+            [
+              "126 Juan Christo Calle"
+            ],
+            [
+              "Belmopan, Belize"
+            ],
+            [
+              "OFFICE HARDWARE"
+            ],
+            [
+              "Tel: 501-362-1111"
+            ],
+            [
+              "Fax: 501-362-1113"
+            ],
+            [
+              "E-mail: wilos@LTD.BZ"
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(i) In alphabetical order",
+          "kind": "text"
+        },
+        {
+          "label": "(ii) By subject",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2005-MJ::5::q5-a": {
+      "prompt": "(i) State THREE ways in which an individual may benefit from an appraisal interview with his or her supervisor. (3 marks)\n(ii) Identify THREE records used specifically in the Human Resource Department. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::5::q5-b": {
+      "prompt": "On May 31, 2005 the Business Department of Marlie High School submitted a purchase requisition for three standard teachers’ desks and three swivel chairs from Willis Office Supplies Ltd. The catalogue numbers were D4 and SC3 respectively. The requisition was prepared by A. Cape, authorized by B. Sect and approved by C. Prof.\n\n(i) Use the information above to complete the Purchase Requisition form provided. (7 marks)\n(ii) Explain the difference between a ‘Purchase Requisition’ and a ‘Stock Requisition’. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        9
+      ],
+      "layoutSourcePages": [
+        5,
+        9
+      ],
+      "layoutVerified": true,
+      "documentTitle": "PURCHASE REQUISITION",
+      "fields": [
+        {
+          "label": "Name",
+          "kind": "text"
+        },
+        {
+          "label": "Dept.",
+          "kind": "text"
+        },
+        {
+          "label": "Date",
+          "kind": "text"
+        },
+        {
+          "label": "To",
+          "kind": "text"
+        },
+        {
+          "label": "Authorized by",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "Job Title",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "Approved by",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "Received by Purchasing",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "(ii) Difference",
+          "kind": "text",
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Requisition #",
+          "columns": [
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "REQUISITION #",
+              "10"
+            ]
+          ],
+          "editable": []
+        },
+        {
+          "title": "Please order the following:",
+          "columns": [
+            "QTY",
+            "CODE",
+            "DESCRIPTION",
+            "SUPPLIER"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2005-MJ::6::q6-a": {
+      "prompt": "A contract of employment was given to you when you joined the firm as an accounts clerk. List FOUR terms or conditions that would be outlined in such a document. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::6::q6-b": {
+      "prompt": "One of your first responsibilities in the Accounts Department is to respond to ALL issues relating to debit and credit notes.\n\nReproduce the following table in your examination booklet. Identify ONE condition for issuing EACH of the documents listed in the table. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "Debit and credit notes",
+          "columns": [
+            "Debit Notes",
+            "Credit Notes"
+          ],
+          "rows": [
+            [
+              "1",
+              "1"
+            ]
+          ],
+          "preserveGiven": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2005-MJ::6::q6-c": {
+      "prompt": "From the information given below, determine the value of the closing stock at May 30, 2005, using the First In First Out method of stock valuation. You are required to show all working in your answer booklet. (9 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "STOCK RECORD CARD",
+        "details": [
+          "WAREHOUSING LTD",
+          "A4 Paper, White",
+          "Maximum Level 100",
+          "Minimum Level 30"
+        ],
+        "columns": [
+          "Purchases · Date 2005",
+          "Quantity",
+          "Unit Price",
+          "Sales · Date 2005",
+          "Quantity"
+        ],
+        "rows": [
+          [
+            "May 1",
+            "b/f 60",
+            "$8.00",
+            "",
+            ""
+          ],
+          [
+            "May 4",
+            "40",
+            "$8.00",
+            "May 6",
+            "50"
+          ],
+          [
+            "May 14",
+            "70",
+            "$9.00",
+            "May 9",
+            "20"
+          ],
+          [
+            "May 24",
+            "70",
+            "$10.00",
+            "May 18",
+            "20"
+          ],
+          [
+            "",
+            "",
+            "",
+            "May 25",
+            "60"
+          ]
+        ]
+      }
+    },
+    "OA-P2-2005-MJ::7::q7-a": {
+      "prompt": "One of the functions of the Factory Office is to ensure that the cost of the finished product is reliably established if a business is to make a profit. List FOUR factors that should be considered in the costing of finished goods. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::7::q7-b": {
+      "prompt": "Examine the excerpts from the Cash Book and bank statement listed below and answer the following questions:\n\n(i) Explain what is meant by the May 1 balance in the bank statement. (2 marks)\n(ii) Revise the cash book balance. (3 marks)\n(iii) Prepare the bank reconciliation statement at May 31, 2005. (6 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true,
+      "tables": [
+        {
+          "title": "CASH BOOK",
+          "columns": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "May",
+              "1",
+              "Bal b/f",
+              "$6 900",
+              "May",
+              "2",
+              "M & C",
+              "$2 000"
+            ],
+            [
+              "",
+              "3",
+              "Ms E Knight",
+              "400",
+              "",
+              "3",
+              "C & W",
+              "850"
+            ],
+            [
+              "",
+              "10",
+              "V. Gordon",
+              "350",
+              "",
+              "15",
+              "Distillers Ltd",
+              "750"
+            ],
+            [
+              "",
+              "20",
+              "Sales",
+              "2 000",
+              "",
+              "18",
+              "Jo Anne",
+              "150"
+            ],
+            [
+              "",
+              "25",
+              "N Couman",
+              "200",
+              "",
+              "24",
+              "K Atkins",
+              "75"
+            ],
+            [
+              "",
+              "30",
+              "Sales",
+              "1 500",
+              "",
+              "30",
+              "Water Co",
+              "300"
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "31",
+              "Bal c/d",
+              "7 225"
+            ],
+            [
+              "",
+              "",
+              "",
+              "$11 350",
+              "",
+              "",
+              "",
+              "$11 350"
+            ],
+            [
+              "June",
+              "1",
+              "Bal b/f",
+              "7 225",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ]
+        },
+        {
+          "title": "BANK STATEMENT",
+          "columns": [
+            "2005",
+            "",
+            "Details",
+            "Dr",
+            "Cr",
+            "Balance"
+          ],
+          "rows": [
+            [
+              "May",
+              "1",
+              "Bal b/f",
+              "",
+              "",
+              "6 900"
+            ],
+            [
+              "",
+              "4",
+              "Mc Knight",
+              "",
+              "400",
+              "7 300"
+            ],
+            [
+              "",
+              "4",
+              "M & C",
+              "2 000",
+              "",
+              "5 300"
+            ],
+            [
+              "",
+              "5",
+              "C & W",
+              "850",
+              "",
+              "4 450"
+            ],
+            [
+              "",
+              "15",
+              "Interest",
+              "",
+              "40",
+              "4 490"
+            ],
+            [
+              "",
+              "21",
+              "Deposit",
+              "",
+              "2 000",
+              "6 490"
+            ],
+            [
+              "",
+              "25",
+              "K Atkins",
+              "75",
+              "",
+              "6 415"
+            ],
+            [
+              "",
+              "26",
+              "N Couman",
+              "",
+              "200",
+              "6 615"
+            ],
+            [
+              "",
+              "31",
+              "Bank Charges",
+              "25",
+              "",
+              "6 590"
+            ]
+          ]
+        }
+      ],
+      "documentTitle": "Bank reconciliation",
+      "fieldLayout": "stacked",
+      "fields": [
+        {
+          "label": "(i) May 1 balance",
+          "kind": "text"
+        },
+        {
+          "label": "(ii) Revised cash book balance",
+          "kind": "text"
+        },
+        {
+          "label": "(iii) Bank reconciliation statement",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2005-MJ::8::q8-a": {
+      "prompt": "List THREE documents that are needed when goods are to be shipped to an overseas buyer. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::8::q8-b": {
+      "prompt": "List THREE pieces of information that would be considered important in a Planning Master. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2005-MJ::8::q8-c": {
+      "prompt": "Modern Office Ltd offered your company, Terrace Mills, the following terms of sale:\n\nA4 Bond Paper, 24 reams at $45.00 each\nLess Trade Discount of 25%\nFurther 20% cash discount for early settlement of the transaction\n\nAssume that your company takes advantage of all of the discounts offered.\n\n(i) Calculate the final payment. Show ALL working. (4 marks)\n(ii) Use the form provided to prepare the cheque for payment. After you prepare the cheque, it will be signed by your manager, Karex Bridglal. (5 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8,
+        10
+      ],
+      "layoutSourcePages": [
+        8,
+        10
+      ],
+      "layoutVerified": true,
+      "documentTitle": "Payment and cheque",
+      "fields": [
+        {
+          "label": "(i) Final payment and working",
+          "kind": "text"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "TERRACE MILLS",
+          "columns": [
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "LOT 20 HAPPY VALE ESTATE",
+              ""
+            ],
+            [
+              "ST MICHAEL",
+              ""
+            ],
+            [
+              "Date, 20",
+              ""
+            ],
+            [
+              "Pay to the order of",
+              ""
+            ],
+            [
+              "$",
+              ""
+            ],
+            [
+              "The sum of:",
+              ""
+            ],
+            [
+              "/100",
+              ""
+            ],
+            [
+              "ISLAND BANK",
+              "MANAGER"
+            ],
+            [
+              "HAPPY VALE",
+              ""
+            ],
+            [
+              "ST MICHAEL",
+              ""
+            ],
+            [
+              "BARBADOS",
+              ""
+            ],
+            [
+              "015 7005650 002 41171 38",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              6,
+              1
+            ]
+          ],
+          "columnLabels": [
+            "",
+            "Entry"
+          ],
+          "rowLabels": [
+            "",
+            "",
+            "Date",
+            "Pay to the order of",
+            "Amount in figures",
+            "Amount in words",
+            "Cents /100"
+          ]
+        }
+      ]
+    }
+  }
+}

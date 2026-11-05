@@ -1,0 +1,1168 @@
+{
+  "paperId": "OA-P2-2012-MJ",
+  "reviewDate": "2026-10-30",
+  "reviewMethod": "Visual comparison with all 11 supplied PDF pages and the detached appointment, FIFO and advice-note inserts; native source tables retain printed dates, names, stock descriptions and blank answers.",
+  "questions": {
+    "OA-P2-2012-MJ::1": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::2": {
+      "stem": "",
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::3": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4,
+        11
+      ],
+      "layoutSourcePages": [
+        4,
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::4": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::5": {
+      "stem": "",
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::6": {
+      "stem": "",
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        7,
+        9
+      ],
+      "layoutSourcePages": [
+        6,
+        7,
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::7": {
+      "stem": "",
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::8": {
+      "stem": "",
+      "sourcePage": 8,
+      "sourcePages": [
+        8,
+        10
+      ],
+      "layoutSourcePages": [
+        8,
+        10
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2012-MJ::1::q1-a": {
+      "prompt": "State THREE characteristics of an efficient records management system. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::1::q1-b": {
+      "prompt": "(i) List TWO types of filing classifications. (2 marks)\n(ii) For EACH filing classification listed above, identify ONE type of record that is filed using that classification. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::1::q1-c": {
+      "prompt": "(i) Copy the following table in your answer booklet. Using the format provided, complete the table to show the correct indexing order of EACH name. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "Correct Indexing Order",
+          "columns": [
+            "NAMES",
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "rows": [
+            [
+              "Dr A. Lenna Facey",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Ministry of Education",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Fabes & Chang Ltd",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Jascinth Stone-Cummings",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "rowLabels": [
+            "Dr A. Lenna Facey",
+            "Ministry of Education",
+            "Fabes & Chang Ltd",
+            "Jascinth Stone-Cummings"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(ii) Prepare the cross-reference sheet for Jascinth Stone-Cummings. (1 mark)",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "(iii) Arrange the THREE remaining names in alphabetical order. (3 marks)",
+          "kind": "text",
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2012-MJ::2::q2-a": {
+      "prompt": "State the meaning of EACH of the following terms in relation to meetings:\n(i) ad hoc (1 mark)\n(ii) ex officio (1 mark)\n(iii) proxy (1 mark)\n(iv) motion (1 mark)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::2::q2-b": {
+      "prompt": "The 15th Annual General Meeting of the International Insurance Company of 10 College Crescent, Mona, Kingston 7, will be held on Friday, 24 August 2012 at 10:00 a.m. in the Boardroom of the Pegasus Hotel, Main Street, Montego Bay. The following resolutions are to be discussed at the meeting:\n– That the Directors’ report for the year ended 30 June 2012 be approved and adopted.\n– That the existing auditors not be reappointed. Prepare the notice of meeting which is to be sent out by order of the board and signed by O. Perkins, secretary. Include any TWO agenda items. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2012-MJ::2::q2-c": {
+      "prompt": "State THREE legal requirements for convening an Annual General Meeting. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::3::q3-a": {
+      "prompt": "(i) List THREE main duties of a receptionist. (3 marks)\n(ii) It is important for the receptionist to have a good temperament. Identify TWO other attributes that a receptionist should possess. (2 marks)\n(iii) State TWO security measures that should be practised by the reception staff. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::3::q3-b": {
+      "prompt": "The following are appointments for today:\n• 9:15 a.m. Jas Bucknor, Ministry of Finance, Kingston 4, to see the Chief Accountant.\n• 8:30 a.m. Nichola Rhodd of Speedy Hardware, 27 Job’s Avenue, May Pen, Tel. 984-3240 to see the Business Development Manager.\n• Sean Hanson, Youth Development Centre, Kingston 5, Tel. 907-7070 to see the Chief Technical Director, half an hour after Ms Rhodd’s appointment time.\n• 1000 hours Winnie Hall, Tel. 983-1220 to see the Purchasing Manager.\n• 1150 hours Rajesh Maraj of Total Delight Restaurant, Santa Cruz, Tel. 966-2334 to see the General Manager. Use the form provided as an insert, to enter the appointments above for the S & K Company, Spanish Town, Jamaica. Convert all times to the 24 hour clock and place in order of time. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4,
+        11
+      ],
+      "layoutSourcePages": [
+        4,
+        11
+      ],
+      "layoutVerified": true,
+      "documentTitle": "S & K Company — Spanish Town, Jamaica — APPOINTMENT BOOK",
+      "fields": [
+        {
+          "label": "Date",
+          "kind": "text"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Appointments",
+          "columns": [
+            "Time",
+            "Name",
+            "Address",
+            "Telephone No.",
+            "To See"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2012-MJ::4::q4-a": {
+      "prompt": "(i) State TWO advantages of the open plan office. (2 marks)\n(ii) State TWO disadvantages of the cellular office (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::4::q4-b": {
+      "prompt": "State THREE functions of the office when carrying out business activities. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::4::q4-c": {
+      "prompt": "You are a receptionist of a large organization in Bridgetown, Barbados. Management has employed a junior clerk to help you with your duties. Write a memorandum to the junior clerk indicating FOUR main rules she should follow when answering the company’s telephone. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2012-MJ::5::q5-a": {
+      "prompt": "(i) Outline TWO duties of the accounts clerk. (2 marks)\n(ii) Identify TWO tasks that the computer can help the accounts clerk accomplish in the Accounts Office. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::5::q5-b": {
+      "prompt": "The spreadsheet is one of the most useful tools available to accounts personnel because they can be used for numerous purposes. State any TWO of these purposes. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::5::q5-c": {
+      "prompt": "(i) Consider the following cash book and bank statement for the OMB Company Ltd. Prepare a reconciliation statement starting with the bank statement balance. (6 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true,
+      "tables": [
+        {
+          "title": "CASH BOOK (BANK COLUMNS ONLY)",
+          "columns": [
+            "DATE",
+            "PARTICULARS",
+            "FOL",
+            "BANK",
+            "DATE",
+            "PARTICULARS",
+            "FOL",
+            "BANK"
+          ],
+          "rows": [
+            [
+              "1 Feb 2011",
+              "Balance",
+              "b/d",
+              "$300.00",
+              "27 Feb 2011",
+              "M. Potter",
+              "",
+              "$80.00"
+            ],
+            [
+              "29 Feb 2011",
+              "P. Williams",
+              "",
+              "$500.00",
+              "29 Feb 2011",
+              "S. Downs",
+              "",
+              "$100.00"
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "29 Feb 2011",
+              "Balance",
+              "c/d",
+              "$620.00"
+            ],
+            [
+              "",
+              "",
+              "",
+              "$800.00",
+              "",
+              "",
+              "",
+              "$800.00"
+            ],
+            [
+              "1 March 2011",
+              "Balance",
+              "b/d",
+              "$620.00",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ]
+        },
+        {
+          "title": "BANK STATEMENT",
+          "columns": [
+            "DATE",
+            "PARTICULARS",
+            "DEBIT (DR)",
+            "CREDIT (CR)",
+            "BALANCE"
+          ],
+          "rows": [
+            [
+              "1 Feb 2011",
+              "Balance",
+              "",
+              "",
+              "$300.00"
+            ],
+            [
+              "27 Feb 2011",
+              "M. Potter",
+              "$80.00",
+              "",
+              "$220.00"
+            ],
+            [
+              "29 Feb 2011",
+              "Deposit",
+              "",
+              "$500.00",
+              "$720.00"
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(i) Reconciliation statement — start with the bank statement balance",
+          "kind": "text",
+          "rows": 8
+        },
+        {
+          "label": "(ii) State THREE reasons why the Cash Book and the Bank Reconciliation Statement may differ. (3 marks)",
+          "kind": "text",
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2012-MJ::6::q6-a": {
+      "prompt": "Identify TWO duties of a clerk in the Purchasing and Stock Control Office (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::6::q6-b": {
+      "prompt": "(i) List TWO factors that the purchasing clerk must consider when ordering goods. (2 marks)\n(ii) Outline the procedure that a department should follow when making an internal request for supplies that\na) are in stock\nb) are not in stock. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::6::q6-c": {
+      "prompt": "(i) The stock records at Northern Supplies Company Ltd are updated when items are received or sold.\n\nAs purchasing clerk, you use the record of transactions made to prepare a quarterly report on the value of stock.\n\nOn the form provided as an insert, use the information in the table below to calculate the value of the stock using the FIFO method. (6 marks)\n\n(ii) Your supervisor gave you the following list of items to record on the stock control card:-\n• 60 one-litre bottles of dish washing liquid – order No. 210A6 received 3 April 2012.\n• The marketing department completed a requisition for 40 bottles of dish washing liquid on 14 April 2012.\n• 100 one-litre bottles of dish washing liquid – order No. 6D120 was ordered on 28 April 2012.\n\nCopy the stock control card given below in your answer booklet and use the information above to complete it. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        7,
+        9
+      ],
+      "layoutSourcePages": [
+        6,
+        7,
+        9
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "RECEIPTS / ISSUES",
+        "columns": [
+          "RECEIPTS",
+          "",
+          "ISSUES",
+          ""
+        ],
+        "rows": [
+          [
+            "AC-DC",
+            "",
+            "AC DC Motors",
+            ""
+          ],
+          [
+            "2011",
+            "",
+            "2011",
+            ""
+          ],
+          [
+            "5 September",
+            "10 @ $50.00",
+            "20 October",
+            "20"
+          ],
+          [
+            "17 October",
+            "15 @ $60.00",
+            "22 November",
+            "12"
+          ],
+          [
+            "21 November",
+            "12 @ $40.00",
+            "–",
+            "–"
+          ],
+          [
+            "10 December",
+            "12 @ $70.00",
+            "–",
+            "–"
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "NORTHERN SUPPLIES COMPANY LTD. — Purchasing Department — Record of Transactions FIFO Method",
+          "columns": [
+            "Date",
+            "Receipts",
+            "Issues",
+            "Balance",
+            "Value"
+          ],
+          "rows": [
+            [
+              "5 September",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "17 October",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "20 October",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "21 November",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "22 November",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "10 December",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "5 September",
+            "17 October",
+            "20 October",
+            "21 November",
+            "22 November",
+            "10 December"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              5,
+              4
+            ]
+          ],
+          "details": [
+            "for the period September – December 2011",
+            "Item: Cell Phone Cases"
+          ]
+        },
+        {
+          "title": "STOCK CONTROL CARD — DISH WASHING LIQUID",
+          "columns": [
+            "Date",
+            "Order No.",
+            "Received",
+            "Used Total",
+            "Balance"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2012-MJ::7::q7-a": {
+      "prompt": "Identify THREE functions of the Marketing Office. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::7::q7-b": {
+      "prompt": "State THREE reasons why a clerk in the Sales and Marketing Department should maintain a mailing list. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::7::q7-c": {
+      "prompt": "(i) Explain the difference between a ‘trade discount’ and a ‘cash discount’. (2 marks)\n(ii) Mr Charles Brown has sent the Sales Department at Pristine Attire an order for 25 shirts. The price list shows a unit price of $50.00. Customers who order at least 20 shirts receive a 20% trade discount. In addition, sales are subject to a 5% cash discount with a further 15% special discount allowed to customers who settle their accounts within 14 days. Mr Brown has no prior credits or debits in hand. Calculate the amount Mr Brown will pay if he takes advantage of all the discounts. Show all working. (7 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::8::q8-a": {
+      "prompt": "Outline THREE functions of the Factory, Despatch and Transport Office. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::8::q8-b": {
+      "prompt": "Identify THREE duties, other than routine office duties, of a clerk in the Transport Office. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2012-MJ::8::q8-c": {
+      "prompt": "(i) You are Patrica Peterson, a clerk employed by Gummy Corporation, Bridge Street, Castries, St Lucia. The office telephone number is 758-453-7869. Your supervisor has asked you to inform Petal Smith of Mary Ann Street, Hanover, that her goods will be delivered by truck on 5 June 2012. The order (Order No. 034B) which contains 500 bags of gummy bears @ $5.00 per bag is to be received by Ms Sylma Charles. On the form provided as an insert, complete the advice note for the information above. (6 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8,
+        10
+      ],
+      "layoutSourcePages": [
+        8,
+        10
+      ],
+      "layoutVerified": true,
+      "documentTitle": "ADVICE NOTE",
+      "fields": [
+        {
+          "label": "Seller",
+          "kind": "text"
+        },
+        {
+          "label": "Telephone No.",
+          "kind": "text"
+        },
+        {
+          "label": "Buyer",
+          "kind": "text"
+        },
+        {
+          "label": "Order No.",
+          "kind": "text"
+        },
+        {
+          "label": "Please receive the following on",
+          "kind": "text"
+        },
+        {
+          "label": "Received by",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "(ii) As clerk in the Despatch and Transport department, you have been asked to assist in the design of a gate pass to grant permission for persons and vehicles to leave the compound. Suggest THREE items of information that should be included on the gate pass. (3 marks)",
+          "kind": "text",
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Goods",
+          "columns": [
+            "Quantity",
+            "Item",
+            "Unit Price",
+            "Total"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ]
+          ],
+          "inputRows": [
+            9
+          ]
+        }
+      ]
+    }
+  }
+}

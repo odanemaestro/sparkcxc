@@ -1,0 +1,973 @@
+{
+  "paperId": "OA-P1-2011-MJ",
+  "reviewDate": "2026-11-04",
+  "reviewMethod": "Visual comparison of all ten supplied PDF pages, including the cover, all question and option boundaries, and printed tables.",
+  "durationMinutes": 75,
+  "durationVerified": true,
+  "items": [
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 1,
+      "sourcePage": 2,
+      "stem": "In a sole trader business, the decision of what to purchase is usually made by the",
+      "options": [
+        "cashier",
+        "proprietor",
+        "stock control clerk",
+        "purchasing manager"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 2,
+      "sourcePage": 2,
+      "stem": "Employees in a large organization are MOST likely to have",
+      "options": [
+        "very close supervision",
+        "limited career prospects",
+        "a high degree of specialization",
+        "direct contact with management"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 3,
+      "sourcePage": 2,
+      "stem": "In a letter, the attention line is typed",
+      "options": [
+        "before the salutation",
+        "after the date",
+        "after the subject",
+        "before the date"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 4,
+      "sourcePage": 2,
+      "stem": "Which of the following documents are used in a sales transaction?\n\nI. Requisition form\nII. Quotation\nIII. Invoices\nIV. Delivery note",
+      "options": [
+        "I and II only",
+        "I and IV only",
+        "I, II and III only",
+        "II, III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 5,
+      "sourcePage": 2,
+      "stem": "In an office where large quantities of printed materials have to be cut to size, which of the following would be the MOST appropriate tool to use?",
+      "options": [
+        "Guillotine",
+        "Letter opener",
+        "Sharp-edged knife",
+        "Large pair of scissors"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 6,
+      "sourcePage": 2,
+      "stem": "The employee is also given a travel allowance of $200.00. The employee’s net pay is",
+      "options": [
+        "$1 378.00",
+        "$1 578.50",
+        "$1 762.00",
+        "$1 962.00"
+      ],
+      "contextText": "Item 6 refers to the following salary information.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Salary information",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "Gross Pay",
+            "$1 570.00"
+          ],
+          [
+            "PAYE",
+            "$115.00"
+          ],
+          [
+            "NIS",
+            "$43.00"
+          ],
+          [
+            "Pension",
+            "$33.50"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 7,
+      "sourcePage": 2,
+      "stem": "A sum of money given to a cashier at the start of a day to make change is called a/an",
+      "options": [
+        "float",
+        "refund",
+        "deposit",
+        "imprest"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 8,
+      "sourcePage": 2,
+      "stem": "Which of the following documents originates from the carrier as a contract between the carrier and the supplier when goods are to be shipped?",
+      "options": [
+        "Consignment note",
+        "Despatch note",
+        "Delivery note",
+        "Bill of lading"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 9,
+      "sourcePage": 2,
+      "stem": "Which of the following is NOT a characteristic of registered mail?",
+      "options": [
+        "It offers proof of postage.",
+        "It facilitates safe delivery of mail.",
+        "It is normally sent by second-class mail.",
+        "It offers compensation for loss or damage up to a specified amount."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 10,
+      "sourcePage": 3,
+      "stem": "A clerk in the human resource department overhears that a friend in another department who reports late for work every day is to be given a warning and notice of dismissal if his punctuality does not improve. Which of the following is the MOST appropriate action for the clerk to take?",
+      "options": [
+        "Warn the friend of the action to be taken by the human resource department.",
+        "Drop hints of action to be taken against late comers.",
+        "Avoid the friend until the matter is resolved.",
+        "Say nothing and leave the friend to receive the official letter."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 11,
+      "sourcePage": 3,
+      "stem": "You are travelling to a destination whose time is one hour ahead of your departure time. If your plane departs at 12:00 noon and your flight takes one hour and fifteen minutes, at what time would you arrive at your destination?",
+      "options": [
+        "1415 hours",
+        "1215 hours",
+        "1315 hours",
+        "0215 hours"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 12,
+      "sourcePage": 3,
+      "stem": "An applicant’s curriculum vitae is",
+      "options": [
+        "a brief description of his life history and work experience",
+        "a comprehensive report on his vital scores obtained during a course of study",
+        "an extended list of his dossier and interests",
+        "a description of the curriculum covered at secondary school level"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 13,
+      "sourcePage": 3,
+      "stem": "A confidential letter addressed to your employer is received in a torn condition. As the secretary, you should",
+      "options": [
+        "return the letter to the mail department",
+        "attach a note to the envelope and deliver by hand to your employer",
+        "put the letter into a new envelope and take it to your employer",
+        "refuse to accept the envelope from the mail department"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 14,
+      "sourcePage": 3,
+      "stem": "When responding to a job advertisement, a Personal Data Sheet should be",
+      "options": [
+        "attached to the letter of application",
+        "posted under separate cover",
+        "brought along with your original certificates",
+        "given to the receptionist on the day of the interview"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 15,
+      "sourcePage": 3,
+      "stem": "Which of the following guidelines should be followed during a job interview?\n\nI. Be pleasant and alert.\nII. Be courteous when answering questions.\nIII. Maintain eye contact with the interviewer.\nIV. Avoid giving one-word answers.",
+      "options": [
+        "I and IV only",
+        "I, II and III only",
+        "I, II and IV only",
+        "I, II, III and IV"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 16,
+      "sourcePage": 4,
+      "stem": "The accounts department has requested a file from the central filing department. Which of the following actions should the file clerk take?\n\nI. Find out if the file is available.\nII. Complete an ‘out’ sheet and place it in the file.\nIII. Ask the person receiving the file to sign for it.\nIV. Send the file with a request for it to be returned in an hour’s time.",
+      "options": [
+        "I and IV only",
+        "I, II and III only",
+        "I, III and IV only",
+        "II, III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 17,
+      "sourcePage": 4,
+      "stem": "A small package containing important documents is to be mailed to Canada from a Caribbean island. Which postal service would be MOST suitable?",
+      "options": [
+        "Recorded mail",
+        "First class mail",
+        "Registered mail",
+        "Parcel post"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 18,
+      "sourcePage": 4,
+      "stem": "Which of the following would be MOST suitable for storing inactive files?",
+      "options": [
+        "Horizontal cabinet",
+        "Microfilm",
+        "Box files",
+        "Accordion files"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 19,
+      "sourcePage": 4,
+      "stem": "For what purpose should a complimentary slip be used?",
+      "options": [
+        "Accepting an invitation",
+        "Congratulating the recipient",
+        "Acknowledging receipt of payment",
+        "Accompanying enclosures sent without a letter"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 20,
+      "sourcePage": 4,
+      "stem": "Which of the following are needed to maintain the reception area?\n\nI. A sign with the word “Enquiries”\nII. A lavishly decorated room\nIII. Comfortable chairs\nIV. Newspapers, magazines and company literature",
+      "options": [
+        "II and III only",
+        "I, III and IV only",
+        "I, II and IV only",
+        "II, III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 21,
+      "sourcePage": 4,
+      "stem": "For which of the following would reminder systems be used in business?\n\nI. To assist those employees suffering from mild memory loss\nII. To allow important matters to be followed up\nIII. To remember dates and names\nIV. To remember times of appointments and addresses",
+      "options": [
+        "I only",
+        "I and II only",
+        "I, II and III only",
+        "II, III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 22,
+      "sourcePage": 4,
+      "stem": "Which of the following items should a receptionist keep for reference in the reception area?\n\nI. Organization chart\nII. Flow chart showing product movement\nIII. Alphabetical index for numerical filing\nIV. Index of callers’ cards",
+      "options": [
+        "I only",
+        "II only",
+        "I and IV only",
+        "II and III only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 23,
+      "sourcePage": 5,
+      "stem": "Travellers cheques are used instead of cash when travelling abroad because they",
+      "options": [
+        "have a greater value than cash",
+        "will be replaced by the bank if lost",
+        "are preferred to cash in foreign countries",
+        "give the traveller a higher status rating in the foreign country"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 24,
+      "sourcePage": 5,
+      "stem": "As a supervisor, you are expected to assess workers for a merit award. Which of the following is NOT taken into consideration?",
+      "options": [
+        "Punctuality and regularity",
+        "Initiative in solving problems",
+        "Salary scale",
+        "Personal qualities"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 25,
+      "sourcePage": 5,
+      "stem": "Which of the following records show an employee’s duties, grade and salary?\n\nI. The employment contract\nII. The job specifications\nIII. The company manual",
+      "options": [
+        "I and II only",
+        "I and III only",
+        "II and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 26,
+      "sourcePage": 5,
+      "stem": "The document above is an example of a",
+      "options": [
+        "job analysis",
+        "job description",
+        "job specification",
+        "personnel specification"
+      ],
+      "contextText": "Item 26 refers to the following document.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Purchasing Clerk",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "TITLE:",
+            "Purchasing Clerk"
+          ],
+          [
+            "DEPARTMENT:",
+            "Purchasing"
+          ],
+          [
+            "HOURS OF WORK:",
+            "8:00am - 4:00pm, Monday - Friday"
+          ],
+          [
+            "RESPONSIBLE TO:",
+            "Purchasing Assistant"
+          ],
+          [
+            "JOB SUMMARY:",
+            "To assist in the procurement of goods and services for the company"
+          ],
+          [
+            "DUTIES:",
+            "1. Preparation and processing of purchasing requisitions\n2. Maintaining stock records\n3. Maintaining a database on suppliers"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 27,
+      "sourcePage": 5,
+      "stem": "Which of the following is the BEST method of payment for purchasing a box of paper clips for a company?",
+      "options": [
+        "Cash",
+        "Cheque",
+        "Credit card",
+        "Money order"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 28,
+      "sourcePage": 5,
+      "stem": "An ex-officio committee member is one who",
+      "options": [
+        "is appointed by a majority vote",
+        "votes on behalf of an absent member",
+        "attends meetings by virtue of an office",
+        "manages the proceedings of the meeting"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 29,
+      "sourcePage": 6,
+      "stem": "Which of the following deductions can be made from wages without obtaining permission from the employee?\n\nI. Company health scheme\nII. National insurance\nIII. Income tax\nIV. Union dues",
+      "options": [
+        "I and II only",
+        "II and III only",
+        "I, II and III only",
+        "I, II, III and IV"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 30,
+      "sourcePage": 6,
+      "stem": "At a meeting held on November 25, 2010, the appointment of a secretary was discussed. Which of the following documents should be consulted to obtain the information that was discussed at the meeting so that follow-up actions can be taken?",
+      "options": [
+        "The Chairman’s Agenda",
+        "The Notice of the meeting",
+        "The Minutes of the meeting",
+        "The Agenda for the meeting"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 31,
+      "sourcePage": 6,
+      "stem": "At a meeting, the Chairperson has suggested that unfinished business be discussed at another meeting. The meeting has therefore been",
+      "options": [
+        "altered",
+        "amended",
+        "postponed",
+        "adjourned"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 32,
+      "sourcePage": 6,
+      "stem": "The chief cashier has reimbursed the petty cashier’s imprest. How must this transaction be recorded?\n\nI. Debit Cash Book\nII. Credit Cash Book\nIII. Debit Petty Cash Book\nIV. Credit Petty Cash Book",
+      "options": [
+        "I only",
+        "IV only",
+        "I and IV only",
+        "II and III only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 33,
+      "sourcePage": 6,
+      "stem": "The MAIN reason for controlling credit is to",
+      "options": [
+        "give credit to all customers",
+        "deal with delinquent customers",
+        "minimize bad debts of customers",
+        "meet financial commitments to creditors"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 34,
+      "sourcePage": 6,
+      "stem": "Which of the following is used by Caribbean businessmen who travel between various English-speaking Caribbean countries?",
+      "options": [
+        "Visa",
+        "Passport",
+        "Entry permit",
+        "National identification card"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 35,
+      "sourcePage": 6,
+      "stem": "Your employer is on a business trip in another Caribbean territory and urgently requires additional money. The BEST way to send money to her is by",
+      "options": [
+        "international bank draft",
+        "credit transfer",
+        "debit transfer",
+        "electronic money transfer"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 36,
+      "sourcePage": 7,
+      "stem": "A supplier has received an order from a customer, whose credit rating he does not know. What is the BEST course of action for the supplier to take to reduce his chances of not being paid?",
+      "options": [
+        "Send the goods and draw a time draft on the customer.",
+        "Ask the customer to give the names of three of his creditors.",
+        "Send the goods C.O.D. and request payment by certified cheque.",
+        "Let the customer sign a promissory note, payable at a specific bank."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 37,
+      "sourcePage": 7,
+      "stem": "In the cash book, all monies received are indicated as a",
+      "options": [
+        "debit entry",
+        "credit entry",
+        "credit account",
+        "deposit account"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 38,
+      "sourcePage": 7,
+      "stem": "ONE of the MOST important functions of a human resource department is",
+      "options": [
+        "receiving visitors to the firm",
+        "ensuring proper communication",
+        "introducing new employees",
+        "attending to the welfare of employees"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 39,
+      "sourcePage": 7,
+      "stem": "Which of the following situations would cause a file to be classified as inactive?",
+      "options": [
+        "A supplier now sells a wider range of goods.",
+        "The organization has stopped buying from a particular supplier.",
+        "A company with which the organization deals has changed its name.",
+        "A company with which the organization deals has changed its business address."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 40,
+      "sourcePage": 7,
+      "stem": "The issues to be addressed at a meeting can be found in the",
+      "options": [
+        "notice",
+        "agenda",
+        "minutes",
+        "schedule"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 41,
+      "sourcePage": 7,
+      "stem": "The MAIN advantage of microfilming is that it",
+      "options": [
+        "is simple to operate",
+        "reduces the size of stored documents",
+        "is the cheapest method of filing",
+        "provides greater security for records"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 42,
+      "sourcePage": 7,
+      "stem": "Which of the following documents is sent by the seller when the customer has been undercharged?",
+      "options": [
+        "Invoice",
+        "Quotation",
+        "Enquiry",
+        "Debit note"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 43,
+      "sourcePage": 7,
+      "stem": "The function of the factory office is to",
+      "options": [
+        "assemble goods for despatch",
+        "purchase and manufacture goods",
+        "organize the production processes",
+        "establish links with reputable suppliers"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 44,
+      "sourcePage": 7,
+      "stem": "Which of the following details is NOT included on the cash disbursement sheet used in petty cash?",
+      "options": [
+        "The name of the person receiving the funds",
+        "A summary of the funds spent",
+        "The date on which the money was paid",
+        "The unused balance"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 45,
+      "sourcePage": 8,
+      "stem": "The diagram shown above is an example of a",
+      "options": [
+        "cash book",
+        "summary sheet",
+        "bank reconciliation statement",
+        "statement of account"
+      ],
+      "contextText": "Items 45–46 refer to the following transactions which occurred on Account Number 346/987/010.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Account Number 346/987/010",
+        "columns": [
+          "Date",
+          "Details",
+          "Description",
+          "Debits",
+          "Credits",
+          "Balance"
+        ],
+        "rows": [
+          [
+            "1 Jan",
+            "Balance",
+            "",
+            "",
+            "",
+            "150.00"
+          ],
+          [
+            "3 Jan",
+            "Interest",
+            "",
+            "",
+            "5.00",
+            ""
+          ],
+          [
+            "5 Jan",
+            "Withdrawal",
+            "ATM",
+            "140.00",
+            "",
+            ""
+          ],
+          [
+            "12 Jan",
+            "Cheque",
+            "13572",
+            "",
+            "200.00",
+            ""
+          ],
+          [
+            "15 Jan",
+            "Cheque",
+            "87431",
+            "50.00",
+            "",
+            ""
+          ],
+          [
+            "27 Jan",
+            "Service charge",
+            "",
+            "10.00",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 46,
+      "sourcePage": 8,
+      "stem": "Assuming that there are no further transactions, the opening balance on the account on February 01 will be",
+      "options": [
+        "$105.00",
+        "$155.00",
+        "$195.00",
+        "$285.00"
+      ],
+      "contextText": "Items 45–46 refer to the following transactions which occurred on Account Number 346/987/010.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Account Number 346/987/010",
+        "columns": [
+          "Date",
+          "Details",
+          "Description",
+          "Debits",
+          "Credits",
+          "Balance"
+        ],
+        "rows": [
+          [
+            "1 Jan",
+            "Balance",
+            "",
+            "",
+            "",
+            "150.00"
+          ],
+          [
+            "3 Jan",
+            "Interest",
+            "",
+            "",
+            "5.00",
+            ""
+          ],
+          [
+            "5 Jan",
+            "Withdrawal",
+            "ATM",
+            "140.00",
+            "",
+            ""
+          ],
+          [
+            "12 Jan",
+            "Cheque",
+            "13572",
+            "",
+            "200.00",
+            ""
+          ],
+          [
+            "15 Jan",
+            "Cheque",
+            "87431",
+            "50.00",
+            "",
+            ""
+          ],
+          [
+            "27 Jan",
+            "Service charge",
+            "",
+            "10.00",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 47,
+      "sourcePage": 8,
+      "stem": "When the 24-hour clock is showing 18:30 hours, the time on the 12-hour clock is",
+      "options": [
+        "6:30 a.m.",
+        "6:30 p.m.",
+        "8:30 a.m.",
+        "8:30 p.m."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 48,
+      "sourcePage": 8,
+      "stem": "How should the name, Dr F.D. Singh, appear on a filing folder?",
+      "options": [
+        "Singh, F.D. (Dr)",
+        "(Dr), F.D. Singh",
+        "F.D. Singh, (Dr)",
+        "(Dr) Singh, F.D."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 49,
+      "sourcePage": 8,
+      "stem": "Which of the following machines would be MOST suitable for producing ten copies of a printed quotation form for internal distribution?",
+      "options": [
+        "Computer",
+        "Ink duplicator",
+        "Photocopier",
+        "Spirit duplicator"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 50,
+      "sourcePage": 8,
+      "stem": "What should a clerk do if the number of items being delivered is less than that shown on the delivery note?",
+      "options": [
+        "Reprimand the delivery agent and refuse to accept delivery.",
+        "Return the goods and ask for urgent delivery of the correct order.",
+        "Accept the delivery and ask the company to send the outstanding items.",
+        "Write the shortage on the delivery note before signing for receipt of the items."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 51,
+      "sourcePage": 9,
+      "stem": "The term ‘carriage paid’ means that the",
+      "options": [
+        "price quoted does not include overseas transport",
+        "carrier must be paid before the goods are delivered",
+        "price quoted includes delivery to the customer’s door",
+        "carrier must be paid by the purchaser before the goods can be despatched"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 52,
+      "sourcePage": 9,
+      "stem": "To pay his account in cash, a customer tendered:\n\n5 - $20.00 bills\n3 - $10.00 bills\n10 - $5.00 bills\n9 - $1.00 bills\n20 - 5¢ pieces\n\nWhat sum of money did the customer pay?",
+      "options": [
+        "$189.00",
+        "$190.00",
+        "$191.00",
+        "$195.00"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 53,
+      "sourcePage": 9,
+      "stem": "The totals above were extracted from a petty cash book. The petty cash float is $100 and it is operated on the imprest system. Which of the following amounts should the petty cashier receive to start the new period?",
+      "options": [
+        "$86.40",
+        "$100.00",
+        "$113.60",
+        "$186.40"
+      ],
+      "contextText": "Item 53 refers to the extract from a petty cash book shown below.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Petty cash book",
+        "columns": [
+          "Goods and Services",
+          "Cleaning $",
+          "Postage $",
+          "Tea Breaks $",
+          "Travel $"
+        ],
+        "rows": [
+          [
+            "Totals",
+            "30.00",
+            "15.00",
+            "19.40",
+            "22.00"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 54,
+      "sourcePage": 9,
+      "stem": "Which of the following agencies should an employer consult in order to obtain US $15 000 in foreign currency?\n\nI. A commercial bank\nII. The Ministry of Trade\nIII. The Central Bank/Ministry of Finance\nIV. The Ministry of Foreign Affairs",
+      "options": [
+        "I and III only",
+        "II and IV only",
+        "II and III only",
+        "III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 55,
+      "sourcePage": 10,
+      "stem": "Which of the following actions should a receptionist take if a visitor, with no appointment, asks to meet with an executive who has a strict policy of seeing clients only by appointment?\n\nI. Inform the visitor of the executive’s policy.\nII. Ask the visitor to be seated in the hope that the executive would attend to him.\nIII. Ask the visitor if someone else may be of help to him.\nIV. Make an appointment for him for another day.",
+      "options": [
+        "I and II only",
+        "I and IV only",
+        "I, II and III only",
+        "I, III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 56,
+      "sourcePage": 10,
+      "stem": "An employee’s gross earnings was $182.80. His statutory deductions totalled $22.00 and voluntary deductions totalled $9.80. How much was his net pay?",
+      "options": [
+        "$151.00",
+        "$160.80",
+        "$173.00",
+        "$214.60"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 57,
+      "sourcePage": 10,
+      "stem": "Which of the following forms of transport is MOST suitable for distributing perishable goods locally?",
+      "options": [
+        "Trucks",
+        "Pick-up vans",
+        "Air-conditioned cars",
+        "Cold-storage vehicles"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 58,
+      "sourcePage": 10,
+      "stem": "The schedule above shows that the aircraft will stop in Antigua (ANU) on its way to Jamaica (KN) from Barbados (BGI). How long will the aircraft be on the ground in Antigua?",
+      "options": [
+        "3 hours 5 minutes",
+        "4 hours 25 minutes",
+        "5 hours 30 minutes",
+        "7 hours 30 minutes"
+      ],
+      "contextText": "Item 58 refers to the following extract from an airline schedule.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "From Barbados to Jamaica",
+        "columns": [
+          "Date",
+          "Airport",
+          "Departure",
+          "Arrival",
+          "Airport"
+        ],
+        "rows": [
+          [
+            "Thursday 14 July 2010",
+            "BGI",
+            "3:00 p.m.",
+            "4:25 p.m.",
+            "ANU"
+          ],
+          [
+            "",
+            "ANU",
+            "7:30 p.m.",
+            "8:30 p.m.",
+            "KN"
+          ]
+        ],
+        "merges": [
+          {
+            "row": 0,
+            "col": 0,
+            "rowSpan": 2
+          }
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 59,
+      "sourcePage": 10,
+      "stem": "P. Hawk has a manufacturing business. His raw materials cost $1 900. Rates and rent total $2 000, and factory wages amount to $2 500.\n\nThe number of units produced is 640. What is the cost of one unit?",
+      "options": [
+        "$4",
+        "$6",
+        "$10",
+        "$13"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2011-MJ",
+      "number": 60,
+      "sourcePage": 10,
+      "stem": "Which of the following is an example of a fringe benefit?",
+      "options": [
+        "Promotion offers",
+        "Training opportunities",
+        "Holiday arrangements",
+        "Use of company vehicle"
+      ]
+    }
+  ]
+}

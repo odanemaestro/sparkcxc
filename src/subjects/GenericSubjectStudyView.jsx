@@ -1,3 +1,5 @@
+import OfficeVisualGuide from "../officeAdministration/components/OfficeVisualGuide.jsx";
+import OfficeWorkspace from "../officeAdministration/components/OfficeWorkspace.jsx";
 import ForwardArrowIcon from "../components/ui/ForwardArrowIcon";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
@@ -290,6 +292,11 @@ export function GenericLessonContent({
       {hasChemistryVisuals && <ChemistryReferenceDiagrams topicId={topic.id}/>}
       {pobHasVisuals&&<PobReferenceMedia topic={topic}/>}
       {isPob&&<div id="pob-lesson-tools"><PobLearningTools topic={topic} onActivityComplete={onActivityComplete}/></div>}
+      {subjectId==="office-administration"&&<>
+        <OfficeVisualGuide section={topic?.metadata?.syllabus?.section} topic={topic}/>
+        <details><summary>Check your understanding</summary><p>{lesson.check?.question}</p><details><summary>Show explanation</summary><p>{lesson.check?.answer}</p></details></details>
+        <details className="oa-lesson-tools"><summary>Practise office skills</summary><OfficeWorkspace userId={userId} topic={topic} onActivityComplete={onActivityComplete}/></details>
+      </>}
       {subjectId==="principles-of-accounts"&&<>
         <AccountingVisualGuide section={topic?.metadata?.syllabus?.section}/>
         <details><summary>Check your understanding</summary><p>{lesson.check?.question}</p><details><summary>Show explanation</summary><p>{lesson.check?.answer}</p></details></details>
@@ -466,7 +473,7 @@ export default function GenericSubjectStudyView({
 
     Promise.all([
       loadGenericSubjectStructure({ supabase, subjectId }),
-      userId
+      userId && supabase?.from
         ? supabase.from("spark_subject_progress")
             .select("topic_id,activity_key,activity_type,completed")
             .eq("user_id", userId)
@@ -638,7 +645,7 @@ export default function GenericSubjectStudyView({
     topicId,
     sectionId,
   }) => {
-    const type=subjectId==="principles-of-accounts"&&activityType==="lab"?"lab":"diagram";
+    const type=["principles-of-accounts","office-administration"].includes(subjectId)&&activityType==="lab"?"lab":"diagram";
     const activityKey = `${type}:${activityId}`;
     if (!activityId || completedActivityKeys.has(activityKey)) return;
 

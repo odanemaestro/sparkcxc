@@ -28,6 +28,7 @@ const ChemistryPracticeHub = lazy(() =>
   import("../chemistry/practice/ChemistryPracticeHub")
 );
 const FnhPracticeHub=lazy(()=>import("../fnh/practice/FnhPracticeHub"));
+const OaPracticeHub=lazy(()=>import("../officeAdministration/practice/OaPracticeHub.jsx"));
 const PoaPracticeHub=lazy(()=>import("../principlesOfAccounts/practice/PoaPracticeHub.jsx"));
 const PobPracticeHub=lazy(()=>import("../principlesOfBusiness/practice/PobPracticeHub.jsx"));
 
@@ -114,6 +115,8 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
                       ? "practice-chemistry"
                     : item.id === "food-nutrition-and-health"
                       ? "practice-food-nutrition-and-health"
+                    : item.id === "office-administration"
+                      ? "practice-office-administration"
                     : item.id === "principles-of-accounts"
                       ? "practice-principles-of-accounts"
                     : item.id === "principles-of-business"
@@ -185,6 +188,10 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
         />
       </PracticeLazyBoundary>
     );
+  }
+
+  if (selectedSubject === "office-administration") {
+    return <PracticeLazyBoundary label="Loading Office Administration practice"><OaPracticeHub supabase={supabase} userId={userId} onActivity={onSubjectActivity} onBack={()=>setView?.("practice")}/></PracticeLazyBoundary>;
   }
 
   if (selectedSubject === "principles-of-accounts") {

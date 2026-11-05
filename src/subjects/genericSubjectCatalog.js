@@ -1,3 +1,4 @@
+import {oaLocalStructure} from "../officeAdministration/data/oaCourse";
 import { chemistryLocalStructure } from "../chemistry/data/chemistryCourse";
 import {fnhLocalStructure} from "../fnh/data/fnhCourse";
 import {pobLocalStructure} from "../principlesOfBusiness/data/pobCourse";
@@ -140,6 +141,7 @@ function structureFromRpc(data) {
 
 export async function loadGenericSubjectStructure({ supabase, subjectId } = {}) {
   const id = cleanId(subjectId);
+  if (id === "office-administration") return {data:oaLocalStructure(),error:null,source:"local-oa"};
   if (id === "principles-of-accounts") return {data:poaLocalStructure(),error:null,source:"local-poa"};
   if (id === "social-studies") {
     return {data:socialStudiesLocalStructure(),error:null,source:"local-social-studies"};

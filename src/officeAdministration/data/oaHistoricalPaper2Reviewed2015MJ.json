@@ -1,0 +1,751 @@
+{
+  "paperId": "OA-P2-2015-MJ",
+  "reviewDate": "2026-10-30",
+  "reviewMethod": "Visual comparison with all 20 supplied PDF pages; native prompts and invoice, purchase order and advice-note layouts checked. Obvious missing terminal glyphs restored for legibility; printed figures and dates retained.",
+  "questions": {
+    "OA-P2-2015-MJ::1": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2,
+        3
+      ],
+      "layoutSourcePages": [
+        2,
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::2": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4,
+        5
+      ],
+      "layoutSourcePages": [
+        4,
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::3": {
+      "stem": "",
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        7,
+        8
+      ],
+      "layoutSourcePages": [
+        6,
+        7,
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::4": {
+      "stem": "",
+      "sourcePage": 9,
+      "sourcePages": [
+        9,
+        10
+      ],
+      "layoutSourcePages": [
+        9,
+        10
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::5": {
+      "stem": "",
+      "sourcePage": 11,
+      "sourcePages": [
+        11,
+        12,
+        13
+      ],
+      "layoutSourcePages": [
+        11,
+        12,
+        13
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::6": {
+      "stem": "",
+      "sourcePage": 15,
+      "sourcePages": [
+        15,
+        16,
+        17
+      ],
+      "layoutSourcePages": [
+        15,
+        16,
+        17
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::7": {
+      "stem": "",
+      "sourcePage": 18,
+      "sourcePages": [
+        18,
+        19
+      ],
+      "layoutSourcePages": [
+        18,
+        19
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2015-MJ::1::q1-a": {
+      "prompt": "Computer literacy and proficiency in the use of productivity tools and office equipment are essential skills for office workers. Differentiate between:\n(i) Computer literacy and productivity tools (2 marks)\n(ii) Collating and addressing machines (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::1::q1-b": {
+      "prompt": "Speed dialling and electronic top-up are two services that a telephone company provides. Describe the features of EACH of these services. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::1::q1-c": {
+      "prompt": "Your friend Eric Luwis has seen a job vacancy for a receptionist at a five-star hotel in town. He feels that the job would be ideal for him as it satisfies his personal taste; the ‘image of the firm’ also appeals to him. Compose TWO questions EACH on ‘personal taste’ and the ‘image of the firm’ that Eric should consider before applying for the job. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::1::q1-d": {
+      "prompt": "Your colleague who works as a clerk in the human resource (HR) department had to attend to urgent personal matters overseas. As the data entry clerk, you were deployed to her desk but without any information as to what the position entails.\n(i) Suggest ONE duty not performed in the data entry position which would be required in the HR clerk’s position. (1 mark)\n(ii) Explain ONE way in which a job description for the HR clerk’s position could assist the data entry clerk to perform her ‘new’ role effectively. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::2::q2-a": {
+      "prompt": "List THREE characteristics of an effective records management system. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::2::q2-b": {
+      "prompt": "(i) Explain the meaning of the term ‘defamation’ as it relates to legal issues. (2 marks)\n(ii) Infringement of copyright is the act of reproducing or imitating other persons’ ideas or inventions without permission. State TWO examples of works that may be copied by unauthorized persons. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::2::q2-c": {
+      "prompt": "Sam works as the records and information manager in the computer department of a large company. He reads the following extract on the minute sheet from his assistant.\n* Ten laptops purchased for supervisors over the last calendar year cannot be accounted for.\n** Reports were not submitted on a timely basis by two supervisors over the last three months. Draft a follow-up comment that Sam could write on the minute sheet to ensure that appropriate action is taken to address the matters in the extract. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::2::q2-d": {
+      "prompt": "You work in a large government ministry which is in the process of transferring information from filing cabinets to an electronic database.\n(i) Outline FOUR precautionary measures that should be considered in moving from a manual to an electronic mode of information management. (4 marks)\n(ii) Explain ONE benefit to the organization if computers rather than filing cabinets are used. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::3::q3-a": {
+      "prompt": "Identify THREE records that may be regarded as corporate records. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::3::q3-b": {
+      "prompt": "State ONE legal requirement for holding statutory meetings. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::3::q3-c": {
+      "prompt": "State TWO pieces of information that are usually found on an e-ticket for a flight. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::3::q3-d": {
+      "prompt": "Kerry Lindo, the administrative assistant, was given instructions by the principal of Quality Academy to prepare a notice of meeting. All senior teachers must be informed that the staff meeting of the academy will be held in the boardroom on 28 August 2015 at 10:00 a.m. Based on the information given, write the notice the administrative assistant would place on the staff notice board. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true,
+      "answerType": "document",
+      "documentTitle": "Notice of meeting",
+      "fields": [
+        {
+          "label": "Notice",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2015-MJ::3::q3-e": {
+      "prompt": "A curriculum officer is going on a tour of educational facilities in a country which is affected by yellow fever. He needs to obtain a visa and health certificate.\n\nExplain why it is necessary to obtain EACH of the documents mentioned above for use on the trip. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true,
+      "fields": [
+        {
+          "label": "Visa",
+          "kind": "text"
+        },
+        {
+          "label": "Health Certificate",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2015-MJ::4::q4-a": {
+      "prompt": "Two of the functions of the HR management office are as follows:\n• Recruitment\n• Induction\n\nIdentify ONE task that must be performed for EACH of the above mentioned HR management functions. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 9,
+      "sourcePages": [
+        9
+      ],
+      "layoutSourcePages": [
+        9
+      ],
+      "layoutVerified": true,
+      "fields": [
+        {
+          "label": "Recruitment",
+          "kind": "text"
+        },
+        {
+          "label": "Induction",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2015-MJ::4::q4-b": {
+      "prompt": "State TWO types of leave, other than vacation leave, for which an employee could request time off from work. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 9,
+      "sourcePages": [
+        9
+      ],
+      "layoutSourcePages": [
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::4::q4-c": {
+      "prompt": "Give TWO external factors that contribute to employee turnover. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 9,
+      "sourcePages": [
+        9
+      ],
+      "layoutSourcePages": [
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::4::q4-d": {
+      "prompt": "(i) On 4 April 2015, Media Services Ltd, 10 Georgetown Drive, Guyana, purchased the following items from Best Buy Co. Ltd, 17 Parkway Drive, Guyana.\n• 10 memory sticks, 8 GB @ $750 each\n• 15 packs HP deskjet ink cartridges @ $500 each\n• 20 boxes of A4 paper @ $100 each The terms of sale offered by Best Buy Co. Ltd are 10% trade discount and a cash discount of 5% if the net amount is paid within 10 days. Use the invoice below to complete the sales transaction. (7 marks)",
+      "promptVerified": true,
+      "sourcePage": 10,
+      "sourcePages": [
+        10
+      ],
+      "layoutSourcePages": [
+        10
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "INVOICE",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "Invoice #",
+            "100"
+          ],
+          [
+            "BEST BUY CO. LTD",
+            "17 Parkway Drive\nGUYANA\nTelephone: 867 123 4567"
+          ],
+          [
+            "Media Services Ltd",
+            "10 Georgetown Drive\nGUYANA"
+          ],
+          [
+            "Terms",
+            "5%/10/N30"
+          ],
+          [
+            "Date",
+            "4 April 2015"
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "To supply:",
+          "columns": [
+            "QUANTITY",
+            "DESCRIPTION",
+            "UNIT PRICE",
+            "TOTAL"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(ii) If the debt is settled within 10 days, calculate the amount that Media Services Ltd would be required to pay. (Show all working.) (2 marks)",
+          "kind": "text",
+          "position": "after",
+          "rows": 5
+        }
+      ]
+    },
+    "OA-P2-2015-MJ::5::q5-a": {
+      "prompt": "Explain the meaning of the term ‘just-in-time’ as it relates to inventory management. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 11,
+      "sourcePages": [
+        11
+      ],
+      "layoutSourcePages": [
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::5::q5-b": {
+      "prompt": "State TWO disadvantages of having too much stock. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 11,
+      "sourcePages": [
+        11
+      ],
+      "layoutSourcePages": [
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::5::q5-c": {
+      "prompt": "State TWO functions of the marketing office. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 11,
+      "sourcePages": [
+        11
+      ],
+      "layoutSourcePages": [
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::5::q5-d": {
+      "prompt": "(i) Pete Danvers, a clerk in the procurement and inventory management department, was asked to order the following items from Mathews Co. Ltd, 17 Pear Drive, Antigua.\n• 5 dozen #2 HB pencils @ $20 per dozen\n• 2 boxes letter size envelopes @ $25 per box\n• 10 reams legal size paper @ $50 per ream\n• 3 packs sarasa 0.7 black ink pens @ $30 per pack Complete the purchase order using the form provided below. (7 marks)",
+      "promptVerified": true,
+      "sourcePage": 12,
+      "sourcePages": [
+        12,
+        13
+      ],
+      "layoutSourcePages": [
+        12,
+        13
+      ],
+      "layoutVerified": true,
+      "documentTitle": "PURCHASE ORDER — Order No. 101",
+      "fields": [
+        {
+          "label": "To",
+          "kind": "text"
+        },
+        {
+          "label": "Date",
+          "kind": "text"
+        },
+        {
+          "label": "Address",
+          "kind": "text"
+        },
+        {
+          "label": "Prepared by",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "(ii) What action should Pete Danvers take if the paper delivered was the wrong size? (2 marks)",
+          "kind": "text",
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Please supply the following:",
+          "columns": [
+            "QUANTITY",
+            "DESCRIPTION",
+            "UNIT PRICE",
+            "TOTAL"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "TOTAL",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "merges": [
+            {
+              "row": 1,
+              "col": 0,
+              "colSpan": 3,
+              "align": "right"
+            }
+          ],
+          "inputRows": [
+            7,
+            2
+          ]
+        }
+      ]
+    },
+    "OA-P2-2015-MJ::6::q6-a": {
+      "prompt": "List FOUR functions of the corporate communications clerk. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 15,
+      "sourcePages": [
+        15
+      ],
+      "layoutSourcePages": [
+        15
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::6::q6-b": {
+      "prompt": "Identify TWO tasks that the customer service clerk should perform in assisting with the maintenance of a website. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 15,
+      "sourcePages": [
+        15
+      ],
+      "layoutSourcePages": [
+        15
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::6::q6-c": {
+      "prompt": "Mr Charleston, an angry customer, storms into Murrell Motors and the following conversation takes place between him and the customer service clerk.\nCustomer Service Clerk: Good morning Mr Charleston. May I help you?\nMr Charleston: This is nonsense! This is the second time in two months I’m in here with this car. It’s just two months old! You people don’t seem to know what you’re doing! A new car and it needs a part already! I was promised that someone would call me when the part came in and not a word have I heard from anyone!\nCustomer Service Clerk: Mr Charleston there’s no need for you to behave like that. After all it’s only a car. Besides we’ve been busy with other customers, and I have no idea when that part will be in. You’ll just have to wait.\nMr Charleston: What! The customer service in this place stinks! I demand to see the brand manager. I want my money back now! I’ll never do business with this company again!\n(i) Identify THREE rules of good customer service relations which the customer service clerk at Murrell Motors failed to observe. (3 marks)\n\n(ii) State THREE ways in which such actions will affect the company, if this clerk continues to deal with customers in the same manner Mr Charleston was treated. (3 marks)\n(iii) Instead of removing the clerk from the job (firing) what THREE actions could the company take to improve this clerk’s handling of customers? (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 16,
+      "sourcePages": [
+        16,
+        17
+      ],
+      "layoutSourcePages": [
+        16,
+        17
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::7::q7-a": {
+      "prompt": "List THREE duties of the clerk in a despatch office. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 18,
+      "sourcePages": [
+        18
+      ],
+      "layoutSourcePages": [
+        18
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::7::q7-b": {
+      "prompt": "Identify THREE items of information, apart from the price or price list, that may be found in a catalogue. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 18,
+      "sourcePages": [
+        18
+      ],
+      "layoutSourcePages": [
+        18
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::7::q7-c": {
+      "prompt": "The following is an extract of an advice note.\n\nSuggest TWO actions that the seller could take if the goods are not despatched to the customer by 6/10/14. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 18,
+      "sourcePages": [
+        18
+      ],
+      "layoutSourcePages": [
+        18
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "ADVICE NOTE",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "OFFICE OUTFITS",
+            "24 Baldwin Avenue\nNewport\nSt John’s\nANTIGUA"
+          ],
+          [
+            "Advice Note #",
+            "AN73192"
+          ],
+          [
+            "Date",
+            "June 08, 2014"
+          ],
+          [
+            "TO",
+            "FTC BUSINESS INSTITUTE\n#18, 8th Avenue\nBellevue, St Michael\nBARBADOS"
+          ],
+          [
+            "Order No.",
+            "18098"
+          ],
+          [
+            "Dated",
+            "October 02, 2014"
+          ],
+          [
+            "Terms",
+            "4.5% 7 days\n(1) 3% 21 days\n(2) Otherwise net"
+          ],
+          [
+            "Despatch details",
+            "1 carton\nAir 6/10/14"
+          ]
+        ]
+      }
+    },
+    "OA-P2-2015-MJ::7::q7-d": {
+      "prompt": "The owner of FTC Business Institute wants to get some information from a supplier about products for his business, and is advised to use an enquiry. Advise him of\n(i) ONE benefit he could gain by using an enquiry to get information from suppliers (2 marks)\n(ii) the next step to take in the purchasing procedures after deciding on the supplier. (1 mark)",
+      "promptVerified": true,
+      "sourcePage": 19,
+      "sourcePages": [
+        19
+      ],
+      "layoutSourcePages": [
+        19
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2015-MJ::7::q7-e": {
+      "prompt": "You are assigned the responsibility of maintaining a mailing list for the sales department at Yoo Toob IT Resources Inc. A most valued customer handed you a letter, complaining of not receiving any correspondence from the company since moving to her new address. Suggest TWO ways the company could maintain its mailing list to communicate effectively with customers. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 19,
+      "sourcePages": [
+        19
+      ],
+      "layoutSourcePages": [
+        19
+      ],
+      "layoutVerified": true
+    }
+  }
+}

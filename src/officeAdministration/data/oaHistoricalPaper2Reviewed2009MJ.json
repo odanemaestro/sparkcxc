@@ -1,0 +1,1034 @@
+{
+  "paperId": "OA-P2-2009-MJ",
+  "reviewDate": "2026-11-04",
+  "reviewMethod": "Visual comparison with all 10 supplied PDF pages, including the advice note, job card and FIFO inserts. Native fields preserve the source terms, identifiers and blank answer spaces.",
+  "questions": {
+    "OA-P2-2009-MJ::1": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::2": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2,
+        3
+      ],
+      "layoutSourcePages": [
+        2,
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::3": {
+      "stem": "",
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::4": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::5": {
+      "stem": "",
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::6": {
+      "stem": "",
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        10
+      ],
+      "layoutSourcePages": [
+        6,
+        10
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::7": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        9
+      ],
+      "layoutSourcePages": [
+        7,
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::8": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        8
+      ],
+      "layoutSourcePages": [
+        7,
+        8
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2009-MJ::1::q1-a": {
+      "prompt": "Identify THREE levels of staff that may be employed to run a large industrial complex. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::1::q1-b": {
+      "prompt": "Olivia, a word processing clerk, is employed in the Administrative Department of Technology Plus Inc. Give TWO tasks she would be expected to perform. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::1::q1-c": {
+      "prompt": "List ONE advantage and ONE disadvantage of working in an enclosed office. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::1::q1-d": {
+      "prompt": "Assume that you are employed at the Inland Revenue Department. You notice Keno, a new worker, is often alone. He seems to have difficulty relating to customers, his supervisor and colleagues. Members of staff are willing to assist him in overcoming this problem.\n(i) Outline TWO actions that should be recommended to Keno to improve relationships. (2 marks)\n(ii) State TWO benefits that can be gained from maintaining good relationships with EACH of the following:\na) Customers\nb) Supervisors\nc) Colleagues (6 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::2::q2-a": {
+      "prompt": "(i) Give the information that is found in EACH of the following sources:\na) Hansard\nb) Post Office Guide\nc) Travel Schedule\nd) Official Gazette (4 marks)\n(ii) Name THREE reference materials, other than those mentioned in 2 (a) (i) above, that are considered useful in the library of a public high school. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::2::q2-b": {
+      "prompt": "(i) In your Office Administration class, Jon argues that despite the technological era, there is still need for courier services. State THREE points that Jon can use to convince the class that courier services will be required as long as businesses exist. (3 marks)\n(ii) Give ONE reason an international sales representative would find the poste restante service convenient. (1 mark)\n(iii) A junior clerk has been assigned to the registry of your firm. Develop a checklist of THREE procedures for receiving a parcel by post that can be given to him to assist in performing this duty. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2,
+        3
+      ],
+      "layoutSourcePages": [
+        2,
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::3::q3-a": {
+      "prompt": "As a receptionist, two of your duties are to\n(i) attend to visitors\n(ii) receive and file business cards. For EACH of the above duties, state TWO steps you should take to ensure that the duties are performed effectively. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::3::q3-b": {
+      "prompt": "State THREE attributes that a receptionist should display when introducing visitors. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::3::q3-c": {
+      "prompt": "You are Jon Wiles and you need to develop a Reminder System for your Manager, Mrs. Hilda Coates, who has just returned from an overseas trip. The following activities have been scheduled between 9:00 a.m. and 5:00 p.m. on June 01, 2009.\n– Conduct regular monthly meeting with officers two hours before lunch.\n– Meet with secretarial staff two hours before the end of the work day.\n– Review activities listed in the diary for the day. This will take one hour.\n– Three-hour working lunch with directors from noon.\n\nCopy the \"Things To Do, Reminder System\" given below in your answer booklet and complete it by arranging the activities given in 3 (c) above in order of scheduled time. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Things To Do, Reminder System",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "Name",
+            "Hilda Coates"
+          ],
+          [
+            "Date",
+            "June 01, 2009"
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "Reminder entries",
+          "columns": [
+            "Time",
+            "Activity"
+          ],
+          "rows": [
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2009-MJ::4::q4-a": {
+      "prompt": "Identify FOUR factors that should be taken into account when making hotel reservations for a company executive. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::4::q4-b": {
+      "prompt": "You are required to prepare the travel folder for Mr. Bob Levy who will be travelling to Barbados, St. Lucia, Antigua and Jamaica during August 20-27, 2009. You have begun to compile material for his travel folder. State the information that should be included on the label of the travel folder. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::4::q4-c": {
+      "prompt": "You have been chosen by your graduation class of the High Flyers Secondary School in your country to sit on a panel to discuss the topic, \"Requirements of the Work Environment\".\n\nPrepare TWO points for EACH of the following headings that you will address in the panel discussion.\n– Differences between school and the workplace\n– Confidentiality at the workplace\n– Development of new skills\n– Desirable attitudes (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::5::q5-a": {
+      "prompt": "(i) State FOUR reasons employers should provide for the safety of workers. (4 marks)\n(ii) The Factories Act requires employers to put in place certain safety, health and welfare provisions as approved by the Chief Factory Inspector. State ONE health and ONE welfare provision employers should put in place for their workers. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::5::q5-b": {
+      "prompt": "(i) Copy the cheque below in your answer booklet and prepare and sign a crossed cheque with today’s date and paid to Wil Paymar for the amount of $1 001.50. (6 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Antigua Publishing House — Cheque 01",
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "Citizens’ Bank of Antigua Ltd.",
+            "Rose Street Branch"
+          ],
+          [
+            "",
+            "002   003   004"
+          ]
+        ]
+      },
+      "fields": [
+        {
+          "label": "Cross the cheque",
+          "kind": "checkbox"
+        },
+        {
+          "label": "Date",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Pay to the order of",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Amount in figures ($)",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "The sum of",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Signature",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "(ii) Other than the information represented on the cheque, prepare a set of THREE guidelines for junior clerks to use when writing a cheque. (3 marks)",
+          "kind": "text",
+          "rows": 5,
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2009-MJ::6::q6-a": {
+      "prompt": "(i) Define the term 'stock control'. (2 marks)\n(ii) List FOUR reasons for controlling stock. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::6::q6-b": {
+      "prompt": "(i) Your supervisor gave you the following list of items to record on the Stock Control Card.\n\n50 1L bottles cleaning fluid – order No. 10AI received May 2, 2009\n100 1L bottles cleaning fluid – order No. 5B8 received May 28, 2009.\n\nCopy the Stock Control Card given below in your answer booklet and complete it using the information given in 6 (b) (i) above. (3 marks)\n\n(ii) On the form provided, use the information presented in the table below to calculate the value of inventory, using the FIFO method of stock valuation. (6 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        10
+      ],
+      "layoutSourcePages": [
+        6,
+        10
+      ],
+      "layoutVerified": true,
+      "fields": [
+        {
+          "label": "Item",
+          "kind": "text",
+          "rows": 3
+        }
+      ],
+      "table": {
+        "title": "Record of Transactions — For Period September – December 2008",
+        "columns": [
+          "RECEIPTS/PURCHASES",
+          "",
+          "ISSUES",
+          ""
+        ],
+        "rows": [
+          [
+            "AA Batteries",
+            "",
+            "AA Batteries",
+            ""
+          ],
+          [
+            "2008",
+            "",
+            "2008",
+            ""
+          ],
+          [
+            "September 5",
+            "10 @ $50",
+            "October 20",
+            "20"
+          ],
+          [
+            "October 17",
+            "15 @ $60",
+            "November 22",
+            "12"
+          ],
+          [
+            "November 21",
+            "12 @ $40",
+            "–",
+            ""
+          ],
+          [
+            "December 10",
+            "12 @ $70",
+            "–",
+            ""
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "STOCK CONTROL CARD",
+          "columns": [
+            "Date",
+            "Order No.",
+            "Received",
+            "Used Total",
+            "Balance"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "inputRows": [
+            6
+          ]
+        },
+        {
+          "title": "BATTERY SUPPLIES COMPANY — Purchasing Department — Record of Transactions FIFO Method",
+          "columns": [
+            "DATE",
+            "RECEIPTS",
+            "ISSUES",
+            "BALANCE",
+            "VALUE"
+          ],
+          "rows": [
+            [
+              "September 5",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "October 17",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "October 20",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "November 21",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "November 22",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "December 10",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "rowLabels": [
+            "September 5",
+            "October 17",
+            "October 20",
+            "November 21",
+            "November 22",
+            "December 10"
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              5,
+              4
+            ]
+          ],
+          "details": [
+            "For Period September – December 2008",
+            "Item: AA Batteries"
+          ]
+        }
+      ]
+    },
+    "OA-P2-2009-MJ::7::q7-a": {
+      "prompt": "State ONE function of EACH of the following items of equipment used in sales and marketing. Answering machine Calculator Computer Risograph (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::7::q7-b": {
+      "prompt": "Give TWO uses of a Planning Master. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::7::q7-c": {
+      "prompt": "Assume you are Jhane Brew who works as a clerk in the Factory Office of Trendy Garment Ltd. Suzie Crowne is your supervisor and Sam Hugh is the factory manager. The factory has just completed 50 dozen white, size 12 school blouses.\n\nThe following were required to complete the job No. 100.\n\nMaterial\n700 metres white cotton\n200 dozen white buttons\n150 spools white cotton thread\n\nLabour\n4 cutters @ $50.00 for 4 hours\n20 stitchers @ $60.00 per hour for 26 hours\n4 packers @ $40.00 per hour for 5 hours\n\nUse the form provided to complete Job Card #50. Assume it was prepared by the factory clerk on August 01, approved by the supervisor on August 02 and inspected by the factory manager on August 20. (9 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        9
+      ],
+      "layoutSourcePages": [
+        7,
+        9
+      ],
+      "layoutVerified": true,
+      "documentTitle": "JOB CARD",
+      "fields": [
+        {
+          "label": "Job No.",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Card No.",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Date",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Job description",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Material used",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Workers employed",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Time taken to complete job",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "Approved by",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "Date approved",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "Inspected by",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "Date inspected",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "Prepared by",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "Date prepared",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Material used",
+          "columns": [
+            "Quantity",
+            "Description"
+          ],
+          "rows": [
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        },
+        {
+          "title": "Workers employed",
+          "columns": [
+            "Number",
+            "Type",
+            "Rate of pay"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2009-MJ::8::q8-a": {
+      "prompt": "(i) Identify TWO duties, other than the routine office duties, of a clerk in the Despatch and Transport office. (2 marks)\n(ii) State TWO responsibilities of a clerk in the Despatch and Transport office. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::8::q8-b": {
+      "prompt": "Define the following terms used in Despatch and Transport documents: Consignee Freight (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2009-MJ::8::q8-c": {
+      "prompt": "(i) You are Jay Wray, a clerk employed by the firm KSO Corporation in Lakeville, Spanish Town, Jamaica. The telephone number for the company is 479-2525.\n\nYour supervisor told you to inform Liz Hector of Bridge Palm Grove, Steer Town, Hanover, in response to Order No. 25D that her goods will be sent by truck on June 8, 2009. The order contained 1 000 bags of brown rice, to be received by Ms. M. Wheatley.\n\nUse the form provided to complete the Advice Note. (6 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        8
+      ],
+      "layoutSourcePages": [
+        7,
+        8
+      ],
+      "layoutVerified": true,
+      "documentTitle": "ADVICE NOTE",
+      "fields": [
+        {
+          "label": "Seller",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Telephone",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Buyer",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Order No.",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Please receive the following on",
+          "kind": "text",
+          "rows": 3
+        },
+        {
+          "label": "Received by",
+          "kind": "text",
+          "rows": 2,
+          "position": "after"
+        },
+        {
+          "label": "(ii) What THREE actions should a driver of a transport vehicle take before delivering goods to customers? (3 marks)",
+          "kind": "text",
+          "rows": 5,
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Goods",
+          "columns": [
+            "Quantity",
+            "Item",
+            "Description"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "inputRows": [
+            7
+          ]
+        }
+      ]
+    }
+  }
+}

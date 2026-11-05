@@ -1,0 +1,720 @@
+{
+  "paperId": "OA-P2-2024-MJ",
+  "reviewDate": "2026-10-28",
+  "reviewMethod": "Visual comparison with every supplied examination page; native question text and forms.",
+  "questions": {
+    "OA-P2-2024-MJ::3": {
+      "stem": "The articles of incorporation are one of the basic legal requirements of an annual general meeting.",
+      "layoutVerified": true,
+      "layoutSourcePages": [
+        8
+      ]
+    }
+  },
+  "parts": {
+    "OA-P2-2024-MJ::1::q1-a": {
+      "prompt": "In offices, electronic communication is the most widely used channel to disseminate information.\n\n(i) State TWO benefits of using electronic communication in an organization.\n\n(ii) Outline the importance of EACH of the following factors when selecting a channel of communication.\n\n• Degree of urgency\n• Level of confidentiality\n• Audience size",
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "sourcePages": [
+        3
+      ],
+      "sourcePage": 3
+    },
+    "OA-P2-2024-MJ::1::q1-b": {
+      "prompt": "As the clerk in the mailroom, you are required to use the franking machine to affix postage on all outgoing mail.\n\nThe following information represents activity for Week 1.\n\n• $300.00 was added to the franking machine\n• 5 manuscripts @ $0.25 each\n• 450 form letters @ $0.15 each\n• 2000 advertising pamphlets @ $0.10 each\n\nUse the given information to complete the form below.",
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "documentTitle": "Franking Machine — Postage for Week 1",
+      "table": {
+        "title": "Opening balance",
+        "columns": [
+          "Details",
+          "Amount"
+        ],
+        "rows": [
+          [
+            "Balance",
+            "$5.00"
+          ]
+        ]
+      },
+      "fields": [
+        {
+          "label": "Postage Added ($)",
+          "kind": "numeric"
+        },
+        {
+          "label": "Total Postage ($)",
+          "kind": "numeric"
+        },
+        {
+          "label": "Total Usage (Week 1) ($)",
+          "kind": "numeric",
+          "position": "after"
+        },
+        {
+          "label": "Balance after Week 1 ($)",
+          "kind": "numeric",
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Week 1",
+          "columns": [
+            "Quantity",
+            "Description",
+            "Unit Price ($)",
+            "Total ($)"
+          ],
+          "rows": [
+            [
+              "5",
+              "Manuscripts",
+              "0.25",
+              "1.25"
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        }
+      ],
+      "sourcePages": [
+        4
+      ],
+      "sourcePage": 4
+    },
+    "OA-P2-2024-MJ::2::q2-c": {
+      "prompt": "You work as an assistant secretary in the human resource department at CPK International. Your manager, Mrs Yanna Smith, sent you the following email.\n\nFrom: ysmith@cpkinternational.net\nTo: juniorclerk1@cpkinternational.net\nSubject: Orientation of New Recruit\nDate: 5 June 2024\n\nIn preparation for the orientation exercise next week, prepare a job description for the newly appointed position of Sales Clerk II.\n\nThis position requires a good command of the English Language, administrative skills and competence in computer technology. The appointed clerk will be reporting to the sales manager and will be assigned a Grade 4 salary. This position also requires the clerk to have the ability to follow procedures and practise good interpersonal relations.\n\nN.B. Include FOUR duties the clerk is expected to perform.\n\nRegards\nY Smith\n\nUse the information in the email to complete the job description form.",
+      "layoutSourcePages": [
+        6,
+        7
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "documentTitle": "JOB DESCRIPTION",
+      "fieldLayout": "stacked",
+      "table": {
+        "title": "Printed job details",
+        "columns": [
+          "Field",
+          "Details"
+        ],
+        "rows": [
+          [
+            "DEPARTMENT",
+            "Sales, Marketing and Customer Service"
+          ],
+          [
+            "SECTION",
+            "Customer Service"
+          ]
+        ],
+        "details": [
+          "HRM 2024"
+        ]
+      },
+      "fields": [
+        {
+          "label": "JOB TITLE",
+          "kind": "text"
+        },
+        {
+          "label": "SALARY GRADE",
+          "kind": "text"
+        },
+        {
+          "label": "REPORTING TO",
+          "kind": "text"
+        },
+        {
+          "label": "JOB SUMMARY",
+          "kind": "text"
+        },
+        {
+          "label": "DUTIES 1",
+          "kind": "text"
+        },
+        {
+          "label": "DUTIES 2",
+          "kind": "text"
+        },
+        {
+          "label": "DUTIES 3",
+          "kind": "text"
+        },
+        {
+          "label": "DUTIES 4",
+          "kind": "text"
+        }
+      ],
+      "sourcePages": [
+        6,
+        7
+      ],
+      "sourcePage": 6
+    },
+    "OA-P2-2024-MJ::2::q2-a": {
+      "prompt": "At a recent departmental meeting, the filing clerk recommended the need for the disposal of dead files and the archiving of important inactive files.\n\n(i) State the difference between archiving and disposing of files.\n\n(ii) State TWO factors the filing clerk should consider when determining the period for record retention.",
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "sourcePages": [
+        5
+      ],
+      "sourcePage": 5
+    },
+    "OA-P2-2024-MJ::2::q2-b": {
+      "prompt": "List THREE characteristics of an effective records management system.",
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "sourcePages": [
+        5
+      ],
+      "sourcePage": 5
+    },
+    "OA-P2-2024-MJ::3::q3-a": {
+      "prompt": "State THREE other basic legal requirements that help inform the way in which annual general meetings must be conducted.",
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "sourcePages": [
+        8
+      ],
+      "sourcePage": 8
+    },
+    "OA-P2-2024-MJ::3::q3-b": {
+      "prompt": "Ms Jane Nolan was recently appointed to the post of marketing manager and will be travelling to North America to conduct business on behalf of the company.\n\n(i) Identify TWO important documents Ms Nolan will need for travel.\n\n(ii) Outline the importance of any ONE of the documents identified in (b) (i) for travel.",
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "sourcePages": [
+        8
+      ],
+      "sourcePage": 8
+    },
+    "OA-P2-2024-MJ::3::q3-c": {
+      "prompt": "The following is an excerpt of minutes from a recently held meeting.\n\nAt the last meeting of the Parent Teacher Association held on 3 May, plans were finalized for the upcoming fun day.\n\nThe following decisions were made.\n\n• Within four days, Mr Ramnarine James would select five members to comprise the planning committee.\n• In one week’s time, the parent representative would source equipment for the relays.\n• The following day, the secretary would create an advertisement for the local newspaper.\n• Mrs Marie Evans is the secretary and Mr Tomlin Adams is the parent representative.\n\nAssume you are the secretary of the association. Complete the action sheet below.",
+      "layoutSourcePages": [
+        9
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "responseTables": [
+        {
+          "title": "Action sheet",
+          "columns": [
+            "Action Required",
+            "Person Assigned",
+            "Completion Date"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      ],
+      "sourcePages": [
+        9
+      ],
+      "sourcePage": 9
+    },
+    "OA-P2-2024-MJ::4::q4-a": {
+      "prompt": "State TWO attributes of a clerk in the accounts office.",
+      "layoutSourcePages": [
+        10
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "sourcePages": [
+        10
+      ],
+      "sourcePage": 10
+    },
+    "OA-P2-2024-MJ::4::q4-b": {
+      "prompt": "The following resources are used in the accounts office. Complete the table by classifying each listed resource under the appropriate resource heading.\n\nLaptop     Spreadsheet     Accounting package     Scanner",
+      "layoutSourcePages": [
+        10
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "responseTables": [
+        {
+          "title": "Office resources",
+          "columns": [
+            "Hardware Resource",
+            "Software Resource"
+          ],
+          "rows": [
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "sourcePages": [
+        10
+      ],
+      "sourcePage": 10
+    },
+    "OA-P2-2024-MJ::4::q4-c": {
+      "prompt": "The accounts clerk at Joe’s Enterprises has been asked by the accountant, Mr Derrick Granston, to prepare a cheque for $10 050 to be paid to Tees R Us Limited. The A/C Payee cheque is to be postdated 10 June 2024 and signed by the accountant and manager.\n\n(i) Use the cheque below to enter the information given.\n\n(ii) State TWO reasons why both the accountant and the manager signed the cheque.",
+      "layoutSourcePages": [
+        11
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "documentTitle": "NOPBANK Commercial Limited — Newlands Plaza",
+      "fields": [
+        {
+          "label": "Counterfoil — Date",
+          "kind": "text"
+        },
+        {
+          "label": "Counterfoil — Details",
+          "kind": "text"
+        },
+        {
+          "label": "Counterfoil — Amount",
+          "kind": "text"
+        },
+        {
+          "label": "Cheque — Date",
+          "kind": "text"
+        },
+        {
+          "label": "Pay to the order of",
+          "kind": "text"
+        },
+        {
+          "label": "the sum of (Dollars)",
+          "kind": "text"
+        },
+        {
+          "label": "Amount ($)",
+          "kind": "text"
+        },
+        {
+          "label": "Crossing",
+          "kind": "text"
+        },
+        {
+          "label": "(ii) Reasons",
+          "kind": "text",
+          "position": "after",
+          "rows": 5
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Printed cheque details",
+          "columns": [
+            "Counterfoil No.",
+            "Cheque No.",
+            "Sign"
+          ],
+          "rows": [
+            [
+              "600101",
+              "600101",
+              "D. Granston; J. Dillon"
+            ]
+          ],
+          "editable": []
+        }
+      ],
+      "sourcePages": [
+        11
+      ],
+      "sourcePage": 11
+    },
+    "OA-P2-2024-MJ::5::q5-a": {
+      "prompt": "Identify TWO factors that a purchasing manager should consider before acquiring goods for the organization.",
+      "layoutSourcePages": [
+        12
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "sourcePages": [
+        12
+      ],
+      "sourcePage": 12
+    },
+    "OA-P2-2024-MJ::5::q5-b": {
+      "prompt": "Mr Lee Johnson, purchasing manager, of Computers-R-Us Limited, received the following proforma invoice.\n\n(i) State the difference between the terms ‘quantity discounts’ and ‘trade discounts’.\n\n(ii) Calculate the total to be paid if Computers-R-Us Limited is only given a trade discount.",
+      "layoutSourcePages": [
+        12,
+        13
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "table": {
+        "title": "Computer Network Solutions\n21 Blueberry Road\nNorthsound",
+        "columns": [
+          "Quantity",
+          "Description",
+          "Unit Price",
+          "Total Cost"
+        ],
+        "rows": [
+          [
+            "3",
+            "GenZ–24XX Motherboard",
+            "$600",
+            "$1800"
+          ]
+        ],
+        "details": [
+          "TO: Mr Lee Johnson, Purchasing Manager, Computers-R-Us Limited",
+          "Quantity Discount 5%",
+          "Trade Discount 10%",
+          "E&OE"
+        ]
+      },
+      "sourcePages": [
+        12,
+        13
+      ],
+      "sourcePage": 12
+    },
+    "OA-P2-2024-MJ::5::q5-c": {
+      "prompt": "(i) Globaltech is a leading telecommunications organization in the Caribbean. Recently, the company has experienced issues with customer relations.\n\nSuggest TWO ways in which each of the functions of the corporate communications clerk can help to improve customer relations at Globaltech.\n\n(ii) The management at Globaltech has decided to host a family event and has asked the corporate communications clerk to plan the event.\n\nSuggest ONE challenge the corporate communications clerk may encounter when planning the event.",
+      "layoutSourcePages": [
+        13,
+        14
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "responseTables": [
+        {
+          "title": "Corporate communications",
+          "columns": [
+            "Function of Corporate Communications Clerk",
+            "Suggestion"
+          ],
+          "rows": [
+            [
+              "Interface with media houses",
+              ""
+            ],
+            [
+              "Upkeep company website",
+              ""
+            ],
+            [
+              "Coordinate events",
+              ""
+            ],
+            [
+              "Produce company newsletter/magazines/calendar",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(ii) Challenge",
+          "kind": "text",
+          "position": "after"
+        }
+      ],
+      "sourcePages": [
+        13,
+        14
+      ],
+      "sourcePage": 13
+    },
+    "OA-P2-2024-MJ::6::q6-a": {
+      "prompt": "One of the functions of the transport office is to liaise with customers.\n\nIdentify TWO effective ways by which the transport office can stay in contact with their customers.",
+      "layoutSourcePages": [
+        15
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "sourcePages": [
+        15
+      ],
+      "sourcePage": 15
+    },
+    "OA-P2-2024-MJ::6::q6-b": {
+      "prompt": "In an effort to protect factory workers from injury, management has placed signs and symbols in the operations department.\n\nState the meaning of EACH of the signs illustrated below.",
+      "layoutSourcePages": [
+        15
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "sourceVisual": {
+        "page": 15,
+        "description": "The four printed signs, in numbered order.",
+        "region": [
+          483.82000000000005,
+          800,
+          170.76,
+          680
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "Signs",
+          "columns": [
+            "Sign",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "1",
+              ""
+            ],
+            [
+              "2",
+              ""
+            ],
+            [
+              "3",
+              ""
+            ],
+            [
+              "4",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        }
+      ],
+      "sourcePages": [
+        15
+      ],
+      "sourcePage": 15
+    },
+    "OA-P2-2024-MJ::6::q6-c": {
+      "prompt": "In the last month, the dispatch manager, Ms Pauline Hughs, has received numerous complaints from customers about their dissatisfaction with the delivery of goods to their establishment. Some of the complaints include:\n\n• late deliveries\n• frequent vehicle breakdowns\n• incomplete documentation.\n\nComplete the memorandum on page 18 to be sent to all drivers, informing them of the recent complaints. Use today’s date. Suggest ONE way in which EACH problem identified can be resolved. Include an appropriate subject line and send a copy to Ms Sharon Madison, the operations manager.",
+      "layoutSourcePages": [
+        16,
+        17
+      ],
+      "layoutVerified": true,
+      "promptVerified": true,
+      "layoutReviewDate": "2026-10-28",
+      "documentTitle": "MEMORANDUM",
+      "fieldLayout": "stacked",
+      "fields": [
+        {
+          "label": "TO",
+          "kind": "text"
+        },
+        {
+          "label": "FROM",
+          "kind": "text"
+        },
+        {
+          "label": "CC",
+          "kind": "text"
+        },
+        {
+          "label": "DATE",
+          "kind": "text"
+        },
+        {
+          "label": "SUBJECT",
+          "kind": "text"
+        },
+        {
+          "label": "Message",
+          "kind": "text",
+          "rows": 12
+        }
+      ],
+      "sourcePages": [
+        16,
+        17
+      ],
+      "sourcePage": 16
+    }
+  }
+}

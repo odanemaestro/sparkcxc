@@ -1,0 +1,1339 @@
+{
+  "paperId": "OA-P2-2013-MJ",
+  "reviewDate": "2026-10-30",
+  "reviewMethod": "Visual comparison with all 12 supplied PDF pages, including sideways petty cash book and detached cheque/advice-note inserts; source amounts, signatures, addresses and blank response spaces retained.",
+  "questions": {
+    "OA-P2-2013-MJ::1": {
+      "stem": "",
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::2": {
+      "stem": "",
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::3": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::4": {
+      "stem": "",
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::5": {
+      "stem": "",
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        9
+      ],
+      "layoutSourcePages": [
+        5,
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::6": {
+      "stem": "",
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        10,
+        11
+      ],
+      "layoutSourcePages": [
+        6,
+        10,
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::7": {
+      "stem": "",
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::8": {
+      "stem": "",
+      "sourcePage": 8,
+      "sourcePages": [
+        8,
+        12
+      ],
+      "layoutSourcePages": [
+        8,
+        12
+      ],
+      "layoutVerified": true
+    }
+  },
+  "parts": {
+    "OA-P2-2013-MJ::1::q1-a": {
+      "prompt": "The guillotine, risograph and computer are three vital pieces of equipment that are used in general and specialized office work State the purpose of EACH piece of equipment listed above. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::1::q1-b": {
+      "prompt": "(i) Define the term ‘skill’ (2 marks)\n(ii) Word processing and time management are two important skills for office workers. State ONE reason why EACH of these skills is important to an organization. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::1::q1-c": {
+      "prompt": "Vijay is employed as a clerical assistant in the Technical and Vocational Unit of the Ministry of Education. After six months, he is appraised by his supervisor as “someone with excellent interpersonal skills”. Outline TWO ways in which Vijay’s interpersonal skills can be used to settle disputes/conflicts at his workplace. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::1::q1-d": {
+      "prompt": "Ayana recently graduated from the School of Excellence with Grades I and II in eight CSEC subjects. She applies for a job as a teller at a local bank and is invited to attend an interview for the position. During the interview, she is asked the following questions:\n(i) Why did you apply for this job?\n(ii) What is your greatest strength?\n(iii) What are your career goals for the next five years For EACH of the questions listed above, write TWO appropriate responses that Ayana could give. (6 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::2::q2-a": {
+      "prompt": "Identify ONE use of EACH of the following types of paper:\n(i) Bond\n(ii) Parchment (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::2::q2-b": {
+      "prompt": "State THREE desirable attributes of a receptionist. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::2::q2-c": {
+      "prompt": "(i) Outline TWO guidelines that a receptionist should follow when taking telephone messages. (2 marks)\n(ii) Assume that you are Maya, a receptionist at Office Plus Inc. Indicate what actions you would take for EACH of the following situations:\na) An angry customer calls to report that the photocopying machine that she purchased recently from your company is faulty.\nb) The human resource manager wants to get in contact with a client immediately and gives you the client’s telephone number to dial. You dial the number but keep getting a busy signal.\nc) A message was left at your desk to call the travel agency to confirm your supervisor’s flight to an upcoming office supplies trade fair. You accidentally dial the wrong number.\nd) You call to make hotel reservations at the Caribbean Spa Resort for your manager. You hear a pre-recorded message. (8 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::3::q3-a": {
+      "prompt": "State ONE use of EACH of the following as a means of telecommunication:\n(i) Paging device\n(ii) Facsimile/fax machine\n(iii) Internet (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::3::q3-b": {
+      "prompt": "State TWO uses of a postage book. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::3::q3-c": {
+      "prompt": "The organization in which you work is engaged in trading globally and you have to frequently make telephone contact with customers overseas. State TWO reasons why understanding time zone differences is important to your work. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::3::q3-d": {
+      "prompt": "You work as a mail clerk for D & O Associates which is about to relocate its offices in town. The company wishes to convert to a centralized mailing system. Mr Wray, the managing director, has asked you to assist with identifying equipment for the new office\n(i) Identify FOUR modern pieces of equipment that are suitable for the new centralized mail room. (4 marks)\n(ii) Outline how EACH piece of equipment identified in (i) above could increase the efficiency of outgoing mail. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::4::q4-a": {
+      "prompt": "State THREE classifications of a records management system (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::4::q4-b": {
+      "prompt": "(i) Define the term ‘archiving’. (2 marks)\n(ii) Identify TWO types of microfilming. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::4::q4-c": {
+      "prompt": "O & R Credit Union Limited has expanded its operations and has decided to change from a departmental to a centralized filing system. As the senior records management clerk, you have been asked to advise Mr Guy Briggs, the manager, how he could improve records management in the organization.\n(i) Suggest THREE factors that should be considered in using a centralized filing system to improve records management. (6 marks)\n(ii) Suggest ONE disadvantage of implementing a centralized filing system (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::5::q5-a": {
+      "prompt": "List THREE functions of the accounts office (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::5::q5-b": {
+      "prompt": "Define EACH of the following types of cheques\n(i) Post dated\n(ii) Counter\n(iii) Certified (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5
+      ],
+      "layoutSourcePages": [
+        5
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::5::q5-c": {
+      "prompt": "Mr Dwayne Chung received the following invoice. He is required to prepare payment by cheque on 10 May 2013 for the amount due.\n\n(i) a) Calculate (showing your working) the amount due to R.K.C. Bujam and Company Ltd.\n\nb) On the form provided as an insert prepare the cheque for the amount calculated in (i) a) above. (7 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        9
+      ],
+      "layoutSourcePages": [
+        5,
+        9
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "INVOICE",
+        "columns": [
+          "Quantity",
+          "Description",
+          "Unit Price $",
+          "Total $"
+        ],
+        "rows": [
+          [
+            "20",
+            "Reams Legal-Size Paper",
+            "200",
+            "4 000"
+          ],
+          [
+            "10",
+            "Packs Computer Printout Paper",
+            "100",
+            "1 000"
+          ]
+        ],
+        "details": [
+          "R.K.C. BUJAM & CO LTD\n19 Happy Hill, Gaspillo, Trinidad",
+          "3 May 2013",
+          "In account with\nMr Dwayne Chung\n7 Chester Avenue\nSanta Cruz, Trinidad",
+          "Terms: 10 % discount if paid within 7 days"
+        ]
+      },
+      "tables": [
+        {
+          "title": "Cheque No. 1000",
+          "columns": [
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "MIDTOWN BANK LTD",
+              "81 Bond Street, Santa Cruz, Trinidad"
+            ],
+            [
+              "A/C No.",
+              "1562370"
+            ]
+          ]
+        }
+      ],
+      "documentTitle": "Cheque",
+      "fields": [
+        {
+          "label": "(i) a) Calculation — show your working",
+          "kind": "text"
+        },
+        {
+          "label": "Date",
+          "kind": "text"
+        },
+        {
+          "label": "Pay to the order of",
+          "kind": "text"
+        },
+        {
+          "label": "Amount in figures ($)",
+          "kind": "text"
+        },
+        {
+          "label": "The sum of",
+          "kind": "text"
+        },
+        {
+          "label": "Signature",
+          "kind": "text"
+        },
+        {
+          "label": "(ii) State TWO consequences if the amount on a cheque did not agree in words and figures. (2 marks)",
+          "kind": "text",
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2013-MJ::6::q6-a": {
+      "prompt": "State THREE duties of a purchasing clerk. (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::6::q6-b": {
+      "prompt": "Define the following terms as used in the purchasing department\n(i) Tender\n(ii) Enquiry\n(iii) Quotation (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::6::q6-c": {
+      "prompt": "Below are samples of four petty cash vouchers.\n\n(i) Record the above transactions in the petty cash book provided as an insert. Total all columns and balance the petty cash book at the end of the month, restoring the imprest to the beginning balance of $120.00. (7 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        10,
+        11
+      ],
+      "layoutSourcePages": [
+        6,
+        10,
+        11
+      ],
+      "layoutVerified": true,
+      "table": {
+        "title": "Petty cash vouchers",
+        "columns": [
+          "No.",
+          "Date",
+          "Required for",
+          "Amount",
+          "Signature",
+          "Passed by"
+        ],
+        "rows": [
+          [
+            "1",
+            "5 May 2013",
+            "Cleaning",
+            "$35.00",
+            "Ed Donley",
+            "Ali Brown"
+          ],
+          [
+            "2",
+            "12 May 2013",
+            "Stamps",
+            "$15.00",
+            "Ed Donley",
+            "Ali Brown"
+          ],
+          [
+            "3",
+            "20 May 2013",
+            "Travelling",
+            "$25.00",
+            "Ed Donley",
+            "Ali Brown"
+          ],
+          [
+            "4",
+            "30 May 2013",
+            "Envelopes\nMasking Tape",
+            "$15.00\n$10.00",
+            "Ed Donley",
+            "Ali Brown"
+          ]
+        ]
+      },
+      "responseTables": [
+        {
+          "title": "PETTY CASH BOOK (Imprest System)",
+          "columns": [
+            "Imprest $",
+            "",
+            "Date 2013",
+            "Details",
+            "Voucher #",
+            "Payments",
+            "Postage",
+            "Fares",
+            "Cleaning",
+            "Stationery"
+          ],
+          "rows": [
+            [
+              "120",
+              "00",
+              "1 May",
+              "To Imprest",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              9
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              6,
+              5
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              7,
+              1
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              7,
+              3
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              7,
+              5
+            ],
+            [
+              7,
+              6
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              7,
+              8
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              8,
+              1
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              8,
+              3
+            ],
+            [
+              8,
+              4
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              8,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              8,
+              8
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              9,
+              0
+            ],
+            [
+              9,
+              1
+            ],
+            [
+              9,
+              2
+            ],
+            [
+              9,
+              3
+            ],
+            [
+              9,
+              4
+            ],
+            [
+              9,
+              5
+            ],
+            [
+              9,
+              6
+            ],
+            [
+              9,
+              7
+            ],
+            [
+              9,
+              8
+            ],
+            [
+              9,
+              9
+            ],
+            [
+              10,
+              0
+            ],
+            [
+              10,
+              1
+            ],
+            [
+              10,
+              2
+            ],
+            [
+              10,
+              3
+            ],
+            [
+              10,
+              4
+            ],
+            [
+              10,
+              5
+            ],
+            [
+              10,
+              6
+            ],
+            [
+              10,
+              7
+            ],
+            [
+              10,
+              8
+            ],
+            [
+              10,
+              9
+            ],
+            [
+              11,
+              0
+            ],
+            [
+              11,
+              1
+            ],
+            [
+              11,
+              2
+            ],
+            [
+              11,
+              3
+            ],
+            [
+              11,
+              4
+            ],
+            [
+              11,
+              5
+            ],
+            [
+              11,
+              6
+            ],
+            [
+              11,
+              7
+            ],
+            [
+              11,
+              8
+            ],
+            [
+              11,
+              9
+            ],
+            [
+              12,
+              0
+            ],
+            [
+              12,
+              1
+            ],
+            [
+              12,
+              2
+            ],
+            [
+              12,
+              3
+            ],
+            [
+              12,
+              4
+            ],
+            [
+              12,
+              5
+            ],
+            [
+              12,
+              6
+            ],
+            [
+              12,
+              7
+            ],
+            [
+              12,
+              8
+            ],
+            [
+              12,
+              9
+            ]
+          ],
+          "columnLabels": [
+            "Imprest dollars",
+            "Imprest cents",
+            "Date 2013",
+            "Details",
+            "Voucher #",
+            "Payments",
+            "Postage",
+            "Fares",
+            "Cleaning",
+            "Stationery"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(ii) State TWO consequences of abusing the petty cash funds. (2 marks)",
+          "kind": "text",
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2013-MJ::7::q7-a": {
+      "prompt": "State EACH of the following acronyms in full and explain their meanings.\n(i) LIFO\n(ii) FIFO (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::7::q7-b": {
+      "prompt": "Identify TWO reasons why it is important to monitor stock levels. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::7::q7-c": {
+      "prompt": "On 1 May 2013, Mr Harry Duggam, a manager at Perfect Block Construction Ltd, Middlesex, Antigua, sent a request for a quotation of the following items:\n• 12 ergonomic office chair\n• 6 four-drawer vertical filing cabinet The request was sent to Hi-Tech Office Supplies located at 25 Kings Street, Kingstown, St Vincent. On receipt of the quotation #10, the Sales Manager of Hi-Tech Office Supplies, Mr Ramesh Rooplal, decides to send a thank you note to Mr Duggam to let him know that he would be happy to supply his order. Mr Rooplal provides a quotation with the following terms:\n• 12 ergonomic office chairs @ $500.00 each\n• 6 four-drawer vertical filing cabinets @ $1 000.00 each\n• Terms of sale: Delivered by company’s delivery truck within two days of receipt of order\n• Trade discount: 5%\n• Cash discount: 10% if paid within one month, otherwise net cash\n• Goods can be taken from the warehouse and the offer is valid for two months Draft the quotation to Mr Duggam, using a letter format, signed by Mr Rooplal, Sales Manager. (9 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2013-MJ::8::q8-a": {
+      "prompt": "State THREE functions of the staff in the factory office (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::8::q8-b": {
+      "prompt": "List THREE documents that are used in the factory office (3 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2013-MJ::8::q8-c": {
+      "prompt": "An advice note with serial no. 98762RM, order no. 17B and terms = charge, was sent from OMJ Corporation, Industrial Terrace, Georgetown, telephone number (592) 333-7777 to customer SKR Central Reprographics, Freepark, Georgetown. The shipment which was sent by van on 11 May 2013 consisted of:\n• 50 reams A4 paper\n• 25 reams legal paper\n• 1 000 plastic file jacket\n• 100 packages of note pads. On receipt of the advice note, Jahari Baptiste, the receptionist, should sign and date the document on behalf of the company.\n(i) Use the form provided as an insert to record the above information. (7 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8,
+        12
+      ],
+      "layoutSourcePages": [
+        8,
+        12
+      ],
+      "layoutVerified": true,
+      "documentTitle": "ADVICE NOTE",
+      "fields": [
+        {
+          "label": "Seller",
+          "kind": "text"
+        },
+        {
+          "label": "Telephone No.",
+          "kind": "text"
+        },
+        {
+          "label": "Buyer",
+          "kind": "text"
+        },
+        {
+          "label": "Date",
+          "kind": "text"
+        },
+        {
+          "label": "Serial No.",
+          "kind": "text"
+        },
+        {
+          "label": "Order No.",
+          "kind": "text"
+        },
+        {
+          "label": "Terms",
+          "kind": "text"
+        },
+        {
+          "label": "Via",
+          "kind": "text"
+        },
+        {
+          "label": "Please receive the following on",
+          "kind": "text"
+        },
+        {
+          "label": "Received by",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "Date received",
+          "kind": "text",
+          "position": "after"
+        },
+        {
+          "label": "(ii) State TWO consequences to the purchaser in the event that goods are dispatched and the advice note is omitted. (2 marks)",
+          "kind": "text",
+          "position": "after"
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Goods",
+          "columns": [
+            "QUANTITY",
+            "ITEM",
+            "DESCRIPTION"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "inputRows": [
+            9
+          ]
+        }
+      ]
+    }
+  }
+}

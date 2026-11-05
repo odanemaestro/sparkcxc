@@ -1,0 +1,1431 @@
+{
+  "paperId": "OA-P2-2016-MJ",
+  "reviewDate": "2026-10-30",
+  "reviewMethod": "Visual comparison with all 22 supplied PDF pages. Source amounts, blanks, dates and name discrepancies retained; omitted terminal glyphs in common words are restored for readable native text.",
+  "questions": {
+    "OA-P2-2016-MJ::1": {
+      "sourcePage": 2,
+      "sourcePages": [
+        2,
+        3,
+        4
+      ],
+      "layoutSourcePages": [
+        2,
+        3,
+        4
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2016-MJ::2": {
+      "sourcePage": 6,
+      "sourcePages": [
+        6,
+        7
+      ],
+      "layoutSourcePages": [
+        6,
+        7
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2016-MJ::3": {
+      "sourcePage": 9,
+      "sourcePages": [
+        9,
+        10,
+        11
+      ],
+      "layoutSourcePages": [
+        9,
+        10,
+        11
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2016-MJ::4": {
+      "sourcePage": 12,
+      "sourcePages": [
+        12,
+        13,
+        14
+      ],
+      "layoutSourcePages": [
+        12,
+        13,
+        14
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2016-MJ::5": {
+      "sourcePage": 15,
+      "sourcePages": [
+        15,
+        16,
+        17
+      ],
+      "layoutSourcePages": [
+        15,
+        16,
+        17
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2016-MJ::6": {
+      "sourcePage": 18,
+      "sourcePages": [
+        18,
+        19,
+        20
+      ],
+      "layoutSourcePages": [
+        18,
+        19,
+        20
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2016-MJ::7": {
+      "sourcePage": 21,
+      "sourcePages": [
+        21,
+        22
+      ],
+      "layoutSourcePages": [
+        21,
+        22
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    }
+  },
+  "parts": {
+    "OA-P2-2016-MJ::1::q1-a": {
+      "prompt": "(i) List THREE attitudes an office worker should possess.\n(3 marks)\n(ii) State THREE ways in which social responsibility may be displayed in the workplace.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::1::q1-b": {
+      "prompt": "State ONE purpose for which an office clerk may use EACH of the following charts:\nBar chart\nPie chart\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::1::q1-c": {
+      "prompt": "The type of communication climate that exists in an office may influence morale and\nproductivity.\nExplain TWO ways in which fostering an open communication climate may enhance the\nmorale and productivity in an office\n(4 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::1::q1-d": {
+      "prompt": "Mesha-Gay Butler is employed as a clerk at Moses and Dwyer Co. Ltd. Her supervisor is Mr\nTimothy Allen. The office does not have any electronic recording equipment and she has to\nanswer the telephone and take messages when necessary. As she is about to leave for lunch at\n1:00 p.m. the telephone rings. She receives a message from Mr Sean Browne, the managing\ndirector at ACMR Financial Services Ltd.\nMr Browne instructs Mesha-Gray to inform her supervisor, Mr Allen, that the two new\naccounts that are to be opened have now been approved and the documents prepared. He\nshould have one other person accompany him to have their signitures affixed to the document.\nUse the information given in the scenario to complete the telephone message form provided\nbelow.",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true,
+      "documentTitle": "MESSAGE FORM",
+      "fieldLayout": "stacked",
+      "fields": [
+        {
+          "label": "TO",
+          "kind": "text"
+        },
+        {
+          "label": "FROM",
+          "kind": "text"
+        },
+        {
+          "label": "ORGANIZATION",
+          "kind": "text"
+        },
+        {
+          "label": "ADDRESS",
+          "kind": "text"
+        },
+        {
+          "label": "PHONE",
+          "kind": "text"
+        },
+        {
+          "label": "EXT",
+          "kind": "text"
+        },
+        {
+          "label": "MESSAGE",
+          "kind": "text"
+        },
+        {
+          "label": "Message Taken By",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2016-MJ::2::q2-a": {
+      "prompt": "State TWO ways in which a tickler file may be used as an effective reminder system.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::2::q2-b": {
+      "prompt": "(i) Identify THREE factors that are taken into consideration when retaining records.\n(3 marks)\n(ii) State TWO conditions that would influence the decision to dispose of a file\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 6,
+      "sourcePages": [
+        6
+      ],
+      "layoutSourcePages": [
+        6
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::2::q2-c": {
+      "prompt": "Indira recently graduated from the St Gabriel School for Girls. She is invited for an interview\nas a clerk at the prestigious company Lazarus and Fletcher. Indira thought that she should do\nsome research on the company before the interview.\n(i) Suggest FOUR ways in which prior research would enhance Indira’s level of\nconfidence during the interview.\n(4 marks)\n(ii) Indira also researched the possible questions that she may be asked.\nSuggest TWO possible questions that Indira may be asked at the interview.\n(4 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::3::q3-a": {
+      "prompt": "State TWO roles performed by EACH of the following persons at a meeting:\nTreasurer\nEx-officio member\n(4 marks)",
+      "promptVerified": true,
+      "sourcePage": 9,
+      "sourcePages": [
+        9
+      ],
+      "layoutSourcePages": [
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::3::q3-b": {
+      "prompt": "Describe THREE follow-up tasks a secretary may be required to complete after a meeting.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 9,
+      "sourcePages": [
+        9
+      ],
+      "layoutSourcePages": [
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::3::q3-c": {
+      "prompt": "Thomas Reid is assigned to assist the secretary at Chin Sang Travel Co. located in Basseterre,\nSt Kitts. His boss, Mr Chad Sang, is preparing to travel on business to promote interisland\ntourism within the Caribbean region. He instructed Thomas to perform the following tasks:\n• Call airline and confirm travel dates and hotel reservations\n• Prepare meeting documents for his trip\n• Get monetary instruments needed for travel\n• Prepare his travel folder\n• Ensure his passport is valid\n(i) Indicate how EACH of the above tasks, when completed properly by Thomas, would\nassist Mr Sang in preparation for his promotional activities abroad.\nCall airline and confirm travel dates and hotel reservations\nPrepare meeting documents for his trip\nGet monetary instruments needed for travel\nPrepare his travel folder\nEnsure his passport is valid\n(5 marks)\n(ii) THREE resources that Mr Chad Sang would need on his trip to promote interisland\ntourism are: a promotional video, list of names, addresses and telephone contacts in\neach island, and a flash drive.\nHow would EACH of the above resources help Mr Sang to achieve the objectives of\nhis trip?\nPromotional video\nList of names and contact information\nFlash drive\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 10,
+      "sourcePages": [
+        10,
+        11
+      ],
+      "layoutSourcePages": [
+        10,
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::4::q4-a": {
+      "prompt": "Define the term ‘collective agreement’.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 12,
+      "sourcePages": [
+        12
+      ],
+      "layoutSourcePages": [
+        12
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::4::q4-b": {
+      "prompt": "State TWO benefit to be derived from the Factories Act designed for factory workers.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 12,
+      "sourcePages": [
+        12
+      ],
+      "layoutSourcePages": [
+        12
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::4::q4-c": {
+      "prompt": "Identify TWO International Labour Organization (ILO) conventions that protect the rights of\nworkers.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 12,
+      "sourcePages": [
+        12
+      ],
+      "layoutSourcePages": [
+        12
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::4::q4-d": {
+      "prompt": "Marsha Riley is employed at Shamer and Shamer Corporation as a human resource clerk where she\nreports to the human resource administrative assistant. She is required to work from 8:00 a.m. to\n4:30 p.m., Monday to Friday, with one hour for lunch. The salary scale is $12 500 to $13 500 per\nmonth.\n\nUsing the above information, complete the job specification provided below for\nMarsha Riley. Include FOUR details of her duties and responsibilities and any special skills\nand qualification that a clerk would bring to the organization. Also, provide a brief job\nsummary. Use today’s date. (7 marks)",
+      "promptVerified": true,
+      "sourcePage": 13,
+      "sourcePages": [
+        13
+      ],
+      "layoutSourcePages": [
+        13
+      ],
+      "layoutVerified": true,
+      "documentTitle": "JOB SPECIFICATION — Shamer and Shamer Corporation",
+      "fieldLayout": "stacked",
+      "fields": [
+        {
+          "label": "Job Title",
+          "kind": "text"
+        },
+        {
+          "label": "Department",
+          "kind": "text"
+        },
+        {
+          "label": "Work Hours",
+          "kind": "text"
+        },
+        {
+          "label": "Leave Entitlement",
+          "kind": "text"
+        },
+        {
+          "label": "Salary Range",
+          "kind": "text"
+        },
+        {
+          "label": "Reports To",
+          "kind": "text"
+        },
+        {
+          "label": "Qualifications",
+          "kind": "text"
+        },
+        {
+          "label": "Special Skills Required",
+          "kind": "text"
+        },
+        {
+          "label": "Duties & Responsibilities",
+          "kind": "text"
+        },
+        {
+          "label": "Job Summary",
+          "kind": "text"
+        },
+        {
+          "label": "Date",
+          "kind": "text"
+        }
+      ]
+    },
+    "OA-P2-2016-MJ::4::q4-e": {
+      "prompt": "One function of the central bank is to print and issue currency/money.\nSuggest TWO circumstances under which the central bank may perform this function.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 14,
+      "sourcePages": [
+        14
+      ],
+      "layoutSourcePages": [
+        14
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::5::q5-a": {
+      "prompt": "(i) Identify TWO attributes of a purchasing clerk.\n(2 marks)\n(ii) State TWO main duties of a purchasing clerk.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 15,
+      "sourcePages": [
+        15
+      ],
+      "layoutSourcePages": [
+        15
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::5::q5-b": {
+      "prompt": "Define EACH of the following terms associated with bank statements:\nCredit transfer\nOutstanding cheques\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 15,
+      "sourcePages": [
+        15
+      ],
+      "layoutSourcePages": [
+        15
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::5::q5-c": {
+      "prompt": "The following are extracts of a cash book and a bank statement as at 1 July 2015.\n\nStudy the extracts carefully. Describe the following transactions.\n(i) Cash Book: B. Myers: $50\n(ii) Cash Book: S. Yee: $700\n(iii) Bank Statement: M. Alleyne: $300\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 16,
+      "sourcePages": [
+        16
+      ],
+      "layoutSourcePages": [
+        16
+      ],
+      "layoutVerified": true,
+      "tables": [
+        {
+          "title": "CASH BOOK",
+          "columns": [
+            "Date",
+            "Particulars",
+            "Folio",
+            "Bank",
+            "Date",
+            "Particulars",
+            "Folio",
+            "Bank"
+          ],
+          "rows": [
+            [
+              "2015",
+              "",
+              "",
+              "",
+              "2016",
+              "",
+              "",
+              ""
+            ],
+            [
+              "1 July",
+              "Balance",
+              "b/d",
+              "$500",
+              "12 July",
+              "B. Myers",
+              "",
+              "$50"
+            ],
+            [
+              "14 July",
+              "S. Yee",
+              "",
+              "$700",
+              "18 July",
+              "M. Alleyne\nCheque 3279",
+              "",
+              "$300"
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "28 July",
+              "Balance",
+              "c/d",
+              "$850"
+            ],
+            [
+              "",
+              "",
+              "",
+              "$1 200",
+              "",
+              "",
+              "",
+              "$1 200"
+            ],
+            [
+              "1 August",
+              "Balance",
+              "b/d",
+              "$850",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "details": [
+            "Dr: left-hand columns. Cr: right-hand columns."
+          ]
+        },
+        {
+          "title": "BANK STATEMENT",
+          "columns": [
+            "Date",
+            "Particulars",
+            "Debit",
+            "Credit",
+            "Balance"
+          ],
+          "rows": [
+            [
+              "2015",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "1 July",
+              "Balance b/f",
+              "",
+              "",
+              "$500"
+            ],
+            [
+              "15 July",
+              "M. Alleyne",
+              "$300",
+              "",
+              "$200"
+            ],
+            [
+              "22 July",
+              "Cheque deposit",
+              "",
+              "$600",
+              "$800"
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2016-MJ::5::q5-d": {
+      "prompt": "Use the cash book and bank statement on page 18 to prepare a bank reconciliation statement,\nstarting with the updated cash book balance.\nShow all calculations.",
+      "promptVerified": true,
+      "sourcePage": 17,
+      "sourcePages": [
+        17
+      ],
+      "layoutSourcePages": [
+        17
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "UPDATED CASH BOOK",
+          "columns": [
+            "Date",
+            "Particulars",
+            "Folio",
+            "Bank",
+            "Date",
+            "Particulars",
+            "Folio",
+            "Bank"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              7
+            ]
+          ],
+          "columnLabels": [
+            "Debit date",
+            "Debit particulars",
+            "Debit folio",
+            "Debit bank",
+            "Credit date",
+            "Credit particulars",
+            "Credit folio",
+            "Credit bank"
+          ],
+          "details": [
+            "Dr: left-hand columns. Cr: right-hand columns. (2 marks)"
+          ]
+        },
+        {
+          "title": "BANK RECONCILIATION STATEMENT",
+          "columns": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ],
+          "columnLabels": [
+            "Column 1",
+            "Column 2",
+            "Column 3",
+            "Column 4"
+          ],
+          "details": [
+            "(4 marks)"
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "Calculations",
+          "kind": "text",
+          "position": "after",
+          "rows": 6
+        }
+      ]
+    },
+    "OA-P2-2016-MJ::6::q6-a": {
+      "prompt": "List FOUR functions of the despatch office\n(4 marks)",
+      "promptVerified": true,
+      "sourcePage": 18,
+      "sourcePages": [
+        18
+      ],
+      "layoutSourcePages": [
+        18
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::6::q6-b": {
+      "prompt": "State TWO purposes for recording the minimum level on a stock control card.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 18,
+      "sourcePages": [
+        18
+      ],
+      "layoutSourcePages": [
+        18
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::6::q6-c": {
+      "prompt": "(i) On 4 April, the human resource department submitted requisition No. 004, as shown in Figure 1, to request stationery for a training seminar for 20 employees scheduled for 27 April.\n\nUsing the information in Figure 1, complete the stock control card in Figure 2 to account for the notepads that have been issued. (5 marks)\n\n(ii) Because the notepads have been in great demand recently, the maximum stock level was changed to 45. There was another order for 9 notepads also issued on 4 April. Recalculate the balance in stock at 7 April. Show all calculations. (4 marks)",
+      "promptVerified": true,
+      "sourcePage": 19,
+      "sourcePages": [
+        19,
+        20
+      ],
+      "layoutSourcePages": [
+        19,
+        20
+      ],
+      "layoutVerified": true,
+      "tables": [
+        {
+          "title": "Figure 1. STATIONERY REQUISITION — Req. No. 004",
+          "columns": [
+            "QUANTITY",
+            "DESCRIPTION"
+          ],
+          "rows": [
+            [
+              "24",
+              "Expo dry erase whiteboard markers"
+            ],
+            [
+              "4",
+              "Reams 8½” × 11” white copy paper"
+            ],
+            [
+              "24",
+              "Notepads 8” × 4” (White)"
+            ],
+            [
+              "24",
+              "Stabilo blue ink pens (m)"
+            ]
+          ],
+          "details": [
+            "Date: 4 April 2016",
+            "From Human Resource Department",
+            "To Stationery Store",
+            "Signed Magella Payne — Date 4 April 2016"
+          ]
+        },
+        {
+          "title": "STOCK CONTROL CARD",
+          "columns": [
+            "",
+            ""
+          ],
+          "rows": [
+            [
+              "Item",
+              "8” × 4” Notepads (white)"
+            ],
+            [
+              "Store Ref",
+              "325"
+            ],
+            [
+              "Location",
+              "G4"
+            ],
+            [
+              "Maximum",
+              "40"
+            ],
+            [
+              "Reorder Level",
+              "15"
+            ],
+            [
+              "Minimum",
+              "10"
+            ]
+          ]
+        }
+      ],
+      "responseTables": [
+        {
+          "title": "Figure 2. Stock control card",
+          "columns": [
+            "Date",
+            "Receipts — Quantity",
+            "Receipts — Inv. No.",
+            "Issues — Quantity",
+            "Issues — Reqn. No.",
+            "Issues — Dept/Staff",
+            "Balance in Stock",
+            "On Order — Date Ordered",
+            "On Order — Quantity",
+            "On Order — Order No.",
+            "On Order — Date Rec’d"
+          ],
+          "rows": [
+            [
+              "2016",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "2016",
+              "",
+              "",
+              "2016"
+            ],
+            [
+              "1 Apr.",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "36",
+              "5 Apr.",
+              "",
+              "A663",
+              "13 Apr."
+            ],
+            [
+              "4 Apr.",
+              "",
+              "",
+              "",
+              "004",
+              "M. Payne",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "7 Apr.",
+              "",
+              "J22",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              3,
+              10
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "Unit",
+          "kind": "text"
+        },
+        {
+          "label": "(ii) Recalculation and working",
+          "kind": "text",
+          "position": "after",
+          "rows": 7
+        }
+      ]
+    },
+    "OA-P2-2016-MJ::7::q7-a": {
+      "prompt": "State ONE way in which EACH of the following documents may be used in buying and\nselling transactions:\nInsurance certificate\nManifest\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 21,
+      "sourcePages": [
+        21
+      ],
+      "layoutSourcePages": [
+        21
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::7::q7-b": {
+      "prompt": "State TWO ways in which bar codes can contribute to inventory management.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 21,
+      "sourcePages": [
+        21
+      ],
+      "layoutSourcePages": [
+        21
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::7::q7-c": {
+      "prompt": "State TWO advantages of using the FIFO (first-in-first-out) inventory method.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 21,
+      "sourcePages": [
+        21
+      ],
+      "layoutSourcePages": [
+        21
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2016-MJ::7::q7-d": {
+      "prompt": "Calculate the value of closing stock at 31 October 2015 using the FIFO method.",
+      "promptVerified": true,
+      "sourcePage": 22,
+      "sourcePages": [
+        22
+      ],
+      "layoutSourcePages": [
+        22
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "FIFO stock record",
+          "columns": [
+            "Date",
+            "Received",
+            "Sold",
+            "Stock Remaining",
+            "Total Value"
+          ],
+          "rows": [
+            [
+              "March",
+              "25 @ $20 each",
+              "",
+              "25 @ $20 each",
+              "$500"
+            ],
+            [
+              "June",
+              "20 @ $22 each",
+              "",
+              "25 @ $20 each",
+              "$500"
+            ],
+            [
+              "",
+              "",
+              "",
+              "20 @ $22 each",
+              "$440"
+            ],
+            [
+              "August",
+              "",
+              "8 @ $20 each",
+              "17 @ $20 each",
+              "$340"
+            ],
+            [
+              "",
+              "",
+              "",
+              "20 @ $22 each",
+              "$440"
+            ],
+            [
+              "October",
+              "",
+              "15 @ $20 each",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "9 @ $22 each",
+              "",
+              ""
+            ],
+            [
+              "Closing Stock",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              5,
+              3
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              7,
+              3
+            ],
+            [
+              7,
+              4
+            ]
+          ]
+        }
+      ]
+    },
+    "OA-P2-2016-MJ::7::q7-e": {
+      "prompt": "Calculate the value of closing stock at 31 October 2015 using the average cost of stock method.",
+      "promptVerified": true,
+      "sourcePage": 22,
+      "sourcePages": [
+        22
+      ],
+      "layoutSourcePages": [
+        22
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "Average cost of stock",
+          "columns": [
+            "",
+            "Received",
+            "Issued",
+            "Average Cost Per Unit of Stock Held ($)",
+            "Number of Units in Stock",
+            "Total Value of Stock ($)"
+          ],
+          "columnLabels": [
+            "Date",
+            "Received",
+            "Issued",
+            "Average cost",
+            "Units in stock",
+            "Total value"
+          ],
+          "rows": [
+            [
+              "March",
+              "25 @ $20 each",
+              "",
+              "$20",
+              "25",
+              "$500"
+            ],
+            [
+              "June",
+              "20 @ $22.25 each",
+              "",
+              "$21",
+              "45",
+              "$945"
+            ],
+            [
+              "August",
+              "",
+              "8 @ $21 each",
+              "$21",
+              "37",
+              "$777"
+            ],
+            [
+              "October",
+              "15 @ $25 each",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "31 October",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              5
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

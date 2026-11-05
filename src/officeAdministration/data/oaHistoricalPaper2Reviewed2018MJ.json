@@ -1,0 +1,792 @@
+{
+  "paperId": "OA-P2-2018-MJ",
+  "reviewDate": "2026-10-30",
+  "reviewMethod": "Visual comparison with all 18 supplied PDF pages, including bank tables, blank reconciliation forms and the image-only last page.",
+  "questions": {
+    "OA-P2-2018-MJ::1": {
+      "sourcePage": 2,
+      "sourcePages": [
+        2,
+        3
+      ],
+      "layoutSourcePages": [
+        2,
+        3
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2018-MJ::2": {
+      "sourcePage": 4,
+      "sourcePages": [
+        4,
+        5,
+        6
+      ],
+      "layoutSourcePages": [
+        4,
+        5,
+        6
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2018-MJ::3": {
+      "sourcePage": 7,
+      "sourcePages": [
+        7,
+        8,
+        9
+      ],
+      "layoutSourcePages": [
+        7,
+        8,
+        9
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2018-MJ::4": {
+      "sourcePage": 10,
+      "sourcePages": [
+        10,
+        11
+      ],
+      "layoutSourcePages": [
+        10,
+        11
+      ],
+      "layoutVerified": true,
+      "stem": "Guyana Press Associates is advertising to recruit a clerk for its human resource office. Anula\nBoodraj has just completed a human resource training course which included communication,\ntechnology skills, electronic document processing and management. The job requires the human\nresource clerk to report to the human resource manager. Anula believes she meets the job\nrequirements and wishes to apply."
+    },
+    "OA-P2-2018-MJ::5": {
+      "sourcePage": 12,
+      "sourcePages": [
+        12,
+        14,
+        15
+      ],
+      "layoutSourcePages": [
+        12,
+        14,
+        15
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    },
+    "OA-P2-2018-MJ::6": {
+      "sourcePage": 16,
+      "sourcePages": [
+        16,
+        17,
+        18
+      ],
+      "layoutSourcePages": [
+        16,
+        17,
+        18
+      ],
+      "layoutVerified": true,
+      "stem": ""
+    }
+  },
+  "parts": {
+    "OA-P2-2018-MJ::1::q1-a": {
+      "prompt": "List FOUR storage devices an office may use to store information electronically.\n(4 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::1::q1-b": {
+      "prompt": "Identify TWO functions of an organizational chart.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 2,
+      "sourcePages": [
+        2
+      ],
+      "layoutSourcePages": [
+        2
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::1::q1-c": {
+      "prompt": "John has been working for five years with his supervisor, Miss Stephens, as her secretary.\nJohn has told one of his colleagues that he does not like Miss Stephens and he is determined\nto make her look ‘bad’.\n(i) Identify TWO benefits to be gained by John from improving his relationship with\nhis supervisor.\n(2 marks)\n(ii) Outline a recommendation for achieving ONE of the benefits you explained in\n(c) (i).\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::1::q1-d": {
+      "prompt": "Shelly has been asked to prepare for a very important management meeting at which all\nmanagers will need to have their own copies of the reports and be able to see the graphical\npresentations as they are presented by department managers.\nExplain how Shelly can use TWO named pieces of office equipment to meet the managers’\nneeds.\n(5 marks)",
+      "promptVerified": true,
+      "sourcePage": 3,
+      "sourcePages": [
+        3
+      ],
+      "layoutSourcePages": [
+        3
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::2::q2-a": {
+      "prompt": "List THREE ways to prepare for a successful interview.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::2::q2-b": {
+      "prompt": "During a job interview for a receptionist’s position to work in a bookstore, you are asked\nto explain the terms ‘physical deportment’ and ‘copyright infringement’. Write your\nresponses in the spaces provide.\n(i) Physical deportment\n(2 marks)\n(ii) Copyright infringement\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 4,
+      "sourcePages": [
+        4
+      ],
+      "layoutSourcePages": [
+        4
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::2::q2-c": {
+      "prompt": "A vacancy requiring office administration skills is advertised. The applicant is required to\nsubmit a curriculum vitae which includes the following specific details. You may include\nadditional headings and data as appropriate.\nSpecific details\nName: Shawna McLean\nAddress: 64 William Street, Kingston, Jamaica\nSchool Attended: Bright Star High School (2012 – 2017)\nQualifications: 6 CSEC subjects at General Proficiency Level\nPersonal Objective\nHoliday Jobs\nProject Undertaken or Volunteerism\nReference\nDraft a curriculum vitae for the applicant using the information above.\n(8 marks)",
+      "promptVerified": true,
+      "sourcePage": 5,
+      "sourcePages": [
+        5,
+        6
+      ],
+      "layoutSourcePages": [
+        5,
+        6
+      ],
+      "layoutVerified": true,
+      "answerType": "document"
+    },
+    "OA-P2-2018-MJ::3::q3-a": {
+      "prompt": "A receptionist is the first person a customer interacts within an organization. State TWO\nattributes/qualities receptionists must possess.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::3::q3-b": {
+      "prompt": "Amanda Sykers works as a receptionist in a multinational office in Bridgetown,\nBarbados. A major function of her job is to follow-up on customers’ queries to ensure\nthat transactions are completed within three working days.\nDescribe ONE reminder system Amanda may use to ensure that all matters are followed\nthrough to resolution.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 7,
+      "sourcePages": [
+        7
+      ],
+      "layoutSourcePages": [
+        7
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::3::q3-c": {
+      "prompt": "(i) Complete the reception register form using the information below.\nOn 29 April 2018 Mr Rajiv Goldson arrived for a 2:55 p.m. appointment with the\nMarketing Manager, Miss Olivia Shields. Mr Goldson received an emergency\ncall to pick up his daughter from school and had to leave five minutes after he\narrived. He would like to reschedule his appointment. All timings must appear as\n24-hour timings. (5 marks)\n\n(ii) Write a note to Miss Shields stating why Mr Goldson was unable to keep his appointment. (2 marks)",
+      "promptVerified": true,
+      "sourcePage": 8,
+      "sourcePages": [
+        8
+      ],
+      "layoutSourcePages": [
+        8
+      ],
+      "layoutVerified": true,
+      "responseTables": [
+        {
+          "title": "RECEPTION REGISTER",
+          "columns": [
+            "DATE",
+            "TIME IN",
+            "TIME OUT",
+            "VISITOR’S NAME",
+            "TO SEE"
+          ],
+          "rows": [
+            [
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "(ii) Note to Miss Shields",
+          "kind": "text",
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2018-MJ::3::q3-d": {
+      "prompt": "Mr Elvis Robins needs to travel on company business to Jamaica, Antigua, Guyana and\nBarbados over the next two weeks. Payments for his hotel accommodation, meals and\nlocal travel will be made by credit card.\nState THREE advantages of Mr Robins’ use of a credit card for his business travel\nexpenses.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 9,
+      "sourcePages": [
+        9
+      ],
+      "layoutSourcePages": [
+        9
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::4::q4-a": {
+      "prompt": "Outline THREE duties Anula should expect to perform, if she is offered the job.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 10,
+      "sourcePages": [
+        10
+      ],
+      "layoutSourcePages": [
+        10
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::4::q4-b": {
+      "prompt": "As a human resource clerk, list TWO characteristics that Anula must possess.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 10,
+      "sourcePages": [
+        10
+      ],
+      "layoutSourcePages": [
+        10
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::4::q4-c": {
+      "prompt": "The Human Resource Manager explains to Anula that there is a performance appraisal\nsystem in place. Explain, using six points, how a properly constructed appraisal may\nserve as an effective tool in managing the performance of an employee.\n(9 marks)",
+      "promptVerified": true,
+      "sourcePage": 11,
+      "sourcePages": [
+        11
+      ],
+      "layoutSourcePages": [
+        11
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::5::q5-a": {
+      "prompt": "(i) As part of a work experience programme in high school, students are assigned to\nwork in the accounts office as an accounts clerk.\nState TWO functions of the accounts office that may be observed by a student on\nthe work experience programme.\n(2 marks)\n(ii) Identify TWO duties an accounts clerk would expect to be assigned.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 12,
+      "sourcePages": [
+        12
+      ],
+      "layoutSourcePages": [
+        12
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::5::q5-b": {
+      "prompt": "Briefly explain why confidentiality is one of the attributes required of a clerk in the\npurchasing department.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 12,
+      "sourcePages": [
+        12
+      ],
+      "layoutSourcePages": [
+        12
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::5::q5-c": {
+      "prompt": "As part of its cash controls, the Computer Repairs Services prepares monthly bank\nreconciliation statements.\nUsing the information provided in the cash book and bank statement below, prepare the\nrevised cash book and bank reconciliation statement on page 17 for presentation to the\nchief accountant on 30 May 2018.",
+      "promptVerified": true,
+      "sourcePage": 14,
+      "sourcePages": [
+        14,
+        15
+      ],
+      "layoutSourcePages": [
+        14,
+        15
+      ],
+      "layoutVerified": true,
+      "tables": [
+        {
+          "title": "CASH BOOK",
+          "columns": [
+            "DATE",
+            "DETAILS",
+            "AMOUNT",
+            "DATE",
+            "DETAILS",
+            "AMOUNT"
+          ],
+          "rows": [
+            [
+              "April 01",
+              "Balance b/d",
+              "$43 000",
+              "April 01",
+              "P Barnes",
+              "$7 350"
+            ],
+            [
+              "April 15",
+              "Service Fees",
+              "$24 000",
+              "April 14",
+              "Internet Service Provider",
+              "$2 500"
+            ],
+            [
+              "April 25",
+              "Service Fees",
+              "$ 5 750",
+              "April 20",
+              "Wages and salaries",
+              "$19 400"
+            ],
+            [
+              "",
+              "",
+              "",
+              "April 25",
+              "S Boolal",
+              "$18 500"
+            ],
+            [
+              "April 03",
+              "Credit Union — Loan",
+              "$25 000",
+              "April 31",
+              "Balance c/d",
+              "$50 000"
+            ],
+            [
+              "",
+              "",
+              "$97 750",
+              "",
+              "",
+              "$97 750"
+            ],
+            [
+              "May 01",
+              "Balance b/d",
+              "$50 000",
+              "",
+              "",
+              ""
+            ]
+          ]
+        },
+        {
+          "title": "SAVERS BANK LTD",
+          "columns": [
+            "DATE",
+            "DETAILS",
+            "DR",
+            "CR",
+            "BALANCE"
+          ],
+          "rows": [
+            [
+              "April 01",
+              "Balance b/d",
+              "",
+              "",
+              ""
+            ],
+            [
+              "April 03",
+              "Lodgements",
+              "",
+              "$21 000",
+              ""
+            ],
+            [
+              "April 05",
+              "Cheque",
+              "$7 350",
+              "",
+              ""
+            ],
+            [
+              "April 15",
+              "Lodgement",
+              "",
+              "$24 000",
+              ""
+            ],
+            [
+              "April 16",
+              "Cheque",
+              "$2 500",
+              "",
+              ""
+            ],
+            [
+              "April 22",
+              "Cheque",
+              "$19 400",
+              "",
+              ""
+            ],
+            [
+              "April 23",
+              "Charges",
+              "$250",
+              "",
+              ""
+            ],
+            [
+              "April 24",
+              "Standing order — Internet Service provider",
+              "$5 000",
+              "",
+              ""
+            ],
+            [
+              "April 30",
+              "Lodgement",
+              "",
+              "$25 000",
+              ""
+            ]
+          ]
+        }
+      ],
+      "documentTitle": "RECONCILIATION",
+      "responseTables": [
+        {
+          "title": "REVISED CASH BOOK",
+          "columns": [
+            "DATE",
+            "DETAILS",
+            "AMOUNT",
+            "DATE",
+            "DETAILS",
+            "AMOUNT"
+          ],
+          "columnLabels": [
+            "Debit date",
+            "Debit details",
+            "Debit amount",
+            "Credit date",
+            "Credit details",
+            "Credit amount"
+          ],
+          "rows": [
+            [
+              "",
+              "Balance b/d",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "Balance c/d",
+              ""
+            ],
+            [
+              "",
+              "Balance b/d",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              5
+            ]
+          ]
+        },
+        {
+          "title": "Computer Repairs Services — Bank Reconciliation Statement as at",
+          "columns": [
+            "",
+            "Amount"
+          ],
+          "columnLabels": [
+            "Details",
+            "Amount"
+          ],
+          "rows": [
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ],
+            [
+              "",
+              ""
+            ]
+          ],
+          "editable": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        }
+      ],
+      "fields": [
+        {
+          "label": "Bank Reconciliation Statement as at (date)",
+          "kind": "text",
+          "position": "after"
+        }
+      ]
+    },
+    "OA-P2-2018-MJ::6::q6-a": {
+      "prompt": "Patrick Green is a clerk in the sales, marketing and customer service department of Parks\nand Hudson Company Limited. Maintaining accurate sales records is one of the functions\nof the sales office.\n(i) State TWO ways in which Mr. Green could maintain accurate sales records.\n(2 marks)\n(ii) State TWO functions of the marketing office apart from maintaining records.\n(2 mark)\n(iii) Identify TWO functions of the customer service department that are important in\nmaintaining good customer relations.\n(2 marks)",
+      "promptVerified": true,
+      "sourcePage": 16,
+      "sourcePages": [
+        16
+      ],
+      "layoutSourcePages": [
+        16
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::6::q6-b": {
+      "prompt": "Samantha Browne worked as a corporate communications clerk for the past three years\nat Jambeck Corporation and has gained tremendous experience in this area. She is\nplanning to make a career change by securing a job at Intrinsic Company Limited.\nRecommend to Intrinsic Company Limited, THREE ways in which Samantha could\nimprove the company’s image with prospective customers.\n(6 marks)",
+      "promptVerified": true,
+      "sourcePage": 17,
+      "sourcePages": [
+        17
+      ],
+      "layoutSourcePages": [
+        17
+      ],
+      "layoutVerified": true
+    },
+    "OA-P2-2018-MJ::6::q6-c": {
+      "prompt": "State THREE ways in which the destination sheet could increase the success of the operations, dispatch and transport services in the organization to more efficiently provide goods and services to its customers.\n(3 marks)",
+      "promptVerified": true,
+      "sourcePage": 18,
+      "sourcePages": [
+        18
+      ],
+      "layoutSourcePages": [
+        18
+      ],
+      "layoutVerified": true
+    }
+  }
+}

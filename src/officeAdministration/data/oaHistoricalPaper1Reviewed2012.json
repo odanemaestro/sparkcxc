@@ -1,0 +1,1015 @@
+{
+  "paperId": "OA-P1-2012-MJ",
+  "reviewDate": "2026-10-29",
+  "reviewMethod": "Visual comparison with all supplied question pages; native selectable text and tables. Handwritten annotations are excluded from question wording.",
+  "durationMinutes": null,
+  "durationVerified": false,
+  "items": [
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 1,
+      "sourcePage": 1,
+      "stem": "In the business of a sole trader the decision of what to purchase is usually made by the",
+      "options": [
+        "cashier",
+        "proprietor",
+        "stock control clerk",
+        "purchasing manager"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 2,
+      "sourcePage": 1,
+      "stem": "The proprietors of James Co Ltd are the",
+      "options": [
+        "clerks",
+        "directors",
+        "managers",
+        "shareholders"
+      ],
+      "contextText": "Item 2 refers to the following organizational chart of James Co Ltd.",
+      "figure": "office-administration/figures/OA-P1-2012-MJ-q02-chart.png",
+      "figureAlt": "James Co Ltd organizational chart, with solid reporting lines and dashed advisory lines as printed.",
+      "figureSourceRegion": {
+        "page": 1,
+        "region": [
+          85,
+          500,
+          960,
+          770
+        ]
+      },
+      "figureVerified": true,
+      "figureBeforeStem": true,
+      "figureWidth": 960
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 3,
+      "sourcePage": 1,
+      "stem": "You are a clerk in a small organisation. Your supervisor is the secretary, and the head of the organisation is the general manager. You feel that some improvements can be made in the filing system. Which of the following would be the MOST appropriate action for you to take?",
+      "options": [
+        "Discuss your ideas with the secretary.",
+        "Make the changes you feel are necessary.",
+        "Discuss your ideas with the general manager.",
+        "Continue with the old system until you are asked for an opinion."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 4,
+      "sourcePage": 2,
+      "stem": "Which of the following pieces of computer hardware is an output device?",
+      "options": [
+        "CPU",
+        "Mouse",
+        "Monitor",
+        "Keyboard"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 5,
+      "sourcePage": 2,
+      "stem": "When dealing with members of the public which attitude should you adopt in your job?",
+      "options": [
+        "The customer is always right.",
+        "Be polite to customers who are polite to you.",
+        "Work hard, but do not go the extra mile.",
+        "Treat people as they deserve to be treated."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 6,
+      "sourcePage": 2,
+      "stem": "The term ‘span of control’ refers to the",
+      "options": [
+        "lines of communication between the manager and his/her subordinates",
+        "effective number of subordinates the manager can supervise efficiently",
+        "manager’s influence, right or power to perform a particular task",
+        "system of grading management and subordinates on different levels"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 7,
+      "sourcePage": 2,
+      "stem": "An application for the position of despatch clerk was addressed to the company. To whom should the mail clerk forward this application?",
+      "options": [
+        "Shipping Supervisor",
+        "Marketing Manager",
+        "Administrative Officer",
+        "Human Resource Manager"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 8,
+      "sourcePage": 2,
+      "stem": "The means of communication illustrated in the above diagram is BEST described as",
+      "options": [
+        "oral",
+        "written",
+        "visual",
+        "electronic"
+      ],
+      "contextText": "Item 8 refers to the diagram below.",
+      "figure": "office-administration/figures/OA-P1-2012-MJ-q08-chart.png",
+      "figureAlt": "Bar chart showing sales (000’s) for January, February, March, April, May and June, with a vertical scale from 0 to 80.",
+      "figureSourceRegion": {
+        "page": 2,
+        "region": [
+          790,
+          248,
+          570,
+          410
+        ]
+      },
+      "figureVerified": true,
+      "figureBeforeStem": true,
+      "figureWidth": 570
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 9,
+      "sourcePage": 2,
+      "stem": "The franking machine is used to",
+      "options": [
+        "despatch outgoing mail",
+        "record the time of arrival of incoming mail",
+        "indicate that a person has seen the correspondence",
+        "give an impression of the value of postage"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 10,
+      "sourcePage": 2,
+      "stem": "A draft of revised procedures for handling mail is to be prepared by a committee and submitted to the office manager. Which of the following formats should be used?",
+      "options": [
+        "Note",
+        "Report",
+        "Letter",
+        "Statement"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 11,
+      "sourcePage": 2,
+      "stem": "A PBX system is used to facilitate",
+      "options": [
+        "oral communication",
+        "storage of documents",
+        "retrieval of documents",
+        "written communication"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 12,
+      "sourcePage": 3,
+      "stem": "On receipt of an incoming letter, the mail clerk’s first action should be to",
+      "options": [
+        "code it",
+        "date-stamp it",
+        "route it correctly",
+        "hand it to the supervisor"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 13,
+      "sourcePage": 3,
+      "stem": "A confidential letter addressed to your employer is received in a torn condition. You should",
+      "options": [
+        "return the letter to the mail department",
+        "attach a note to the envelope and deliver by hand to your employer",
+        "put the letter into a new envelope and take it to your employer",
+        "refuse to accept the envelope from the mail department"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 14,
+      "sourcePage": 3,
+      "stem": "When the 24-hour clock is showing 18:30 hours, the time on the 12-hour clock is",
+      "options": [
+        "6.30 a.m.",
+        "8.30 a.m.",
+        "6.30 p.m.",
+        "8.30 p.m."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 15,
+      "sourcePage": 3,
+      "stem": "Ms Jan Brown is the marketing specialist of Bath Soaps Ltd. She wants to send a sample questionnaire about a product, manufactured by the company, to the public. Which of the following types of postal services should she use?",
+      "options": [
+        "Express mail",
+        "Registered letter",
+        "Business reply service",
+        "Special delivery service"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 16,
+      "sourcePage": 3,
+      "stem": "Which of the following should be used to obtain postage rates?",
+      "options": [
+        "Ready Reckoner",
+        "Post Office Guide",
+        "Franking Machine",
+        "ABC Shipping Guide"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 17,
+      "sourcePage": 3,
+      "stem": "A file is said to be inactive when",
+      "options": [
+        "it is of no further use",
+        "it has not been released for filing",
+        "it has been withdrawn for reference purposes",
+        "the correspondence is too little to open a new file"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 18,
+      "sourcePage": 3,
+      "stem": "Which of the following characteristics is the MOST important when choosing a filing system?",
+      "options": [
+        "Ease of operation",
+        "Capability of expansion",
+        "Availability of filing equipment and supplies",
+        "Suitability for the nature of the business"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 19,
+      "sourcePage": 3,
+      "stem": "Filing through the use of microfilming is valuable for the storage of",
+      "options": [
+        "passport sized photographs of staff members",
+        "information which must be kept for many years",
+        "official records which are frequently used",
+        "customers’ accounts from which statements are to be made"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 20,
+      "sourcePage": 3,
+      "stem": "A tickler file should be used to",
+      "options": [
+        "serve as a reminder",
+        "keep temporary records",
+        "keep permanent records",
+        "store confidential information"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 21,
+      "sourcePage": 4,
+      "stem": "In which order should the following names be filed?\nI. Capt. Richard P. Dundee\nII. The Dundee Cake Co\nIII. Dundee and Dandee Ltd\nIV. James Dundee & Sons",
+      "options": [
+        "I, II, III, IV",
+        "I, III, IV, II",
+        "II, III, IV, I",
+        "III, IV, II, I"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 22,
+      "sourcePage": 4,
+      "stem": "To maintain efficient records management, documents are filed in chronological order. This system is used by arranging files according to",
+      "options": [
+        "dates",
+        "topics",
+        "numbers",
+        "companies"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 23,
+      "sourcePage": 4,
+      "stem": "A records management system is BEST described as an information cycle that",
+      "options": [
+        "collects, retains, runs and moves information in an upward direction",
+        "recycles information so that it becomes available when needed",
+        "stores, retrieves, transports and collects information",
+        "collects information every year"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 24,
+      "sourcePage": 4,
+      "stem": "The term cross-referencing refers to files that are filed under",
+      "options": [
+        "inactive filing",
+        "the same heading",
+        "different headings",
+        "miscellaneous filing"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 25,
+      "sourcePage": 4,
+      "stem": "Appointments for each day should be written in a diary",
+      "options": [
+        "at regular intervals",
+        "in the correct time sequence",
+        "clearly and concisely with a pen",
+        "in pencil and when confirmed, in ink"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 26,
+      "sourcePage": 4,
+      "stem": "The correct procedure for a receptionist to use when introducing a business visitor is to announce the person’s",
+      "options": [
+        "name and title",
+        "title and company",
+        "company, title and name",
+        "name, title and company"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 27,
+      "sourcePage": 4,
+      "stem": "The BEST location for a receptionist’s desk is near to the",
+      "options": [
+        "manager’s office",
+        "records department",
+        "entrance of the building",
+        "busiest part of the building"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 28,
+      "sourcePage": 4,
+      "stem": "Before starting to set up appointments, a secretary should first thoroughly familiarise herself with which of the following?",
+      "options": [
+        "The pattern of her boss’ work day",
+        "The correct procedure for greeting callers",
+        "The method of recording appointments",
+        "The extension numbers for each member of staff"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 29,
+      "sourcePage": 5,
+      "stem": "In what order should a secretary complete the following procedures when preparing for a meeting?\nI. Collect stationery for use at the meeting.\nII. Ensure that a venue is booked.\nIII. Send notices of the meeting and agenda to all members.\nIV. Collect information required for use at the meeting.",
+      "options": [
+        "I, IV, II, III",
+        "II, III, IV, I",
+        "III, II, I, IV",
+        "IV, III, I, II"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 30,
+      "sourcePage": 5,
+      "stem": "Which of the following terms is used to describe a committee which has been set up to deal with a specific matter?",
+      "options": [
+        "Ad hoc",
+        "Central",
+        "General",
+        "Administrative"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 31,
+      "sourcePage": 5,
+      "stem": "All of the following items of business are discussed at an annual general meeting EXCEPT",
+      "options": [
+        "declaration of dividends",
+        "election of directors and auditors",
+        "making arrangements for a very important person",
+        "presentation and adoption of the company’s reports and accounts for the previous year"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 32,
+      "sourcePage": 5,
+      "stem": "When there is an equal number of votes ‘for’ and ‘against’ a motion the Chairman should",
+      "options": [
+        "cast a vote",
+        "drop the motion",
+        "recount the votes",
+        "amend the motion"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 33,
+      "sourcePage": 5,
+      "stem": "For which of the following reasons would a chairman of a company’s board postpone a meeting?",
+      "options": [
+        "Two of the directors of the company are absent.",
+        "The secretary has misplaced the list of members.",
+        "The chairman’s agenda has not been prepared.",
+        "The number of persons needed to form a quorum is not present."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 34,
+      "sourcePage": 5,
+      "stem": "The term ‘verbatim minutes’ refers to a/an",
+      "options": [
+        "record prepared in the present tense",
+        "detailed recording of the chairman’s remarks",
+        "extract of important proceedings in the minutes",
+        "exact wording of the proceedings at the meeting"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 35,
+      "sourcePage": 5,
+      "stem": "An executive has to attend an overseas meeting and will have to make reference to correspondence on file. Which of the following actions would be MOST appropriate to allow him to have the relevant information?",
+      "options": [
+        "Make copies of the correspondence.",
+        "Make a summary of the correspondence.",
+        "Give him the relevant files and ask him to sign for them.",
+        "Give him the correspondence from the files and ask him to sign for it."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 36,
+      "sourcePage": 6,
+      "stem": "Traveller’s cheques should be countersigned",
+      "options": [
+        "as soon as they are issued",
+        "before taking them to the person accepting payment or cashing them",
+        "in the presence of the person accepting payment or cashing them",
+        "at the hotel before taking them to the person accepting payment or cashing them"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 37,
+      "sourcePage": 6,
+      "stem": "Your employer is on a business trip in another Caribbean territory and urgently requires additional money. The BEST way to send money to her is by",
+      "options": [
+        "debit transfer",
+        "credit transfer",
+        "international bank draft",
+        "electronic money transfer"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 38,
+      "sourcePage": 6,
+      "stem": "Some firms offer a programme which aims at assisting new employees in becoming familiar with their jobs. This programme is referred to as a/an",
+      "options": [
+        "appraisal",
+        "induction",
+        "deployment",
+        "recruitment"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 39,
+      "sourcePage": 6,
+      "stem": "The document above is an example of a",
+      "options": [
+        "job analysis",
+        "job description",
+        "job specification",
+        "personnel specification"
+      ],
+      "contextText": "Item 39 refers to the following document.",
+      "tableBeforeStem": true,
+      "table": {
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "TITLE",
+            "Purchasing Clerk"
+          ],
+          [
+            "DEPARTMENT",
+            "Purchasing"
+          ],
+          [
+            "HOURS OF WORK",
+            "8.00am - 4.00 pm, Monday - Friday"
+          ],
+          [
+            "RESPONSIBLE TO",
+            "Purchasing Assistant"
+          ],
+          [
+            "JOB SUMMARY",
+            "To assist in the procurement of goods and services for the company"
+          ],
+          [
+            "DUTIES",
+            "1. Preparation and processing of purchasing requisitions\n2. Maintaining stock records\n3. Maintaining a database on suppliers"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 40,
+      "sourcePage": 7,
+      "stem": "Which of the following sequences should be used when planning interview appointments?\nI. Inform each applicant of the date and time of the interview.\nII. Give the receptionist the names of applicants and the time each is expected.\nIII. Plan that each interview lasts at least half an hour.\nIV. Make a note of the exact time set for each applicant.",
+      "options": [
+        "I, II, III, IV",
+        "II, III, IV, I",
+        "III, IV, I, II",
+        "IV, I, II, III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 41,
+      "sourcePage": 7,
+      "stem": "Clare Lee is paid a basic wage of $8.00 per hour for a 40-hour week and $9.60 per hour for overtime work. Last week Clare worked 48 hours. What was her total wage for the week?",
+      "options": [
+        "$ 76.80",
+        "$320.00",
+        "$396.80",
+        "$760.00"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 42,
+      "sourcePage": 7,
+      "stem": "The job an employee has been doing is no longer required by the organization. The employee is said to be",
+      "options": [
+        "retrained",
+        "regraded",
+        "reassigned",
+        "redundant"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 43,
+      "sourcePage": 7,
+      "stem": "Which of the following sources can a NEW employee use to familiarise himself with the organization?",
+      "options": [
+        "Personal files",
+        "Company secretary",
+        "Company manual",
+        "Contract of Employment"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 44,
+      "sourcePage": 7,
+      "stem": "The above cheque is payable to",
+      "options": [
+        "anyone who presents it",
+        "the person who has endorsed it",
+        "anyone with an account at the bank",
+        "the account of the person named on the cheque"
+      ],
+      "contextText": "Item 44 refers to the diagram below.\nMUTUAL TRUST BANK LTD\n10 High Street\nPort-of-Spain, Trinidad\nA/C PAYEE ONLY (crossed)",
+      "tableBeforeStem": true,
+      "table": {
+        "columns": [
+          "",
+          ""
+        ],
+        "rows": [
+          [
+            "Date",
+            "30 May 2010"
+          ],
+          [
+            "Pay",
+            "Joan Grant"
+          ],
+          [
+            "Amount in words",
+            "Three hundred dollars"
+          ],
+          [
+            "Amount",
+            "$300"
+          ],
+          [
+            "Cheque number",
+            "032581"
+          ],
+          [
+            "Signature",
+            "J Robinson"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 45,
+      "sourcePage": 7,
+      "stem": "To pay his account in cash, a customer tendered:\n5 - $20.00 bills\n3 - $10.00 bills\n10 - $5.00 bills\n9 - $1.00 bills\n20 - 5¢ pieces\nWhat sum of money did the customer pay?",
+      "options": [
+        "$189.00",
+        "$190.00",
+        "$191.00",
+        "$195.00"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 46,
+      "sourcePage": 8,
+      "stem": "The person, Mr Bruce Hall, to whom the cheque was made out, is called the",
+      "options": [
+        "payee",
+        "payer",
+        "banker",
+        "accepter"
+      ],
+      "contextText": "Items 46–47 refer to the following document.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "LINGO BANK LTD",
+        "columns": [
+          "",
+          "Counterfoil",
+          "Cheque"
+        ],
+        "rows": [
+          [
+            "Address",
+            "",
+            "LINGO BLVD\nLINGO"
+          ],
+          [
+            "No.",
+            "001",
+            "001"
+          ],
+          [
+            "Date",
+            "21/9/2011",
+            "Sept. 21, 2011"
+          ],
+          [
+            "In favour of / Pay to the order of",
+            "B Hall",
+            "Mr Bruce Hall"
+          ],
+          [
+            "Amount in words",
+            "",
+            "one hundred and fifty dollars"
+          ],
+          [
+            "Amount",
+            "$150.00",
+            "$150.00"
+          ],
+          [
+            "Signature",
+            "",
+            "Joan Wilpaymor"
+          ]
+        ],
+        "details": [
+          "A/C Payee Only (crossed)"
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 47,
+      "sourcePage": 8,
+      "stem": "On 2 October 2011, Mr Hall attempted to cash the above cheque at his bank, Savings Banks Ltd. His request was denied because",
+      "options": [
+        "his account was overdrawn",
+        "it was a crossed cheque",
+        "the cheque is postdated",
+        "he did not possess any form of identification"
+      ],
+      "contextText": "Items 46–47 refer to the following document.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "LINGO BANK LTD",
+        "columns": [
+          "",
+          "Counterfoil",
+          "Cheque"
+        ],
+        "rows": [
+          [
+            "Address",
+            "",
+            "LINGO BLVD\nLINGO"
+          ],
+          [
+            "No.",
+            "001",
+            "001"
+          ],
+          [
+            "Date",
+            "21/9/2011",
+            "Sept. 21, 2011"
+          ],
+          [
+            "In favour of / Pay to the order of",
+            "B Hall",
+            "Mr Bruce Hall"
+          ],
+          [
+            "Amount in words",
+            "",
+            "one hundred and fifty dollars"
+          ],
+          [
+            "Amount",
+            "$150.00",
+            "$150.00"
+          ],
+          [
+            "Signature",
+            "",
+            "Joan Wilpaymor"
+          ]
+        ],
+        "details": [
+          "A/C Payee Only (crossed)"
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 48,
+      "sourcePage": 8,
+      "stem": "A time card is used when calculating the",
+      "options": [
+        "wages for hourly paid workers",
+        "machine hours needed for a job",
+        "time required to complete a job",
+        "salaries for monthly paid workers"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 49,
+      "sourcePage": 8,
+      "stem": "Which of the following services would usually be offered to customers who have fixed deposit accounts at a commercial bank?\nI. Higher interest rate than that offered on savings accounts\nII. Withdrawals on demand with interest earned\nIII. Permission to write cheques on the accounts",
+      "options": [
+        "I only",
+        "II only",
+        "I and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 50,
+      "sourcePage": 8,
+      "stem": "Which of the following is the BEST method of processing inventory data?",
+      "options": [
+        "Manual",
+        "Physical",
+        "Electronic",
+        "Mechanical"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 51,
+      "sourcePage": 8,
+      "stem": "The Joy High School wants to build a new canteen and has received promotional material from several firms. In order to select the most suitable firm for the job, the school should invite firms to send",
+      "options": [
+        "tenders",
+        "price lists",
+        "catalogues",
+        "statements"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 52,
+      "sourcePage": 9,
+      "stem": "How many reams must be ordered on 23 April to restore stock to maximum?",
+      "options": [
+        "20",
+        "30",
+        "45",
+        "50"
+      ],
+      "contextText": "Item 52 refers to the table below which shows the information on a stationery stock card.\nMaximum: 50 reams\nMinimum: 20 reams",
+      "tableBeforeStem": true,
+      "table": {
+        "columns": [
+          "Date",
+          "Details",
+          "Received",
+          "Issued",
+          "Balance"
+        ],
+        "rows": [
+          [
+            "1 March",
+            "",
+            "",
+            "",
+            "45"
+          ],
+          [
+            "8 March",
+            "Sales Department",
+            "",
+            "10",
+            "35"
+          ],
+          [
+            "10 March",
+            "Typing Pool",
+            "",
+            "12",
+            "23"
+          ],
+          [
+            "10 March",
+            "A.S. Bounty & Sons Ltd.",
+            "25",
+            "",
+            "48"
+          ],
+          [
+            "1 April",
+            "Purchasing Department",
+            "",
+            "8",
+            "40"
+          ],
+          [
+            "12 April",
+            "Typing Pool",
+            "",
+            "10",
+            "30"
+          ],
+          [
+            "23 April",
+            "Personnel Department",
+            "",
+            "10",
+            "20"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 53,
+      "sourcePage": 9,
+      "stem": "What is the closing stock at the end of May, using the LIFO method?",
+      "options": [
+        "$350",
+        "$365",
+        "$370",
+        "$390"
+      ],
+      "contextText": "Item 53 refers to the following stock information.",
+      "tableBeforeStem": true,
+      "table": {
+        "columns": [
+          "Month",
+          "Receipts",
+          "Issues"
+        ],
+        "rows": [
+          [
+            "Jan",
+            "15 @ $35",
+            ""
+          ],
+          [
+            "Feb",
+            "15 @ $30",
+            ""
+          ],
+          [
+            "May",
+            "",
+            "20"
+          ]
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 54,
+      "sourcePage": 9,
+      "stem": "The factory office is responsible for planning and organizing the",
+      "options": [
+        "costs of production",
+        "marketing of goods",
+        "production processes",
+        "contracts of employment of the workers"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 55,
+      "sourcePage": 10,
+      "stem": "The duties of a clerk in the transport office include\nI. maintaining a database of couriers\nII. accepting orders from customers\nIII. providing customers with information about the delivery of their orders",
+      "options": [
+        "I and II only",
+        "I and III only",
+        "II and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 56,
+      "sourcePage": 10,
+      "stem": "An unsolicited letter of application may be written when",
+      "options": [
+        "a job is advertised in the newspaper",
+        "a company advertises for a vacancy",
+        "a company’s application form is made available",
+        "an application is sent enquiring about a vacancy"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 57,
+      "sourcePage": 10,
+      "stem": "It is now three months since you have applied for a job at a large firm and you have only received a letter of acknowledgement. What action should you now take in an effort to obtain the job?",
+      "options": [
+        "Write another letter of application.",
+        "Telephone your friend who works with the firm.",
+        "Visit the company and ask to see the human resource manager.",
+        "Write a letter to follow-up the application."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 58,
+      "sourcePage": 10,
+      "stem": "A person who was dismissed from a previous job is filling out an application form for another job. He is required to state the reason for leaving the last place of employment. It is best to",
+      "options": [
+        "ignore the question",
+        "answer ‘not applicable’",
+        "give the correct reason",
+        "make a reasonable excuse"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 59,
+      "sourcePage": 10,
+      "stem": "Which of the following should be done if no mention is made of promotion opportunities when you are being interviewed for a job and you are interested in having such information?",
+      "options": [
+        "Ask about it in a follow-up letter after the interview.",
+        "Visit the office and question the employees.",
+        "Assume that promotion will be automatic.",
+        "Ask about it before the close of the interview."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2012-MJ",
+      "number": 60,
+      "sourcePage": 10,
+      "stem": "Which of the following is NOT a requirement of a letter of application?",
+      "options": [
+        "It should be typed.",
+        "The grammar used should be correct.",
+        "It should request an opportunity for an interview.",
+        "It should indicate the position for which the person is applying."
+      ]
+    }
+  ]
+}

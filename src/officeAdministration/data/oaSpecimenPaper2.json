@@ -1,0 +1,960 @@
+{
+  "id": "OA-P2-SPECIMEN-2024",
+  "sourceId": "OA-P2-SPECIMEN-2024",
+  "paper": 2,
+  "subjectId": "office-administration",
+  "title": "CXC specimen 2024 · Paper 2",
+  "year": 2024,
+  "sitting": "SPECIMEN",
+  "source": "specimen",
+  "sourceType": "official-specimen",
+  "qualification": "CSEC",
+  "syllabus": "CXC 27/O/SYLL24",
+  "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+  "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+  "sourceAsset": "office-administration/source-pages/OA-P2-SPECIMEN-2024.json",
+  "sourcePdfPages": 169,
+  "examSourcePages": [
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125
+  ],
+  "questionSourcePages": [
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120
+  ],
+  "durationMinutes": 120,
+  "timeLimitMinutes": 120,
+  "totalMarks": 90,
+  "marks": 90,
+  "availableQuestionMarks": 90,
+  "requiredQuestionCount": 6,
+  "compulsory": true,
+  "questionDataAvailable": true,
+  "transcriptionVerified": true,
+  "partAllocationsVerified": true,
+  "officialMarkSchemeAvailable": true,
+  "gradingMode": "official-guidance",
+  "serverMarking": false,
+  "instructions": [
+    "This paper consists of SIX questions: THREE in SECTION I and THREE in SECTION II.",
+    "Answer ALL questions.",
+    "You may use a silent, non-programmable calculator to answer questions."
+  ],
+  "sourceInstructions": [
+    "This paper consists of SIX questions: THREE in SECTION I and THREE in SECTION II.",
+    "Answer ALL questions.",
+    "Write your answers in the spaces provided in this answer booklet.",
+    "Do NOT write in the margins.",
+    "You may use a silent, non-programmable calculator to answer questions.",
+    "If you need to rewrite any answer and there is not enough space to do so on the original page, you must use the extra lined page(s) provided at the back of this booklet. Remember to draw a line through your original answer.",
+    "If you use the extra page(s), you MUST write the question number clearly in the box provided at the top of the extra page(s) and, where relevant, include the question part beside the answer."
+  ],
+  "provenance": {
+    "sourceId": "OA-P2-SPECIMEN-2024",
+    "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+    "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+    "pdfPages": [
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125
+    ],
+    "kind": "official-specimen-examination",
+    "transcriptionMethod": "native PDF text checked against rendered pages",
+    "visuallyVerified": true
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "number": 1,
+      "title": "Office arrangements and equipment",
+      "section": "I",
+      "stem": "",
+      "marks": 15,
+      "sourcePage": 105,
+      "sourcePages": [
+        105,
+        106,
+        107
+      ],
+      "partAllocationVerified": true,
+      "parts": [
+        {
+          "id": "q1-a",
+          "label": "a",
+          "prompt": "Identify TWO attributes that an administrative clerk should possess.",
+          "marks": 2,
+          "answerType": "written",
+          "sourcePage": 105,
+          "sourcePages": [
+            105
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              105
+            ],
+            "originalQuestionNumber": 1,
+            "originalPartLabel": "a",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q1-b",
+          "label": "b",
+          "prompt": "Outline TWO benefits of EACH of the following office arrangements.\nOpen plan\nCellular\nVirtual",
+          "marks": 6,
+          "answerType": "written",
+          "sourcePage": 105,
+          "sourcePages": [
+            105
+          ],
+          "fields": [
+            {
+              "label": "Open plan 1",
+              "kind": "field"
+            },
+            {
+              "label": "Open plan 2",
+              "kind": "field"
+            },
+            {
+              "label": "Cellular 1",
+              "kind": "field"
+            },
+            {
+              "label": "Cellular 2",
+              "kind": "field"
+            },
+            {
+              "label": "Virtual 1",
+              "kind": "field"
+            },
+            {
+              "label": "Virtual 2",
+              "kind": "field"
+            }
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              105
+            ],
+            "originalQuestionNumber": 1,
+            "originalPartLabel": "b",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q1-c",
+          "label": "c",
+          "prompt": "The student council at Brown’s Academy has decided to publish a monthly newsletter to highlight the activities of the school. However, the school does not have the equipment which the council needs to prepare the newsletter.\n\nAssume that you are Tomas Field, the clerk in the school office. Write an email to the principal, Mrs Adya Brown, describing how EACH of the following devices could assist with the publication of the newsletter.\n• Multi-function printer\n• Digital camera\n• Tablet",
+          "marks": 7,
+          "answerType": "document",
+          "sourcePage": 106,
+          "sourcePages": [
+            106,
+            107
+          ],
+          "table": {
+            "title": "EMAIL",
+            "columns": [
+              "Field",
+              "Supplied information"
+            ],
+            "rows": [
+              [
+                "TO",
+                "principal@browns.edu"
+              ],
+              [
+                "SUBJECT",
+                "Purchase of additional devices"
+              ]
+            ]
+          },
+          "fields": [
+            {
+              "label": "Email",
+              "kind": "field"
+            }
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              106,
+              107
+            ],
+            "originalQuestionNumber": 1,
+            "originalPartLabel": "c",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        }
+      ],
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          105,
+          106,
+          107
+        ],
+        "originalQuestionNumber": 1,
+        "kind": "official-specimen-question"
+      }
+    },
+    {
+      "id": "q2",
+      "number": 2,
+      "title": "Communication and correspondence",
+      "section": "I",
+      "stem": "",
+      "marks": 15,
+      "sourcePage": 108,
+      "sourcePages": [
+        108,
+        109,
+        110
+      ],
+      "partAllocationVerified": true,
+      "parts": [
+        {
+          "id": "q2-a",
+          "label": "a",
+          "prompt": "List THREE barriers to communication that may interfere with the effective transfer of information in an organization.",
+          "marks": 3,
+          "answerType": "written",
+          "sourcePage": 108,
+          "sourcePages": [
+            108
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              108
+            ],
+            "originalQuestionNumber": 2,
+            "originalPartLabel": "a",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q2-b",
+          "label": "b",
+          "prompt": "Luna is opening a nail salon and wants to print flyers to advertise the business. However, her business partner suggested that it would be more economical to create a website for the business.\n\nExplain TWO benefits of creating a website to advertise the business.",
+          "marks": 4,
+          "answerType": "written",
+          "sourcePage": 108,
+          "sourcePages": [
+            108
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              108
+            ],
+            "originalQuestionNumber": 2,
+            "originalPartLabel": "b",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q2-c",
+          "label": "c",
+          "prompt": "Megabytes Limited, a software company located at 19 Palmer’s Crescent, The Valley, Anguilla advertised to fill the post of receptionist.\n\nMr Derek Wales of 10 Highway Drive, The Valley, Anguilla has applied for the post of receptionist. Assume that you are Mrs Iris Field, assistant to the human resource manager.\n\nDraft a letter to Mr Wales acknowledging his application and interest in employment at the company. The letter is to be signed by Miss Amber Black, the human resource manager.\n\nUse the current date.",
+          "marks": 8,
+          "answerType": "document",
+          "sourcePage": 109,
+          "sourcePages": [
+            109,
+            110
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              109,
+              110
+            ],
+            "originalQuestionNumber": 2,
+            "originalPartLabel": "c",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        }
+      ],
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          108,
+          109,
+          110
+        ],
+        "originalQuestionNumber": 2,
+        "kind": "official-specimen-question"
+      }
+    },
+    {
+      "id": "q3",
+      "number": 3,
+      "title": "Business meetings",
+      "section": "I",
+      "stem": "",
+      "marks": 15,
+      "sourcePage": 111,
+      "sourcePages": [
+        111,
+        112,
+        113
+      ],
+      "partAllocationVerified": true,
+      "parts": [
+        {
+          "id": "q3-a",
+          "label": "a",
+          "prompt": "Define EACH of the following terms as they relate to business meetings.\nCasting vote\nBy-laws\nVerbatim",
+          "marks": 3,
+          "answerType": "written",
+          "sourcePage": 111,
+          "sourcePages": [
+            111
+          ],
+          "fields": [
+            {
+              "label": "Casting vote",
+              "kind": "field"
+            },
+            {
+              "label": "By-laws",
+              "kind": "field"
+            },
+            {
+              "label": "Verbatim",
+              "kind": "field"
+            }
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              111
+            ],
+            "originalQuestionNumber": 3,
+            "originalPartLabel": "a",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q3-b",
+          "label": "b",
+          "prompt": "State FOUR functions that should be performed by the secretary in preparation for a virtual meeting.",
+          "marks": 4,
+          "answerType": "written",
+          "sourcePage": 111,
+          "sourcePages": [
+            111
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              111
+            ],
+            "originalQuestionNumber": 3,
+            "originalPartLabel": "b",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q3-c",
+          "label": "c",
+          "prompt": "Mrs Cruz has reminded her secretary, Adam Clarke, that the annual general meeting of XYZ Credit Union will be held on 15 November 2024.\n\nThe meeting will start at 3 p.m. and will be held in the conference room at the credit union’s headquarters in Castries, St Lucia.\n\nAssume that you are Mr Clarke. Prepare the notice of the meeting, including the agenda and the main purpose of the meeting.\n\nXYZ Credit Union\nFriars Hill Road\nCastries\nSt. Lucia\nTelephone: 1(758) 400-0390/91\nEmail: xyzcu758@gmail.com",
+          "marks": 8,
+          "answerType": "document",
+          "sourcePage": 112,
+          "sourcePages": [
+            112,
+            113
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              112,
+              113
+            ],
+            "originalQuestionNumber": 3,
+            "originalPartLabel": "c",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        }
+      ],
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          111,
+          112,
+          113
+        ],
+        "originalQuestionNumber": 3,
+        "kind": "official-specimen-question"
+      }
+    },
+    {
+      "id": "q4",
+      "number": 4,
+      "title": "Human resource management",
+      "section": "II",
+      "stem": "",
+      "marks": 15,
+      "sourcePage": 114,
+      "sourcePages": [
+        114,
+        115
+      ],
+      "partAllocationVerified": true,
+      "parts": [
+        {
+          "id": "q4-a",
+          "label": "a",
+          "prompt": "One of the functions of the human resource department is to administer disciplinary procedures.\n\nState TWO reasons why employees might face disciplinary procedures.",
+          "marks": 2,
+          "answerType": "written",
+          "sourcePage": 114,
+          "sourcePages": [
+            114
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              114
+            ],
+            "originalQuestionNumber": 4,
+            "originalPartLabel": "a",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q4-b",
+          "label": "b",
+          "prompt": "Describe TWO internal factors that might contribute to a high employee turnover within an organization.",
+          "marks": 4,
+          "answerType": "written",
+          "sourcePage": 114,
+          "sourcePages": [
+            114
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              114
+            ],
+            "originalQuestionNumber": 4,
+            "originalPartLabel": "b",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q4-c",
+          "label": "c",
+          "prompt": "Plumbers Market is expanding its operations and has decided to hire an additional clerk to assist the human resource manager. On the form provided below, complete the job specification for the post of human resource clerk.",
+          "marks": 9,
+          "answerType": "document",
+          "sourcePage": 115,
+          "sourcePages": [
+            115
+          ],
+          "table": {
+            "title": "JOB SPECIFICATION",
+            "columns": [
+              "Field",
+              "Supplied information"
+            ],
+            "rows": [
+              [
+                "POSITION",
+                "Human Resource Clerk"
+              ],
+              [
+                "DEPARTMENT",
+                "Human Resource"
+              ],
+              [
+                "REPORTING TO",
+                "Human Resource Manager"
+              ]
+            ]
+          },
+          "fields": [
+            {
+              "label": "Job Summary",
+              "kind": "field"
+            },
+            {
+              "label": "Duties and Responsibilities 1",
+              "kind": "field"
+            },
+            {
+              "label": "Duties and Responsibilities 2",
+              "kind": "field"
+            },
+            {
+              "label": "Skills 1",
+              "kind": "field"
+            },
+            {
+              "label": "Skills 2",
+              "kind": "field"
+            },
+            {
+              "label": "Qualifications",
+              "kind": "field"
+            },
+            {
+              "label": "Attributes 1",
+              "kind": "field"
+            },
+            {
+              "label": "Attributes 2",
+              "kind": "field"
+            }
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              115
+            ],
+            "originalQuestionNumber": 4,
+            "originalPartLabel": "c",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        }
+      ],
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          114,
+          115
+        ],
+        "originalQuestionNumber": 4,
+        "kind": "official-specimen-question"
+      }
+    },
+    {
+      "id": "q5",
+      "number": 5,
+      "title": "Purchasing and stock valuation",
+      "section": "II",
+      "stem": "",
+      "marks": 15,
+      "sourcePage": 116,
+      "sourcePages": [
+        116,
+        117
+      ],
+      "partAllocationVerified": true,
+      "parts": [
+        {
+          "id": "q5-a",
+          "label": "a",
+          "prompt": "State the meaning of EACH of the following terms as they relate to purchasing.\nEx works\n5/10",
+          "marks": 2,
+          "answerType": "written",
+          "sourcePage": 116,
+          "sourcePages": [
+            116
+          ],
+          "fields": [
+            {
+              "label": "Ex works",
+              "kind": "field"
+            },
+            {
+              "label": "5/10",
+              "kind": "field"
+            }
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              116
+            ],
+            "originalQuestionNumber": 5,
+            "originalPartLabel": "a",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q5-b",
+          "label": "b",
+          "prompt": "Describe TWO reasons why an organization would utilize Just-in-Time (JIT) inventory management in the conduct of its day-to-day operations.",
+          "marks": 4,
+          "answerType": "written",
+          "sourcePage": 116,
+          "sourcePages": [
+            116
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              116
+            ],
+            "originalQuestionNumber": 5,
+            "originalPartLabel": "b",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q5-c",
+          "label": "c",
+          "prompt": "JC Miller is a supplier of electrical components. Assume you are Calvin Kin, the inventory clerk at JC Miller. Use the average cost (AVCO) method of stock valuation to insert the missing entries labelled (i) to (v) in the following table.",
+          "marks": 9,
+          "answerType": "document",
+          "sourcePage": 117,
+          "sourcePages": [
+            117
+          ],
+          "table": {
+            "columns": [
+              "Received",
+              "Issued",
+              "Average Cost Per Unit of Stock ($)",
+              "Total Number of Units in Stock ($)",
+              "Total Value of Stock ($)"
+            ],
+            "rows": [
+              [
+                "January: … @ $35",
+                "",
+                "35.00",
+                "(i) __________",
+                "875.00"
+              ],
+              [
+                "March: … @ $36",
+                "",
+                "(iii) __________",
+                "35",
+                "(ii) __________"
+              ],
+              [
+                "",
+                "June: 8 @ $35.40",
+                "35.40",
+                "(iv) __________",
+                "(v) __________"
+              ]
+            ]
+          },
+          "fields": [
+            {
+              "label": "(i) January - total number of units in stock",
+              "kind": "numeric"
+            },
+            {
+              "label": "(ii) March - total value of stock",
+              "kind": "numeric",
+              "unit": "$"
+            },
+            {
+              "label": "(iii) March - average cost per unit of stock",
+              "kind": "numeric",
+              "unit": "$"
+            },
+            {
+              "label": "(iv) June - total number of units in stock",
+              "kind": "numeric"
+            },
+            {
+              "label": "(v) June - total value of stock",
+              "kind": "numeric",
+              "unit": "$"
+            }
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              117
+            ],
+            "originalQuestionNumber": 5,
+            "originalPartLabel": "c",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        }
+      ],
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          116,
+          117
+        ],
+        "originalQuestionNumber": 5,
+        "kind": "official-specimen-question"
+      }
+    },
+    {
+      "id": "q6",
+      "number": 6,
+      "title": "Sales and customer service",
+      "section": "II",
+      "stem": "",
+      "marks": 15,
+      "sourcePage": 118,
+      "sourcePages": [
+        118,
+        119,
+        120
+      ],
+      "partAllocationVerified": true,
+      "parts": [
+        {
+          "id": "q6-a",
+          "label": "a",
+          "prompt": "List THREE skills required by a sales clerk.",
+          "marks": 3,
+          "answerType": "written",
+          "sourcePage": 118,
+          "sourcePages": [
+            118
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              118
+            ],
+            "originalQuestionNumber": 6,
+            "originalPartLabel": "a",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q6-b",
+          "label": "b",
+          "prompt": "One of the conditions to qualify as a member of the International Standards Organization (ISO) is to maintain a high quality of goods and services.\n\nState THREE other conditions that are required by a company to qualify as a member of the ISO.",
+          "marks": 3,
+          "answerType": "written",
+          "sourcePage": 118,
+          "sourcePages": [
+            118
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              118
+            ],
+            "originalQuestionNumber": 6,
+            "originalPartLabel": "b",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q6-c",
+          "label": "c",
+          "prompt": "Green’s Computing had a back-to-school promotion and offered laptops for sale. Robyn purchased a laptop but found that the battery was dying after 30 minutes of use. Hence, she returned the laptop the next day.\n\nSuggest THREE actions that should be taken by the customer service agent when dealing with Robyn.",
+          "marks": 3,
+          "answerType": "written",
+          "sourcePage": 119,
+          "sourcePages": [
+            119
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              119
+            ],
+            "originalQuestionNumber": 6,
+            "originalPartLabel": "c",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        },
+        {
+          "id": "q6-d",
+          "label": "d",
+          "prompt": "Green’s Computing informed the sales department that all computers must be thoroughly checked before being sold. Assume you are a clerk in the sales department.\n\n(i) Suggest THREE tasks that should be included in a checklist used to verify the quality of the computer equipment. (3 marks)\n\n(ii) Justify the importance of EACH of the tasks given in (i). (3 marks)",
+          "marks": 6,
+          "answerType": "document",
+          "sourcePage": 119,
+          "sourcePages": [
+            119,
+            120
+          ],
+          "fields": [
+            {
+              "label": "Task 1",
+              "kind": "field"
+            },
+            {
+              "label": "Justification 1",
+              "kind": "field"
+            },
+            {
+              "label": "Task 2",
+              "kind": "field"
+            },
+            {
+              "label": "Justification 2",
+              "kind": "field"
+            },
+            {
+              "label": "Task 3",
+              "kind": "field"
+            },
+            {
+              "label": "Justification 3",
+              "kind": "field"
+            }
+          ],
+          "subparts": [
+            {
+              "label": "i",
+              "marks": 3
+            },
+            {
+              "label": "ii",
+              "marks": 3
+            }
+          ],
+          "provenance": {
+            "sourceId": "OA-P2-SPECIMEN-2024",
+            "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+            "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+            "pdfPages": [
+              119,
+              120
+            ],
+            "originalQuestionNumber": 6,
+            "originalPartLabel": "d",
+            "attributionScope": "question-pages",
+            "kind": "official-specimen-question"
+          }
+        }
+      ],
+      "provenance": {
+        "sourceId": "OA-P2-SPECIMEN-2024",
+        "filename": "CSEC-Office-Administration-Syllabus-Revised-2024.pdf",
+        "sha256": "8b30e64f2b3a2585dc576e5885fbdbc95aee55d3278b583c6e37a1beabebc7bf",
+        "pdfPages": [
+          118,
+          119,
+          120
+        ],
+        "originalQuestionNumber": 6,
+        "kind": "official-specimen-question"
+      }
+    }
+  ]
+}

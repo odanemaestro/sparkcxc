@@ -1,0 +1,897 @@
+{
+  "paperId": "OA-P1-2001-MJ",
+  "reviewDate": "2026-11-04",
+  "reviewMethod": "Compared all nine supplied question pages to native text. Item 10’s clipped opening line matches the visible letter fragments and is corroborated by the identical item 7 on the 2000 source’s first PDF page. The supplied 2001 copy begins on printed page 2.",
+  "durationMinutes": null,
+  "durationVerified": false,
+  "items": [
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 1,
+      "sourcePage": 1,
+      "stem": "An application for the position of despatch clerk was addressed to the company. To whom should the mail clerk send the application?",
+      "options": [
+        "Shipping supervisor",
+        "Administrative officer",
+        "Marketing manager",
+        "Personnel manager"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 2,
+      "sourcePage": 1,
+      "stem": "In the business of a sole trader the decision of what to purchase is usually made by the",
+      "options": [
+        "stock control clerk",
+        "purchasing manager",
+        "proprietor",
+        "cashier"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 3,
+      "sourcePage": 1,
+      "stem": "Assume that you are a new employee in a large firm. While you are awaiting instructions from your supervisor, another employee asks you to help her with her work. You should tell her that",
+      "options": [
+        "you are a new employee and unfamiliar with her work",
+        "she should try to complete her work even if she has to work late",
+        "you are willing to assist with your supervisor’s permission",
+        "you have already been given the work that you are supposed to do"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 4,
+      "sourcePage": 1,
+      "stem": "Your supervisor gives you oral instructions which you do not fully understand. You should",
+      "options": [
+        "ask another worker before starting the task",
+        "ask your supervisor to explain what she means",
+        "ask your supervisor to write out the instructions",
+        "start the task and hope that things will become clear as you work"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 5,
+      "sourcePage": 1,
+      "stem": "Which of the following attributes is NOT required of all beginning office workers?",
+      "options": [
+        "Punctuality",
+        "Initiative",
+        "Ability to calculate accurately",
+        "A pleasant disposition"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 6,
+      "sourcePage": 1,
+      "stem": "Mr. Lee of the Sales Department asked the telephonist to transfer a call from a customer to Mr. Field of the Accounts Department. If the call is disconnected while it is being put through to the Accounts Department, what should the telephonist do?",
+      "options": [
+        "Telephone Mr. Lee, explain what happened and offer an apology.",
+        "Telephone Mr. Field, explain what happened and offer an apology.",
+        "Leave the line open so that the customer can call again.",
+        "Ask Mr. Lee for the customer’s number, call, apologise and connect to Mr. Field."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 7,
+      "sourcePage": 1,
+      "stem": "Which of the following items of equipment must be used along with the fax machine in order to send a message?",
+      "options": [
+        "Telex",
+        "Telephone",
+        "Printer",
+        "Photocopier"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 8,
+      "sourcePage": 1,
+      "stem": "In business a memorandum is used",
+      "options": [
+        "for short letters",
+        "in place of post-cards",
+        "for internal communication",
+        "as a memory aid"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 9,
+      "sourcePage": 1,
+      "stem": "A business letter which begins with the salutation “Dear Sirs” should end with the complimentary close",
+      "options": [
+        "Yours sincerely",
+        "Your affectionately",
+        "Yours faithfully",
+        "Faithfully yours"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 10,
+      "sourcePage": 2,
+      "stem": "To determine if a reference book has information on a specific topic, one should consult the",
+      "options": [
+        "foreword",
+        "title page",
+        "bibliography",
+        "index"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 11,
+      "sourcePage": 2,
+      "stem": "You have been asked to arrange for personnel in several different locations to speak to each other without a personal meeting. Which of the following telephone calls should be used?",
+      "options": [
+        "Fixed time",
+        "Collect",
+        "Toll free",
+        "Conference"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 12,
+      "sourcePage": 2,
+      "stem": "As a wages clerk, you are instructed to remove some PAYE Income Tax documents to make room for new ones. Which of the following employees’ tax documents should you dispose of?\n\nI. Current employees who are on minimum wages\nII. Employees who have been transferred to other branch offices\nIII. Employees who have left the company over the last five years\nIV. Employees who have retired for more than six years",
+      "options": [
+        "II only",
+        "IV only",
+        "I and IV only",
+        "I, II and III only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 13,
+      "sourcePage": 2,
+      "stem": "Which of the following devices would alert the person carrying it to go to the nearest telephone as quickly as possible?",
+      "options": [
+        "Beeper",
+        "Pocket radio receiver",
+        "Two-way radio",
+        "Cellular phone"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 14,
+      "sourcePage": 2,
+      "stem": "A cheque which has been sent to your firm is made payable to another firm. What action should be taken?\n\nI. Forward the cheque to the firm to which it is made payable.\nII. Change the name on the cheque, initial it, and notify the sender.\nIII. Make a note of the error in the Remittances Book.\nIV. Return the cheque to the sender.",
+      "options": [
+        "II only",
+        "I and III only",
+        "II and III only",
+        "III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 15,
+      "sourcePage": 2,
+      "stem": "Which of the following media would be MOST appropriate for sending additional funds to your boss, who is on an overseas business trip and is scheduled to return in three days?",
+      "options": [
+        "Bank draft",
+        "Certified cheque",
+        "Telegraphic money order",
+        "Postal order"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 16,
+      "sourcePage": 2,
+      "stem": "A draft of revised procedures for handling mail is to be prepared and submitted to the Office Manager. Which of the following media should be used?",
+      "options": [
+        "Letter",
+        "Report",
+        "Statement",
+        "Note"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 17,
+      "sourcePage": 2,
+      "stem": "Which of the following BEST describes the “Poste Restante” mail service of the Post Office?",
+      "options": [
+        "Mail for which no postage is required",
+        "Mail sent to persons with temporary addresses",
+        "Mail service used by non-profit organisations, charities and the blind",
+        "Mail sent in which delivery is made by special courier after normal business hours"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 18,
+      "sourcePage": 3,
+      "stem": "Which of the following would ensure the efficient management of records?\n\nI. Easy retrieval\nII. Preparation of paperwork\nIII. An auditing system in place\nIV. Proper storage facilities",
+      "options": [
+        "I and II only",
+        "I and IV only",
+        "II and III only",
+        "III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 19,
+      "sourcePage": 3,
+      "stem": "Which of the following refers to suspension filing?",
+      "options": [
+        "Correspondence being held in a temporary file",
+        "File folders hanging from a rail in a filing cabinet",
+        "Collection and storage of files being done at specified times",
+        "The action of removing a folder from the filing cabinet"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 20,
+      "sourcePage": 3,
+      "stem": "When a file has been requisitioned, important information about the loan of the file should be recorded on a/an",
+      "options": [
+        "index card",
+        "out card",
+        "card indicator",
+        "guide card"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 21,
+      "sourcePage": 3,
+      "stem": "Under which of the following circumstances is a cross-reference used?",
+      "options": [
+        "A file is missing and a temporary file is opened.",
+        "Correspondence has to be seen by two or more persons.",
+        "Correspondence is transferred to inactive files.",
+        "Correspondence could be put in two or more files."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 22,
+      "sourcePage": 3,
+      "stem": "Firms which have to retain large volumes of inactive files and have a storage space problem should use",
+      "options": [
+        "hanging cabinets",
+        "accordion files",
+        "microfilm",
+        "suspension folders"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 23,
+      "sourcePage": 3,
+      "stem": "To find a file in a numerical filing system one must first refer to the",
+      "options": [
+        "visible index",
+        "index cards",
+        "strip index",
+        "routing slip"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 24,
+      "sourcePage": 3,
+      "stem": "An alternative system that may be used in place of a tickler file is a/an",
+      "options": [
+        "executive diary",
+        "card/pocket calculator",
+        "filing cabinet",
+        "indexing cabinet"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 25,
+      "sourcePage": 3,
+      "stem": "With which of the following should a receptionist familiarise herself, before setting up appointments?\n\nI. The pattern of her boss’ work day\nII. The correct procedure for greeting callers\nIII. The filing method used by the company\nIV. The intercom numbers for each member of staff",
+      "options": [
+        "I only",
+        "I, II and III only",
+        "I, II and IV only",
+        "II, III and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 26,
+      "sourcePage": 4,
+      "stem": "The item of information which is LEAST likely to appear on a register of visitors kept by a receptionist is the",
+      "options": [
+        "reason for the visit",
+        "time of arrival of the visitor",
+        "name of the person visited",
+        "name of the visitor"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 27,
+      "sourcePage": 4,
+      "stem": "An urgently required piece of equipment was delivered to the office in a damaged condition. Which of the following actions should the receptionist take?",
+      "options": [
+        "Refuse to accept it on the grounds that the item is damaged.",
+        "Make a note of the damage on the delivery note, sign it, and inform the supervisor of the damage.",
+        "Phone the supplier, report the damage, and follow his or her advice.",
+        "Sign the delivery note and at the first opportunity inform the supervisor of the damage."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 28,
+      "sourcePage": 4,
+      "stem": "The person who moves a motion at a meeting has the right to reply after the motion has been",
+      "options": [
+        "adopted",
+        "recorded",
+        "seconded",
+        "spoken"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 29,
+      "sourcePage": 4,
+      "stem": "Members who cannot attend a meeting at which officers will be elected but who wish to vote can do so by",
+      "options": [
+        "poll",
+        "proxy",
+        "order",
+        "ballot"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 30,
+      "sourcePage": 4,
+      "stem": "The term ‘matters arising thereon’ on an agenda provides for discussion of topics",
+      "options": [
+        "listed on the agenda",
+        "which members want to add",
+        "related to the minutes",
+        "on correspondence presented"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 31,
+      "sourcePage": 4,
+      "stem": "The notice and agenda of an Annual General Meeting of a public company should be sent to shareholders at LEAST",
+      "options": [
+        "2 - 3 days before the meeting",
+        "6 - 14 days before the meeting",
+        "21 days before the meeting",
+        "one month before the meeting"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 32,
+      "sourcePage": 4,
+      "stem": "Which of the following items of information should be put on an agenda for a monthly General Meeting?\n\nI. Place of meeting\nII. Business of meeting\nIII. Names of members\nIV. Date of meeting",
+      "options": [
+        "II only",
+        "I and IV only",
+        "I, II and III only",
+        "I, II and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 33,
+      "sourcePage": 4,
+      "stem": "If the number of persons required to form a quorum is NOT present, the meeting must be",
+      "options": [
+        "adjourned",
+        "postponed",
+        "conducted as a sub-committee",
+        "conducted as an extra-ordinary meeting"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 34,
+      "sourcePage": 4,
+      "stem": "You are travelling with TT$1,650. If this amount is converted to EC$ at an exchange rate of EC$1 = TT$3.00, it will be equivalent to",
+      "options": [
+        "$495.50",
+        "$500.00",
+        "$500.50",
+        "$550.00"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 35,
+      "sourcePage": 5,
+      "stem": "An executive is scheduled to attend an overseas meeting and will have to make reference to correspondence on file. Which of the following procedures would BEST be used to allow him to have the relevant information?",
+      "options": [
+        "Make copies of the correspondence.",
+        "Give him the correspondence from the files and ask him to sign for it.",
+        "Give him the relevant files and ask him to sign for them.",
+        "Make a summary of the correspondence."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 36,
+      "sourcePage": 5,
+      "stem": "Which of the following actions should be taken after copies of minutes of a meeting have been prepared?\n\nI. Put a copy in the minute book.\nII. Send a copy of the minutes to all members of the committee.\nIII. Cross-reference minutes to the files.\nIV. Extract information and prepare for relevant files.",
+      "options": [
+        "I only",
+        "I and II only",
+        "I, II and III only",
+        "I, II and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 37,
+      "sourcePage": 5,
+      "stem": "Which of the following services is NOT provided for by the Human Resources office?",
+      "options": [
+        "Health and safety",
+        "Education and training",
+        "Induction and orientation",
+        "Production and maintenance"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 38,
+      "sourcePage": 5,
+      "stem": "Which of the following records would show an employee’s duties, grade and salary?\n\nI. The employment contract\nII. The job specification\nIII. The company manual",
+      "options": [
+        "I and II only",
+        "I and III only",
+        "II and III only",
+        "I, II and III"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 39,
+      "sourcePage": 5,
+      "stem": "An employee’s gross earnings were $182.80. His statutory deductions totaled $22.00 and voluntary deductions $9.80. How much was his net pay?",
+      "options": [
+        "$151.00",
+        "$160.80",
+        "$173.00",
+        "$214.60"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 40,
+      "sourcePage": 5,
+      "stem": "A job specification gives the",
+      "options": [
+        "general description of the duties which are to be performed",
+        "list of personal qualities and skills required for performing the job",
+        "identification of tasks and specific times required for performing a job",
+        "evaluation of a job to determine the wages for its performance"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 41,
+      "sourcePage": 5,
+      "stem": "Shortlisting of applications is carried out",
+      "options": [
+        "when making the list of applicants to be interviewed",
+        "when preparing personal record cards for new employees",
+        "after the applicants have been interviewed",
+        "after applications for an advertised post are received"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 42,
+      "sourcePage": 5,
+      "stem": "What steps should a businessman take if his cash book and bank statement show a difference of $20.00?",
+      "options": [
+        "Reconcile his bank statement with his cash book.",
+        "Regard the $20.00 as interest on his current account.",
+        "Inform the bank that an error has been made in his account.",
+        "Write a cheque for $20.00 to balance his statement with the bank."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 43,
+      "sourcePage": 6,
+      "stem": "A customer wishes to pay a shopkeeper with a cheque which was paid to him. What must he do before passing the cheque to the shopkeeper?",
+      "options": [
+        "Write ‘A/c Payee Only’ on the back of the cheque.",
+        "Remove his name from the cheque, write the shopkeeper’s name and initial the change.",
+        "Sign his name at the back of the cheque and request that payment be made to the shopkeeper.",
+        "Present the cheque to the shopkeeper with a letter asking the bank to give him the money."
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 44,
+      "sourcePage": 6,
+      "stem": "Which is the BEST method of payment for purchasing a box of paper clips for a company?",
+      "options": [
+        "Money order",
+        "Credit card",
+        "Cash",
+        "Cheque"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 45,
+      "sourcePage": 6,
+      "stem": "To pay his account in cash, a customer tenders:\n\nFive — $20.00 bills\nThree — $10.00 bills\nTen — $5.00 bills\nNine — $1.00 bills\nTwenty — 5¢ pieces\n\nWhat sum of money does the customer pay?",
+      "options": [
+        "$189.00",
+        "$190.00",
+        "$191.00",
+        "$195.00"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 46,
+      "sourcePage": 6,
+      "stem": "In the cash book, all monies received are indicated as a",
+      "options": [
+        "credit entry",
+        "debit entry",
+        "deposit account",
+        "credit account"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 47,
+      "sourcePage": 6,
+      "stem": "Which of the following amounts should be ordered to maintain the minimum level on the Stock Record Card?",
+      "options": [
+        "11",
+        "21",
+        "29",
+        "45"
+      ],
+      "contextText": "Items 47 - 48 refer to the Stock Record Card below.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "STOCK RECORD CARD",
+        "columns": [
+          "Date",
+          "Quantity Received",
+          "Quantity Issued",
+          "Balance"
+        ],
+        "rows": [
+          [
+            "4/3/2001",
+            "",
+            "",
+            "45"
+          ],
+          [
+            "5/3/2001",
+            "10",
+            "",
+            "55"
+          ],
+          [
+            "6/3/2001",
+            "",
+            "26",
+            "29"
+          ]
+        ],
+        "details": [
+          "Item: Bond Paper",
+          "Supplier: Ross Ltd",
+          "Minimum Level — 40",
+          "Maximum Level — 120"
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 48,
+      "sourcePage": 6,
+      "stem": "What should be the minimum stock level of envelopes, if the rate of usage is calculated at 50 per week, and a period of two weeks is allowed for delivery?",
+      "options": [
+        "50",
+        "100",
+        "150",
+        "200"
+      ],
+      "contextText": "Items 47 - 48 refer to the Stock Record Card below.",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "STOCK RECORD CARD",
+        "columns": [
+          "Date",
+          "Quantity Received",
+          "Quantity Issued",
+          "Balance"
+        ],
+        "rows": [
+          [
+            "4/3/2001",
+            "",
+            "",
+            "45"
+          ],
+          [
+            "5/3/2001",
+            "10",
+            "",
+            "55"
+          ],
+          [
+            "6/3/2001",
+            "",
+            "26",
+            "29"
+          ]
+        ],
+        "details": [
+          "Item: Bond Paper",
+          "Supplier: Ross Ltd",
+          "Minimum Level — 40",
+          "Maximum Level — 120"
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 49,
+      "sourcePage": 7,
+      "stem": "Which of the following items would a stock clerk be responsible for ordering?\n\nI. Postage stamps\nII. Pens\nIII. Typewriters\nIV. Typewriting ribbons",
+      "options": [
+        "III only",
+        "II and IV only",
+        "I, II and IV only",
+        "I, II, III and IV"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 50,
+      "sourcePage": 7,
+      "stem": "If the goods were paid for within 10 days, what was the price paid on the typewriters?",
+      "options": [
+        "$2 800",
+        "$2 880",
+        "$3 200",
+        "$3 600"
+      ],
+      "contextText": "Item 50 refers to the price list below.\n\nPRICELIST\n\n2 typewriters @ $2 000 ea = $4 000\nLess 20% trade discount   — —\n                                       $ ______\nCash discount 10% for payment within 10 days"
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 51,
+      "sourcePage": 7,
+      "stem": "Which of the following sets of information is NOT required when preparing purchasing requisitions?",
+      "options": [
+        "Date, reference, quantity",
+        "Description, department, signature",
+        "Transport, tax, arrival time",
+        "Sender, catalogue number, supplier"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 52,
+      "sourcePage": 7,
+      "stem": "Which of the following actions should be taken by the sales office of a department store, if the stock-taking report shows that an item is unpopular with customers?\n\nI. Lower the price of the item.\nII. Carry the item at the same price.\nIII. Store the item for another season.\nIV. Arouse interest in the item through advertisement.",
+      "options": [
+        "I and III only",
+        "I and IV only",
+        "II and III only",
+        "II and IV only"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 53,
+      "sourcePage": 7,
+      "stem": "Which of the following should NOT be found on a job card?",
+      "options": [
+        "Materials to be used",
+        "Cost of the item",
+        "Instructions to the operator",
+        "Completion time"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 54,
+      "sourcePage": 7,
+      "stem": "A time card is used when calculating the",
+      "options": [
+        "salaries for monthly paid workers",
+        "machine hours needed for a job",
+        "time required to complete a job",
+        "wages for hourly paid workers"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 55,
+      "sourcePage": 8,
+      "stem": "The letters “E. & O.E.” on the invoice indicate that",
+      "options": [
+        "Mr. Lee should not regard this document as a request for payment",
+        "Garden Supplies & Plant Care Services can correct any error made when preparing the bill",
+        "Mr. Lee can hold Garden Supplies & Plant Care Services to the terms of sale as shown on the invoice",
+        "Garden Supplies & Plant Care Services may not have included all the items that Mr. Lee ordered"
+      ],
+      "contextText": "Items 55 - 57 refer to the following invoice:\n\nNo. 198\nGARDEN SUPPLIES & PLANT CARE SERVICES\n21 Happy Street\nBushey Park\n\nTo: Mr D Lee\n50 New Lane\nMountain View\n\n10th May, 2001\nYour Order No: 483",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Invoice",
+        "columns": [
+          "Qty",
+          "Description",
+          "Unit",
+          "Total"
+        ],
+        "rows": [
+          [
+            "1",
+            "Model G — Lawn Mower",
+            "$556.00",
+            "$556.00"
+          ],
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ],
+        "details": [
+          "Terms: 25% Discount if paid within 7 days",
+          "10% within 14 days",
+          "N/30",
+          "E. & O.E."
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 56,
+      "sourcePage": 8,
+      "stem": "How much should Mr. Lee pay if the bill is settled on 16th May?",
+      "options": [
+        "$255.60",
+        "$339.00",
+        "$417.00",
+        "$556.00"
+      ],
+      "contextText": "Items 55 - 57 refer to the following invoice:\n\nNo. 198\nGARDEN SUPPLIES & PLANT CARE SERVICES\n21 Happy Street\nBushey Park\n\nTo: Mr D Lee\n50 New Lane\nMountain View\n\n10th May, 2001\nYour Order No: 483",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Invoice",
+        "columns": [
+          "Qty",
+          "Description",
+          "Unit",
+          "Total"
+        ],
+        "rows": [
+          [
+            "1",
+            "Model G — Lawn Mower",
+            "$556.00",
+            "$556.00"
+          ],
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ],
+        "details": [
+          "Terms: 25% Discount if paid within 7 days",
+          "10% within 14 days",
+          "N/30",
+          "E. & O.E."
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 57,
+      "sourcePage": 8,
+      "stem": "What is the LATEST date by which Mr. Lee is required to pay this bill?",
+      "options": [
+        "17th May, 2001",
+        "24th May, 2001",
+        "31st May, 2001",
+        "9th June, 2001"
+      ],
+      "contextText": "Items 55 - 57 refer to the following invoice:\n\nNo. 198\nGARDEN SUPPLIES & PLANT CARE SERVICES\n21 Happy Street\nBushey Park\n\nTo: Mr D Lee\n50 New Lane\nMountain View\n\n10th May, 2001\nYour Order No: 483",
+      "tableBeforeStem": true,
+      "table": {
+        "title": "Invoice",
+        "columns": [
+          "Qty",
+          "Description",
+          "Unit",
+          "Total"
+        ],
+        "rows": [
+          [
+            "1",
+            "Model G — Lawn Mower",
+            "$556.00",
+            "$556.00"
+          ],
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ],
+        "details": [
+          "Terms: 25% Discount if paid within 7 days",
+          "10% within 14 days",
+          "N/30",
+          "E. & O.E."
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 58,
+      "sourcePage": 9,
+      "stem": "Which of the following should appear in a resumé?\n\nI. Name of applicant\nII. Position for which application is made\nIII. School(s) applicant attended.\nIV. Name of applicant’s parent or guardian",
+      "options": [
+        "I and III only",
+        "III and IV only",
+        "I, II and III only",
+        "I, II, III and IV"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 59,
+      "sourcePage": 9,
+      "stem": "A letter from a company confirming receipt of your application for employment is referred to as a",
+      "options": [
+        "letter of acknowledgement",
+        "letter of acceptance",
+        "memo",
+        "job letter"
+      ]
+    },
+    {
+      "paperId": "OA-P1-2001-MJ",
+      "number": 60,
+      "sourcePage": 9,
+      "stem": "Which of the following guidelines should be followed during a job interview?\n\nI. Be pleasant and alert.\nII. Be courteous when answering.\nIII. Maintain eye contact with the interviewer.\nIV. Avoid giving one word answers.",
+      "options": [
+        "I and IV only",
+        "I, II and III only",
+        "I, II and IV only",
+        "I, II, III and IV"
+      ]
+    }
+  ]
+}
