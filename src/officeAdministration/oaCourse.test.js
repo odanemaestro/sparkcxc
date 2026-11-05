@@ -19,8 +19,8 @@ test('new papers use the 2026 format, with unique complete questions',()=>{
  expect(new Set(all).size).toBe(120);
  expect(OA_PAPER2S).toHaveLength(3);for(const p of OA_PAPER2S)expect(validateOaPaper2(p)).toMatchObject({valid:true,totalMarks:90,knowledgeMarks:40,applicationMarks:50});
 });
-test('Office Administration loads through the native catalogue and stays draft until publication',async()=>{
- const subject=getSparkSubjectRegistry().find(s=>s.id==='office-administration');expect(subject).toMatchObject({enabled:false,status:'draft',implementation:'generic',routes:{study:'/study/office-administration',practice:'/practice/office-administration'}});
+test('Office Administration loads through the native catalogue as a live course',async()=>{
+ const subject=getSparkSubjectRegistry().find(s=>s.id==='office-administration');expect(subject).toMatchObject({enabled:true,status:'live',implementation:'generic',routes:{study:'/study/office-administration',practice:'/practice/office-administration'}});
  const result=await loadGenericSubjectStructure({subjectId:subject.id});expect(result.data.topics).toHaveLength(39);expect(result.source).toBe('local-oa');
 });
 test('payroll uses stated rates and rejects invalid or impossible inputs',()=>{

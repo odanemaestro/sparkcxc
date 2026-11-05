@@ -18,7 +18,7 @@ Review dates: 28 October–4 November 2026. All 23 supplied sources retain their
 | 2012 | 60 | 60 | 60 | 0 |
 | 2013 | 60 | 60 | 60 | 0 |
 | 2015 | 60 | 60 | 60 | 0 |
-| 2016 | 58 | 58 | 58 | 2 |
+| 2016 | 60 | 60 | 60 | 0 |
 | 2017 | 60 | 60 | 60 | 0 |
 | 2018 | 60 | 60 | 60 | 0 |
 | 2019 | 60 | 60 | 60 | 0 |
@@ -73,3 +73,5 @@ The 2000 paper was checked across all ten supplied question pages, including the
 The 1995 and 1997 covers both confirm 75 minutes. All nine question pages per paper were compared visually. Their stationery stock, petty cash, weekly hours and costing figures are selectable, with blanks and source values preserved. The 1997 scan repeats the same choice at item 21 and has legible overwritten amounts at item 55. Both were retained as supplied. A few clipped word endings in the two papers were restored from the visible fragments.
 
 The remaining source check is 2016 May/June Paper 1, questions 23 and 27 on PDF page 5. Both starts are absent from the embedded image. Earlier papers contain very similar items and the same option order, but their text does not establish the exact 2016 stems. The native records remain source-required until a complete copy is available.
+
+On 5 November 2026 the user approved restoring the two missing 2016 stems from the matching 2009 items 25/29 and 2011 items 22/28 and proceeding with launch. The 2016 list and choices remain as printed. The native records carry separate cross-paper-restoration provenance. The complete archive now has 1,380 available Paper 1 questions across 23 papers, including these two approved restorations, and all 21 Paper 2 papers are checked.

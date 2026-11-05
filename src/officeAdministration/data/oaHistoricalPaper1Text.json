@@ -46454,7 +46454,7 @@
     "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
     "pages": 12,
     "sourceAsset": "office-administration/source-pages/OA-P1-2016-MJ.json",
-    "transcriptionVerified": false,
+    "transcriptionVerified": true,
     "answerKeyVerified": false,
     "questions": [
       {
@@ -46500,12 +46500,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 2,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q02",
@@ -46550,12 +46550,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 2,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q03",
@@ -46600,12 +46600,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 2,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q04",
@@ -46650,12 +46650,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 2,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q05",
@@ -46700,12 +46700,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 2,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q06",
@@ -46750,12 +46750,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 2,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q07",
@@ -46796,7 +46796,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 2,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "optionLabelsRecovered": [
           "A",
@@ -46804,7 +46804,7 @@
           "C",
           "D"
         ],
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q08",
@@ -46849,13 +46849,13 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 2,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "contextText": "Item 8 refers to the following situation.\n\nThe secretary of Brands International was having difficulty placing a direct overseas call, so she asked the operator to place the call for her. She wanted to speak to Mr John King only. The operator was successful in placing the call.",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q09",
@@ -46900,12 +46900,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 3,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q10",
@@ -46950,12 +46950,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 3,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q11",
@@ -47000,12 +47000,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 3,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q12",
@@ -47050,12 +47050,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 3,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q13",
@@ -47100,12 +47100,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 3,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q14",
@@ -47150,12 +47150,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 3,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q15",
@@ -47200,12 +47200,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 3,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q16",
@@ -47250,12 +47250,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 4,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q17",
@@ -47296,7 +47296,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 4,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "optionLabelsRecovered": [
           "A",
@@ -47304,7 +47304,7 @@
           "C",
           "D"
         ],
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q18",
@@ -47349,12 +47349,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 4,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q19",
@@ -47399,12 +47399,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 4,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q20",
@@ -47449,12 +47449,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 4,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q21",
@@ -47499,12 +47499,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 4,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q22",
@@ -47549,42 +47549,44 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 4,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q23",
         "number": 23,
-        "stem": "",
-        "question": "",
-        "options": [],
+        "stem": "Which of the following items should a receptionist keep for reference in the reception area?\n\nI. Organizational chart\nII. Flowchart showing product movement\nIII. Alphabetical index for numerical filing\nIV. Index of callers’ cards",
+        "question": "Which of the following items should a receptionist keep for reference in the reception area?\n\nI. Organizational chart\nII. Flowchart showing product movement\nIII. Alphabetical index for numerical filing\nIV. Index of callers’ cards",
+        "options": [
+          "I only",
+          "II only",
+          "I and IV only",
+          "II and III only"
+        ],
         "answerIndex": null,
         "correctIndex": null,
         "marks": 1,
         "objectiveCode": null,
-        "explanation": "Read this item on the supplied source page. OCR did not recover its numbered boundary reliably, and no verified answer key was supplied.",
-        "sourcePage": 4,
+        "explanation": "Review your choices alongside the printed paper. No verified answer key was supplied.",
+        "sourcePage": 5,
         "sourcePages": [
-          4,
           5
         ],
         "sourcePageAsset": "office-administration/source-pages/OA-P1-2016-MJ.json",
-        "sourcePageVerified": false,
-        "sourcePageLocationStatus": "approximate-between-neighbour-items",
-        "sourceText": "[Source PDF page 4]\n16.\n18.\nWhich of the following guidelines should\nbe followed during a job interview?\n19.\n20.\n21.\n22.\nWhich of the following situations would\ncause a file to be classified as inactive?\n1.\n11.\n111.\n(B)\n(C)\n(D)\nBe pleasant and alert.\nBe courteous when answering\nquestions.\nMaintain eye contact with the\ninterviewer.\nAvoid giving one-word answers.\nI and IV only\nI, II and III only\nI, II and IV only\n1, 11, 111 and IV\n(A)\n(B)\n(C)\n(D)\nA supplier now sells a wider range\nof goods.\nThe organization has stopped\nbuying from a particular supplier.\nA company with which thc\norganization deals has changed\nits name.\nA company with which the\norganization deals has changed\nits business address.\nIf an interviewee is interested in\nhaving information about promotional\nopportunities during an interview, which\nof the following steps should be taken?\nAn executive is called to a meeting and\nas such is unable to keep a 3:00 p.m.\nappointment with a Client in his office.\nWhat action MUST the receptionist take?\n(B)\n(C)\n(D)\nAsk about such opportunities\nin a follow-up letter after the\ninterview.\nVisit the office and question the\nemployees.\nAssume that promotion will be\nautomatic.\nAsk about such opportunities\nbefore the close of the interview.\n(A)\n(B)\n(C)\n(D)\nWrite the client, apologize and ask\nhim to suggest an alternative\ndate.\nWhen the client arrives, apologize\nand offer him another\nappointment.\nTelephone the client, apologize\nand suggest the time for a new\nappointment.\nWhen the client arrives, apologize\nand suggest that he might wish\nto see someone else.\nFiling through the use of microfilming is\nvaluable for the storage of\nofficial records which are frequently\nused\nThe correct indexing title of a file for Peter\nKenneth Jaundoo A.A. S.C., LLB is\n(B)\n(D)\npassport-sized photographs of staff\nmembers\ninformation which must be kept for\nmany years\ncustomers' accounts from which\nstatements are to be made\n(B)\n(D)\nPeter K Jaundoo A.A. SC (LLB)\nJaundoo, Peter Kenneth (A.A. S.C.,\nLLB)\nP.K. Jaundoo (A.A). (S.c.) (LLB)\nJaundoo, Peter K, (AA S.C. LLB)\nWhen a file has been requisitioned, the\nname of the borrower should be recorded\non\n(B)\n(C)\n(D)\na call card\nan out card\nan index card\na card indicator\nGO ON TO THE NEXT PAGE\n\n[Source PDF page 5]\n1.\n11.\n111.\n(B)\n(C)\n(D)\nOrganizational chart\nFlowchart showing product\nmovement\nAlphabetical index for numerical\nfiling\nIndex of callers' cards\nI only\nII only\nI and IV only\n11 and 111 only\n(B)\n(C)\n(D)\nis appointed by a majority vote\nvotes on behalf of an absent\nmember\nattends meetings by virtue of an\noffice\nmanages the proceedings of the\nmeeting\n24.\n25.\n26.\nthe\n28.\n29.\n30.\nIfthe number of persons required to form a\nquorum is NOT present, the meeting must\nA tickler file is used to remind\nreceptionist so that he/she\nbe\n(A)\n(B)\n(D)\nconducted as an extraordinary\nmeeting\nconducted as a subcommittee\nadjourned\npostponed\n(B)\n(C)\n(D)\ndoes not overlook a matter\ntakes his/her break on time\nanswers the phone promptly\nrecords the appointments of the\nexecutive\nWhich of the following items of business\nis NOT discussed at an annual general\nmeeting?\nBefore starting to set up appointments, a\nsecretary should first thoroughly fami I iarize\nherself with the\n(B)\n(C)\n(D)\n(B)\n(C)\n(D)\npattern of her boss' workday\nmethod of record ing appo intments\ncorrect procedure for greeting\ncallers\nextension numbers for each\nmember of staff\nDeclaration of dividends\nElection of directors and auditors\nMaking arrangements for a very\nimportant person\nPresentation and adoption of the\ncompany's reports\nIn what order should the following items\non an agenda be arranged?\nAt a meeting on 25 November 2015,\ndiscussions were held concerning the\nappointment of a secretary. What\ndocument should be consulted to obtain\nthe information that was discussed at the\nmeeting so that follow-up actions can be\ntaken?\nI.\nIL\n111.\n(B)\n(D)\n(B)\n(D)\nAgenda for the meeting\nMinutes of the meeting\nNotice of the meeting\nChairman 's Agenda\nAny other business\nMinutes of the last meeting\nApologies\nMatters arising\n1, 111, 11, IV\n11, IV, 1, 111\n111, 11, IV, 1\nIV, 1, 111, 11\nGO ON TO THE NEXT PAGE",
-        "sourceTextScope": "full-source-pages",
-        "sourceQuestionNumberDetected": false,
-        "transcriptionMethod": "source-page-review-slot",
-        "transcriptionVerified": false,
-        "transcriptionStatus": "source-required",
-        "requiresSourcePage": true,
-        "transcriptionIssues": [
-          "The numbered question boundary was not recovered by OCR. The linked page range is approximate; use the printed question number."
-        ],
+        "sourcePageVerified": true,
+        "sourcePageLocationStatus": "verified-on-source-image",
+        "sourceText": "\nWhich of the following items should a receptionist keep for reference in the reception area?\n\nI. Organizational chart\nII. Flowchart showing product movement\nIII. Alphabetical index for numerical filing\nIV. Index of callers’ cards\n(A) I only\n(B) II only\n(C) I and IV only\n(D) II and III only",
+        "sourceTextScope": "reviewed-question-with-context",
+        "sourceQuestionNumberDetected": true,
+        "transcriptionMethod": "cross-paper-restoration",
+        "transcriptionVerified": true,
+        "transcriptionStatus": "restored-with-approval",
+        "requiresSourcePage": false,
+        "transcriptionIssues": [],
         "answerProvenance": "No verified answer key supplied. No inferred official answer.",
         "keyStatus": "unverified",
         "scoringReady": false,
@@ -47592,12 +47594,46 @@
           "sourceId": "OA-P1-2016-MJ",
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
-          "method": "Approximate source-page range between recovered neighbouring items",
-          "candidatePages": [
-            4,
-            5
+          "page": 5,
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed.",
+          "restoration": {
+            "approvedDate": "2026-11-05",
+            "method": "User-approved restoration from matching earlier questions; 2016 printed list and choices retained.",
+            "missingText": "Opening sentence",
+            "references": [
+              {
+                "paperId": "OA-P1-2009-MJ",
+                "number": 25
+              },
+              {
+                "paperId": "OA-P1-2011-MJ",
+                "number": 22
+              }
+            ]
+          }
+        },
+        "restoration": {
+          "approvedDate": "2026-11-05",
+          "method": "User-approved restoration from matching earlier questions; 2016 printed list and choices retained.",
+          "missingText": "Opening sentence",
+          "references": [
+            {
+              "paperId": "OA-P1-2009-MJ",
+              "number": 25
+            },
+            {
+              "paperId": "OA-P1-2011-MJ",
+              "number": 22
+            }
           ]
-        }
+        },
+        "optionLabelsRecovered": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q24",
@@ -47642,12 +47678,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 5,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q25",
@@ -47692,12 +47728,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 5,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q26",
@@ -47742,41 +47778,44 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 5,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q27",
         "number": 27,
-        "stem": "",
-        "question": "",
-        "options": [],
+        "stem": "An ex-officio committee member is one who",
+        "question": "An ex-officio committee member is one who",
+        "options": [
+          "is appointed by a majority vote",
+          "votes on behalf of an absent member",
+          "attends meetings by virtue of an office",
+          "manages the proceedings of the meeting"
+        ],
         "answerIndex": null,
         "correctIndex": null,
         "marks": 1,
         "objectiveCode": null,
-        "explanation": "Read this item on the supplied source page. OCR did not recover its numbered boundary reliably, and no verified answer key was supplied.",
+        "explanation": "Review your choices alongside the printed paper. No verified answer key was supplied.",
         "sourcePage": 5,
         "sourcePages": [
           5
         ],
         "sourcePageAsset": "office-administration/source-pages/OA-P1-2016-MJ.json",
-        "sourcePageVerified": false,
-        "sourcePageLocationStatus": "approximate-between-neighbour-items",
-        "sourceText": "[Source PDF page 5]\n1.\n11.\n111.\n(B)\n(C)\n(D)\nOrganizational chart\nFlowchart showing product\nmovement\nAlphabetical index for numerical\nfiling\nIndex of callers' cards\nI only\nII only\nI and IV only\n11 and 111 only\n(B)\n(C)\n(D)\nis appointed by a majority vote\nvotes on behalf of an absent\nmember\nattends meetings by virtue of an\noffice\nmanages the proceedings of the\nmeeting\n24.\n25.\n26.\nthe\n28.\n29.\n30.\nIfthe number of persons required to form a\nquorum is NOT present, the meeting must\nA tickler file is used to remind\nreceptionist so that he/she\nbe\n(A)\n(B)\n(D)\nconducted as an extraordinary\nmeeting\nconducted as a subcommittee\nadjourned\npostponed\n(B)\n(C)\n(D)\ndoes not overlook a matter\ntakes his/her break on time\nanswers the phone promptly\nrecords the appointments of the\nexecutive\nWhich of the following items of business\nis NOT discussed at an annual general\nmeeting?\nBefore starting to set up appointments, a\nsecretary should first thoroughly fami I iarize\nherself with the\n(B)\n(C)\n(D)\n(B)\n(C)\n(D)\npattern of her boss' workday\nmethod of record ing appo intments\ncorrect procedure for greeting\ncallers\nextension numbers for each\nmember of staff\nDeclaration of dividends\nElection of directors and auditors\nMaking arrangements for a very\nimportant person\nPresentation and adoption of the\ncompany's reports\nIn what order should the following items\non an agenda be arranged?\nAt a meeting on 25 November 2015,\ndiscussions were held concerning the\nappointment of a secretary. What\ndocument should be consulted to obtain\nthe information that was discussed at the\nmeeting so that follow-up actions can be\ntaken?\nI.\nIL\n111.\n(B)\n(D)\n(B)\n(D)\nAgenda for the meeting\nMinutes of the meeting\nNotice of the meeting\nChairman 's Agenda\nAny other business\nMinutes of the last meeting\nApologies\nMatters arising\n1, 111, 11, IV\n11, IV, 1, 111\n111, 11, IV, 1\nIV, 1, 111, 11\nGO ON TO THE NEXT PAGE",
-        "sourceTextScope": "full-source-pages",
-        "sourceQuestionNumberDetected": false,
-        "transcriptionMethod": "source-page-review-slot",
-        "transcriptionVerified": false,
-        "transcriptionStatus": "source-required",
-        "requiresSourcePage": true,
-        "transcriptionIssues": [
-          "The numbered question boundary was not recovered by OCR. The linked page range is approximate; use the printed question number."
-        ],
+        "sourcePageVerified": true,
+        "sourcePageLocationStatus": "verified-on-source-image",
+        "sourceText": "\nAn ex-officio committee member is one who\n(A) is appointed by a majority vote\n(B) votes on behalf of an absent member\n(C) attends meetings by virtue of an office\n(D) manages the proceedings of the meeting",
+        "sourceTextScope": "reviewed-question-with-context",
+        "sourceQuestionNumberDetected": true,
+        "transcriptionMethod": "cross-paper-restoration",
+        "transcriptionVerified": true,
+        "transcriptionStatus": "restored-with-approval",
+        "requiresSourcePage": false,
+        "transcriptionIssues": [],
         "answerProvenance": "No verified answer key supplied. No inferred official answer.",
         "keyStatus": "unverified",
         "scoringReady": false,
@@ -47784,11 +47823,46 @@
           "sourceId": "OA-P1-2016-MJ",
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
-          "method": "Approximate source-page range between recovered neighbouring items",
-          "candidatePages": [
-            5
+          "page": 5,
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed.",
+          "restoration": {
+            "approvedDate": "2026-11-05",
+            "method": "User-approved restoration from matching earlier questions; 2016 printed list and choices retained.",
+            "missingText": "Complete stem",
+            "references": [
+              {
+                "paperId": "OA-P1-2009-MJ",
+                "number": 29
+              },
+              {
+                "paperId": "OA-P1-2011-MJ",
+                "number": 28
+              }
+            ]
+          }
+        },
+        "restoration": {
+          "approvedDate": "2026-11-05",
+          "method": "User-approved restoration from matching earlier questions; 2016 printed list and choices retained.",
+          "missingText": "Complete stem",
+          "references": [
+            {
+              "paperId": "OA-P1-2009-MJ",
+              "number": 29
+            },
+            {
+              "paperId": "OA-P1-2011-MJ",
+              "number": 28
+            }
           ]
-        }
+        },
+        "optionLabelsRecovered": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q28",
@@ -47833,12 +47907,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 5,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q29",
@@ -47883,12 +47957,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 5,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q30",
@@ -47933,12 +48007,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 5,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q31",
@@ -47983,12 +48057,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 6,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q32",
@@ -48033,12 +48107,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 6,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q33",
@@ -48083,12 +48157,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 6,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q34",
@@ -48133,7 +48207,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 7,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "contextText": "From: Grand Cayman, Cayman Islands\nDepart Owen Roberts Intl. Airport (Check-in time 1100 hours)\nARR Barbados\nVia Jamaica\n\nCheck in is two and a half hours before departure",
@@ -48160,7 +48234,7 @@
         },
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q35",
@@ -48205,12 +48279,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 7,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q36",
@@ -48255,12 +48329,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 7,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q37",
@@ -48305,12 +48379,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 7,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q38",
@@ -48355,12 +48429,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 7,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q39",
@@ -48401,7 +48475,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 8,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "optionLabelsRecovered": [
           "A",
@@ -48409,7 +48483,7 @@
           "C",
           "D"
         ],
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q40",
@@ -48450,7 +48524,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 8,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "optionLabelsRecovered": [
           "A",
@@ -48458,7 +48532,7 @@
           "C",
           "D"
         ],
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q41",
@@ -48499,7 +48573,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 8,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "optionLabelsRecovered": [
           "A",
@@ -48507,7 +48581,7 @@
           "C",
           "D"
         ],
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q42",
@@ -48552,7 +48626,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 8,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "contextText": "Item 42 refers to the following document.",
@@ -48578,7 +48652,7 @@
         },
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q43",
@@ -48623,12 +48697,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 8,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q44",
@@ -48673,12 +48747,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 8,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q45",
@@ -48723,7 +48797,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 9,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "contextText": "Items 45–46 refer to the following diagram.",
@@ -48759,7 +48833,7 @@
         "tableBeforeStem": true,
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q46",
@@ -48804,7 +48878,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 9,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "contextText": "Items 45–46 refer to the following diagram.",
@@ -48840,7 +48914,7 @@
         "tableBeforeStem": true,
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q47",
@@ -48885,12 +48959,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 9,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q48",
@@ -48931,7 +49005,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 10,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "contextText": "Item 48 refers to the following transactions which occurred during the month of January 2015.",
         "tableBeforeStem": true,
@@ -49001,7 +49075,7 @@
           "C",
           "D"
         ],
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q49",
@@ -49042,7 +49116,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 10,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "optionLabelsRecovered": [
           "A",
@@ -49050,7 +49124,7 @@
           "C",
           "D"
         ],
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q50",
@@ -49091,7 +49165,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 10,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "optionLabelsRecovered": [
           "A",
@@ -49099,7 +49173,7 @@
           "C",
           "D"
         ],
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q51",
@@ -49144,12 +49218,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 10,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q52",
@@ -49194,7 +49268,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 11,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "contextText": "Items 52–53 refer to the following form.\n\nNo. 105\nThe Confectioner’s Shop\n25 Sweet Garden\nHappy Park\nTel/Fax 775-5843\n\nOrder No: 888/10\n8 March 2016\n\nJodella’s Sweet Tooth\nPO Box 989\nPOS Trinidad\n\nYour Reference: Quotation 259",
@@ -49234,7 +49308,7 @@
         "tableBeforeStem": true,
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q53",
@@ -49279,7 +49353,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 11,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "contextText": "Items 52–53 refer to the following form.\n\nNo. 105\nThe Confectioner’s Shop\n25 Sweet Garden\nHappy Park\nTel/Fax 775-5843\n\nOrder No: 888/10\n8 March 2016\n\nJodella’s Sweet Tooth\nPO Box 989\nPOS Trinidad\n\nYour Reference: Quotation 259",
@@ -49319,7 +49393,7 @@
         "tableBeforeStem": true,
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q54",
@@ -49360,7 +49434,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 12,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "contextText": "Item 54 refers to the following information on the movement of stock over a three-month period.",
         "tableBeforeStem": true,
@@ -49394,7 +49468,7 @@
           "C",
           "D"
         ],
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q55",
@@ -49435,7 +49509,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 12,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "optionLabelsRecovered": [
           "A",
@@ -49443,7 +49517,7 @@
           "C",
           "D"
         ],
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q56",
@@ -49484,7 +49558,7 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 12,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "optionLabelsRecovered": [
           "A",
@@ -49492,7 +49566,7 @@
           "C",
           "D"
         ],
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q57",
@@ -49537,12 +49611,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 12,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q58",
@@ -49587,12 +49661,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 12,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q59",
@@ -49637,12 +49711,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 12,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       },
       {
         "id": "OA-P1-2016-MJ-q60",
@@ -49687,12 +49761,12 @@
           "filename": "CSEC_Office_Administration_P1_2016_MJ.pdf",
           "sha256": "5bc77c15a0c4277a723f4ba6179140d6529b5a67198ab25010209cd8ce335c6c",
           "page": 12,
-          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables."
+          "method": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed."
         },
         "transcriptionStatus": "source-reviewed",
         "sourceTextScope": "reviewed-question-with-context",
         "sourcePageLocationStatus": "verified-on-source-image",
-        "reviewDate": "2026-10-29"
+        "reviewDate": "2026-11-05"
       }
     ],
     "durationMinutes": 75,
@@ -49706,7 +49780,7 @@
       "Choose one answer for each question.",
       "You may return to an earlier question before submitting."
     ],
-    "transcriptionStatus": "ocr-review-required",
+    "transcriptionStatus": "source-reviewed",
     "sourceQuestionNumbers": [
       1,
       2,
@@ -49730,9 +49804,11 @@
       20,
       21,
       22,
+      23,
       24,
       25,
       26,
+      27,
       28,
       29,
       30,
@@ -49816,11 +49892,11 @@
       59,
       60
     ],
-    "sourceReviewRequiredCount": 2,
-    "extractedQuestionCount": 58,
-    "sourceReviewSlotCount": 2,
-    "reviewedQuestionCount": 58,
-    "extractedOptionSetCount": 58
+    "sourceReviewRequiredCount": 0,
+    "extractedQuestionCount": 60,
+    "sourceReviewSlotCount": 0,
+    "reviewedQuestionCount": 60,
+    "extractedOptionSetCount": 60
   },
   {
     "id": "OA-P1-2017-MJ",

@@ -247,7 +247,7 @@ const BASE_SUBJECTS = Object.freeze({
     stats:Object.freeze({sections:11,topics:39,objectives:80,flashcards:119}),
     id:"office-administration", name:"CSEC Office Administration", shortName:"Office Administration",
     qualification:"CSEC",mark:"OA",description:"Understand the modern office, practise office procedures and prepare for CSEC with clear lessons and full examination practice.",
-    enabled:false,status:"draft",sortOrder:51,implementation:"generic",studyView:"study",
+    enabled:true,status:"live",sortOrder:51,implementation:"generic",studyView:"study",
     routes:Object.freeze({study:"/study/office-administration",practice:"/practice/office-administration",flashcards:"/dashboard/flashcards/office-administration",progress:"/dashboard/progress"}),
     capabilities:Object.freeze({study:true,practice:true,flashcards:true,progress:true,paper1:true,paper2:true,adaptive:false,structured:true,labs:true,sba:true}),
   }),

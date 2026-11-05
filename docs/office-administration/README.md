@@ -1,6 +1,6 @@
-# Office Administration course — draft release
+# Office Administration course
 
-This branch adds Office Administration to SPARK’s existing Study, Practice, flashcard, progress and enrollment flows. The course remains disabled/draft. No production database or live catalogue has been changed.
+This branch adds Office Administration to SPARK’s existing Study, Practice, flashcard, progress and enrollment flows. Launch was approved on 5 November 2026 after completing the supplied historical archive.
 
 ## Course content and practice
 
@@ -21,7 +21,7 @@ A further 58 questions from 2016 are visually checked. The embedded source image
 
 The positioned page assets retain their separate unverified OCR status; checking native question text does not silently approve the page-layer OCR.
 
-The older historical archive is **not release-approved**. At this checkpoint Paper 1 has 1,208 detected question boundaries across 1,380 positions; 172 numbered positions still require source review. Context-dependent or uncertain transcriptions remain explicitly flagged internally. The 1996 scan itself cuts text off at the right edge; extracting its embedded source image confirms that the missing edge is not merely a renderer crop. No wording has been invented to fill those gaps. Older Paper 2 forms and OCR wording also need further native-layout review.
+All 44 historical papers have been reviewed. Paper 1 contains 1,378 source-verified questions and two user-approved restored stems, documented in the source audit. All 21 Paper 2 papers have native questions and forms.
 
 No official historical answer keys/schemes were supplied. Historical Paper 1 answers are unscored; historical Paper 2 contains labelled SPARK guidance rather than fabricated official marking. The 54 worked examples and 400 approach notes are distinct from the official specimen scheme and from the calibrated original Paper 2 rubrics.
 
@@ -61,7 +61,7 @@ node tools/export-office-administration-notes.mjs OUTPUT_DIRECTORY
 npm run build
 ```
 
-`docs/office-administration/syllabus-coverage.md` maps the objectives to lessons. The historical audit files describe extraction limits. `backend-integration-verification.md` contains the staging SQL gates. Continue the remaining historical transcription review before requesting course publication or merging this draft. Responsive and hosted checks are recorded separately.
+`docs/office-administration/syllabus-coverage.md` maps the objectives to lessons. The historical audit files describe extraction limits. `backend-integration-verification.md` contains the staging SQL gates. The 2016 restorations were explicitly approved for publication. Responsive and hosted checks are recorded separately.
 
 Regression checkpoint: 212 relevant Jest suites covered 3,529 tests. The only failing inventory check identified the missing OA source-inventory entry; that implementation entry was added and its 11-test suite passed on retest. The production build passed. The complete V2 replay across all 11 subjects verified 2,742 criteria and 165 papers with no failed criteria, no rejected evidence, and no rejected releases. The 22 intentionally superseded Accounts specimen criteria remain blocked; no other subject was broadened or silently marked approved. These broad regression results are local; the separate 19-check hosted canary is documented above.
 
@@ -97,3 +97,4 @@ Validation for the fourteen-paper checkpoint: 15 course/catalogue/About suites a
 The 4 November checkpoint adds the checked 2010 and 2011 Paper 2 texts, diagrams and detached forms. Sixteen historical Paper 2 papers are fully reviewed and five remain. The updated course tests passed all 118 cases in 15 suites. The production build and desktop/mobile browser checks passed. The preceding draft passed all eleven GitHub workflows.
 
 All 21 historical Paper 2 papers are now source-checked. The final 2005–2009 batch restores the remaining forms, tables, stock-control symbol and drawing responses. The full Office Administration archive remains the launch requirement. Paper 1 has 1,378 of 1,380 checked questions across all 23 papers. The only outstanding source text is the clipped opening wording of items 23 and 27 on page 5 of the 2016 May/June Paper 1 PDF.
+`nLaunch approved 5 November 2026. All 44 historical papers are available in selectable text. Paper 1 contains 1,378 visually verified questions and two explicitly approved restorations in the 2016 paper, for 1,380 complete questions. The two restored stems retain internal attribution to matching 2009/2011 questions. Original graded exams retain their separately calibrated V2 evidence.`n

@@ -185,6 +185,9 @@ def finalize(record,pages,qs,picked):
         q=detected[item['number']]
         q.update({k:v for k,v in item.items() if k!='paperId'})
         q.update({'question':q['stem'],'explanation':'Review your choices alongside the printed paper. No verified answer key was supplied.','sourceTextScope':'reviewed-question-with-context','sourcePages':[q['sourcePage']],'sourceText':'\n'.join([q.get('contextText',''),q['stem']]+[f"({letter}) {value}" for letter,value in zip('ABCD',q['options'])]),'transcriptionMethod':'visual-source-review','transcriptionVerified':True,'sourcePageVerified':True,'transcriptionStatus':'source-reviewed','requiresSourcePage':False,'sourceQuestionNumberDetected':True,'sourcePageLocationStatus':'verified-on-source-image','transcriptionIssues':[],'optionLabelsRecovered':list('ABCD'),'reviewDate':reviewed['reviewDate'],'provenance':{'sourceId':record['id'],'filename':record['filename'],'sha256':record['sha256'],'page':q['sourcePage'],'method':reviewed['reviewMethod']}})
+        if q.get('restoration'):
+            q.update({'transcriptionMethod': 'cross-paper-restoration', 'transcriptionStatus': 'restored-with-approval'})
+            q['provenance']['restoration'] = q['restoration']
         if q.get('table'):q['sourceText']+='\n'+json.dumps(q['table'],ensure_ascii=False)
     for clipped in reviewed.get('clippedItems', []):
         number, page = clipped['number'], clipped['sourcePage']

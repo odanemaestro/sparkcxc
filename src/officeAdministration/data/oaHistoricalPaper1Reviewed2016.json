@@ -1,7 +1,7 @@
 {
   "paperId": "OA-P1-2016-MJ",
-  "reviewDate": "2026-10-29",
-  "reviewMethod": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables.",
+  "reviewDate": "2026-11-05",
+  "reviewMethod": "Visual comparison with all supplied pages after correcting source orientation; native selectable question text and tables. Items 23 and 27 have user-approved restored stems from identical 2009/2011 repeats, with the readable 2016 list and answer choices preserved. Restored stems are separately attributed.",
   "durationMinutes": 75,
   "durationVerified": true,
   "items": [
@@ -272,6 +272,33 @@
     },
     {
       "paperId": "OA-P1-2016-MJ",
+      "number": 23,
+      "sourcePage": 5,
+      "stem": "Which of the following items should a receptionist keep for reference in the reception area?\n\nI. Organizational chart\nII. Flowchart showing product movement\nIII. Alphabetical index for numerical filing\nIV. Index of callers’ cards",
+      "options": [
+        "I only",
+        "II only",
+        "I and IV only",
+        "II and III only"
+      ],
+      "restoration": {
+        "approvedDate": "2026-11-05",
+        "method": "User-approved restoration from matching earlier questions; 2016 printed list and choices retained.",
+        "missingText": "Opening sentence",
+        "references": [
+          {
+            "paperId": "OA-P1-2009-MJ",
+            "number": 25
+          },
+          {
+            "paperId": "OA-P1-2011-MJ",
+            "number": 22
+          }
+        ]
+      }
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
       "number": 24,
       "sourcePage": 5,
       "stem": "A tickler file is used to remind the receptionist so that he/she",
@@ -305,6 +332,33 @@
         "Notice of the meeting",
         "Chairman’s Agenda"
       ]
+    },
+    {
+      "paperId": "OA-P1-2016-MJ",
+      "number": 27,
+      "sourcePage": 5,
+      "stem": "An ex-officio committee member is one who",
+      "options": [
+        "is appointed by a majority vote",
+        "votes on behalf of an absent member",
+        "attends meetings by virtue of an office",
+        "manages the proceedings of the meeting"
+      ],
+      "restoration": {
+        "approvedDate": "2026-11-05",
+        "method": "User-approved restoration from matching earlier questions; 2016 printed list and choices retained.",
+        "missingText": "Complete stem",
+        "references": [
+          {
+            "paperId": "OA-P1-2009-MJ",
+            "number": 29
+          },
+          {
+            "paperId": "OA-P1-2011-MJ",
+            "number": 28
+          }
+        ]
+      }
     },
     {
       "paperId": "OA-P1-2016-MJ",
@@ -964,18 +1018,6 @@
         "Cost",
         "Time"
       ]
-    }
-  ],
-  "sourceLimitations": [
-    {
-      "number": 23,
-      "page": 5,
-      "issue": "The embedded source image begins at the Roman-numeral list; the question stem is clipped."
-    },
-    {
-      "number": 27,
-      "page": 5,
-      "issue": "The embedded source image begins at the answer choices; the question stem is clipped."
     }
   ]
 }

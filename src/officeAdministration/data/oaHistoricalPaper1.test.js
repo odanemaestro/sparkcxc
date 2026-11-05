@@ -85,7 +85,7 @@ describe('Office Administration historical Paper 1 source integrity', () => {
     expect(historicalQuestions.filter(q => !q.sourceQuestionNumberDetected).length).toBeLessThanOrEqual(206);
     expect(historicalQuestions.filter(q => q.options.length === 4).length).toBeGreaterThan(682);
     expect(historicalQuestions.filter(q => q.requiresSourcePage).length).toBeLessThan(698);
-    expect(historicalQuestions.filter(q => q.transcriptionVerified)).toHaveLength(1378);
+    expect(historicalQuestions.filter(q => q.transcriptionVerified)).toHaveLength(1380);
     historicalText.forEach(paper => {
       expect(paper.extractedQuestionCount).toBe(paper.questions.filter(q => q.sourceQuestionNumberDetected).length);
       expect(paper.sourceReviewSlotCount).toBe(paper.questions.filter(q => !q.sourceQuestionNumberDetected).length);
@@ -109,10 +109,6 @@ describe('Office Administration historical Paper 1 source integrity', () => {
     });
     const paper1995 = historicalText.find(paper => paper.year === 1995);
     expect(paper1995.questions.every(q => q.sourcePage > 1)).toBe(true);
-    // The clipped 2016 question 23 stem is never inferred from its surviving list.
-    const clipped = historicalText.find(paper => paper.year === 2016).questions[22];
-    expect(clipped.sourceQuestionNumberDetected).toBe(false);
-    expect(clipped.stem).toBe('');
   });
 
   test('the 60 visually checked 2025 items preserve wording and source tables without enabling marks', () => {
@@ -175,14 +171,22 @@ describe('Office Administration historical Paper 1 source integrity', () => {
     for(const number of [29,47,54,56,57])expect(p.questions[number-1].tableBeforeStem).toBe(true);
   });
 
-  test('keeps the two physically clipped 2016 stems unresolved after reviewing readable items',()=>{
+  test('attributes the two approved 2016 restorations and preserves the source choices',()=>{
     const p=historicalText.find(p=>p.year===2016);
-    expect(reviewed2016.items).toHaveLength(58);
-    expect(p).toMatchObject({reviewedQuestionCount:58,transcriptionVerified:false,sourceReviewRequiredCount:2,durationMinutes:75,durationVerified:true});
-    expect(p.questions.filter(q=>!q.transcriptionVerified).map(q=>q.number)).toEqual([23,27]);
-    expect(p.questions[49]).toMatchObject({sourcePage:10,transcriptionVerified:true});
-    expect(p.questions[49].stem).toContain('COD means');
-    expect(p.questions[49].options).toEqual(['Cash on due date','Cash on delivery','Cash on demand','Cash on deposit']);
+    expect(reviewed2016.items).toHaveLength(60);
+    expect(p).toMatchObject({reviewedQuestionCount:60,transcriptionVerified:true,sourceReviewRequiredCount:0,durationMinutes:75,durationVerified:true});
+    expect(p.questions.filter(q=>q.restoration).map(q=>q.number)).toEqual([23,27]);
+    for(const number of [23,27]){
+      const q=p.questions[number-1];
+      expect(q).toMatchObject({sourcePage:5,transcriptionMethod:'cross-paper-restoration',transcriptionStatus:'restored-with-approval',scoringReady:false,answerIndex:null});
+      expect(q.provenance.restoration).toEqual(q.restoration);
+      expect(q.restoration.approvedDate).toBe('2026-11-05');
+      expect(q.restoration.references).toHaveLength(2);
+    }
+    expect(p.questions[22].options).toEqual(['I only','II only','I and IV only','II and III only']);
+    expect(p.questions[22].stem).toContain('Organizational chart');
+    expect(p.questions[26].stem).toBe('An ex-officio committee member is one who');
+    expect(p.questions[26].options[2]).toBe('attends meetings by virtue of an office');
   });
 
   test('official specimen conflict remains separate and excluded from scoring', () => {
