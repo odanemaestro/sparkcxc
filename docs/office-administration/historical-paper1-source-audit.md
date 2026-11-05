@@ -4,9 +4,9 @@ Review dates: 28 October–4 November 2026. All 23 supplied sources retain their
 
 | Year | Question boundaries recovered | Four-choice sets | Visually checked questions | Source-dependent positions |
 |---|---:|---:|---:|---:|
-| 1995 | 38 | 19 | 0 | 43 |
+| 1995 | 60 | 60 | 60 | 0 |
 | 1996 | 60 | 60 | 60 | 0 |
-| 1997 | 35 | 21 | 0 | 46 |
+| 1997 | 60 | 60 | 60 | 0 |
 | 2000 | 60 | 60 | 60 | 0 |
 | 2001 | 60 | 60 | 60 | 0 |
 | 2002 | 60 | 60 | 60 | 0 |
@@ -28,7 +28,7 @@ Review dates: 28 October–4 November 2026. All 23 supplied sources retain their
 | 2024 | 60 | 60 | 60 | 0 |
 | 2025 | 60 | 60 | 60 | 0 |
 
-The 1996, 2000, 2001, 2002, 2003, 2007, 2009, 2010, 2011, 2012, 2013, 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024 and 2025 papers each have 60 visually checked native questions. Their schedules, invoices, registers, cheque wording, petty cash, stock and costing tables remain selectable text. All other records retain their individual unverified/source-required flags. The clipped right edge in the 1996 scan was reviewed against other supplied papers as documented below.
+The 1995, 1996, 1997, 2000, 2001, 2002, 2003, 2007, 2009, 2010, 2011, 2012, 2013, 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024 and 2025 papers each have 60 visually checked native questions. Their schedules, invoices, registers, cheque wording, petty cash, stock and costing tables remain selectable text. All other records retain their individual unverified/source-required flags. The clipped right edge in the 1996 scan was reviewed against other supplied papers as documented below.
 
 The official syllabus specimen is separately audited in `../office-administration-specimen-paper1-audit.md`; its disputed item 60 stays excluded from scoring.
 
@@ -69,3 +69,7 @@ The 2002 paper was compared with all eight supplied question pages. The weekly h
 The 2001 paper was checked across all nine supplied question pages. The visible fragments of item 10’s clipped opening line and its complete answer choices match the repeat at item 7 on the 2000 paper’s first PDF page. The stock record card, price list and invoice remain selectable. The 2001 cover is absent.
 
 The 2000 paper was checked across all ten supplied question pages, including the sideways final page. Its weekly hours and stationery stock card remain selectable, with printed dates, values and blanks preserved. The copy begins at printed page 2. A handwritten time annotation appears on that page, so the original cover duration remains unverified.
+
+The 1995 and 1997 covers both confirm 75 minutes. All nine question pages per paper were compared visually. Their stationery stock, petty cash, weekly hours and costing figures are selectable, with blanks and source values preserved. The 1997 scan repeats the same choice at item 21 and has legible overwritten amounts at item 55. Both were retained as supplied. A few clipped word endings in the two papers were restored from the visible fragments.
+
+The remaining source check is 2016 May/June Paper 1, questions 23 and 27 on PDF page 5. Both starts are absent from the embedded image. Earlier papers contain very similar items and the same option order, but their text does not establish the exact 2016 stems. The native records remain source-required until a complete copy is available.
