@@ -1,0 +1,23 @@
+.ch-question-text, .ch-exam .oa-part label { white-space: pre-wrap; }
+.ch-question-preview { margin: 0 0 .75rem 1.75rem; }
+.ch-question-preview summary { color: var(--poa-soft-ink); cursor: pointer; }
+.ch-exam-source {
+  margin: 1rem 0;
+  padding: .875rem 1rem;
+  border-inline-start: 3px solid var(--poa-accent);
+  background: var(--spark-muted);
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+.ch-exam-figure { margin: 1rem 0; }
+.ch-exam-figure img { display: block; max-width: 100%; height: auto; background: #fff; border-radius: .5rem; }
+.ch-figure-scroll { max-width: 100%; overflow: auto; overscroll-behavior-inline: contain; }
+.ch-figure-scroll img { min-width: 36rem; }
+.ch-exam-figure figcaption { margin-top: .5rem; color: var(--poa-soft-ink); }
+.ch-workspace .poa-library-tabs [aria-pressed="true"] { border-color: var(--poa-accent); background: var(--poa-accent-soft); color: var(--poa-ink); }
+.ch-workspace { max-width: 56rem; }
+.ch-workshop-fields { display: grid; gap: 1rem; margin: 1rem 0; }
+.ch-workshop-fields label { min-width: 0; }
+.ch-workshop-fields label span { color: var(--poa-soft-ink); font-weight: 400; }
+.ch-workshop-fields textarea { width: 100%; min-width: 0; padding: .75rem; resize: vertical; font-size: 1rem; }
+.ch-workshop-fields select { max-width: 18rem; min-height: 44px; }
