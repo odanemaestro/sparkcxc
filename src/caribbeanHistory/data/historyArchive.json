@@ -61,7 +61,7 @@
             "marks": 10
           }
         ],
-        "prompt": "Imagine that you are a Taino (Arawak) cacique on whose island the Spaniards settled in the early I SOOs. You are having a discussion with the Spanish settlers about the meeting of your culture with theirs."
+        "prompt": "Imagine that you are a Taino (Arawak) cacique on whose island the Spaniards settled in the early 1500s. You are having a discussion with the Spanish settlers about the meeting of your culture with theirs."
       },
       {
         "id": "q3",
@@ -485,7 +485,7 @@
           {
             "id": "q19-b",
             "label": "(b)",
-            "prompt": "Outline THREE difficulties encountered in transportation in the Caribbeanin the midnineteenth century.",
+            "prompt": "Outline THREE difficulties encountered in transportation in the Caribbean in the mid-nineteenth century.",
             "marks": 10
           },
           {
@@ -526,6 +526,1493 @@
           }
         ],
         "prompt": "In addition to working in their own homes, working-class women in the Caribbean had to support their families in a variety of ways, both in and outside of the home."
+      }
+    ]
+  },
+  {
+    "id": "ch-p2-2006-mj",
+    "title": "May/June 2006 · Paper 2",
+    "paper": 2,
+    "year": 2006,
+    "duration": 130,
+    "totalMarks": 100,
+    "filename": "CSEC_Caribbean_History_Paper_2_-_May_June_2006.pdf",
+    "sha256": "b12bf2d561fd20d9652ce0f54d4a141cce7458940b8a0c7d5677702005215992",
+    "questions": [
+      {
+        "id": "q1",
+        "number": 1,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          2
+        ],
+        "parts": [
+          {
+            "id": "q1-a",
+            "label": "(a)",
+            "prompt": "Outline TWO reasons why Columbus undertook voyages out of Europe.",
+            "marks": 4
+          },
+          {
+            "id": "q1-b",
+            "label": "(b)",
+            "prompt": "Explain THREE ways in which these voyages affected Europe and Europeans.",
+            "marks": 9
+          },
+          {
+            "id": "q1-c",
+            "label": "(c)",
+            "prompt": "Discuss the ways in which these voyages affected the Indigenous peoples of the New World.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "number": 2,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          2
+        ],
+        "parts": [
+          {
+            "id": "q2-a",
+            "label": "(a)",
+            "prompt": "Outline FOUR forms of resistance used by the Indigenous peoples against enslavement by the Europeans.",
+            "marks": 4
+          },
+          {
+            "id": "q2-b",
+            "label": "(b)",
+            "prompt": "Discuss THREE advantages that Indigenous peoples had in their resistance to the Spaniards.",
+            "marks": 9
+          },
+          {
+            "id": "q2-c",
+            "label": "(c)",
+            "prompt": "Explain why resistance by Indigenous people against the Spaniards was generally not successful.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "number": 3,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          2
+        ],
+        "prompt": "EITHER\nCompare the organisation of slave labour in the logwood and mahogany industries of Belize with that of the sugar industry in other British Caribbean territories.\n\nOR\n(a) Describe the roles of enslaved people in the MAIN stages of the manufacture of sugar and rum in the Caribbean. (16 marks)\n(b) Explain THREE difficulties that could have affected the manufacturing of sugar and rum in the Caribbean. (9 marks)",
+        "parts": [
+          {
+            "id": "q3-response",
+            "prompt": "Answer either option.",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "number": 4,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Imagine that you are a journalist visiting a Caribbean plantation in 1800. Write a report for your newspaper describing the social relations of plantation society, with reference to EACH of the following aspects:\n\nFamily life\n\nGender\n\nRace and class.",
+        "parts": [
+          {
+            "id": "q4-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "number": 5,
+        "group": 2,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          3
+        ],
+        "parts": [
+          {
+            "id": "q5-a",
+            "label": "(a)",
+            "prompt": "Outline THREE factors that contributed to the development of Maroon societies in the Caribbean.",
+            "marks": 6
+          },
+          {
+            "id": "q5-b",
+            "label": "(b)",
+            "prompt": "Outline THREE difficulties faced by the developing Maroon societies in the Caribbean.",
+            "marks": 10
+          },
+          {
+            "id": "q5-c",
+            "label": "(c)",
+            "prompt": "Discuss the measures taken by the Maroons to overcome the difficulties they encountered in the development of their societies.",
+            "marks": 9
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "number": 6,
+        "group": 2,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Read the passage below and answer the questions that follow.\n\nThe Barbados revolt broke out on April 14, 1816. It was the first and only slave revolt in Barbados. It was an important revolt, but after only three days, the authorities were able to defeat the rebels.",
+        "parts": [
+          {
+            "id": "q6-a",
+            "label": "(a)",
+            "prompt": "Explain FIVE factors that led the slaves in Barbados to revolt against the system of slavery in 1816.",
+            "marks": 10
+          },
+          {
+            "id": "q6-b",
+            "label": "(b)",
+            "prompt": "Explain the factors that were responsible for the defeat of the slaves by the authorities.",
+            "marks": 9
+          },
+          {
+            "id": "q6-c",
+            "label": "(c)",
+            "prompt": "To what extent did this revolt advance the cause of the anti-slavery movement?",
+            "marks": 6
+          }
+        ]
+      },
+      {
+        "id": "q7",
+        "number": 7,
+        "group": 2,
+        "title": "Movement Towards Emancipation",
+        "sourcePages": [
+          4
+        ],
+        "parts": [
+          {
+            "id": "q7-a",
+            "label": "(a)",
+            "prompt": "Name TWO groups who supported the abolition of slavery in the British Caribbean in the 1800s.",
+            "marks": 2
+          },
+          {
+            "id": "q7-b",
+            "label": "(b)",
+            "prompt": "Name TWO groups who opposed the abolition of slavery in the British Caribbean in the 1800s.",
+            "marks": 2
+          },
+          {
+            "id": "q7-c",
+            "label": "(c)",
+            "prompt": "Explain why there was opposition to the abolition of slavery in the British Caribbean in the 1800s.",
+            "marks": 12
+          },
+          {
+            "id": "q7-d",
+            "label": "(d)",
+            "prompt": "Describe how the anti-slavery movement organised its activities to end slavery in the British Caribbean in the 1800s.",
+            "marks": 9
+          }
+        ]
+      },
+      {
+        "id": "q8",
+        "number": 8,
+        "group": 2,
+        "title": "Movement Towards Emancipation",
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Read the passage below and answer the questions that follow.\n\nThe British were the first to abolish plantation slavery in 1834. The French did not manage to do so until 1848. Spain found it even more difficult to do so in Cuba, where the system was not abolished until 1886.",
+        "parts": [
+          {
+            "id": "q8-a",
+            "label": "(a)",
+            "prompt": "Account for the success of the British anti-slavery movement in 1834.",
+            "marks": 12
+          },
+          {
+            "id": "q8-b",
+            "label": "(b)",
+            "prompt": "Outline FOUR reasons why France abolished slavery in 1848.",
+            "marks": 8
+          },
+          {
+            "id": "q8-c",
+            "label": "(c)",
+            "prompt": "Explain why Spain abolished slavery in Cuba in 1886.",
+            "marks": 5
+          }
+        ]
+      },
+      {
+        "id": "q9",
+        "number": 9,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Read the passage below and answer the questions that follow.\n\nIn 1838, sugar planters in the British Caribbean had many fears in relation to the future of their labour force. Therefore, they decided to take action to ensure that they had an adequate number of labourers to work on the sugar plantations. However, in spite of their efforts, sugar production decreased considerably in some territories between 1838 and 1850.",
+        "parts": [
+          {
+            "id": "q9-a",
+            "label": "(a)",
+            "prompt": "Apart from the shortage of labour, what fears did sugar planters in the British Caribbean have in 1838 about their labour force?",
+            "marks": 6
+          },
+          {
+            "id": "q9-b",
+            "label": "(b)",
+            "prompt": "Describe FOUR actions taken by the planters after 1838 to ensure that they had an adequate number of labourers.",
+            "marks": 10
+          },
+          {
+            "id": "q9-c",
+            "label": "(c)",
+            "prompt": "Explain why sugar production decreased in some British Caribbean territories between 1838 and 1850.",
+            "marks": 9
+          }
+        ]
+      },
+      {
+        "id": "q10",
+        "number": 10,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Imagine that you are the owner of a large sugar plantation in a British Caribbean territory in the 1850s. Most of the labourers on the plantation are Indians, but there is a small number of immigrants from the other Caribbean territories, from Africa, Madeira and China, and some former slaves.\n\nWrite a letter to a friend in England describing your efforts to secure labour for your plantation.\n\nYour letter must include the following:\n\nThe reasons why many Caribbean planters decided to secure immigrants to work on their plantations after 1838\n\nThe reasons why some government officials in England and the Caribbean objected to this immigration\n\nThe factors which caused Indian immigrants to leave their homeland to come to the Caribbean\n\nThe reasons for your decision to make India your main source of labour.",
+        "parts": [
+          {
+            "id": "q10-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q11",
+        "number": 11,
+        "group": 3,
+        "title": "Economic Diversification, 1875–1985",
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Read the passage below and answer the questions that follow.\n\nIn the early 1900s, the sugar industry in the British Caribbean recovered from a major crisis which it had been facing since 1884. Nevertheless, it could not compete with the Cuban sugar industry which was more prosperous.",
+        "parts": [
+          {
+            "id": "q11-a",
+            "label": "(a)",
+            "prompt": "Outline the MAIN factors which enabled the British Caribbean sugar industry to recover from the crisis it faced in the late 1800s.",
+            "marks": 9
+          },
+          {
+            "id": "q11-b",
+            "label": "(b)",
+            "prompt": "Explain why the Cuban sugar industry was more prosperous than the British Caribbean sugar industry in the early 1900s.",
+            "marks": 16
+          }
+        ]
+      },
+      {
+        "id": "q12",
+        "number": 12,
+        "group": 3,
+        "title": "Economic Diversification, 1875–1985",
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Read the passage below and answer the questions that follow.\n\nIn the 1900s, mining industries developed in some Caribbean territories. Bauxite mining in British Guiana (Guyana) and Jamaica became a major industry and had important effects on the economies of these two countries.",
+        "parts": [
+          {
+            "id": "q12-a",
+            "label": "(a)",
+            "prompt": "Discuss FIVE factors that were responsible for the development of the bauxite industry in British Guiana (Guyana) and Jamaica in the 1900s.",
+            "marks": 10
+          },
+          {
+            "id": "q12-b",
+            "label": "(b)",
+            "prompt": "Examine the effects of the bauxite industry on the economies of British Guiana (Guyana) and Jamaica.",
+            "marks": 15
+          }
+        ]
+      },
+      {
+        "id": "q13",
+        "number": 13,
+        "group": 3,
+        "title": "Social and Economic Conditions in the 20th Century",
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Read the passage below and answer the questions that follow.\n\nIn the 1900s, many residents of English-speaking Caribbean countries migrated to other territories in the Caribbean as well as to Central America, the United States, Canada and the United Kingdom. This migration had important effects on the society of the English-speaking Caribbean.",
+        "parts": [
+          {
+            "id": "q13-a",
+            "label": "(a)",
+            "prompt": "Explain FIVE factors that led many residents of English-speaking Caribbean countries to migrate in the 1900s.",
+            "marks": 15
+          },
+          {
+            "id": "q13-b",
+            "label": "(b)",
+            "prompt": "Discuss the effects of this migration between 1900 and 1985 on the society of the English-speaking Caribbean.",
+            "marks": 10
+          }
+        ]
+      },
+      {
+        "id": "q14",
+        "number": 14,
+        "group": 3,
+        "title": "Social and Economic Conditions in the 20th Century",
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Discuss the MAJOR policies adopted by British Caribbean governments to improve education and health for their people between 1962 and 1985.",
+        "parts": [
+          {
+            "id": "q14-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q15",
+        "number": 15,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          7
+        ],
+        "parts": [
+          {
+            "id": "q15-a",
+            "label": "(a)",
+            "prompt": "Explain FOUR ways in which the British Caribbean was affected between 1776 and the 1820s by the North American War of Independence.",
+            "marks": 13
+          },
+          {
+            "id": "q15-b",
+            "label": "(b)",
+            "prompt": "Describe the ways in which the United States of America demonstrated its interest in Cuba between 1776 and 1870.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q16",
+        "number": 16,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          7
+        ],
+        "prompt": "The United States had a profound influence on the popular culture of the British Caribbean during the twentieth century.",
+        "parts": [
+          {
+            "id": "q16-a",
+            "label": "(a)",
+            "prompt": "Describe FOUR other ways in which the United States influenced the British Caribbean between 1939 and 1945.",
+            "marks": 5
+          },
+          {
+            "id": "q16-b",
+            "label": "(b)",
+            "prompt": "Outline the MAIN reasons for the growth of United States' trade and investment in the British Caribbean after 1945.",
+            "marks": 20
+          }
+        ]
+      },
+      {
+        "id": "q17",
+        "number": 17,
+        "group": 4,
+        "title": "Movements Towards Independence and Regional Integration up to 1985",
+        "sourcePages": [
+          8
+        ],
+        "parts": [
+          {
+            "id": "q17-a",
+            "label": "(a)",
+            "prompt": "Outline FOUR arguments used to justify the efforts to establish federations in the Leeward and Windward Islands in the nineteenth century.",
+            "marks": 9
+          },
+          {
+            "id": "q17-b",
+            "label": "(b)",
+            "prompt": "Explain why the efforts to unite the Windward and Leeward Islands during the nineteenth century met with considerable opposition.",
+            "marks": 16
+          }
+        ]
+      },
+      {
+        "id": "q18",
+        "number": 18,
+        "group": 4,
+        "title": "Movements Towards Independence and Regional Integration up to 1985",
+        "sourcePages": [
+          8
+        ],
+        "transcriptionNote": "The source prints 1961 in part (b). This date is retained.",
+        "parts": [
+          {
+            "id": "q18-a",
+            "label": "(a)",
+            "prompt": "Explain FOUR factors which led British Caribbean leaders to support a Federation of the British West Indies in 1958.",
+            "marks": 10
+          },
+          {
+            "id": "q18-b",
+            "label": "(b)",
+            "prompt": "Account for the collapse of the Federation in 1961.",
+            "marks": 15
+          }
+        ]
+      },
+      {
+        "id": "q19",
+        "number": 19,
+        "group": 4,
+        "title": "Social Life, 1838–1962",
+        "sourcePages": [
+          8
+        ],
+        "parts": [
+          {
+            "id": "q19-a",
+            "label": "(a)",
+            "prompt": "Examine the evidence to support the claim that there was widespread poverty in the British Caribbean in the 1930s and 1940s.",
+            "marks": 15
+          },
+          {
+            "id": "q19-b",
+            "label": "(b)",
+            "prompt": "Describe some of the measures taken by the colonial governments to bring relief to the working peoples of the British Caribbean between 1945 and 1962.",
+            "marks": 10
+          }
+        ]
+      },
+      {
+        "id": "q20",
+        "number": 20,
+        "group": 4,
+        "title": "Social Life, 1838–1962",
+        "sourcePages": [
+          8
+        ],
+        "parts": [
+          {
+            "id": "q20-a",
+            "label": "(a)",
+            "prompt": "Outline SIX factors which led the Christian Church in the British Caribbean to retain its influence within the African community in the British territories in the years just after slavery was abolished.",
+            "marks": 15
+          },
+          {
+            "id": "q20-b",
+            "label": "(b)",
+            "prompt": "Explain why the Christian Church in the British Caribbean during the 1800s found it difficult to convert the Indian immigrant population to Christianity.",
+            "marks": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ch-p2-2007-mj",
+    "title": "May/June 2007 · Paper 2",
+    "paper": 2,
+    "year": 2007,
+    "duration": 130,
+    "totalMarks": 100,
+    "filename": "CSEC_Caribbean_History_Paper_2_-_May_June_2007.pdf",
+    "sha256": "130a9d2dc387a8b03aa4d3da1b493766d3ca6804a04889bc55c65c53b55faf27",
+    "questions": [
+      {
+        "id": "q1",
+        "number": 1,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Read the passage below, and answer the questions that follow.\n\nThe Arawaks/Tainos, who practised 'slash and burn' agriculture, were partly nomadic, but they succeeded in establishing an efficient system of agricultural production.",
+        "parts": [
+          {
+            "id": "q1-a",
+            "label": "(a)",
+            "prompt": "Explain what is meant by 'slash and burn' agriculture.",
+            "marks": 3
+          },
+          {
+            "id": "q1-b",
+            "label": "(b)",
+            "prompt": "Explain why the Arawak system of agriculture can be regarded as efficient.",
+            "marks": 12
+          },
+          {
+            "id": "q1-c",
+            "label": "(c)",
+            "prompt": "Describe THREE methods, apart from agriculture, used by the Arawaks/Tainos to obtain food.",
+            "marks": 10
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "number": 2,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Read the passage below, and answer the questions that follow.\n\nIndigenous Caribbean island peoples did not leave behind magnificent monuments, but articles made for everyday use were highly artistic. On the other hand, the civilization of the Maya showed great intellectual ability and engineering skills.",
+        "parts": [
+          {
+            "id": "q2-a",
+            "label": "(a)",
+            "prompt": "Explain why articles made by Arawaks for everyday use have been described as highly artistic.",
+            "marks": 10
+          },
+          {
+            "id": "q2-b",
+            "label": "(b)",
+            "prompt": "Explain the ways in which the Mayan civilization showed evidence of great intellectual ability and engineering skills.",
+            "marks": 15
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "number": 3,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          2
+        ],
+        "parts": [
+          {
+            "id": "q3-a",
+            "label": "(a)",
+            "prompt": "Describe the MAIN features of the organisation of the triangular trade.",
+            "marks": 10
+          },
+          {
+            "id": "q3-b",
+            "label": "(b)",
+            "prompt": "Explain SIX major ways in which West Africa was affected by the slave trade.",
+            "marks": 15
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "number": 4,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          3
+        ],
+        "parts": [
+          {
+            "id": "q4-a",
+            "label": "(a)",
+            "prompt": "Explain why it was difficult for the enslaved Africans to practise their traditional culture on the plantation.",
+            "marks": 12
+          },
+          {
+            "id": "q4-b",
+            "label": "(b)",
+            "prompt": "Explain how enslaved Africans were able to retain some aspects of their culture during the period of plantation slavery.",
+            "marks": 13
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "number": 5,
+        "group": 2,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          3
+        ],
+        "parts": [
+          {
+            "id": "q5-a",
+            "label": "(a)",
+            "prompt": "Explain why the slave masters found it necessary to control the enslaved Africans on the Caribbean sugar plantations.",
+            "marks": 6
+          },
+          {
+            "id": "q5-b",
+            "label": "(b)",
+            "prompt": "Describe THREE methods of slave control employed by the master on a Caribbean sugar plantation.",
+            "marks": 10
+          },
+          {
+            "id": "q5-c",
+            "label": "(c)",
+            "prompt": "Identify THREE ways in which Spanish slave laws differed from the English slave laws.",
+            "marks": 9
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "number": 6,
+        "group": 2,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          3
+        ],
+        "prompt": "The enslaved Africans on the French island of St Domingue staged a revolt in 1791 which resulted in Haitian independence in 1804. Imagine that you are the Governor of St Domingue who must report to your superior officer in France.\n\nEITHER\nWrite a report explaining the factors that were responsible for the outbreak of the Haitian Revolution.\n\nOR\nWrite a report accounting for the success of the Haitian Revolution up to 1804.",
+        "parts": [
+          {
+            "id": "q6-response",
+            "prompt": "Answer either option.",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q7",
+        "number": 7,
+        "group": 2,
+        "title": "Movement Towards Emancipation",
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Read the passage below, and answer the questions that follow.\n\nEven after abolishing the trade in captive Africans, both the British and the French authorities were forced to introduce a set of Amelioration measures. The measures introduced by the French were in some respects similar to the ones introduced by the British. These measures produced similar responses in both the British and French sugar colonies.",
+        "parts": [
+          {
+            "id": "q7-a",
+            "label": "(a)",
+            "prompt": "Identify THREE Amelioration measures introduced by EITHER the British OR the French in their Caribbean sugar colonies.",
+            "marks": 6
+          },
+          {
+            "id": "q7-b",
+            "label": "(b)",
+            "prompt": "Explain why the British Government introduced Amelioration measures in the British colonies.",
+            "marks": 9
+          },
+          {
+            "id": "q7-c",
+            "label": "(c)",
+            "prompt": "Explain how the planters in the British colonies responded to the Amelioration measures.",
+            "marks": 10
+          }
+        ]
+      },
+      {
+        "id": "q8",
+        "number": 8,
+        "group": 2,
+        "title": "Movement Towards Emancipation",
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Read the passage below, and answer the questions that follow.\n\nThe British authorities passed the Act of Abolition in 1833 in order to bring an end to the system of chattel slavery on the Caribbean plantations. The Act contained several clauses among which were the promise of freedom, the payment of compensation and a period of apprenticeship. Even so the Act made neither the planters nor the apprentices happy.",
+        "parts": [
+          {
+            "id": "q8-a",
+            "label": "(a)",
+            "prompt": "Identify TWO clauses of the 1833 Act of Abolition, other than those listed above.",
+            "marks": 4
+          },
+          {
+            "id": "q8-b",
+            "label": "(b)",
+            "prompt": "Explain why a period of apprenticeship was considered necessary prior to full freedom.",
+            "marks": 9
+          },
+          {
+            "id": "q8-c",
+            "label": "(c)",
+            "prompt": "Describe some of the difficulties experienced by the apprentices on the sugar plantation after 1 August 1834.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q9",
+        "number": 9,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          5
+        ],
+        "parts": [
+          {
+            "id": "q9-a",
+            "label": "(a)",
+            "prompt": "Explain why many former slaves in the British Caribbean tried to establish themselves as peasants after 1838.",
+            "marks": 10
+          },
+          {
+            "id": "q9-b",
+            "label": "(b)",
+            "prompt": "Describe the difficulties which former slaves in the British Caribbean faced in establishing themselves as peasants between 1838 and 1876.",
+            "marks": 15
+          }
+        ]
+      },
+      {
+        "id": "q10",
+        "number": 10,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          5
+        ],
+        "parts": [
+          {
+            "id": "q10-a",
+            "label": "(a)",
+            "prompt": "Describe the educational policies of British Caribbean governments between 1838 and 1876.",
+            "marks": 9
+          },
+          {
+            "id": "q10-b",
+            "label": "(b)",
+            "prompt": "Explain the factors that led to a rebellion at Morant Bay in Jamaica in 1865.",
+            "marks": 10
+          },
+          {
+            "id": "q10-c",
+            "label": "(c)",
+            "prompt": "Describe how the local government in Jamaica responded to the Morant Bay rebellion.",
+            "marks": 6
+          }
+        ]
+      },
+      {
+        "id": "q11",
+        "number": 11,
+        "group": 3,
+        "title": "Economic Diversification, 1875–1985",
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Read the passage below, and answer the questions that follow.\n\nBetween 1884 and 1900, the sugar industry in the British Caribbean experienced a crisis which nearly killed it. It was therefore necessary to adopt measures to breathe new life into the industry.",
+        "parts": [
+          {
+            "id": "q11-a",
+            "label": "(a)",
+            "prompt": "Describe the measures which were adopted \"to breathe new life\" into the British Caribbean sugar industry in the late 19th and early 20th centuries.",
+            "marks": 13
+          },
+          {
+            "id": "q11-b",
+            "label": "(b)",
+            "prompt": "Explain the effects that these measures had on the sugar industry in the British Caribbean.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q12",
+        "number": 12,
+        "group": 3,
+        "title": "Economic Diversification, 1875–1985",
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Explain why many British Caribbean farmers expanded their cultivation of crops, other than sugar cane, in the late 19th and early 20th centuries.",
+        "parts": [
+          {
+            "id": "q12-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q13",
+        "number": 13,
+        "group": 3,
+        "title": "Social and Economic Conditions in the 20th Century",
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Read the passage below, and answer the questions that follow.\n\nBetween 1900 and 1962, women were more active in the public life of the British Caribbean than they were previously. They formed women's organisations and clubs which have helped to improve women's lives in the Caribbean.",
+        "parts": [
+          {
+            "id": "q13-a",
+            "label": "(a)",
+            "prompt": "Explain why women became more active in public life in the British Caribbean between 1900 and 1962 than they were before this period.",
+            "marks": 10
+          },
+          {
+            "id": "q13-b",
+            "label": "(b)",
+            "prompt": "Describe the ways in which women's organisations and clubs helped to improve women's lives in the British Caribbean between 1900 and 1962.",
+            "marks": 15
+          }
+        ]
+      },
+      {
+        "id": "q14",
+        "number": 14,
+        "group": 3,
+        "title": "Social and Economic Conditions in the 20th Century",
+        "sourcePages": [
+          6
+        ],
+        "parts": [
+          {
+            "id": "q14-a",
+            "label": "(a)",
+            "prompt": "Outline THREE examples of improvements in working conditions introduced into the British Caribbean by labour unions up to 1962.",
+            "marks": 6
+          },
+          {
+            "id": "q14-b",
+            "label": "(b)",
+            "prompt": "Name TWO Caribbean political parties and the trade unions with which they have been associated.",
+            "marks": 2
+          },
+          {
+            "id": "q14-c",
+            "label": "(c)",
+            "prompt": "Explain FIVE factors that favoured the development of trade unions in the British Caribbean between 1930 and 1960.",
+            "marks": 17
+          }
+        ]
+      },
+      {
+        "id": "q15",
+        "number": 15,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          7
+        ],
+        "parts": [
+          {
+            "id": "q15-a",
+            "label": "(a)",
+            "prompt": "Explain FOUR ways in which the United States' occupation affected Puerto Rico between 1898 and 1917.",
+            "marks": 13
+          },
+          {
+            "id": "q15-b",
+            "label": "(b)",
+            "prompt": "Explain briefly how the United States succeeded in acquiring land in order to construct a canal across the Isthmus of Panama by 1914.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q16",
+        "number": 16,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          7
+        ],
+        "parts": [
+          {
+            "id": "q16-a",
+            "label": "(a)",
+            "prompt": "Explain why a large number of Cubans were discontented with the government of Fulgencio Batista in 1959.",
+            "marks": 12
+          },
+          {
+            "id": "q16-b",
+            "label": "(b)",
+            "prompt": "Discuss FOUR factors that accounted for the worsening of relations between Cuba and the United States between 1959 and 1962.",
+            "marks": 13
+          }
+        ]
+      },
+      {
+        "id": "q17",
+        "number": 17,
+        "group": 4,
+        "title": "Movements Towards Independence and Regional Integration up to 1985",
+        "sourcePages": [
+          7
+        ],
+        "parts": [
+          {
+            "id": "q17-a",
+            "label": "(a)",
+            "prompt": "Discuss FOUR factors that encouraged independence movements in the British Caribbean between 1935 and 1983.",
+            "marks": 13
+          },
+          {
+            "id": "q17-b",
+            "label": "(b)",
+            "prompt": "Explain FOUR reasons why Caribbean leaders decided to federate the British Caribbean in 1958.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q18",
+        "number": 18,
+        "group": 4,
+        "title": "Movements Towards Independence and Regional Integration up to 1985",
+        "sourcePages": [
+          7
+        ],
+        "parts": [
+          {
+            "id": "q18-a",
+            "label": "(a)",
+            "prompt": "Explain briefly the attempts by the people of the Dutch Caribbean to govern themselves between the 1940s and 1986.",
+            "marks": 10
+          },
+          {
+            "id": "q18-b",
+            "label": "(b)",
+            "prompt": "Discuss FOUR advantages that the French Caribbean territories hoped to gain by becoming Overseas Departments of France in 1946.",
+            "marks": 15
+          }
+        ]
+      },
+      {
+        "id": "q19",
+        "number": 19,
+        "group": 4,
+        "title": "Social Life, 1838–1962",
+        "sourcePages": [
+          8
+        ],
+        "parts": [
+          {
+            "id": "q19-a",
+            "label": "(a)",
+            "prompt": "Discuss FIVE factors that led to discrimination against women in Caribbean societies between 1838 and 1945.",
+            "marks": 15
+          },
+          {
+            "id": "q19-b",
+            "label": "(b)",
+            "prompt": "Explain THREE factors that accounted for an improvement in attitudes to women in Caribbean societies after 1945.",
+            "marks": 10
+          }
+        ]
+      },
+      {
+        "id": "q20",
+        "number": 20,
+        "group": 4,
+        "title": "Social Life, 1838–1962",
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Read the passage below, and answer the questions that follow.\n\nCaribbean architecture, like its art and other social recreational pursuits, reflects very strongly the European influences of the colonial past. However, over time, these influences have been modified by local circumstances and conditions.",
+        "parts": [
+          {
+            "id": "q20-a",
+            "label": "(a)",
+            "prompt": "Explain how Caribbean architecture has been influenced by its colonial past.",
+            "marks": 12
+          },
+          {
+            "id": "q20-b",
+            "label": "(b)",
+            "prompt": "Describe the ways in which local conditions and circumstances influenced Caribbean architecture.",
+            "marks": 13
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ch-p2-2008-mj",
+    "title": "May/June 2008 · Paper 2",
+    "paper": 2,
+    "year": 2008,
+    "duration": 130,
+    "totalMarks": 100,
+    "filename": "CSEC_Caribbean_History_Paper_2_-_May_June_2008.pdf",
+    "sha256": "0db64330f0ef41f28fe67c13c44364036e04c71f476596ba5f4a8f5d9663c740",
+    "questions": [
+      {
+        "id": "q1",
+        "number": 1,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          2
+        ],
+        "parts": [
+          {
+            "id": "q1-a",
+            "label": "(a)",
+            "prompt": "State THREE features of gender relations in EITHER Taino (Arawak) OR Kalinago (Carib) society.",
+            "marks": 12
+          },
+          {
+            "id": "q1-b",
+            "label": "(b)",
+            "prompt": "Describe THREE features of the social organization of the Maya.",
+            "marks": 13
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "number": 2,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Read the extract below then answer the questions that follow.\n\nAfter the voyages of Columbus, many Europeans came to live in the New World which was very different from the Old World. They had to make some changes to their lifestyle but they gained many benefits. After the arrival of the Europeans, life for the indigenous peoples was changed forever.",
+        "parts": [
+          {
+            "id": "q2-a",
+            "label": "(a)",
+            "prompt": "Explain FOUR ways in which the European conquest affected the lives of indigenous peoples.",
+            "marks": 13
+          },
+          {
+            "id": "q2-b",
+            "label": "(b)",
+            "prompt": "Describe THREE benefits Europeans obtained from the New World.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "number": 3,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          2
+        ],
+        "parts": [
+          {
+            "id": "q3-a",
+            "label": "(a)",
+            "prompt": "Give THREE reasons why enslaved Africans were brought to the Caribbean by Europeans during the 1500s.",
+            "marks": 9
+          },
+          {
+            "id": "q3-b",
+            "label": "(b)",
+            "prompt": "Outline FOUR reasons for the increased use of African labour in the Caribbean from the 1600s to the 1800s.",
+            "marks": 16
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "number": 4,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          2
+        ],
+        "parts": [
+          {
+            "id": "q4-a",
+            "label": "(a)",
+            "prompt": "Describe FOUR ways in which race affected social relations on the sugar plantations in the Caribbean during the 1700s.",
+            "marks": 12
+          },
+          {
+            "id": "q4-b",
+            "label": "(b)",
+            "prompt": "Discuss THREE ways in which class and gender affected family life on the sugar plantations in the Caribbean.",
+            "marks": 13
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "number": 5,
+        "group": 2,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          3
+        ],
+        "parts": [
+          {
+            "id": "q5-a",
+            "label": "(a)",
+            "prompt": "Outline TWO examples of passive resistance that were used by both enslaved men and women in the Caribbean.",
+            "marks": 5
+          },
+          {
+            "id": "q5-b",
+            "label": "(b)",
+            "prompt": "Outline TWO examples of active resistance that were used by both enslaved men and women in the Caribbean.",
+            "marks": 5
+          },
+          {
+            "id": "q5-c",
+            "label": "(c)",
+            "prompt": "Describe THREE methods of resistance to slavery that were used ONLY by enslaved women.",
+            "marks": 15
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "number": 6,
+        "group": 2,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Discuss the effects of the Haitian Revolution UP TO 1830 on\n\n(a) Haiti\n\n(b) the rest of the Caribbean.",
+        "parts": [
+          {
+            "id": "q6-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q7",
+        "number": 7,
+        "group": 2,
+        "title": "Movement Towards Emancipation",
+        "sourcePages": [
+          3
+        ],
+        "parts": [
+          {
+            "id": "q7-a",
+            "label": "(a)",
+            "prompt": "State FOUR reasons for the increase in slave rebellions after the abolition of the African slave trade in 1807.",
+            "marks": 10
+          },
+          {
+            "id": "q7-b",
+            "label": "(b)",
+            "prompt": "Outline FOUR reasons why these slave revolts were unsuccessful.",
+            "marks": 10
+          },
+          {
+            "id": "q7-c",
+            "label": "(c)",
+            "prompt": "Explain TWO ways in which these revolts helped to bring about the abolition of slavery in the British Caribbean.",
+            "marks": 5
+          }
+        ]
+      },
+      {
+        "id": "q8",
+        "number": 8,
+        "group": 2,
+        "title": "Movement Towards Emancipation",
+        "sourcePages": [
+          4
+        ],
+        "parts": [
+          {
+            "id": "q8-a",
+            "label": "(a)",
+            "prompt": "Identify FOUR similarities between the British and French anti-slavery movements.",
+            "marks": 10
+          },
+          {
+            "id": "q8-b",
+            "label": "(b)",
+            "prompt": "State TWO differences between the British and French anti-slavery movements.",
+            "marks": 5
+          },
+          {
+            "id": "q8-c",
+            "label": "(c)",
+            "prompt": "Explain FOUR factors responsible for the success of the British anti-slavery movement.",
+            "marks": 10
+          }
+        ]
+      },
+      {
+        "id": "q9",
+        "number": 9,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          4
+        ],
+        "parts": [
+          {
+            "id": "q9-a",
+            "label": "(a)",
+            "prompt": "Outline FOUR reasons why some Caribbean territories imported overseas labourers after 1834.",
+            "marks": 13
+          },
+          {
+            "id": "q9-b",
+            "label": "(b)",
+            "prompt": "Explain FOUR ways in which Indian indentured workers strengthened the sugar industries of Guyana and Trinidad in the latter half of the nineteenth century.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q10",
+        "number": 10,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          4
+        ],
+        "parts": [
+          {
+            "id": "q10-a",
+            "label": "(a)",
+            "prompt": "Describe FOUR ways in which missionary groups and churches helped the development of the free villages after 1838.",
+            "marks": 13
+          },
+          {
+            "id": "q10-b",
+            "label": "(b)",
+            "prompt": "Describe THREE other ways in which missionary groups and churches helped the freed people after Emancipation.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q11",
+        "number": 11,
+        "group": 3,
+        "title": "Economic Diversification, 1875–1985",
+        "sourcePages": [
+          5
+        ],
+        "parts": [
+          {
+            "id": "q11-a",
+            "label": "(a)",
+            "prompt": "Explain FOUR factors within the British Caribbean which caused difficulties for the sugar industry between the 1880s and early 1900s.",
+            "marks": 16
+          },
+          {
+            "id": "q11-b",
+            "label": "(b)",
+            "prompt": "Identify THREE factors outside the Caribbean which caused difficulties for the sugar industry between the 1800s and early 1900s.",
+            "marks": 9
+          }
+        ]
+      },
+      {
+        "id": "q12",
+        "number": 12,
+        "group": 3,
+        "title": "Economic Diversification, 1875–1985",
+        "sourcePages": [
+          5
+        ],
+        "parts": [
+          {
+            "id": "q12-a",
+            "label": "(a)",
+            "prompt": "Describe THREE factors that encouraged diversification of Caribbean economies in the late 1800s and 1900s.",
+            "marks": 9
+          },
+          {
+            "id": "q12-b",
+            "label": "(b)",
+            "prompt": "Outline FOUR major factors that made possible the growth of industrial enterprises in the British Caribbean since 1945.",
+            "marks": 16
+          }
+        ]
+      },
+      {
+        "id": "q13",
+        "number": 13,
+        "group": 3,
+        "title": "Social and Economic Conditions in the 20th Century",
+        "sourcePages": [
+          5
+        ],
+        "parts": [
+          {
+            "id": "q13-a",
+            "label": "(a)",
+            "prompt": "Outline FIVE methods used by Marcus Garvey and the UNIA to improve the condition of Blacks in the Caribbean.",
+            "marks": 15
+          },
+          {
+            "id": "q13-b",
+            "label": "(b)",
+            "prompt": "Give THREE reasons why many people were opposed to Marcus Garvey.",
+            "marks": 10
+          }
+        ]
+      },
+      {
+        "id": "q14",
+        "number": 14,
+        "group": 3,
+        "title": "Social and Economic Conditions in the 20th Century",
+        "sourcePages": [
+          5
+        ],
+        "parts": [
+          {
+            "id": "q14-a",
+            "label": "(a)",
+            "prompt": "Describe FOUR major factors that encouraged the growth of trade unions in the British Caribbean between 1900 and 1945.",
+            "marks": 13
+          },
+          {
+            "id": "q14-b",
+            "label": "(b)",
+            "prompt": "Outline FOUR ways in which labour laws have benefited Caribbean workers.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q15",
+        "number": 15,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          6
+        ],
+        "transcriptionNote": "The source prints 1914 in part (b). This date is retained.",
+        "parts": [
+          {
+            "id": "q15-a",
+            "label": "(a)",
+            "prompt": "Describe FOUR major steps taken by the United States to acquire land to build a canal from the Atlantic to the Pacific Ocean in the early 1900s.",
+            "marks": 12
+          },
+          {
+            "id": "q15-b",
+            "label": "(b)",
+            "prompt": "Outline FOUR reasons why the United States invaded and occupied Haiti in 1914.",
+            "marks": 13
+          }
+        ]
+      },
+      {
+        "id": "q16",
+        "number": 16,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          6
+        ],
+        "parts": [
+          {
+            "id": "q16-a",
+            "label": "(a)",
+            "prompt": "Outline FOUR reasons why some Cubans criticized the role of the United States in Cuba between 1898 and 1959.",
+            "marks": 13
+          },
+          {
+            "id": "q16-b",
+            "label": "(b)",
+            "prompt": "Outline THREE reasons why relations between the United States and Cuba worsened between 1959 and 1962.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q17",
+        "number": 17,
+        "group": 4,
+        "title": "Movements Towards Independence and Regional Integration up to 1985",
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Explain the MAIN reasons for the failure of the 1958 British Caribbean Federation.",
+        "parts": [
+          {
+            "id": "q17-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q18",
+        "number": 18,
+        "group": 4,
+        "title": "Movements Towards Independence and Regional Integration up to 1985",
+        "sourcePages": [
+          6
+        ],
+        "parts": [
+          {
+            "id": "q18-a",
+            "label": "(a)",
+            "prompt": "Give FOUR reasons why many Puerto Ricans showed discontent with their colonial status between 1900 and the 1940s.",
+            "marks": 13
+          },
+          {
+            "id": "q18-b",
+            "label": "(b)",
+            "prompt": "Describe THREE advantages that Puerto Rico gained from becoming an Associated State of the United States after 1947.",
+            "marks": 12
+          }
+        ]
+      },
+      {
+        "id": "q19",
+        "number": 19,
+        "group": 4,
+        "title": "Social Life, 1838–1962",
+        "sourcePages": [
+          7
+        ],
+        "parts": [
+          {
+            "id": "q19-a",
+            "label": "(a)",
+            "prompt": "Identify ONE Christian, ONE Hindu, and ONE Islamic festival celebrated in the Caribbean.",
+            "marks": 3
+          },
+          {
+            "id": "q19-b",
+            "label": "(b)",
+            "prompt": "Examine FOUR reasons why government officials of the period disapproved of non-Christian cultures in the Caribbean.",
+            "marks": 12
+          },
+          {
+            "id": "q19-c",
+            "label": "(c)",
+            "prompt": "Outline THREE reasons why attitudes of government officials towards Hinduism and Hindu festivals changed after the 1960s.",
+            "marks": 10
+          }
+        ]
+      },
+      {
+        "id": "q20",
+        "number": 20,
+        "group": 4,
+        "title": "Social Life, 1838–1962",
+        "sourcePages": [
+          7
+        ],
+        "parts": [
+          {
+            "id": "q20-a",
+            "label": "(a)",
+            "prompt": "Examine FOUR reasons why Rastafarianism was unpopular in some sections of Caribbean society between the 1920s and the 1960s.",
+            "marks": 13
+          },
+          {
+            "id": "q20-b",
+            "label": "(b)",
+            "prompt": "Account for the more general acceptance of Rastafarianism in the Caribbean since the 1960s.",
+            "marks": 12
+          }
+        ]
       }
     ]
   },

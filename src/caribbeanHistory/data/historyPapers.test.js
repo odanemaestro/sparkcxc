@@ -21,6 +21,20 @@ test("choice rules preserve the four-section historical papers and the two pract
   }
 });
 
+test("the supplied Paper 2 archive preserves the early alternatives under their printed question numbers", () => {
+  const papers = archive.filter(paper => paper.paper === 2);
+  expect(papers.map(paper => paper.year)).toEqual([
+    2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023, 2024,
+  ]);
+  for (const [year, group, id] of [[2006, 1, "q3"], [2007, 2, "q6"]]) {
+    const paper = papers.find(entry => entry.year === year);
+    const [question] = historySelectedQuestions(paper, { [group]: id });
+    expect(historyGroups(paper)).toEqual([1, 2, 3, 4]);
+    expect(question.prompt).toMatch(/EITHER\n[\s\S]+\n\nOR\n/);
+    expect(question.parts).toEqual([{ id: `${id}-response`, prompt: "Answer either option.", marks: 25 }]);
+  }
+});
+
 test("digitised questions have source pages, complete choices or allocations, and available figures", () => {
   expect(new Set(archive.map(paper => paper.id)).size).toBe(archive.length);
   for (const paper of archive) {
