@@ -5359,6 +5359,1604 @@
     ]
   },
   {
+    "id": "ch-p2-2019-mj",
+    "title": "May/June 2019 · Paper 2",
+    "paper": 2,
+    "year": 2019,
+    "duration": 130,
+    "totalMarks": 75,
+    "filename": "CSEC_Caribbean_History_Paper_2_-_May_June_2019.pdf",
+    "questions": [
+      {
+        "id": "q1",
+        "number": 1,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          2
+        ],
+        "prompt": "The Taino, Maya and Kalinago impressed some Europeans with their architecture, craftsmanship, weaving, boatbuilding and so on. However, some Europeans believed that these early inhabitants of the Americas had no religion, writing or monuments to their past.",
+        "parts": [
+          {
+            "id": "q1-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "With which early inhabitants do you associate the following examples of craftsmanship?\n\n(i) Zemi\n(ii) Carbet\n(iii) Duho\n(iv) Matapi or matapee"
+          },
+          {
+            "id": "q1-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "The canoe was the main form of transportation for the Kalinago. Explain THREE reasons why the canoe was of such importance to the Kalinago."
+          },
+          {
+            "id": "q1-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Examine THREE examples from the Maya which would challenge the European’s view that the early inhabitants had “no religion”."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "number": 2,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Like other European explorers of his time from the Iberian Peninsula, Christopher Columbus was motivated to explore and claim colonies in the “New World” in the name of the monarch.",
+        "parts": [
+          {
+            "id": "q2-1",
+            "label": "(a) (i)",
+            "marks": 2,
+            "prompt": "Name the countries which make up the Iberian Peninsula."
+          },
+          {
+            "id": "q2-2",
+            "label": "(a) (ii)",
+            "marks": 2,
+            "prompt": "Name the monarchs in whose name Columbus claimed lands in the Americas."
+          },
+          {
+            "id": "q2-3",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain how THREE technological innovations or developments made Columbus’ voyages possible."
+          },
+          {
+            "id": "q2-4",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Examine THREE reasons, other than to claim colonies for the monarch, why Columbus made his voyages to the “New World”."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "number": 3,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          4
+        ],
+        "prompt": "“One day, when all our people were gone out to their works as usual and only I and my dear sister were left to mind the house, two men and a woman got over our walls, and in a moment seized us both, and without giving us time to cry out or make resistance they stopped our mouths and ran off with us into the nearest wood.\n\n… I continued to travel, sometimes by land, sometimes by water, through different countries and various nations, till at the end of six or seven months after I had been kidnapped I arrived at the sea coast.\n\n… The first object which saluted my eyes when I arrived on the coast was the sea, and a slave ship … waiting for its cargo.”\n\nAdapted from Olaudah Equiano, Equiano’s Travels: The Interesting Narrative of the Life of Olaudah Equiano or Gustavus Vassa the African, Heinemann, 1996, pp. 13–14 and 21–22.",
+        "parts": [
+          {
+            "id": "q3-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "(i) Name TWO slave-trading forts on the Gold Coast in West Africa.\n(ii) Name TWO slave-trading ports in Europe — one in Britain and one in France."
+          },
+          {
+            "id": "q3-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Describe the part played by EACH of the following in the transatlantic trade in enslaved Africans:\n\n(i) Asiento\n(ii) Coffle\n(iii) Loose packing"
+          },
+          {
+            "id": "q3-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Examine THREE ways in which the transatlantic trade in enslaved Africans impacted the West African economy."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "number": 4,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          5
+        ],
+        "prompt": "“Magnum est saccharum et prevalebit! Great is sugar, and it will prevail! The colonies, wrote Howard Walpole, were ‘the source of all our riches, and preserve the balance of trade in our favour, for I don’t know where we have it but by the means of our colonies.”\n\nEric Williams, From Columbus to Castro: The History of the Caribbean. First Vintage Books, 1984, p. 153.",
+        "parts": [
+          {
+            "id": "q4-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "List FOUR factors that accounted for the ‘greatness’ of British Caribbean sugar."
+          },
+          {
+            "id": "q4-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain the significance of EACH of the following factors to the marketing of eighteenth-century British Caribbean sugar:\n\n(i) Mercantile system\n(ii) Industrialization in Britain\n(iii) Brokers/commissioned agents"
+          },
+          {
+            "id": "q4-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss THREE challenges to British Caribbean sugar trade which resulted from war and revolution prior to 1834."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "number": 5,
+        "group": 1,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          6
+        ],
+        "prompt": "“Some time in the year 1801, a negro slave … was … accused of sorcery … etc. This slave was Pierre François, … Without hearing any defence for the prisoner, he … was ordered to fall down on his knees, and adjudged to be burnt alive! A little after 3 p.m. poor Pierre was conducted by a file of soldiers to the gallows, where they chained him to a stake, and covered his body with a shirt loaded with brimstone. Faggots being placed around the stake. They were set on fire by the executioner.”\n\nShirley C. Gordon, Caribbean Generations. Longman Group Ltd., 1983, p. 84.",
+        "parts": [
+          {
+            "id": "q5-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "List FOUR practices of the enslaved people, other than sorcery, of which Caribbean planters were afraid."
+          },
+          {
+            "id": "q5-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Describe THREE ways in which Caribbean slave societies used manumission for control."
+          },
+          {
+            "id": "q5-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss THREE ways in which Caribbean slave societies tried to discourage revolts by the enslaved men and women."
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "number": 6,
+        "group": 1,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Study the map of the Caribbean below, then answer the questions which follow.",
+        "figure": {
+          "src": "caribbean-history/figures/ch-2019-p2-q6-map.jpg",
+          "alt": "Unlabelled outline map of the Caribbean islands and the neighbouring mainland.",
+          "wide": true,
+          "markers": [
+            "A",
+            "B"
+          ]
+        },
+        "parts": [
+          {
+            "id": "q6-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "(i) Write the letter A on the map, to identify the territory where the Bussa Rebellion of 1816 occurred.\n(ii) Name this territory.\n(iii) Write the letter B on the map, to identify the territory where the 1831 rebellion occurred.\n(iv) Name this territory."
+          },
+          {
+            "id": "q6-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain THREE causes of the Christmas Rebellion led by Samuel Sharpe in 1831."
+          },
+          {
+            "id": "q6-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Examine THREE consequences of the Christmas Rebellion led by Samuel Sharpe in 1831."
+          }
+        ]
+      },
+      {
+        "id": "q7",
+        "number": 7,
+        "group": 2,
+        "title": "Metropolitan Movements Towards Emancipation",
+        "sourcePages": [
+          12
+        ],
+        "prompt": "Imagine you are a journalist and observer in the Caribbean in August 1833. Using FIVE distinct points, write a newspaper article making a case for the significance of revolts in bringing about an end to the system of slavery.",
+        "parts": [
+          {
+            "id": "q7-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q8",
+        "number": 8,
+        "group": 2,
+        "title": "Metropolitan Movements Towards Emancipation",
+        "sourcePages": [
+          12
+        ],
+        "prompt": "Imagine you are an investigator in a British Caribbean territory in 1837. Write a report to a British anti-slavery society in which you discuss the impact of FIVE problems regarding the functioning of the Apprenticeship System.",
+        "parts": [
+          {
+            "id": "q8-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q9",
+        "number": 9,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          12
+        ],
+        "prompt": "Pretend you are a sugar planter in a British Caribbean territory in 1854. Write a letter to the editor of a local newspaper in which you examine FIVE main threats facing the sugar industry since 1838.",
+        "parts": [
+          {
+            "id": "q9-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q10",
+        "number": 10,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          12
+        ],
+        "prompt": "Pretend you are a governor of either British Guiana or Trinidad in 1876. Write a report to the Colonial Office in which you examine FIVE ways migrants from both China and Madeira impacted the economy and society of the selected Caribbean territory.",
+        "parts": [
+          {
+            "id": "q10-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q11",
+        "number": 11,
+        "group": 2,
+        "title": "Caribbean Economy, 1875–1985",
+        "sourcePages": [
+          13
+        ],
+        "prompt": "You are the governor of an island in the British-colonized Caribbean during the late nineteenth century and early twentieth century. Write a letter to the Colonial Secretary in which you assess the measures taken to address the crisis in the sugar industry in those British-colonized Caribbean islands. Your letter must assess THREE measures related to science and technology and TWO measures related to imperial policy.",
+        "parts": [
+          {
+            "id": "q11-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q12",
+        "number": 12,
+        "group": 2,
+        "title": "Caribbean Economy, 1875–1985",
+        "sourcePages": [
+          13
+        ],
+        "prompt": "As the head of the Caribbean Farmers’ Association in 1935, write a letter to the members of the association in the English-speaking territories who may be thinking of switching from sugar production to other crops. In your letter, explain to these members how any FIVE factors have encouraged the growth and survival of alternate agricultural enterprises up to 1935.",
+        "parts": [
+          {
+            "id": "q12-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q13",
+        "number": 13,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          18
+        ],
+        "prompt": "Examine FIVE factors responsible for the involvement of the USA in Cuba in 1898 and in Panama in 1903. Your examination should address THREE factors for Cuba and TWO factors for Panama.",
+        "parts": [
+          {
+            "id": "q13-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q14",
+        "number": 14,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          18
+        ],
+        "prompt": "Discuss FIVE ways in which Castro’s revolution in Cuba impacted the rest of the Caribbean between 1959 and 1985.",
+        "parts": [
+          {
+            "id": "q14-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q15",
+        "number": 15,
+        "group": 3,
+        "title": "Caribbean Political Development up to 1985",
+        "sourcePages": [
+          18
+        ],
+        "prompt": "Examine FIVE ways in which the Moyne Commission’s recommendations provided an adequate response to the concerns expressed through popular protests in the Caribbean between 1935 and 1958.",
+        "parts": [
+          {
+            "id": "q15-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q16",
+        "number": 16,
+        "group": 3,
+        "title": "Caribbean Political Development up to 1985",
+        "sourcePages": [
+          18
+        ],
+        "prompt": "Examine FIVE reasons why the British West Indies Federation failed in 1962.",
+        "parts": [
+          {
+            "id": "q16-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q17",
+        "number": 17,
+        "group": 3,
+        "title": "Caribbean Society, 1900–1985",
+        "sourcePages": [
+          19
+        ],
+        "prompt": "Discuss FIVE efforts made by women’s organizations to improve the social conditions of women across the Caribbean between 1900 and 1985.",
+        "parts": [
+          {
+            "id": "q17-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q18",
+        "number": 18,
+        "group": 3,
+        "title": "Caribbean Society, 1900–1985",
+        "sourcePages": [
+          19
+        ],
+        "prompt": "Examine FIVE reasons for the development of Hinduism in the Caribbean from 1900 to 1985.",
+        "parts": [
+          {
+            "id": "q18-response",
+            "marks": 25
+          }
+        ]
+      }
+    ],
+    "sha256": "9e17eb58aa3fb6dab5396a7851dc38f7151f00206fd6b8955270015a2193ab37"
+  },
+  {
+    "id": "ch-p2-2021-mj",
+    "title": "May/June 2021 · Paper 2",
+    "paper": 2,
+    "year": 2021,
+    "duration": 130,
+    "totalMarks": 75,
+    "filename": "CSEC_Caribbean_History_Paper_2_-_May_June_2021.pdf",
+    "questions": [
+      {
+        "id": "q1",
+        "number": 1,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          2
+        ],
+        "parts": [
+          {
+            "id": "q1-1",
+            "label": "(a) (i)",
+            "marks": 1,
+            "prompt": "State ONE name for the meeting place of Kalinago men."
+          },
+          {
+            "id": "q1-2",
+            "label": "(a) (ii)",
+            "marks": 3,
+            "prompt": "List THREE activities which took place at the meeting places of Kalinago men."
+          },
+          {
+            "id": "q1-3",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain the role of THREE leaders in the Mayan society."
+          },
+          {
+            "id": "q1-4",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Examine TWO differences and ONE similarity between Kalinago and Taino societies."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "number": 2,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          2
+        ],
+        "parts": [
+          {
+            "id": "q2-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "“The indigenous people had a lasting impact on the language of the Europeans. Today many of these indigenous words remain as part of the English Language.”\n\nList FOUR English words which have origins that can be traced to the indigenous peoples of the Caribbean."
+          },
+          {
+            "id": "q2-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain THREE reasons why the Kalinago were able to resist European domination longer than the Taino."
+          },
+          {
+            "id": "q2-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss THREE ways, other than languages, in which the indigenous peoples impacted the Europeans."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "number": 3,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          3
+        ],
+        "prompt": "“Sugar led to a change in the population in the seventeenth century Caribbean. The African population grew rapidly and this growth was accompanied by untold suffering.”",
+        "parts": [
+          {
+            "id": "q3-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "List FOUR modern West African nations from which enslaved persons were shipped to the New World in the seventeenth century."
+          },
+          {
+            "id": "q3-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Describe the THREE systems of labour that existed in the seventeenth-century Caribbean."
+          },
+          {
+            "id": "q3-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Explain FOUR social consequences of the coming of the Africans to the Caribbean due to the sugar revolution."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "number": 4,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          3
+        ],
+        "parts": [
+          {
+            "id": "q4-1",
+            "label": "(a) (i)",
+            "marks": 2,
+            "prompt": "Define the term ‘Asiento’."
+          },
+          {
+            "id": "q4-2",
+            "label": "(a) (ii)",
+            "marks": 2,
+            "prompt": "Outline the reason for the establishment of the Asiento System used in the Caribbean during the Spanish occupation."
+          },
+          {
+            "id": "q4-3",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain THREE horrors which enslaved Africans would have encountered due to their capture in Africa and during the journey through the Middle Passage."
+          },
+          {
+            "id": "q4-4",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Explain the MAIN activity that took place at EACH of the THREE points of the triangular trade."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "number": 5,
+        "group": 1,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          4
+        ],
+        "prompt": "“The Haitian Revolution refers to a series of conflicts starting in 1791 among Haitian enslaved people, colonists, the armies of the British and French colonizers, and ending with Haitian independence in 1804.”",
+        "parts": [
+          {
+            "id": "q5-1",
+            "label": "(a) (i)",
+            "marks": 2,
+            "prompt": "State the names of the TWO groups of white Haitians in St Domingue at the time of the Haitian Revolution."
+          },
+          {
+            "id": "q5-2",
+            "label": "(a) (ii)",
+            "marks": 2,
+            "prompt": "State the names of any TWO leaders of the Haitian Revolution between 1791 and 1804."
+          },
+          {
+            "id": "q5-3",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain THREE causes of the Haitian Revolution."
+          },
+          {
+            "id": "q5-4",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss THREE key developments that took place during the course of the Haitian Revolution."
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "number": 6,
+        "group": 1,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          4
+        ],
+        "parts": [
+          {
+            "id": "q6-1",
+            "label": "(a) (i)",
+            "marks": 3,
+            "prompt": "Identify THREE persons who were associated with the Demerara Revolt of 1823."
+          },
+          {
+            "id": "q6-2",
+            "label": "(a) (ii)",
+            "marks": 1,
+            "prompt": "State the name of the plantation on which the major planning for the revolt took place."
+          },
+          {
+            "id": "q6-3",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain THREE effects of the Demerara Revolt on the planter class."
+          },
+          {
+            "id": "q6-4",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss THREE reasons for the failure of the revolt to secure major gains for the enslaved population."
+          }
+        ]
+      },
+      {
+        "id": "q7",
+        "number": 7,
+        "group": 2,
+        "title": "Metropolitan Movements Towards Emancipation",
+        "sourcePages": [
+          5
+        ],
+        "prompt": "You are a member of the legislature in a British colony in 1833 addressing a group of planters about the favourable provision for them in the Emancipation Act. In your address, discuss FIVE provisions of the act you think will benefit these planters after emancipation and during the period of apprenticeship.",
+        "parts": [
+          {
+            "id": "q7-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q8",
+        "number": 8,
+        "group": 2,
+        "title": "Metropolitan Movements Towards Emancipation",
+        "sourcePages": [
+          5
+        ],
+        "prompt": "You are a newly freed person on a British West Indies plantation who was an apprentice between 1834 and 1838. You have been asked to speak about your experience regarding the apprentice system to a committee of missionaries concerned about the welfare of ex-enslaved persons. In your speech, examine FIVE reasons why the apprenticeship system was UNSUCCESSFUL and resulted in an early end in 1838.",
+        "parts": [
+          {
+            "id": "q8-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q9",
+        "number": 9,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          5
+        ],
+        "prompt": "You are a Chinese national who travelled to the British West Indies in 1840 to work as an indentured labourer. Write an article for a newspaper in China in which you explain\n\n• TWO reasons for choosing to work in the British West Indies\n• THREE experiences which made you want to rethink your decision.",
+        "parts": [
+          {
+            "id": "q9-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q10",
+        "number": 10,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          5
+        ],
+        "prompt": "You are a reporter for a London-based newspaper that supported freedom for enslaved people. Write an article for your newspaper in which you examine FIVE economic and TWO social contributions of the peasantry to the British Caribbean in the late nineteenth century.",
+        "parts": [
+          {
+            "id": "q10-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q11",
+        "number": 11,
+        "group": 2,
+        "title": "Caribbean Economy, 1875–1985",
+        "sourcePages": [
+          6
+        ],
+        "prompt": "It is 1900 and you are a journalist for a newspaper in London. You spent six months travelling throughout the British Caribbean trying to understand the factors which led to the decline of the sugar industry in the region. Write an article for your newspaper in which you examine FIVE factors responsible for the decline of the sugar industry in the countries of the region in the late nineteenth century.",
+        "parts": [
+          {
+            "id": "q11-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q12",
+        "number": 12,
+        "group": 2,
+        "title": "Caribbean Economy, 1875–1985",
+        "sourcePages": [
+          6
+        ],
+        "prompt": "You are a politician in the 1960s–1970s who has been asked to make a presentation to your fellow parliamentarians on the topic “Industrialization: Is it good? Is it bad?” In your presentation, discuss FIVE points that can be used to defend the existence of the bauxite or petroleum industry in a named Caribbean country.",
+        "parts": [
+          {
+            "id": "q12-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q13",
+        "number": 13,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Write an essay examining TWO factors which led to the United States presence in Puerto Rico in 1898 and THREE consequences of such presence.",
+        "parts": [
+          {
+            "id": "q13-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q14",
+        "number": 14,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Write an essay examining FIVE consequences of the United States 1983 invasion of Grenada in Operation Urgent Fury.",
+        "parts": [
+          {
+            "id": "q14-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q15",
+        "number": 15,
+        "group": 3,
+        "title": "Caribbean Political Development up to 1985",
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Write an essay examining FIVE ways in which the West Indies Federation was intended to be beneficial for the colonies of the British Caribbean.",
+        "parts": [
+          {
+            "id": "q15-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q16",
+        "number": 16,
+        "group": 3,
+        "title": "Caribbean Political Development up to 1985",
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Write an essay in which you examine EACH of the following:\n\n• FOUR reasons why the countries of the Netherlands Antilles chose to remain under the Dutch\n• ONE feature of the constitutional arrangement of the Netherlands Antilles.",
+        "parts": [
+          {
+            "id": "q16-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q17",
+        "number": 17,
+        "group": 3,
+        "title": "Caribbean Society, 1900–1985",
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Write an essay in which you examine FIVE ways in which the United Negro Improvement Association (UNIA) positively impacted the lives of black persons in the Caribbean in the twentieth century.",
+        "parts": [
+          {
+            "id": "q17-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q18",
+        "number": 18,
+        "group": 3,
+        "title": "Caribbean Society, 1900–1985",
+        "sourcePages": [
+          8
+        ],
+        "prompt": "You are a reporter in your country in the 1980s, writing an article on the state of Caribbean social life. In your article, examine FIVE cultural and/or recreational practices that bring races/ethnic groups together in the British Caribbean.",
+        "parts": [
+          {
+            "id": "q18-response",
+            "marks": 25
+          }
+        ]
+      }
+    ],
+    "sha256": "2a5fb9ef088ea7ddeaa2781588be44e515e655266de7f0a3542ad7bcc1663184"
+  },
+  {
+    "id": "ch-p2-2022-mj",
+    "title": "May/June 2022 · Paper 2",
+    "paper": 2,
+    "year": 2022,
+    "duration": 130,
+    "totalMarks": 75,
+    "filename": "CSEC_Caribbean_History_Paper_2_-_May_June_2022.pdf",
+    "questions": [
+      {
+        "id": "q1",
+        "number": 1,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          2,
+          3
+        ],
+        "prompt": "The following map shows the areas of Guyana occupied by various groups in the early nineteenth century. Study it carefully, then answer (a) (i) and (a) (ii) which follow.",
+        "figure": {
+          "alt": "Map of Guyana and neighbouring territories showing named Indigenous groups, rivers and borders, with a key and distance scale.",
+          "caption": "Adapted from M. Menezes, The Amerindians and the Europeans, Red Thread Woman Press, 1993, p. 26.",
+          "wide": true,
+          "src": "caribbean-history/figures/ch-2022-p2-q1-map.jpg"
+        },
+        "parts": [
+          {
+            "id": "q1-1",
+            "label": "(a) (i)",
+            "marks": 2,
+            "prompt": "State TWO geographic features of the location of Taino (Arawak) and Kalinago (Carib) settlements."
+          },
+          {
+            "id": "q1-2",
+            "label": "(a) (ii)",
+            "marks": 2,
+            "prompt": "Outline how ONE feature of the location of Taino and Kalinago settlements may have favoured Taino and Kalinago migration to the Caribbean islands by the fifteenth century."
+          },
+          {
+            "id": "q1-3",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain THREE ways in which the Maya overcame the challenge of settling in areas where there was little or no surface water for farming or domestic purposes."
+          },
+          {
+            "id": "q1-4",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Examine THREE distinctive architectural features of Mayan settlements other than those associated with overcoming the challenge of a lack of surface water."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "number": 2,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          4
+        ],
+        "prompt": "The picture below shows Africans mining gold in the Spanish American empire. The Spaniards are overseeing the activities. Study the picture, then answer the questions which follow.",
+        "figure": {
+          "alt": "Engraving of Africans working in mines under Spanish supervision.",
+          "caption": "Theodor de Bry, America, 1595. British Library, via Wikimedia Commons.",
+          "src": "caribbean-history/figures/ch-2022-p2-q2-mining.jpg"
+        },
+        "parts": [
+          {
+            "id": "q2-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "Describe TWO distinct behaviours displayed by the Spaniards during the period depicted in the picture."
+          },
+          {
+            "id": "q2-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain THREE reasons for the establishment of the encomienda system during the period depicted in the picture."
+          },
+          {
+            "id": "q2-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Examine THREE reasons for the selection of Africans as labourers on the mines operated by the Spaniards."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "number": 3,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          5
+        ],
+        "prompt": "The historical record tell us that during the years 1627 to 1640 the settlers in Barbados and elsewhere in the British Caribbean focused mainly on planting tobacco. After this period, they began the search for a viable alternative to this crop.",
+        "parts": [
+          {
+            "id": "q3-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "List FOUR crops, other than sugar, that were considered as possible viable export alternatives to tobacco in the seventeenth century."
+          },
+          {
+            "id": "q3-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain THREE reasons why the British Caribbean economies switched from cultivating tobacco in the seventeenth century."
+          },
+          {
+            "id": "q3-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss THREE of the main reasons why sugar was the most viable alternative to tobacco in some British Caribbean countries."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "number": 4,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          5
+        ],
+        "prompt": "“Black women were outnumbered by black men in the Atlantic slave trade, but their presence in the trade and their socioeconomic impact on the plantations are very significant factors in the study of Caribbean slavery.”\n\nBernard Moitt, Women and Slavery in the French Antilles, 1635–1848. Indiana University Press, 2001, p. 19.",
+        "parts": [
+          {
+            "id": "q4-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "List FOUR domestic occupations which enslaved women performed on the plantations."
+          },
+          {
+            "id": "q4-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain the importance of EACH of the following occupations to the functioning of the sugar plantation:\n\n(i) Jobber\n(ii) Cooper\n(iii) Boiler"
+          },
+          {
+            "id": "q4-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Examine the contribution of enslaved women in THREE non-domestic occupations on sugar plantations."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "number": 5,
+        "group": 1,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          6
+        ],
+        "prompt": "“The Negro’s revolutionary history is rich, inspiring, and unknown … The docile Negro is a myth … The only place where Negroes did not revolt is in the pages of capitalist historians … It is not strange that the Negroes revolted. It would have been strange if they had not.”\n\nC.L.R. James, “The Revolution and the Negro”. In Tony Martin, Caribbean History: From Pre-Colonial Origins to the Present. Pearson, 2012, p. 140.",
+        "parts": [
+          {
+            "id": "q5-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "Identify TWO enslaved women who were leaders of revolts in the Caribbean and state the territory in which EACH lived."
+          },
+          {
+            "id": "q5-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain the role EACH of the following activities played in the history of resistance by the enslaved in the Caribbean:\n\n(i) ‘Pulling foot’/running away\n(ii) Sabotage\n(iii) Festivals and celebrations"
+          },
+          {
+            "id": "q5-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss THREE reasons why planters regarded women as being the fiercest, most troublesome and ungovernable of all enslaved persons."
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "number": 6,
+        "group": 1,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Read the following extract, then answer the questions which follow.\n\n“Let us ensure … that a missionary spirit does not destroy our work; let us allow our neighbors to breathe in peace; may they live quietly under the laws that they have made for themselves, and let us not, as revolutionary firebrands, declare ourselves the lawgivers of the Caribbean, nor let our glory consist in troubling the peace of the neighboring islands.”\n\n“The Haitian Declaration of Independence, January 1, 1804: The Commander in Chief to the People of Haiti.” In Laurent Dubois and D. Garrigus, John Slave Revolution in the Caribbean, 1789–1904: A Brief History with Documents. Palgrave Macmillan, 2006, p. 190.",
+        "parts": [
+          {
+            "id": "q6-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "(i) State the name of the Commander in Chief to the People of Haiti who is speaking in the extract above.\n(ii) State the name of ONE revolutionary leader who preceded the Commander in Chief identified in (a) (i).\n(iii) State the name of TWO revolutionary leaders who succeeded the same commander by 1848."
+          },
+          {
+            "id": "q6-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain ONE economic, ONE social and ONE political consequence of the Haitian Revolution on Haiti by 1848."
+          },
+          {
+            "id": "q6-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss ONE effect of the Haitian Revolution on EACH of the following territories:\n\n(i) The French Antilles\n(ii) The British Caribbean\n(iii) Cuba"
+          }
+        ]
+      },
+      {
+        "id": "q7",
+        "number": 7,
+        "group": 2,
+        "title": "Metropolitan Movements Towards Emancipation",
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Imagine you are a journalist stationed in the Caribbean in 1830. Write an article for a journal in Europe in which you examine the effectiveness of FIVE key measures passed since 1808, aimed at ameliorating conditions of life and work for the enslaved.",
+        "parts": [
+          {
+            "id": "q7-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q8",
+        "number": 8,
+        "group": 2,
+        "title": "Metropolitan Movements Towards Emancipation",
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Imagine you are a member of an abolitionist lobby in December 1833. Write a speech to be delivered at a public anti-slavery forum in which you evaluate FIVE key provisions of the recently passed Act for the Abolition of Slavery throughout the British colonies.",
+        "parts": [
+          {
+            "id": "q8-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q9",
+        "number": 9,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Imagine you are a non-conformist missionary in the British Caribbean in 1860. Write a letter to the parent missionary society in London examining FIVE ways in which the free village movement positively impacted the economy and society.",
+        "parts": [
+          {
+            "id": "q9-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q10",
+        "number": 10,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Imagine you are a colonial office agent in Jamaica in 1865. Write a report to the colonial secretary explaining FIVE reasons why you are advocating an immediate change to the Crown Colony System from the Old Representative System of government.",
+        "parts": [
+          {
+            "id": "q10-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q11",
+        "number": 11,
+        "group": 2,
+        "title": "Caribbean Economy, 1875–1985",
+        "sourcePages": [
+          9
+        ],
+        "prompt": "Imagine you are a former sugar grower in the British-colonized Caribbean appearing before the 1897 Royal Commission on the status of sugar in the region. Explain to the commission FIVE environmental factors and/or trade regulations that you think contributed to the crisis in the sugar industry in the late nineteenth century. Include at least ONE environmental factor and ONE trade regulation factor.",
+        "parts": [
+          {
+            "id": "q11-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q12",
+        "number": 12,
+        "group": 2,
+        "title": "Caribbean Economy, 1875–1985",
+        "sourcePages": [
+          9
+        ],
+        "prompt": "Imagine you are a film-maker in the Cuban film industry doing research for a documentary on the Cuban sugar industry. As part of your research, examine any FIVE factors that contributed to the growth of the Cuban sugar industry in the nineteenth century.",
+        "parts": [
+          {
+            "id": "q12-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q13",
+        "number": 13,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          10
+        ],
+        "prompt": "Examine FIVE reasons why the United States invaded Grenada in 1983.",
+        "parts": [
+          {
+            "id": "q13-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q14",
+        "number": 14,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          10
+        ],
+        "prompt": "With reference to economic, political and social reforms, examine FIVE policies of Castro’s revolution in Cuba up to 1985. Include at least ONE economic, ONE political and ONE social reform policy.",
+        "parts": [
+          {
+            "id": "q14-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q15",
+        "number": 15,
+        "group": 3,
+        "title": "Caribbean Political Development up to 1985",
+        "sourcePages": [
+          10
+        ],
+        "prompt": "Examine FIVE reforms instituted in Cuba by the revolutionary government of Fidel Castro. Include at least ONE social, ONE political and ONE economic reform.",
+        "parts": [
+          {
+            "id": "q15-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q16",
+        "number": 16,
+        "group": 3,
+        "title": "Caribbean Political Development up to 1985",
+        "sourcePages": [
+          10
+        ],
+        "prompt": "Examine FIVE ways in which Puerto Rico pursued constitutional alternatives to independence up to 1985.",
+        "parts": [
+          {
+            "id": "q16-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q17",
+        "number": 17,
+        "group": 3,
+        "title": "Caribbean Society, 1900–1985",
+        "sourcePages": [
+          11
+        ],
+        "prompt": "Examine FIVE ways in which trade unions across the Caribbean tried to improve social and economic conditions in the British-colonized Caribbean up to 1985.",
+        "parts": [
+          {
+            "id": "q17-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q18",
+        "number": 18,
+        "group": 3,
+        "title": "Caribbean Society, 1900–1985",
+        "sourcePages": [
+          11
+        ],
+        "prompt": "Examine the part played by FIVE types of celebrations in Caribbean social life during the twentieth century up to 1985.",
+        "parts": [
+          {
+            "id": "q18-response",
+            "marks": 25
+          }
+        ]
+      }
+    ],
+    "sha256": "3be3047d5b573c73cb065a1da70c319413f7a6221adc85feb352facaef9ed4ad"
+  },
+  {
+    "id": "ch-p2-2023-mj",
+    "title": "May/June 2023 · Paper 2",
+    "paper": 2,
+    "year": 2023,
+    "duration": 130,
+    "totalMarks": 75,
+    "filename": "CSEC_Caribbean_History_Paper_2_-_May_June_2023.pdf",
+    "questions": [
+      {
+        "id": "q1",
+        "number": 1,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          2,
+          3
+        ],
+        "prompt": "Study the following map and answer the questions that follow.",
+        "figure": {
+          "src": "caribbean-history/figures/ch-2023-p2-q1-map.jpg",
+          "alt": "Labelled map of the Caribbean archipelago and surrounding mainland, with the Greater and Lesser Antilles and a distance scale.",
+          "caption": "Map of the greater Caribbean Archipelago and surrounding continental mainland, as credited in the source paper.",
+          "wide": true
+        },
+        "parts": [
+          {
+            "id": "q1-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "The map illustrates the Caribbean region. List FOUR islands that were occupied by the Taino."
+          },
+          {
+            "id": "q1-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain how THREE factors caused migration from Central and South America to the Caribbean."
+          },
+          {
+            "id": "q1-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss THREE cultural characteristics of the Taino people."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "number": 2,
+        "group": 1,
+        "title": "The Indigenous Peoples and the Europeans",
+        "sourcePages": [
+          3
+        ],
+        "parts": [
+          {
+            "id": "q2-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "List FOUR developments in shipping technology that aided Columbus in his voyage to the New World."
+          },
+          {
+            "id": "q2-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain THREE factors that motivated Christopher Columbus’ voyages to the Caribbean in the 15th century."
+          },
+          {
+            "id": "q2-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss THREE effects on the region of Columbus’ voyages to the Caribbean."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "number": 3,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          4
+        ],
+        "parts": [
+          {
+            "id": "q3-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "Name FOUR crops other than sugar and tobacco, which were grown in the 17th century Caribbean."
+          },
+          {
+            "id": "q3-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain THREE reasons why tobacco was a suitable crop for small European farmers in the 17th century Caribbean."
+          },
+          {
+            "id": "q3-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss TWO advantages and ONE disadvantage which farmers had to consider in changing from tobacco to sugar."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "number": 4,
+        "group": 1,
+        "title": "Caribbean Economy and Slavery",
+        "sourcePages": [
+          4
+        ],
+        "parts": [
+          {
+            "id": "q4-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "Identify FOUR buildings found on a typical sugar plantation which were utilised in the manufacture of sugar."
+          },
+          {
+            "id": "q4-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Outline THREE tasks which were essential in the manufacturing of sugar."
+          },
+          {
+            "id": "q4-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Explain the role performed by THREE types of individuals residing in Europe who were involved in the West Indian sugar industry."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "number": 5,
+        "group": 1,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          5
+        ],
+        "parts": [
+          {
+            "id": "q5-1",
+            "label": "(a)",
+            "marks": 4,
+            "prompt": "List FOUR types of physical punishment used by planters to control enslaved people in the Caribbean."
+          },
+          {
+            "id": "q5-2",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain how THREE psychological forms of control were used on the enslaved population of the Caribbean."
+          },
+          {
+            "id": "q5-3",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss TWO economic and TWO legislative methods used to keep enslaved persons in bondage to their owners."
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "number": 6,
+        "group": 1,
+        "title": "Resistance and Revolt",
+        "sourcePages": [
+          5
+        ],
+        "prompt": "“The record of resistance tells us that there was hardly a generation of enslaved persons in the region that did not confront their enslavers with arms in pursuit of their freedom.”\n\nHilary Beckles and Verene Shepherd. Liberties Lost: Caribbean Indigenous Societies and Slave Systems. Cambridge University Press, 2004, p. 169.",
+        "parts": [
+          {
+            "id": "q6-1",
+            "label": "(a) (i)",
+            "marks": 2,
+            "prompt": "List TWO types of resistance commonly used by enslaved women in the Caribbean."
+          },
+          {
+            "id": "q6-2",
+            "label": "(a) (ii)",
+            "marks": 2,
+            "prompt": "List TWO types of resistance commonly used by enslaved men in the Caribbean."
+          },
+          {
+            "id": "q6-3",
+            "label": "(b)",
+            "marks": 9,
+            "prompt": "Explain THREE reasons for the outbreak of the enslaved rebellion in Barbados in 1816."
+          },
+          {
+            "id": "q6-4",
+            "label": "(c)",
+            "marks": 12,
+            "prompt": "Discuss THREE reasons for the development of maroon societies in Jamaica, Suriname or British Guiana."
+          }
+        ]
+      },
+      {
+        "id": "q7",
+        "number": 7,
+        "group": 2,
+        "title": "Metropolitan Movements Towards Emancipation",
+        "sourcePages": [
+          10
+        ],
+        "prompt": "Imagine that you are a member of the Methodist clergy and have been invited to the first meeting of the Society of Friends to establish the anti-slavery movement in Great Britain. On your return home, prepare a speech discussing FIVE key points explaining why enslavement should end in Great Britain and its colonies.",
+        "parts": [
+          {
+            "id": "q7-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q8",
+        "number": 8,
+        "group": 2,
+        "title": "Metropolitan Movements Towards Emancipation",
+        "sourcePages": [
+          10
+        ],
+        "prompt": "You are a journalist writing on the anti-slavery movements in Britain and France. Discuss the ideas and actions of the anti-slavery organizations in Britain and France. Your response MUST include TWO similarities and THREE differences.",
+        "parts": [
+          {
+            "id": "q8-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q9",
+        "number": 9,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          10
+        ],
+        "prompt": "You are a newly freed person living in the English-Speaking Caribbean being interviewed by a reporter for a newspaper in England. Discuss with the reporter TWO social and THREE economic impacts that free villages have had on you and the territory in which you live.",
+        "parts": [
+          {
+            "id": "q9-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q10",
+        "number": 10,
+        "group": 2,
+        "title": "Adjustments to Emancipation, 1838–1876",
+        "sourcePages": [
+          10
+        ],
+        "prompt": "Imagine that you are a member of the Commission of Enquiry sent to the Caribbean to report on the systems of government in the territories. In your report, discuss TWO reasons why Crown Colony government was adopted in some British Caribbean colonies and THREE results of the change in government.",
+        "parts": [
+          {
+            "id": "q10-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q11",
+        "number": 11,
+        "group": 2,
+        "title": "Caribbean Economy, 1875–1985",
+        "sourcePages": [
+          11
+        ],
+        "prompt": "You are a journalist for the Spanish Newspaper El Daily Mail and you have arrived in Cuba to assess the state of the sugar industry. Write an article for your readers examining FIVE factors that facilitated the growth of the Cuban sugar industry in the 19th century.",
+        "parts": [
+          {
+            "id": "q11-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q12",
+        "number": 12,
+        "group": 2,
+        "title": "Caribbean Economy, 1875–1985",
+        "sourcePages": [
+          11
+        ],
+        "prompt": "As a farmer, you have made the switch from sugar to new agricultural crops. In discussion with farmers at the local co-operative, examine THREE factors that encouraged you to make that change and TWO factors that allowed for the successful production of the crops.",
+        "parts": [
+          {
+            "id": "q12-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q13",
+        "number": 13,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          16
+        ],
+        "prompt": "“Revolution is a dictatorship of the exploited against the exploiters.”\n\nFidel Castro Quotes: https://wellquo.com/fidel-castro-quotes/\n\nExamine THREE ways in which the Cuban people were exploited before the revolution, and TWO features of Fidel Castro’s dictatorship in Cuba.",
+        "parts": [
+          {
+            "id": "q13-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q14",
+        "number": 14,
+        "group": 3,
+        "title": "The United States in the Caribbean, 1776–1985",
+        "sourcePages": [
+          16
+        ],
+        "prompt": "Examine FIVE ways in which the English-Speaking Caribbean was impacted by the United States’ influence and involvement between 1939 and 1985.",
+        "parts": [
+          {
+            "id": "q14-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q15",
+        "number": 15,
+        "group": 3,
+        "title": "Caribbean Political Development up to 1985",
+        "sourcePages": [
+          17
+        ],
+        "prompt": "“For a century after emancipation the economic foundations of slavery had remained basically untouched … Within a few years in the 1930s, the working people in all these colonies … challenged these systems of domination.”\n\nNigel Boland, On the March: Labour Rebellions in the British Caribbean 1934–39. London: Ian Randle Publishers, 1995, p. 3.\n\nExamine FIVE ways in which popular protests by persons in the British Caribbean impacted political developments in those territories between 1935 and 1958.",
+        "parts": [
+          {
+            "id": "q15-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q16",
+        "number": 16,
+        "group": 3,
+        "title": "Caribbean Political Development up to 1985",
+        "sourcePages": [
+          17
+        ],
+        "prompt": "Examine FIVE ways in which prominent women and men from the English-Speaking Caribbean contributed to social, economic and political integration in the region up to 1985. At least FIVE personalities should be named in your discussion.",
+        "parts": [
+          {
+            "id": "q16-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q17",
+        "number": 17,
+        "group": 3,
+        "title": "Caribbean Society, 1900–1985",
+        "sourcePages": [
+          17
+        ],
+        "prompt": "The Royal Commission, also called the Moyne Commission, which was created to investigate the labour disturbances in the then British West Indies between 1937 and 1938, visited many Caribbean countries and held public enquiries into the reasons for the disturbances.\n\nExamine FIVE recommendations of the Moyne Commission which were intended to reverse the previous century of neglect in the region.",
+        "parts": [
+          {
+            "id": "q17-response",
+            "marks": 25
+          }
+        ]
+      },
+      {
+        "id": "q18",
+        "number": 18,
+        "group": 3,
+        "title": "Caribbean Society, 1900–1985",
+        "sourcePages": [
+          17
+        ],
+        "prompt": "Examine THREE social and TWO political conditions that resulted in the labour disturbances of the late 1930s in the English-Speaking Caribbean.",
+        "parts": [
+          {
+            "id": "q18-response",
+            "marks": 25
+          }
+        ]
+      }
+    ],
+    "sha256": "d22a396defd60339243f527db00e81fd61fee09e9a95f5b1664872dceef2bcba"
+  },
+  {
     "id": "ch-p2-2024-mj",
     "title": "May/June 2024 · Paper 2",
     "paper": 2,

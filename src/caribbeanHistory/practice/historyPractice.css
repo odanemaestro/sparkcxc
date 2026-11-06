@@ -14,6 +14,21 @@
 .ch-figure-scroll { max-width: 100%; overflow: auto; overscroll-behavior-inline: contain; }
 .ch-figure-scroll img { min-width: 36rem; }
 .ch-exam-figure figcaption { margin-top: .5rem; color: var(--poa-soft-ink); }
+.ch-map-controls { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem; }
+.ch-map-controls p { flex-basis: 100%; margin: 0; }
+.ch-map-controls button[aria-pressed="true"] { outline: 2px solid currentColor; outline-offset: -4px; }
+.ch-map-image { position: relative; width: fit-content; min-width: 36rem; max-width: 100%; }
+.ch-map-target { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: crosshair; }
+.ch-map-marker {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  padding: .1rem .35rem;
+  border-radius: .25rem .25rem .25rem 0;
+  background: #132950;
+  color: #fff;
+  font-weight: 700;
+  pointer-events: none;
+}
 .ch-workspace .poa-library-tabs [aria-pressed="true"] { border-color: var(--poa-accent); background: var(--poa-accent-soft); color: var(--poa-ink); }
 .ch-workspace { max-width: 56rem; }
 .ch-workshop-fields { display: grid; gap: 1rem; margin: 1rem 0; }

@@ -25,12 +25,17 @@ export function historyScore(paper, answers) {
   return paper.questions.reduce((score, question) => score + Number(answers[question.id] === "ABCD"[question.answerIndex]), 0);
 }
 
+const markerKey = (question, marker) => `${question.id}-map-${marker}`;
+
 function readAttempt(data, fallback, paper) {
   if (!data || typeof data.id !== "string" || !["setup", "exam", "review"].includes(data.phase)) return fallback;
   const choices = Object.fromEntries(paper.questions.filter(q => data.choices?.[q.group] === q.id).map(q => [q.group, q.id]));
   const questions = historySelectedQuestions(paper, choices);
   if (data.phase !== "setup" && (!Number.isFinite(data.deadline) || (paper.paper === 2 && questions.length !== historyGroups(paper).length))) return fallback;
-  const answerIds = paper.paper === 1 ? questions.map(q => q.id) : questions.flatMap(q => q.parts.map(p => p.id));
+  const answerIds = paper.paper === 1 ? questions.map(q => q.id) : questions.flatMap(q => [
+    ...q.parts.map(p => p.id),
+    ...(q.figure?.markers || []).map(marker => markerKey(q, marker)),
+  ]);
   const answers = Object.fromEntries(answerIds.filter(id => typeof data.answers?.[id] === "string").map(id => [id, data.answers[id]]));
   const flags = Object.fromEntries(questions.filter(q => data.flags?.[q.id] === true).map(q => [q.id, true]));
   const index = Number.isInteger(data.index) && data.index >= 0 && data.index < questions.length ? data.index : 0;
@@ -41,12 +46,42 @@ function clock(seconds) {
   return [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60].map(value => String(value).padStart(2, "0")).join(":");
 }
 
-function Stimulus({ question }) {
+function MapFigure({ question, answers, onAnswer }) {
+  const [selected, setSelected] = useState(question.figure.markers[0]);
+  const markers = question.figure.markers;
+  const image = <img src={`${process.env.PUBLIC_URL || ""}/${question.figure.src}`} alt={question.figure.alt} />;
+  return <>
+    {onAnswer && <div className="ch-map-controls">
+      <p id="ch-map-instructions">Choose A or B, then tap or click the map. You can also describe each position in your written answer for part (a).</p>
+      {markers.map(marker => <button className="secondary" key={marker} type="button" aria-pressed={marker === selected}
+        onClick={() => setSelected(marker)}>{answers[markerKey(question, marker)] ? "Move" : "Place"} {marker}</button>)}
+    </div>}
+    <div className="ch-figure-scroll" tabIndex={0} role="region" aria-label="Scrollable map">
+      <div className="ch-map-image">
+        {onAnswer ? <button className="ch-map-target" type="button" tabIndex={-1} aria-describedby="ch-map-instructions"
+          aria-label={`Place marker ${selected} on the map`} onClick={event => {
+            if (!event.detail) return;
+            const bounds = event.currentTarget.getBoundingClientRect();
+            const point = [(event.clientX - bounds.left) / bounds.width, (event.clientY - bounds.top) / bounds.height];
+            onAnswer(markerKey(question, selected), point.map(value => (value * 100).toFixed(2)).join(","));
+          }}>{image}</button> : image}
+        {markers.map(marker => {
+          const [left, top] = (answers[markerKey(question, marker)] || "").split(",").map(Number);
+          if (![left, top].every(value => Number.isFinite(value) && value >= 0 && value <= 100)) return null;
+          return <span key={marker} className="ch-map-marker" style={{ left: `${left}%`, top: `${top}%` }}>{marker}</span>;
+        })}
+      </div>
+    </div>
+  </>;
+}
+
+function Stimulus({ question, answers, onAnswer }) {
   return <>{question.source && <blockquote className="ch-exam-source">{question.source}</blockquote>}
     {question.figure && <figure className="ch-exam-figure">
+      {question.figure.markers && answers ? <MapFigure key={question.id} question={question} answers={answers} onAnswer={onAnswer} /> :
       <div className={question.figure.wide ? "ch-figure-scroll" : undefined} tabIndex={question.figure.wide ? 0 : undefined} role={question.figure.wide ? "region" : undefined} aria-label={question.figure.wide ? "Scrollable map" : undefined}>
         <img src={`${process.env.PUBLIC_URL || ""}/${question.figure.src}`} alt={question.figure.alt} />
-      </div>
+      </div>}
       {question.figure.caption && <figcaption>{question.figure.caption}</figcaption>}
     </figure>}
   </>;
@@ -65,7 +100,9 @@ export default function HistoryExam({ paper, userId, supabase, onBack }) {
   const remaining = Math.max(0, Math.ceil((attempt.deadline - Math.max(now, Date.now())) / 1000));
   const score = historyScore(paper, attempt.answers);
   const total = paper.totalMarks || (paper.paper === 1 ? questions.length : groups.length * 25);
-  const answered = question => paper.paper === 1 ? Boolean(attempt.answers[question.id]) : question.parts.some(part => attempt.answers[part.id]?.trim());
+  const answered = question => paper.paper === 1 ? Boolean(attempt.answers[question.id]) :
+    question.parts.some(part => attempt.answers[part.id]?.trim()) ||
+    (question.figure?.markers || []).some(marker => attempt.answers[markerKey(question, marker)]);
   const answer = (id, value) => setAttempt(previous => ({ ...previous, answers: { ...previous.answers, [id]: value } }));
   const go = index => {
     setAttempt(previous => ({ ...previous, index }));
@@ -145,7 +182,7 @@ export default function HistoryExam({ paper, userId, supabase, onBack }) {
               onClick={() => setAttempt(previous => ({ ...previous, flags: { ...previous.flags, [current.id]: !previous.flags[current.id] } }))}>{attempt.flags[current.id] ? "Flagged for review" : "Flag for review"}</button>}
           </div>
           {current.prompt && <p className="ch-question-text">{current.prompt}</p>}
-          <Stimulus question={current} />
+          <Stimulus question={current} answers={attempt.answers} onAnswer={active ? answer : undefined} />
           {paper.paper === 1 ? <fieldset className="oa-options"><legend>Choose one answer</legend>
             {current.options.map((option, index) => {
               const letter = "ABCD"[index];

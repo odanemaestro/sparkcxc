@@ -10,6 +10,13 @@ const MEDIA = {
     source: "The Metropolitan Museum of Art · public domain",
     url: "https://www.metmuseum.org/art/collection/search/313384",
   },
+  "ch-encounter-and-conquest": {
+    image: `${process.env.PUBLIC_URL || ""}/caribbean-history/figures/ch-2022-p2-q2-mining.jpg`,
+    alt: "A European engraving shows Africans working in mines under Spanish supervision.",
+    caption: "Theodor de Bry’s 1595 engraving depicts forced labour in Hispaniola. Which details can you see directly? What could a worker’s account tell you that the engraving leaves out?",
+    source: "British Library · public domain, via Wikimedia Commons",
+    url: "https://commons.wikimedia.org/wiki/File:Slaves_from_Guinea_digging_for_gold_and_silver_in_mines_in_Hispaniola_-_America_(1595),_A2_-_BL.jpg",
+  },
   "ch-plantation-labour": {
     image: "https://cdn.loc.gov/service/pnp/cph/3b10000/3b19000/3b19400/3b19470r.jpg",
     alt: "Historic engraving showing several people around equipment for processing sugar cane.",
