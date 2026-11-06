@@ -14,11 +14,11 @@ export default function OaSourcePages({source,onClose}){
  if(error)return <section className="oa-source"><p role="alert">{error}</p><button className="secondary" onClick={onClose}>Return to paper</button></section>;
  if(!document)return <SparkLoader variant="section" label="Opening the printed paper"/>;
  const index=Math.min(document.pages.length-1,Math.max(0,requestedPage-1)),p=document.pages[index];
- return <section className="oa-source" aria-label="Printed paper layout"><div className="oa-source-controls"><button className="secondary" type="button" onClick={onClose}><BackArrowIcon/> Back to paper</button><label>Page<select value={index+1} onChange={e=>setPage(Number(e.target.value))}>{document.pages.map((p,i)=><option key={p.number} value={i+1}>Page {i+1}</option>)}</select></label><label>Zoom<select value={zoom} onChange={e=>setZoom(e.target.value)}><option value="fit">Fit width</option><option value="1">100%</option><option value="1.25">125%</option><option value="1.5">150%</option><option value="2">200%</option></select></label></div>
+ return <section className="oa-source" aria-label="Printed paper layout"><div className="oa-source-controls oa-source-settings"><button className="secondary" type="button" onClick={onClose}><BackArrowIcon/> Back to paper</button><label>Page<select value={index+1} onChange={e=>setPage(Number(e.target.value))}>{document.pages.map((p,i)=><option key={p.number} value={i+1}>Page {i+1}</option>)}</select></label><label>Zoom<select value={zoom} onChange={e=>setZoom(e.target.value)}><option value="fit">Fit width</option><option value="1">100%</option><option value="1.25">125%</option><option value="1.5">150%</option><option value="2">200%</option></select></label></div>
   <div className="oa-source-scroll" tabIndex={0} aria-label="Scrollable printed page"><div className="oa-source-sheet" style={{width:zoom==='fit'?'100%':`${800*Number(zoom)}px`}}><svg viewBox={`0 0 ${p.width} ${p.height}`} xmlns="http://www.w3.org/2000/svg" aria-label={`${source.title}, source page ${p.number}`}>
    <rect width={p.width} height={p.height} fill="white"/>{p.figure&&<image href={`${process.env.PUBLIC_URL||''}/${p.figure}`} width={p.width} height={p.height} aria-label="Original printed forms, rules and illustration details"/>}
    {p.words.map((w,i)=><text key={i} x={w.x} y={w.y+w.h*.83} textLength={Math.max(.1,w.w)} lengthAdjust="spacingAndGlyphs" fontFamily={w.f||'Times New Roman'} fontSize={w.s||w.h} fontWeight={w.b?'bold':'normal'} fill="#111">{w.t}</text>)}
-  </svg></div></div><div className="oa-source-controls"><button className="secondary" type="button" disabled={index===0} onClick={()=>setPage(index)}><BackArrowIcon/> Previous page</button><span>{index+1} of {document.pages.length}</span><button className="secondary" type="button" disabled={index===document.pages.length-1} onClick={()=>setPage(index+2)}>Next page <ForwardArrowIcon/></button></div>
+  </svg></div></div><nav className="oa-source-controls oa-source-pagination" aria-label="Printed paper pages"><button className="secondary" type="button" aria-label="Previous page" disabled={index===0} onClick={()=>setPage(index)}><BackArrowIcon/> Previous</button><span>{index+1} of {document.pages.length}</span><button className="secondary" type="button" aria-label="Next page" disabled={index===document.pages.length-1} onClick={()=>setPage(index+2)}>Next <ForwardArrowIcon/></button></nav>
  </section>;
 }
 
@@ -32,7 +32,7 @@ export function OaSourceFragment({source,visual}){
   fetch(`${process.env.PUBLIC_URL||''}/${asset}`).then(r=>{if(!r.ok)throw Error();return r.json();}).then(d=>{const found=d.pages?.find(p=>p.number===Number(visual.page));if(!found)throw Error();if(active)setPage(found);}).catch(()=>{if(active)setError(true);});
   return()=>{active=false;};
  },[source.id,source.sourceAsset,source.sourceId,visual.page]);
- if(error)return <p role="status">Open the printed layout to view this question's illustration.</p>;
+ if(error)return <p role="status">The illustration could not load. Refresh the page to try again.</p>;
  if(!page)return <p role="status">Loading the printed question…</p>;
  const region=Array.isArray(visual.region)&&visual.region.length===4&&visual.region.every(Number.isFinite)?visual.region:[0,0,page.width,page.height];
  return <figure className="oa-source-fragment"><div className="oa-source-scroll"><div className="oa-source-sheet"><svg viewBox={region.join(' ')} xmlns="http://www.w3.org/2000/svg" role="img" aria-label={visual.description||'Printed question illustration'}>
