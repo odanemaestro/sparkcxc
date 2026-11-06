@@ -41,6 +41,7 @@ test("digitised questions have source pages, complete choices or allocations, an
     expect(paper.sha256).toMatch(/^[a-f0-9]{64}$/);
     expect(paper.questions.map(q => q.number)).toEqual(paper.questions.map((_, i) => i + 1));
     expect(historyScore(paper, {})).toBeNull();
+    if (paper.paper === 1) expect(paper.questions).toHaveLength(60);
     for (const question of paper.questions) {
       expect(question.sourcePages.length).toBeGreaterThan(0);
       if (paper.paper === 1) {
@@ -50,6 +51,9 @@ test("digitised questions have source pages, complete choices or allocations, an
         expect(question.parts.reduce((sum, part) => sum + part.marks, 0)).toBe(25);
       }
       if (question.figure) expect(existsSync(`public/${question.figure.src}`)).toBe(true);
+      if (question.table) {
+        for (const row of question.table.rows) expect(row).toHaveLength(question.table.columns.length + 1);
+      }
     }
   }
 });

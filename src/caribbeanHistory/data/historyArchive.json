@@ -8849,5 +8849,2618 @@
         ]
       }
     ]
+  },
+  {
+    "id": "ch-p1-2019-mj",
+    "title": "May/June 2019 · Paper 1",
+    "paper": 1,
+    "year": 2019,
+    "duration": 75,
+    "totalMarks": 60,
+    "filename": "CSEC_Caribbean_History_Paper_1_-_May_June_2019.pdf",
+    "transcriptionNote": "Answer markings on the supplied copy have no verified provenance and are omitted. Several marked choices appear inconsistent with the question.",
+    "questions": [
+      {
+        "id": "q1",
+        "number": 1,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Which of the following BEST explains why the indigenous peoples migrated to the Americas from their original homelands?",
+        "options": [
+          "They were following herds of deer that they hunted.",
+          "They were searching for grasslands to feed their livestock.",
+          "They were driven out of their homelands by warlike people.",
+          "Their populations had grown too large to survive in their homelands."
+        ]
+      },
+      {
+        "id": "q2",
+        "number": 2,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Which of the following BEST describe the religious practices of the Tainos?",
+        "options": [
+          "Nature worship and animal sacrifice",
+          "Nature worship and ancestor worship",
+          "Protective magic and animal sacrifice",
+          "Long periods of fasting and ancestor worship"
+        ]
+      },
+      {
+        "id": "q3",
+        "number": 3,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "The Maya wrote using a type of writing called",
+        "options": [
+          "Cuneiform",
+          "Epi-Olmec",
+          "Indus Script",
+          "Hieroglyphic"
+        ]
+      },
+      {
+        "id": "q4",
+        "number": 4,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Which of the following did the Maya use as money?",
+        "options": [
+          "Cocoa beans",
+          "Copper bars",
+          "Gold nuggets",
+          "Cowrie shells"
+        ]
+      },
+      {
+        "id": "q5",
+        "number": 5,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Which of the following BEST explains why many Kalinago women spoke the Taino language?",
+        "options": [
+          "They worked in the fields with the Taino women.",
+          "Kalinago women often traded with the Taino women.",
+          "Taino women were often captured by Kalinago warriors.",
+          "Kalinago girls were taught the language of the Taino by their elders."
+        ]
+      },
+      {
+        "id": "q6",
+        "number": 6,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Which of the following islands was the FIRST to be settled by the English?",
+        "options": [
+          "St Kitts",
+          "Antigua",
+          "Grenada",
+          "Barbados"
+        ]
+      },
+      {
+        "id": "q7",
+        "number": 7,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "In which century were the English MOST successful in establishing settlements in the Caribbean?",
+        "options": [
+          "Fourteenth",
+          "Fifteenth",
+          "Sixteenth",
+          "Seventeenth"
+        ]
+      },
+      {
+        "id": "q8",
+        "number": 8,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "On which of the following islands was the first Spanish settlement established?",
+        "options": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ],
+        "figure": {
+          "src": "caribbean-history/figures/ch-2019-p1-q8-map.jpg",
+          "alt": "Outline map of the Caribbean. Label I marks the long northwestern island. II marks the island south of I. III marks the large island east of I. IV marks the island immediately east of III. V marks the arc of small eastern islands, and VI the island next to the mainland in the southeast.",
+          "wide": true
+        }
+      },
+      {
+        "id": "q9",
+        "number": 9,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "The ‘practice’ referred to in the statement was known as the",
+        "options": [
+          "asiento",
+          "audiencia",
+          "residencia",
+          "encomienda"
+        ],
+        "source": "“The authorities began the practice of allowing the Spaniards to extract labour and collect tribute from the Indians. In return, the Spaniards were to see that the Indians were ‘protected’ and converted to Christianity.”"
+      },
+      {
+        "id": "q10",
+        "number": 10,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Which of the following strategies were NOT used to weaken the Spanish Monopoly in the Caribbean up to 1763?",
+        "options": [
+          "Piracy and settlement",
+          "Sporadic attacks and open warfare",
+          "Colonization and contests in the European courts",
+          "Illegal trading and negotiation of treaty agreements"
+        ]
+      },
+      {
+        "id": "q11",
+        "number": 11,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Which of the following groups of items did the Europeans use for the purchase of Africans on the Slave Coast?",
+        "options": [
+          "Grain, mirrors, salt",
+          "Grain, knives, palm oil",
+          "Cutlasses, salt, palm oil",
+          "Gunpowder, iron pots, beads"
+        ]
+      },
+      {
+        "id": "q12",
+        "number": 12,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Which of the following ports were British slave ships MOST likely to visit during the 1700s?",
+        "options": [
+          "Havana",
+          "Kingston",
+          "Rio de Janeiro",
+          "Port-au-Prince"
+        ]
+      },
+      {
+        "id": "q13",
+        "number": 13,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "The term ‘barracoon’ is BEST associated with the",
+        "options": [
+          "cultivation by captive persons in Africa",
+          "trade of enslaved persons in the Caribbean",
+          "housing of captive persons on the African coast",
+          "punishment of enslaved persons in the Caribbean"
+        ]
+      },
+      {
+        "id": "q14",
+        "number": 14,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "The curing house on Caribbean sugar plantations was associated with",
+        "options": [
+          "caring for sick enslaved persons on the plantation",
+          "the packaging of sugar for immediate export",
+          "caring for the poor whites on the plantation",
+          "the removal of molasses from Muscavado sugar"
+        ]
+      },
+      {
+        "id": "q15",
+        "number": 15,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Which of the following statements about the population of Barbados by the end of the 1600s is TRUE?",
+        "options": [
+          "There were more whites than blacks.",
+          "Blacks were far greater in number than whites.",
+          "Coloureds were far greater in number than whites.",
+          "There were equal numbers of coloureds and blacks."
+        ]
+      },
+      {
+        "id": "q16",
+        "number": 16,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "An enslaved African in the British Caribbean who stole from the owner was LEAST likely to be",
+        "options": [
+          "whipped",
+          "mutilated",
+          "charged a fine",
+          "placed in the stockade"
+        ]
+      },
+      {
+        "id": "q17",
+        "number": 17,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Toussaint L’Ouverture contributed to the success of the Haitian Revolution MAINLY by",
+        "options": [
+          "setting up a system of fortification",
+          "developing a revolutionary ideology",
+          "dividing the country between blacks and mulattos",
+          "organizing the enslaved into a formidable fighting force"
+        ]
+      },
+      {
+        "id": "q18",
+        "number": 18,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "The free coloureds of St Domingue revolted in 1790 because they",
+        "options": [
+          "supported the cause of the King of France",
+          "were dissatisfied with their status in society",
+          "wished to assist the enslaved Africans",
+          "wanted to prevent the enslaved Africans from revolting"
+        ]
+      },
+      {
+        "id": "q19",
+        "number": 19,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "In 1763, a major uprising of enslaved Africans took place in the Dutch colony of",
+        "options": [
+          "Berbice",
+          "Curaçao",
+          "Suriname",
+          "St Eustatius"
+        ]
+      },
+      {
+        "id": "q20",
+        "number": 20,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "The punishment MOST frequently meted out to the enslaved on eighteenth century sugar estates was",
+        "options": [
+          "flogging",
+          "treadmill",
+          "starvation",
+          "imprisonment"
+        ]
+      },
+      {
+        "id": "q21",
+        "number": 21,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Which of the following was the MAIN purpose of the policy of amelioration?",
+        "options": [
+          "To maintain the established system of enslavement",
+          "To put an end to enslavement in the British Caribbean",
+          "To introduce a new supply of cheap labour to the British Caribbean",
+          "To improve the conditions of the enslaved in the British Caribbean"
+        ]
+      },
+      {
+        "id": "q22",
+        "number": 22,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "The MAIN source of disputes between planters and formerly enslaved persons during apprenticeship was",
+        "options": [
+          "wage rate",
+          "child labour",
+          "Sunday work",
+          "property rental"
+        ]
+      },
+      {
+        "id": "q23",
+        "number": 23,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "The Registry Bill was intended to",
+        "options": [
+          "punish slave masters",
+          "register persons born into slavery",
+          "prevent the illegal sale of the enslaved",
+          "continue the excessive punishment of the enslaved"
+        ]
+      },
+      {
+        "id": "q24",
+        "number": 24,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Stipendiary magistrates were persons originally sent out from Britain to ensure that",
+        "options": [
+          "the courts of the colonies were in order",
+          "there were no abuses of the apprenticeship system",
+          "the illegal trade in captive Africans did not continue during apprenticeship",
+          "planters were correctly compensated for the loss of enslaved Africans"
+        ]
+      },
+      {
+        "id": "q25",
+        "number": 25,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Most West Indian planters saw the period of apprenticeship MAINLY as",
+        "options": [
+          "a means of ensuring a steady labour supply",
+          "a time for training the enslaved in new skills",
+          "an opportunity to educate the enslaved",
+          "a time to reorganize sugar production"
+        ]
+      },
+      {
+        "id": "q26",
+        "number": 26,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which of the following were benefits the Emancipation Act of 1833 gave enslaved Africans in the British Caribbean?\n\nI. A chance to work for wages\nII. Social equality with the whites\nIII. Assistance from stipendiary magistrates",
+        "options": [
+          "I and II only",
+          "I and III only",
+          "II and III only",
+          "I, II and III"
+        ]
+      },
+      {
+        "id": "q27",
+        "number": 27,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Large-scale immigration to Trinidad and British Guiana between 1838 and 1870 led to\n\nI. cultural diversity in those territories\nII. racial conflicts among the ethnic groups\nIII. economic growth in both territories",
+        "options": [
+          "I only",
+          "I and II only",
+          "II and III only",
+          "I, II and III"
+        ]
+      },
+      {
+        "id": "q28",
+        "number": 28,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Indian indentured labour was introduced into the British Caribbean in order to",
+        "options": [
+          "ease the labour problems of the planters",
+          "help keep the colonies peaceful",
+          "help introduce new crops into the colonies",
+          "prevent the freed Africans from getting jobs"
+        ]
+      },
+      {
+        "id": "q29",
+        "number": 29,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which of the following did NOT result from the immigration of indentured labourers to the Caribbean after emancipation?",
+        "options": [
+          "The expansion of rice cultivation in Guyana",
+          "The expansion of sugar production in Barbados",
+          "The introduction of new religions in the Caribbean",
+          "The introduction of a variety of ethnic groups in Trinidad"
+        ]
+      },
+      {
+        "id": "q30",
+        "number": 30,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "The majority of the Portuguese immigrants brought to work in the British Caribbean in the years between emancipation and the First World War were employed as",
+        "options": [
+          "shopkeepers",
+          "small farmers",
+          "unskilled labourers",
+          "skilled factory hands"
+        ]
+      },
+      {
+        "id": "q31",
+        "number": 31,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "There were more free villages in Jamaica than there were in Barbados MAINLY because",
+        "options": [
+          "in Jamaica more land was available for settlement",
+          "in Barbados the freed Africans did not want to leave the plantations",
+          "the Jamaican planters encouraged the freed Africans to set up free villages",
+          "freed Africans in Jamaica had more money to buy land than freed Africans in Barbados"
+        ]
+      },
+      {
+        "id": "q32",
+        "number": 32,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "To which territory is the statement referring?",
+        "options": [
+          "Guyana",
+          "Jamaica",
+          "Trinidad",
+          "Barbados"
+        ],
+        "source": "“William Knibb foresaw that planters would try to force extra work from their free labourers by increasing rent on homes on the estate.”"
+      },
+      {
+        "id": "q33",
+        "number": 33,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Which of the following BEST describes the response by free labourers in the Caribbean to planters’ attempts to force them to remain on the plantation?",
+        "options": [
+          "Riots against the planters",
+          "Payment of the increased rent",
+          "Refusal to leave the plantation",
+          "Establishment of homes off the plantation"
+        ],
+        "source": "“William Knibb foresaw that planters would try to force extra work from their free labourers by increasing rent on homes on the estate.”"
+      },
+      {
+        "id": "q34",
+        "number": 34,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "What action did William Knibb take to assist freed Africans to acquire land?",
+        "options": [
+          "Bribe the planters",
+          "Warn the labourers",
+          "Establish free villages",
+          "Report to the governor"
+        ],
+        "source": "“William Knibb foresaw that planters would try to force extra work from their free labourers by increasing rent on homes on the estate.”"
+      },
+      {
+        "id": "q35",
+        "number": 35,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Which of the following crops was MOST likely to be sold in a peasant market?",
+        "options": [
+          "Cotton",
+          "Tobacco",
+          "Sugar cane",
+          "Sweet potatoes"
+        ]
+      },
+      {
+        "id": "q36",
+        "number": 36,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "The above statement is associated with President",
+        "options": [
+          "Ulysses S. Grant",
+          "Woodrow Wilson",
+          "Theodore Roosevelt",
+          "John Fitzgerald Kennedy"
+        ],
+        "source": "“The adherence of the United States to the Monroe Doctrine may force the United States, however reluctantly, in cases of wrong doing or impotence, to the exercise of the international police force.”"
+      },
+      {
+        "id": "q37",
+        "number": 37,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Which of the following was the IMMEDIATE cause of the United States declaring war against Spain in 1898?",
+        "options": [
+          "The United States took over Panama.",
+          "The U.S.S. Maine was blown up in Havana harbour.",
+          "The United States was angered by the Spanish invasion of Cuba.",
+          "The United States was angered by General Weyler’s atrocities."
+        ]
+      },
+      {
+        "id": "q38",
+        "number": 38,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "By which agreement did the USA make Cuba “gravitate toward the North American Union”?",
+        "options": [
+          "Platt Amendment",
+          "Teller Amendment",
+          "Hay–Pauncefote Treaty",
+          "Clayton–Bulwer Treaty"
+        ]
+      },
+      {
+        "id": "q39",
+        "number": 39,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "The MAIN reason for the United States’ interest in Panama in the first decade of the twentieth century was to",
+        "options": [
+          "provide greater opportunities for trade",
+          "provide employment for Americans in Panama",
+          "improve the relationship between the two countries",
+          "improve communication between the Atlantic and the Pacific"
+        ]
+      },
+      {
+        "id": "q40",
+        "number": 40,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Which of the following Caribbean territories was NOT occupied by US military forces in the early 1900s?",
+        "options": [
+          "Cuba",
+          "Haiti",
+          "Jamaica",
+          "Dominican Republic"
+        ]
+      },
+      {
+        "id": "q41",
+        "number": 41,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Which of the following commissions was sent to investigate conditions in the Caribbean as a result of the 1930s riots?",
+        "options": [
+          "Foster Commission",
+          "Deane Commission",
+          "Moyne Commission",
+          "Norman Commission"
+        ]
+      },
+      {
+        "id": "q42",
+        "number": 42,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Which of the following personalities was directly associated with the riots of the 1930s in the British Caribbean?",
+        "options": [
+          "Fidel Castro of Cuba",
+          "George Price of Belize",
+          "Maria Nugent of Jamaica",
+          "Clement Payne of Barbados"
+        ]
+      },
+      {
+        "id": "q43",
+        "number": 43,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Most of the Caribbean political leaders in the 1930s advocated constitutional changes MAINLY in order to",
+        "options": [
+          "obtain self-government",
+          "promote social revolution",
+          "promote the two-party system",
+          "develop the colonies economically"
+        ]
+      },
+      {
+        "id": "q44",
+        "number": 44,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Marcus Garvey is BEST known for his",
+        "options": [
+          "participation in the 1937 riots",
+          "teachings on black nationalism",
+          "deportation from the United States",
+          "association with the trade union movement"
+        ]
+      },
+      {
+        "id": "q45",
+        "number": 45,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Which of the following territories did NOT join the British West Indies Federation?",
+        "options": [
+          "Guyana and Belize",
+          "Grenada and Antigua",
+          "St Vincent and Dominica",
+          "St Kitts-Nevis and Saint Lucia"
+        ]
+      },
+      {
+        "id": "q46",
+        "number": 46,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "In many British Caribbean territories during the 1930s, there was a strong link between political parties and",
+        "options": [
+          "trade unions",
+          "plantation owners",
+          "the established church",
+          "stipendiary magistrates"
+        ]
+      },
+      {
+        "id": "q47",
+        "number": 47,
+        "sourcePages": [
+          9
+        ],
+        "prompt": "Which of the following considerations MOST influenced the decision to form the British West Indies Federation of 1958?",
+        "options": [
+          "All territories would participate on an equal basis.",
+          "Federation would help the independence movement.",
+          "Interisland communication would be more economical.",
+          "Citizens would be able to move more freely in the various territories."
+        ]
+      },
+      {
+        "id": "q48",
+        "number": 48,
+        "sourcePages": [
+          9
+        ],
+        "prompt": "By the referendum of 1961, Jamaica decided to",
+        "options": [
+          "withdraw from the federation",
+          "change its federal representative",
+          "change the site of the federal capital",
+          "reduce its financial contribution to the federation"
+        ]
+      },
+      {
+        "id": "q49",
+        "number": 49,
+        "sourcePages": [
+          9
+        ],
+        "prompt": "Which of the following Caribbean territories became a free and associated state of the USA.?",
+        "options": [
+          "Cuba",
+          "Margarita",
+          "Hispaniola",
+          "Puerto Rico"
+        ]
+      },
+      {
+        "id": "q50",
+        "number": 50,
+        "sourcePages": [
+          9
+        ],
+        "prompt": "Which of the following Caribbean territories were assimilated by France in 1946?",
+        "options": [
+          "Haiti, Martinique, Guadeloupe",
+          "Marie Galante, Haiti, Dominica",
+          "Saint Barthelemy, Haiti, Martinique",
+          "Guadeloupe, St Martin, Martinique"
+        ]
+      },
+      {
+        "id": "q51",
+        "number": 51,
+        "sourcePages": [
+          9
+        ],
+        "prompt": "‘Colonialism’ may be described as the",
+        "options": [
+          "spread of Roman Catholicism worldwide",
+          "settlement and exploitation of one country by another",
+          "assistance given to developing countries by developed ones",
+          "large-scale killing of native people by a more powerful group"
+        ]
+      },
+      {
+        "id": "q52",
+        "number": 52,
+        "sourcePages": [
+          9
+        ],
+        "prompt": "Which of the following leaders served as the first female prime minister of a Caribbean territory?",
+        "options": [
+          "Una Marson",
+          "Muriel Greaves",
+          "Eugenia Charles",
+          "Gertrude Protain"
+        ]
+      },
+      {
+        "id": "q53",
+        "number": 53,
+        "sourcePages": [
+          9
+        ],
+        "prompt": "Which of the following laws was intended to improve the treatment of enslaved indigenous people?",
+        "options": [
+          "The Code Noir",
+          "The Laws of Burgos",
+          "The Deficiency Law",
+          "The Amelioration Act"
+        ]
+      },
+      {
+        "id": "q54",
+        "number": 54,
+        "sourcePages": [
+          9
+        ],
+        "prompt": "Which of the following British Caribbean territories was FIRST granted adult suffrage?",
+        "options": [
+          "Jamaica",
+          "Guyana",
+          "Trinidad",
+          "Barbados"
+        ]
+      },
+      {
+        "id": "q55",
+        "number": 55,
+        "sourcePages": [
+          10
+        ],
+        "prompt": "Which of the following Dutch territories gained independence by 1980?",
+        "options": [
+          "Aruba",
+          "Curaçao",
+          "Suriname",
+          "Sint Maarten"
+        ]
+      },
+      {
+        "id": "q56",
+        "number": 56,
+        "sourcePages": [
+          10
+        ],
+        "prompt": "What is the correct order of the abolition process?",
+        "options": [
+          "Apprenticeship, emancipation, amelioration, abolition of slave trade",
+          "Abolition of slave trade, amelioration, emancipation, apprenticeship",
+          "Amelioration, emancipation, abolition of slave trade, apprenticeship",
+          "Emancipation, apprenticeship, abolition of slave trade, amelioration"
+        ]
+      },
+      {
+        "id": "q57",
+        "number": 57,
+        "sourcePages": [
+          10
+        ],
+        "prompt": "Which of the following statements is true of Cuba in the 1800s?",
+        "options": [
+          "It had become a major sugar producing territory.",
+          "Logwood production had become a major industry.",
+          "Tobacco had replaced sugar as the leading product.",
+          "Indigenous Indians were the major source of agricultural labour."
+        ]
+      },
+      {
+        "id": "q58",
+        "number": 58,
+        "sourcePages": [
+          10
+        ],
+        "prompt": "In which chronological order did the British Caribbean planters first face competition from the following?\n\nI. French beet sugar\nII. Cuban slave-grown sugar\nIII. St Domingue slave-grown sugar",
+        "options": [
+          "I, II, III",
+          "II, III, I",
+          "III, II, I",
+          "II, I, III"
+        ]
+      },
+      {
+        "id": "q59",
+        "number": 59,
+        "sourcePages": [
+          10
+        ],
+        "prompt": "Which of the following persons was an important trade union leader in Guyana?",
+        "options": [
+          "Vere Bird",
+          "Clement Payne",
+          "Robert Bradshaw",
+          "Hubert Critchlow"
+        ]
+      },
+      {
+        "id": "q60",
+        "number": 60,
+        "sourcePages": [
+          10
+        ],
+        "prompt": "In which order did the following stages in the movement towards independence in British Caribbean territories take place?\n\nI. Full internal self-government\nII. Achievement of universal adult suffrage\nIII. Election of a prime minister or premier",
+        "options": [
+          "I, II, III",
+          "II, III, I",
+          "III, II, I",
+          "II, I, III"
+        ]
+      }
+    ],
+    "sha256": "66d731a732d24572b611d5daac8b23b1cbe74eb1bb770d799fdf078171a1be4e"
+  },
+  {
+    "id": "ch-p1-2020-mj",
+    "title": "May/June 2020 · Paper 1",
+    "paper": 1,
+    "year": 2020,
+    "duration": 75,
+    "totalMarks": 60,
+    "filename": "CSEC_Caribbean_History_Paper_1_-_May_June_2020.pdf",
+    "transcriptionNote": "The supplied scan has a replacement cover and does not include a verified key. The 75-minute duration follows the syllabus.",
+    "questions": [
+      {
+        "id": "q1",
+        "number": 1,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Which of the following BEST explains why the indigenous peoples migrated to the Americas from their original homelands?",
+        "options": [
+          "They were following herds of deer which they hunted.",
+          "They were searching for grasslands to feed their livestock.",
+          "They were driven out of their homelands by warlike people.",
+          "Their populations had grown too large to survive in their homelands."
+        ]
+      },
+      {
+        "id": "q2",
+        "number": 2,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "The Kalinagos went on sea-faring expeditions in vessels called",
+        "options": [
+          "batos",
+          "piragas",
+          "caneyes",
+          "tortillas"
+        ]
+      },
+      {
+        "id": "q3",
+        "number": 3,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Which of the following is an activity in which the Maya engaged?",
+        "options": [
+          "Using matapi",
+          "Making quipus",
+          "Building temples",
+          "Worshipping zemis"
+        ]
+      },
+      {
+        "id": "q4",
+        "number": 4,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "The Maya wrote using a type of writing called",
+        "options": [
+          "Cuneiform",
+          "Epi-Olmec",
+          "Indus Script",
+          "Hieroglyphic"
+        ]
+      },
+      {
+        "id": "q5",
+        "number": 5,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "At Columbus’ arrival in the Caribbean, both Jamaica and Cuba were",
+        "options": [
+          "not inhabited",
+          "inhabited by Maya",
+          "inhabited by Tainos",
+          "inhabited by Kalinagos"
+        ]
+      },
+      {
+        "id": "q6",
+        "number": 6,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "The MAIN reason why the English attempted to break the Spanish monopoly in the New World was to",
+        "options": [
+          "obtain new trade routes to the East",
+          "obtain a share of the wealth of the New World",
+          "supply captive Africans to the Spanish colonies",
+          "gain a base from which to attack the native peoples"
+        ]
+      },
+      {
+        "id": "q7",
+        "number": 7,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Which of the following is the town council in the Spanish American empire?",
+        "options": [
+          "Cabildos",
+          "Corregidores",
+          "Repartimiento",
+          "Conquistadores"
+        ]
+      },
+      {
+        "id": "q8",
+        "number": 8,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "The Dutch may be called the ‘foster fathers’ of French and British settlers in the Caribbean in the 1600s because they",
+        "options": [
+          "converted the settlers to the Protestant faith",
+          "kept the settlers supplied with essential goods",
+          "shared their skills in tobacco growing with the settlers",
+          "conquered the indigenous people to make settlement safe"
+        ]
+      },
+      {
+        "id": "q9",
+        "number": 9,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Which is the correct order of the fifteenth century European social groups, from MOST to LEAST powerful?",
+        "options": [
+          "Merchants, priests, peasants, kings",
+          "Priests, kings, merchants, peasants",
+          "Kings, priests, merchants, peasants",
+          "Kings, priests, peasants, merchants"
+        ]
+      },
+      {
+        "id": "q10",
+        "number": 10,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "The “practice” referred to in the statement was known as the",
+        "options": [
+          "asiento",
+          "audiencia",
+          "residencia",
+          "encomienda"
+        ],
+        "source": "“The authorities began the practice of allowing the Spaniards to extract labour and collect tribute from the Indians. In return, the Spaniards were to see that the Indians were ‘protected’ and converted to Christianity.”"
+      },
+      {
+        "id": "q11",
+        "number": 11,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "In the 1600s, Dutch islands in the Caribbean were used MAINLY as",
+        "options": [
+          "fishing ports",
+          "military bases",
+          "trading stations",
+          "plantation colonies"
+        ]
+      },
+      {
+        "id": "q12",
+        "number": 12,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Tobacco did NOT continue as a ‘profitable crop’ for Caribbean settlers because of the",
+        "options": [
+          "high cost of shipping and insurance",
+          "increased competition from Virginia",
+          "destruction of plantations by the Kalinagos",
+          "spoilage of tobacco on the longer transatlantic voyage"
+        ]
+      },
+      {
+        "id": "q13",
+        "number": 13,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Which of the following occurred in Africa as a result of the trade in enslaved Africans?",
+        "options": [
+          "Reduction of warfare in West Africa",
+          "Uniting of Africa under European rule",
+          "Growth of the West African population",
+          "Increased importation of European goods"
+        ]
+      },
+      {
+        "id": "q14",
+        "number": 14,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Which of the following is true of enslaved persons in the British Caribbean?",
+        "options": [
+          "They were encouraged by their owners to educate themselves.",
+          "They were allowed to raise a family without the owner’s permission.",
+          "They were encouraged by their masters to farm on small provision grounds.",
+          "They were allowed to own small properties without the owner’s permission."
+        ]
+      },
+      {
+        "id": "q15",
+        "number": 15,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "The curing house on a Caribbean sugar plantation is associated with",
+        "options": [
+          "the packaging of sugar for immediate export",
+          "caring for the sick slaves on the plantation",
+          "caring for the poor whites on the plantation",
+          "the removal of molasses from muscovado sugar"
+        ]
+      },
+      {
+        "id": "q16",
+        "number": 16,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Which of the following conditions did NOT result from the Revolution in Haiti?",
+        "options": [
+          "The mulattoes were wiped out.",
+          "The pattern of land ownership changed.",
+          "The country became independent from France.",
+          "The economy of the island was almost destroyed."
+        ]
+      },
+      {
+        "id": "q17",
+        "number": 17,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Which of the following is true of the Maroons of Jamaica and Suriname?",
+        "options": [
+          "They sold meat to passing ships.",
+          "They signed peace treaties with the French.",
+          "They were converted to the Christian religion.",
+          "They waged guerrilla warfare on white plantations."
+        ]
+      },
+      {
+        "id": "q18",
+        "number": 18,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Which of the following were consequences of the Haitian Revolution?\n\nI. All enslaved Africans were freed.\nII. All the mulattoes left the island.\nIII. The colony gained political independence.",
+        "options": [
+          "I and II only",
+          "I and III only",
+          "II and III only",
+          "I, II and III"
+        ]
+      },
+      {
+        "id": "q19",
+        "number": 19,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Which of the following causes is common to the Barbados Rebellion of 1816 and the Jamaican Rebellion of 1831?",
+        "options": [
+          "Planters did not provide the enslaved Africans with sufficient provisions.",
+          "Missionaries encouraged the enslaved Africans to fight for their freedom.",
+          "Enslaved Africans felt that their owners should pay them for their hard work.",
+          "Enslaved Africans thought that their freedom was being withheld by the planters."
+        ]
+      },
+      {
+        "id": "q20",
+        "number": 20,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Which slave revolt forced the British government to give serious consideration to the Emancipation Proposal?",
+        "options": [
+          "Bussa Revolt",
+          "Berbice Revolt",
+          "Haitian Revolution",
+          "Christmas Rebellion"
+        ]
+      },
+      {
+        "id": "q21",
+        "number": 21,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "The arguments that the British humanitarians used against slavery in the 1800s were MAINLY",
+        "options": [
+          "legal",
+          "moral",
+          "political",
+          "economic"
+        ]
+      },
+      {
+        "id": "q22",
+        "number": 22,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "The MAIN source of disputes between planters and formerly enslaved persons during apprenticeship was",
+        "options": [
+          "wage rates",
+          "child labour",
+          "Sunday work",
+          "property rentals"
+        ]
+      },
+      {
+        "id": "q23",
+        "number": 23,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Which of the following was the MAIN purpose of the policy of amelioration?",
+        "options": [
+          "Putting an end to enslavement",
+          "Improving the conditions of the enslaved",
+          "Introducing a new supply of cheap labour",
+          "Maintaining the established system of enslavement"
+        ]
+      },
+      {
+        "id": "q24",
+        "number": 24,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Which of the following describes how MOST planters and colonial assemblies reacted to amelioration?",
+        "options": [
+          "They willingly adopted the proposals for improvements.",
+          "They completely rejected or largely ignored the proposals.",
+          "They saw the proposals as a way to get the enslaved to produce more.",
+          "They saw the proposals as a good way to prepare the enslaved for freedom."
+        ]
+      },
+      {
+        "id": "q25",
+        "number": 25,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "The reason Baptist missionaries gave for organizing free villages immediately after emancipation was to",
+        "options": [
+          "assist formerly enslaved persons",
+          "help secure land to build churches",
+          "make a profit from the sale of land",
+          "get more members for their churches"
+        ]
+      },
+      {
+        "id": "q26",
+        "number": 26,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Which of the following push factors led to the emigration of East Indians to the Caribbean?\n\nI. Civil War\nII. Caste system\nIII. Unemployment",
+        "options": [
+          "I and II only",
+          "I and III only",
+          "II and III only",
+          "I, II and III"
+        ]
+      },
+      {
+        "id": "q27",
+        "number": 27,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "The MAIN purpose of Indian immigration was to secure",
+        "options": [
+          "labour for the rice plantations",
+          "cheap labour for the sugar plantations",
+          "more docile workers than the newly freed Africans",
+          "more efficient workers to replace the newly freed Africans"
+        ]
+      },
+      {
+        "id": "q28",
+        "number": 28,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Which factor BEST explains why East Indians did not return home immediately after their term of indentureship was over?",
+        "options": [
+          "Some of them accepted grants of money or land.",
+          "They feared being rejected by their families at home.",
+          "Many of them did not know of the offer of a free passage home.",
+          "Planters did not want them to return to the low standard of life in India."
+        ]
+      },
+      {
+        "id": "q29",
+        "number": 29,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Indentured workers from Madeira brought elements of a culture to the British Caribbean. From which of the following cultures were these elements drawn?",
+        "options": [
+          "Indian",
+          "African",
+          "Chinese",
+          "Portuguese"
+        ]
+      },
+      {
+        "id": "q30",
+        "number": 30,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "The majority of immigrants brought to work in the British Caribbean in the years between Emancipation and the First World War were employed as",
+        "options": [
+          "shopkeepers",
+          "small farmers",
+          "unskilled labourers",
+          "skilled factory hands"
+        ]
+      },
+      {
+        "id": "q31",
+        "number": 31,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Which of the following is the MOST significant factor explaining the Colonial Office’s lack of support for the establishment of free villages?",
+        "options": [
+          "Desire to appease the planters",
+          "Dislike of the previously enslaved",
+          "Lack of money to finance settlements",
+          "Desire to maintain labour for plantations"
+        ]
+      },
+      {
+        "id": "q32",
+        "number": 32,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "The main source of evidence to support the peasantry positive contributions to the economy of the British West Indies in the latter part of the nineteenth century was an increase in the",
+        "options": [
+          "production of a variety of cash crops",
+          "production of beet sugar over cane sugar",
+          "number of vagrants throughout the region",
+          "number of village settlements in the rural areas"
+        ]
+      },
+      {
+        "id": "q33",
+        "number": 33,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Which of the following was NOT a means by which freed Africans acquired land after emancipation?",
+        "options": [
+          "Renting estate land",
+          "Buying old estate land",
+          "Squatting on crown land",
+          "Receiving free crown land"
+        ]
+      },
+      {
+        "id": "q34",
+        "number": 34,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which of the following was a result of the development of the peasantry in the British Caribbean after 1838?\n\nI. Diversification of the economy\nII. Legal recognition of the practice of obeah\nIII. A growing sense of independence among freed Africans",
+        "options": [
+          "I and II only",
+          "I and III only",
+          "II and III only",
+          "I, II and III"
+        ]
+      },
+      {
+        "id": "q35",
+        "number": 35,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which of the following crops was MOST likely to be sold in a peasant market?",
+        "options": [
+          "Cotton",
+          "Tobacco",
+          "Sugar cane",
+          "Sweet potato"
+        ]
+      },
+      {
+        "id": "q36",
+        "number": 36,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which of the following clauses from the Jones Act shows that it was just as restrictive as the Foraker Act?",
+        "options": [
+          "Veto power was granted to the governor.",
+          "US citizenship was granted to Puerto Ricans.",
+          "The two branches of government were separated.",
+          "An increase in the number of local government posts."
+        ]
+      },
+      {
+        "id": "q37",
+        "number": 37,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which of the following Caribbean territories was NOT occupied by the United States’ military forces in the early 1900s?",
+        "options": [
+          "Cuba",
+          "Haiti",
+          "Jamaica",
+          "Dominican Republic"
+        ]
+      },
+      {
+        "id": "q38",
+        "number": 38,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "The policy by which the United States government was actively involved in directing the financial affairs of the Caribbean between 1905 and 1930 was known as",
+        "options": [
+          "Dollar Diplomacy",
+          "Operation Bootstrap",
+          "The Big Stick Policy",
+          "The Good Neighbour Policy"
+        ]
+      },
+      {
+        "id": "q39",
+        "number": 39,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which of the following presidents of the United States was responsible for the Good Neighbour Policy?",
+        "options": [
+          "James Monroe",
+          "Barack Obama",
+          "John F. Kennedy",
+          "Franklin D. Roosevelt"
+        ]
+      },
+      {
+        "id": "q40",
+        "number": 40,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which of the following was intended MAINLY to prevent further extension of European influence in the ‘New World’?",
+        "options": [
+          "Monroe Doctrine",
+          "Platt Amendment",
+          "Dollar Diplomacy",
+          "Clayton–Bulwer Treaty"
+        ]
+      },
+      {
+        "id": "q41",
+        "number": 41,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which of the following factors contributed LEAST to the dissatisfaction of the masses during the popular protests in the Caribbean during the 1930s?",
+        "options": [
+          "The Great Depression",
+          "Inadequate social services",
+          "Low levels of employment",
+          "Low wages paid to workers"
+        ]
+      },
+      {
+        "id": "q42",
+        "number": 42,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "In their efforts to improve working conditions around 1900, workers in the British Caribbean MOST often resorted to",
+        "options": [
+          "arson",
+          "strikes",
+          "rioting",
+          "picketing"
+        ]
+      },
+      {
+        "id": "q43",
+        "number": 43,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Most Caribbean political leaders in the 1930s advocated constitutional changes MAINLY to",
+        "options": [
+          "obtain self-government",
+          "promote social evolution",
+          "promote the two-party system",
+          "develop the colonies economically"
+        ]
+      },
+      {
+        "id": "q44",
+        "number": 44,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Which of the following persons was an important trade union leader in Grenada in the 1930s?",
+        "options": [
+          "Eric Gairy",
+          "Clement Payne",
+          "Maurice Bishop",
+          "Albert Marryshow"
+        ]
+      },
+      {
+        "id": "q45",
+        "number": 45,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "In many British Caribbean territories during the 1930s, there was a strong link between political parties and",
+        "options": [
+          "trade unions",
+          "plantation owners",
+          "the established church",
+          "stipendiary magistrates"
+        ]
+      },
+      {
+        "id": "q46",
+        "number": 46,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Which of the following female leaders was involved in the labour unrest of the 1930s?",
+        "options": [
+          "Audrey Jeffers",
+          "Elma François",
+          "Dame Nita Barrow",
+          "Amy Ashwood Garvey"
+        ]
+      },
+      {
+        "id": "q47",
+        "number": 47,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Funding for the 1958 British West Indian Federal Government was obtained from",
+        "options": [
+          "mandatory levies from each island",
+          "local custom duties in all the island",
+          "mandatory levies from the larger islands",
+          "a percentage of the income tax from Caribbean citizens"
+        ]
+      },
+      {
+        "id": "q48",
+        "number": 48,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "The majority of French people in the Caribbean objected to Assimilation because they",
+        "options": [
+          "would no longer be colonists but Frenchmen",
+          "were to accept the French culture as superior",
+          "were to be a part and not separate from France",
+          "were to ensure the loyalty of the people to France"
+        ]
+      },
+      {
+        "id": "q49",
+        "number": 49,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "For which of the following reasons were citizens of Puerto Rico satisfied with commonwealth status offered by the United States?",
+        "options": [
+          "The ability to promptly settle disputes with the US.",
+          "Increase in the number of employed Puerto Ricans.",
+          "The island was guaranteed protection by the US military.",
+          "Farmers were competing with cheap imported foodstuff from the US."
+        ]
+      },
+      {
+        "id": "q50",
+        "number": 50,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "The first Caribbean country to gain its independence was",
+        "options": [
+          "Cuba",
+          "Haiti",
+          "Jamaica",
+          "Grenada"
+        ]
+      },
+      {
+        "id": "q51",
+        "number": 51,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Which group of people was ranked directly below the Grand Blanc in the social hierarchy in St Domingue in the eighteenth century?",
+        "options": [
+          "Nobles",
+          "Affranchis",
+          "Aristocrats",
+          "Petit Whites"
+        ]
+      },
+      {
+        "id": "q52",
+        "number": 52,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "The arrangement between the Netherlands and her colonies was called",
+        "options": [
+          "assimilation",
+          "decolonization",
+          "tripartite kingdom",
+          "associated statehood"
+        ]
+      },
+      {
+        "id": "q53",
+        "number": 53,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "José Martí is associated with the struggle for independence in",
+        "options": [
+          "Cuba",
+          "Haiti",
+          "Jamaica",
+          "Puerto Rico"
+        ]
+      },
+      {
+        "id": "q54",
+        "number": 54,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "What is the correct order of the steps towards full freedom in the British Caribbean?",
+        "options": [
+          "Apprenticeship, emancipation, amelioration, abolition of slave trade",
+          "Emancipation, apprenticeship, abolition of slave trade, amelioration",
+          "Abolition of slave trade, amelioration, emancipation, apprenticeship",
+          "Amelioration, emancipation, abolition of slave trade, apprenticeship"
+        ]
+      },
+      {
+        "id": "q55",
+        "number": 55,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Universal adult suffrage may be described as the right of",
+        "options": [
+          "educated people to govern a country",
+          "all citizens of a specified age to vote",
+          "blacks and non-blacks to share political power",
+          "people with a given amount of property to run for elections"
+        ]
+      },
+      {
+        "id": "q56",
+        "number": 56,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "In which territory did sugar production experience a steady decline?",
+        "options": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ],
+        "table": {
+          "caption": "Sugar production (in tons) in four Caribbean territories, 1815 to 1894",
+          "rowHeading": "Year",
+          "columnGroup": "Territory",
+          "columns": [
+            "I",
+            "II",
+            "III",
+            "IV"
+          ],
+          "rows": [
+            [
+              "1815",
+              "79 660",
+              "8 837",
+              "7 682",
+              "16 520"
+            ],
+            [
+              "1828",
+              "72 198",
+              "16 942",
+              "13 285",
+              "40 115"
+            ],
+            [
+              "1882",
+              "32 638",
+              "48 325",
+              "55 327",
+              "124 102"
+            ],
+            [
+              "1894",
+              "19 934",
+              "50 958",
+              "19 934",
+              "102 502"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "q57",
+        "number": 57,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "The Cuban sugar industry in the late nineteenth century received most of its capital from",
+        "options": [
+          "Spain",
+          "the USA",
+          "England",
+          "Germany"
+        ]
+      },
+      {
+        "id": "q58",
+        "number": 58,
+        "sourcePages": [
+          9
+        ],
+        "prompt": "The Rastafarian belief in the emergence of a king originated from the teachings of",
+        "options": [
+          "Ché Guevara",
+          "Eric Williams",
+          "Marcus Garvey",
+          "Nelson Mandela"
+        ]
+      },
+      {
+        "id": "q59",
+        "number": 59,
+        "sourcePages": [
+          9
+        ],
+        "prompt": "Mercantilism was the policy used by England and France to",
+        "options": [
+          "control the trade of their colonies",
+          "invest their profits in their colonies",
+          "transfer their way of life to the colonies",
+          "win the friendship of the Kalinagos in St Kitts"
+        ]
+      },
+      {
+        "id": "q60",
+        "number": 60,
+        "sourcePages": [
+          9
+        ],
+        "prompt": "Which of the following persons served as Prime Minister of the West Indies Federation?",
+        "options": [
+          "Eric Williams",
+          "Grantley Adams",
+          "Alexande Bustamante",
+          "Hubert Nathaniel Critchlow"
+        ]
+      }
+    ],
+    "sha256": "2eb28677dd1be4444b7e1718b4388f620cc94017498484ef80ddeab081c441b9"
+  },
+  {
+    "id": "ch-p1-2024-mj",
+    "title": "May/June 2024 · Paper 1",
+    "paper": 1,
+    "year": 2024,
+    "duration": 75,
+    "totalMarks": 60,
+    "filename": "CSEC_Caribbean_History_Paper_1_-_May_June_2024.pdf",
+    "transcriptionNote": "The supplied copy is a numbered compilation. It has no official cover or verified answer key. The 75-minute duration follows the syllabus.",
+    "questions": [
+      {
+        "id": "q1",
+        "number": 1,
+        "sourcePages": [
+          1
+        ],
+        "prompt": "The Maya wrote using a type of writing called",
+        "options": [
+          "cuneiform",
+          "Epi-Olmec",
+          "Indus Script",
+          "hieroglyphic"
+        ]
+      },
+      {
+        "id": "q2",
+        "number": 2,
+        "sourcePages": [
+          1
+        ],
+        "prompt": "The Kalinagos went on sea-faring expeditions in vessels called",
+        "options": [
+          "batos",
+          "piragas",
+          "caravel",
+          "caneyes"
+        ]
+      },
+      {
+        "id": "q3",
+        "number": 3,
+        "sourcePages": [
+          1
+        ],
+        "prompt": "The ruler of a Mayan city state was called the",
+        "options": [
+          "cacique",
+          "ouboutou",
+          "audiencia",
+          "halach uinic"
+        ]
+      },
+      {
+        "id": "q4",
+        "number": 4,
+        "sourcePages": [
+          1
+        ],
+        "prompt": "Which of the following did the Maya use as money?",
+        "options": [
+          "Copper bars",
+          "Cocoa beans",
+          "Gold nuggets",
+          "Cowrie shells"
+        ]
+      },
+      {
+        "id": "q5",
+        "number": 5,
+        "sourcePages": [
+          1
+        ],
+        "prompt": "The Maya obtained their food MAINLY by",
+        "options": [
+          "fishing",
+          "trading",
+          "hunting",
+          "farming"
+        ]
+      },
+      {
+        "id": "q6",
+        "number": 6,
+        "sourcePages": [
+          1
+        ],
+        "prompt": "The duty of the encomendero regarding the indigenous peoples was to",
+        "options": [
+          "free them from enslavement",
+          "protect and Christianize them",
+          "keep records of their punishment",
+          "ensure that they worked in the mines"
+        ]
+      },
+      {
+        "id": "q7",
+        "number": 7,
+        "sourcePages": [
+          1
+        ],
+        "prompt": "In which century were the English MOST successful in establishing settlements in the Caribbean?",
+        "options": [
+          "Fourteenth",
+          "Fifteenth",
+          "Sixteenth",
+          "Seventeenth"
+        ]
+      },
+      {
+        "id": "q8",
+        "number": 8,
+        "sourcePages": [
+          1
+        ],
+        "prompt": "Which of the following is the town council in the Spanish American empire?",
+        "options": [
+          "Alcalde",
+          "Cabildos",
+          "Repartimiento",
+          "Conquistadores"
+        ]
+      },
+      {
+        "id": "q9",
+        "number": 9,
+        "sourcePages": [
+          1
+        ],
+        "prompt": "Which TWO European countries were chief rivals in the setting up of colonies in the Americas in the early 16th century?",
+        "options": [
+          "Portugal and Spain",
+          "England and Spain",
+          "England and France",
+          "France and Portugal"
+        ]
+      },
+      {
+        "id": "q10",
+        "number": 10,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "The MAIN goal of the English and French colonies in the Caribbean was to",
+        "options": [
+          "mine gold and precious minerals",
+          "convert the natives of the Caribbean",
+          "produce tropical crops for the mother country",
+          "relieve the mother country of its excess population"
+        ]
+      },
+      {
+        "id": "q11",
+        "number": 11,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Which of the following resulted from the changeover from tobacco to sugar cane cultivation in the Caribbean?\n\nI. The black population increased.\nII. The mulatto population declined.\nIII. The number of land owners declined.",
+        "options": [
+          "I and II only",
+          "I and III only",
+          "II and III only",
+          "I, II and III"
+        ]
+      },
+      {
+        "id": "q12",
+        "number": 12,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Legislation passed in British colonies to regulate the ratio of the black population to the whites were called the",
+        "options": [
+          "Slave Laws",
+          "Navigation Acts",
+          "Deficiency Laws",
+          "Amelioration Proposals"
+        ]
+      },
+      {
+        "id": "q13",
+        "number": 13,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Which of the following occurred in Africa as a result of the slave trade?",
+        "options": [
+          "Reduction of warfare in West Africa",
+          "Uniting of Africa under European rule",
+          "Growth of the West African population",
+          "Increased importation of European goods"
+        ]
+      },
+      {
+        "id": "q14",
+        "number": 14,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "The term ‘barracoon’ is MOST likely associated with the",
+        "options": [
+          "cultivation by captive persons in Africa",
+          "trade in enslaved persons in the Caribbean",
+          "housing of captive persons on the African coast",
+          "punishment of enslaved persons in the Caribbean"
+        ]
+      },
+      {
+        "id": "q15",
+        "number": 15,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "Which of the following ports were British slave ships MOST likely to visit during the 1700s?",
+        "options": [
+          "Havana",
+          "Kingston",
+          "Rio de Janeiro",
+          "Port-au-Prince"
+        ]
+      },
+      {
+        "id": "q16",
+        "number": 16,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "An enslaved African in the British Caribbean who stole from his/her owner was LEAST likely to be",
+        "options": [
+          "whipped",
+          "mutilated",
+          "charged a fine",
+          "placed in the stockade"
+        ]
+      },
+      {
+        "id": "q17",
+        "number": 17,
+        "sourcePages": [
+          2
+        ],
+        "prompt": "A MAJOR cause of the ‘Bussa Revolt’ of 1816 in Barbados was the",
+        "options": [
+          "activity of free blacks and coloureds",
+          "belief that emancipation was being delayed",
+          "influence of Sam Sharpe’s revolt in Jamaica",
+          "shortage of provisions for the enslaved Africans"
+        ]
+      },
+      {
+        "id": "q18",
+        "number": 18,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Which of the following factors contributed to the success of the Maroons in Jamaica and Suriname in their resistance to slavery?\n\nI. Large size of the two territories\nII. Nearness of difficult and remote terrain\nIII. Cooperation of free coloureds",
+        "options": [
+          "I and II only",
+          "I and III only",
+          "II and III only",
+          "I, II and III"
+        ]
+      },
+      {
+        "id": "q19",
+        "number": 19,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "The punishment MOST frequently meted out to the enslaved on 18th century sugar estates was",
+        "options": [
+          "flogging",
+          "treadmill",
+          "starvation",
+          "imprisonment"
+        ]
+      },
+      {
+        "id": "q20",
+        "number": 20,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Which slave revolt forced the British government to give serious consideration to the Emancipation Proposal?",
+        "options": [
+          "Bussa Revolt",
+          "Berbice Revolt",
+          "Haitian Revolution",
+          "Christmas Rebellion"
+        ]
+      },
+      {
+        "id": "q21",
+        "number": 21,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Which of the following was the MAIN purpose of the policy of amelioration?",
+        "options": [
+          "To improve the conditions of the enslaved in the British Caribbean",
+          "To introduce a new supply of cheap labour to the British Caribbean",
+          "To put an end to enslavement in the British Caribbean",
+          "To maintain the established system of enslavement"
+        ]
+      },
+      {
+        "id": "q22",
+        "number": 22,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Lord Mansfield is MOST closely associated with the declaration that",
+        "options": [
+          "the slave trade was unlawful",
+          "the enslaved were our brothers",
+          "slavery was not legal in England",
+          "slavery was legal in the crown colonies"
+        ]
+      },
+      {
+        "id": "q23",
+        "number": 23,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Which of the following was NOT a requirement of the apprenticeship system?",
+        "options": [
+          "Apprentices were to be trained to become skilled labourers.",
+          "Planters were to provide food and clothing for the apprentices.",
+          "Praedials were to continue working for their former masters for six years.",
+          "Apprentices were to work the first 40 hours of the week for no wages."
+        ]
+      },
+      {
+        "id": "q24",
+        "number": 24,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Which of the following organizations supported the abolition of slavery?",
+        "options": [
+          "Clapham Sect",
+          "Absentee Owners",
+          "West India Interest",
+          "Colonial Church Union"
+        ]
+      },
+      {
+        "id": "q25",
+        "number": 25,
+        "sourcePages": [
+          3
+        ],
+        "prompt": "Which of the following did the amelioration measures of 1823 propose?",
+        "options": [
+          "Enslaved persons should not be sold.",
+          "Enslaved families should be divided.",
+          "No enslaved woman should be flogged.",
+          "Children should not be allowed to work on estates."
+        ]
+      },
+      {
+        "id": "q26",
+        "number": 26,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Most of the immigrant workers used in the Cuban sugar industry in the 19th century were",
+        "options": [
+          "Indians",
+          "Chinese",
+          "Africans",
+          "Europeans"
+        ]
+      },
+      {
+        "id": "q27",
+        "number": 27,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Large-scale immigration to Trinidad and Guyana between 1838 and 1870 led to\n\nI. cultural diversity in those territories\nII. racial conflicts among the ethnic groups\nIII. economic development in both territories",
+        "options": [
+          "I only",
+          "I and II only",
+          "II and III only",
+          "I, II and III"
+        ]
+      },
+      {
+        "id": "q28",
+        "number": 28,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Which of the following did NOT result from the immigration of indentured labourers to the Caribbean after emancipation?",
+        "options": [
+          "The expansion of rice cultivation in Guyana",
+          "The introduction of new religions to Guyana",
+          "The expansion of sugar production in Barbados",
+          "The introduction of a variety of ethnic groups in Trinidad"
+        ]
+      },
+      {
+        "id": "q29",
+        "number": 29,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Indentured workers from Madeira brought elements of a culture to the British Caribbean. From which of the following cultures were these elements drawn?",
+        "options": [
+          "Indian",
+          "African",
+          "Chinese",
+          "Portuguese"
+        ]
+      },
+      {
+        "id": "q30",
+        "number": 30,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "The majority of immigrants brought to work in the British Caribbean in the years between emancipation and the First World War were employed as",
+        "options": [
+          "unskilled labourers",
+          "small farmers",
+          "factory hands",
+          "shopkeepers"
+        ]
+      },
+      {
+        "id": "q31",
+        "number": 31,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Which Spaniard is associated with the conquest of the Yucatán Peninsula?",
+        "options": [
+          "Alonso de Ojeda",
+          "Juan Ponce de Leon",
+          "Sebastian de Ocampo",
+          "Francisco Hernandez de Cordoba"
+        ]
+      },
+      {
+        "id": "q32",
+        "number": 32,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "Which of the following BEST describes a British Caribbean peasant proprietor in the period after emancipation?",
+        "options": [
+          "Someone who cultivated plots of land on his/her own account.",
+          "Someone who sold ground provisions in the market.",
+          "Someone who worked for very low wages.",
+          "Someone who worked on a large farm."
+        ]
+      },
+      {
+        "id": "q33",
+        "number": 33,
+        "sourcePages": [
+          4
+        ],
+        "prompt": "The main source of evidence which supports the positive contributions of the peasantry to the economy of the British West Indies in the latter part of the 19th century was an increase in the",
+        "options": [
+          "production of a variety of cash crops",
+          "production of beet sugar over cane sugar",
+          "number of vagrants throughout the region",
+          "number of village settlements in the rural areas"
+        ]
+      },
+      {
+        "id": "q34",
+        "number": 34,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Which of the following BEST explains why Guyana and Trinidad had the greatest need for immigrant labour?",
+        "options": [
+          "The planters wanted to introduce new crops.",
+          "The planters no longer employed African labour.",
+          "The creation of peasant villages led to a labour shortage.",
+          "The planters were slow to adopt new labour-saving devices."
+        ]
+      },
+      {
+        "id": "q35",
+        "number": 35,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Which of the following was NOT a result of the development of the peasantry in the British Caribbean after 1838?",
+        "options": [
+          "Diversification of the economy",
+          "Legal recognition of the practice of obeah",
+          "Greater expansion of non-conformist churches",
+          "A growing sense of independence among freed Africans"
+        ]
+      },
+      {
+        "id": "q36",
+        "number": 36,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Fidel Castro overthrew the government of Fulgencio Batista by",
+        "options": [
+          "using financial aid from America",
+          "making use of Russian warships",
+          "joining forces with foreign powers",
+          "organizing armed internal uprising"
+        ]
+      },
+      {
+        "id": "q37",
+        "number": 37,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Which of the following was the IMMEDIATE cause of the United States’ declaration of war against Spain in 1898?",
+        "options": [
+          "The United States took over Panama.",
+          "The U.S.S. Maine was blown up in the Havana harbour.",
+          "The United States was angered by the Spanish invasion of Cuba.",
+          "The United States was angered by General Weyler’s atrocities."
+        ]
+      },
+      {
+        "id": "q38",
+        "number": 38,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Which of the following Caribbean territories was NOT occupied by US military forces in the early 1900s?",
+        "options": [
+          "Dominican Republic",
+          "Jamaica",
+          "Haiti",
+          "Cuba"
+        ]
+      },
+      {
+        "id": "q39",
+        "number": 39,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Which of the following BEST summarizes the stated aims of the Monroe Doctrine?",
+        "options": [
+          "The ending of European economic exploitation of the Americas",
+          "The prevention of new European colonization in the Americas",
+          "The establishment of US military bases in the Americas",
+          "The establishment of US economic control in the Americas"
+        ]
+      },
+      {
+        "id": "q40",
+        "number": 40,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "Which of the following women was associated with the Labourers and Unemployed Association (LUA) of Belize?",
+        "options": [
+          "Una Marson",
+          "Amy Bailey",
+          "Phyllis Allfrey",
+          "Cleopatra White"
+        ]
+      },
+      {
+        "id": "q41",
+        "number": 41,
+        "sourcePages": [
+          5
+        ],
+        "prompt": "The focus of the Moyne Commission was to",
+        "options": [
+          "investigate ethnic conflicts among workers",
+          "bring an immediate end to anti-war protests",
+          "investigate existing socioeconomic conditions",
+          "recommend penalties for persons causing the unrest"
+        ]
+      },
+      {
+        "id": "q42",
+        "number": 42,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which of the following factors did NOT contribute to the dissatisfaction of the masses during the popular protests in the Caribbean during the 1930s?",
+        "options": [
+          "The Great Depression",
+          "The Second World War",
+          "Inadequate social services",
+          "Low wages paid to workers"
+        ]
+      },
+      {
+        "id": "q43",
+        "number": 43,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which of the following is true about the agitation of West Indian workers in the 1930s?",
+        "options": [
+          "They resulted in stronger labour unions.",
+          "They were supported by foreign agitators.",
+          "They were reacting to the Wood Commission.",
+          "They sought improved conditions for enslaved people."
+        ]
+      },
+      {
+        "id": "q44",
+        "number": 44,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "During the post-1938 period, trade unions in the British Caribbean sought MAINLY to",
+        "options": [
+          "extend the vote for all working people",
+          "organize strikes on estates and at the docks",
+          "create equality among all men in the society",
+          "improve the wages and living conditions for workers"
+        ]
+      },
+      {
+        "id": "q45",
+        "number": 45,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "In many British Caribbean territories during the 1930s, there was a strong link between political parties and",
+        "options": [
+          "trade unions",
+          "plantation owners",
+          "the established church",
+          "stipendiary magistrates"
+        ]
+      },
+      {
+        "id": "q46",
+        "number": 46,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which of the following female leaders was involved in the labour unrest of the 1930s?",
+        "options": [
+          "Audrey Jeffers",
+          "Elma François",
+          "Dame Nita Barrow",
+          "Amy Ashwood Garvey"
+        ]
+      },
+      {
+        "id": "q47",
+        "number": 47,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "In which order did the following countries gain political independence?\n\nI. Guyana\nII. Jamaica\nIII. Grenada",
+        "options": [
+          "I, II, III",
+          "II, I, III",
+          "II, III, I",
+          "III, II, I"
+        ]
+      },
+      {
+        "id": "q48",
+        "number": 48,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "With which of the following is the above statement associated?",
+        "options": [
+          "Jamaica’s objections to a federal customs union",
+          "Guyana’s decision not to join the 1958 Federation",
+          "British control of the foreign policy of the 1958 Federation",
+          "Jamaica’s decision to withdraw from the 1958 Federation"
+        ],
+        "source": "“One from ten leaves nought.”"
+      },
+      {
+        "id": "q49",
+        "number": 49,
+        "sourcePages": [
+          6
+        ],
+        "prompt": "Which Caribbean territories were assimilated by France in 1946?",
+        "options": [
+          "Haiti, Martinique, Guadeloupe",
+          "Marie Galante, Haiti, Dominica",
+          "Guadeloupe, French Guiana, Martinique",
+          "Saint Barthelemy, Trinidad and Tobago, Martinique"
+        ]
+      },
+      {
+        "id": "q50",
+        "number": 50,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "In which year were French territories in the Caribbean granted overseas department status?",
+        "options": [
+          "1944",
+          "1945",
+          "1946",
+          "1947"
+        ]
+      },
+      {
+        "id": "q51",
+        "number": 51,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Which group of people was ranked directly below the Grand Blanc in the social hierarchy in St Domingue in the 18th century?",
+        "options": [
+          "Nobles",
+          "Affranchis",
+          "Aristocrats",
+          "Petit Blanc"
+        ]
+      },
+      {
+        "id": "q52",
+        "number": 52,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "‘Colonialism’ may be described as the",
+        "options": [
+          "spread of Roman Catholicism worldwide",
+          "settlement and exploitation of one country by another",
+          "assistance given to developing countries by developed ones",
+          "large-scale killing of native people by a more powerful group"
+        ]
+      },
+      {
+        "id": "q53",
+        "number": 53,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Which of the following was passed to ensure that the Indians were NOT kept in “cruel and humble servitude”?",
+        "options": [
+          "The Asiento",
+          "The Code Noir",
+          "The Laws of Burgos",
+          "The Deficiency Laws"
+        ],
+        "source": "“Tell me by what right and justice do you keep these Indians in such cruel and humble servitude?”"
+      },
+      {
+        "id": "q54",
+        "number": 54,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Which of the following shows the correct order of the steps towards full freedom in the British Caribbean?",
+        "options": [
+          "Apprenticeship, Emancipation Act, amelioration, abolition of slave trade",
+          "Emancipation Act, apprenticeship, abolition of slave trade, amelioration",
+          "Amelioration, Emancipation Act, abolition of slave trade, apprenticeship",
+          "Abolition of slave trade, amelioration, Emancipation Act, apprenticeship"
+        ]
+      },
+      {
+        "id": "q55",
+        "number": 55,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Which of the following statements is true of Cuba in the 1800s?",
+        "options": [
+          "It had become a major sugar-producing territory.",
+          "Logwood production had become a major industry.",
+          "Tobacco had replaced sugar as the leading product.",
+          "Indigenous Indians were the major source of agricultural labour."
+        ]
+      },
+      {
+        "id": "q56",
+        "number": 56,
+        "sourcePages": [
+          7
+        ],
+        "prompt": "Which of the following Dutch territories gained independence by 1980?",
+        "options": [
+          "Aruba",
+          "Curaçao",
+          "Suriname",
+          "Sint Maarten"
+        ]
+      },
+      {
+        "id": "q57",
+        "number": 57,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "In which chronological order did the British Caribbean planters face competition from the following?\n\nI. French beet sugar\nII. Cuban slave-grown sugar\nIII. St Domingue slave-grown sugar",
+        "options": [
+          "I, II, III",
+          "III, II, I",
+          "II, III, I",
+          "II, I, III"
+        ]
+      },
+      {
+        "id": "q58",
+        "number": 58,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "In which of the following territories was Hubert Critchlow an active trade unionist?",
+        "options": [
+          "Trinidad and Tobago",
+          "British Guiana",
+          "Barbados",
+          "Grenada"
+        ]
+      },
+      {
+        "id": "q59",
+        "number": 59,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Which of the following leaders was the first female prime minister of a Caribbean country?",
+        "options": [
+          "Muriel Greaves",
+          "Gertrude Protain",
+          "Eugenia Charles",
+          "Portia Simpson-Miller"
+        ]
+      },
+      {
+        "id": "q60",
+        "number": 60,
+        "sourcePages": [
+          8
+        ],
+        "prompt": "Which of the following persons served as Prime Minister of the West Indies Federation?",
+        "options": [
+          "Eric Williams",
+          "Grantley Adams",
+          "Alexander Bustamante",
+          "Hubert Nathaniel Critchlow"
+        ]
+      }
+    ],
+    "sha256": "31deb5508ca1d78e55fd48b7a5c0a38fae386dfe2dd14f5734f51562703904b7"
   }
 ]

@@ -13,6 +13,11 @@
 .ch-exam-figure img { display: block; max-width: 100%; height: auto; background: #fff; border-radius: .5rem; }
 .ch-figure-scroll { max-width: 100%; overflow: auto; overscroll-behavior-inline: contain; }
 .ch-figure-scroll img { min-width: 36rem; }
+.ch-table-scroll { margin: 1rem 0; }
+.ch-table-scroll table { width: 100%; min-width: 24rem; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.ch-table-scroll caption { padding-bottom: .5rem; text-align: start; font-weight: 600; }
+.ch-table-scroll :is(th, td) { border: 1px solid var(--poa-line); padding: .5rem; text-align: center; white-space: nowrap; }
+.ch-table-scroll th { background: var(--spark-muted); }
 .ch-exam-figure figcaption { margin-top: .5rem; color: var(--poa-soft-ink); }
 .ch-map-controls { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem; }
 .ch-map-controls p { flex-basis: 100%; margin: 0; }

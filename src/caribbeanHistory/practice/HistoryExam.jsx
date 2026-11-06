@@ -75,8 +75,30 @@ function MapFigure({ question, answers, onAnswer }) {
   </>;
 }
 
-function Stimulus({ question, answers, onAnswer }) {
-  return <>{question.source && <blockquote className="ch-exam-source">{question.source}</blockquote>}
+function SourceTable({ table }) {
+  return <div className="ch-figure-scroll ch-table-scroll" tabIndex={0} role="region" aria-label="Source data">
+    <table>
+      <caption>{table.caption}</caption>
+      <colgroup span={1} />
+      <colgroup span={table.columns.length} />
+      <thead>
+        <tr><th scope="col" rowSpan={2}>{table.rowHeading}</th><th scope="colgroup" colSpan={table.columns.length}>{table.columnGroup}</th></tr>
+        <tr>{table.columns.map(column => <th key={column} scope="col">{column}</th>)}</tr>
+      </thead>
+      <tbody>{table.rows.map(([heading, ...values]) => <tr key={heading}>
+        <th scope="row">{heading}</th>
+        {values.map((value, index) => <td key={table.columns[index]}>{value}</td>)}
+      </tr>)}</tbody>
+    </table>
+  </div>;
+}
+
+function QuestionContent({ question, answers, onAnswer, sourceFirst = false }) {
+  const prompt = question.prompt && <p className="ch-question-text">{question.prompt}</p>;
+  return <>
+    {!sourceFirst && prompt}
+    {question.source && <blockquote className="ch-exam-source">{question.source}</blockquote>}
+    {question.table && <SourceTable table={question.table} />}
     {question.figure && <figure className="ch-exam-figure">
       {question.figure.markers && answers ? <MapFigure key={question.id} question={question} answers={answers} onAnswer={onAnswer} /> :
       <div className={question.figure.wide ? "ch-figure-scroll" : undefined} tabIndex={question.figure.wide ? 0 : undefined} role={question.figure.wide ? "region" : undefined} aria-label={question.figure.wide ? "Scrollable map" : undefined}>
@@ -84,6 +106,7 @@ function Stimulus({ question, answers, onAnswer }) {
       </div>}
       {question.figure.caption && <figcaption>{question.figure.caption}</figcaption>}
     </figure>}
+    {sourceFirst && prompt}
   </>;
 }
 
@@ -153,8 +176,7 @@ export default function HistoryExam({ paper, userId, supabase, onBack }) {
               <span>Question {question.number}{question.title && ` · ${question.title}`}</span>
             </label>
             <details className="ch-question-preview"><summary>Read question {question.number}</summary>
-              {question.prompt && <p className="ch-question-text">{question.prompt}</p>}
-              <Stimulus question={question} />
+              <QuestionContent question={question} />
               {question.parts.map(part => <p className="ch-question-text" key={part.id}>{part.label} {part.prompt} <strong>[{part.marks} marks]</strong></p>)}
             </details>
           </div>)}
@@ -181,8 +203,7 @@ export default function HistoryExam({ paper, userId, supabase, onBack }) {
             {active && <button className="secondary" type="button" aria-pressed={Boolean(attempt.flags[current.id])}
               onClick={() => setAttempt(previous => ({ ...previous, flags: { ...previous.flags, [current.id]: !previous.flags[current.id] } }))}>{attempt.flags[current.id] ? "Flagged for review" : "Flag for review"}</button>}
           </div>
-          {current.prompt && <p className="ch-question-text">{current.prompt}</p>}
-          <Stimulus question={current} answers={attempt.answers} onAnswer={active ? answer : undefined} />
+          <QuestionContent question={current} sourceFirst={paper.paper === 1} answers={attempt.answers} onAnswer={active ? answer : undefined} />
           {paper.paper === 1 ? <fieldset className="oa-options"><legend>Choose one answer</legend>
             {current.options.map((option, index) => {
               const letter = "ABCD"[index];
