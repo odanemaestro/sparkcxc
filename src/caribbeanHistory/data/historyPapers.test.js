@@ -37,6 +37,9 @@ test("the supplied Paper 2 archive preserves the early alternatives under their 
 
 test("digitised questions have source pages, complete choices or allocations, and available figures", () => {
   expect(new Set(archive.map(paper => paper.id)).size).toBe(archive.length);
+  expect(archive.filter(paper => paper.paper === 1).map(paper => paper.year)).toEqual([
+    2011, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2024,
+  ]);
   for (const paper of archive) {
     expect(paper.sha256).toMatch(/^[a-f0-9]{64}$/);
     expect(paper.questions.map(q => q.number)).toEqual(paper.questions.map((_, i) => i + 1));
