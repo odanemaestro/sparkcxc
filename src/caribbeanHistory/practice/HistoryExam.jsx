@@ -76,18 +76,24 @@ function MapFigure({ question, answers, onAnswer }) {
 }
 
 function SourceTable({ table }) {
+  const { caption, columnGroup, columns, rowHeading, rows } = table;
   return <div className="ch-figure-scroll ch-table-scroll" tabIndex={0} role="region" aria-label="Source data">
     <table>
-      <caption>{table.caption}</caption>
-      <colgroup span={1} />
-      <colgroup span={table.columns.length} />
+      <caption>{caption}</caption>
+      {columnGroup && <><colgroup span={1} /><colgroup span={columns.length} /></>}
       <thead>
-        <tr><th scope="col" rowSpan={2}>{table.rowHeading}</th><th scope="colgroup" colSpan={table.columns.length}>{table.columnGroup}</th></tr>
-        <tr>{table.columns.map(column => <th key={column} scope="col">{column}</th>)}</tr>
+        {columnGroup && <tr>
+          <th scope="col" rowSpan={2}>{rowHeading}</th>
+          <th scope="colgroup" colSpan={columns.length}>{columnGroup}</th>
+        </tr>}
+        <tr>
+          {!columnGroup && <th scope="col">{rowHeading}</th>}
+          {columns.map(column => <th key={column} scope="col">{column}</th>)}
+        </tr>
       </thead>
-      <tbody>{table.rows.map(([heading, ...values]) => <tr key={heading}>
+      <tbody>{rows.map(([heading, ...values]) => <tr key={heading}>
         <th scope="row">{heading}</th>
-        {values.map((value, index) => <td key={table.columns[index]}>{value}</td>)}
+        {values.map((value, index) => <td key={columns[index]}>{value}</td>)}
       </tr>)}</tbody>
     </table>
   </div>;
