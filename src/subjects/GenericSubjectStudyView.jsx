@@ -1,4 +1,5 @@
 import OfficeVisualGuide from "../officeAdministration/components/OfficeVisualGuide.jsx";
+import HistoryLessonCompanion from "../caribbeanHistory/components/HistoryLessonCompanion.jsx";
 import OfficeWorkspace from "../officeAdministration/components/OfficeWorkspace.jsx";
 import ForwardArrowIcon from "../components/ui/ForwardArrowIcon";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
@@ -292,6 +293,7 @@ export function GenericLessonContent({
       {hasChemistryVisuals && <ChemistryReferenceDiagrams topicId={topic.id}/>}
       {pobHasVisuals&&<PobReferenceMedia topic={topic}/>}
       {isPob&&<div id="pob-lesson-tools"><PobLearningTools topic={topic} onActivityComplete={onActivityComplete}/></div>}
+      {subjectId==="caribbean-history"&&<HistoryLessonCompanion topic={topic}/>}
       {subjectId==="office-administration"&&<>
         <OfficeVisualGuide section={topic?.metadata?.syllabus?.section} topic={topic}/>
         <details><summary>Check your understanding</summary><p>{lesson.check?.question}</p><details><summary>Show explanation</summary><p>{lesson.check?.answer}</p></details></details>

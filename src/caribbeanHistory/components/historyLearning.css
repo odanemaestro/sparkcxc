@@ -1,0 +1,25 @@
+.ch-lesson-companion { display: grid; gap: 1rem; }
+.ch-lesson-companion :is(figure, p) { margin: 0; }
+.ch-lesson-companion details p { margin: .75rem 0; }
+.ch-sequence, .ch-archive-figure {
+  padding: clamp(.875rem, 3vw, 1.5rem);
+  border: 1px solid var(--spark-border, #d8dce3);
+  border-radius: 1rem;
+  background: var(--spark-muted);
+}
+.ch-sequence figcaption { font-weight: 700; }
+.ch-sequence ol {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+  gap: .5rem;
+  margin: .75rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: ch-step;
+}
+.ch-sequence li { counter-increment: ch-step; padding: .625rem; border: 1px solid var(--spark-border, #d8dce3); border-radius: .625rem; }
+.ch-sequence li::before { content: counter(ch-step); display: block; font-weight: 700; }
+.ch-archive-figure img { display: block; max-width: 100%; max-height: 24rem; margin: 0 auto 1rem; object-fit: contain; border-radius: .5rem; }
+.ch-archive-figure img[hidden] { display: none; }
+.ch-archive-figure a { display: inline-block; margin-top: .5rem; }
+.ch-syllabus-note { font-size: .875rem; }

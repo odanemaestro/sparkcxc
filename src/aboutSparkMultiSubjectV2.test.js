@@ -29,9 +29,8 @@ describe("About SPARK multi-subject update", () => {
     const {runtimeSubjectCatalog} = require("./subjects/subjectCatalog");
     const base = getSparkSubjectRegistry({physicsEnabled:true});
     expect(base.find(subject=>subject.id==="office-administration")).toMatchObject({enabled:true,status:"live"});
-    // Existing published courses are live; Office Administration remains a draft.
-    // Reproduce the returned catalog rows rather than promoting local draft flags.
-    const productionRows = base.filter(subject=>subject.id!=="office-administration").map(subject => ({
+    // Simulate a catalogue before Office Administration's release, with Caribbean History in draft.
+    const productionRows = base.filter(subject=>!["office-administration", "caribbean-history"].includes(subject.id)).map(subject => ({
       id: subject.id, name: subject.name, short_name: subject.shortName,
       enabled: true, status: "live", sort_order: subject.sortOrder,
       capabilities: subject.capabilities,
@@ -43,6 +42,7 @@ describe("About SPARK multi-subject update", () => {
       "food-nutrition-and-health", "principles-of-accounts"
     ]));
     expect(live.map(subject=>subject.id)).not.toContain("office-administration");
+    expect(live.map(subject=>subject.id)).not.toContain("caribbean-history");
     const office=base.find(subject=>subject.id==="office-administration");
     const afterOfficePublish=runtimeSubjectCatalog(base,[...productionRows,{
       id:office.id,name:office.name,short_name:office.shortName,enabled:true,status:"live",
