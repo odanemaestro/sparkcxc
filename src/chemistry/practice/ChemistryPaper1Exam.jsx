@@ -10,14 +10,14 @@ const getJSON=async path=>{
   const response=await fetch(root+path,{cache:"no-store"});
   const mime=response.headers?.get?.("content-type") || "";
   if(!response.ok || !mime.includes("json")){
-    throw new Error("Chemistry Paper 1 questions are not installed yet. Import the reviewed question-bank ZIP into SPARK's public/chemistry-paper1 folder using tools/import-chemistry-paper1.py, then reload this page.");
+    throw new Error("This paper couldn’t load. Try again or choose another paper.");
   }
   try{
     const data=await response.json();
     if(!Array.isArray(data?.questions) || !data.questions.length)throw new Error("Empty question set");
     return data;
   }catch{
-    throw new Error("Chemistry Paper 1 data could not be read. Reinstall the reviewed JSON question bank and reload the page.");
+    throw new Error("This paper couldn’t load. Try again or choose another paper.");
   }
 };
 const labels=["A","B","C","D"];
@@ -30,6 +30,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId,sourceId=nul
   const controlled=Boolean(sourceId);
   const savedAttempt=useRef(null);
   const [paper,setPaper]=useState(null),[error,setError]=useState(""),[loading,setLoading]=useState(false);
+  const [loadAttempt,setLoadAttempt]=useState(0);
   const [answers,setAnswers]=useState({});
   const [active,setActive]=useState(0);
   const [phase,setPhase]=useState("instructions");
@@ -39,6 +40,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId,sourceId=nul
   const [showExitConfirm,setShowExitConfirm]=useState(false);
   const [showSubmitConfirm,setShowSubmitConfirm]=useState(false);
   const submitted=phase==="review";
+  const reviewOnly=paper?.grading_status==="review-only";
   const exam=paper?.questions||[];
   const current=exam[active];
   const isPractice=source.startsWith("practice-");
@@ -68,7 +70,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId,sourceId=nul
       .catch(err=>{if(!cancelled)setError(err.message);})
       .finally(()=>{if(!cancelled)setLoading(false);});
     return()=>{cancelled=true;};
-  },[source,isPractice,userId]);
+  },[source,isPractice,userId,loadAttempt]);
   useEffect(()=>{
     if(!paper||!exam.length||!endsAt||phase!=="exam")return undefined;
     const tick=()=>{
@@ -113,7 +115,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId,sourceId=nul
   const scores=useMemo(()=>exam.reduce((n,q)=>n+Number(Boolean(answers[q.id])&&answers[q.id]===q.answer),0),[exam,answers]);
   // Use the same canonical subject progress and recommendation-outcome pipeline as Paper 02.
   useEffect(()=>{
-    if(!submitted||!paper||!exam.length||!userId||!supabase?.rpc)return;
+    if(reviewOnly||!submitted||!paper||!exam.length||!userId||!supabase?.rpc)return;
     const attemptKey=`${userId}:${source}:${paper.paper_id||source}`;
     if(savedAttempt.current===attemptKey)return;
     savedAttempt.current=attemptKey;
@@ -129,7 +131,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId,sourceId=nul
         available_questions:exam.length,complete_historical_paper:!isPractice&&isFullPaper,
         provisional_key:true,at:new Date().toISOString()},
     }}).catch(error=>console.warn("Could not save Chemistry Paper 01 result",error));
-  },[submitted,paper,exam.length,userId,supabase,source,scores]);
+  },[reviewOnly,submitted,paper,exam.length,userId,supabase,source,scores]);
   const flagged=exam.filter(q=>q.flags?.length).length;
   const diagrams=paper?.diagrams||{};
   const stimuli=Object.fromEntries((paper?.stimuli||[]).map(s=>[s.id,s]));
@@ -155,7 +157,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId,sourceId=nul
         </div>
       </section></>}
       {loading&&<p role="status">Loading Chemistry Paper 1 questions…</p>}
-      {error&&<div className="chem-p1-load-error" role="alert"><strong>Paper 1 bank unavailable</strong><p>{error}</p><button type="button" onClick={()=>setSource(current=>current==="practice-01"?"practice-02":"practice-01")}>Try another set</button></div>}
+      {error&&<div className="chem-p1-load-error" role="alert"><strong>Paper unavailable</strong><p>{error}</p><button type="button" onClick={()=>setLoadAttempt(attempt=>attempt+1)}>Try again</button></div>}
       {paper&&<section className="is-exam-instructions-card chem-p1-instructions">
         <span className="is-exam-eyebrow">CSEC CHEMISTRY · PAPER 01</span>
         <h1>{paperLabel}</h1>
@@ -164,22 +166,22 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId,sourceId=nul
         <div className="is-exam-instructions-meta">
           <div><span>Time</span><strong>1 h 15 min</strong></div>
           <div><span>Questions</span><strong>{exam.length}</strong></div>
-          <div><span>Marks</span><strong>{exam.length}</strong></div>
+          {!reviewOnly&&<div><span>Marks</span><strong>{exam.length}</strong></div>}
           <div><span>Question type</span><strong>Multiple choice</strong></div>
         </div>
-        {isPartial&&<p className="chem-p1-partial-note" role="status">Only {exam.length} questions are available from this historical paper. This is a timed revision session, not a complete 60-question examination.</p>}
+        {isPartial&&!reviewOnly&&<p className="chem-p1-partial-note" role="status">This timed revision paper contains {exam.length} questions.</p>}
         <div className="is-exam-instructions-sheet">
           <h2>READ THE FOLLOWING INSTRUCTIONS CAREFULLY.</h2>
           <ol>
             <li>This paper contains {exam.length} multiple-choice questions. You have 1 hour and 15 minutes to complete the paper.</li>
             <li>Each question has four options labelled A, B, C and D. Choose the best answer.</li>
-            <li>Each correct response earns one mark. No marks are deducted for incorrect answers.</li>
+            {!reviewOnly&&<li>Each correct response earns one mark. No marks are deducted for incorrect answers.</li>}
             <li>Use Next, Previous, or the question navigator to move between questions.</li>
             <li>You may change an answer before submitting. You can flag questions to return to later.</li>
             <li>Your responses are saved on this device while you work. Your paper submits automatically when time expires.</li>
           </ol>
         </div>
-        <div className="is-exam-instructions-note"><strong>After submission</strong><span>View your score, selected answers, correct answers and explanations for each question.</span></div>
+        <div className="is-exam-instructions-note"><strong>After submission</strong><span>{reviewOnly?"Review the answers you selected. This paper is for unscored practice.":"View your score, selected answers, correct answers and explanations for each question."}</span></div>
         <div className="is-exam-instructions-actions"><button type="button" className="is-exam-primary" onClick={beginExam}>Start examination</button></div>
       </section>}
     </div>
@@ -193,25 +195,24 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId,sourceId=nul
     </header>
     {paper?<section className="chem-p1-exam">
       <div className="chem-p1-exam-bar"><strong>{exam.length} questions</strong><span>Answered {Object.keys(answers).length}/{exam.length}</span><span>Flagged {Object.values(flaggedItems).filter(Boolean).length}</span></div>
-      {!isPractice&&source==="2010-MJ"?<p role="status">Only 55 questions are available from this historical paper. This is a partial-paper simulation.</p>:null}
       {flagged>0?<p role="status">{flagged} question(s) have recorded source/answer ambiguities; their keys are provisional.</p>:null}
       {submitted?<section aria-label="Paper 1 results">
-        <h2>Practice review: {scores}/{exam.length} ({exam.length?Math.round(scores/exam.length*100):0}%)</h2>
-        <p>Compare your answers with the correct choices and explanations below.</p>
+        <h2>{reviewOnly?"Review your answers":`Practice review: ${scores}/${exam.length} (${Math.round(scores/exam.length*100)}%)`}</h2>
+        {!reviewOnly&&<p>Compare your answers with the correct choices and explanations below.</p>}
         <button type="button" className="chem-p1-try-again" onClick={selectAnother}>Choose another paper or try again</button>
         {exam.map((q,i)=>{
           const selected=answers[q.id];
           const correct=q.answer;
           return <article key={q.id} className="chem-p1-review">
-            <h3>Question {i+1}: {selected&&selected===correct?"Correct":selected?"Incorrect":"Not answered"}</h3>
+            <h3>Question {i+1}: {selected?(reviewOnly?"Answered":selected===correct?"Correct":"Incorrect"):"Not answered"}</h3>
             {q.stimulus&&stimuli[q.stimulus]?<div className="chem-p1-stimulus"><p>{stimuli[q.stimulus].text}</p>{(stimuli[q.stimulus].diagrams||[]).map(d=><React.Fragment key={d}>{renderFigure(d)}</React.Fragment>)}</div>:null}
             <p>{q.stem}</p>{q.stem_after&&<p>{q.stem_after}</p>}
             {(q.diagrams||[]).map(d=><React.Fragment key={d}>{renderFigure(d)}</React.Fragment>)}
             <div className="chem-p1-review-answer-grid">
               <div><strong>Your answer</strong><p>{selected?`${selected}. ${q.options?.[selected]||""}`:"Not answered"}</p>{selected&&q.option_diagrams?.[selected]?renderFigure(q.option_diagrams[selected]):null}</div>
-              <div><strong>Correct answer</strong><p>{correct&&q.options?.[correct]?`${correct}. ${q.options[correct]}`:"Answer key awaiting verification"}</p>{correct&&q.option_diagrams?.[correct]?renderFigure(q.option_diagrams[correct]):null}</div>
+              {!reviewOnly&&<div><strong>Correct answer</strong><p>{correct&&q.options?.[correct]?`${correct}. ${q.options[correct]}`:"Answer key awaiting verification"}</p>{correct&&q.option_diagrams?.[correct]?renderFigure(q.option_diagrams[correct]):null}</div>}
             </div>
-            {q.explanation&&<div className="chem-p1-review-explanation"><strong>Explanation</strong><p>{q.explanation}</p></div>}
+            {!reviewOnly&&q.explanation&&<div className="chem-p1-review-explanation"><strong>Explanation</strong><p>{q.explanation}</p></div>}
             {q.flags?.length?<p>Source accuracy note: {q.flags.join(" ")}</p>:null}
           </article>;
         })}
@@ -242,7 +243,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId,sourceId=nul
       <section className="chem-exam-modal" role="dialog" aria-modal="true" aria-labelledby="chem-submit-title">
         <span className="chem-library-eyebrow">SUBMIT EXAMINATION</span>
         <h2 id="chem-submit-title">Submit your paper?</h2>
-        <p>Your answers will be marked. You will not be able to edit them after submission.</p>
+        <p>{reviewOnly?"Submit to review your selected answers.":"Your answers will be marked after submission."} You cannot edit them once submitted.</p>
         <div className="chem-exam-modal-actions">
           <button type="button" className="chem-exam-modal-secondary" onClick={()=>setShowSubmitConfirm(false)}>Continue examination</button>
           <button type="button" className="chem-exam-modal-primary" onClick={finishSubmit}>Submit examination</button>

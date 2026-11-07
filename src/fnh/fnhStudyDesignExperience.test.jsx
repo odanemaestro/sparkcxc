@@ -6,6 +6,7 @@ import {FNH_TOPICS,fnhLocalStructure} from "./data/fnhCourse";
 import {readSparkHashRoute,subscribeSparkRoute} from "../routing/sparkRoutingV270";
 
 jest.mock("../subjects/genericSubjectCatalog",()=>({
+  ...jest.requireActual("../subjects/genericSubjectCatalog"),
   loadGenericSubjectStructure:jest.fn()
 }));
 jest.mock("../routing/sparkRoutingV270",()=>({

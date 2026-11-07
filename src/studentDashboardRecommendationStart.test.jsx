@@ -2,6 +2,7 @@ import React from "react";
 import {act, fireEvent, render, screen, waitFor} from "@testing-library/react";
 import {DashboardView} from "./App";
 import {supabase} from "./lib/supabaseClient";
+import {writeSparkNestedRoute} from "./routing/sparkRoutingV270";
 
 jest.mock("./lib/supabaseClient", () => ({
   supabase:{from:jest.fn(), rpc:jest.fn(), channel:jest.fn(), removeChannel:jest.fn()},
@@ -26,7 +27,11 @@ function queryResult(data) {
   return query;
 }
 
-function renderDashboard(setView = jest.fn()) {
+const practiceDestination = {path:"/practice/mathematics", params:{mode:"adaptive", skill:"Sets & Venn Diagrams"}};
+
+function renderDashboard(setView = jest.fn((view, destination) => {
+  if (destination?.path) writeSparkNestedRoute(destination.path, destination.params);
+})) {
   const rendered = render(<DashboardView
     user={{id:"student-1"}}
     profile={{id:"student-1", role:"student", name:"Odane Robinson"}}
@@ -77,7 +82,7 @@ describe("dashboard next-step recommendation tracking", () => {
     expect(button).not.toBeDisabled();
     expect(screen.queryByText("Opening…")).not.toBeInTheDocument();
     expect(setView).toHaveBeenCalledTimes(1);
-    expect(setView).toHaveBeenCalledWith("practice-math");
+    expect(setView).toHaveBeenCalledWith("practice-math", practiceDestination);
     const calls = supabase.rpc.mock.calls.filter(([name]) => name === "spark_record_learning_recommendation");
     expect(calls).toHaveLength(1);
     expect(calls[0][1]).toEqual(expect.objectContaining({
@@ -98,7 +103,7 @@ describe("dashboard next-step recommendation tracking", () => {
     await act(async () => { complete({data:"recommendation-1", error:null}); });
 
     expect(setView).toHaveBeenCalledTimes(1);
-    expect(setView).toHaveBeenCalledWith("practice-math");
+    expect(setView).toHaveBeenCalledWith("practice-math", practiceDestination);
     expect(window.location.hash).toContain("skill=Sets");
     await waitFor(() => expect(screen.getByRole("button", {name:/Start practice|Open the lesson/})).not.toBeDisabled());
     // The new start immediately enters history and lowers this recommendation's rank.
@@ -115,7 +120,7 @@ describe("dashboard next-step recommendation tracking", () => {
 
     fireEvent.click(await screen.findByRole("button", {name:"Start practice"}));
 
-    await waitFor(() => expect(setView).toHaveBeenCalledWith("practice-math"));
+    await waitFor(() => expect(setView).toHaveBeenCalledWith("practice-math", practiceDestination));
     expect(warning).toHaveBeenCalledWith("Could not record SPARK recommendation", expect.objectContaining({code:"42501"}));
     expect(screen.getByRole("button", {name:"Start practice"})).not.toBeDisabled();
     warning.mockRestore();
@@ -131,7 +136,7 @@ describe("dashboard next-step recommendation tracking", () => {
 
     fireEvent.click(await screen.findByRole("button", {name:"Start practice"}));
 
-    await waitFor(() => expect(setView).toHaveBeenCalledWith("practice-math"));
+    await waitFor(() => expect(setView).toHaveBeenCalledWith("practice-math", practiceDestination));
     expect(screen.getByRole("button", {name:"Start practice"})).not.toBeDisabled();
     expect(warning).toHaveBeenCalled();
     warning.mockRestore();
@@ -187,7 +192,7 @@ describe("dashboard next-step recommendation tracking", () => {
 
     fireEvent.click(await screen.findByRole("button", {name:"Start practice"}));
 
-    expect(setView).toHaveBeenCalledWith("practice-math");
+    expect(setView).toHaveBeenCalledWith("practice-math", practiceDestination);
     expect(screen.queryByText("Opening…")).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", {name:"Quick practice"}));
     expect(setView).toHaveBeenLastCalledWith("practice");

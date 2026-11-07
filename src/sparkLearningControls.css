@@ -50,6 +50,52 @@ html body select :is(option, optgroup) {
   color: var(--spark-ink);
   font-family: inherit;
 }
+html[data-theme="dark"] body select { color-scheme: dark; }
+
+/* Use the browser's customizable picker where available. Other browsers
+   keep their native keyboard and touch picker with themed text and surfaces. */
+@supports (appearance: base-select) and selector(::picker(select)) {
+  @media (forced-colors: none) {
+    html body select:not([multiple]):not([size]),
+    html body select:is([size="0"], [size="1"]):not([multiple]),
+    html body select:not([multiple]):not([size])::picker(select),
+    html body select:is([size="0"], [size="1"]):not([multiple])::picker(select) {
+      appearance: base-select;
+    }
+    html body select:not([multiple]):not([size]),
+    html body select:is([size="0"], [size="1"]):not([multiple]) {
+      background-image: none !important;
+      padding-inline-end: 12px !important;
+    }
+    html body select::picker-icon { color: var(--spark-ink); }
+    html body select::picker(select) {
+      box-sizing: border-box;
+      max-inline-size: calc(100vi - 24px);
+      max-block-size: min(360px, 55dvh);
+      overflow: auto;
+      margin-block: 4px;
+      padding: 4px;
+      border: 1px solid var(--spark-border-strong);
+      border-radius: 10px;
+      background: var(--spark-paper);
+      color: var(--spark-ink);
+      box-shadow: 0 6px 18px rgb(10 28 54 / 18%);
+      font: inherit;
+    }
+    html body select:not([multiple]) option {
+      min-block-size: 40px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+    html body select option:is(:checked, :focus-visible, :hover):not(:disabled) {
+      background: var(--spark-teal-surface);
+      color: var(--spark-ink);
+    }
+    html body select :is(option, optgroup):disabled { color: var(--spark-ink-soft); }
+  }
+}
 
 html body input[type="file"] {
   box-sizing: border-box;

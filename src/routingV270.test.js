@@ -26,6 +26,28 @@ describe("SPARK comprehensive refresh-safe routing V2.7.0", () => {
       .toBe("#/study/physics/workbook?section=A&topic=A5");
   });
 
+  test.each([
+    ["caribbean-history", {view:"library", paper:"2"}],
+    ["chemistry", {mode:"paper2"}],
+    ["english-a", {mode:"paper2"}],
+    ["food-nutrition-and-health", {view:"paper2"}],
+    ["integrated-science", {mode:"paper2"}],
+    ["office-administration", {view:"library", paper:"2"}],
+    ["principles-of-accounts", {view:"library", paper:"2"}],
+    ["principles-of-business", {view:"paper2"}],
+    ["social-studies", {mode:"paper2"}],
+  ])("restores direct Paper 2 links for %s", (subject, expected) => {
+    const route = parseSparkHashValue(`#/practice/${subject}/paper-2?source=selected-paper`);
+    expect(route.path).toBe(`/practice/${subject}`);
+    expect(Object.fromEntries(route.params)).toEqual({ ...expected, source:"selected-paper" });
+  });
+
+  test("preserves the exact section and lesson in nested History links", () => {
+    const route = parseSparkHashValue("#/study/caribbean-history/section/ch-theme-1/topic/ch-indigenous-societies");
+    expect(route.path).toBe("/study/caribbean-history");
+    expect(Object.fromEntries(route.params)).toEqual({ section:"ch-theme-1", topic:"ch-indigenous-societies" });
+  });
+
   test("non-SPARK auth hashes are left alone", () => {
     const route = parseSparkHashValue("#access_token=abc&type=recovery");
     expect(route.routable).toBe(false);

@@ -1,0 +1,1045 @@
+{
+  "paper_id": "SPARK-CHEM-P1-PRACTICE-03",
+  "subject": "CSEC Chemistry",
+  "paper_type": "Paper 1",
+  "question_count": 60,
+  "duration_minutes": 75,
+  "is_historical_exam": false,
+  "generation_method": "Source-derived historical-item remix, each item standalone; no questionable keyed items; not newly written",
+  "answer_review_status": "technical checks passed; original answer keys require source-specific chemistry adjudication",
+  "diagram_review_status": "No stimulus-dependent or diagram-dependent items used in this generated set",
+  "questions": [
+    {
+      "stem": "One property of ionic compounds is that they",
+      "options": {
+        "A": "contain molecules",
+        "B": "are solids and vaporize easily",
+        "C": "usually dissolve in organic solvents",
+        "D": "conduct electricity when molten or dissolved in water"
+      },
+      "objective": "A5.6",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q01",
+      "n": 1,
+      "original_question_id": "2020-JAN-01",
+      "original_paper_id": "2020-JAN",
+      "page": 2
+    },
+    {
+      "stem": "A separating funnel can be used to separate a mixture of",
+      "options": {
+        "A": "water and ethanol",
+        "B": "water and kerosene",
+        "C": "water and solid sodium chloride",
+        "D": "kerosene and solid sodium chloride"
+      },
+      "objective": "A2.5",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q02",
+      "n": 2,
+      "original_question_id": "2021-MJ-27",
+      "original_paper_id": "2021-MJ",
+      "page": 6
+    },
+    {
+      "stem": "Which of the following features is NOT true of all homologous series of compounds?",
+      "stem_after": "The members of a series have",
+      "options": {
+        "A": "the same functional group",
+        "B": "the same general formula",
+        "C": "similar chemical properties",
+        "D": "the same empirical formula"
+      },
+      "objective": "B2.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q03",
+      "n": 3,
+      "original_question_id": "2016-MJ-57",
+      "original_paper_id": "2016-MJ",
+      "page": 10
+    },
+    {
+      "stem": "Which of the following methods can be used in the extraction of aluminium?",
+      "options": {
+        "A": "Reduction of the oxide by carbon",
+        "B": "Reduction of the oxide by hydrogen",
+        "C": "Electrolysis of the oxide in its molten state",
+        "D": "Displacement by a metal higher up the electrochemical series"
+      },
+      "objective": "C2.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q04",
+      "n": 4,
+      "original_question_id": "2023-MJ-42",
+      "original_paper_id": "2023-MJ",
+      "page": 10
+    },
+    {
+      "stem": "'Ionic bond formation' results from the",
+      "options": {
+        "A": "donation of electrons from a non-metal to a metal to achieve stability",
+        "B": "donation of electrons from a metal to a non-metal to achieve stability",
+        "C": "attraction between the positively charged ions of a metal and a pool of electrons",
+        "D": "sharing of electrons between the atoms of a metal and non-metal to achieve stability"
+      },
+      "objective": "A5.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q05",
+      "n": 5,
+      "original_question_id": "2020-JAN-13",
+      "original_paper_id": "2020-JAN",
+      "page": 4
+    },
+    {
+      "stem": "Which of the following pairs of reactions would you expect to take place?",
+      "statements": [
+        [
+          "I.",
+          "Zn(s) + Mg²⁺(aq) → Mg(s) + Zn²⁺(aq)"
+        ],
+        [
+          "II.",
+          "Zn(s) + Cu²⁺(aq) → Cu(s) + Zn²⁺(aq)"
+        ],
+        [
+          "III.",
+          "Mg(s) + Cu²⁺(aq) → Cu(s) + Mg²⁺(aq)"
+        ],
+        [
+          "IV.",
+          "Cu(s) + Mg²⁺(aq) → Mg(s) + Cu²⁺(aq)"
+        ]
+      ],
+      "options": {
+        "A": "I and III only",
+        "B": "II and III only",
+        "C": "II and IV only",
+        "D": "III and IV only"
+      },
+      "objective": "C2.2",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q06",
+      "n": 6,
+      "original_question_id": "2010-MJ-27",
+      "original_paper_id": "2010-MJ",
+      "page": 5
+    },
+    {
+      "stem": "Which of the following substances is an important constituent of chlorophyll?",
+      "options": {
+        "A": "Iron",
+        "B": "Copper",
+        "C": "Calcium",
+        "D": "Magnesium"
+      },
+      "objective": "C4.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q07",
+      "n": 7,
+      "original_question_id": "2018-MJ-43",
+      "original_paper_id": "2018-MJ",
+      "page": 8
+    },
+    {
+      "stem": "When copper(II) carbonate is heated alone in a dry test tube, a gas is evolved and a black residue is formed. This gas is expected to",
+      "options": {
+        "A": "turn red litmus blue",
+        "B": "relight a glowing splint",
+        "C": "decolourize acidified aqueous potassium manganate(VII)",
+        "D": "form a white precipitate with aqueous calcium hydroxide"
+      },
+      "objective": "C1.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q08",
+      "n": 8,
+      "original_question_id": "2017-MJ-51",
+      "original_paper_id": "2017-MJ",
+      "page": 9
+    },
+    {
+      "stem": "Which of the following hydrocarbons is the MAJOR constituent of natural gas?",
+      "options": {
+        "A": "Butane",
+        "B": "Ethane",
+        "C": "Propane",
+        "D": "Methane"
+      },
+      "objective": "B1.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q09",
+      "n": 9,
+      "original_question_id": "2023-MJ-45",
+      "original_paper_id": "2023-MJ",
+      "page": 11
+    },
+    {
+      "stem": "Which two groups are present in the molecules of amino acids?",
+      "options": {
+        "A": "-NH₂ group and -COOH group",
+        "B": "-NH₂ group and -OH group",
+        "C": "-OH group and -COOH group",
+        "D": "-COOH group and C=C group"
+      },
+      "objective": "B4.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q10",
+      "n": 10,
+      "original_question_id": "2009-MJ-58",
+      "original_paper_id": "2009-MJ",
+      "page": 14
+    },
+    {
+      "stem": "'Ionic bond formation' results from the",
+      "options": {
+        "A": "donation of electrons from a metal to a non-metal to achieve stability",
+        "B": "donation of electrons from a non-metal to a metal to achieve stability",
+        "C": "attraction between the positively charged ions of a metal and a pool of electrons",
+        "D": "sharing of electrons between the atoms of a metal and a non-metal to achieve stability"
+      },
+      "objective": "A5.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q11",
+      "n": 11,
+      "original_question_id": "2016-MJ-12",
+      "original_paper_id": "2016-MJ",
+      "page": 3
+    },
+    {
+      "stem": "Which TWO of the following substances can be produced DIRECTLY from ethanol?",
+      "statements": [
+        [
+          "I.",
+          "Ethene"
+        ],
+        [
+          "II.",
+          "Ethane"
+        ],
+        [
+          "III.",
+          "Sodium ethanoate"
+        ],
+        [
+          "IV.",
+          "Ethyl ethanoate"
+        ]
+      ],
+      "options": {
+        "A": "I and II",
+        "B": "I and IV",
+        "C": "II and III",
+        "D": "II and IV"
+      },
+      "objective": "B3.7",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q12",
+      "n": 12,
+      "original_question_id": "2016-MJ-58",
+      "original_paper_id": "2016-MJ",
+      "page": 11
+    },
+    {
+      "stem": "Which of the following halogens is a liquid at room temperature?",
+      "options": {
+        "A": "Iodine",
+        "B": "Fluorine",
+        "C": "Chlorine",
+        "D": "Bromine"
+      },
+      "objective": "A4.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q13",
+      "n": 13,
+      "original_question_id": "2020-JAN-18",
+      "original_paper_id": "2020-JAN",
+      "page": 5
+    },
+    {
+      "stem": "Which of the following reactions correctly represents the dehydration of ethanol?",
+      "options": {
+        "A": "CH₃CH₂OH → CH₃COOH",
+        "B": "CH₃CH₂OH → CH₃CHO",
+        "C": "CH₃CH₂OH → C₂H₄",
+        "D": "CH₃CH₂OH → 2CO₂ + 3H₂O"
+      },
+      "objective": "B3.7",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q14",
+      "n": 14,
+      "original_question_id": "2010-MJ-43",
+      "original_paper_id": "2010-MJ",
+      "page": 8
+    },
+    {
+      "stem": "The number of shared electron pairs in the methane (CH₄) molecule is",
+      "options": {
+        "A": "4",
+        "B": "6",
+        "C": "8",
+        "D": "10"
+      },
+      "objective": "A5.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q15",
+      "n": 15,
+      "original_question_id": "2021-MJ-17",
+      "original_paper_id": "2021-MJ",
+      "page": 5
+    },
+    {
+      "stem": "Which of the following gases is NOT considered to be toxic?",
+      "options": {
+        "A": "Sulfur dioxide",
+        "B": "Carbon dioxide",
+        "C": "Nitrogen dioxide",
+        "D": "Carbon monoxide"
+      },
+      "objective": "C5.5",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q16",
+      "n": 16,
+      "original_question_id": "2019-MJ-42",
+      "original_paper_id": "2019-MJ",
+      "page": 9
+    },
+    {
+      "stem": "An organic substance reacts with bromine water and decolourizes it immediately.",
+      "stem_after": "The substance is MOST likely an",
+      "options": {
+        "A": "alcohol",
+        "B": "alkane",
+        "C": "alkene",
+        "D": "ester"
+      },
+      "objective": "B3.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q17",
+      "n": 17,
+      "original_question_id": "2023-MJ-50",
+      "original_paper_id": "2023-MJ",
+      "page": 12
+    },
+    {
+      "stem": "Which of the following compounds will react with ethanoic acid to form an ester?",
+      "options": {
+        "A": "CH₃CH₃",
+        "B": "CH₃CH₂Cl",
+        "C": "CH₃CH₂OH",
+        "D": "CH₃CH₂CO₂H"
+      },
+      "objective": "B3.9",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q18",
+      "n": 18,
+      "original_question_id": "2023-MJ-51",
+      "original_paper_id": "2023-MJ",
+      "page": 12
+    },
+    {
+      "stem": "Barium is below calcium in Group II of the periodic table. When these two metals react with water, the main difference observed is the",
+      "options": {
+        "A": "rate of reaction",
+        "B": "type of gas evolved",
+        "C": "colour of the product",
+        "D": "colour change with litmus"
+      },
+      "objective": "A4.2",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q19",
+      "n": 19,
+      "original_question_id": "2023-MJ-21",
+      "original_paper_id": "2023-MJ",
+      "page": 6
+    },
+    {
+      "stem": "Which of the substances, represented by the options, A, B, C and D in the following table, is MOST likely sodium chloride?",
+      "options": {
+        "A": "1465 °C; No; Yes",
+        "B": "444 °C; No; No",
+        "C": "2600 °C; Yes; No",
+        "D": "−35 °C; No; Yes"
+      },
+      "option_table": {
+        "columns": [
+          "Boiling Point (°C)",
+          "Electrical Conductivity: Solid State",
+          "Electrical Conductivity: Aqueous State"
+        ],
+        "rows": {
+          "A": [
+            "1465",
+            "No",
+            "Yes"
+          ],
+          "B": [
+            "444",
+            "No",
+            "No"
+          ],
+          "C": [
+            "2600",
+            "Yes",
+            "No"
+          ],
+          "D": [
+            "−35",
+            "No",
+            "Yes"
+          ]
+        },
+        "letter_header": "Substance"
+      },
+      "objective": "A5.6",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q20",
+      "n": 20,
+      "original_question_id": "2020-JAN-06",
+      "original_paper_id": "2020-JAN",
+      "page": 2
+    },
+    {
+      "stem": "Which of the following pairs of reagents will result in the formation of a yellow precipitate?",
+      "options": {
+        "A": "Fe₂(SO₄)₃/NH₃(aq)",
+        "B": "CuSO₄(aq)/NH₃(aq)",
+        "C": "Pb(NO₃)₂(aq)/KI(aq)",
+        "D": "FeSO₄(aq)/NaOH(aq)"
+      },
+      "objective": "C6.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q21",
+      "n": 21,
+      "original_question_id": "2021-MJ-32",
+      "original_paper_id": "2021-MJ",
+      "page": 7
+    },
+    {
+      "stem": "Which of the following features is NOT true of all homologous series of compounds?",
+      "stem_after": "The members of a series have",
+      "options": {
+        "A": "the same functional group",
+        "B": "the same general formula",
+        "C": "similar chemical properties",
+        "D": "the same empirical formula"
+      },
+      "objective": "B2.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q22",
+      "n": 22,
+      "original_question_id": "2021-MJ-47",
+      "original_paper_id": "2021-MJ",
+      "page": 10
+    },
+    {
+      "stem": "A solution, when treated with sulfur dioxide gas, becomes green. The solution contains potassium",
+      "options": {
+        "A": "nitrate",
+        "B": "sulfate",
+        "C": "dichromate(VI)",
+        "D": "manganate(VII)"
+      },
+      "objective": "C6.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q23",
+      "n": 23,
+      "original_question_id": "2019-MJ-49",
+      "original_paper_id": "2019-MJ",
+      "page": 10
+    },
+    {
+      "stem": "Which of the following factors does NOT determine if a particular cation would be discharged during electrolysis?",
+      "options": {
+        "A": "The position of the cation in the electrochemical series",
+        "B": "The concentration of the cation in solution",
+        "C": "The temperature of the solution",
+        "D": "The type of electrode"
+      },
+      "objective": "A9.6",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q24",
+      "n": 24,
+      "original_question_id": "2016-MJ-28",
+      "original_paper_id": "2016-MJ",
+      "page": 5
+    },
+    {
+      "stem": "What mass of oxygen atoms contains the same number of moles as 112 g of sulfur atoms? [RAM: O = 16; S = 32]",
+      "stem_after": "[RAM: O = 16; S = 32]",
+      "options": {
+        "A": "0.56 g",
+        "B": "5.60 g",
+        "C": "56.00 g",
+        "D": "560.00 g"
+      },
+      "objective": "A6.2",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q25",
+      "n": 25,
+      "original_question_id": "2018-JAN-07",
+      "original_paper_id": "2018-JAN",
+      "page": 2
+    },
+    {
+      "stem": "Which of the following substances is an unsaturated hydrocarbon?",
+      "options": {
+        "A": "Vinegar",
+        "B": "Propene",
+        "C": "Ethanol",
+        "D": "Natural gas"
+      },
+      "objective": "B2.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q26",
+      "n": 26,
+      "original_question_id": "2016-MJ-49",
+      "original_paper_id": "2016-MJ",
+      "page": 9
+    },
+    {
+      "stem": "Which of the following terms BEST describes the oxide of a metal?",
+      "options": {
+        "A": "Salt",
+        "B": "Base",
+        "C": "Alkali",
+        "D": "Acid"
+      },
+      "objective": "A7.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q27",
+      "n": 27,
+      "original_question_id": "2016-MJ-21",
+      "original_paper_id": "2016-MJ",
+      "page": 4
+    },
+    {
+      "stem": "Which of the following factors will usually increase the rate of catalytic decomposition of hydrogen peroxide?",
+      "options": {
+        "A": "Increasing the temperature",
+        "B": "Applying a greater external pressure",
+        "C": "Using a larger volume of hydrogen peroxide",
+        "D": "Using the catalyst in lumps rather than in powdered form"
+      },
+      "objective": "A10.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q28",
+      "n": 28,
+      "original_question_id": "2023-MJ-26",
+      "original_paper_id": "2023-MJ",
+      "page": 7
+    },
+    {
+      "stem": "The main substances responsible for the production of 'acid rain' are",
+      "options": {
+        "A": "chlorofluorocarbons",
+        "B": "lead compounds in exhaust fumes",
+        "C": "sulfur dioxide and sulfur trioxide",
+        "D": "carbon dioxide and carbon monoxide"
+      },
+      "objective": "C5.5",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q29",
+      "n": 29,
+      "original_question_id": "2018-MJ-31",
+      "original_paper_id": "2018-MJ",
+      "page": 6
+    },
+    {
+      "stem": "Two solutions are to be mixed in order to demonstrate endothermic change. Which of the following techniques would be MOST appropriate?",
+      "options": {
+        "A": "Taking mass readings",
+        "B": "Taking temperature readings",
+        "C": "Monitoring the pH of the solutions",
+        "D": "Carefully observing colour changes"
+      },
+      "objective": "A11.1",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q30",
+      "n": 30,
+      "original_question_id": "2020-JAN-09",
+      "original_paper_id": "2020-JAN",
+      "page": 3
+    },
+    {
+      "stem": "Sulphur and oxygen are in the same group of the periodic table because",
+      "options": {
+        "A": "they can react with each other",
+        "B": "they can form covalent compounds",
+        "C": "they have the same number of electrons in their outer shell",
+        "D": "the atomic number of sulphur is 16 and the relative atomic mass of oxygen is 16"
+      },
+      "objective": "A4.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q31",
+      "n": 31,
+      "original_question_id": "2010-MJ-01",
+      "original_paper_id": "2010-MJ",
+      "page": 2
+    },
+    {
+      "stem": "Which of the following pairs of atoms has the same number of neutrons?",
+      "options": {
+        "A": "⁴⁰₁₈Ar and ⁴⁰₂₀Ca",
+        "B": "³¹₁₅P and ³²₁₆S",
+        "C": "²⁴₁₂Mg and ¹²₆C",
+        "D": "¹⁶₈O and ¹⁹₉F"
+      },
+      "objective": "A3.5",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q32",
+      "n": 32,
+      "original_question_id": "2016-MJ-10",
+      "original_paper_id": "2016-MJ",
+      "page": 3
+    },
+    {
+      "stem": "The ionic equation for the reaction between an acid and a carbonate is represented by",
+      "options": {
+        "A": "2H⁺(aq) + CO₃²⁻(aq) → HCO₃⁻(aq)",
+        "B": "H⁺(aq) + CO₃²⁻(aq) → H₂CO₃(aq)",
+        "C": "2H⁺(aq) + CO₃²⁻(aq) → CO₂(g) + H₂O(l)",
+        "D": "H⁺(aq) + CO₃²⁻(aq) → CO₂(g) + H₂O(l)"
+      },
+      "objective": "A7.4",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q33",
+      "n": 33,
+      "original_question_id": "2023-MJ-12",
+      "original_paper_id": "2023-MJ",
+      "page": 5
+    },
+    {
+      "stem": "A suitable drying agent for a laboratory preparation of ammonia is",
+      "options": {
+        "A": "calcium oxide",
+        "B": "calcium chloride",
+        "C": "anhydrous copper sulfate",
+        "D": "concentrated sulfuric acid"
+      },
+      "objective": "C5.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q34",
+      "n": 34,
+      "original_question_id": "2018-JAN-32",
+      "original_paper_id": "2018-JAN",
+      "page": 6
+    },
+    {
+      "stem": "Which of the following statements BEST describes the difference between an atom and an ion?",
+      "options": {
+        "A": "An atom is electrically neutral but an ion is positively charged.",
+        "B": "An atom is electrically neutral but an ion is negatively charged.",
+        "C": "An atom contains equal numbers of protons and electrons whereas an ion contains more electrons than protons.",
+        "D": "An atom contains equal numbers of protons and electrons whereas an ion contains unequal numbers of protons and electrons."
+      },
+      "objective": "A5.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q35",
+      "n": 35,
+      "original_question_id": "2016-MJ-04",
+      "original_paper_id": "2016-MJ",
+      "page": 2
+    },
+    {
+      "stem": "When an exothermic reaction occurs, energy is",
+      "options": {
+        "A": "absorbed from the environment",
+        "B": "released to the environment",
+        "C": "absorbed from the reactants",
+        "D": "released from the products"
+      },
+      "objective": "A11.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q36",
+      "n": 36,
+      "original_question_id": "2018-MJ-03",
+      "original_paper_id": "2018-MJ",
+      "page": 2
+    },
+    {
+      "stem": "Glucose is converted to starch or cellulose by",
+      "options": {
+        "A": "dehydrogenation",
+        "B": "oxidation and reduction",
+        "C": "addition polymerization",
+        "D": "condensation polymerization"
+      },
+      "objective": "B4.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q37",
+      "n": 37,
+      "original_question_id": "2017-MJ-42",
+      "original_paper_id": "2017-MJ",
+      "page": 8
+    },
+    {
+      "stem": "Barium is below calcium in Group II of the periodic table. When these two metals react with water, the main difference observed is the",
+      "options": {
+        "A": "rate of reaction",
+        "B": "type of gas evolved",
+        "C": "colour of the product",
+        "D": "colour change with litmus"
+      },
+      "objective": "A4.2",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q38",
+      "n": 38,
+      "original_question_id": "2021-MJ-21",
+      "original_paper_id": "2021-MJ",
+      "page": 5
+    },
+    {
+      "stem": "Which of the following mixtures can be referred to as a standard solution?",
+      "options": {
+        "A": "Iodine in 50 cm³ of ethanol",
+        "B": "30 g of sodium chloride in water",
+        "C": "Sodium chloride in 50 cm³ of water",
+        "D": "30 g of iodine in 50 cm³ of ethanol"
+      },
+      "objective": "A6.7",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q39",
+      "n": 39,
+      "original_question_id": "2019-MJ-17",
+      "original_paper_id": "2019-MJ",
+      "page": 5
+    },
+    {
+      "stem": "Which of the following reactions occurs between propene and bromine?",
+      "options": {
+        "A": "Addition",
+        "B": "Substitution",
+        "C": "Precipitation",
+        "D": "Condensation"
+      },
+      "objective": "B3.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q40",
+      "n": 40,
+      "original_question_id": "2023-MJ-48",
+      "original_paper_id": "2023-MJ",
+      "page": 11
+    },
+    {
+      "stem": "Sulfuric acid is a stronger acid than ethanoic acid (acetic acid) in aqueous solution because sulfuric acid",
+      "options": {
+        "A": "is more corrosive than ethanoic acid",
+        "B": "is more concentrated than ethanoic acid",
+        "C": "ionizes to a greater extent than ethanoic acid",
+        "D": "causes sugar to char whereas ethanoic acid does not"
+      },
+      "objective": "A7.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q41",
+      "n": 41,
+      "original_question_id": "2018-JAN-04",
+      "original_paper_id": "2018-JAN",
+      "page": 2
+    },
+    {
+      "stem": "Which of the following is used in the breathalyser test to detect the presence of alcohol?",
+      "options": {
+        "A": "Lime water",
+        "B": "Lighted splint",
+        "C": "Bromine water",
+        "D": "Potassium dichromate"
+      },
+      "objective": "B3.7",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q42",
+      "n": 42,
+      "original_question_id": "2009-MJ-52",
+      "original_paper_id": "2009-MJ",
+      "page": 13
+    },
+    {
+      "stem": "A suitable drying agent for the laboratory preparation of ammonia gas is",
+      "options": {
+        "A": "calcium oxide",
+        "B": "calcium chloride",
+        "C": "anhydrous copper sulfate",
+        "D": "concentrated sulfuric acid"
+      },
+      "objective": "C5.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q43",
+      "n": 43,
+      "original_question_id": "2017-MJ-50",
+      "original_paper_id": "2017-MJ",
+      "page": 9
+    },
+    {
+      "stem": "It is better to use soapless detergents for washing in hard water than it is to use soap because soapless detergents",
+      "options": {
+        "A": "are cheaper than soaps",
+        "B": "are more biodegradable than soaps",
+        "C": "are more soluble in hard water than soaps",
+        "D": "form an insoluble scum in hard water"
+      },
+      "objective": "B3.11",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q44",
+      "n": 44,
+      "original_question_id": "2018-JAN-59",
+      "original_paper_id": "2018-JAN",
+      "page": 11
+    },
+    {
+      "stem": "Adding dilute sulfuric acid to which of the following copper(II) compounds would be the LEAST suitable method for preparing copper(II) sulfate?",
+      "options": {
+        "A": "Copper(II) oxide",
+        "B": "Copper(II) chloride",
+        "C": "Copper(II) carbonate",
+        "D": "Copper(II) hydroxide"
+      },
+      "objective": "A7.7",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q45",
+      "n": 45,
+      "original_question_id": "2018-MJ-20",
+      "original_paper_id": "2018-MJ",
+      "page": 4
+    },
+    {
+      "stem": "Which of the following statements is true of soapless detergents?",
+      "options": {
+        "A": "They are made from fats.",
+        "B": "They are all biodegradable.",
+        "C": "They are inorganic materials.",
+        "D": "They are not affected by hard water."
+      },
+      "objective": "B3.11",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q46",
+      "n": 46,
+      "original_question_id": "2019-MJ-43",
+      "original_paper_id": "2019-MJ",
+      "page": 9
+    },
+    {
+      "stem": "Which of the following methods can be used in the extraction of aluminium?",
+      "options": {
+        "A": "Reduction of the oxide by carbon",
+        "B": "Reduction of the oxide by hydrogen",
+        "C": "Electrolysis of the oxide in its molten state",
+        "D": "Displacement by a metal higher up the electrochemical series"
+      },
+      "objective": "C2.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q47",
+      "n": 47,
+      "original_question_id": "2021-MJ-42",
+      "original_paper_id": "2021-MJ",
+      "page": 9
+    },
+    {
+      "stem": "Barium is below calcium in Group II of the Periodic Table. When BOTH metals react with water, the MAIN observed differences would be the rate of reaction and the",
+      "options": {
+        "A": "type of product",
+        "B": "type of gas evolved",
+        "C": "reaction with litmus",
+        "D": "solubility of the product"
+      },
+      "objective": "A4.2",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q48",
+      "n": 48,
+      "original_question_id": "2018-MJ-08",
+      "original_paper_id": "2018-MJ",
+      "page": 2
+    },
+    {
+      "stem": "The mass concentration of a potassium chloride solution is 60 g dm⁻³. What is the mass of potassium chloride in 25 cm³ of this solution?",
+      "options": {
+        "A": "0.0015 g",
+        "B": "0.15 g",
+        "C": "1.5 g",
+        "D": "15.0 g"
+      },
+      "objective": "A6.2",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q49",
+      "n": 49,
+      "original_question_id": "2019-MJ-14",
+      "original_paper_id": "2019-MJ",
+      "page": 5
+    },
+    {
+      "stem": "A solution having a pH of 1 will",
+      "options": {
+        "A": "neutralize a solution of pH 4",
+        "B": "react with zinc metal to produce hydrogen",
+        "C": "react with zinc metal to produce a solution of pH 10",
+        "D": "react with hydrochloric acid to produce a salt and water"
+      },
+      "objective": "A7.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q50",
+      "n": 50,
+      "original_question_id": "2023-MJ-19",
+      "original_paper_id": "2023-MJ",
+      "page": 6
+    },
+    {
+      "stem": "A mixture of copper(II) oxide and copper(II) sulfate is BEST separated by",
+      "options": {
+        "A": "distilling the mixture",
+        "B": "heating the mixture and condensing",
+        "C": "shaking with excess water and then filtering",
+        "D": "shaking with excess water followed by fractional distillation"
+      },
+      "objective": "A2.5",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q51",
+      "n": 51,
+      "original_question_id": "2017-MJ-11",
+      "original_paper_id": "2017-MJ",
+      "page": 4
+    },
+    {
+      "stem": "Which of the following represents a balanced equation for the reaction between aqueous silver nitrate and aqueous sodium chloride?",
+      "options": {
+        "A": "Ag(NO₃)₂(aq) + 2NaCl(aq) → AgCl₂(s) + 2NaNO₃(aq)",
+        "B": "AgNO₃(aq) + 2NaCl(aq) → AgCl₂(s) + Na₂NO₃(aq)",
+        "C": "Ag₂NO₃(aq) + NaCl(aq) → Ag₂Cl(s) + NaNO₃(aq)",
+        "D": "AgNO₃(aq) + NaCl(aq) → AgCl(s) + NaNO₃(aq)"
+      },
+      "objective": "A6.5",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q52",
+      "n": 52,
+      "original_question_id": "2017-MJ-07",
+      "original_paper_id": "2017-MJ",
+      "page": 3
+    },
+    {
+      "stem": "The atomic number of an element is defined as the number of",
+      "options": {
+        "A": "electrons",
+        "B": "protons",
+        "C": "protons and neutrons",
+        "D": "electrons and neutrons"
+      },
+      "objective": "A3.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q53",
+      "n": 53,
+      "original_question_id": "2019-MJ-23",
+      "original_paper_id": "2019-MJ",
+      "page": 6
+    },
+    {
+      "stem": "The particles in a gas",
+      "options": {
+        "A": "have strong forces between them",
+        "B": "are very closely packed together",
+        "C": "can move in any direction",
+        "D": "get larger when heated"
+      },
+      "objective": "A1.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q54",
+      "n": 54,
+      "original_question_id": "2021-MJ-01",
+      "original_paper_id": "2021-MJ",
+      "page": 2
+    },
+    {
+      "stem": "The mass number of an element is the number of",
+      "options": {
+        "A": "neutrons in an atom of the element",
+        "B": "protons and electrons in an atom of the element",
+        "C": "neutrons and protons in an atom of the element",
+        "D": "protons, neutrons and electrons in an atom of the element"
+      },
+      "objective": "A3.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q55",
+      "n": 55,
+      "original_question_id": "2016-MJ-06",
+      "original_paper_id": "2016-MJ",
+      "page": 2
+    },
+    {
+      "stem": "An atom has 20 electrons. When it ionizes, it has the same electronic configuration as",
+      "options": {
+        "A": "argon",
+        "B": "neon",
+        "C": "sodium",
+        "D": "calcium"
+      },
+      "objective": "A5.1",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q56",
+      "n": 56,
+      "original_question_id": "2023-MJ-13",
+      "original_paper_id": "2023-MJ",
+      "page": 5
+    },
+    {
+      "stem": "The reaction occurring at the cathode during the electrolysis of copper sulphate using inert electrodes is given by the equation",
+      "options": {
+        "A": "Cu → Cu²⁺ + 2e⁻",
+        "B": "Cu²⁺ + 2e⁻ → Cu",
+        "C": "2H⁺ + 2e⁻ → H₂",
+        "D": "4OH⁻ - 4e⁻ → 2H₂O + O₂"
+      },
+      "objective": "A9.8",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q57",
+      "n": 57,
+      "original_question_id": "2009-MJ-34",
+      "original_paper_id": "2009-MJ",
+      "page": 9
+    },
+    {
+      "stem": "Which of the following compounds is NOT a member of the alkene series?",
+      "options": {
+        "A": "C₂H₄",
+        "B": "C₂H₆",
+        "C": "C₄H₈",
+        "D": "C₅H₁₀"
+      },
+      "objective": "B2.4",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q58",
+      "n": 58,
+      "original_question_id": "2010-MJ-38",
+      "original_paper_id": "2010-MJ",
+      "page": 7
+    },
+    {
+      "stem": "A piece of calcium is added to some distilled water in a container and a gas is produced. The gas produced is expected to",
+      "options": {
+        "A": "relight a glowing splint",
+        "B": "give a 'pop' with a lighted splint",
+        "C": "decolourize acidified aqueous potassium manganate (VII)",
+        "D": "turn acidified aqueous potassium dichromate green"
+      },
+      "objective": "C6.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-03-Q59",
+      "n": 59,
+      "original_question_id": "2009-MJ-16",
+      "original_paper_id": "2009-MJ",
+      "page": 4
+    },
+    {
+      "stem": "The equation for the reaction of silicon with chlorine is",
+      "stem_after": "Si(s) + 2Cl₂(g) → SiCl₄(l). In this reaction, silicon is the reducing agent and is",
+      "options": {
+        "A": "oxidized with an increase in oxidation state",
+        "B": "oxidized with a decrease in oxidation state",
+        "C": "reduced with an increase in oxidation state",
+        "D": "reduced with a decrease in oxidation state"
+      },
+      "objective": "A8.5",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-03-Q60",
+      "n": 60,
+      "original_question_id": "2019-MJ-21",
+      "original_paper_id": "2019-MJ",
+      "page": 6
+    }
+  ],
+  "grading_status": "review-only"
+}

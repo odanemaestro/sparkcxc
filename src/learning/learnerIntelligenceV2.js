@@ -72,10 +72,13 @@ function daysSince(value, now = new Date()) {
   return Math.max(0, (now.getTime() - date.getTime()) / DAY_MS);
 }
 
+export function isInternalSkillCode(value) {
+  return /^(?:criterion\s+)?(?:[a-z]{1,5}\d+(?:[._-]\d+)*[a-z]?|\d+(?:\.\d+)*)$/i.test(String(value || "").trim());
+}
+
 export function displaySkillLabel(value) {
   const raw = String(value || "").trim();
-  if (!raw) return "Learning skill";
-  if (/^[A-E]\d+$/i.test(raw)) return raw.toUpperCase();
+  if (!raw || isInternalSkillCode(raw)) return "Learning skill";
 
   const cleaned = raw
     .replace(/^lesson:|^lab:|^flashcard:|^checkpoint:|^paper[12]:|^sba:/i, "")
@@ -86,7 +89,7 @@ export function displaySkillLabel(value) {
     .replace(/\s+/g, " ")
     .trim();
 
-  if (!cleaned) return "Learning skill";
+  if (!cleaned || isInternalSkillCode(cleaned)) return "Learning skill";
 
   const smallWords = new Set(["and","of","the","to","in","for","with","on","at","by"]);
   const acronyms = new Map([

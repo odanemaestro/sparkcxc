@@ -228,7 +228,8 @@ describe("Social Studies platform parity", () => {
     expect(study).toContain("SocialStudiesLessonExtras");
     expect(study).toContain("Open Research &");
     expect(adapter).toContain("socialStudiesLocalStructure");
-    expect(reader).toContain("function isTopicUnlocked");
+    expect(adapter).toContain("function isGenericTopicUnlocked");
+    expect(reader).toContain("isGenericTopicUnlocked as isTopicUnlocked");
     expect(reader).toContain("Complete the earlier lessons to unlock this lesson.");
     expect(reader).toContain("previousTopic");
     expect(reader).toContain("nextTopic");

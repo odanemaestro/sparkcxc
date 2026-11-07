@@ -7,7 +7,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import SparkLoader from "../components/ui/SparkLoader";
 import Card from "../components/ui/Card";
 import { recordSubjectActivity } from "./subjectProgress";
-import { loadGenericSubjectStructure } from "./genericSubjectCatalog";
+import { isGenericTopicUnlocked as isTopicUnlocked, loadGenericSubjectStructure } from "./genericSubjectCatalog";
 import IntegratedScienceModel from "./components/IntegratedScienceModel";
 import IntegratedScienceLabelDiagram from "./components/IntegratedScienceLabelDiagram";
 import ReviewedScienceDiagram from "./components/ReviewedScienceDiagram";
@@ -143,14 +143,6 @@ function firstTopic(structure, completedIds = new Set()) {
   return (structure?.topics || []).find(topic => !completedIds.has(topic.id))
     || structure?.topics?.[0]
     || null;
-}
-
-function isTopicUnlocked(structure, topicId, completedIds = new Set()) {
-  const topics = structure?.topics || [];
-  const index = topics.findIndex(topic => topic.id === topicId);
-  if (index < 0) return false;
-  if (index === 0 || completedIds.has(topicId)) return true;
-  return topics.slice(0, index).every(topic => completedIds.has(topic.id));
 }
 
 export function GenericLessonContent({
@@ -431,33 +423,18 @@ export default function GenericSubjectStudyView({
 
     const safeCompleted = completed || new Set();
     const routed = routeSelection(studyPath, nextStructure);
-
-    const fallbackTopic = firstTopic(nextStructure, safeCompleted);
-
-    if (routed.topicId && isTopicUnlocked(nextStructure, routed.topicId, safeCompleted)) {
-      setActiveSectionId(routed.sectionId);
-      setActiveTopicId(routed.topicId);
-      return;
-    }
-
-    if (routed.sectionId) {
-      const section = nextStructure.sections.find(item => item.id === routed.sectionId);
-      const topic = section?.topics?.find(item => isTopicUnlocked(nextStructure, item.id, safeCompleted)) || null;
-      if (topic) {
-        setActiveSectionId(routed.sectionId);
-        setActiveTopicId(topic.id);
-        return;
-      }
-    }
-
-    setActiveSectionId(fallbackTopic?.sectionId || nextStructure.sections?.[0]?.id || null);
-    setActiveTopicId(fallbackTopic?.id || null);
-
-    if (fallbackTopic && (routed.topicId || routed.sectionId)) {
+    const unlocked = topic => isTopicUnlocked(nextStructure, topic.id, safeCompleted);
+    const topic = nextStructure.topics?.find(item => item.id === routed.topicId && unlocked(item))
+      || nextStructure.sections?.find(item => item.id === routed.sectionId)?.topics?.find(unlocked)
+      || firstTopic(nextStructure, safeCompleted);
+    const sectionId = topic?.sectionId || nextStructure.sections?.[0]?.id || null;
+    setActiveSectionId(sectionId);
+    setActiveTopicId(topic?.id || null);
+    if (topic && readSparkHashRoute().path === studyPath) {
       writeSparkNestedRoute(studyPath, {
-        section:fallbackTopic.sectionId || null,
-        topic:fallbackTopic.id,
-      });
+        section:sectionId,
+        topic:topic.id,
+      }, { preserve:true, replace:true });
     }
   }, [studyPath]);
 
@@ -529,43 +506,9 @@ export default function GenericSubjectStudyView({
 
     return subscribeSparkRoute(route => {
       if (route.path !== studyPath) return;
-
-      const next = routeSelection(studyPath, structure);
-      if (next.topicId && isTopicUnlocked(structure, next.topicId, completedTopicIds)) {
-        setActiveSectionId(next.sectionId);
-        setActiveTopicId(next.topicId);
-      } else if (next.sectionId) {
-        const topic = structure.sections
-          .find(section => section.id === next.sectionId)
-          ?.topics?.find(item => isTopicUnlocked(structure, item.id, completedTopicIds));
-
-        if (topic) {
-          setActiveSectionId(next.sectionId);
-          setActiveTopicId(topic.id);
-        } else {
-          const fallbackTopic = firstTopic(structure, completedTopicIds);
-          if (fallbackTopic) {
-            setActiveSectionId(fallbackTopic.sectionId || null);
-            setActiveTopicId(fallbackTopic.id);
-            writeSparkNestedRoute(studyPath, {
-              section:fallbackTopic.sectionId || null,
-              topic:fallbackTopic.id,
-            });
-          }
-        }
-      } else if (next.topicId) {
-        const fallbackTopic = firstTopic(structure, completedTopicIds);
-        if (fallbackTopic) {
-          setActiveSectionId(fallbackTopic.sectionId || null);
-          setActiveTopicId(fallbackTopic.id);
-          writeSparkNestedRoute(studyPath, {
-            section:fallbackTopic.sectionId || null,
-            topic:fallbackTopic.id,
-          });
-        }
-      }
+      applySelection(structure, completedTopicIds);
     });
-  }, [completedTopicIds, structure, studyPath, subjectId]);
+  }, [applySelection, completedTopicIds, structure, studyPath, subjectId]);
 
   const activeTopic = useMemo(
     () => structure?.topics?.find(topic => topic.id === activeTopicId) || null,

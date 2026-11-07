@@ -1,0 +1,1173 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "2010-MJ",
+  "year": 2010,
+  "session": "May/June",
+  "title": "CHEMISTRY Paper 01 - General Proficiency",
+  "test_code": "01212010",
+  "form": "FORM TP 2010051",
+  "date": "04 June 2010 (p.m.)",
+  "duration": "75 minutes",
+  "source_file": "CSEC_Chemistry_P1_2010_MJ.pdf",
+  "notes": "The scan stops at page 11, so Items 56 - 60 are missing and cannot be included.",
+  "instructions": [
+    "This test consists of 60 items. You will have 75 minutes to answer them.",
+    "In addition to this test booklet, you should have an answer sheet.",
+    "Each item in this test has four suggested answers lettered (A), (B), (C), (D). Read each item you are about to answer and decide which choice is best.",
+    "On your answer sheet, find the number which corresponds to your item and shade the space having the same letter as the answer you have chosen. Look at the sample item below. Sample Item: The SI unit of length is the (A) metre (B) newton (C) second (D) kilogram. The best answer to this item is \"metre\", so answer space (A) has been shaded.",
+    "If you want to change your answer, erase it completely before you fill in your new choice.",
+    "When you are told to begin, turn the page and work as quickly and as carefully as you can. If you cannot answer an item, omit it and go on to the next one. You may return to the omitted item later. Your score will be the total number of correct answers.",
+    "You may do any rough work in this booklet.",
+    "Figures are not necessarily drawn to scale.",
+    "The use of silent, non programmable calculators is allowed."
+  ],
+  "missing_items": [
+    56,
+    57,
+    58,
+    59,
+    60
+  ],
+  "stimuli": [
+    {
+      "id": "2010-MJ-S01",
+      "items": [
+        11,
+        12,
+        13
+      ],
+      "text": "Items 11 - 13 refer to the information in the table below.",
+      "shared_option_table": {
+        "columns": [
+          "Melting Point",
+          "Solubility in Water",
+          "Conducts in Solid State",
+          "Conducts in Solution"
+        ],
+        "rows": {
+          "A": [
+            "High",
+            "Insoluble",
+            "Yes",
+            "Not Applicable"
+          ],
+          "B": [
+            "High",
+            "Soluble",
+            "No",
+            "Yes"
+          ],
+          "C": [
+            "High",
+            "Insoluble",
+            "No",
+            "Not Applicable"
+          ],
+          "D": [
+            "Low",
+            "Insoluble",
+            "No",
+            "Not Applicable"
+          ]
+        }
+      },
+      "after_options": "Match each item below with ONE of the options, A, B, C, D above. Each option may be used more than once, once or not at all."
+    },
+    {
+      "id": "2010-MJ-S02",
+      "items": [
+        30
+      ],
+      "text": "Item 30 refers to the following graph which shows the changes in temperature with time, for a substance heated until no further physical change takes place.",
+      "diagrams": [
+        "2010-MJ-D02"
+      ]
+    },
+    {
+      "id": "2010-MJ-S03",
+      "items": [
+        34
+      ],
+      "text": "Item 34 refers to the graph below which shows the rate of reaction for different particle sizes of the same mass of magnesium, reacting with dilute acid.",
+      "diagrams": [
+        "2010-MJ-D03"
+      ]
+    },
+    {
+      "id": "2010-MJ-S04",
+      "items": [
+        39,
+        40
+      ],
+      "text": "Items 39 - 40 refer to the following options.",
+      "shared_options": {
+        "A": "C₂H₄",
+        "B": "C₂H₆",
+        "C": "CH₃(CH₂)₂COOH",
+        "D": "CH₃(CH₂)₃OH"
+      },
+      "after_options": "Match each item below with ONE of the options above, each of which may be used more than once, once or not at all."
+    },
+    {
+      "id": "2010-MJ-S05",
+      "items": [
+        53
+      ],
+      "text": "Item 53 refers to the following structures.",
+      "diagrams": [
+        "2010-MJ-D06"
+      ]
+    }
+  ],
+  "diagrams": {
+    "2010-MJ-D01": {
+      "svg": "diagrams/2010-MJ-D01.svg",
+      "alt": "Outline of part of the periodic table with group numbers I to VIII across the top. Element A is in Group I in the lowest row shown, B is in Group II one row higher, D is in Group VI in the same row as B, and C is in Group VII one row higher than D."
+    },
+    "2010-MJ-D02": {
+      "svg": "diagrams/2010-MJ-D02.svg",
+      "alt": "Heating curve: Temperature (vertical axis) against Time (horizontal axis). The line rises (portion I), levels off (portion II), rises again (portion III), levels off a second time, then rises again (portion IV)."
+    },
+    "2010-MJ-D03": {
+      "svg": "diagrams/2010-MJ-D03.svg",
+      "alt": "Graph of Volume of H₂ (cm³) against Time with four straight lines from the origin labelled I, II, III and IV. Line I is the steepest and line IV is the least steep."
+    },
+    "2010-MJ-D04A": {
+      "svg": "diagrams/2010-MJ-D04A.svg",
+      "alt": "Option A: displayed formula of but-1-ene (CH₃-CH₂-CH=CH₂) + Br₂ gives a four-carbon chain with Br on the second and third carbons."
+    },
+    "2010-MJ-D04B": {
+      "svg": "diagrams/2010-MJ-D04B.svg",
+      "alt": "Option B: displayed formula of but-1-ene (CH₃-CH₂-CH=CH₂) + Br₂ gives a four-carbon chain with Br on the third and fourth carbons."
+    },
+    "2010-MJ-D04C": {
+      "svg": "diagrams/2010-MJ-D04C.svg",
+      "alt": "Option C: displayed formula of but-1-ene + Br₂ gives a four-carbon chain with a single Br on the fourth carbon."
+    },
+    "2010-MJ-D04D": {
+      "svg": "diagrams/2010-MJ-D04D.svg",
+      "alt": "Option D: displayed formula of but-1-ene + Br₂ gives a four-carbon chain with a single Br on the third carbon."
+    },
+    "2010-MJ-D05A": {
+      "svg": "diagrams/2010-MJ-D05A.svg",
+      "alt": "Option A: displayed formula H₂C=CH-CH₂-Cl (a C=C double bond, with a chlorine atom on the third carbon)."
+    },
+    "2010-MJ-D05B": {
+      "svg": "diagrams/2010-MJ-D05B.svg",
+      "alt": "Option B: displayed formula of propene, H₂C=CH-CH₃."
+    },
+    "2010-MJ-D05C": {
+      "svg": "diagrams/2010-MJ-D05C.svg",
+      "alt": "Option C: displayed formula of ethanal, CH₃-CHO (a C=O double bond)."
+    },
+    "2010-MJ-D05D": {
+      "svg": "diagrams/2010-MJ-D05D.svg",
+      "alt": "Option D: displayed formula of propane, CH₃-CH₂-CH₃ (single bonds only)."
+    },
+    "2010-MJ-D06": {
+      "svg": "diagrams/2010-MJ-D06.svg",
+      "alt": "Four displayed formulae labelled I to IV. I: a three-carbon chain with a CH₃ group on the middle carbon (2-methylpropane). II: a four-carbon chain drawn with a bend at the first carbon (butane). III: a four-carbon chain drawn in a zigzag (butane). IV: a central carbon joined to three CH₃ groups and one H (2-methylpropane)."
+    },
+    "2010-MJ-D07A": {
+      "svg": "diagrams/2010-MJ-D07A.svg",
+      "alt": "Option A: displayed formula of ethene, H₂C=CH₂."
+    },
+    "2010-MJ-D07B": {
+      "svg": "diagrams/2010-MJ-D07B.svg",
+      "alt": "Option B: displayed formula of ethane, CH₃-CH₃."
+    },
+    "2010-MJ-D07C": {
+      "svg": "diagrams/2010-MJ-D07C.svg",
+      "alt": "Option C: displayed formula of propane, CH₃-CH₂-CH₃."
+    },
+    "2010-MJ-D07D": {
+      "svg": "diagrams/2010-MJ-D07D.svg",
+      "alt": "Option D: displayed formula of propane drawn with a bend (CH₃-CH₂-CH₃, single bonds only)."
+    }
+  },
+  "questions": [
+    {
+      "id": "2010-MJ-01",
+      "n": 1,
+      "page": 2,
+      "stem": "Sulphur and oxygen are in the same group of the periodic table because",
+      "options": {
+        "A": "they can react with each other",
+        "B": "they can form covalent compounds",
+        "C": "they have the same number of electrons in their outer shell",
+        "D": "the atomic number of sulphur is 16 and the relative atomic mass of oxygen is 16"
+      },
+      "objective": "A4.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-02",
+      "n": 2,
+      "page": 2,
+      "stem": "Which of the following statements is true about the particles in a gas?",
+      "options": {
+        "A": "They get larger when heated.",
+        "B": "They can move in any direction.",
+        "C": "They are very closely packed together.",
+        "D": "They have strong forces between them."
+      },
+      "objective": "A1.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-03",
+      "n": 3,
+      "page": 2,
+      "stem": "X and Y are isotopes. Which of the following would be true for the atoms X and Y?",
+      "statements": [
+        [
+          "I.",
+          "They have the same number of electrons."
+        ],
+        [
+          "II.",
+          "They have the same number of protons."
+        ],
+        [
+          "III.",
+          "They have different numbers of neutrons."
+        ]
+      ],
+      "options": {
+        "A": "III only",
+        "B": "I and II only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "A3.6",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-04",
+      "n": 4,
+      "page": 2,
+      "stem": "The mass number of an element is the number of",
+      "options": {
+        "A": "neutrons in an atom of the element",
+        "B": "protons and electrons in an atom of the element",
+        "C": "neutrons and protons in an atom of the element",
+        "D": "protons, neutrons and electrons in an atom of the element"
+      },
+      "objective": "A3.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-05",
+      "n": 5,
+      "page": 2,
+      "stem": "An isotope of lead can be represented by the following symbol ²⁰⁷₈₂Pb. From this symbol, it can be deduced that one atom of the isotope has",
+      "options": {
+        "A": "82 neutrons",
+        "B": "82 protons",
+        "C": "125 protons",
+        "D": "207 protons"
+      },
+      "objective": "A3.5",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-06",
+      "n": 6,
+      "page": 2,
+      "stem": "What mass of oxygen gas contains the same number of moles as 56 g of sulphur? (Relative atomic mass: S = 32, O = 16)",
+      "options": {
+        "A": "0.56 g",
+        "B": "5.6 g",
+        "C": "56 g",
+        "D": "560 g"
+      },
+      "objective": "A6.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-07",
+      "n": 7,
+      "page": 2,
+      "stem": "2 g of magnesium are reacted with excess dilute acid according to the equation Mg(s) + 2H⁺(aq) → Mg²⁺(aq) + H₂(g) (Relative atomic mass of Mg = 24, molar volume at room temperature and pressure = 24 dm³) The volume of hydrogen, measured at room temperature and pressure, that is produced is",
+      "options": {
+        "A": "1 000 cm³",
+        "B": "1 500 cm³",
+        "C": "2 000 cm³",
+        "D": "24 000 cm³"
+      },
+      "objective": "A6.6",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-08",
+      "n": 8,
+      "page": 2,
+      "stem": "The values of x and y in the equation xKOH + 3Br₂ → yKBr + KBrO₃ + 3H₂O are",
+      "options": {
+        "A": "x = 5; y = 6",
+        "B": "x = 6; y = 5",
+        "C": "x = 5; y = 5",
+        "D": "x = 6; y = 6"
+      },
+      "objective": "A6.5",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-09",
+      "n": 9,
+      "page": 3,
+      "stem": "The mass concentration of a potassium chloride solution is 60 g dm⁻³. What is the mass of potassium chloride in 25 cm³ of this solution?",
+      "options": {
+        "A": "0.0015 g",
+        "B": "0.15 g",
+        "C": "1.5 g",
+        "D": "15 g"
+      },
+      "objective": "A6.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-10",
+      "n": 10,
+      "page": 3,
+      "stem": "The number of shared electron pairs in a methane molecule is",
+      "options": {
+        "A": "4",
+        "B": "6",
+        "C": "8",
+        "D": "10"
+      },
+      "objective": "A5.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-11",
+      "n": 11,
+      "page": 3,
+      "stimulus": "2010-MJ-S01",
+      "stem": "Simple molecular structure",
+      "options": {
+        "A": "High; Insoluble; Yes; Not Applicable",
+        "B": "High; Soluble; No; Yes",
+        "C": "High; Insoluble; No; Not Applicable",
+        "D": "Low; Insoluble; No; Not Applicable"
+      },
+      "objective": "A5.6",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-12",
+      "n": 12,
+      "page": 3,
+      "stimulus": "2010-MJ-S01",
+      "stem": "Ionic structure",
+      "options": {
+        "A": "High; Insoluble; Yes; Not Applicable",
+        "B": "High; Soluble; No; Yes",
+        "C": "High; Insoluble; No; Not Applicable",
+        "D": "Low; Insoluble; No; Not Applicable"
+      },
+      "objective": "A5.6",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-13",
+      "n": 13,
+      "page": 3,
+      "stimulus": "2010-MJ-S01",
+      "stem": "Metallic structure",
+      "options": {
+        "A": "High; Insoluble; Yes; Not Applicable",
+        "B": "High; Soluble; No; Yes",
+        "C": "High; Insoluble; No; Not Applicable",
+        "D": "Low; Insoluble; No; Not Applicable"
+      },
+      "objective": "A5.6",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-14",
+      "n": 14,
+      "page": 3,
+      "stem": "Graphite can be used as a lubricant because of",
+      "options": {
+        "A": "strong attraction among the hexagonal layers of carbon atoms",
+        "B": "weak attraction among the hexagonal layers of carbon atoms",
+        "C": "the loose electrons which can move throughout the lattice",
+        "D": "strong attraction within the hexagonal layers of carbon atoms"
+      },
+      "objective": "A5.7",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-15",
+      "n": 15,
+      "page": 3,
+      "stem": "Which of the following substances is a suspension?",
+      "options": {
+        "A": "Milk",
+        "B": "Gasoline",
+        "C": "Chalk in water",
+        "D": "Sugar in water"
+      },
+      "objective": "A2.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-16",
+      "n": 16,
+      "page": 4,
+      "stem": "When a saturated solution of copper(II) sulphate is cooled, crystals of copper(II) sulphate-5-water begin to form because solubility of copper(II) sulphate-5-water",
+      "options": {
+        "A": "decreases with decreasing temperature",
+        "B": "decreases with increasing temperature",
+        "C": "increases with decreasing temperature",
+        "D": "increases with increasing temperature"
+      },
+      "objective": "A2.4",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-17",
+      "n": 17,
+      "page": 4,
+      "stem": "A separating funnel can be used to separate a mixture of",
+      "options": {
+        "A": "water and ethanol",
+        "B": "water and kerosene",
+        "C": "water and solid sodium chloride",
+        "D": "kerosene and solid sodium chloride"
+      },
+      "objective": "A2.5",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-18",
+      "n": 18,
+      "page": 4,
+      "stem": "In the portion of the periodic table indicated below, which of the elements, A, B, C and D, is MOST easily ionized?",
+      "diagrams": [
+        "2010-MJ-D01"
+      ],
+      "options": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D"
+      },
+      "objective": "A4.5",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-19",
+      "n": 19,
+      "page": 4,
+      "stem": "Which of the following is NOT true of the group of elements known as the halogens?",
+      "options": {
+        "A": "They are all nonmetals.",
+        "B": "They form negative ions by the loss of electrons from their atoms.",
+        "C": "The boiling point of the elements increases as their atomic numbers increase.",
+        "D": "The oxidizing power of the elements decreases as their atomic numbers increase."
+      },
+      "objective": "A4.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-20",
+      "n": 20,
+      "page": 4,
+      "stem": "A solution has a pH of 1. This solution would be expected to",
+      "options": {
+        "A": "neutralise a solution of pH 4",
+        "B": "react with zinc metal to produce a solution of pH 10",
+        "C": "react with zinc metal to produce hydrogen",
+        "D": "react with hydrochloric acid to produce a salt and water"
+      },
+      "objective": "A7.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-21",
+      "n": 21,
+      "page": 4,
+      "stem": "Ethanoic acid is a weak acid because it",
+      "options": {
+        "A": "is a carboxylic acid",
+        "B": "does not irritate the skin",
+        "C": "is not completely ionized in water",
+        "D": "produces one hydrogen ion per molecule"
+      },
+      "objective": "A7.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-22",
+      "n": 22,
+      "page": 5,
+      "stem": "A substance P, has the following properties.",
+      "statements": [
+        [
+          "I.",
+          "It is insoluble in water."
+        ],
+        [
+          "II.",
+          "A gas is evolved when P is added to dilute acids."
+        ],
+        [
+          "III.",
+          "P gives off a gas when heated."
+        ]
+      ],
+      "stem_after": "P is MOST likely",
+      "options": {
+        "A": "zinc oxide",
+        "B": "calcium hydroxide",
+        "C": "potassium carbonate",
+        "D": "copper(II) carbonate"
+      },
+      "objective": "C1.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-23",
+      "n": 23,
+      "page": 5,
+      "stem": "A specific base reacts with a salt to produce a gas which turns damp red litmus paper blue. Which of the following ions does the salt contain?",
+      "options": {
+        "A": "Ammonium",
+        "B": "Carbonate",
+        "C": "Nitrate(V)",
+        "D": "Sulphate(VI)"
+      },
+      "objective": "A7.6",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-24",
+      "n": 24,
+      "page": 5,
+      "stem": "Which of the following salts can be prepared by mixing two solutions and then filtering?",
+      "statements": [
+        [
+          "I.",
+          "Barium sulphate"
+        ],
+        [
+          "II.",
+          "Calcium nitrate"
+        ],
+        [
+          "III.",
+          "Silver chloride"
+        ],
+        [
+          "IV.",
+          "Ammonium carbonate"
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and IV only",
+        "D": "III and IV only"
+      },
+      "objective": "A7.7",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-25",
+      "n": 25,
+      "page": 5,
+      "stem": "A solution, when treated with the gas sulphur dioxide, becomes green. Which of the following does the solution contain?",
+      "options": {
+        "A": "Potassium nitrate",
+        "B": "Potassium sulphate",
+        "C": "Potassium dichromate(VI)",
+        "D": "Potassium manganate(VII)"
+      },
+      "objective": "C6.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-26",
+      "n": 26,
+      "page": 5,
+      "stem": "In which of the following reactions is sulphur dioxide acting as an oxidising agent?",
+      "options": {
+        "A": "2SO₂(g) + O₂(g) → 2SO₃(g)",
+        "B": "SO₂(g) + 2HNO₃(aq) → H₂SO₄(aq) + 2NO₂(g)",
+        "C": "SO₂(g) + H₂O(l) → H₂SO₃(aq)",
+        "D": "SO₂(g) + 2H₂S(g) → 2H₂O(l) + 3S(s)"
+      },
+      "objective": "A8.5",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-27",
+      "n": 27,
+      "page": 5,
+      "stem": "Which of the following pairs of reactions would you expect to take place?",
+      "statements": [
+        [
+          "I.",
+          "Zn(s) + Mg²⁺(aq) → Mg(s) + Zn²⁺(aq)"
+        ],
+        [
+          "II.",
+          "Zn(s) + Cu²⁺(aq) → Cu(s) + Zn²⁺(aq)"
+        ],
+        [
+          "III.",
+          "Mg(s) + Cu²⁺(aq) → Cu(s) + Mg²⁺(aq)"
+        ],
+        [
+          "IV.",
+          "Cu(s) + Mg²⁺(aq) → Mg(s) + Cu²⁺(aq)"
+        ]
+      ],
+      "options": {
+        "A": "I and III only",
+        "B": "II and III only",
+        "C": "II and IV only",
+        "D": "III and IV only"
+      },
+      "objective": "C2.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-28",
+      "n": 28,
+      "page": 5,
+      "stem": "Which of the following statements are true?",
+      "statements": [
+        [
+          "I.",
+          "Metals conduct electricity by the movement of electrons."
+        ],
+        [
+          "II.",
+          "Electrolytes conduct electricity by the movement of positive and negative ions."
+        ],
+        [
+          "III.",
+          "Electrolytes conduct electricity by the movement of electrons."
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "A9.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-29",
+      "n": 29,
+      "page": 6,
+      "stem": "During the electrolysis of aqueous copper(II) sulphate solution using inert electrodes, the ions migrating to the cathode are",
+      "options": {
+        "A": "Cu²⁺(aq) and SO₄²⁻(aq)",
+        "B": "H⁺(aq) and OH⁻(aq)",
+        "C": "SO₄²⁻(aq) and OH⁻(aq)",
+        "D": "Cu²⁺(aq) and H⁺(aq)"
+      },
+      "objective": "A9.6",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-30",
+      "n": 30,
+      "page": 6,
+      "stimulus": "2010-MJ-S02",
+      "stem": "At which portion of the curve, I, II, III and IV, is the substance a liquid only?",
+      "options": {
+        "A": "I",
+        "B": "II",
+        "C": "III",
+        "D": "IV"
+      },
+      "objective": "A1.3",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-31",
+      "n": 31,
+      "page": 6,
+      "stem": "Which of the following is NOT achieved by one Faraday of electricity?",
+      "options": {
+        "A": "Deposit of one mole of any element during electrolysis",
+        "B": "Deposit of 12 g of magnesium during electrolysis",
+        "C": "Migration of Avogadro's number of electrons",
+        "D": "Passage of electricity equivalent to 96 500"
+      },
+      "objective": "A9.9",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-32",
+      "n": 32,
+      "page": 6,
+      "stem": "What quantity of electricity passes through the electrolyte when a current of 100 A flows for 10 minutes?",
+      "options": {
+        "A": "100 C",
+        "B": "600 C",
+        "C": "10 000 C",
+        "D": "60 000 C"
+      },
+      "objective": "A9.10",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-33",
+      "n": 33,
+      "page": 6,
+      "stem": "A piece of metal is reacted with an acid to produce hydrogen gas. Which of the following procedures should be employed in order to increase the rate of the reaction?",
+      "statements": [
+        [
+          "I.",
+          "Increasing the temperature at which the reaction is carried out"
+        ],
+        [
+          "II.",
+          "Subdividing the lump of metal"
+        ],
+        [
+          "III.",
+          "Reducing the concentration of the acid"
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "A10.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-34",
+      "n": 34,
+      "page": 6,
+      "stimulus": "2010-MJ-S03",
+      "stem": "Which line on the graph, I, II, III or IV, would BEST represent the reaction with powdered magnesium?",
+      "options": {
+        "A": "I",
+        "B": "II",
+        "C": "III",
+        "D": "IV"
+      },
+      "objective": "A10.4",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-35",
+      "n": 35,
+      "page": 7,
+      "stem": "Which of the following is true of an endothermic reaction?",
+      "options": {
+        "A": "Heat is given up to the surroundings.",
+        "B": "Heat is absorbed from the surroundings.",
+        "C": "The products have less energy than the reactants.",
+        "D": "The products have the same energy as the reactants."
+      },
+      "objective": "A11.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-36",
+      "n": 36,
+      "page": 7,
+      "stem": "When crystals of potassium nitrate are dissolved in water, the temperature of the solution decreases because",
+      "options": {
+        "A": "energy is required to break down the crystal structure of the potassium nitrate",
+        "B": "heat is always absorbed when a substance dissolves",
+        "C": "the energy content of dissolved potassium nitrate is lower than that of solid potassium nitrate",
+        "D": "the energy content of dissolved potassium nitrate is higher than that of solid potassium nitrate"
+      },
+      "objective": "A11.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-37",
+      "n": 37,
+      "page": 7,
+      "stem": "The members of a homologous series have",
+      "options": {
+        "A": "different chemical properties",
+        "B": "the same physical properties",
+        "C": "the same functional group",
+        "D": "different general formulae"
+      },
+      "objective": "B2.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-38",
+      "n": 38,
+      "page": 7,
+      "stem": "Which of the following compounds is NOT a member of the alkene series?",
+      "options": {
+        "A": "C₂H₄",
+        "B": "C₂H₆",
+        "C": "C₄H₈",
+        "D": "C₅H₁₀"
+      },
+      "objective": "B2.4",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-39",
+      "n": 39,
+      "page": 7,
+      "stimulus": "2010-MJ-S04",
+      "stem": "An alcohol",
+      "options": {
+        "A": "C₂H₄",
+        "B": "C₂H₆",
+        "C": "CH₃(CH₂)₂COOH",
+        "D": "CH₃(CH₂)₃OH"
+      },
+      "objective": "B2.5",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-40",
+      "n": 40,
+      "page": 7,
+      "stimulus": "2010-MJ-S04",
+      "stem": "An alkane",
+      "options": {
+        "A": "C₂H₄",
+        "B": "C₂H₆",
+        "C": "CH₃(CH₂)₂COOH",
+        "D": "CH₃(CH₂)₃OH"
+      },
+      "objective": "B2.5",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-41",
+      "n": 41,
+      "page": 7,
+      "stem": "Isomerism is a property shown by compounds possessing",
+      "options": {
+        "A": "the same structures but different molecular formulae",
+        "B": "different structures and different empirical formulae",
+        "C": "the same structures but different empirical formulae",
+        "D": "different structures but the same molecular formulae"
+      },
+      "objective": "B2.7",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-42",
+      "n": 42,
+      "page": 8,
+      "stem": "Which of the following equations correctly represents the reaction between butene and Br₂(l)?",
+      "options": {
+        "A": "but-1-ene + Br₂ → CH₃-CHBr-CHBr-CH₃ (Br on the 2nd and 3rd carbons)",
+        "B": "but-1-ene + Br₂ → CH₃-CH₂-CHBr-CH₂Br (Br on the 3rd and 4th carbons)",
+        "C": "but-1-ene + Br₂ → CH₃-CH₂-CH₂-CH₂Br (one Br on the 4th carbon)",
+        "D": "but-1-ene + Br₂ → CH₃-CH₂-CHBr-CH₃ (one Br on the 3rd carbon)"
+      },
+      "option_diagrams": {
+        "A": "2010-MJ-D04A",
+        "B": "2010-MJ-D04B",
+        "C": "2010-MJ-D04C",
+        "D": "2010-MJ-D04D"
+      },
+      "objective": "B3.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-43",
+      "n": 43,
+      "page": 8,
+      "stem": "Which of the following reactions correctly represents the dehydration of ethanol?",
+      "options": {
+        "A": "CH₃CH₂OH → CH₃COOH",
+        "B": "CH₃CH₂OH → CH₃CHO",
+        "C": "CH₃CH₂OH → C₂H₄",
+        "D": "CH₃CH₂OH → 2CO₂ + 3H₂O"
+      },
+      "objective": "B3.7",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-44",
+      "n": 44,
+      "page": 9,
+      "stem": "Which of the following structures represents an unsaturated hydrocarbon?",
+      "options": {
+        "A": "H₂C=CH-CH₂-Cl",
+        "B": "H₂C=CH-CH₃ (propene)",
+        "C": "CH₃-CHO (ethanal)",
+        "D": "CH₃-CH₂-CH₃ (propane)"
+      },
+      "option_diagrams": {
+        "A": "2010-MJ-D05A",
+        "B": "2010-MJ-D05B",
+        "C": "2010-MJ-D05C",
+        "D": "2010-MJ-D05D"
+      },
+      "objective": "B2.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2010-MJ-45",
+      "n": 45,
+      "page": 9,
+      "stem": "When ethanoic acid and ethanol react to form ethyl-ethanoate, the catalyst used is",
+      "options": {
+        "A": "dilute sulphuric acid",
+        "B": "dilute hydrochloric acid",
+        "C": "concentrated hydrochloric acid",
+        "D": "concentrated sulphuric acid"
+      },
+      "objective": "B3.9",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-46",
+      "n": 46,
+      "page": 9,
+      "stem": "When hydrocarbons with 5 to 12 carbon atoms are cracked, which of the following can be obtained?",
+      "statements": [
+        [
+          "I.",
+          "Ethene"
+        ],
+        [
+          "II.",
+          "Propene"
+        ],
+        [
+          "III.",
+          "Methane"
+        ],
+        [
+          "IV.",
+          "Petroleum"
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and IV only",
+        "C": "I, II and III only",
+        "D": "II, III and IV only"
+      },
+      "objective": "B1.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-47",
+      "n": 47,
+      "page": 9,
+      "stem": "Which of the following statements are true for the fermentation of carbohydrates to produce ethanol?",
+      "statements": [
+        [
+          "I.",
+          "The enzymes are obtained from yeast."
+        ],
+        [
+          "II.",
+          "The reaction mixture is kept at 50 °C."
+        ],
+        [
+          "III.",
+          "Carbon dioxide is a by-product of the reaction."
+        ],
+        [
+          "IV.",
+          "Ethanol is obtained from the mixture by titration."
+        ]
+      ],
+      "options": {
+        "A": "I and III only",
+        "B": "I and IV only",
+        "C": "II and III only",
+        "D": "II and IV only"
+      },
+      "objective": "B3.8",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-48",
+      "n": 48,
+      "page": 9,
+      "stem": "Which of the following compounds produces amino acids, when hydrolysed?",
+      "options": {
+        "A": "Fat",
+        "B": "Starch",
+        "C": "Protein",
+        "D": "Polyamine"
+      },
+      "objective": "B4.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-49",
+      "n": 49,
+      "page": 9,
+      "stem": "Sodium chloride solution is used in the laboratory preparation of soap to",
+      "options": {
+        "A": "increase the solubility of the soap",
+        "B": "make the soap more biodegradable",
+        "C": "make the soap produce more lather in hard water",
+        "D": "separate the glycerol formed from the soap"
+      },
+      "objective": "B3.10",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-50",
+      "n": 50,
+      "page": 10,
+      "stem": "Which of the following statements about polymers are true?",
+      "statements": [
+        [
+          "I.",
+          "Polymers are long-chain molecules made by joining together a large number of monomer units."
+        ],
+        [
+          "II.",
+          "Condensation polymers are generally made up from one type of monomer."
+        ],
+        [
+          "III.",
+          "Addition polymerization involves the breaking of a C = C double bond in the monomer."
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "B4.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-51",
+      "n": 51,
+      "page": 10,
+      "stem": "Which of the following compounds are naturally occurring?",
+      "statements": [
+        [
+          "I.",
+          "Terylene"
+        ],
+        [
+          "II.",
+          "Nylon"
+        ],
+        [
+          "III.",
+          "Fats"
+        ],
+        [
+          "IV.",
+          "Proteins"
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "III and IV only"
+      },
+      "objective": "B4.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-52",
+      "n": 52,
+      "page": 10,
+      "stem": "Which of the following can decolourize potassium manganate(VII)?",
+      "options": {
+        "A": "H₂C=CH₂ (ethene)",
+        "B": "CH₃-CH₃ (ethane)",
+        "C": "CH₃-CH₂-CH₃ (propane)",
+        "D": "CH₃-CH₂-CH₃ (propane, drawn bent)"
+      },
+      "option_diagrams": {
+        "A": "2010-MJ-D07A",
+        "B": "2010-MJ-D07B",
+        "C": "2010-MJ-D07C",
+        "D": "2010-MJ-D07D"
+      },
+      "objective": "B3.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-53",
+      "n": 53,
+      "page": 11,
+      "stimulus": "2010-MJ-S05",
+      "stem": "Which structures represent branched alkanes?",
+      "options": {
+        "A": "I and II only",
+        "B": "I and IV only",
+        "C": "III and IV only",
+        "D": "I, II and III only"
+      },
+      "objective": "B2.8",
+      "profile": "UK",
+      "copied_from": "2009-MJ-48"
+    },
+    {
+      "id": "2010-MJ-54",
+      "n": 54,
+      "page": 11,
+      "stem": "Which of the following are properties of a metal?",
+      "statements": [
+        [
+          "I.",
+          "High melting point"
+        ],
+        [
+          "II.",
+          "Good oxidizing agent"
+        ],
+        [
+          "III.",
+          "Good conductor of electricity"
+        ],
+        [
+          "IV.",
+          "Low density"
+        ]
+      ],
+      "options": {
+        "A": "I and III only",
+        "B": "II and IV only",
+        "C": "I, II and III only",
+        "D": "I, III and IV only"
+      },
+      "objective": "C1.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2010-MJ-55",
+      "n": 55,
+      "page": 11,
+      "stem": "Which of the following can be extracted by chemical reduction?",
+      "options": {
+        "A": "K",
+        "B": "Ca",
+        "C": "Mg",
+        "D": "Fe"
+      },
+      "objective": "C2.3",
+      "profile": "KC"
+    }
+  ],
+  "verification_status": "source_json_imported_answers_not_independently_validated",
+  "diagram_status": "vector_trace_requires_visual_comparison_to_original",
+  "source_archive": "2010-MJ.zip",
+  "grading_status": "review-only"
+}

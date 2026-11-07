@@ -91,6 +91,19 @@ describe("SPARK Next Best Action V2", () => {
     expect(target.exact).toBe(true);
   });
 
+  test("uses the syllabus topic for an IT criterion code with topic evidence", () => {
+    const focus = state({skill:"P4", modelConfidencePercent:25});
+    const plan = buildNextBestActionPlan({
+      intelligence:intelligence({subjectId:"information-technology", focus}),
+      sourceRows:[{subject_id:"information-technology", topic_id:"16", metadata:{skill:"P4"}}],
+    });
+    expect(plan.primary.title).toMatch(/Spreadsheet Fundamentals/i);
+    expect(plan.primary.title).not.toMatch(/\bP4\b/);
+    expect(plan.primary.target).toMatchObject({
+      path:"/study/information-technology/section/5/topic/16", params:{step:"practice"},
+    });
+  });
+
   test("does not fuzzily map a broad IT exam profile to a random topic", () => {
     const target = exactTargetForAction("information-technology", "Productivity Tools", "targeted_practice");
     expect(target.path).toBe("/practice/information-technology/paper-2");
@@ -215,7 +228,7 @@ describe("SPARK Next Best Action V2", () => {
     expect(plan.primary.why).toContain("SPARK is 67% confident in that estimate.");
 
     const student = recommendationForAudience(plan.primary, { audience:"student" });
-    expect(student.why).toContain("Your current mastery of E3 is about 22%.");
+    expect(student.why).toContain("Your current mastery of Radioactivity is about 22%.");
     expect(student.why).toContain("SPARK has some results for this estimate. More practice will help confirm it.");
     expect(student.why).toContain("Your last tracked activity for this skill was about 17 days ago.");
     expect(student.why.join(" ")).not.toMatch(/67% confident|meaningful evidence/i);
@@ -243,7 +256,11 @@ describe("SPARK Next Best Action V2", () => {
     expect(plan.primary.why).toContain("SPARK is 34% confident in that estimate.");
 
     const student = recommendationForAudience(plan.primary, { audience:"student" });
-    expect(student.why).toContain("Your current mastery of 1.2.6 is about 33%.");
+    expect(student.why).toContain("Your current mastery of Reproduction and Growth in Plants is about 33%.");
+    expect(student.target).toMatchObject({
+      path:"/practice/integrated-science",
+      params:{mode:"topic", module:1, topic:2, objective:"1.2.6"},
+    });
     expect(student.why).toContain("SPARK needs more practice results to confirm this estimate.");
     expect(student.why).toContain("Your last tracked activity for this skill was about 17 days ago.");
     expect(student.why.join(" ")).not.toMatch(/34% confident|meaningful evidence/i);

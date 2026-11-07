@@ -4,7 +4,8 @@ import InformationTechnologyTools from "./InformationTechnologyTools";
 import InformationTechnologyVisuals from "./InformationTechnologyVisuals";
 import CuratedStudyMedia, { CuratedStudyJump } from "../../components/study/CuratedStudyMedia.jsx";
 import InformationTechnologyPracticalLabs from "../labs/InformationTechnologyPracticalLabs";
-import { readSparkHashRoute, useInformationTechnologyStudyRoute } from "../../routing/sparkRoutingV270";
+import { useInformationTechnologyStudyRoute } from "../../routing/sparkRoutingV270";
+import { usePracticeRouteState } from "../../routing/usePracticeRouteState";
 import objectiveCoverage from "../course/itObjectiveCoverage.json";
 import "./informationTechnology.css";
 import "../../subjects/sparkSpecializedStudyPolish.css";
@@ -245,9 +246,13 @@ function ExamIt({ topic }) {
   </div>;
 }
 
-function TopicLesson({ topic, onBack, completed = false, onToggleComplete, onActivity, initialStep = "learn" }) {
+function TopicLesson({ topic, onBack, completed = false, onToggleComplete, onActivity }) {
   const [toolOpen, setToolOpen] = useState(true);
-  const [activeStep, setActiveStep] = useState(LESSON_STEPS.some(step => step.id === initialStep) ? initialStep : "learn");
+  const [initialStep, setLessonStep] = usePracticeRouteState("information-technology", "step", "learn", {
+    path:`/study/information-technology/section/${topic.section}/topic/${topic.id}`,
+    decode:raw => LESSON_STEPS.some(step => step.id === raw) ? raw : "learn",
+  });
+  const [activeStep, setActiveStep] = useState(initialStep);
   const refs = useRef({});
 
   const setSectionRef = id => node => {
@@ -267,6 +272,10 @@ function TopicLesson({ topic, onBack, completed = false, onToggleComplete, onAct
       }, behavior === "smooth" ? 380 : 0);
     }
     return true;
+  };
+  const selectStep = id => {
+    setLessonStep(id);
+    moveTo(id);
   };
 
   // SPARK_NEXT_BEST_ACTION_IT_STEP
@@ -324,7 +333,7 @@ function TopicLesson({ topic, onBack, completed = false, onToggleComplete, onAct
           <h1>{topic.title}</h1>
           <p>{topic.purpose}</p>
           <div className="it-objective-pill">Specific objectives {topic.objectives}</div>
-          <CuratedStudyJump subject="information-technology" topicId={topic.id} onActivate={()=>moveTo("see")}/>
+          <CuratedStudyJump subject="information-technology" topicId={topic.id} onActivate={()=>selectStep("see")}/>
         </header>
 
         <section className="it-objective-coverage" aria-label="Syllabus objective coverage">
@@ -353,7 +362,7 @@ function TopicLesson({ topic, onBack, completed = false, onToggleComplete, onAct
               key={step.id}
               className={activeStep === step.id ? "active" : ""}
               aria-current={activeStep === step.id ? "location" : undefined}
-              onClick={() => moveTo(step.id)}
+              onClick={() => selectStep(step.id)}
             >
               {step.label}
             </button>
@@ -518,10 +527,9 @@ export default function InformationTechnologySubjectView({ onBack, userId, onAct
   const topic = topicId ? course.topics.find(item => item.id === topicId) : null;
 
   if (topic) {
-    const requestedStep = readSparkHashRoute().params.get("step") || "learn";
     return <TopicLesson
+      key={topic.id}
       topic={topic}
-      initialStep={requestedStep}
       completed={Boolean(lessonProgress[`lesson:${topic.id}`])}
       onToggleComplete={value => setLessonCompleted(topic, value)}
       onActivity={onActivity}

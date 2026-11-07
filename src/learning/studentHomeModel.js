@@ -4,6 +4,8 @@
 // subject attention status and small display formatters.
 // ============================================================================
 
+import { isInternalSkillCode } from "./learnerIntelligenceV2";
+
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 export const SUBJECT_ATTENTION_AVERAGE = 60;
@@ -126,15 +128,16 @@ function isGenericRecommendationTitle(value = "") {
 }
 
 function cleanTargetLabel(value = "") {
-  return String(value || "")
+  const title = String(value || "")
     .replace(/\s*\|\s*(learn|practise it|practice|review)$/i, "")
     .replace(/\s+targeted practice$/i, "")
     .trim();
+  return isInternalSkillCode(title) ? "" : title;
 }
 
 function specificActionTitle(recommendation = {}) {
   const targetLabel = cleanTargetLabel(recommendation?.target?.label);
-  const skill = String(recommendation?.skill || "").trim();
+  const skill = cleanTargetLabel(recommendation?.skillLabel || recommendation?.skill);
   const kind = String(recommendation?.target?.kind || recommendation?.targetActivityType || recommendation?.actionType || "").toLowerCase();
 
   if (targetLabel) {
@@ -164,7 +167,7 @@ function focusAreaFromIntelligence(intelligence = null) {
 
   for (const item of candidates) {
     const label = String(item?.displaySkill || item?.skill || "").trim();
-    if (!label || /^general$/i.test(label) || /^learning skill$/i.test(label)) continue;
+    if (!label || isInternalSkillCode(label) || /^general$/i.test(label) || /^learning skill$/i.test(label)) continue;
     return label;
   }
   return "";
@@ -207,8 +210,10 @@ export function recommendationDisplay({ subject = {}, intelligence = null, recom
         ? "Practise " + focusArea
         : specificActionTitle(rec);
 
-    const title = isGenericRecommendationTitle(rawTitle)
-      ? (fallbackTitle || rawTitle || "Continue learning")
+    const opaqueTitle = isInternalSkillCode(rec.skill) &&
+      rawTitle.split(/\s+/).some(word => word.replace(/[,;:!?]+$/, "").toLowerCase() === String(rec.skill).toLowerCase());
+    const title = opaqueTitle || isGenericRecommendationTitle(rawTitle)
+      ? (fallbackTitle || "Continue " + subjectDisplayName(subject))
       : rawTitle;
 
     let detail = String(rec.detail || "").trim();

@@ -33,7 +33,7 @@ describe("SPARK Next Best Action V2 integration", () => {
   });
 
   test("Mathematics adaptive and flashcards consume hash-routed exact targets", () => {
-    expect(adaptive).toContain("readSparkHashRoute");
+    expect(adaptive).toContain('usePracticeRouteState("mathematics", "skill"');
     expect(adaptive).toContain("requestedSkill");
     expect(adaptive).toContain("topic.skills");
     expect(flashcards).toContain("requestedDeck");

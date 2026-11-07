@@ -22,7 +22,7 @@ import ReportQuestionButton from "../components/ui/ReportQuestionButton";
 import MathText from "../practice/MathText";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
 import SparkLoader from "../components/ui/SparkLoader";
-import { readSparkHashRoute } from "../routing/sparkRoutingV270";
+import { usePracticeRouteState } from "../routing/usePracticeRouteState";
 import "./adaptive.css";
 
 function isAdaptiveMultipleChoice(question) {
@@ -87,7 +87,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
   const [dbMessage, setDbMessage] = useState("");
   const [sessionHydrated, setSessionHydrated] = useState(false);
   const storageKey = adaptiveSessionStorageKey(userId);
-  const requestedSkill = readSparkHashRoute().params.get("skill");
+  const [requestedSkill] = usePracticeRouteState("mathematics", "skill", "");
 
   useEffect(() => {
     let cancelled = false;
@@ -205,9 +205,11 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
   ]);
 
   useEffect(() => {
-    if (manifest && requestedSkill && sessionHydrated && session.length === 0) start();
+    const location = findRequestedSkillLocation(manifest, requestedSkill);
+    if (location?.area.name === selectedArea && location?.topic.name === selectedTopic &&
+        sessionHydrated && session.length === 0) start();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [manifest, requestedSkill, sessionHydrated]);
+  }, [manifest, requestedSkill, selectedArea, selectedTopic, sessionHydrated]);
 
   const area = manifest?.areas?.find(a => a.name === selectedArea);
 

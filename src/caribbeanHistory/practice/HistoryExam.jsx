@@ -200,7 +200,7 @@ export default function HistoryExam({ paper, userId, supabase, onBack }) {
       <div className="poa-exam-toolbar"><span>{questions.filter(answered).length}/{questions.length} answered · {Object.values(attempt.flags).filter(Boolean).length} flagged</span>
         {active && <button className="oa-primary" type="button" onClick={() => setConfirmation("submit")}>Submit paper</button>}
       </div>
-      <div className="poa-exam-layout">
+      <div className="oa-exam-layout">
         <PoaQuestionNavigator questions={questions.map(question => ({ ...question, displayNumber: question.number, answered: answered(question), flagged: attempt.flags[question.id] }))} currentId={current.id}
           onSelect={id => go(questions.findIndex(question => question.id === id))} />
         <section className="poa-answer-sheet oa-answer-sheet" id="ch-question" aria-labelledby="ch-question-heading" tabIndex={-1}>

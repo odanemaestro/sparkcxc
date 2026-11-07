@@ -11,6 +11,18 @@ const STUDY_MODES = new Set(["study", "labs", "flashcards", "quiz", "checkpoint"
 const PRACTICE_MODES = new Set(["home", "topic", "structured", "checkpoint"]);
 const MATH_PRACTICE_MODES = new Set(["home", "paper1", "paper2", "adaptive", "2027"]);
 const EXAM_INTENTS = new Set(["resume", "new"]);
+const PRACTICE_PAPER_ALIAS = {
+  "caribbean-history": paper => ({ view:"library", paper }),
+  chemistry: paper => ({ mode:`paper${paper}` }),
+  "english-a": paper => ({ mode:`paper${paper}` }),
+  "food-nutrition-and-health": paper => ({ view:`paper${paper}` }),
+  "integrated-science": paper => ({ mode:`paper${paper}` }),
+  "office-administration": paper => ({ view:"library", paper }),
+  "principles-of-accounts": paper => ({ view:"library", paper }),
+  "principles-of-business": paper => ({ view:`paper${paper}` }),
+  "social-studies": paper => ({ mode:`paper${paper}` }),
+};
+const SPECIALIZED_STUDY_ROUTES = new Set(["physics", "information-technology"]);
 /**
  * "new" is an in-memory, one-shot launch instruction. It must never survive
  * in the URL because a hard refresh should resume the active saved attempt.
@@ -37,9 +49,26 @@ export function parseSparkHashValue(hashValue = "") {
   }
   const raw = hash.slice(1);
   const queryIndex = raw.indexOf("?");
-  const path = normalizePath(queryIndex >= 0 ? raw.slice(0, queryIndex) : raw);
+  let path = normalizePath(queryIndex >= 0 ? raw.slice(0, queryIndex) : raw);
   const query = queryIndex >= 0 ? raw.slice(queryIndex + 1) : "";
-  return { path, params: new URLSearchParams(query), routable: true };
+  const params = new URLSearchParams(query);
+  const paper = path.match(/^\/practice\/([a-z-]+)\/paper-?([12])$/);
+  const defaults = paper && Object.hasOwn(PRACTICE_PAPER_ALIAS, paper[1])
+    ? PRACTICE_PAPER_ALIAS[paper[1]](paper[2])
+    : null;
+  if (defaults) {
+    path = `/practice/${paper[1]}`;
+    for (const [key, value] of Object.entries(defaults)) {
+      if (!params.has(key)) params.set(key, value);
+    }
+  }
+  const lesson = path.match(/^\/study\/([a-z-]+)\/section\/([\w.-]+)(?:\/topic\/([\w.-]+))?$/);
+  if (lesson && !SPECIALIZED_STUDY_ROUTES.has(lesson[1])) {
+    path = `/study/${lesson[1]}`;
+    if (!params.has("section")) params.set("section", lesson[2]);
+    if (lesson[3] && !params.has("topic")) params.set("topic", lesson[3]);
+  }
+  return { path, params, routable: true };
 }
 
 export function readSparkHashRoute() {

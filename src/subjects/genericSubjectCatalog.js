@@ -140,7 +140,13 @@ function structureFromRpc(data) {
   });
 }
 
-export async function loadGenericSubjectStructure({ supabase, subjectId } = {}) {
+export function isGenericTopicUnlocked(structure, topicId, completedIds) {
+  const topics = structure?.topics || [];
+  const index = topics.findIndex(topic => topic.id === topicId);
+  return index >= 0 && (completedIds.has(topicId) || topics.slice(0, index).every(topic => completedIds.has(topic.id)));
+}
+
+export function bundledSubjectStructure(subjectId) {
   const id = cleanId(subjectId);
   if (id === "office-administration") return {data:oaLocalStructure(),error:null,source:"local-oa"};
   if (id === "caribbean-history") return {data:historyLocalStructure(),error:null,source:"local-history"};
@@ -157,6 +163,13 @@ export async function loadGenericSubjectStructure({ supabase, subjectId } = {}) 
   if (id === "principles-of-business") {
     return {data:pobLocalStructure(),error:null,source:"local-pob"};
   }
+  return null;
+}
+
+export async function loadGenericSubjectStructure({ supabase, subjectId } = {}) {
+  const id = cleanId(subjectId);
+  const bundled = bundledSubjectStructure(id);
+  if (bundled) return bundled;
   if (!supabase || !id) {
     return { data:buildGenericSubjectStructure(), error:null, skipped:true };
   }

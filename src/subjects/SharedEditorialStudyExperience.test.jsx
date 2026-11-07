@@ -5,6 +5,7 @@ import {loadGenericSubjectStructure} from "./genericSubjectCatalog";
 import {readSparkHashRoute,subscribeSparkRoute} from "../routing/sparkRoutingV270";
 
 jest.mock("./genericSubjectCatalog",()=>({
+ ...jest.requireActual("./genericSubjectCatalog"),
  loadGenericSubjectStructure:jest.fn()
 }));
 jest.mock("../routing/sparkRoutingV270",()=>({
@@ -76,6 +77,23 @@ describe("Shared editorial study design for established CSEC subjects",()=>{
    expect(main).not.toHaveClass("spark-fnh-focus-reading");
   }
  );
+ test("a saved deep link reopens the same unlocked lesson",async()=>{
+  readSparkHashRoute.mockReturnValue({
+   path:"/study/english-a",
+   params:new URLSearchParams({section:"unit-1",topic:"next-lesson"})
+  });
+  const progressQuery={select:jest.fn().mockReturnThis(),eq:jest.fn().mockReturnThis()};
+  progressQuery.eq.mockImplementation((key)=>key==="completed"
+   ? Promise.resolve({data:[{activity_type:"lesson",topic_id:"sample-lesson"}],error:null})
+   : progressQuery);
+  const supabase={from:jest.fn().mockReturnValue(progressQuery)};
+  const open=()=>render(<GenericSubjectStudyView subject={subject("english-a")} userId="student" supabase={supabase}/>);
+  const firstOpen=open();
+  expect(await screen.findByRole("heading",{level:2,name:"Another topic"})).toBeInTheDocument();
+  firstOpen.unmount();
+  open();
+  expect(await screen.findByRole("heading",{level:2,name:"Another topic"})).toBeInTheDocument();
+ });
  test("shared in-lesson links scroll without touching the subject route",()=>{
   render(<GenericLessonContent subjectId="social-studies" topic={lessonTopic} editorial/>);
   const nav=screen.getByRole("navigation",{name:"Jump to a part of this lesson"});

@@ -1,0 +1,1304 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "2020-JAN",
+  "year": 2020,
+  "session": "January",
+  "title": "CHEMISTRY Paper 01 - General Proficiency",
+  "test_code": "01212010",
+  "form": "FORM TP 2020004",
+  "date": "20 January 2020 (p.m.)",
+  "duration": "1 hour 15 minutes",
+  "source_file": "CSEC_Chemistry_P1_2020_JAN.pdf",
+  "instructions": [
+    "This test consists of 60 items. You will have 1 hour and 15 minutes to answer them.",
+    "In addition to this test booklet, you should have an answer sheet.",
+    "Each item in this test has four suggested answers lettered (A), (B), (C), (D). Read each item you are about to answer and decide which choice is best.",
+    "On your answer sheet, find the number which corresponds to your item and shade the space having the same letter as the answer you have chosen. Look at the sample item below. Sample Item: The SI unit of length is the (A) metre (B) newton (C) second (D) kilogram. The best answer to this item is \"metre\", so (A) has been shaded.",
+    "If you want to change your answer, erase it completely before you fill in your new choice.",
+    "When you are told to begin, turn the page and work as quickly and as carefully as you can. If you cannot answer an item, go on to the next one. You may return to that item later.",
+    "You may do any rough work in this booklet.",
+    "Figures are not necessarily drawn to scale.",
+    "You may use a silent, non-programmable calculator to answer items."
+  ],
+  "stimuli": [
+    {
+      "id": "2020-JAN-S01",
+      "items": [
+        3,
+        4
+      ],
+      "text": "Items 3 - 4 refer to the four sets of properties represented by the options, A, B, C and D, below.",
+      "shared_option_table": {
+        "columns": [
+          "Relative Charge",
+          "Approximate Mass"
+        ],
+        "rows": {
+          "A": [
+            "+1",
+            "1"
+          ],
+          "B": [
+            "0",
+            "1"
+          ],
+          "C": [
+            "−1",
+            "0"
+          ],
+          "D": [
+            "0",
+            "2"
+          ]
+        }
+      }
+    },
+    {
+      "id": "2020-JAN-S02",
+      "items": [
+        11
+      ],
+      "text": "Item 11 refers to the following equation which represents the reaction between ethene and chlorine.",
+      "scheme": "H₂C=CH₂ + Cl₂ → CH₂Cl-CH₂Cl (drawn as displayed formulae)",
+      "diagrams": [
+        "2020-JAN-D01"
+      ]
+    },
+    {
+      "id": "2020-JAN-S03",
+      "items": [
+        17
+      ],
+      "text": "Item 17 refers to the following graph which shows the variation of the pH of the mixture formed when Solution Y is added to a fixed volume of Solution X.",
+      "diagrams": [
+        "2020-JAN-D02"
+      ]
+    },
+    {
+      "id": "2020-JAN-S04",
+      "items": [
+        22,
+        23
+      ],
+      "text": "Items 22 - 23 refer to the following information. A piece of calcium was added to some distilled water in a container and the following observations were recorded.",
+      "statements": [
+        [
+          "I.",
+          "Bubbles of gas evolved."
+        ],
+        [
+          "II.",
+          "A cloudy suspension was formed."
+        ]
+      ]
+    },
+    {
+      "id": "2020-JAN-S05",
+      "items": [
+        30
+      ],
+      "text": "Item 30 refers to the following apparatus which is used to measure the relative conductivity of various substances.",
+      "diagrams": [
+        "2020-JAN-D06"
+      ]
+    },
+    {
+      "id": "2020-JAN-S06",
+      "items": [
+        38
+      ],
+      "text": "Item 38 refers to the following sequence of reactions involving iron compounds, where I, II, III and IV represent the progressive stages in the sequence.",
+      "scheme": "FeCO₃ --I--> FeO --II--> Fe₂O₃ --III--> Fe₂(SO₄)₃ --IV--> Fe(OH)₃",
+      "diagrams": [
+        "2020-JAN-D08"
+      ]
+    },
+    {
+      "id": "2020-JAN-S07",
+      "items": [
+        45
+      ],
+      "text": "Item 45 refers to the following structures of two organic compounds, I and II, whose molecular formula is C₃H₈O.",
+      "diagrams": [
+        "2020-JAN-D09"
+      ]
+    },
+    {
+      "id": "2020-JAN-S08",
+      "items": [
+        48
+      ],
+      "text": "Item 48 refers to the fully displayed structural formulae of Compounds Q, R and S shown below.",
+      "diagrams": [
+        "2020-JAN-D11"
+      ]
+    }
+  ],
+  "diagrams": {
+    "2020-JAN-D01": {
+      "svg": "diagrams/2020-JAN-D01.svg",
+      "alt": "Equation: displayed formula of ethene (H₂C=CH₂) + Cl₂ gives the displayed formula of 1,2-dichloroethane, with one Cl on each carbon."
+    },
+    "2020-JAN-D02": {
+      "svg": "diagrams/2020-JAN-D02.svg",
+      "alt": "Graph of pH (vertical axis, marked 1, 7 and 13) against Volume of Solution Y added (cm³). The pH starts at about 1, rises slowly, then rises steeply through 7 and levels off at about 13."
+    },
+    "2020-JAN-D03A": {
+      "svg": "diagrams/2020-JAN-D03A.svg",
+      "alt": "Option A: two overlapping circles. The overlap holds one cross and one dot; the left circle has no other electrons and the right circle has six other crosses."
+    },
+    "2020-JAN-D03B": {
+      "svg": "diagrams/2020-JAN-D03B.svg",
+      "alt": "Option B: two overlapping circles. The overlap holds two crosses and two dots (two shared pairs); the left circle has four other crosses and the right circle four other dots."
+    },
+    "2020-JAN-D03C": {
+      "svg": "diagrams/2020-JAN-D03C.svg",
+      "alt": "Option C: two overlapping circles. The overlap holds three crosses and three dots (three shared pairs); each circle has two other electrons."
+    },
+    "2020-JAN-D03D": {
+      "svg": "diagrams/2020-JAN-D03D.svg",
+      "alt": "Option D: two overlapping circles. The overlap holds one cross and one dot; the left circle has six other dots and the right circle six other crosses."
+    },
+    "2020-JAN-D04": {
+      "svg": "diagrams/2020-JAN-D04.svg",
+      "alt": "Graph of Temperature (°C) against Volume of acid added (cm³). The temperature rises in a straight line through point P to a peak at point Q, then falls in a straight line through points R and S."
+    },
+    "2020-JAN-D05A": {
+      "svg": "diagrams/2020-JAN-D05A.svg",
+      "alt": "Option A: graph of Total volume of CO₂ (cm³) against Time (min). The curve rises steeply from the origin, then levels off."
+    },
+    "2020-JAN-D05B": {
+      "svg": "diagrams/2020-JAN-D05B.svg",
+      "alt": "Option B: graph of Total volume of CO₂ (cm³) against Time (min). The curve starts high and falls, levelling off near the time axis."
+    },
+    "2020-JAN-D05C": {
+      "svg": "diagrams/2020-JAN-D05C.svg",
+      "alt": "Option C: graph of Total volume of CO₂ (cm³) against Time (min). A straight line falls from high on the volume axis to the time axis."
+    },
+    "2020-JAN-D05D": {
+      "svg": "diagrams/2020-JAN-D05D.svg",
+      "alt": "Option D: graph of Total volume of CO₂ (cm³) against Time (min). A straight line rises steadily from the origin."
+    },
+    "2020-JAN-D06": {
+      "svg": "diagrams/2020-JAN-D06.svg",
+      "alt": "Conductivity apparatus: a 6 V DC supply and a bulb in a circuit connected to two graphite rods that dip into a container of the substance under investigation."
+    },
+    "2020-JAN-D08": {
+      "svg": "diagrams/2020-JAN-D08.svg",
+      "alt": "Reaction sequence: FeCO₃ goes to FeO (stage I), FeO goes to Fe₂O₃ (stage II), Fe₂O₃ goes to Fe₂(SO₄)₃ (stage III), and Fe₂(SO₄)₃ goes to Fe(OH)₃ (stage IV)."
+    },
+    "2020-JAN-D09": {
+      "svg": "diagrams/2020-JAN-D09.svg",
+      "alt": "Two displayed formulae. Compound I: a three-carbon chain with OH on the middle carbon (propan-2-ol). Compound II: a three-carbon chain with OH on the end carbon (propan-1-ol)."
+    },
+    "2020-JAN-D10": {
+      "svg": "diagrams/2020-JAN-D10.svg",
+      "alt": "Small displayed formula of ethene, H₂C=CH₂, shown as option A's 'structural formula'."
+    },
+    "2020-JAN-D11": {
+      "svg": "diagrams/2020-JAN-D11.svg",
+      "alt": "Three displayed formulae. Q: CH₃-CH₂-COOH (propanoic acid). R: CH₃-COO-CH₃ (methyl ethanoate). S: CH₃-CH₂-CH₂-O-H (propan-1-ol)."
+    },
+    "2020-JAN-D12A": {
+      "svg": "diagrams/2020-JAN-D12A.svg",
+      "alt": "Option A: displayed formula of butane with Br on the first carbon (1-bromobutane)."
+    },
+    "2020-JAN-D12B": {
+      "svg": "diagrams/2020-JAN-D12B.svg",
+      "alt": "Option B: displayed formula CH₂=C(Br)-CH₂-CH₃, with a C=C double bond and Br on the second carbon."
+    },
+    "2020-JAN-D12C": {
+      "svg": "diagrams/2020-JAN-D12C.svg",
+      "alt": "Option C: displayed formula of butane with Br on the second carbon (2-bromobutane)."
+    },
+    "2020-JAN-D12D": {
+      "svg": "diagrams/2020-JAN-D12D.svg",
+      "alt": "Option D: displayed formula of a three-carbon chain with a CH₃ branch and Br both on the middle carbon (2-bromo-2-methylpropane)."
+    },
+    "2020-JAN-D13A": {
+      "svg": "diagrams/2020-JAN-D13A.svg",
+      "alt": "Option A: displayed formula of ethane, CH₃-CH₃."
+    },
+    "2020-JAN-D13B": {
+      "svg": "diagrams/2020-JAN-D13B.svg",
+      "alt": "Option B: displayed formula of ethene, H₂C=CH₂."
+    },
+    "2020-JAN-D13C": {
+      "svg": "diagrams/2020-JAN-D13C.svg",
+      "alt": "Option C: displayed formula of propane, CH₃-CH₂-CH₃."
+    },
+    "2020-JAN-D13D": {
+      "svg": "diagrams/2020-JAN-D13D.svg",
+      "alt": "Option D: displayed formula of propane drawn with a bend (single bonds only)."
+    },
+    "2020-JAN-D14": {
+      "svg": "diagrams/2020-JAN-D14.svg",
+      "alt": "Monomer: displayed formula H-C(H)(NH₂)-COOH, a carbon atom bonded to two H atoms, an NH₂ group and a COOH group (glycine, an amino acid)."
+    }
+  },
+  "questions": [
+    {
+      "id": "2020-JAN-01",
+      "n": 1,
+      "page": 2,
+      "stem": "One property of ionic compounds is that they",
+      "options": {
+        "A": "contain molecules",
+        "B": "are solids and vaporize easily",
+        "C": "usually dissolve in organic solvents",
+        "D": "conduct electricity when molten or dissolved in water"
+      },
+      "objective": "A5.6",
+      "profile": "KC",
+      "copied_from": "2023-MJ-07"
+    },
+    {
+      "id": "2020-JAN-02",
+      "n": 2,
+      "page": 2,
+      "stem": "Which of the following processes does NOT provide evidence in support of the particulate nature of matter?",
+      "options": {
+        "A": "Osmosis",
+        "B": "Diffusion",
+        "C": "Filtration",
+        "D": "Brownian motion"
+      },
+      "objective": "A1.1",
+      "profile": "KC",
+      "copied_from": "2023-MJ-16"
+    },
+    {
+      "id": "2020-JAN-03",
+      "n": 3,
+      "page": 2,
+      "stimulus": "2020-JAN-S01",
+      "stem": "Which set of properties above refers to a neutron?",
+      "options": {
+        "A": "+1; 1",
+        "B": "0; 1",
+        "C": "−1; 0",
+        "D": "0; 2"
+      },
+      "objective": "A3.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-04",
+      "n": 4,
+      "page": 2,
+      "stimulus": "2020-JAN-S01",
+      "stem": "Which set of properties above refers to a proton?",
+      "options": {
+        "A": "+1; 1",
+        "B": "0; 1",
+        "C": "−1; 0",
+        "D": "0; 2"
+      },
+      "objective": "A3.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-05",
+      "n": 5,
+      "page": 2,
+      "stem": "Sulfuric acid is a stronger acid than ethanoic acid (acetic acid) in aqueous solution because sulfuric acid",
+      "options": {
+        "A": "is more corrosive than ethanoic acid",
+        "B": "is more concentrated than ethanoic acid",
+        "C": "ionizes to a greater extent than ethanoic acid",
+        "D": "causes sugar to char whereas ethanoic acid does not"
+      },
+      "objective": "A7.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-06",
+      "n": 6,
+      "page": 2,
+      "stem": "Which of the substances, represented by the options, A, B, C and D in the following table, is MOST likely sodium chloride?",
+      "options": {
+        "A": "1465 °C; No; Yes",
+        "B": "444 °C; No; No",
+        "C": "2600 °C; Yes; No",
+        "D": "−35 °C; No; Yes"
+      },
+      "option_table": {
+        "columns": [
+          "Boiling Point (°C)",
+          "Electrical Conductivity: Solid State",
+          "Electrical Conductivity: Aqueous State"
+        ],
+        "rows": {
+          "A": [
+            "1465",
+            "No",
+            "Yes"
+          ],
+          "B": [
+            "444",
+            "No",
+            "No"
+          ],
+          "C": [
+            "2600",
+            "Yes",
+            "No"
+          ],
+          "D": [
+            "−35",
+            "No",
+            "Yes"
+          ]
+        },
+        "letter_header": "Substance"
+      },
+      "objective": "A5.6",
+      "profile": "UK",
+      "copied_from": "2020-MJ-22"
+    },
+    {
+      "id": "2020-JAN-07",
+      "n": 7,
+      "page": 2,
+      "stem": "Isotopes of an element contain",
+      "options": {
+        "A": "different numbers of protons",
+        "B": "the same number of neutrons",
+        "C": "the same number of electrons as neutrons",
+        "D": "the same number of protons as electrons"
+      },
+      "objective": "A3.6",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-08",
+      "n": 8,
+      "page": 3,
+      "stem": "What mass of oxygen atoms contains the same number of moles as 112 g of sulfur atoms?",
+      "stem_after": "[RAM: O = 16; S = 32]",
+      "options": {
+        "A": "0.56 g",
+        "B": "5.60 g",
+        "C": "56.00 g",
+        "D": "560.00 g"
+      },
+      "objective": "A6.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-09",
+      "n": 9,
+      "page": 3,
+      "stem": "Two solutions are to be mixed in order to demonstrate endothermic change. Which of the following techniques would be MOST appropriate?",
+      "options": {
+        "A": "Taking mass readings",
+        "B": "Taking temperature readings",
+        "C": "Monitoring the pH of the solutions",
+        "D": "Carefully observing colour changes"
+      },
+      "objective": "A11.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-10",
+      "n": 10,
+      "page": 3,
+      "stem": "An element, X, has an electronic configuration 2, 8, 1. At which of the following positions is the element in the periodic table?",
+      "options": {
+        "A": "Period 1 Group II",
+        "B": "Period 1 Group I",
+        "C": "Period 3 Group II",
+        "D": "Period 3 Group I"
+      },
+      "objective": "A4.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-11",
+      "n": 11,
+      "page": 3,
+      "stimulus": "2020-JAN-S02",
+      "stem": "What type of reaction does the equation above represent?",
+      "options": {
+        "A": "Addition",
+        "B": "Substitution",
+        "C": "Addition polymerization",
+        "D": "Condensation polymerization"
+      },
+      "objective": "B3.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-12",
+      "n": 12,
+      "page": 4,
+      "stem": "Which of the following groups of mixtures is arranged in order of INCREASING particle size?",
+      "options": {
+        "A": "Colloids, solutions, suspensions",
+        "B": "Solutions, suspensions, colloids",
+        "C": "Solutions, colloids, suspensions",
+        "D": "Suspensions, colloids, solutions"
+      },
+      "objective": "A2.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-13",
+      "n": 13,
+      "page": 4,
+      "stem": "'Ionic bond formation' results from the",
+      "options": {
+        "A": "donation of electrons from a non-metal to a metal to achieve stability",
+        "B": "donation of electrons from a metal to a non-metal to achieve stability",
+        "C": "attraction between the positively charged ions of a metal and a pool of electrons",
+        "D": "sharing of electrons between the atoms of a metal and non-metal to achieve stability"
+      },
+      "objective": "A5.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-14",
+      "n": 14,
+      "page": 4,
+      "stem": "An acid may be defined as a",
+      "options": {
+        "A": "proton donor",
+        "B": "neutron donor",
+        "C": "proton acceptor",
+        "D": "neutron acceptor"
+      },
+      "objective": "A7.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-15",
+      "n": 15,
+      "page": 4,
+      "stem": "Ethanoic acid reacts with ethanol to form an ester and water. How many moles of ethanoic acid are required to produce 0.5 mol of ester?",
+      "options": {
+        "A": "0.05",
+        "B": "0.5",
+        "C": "1",
+        "D": "2"
+      },
+      "objective": "A6.6",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-16",
+      "n": 16,
+      "page": 4,
+      "stem": "From which of the following substances can a solid be obtained by the process of sedimentation?",
+      "options": {
+        "A": "Suspensions",
+        "B": "Emulsions",
+        "C": "Foams",
+        "D": "Gels"
+      },
+      "objective": "A2.2",
+      "profile": "KC",
+      "copied_from": "2021-MJ-07"
+    },
+    {
+      "id": "2020-JAN-17",
+      "n": 17,
+      "page": 4,
+      "stimulus": "2020-JAN-S03",
+      "stem": "Which of the following pairs of substances can represent Solutions X and Y?",
+      "options": {
+        "A": "HCl(aq); H₂O",
+        "B": "KOH(aq); H₂O",
+        "C": "HCl(aq); KOH(aq)",
+        "D": "KOH(aq); HCl(aq)"
+      },
+      "option_table": {
+        "columns": [
+          "X",
+          "Y"
+        ],
+        "rows": {
+          "A": [
+            "HCl(aq)",
+            "H₂O"
+          ],
+          "B": [
+            "KOH(aq)",
+            "H₂O"
+          ],
+          "C": [
+            "HCl(aq)",
+            "KOH(aq)"
+          ],
+          "D": [
+            "KOH(aq)",
+            "HCl(aq)"
+          ]
+        }
+      },
+      "objective": "A7.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-18",
+      "n": 18,
+      "page": 5,
+      "stem": "Which of the following halogens is a liquid at room temperature?",
+      "options": {
+        "A": "Iodine",
+        "B": "Fluorine",
+        "C": "Chlorine",
+        "D": "Bromine"
+      },
+      "objective": "A4.3",
+      "profile": "KC",
+      "copied_from": "2020-MJ-18"
+    },
+    {
+      "id": "2020-JAN-19",
+      "n": 19,
+      "page": 5,
+      "stem": "A piece of metal is reacted with an acid to produce hydrogen gas. Which of the following steps should be employed in order to increase the rate of the reaction?",
+      "statements": [
+        [
+          "I.",
+          "Increasing the temperature at which the reaction is carried out"
+        ],
+        [
+          "II.",
+          "Subdividing the piece of metal"
+        ],
+        [
+          "III.",
+          "Reducing the concentration of the acid"
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "A10.2",
+      "profile": "KC",
+      "copied_from": "2010-MJ-33"
+    },
+    {
+      "id": "2020-JAN-20",
+      "n": 20,
+      "page": 5,
+      "stem": "Which of the following properties increases across Period 3 of the periodic table?",
+      "options": {
+        "A": "Atomic radius",
+        "B": "Atomic number",
+        "C": "Tensile strength",
+        "D": "Metallic character"
+      },
+      "objective": "A4.4",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-21",
+      "n": 21,
+      "page": 5,
+      "stem": "Which of the following substances do NOT produce water when reacted with acid?",
+      "options": {
+        "A": "Carbonates",
+        "B": "Metal oxides",
+        "C": "Active metals",
+        "D": "Metal hydroxides"
+      },
+      "objective": "A7.4",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-22",
+      "n": 22,
+      "page": 5,
+      "stimulus": "2020-JAN-S04",
+      "stem": "The gas produced is expected to",
+      "options": {
+        "A": "relight a glowing splint",
+        "B": "give a 'pop' with a lighted splint",
+        "C": "turn acidified aqueous potassium dichromate green",
+        "D": "decolorize acidified aqueous potassium manganate(VII)"
+      },
+      "objective": "C6.3",
+      "profile": "KC",
+      "copied_from": "2009-MJ-16"
+    },
+    {
+      "id": "2020-JAN-23",
+      "n": 23,
+      "page": 5,
+      "stimulus": "2020-JAN-S04",
+      "stem": "A sample of the suspension was filtered and the pH of the filtrate determined. The expected pH of the filtrate should be approximately",
+      "options": {
+        "A": "3",
+        "B": "5",
+        "C": "7",
+        "D": "10"
+      },
+      "objective": "A7.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-24",
+      "n": 24,
+      "page": 5,
+      "stem": "Which of the following salts is an acid salt?",
+      "options": {
+        "A": "NaHSO₄",
+        "B": "Na₂CO₃",
+        "C": "Na₃PO₄",
+        "D": "Na₂SO₄"
+      },
+      "objective": "A7.9",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-25",
+      "n": 25,
+      "page": 6,
+      "stem": "Sodium hydrogen carbonate and hydrochloric acid reacted to produce sodium chloride. The mixture effervesced. The effervescence is caused by the evolution of",
+      "options": {
+        "A": "oxygen",
+        "B": "hydrogen",
+        "C": "carbon dioxide",
+        "D": "hydrogen chloride"
+      },
+      "objective": "A7.4",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-26",
+      "n": 26,
+      "page": 6,
+      "stem": "Which of the following diagrams illustrates bonding in oxygen?",
+      "options": {
+        "A": "One shared pair; other electrons on one atom only",
+        "B": "Two shared pairs; four other electrons on each atom",
+        "C": "Three shared pairs; two other electrons on each atom",
+        "D": "One shared pair; six other electrons on each atom"
+      },
+      "option_diagrams": {
+        "A": "2020-JAN-D03A",
+        "B": "2020-JAN-D03B",
+        "C": "2020-JAN-D03C",
+        "D": "2020-JAN-D03D"
+      },
+      "objective": "A5.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-27",
+      "n": 27,
+      "page": 7,
+      "stem": "Which of the following is the correct formula for ammonium carbonate?",
+      "options": {
+        "A": "NH₄CO₃",
+        "B": "NH₄(CO₃)₂",
+        "C": "(NH₄)₂CO₃",
+        "D": "(NH₄)₂(CO₃)₂"
+      },
+      "objective": "A5.3",
+      "profile": "KC",
+      "copied_from": "2009-MJ-13"
+    },
+    {
+      "id": "2020-JAN-28",
+      "n": 28,
+      "page": 7,
+      "stem": "Which of the following products would be produced by the electrolysis of dilute sulfuric acid?",
+      "options": {
+        "A": "H₂; O₂",
+        "B": "O₂; N₂",
+        "C": "H₂; N₂",
+        "D": "O₂; H₂"
+      },
+      "option_table": {
+        "columns": [
+          "At Cathode",
+          "At Anode"
+        ],
+        "rows": {
+          "A": [
+            "H₂",
+            "O₂"
+          ],
+          "B": [
+            "O₂",
+            "N₂"
+          ],
+          "C": [
+            "H₂",
+            "N₂"
+          ],
+          "D": [
+            "O₂",
+            "H₂"
+          ]
+        }
+      },
+      "objective": "A9.8",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-29",
+      "n": 29,
+      "page": 7,
+      "stem": "A solution of sodium hydroxide is neutralized by the addition of dilute hydrochloric acid. The results obtained are used to plot the graph below.",
+      "stem_after": "Which of the points on the graph above represents the neutralization point of the reaction?",
+      "diagrams": [
+        "2020-JAN-D04"
+      ],
+      "options": {
+        "A": "P",
+        "B": "Q",
+        "C": "R",
+        "D": "S"
+      },
+      "objective": "A7.10",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-30",
+      "n": 30,
+      "page": 7,
+      "stimulus": "2020-JAN-S05",
+      "stem": "If substances containing one mole of solute per dm³ are investigated, which substance should cause the bulb to glow BRIGHTEST?",
+      "options": {
+        "A": "Water",
+        "B": "Ammonia",
+        "C": "Sulfuric acid",
+        "D": "Ethanoic acid"
+      },
+      "objective": "A9.3",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-31",
+      "n": 31,
+      "page": 7,
+      "stem": "When a piece of magnesium ribbon is burnt in air, magnesium oxide is formed. The magnesium oxide is then placed in water and tested with litmus solution, which turns blue.",
+      "stem_after": "The above experiment shows that magnesium oxide is",
+      "options": {
+        "A": "insoluble",
+        "B": "neutral",
+        "C": "acidic",
+        "D": "basic"
+      },
+      "objective": "A7.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-32",
+      "n": 32,
+      "page": 7,
+      "stem": "When a metal atom becomes an ion, it",
+      "options": {
+        "A": "gains electrons and is oxidized",
+        "B": "gains electrons and is reduced",
+        "C": "loses electrons and is reduced",
+        "D": "loses electrons and is oxidized"
+      },
+      "objective": "A8.2",
+      "profile": "KC",
+      "copied_from": "2023-MJ-23"
+    },
+    {
+      "id": "2020-JAN-33",
+      "n": 33,
+      "page": 8,
+      "stem": "Some calcium carbonate was reacted with excess dilute hydrochloric acid. The volume of carbon dioxide evolved was recorded and plotted against time. Which of the following graphs represents this reaction?",
+      "options": {
+        "A": "Rises steeply then levels off",
+        "B": "Starts high and curves down",
+        "C": "Straight line falling",
+        "D": "Straight line rising"
+      },
+      "option_diagrams": {
+        "A": "2020-JAN-D05A",
+        "B": "2020-JAN-D05B",
+        "C": "2020-JAN-D05C",
+        "D": "2020-JAN-D05D"
+      },
+      "objective": "A10.4",
+      "profile": "UK",
+      "copied_from": "2023-MJ-28"
+    },
+    {
+      "id": "2020-JAN-34",
+      "n": 34,
+      "page": 8,
+      "stem": "Potassium is a metal. From this information ONLY, it may be deduced that potassium",
+      "options": {
+        "A": "is soft",
+        "B": "is very reactive",
+        "C": "has a low melting point",
+        "D": "is a good conductor of electricity"
+      },
+      "objective": "C1.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-35",
+      "n": 35,
+      "page": 8,
+      "stem": "An alloy is",
+      "options": {
+        "A": "a type of element",
+        "B": "a mixture of metals",
+        "C": "a compound of metals",
+        "D": "the same as aluminium"
+      },
+      "objective": "C3.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-36",
+      "n": 36,
+      "page": 8,
+      "stem": "Which of the following methods is used for the extraction of aluminium?",
+      "options": {
+        "A": "Electrolysis of its molten oxide",
+        "B": "Reduction of its oxide using coke",
+        "C": "Electrolysis of its aqueous chloride",
+        "D": "Reduction of its oxide using carbon monoxide"
+      },
+      "objective": "C2.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-37",
+      "n": 37,
+      "page": 8,
+      "stem": "Which of the following statements explains why, over time, aluminium products do NOT deteriorate in air as do iron products?",
+      "options": {
+        "A": "Aluminium is lower than iron in the activity series, therefore it reacts less readily with air than iron.",
+        "B": "Aluminium is higher up in the activity series than iron, therefore it is more resistant to corrosion than iron.",
+        "C": "Both metals form oxide coats but the aluminium oxide prevents further reaction while the iron oxide does not.",
+        "D": "Both metals form hydroxide coats but the aluminium hydroxide prevents further reaction while the iron hydroxide does not."
+      },
+      "objective": "C4.1",
+      "profile": "KC",
+      "copied_from": "2009-MJ-43"
+    },
+    {
+      "id": "2020-JAN-38",
+      "n": 38,
+      "page": 9,
+      "stimulus": "2020-JAN-S06",
+      "stem": "A suitable reagent that could be used at Stage IV is",
+      "options": {
+        "A": "steam",
+        "B": "hydrogen",
+        "C": "solid copper oxide",
+        "D": "aqueous sodium hydroxide"
+      },
+      "objective": "C6.1",
+      "profile": "UK",
+      "copied_from": "2023-MJ-30"
+    },
+    {
+      "id": "2020-JAN-39",
+      "n": 39,
+      "page": 9,
+      "stem": "Which of the following elements is an important constituent of chlorophyll?",
+      "options": {
+        "A": "Magnesium",
+        "B": "Calcium",
+        "C": "Copper",
+        "D": "Iron"
+      },
+      "objective": "C4.2",
+      "profile": "KC",
+      "copied_from": "2023-MJ-31"
+    },
+    {
+      "id": "2020-JAN-40",
+      "n": 40,
+      "page": 9,
+      "stem": "The existence of millions of organic compounds is due primarily to the ability of carbon to form",
+      "statements": [
+        [
+          "I.",
+          "multiple bonds"
+        ],
+        [
+          "II.",
+          "ring structures"
+        ],
+        [
+          "III.",
+          "branched chains"
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "B2.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-41",
+      "n": 41,
+      "page": 9,
+      "stem": "Copper and aluminium are both good conductors of electricity, but aluminium is preferred to copper for overhead electrical cables because",
+      "options": {
+        "A": "aluminium is obtained in a very high degree of purity",
+        "B": "aluminium is lighter and resistant to corrosion",
+        "C": "copper, a transition metal, forms a coloured coating",
+        "D": "copper rapidly reacts with grease present in air"
+      },
+      "objective": "C3.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-42",
+      "n": 42,
+      "page": 9,
+      "stem": "Which of the following aqueous solutions will produce a yellow precipitate with aqueous potassium iodide?",
+      "options": {
+        "A": "Lead nitrate",
+        "B": "Zinc sulfate",
+        "C": "Calcium chloride",
+        "D": "Sodium carbonate"
+      },
+      "objective": "C6.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-43",
+      "n": 43,
+      "page": 10,
+      "stem": "Which of the following outcomes is observed when EXCESS aqueous ammonia is added to a solution of copper(II) sulfate?",
+      "options": {
+        "A": "Green solution",
+        "B": "Green precipitate",
+        "C": "Deep blue solution",
+        "D": "Light blue precipitate"
+      },
+      "objective": "C6.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-44",
+      "n": 44,
+      "page": 10,
+      "stem": "Hexane is an alkane with six carbon atoms per molecule. Which of the following is the formula for hexane?",
+      "options": {
+        "A": "C₆H₁₂",
+        "B": "C₆H₁₄",
+        "C": "C₆H₁₆",
+        "D": "C₆H₁₈"
+      },
+      "objective": "B2.4",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-45",
+      "n": 45,
+      "page": 10,
+      "stimulus": "2020-JAN-S07",
+      "stem": "Compounds I and II are known as the",
+      "options": {
+        "A": "isomers of C₃H₈O",
+        "B": "isotopes of C₃H₈O",
+        "C": "condensed formulae of C₃H₈O",
+        "D": "molecular formulae of C₃H₈O"
+      },
+      "objective": "B2.7",
+      "profile": "KC",
+      "copied_from": "2009-MJ-49"
+    },
+    {
+      "id": "2020-JAN-46",
+      "n": 46,
+      "page": 10,
+      "stem": "Which of the following metals will react the MOST vigorously with dilute acid?",
+      "options": {
+        "A": "Iron",
+        "B": "Zinc",
+        "C": "Lead",
+        "D": "Copper"
+      },
+      "objective": "C2.1",
+      "profile": "KC",
+      "copied_from": "2009-MJ-40"
+    },
+    {
+      "id": "2020-JAN-47",
+      "n": 47,
+      "page": 11,
+      "stem": "Which of the following about ethane is correct?",
+      "options": {
+        "A": "Structural formula: H₂C=CH₂ (displayed)",
+        "B": "Molecular formula - C₂H₄",
+        "C": "Empirical formula - CH₂",
+        "D": "General formula - CₙH₂ₙ₊₂"
+      },
+      "option_diagrams": {
+        "A": "2020-JAN-D10"
+      },
+      "objective": "B2.2",
+      "profile": "UK",
+      "option_diagram_inline": [
+        "A"
+      ]
+    },
+    {
+      "id": "2020-JAN-48",
+      "n": 48,
+      "page": 11,
+      "stimulus": "2020-JAN-S08",
+      "stem": "Which of the following correctly identifies the homologous series to which each compound belongs?",
+      "options": {
+        "A": "Ester; Acid; Alcohol",
+        "B": "Acid; Alcohol; Ester",
+        "C": "Alcohol; Ester; Acid",
+        "D": "Acid; Ester; Alcohol"
+      },
+      "option_table": {
+        "columns": [
+          "Q",
+          "R",
+          "S"
+        ],
+        "rows": {
+          "A": [
+            "Ester",
+            "Acid",
+            "Alcohol"
+          ],
+          "B": [
+            "Acid",
+            "Alcohol",
+            "Ester"
+          ],
+          "C": [
+            "Alcohol",
+            "Ester",
+            "Acid"
+          ],
+          "D": [
+            "Acid",
+            "Ester",
+            "Alcohol"
+          ]
+        }
+      },
+      "objective": "B2.5",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-49",
+      "n": 49,
+      "page": 11,
+      "stem": "Which reaction involves the boiling of a fat or oil with aqueous sodium hydroxide (caustic soda)?",
+      "options": {
+        "A": "Hydrolysis",
+        "B": "Dehydration",
+        "C": "Saponification",
+        "D": "Esterification"
+      },
+      "objective": "B3.10",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-50",
+      "n": 50,
+      "page": 12,
+      "stem": "Which of the following is the fully displayed structural formula of 2-bromobutane?",
+      "options": {
+        "A": "Butane with Br on carbon 1",
+        "B": "CH₂=C(Br)-CH₂-CH₃",
+        "C": "Butane with Br on carbon 2",
+        "D": "A branched chain with Br and CH₃ on the middle carbon"
+      },
+      "option_diagrams": {
+        "A": "2020-JAN-D12A",
+        "B": "2020-JAN-D12B",
+        "C": "2020-JAN-D12C",
+        "D": "2020-JAN-D12D"
+      },
+      "objective": "B2.6",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-51",
+      "n": 51,
+      "page": 12,
+      "stem": "Which of the following statements are true of alkanes and alkenes?",
+      "statements": [
+        [
+          "I.",
+          "Both alkanes and alkenes burn in air to give carbon dioxide and water."
+        ],
+        [
+          "II.",
+          "Alkanes undergo substitution reactions whilst alkenes undergo addition reactions."
+        ],
+        [
+          "III.",
+          "Alkanes are saturated hydrocarbons whilst alkenes are unsaturated hydrocarbons."
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "B3.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-52",
+      "n": 52,
+      "page": 12,
+      "stem": "A solution has a pH of 1. This solution would be expected to react with",
+      "options": {
+        "A": "zinc metal to produce hydrogen",
+        "B": "hydrochloric acid to produce chlorine",
+        "C": "zinc metal to produce a solution of pH 10",
+        "D": "hydrochloric acid to produce a salt and water"
+      },
+      "objective": "A7.4",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-53",
+      "n": 53,
+      "page": 12,
+      "stem": "Which of the following compounds will react with ethanoic acid to form an ester?",
+      "options": {
+        "A": "CH₃CH₃",
+        "B": "CH₃CH₂Cl",
+        "C": "CH₃CH₂OH",
+        "D": "CH₃CH₂CO₂H"
+      },
+      "objective": "B3.9",
+      "profile": "KC",
+      "copied_from": "2023-MJ-51"
+    },
+    {
+      "id": "2020-JAN-54",
+      "n": 54,
+      "page": 13,
+      "stem": "Which of the following equations represents the fermentation of sugars, using glucose as the substrate?",
+      "options": {
+        "A": "C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂",
+        "B": "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂",
+        "C": "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O",
+        "D": "C₆H₁₂O₆ + C₆H₁₂O₆ → C₁₂H₂₂O₁₁ + H₂O"
+      },
+      "objective": "B3.8",
+      "profile": "KC",
+      "copied_from": "2021-MJ-58"
+    },
+    {
+      "id": "2020-JAN-55",
+      "n": 55,
+      "page": 13,
+      "stem": "Ethene is described as being unsaturated. This means that the",
+      "options": {
+        "A": "molecule has insufficient hydrogen atoms",
+        "B": "molecule contains at least one double bond",
+        "C": "carbon atoms in the molecule are very reactive",
+        "D": "carbon atoms in ethene are linked by single bonds"
+      },
+      "objective": "B2.1",
+      "profile": "KC",
+      "copied_from": "2009-MJ-46"
+    },
+    {
+      "id": "2020-JAN-56",
+      "n": 56,
+      "page": 13,
+      "stem": "ALL members of a homologous series have similar",
+      "options": {
+        "A": "densities",
+        "B": "boiling points",
+        "C": "chemical properties",
+        "D": "physical properties"
+      },
+      "objective": "B2.3",
+      "profile": "KC",
+      "copied_from": "2009-MJ-47"
+    },
+    {
+      "id": "2020-JAN-57",
+      "n": 57,
+      "page": 14,
+      "stem": "Which of the following compounds can decolorize potassium manganate(VII)?",
+      "options": {
+        "A": "CH₃-CH₃ (ethane)",
+        "B": "H₂C=CH₂ (ethene)",
+        "C": "CH₃-CH₂-CH₃ (propane)",
+        "D": "CH₃-CH₂-CH₃ (propane, drawn bent)"
+      },
+      "option_diagrams": {
+        "A": "2020-JAN-D13A",
+        "B": "2020-JAN-D13B",
+        "C": "2020-JAN-D13C",
+        "D": "2020-JAN-D13D"
+      },
+      "objective": "B3.3",
+      "profile": "KC",
+      "copied_from": "2010-MJ-52"
+    },
+    {
+      "id": "2020-JAN-58",
+      "n": 58,
+      "page": 14,
+      "stem": "Which of the following is a natural source of hydrocarbons?",
+      "options": {
+        "A": "Carbon",
+        "B": "Methane",
+        "C": "Hydrogen",
+        "D": "Petroleum"
+      },
+      "objective": "B1.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2020-JAN-59",
+      "n": 59,
+      "page": 14,
+      "stem": "Which of the following types of polymers may be derived from monomers of the type shown below?",
+      "diagrams": [
+        "2020-JAN-D14"
+      ],
+      "options": {
+        "A": "Polyester",
+        "B": "Polyalkene",
+        "C": "Polyamide",
+        "D": "Polysaccharide"
+      },
+      "objective": "B4.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2020-JAN-60",
+      "n": 60,
+      "page": 14,
+      "stem": "Which of the following hydrocarbons is the MAJOR constituent of natural gas?",
+      "options": {
+        "A": "Methane",
+        "B": "Propane",
+        "C": "Ethane",
+        "D": "Butane"
+      },
+      "objective": "B1.1",
+      "profile": "KC",
+      "copied_from": "2023-MJ-45"
+    }
+  ],
+  "verification_status": "source_json_imported_answers_not_independently_validated",
+  "diagram_status": "vector_trace_requires_visual_comparison_to_original",
+  "source_archive": "2020-JAN.zip",
+  "grading_status": "review-only"
+}

@@ -1,0 +1,1072 @@
+{
+  "paper_id": "SPARK-CHEM-P1-PRACTICE-01",
+  "subject": "CSEC Chemistry",
+  "paper_type": "Paper 1",
+  "question_count": 60,
+  "duration_minutes": 75,
+  "is_historical_exam": false,
+  "generation_method": "Source-derived historical-item remix, each item standalone; no questionable keyed items; not newly written",
+  "answer_review_status": "technical checks passed; original answer keys require source-specific chemistry adjudication",
+  "diagram_review_status": "No stimulus-dependent or diagram-dependent items used in this generated set",
+  "questions": [
+    {
+      "stem": "Which of the following elements is the MOST electropositive?",
+      "options": {
+        "A": "Zinc",
+        "B": "Copper",
+        "C": "Magnesium",
+        "D": "Aluminium"
+      },
+      "objective": "C2.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q01",
+      "n": 1,
+      "original_question_id": "2018-JAN-42",
+      "original_paper_id": "2018-JAN",
+      "page": 7
+    },
+    {
+      "stem": "'Cracking' is the process of breaking down",
+      "options": {
+        "A": "large alkane molecules into smaller alkene and alkane molecules",
+        "B": "large alkane molecules into smaller alkane molecules and alcohol",
+        "C": "complex sugar molecules into simple sugar molecules",
+        "D": "large polymer molecules into smaller polymer molecules"
+      },
+      "objective": "B1.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q02",
+      "n": 2,
+      "original_question_id": "2019-MJ-39",
+      "original_paper_id": "2019-MJ",
+      "page": 9
+    },
+    {
+      "stem": "Which of the following compounds produces amino acids, when hydrolysed?",
+      "options": {
+        "A": "Fat",
+        "B": "Starch",
+        "C": "Protein",
+        "D": "Polyamine"
+      },
+      "objective": "B4.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q03",
+      "n": 3,
+      "original_question_id": "2010-MJ-48",
+      "original_paper_id": "2010-MJ",
+      "page": 9
+    },
+    {
+      "stem": "A piece of metal is reacted with an acid to produce hydrogen gas. Which of the following procedures should be employed in order to increase the rate of the reaction?",
+      "statements": [
+        [
+          "I.",
+          "Increasing the temperature at which the reaction is carried out"
+        ],
+        [
+          "II.",
+          "Subdividing the lump of metal"
+        ],
+        [
+          "III.",
+          "Reducing the concentration of the acid"
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "A10.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q04",
+      "n": 4,
+      "original_question_id": "2010-MJ-33",
+      "original_paper_id": "2010-MJ",
+      "page": 6
+    },
+    {
+      "stem": "Which metal appears between copper and aluminium in the reactivity series and is an important component in haemoglobin?",
+      "options": {
+        "A": "Lead",
+        "B": "Iron",
+        "C": "Zinc",
+        "D": "Magnesium"
+      },
+      "objective": "C4.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q05",
+      "n": 5,
+      "original_question_id": "2017-MJ-59",
+      "original_paper_id": "2017-MJ",
+      "page": 10
+    },
+    {
+      "stem": "A solution has a pH of 1. This solution would be expected to react with",
+      "options": {
+        "A": "zinc metal to produce hydrogen",
+        "B": "hydrochloric acid to produce chlorine",
+        "C": "zinc metal to produce a solution of pH 10",
+        "D": "hydrochloric acid to produce a salt and water"
+      },
+      "objective": "A7.4",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q06",
+      "n": 6,
+      "original_question_id": "2020-JAN-52",
+      "original_paper_id": "2020-JAN",
+      "page": 12
+    },
+    {
+      "stem": "Which of the following observations is expected when aqueous silver nitrate is added to aqueous potassium chloride?",
+      "options": {
+        "A": "A pungent gas is evolved.",
+        "B": "A blue precipitate appears.",
+        "C": "A white precipitate appears.",
+        "D": "A brown precipitate appears."
+      },
+      "objective": "C6.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q07",
+      "n": 7,
+      "original_question_id": "2017-MJ-58",
+      "original_paper_id": "2017-MJ",
+      "page": 10
+    },
+    {
+      "stem": "Which of the following groups of mixtures is arranged in order of INCREASING particle size?",
+      "options": {
+        "A": "Colloids, solutions, suspensions",
+        "B": "Solutions, suspensions, colloids",
+        "C": "Solutions, colloids, suspensions",
+        "D": "Suspensions, colloids, solutions"
+      },
+      "objective": "A2.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q08",
+      "n": 8,
+      "original_question_id": "2020-JAN-12",
+      "original_paper_id": "2020-JAN",
+      "page": 4
+    },
+    {
+      "stem": "An example of a substance with a giant covalent structure is",
+      "options": {
+        "A": "copper",
+        "B": "diamond",
+        "C": "solid iodine",
+        "D": "sodium chloride"
+      },
+      "objective": "A5.5",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q09",
+      "n": 9,
+      "original_question_id": "2018-MJ-28",
+      "original_paper_id": "2018-MJ",
+      "page": 6
+    },
+    {
+      "stem": "An element that is a nonmetal",
+      "options": {
+        "A": "is a solid at room temperature",
+        "B": "can act as a reducing agent",
+        "C": "forms an acidic oxide",
+        "D": "conducts electricity"
+      },
+      "objective": "C5.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q10",
+      "n": 10,
+      "original_question_id": "2017-MJ-52",
+      "original_paper_id": "2017-MJ",
+      "page": 9
+    },
+    {
+      "stem": "Particles of a solid cannot move about freely because the",
+      "options": {
+        "A": "particles have a high density",
+        "B": "forces of attraction are very strong",
+        "C": "forces of attraction are very weak",
+        "D": "particles cannot be easily compressed"
+      },
+      "objective": "A1.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q11",
+      "n": 11,
+      "original_question_id": "2018-JAN-01",
+      "original_paper_id": "2018-JAN",
+      "page": 2
+    },
+    {
+      "stem": "Which of the following oxides reacts with both acids and bases?",
+      "options": {
+        "A": "MgO",
+        "B": "CuO",
+        "C": "Al₂O₃",
+        "D": "CaO"
+      },
+      "objective": "A7.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q12",
+      "n": 12,
+      "original_question_id": "2021-MJ-20",
+      "original_paper_id": "2021-MJ",
+      "page": 5
+    },
+    {
+      "stem": "When ethene reacts with steam the ethene is",
+      "options": {
+        "A": "decomposed to carbon",
+        "B": "converted to ethanol",
+        "C": "converted to an ester",
+        "D": "oxidised to carbon dioxide"
+      },
+      "objective": "B3.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q13",
+      "n": 13,
+      "original_question_id": "2009-MJ-56",
+      "original_paper_id": "2009-MJ",
+      "page": 14
+    },
+    {
+      "stem": "The ability of an atom to form a cation increases",
+      "options": {
+        "A": "across a period",
+        "B": "as the oxidation state increases",
+        "C": "as electronegativity increases",
+        "D": "as electropositivity increases"
+      },
+      "objective": "A4.5",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q14",
+      "n": 14,
+      "original_question_id": "2016-MJ-36",
+      "original_paper_id": "2016-MJ",
+      "page": 6
+    },
+    {
+      "stem": "Which of the following trends would be observed in moving from left to right across Period 3 of the Periodic Table?",
+      "statements": [
+        [
+          "I.",
+          "The melting points of the elements increase."
+        ],
+        [
+          "II.",
+          "The nature of the oxides becomes increasingly acidic."
+        ],
+        [
+          "III.",
+          "The elements become more electronegative."
+        ]
+      ],
+      "options": {
+        "A": "III only",
+        "B": "I and II only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "A4.4",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-01-Q15",
+      "n": 15,
+      "original_question_id": "2016-MJ-20",
+      "original_paper_id": "2016-MJ",
+      "page": 4
+    },
+    {
+      "stem": "Which of the following terms describes calcium chloride?",
+      "options": {
+        "A": "Giant ionic structure",
+        "B": "Giant covalent structure",
+        "C": "Simple molecular crystal",
+        "D": "Macromolecular structure"
+      },
+      "objective": "A5.5",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q16",
+      "n": 16,
+      "original_question_id": "2021-MJ-09",
+      "original_paper_id": "2021-MJ",
+      "page": 3
+    },
+    {
+      "stem": "Which of the following substances forms dense white fumes with ammonia gas?",
+      "options": {
+        "A": "Oxygen",
+        "B": "Hydrogen",
+        "C": "Nitrogen dioxide",
+        "D": "Hydrogen chloride"
+      },
+      "objective": "C6.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q17",
+      "n": 17,
+      "original_question_id": "2009-MJ-44",
+      "original_paper_id": "2009-MJ",
+      "page": 10
+    },
+    {
+      "stem": "Which metal is MOST easily ionized?",
+      "options": {
+        "A": "Aluminium",
+        "B": "Sodium",
+        "C": "Copper",
+        "D": "Iron"
+      },
+      "objective": "C2.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q18",
+      "n": 18,
+      "original_question_id": "2023-MJ-32",
+      "original_paper_id": "2023-MJ",
+      "page": 8
+    },
+    {
+      "stem": "Which of the following substances is NOT a polymer?",
+      "options": {
+        "A": "Nylon",
+        "B": "Protein",
+        "C": "Fructose",
+        "D": "Cellulose"
+      },
+      "objective": "B4.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q19",
+      "n": 19,
+      "original_question_id": "2017-MJ-45",
+      "original_paper_id": "2017-MJ",
+      "page": 9
+    },
+    {
+      "stem": "Which of the following substances is a product of a halogenation reaction with methane?",
+      "options": {
+        "A": "Ammonia",
+        "B": "Water",
+        "C": "Hydrogen chloride",
+        "D": "Nitrogen(IV) oxide"
+      },
+      "objective": "B3.1",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-01-Q20",
+      "n": 20,
+      "original_question_id": "2016-MJ-47",
+      "original_paper_id": "2016-MJ",
+      "page": 9
+    },
+    {
+      "stem": "Which of the following techniques may be used to separate a mixture of plant pigments into their individual components?",
+      "options": {
+        "A": "Centrifugation",
+        "B": "Solvent extraction",
+        "C": "Fractional distillation",
+        "D": "Paper chromatography"
+      },
+      "objective": "A2.5",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q21",
+      "n": 21,
+      "original_question_id": "2016-MJ-22",
+      "original_paper_id": "2016-MJ",
+      "page": 4
+    },
+    {
+      "stem": "A recently discovered element is thought to be a metal. Which of the following physical properties would BEST confirm this?",
+      "options": {
+        "A": "Density",
+        "B": "Hardness",
+        "C": "Melting point",
+        "D": "Electrical conductivity"
+      },
+      "objective": "C1.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q22",
+      "n": 22,
+      "original_question_id": "2009-MJ-38",
+      "original_paper_id": "2009-MJ",
+      "page": 9
+    },
+    {
+      "stem": "A piece of metal is reacted with an acid to produce hydrogen gas. Which of the following steps should be employed in order to increase the rate of the reaction?",
+      "statements": [
+        [
+          "I.",
+          "Increasing the temperature at which the reaction is carried out"
+        ],
+        [
+          "II.",
+          "Subdividing the piece of metal"
+        ],
+        [
+          "III.",
+          "Reducing the concentration of the acid"
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "A10.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q23",
+      "n": 23,
+      "original_question_id": "2020-JAN-19",
+      "original_paper_id": "2020-JAN",
+      "page": 5
+    },
+    {
+      "stem": "In which of the following substances will electrolysis NOT occur when an electrical current is passed through it?",
+      "options": {
+        "A": "Sodium hydroxide solution",
+        "B": "Molten sodium chloride",
+        "C": "Solid sodium chloride",
+        "D": "Dilute sulfuric acid"
+      },
+      "objective": "A9.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q24",
+      "n": 24,
+      "original_question_id": "2023-MJ-27",
+      "original_paper_id": "2023-MJ",
+      "page": 7
+    },
+    {
+      "stem": "One property of ionic compounds is that they",
+      "options": {
+        "A": "contain molecules",
+        "B": "are solids and vaporize easily",
+        "C": "usually dissolve in organic solvents",
+        "D": "conduct electricity when molten or dissolved in water"
+      },
+      "objective": "A5.6",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q25",
+      "n": 25,
+      "original_question_id": "2023-MJ-07",
+      "original_paper_id": "2023-MJ",
+      "page": 3
+    },
+    {
+      "stem": "Which of the following is true of an endothermic reaction?",
+      "options": {
+        "A": "Heat is given up to the surroundings.",
+        "B": "Heat is absorbed from the surroundings.",
+        "C": "The products have less energy than the reactants.",
+        "D": "The products have the same energy as the reactants."
+      },
+      "objective": "A11.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q26",
+      "n": 26,
+      "original_question_id": "2010-MJ-35",
+      "original_paper_id": "2010-MJ",
+      "page": 7
+    },
+    {
+      "stem": "The pH of fresh sugar cane juice, which is usually 5.0-5.5, can be changed to 7.5-8.0 for more efficient processing by adding",
+      "options": {
+        "A": "acetic (ethanoic) acid, CH₃CO₂H",
+        "B": "sodium chloride, NaCl",
+        "C": "slaked lime, Ca(OH)₂",
+        "D": "limestone, CaCO₃"
+      },
+      "objective": "A2.6",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q27",
+      "n": 27,
+      "original_question_id": "2021-MJ-23",
+      "original_paper_id": "2021-MJ",
+      "page": 6
+    },
+    {
+      "stem": "Which metal appears between copper and aluminium in the reactivity series and is an important component in haemoglobin?",
+      "options": {
+        "A": "Lead",
+        "B": "Iron",
+        "C": "Zinc",
+        "D": "Magnesium"
+      },
+      "objective": "C4.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q28",
+      "n": 28,
+      "original_question_id": "2019-MJ-59",
+      "original_paper_id": "2019-MJ",
+      "page": 13
+    },
+    {
+      "stem": "Ethene reacts with hydrogen, chlorine and hydrogen chloride. These reactions are all examples of",
+      "options": {
+        "A": "addition",
+        "B": "substitution",
+        "C": "condensation",
+        "D": "polymerization"
+      },
+      "objective": "B3.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q29",
+      "n": 29,
+      "original_question_id": "2017-MJ-44",
+      "original_paper_id": "2017-MJ",
+      "page": 9
+    },
+    {
+      "stem": "Potassium is a metal. From this information ONLY, it may be deduced that potassium",
+      "options": {
+        "A": "is soft",
+        "B": "is very reactive",
+        "C": "has a low melting point",
+        "D": "is a good conductor of electricity"
+      },
+      "objective": "C1.1",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-01-Q30",
+      "n": 30,
+      "original_question_id": "2018-JAN-34",
+      "original_paper_id": "2018-JAN",
+      "page": 6
+    },
+    {
+      "stem": "The relative atomic mass of carbon is 12 and that of oxygen is 16. Therefore, 88 g of carbon dioxide consists of",
+      "options": {
+        "A": "3.1 moles of carbon dioxide",
+        "B": "12 moles of carbon and 32 moles of oxygen",
+        "C": "1 mole of carbon atoms and 2 moles of oxygen atoms",
+        "D": "2 moles of carbon atoms and 4 moles of oxygen atoms"
+      },
+      "objective": "A6.2",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-01-Q31",
+      "n": 31,
+      "original_question_id": "2018-JAN-18",
+      "original_paper_id": "2018-JAN",
+      "page": 4
+    },
+    {
+      "stem": "Which of the following observations is expected when aqueous silver nitrate is added to aqueous potassium chloride?",
+      "options": {
+        "A": "A pungent gas is evolved.",
+        "B": "A blue precipitate appears.",
+        "C": "A brown precipitate appears.",
+        "D": "A white precipitate appears."
+      },
+      "objective": "C6.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q32",
+      "n": 32,
+      "original_question_id": "2021-MJ-34",
+      "original_paper_id": "2021-MJ",
+      "page": 7
+    },
+    {
+      "stem": "Chlorofluorocarbons are MAINLY responsible for",
+      "options": {
+        "A": "acid rain",
+        "B": "the greenhouse effect",
+        "C": "destruction of the ozone layer",
+        "D": "destruction of limestone statues"
+      },
+      "objective": "C5.5",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q33",
+      "n": 33,
+      "original_question_id": "2009-MJ-57",
+      "original_paper_id": "2009-MJ",
+      "page": 14
+    },
+    {
+      "stem": "Which of the following substances can be described as the oxide of a metal?",
+      "options": {
+        "A": "Alkali",
+        "B": "Base",
+        "C": "Salt",
+        "D": "Acid"
+      },
+      "objective": "A7.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q34",
+      "n": 34,
+      "original_question_id": "2023-MJ-11",
+      "original_paper_id": "2023-MJ",
+      "page": 5
+    },
+    {
+      "stem": "Ethene is described as being unsaturated. This means that the",
+      "options": {
+        "A": "molecule has insufficient hydrogen atoms",
+        "B": "molecule contains at least one double bond",
+        "C": "carbon atoms in the molecule are very reactive",
+        "D": "carbon atoms in ethene are linked by single bonds"
+      },
+      "objective": "B2.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q35",
+      "n": 35,
+      "original_question_id": "2020-JAN-55",
+      "original_paper_id": "2020-JAN",
+      "page": 13
+    },
+    {
+      "stem": "A specific base reacts with a salt to produce a gas which turns damp red litmus paper blue. Which of the following ions does the salt contain?",
+      "options": {
+        "A": "Ammonium",
+        "B": "Carbonate",
+        "C": "Nitrate(V)",
+        "D": "Sulphate(VI)"
+      },
+      "objective": "A7.6",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q36",
+      "n": 36,
+      "original_question_id": "2010-MJ-23",
+      "original_paper_id": "2010-MJ",
+      "page": 5
+    },
+    {
+      "stem": "Hexane has the formula C₆H₁₄. Which of the following statements is true about hexane?",
+      "statements": [
+        [
+          "I.",
+          "It is a covalent compound."
+        ],
+        [
+          "II.",
+          "It is an unsaturated compound."
+        ],
+        [
+          "III.",
+          "It belongs to a group of compounds known as alkanes."
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "B2.5",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q37",
+      "n": 37,
+      "original_question_id": "2023-MJ-57",
+      "original_paper_id": "2023-MJ",
+      "page": 13
+    },
+    {
+      "stem": "In which of the following are radioactive isotopes NOT used?",
+      "options": {
+        "A": "Radiotherapy",
+        "B": "Carbon dating",
+        "C": "Metal extraction",
+        "D": "Energy generation"
+      },
+      "objective": "A3.7",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q38",
+      "n": 38,
+      "original_question_id": "2009-MJ-03",
+      "original_paper_id": "2009-MJ",
+      "page": 2
+    },
+    {
+      "stem": "Which of the following statements is NOT true?",
+      "options": {
+        "A": "Aqueous ammonia is a weak electrolyte.",
+        "B": "Sulfuric acid is a strong electrolyte.",
+        "C": "Copper is a strong electrolyte.",
+        "D": "Ethanol is a non-electrolyte."
+      },
+      "objective": "A9.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q39",
+      "n": 39,
+      "original_question_id": "2018-MJ-21",
+      "original_paper_id": "2018-MJ",
+      "page": 4
+    },
+    {
+      "stem": "Which of the following gases will give a positive test with dry cobalt chloride paper?",
+      "options": {
+        "A": "O₂",
+        "B": "H₂",
+        "C": "CO₂",
+        "D": "H₂O"
+      },
+      "objective": "C6.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q40",
+      "n": 40,
+      "original_question_id": "2017-MJ-60",
+      "original_paper_id": "2017-MJ",
+      "page": 10
+    },
+    {
+      "stem": "Which of the following substances, when added to pure water, SIGNIFICANTLY increases the water's conductivity?",
+      "options": {
+        "A": "Copper(II) hydroxide",
+        "B": "Iron(II) hydroxide",
+        "C": "Sodium chloride",
+        "D": "Graphite"
+      },
+      "objective": "A9.3",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-01-Q41",
+      "n": 41,
+      "original_question_id": "2021-MJ-18",
+      "original_paper_id": "2021-MJ",
+      "page": 5
+    },
+    {
+      "stem": "What mass of oxygen gas contains the same number of moles as 56 g of sulphur? (Relative atomic mass: S = 32, O = 16)",
+      "options": {
+        "A": "0.56 g",
+        "B": "5.6 g",
+        "C": "56 g",
+        "D": "560 g"
+      },
+      "objective": "A6.2",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-01-Q42",
+      "n": 42,
+      "original_question_id": "2010-MJ-06",
+      "original_paper_id": "2010-MJ",
+      "page": 2
+    },
+    {
+      "stem": "Ammonia may be produced in the laboratory by heating a mixture of ammonium chloride and",
+      "options": {
+        "A": "ammonium sulfate",
+        "B": "calcium hydroxide",
+        "C": "calcium chloride",
+        "D": "copper"
+      },
+      "objective": "C5.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q43",
+      "n": 43,
+      "original_question_id": "2019-MJ-33",
+      "original_paper_id": "2019-MJ",
+      "page": 8
+    },
+    {
+      "stem": "Which of the following metals will NOT displace hydrogen from dilute hydrochloric acid?",
+      "options": {
+        "A": "Zinc",
+        "B": "Iron",
+        "C": "Copper",
+        "D": "Aluminium"
+      },
+      "objective": "C2.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q44",
+      "n": 44,
+      "original_question_id": "2018-MJ-34",
+      "original_paper_id": "2018-MJ",
+      "page": 6
+    },
+    {
+      "stem": "Which of the following terms describes calcium chloride?",
+      "options": {
+        "A": "Giant ionic structure",
+        "B": "Giant covalent structure",
+        "C": "Simple molecular crystal",
+        "D": "Macromolecular structure"
+      },
+      "objective": "A5.5",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q45",
+      "n": 45,
+      "original_question_id": "2023-MJ-09",
+      "original_paper_id": "2023-MJ",
+      "page": 3
+    },
+    {
+      "stem": "The existence of millions of organic compounds is due primarily to the ability of carbon to form",
+      "statements": [
+        [
+          "I.",
+          "multiple bonds"
+        ],
+        [
+          "II.",
+          "ring structures"
+        ],
+        [
+          "III.",
+          "branched chains"
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "B2.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q46",
+      "n": 46,
+      "original_question_id": "2020-JAN-40",
+      "original_paper_id": "2020-JAN",
+      "page": 9
+    },
+    {
+      "stem": "Which of the following observations is expected when aqueous silver nitrate is added to aqueous potassium chloride?",
+      "options": {
+        "A": "A pungent gas is evolved.",
+        "B": "A blue precipitate appears.",
+        "C": "A white precipitate appears.",
+        "D": "A brown precipitate appears."
+      },
+      "objective": "C6.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q47",
+      "n": 47,
+      "original_question_id": "2023-MJ-34",
+      "original_paper_id": "2023-MJ",
+      "page": 8
+    },
+    {
+      "stem": "Which of the following aqueous solutions contains 1 mole of hydrogen ions?",
+      "options": {
+        "A": "2 dm³ of 0.5 mol dm⁻³ HCl",
+        "B": "2 dm³ of 0.5 mol dm⁻³ H₂SO₄",
+        "C": "1 dm³ of 1.0 mol dm⁻³ H₂SO₄",
+        "D": "1 dm³ of 1.0 mol dm⁻³ CH₃COOH"
+      },
+      "objective": "A6.2",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-01-Q48",
+      "n": 48,
+      "original_question_id": "2016-MJ-09",
+      "original_paper_id": "2016-MJ",
+      "page": 3
+    },
+    {
+      "stem": "Glucose is converted to starch or cellulose by",
+      "options": {
+        "A": "dehydrogenation",
+        "B": "oxidation and reduction",
+        "C": "addition polymerization",
+        "D": "condensation polymerization"
+      },
+      "objective": "B4.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q49",
+      "n": 49,
+      "original_question_id": "2023-MJ-60",
+      "original_paper_id": "2023-MJ",
+      "page": 14
+    },
+    {
+      "stem": "A property of metals is that they tend to",
+      "options": {
+        "A": "lose electrons",
+        "B": "form negative ions",
+        "C": "be resistant to the passage of electricity",
+        "D": "be discharged at the positive electrode in electrolysis"
+      },
+      "objective": "C1.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q50",
+      "n": 50,
+      "original_question_id": "2018-MJ-36",
+      "original_paper_id": "2018-MJ",
+      "page": 7
+    },
+    {
+      "stem": "Which of the following substances, when added to pure water, SIGNIFICANTLY increases the water's conductivity?",
+      "options": {
+        "A": "Graphite",
+        "B": "Iron(II) hydroxide",
+        "C": "Copper(II) hydroxide",
+        "D": "Sodium chloride"
+      },
+      "objective": "A9.3",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-01-Q51",
+      "n": 51,
+      "original_question_id": "2018-MJ-25",
+      "original_paper_id": "2018-MJ",
+      "page": 5
+    },
+    {
+      "stem": "In which of the following processes is sulfur used?",
+      "statements": [
+        [
+          "I.",
+          "Vulcanization of rubber"
+        ],
+        [
+          "II.",
+          "Extraction of iron from iron ore"
+        ],
+        [
+          "III.",
+          "Manufacture of explosives"
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "C5.4",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q52",
+      "n": 52,
+      "original_question_id": "2023-MJ-39",
+      "original_paper_id": "2023-MJ",
+      "page": 10
+    },
+    {
+      "stem": "Nylon is a macromolecule which is held together by the same linkage as a protein molecule. What is the name given to this type of linkage?",
+      "options": {
+        "A": "Ether linkage",
+        "B": "Double bond",
+        "C": "Ester linkage",
+        "D": "Amide bond"
+      },
+      "objective": "B4.2",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q53",
+      "n": 53,
+      "original_question_id": "2009-MJ-60",
+      "original_paper_id": "2009-MJ",
+      "page": 14
+    },
+    {
+      "stem": "Which of the following substances, when added to pure water, SIGNIFICANTLY increases the water's conductivity?",
+      "options": {
+        "A": "Graphite",
+        "B": "Iron(II) hydroxide",
+        "C": "Copper(II) hydroxide",
+        "D": "Sodium chloride"
+      },
+      "objective": "A9.3",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-01-Q54",
+      "n": 54,
+      "original_question_id": "2017-MJ-16",
+      "original_paper_id": "2017-MJ",
+      "page": 4
+    },
+    {
+      "stem": "Which of the following is/are true of non metals?",
+      "statements": [
+        [
+          "I.",
+          "They are reducing agents."
+        ],
+        [
+          "II.",
+          "They are capable of replacing hydrogen in acids to form salts."
+        ],
+        [
+          "III.",
+          "They are generally poor conductors of electricity."
+        ]
+      ],
+      "options": {
+        "A": "III only",
+        "B": "I and II only",
+        "C": "I and III only",
+        "D": "I, II and III"
+      },
+      "objective": "C5.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q55",
+      "n": 55,
+      "original_question_id": "2018-JAN-40",
+      "original_paper_id": "2018-JAN",
+      "page": 7
+    },
+    {
+      "stem": "Which of the following reactions is LEAST likely to occur?",
+      "options": {
+        "A": "Mg(s) + Zn(NO₃)₂(aq) → Mg(NO₃)₂(aq) + Zn(s)",
+        "B": "Cu(s) + 2AgNO₃(aq) → Cu(NO₃)₂(aq) + 2Ag(s)",
+        "C": "Fe(s) + Cu(NO₃)₂(aq) → Fe(NO₃)₂(aq) + Cu(s)",
+        "D": "Pb(s) + Fe(NO₃)₂(aq) → Pb(NO₃)₂(aq) + Fe(s)"
+      },
+      "objective": "C2.2",
+      "profile": "UK",
+      "id": "CHEM-P1-PRACTICE-01-Q56",
+      "n": 56,
+      "original_question_id": "2017-MJ-56",
+      "original_paper_id": "2017-MJ",
+      "page": 10
+    },
+    {
+      "stem": "Which of the following methods is used for the extraction of aluminium?",
+      "options": {
+        "A": "Electrolysis of its molten oxide",
+        "B": "Electrolysis of its aqueous chloride",
+        "C": "Reduction of its oxide using coke",
+        "D": "Reduction of its oxide using carbon monoxide"
+      },
+      "objective": "C2.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q57",
+      "n": 57,
+      "original_question_id": "2017-MJ-46",
+      "original_paper_id": "2017-MJ",
+      "page": 9
+    },
+    {
+      "stem": "The compound which has the formula CH₃CH = CHCH₂CH₂CH₃ is",
+      "options": {
+        "A": "an alkene",
+        "B": "a polymer",
+        "C": "a carboxylic acid",
+        "D": "an unsaturated acid"
+      },
+      "objective": "B2.5",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q58",
+      "n": 58,
+      "original_question_id": "2021-MJ-52",
+      "original_paper_id": "2021-MJ",
+      "page": 11
+    },
+    {
+      "stem": "Which of the following energy changes occurs during the breaking of a chemical bond?",
+      "options": {
+        "A": "Energy is released.",
+        "B": "Energy is required.",
+        "C": "There is no energy change.",
+        "D": "The process is exothermic."
+      },
+      "objective": "A11.1",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q59",
+      "n": 59,
+      "original_question_id": "2016-MJ-27",
+      "original_paper_id": "2016-MJ",
+      "page": 5
+    },
+    {
+      "stem": "Which of the following is the correct formula for ammonium carbonate?",
+      "options": {
+        "A": "NH₄CO₃",
+        "B": "NH₄(CO₃)₂",
+        "C": "(NH₄)₂CO₃",
+        "D": "(NH₄)₂(CO₃)₂"
+      },
+      "objective": "A5.3",
+      "profile": "KC",
+      "id": "CHEM-P1-PRACTICE-01-Q60",
+      "n": 60,
+      "original_question_id": "2023-MJ-20",
+      "original_paper_id": "2023-MJ",
+      "page": 6
+    }
+  ],
+  "grading_status": "review-only"
+}

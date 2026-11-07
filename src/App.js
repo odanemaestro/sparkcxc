@@ -29,7 +29,7 @@ import "./studyPracticeSemanticsV261";
 // ============================================================================
 import React, { lazy, Suspense, useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
-import { useMathLessonRoute, writeSparkNestedRoute } from "./routing/sparkRoutingV270";
+import { readSparkHashRoute, useMathLessonRoute, writeSparkNestedRoute } from "./routing/sparkRoutingV270";
 // SPARK_PHYSICS_SECTION_A_RC1_IMPORTS
 import SubjectSelectionView, { SubjectChangeButton } from "./subjects/SubjectSelectionView";
 import { getSparkSubjectRegistry, subjectsForCapability, getSparkSubject, enabledSparkSubjects, subjectsForEnrollmentIds } from "./subjects/subjectRegistry";
@@ -310,12 +310,11 @@ function viewFromBrowserHash() {
   return ROUTE_PATH_VIEWS[normalizedPath] || "home";
 }
 
-function genericStudySubjectFromBrowserHash() {
-  const path = normalizedSparkPathFromBrowserHash();
+function genericStudySubjectFromBrowserHash(path = normalizedSparkPathFromBrowserHash()) {
   const match = String(path || "").match(/^\/study\/([^/]+)(?:\/.*)?$/);
   if (!match) return null;
 
-  const id = decodeURIComponent(match[1] || "").trim().toLowerCase();
+  const id = normalizeFlashcardSubjectId(match[1]);
   return ["mathematics","physics","information-technology","social-studies"].includes(id)
     ? null
     : id;
@@ -331,8 +330,12 @@ function dashboardSectionFromBrowserHash() {
 }
 
 function normalizeFlashcardSubjectId(value) {
-  const subjectId = String(value || "").trim().toLowerCase();
-  return /^[a-z0-9][a-z0-9-]*$/.test(subjectId) ? subjectId : null;
+  try {
+    const subjectId = decodeURIComponent(String(value || "")).trim().toLowerCase();
+    return /^[a-z0-9][a-z0-9-]*$/.test(subjectId) ? subjectId : null;
+  } catch {
+    return null;
+  }
 }
 
 function flashcardSubjectFromBrowserHash() {
@@ -340,7 +343,7 @@ function flashcardSubjectFromBrowserHash() {
   if (!path || !path.startsWith("/dashboard/flashcards/")) return null;
 
   const raw = path.slice("/dashboard/flashcards/".length).split("/")[0];
-  return normalizeFlashcardSubjectId(decodeURIComponent(raw || ""));
+  return normalizeFlashcardSubjectId(raw);
 }
 
 function emitSparkRouteChange() {
@@ -4543,7 +4546,7 @@ export function DashboardView({ user, profile, setView, showToast, hasTutorApp, 
       }).catch(error => {
         console.warn("Could not record SPARK recommendation", error);
       });
-      if (!openNextBestActionTarget(recommendation,{setView,setDashboardSection,setFlashcardSubjectRoute})) {
+      if (!openNextBestActionTarget(recommendation,{setView})) {
         studentNextStepStartRef.current = false;
       }
       return;
@@ -5145,11 +5148,7 @@ export function DashboardView({ user, profile, setView, showToast, hasTutorApp, 
                   <LearnerIntelligencePanel
                     intelligence={studentMathIntelligence}
                     supabase={supabase}
-                    onStartRecommendation={recommendation => openNextBestActionTarget(recommendation, {
-                      setView,
-                      setDashboardSection,
-                      setFlashcardSubjectRoute,
-                    })}
+                    onStartRecommendation={recommendation => openNextBestActionTarget(recommendation, { setView })}
                     onRecommendationRecorded={row => row && setStudentRecommendationHistory(current => [row, ...current].slice(0, 200))}
                   />
                 </div>
@@ -5183,11 +5182,7 @@ export function DashboardView({ user, profile, setView, showToast, hasTutorApp, 
                       openSubject(subject);
                       return;
                     }
-                    openNextBestActionTarget(recommendation, {
-                      setView,
-                      setDashboardSection,
-                      setFlashcardSubjectRoute,
-                    });
+                    openNextBestActionTarget(recommendation, { setView });
                   }}
                   onRecommendationRecorded={row => row && setStudentRecommendationHistory(current => [row, ...current].slice(0, 200))}
                   onOpenReport={subject => { setStudentReportSubject(subject?.id || progressSubject); setStudentReportOpen(true); }}
@@ -6897,6 +6892,7 @@ function GoogleOAuthGateErrorView({ message, onRetry, onSignOut }) {
 
 export default function App() {
   const [view, setViewState] = useState(() => viewFromBrowserHash());
+  const [routePath, setRoutePath] = useState(normalizedSparkPathFromBrowserHash);
   const { themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode } = useThemeMode();
   const viewRef = useRef(view);
   const [session, setSession] = useState(null);
@@ -6949,7 +6945,8 @@ export default function App() {
 
     viewRef.current = resolvedView;
     setViewState(resolvedView);
-    writeViewToBrowserHash(resolvedView, options);
+    if (options.path) writeSparkNestedRoute(options.path, options.params, options);
+    else writeViewToBrowserHash(resolvedView, options);
   }, []);
 
   // SPARK_DEDICATED_ADMIN_ROUTE_GUARD
@@ -7032,6 +7029,7 @@ export default function App() {
   // changes a hash route. pushState itself is handled by setView above.
   useEffect(() => {
     const syncViewFromUrl = () => {
+      setRoutePath(readSparkHashRoute().path);
       const nextView = viewFromBrowserHash();
       viewRef.current = nextView;
       setViewState(nextView);
@@ -7657,7 +7655,7 @@ const handleLogout = async () => {
   const appHasCaribbeanHistory=appStudentEnrolledSubjectIds.has("caribbean-history");
   const appHasPrinciplesOfAccounts=appStudentEnrolledSubjectIds.has("principles-of-accounts");
   const appGenericStudySubjectId = view === "generic-study"
-    ? genericStudySubjectFromBrowserHash()
+    ? genericStudySubjectFromBrowserHash(routePath)
     : null;
   const appGenericStudySubject = appGenericStudySubjectId
     ? getSparkSubject(runtimeSparkSubjects, appGenericStudySubjectId)
@@ -7819,6 +7817,7 @@ if (loading || authenticatedRolePending) {
               : (
                 <Suspense fallback={<SparkLoader variant="section" label={`Loading ${appGenericStudySubject.shortName || appGenericStudySubject.name}`} />}>
                   <GenericSubjectStudyView
+                    key={appGenericStudySubjectId}
                     supabase={supabase}
                     userId={session.user.id}
                     subject={appGenericStudySubject}

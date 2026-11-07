@@ -21,7 +21,7 @@ const originals=[...OA_PAPER1S.map(p=>({...p,paper:1})),...OA_PAPER2S.map(p=>({.
 const historicals=[...OA_HISTORICAL_PAPER1S.map(p=>({...p,paper:1})),...OA_HISTORICAL_PAPER2S.map(p=>({...p,paper:2})),{...officialSpecimen,source:'specimen',sitting:'SPECIMEN',year:2024,paper:2}];
 const papers=new Map([...originals,...historicals].map(p=>[p.id,p]));
 export default function OaPracticeHub({userId,supabase,onBack}){
- const [view,setView]=usePracticeRouteState(SUBJECT,'view','home',selection(['home','library','exam','source','workspace'],'home'));
+ const [view,setView]=usePracticeRouteState(SUBJECT,'view','home',{...selection(['home','library','exam','source','workspace'],'home'),replace:false});
  const [paperNumber,setPaperNumber]=usePracticeRouteState(SUBJECT,'paper','1',selection(['1','2'],'1'));
  const [library,setLibrary]=usePracticeRouteState(SUBJECT,'library','practice',selection(['practice','historical'],'practice'));
  const [sourceId,setSource]=usePracticeRouteState(SUBJECT,'source','',{decode:raw=>papers.has(raw)?raw:'',replace:true});

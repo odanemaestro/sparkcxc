@@ -1,0 +1,1236 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "2018-MJ",
+  "year": 2018,
+  "session": "May/June",
+  "title": "CHEMISTRY Paper 01 - General Proficiency",
+  "test_code": "01212010",
+  "form": "FORM TP 2018050",
+  "date": "08 June 2018 (p.m.)",
+  "duration": "1 hour 15 minutes",
+  "source_file": "CSEC_Chemistry_P1_2018_MJ.pdf",
+  "notes": "Several pages of this scan were slightly tilted and were straightened before the diagrams were cut out.",
+  "instructions": [
+    "This test consists of 60 items. You will have 1 hour and 15 minutes to answer them.",
+    "In addition to this test booklet, you should have an answer sheet.",
+    "Each item in this test has four suggested answers lettered (A), (B), (C), (D). Read each item you are about to answer and decide which choice is best.",
+    "On your answer sheet, find the number which corresponds to your item and shade the space having the same letter as the answer you have chosen. Look at the sample item below. Sample Item: The SI unit of length is the (A) metre (B) newton (C) second (D) kilogram. The best answer to this item is \"metre\", so (A) has been shaded.",
+    "If you want to change your answer, erase it completely before you fill in your new choice.",
+    "When you are told to begin, turn the page and work as quickly and as carefully as you can. If you cannot answer an item, go on to the next one. You may return to that item later.",
+    "You may do any rough work in this booklet.",
+    "Figures are not necessarily drawn to scale.",
+    "You may use a silent, non-programmable calculator to answer items."
+  ],
+  "stimuli": [
+    {
+      "id": "2018-MJ-S01",
+      "items": [
+        5,
+        6,
+        7
+      ],
+      "text": "Items 5 - 7 refer to the information in the following table.",
+      "table": {
+        "columns": [
+          "Element",
+          "Number of Protons",
+          "Number of Electrons",
+          "Number of Neutrons"
+        ],
+        "rows": [
+          [
+            "Q",
+            "8",
+            "8",
+            "8"
+          ],
+          [
+            "R",
+            "16",
+            "16",
+            "16"
+          ],
+          [
+            "S",
+            "8",
+            "8",
+            "9"
+          ],
+          [
+            "T",
+            "16",
+            "18",
+            "16"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "2018-MJ-S02",
+      "items": [
+        12
+      ],
+      "text": "Item 12 refers to the information in the following table.",
+      "table": {
+        "columns": [
+          "Element",
+          "Atomic Number"
+        ],
+        "rows": [
+          [
+            "I",
+            "3"
+          ],
+          [
+            "II",
+            "6"
+          ],
+          [
+            "III",
+            "17"
+          ],
+          [
+            "IV",
+            "18"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "2018-MJ-S03",
+      "items": [
+        17,
+        18
+      ],
+      "text": "Items 17 - 18 refer to the following sets into which elements may be placed.",
+      "shared_options": {
+        "A": "Period 2",
+        "B": "Group 2",
+        "C": "Group 7",
+        "D": "Period 3"
+      },
+      "after_options": "Select the set of elements which BEST fits the following descriptions. Each set may be used once, more than once or not at all."
+    },
+    {
+      "id": "2018-MJ-S04",
+      "items": [
+        23,
+        24
+      ],
+      "text": "Items 23 - 24 refer to the following equation.",
+      "scheme": "NO₂(g) + SO₂(g) → NO(g) + SO₃(g)"
+    },
+    {
+      "id": "2018-MJ-S05",
+      "items": [
+        32
+      ],
+      "text": "Item 32 refers to the following information. Z is a brown, gaseous oxide which is soluble in water. It turns moist blue litmus paper red."
+    },
+    {
+      "id": "2018-MJ-S06",
+      "items": [
+        41
+      ],
+      "text": "Item 41 refers to the following table which shows the reaction of four metals, W, X, Y and Z, with water or steam. The table also shows the products formed when nitrates are heated for each metal?",
+      "table": {
+        "columns": [
+          "Metals",
+          "Reaction with Water/Steam",
+          "Products Formed When Nitrate is Heated"
+        ],
+        "rows": [
+          [
+            "W",
+            "No reaction",
+            "Metal, NO₂ and O₂"
+          ],
+          [
+            "X",
+            "Reacts with steam but not with cold water",
+            "Oxide, NO₂ and O₂"
+          ],
+          [
+            "Y",
+            "Reacts rapidly with cold water",
+            "Nitrite and oxygen"
+          ],
+          [
+            "Z",
+            "Reacts slowly with cold water",
+            "Oxide, NO₂ and O₂"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "2018-MJ-S07",
+      "items": [
+        46,
+        47
+      ],
+      "text": "Items 46 - 47 refer to the following compounds.",
+      "shared_options": {
+        "A": "Natural gas",
+        "B": "Propene",
+        "C": "Ethanol",
+        "D": "Vinegar"
+      },
+      "after_options": "Each compound may be used once, more than once or not at all."
+    },
+    {
+      "id": "2018-MJ-S08",
+      "items": [
+        51,
+        52
+      ],
+      "text": "Items 51 - 52 refer to the following substances.",
+      "shared_options": {
+        "A": "C₃H₇OH",
+        "B": "C₃H₆",
+        "C": "C₃H₈",
+        "D": "CH₃COOC₂H₅"
+      },
+      "after_options": "In answering Items 51 - 52, a particular substance may be used once, more than once or not at all."
+    },
+    {
+      "id": "2018-MJ-S09",
+      "items": [
+        55,
+        56
+      ],
+      "text": "Items 55 - 56 refer to the following equation.",
+      "scheme": "Organic Acid + Alcohol ⇌ Ester + Water"
+    },
+    {
+      "id": "2018-MJ-S10",
+      "items": [
+        60
+      ],
+      "text": "Item 60 refers to the following graph which shows the boiling points of some straight-chain alcohols.",
+      "diagrams": [
+        "2018-MJ-D05"
+      ]
+    }
+  ],
+  "diagrams": {
+    "2018-MJ-D01A": {
+      "svg": "diagrams/2018-MJ-D01A.svg",
+      "alt": "Option A: energy profile (Energy against Reaction path). Reactants are on a higher level than Products, with a hump between them."
+    },
+    "2018-MJ-D01B": {
+      "svg": "diagrams/2018-MJ-D01B.svg",
+      "alt": "Option B: energy profile. Reactants are on a lower level than Products, with a hump between them."
+    },
+    "2018-MJ-D01C": {
+      "svg": "diagrams/2018-MJ-D01C.svg",
+      "alt": "Option C: energy profile. Reactants and Products are on the same level, with a tall hump between them."
+    },
+    "2018-MJ-D01D": {
+      "svg": "diagrams/2018-MJ-D01D.svg",
+      "alt": "Option D: energy profile. Reactants and Products are on the same level, with a low rounded hump between them."
+    },
+    "2018-MJ-D02A": {
+      "svg": "diagrams/2018-MJ-D02A.svg",
+      "alt": "Option A: two overlapping circles. The overlap holds one cross and one dot; the left circle has six other dots and the right circle six other crosses."
+    },
+    "2018-MJ-D02B": {
+      "svg": "diagrams/2018-MJ-D02B.svg",
+      "alt": "Option B: two overlapping circles. The overlap holds three crosses and three dots; each circle has two other electrons."
+    },
+    "2018-MJ-D02C": {
+      "svg": "diagrams/2018-MJ-D02C.svg",
+      "alt": "Option C: two overlapping circles. The overlap holds two crosses and two dots; each circle has four other electrons."
+    },
+    "2018-MJ-D02D": {
+      "svg": "diagrams/2018-MJ-D02D.svg",
+      "alt": "Option D: two overlapping circles. The overlap holds one cross and one dot; the left circle has no other electrons and the right circle has six other crosses."
+    },
+    "2018-MJ-D03A": {
+      "svg": "diagrams/2018-MJ-D03A.svg",
+      "alt": "Option A: displayed formula CH₂=CH-CH₂-CH₃ (but-1-ene)."
+    },
+    "2018-MJ-D03B": {
+      "svg": "diagrams/2018-MJ-D03B.svg",
+      "alt": "Option B: displayed formula CH₃-CH=CH-CH₃ (but-2-ene)."
+    },
+    "2018-MJ-D03C": {
+      "svg": "diagrams/2018-MJ-D03C.svg",
+      "alt": "Option C: displayed formula of propene, CH₃-CH=CH₂."
+    },
+    "2018-MJ-D03D": {
+      "svg": "diagrams/2018-MJ-D03D.svg",
+      "alt": "Option D: a three-carbon chain drawn as H-C=C=C-H with two H atoms on each end carbon (two double bonds)."
+    },
+    "2018-MJ-D04": {
+      "svg": "diagrams/2018-MJ-D04.svg",
+      "alt": "Displayed formula of propanoic acid: CH₃-CH₂- joined to a carbon that has a double bond to O and a single bond to O-H."
+    },
+    "2018-MJ-D05": {
+      "svg": "diagrams/2018-MJ-D05.svg",
+      "alt": "Line graph on grid paper. Vertical axis: Boiling points (°C) from 50 to 250. Horizontal axis: Number of carbon atoms in chain from 1 to 9. A straight line rises from about 65 °C at 1 carbon atom to about 215 °C at 9 carbon atoms; it passes 160 °C at 6 carbon atoms."
+    }
+  },
+  "questions": [
+    {
+      "id": "2018-MJ-01",
+      "n": 1,
+      "page": 2,
+      "stem": "Which of the following processes suggests that matter is made up of minute particles?",
+      "options": {
+        "A": "Diffusion",
+        "B": "Capillarity",
+        "C": "Evaporation",
+        "D": "Distillation"
+      },
+      "objective": "A1.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2018-MJ-02",
+      "n": 2,
+      "page": 2,
+      "stem": "'Mass number' is the number of",
+      "options": {
+        "A": "neutrons plus protons",
+        "B": "neutrons minus protons",
+        "C": "electrons plus neutrons",
+        "D": "electrons plus protons"
+      },
+      "objective": "A3.3",
+      "profile": "KC",
+      "copied_from": "2020-MJ-02"
+    },
+    {
+      "id": "2018-MJ-03",
+      "n": 3,
+      "page": 2,
+      "stem": "When an exothermic reaction occurs, energy is",
+      "options": {
+        "A": "absorbed from the environment",
+        "B": "released to the environment",
+        "C": "absorbed from the reactants",
+        "D": "released from the products"
+      },
+      "objective": "A11.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2018-MJ-04",
+      "n": 4,
+      "page": 2,
+      "stem": "Which of the following statements BEST describes the difference between an atom and an ion?",
+      "options": {
+        "A": "An atom is electrically neutral but an ion is positively charged.",
+        "B": "An atom is electrically neutral but an ion is negatively charged.",
+        "C": "An atom contains equal numbers of protons and electrons whereas an ion contains more electrons than protons.",
+        "D": "An atom contains equal numbers of protons and electrons whereas an ion contains unequal numbers of protons and electrons."
+      },
+      "objective": "A5.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2018-MJ-05",
+      "n": 5,
+      "page": 2,
+      "stimulus": "2018-MJ-S01",
+      "stem": "Which of the following pairs of elements are isotopes?",
+      "options": {
+        "A": "Q and R",
+        "B": "R and T",
+        "C": "Q and S",
+        "D": "S and T"
+      },
+      "objective": "A3.6",
+      "profile": "KC",
+      "copied_from": "2020-MJ-05"
+    },
+    {
+      "id": "2018-MJ-06",
+      "n": 6,
+      "page": 2,
+      "stimulus": "2018-MJ-S01",
+      "stem": "Which of the following elements is an anion?",
+      "options": {
+        "A": "Q",
+        "B": "R",
+        "C": "S",
+        "D": "T"
+      },
+      "objective": "A5.1",
+      "profile": "UK",
+      "copied_from": "2020-MJ-04"
+    },
+    {
+      "id": "2018-MJ-07",
+      "n": 7,
+      "page": 2,
+      "stimulus": "2018-MJ-S01",
+      "stem": "The element Q is",
+      "options": {
+        "A": "oxygen",
+        "B": "chlorine",
+        "C": "nitrogen",
+        "D": "sulfur"
+      },
+      "objective": "A3.1",
+      "profile": "KC",
+      "copied_from": "2020-MJ-06"
+    },
+    {
+      "id": "2018-MJ-08",
+      "n": 8,
+      "page": 2,
+      "stem": "Barium is below calcium in Group II of the Periodic Table. When BOTH metals react with water, the MAIN observed differences would be the rate of reaction and the",
+      "options": {
+        "A": "type of product",
+        "B": "type of gas evolved",
+        "C": "reaction with litmus",
+        "D": "solubility of the product"
+      },
+      "objective": "A4.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2018-MJ-09",
+      "n": 9,
+      "page": 3,
+      "stem": "Which of the following aqueous solutions contains 1 mole of hydrogen ions?",
+      "options": {
+        "A": "2 dm³ of 0.5 mol dm⁻³ HCl",
+        "B": "2 dm³ of 0.5 mol dm⁻³ H₂SO₄",
+        "C": "1 dm³ of 1.0 mol dm⁻³ H₂SO₄",
+        "D": "1 dm³ of 1.0 mol dm⁻³ CH₃COOH"
+      },
+      "objective": "A6.2",
+      "profile": "UK",
+      "copied_from": "2020-MJ-09"
+    },
+    {
+      "id": "2018-MJ-10",
+      "n": 10,
+      "page": 3,
+      "stem": "Which of the following substances does NOT conduct electricity?",
+      "options": {
+        "A": "Lead",
+        "B": "Copper",
+        "C": "Ethanol",
+        "D": "Ethanoic acid"
+      },
+      "objective": "A9.1",
+      "profile": "KC",
+      "copied_from": "2021-MJ-28"
+    },
+    {
+      "id": "2018-MJ-11",
+      "n": 11,
+      "page": 3,
+      "stem": "A new element, R, shows chemical properties similar to the element sodium. What is the correct formula of a compound formed with R and sulfur?",
+      "options": {
+        "A": "RS₂",
+        "B": "RS",
+        "C": "R₂S",
+        "D": "R₂S₂"
+      },
+      "objective": "A5.3",
+      "profile": "UK",
+      "copied_from": "2020-MJ-11"
+    },
+    {
+      "id": "2018-MJ-12",
+      "n": 12,
+      "page": 3,
+      "stimulus": "2018-MJ-S02",
+      "stem": "Which TWO elements above, when combined with each other, form an ionic compound?",
+      "options": {
+        "A": "I and II",
+        "B": "I and III",
+        "C": "II and IV",
+        "D": "III and IV"
+      },
+      "objective": "A5.2",
+      "profile": "UK",
+      "copied_from": "2020-MJ-12"
+    },
+    {
+      "id": "2018-MJ-13",
+      "n": 13,
+      "page": 3,
+      "stem": "The number of shared electron pairs in the methane (CH₄) molecule is",
+      "options": {
+        "A": "4",
+        "B": "6",
+        "C": "8",
+        "D": "10"
+      },
+      "objective": "A5.1",
+      "profile": "KC",
+      "copied_from": "2021-MJ-17"
+    },
+    {
+      "id": "2018-MJ-14",
+      "n": 14,
+      "page": 3,
+      "stem": "Which of the following statements BEST describes the formation of a metallic bond?",
+      "options": {
+        "A": "Anions are held together by electrons.",
+        "B": "Metal atoms are held together by anions.",
+        "C": "Metal ions are held together by a sea of anions.",
+        "D": "Cations are held together by a sea of mobile electrons."
+      },
+      "objective": "A5.4",
+      "profile": "KC",
+      "copied_from": "2020-MJ-14"
+    },
+    {
+      "id": "2018-MJ-15",
+      "n": 15,
+      "page": 4,
+      "stem": "A solution having a pH of 1 will",
+      "options": {
+        "A": "neutralize a solution of pH 4",
+        "B": "react with zinc metal to produce hydrogen",
+        "C": "react with zinc metal to produce a solution of pH 10",
+        "D": "react with hydrochloric acid to produce a salt and water"
+      },
+      "objective": "A7.2",
+      "profile": "KC",
+      "copied_from": "2023-MJ-19"
+    },
+    {
+      "id": "2018-MJ-16",
+      "n": 16,
+      "page": 4,
+      "stem": "In the electrolysis of aqueous copper(II) sulfate solution using copper electrodes, the anode",
+      "options": {
+        "A": "decreases in mass",
+        "B": "increases in mass",
+        "C": "undergoes no change in mass",
+        "D": "is the site where reduction occurs"
+      },
+      "objective": "A9.8",
+      "profile": "UK",
+      "copied_from": "2019-MJ-28"
+    },
+    {
+      "id": "2018-MJ-17",
+      "n": 17,
+      "page": 4,
+      "stimulus": "2018-MJ-S03",
+      "stem": "Which set of elements forms molecules which contain two atoms?",
+      "options": {
+        "A": "Period 2",
+        "B": "Group 2",
+        "C": "Group 7",
+        "D": "Period 3"
+      },
+      "objective": "A4.3",
+      "profile": "KC",
+      "copied_from": "2020-MJ-17"
+    },
+    {
+      "id": "2018-MJ-18",
+      "n": 18,
+      "page": 4,
+      "stimulus": "2018-MJ-S03",
+      "stem": "Which set of elements has atoms with two electrons in their outer shells?",
+      "options": {
+        "A": "Period 2",
+        "B": "Group 2",
+        "C": "Group 7",
+        "D": "Period 3"
+      },
+      "objective": "A4.1",
+      "profile": "KC",
+      "copied_from": "2023-MJ-02"
+    },
+    {
+      "id": "2018-MJ-19",
+      "n": 19,
+      "page": 4,
+      "stem": "Which of the following statements is true of carbon monoxide?",
+      "options": {
+        "A": "It is an acidic gas.",
+        "B": "It is very soluble in water.",
+        "C": "It turns lime water milky.",
+        "D": "It reduces iron(II) oxide."
+      },
+      "objective": "C2.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2018-MJ-20",
+      "n": 20,
+      "page": 4,
+      "stem": "Adding dilute sulfuric acid to which of the following copper(II) compounds would be the LEAST suitable method for preparing copper(II) sulfate?",
+      "options": {
+        "A": "Copper(II) oxide",
+        "B": "Copper(II) chloride",
+        "C": "Copper(II) carbonate",
+        "D": "Copper(II) hydroxide"
+      },
+      "objective": "A7.7",
+      "profile": "UK",
+      "copied_from": "2020-MJ-20"
+    },
+    {
+      "id": "2018-MJ-21",
+      "n": 21,
+      "page": 4,
+      "stem": "Which of the following statements is NOT true?",
+      "options": {
+        "A": "Aqueous ammonia is a weak electrolyte.",
+        "B": "Sulfuric acid is a strong electrolyte.",
+        "C": "Copper is a strong electrolyte.",
+        "D": "Ethanol is a non-electrolyte."
+      },
+      "objective": "A9.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2018-MJ-22",
+      "n": 22,
+      "page": 4,
+      "stem": "Which of the following techniques may be used to separate a mixture of plant pigments into their individual components?",
+      "options": {
+        "A": "Centrifugation",
+        "B": "Solvent extraction",
+        "C": "Fractional distillation",
+        "D": "Paper chromatography"
+      },
+      "objective": "A2.5",
+      "profile": "KC"
+    },
+    {
+      "id": "2018-MJ-23",
+      "n": 23,
+      "page": 5,
+      "stimulus": "2018-MJ-S04",
+      "stem": "Which of the following compounds is reduced?",
+      "options": {
+        "A": "NO₂",
+        "B": "SO₂",
+        "C": "NO",
+        "D": "SO₃"
+      },
+      "objective": "A8.4",
+      "profile": "UK",
+      "copied_from": "2020-MJ-23"
+    },
+    {
+      "id": "2018-MJ-24",
+      "n": 24,
+      "page": 5,
+      "stimulus": "2018-MJ-S04",
+      "stem": "Which of the following compounds is the oxidizing agent?",
+      "options": {
+        "A": "NO₂",
+        "B": "SO₂",
+        "C": "NO",
+        "D": "SO₃"
+      },
+      "objective": "A8.5",
+      "profile": "UK",
+      "copied_from": "2020-MJ-24"
+    },
+    {
+      "id": "2018-MJ-25",
+      "n": 25,
+      "page": 5,
+      "stem": "Which of the following substances, when added to pure water, SIGNIFICANTLY increases the water's conductivity?",
+      "options": {
+        "A": "Graphite",
+        "B": "Iron(II) hydroxide",
+        "C": "Copper(II) hydroxide",
+        "D": "Sodium chloride"
+      },
+      "objective": "A9.3",
+      "profile": "UK",
+      "copied_from": "2021-MJ-18"
+    },
+    {
+      "id": "2018-MJ-26",
+      "n": 26,
+      "page": 5,
+      "stem": "Which of the following diagrams BEST illustrates the course of an exothermic reaction?",
+      "options": {
+        "A": "Reactants higher than products",
+        "B": "Reactants lower than products",
+        "C": "Reactants and products at the same level (tall hump)",
+        "D": "Reactants and products at the same level (low hump)"
+      },
+      "option_diagrams": {
+        "A": "2018-MJ-D01A",
+        "B": "2018-MJ-D01B",
+        "C": "2018-MJ-D01C",
+        "D": "2018-MJ-D01D"
+      },
+      "objective": "A11.2",
+      "profile": "KC",
+      "copied_from": "2019-MJ-24"
+    },
+    {
+      "id": "2018-MJ-27",
+      "n": 27,
+      "page": 6,
+      "stem": "A substance Y reacts with an ammonium salt to produce ammonia gas. Y must therefore be",
+      "options": {
+        "A": "a salt",
+        "B": "a base",
+        "C": "an acid",
+        "D": "an ester"
+      },
+      "objective": "A7.6",
+      "profile": "KC"
+    },
+    {
+      "id": "2018-MJ-28",
+      "n": 28,
+      "page": 6,
+      "stem": "An example of a substance with a giant covalent structure is",
+      "options": {
+        "A": "copper",
+        "B": "diamond",
+        "C": "solid iodine",
+        "D": "sodium chloride"
+      },
+      "objective": "A5.5",
+      "profile": "KC",
+      "copied_from": "2021-MJ-24"
+    },
+    {
+      "id": "2018-MJ-29",
+      "n": 29,
+      "page": 6,
+      "stem": "An ion with a single negative charge may be converted into a neutral atom of the same element by",
+      "options": {
+        "A": "losing a neutron",
+        "B": "gaining a proton",
+        "C": "losing an electron",
+        "D": "gaining an electron"
+      },
+      "objective": "A5.1",
+      "profile": "KC",
+      "copied_from": "2020-MJ-08"
+    },
+    {
+      "id": "2018-MJ-30",
+      "n": 30,
+      "page": 6,
+      "stem": "On adding aqueous hydrochloric acid to a solution in a test tube, a gas is given off which extinguishes a burning splint. This shows the presence of",
+      "options": {
+        "A": "nitrate ions",
+        "B": "sodium ions",
+        "C": "ammonium ions",
+        "D": "carbonate ions"
+      },
+      "objective": "C6.2",
+      "profile": "KC",
+      "copied_from": "2020-MJ-30"
+    },
+    {
+      "id": "2018-MJ-31",
+      "n": 31,
+      "page": 6,
+      "stem": "The main substances responsible for the production of 'acid rain' are",
+      "options": {
+        "A": "chlorofluorocarbons",
+        "B": "lead compounds in exhaust fumes",
+        "C": "sulfur dioxide and sulfur trioxide",
+        "D": "carbon dioxide and carbon monoxide"
+      },
+      "objective": "C5.5",
+      "profile": "KC",
+      "copied_from": "2023-MJ-40"
+    },
+    {
+      "id": "2018-MJ-32",
+      "n": 32,
+      "page": 6,
+      "stimulus": "2018-MJ-S05",
+      "stem": "Z may BEST be described as",
+      "options": {
+        "A": "a basic oxide",
+        "B": "a neutral oxide",
+        "C": "an acidic oxide",
+        "D": "an amphoteric oxide"
+      },
+      "objective": "A7.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2018-MJ-33",
+      "n": 33,
+      "page": 6,
+      "stem": "In which of the following processes is sulfur used?",
+      "statements": [
+        [
+          "I.",
+          "Vulcanization of rubber"
+        ],
+        [
+          "II.",
+          "Extraction of iron from iron ore"
+        ],
+        [
+          "III.",
+          "Manufacture of explosives"
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "objective": "C5.4",
+      "profile": "KC",
+      "copied_from": "2023-MJ-39"
+    },
+    {
+      "id": "2018-MJ-34",
+      "n": 34,
+      "page": 6,
+      "stem": "Which of the following metals will NOT displace hydrogen from dilute hydrochloric acid?",
+      "options": {
+        "A": "Zinc",
+        "B": "Iron",
+        "C": "Copper",
+        "D": "Aluminium"
+      },
+      "objective": "C2.1",
+      "profile": "KC",
+      "copied_from": "2020-MJ-34"
+    },
+    {
+      "id": "2018-MJ-35",
+      "n": 35,
+      "page": 6,
+      "stem": "Which of the following lists contains ALL the raw materials used in the extraction of iron?",
+      "options": {
+        "A": "Air, iron ore and limestone",
+        "B": "Air, coke, cryolite and limestone",
+        "C": "Air, coke, iron ore and limestone",
+        "D": "Coke, iron ore, bauxite and limestone"
+      },
+      "objective": "C2.3",
+      "profile": "KC",
+      "copied_from": "2020-MJ-33"
+    },
+    {
+      "id": "2018-MJ-36",
+      "n": 36,
+      "page": 7,
+      "stem": "A property of metals is that they tend to",
+      "options": {
+        "A": "lose electrons",
+        "B": "form negative ions",
+        "C": "be resistant to the passage of electricity",
+        "D": "be discharged at the positive electrode in electrolysis"
+      },
+      "objective": "C1.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2018-MJ-37",
+      "n": 37,
+      "page": 7,
+      "stem": "Which of the following procedures can be used to identify ammonia gas?",
+      "options": {
+        "A": "Passing the gas through lime water",
+        "B": "Placing a burning splint in a jar of the gas",
+        "C": "Placing a glowing splint in a jar of the gas",
+        "D": "Placing red and blue litmus paper in a jar of the gas"
+      },
+      "objective": "C6.3",
+      "profile": "KC",
+      "copied_from": "2019-MJ-55"
+    },
+    {
+      "id": "2018-MJ-38",
+      "n": 38,
+      "page": 7,
+      "stem": "Why is aluminium more resistant to corrosion than iron?",
+      "options": {
+        "A": "Aluminium has reacted completely but iron has not reacted completely.",
+        "B": "Aluminium oxide formed is more reactive than the iron oxide formed.",
+        "C": "Aluminium oxide protects the aluminium but the iron oxide does not protect the iron.",
+        "D": "Aluminium oxide does not react with aluminium but the iron oxide reacts with iron."
+      },
+      "objective": "C4.1",
+      "profile": "KC",
+      "copied_from": "2023-MJ-43"
+    },
+    {
+      "id": "2018-MJ-39",
+      "n": 39,
+      "page": 7,
+      "stem": "Which of the following diagrams BEST illustrates bonding in hydrogen bromide?",
+      "options": {
+        "A": "One shared pair, with six other electrons on each atom",
+        "B": "Three shared pairs",
+        "C": "Two shared pairs",
+        "D": "One shared pair, with six other electrons on one atom only"
+      },
+      "option_diagrams": {
+        "A": "2018-MJ-D02A",
+        "B": "2018-MJ-D02B",
+        "C": "2018-MJ-D02C",
+        "D": "2018-MJ-D02D"
+      },
+      "objective": "A5.1",
+      "profile": "UK",
+      "copied_from": "2020-MJ-39"
+    },
+    {
+      "id": "2018-MJ-40",
+      "n": 40,
+      "page": 7,
+      "stem": "How many covalent bonds are there in a nitrogen molecule?",
+      "options": {
+        "A": "4",
+        "B": "3",
+        "C": "2",
+        "D": "1"
+      },
+      "objective": "A5.1",
+      "profile": "KC",
+      "copied_from": "2021-MJ-33"
+    },
+    {
+      "id": "2018-MJ-41",
+      "n": 41,
+      "page": 8,
+      "stimulus": "2018-MJ-S06",
+      "stem": "Which of the metals is LIKELY to form a soluble hydroxide?",
+      "options": {
+        "A": "W",
+        "B": "X",
+        "C": "Y",
+        "D": "Z"
+      },
+      "objective": "C1.2",
+      "profile": "UK",
+      "copied_from": "2020-MJ-41"
+    },
+    {
+      "id": "2018-MJ-42",
+      "n": 42,
+      "page": 8,
+      "stem": "Aluminium is manufactured by the electrolysis of pure molten aluminium oxide while iron is manufactured by the reduction of its ore haematite, Fe₂O₃. Which of the following statements about aluminium and iron is correct?",
+      "options": {
+        "A": "Iron is more reactive than aluminium.",
+        "B": "Aluminium is more reactive than iron.",
+        "C": "Iron cannot be obtained by electrolysis.",
+        "D": "Electricity is cheap near aluminium oxide deposits."
+      },
+      "objective": "C2.3",
+      "profile": "UK"
+    },
+    {
+      "id": "2018-MJ-43",
+      "n": 43,
+      "page": 8,
+      "stem": "Which of the following substances is an important constituent of chlorophyll?",
+      "options": {
+        "A": "Iron",
+        "B": "Copper",
+        "C": "Calcium",
+        "D": "Magnesium"
+      },
+      "objective": "C4.2",
+      "profile": "KC",
+      "copied_from": "2023-MJ-31"
+    },
+    {
+      "id": "2018-MJ-44",
+      "n": 44,
+      "page": 8,
+      "stem": "Which of the following metals will NOT react with water under any condition?",
+      "options": {
+        "A": "Iron",
+        "B": "Copper",
+        "C": "Aluminium",
+        "D": "Magnesium"
+      },
+      "objective": "C2.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2018-MJ-45",
+      "n": 45,
+      "page": 8,
+      "stem": "Which of the following metals forms an oxide which cannot be reduced by hydrogen?",
+      "options": {
+        "A": "Iron",
+        "B": "Lead",
+        "C": "Copper",
+        "D": "Magnesium"
+      },
+      "objective": "C2.1",
+      "profile": "KC",
+      "copied_from": "2009-MJ-30"
+    },
+    {
+      "id": "2018-MJ-46",
+      "n": 46,
+      "page": 8,
+      "stimulus": "2018-MJ-S07",
+      "stem": "Which of the compounds contains a saturated hydrocarbon?",
+      "options": {
+        "A": "Natural gas",
+        "B": "Propene",
+        "C": "Ethanol",
+        "D": "Vinegar"
+      },
+      "objective": "B1.1",
+      "profile": "KC",
+      "copied_from": "2020-MJ-46"
+    },
+    {
+      "id": "2018-MJ-47",
+      "n": 47,
+      "page": 8,
+      "stimulus": "2018-MJ-S07",
+      "stem": "Which of the compounds can be dehydrated?",
+      "options": {
+        "A": "Natural gas",
+        "B": "Propene",
+        "C": "Ethanol",
+        "D": "Vinegar"
+      },
+      "objective": "B3.7",
+      "profile": "KC",
+      "copied_from": "2023-MJ-56"
+    },
+    {
+      "id": "2018-MJ-48",
+      "n": 48,
+      "page": 9,
+      "stem": "How many isomers of butane, C₄H₁₀, are there?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "objective": "B2.8",
+      "profile": "KC",
+      "copied_from": "2020-MJ-47"
+    },
+    {
+      "id": "2018-MJ-49",
+      "n": 49,
+      "page": 9,
+      "stem": "Ethene CANNOT be directly converted to",
+      "options": {
+        "A": "ethane",
+        "B": "ethanol",
+        "C": "carbon dioxide",
+        "D": "ethanoic acid"
+      },
+      "objective": "B3.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2018-MJ-50",
+      "n": 50,
+      "page": 9,
+      "stem": "Which of the following structures represents a molecule of but-2-ene?",
+      "options": {
+        "A": "CH₂=CH-CH₂-CH₃",
+        "B": "CH₃-CH=CH-CH₃",
+        "C": "CH₃-CH=CH₂",
+        "D": "H-C=C=C-H with two H on each end carbon"
+      },
+      "option_diagrams": {
+        "A": "2018-MJ-D03A",
+        "B": "2018-MJ-D03B",
+        "C": "2018-MJ-D03C",
+        "D": "2018-MJ-D03D"
+      },
+      "objective": "B2.6",
+      "profile": "KC",
+      "copied_from": "2021-MJ-46"
+    },
+    {
+      "id": "2018-MJ-51",
+      "n": 51,
+      "page": 9,
+      "stimulus": "2018-MJ-S08",
+      "stem": "Which of the substances is soluble in water?",
+      "options": {
+        "A": "C₃H₇OH",
+        "B": "C₃H₆",
+        "C": "C₃H₈",
+        "D": "CH₃COOC₂H₅"
+      },
+      "objective": "B3.6",
+      "profile": "UK",
+      "copied_from": "2020-MJ-51"
+    },
+    {
+      "id": "2018-MJ-52",
+      "n": 52,
+      "page": 9,
+      "stimulus": "2018-MJ-S08",
+      "stem": "Which of the substances is used as a monomer in addition polymerization?",
+      "options": {
+        "A": "C₃H₇OH",
+        "B": "C₃H₆",
+        "C": "C₃H₈",
+        "D": "CH₃COOC₂H₅"
+      },
+      "objective": "B4.2",
+      "profile": "KC",
+      "copied_from": "2023-MJ-47"
+    },
+    {
+      "id": "2018-MJ-53",
+      "n": 53,
+      "page": 9,
+      "stem": "The MAJOR natural source of alkanes and alkenes is",
+      "options": {
+        "A": "petroleum",
+        "B": "natural gas",
+        "C": "the earth's crust",
+        "D": "the atmosphere"
+      },
+      "objective": "B1.1",
+      "profile": "KC",
+      "copied_from": "2021-MJ-54"
+    },
+    {
+      "id": "2018-MJ-54",
+      "n": 54,
+      "page": 9,
+      "stem": "When a hydrocarbon molecule is cracked, which TWO smaller molecules are produced?",
+      "statements": [
+        [
+          "I.",
+          "An alkane"
+        ],
+        [
+          "II.",
+          "An alkene"
+        ],
+        [
+          "III.",
+          "An alcohol"
+        ],
+        [
+          "IV.",
+          "An organic acid"
+        ]
+      ],
+      "options": {
+        "A": "I and II",
+        "B": "I and IV",
+        "C": "II and III",
+        "D": "II and IV"
+      },
+      "objective": "B1.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2018-MJ-55",
+      "n": 55,
+      "page": 10,
+      "stimulus": "2018-MJ-S09",
+      "stem": "The forward reaction is known as",
+      "options": {
+        "A": "synthesis",
+        "B": "hydrolysis",
+        "C": "esterification",
+        "D": "polymerization"
+      },
+      "objective": "B3.9",
+      "profile": "KC",
+      "copied_from": "2021-MJ-55"
+    },
+    {
+      "id": "2018-MJ-56",
+      "n": 56,
+      "page": 10,
+      "stimulus": "2018-MJ-S09",
+      "stem": "The reverse reaction is known as",
+      "options": {
+        "A": "synthesis",
+        "B": "hydrolysis",
+        "C": "esterification",
+        "D": "polymerization"
+      },
+      "objective": "B3.10",
+      "profile": "KC",
+      "copied_from": "2021-MJ-56"
+    },
+    {
+      "id": "2018-MJ-57",
+      "n": 57,
+      "page": 10,
+      "stem": "Which of the following features is NOT true of all homologous series of compounds?",
+      "stem_after": "The members of the series have",
+      "options": {
+        "A": "the same functional group",
+        "B": "the same general formula",
+        "C": "similar chemical properties",
+        "D": "the same empirical formula"
+      },
+      "objective": "B2.3",
+      "profile": "KC",
+      "copied_from": "2021-MJ-47"
+    },
+    {
+      "id": "2018-MJ-58",
+      "n": 58,
+      "page": 10,
+      "stem": "The fermentation of sugars, using glucose as the substrate, can be represented by the equation",
+      "options": {
+        "A": "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O",
+        "B": "C₆H₁₂O₆ + C₆H₁₂O₆ → C₁₂H₂₂O₁₁ + H₂O",
+        "C": "C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂",
+        "D": "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂"
+      },
+      "objective": "B3.8",
+      "profile": "KC",
+      "copied_from": "2021-MJ-58"
+    },
+    {
+      "id": "2018-MJ-59",
+      "n": 59,
+      "page": 10,
+      "stem": "To which homologous series does the following structure belong?",
+      "diagrams": [
+        "2018-MJ-D04"
+      ],
+      "options": {
+        "A": "Alkenes",
+        "B": "Alkanes",
+        "C": "Alcohols",
+        "D": "Carboxylic acids"
+      },
+      "objective": "B2.5",
+      "profile": "UK"
+    },
+    {
+      "id": "2018-MJ-60",
+      "n": 60,
+      "page": 11,
+      "stimulus": "2018-MJ-S10",
+      "stem": "Which of the following molecular formulae represents the alcohol whose boiling point is 160 °C?",
+      "options": {
+        "A": "CH₃(CH₂)₃OH",
+        "B": "CH₃(CH₂)₄OH",
+        "C": "CH₃(CH₂)₅OH",
+        "D": "CH₃(CH₂)₆OH"
+      },
+      "objective": "B2.3",
+      "profile": "UK",
+      "copied_from": "2023-MJ-55"
+    }
+  ],
+  "verification_status": "source_json_imported_answers_not_independently_validated",
+  "diagram_status": "vector_trace_requires_visual_comparison_to_original",
+  "source_archive": "2018-MJ.zip",
+  "grading_status": "review-only"
+}

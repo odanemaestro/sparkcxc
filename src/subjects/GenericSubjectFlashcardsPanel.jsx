@@ -7,6 +7,7 @@ import ProgressBar from "../components/ui/ProgressBar";
 import { SubjectChangeButton } from "./SubjectSelectionView";
 import { loadGenericSubjectStructure } from "./genericSubjectCatalog";
 import { recordSubjectActivity } from "./subjectProgress";
+import { usePracticeRouteState } from "../routing/usePracticeRouteState";
 import "./genericSubjectFlashcards.css";
 
 function cleanText(value, max = 700) {
@@ -146,7 +147,9 @@ export default function GenericSubjectFlashcardsPanel({
   const [loading, setLoading] = useState(Boolean(subjectId));
   const [error, setError] = useState("");
   const [reloadKey, setReloadKey] = useState(0);
-  const [activeSectionId, setActiveSectionId] = useState("all");
+  const route = { path:`/dashboard/flashcards/${subjectId}`, replace:true };
+  const [requestedSection, setSection] = usePracticeRouteState(subjectId, "section", "all", route);
+  const [requestedTopic, setTopic] = usePracticeRouteState(subjectId, "topic", "", route);
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [reviewedKeys, setReviewedKeys] = useState(new Set());
@@ -207,12 +210,16 @@ export default function GenericSubjectFlashcardsPanel({
   }, [reloadKey, subjectId, supabase, userId]);
 
   const allCards = useMemo(() => buildGenericSubjectFlashcards(structure), [structure]);
-  const cards = useMemo(
-    () => activeSectionId === "all"
-      ? allCards
-      : allCards.filter(card => card.sectionId === activeSectionId),
-    [activeSectionId, allCards]
-  );
+  const topicCard = allCards.find(card => card.topicId === requestedTopic);
+  const activeSectionId = topicCard?.sectionId || (allCards.some(card => card.sectionId === requestedSection) ? requestedSection : "all");
+  const cards = useMemo(() => allCards.filter(card => topicCard
+    ? card.topicId === topicCard.topicId
+    : activeSectionId === "all" || card.sectionId === activeSectionId
+  ), [activeSectionId, allCards, topicCard]);
+  const selectSection = id => {
+    setTopic("");
+    setSection(id);
+  };
 
   const current = cards.length ? cards[Math.min(index, cards.length - 1)] : null;
   const totalReviewed = allCards.filter(card => reviewedKeys.has(`flashcard:${card.id}`)).length;
@@ -222,7 +229,7 @@ export default function GenericSubjectFlashcardsPanel({
     setIndex(0);
     setRevealed(false);
     setDragX(0);
-  }, [activeSectionId]);
+  }, [activeSectionId, requestedTopic]);
 
   const moveCard = useCallback(direction => {
     if (!cards.length) return false;
@@ -384,7 +391,7 @@ export default function GenericSubjectFlashcardsPanel({
           </div>
 
           <div className="spark-generic-flashcards-sections" aria-label="Choose flashcard section">
-            <button type="button" className={activeSectionId === "all" ? "active" : ""} onClick={() => setActiveSectionId("all")}>
+            <button type="button" className={activeSectionId === "all" ? "active" : ""} onClick={() => selectSection("all")}>
               All review
             </button>
             {(structure?.sections || []).filter(section => allCards.some(card => card.sectionId === section.id)).map(section => (
@@ -392,12 +399,13 @@ export default function GenericSubjectFlashcardsPanel({
                 type="button"
                 key={section.id}
                 className={activeSectionId === section.id ? "active" : ""}
-                onClick={() => setActiveSectionId(section.id)}
+                onClick={() => selectSection(section.id)}
               >
                 {section.title}
               </button>
             ))}
           </div>
+          {topicCard && <p>Reviewing {topicCard.topicTitle}. Choose a section to review its full deck.</p>}
 
           <div className="spark-generic-flashcard-progress-row">
             <div>

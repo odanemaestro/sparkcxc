@@ -1,0 +1,1263 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "2009-MJ",
+  "year": 2009,
+  "session": "May/June",
+  "title": "CHEMISTRY Paper 01 - General Proficiency",
+  "duration": "75 minutes",
+  "source_file": "CSEC_Chemistry_P1_2009_MJ.pdf",
+  "notes": "The scanned cover is a retyped page headed 'CSEC Chemistry June 2009 Paper 1', so no test code or form number is shown. The scan is a used copy with a few pencil marks; they were ignored.",
+  "instructions": [
+    "In addition to this test booklet, you should have an answer sheet.",
+    "Each item in this test has four suggested answers lettered (A), (B), (C), (D). Read each item you are about to answer and decide which choice is best.",
+    "On your answer sheet, find the number which corresponds to your item and shade the space having the same letter as the answer you have chosen. Look at the sample item below. Sample Item: The SI unit of length is the (A) kilogram (B) metre (C) newton (D) second. The best answer to this item is \"metre\", so answer space (B) has been blackened.",
+    "If you want to change your answer, be sure to erase your old answer completely and fill in your new choice.",
+    "When you are told to begin, turn the page and work as quickly and as carefully as you can. If you cannot answer an item, omit it and go on to the next one. You can come back to the harder item later. Your score will be the total number of correct answers.",
+    "You may do any rough work in this booklet.",
+    "Figures are not necessarily drawn to scale.",
+    "The use of silent electronic calculators is allowed.",
+    "This test consists of 60 items. You will have 75 minutes to answer them.",
+    "Do not be concerned that the answer sheet provides spaces for more answers than there are items in this test."
+  ],
+  "stimuli": [
+    {
+      "id": "2009-MJ-S01",
+      "items": [
+        1,
+        2
+      ],
+      "text": "Items 1 - 2 refer to the following atoms represented by their electronic configuration.",
+      "shared_options": {
+        "A": "2,4",
+        "B": "2,8",
+        "C": "2,8,6",
+        "D": "2,8,8,2"
+      },
+      "after_options": "Match each item below with one of the options above. Each option may be used more than once, once or not at all.",
+      "lead_in": "Which element"
+    },
+    {
+      "id": "2009-MJ-S02",
+      "items": [
+        9
+      ],
+      "text": "Item 9 refers to the following illustrations of the electronic structure of four atoms.",
+      "diagrams": [
+        "2009-MJ-D01"
+      ]
+    },
+    {
+      "id": "2009-MJ-S03",
+      "items": [
+        12
+      ],
+      "text": "Item 12 refers to the following graph which shows the boiling points of some straight-chain alcohols.",
+      "diagrams": [
+        "2009-MJ-D02"
+      ]
+    },
+    {
+      "id": "2009-MJ-S04",
+      "items": [
+        18,
+        19
+      ],
+      "text": "Items 18 - 19 refer to the following types of substances.",
+      "shared_options": {
+        "A": "Salt",
+        "B": "Base",
+        "C": "Alkali",
+        "D": "Acid"
+      },
+      "after_options": "Match each item below with one of the options above. Each option may be used more than once, once or not at all."
+    },
+    {
+      "id": "2009-MJ-S05",
+      "items": [
+        22,
+        23
+      ],
+      "text": "Items 22 - 23 refer to the following chemicals.",
+      "shared_options": {
+        "A": "Calcium carbonate",
+        "B": "Magnesium metal",
+        "C": "Barium chloride",
+        "D": "Litmus solution"
+      },
+      "after_options": "In answering items 22 - 23, a particular choice from the above may be made more than once, once or not at all.",
+      "lead_in": "Which of these chemicals"
+    },
+    {
+      "id": "2009-MJ-S06",
+      "items": [
+        25
+      ],
+      "text": "Item 25 refers to the following information. Different volumes of 0.1 M hydrochloric acid were added to 25 cm³ of aqueous potassium hydroxide in a plastic cup and stirred. The HIGHEST temperature reached after each addition was recorded and the results obtained are shown on the graph below.",
+      "diagrams": [
+        "2009-MJ-D03"
+      ]
+    },
+    {
+      "id": "2009-MJ-S07",
+      "items": [
+        27
+      ],
+      "text": "Item 27 refers to the following information. 2.32 g of an oxide of iron, Fe₃O₄, are heated in dry hydrogen. When the reaction is complete, 1.68 g of iron are left. [Rel. atomic mass: Fe = 56; O = 16]"
+    },
+    {
+      "id": "2009-MJ-S08",
+      "items": [
+        29,
+        30
+      ],
+      "text": "Items 29 - 30 refer to the following options which represent the order of some metals in the activity series.",
+      "shared_options": {
+        "A": "Magnesium",
+        "B": "Iron",
+        "C": "Lead",
+        "D": "Copper"
+      },
+      "after_options": "In answering items 29 - 30, each option may be used once, more than once or not at all.",
+      "lead_in": "Which element"
+    },
+    {
+      "id": "2009-MJ-S09",
+      "items": [
+        31
+      ],
+      "text": "Item 31 refers to the following apparatus which is used to measure the relative conductivity of various substances.",
+      "diagrams": [
+        "2009-MJ-D04"
+      ]
+    },
+    {
+      "id": "2009-MJ-S10",
+      "items": [
+        36,
+        37
+      ],
+      "text": "Items 36 - 37 refer to the following sequence of reactions involving iron compounds, where I, II, III and IV represent the stages involved.",
+      "scheme": "FeCO₃ --I--> FeO --II--> Fe₂O₃ --III--> Fe₂(SO₄)₃ --IV--> Fe(OH)₃",
+      "diagrams": [
+        "2009-MJ-D06"
+      ]
+    },
+    {
+      "id": "2009-MJ-S11",
+      "items": [
+        41
+      ],
+      "text": "Item 41 refers to the properties of four metals, W, X, Y and Z, which are summarised in the following table.",
+      "table": {
+        "columns": [
+          "Metal",
+          "Reaction with water/steam",
+          "Products formed when nitrate is heated"
+        ],
+        "rows": [
+          [
+            "W",
+            "No reaction",
+            "Metal, NO₂ and O₂"
+          ],
+          [
+            "X",
+            "Reacts with steam but not with cold water",
+            "Oxide, NO₂ and O₂"
+          ],
+          [
+            "Y",
+            "Reacts rapidly with cold water",
+            "Nitrite and O₂"
+          ],
+          [
+            "Z",
+            "Reacts slowly with cold water",
+            "Oxide, NO₂ and O₂"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "2009-MJ-S12",
+      "items": [
+        42
+      ],
+      "text": "Item 42 refers to the following types of chemical reactions which occur in the carbon cycle.",
+      "statements": [
+        [
+          "I.",
+          "Decomposition"
+        ],
+        [
+          "II.",
+          "Combustion"
+        ],
+        [
+          "III.",
+          "Photosynthesis"
+        ]
+      ]
+    },
+    {
+      "id": "2009-MJ-S13",
+      "items": [
+        45
+      ],
+      "text": "Item 45 refers to the following equation.",
+      "scheme": "CH₃-CH=CH-CH₃ (drawn as a full displayed formula) + Br₂ → X",
+      "diagrams": [
+        "2009-MJ-D07"
+      ]
+    },
+    {
+      "id": "2009-MJ-S14",
+      "items": [
+        48
+      ],
+      "text": "Item 48 refers to the following structures.",
+      "diagrams": [
+        "2009-MJ-D09"
+      ]
+    },
+    {
+      "id": "2009-MJ-S15",
+      "items": [
+        49
+      ],
+      "text": "Item 49 refers to two organic compounds, I and II, of molecular formula C₃H₈O, with the following structures.",
+      "diagrams": [
+        "2009-MJ-D10"
+      ]
+    },
+    {
+      "id": "2009-MJ-S16",
+      "items": [
+        50,
+        51
+      ],
+      "text": "Items 50 - 51 refer to the following compounds.",
+      "statements": [
+        [
+          "I.",
+          "Fats"
+        ],
+        [
+          "II.",
+          "Nylon"
+        ],
+        [
+          "III.",
+          "Proteins"
+        ],
+        [
+          "IV.",
+          "Terylene"
+        ]
+      ]
+    }
+  ],
+  "diagrams": {
+    "2009-MJ-D01": {
+      "svg": "diagrams/2009-MJ-D01.svg",
+      "alt": "Four atom diagrams labelled P, Q, R and S. P: nucleus 1p 1n with one electron (x) in one shell. Q: nucleus 2p 2n with two electrons in one shell. R: nucleus 8p 8n with 2 electrons in the first shell and 6 in the second. S: nucleus 16p 16n with 2, 8 and 6 electrons in three shells."
+    },
+    "2009-MJ-D02": {
+      "svg": "diagrams/2009-MJ-D02.svg",
+      "alt": "Line graph on grid paper. Vertical axis: Boiling Points/°C from 50 to 250. Horizontal axis: Number of Carbon Atoms in Chain from 1 to 7. A straight line rises from about 60 °C at 1 carbon atom to about 215 °C at 7 carbon atoms (about 120 °C at 4 and 140 °C at 5)."
+    },
+    "2009-MJ-D03": {
+      "svg": "diagrams/2009-MJ-D03.svg",
+      "alt": "Line graph on grid paper. Vertical axis: Temperature/°C from 0 to 50. Horizontal axis: Volume of 0.1 M HCl added/cm³ from 0 to 40. The temperature rises in a straight line from about 27 °C at 0 cm³ to a peak of about 38 °C at 25 cm³, then falls in a straight line to about 34 °C at about 33 cm³."
+    },
+    "2009-MJ-D04": {
+      "svg": "diagrams/2009-MJ-D04.svg",
+      "alt": "Circuit for testing conductivity: a 6 V d.c. supply (battery) and a bulb connected in series by wires to two graphite rods that dip into the liquid under investigation in a container."
+    },
+    "2009-MJ-D05A": {
+      "svg": "diagrams/2009-MJ-D05A.svg",
+      "alt": "Option A: U-tube containing copper(II) sulphate(aq) with an electrode in each arm, connected to a battery, switch and ammeter; a gas syringe is attached to the top of the left arm."
+    },
+    "2009-MJ-D05B": {
+      "svg": "diagrams/2009-MJ-D05B.svg",
+      "alt": "Option B: U-tube containing copper(II) sulphate(aq) with an electrode in each arm, connected to a battery, switch and ammeter; a gas syringe is attached to the top of the right arm."
+    },
+    "2009-MJ-D05C": {
+      "svg": "diagrams/2009-MJ-D05C.svg",
+      "alt": "Option C: beaker of copper(II) sulphate(aq) with two electrodes, connected in series with an ammeter, a battery and a switch."
+    },
+    "2009-MJ-D05D": {
+      "svg": "diagrams/2009-MJ-D05D.svg",
+      "alt": "Option D: beaker of copper(II) sulphate(aq) with two electrodes; the ammeter is connected between the two electrode leads, with the battery and switch in a loop above."
+    },
+    "2009-MJ-D06": {
+      "svg": "diagrams/2009-MJ-D06.svg",
+      "alt": "Reaction sequence: FeCO₃ goes to FeO (stage I), FeO goes to Fe₂O₃ (stage II), Fe₂O₃ goes to Fe₂(SO₄)₃ (stage III), and Fe₂(SO₄)₃ goes to Fe(OH)₃ (stage IV)."
+    },
+    "2009-MJ-D07": {
+      "svg": "diagrams/2009-MJ-D07.svg",
+      "alt": "Equation: the displayed formula of but-2-ene, H-C(H)(H)-C(H)=C(H)-C(H)(H)-H, plus Br₂ gives X."
+    },
+    "2009-MJ-D08A": {
+      "svg": "diagrams/2009-MJ-D08A.svg",
+      "alt": "Option A: displayed formula of a four-carbon chain with Br on the first and second carbon atoms (CH₂Br-CHBr-CH₂-CH₃)."
+    },
+    "2009-MJ-D08B": {
+      "svg": "diagrams/2009-MJ-D08B.svg",
+      "alt": "Option B: displayed formula of a four-carbon chain with Br on the second and third carbon atoms (CH₃-CHBr-CHBr-CH₃)."
+    },
+    "2009-MJ-D08C": {
+      "svg": "diagrams/2009-MJ-D08C.svg",
+      "alt": "Option C: displayed formula of a four-carbon chain with Br on the first and fourth carbon atoms (CH₂Br-CH₂-CH₂-CH₂Br)."
+    },
+    "2009-MJ-D08D": {
+      "svg": "diagrams/2009-MJ-D08D.svg",
+      "alt": "Option D: displayed formula of a four-carbon chain with Br on the second and fourth carbon atoms (CH₃-CHBr-CH₂-CH₂Br)."
+    },
+    "2009-MJ-D09": {
+      "svg": "diagrams/2009-MJ-D09.svg",
+      "alt": "Four displayed formulae labelled I to IV. I: a three-carbon chain with a CH₃ group on the middle carbon (2-methylpropane). II: a four-carbon chain drawn with a bend at the first carbon (butane). III: a four-carbon chain drawn in a zigzag (butane). IV: a central carbon joined to three CH₃ groups and one H (2-methylpropane)."
+    },
+    "2009-MJ-D10": {
+      "svg": "diagrams/2009-MJ-D10.svg",
+      "alt": "Two displayed formulae. I: a three-carbon chain with OH on the middle carbon (propan-2-ol). II: a three-carbon chain with OH on the end carbon (propan-1-ol)."
+    }
+  },
+  "questions": [
+    {
+      "id": "2009-MJ-01",
+      "n": 1,
+      "page": 2,
+      "stimulus": "2009-MJ-S01",
+      "stem": "combines with chlorine to form ionic bonds?",
+      "options": {
+        "A": "2,4",
+        "B": "2,8",
+        "C": "2,8,6",
+        "D": "2,8,8,2"
+      },
+      "objective": "A5.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-02",
+      "n": 2,
+      "page": 2,
+      "stimulus": "2009-MJ-S01",
+      "stem": "forms many giant structures occuring both naturally and artificially?",
+      "options": {
+        "A": "2,4",
+        "B": "2,8",
+        "C": "2,8,6",
+        "D": "2,8,8,2"
+      },
+      "objective": "A5.8",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-03",
+      "n": 3,
+      "page": 2,
+      "stem": "In which of the following are radioactive isotopes NOT used?",
+      "options": {
+        "A": "Radiotherapy",
+        "B": "Carbon dating",
+        "C": "Metal extraction",
+        "D": "Energy generation"
+      },
+      "objective": "A3.7",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-04",
+      "n": 4,
+      "page": 2,
+      "stem": "'One mole of atoms of an element' refers to the mass of",
+      "options": {
+        "A": "1 atom of the element",
+        "B": "the element which contains 6.0 × 10²³ atoms",
+        "C": "the element which occupies 24.0 dm³ at s.t.p.",
+        "D": "the element which combines completely with 12 g of carbon-12"
+      },
+      "objective": "A6.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-05",
+      "n": 5,
+      "page": 2,
+      "stem": "Which of the following requires the LARGEST number of moles of electrons to liberate one mole of it?",
+      "options": {
+        "A": "Al³⁺",
+        "B": "Cl⁻",
+        "C": "Cu²⁺",
+        "D": "O₂⁻"
+      },
+      "objective": "A9.10",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-06",
+      "n": 6,
+      "page": 2,
+      "stem": "Which of these elements has seven electrons in its outer shell?",
+      "options": {
+        "A": "Hydrogen",
+        "B": "Oxygen",
+        "C": "Nitrogen",
+        "D": "Chlorine"
+      },
+      "objective": "A3.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-07",
+      "n": 7,
+      "page": 2,
+      "stem": "The ionic equation for the reaction between an acid and a carbonate may be represented as",
+      "options": {
+        "A": "H⁺(aq) + CO₃²⁻(aq) → HCO³⁻(aq)",
+        "B": "2H⁺(aq) + CO₃²⁻(aq) → H₂CO₃(aq)",
+        "C": "2H⁺(aq) + CO₃²⁻(aq) → CO₂(g) + H₂O(l)",
+        "D": "H⁺(aq) + CO₃²⁻(aq) → CO₂(g) + H₂O(l)"
+      },
+      "objective": "A7.4",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-08",
+      "n": 8,
+      "page": 2,
+      "stem": "Which of the following can be referred to as a standard solution?",
+      "options": {
+        "A": "Iodine in 50 cm³ ethanol",
+        "B": "Sodium chloride in 50 cm³ water",
+        "C": "30 g of sodium chloride in water",
+        "D": "30 g of iodine in 50 cm³ ethanol"
+      },
+      "objective": "A6.7",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-09",
+      "n": 9,
+      "page": 3,
+      "stimulus": "2009-MJ-S02",
+      "stem": "Which pair of atoms forms covalent bonds when reacted together?",
+      "options": {
+        "A": "P and Q",
+        "B": "P and S",
+        "C": "Q and S",
+        "D": "Q and R"
+      },
+      "objective": "A5.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-10",
+      "n": 10,
+      "page": 3,
+      "stem": "Which of the following is the type of crystal structure of iodine at room temperature and pressure?",
+      "options": {
+        "A": "Ionic",
+        "B": "Metallic",
+        "C": "Giant molecular",
+        "D": "Simple molecular"
+      },
+      "objective": "A5.5",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-11",
+      "n": 11,
+      "page": 3,
+      "stem": "A metallic bond is formed when",
+      "options": {
+        "A": "cations are held together by a sea of mobile electrons",
+        "B": "positive metal ions are held together by a sea of anions",
+        "C": "anions are held together by negative electrons",
+        "D": "metal atoms are held together by molecular forces"
+      },
+      "objective": "A5.4",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-12",
+      "n": 12,
+      "page": 4,
+      "stimulus": "2009-MJ-S03",
+      "stem": "The MOST suitable method for separating the 4-carbon alcohol from a mixture with the 5-carbon alcohol is",
+      "options": {
+        "A": "fractional distillation",
+        "B": "solvent extraction",
+        "C": "simple distillation",
+        "D": "simple evaporation"
+      },
+      "objective": "A2.5",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-13",
+      "n": 13,
+      "page": 4,
+      "stem": "Which of the following is the correct formula for ammonium carbonate?",
+      "options": {
+        "A": "NH₄CO₃",
+        "B": "NH₄(CO₃)₂",
+        "C": "(NH₄)₂CO₃",
+        "D": "(NH₄)₂(CO₃)₂"
+      },
+      "objective": "A5.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-14",
+      "n": 14,
+      "page": 4,
+      "stem": "Which of the following separation techniques is NOT used during the extraction of sucrose from sugar cane?",
+      "options": {
+        "A": "Filtration",
+        "B": "Precipitation",
+        "C": "Centrifugation",
+        "D": "Chromatography"
+      },
+      "objective": "A2.6",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-15",
+      "n": 15,
+      "page": 4,
+      "stem": "Which of the following does NOT affect the solubility of a substance?",
+      "options": {
+        "A": "Catalyst",
+        "B": "Pressure",
+        "C": "Stirring",
+        "D": "Temperature"
+      },
+      "objective": "A2.4",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-16",
+      "n": 16,
+      "page": 4,
+      "stem": "A piece of calcium is added to some distilled water in a container and a gas is produced. The gas produced is expected to",
+      "options": {
+        "A": "relight a glowing splint",
+        "B": "give a 'pop' with a lighted splint",
+        "C": "decolourize acidified aqueous potassium manganate (VII)",
+        "D": "turn acidified aqueous potassium dichromate green"
+      },
+      "objective": "C6.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-17",
+      "n": 17,
+      "page": 4,
+      "stem": "Which set of elements has atoms with two electrons in their outer shells?",
+      "options": {
+        "A": "The halogens",
+        "B": "Period 2 elements",
+        "C": "Group II elements",
+        "D": "The transition elements"
+      },
+      "objective": "A4.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-18",
+      "n": 18,
+      "page": 5,
+      "stimulus": "2009-MJ-S04",
+      "stem": "The oxide of a metal",
+      "options": {
+        "A": "Salt",
+        "B": "Base",
+        "C": "Alkali",
+        "D": "Acid"
+      },
+      "objective": "A7.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-19",
+      "n": 19,
+      "page": 5,
+      "stimulus": "2009-MJ-S04",
+      "stem": "Supplies protons as the only positive ions in aqueous solutions",
+      "options": {
+        "A": "Salt",
+        "B": "Base",
+        "C": "Alkali",
+        "D": "Acid"
+      },
+      "objective": "A7.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-20",
+      "n": 20,
+      "page": 5,
+      "stem": "When X and Y are stirred together in a beaker and the mixture filtered, X and Y are both present in the filtrate. Which of the following could describe the mixture formed by X and Y?",
+      "statements": [
+        [
+          "I.",
+          "Solution"
+        ],
+        [
+          "II.",
+          "Colloid"
+        ],
+        [
+          "III.",
+          "Suspension"
+        ]
+      ],
+      "options": {
+        "A": "I only",
+        "B": "III only",
+        "C": "I and II only",
+        "D": "II and III only"
+      },
+      "objective": "A2.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-21",
+      "n": 21,
+      "page": 5,
+      "stem": "Which of the following compounds are acid salts?",
+      "statements": [
+        [
+          "I.",
+          "NaH₂PO₄"
+        ],
+        [
+          "II.",
+          "CaSO₄"
+        ],
+        [
+          "III.",
+          "Al₂CO₃"
+        ],
+        [
+          "IV.",
+          "KHSO₄"
+        ]
+      ],
+      "options": {
+        "A": "I and II only",
+        "B": "I and IV only",
+        "C": "II and III only",
+        "D": "III and IV only"
+      },
+      "objective": "A7.9",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-22",
+      "n": 22,
+      "page": 5,
+      "stimulus": "2009-MJ-S05",
+      "stem": "reacts with an acid, liberating a gas which turns lime water milky?",
+      "options": {
+        "A": "Calcium carbonate",
+        "B": "Magnesium metal",
+        "C": "Barium chloride",
+        "D": "Litmus solution"
+      },
+      "objective": "A7.4",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-23",
+      "n": 23,
+      "page": 5,
+      "stimulus": "2009-MJ-S05",
+      "stem": "reacts with sulphuric acid to produce hydrogen gas?",
+      "options": {
+        "A": "Calcium carbonate",
+        "B": "Magnesium metal",
+        "C": "Barium chloride",
+        "D": "Litmus solution"
+      },
+      "objective": "A7.4",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-24",
+      "n": 24,
+      "page": 5,
+      "stem": "Acidified potassium manganate (VII) is",
+      "options": {
+        "A": "an oxidising agent",
+        "B": "a reducing agent",
+        "C": "a dehydrating agent",
+        "D": "both an oxidising and reducing agent"
+      },
+      "objective": "A8.5",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-25",
+      "n": 25,
+      "page": 6,
+      "stimulus": "2009-MJ-S06",
+      "stem": "The temperature at which neutralisation occurred is",
+      "options": {
+        "A": "25 °C",
+        "B": "27 °C",
+        "C": "34 °C",
+        "D": "38 °C"
+      },
+      "objective": "A7.10",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-26",
+      "n": 26,
+      "page": 7,
+      "stem": "Which of the following occurs when a metal atom becomes an ion?",
+      "options": {
+        "A": "It gains electrons and is oxidised",
+        "B": "It gains electrons and is reduced",
+        "C": "It loses electrons and is oxidised",
+        "D": "It loses electrons and is reduced"
+      },
+      "objective": "A8.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-27",
+      "n": 27,
+      "page": 7,
+      "stimulus": "2009-MJ-S07",
+      "stem": "When this reaction is completed, the oxide of iron is completely",
+      "options": {
+        "A": "reduced",
+        "B": "oxidised",
+        "C": "neutralised",
+        "D": "decomposed into its elements"
+      },
+      "objective": "A8.4",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-28",
+      "n": 28,
+      "page": 7,
+      "stem": "In an experiment, on heating 402 g of mercury, a black powder with a mass of 434 g is obtained (Rel. atomic mass: Hg = 201; O = 16). The balanced equation representing this reaction is",
+      "options": {
+        "A": "Hg(l) + O₂(g) = HgO(s)",
+        "B": "2Hg(l) + O₂(g) = 2HgO(s)",
+        "C": "Hg(s) + O₂(g) = HgO(s)",
+        "D": "2Hg(s) + O₂(g) = 2HgO(s)"
+      },
+      "objective": "A6.6",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-29",
+      "n": 29,
+      "page": 7,
+      "stimulus": "2009-MJ-S08",
+      "stem": "would be liberated at the cathode from the aqueous solution of its salts during electrolysis?",
+      "options": {
+        "A": "Magnesium",
+        "B": "Iron",
+        "C": "Lead",
+        "D": "Copper"
+      },
+      "objective": "A9.6",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-30",
+      "n": 30,
+      "page": 7,
+      "stimulus": "2009-MJ-S08",
+      "stem": "forms an oxide which CANNOT be reduced by hydrogen?",
+      "options": {
+        "A": "Magnesium",
+        "B": "Iron",
+        "C": "Lead",
+        "D": "Copper"
+      },
+      "objective": "C2.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-31",
+      "n": 31,
+      "page": 7,
+      "stimulus": "2009-MJ-S09",
+      "stem": "Which of the following solutions will NOT cause the bulb to light?",
+      "options": {
+        "A": "Sea water",
+        "B": "Pure ethanol",
+        "C": "Aqueous ethanoic acid",
+        "D": "Aqueous propanoic acid"
+      },
+      "objective": "A9.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-32",
+      "n": 32,
+      "page": 8,
+      "stem": "Two experiments were carried out in order to investigate the effect of changing conditions on the reaction between hydrochloric acid and excess magnesium. In Experiment I, 50 cm³ of 1.0 mol dm⁻³ hydrochloric acid were used. In Experiment II, 25 cm³ of 2.0 mol dm⁻³ hydrochloric acid were used. Which of the following describes the effect on the AVERAGE rate of reaction AND the final volume of hydrogen gas collected in going from Experiment I to Experiment II?",
+      "options": {
+        "A": "Increased; Unchanged",
+        "B": "Increased; Increased",
+        "C": "Decreased; Decreased",
+        "D": "Decreased; Unchanged"
+      },
+      "option_table": {
+        "columns": [
+          "Effect on Rate",
+          "Effect on Final Volume of H₂(g) collected"
+        ],
+        "rows": {
+          "A": [
+            "Increased",
+            "Unchanged"
+          ],
+          "B": [
+            "Increased",
+            "Increased"
+          ],
+          "C": [
+            "Decreased",
+            "Decreased"
+          ],
+          "D": [
+            "Decreased",
+            "Unchanged"
+          ]
+        }
+      },
+      "objective": "A10.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-33",
+      "n": 33,
+      "page": 8,
+      "stem": "Which of the following apparatus is the MOST suitable for the electrolysis of copper (II) sulphate between copper electrodes?",
+      "options": {
+        "A": "Apparatus A (U-tube with a gas syringe on the left arm)",
+        "B": "Apparatus B (U-tube with a gas syringe on the right arm)",
+        "C": "Apparatus C (beaker with the ammeter in series)",
+        "D": "Apparatus D (beaker with the ammeter across the electrodes)"
+      },
+      "option_diagrams": {
+        "A": "2009-MJ-D05A",
+        "B": "2009-MJ-D05B",
+        "C": "2009-MJ-D05C",
+        "D": "2009-MJ-D05D"
+      },
+      "objective": "A9.8",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-34",
+      "n": 34,
+      "page": 9,
+      "stem": "The reaction occurring at the cathode during the electrolysis of copper sulphate using inert electrodes is given by the equation",
+      "options": {
+        "A": "Cu → Cu²⁺ + 2e⁻",
+        "B": "Cu²⁺ + 2e⁻ → Cu",
+        "C": "2H⁺ + 2e⁻ → H₂",
+        "D": "4OH⁻ - 4e⁻ → 2H₂O + O₂"
+      },
+      "objective": "A9.8",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-35",
+      "n": 35,
+      "page": 9,
+      "stem": "Which of the following is true when an aluminium pot is being anodised?",
+      "options": {
+        "A": "Aluminium is the anode in the cell.",
+        "B": "Hydrogen is given off at the anode.",
+        "C": "The electrolyte is a solution of sodium chloride.",
+        "D": "A layer of aluminium hydroxide forms on the pot."
+      },
+      "objective": "A9.11",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-36",
+      "n": 36,
+      "page": 9,
+      "stimulus": "2009-MJ-S10",
+      "stem": "In which stage is the oxidation state of iron increased?",
+      "options": {
+        "A": "I",
+        "B": "II",
+        "C": "III",
+        "D": "IV"
+      },
+      "objective": "A8.3",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-37",
+      "n": 37,
+      "page": 9,
+      "stimulus": "2009-MJ-S10",
+      "stem": "A suitable reagent that could be used at IV is",
+      "options": {
+        "A": "steam",
+        "B": "hydrogen",
+        "C": "solid copper oxide",
+        "D": "aqueous sodium hydroxide"
+      },
+      "objective": "C6.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-38",
+      "n": 38,
+      "page": 9,
+      "stem": "A recently discovered element is thought to be a metal. Which of the following physical properties would BEST confirm this?",
+      "options": {
+        "A": "Density",
+        "B": "Hardness",
+        "C": "Melting point",
+        "D": "Electrical conductivity"
+      },
+      "objective": "C1.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-39",
+      "n": 39,
+      "page": 9,
+      "stem": "Chlorine can be obtained by",
+      "options": {
+        "A": "warming sodium chloride with concentrated sulphuric acid",
+        "B": "boiling sodium chloride with manganese (IV) oxide",
+        "C": "electrolysing a concentrated solution of sodium chloride",
+        "D": "adding aqueous bromine to aqueous sodium chloride"
+      },
+      "objective": "A9.8",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-40",
+      "n": 40,
+      "page": 9,
+      "stem": "Which of the following metals will react MOST vigorously with dilute acid?",
+      "options": {
+        "A": "Zinc",
+        "B": "Iron",
+        "C": "Lead",
+        "D": "Copper"
+      },
+      "objective": "C2.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-41",
+      "n": 41,
+      "page": 10,
+      "stimulus": "2009-MJ-S11",
+      "stem": "The order of reactivity of these metals, with the MOST reactive first, is",
+      "options": {
+        "A": "W, X, Y, Z",
+        "B": "X, Y, Z, W",
+        "C": "Y, Z, W, X",
+        "D": "Y, Z, X, W"
+      },
+      "objective": "C2.2",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-42",
+      "n": 42,
+      "page": 10,
+      "stimulus": "2009-MJ-S12",
+      "stem": "Which of these reactions would be responsible for returning carbon dioxide to the atmosphere?",
+      "options": {
+        "A": "I only",
+        "B": "III only",
+        "C": "I and II only",
+        "D": "I, II and III"
+      },
+      "objective": "C5.5",
+      "profile": "KC",
+      "syllabus_note": "The carbon cycle is not a separate objective in the 2019 syllabus. The closest objective is C5.5 (carbon dioxide and the environment)."
+    },
+    {
+      "id": "2009-MJ-43",
+      "n": 43,
+      "page": 10,
+      "stem": "Overtime, aluminium articles do not deteriorate in air as do iron articles. Which of the following statements gives the correct reason for this?",
+      "options": {
+        "A": "Aluminium is higher up in the activity series than iron, therefore it is more resistant to corrosion than iron.",
+        "B": "Both metals form oxide coats but aluminium oxide prevents further reaction, while the iron oxide does not.",
+        "C": "Both metals form hydroxide coats but the aluminium hydroxide prevents further reaction, while the iron hydroxide does not.",
+        "D": "Aluminium is lower than iron in the activity series, therefore it reacts less readily with air than iron."
+      },
+      "objective": "C4.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-44",
+      "n": 44,
+      "page": 10,
+      "stem": "Which of the following substances forms dense white fumes with ammonia gas?",
+      "options": {
+        "A": "Oxygen",
+        "B": "Hydrogen",
+        "C": "Nitrogen dioxide",
+        "D": "Hydrogen chloride"
+      },
+      "objective": "C6.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-45",
+      "n": 45,
+      "page": 11,
+      "stimulus": "2009-MJ-S13",
+      "stem": "Which is the correct structural formula for X?",
+      "options": {
+        "A": "CH₂Br-CHBr-CH₂-CH₃ (Br on carbons 1 and 2)",
+        "B": "CH₃-CHBr-CHBr-CH₃ (Br on carbons 2 and 3)",
+        "C": "CH₂Br-CH₂-CH₂-CH₂Br (Br on carbons 1 and 4)",
+        "D": "CH₃-CHBr-CH₂-CH₂Br (Br on carbons 2 and 4)"
+      },
+      "option_diagrams": {
+        "A": "2009-MJ-D08A",
+        "B": "2009-MJ-D08B",
+        "C": "2009-MJ-D08C",
+        "D": "2009-MJ-D08D"
+      },
+      "objective": "B3.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-46",
+      "n": 46,
+      "page": 12,
+      "stem": "The compound, ethene, is described as being unsaturated. This means that the",
+      "options": {
+        "A": "carbon atoms in ethene are linked by single bonds",
+        "B": "molecule has insufficient hydrogen atoms",
+        "C": "carbon atoms in the molecule are very reactive",
+        "D": "molecule contains at least one double bond"
+      },
+      "objective": "B2.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-47",
+      "n": 47,
+      "page": 12,
+      "stem": "All members of a homologous series have similar",
+      "options": {
+        "A": "densities",
+        "B": "boiling points",
+        "C": "chemical properties",
+        "D": "physical properties"
+      },
+      "objective": "B2.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-48",
+      "n": 48,
+      "page": 12,
+      "stimulus": "2009-MJ-S14",
+      "stem": "Which structures represent branched alkanes?",
+      "options": {
+        "A": "I and II only",
+        "B": "I and IV only",
+        "C": "III and IV only",
+        "D": "I, II and III only"
+      },
+      "objective": "B2.8",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-49",
+      "n": 49,
+      "page": 13,
+      "stimulus": "2009-MJ-S15",
+      "stem": "Compounds I and II are known as the",
+      "options": {
+        "A": "isomers of C₃H₈O",
+        "B": "isotopes of C₃H₈O",
+        "C": "condensed formulae of C₃H₈O",
+        "D": "molecular formulae of C₃H₈O"
+      },
+      "objective": "B2.7",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-50",
+      "n": 50,
+      "page": 13,
+      "stimulus": "2009-MJ-S16",
+      "stem": "Which of the above compounds are synthetic?",
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "II and IV only"
+      },
+      "objective": "B4.3",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-51",
+      "n": 51,
+      "page": 13,
+      "stimulus": "2009-MJ-S16",
+      "stem": "Ester linkage exists in",
+      "options": {
+        "A": "III only",
+        "B": "I and III only",
+        "C": "I and IV only",
+        "D": "II and IV only"
+      },
+      "objective": "B4.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-52",
+      "n": 52,
+      "page": 13,
+      "stem": "Which of the following is used in the breathalyser test to detect the presence of alcohol?",
+      "options": {
+        "A": "Lime water",
+        "B": "Lighted splint",
+        "C": "Bromine water",
+        "D": "Potassium dichromate"
+      },
+      "objective": "B3.7",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-53",
+      "n": 53,
+      "page": 13,
+      "stem": "Which equation BEST represents the balanced equation for the reaction between aqueous ethanoic acid and magnesium?",
+      "options": {
+        "A": "CH₃COOH(aq) + Mg(s) → CH₃COOMg(aq) + H₂(g)",
+        "B": "2CH₃COOH(aq) + Mg(s) → (CH₃COO)₂Mg(aq) + H₂(g)",
+        "C": "2CH₃COOH(aq) + Mg(s) → 2CH₃COOMg(s) + H₂(g)",
+        "D": "2CH₃COOH(aq) + 2Mg(s) → (2CH₃COO)₂Mg₂(aq) + H₂(g)"
+      },
+      "objective": "B3.9",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-54",
+      "n": 54,
+      "page": 14,
+      "stem": "During the manufacture of ethanol by fermentation, the gas evolved",
+      "options": {
+        "A": "relights a glowing splint",
+        "B": "burns with a blue flame",
+        "C": "turns lime water milky",
+        "D": "turns potassium dichromate green"
+      },
+      "objective": "B3.8",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-55",
+      "n": 55,
+      "page": 14,
+      "stem": "The reaction of fats with concentrated aqueous sodium hydroxide is commonly referred to as",
+      "options": {
+        "A": "condensation",
+        "B": "esterification",
+        "C": "neutralisation",
+        "D": "saponification"
+      },
+      "objective": "B3.10",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-56",
+      "n": 56,
+      "page": 14,
+      "stem": "When ethene reacts with steam the ethene is",
+      "options": {
+        "A": "decomposed to carbon",
+        "B": "converted to ethanol",
+        "C": "converted to an ester",
+        "D": "oxidised to carbon dioxide"
+      },
+      "objective": "B3.1",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-57",
+      "n": 57,
+      "page": 14,
+      "stem": "Chlorofluorocarbons are MAINLY responsible for",
+      "options": {
+        "A": "acid rain",
+        "B": "the greenhouse effect",
+        "C": "destruction of the ozone layer",
+        "D": "destruction of limestone statues"
+      },
+      "objective": "C5.5",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-58",
+      "n": 58,
+      "page": 14,
+      "stem": "Which two groups are present in the molecules of amino acids?",
+      "options": {
+        "A": "-NH₂ group and -COOH group",
+        "B": "-NH₂ group and -OH group",
+        "C": "-OH group and -COOH group",
+        "D": "-COOH group and C=C group"
+      },
+      "objective": "B4.2",
+      "profile": "KC"
+    },
+    {
+      "id": "2009-MJ-59",
+      "n": 59,
+      "page": 14,
+      "stem": "Which of the following names refers to the product formed in the reaction 3n(CH₂ = CH₂) → -[CH₂CH₂CH₂CH₂CH₂CH₂]-ₙ",
+      "options": {
+        "A": "Dimer",
+        "B": "Trimer",
+        "C": "Polymer",
+        "D": "Monomer"
+      },
+      "objective": "B4.1",
+      "profile": "UK"
+    },
+    {
+      "id": "2009-MJ-60",
+      "n": 60,
+      "page": 14,
+      "stem": "Nylon is a macromolecule which is held together by the same linkage as a protein molecule. What is the name given to this type of linkage?",
+      "options": {
+        "A": "Ether linkage",
+        "B": "Double bond",
+        "C": "Ester linkage",
+        "D": "Amide bond"
+      },
+      "objective": "B4.2",
+      "profile": "KC"
+    }
+  ],
+  "verification_status": "source_json_imported_answers_not_independently_validated",
+  "diagram_status": "vector_trace_requires_visual_comparison_to_original",
+  "source_archive": "2009-MJ.zip",
+  "grading_status": "review-only"
+}

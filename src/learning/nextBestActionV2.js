@@ -18,9 +18,11 @@ import {
   SOCIAL_STUDIES_LESSONS,
 } from "../socialStudies/data/socialStudiesCourse";
 import { CHEMISTRY_TOPICS } from "../chemistry/data/chemistryCourse";
+import integratedScienceTopics from "../integratedScience/data/integratedScienceTopicIndex.json";
+import { bundledSubjectStructure, isGenericTopicUnlocked } from "../subjects/genericSubjectCatalog";
 import { recommendedDeckIdsForSkills } from "./flashcards";
 import { writeSparkNestedRoute } from "../routing/sparkRoutingV270";
-import { displaySkillLabel, studentRecommendationReasons } from "./learnerIntelligenceV2";
+import { displaySkillLabel, isInternalSkillCode, studentRecommendationReasons } from "./learnerIntelligenceV2";
 import {
   LEARNING_LOOP_VERSION,
   championLearningStrategy,
@@ -191,8 +193,9 @@ function physicsTopicForSkill(skill) {
 
 function physicsTarget(skill, actionType) {
   const topic = physicsTopicForSkill(skill);
-  const topicId = topic?.id || (/^[A-E]\d+$/i.test(String(skill || "")) ? String(skill).toUpperCase() : null);
+  const topicId = topic?.id;
   const section = topicId?.slice(0, 1) || "A";
+  const title = topic?.title || "Physics";
 
   if (actionType === "assessment") {
     return {
@@ -201,7 +204,7 @@ function physicsTarget(skill, actionType) {
       path: `/practice/physics/section/${section}`,
       params: { mode: "checkpoint", topic: topicId || undefined },
       kind: "section_checkpoint",
-      label: `${section} checkpoint`,
+      label: title + " checkpoint",
       exact: Boolean(topicId),
       outcomeScope:{ sectionId:section },
     };
@@ -214,7 +217,7 @@ function physicsTarget(skill, actionType) {
       path: `/practice/physics/section/${section}`,
       params: { mode: "topic", topic: topicId || undefined },
       kind: "topic_quiz",
-      label: topicId ? `${topicId} topic practice` : `${section} topic practice`,
+      label: title + " practice",
       exact: Boolean(topicId),
       outcomeScope:topicId ? { topicId, sectionId:section } : { sectionId:section },
     };
@@ -232,7 +235,7 @@ function physicsTarget(skill, actionType) {
     path: `/study/physics/section/${section}`,
     params: { topic: topicId || undefined, mode },
     kind: actionType === "lab" ? "lab" : actionType === "flashcards" ? "flashcard_review" : "lesson",
-    label: topic?.title ? `${topic.id} ${topic.title}` : topicId || `Section ${section}`,
+    label: title,
     exact: Boolean(topicId),
     outcomeScope:topicId ? { topicId, sectionId:section } : { sectionId:section },
   };
@@ -568,9 +571,10 @@ function socialStudiesLessonForSkill(skill) {
   return matched?.item || (sectionId ? candidates[0] : null);
 }
 
-function socialStudiesTarget(skill, actionType) {
+function socialStudiesTarget(skill, actionType, sourceRows) {
   const lesson=socialStudiesLessonForSkill(skill);
   const sectionId=lesson?.sectionId || socialStudiesSectionForSkill(skill);
+  const sectionTitle=SOCIAL_STUDIES_COURSE.sections.find(section => section.id === sectionId)?.title;
 
   if(actionType==="flashcards"){
     return {
@@ -580,7 +584,7 @@ function socialStudiesTarget(skill, actionType) {
       path:"/dashboard/flashcards/social-studies",
       params:sectionId ? {section:sectionId} : {},
       kind:"flashcard_review",
-      label:sectionId ? `${sectionId} Social Studies flashcards` : "Social Studies flashcards",
+      label:`${sectionTitle || "Social Studies"} flashcards`,
       exact:Boolean(sectionId),
       outcomeScope:sectionId ? {sectionId} : {},
     };
@@ -593,7 +597,7 @@ function socialStudiesTarget(skill, actionType) {
       path:"/practice/social-studies",
       params:sectionId ? {section:sectionId} : {},
       kind:actionType==="assessment" ? "practice" : "topic_quiz",
-      label:sectionId ? `${sectionId} Social Studies unit practice` : "Social Studies practice",
+      label:`${sectionTitle || "Social Studies"} practice`,
       exact:Boolean(sectionId),
       outcomeScope:sectionId ? {sectionId,topicId:sectionId} : {},
     };
@@ -613,6 +617,10 @@ function socialStudiesTarget(skill, actionType) {
   }
 
   if(lesson){
+    if(sourceRows) {
+      const available = genericLessonTarget("social-studies", lesson.id, sourceRows);
+      if(available) return { ...available, view:"social-studies" };
+    }
     return {
       subjectId:"social-studies",
       view:"social-studies",
@@ -631,7 +639,7 @@ function socialStudiesTarget(skill, actionType) {
     path:"/study/social-studies",
     params:sectionId ? {section:sectionId} : {},
     kind:"lesson",
-    label:sectionId ? `${sectionId} Social Studies` : "Social Studies study",
+    label:sectionTitle || "Social Studies study",
     exact:Boolean(sectionId),
     outcomeScope:sectionId ? {sectionId} : {},
   };
@@ -665,7 +673,7 @@ function chemistryLessonForSkill(skill) {
   return matched?.item || null;
 }
 
-function chemistryTarget(skill, actionType) {
+function chemistryTarget(skill, actionType, sourceRows) {
   const lesson=chemistryLessonForSkill(skill);
 
   if(actionType==="flashcards"){
@@ -673,7 +681,7 @@ function chemistryTarget(skill, actionType) {
       subjectId:"chemistry",
       view:"dashboard",
       path:"/dashboard/flashcards/chemistry",
-      params:{},
+      params:lesson ? {section:lesson.sectionId, topic:lesson.id} : {},
       special:"dashboard-flashcards",
       kind:"flashcards",
       label:lesson ? `${lesson.title} flashcards` : "Chemistry flashcards",
@@ -696,6 +704,8 @@ function chemistryTarget(skill, actionType) {
   }
 
   if(lesson){
+    const available = sourceRows && genericLessonTarget("chemistry", lesson.id, sourceRows);
+    if(available && !available.exact) return available;
     const hasLab=(lesson.metadata?.lesson?.interactiveModels || []).length>0;
     return {
       subjectId:"chemistry",
@@ -722,13 +732,58 @@ function chemistryTarget(skill, actionType) {
   };
 }
 
+function genericLessonTarget(subjectId, skill, rows) {
+  const structure = bundledSubjectStructure(subjectId)?.data;
+  const lessons = structure?.topics || [];
+  const subjectRows = rows.filter(row => lower(row.subject_id) === subjectId);
+  const lessonRows = subjectRows.filter(row => row.activity_type === "lesson" && row.topic_id);
+  const completed = new Set(lessonRows.filter(row => row.completed).map(row => row.topic_id));
+  const match = lessons.find(lesson => [
+    lesson.id, lesson.title, ...(lesson.metadata?.syllabus?.objectives || []),
+  ].some(value => lower(value) === lower(skill)));
+  const unlocked = match && isGenericTopicUnlocked(structure, match.id, completed);
+  const bundled = unlocked ? match : lessons.find(lesson => !completed.has(lesson.id)) || lessons[0];
+  const tracked = !bundled && lessonRows.find(row => row.completed && row.title &&
+    [row.topic_id, row.title].some(value => lower(value) === lower(skill)));
+  if (!bundled && !tracked) return null;
+  const topicId = bundled?.id || tracked.topic_id;
+  const sectionId = bundled?.sectionId || tracked?.section_id;
+  return {
+    subjectId,
+    view:"generic-study",
+    path:`/study/${subjectId}`,
+    params:{ section:sectionId, topic:topicId },
+    kind:"lesson",
+    label:bundled?.title || tracked.title,
+    exact:Boolean(unlocked || tracked),
+    outcomeScope:{ topicId, sectionId },
+  };
+}
+
+function integratedSciencePracticeTarget(skill, actionType) {
+  if (!["baseline", "targeted_practice", "assessment"].includes(actionType)) return null;
+  const objective = String(skill || "").trim();
+  const topic = integratedScienceTopics.find(item => item.objectives.includes(objective) || lower(item.title) === lower(skill));
+  if (!topic) return null;
+  return {
+    subjectId:"integrated-science",
+    view:"practice-integrated-science",
+    path:"/practice/integrated-science",
+    params:{ mode:"topic", module:topic.module, topic:topic.topic, objective:topic.objectives.includes(objective) ? objective : undefined },
+    kind:"practice",
+    label:topic.title,
+    exact:true,
+    outcomeScope:topic.objectives.includes(objective) ? { topicId:objective } : { sectionId:`module-${topic.module}` },
+  };
+}
+
 export function exactTargetForAction(subjectId, skill, actionType, options = {}) {
   const id = lower(subjectId);
 
   if (id === "mathematics") {
-    if (actionType === "targeted_practice" || actionType === "baseline") return mathAdaptiveTarget(skill);
+    if ((actionType === "targeted_practice" || actionType === "baseline") && !isInternalSkillCode(skill)) return mathAdaptiveTarget(skill);
     if (actionType === "flashcards") return mathFlashcardTarget(skill);
-    if (actionType === "assessment") {
+    if (actionType === "assessment" && !isInternalSkillCode(skill)) {
       const target = mathAdaptiveTarget(skill);
       return { ...target, label:`${skill} targeted assessment` };
     }
@@ -745,22 +800,30 @@ export function exactTargetForAction(subjectId, skill, actionType, options = {})
 
   if (id === "physics") return physicsTarget(skill, actionType);
   if (id === "information-technology") return itTarget(skill, actionType, options.sourceRows || []);
-  if (id === "social-studies") return socialStudiesTarget(skill, actionType);
+  if (id === "social-studies") return socialStudiesTarget(skill, actionType, options.sourceRows);
   if (id === "english-a") return englishATarget(skill, actionType);
-  if (id === "chemistry") return chemistryTarget(skill, actionType);
+  if (id === "chemistry") return chemistryTarget(skill, actionType, options.sourceRows);
 
+  if (id === "integrated-science") {
+    const target = integratedSciencePracticeTarget(skill, actionType);
+    if (target) return target;
+  }
+
+  const lesson = id && genericLessonTarget(id, skill, options.sourceRows || []);
   if (id && actionType === "flashcards") {
     return {
       subjectId:id,
       view:"dashboard",
       path:`/dashboard/flashcards/${encodeURIComponent(id)}`,
-      params:{},
+      params:lesson?.exact ? lesson.params : {},
       special:"dashboard-flashcards",
       kind:"flashcards",
-      label:`${displaySkillLabel(id)} flashcards`,
-      exact:false,
+      label:`${lesson?.exact ? lesson.label : displaySkillLabel(id)} flashcards`,
+      exact:Boolean(lesson?.exact),
     };
   }
+
+  if (lesson) return lesson;
 
   return {
     subjectId:id,
@@ -914,6 +977,13 @@ function wordingForCandidate(subjectId, state, actionType, target) {
     };
   }
 
+  if (target?.kind === "lesson" && !["lesson", "prerequisite_review"].includes(actionType)) {
+    return {
+      title: target.label.endsWith(" study") ? `Open ${target.label}` : `Review ${target.label}`,
+      detail:"Review the lesson and try the activities available in the topic.",
+      expectedMinutes:15,
+    };
+  }
   if (actionType === "baseline") {
     return {
       title:`Try a short practice on ${skill}`,
@@ -971,7 +1041,15 @@ function wordingForCandidate(subjectId, state, actionType, target) {
 }
 
 function makeCandidate(subjectId, state, actionType, options = {}) {
-  const target = exactTargetForAction(subjectId, state.skill, actionType, options);
+  const evidenceTopic = isInternalSkillCode(state.skill) && (options.sourceRows || []).find(row =>
+    lower(row.subject_id) === subjectId && row.topic_id &&
+    [row.metadata?.skill, row.metadata?.objective, row.metadata?.subtopic].some(value => lower(value) === lower(state.skill))
+  )?.topic_id;
+  const target = exactTargetForAction(subjectId, evidenceTopic || state.skill, actionType, options);
+  const skillLabel = isInternalSkillCode(state.skill) || target.kind === "lesson"
+    ? target.label.replace(/\s*\|.*$/, "").replace(/\s+(?:topic practice|practice|checkpoint|flashcards)$/i, "")
+    : state.displaySkill || displaySkillLabel(state.skill);
+  state = { ...state, displaySkill:skillLabel };
   const wording = wordingForCandidate(subjectId, state, actionType, target);
   const recommendationKey = [
     NEXT_BEST_ACTION_VERSION,
@@ -984,6 +1062,7 @@ function makeCandidate(subjectId, state, actionType, options = {}) {
   const candidate = {
     subjectId,
     skill:state.skill,
+    skillLabel,
     actionType,
     targetActivityType:target.kind,
     title:wording.title,
@@ -1296,8 +1375,9 @@ export function recommendationForAudience(recommendation = null, {
   }
 
   const skill = String(
-    recommendation.skill ||
+    recommendation.skillLabel ||
     recommendation.target?.label ||
+    displaySkillLabel(recommendation.skill) ||
     "this area"
   ).trim();
   const firstName = String(learnerName || "").trim().split(/\s+/)[0] || "The student";
@@ -1366,22 +1446,12 @@ export function localRecommendationHistoryRow(intelligence, id = null, when = ne
 
 export function openNextBestActionTarget(recommendation, {
   setView,
-  setDashboardSection,
-  setFlashcardSubjectRoute,
 } = {}) {
   const target = recommendation?.target;
   if (!target) return false;
 
-  if (target.special === "dashboard-flashcards") {
-    setDashboardSection?.("flashcards");
-    setFlashcardSubjectRoute?.(target.subjectId);
-    writeSparkNestedRoute(target.path, target.params || {}, { replace:true });
-    if (typeof window !== "undefined") window.scrollTo?.(0, 0);
-    return true;
-  }
-
-  setView?.(target.view || "study");
-  if (target.path) writeSparkNestedRoute(target.path, target.params || {}, { replace:true });
+  if (setView) setView(target.view || "study", { path:target.path, params:target.params });
+  else if (target.path) writeSparkNestedRoute(target.path, target.params);
   if (typeof window !== "undefined") window.scrollTo?.(0, 0);
   return true;
 }

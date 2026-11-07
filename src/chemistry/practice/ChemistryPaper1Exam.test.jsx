@@ -112,20 +112,41 @@ describe("CSEC Chemistry Paper 1 simulated examination",()=>{
     fireEvent.click(screen.getByRole("button",{name:"Past papers"}));
     await screen.findByRole("button",{name:"Start examination"});
     fireEvent.change(screen.getByRole("combobox",{name:"Choose Chemistry Paper 1 set"}),{target:{value:"2010-MJ"}});
-    expect(await screen.findByText(/timed revision session, not a complete 60-question examination/)).toBeInTheDocument();
+    expect(await screen.findByText(/This timed revision paper contains/)).toBeInTheDocument();
   });
 
-  test("reports an actionable install message when Vite serves HTML instead of JSON",async()=>{
+  test("offers to retry the same paper when the server returns HTML",async()=>{
     global.fetch=jest.fn().mockResolvedValue({ok:true,headers:{get:()=> "text/html"},
       json:async()=>{throw new Error("Unexpected token <")}});
     render(<ChemistryPaper1Exam onBack={()=>{}}/>);
-    await waitFor(()=>expect(screen.getByRole("alert")).toHaveTextContent(/import the reviewed question-bank ZIP/i));
+    await waitFor(()=>expect(screen.getByRole("alert")).toHaveTextContent(/this paper couldn’t load/i));
+    const requestedUrl=global.fetch.mock.calls[0][0];
+    fireEvent.click(screen.getByRole("button",{name:"Try again"}));
+    await waitFor(()=>expect(global.fetch).toHaveBeenLastCalledWith(requestedUrl, expect.anything()));
     expect(screen.queryByRole("button",{name:"Start examination"})).not.toBeInTheDocument();
   });
 
   test("reports a missing bank rather than silently inventing questions",async()=>{
     global.fetch=jest.fn().mockResolvedValue({ok:false});
     render(<ChemistryPaper1Exam onBack={()=>{}}/>);
-    await waitFor(()=>expect(screen.getByRole("alert")).toHaveTextContent(/not installed yet/));
+    await waitFor(()=>expect(screen.getByRole("alert")).toHaveTextContent(/paper unavailable/i));
+  });
+
+  test("restored review papers retain selected answers without publishing a score",async()=>{
+    const response=await global.fetch("practice-01");
+    const paper=await response.json();
+    global.fetch=jest.fn().mockResolvedValue({
+      ...response,json:async()=>({...paper,grading_status:"review-only"}),
+    });
+    const supabase={rpc:jest.fn()};
+    render(<ChemistryPaper1Exam supabase={supabase} userId="chemistry-review-student" onBack={()=>{}}/>);
+    await startExam();
+    fireEvent.click(screen.getByLabelText(/B\. Mg²⁺/));
+    fireEvent.click(screen.getByText("Submit paper"));
+    fireEvent.click(screen.getByRole("button",{name:"Submit examination"}));
+    expect(await screen.findByRole("heading",{name:"Review your answers"})).toBeInTheDocument();
+    expect(screen.getByText(/B\. Mg²⁺/)).toBeInTheDocument();
+    expect(screen.queryByText("Correct answer")).not.toBeInTheDocument();
+    expect(supabase.rpc).not.toHaveBeenCalled();
   });
 });

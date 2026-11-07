@@ -18,7 +18,7 @@ const papersById = new Map([...practicePapers, ...archive].map(paper => [paper.i
 const options = (values, fallback) => ({ decode: raw => values.includes(raw) ? raw : fallback, replace: true });
 
 export default function HistoryPracticeHub({ userId, supabase, onBack }) {
-  const [view, setView] = usePracticeRouteState(HISTORY_ID, "view", "home", options(["home", "library", "exam", "workshop"], "home"));
+  const [view, setView] = usePracticeRouteState(HISTORY_ID, "view", "home", { ...options(["home", "library", "exam", "workshop"], "home"), replace:false });
   const [paperNumber, setPaperNumber] = usePracticeRouteState(HISTORY_ID, "paper", "1", options(["1", "2"], "1"));
   const [library, setLibrary] = usePracticeRouteState(HISTORY_ID, "library", "practice", options(["practice", "historical"], "practice"));
   const [year, setYear] = usePracticeRouteState(HISTORY_ID, "year", "all", { decode: raw => /^\d{4}$/.test(raw) ? raw : "all", replace: true });
