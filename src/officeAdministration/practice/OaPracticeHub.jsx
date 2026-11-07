@@ -1,6 +1,7 @@
 import React,{useEffect,useMemo,useState} from 'react';
 import BackArrowIcon from '../../components/ui/BackArrowIcon';
 import ForwardArrowIcon from '../../components/ui/ForwardArrowIcon';
+import {writeSparkNestedRoute} from '../../routing/sparkRoutingV270';
 import {usePracticeRouteState} from '../../routing/usePracticeRouteState';
 import {recordSubjectActivity} from '../../subjects/subjectProgress';
 import {OA_PAPER1S} from '../data/oaPaper1';
@@ -30,18 +31,42 @@ export default function OaPracticeHub({userId,supabase,onBack}){
  const [tool,setTool]=usePracticeRouteState(SUBJECT,'tool','message',selection(['message','appointments','meeting','filing','stock','payroll','travel','sba'],'message'));const selected=papers.get(sourceId);
  useEffect(()=>{try{window.scrollTo?.({top:0,left:0,behavior:'instant'});}catch{}},[view,paperNumber,library]);
  const list=useMemo(()=>(library==='practice'?originals:historicals).filter(p=>p.paper===Number(paperNumber)).sort((a,b)=>(b.year||0)-(a.year||0)||a.title.localeCompare(b.title)),[library,paperNumber]);
+ const isHistorical=library==='historical';
+ const visiblePapers=list.filter(p=>!isHistorical||year==='all'||String(p.year)===year);
  const years=[...new Set(list.map(p=>p.year).filter(Boolean))].sort((a,b)=>b-a);
  const open=p=>{setSourcePage(1);setSource(p.id);setView(p.questions?.length?'exam':'source');};
  const closePaper=()=>{setView('library');setSource('');};
- if(view==='exam'&&selected?.questions?.length)return <OaExam key={`${userId||'guest'}:${selected.id}`} paper={selected} userId={userId} supabase={supabase} onBack={closePaper}/>;
- if(view==='source'&&selected)return <main className="poa-practice poa-exam oa-practice"><header className="poa-library-header"><h1>{selected.title}</h1><p>Office Administration · Historical paper</p></header><OaSourcePages source={selected} onClose={closePaper}/></main>;
+ const legacyPaper2Source=view==='source'&&selected?.paper===2;
+ useEffect(()=>{
+  if(!legacyPaper2Source)return;
+  writeSparkNestedRoute('/practice/'+SUBJECT,{view:'exam',paper:'2',layout:null,page:null},{preserve:true,replace:true});
+ },[legacyPaper2Source]);
+ if((view==='exam'||legacyPaper2Source)&&selected?.questions?.length)return <OaExam key={`${userId||'guest'}:${selected.id}`} paper={selected} userId={userId} supabase={supabase} onBack={closePaper}/>;
+ if(view==='source'&&selected?.paper===1)return <main className="poa-practice poa-exam oa-practice"><header className="poa-library-header"><h1>{selected.title}</h1><p>Office Administration · Historical paper</p></header><OaSourcePages source={selected} onClose={closePaper}/></main>;
  if(view==='workspace')return <main className="poa-practice poa-practice-shell oa-practice"><button className="poa-back" type="button" onClick={()=>setView('home')}><BackArrowIcon/>Back to Office Administration practice</button><OfficeWorkspace key={userId||'guest'} userId={userId} initialTool={tool} onToolChange={setTool} onActivityComplete={event=>recordSubjectActivity({supabase,activity:{subjectId:SUBJECT,activityKey:event.activityKey,activityType:'lab',title:event.title,completed:true,metadata:{tool:event.metadata?.tool,practice:true}}}).catch(()=>{})}/></main>;
  return <main className="poa-practice poa-practice-shell oa-practice"><button type="button" className="poa-back" onClick={()=>view==='library'?setView('home'):onBack?.()}><BackArrowIcon/>{view==='library'?'Back to practice':'Choose another subject'}</button>
   {view==='home'?<><header className="poa-library-header"><h1>Office Administration practice</h1><p>Prepare for the exam with full practice papers, explore historical questions and build the office skills you will use in real situations.</p></header><div className="poa-paper-choices">{[1,2].map(number=><button key={number} className="poa-paper-choice" type="button" onClick={()=>{setPaperNumber(String(number));setView('library');setYear('all');}}><span className="poa-paper-choice-number">0{number}</span><span className="poa-paper-choice-copy"><strong>Paper {number}</strong><span>{number===1?'Multiple-choice examination':'Structured examination'}</span><small>{number===1?'60 questions · 75 minutes':'6 compulsory questions · 2 hours'}</small></span><ForwardArrowIcon/></button>)}</div><section className="poa-workspace-entry"><div><h2>Build your office skills</h2><p>Practise messages, appointments, documents, filing, stock records and more.</p></div><button className="oa-primary" type="button" onClick={()=>setView('workspace')}>Open office workspace</button></section></>:<>
    <header className="poa-library-header"><h1>Office Administration Paper {paperNumber}</h1><p>{paperNumber==='1'?'Choose a multiple-choice paper and work through all 60 questions.':'Practise office procedures and prepare business documents using the information in each question.'}</p></header>
-   <div className="poa-library-tabs" role="group" aria-label="Choose a paper library"><button type="button" aria-pressed={library==='practice'} onClick={()=>{setLibrary('practice');setYear('all');}}>Practice papers</button><button type="button" aria-pressed={library==='historical'} onClick={()=>{setLibrary('historical');setYear('all');}}>Historical papers</button></div>
-   {library==='historical'&&<label className="oa-library-filter">Year<select value={year} onChange={e=>setYear(e.target.value)}><option value="all">All years</option>{years.map(y=><option key={y} value={String(y)}>{y}</option>)}</select></label>}
-   <div className="oa-library-list">{list.filter(p=>year==='all'||String(p.year)===year).map(p=>{const active=p.questions?.length&&readOaAttempt(oaAttemptKey(userId,p.id),p).phase==='exam';return <section className="poa-library-card" key={p.id}><div><h2>{p.title}</h2><p>{p.source==='specimen'||p.sitting==='SPECIMEN'?'CXC specimen':library==='historical'?'Historical examination':'SPARK practice paper'}{p.durationMinutes?` · ${p.durationMinutes} minutes`:''}{p.totalMarks?` · ${p.totalMarks} marks`:''}</p></div><button type="button" className="oa-primary" onClick={()=>open(p)}>{active?'Resume examination':'Open paper'}</button></section>;})}</div>
+   <div className="oa-library-controls">
+    <div className="poa-library-tabs" role="group" aria-label="Choose a paper library">
+     <button type="button" className={!isHistorical?'active':undefined} aria-pressed={!isHistorical} onClick={()=>{setLibrary('practice');setYear('all');}}>Practice papers</button>
+     <button type="button" className={isHistorical?'active':undefined} aria-pressed={isHistorical} onClick={()=>{setLibrary('historical');setYear('all');}}>Historical papers</button>
+    </div>
+    {isHistorical&&<label className="oa-library-filter">Year<select value={year} onChange={e=>setYear(e.target.value)}><option value="all">All years</option>{year!=='all'&&!years.includes(Number(year))&&<option value={year}>{year}</option>}{years.map(y=><option key={y} value={String(y)}>{y}</option>)}</select></label>}
+   </div>
+   {isHistorical&&<p className="oa-library-count" aria-live="polite">{visiblePapers.length} {visiblePapers.length===1?'paper':'papers'}</p>}
+   <div className={isHistorical?'oa-library-list oa-library-list--historical':'oa-library-list'}>
+    {visiblePapers.map(p=>{
+     const active=p.questions?.length&&readOaAttempt(oaAttemptKey(userId,p.id),p).phase==='exam';
+     const specimen=p.source==='specimen'||p.sitting==='SPECIMEN';
+     const details=[specimen?'CXC specimen':!isHistorical?'SPARK practice paper':null,p.durationMinutes&&p.durationMinutes+' minutes',p.totalMarks&&p.totalMarks+' marks'].filter(Boolean);
+     return <section className="poa-library-card" key={p.id}>
+      <div><h2>{p.title}</h2>{details.length>0&&<p>{details.join(' · ')}</p>}</div>
+      <button type="button" className="oa-primary" onClick={()=>open(p)}>{active?'Resume examination':isHistorical&&p.paper===2?'Open digital paper':'Open paper'}</button>
+     </section>;
+    })}
+    {!visiblePapers.length&&<div className="poa-library-empty"><p>No papers for {year}.</p><button type="button" className="secondary" onClick={()=>setYear('all')}>Show all years</button></div>}
+   </div>
   </>}
  </main>;
 }
