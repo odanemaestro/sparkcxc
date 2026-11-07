@@ -255,7 +255,7 @@ const BASE_SUBJECTS = Object.freeze({
   caribbeanHistory: Object.freeze({
     id:"caribbean-history", name:"CSEC Caribbean History", shortName:"Caribbean History",
     qualification:"CSEC", mark:"CH", description:"Explore Caribbean history through clear lessons, historical sources, timelines and exam practice.",
-    enabled:false, status:"draft", sortOrder:52, implementation:"generic", studyView:"study",
+    enabled:true, status:"live", sortOrder:52, implementation:"generic", studyView:"study",
     routes:Object.freeze({study:"/study/caribbean-history",practice:"/practice/caribbean-history",flashcards:"/dashboard/flashcards/caribbean-history",progress:"/dashboard/progress"}),
     capabilities:Object.freeze({study:true,practice:true,flashcards:true,progress:true,paper1:true,paper2:true,adaptive:false,structured:true,labs:true,sba:true}),
   }),
