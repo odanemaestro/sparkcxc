@@ -39,7 +39,14 @@ export function parseSparkHashValue(hashValue = "") {
   const queryIndex = raw.indexOf("?");
   const path = normalizePath(queryIndex >= 0 ? raw.slice(0, queryIndex) : raw);
   const query = queryIndex >= 0 ? raw.slice(queryIndex + 1) : "";
-  return { path, params: new URLSearchParams(query), routable: true };
+  const params = new URLSearchParams(query);
+  const geographyPaper = path.match(/^\/practice\/geography\/paper-([123])$/);
+  if (geographyPaper) {
+    if (!params.has("view")) params.set("view", "library");
+    if (!params.has("paper")) params.set("paper", geographyPaper[1]);
+    return { path:"/practice/geography", params, routable:true };
+  }
+  return { path, params, routable: true };
 }
 
 export function readSparkHashRoute() {

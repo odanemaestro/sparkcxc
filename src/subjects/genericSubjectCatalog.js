@@ -1,5 +1,6 @@
 import {oaLocalStructure} from "../officeAdministration/data/oaCourse";
 import {historyLocalStructure} from "../caribbeanHistory/data/historyCourse";
+import {geographyLocalStructure} from "../geography/data/geographyCourse";
 import { chemistryLocalStructure } from "../chemistry/data/chemistryCourse";
 import {fnhLocalStructure} from "../fnh/data/fnhCourse";
 import {pobLocalStructure} from "../principlesOfBusiness/data/pobCourse";
@@ -142,6 +143,7 @@ function structureFromRpc(data) {
 
 export async function loadGenericSubjectStructure({ supabase, subjectId } = {}) {
   const id = cleanId(subjectId);
+  if (id === "geography") return {data:geographyLocalStructure(),error:null,source:"local-geography"};
   if (id === "office-administration") return {data:oaLocalStructure(),error:null,source:"local-oa"};
   if (id === "caribbean-history") return {data:historyLocalStructure(),error:null,source:"local-history"};
   if (id === "principles-of-accounts") return {data:poaLocalStructure(),error:null,source:"local-poa"};
