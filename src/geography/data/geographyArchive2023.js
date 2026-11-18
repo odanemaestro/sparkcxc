@@ -1,0 +1,106 @@
+import { figures } from "./geographyArchiveModels";
+
+const id = "2023-mj-p1";
+const monthlyWeather = {
+  caption: "Average monthly rainfall and temperature at a particular location in a Caribbean country",
+  rowHeading: "Month",
+  columns: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+  rows: [
+    ["Temperature (°C)", 24, 24, 26, 26, 26, 27, 28, 28, 27, 26, 26, 26],
+    ["Rainfall (mm)", 103, 93, 88, 128, 201, 167, 117, 245, 200, 260, 169, 87],
+  ],
+};
+
+const sources = {
+  2: "caribbean-region", 3: "caribbean-region", 4: "caribbean-region",
+  8: "intervisibility", 9: "intervisibility", 11: "contour-bearing", 12: "contour-bearing",
+  13: "estate-sketch", 14: "estate-sketch", 15: "contour-landforms", 16: "landscape", 17: "africa-zone",
+  18: "caribbean-weather", 19: "caribbean-weather", 20: "caribbean-weather", 21: "caribbean-weather", 22: "caribbean-weather",
+  24: "earth-section", 29: "limestone-section", 30: "island-density", 31: "island-density",
+  33: "river-profile", 40: "drainage-pattern", 44: "drainage-basin", 45: "drainage-basin",
+  53: "coastal-settlement", 54: "land-use", 55: "land-use", 57: "deforestation", 58: "deforestation",
+};
+
+const items = [
+  ["A scale of 1:20 000 on a map would indicate that", "1 cm on the map represents 20 000 km on the ground", "1 unit on the map represents 20 000 units on the ground", "1 cm on the map represents 20 000 metres on the ground", "the map is 20 000 times larger than the ground it represents"],
+  ["Which island is located at 16° N 61° W?", "Trinidad", "Barbados", "Dominica", "Saint Lucia"],
+  ["Which city is located 1000 km from Santo Domingo?", "San Juan", "Kingston", "Montego Bay", "Port-au-Prince"],
+  ["An aeroplane leaves Port of Spain, Trinidad, for Kingston, Jamaica. In which general direction should it fly?", "Northeast", "Southeast", "Southwest", "Northwest"],
+  ["What is the average annual temperature at this location?", "25.2 °C", "26.2 °C", "27.2 °C", "28.2 °C"],
+  ["The rainfall pattern on the table indicates that", "rainfall occurs throughout the year", "most of the rainfall occurs at the beginning of the year", "there are small amounts of rainfall throughout the year", "there is little variation in the rainfall from month to month"],
+  ["The type of climate experienced at this location may be described as", "tropical continental", "tropical marine", "equatorial", "savannah"],
+  ["Which of the following pairs of points is intervisible?", "Q and T", "Q and S", "P and S", "P and T"],
+  ["Between which of the following pairs of points is the gradient STEEPEST?", "P and Q", "R and S", "Q and R", "S and T"],
+  ["Which of the following phrases refers to ‘northings’?", "Horizontal lines that decrease in value northwards", "Horizontal lines that increase in value northwards", "Vertical lines that decrease in value northwards", "Vertical lines that increase in value northwards"],
+  ["The bearing of X from W is approximately", "045°", "135°", "225°", "315°"],
+  ["The vertical interval is", "20 m", "40 m", "60 m", "80 m"],
+  ["Which of the following types of settlements will MOST likely develop between Y and Z?", "Linear", "Isolated", "Dispersed", "Nucleated"],
+  ["What type of farming system is MOST likely to exist at X?", "Poultry rearing", "Shifting cultivation", "Subsistence farming", "Commercial arable farming"],
+  ["The landforms shown at X and Y, respectively, are a", "coastal plain and round-topped hill", "ridge and round-topped hill", "coastal plain and plateau", "plateau and ridge"],
+  ["The landform shown is MOST likely a", "cave", "doline", "cockpit", "crater lake"],
+  ["The shaded area on the map above is BEST described as the", "Tropics", "Arctic Zone", "Mediterranean", "Temperature Zone"],
+  ["The weather system shown in the diagram is", "a hurricane", "a cold front", "a tropical wave", "the Intertropical Convergence Zone (ITCZ)"],
+  ["The line labelled Y represents", "an isobar", "a cold front", "a warm front", "a tropical wave"],
+  ["The station model behind the line X shows the wind blowing at a speed of", "10 knots", "15 knots", "20 knots", "25 knots"],
+  ["The rainfall depicted by the station model behind the line X can BEST be described as", "drizzle", "light rainfall", "heavy rainfall", "intermittent showers"],
+  ["The cloud cover shown on the station model behind the line X can BEST be described as", "low and totally overcast", "low and partly cloudy", "high and clear", "low and clear"],
+  ["Which of the following can be defined as “a sheet of solidified magma along a bedding plane”?", "Sill", "Plug", "Dyke", "Batholith"],
+  ["The section which starts at 2900 km from the surface is called the", "core", "sima", "crust", "mantle"],
+  ["Which of the following processes causes the formation of an igneous rock?", "Changing of rocks", "Cooling of magma", "Hardening of rocks", "Compacting of sediments"],
+  ["Which of the following acids increases the rate of chemical weathering in karst landscapes?", "Nitric", "Sulfuric", "Carbonic", "Hydrochloric"],
+  ["Which of the following statements correctly describes the relationship between weather and climate?", "Climate refers to the conditions of the atmosphere whereas weather mainly refers to the seasons.", "Weather refers to cloud cover and winds only while climate refers to temperature and rainfall only.", "Climate is a changeable, everyday occurrence while weather refers to changes in the atmosphere over a longer time.", "Weather is the day-to-day changes in the atmosphere while climate is the average condition of the atmosphere over many years."],
+  ["Limestone is a type of", "metamorphic rock", "sedimentary rock", "igneous rock", "marlstone"],
+  ["What type of limestone landform is labelled Y in the diagram above?", "Pillar", "Stalactite", "Stalagmite", "Swallow hole"],
+  ["Which of the following statements is generally true of the population of Island P?", "It is evenly distributed.", "The area of highest density is in the south.", "The density decreases outward from Area I.", "The density increases outward from Area I."],
+  ["Which of the following areas has the SMALLEST population?", "I", "II", "III", "IV"],
+  ["Which of the following statements explains how vegetation contributes to the development of soils?", "Decaying vegetation produces a habitat for earthworms.", "Vegetation decomposes to produce the organic matter in soil.", "Roots, twigs and leaves are washed downwards to increase the depth of soil.", "Vegetation provides the parent material which helps in the formation of soil structure."],
+  ["Which of the following processes is dominant in the first stage of the river?", "Erosion", "Deflation", "Deposition", "Transportation"],
+  ["Vertical erosion in the upper course of a river can lead to", "potholes", "meanders", "river cliffs", "flood plains"],
+  ["To which sector of the economy do activities such as brewing and bottling, construction and shipbuilding belong?", "Primary", "Tertiary", "Quaternary", "Secondary"],
+  ["Which of the following conditions would MOST likely result from increased use of tropical rainforests for agricultural purposes?", "Increased height of trees", "Greater variety of plants", "Greater rates of erosion of the topsoil", "Increased amounts of nutrients added to the soil"],
+  ["Which of the following conditions is needed for the growth of coral?", "Fresh water", "Deep ocean water", "Warm ocean water", "Cloudy (turbid) water"],
+  ["As one climbs a mountain, the surrounding temperature", "decreases", "increases", "fluctuates", "remains constant"],
+  ["Which of the following actions can be used to reduce the emission of greenhouse gases?", "Reduction in the use of energy efficient technology", "Increased use of chlorofluorocarbons (CFCs)", "Increased large-scale cattle farming", "Increased use of solar power"],
+  ["Which of the following drainage patterns is illustrated in the diagram?", "Radial", "Trellis", "Parallel", "Dendritic"],
+  ["Which of the following features is an example of intrusive volcanicity?", "Crater", "Caldera", "Laccolith", "Lava plateau"],
+  ["Fold mountains form where crustal plates move", "up and down", "towards each other", "parallel to each other", "away from each other"],
+  ["The type of soil related to the equatorial climate is called", "latosol", "alluvium", "terra rossa", "chernozem"],
+  ["What do the dotted lines in the diagram represent?", "A plateau", "The hilltop", "The watershed", "The drainage basin"],
+  ["Which of the following terms describes the drainage pattern of the area?", "Trellis", "Radial", "Parallel", "Dendritic"],
+  ["Which of the following situations contributes MOST to pollution of the environment in capital cities of CARICOM countries?", "Discharge of chemicals into the sea", "Discharge of fish waste into the sea", "Exhaust fumes from motor vehicles", "Accumulation of garbage from factories"],
+  ["Which of the following events pose(s) the MOST serious threat to the rivers of the Caribbean?", "Quarrying", "Tourist activities", "Improper fishing", "Dumping of waste"],
+  ["At a transform plate margin, crustal plates", "are being pulled apart", "are sliding past each other", "are colliding with each other", "are being reabsorbed into the mantle"],
+  ["Which of the following resources is MOST important when considering the location of lumber industries?", "Access to power", "Access to labour", "Proximity to ports", "Proximity to raw materials"],
+  ["Which of the following types of farming is capital intensive and uses high-yielding varieties of seeds to cultivate crops?", "Commercial arable farming", "Subsistence farming", "Market gardening", "Mixed farming"],
+  ["Which of the following factors would be MOST effective in slowing down the rate of population growth in the Caribbean?", "Low death rate", "Low emigration rate", "High life expectancy", "Low total fertility rate"],
+  ["Which of the following benefits would MOST likely be gained by Caribbean countries which diversify their economies through industrialization?", "Protection from economic losses", "Greater purchasing power of population", "Less dependence on a single economic activity", "Increased trade with North and Latin American countries"],
+  ["Which of the following areas on the map would early settlers MOST likely have chosen to build a town?", "W", "X", "Y", "Z"],
+  ["Which of the following areas would be a typical location for commercial arable farming (plantation agriculture) in the Caribbean?", "I", "II", "III", "IV"],
+  ["The BEST area to locate a new factory in order to minimize the effects of air pollution is", "I", "II", "III", "IV"],
+  ["Which of the following features indicates an UNHEALTHY coral reef?", "Brightly coloured coral", "Large number of parrot fish", "Large variety of species of coral", "Extensive area of bright white coral"],
+  ["Which of the following consequences BEST represent(s) X?", "Flooding", "Landslides", "Reduced rainfall", "Decreased canopy"],
+  ["What other consequence can result from tropical deforestation?", "Lumbering", "Loss of flora", "Increase in fauna", "Increase in underground water"],
+  ["Which of the following would NOT be considered a cause of coastal pollution in the Caribbean?", "Oil mining", "Agricultural runoff", "Oil spills from ocean-going vessels", "Poisonous fumes from industrial plants"],
+  ["The bauxite industry in the Caribbean has declined MAINLY because", "the environmental cost has become extremely high", "there is a shortage of skilled labour to work in the industry", "the quality of the region’s bauxite has become substandard", "the demand for bauxite has fallen on the international market"],
+];
+
+export default {
+  id: `geo-${id}`,
+  paper: 1,
+  year: 2023,
+  duration: 75,
+  totalMarks: 60,
+  title: "May/June 2023 · Paper 1",
+  questions: items.map(([prompt, ...options], index) => {
+    const number = index + 1;
+    const source = sources[number];
+    return {
+      id: `geo-${id}-q${number}`,
+      number,
+      prompt,
+      options,
+      ...(source ? { figures: figures(id, source) } : {}),
+      ...(number >= 5 && number <= 7 ? { table: monthlyWeather } : {}),
+    };
+  }),
+};

@@ -18,6 +18,7 @@ import {
   SOCIAL_STUDIES_LESSONS,
 } from "../socialStudies/data/socialStudiesCourse";
 import { CHEMISTRY_TOPICS } from "../chemistry/data/chemistryCourse";
+import { GEOGRAPHY_TOPICS } from "../geography/data/geographyCourse";
 import { recommendedDeckIdsForSkills } from "./flashcards";
 import { writeSparkNestedRoute } from "../routing/sparkRoutingV270";
 import { displaySkillLabel, studentRecommendationReasons } from "./learnerIntelligenceV2";
@@ -722,6 +723,28 @@ function chemistryTarget(skill, actionType) {
   };
 }
 
+function geographyTarget(skill, actionType, sourceRows) {
+  if (actionType === "assessment" || actionType === "flashcards" || actionType === "sba_review") {
+    const targets = {
+      assessment:{view:"practice-geography",path:"/practice/geography",params:{view:"library",paper:"2"},kind:"exam",label:"Geography Paper 2",exact:true},
+      flashcards:{view:"dashboard",path:"/dashboard/flashcards/geography",params:{},special:"dashboard-flashcards",kind:"flashcards",label:"Geography flashcards",exact:false},
+      sba_review:{view:"practice-geography",path:"/practice/geography",params:{view:"workshop",tool:"fieldwork"},kind:"sba_review",label:"Fieldwork planner",exact:true},
+    };
+    return {subjectId:"geography", ...targets[actionType]};
+  }
+  const completed = new Set(sourceRows.filter(row => row.subject_id === "geography" && row.activity_type === "lesson" && row.completed)
+    .map(row => row.topic_id || row.activity_key?.replace(/^lesson:/, "")));
+  const next = GEOGRAPHY_TOPICS.findIndex(topic => !completed.has(topic.id));
+  const matching = GEOGRAPHY_TOPICS.findIndex(topic => [topic.id,topic.title].some(value => lower(value) === lower(skill)));
+  const unlocked = matching >= 0 && (next < 0 || matching <= next || completed.has(GEOGRAPHY_TOPICS[matching].id));
+  const topic = GEOGRAPHY_TOPICS[unlocked ? matching : Math.max(0,next)];
+  return {
+    subjectId:"geography",view:"generic-study",path:"/study/geography",
+    params:{section:topic.sectionId,topic:topic.id},kind:"lesson",label:topic.title,exact:unlocked,
+    outcomeScope:{sectionId:topic.sectionId,topicId:topic.id},
+  };
+}
+
 export function exactTargetForAction(subjectId, skill, actionType, options = {}) {
   const id = lower(subjectId);
 
@@ -748,6 +771,7 @@ export function exactTargetForAction(subjectId, skill, actionType, options = {})
   if (id === "social-studies") return socialStudiesTarget(skill, actionType);
   if (id === "english-a") return englishATarget(skill, actionType);
   if (id === "chemistry") return chemistryTarget(skill, actionType);
+  if (id === "geography") return geographyTarget(skill, actionType, options.sourceRows || []);
 
   if (id && actionType === "flashcards") {
     return {
@@ -972,7 +996,11 @@ function wordingForCandidate(subjectId, state, actionType, target) {
 
 function makeCandidate(subjectId, state, actionType, options = {}) {
   const target = exactTargetForAction(subjectId, state.skill, actionType, options);
-  const wording = wordingForCandidate(subjectId, state, actionType, target);
+  const wording = subjectId === "geography" && target.kind === "lesson"
+    ? {title:`Review ${target.label}`,detail:"Read the explanation and try the worked example and quick check.",expectedMinutes:15}
+    : subjectId === "geography" && target.kind === "exam"
+      ? {title:"Try Geography Paper 2",detail:"Practise map reading and structured questions on natural and human systems.",expectedMinutes:150}
+      : wordingForCandidate(subjectId, subjectId === "geography" ? {...state,displaySkill:"Geography"} : state, actionType, target);
   const recommendationKey = [
     NEXT_BEST_ACTION_VERSION,
     subjectId,

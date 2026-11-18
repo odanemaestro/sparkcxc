@@ -29,8 +29,8 @@ describe("About SPARK multi-subject update", () => {
     const {runtimeSubjectCatalog} = require("./subjects/subjectCatalog");
     const base = getSparkSubjectRegistry({physicsEnabled:true});
     expect(base.find(subject=>subject.id==="office-administration")).toMatchObject({enabled:true,status:"live"});
-    // Simulate a catalogue before Office Administration's release, with Caribbean History in draft.
-    const productionRows = base.filter(subject=>!["office-administration", "caribbean-history"].includes(subject.id)).map(subject => ({
+    // Keep this catalogue fixture at the point before Office Administration's release.
+    const productionRows = base.filter(subject=>!["office-administration", "caribbean-history", "geography"].includes(subject.id)).map(subject => ({
       id: subject.id, name: subject.name, short_name: subject.shortName,
       enabled: true, status: "live", sort_order: subject.sortOrder,
       capabilities: subject.capabilities,
@@ -43,6 +43,7 @@ describe("About SPARK multi-subject update", () => {
     ]));
     expect(live.map(subject=>subject.id)).not.toContain("office-administration");
     expect(live.map(subject=>subject.id)).not.toContain("caribbean-history");
+    expect(live.map(subject=>subject.id)).not.toContain("geography");
     const office=base.find(subject=>subject.id==="office-administration");
     const afterOfficePublish=runtimeSubjectCatalog(base,[...productionRows,{
       id:office.id,name:office.name,short_name:office.shortName,enabled:true,status:"live",

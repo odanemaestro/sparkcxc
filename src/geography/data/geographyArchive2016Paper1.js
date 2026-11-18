@@ -1,0 +1,118 @@
+import { archivedMultipleChoice } from "./geographyArchiveModels";
+
+const id = "2016-mj-p1";
+const sources = {
+  1: "caribbean-map", 2: "caribbean-map", 3: "caribbean-map", 4: "caribbean-map", 5: "caribbean-map",
+  8: "railway-map", 9: "railway-map", 10: "railway-map", 11: "estate-sketch", 12: "estate-sketch",
+  13: "contour-bearing", 14: "contour-bearing", 15: "contour-bearing", 16: "contour-bearing",
+  22: "island-population", 23: "island-population", 26: "plate-margin", 27: "plate-margin",
+  37: "exports", 38: "exports", 39: "coastal-area", 53: "pollution",
+};
+const weather = {
+  caption: "Average rainfall and temperature figures for a certain location",
+  rowHeading: "Month",
+  columns: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+  rows: [
+    ["Temp (°C)", 26, 26, 26, 27, 28, 27, 25, 25, 25, 26, 26, 27],
+    ["Rainfall (mm)", 155, 160, 225, 275, 210, 125, 100, 150, 180, 260, 250, 210],
+  ],
+};
+const population = {
+  caption: "Population data for four Caribbean countries in 2000",
+  rowHeading: "Country",
+  columns: ["Population density (per km²)", "Area (km²)", "Population"],
+  rows: [
+    ["Barbados", "", "432", "268 792"],
+    ["Guyana", "3.5", "21 500", "751 223"],
+    ["Jamaica", "237.3", "10 990", "2 607 632"],
+    ["Trinidad and Tobago", "246.2", "5 128", "1 262 366"],
+  ],
+};
+const aluminium = {
+  caption: "World production of aluminium (million tonnes) in selected countries for 2003",
+  rowHeading: "Country",
+  columns: ["Aluminium production (million tonnes)", "Country", "Aluminium production (million tonnes)"],
+  rows: [
+    ["Australia", "1.8", "Mozambique", "0.4"],
+    ["Argentina", "0.3", "Norway", "1.2"],
+    ["Brazil", "1.4", "Spain", "0.4"],
+    ["Canada", "2.8", "Russia", "3.5"],
+    ["China", "5.4", "UK", "0.4"],
+    ["France", "0.5", "USA", "2.7"],
+    ["West Germany", "0.8", "Venezuela", "0.6"],
+    ["Italy", "0.2", "", ""],
+    ["World Total", "27.7", "", ""],
+  ],
+};
+const tables = {
+  17: weather, 18: weather, 19: weather,
+  20: population, 21: population,
+  24: aluminium, 25: aluminium,
+};
+const reviewNotes = {
+  20: "The table gives 268,792 ÷ 432, or about 622 people per square kilometre. The printed choices omit that result.",
+};
+const items = [
+  ["Which island is located at 14° N 61° W?", "Trinidad", "Barbados", "Saint Lucia", "Saint Vincent"],
+  ["Havana is located at", "28° N 82° E", "28° N 88° W", "23° N 88° E", "23° N 82° W"],
+  ["Which city is located 1000 km from Santo Domingo?", "San Juan", "Kingston", "Montego Bay", "Port-au-Prince"],
+  ["An aeroplane leaves Port of Spain, Trinidad, for Kingston, Jamaica. In which general direction should it fly?", "Northeast", "Northwest", "Southeast", "Southwest"],
+  ["If the time in Santo Domingo is 3.00 p.m., what is the time in Belmopan?", "2.00 a.m.", "2.00 p.m.", "4.00 a.m.", "4.00 p.m."],
+  ["The horizontal distance between two points on a slope is 400 m and the difference in height is 80 m.\n\nWhat is the gradient of the slope?", "1 in 5", "1 in 8", "1 in 10", "1 in 20"],
+  ["Which of the following statements about lines of latitude is true?", "They meet at the poles.", "They are all great circles.", "They represent angular distance from the Prime Meridian.", "They represent angular distance north and south of the Equator."],
+  ["The feature labelled S is situated in grid square", "2728", "2793", "9327", "9394"],
+  ["What is the form of the settlement in which the church is located?", "Linear", "Isolated", "Dispersed", "Nucleated"],
+  ["The feature passing through Q is a", "road", "river", "canal", "railway"],
+  ["Which of the following types of settlement will MOST likely develop between Y and Z?", "Linear", "Isolated", "Dispersed", "Nucleated"],
+  ["The type of farming system which is MOST likely to exist at A is", "poultry rearing", "shifting cultivation", "subsistence farming", "large-scale commercial"],
+  ["The grid reference of Point X is", "345410", "345415", "410345", "415345"],
+  ["The bearing of X from W is approximately", "045°", "135°", "225°", "315°"],
+  ["The vertical interval is", "20 m", "40 m", "60 m", "80 m"],
+  ["The shaded landform shown at Y is a", "hill", "ridge", "valley", "spur"],
+  ["The annual temperature range is", "2 °C", "3 °C", "25 °C", "28 °C"],
+  ["The rainfall pattern indicates", "rain throughout the year", "rain only in the cooler season", "rain only in the warmer season", "little variation in the rainfall from one month to the next"],
+  ["The climatic type indicated is described as", "savanna", "equatorial", "tropical marine", "tropical continental"],
+  ["Based on the data in the table, how many persons per square kilometre did Barbados have?", "100", "166", "1 678", "2 788"],
+  ["Based on the data in the table, which of the following statements about the country with the LOWEST population density is true?", "It has the largest area.", "It has the smallest area.", "It has the largest population.", "It has the smallest population."],
+  ["Which part of the island (I, II, III or IV) has the SMALLEST population?", "I", "II", "III", "IV"],
+  ["The map shows population", "change", "density", "movement", "distribution"],
+  ["Which country produced just over one-tenth of the aluminium in the world in 2003?", "USA", "Russia", "Canada", "Argentina"],
+  ["The number of tonnes of aluminium produced by Norway was", "1 200", "12 000", "120 000", "1 200 000"],
+  ["Which of the following plate margins is shown?", "Divergent", "Transform", "Convergent", "Conservative"],
+  ["The features shown at R are", "volcanoes", "fold mountains", "block mountains", "lava plateaux"],
+  ["A volcanic spine can develop when", "the lava is viscous", "a caldera is present", "the explosion is violent", "ash and cinder are ejected"],
+  ["Potholes will tend to form on the bed of a river if the river has a", "low volume and flows over a steep gradient", "low volume and flows over a gentle gradient", "high volume and flows over a steep gradient", "high volume and flows over a gentle gradient"],
+  ["Which of the following statements explains how vegetation contributes to the development of soils?", "Decaying vegetation produces a habitat for earthworms.", "Vegetation decomposes to produce the organic matter in the soil.", "Roots, twigs and leaves are washed downwards to increase the depth of soil.", "Vegetation provides the parent material which helps in the formation of soil structure."],
+  ["Which of the following statements may explain why some areas in Caribbean territories are sparsely settled?\nI. They are hilly and forested.\nII. They have no mineral resources.\nIII. Transport links are generally poor.", "I and II only", "I and III only", "II and III only", "I, II and III"],
+  ["Which of the following factors is the MOST important contributor to the growth of cities in the Caribbean?", "Rural–urban migration", "Urban–rural migration", "International migration", "Changes in the urban boundaries"],
+  ["Which of the following conditions is a problem in urban areas of the Caribbean?", "Shortage of labour", "Inadequate housing", "Absence of paved roads", "Inadequate shopping facilities"],
+  ["Which of the following conditions is NOT a problem affecting industrial development in the Caribbean?", "Size of the market", "Availability of capital", "Size of the labour force", "Quantity of raw materials"],
+  ["Which of the following factors may increase the rate of soil erosion?\nI. Afforestation\nII. Very intense rainfall\nIII. Poor cultivation techniques", "I only", "I and III only", "II and III only", "I, II and III"],
+  ["Which of the following features is MOST typical of wheat farming as practised in the prairies of Canada?", "Small acreage", "Multi-crop system", "Large labour force", "Intensive mechanization"],
+  ["For which of the following territories was the value of manufactured products exported GREATER than 75% of the total exports?", "Barbados", "Guyana", "Jamaica", "Trinidad and Tobago"],
+  ["In which of the following territories was there the GREATEST difference in value between primary and manufactured products?", "Barbados", "Guyana", "Jamaica", "Trinidad and Tobago"],
+  ["The feature X is MOST likely the result of\nI. longshore drift\nII. wave deposition\nIII. wave erosion", "I and II only", "I and III only", "II and III only", "I, II and III"],
+  ["Which of the following factors causes temperatures to be high in the Caribbean?", "Rainfall", "Altitude", "Latitude", "Wind direction"],
+  ["Which of the following industries is classified as tertiary?", "Fishing", "Tourism", "Oil refining", "Food processing"],
+  ["Which of the following situations have resulted from the setting up of secondary industries in the Caribbean?\nI. Increased external markets\nII. Reduction in the cost of living\nIII. Increased employment opportunities", "I and II only", "I and III only", "II and III only", "I, II and III"],
+  ["Which of the following measures do governments use to influence the location of industries?", "Providing tax incentives to industries", "Offering training programmes to employees", "Establishing green zones for industrial development", "Requiring industrial development certificates"],
+  ["A coral reef which is separated from the mainland by a wide lagoon is known as", "an atoll", "a patch reef", "a barrier reef", "a fringing reef"],
+  ["Which of the following conditions are needed for the growth of coral?", "Cloudy (turbid) water", "Warm water temperatures", "Fresh (low salinity) water", "Very gentle wave action"],
+  ["Which of the following plates is/are being pushed under the margin of the Caribbean plate?\nI. Cocos\nII. Nazca\nIII. South American", "I only", "I and III only", "II and III only", "I, II and III"],
+  ["At a transform plate margin, crustal plates are", "being pulled apart", "sliding past each other", "colliding with each other", "being reabsorbed into the mantle"],
+  ["With what type of plate margin are the volcanoes of the Caribbean associated?", "Convergent", "Divergent", "Transform", "Constructive"],
+  ["Which of the following features is characteristic of volcanoes in the Eastern Caribbean?", "Fluid lava", "Explosive eruption", "Minimal dispersion of ash", "Low toxic gas emission"],
+  ["The cultivation of crops that uses extensive practices and has high yields per worker is called", "mixed farming", "market gardening", "subsistence farming", "commercial arable farming"],
+  ["The type of soil related to the equatorial climate is called", "alluvium", "latasol", "chernozem", "terra rosa"],
+  ["Which of the following resources is MOST important when considering the location of primary industries?", "Power", "Labour", "Transportation", "Raw materials"],
+  ["What type of pollution is common to activities involving the items illustrated in the diagram?", "Air", "Noise", "Land", "Industrial"],
+  ["Which of the following practices may help to reduce problems of pollution created by household waste?", "Depositing in the sea", "Piling up in secluded spots", "Dumping along water courses", "Burying and covering with soil"],
+  ["Which of the following situations contributes MOST to pollution of the environment of capital cities in CARICOM?", "Discharge of chemicals into the sea", "Discharge of fish waste into the sea", "Exhaust fumes from motor vehicles", "Accumulation of garbage from factories"],
+  ["Which of the following events poses the MOST serious threat to the rivers of the Caribbean?", "Tourist activities", "Mixed cropping", "Deforestation and erosion", "Improper fishing in them"],
+  ["Which of the following substances is NOT expected to pollute the underground water supply?", "Mulch", "Gasoline", "Pesticides", "Fertilizers"],
+  ["Which of the following sources of energy is LEAST likely to harm the environment?", "Oil", "Nuclear", "Solar", "Natural gas"],
+  ["Which of the following sequences USUALLY occurs where soil erosion is a problem?", "Increased runoff → decreased infiltration → deforestation → soil erosion", "Deforestation → decreased infiltration → increased runoff → soil erosion", "Deforestation → increased infiltration → increased runoff → soil erosion", "Increased runoff → deforestation → decreased infiltration → soil erosion"],
+  ["Which combination of factors would MOST likely result in flooding?\nI. Soil conservation methods in use\nII. Deforestation\nIII. Dumping of garbage in rivers", "I and II only", "I and III only", "II and III only", "I, II and III"],
+];
+
+export default archivedMultipleChoice(id, 2016, items, { sources, tables, reviewNotes });

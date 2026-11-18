@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 670 570" role="img" aria-labelledby="title description">
+  <title id="title">Bayview map exercise</title>
+  <desc id="description">Fictional kilometre grid from easting 31 to 36 and northing 42 to 47. A north–south river meets the sea at the bottom of the map. A diagonal road links the school, bridge and clinic. Hills rise on the eastern side.</desc>
+  <rect width="670" height="570" fill="#fff"/>
+  <text x="55" y="37" fill="#19374b" font-family="sans-serif" font-weight="bold" font-size="22">Bayview</text>
+  <text x="157" y="36" fill="#40556a" font-family="sans-serif" font-size="14">Practice map · each grid square is 1 km by 1 km</text>
+  <rect x="55" y="65" width="425" height="425" fill="#f6f4de" stroke="#2a4659"/>
+  <path d="M55 456 Q150 436 260 462 T480 454 V490 H55 Z" fill="#d4ecf7" stroke="#2c6a89" stroke-width="2"/>
+  <path d="M290 456 Q290 415 259 376 T265 319 Q289 296 268 277 T245 222 Q230 186 249 150 T249 65" fill="none" stroke="#2c6a89" stroke-width="4"/>
+  <path d="M55 65V490 M140 65V490 M225 65V490 M310 65V490 M395 65V490 M480 65V490 M55 65H480 M55 150H480 M55 235H480 M55 320H480 M55 405H480 M55 490H480" fill="none" stroke="#95a4ae" stroke-width="1"/>
+  <g fill="none" stroke="#976e47" stroke-width="1.6">
+    <path d="M347 65 C314 134 329 168 307 204 S304 263 337 295 C383 342 436 315 480 281"/>
+    <path d="M372 65 C350 124 365 156 344 194 S342 243 365 260 C403 285 448 277 480 250"/>
+    <path d="M400 65 C385 121 399 148 380 186 S386 232 408 233 C445 239 465 230 480 218"/>
+    <path d="M427 65 C419 126 432 145 418 173 S430 205 449 202 C467 200 476 191 480 184"/>
+  </g>
+  <g font-family="sans-serif" font-size="12" fill="#6d4423">
+    <text x="315" y="270">50</text><text x="351" y="231">100</text><text x="385" y="193">150</text><text x="423" y="171">200</text>
+  </g>
+  <path d="M122 424 L182.5 362.5 L267.5 277.5 L352.5 192.5 L434 126" fill="none" stroke="#61312e" stroke-width="5"/>
+  <path d="M122 424 L182.5 362.5 L267.5 277.5 L352.5 192.5 L434 126" fill="none" stroke="#f9ba8c" stroke-width="2"/>
+  <rect x="178" y="358" width="9" height="9" fill="#222"/>
+  <rect x="347.5" y="187.5" width="10" height="10" fill="#fff" stroke="#222"/>
+  <path d="M349 192.5h7 M352.5 189v7" stroke="#222" stroke-width="2"/>
+  <circle cx="267.5" cy="277.5" r="5" fill="#fff" stroke="#222" stroke-width="2"/>
+  <path d="M444 129l5-9 5 9z" fill="#222"/>
+  <g font-family="sans-serif" font-size="13" fill="#19374b" paint-order="stroke" stroke="#fff" stroke-width="2">
+    <text x="119" y="355">School</text><text x="281" y="282">Bridge</text><text x="362" y="201">Clinic</text><text x="422" y="115">240 m</text>
+    <text x="81" y="182">Pasture</text><text x="82" y="302">Bayview village</text><text x="175" y="478">Bayview Bay</text>
+  </g>
+  <g font-family="sans-serif" font-size="12" fill="#19374b" text-anchor="middle">
+    <text x="55" y="510">31</text><text x="140" y="510">32</text><text x="225" y="510">33</text><text x="310" y="510">34</text><text x="395" y="510">35</text><text x="480" y="510">36</text>
+    <text x="40" y="494">42</text><text x="40" y="409">43</text><text x="40" y="324">44</text><text x="40" y="239">45</text><text x="40" y="154">46</text><text x="40" y="69">47</text>
+  </g>
+  <path d="M550 122V78m-6 11 6-11 6 11" fill="none" stroke="#19374b" stroke-width="2"/>
+  <g font-family="sans-serif" font-size="14" fill="#19374b">
+    <text x="544" y="69">N</text><text x="509" y="159" font-weight="bold">Key</text>
+    <text x="533" y="184">River</text><text x="533" y="211">Road</text><text x="533" y="238">Contour (m)</text>
+    <text x="533" y="265">School</text><text x="533" y="292">Clinic</text><text x="533" y="319">Bridge</text><text x="533" y="346">Spot height</text>
+  </g>
+  <path d="M508 179h18" stroke="#2c6a89" stroke-width="3"/>
+  <path d="M508 206h18" stroke="#61312e" stroke-width="4"/>
+  <path d="M508 233h18" stroke="#976e47" stroke-width="2"/>
+  <rect x="512" y="255" width="9" height="9" fill="#222"/>
+  <rect x="512" y="282" width="9" height="9" fill="#fff" stroke="#222"/>
+  <path d="M513 286.5h7m-3.5-3.5v7" stroke="#222"/>
+  <circle cx="517" cy="313" r="5" fill="#fff" stroke="#222"/>
+  <path d="M512 345l5-9 5 9z" fill="#222"/>
+  <path d="M55 535h85m-85-5v10m85-10v10" stroke="#19374b" stroke-width="2"/>
+  <text x="63" y="555" fill="#19374b" font-family="sans-serif" font-size="12">0 to 1 km</text>
+</svg>

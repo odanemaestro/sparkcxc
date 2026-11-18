@@ -1,0 +1,4423 @@
+{
+  "2025-mj-p1": {
+    "eastern-caribbean": {
+      "src": "geography/archive/2025-mj-p1/eastern-caribbean.webp",
+      "alt": "Map of islands of the eastern Caribbean, with latitude and longitude, scale bar and the island labelled X.",
+      "wide": true,
+      "width": 1106,
+      "height": 1640,
+      "sourcePage": 2,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "island-contours": {
+      "src": "geography/archive/2025-mj-p1/island-contours.webp",
+      "alt": "Topographic extract with contours, grid, legend and scale. Grid square A is labelled.",
+      "wide": true,
+      "width": 1170,
+      "height": 1087,
+      "sourcePage": 5,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "slope": {
+      "src": "geography/archive/2025-mj-p1/slope.webp",
+      "alt": "Sketch map with contours in metres, labelled points X, Y, A and B, and a kilometre scale bar.",
+      "wide": false,
+      "width": 1330,
+      "height": 637,
+      "sourcePage": 7,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "landforms": {
+      "src": "geography/archive/2025-mj-p1/landforms.webp",
+      "alt": "Contour map with the features labelled X and Y and the sea indicated.",
+      "wide": false,
+      "width": 948,
+      "height": 402,
+      "sourcePage": 8,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "landscape": {
+      "src": "geography/archive/2025-mj-p1/landscape.webp",
+      "alt": "Landscape photograph provided for Item 16.",
+      "wide": false,
+      "width": 1201,
+      "height": 589,
+      "sourcePage": 9,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "farm-land": {
+      "src": "geography/archive/2025-mj-p1/farm-land.webp",
+      "alt": "Pie chart showing how the farmer allocates land to crops and livestock.",
+      "wide": false,
+      "width": 652,
+      "height": 492,
+      "sourcePage": 11,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "weather-system": {
+      "src": "geography/archive/2025-mj-p1/weather-system.webp",
+      "alt": "Weather map of the northern Caribbean and the location labelled X.",
+      "wide": false,
+      "width": 961,
+      "height": 490,
+      "sourcePage": 12,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "earthquake": {
+      "src": "geography/archive/2025-mj-p1/earthquake.webp",
+      "alt": "Block diagram of an earthquake and the points W, X, Y and Z.",
+      "wide": false,
+      "width": 838,
+      "height": 465,
+      "sourcePage": 13,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "plate-margins": {
+      "src": "geography/archive/2025-mj-p1/plate-margins.webp",
+      "alt": "Block diagram of a plate margin showing movement arrows and the label R.",
+      "wide": false,
+      "width": 673,
+      "height": 396,
+      "sourcePage": 14,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "highland": {
+      "src": "geography/archive/2025-mj-p1/highland.webp",
+      "alt": "Cross-section of air rising over a highland, with a vertical scale in metres.",
+      "wide": false,
+      "width": 782,
+      "height": 418,
+      "sourcePage": 15,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "coastline": {
+      "src": "geography/archive/2025-mj-p1/coastline.webp",
+      "alt": "Diagram of a coastline with a feature labelled X.",
+      "wide": false,
+      "width": 626,
+      "height": 423,
+      "sourcePage": 15,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "oxbow": {
+      "src": "geography/archive/2025-mj-p1/oxbow.webp",
+      "alt": "Four diagrams of river bends and a cut-off channel, labelled I to IV.",
+      "wide": false,
+      "width": 1144,
+      "height": 309,
+      "sourcePage": 16,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "river-profile": {
+      "src": "geography/archive/2025-mj-p1/river-profile.webp",
+      "alt": "Long profile of a river divided into first, second and third stages.",
+      "wide": false,
+      "width": 891,
+      "height": 265,
+      "sourcePage": 16,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "hurricane": {
+      "src": "geography/archive/2025-mj-p1/hurricane.webp",
+      "alt": "Cross-section of a hurricane and its weather conditions at labelled positions R and S.",
+      "wide": false,
+      "width": 1234,
+      "height": 607,
+      "sourcePage": 17,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "rainforest": {
+      "src": "geography/archive/2025-mj-p1/rainforest.webp",
+      "alt": "Side view of a rainforest showing vegetation at different heights.",
+      "wide": false,
+      "width": 721,
+      "height": 453,
+      "sourcePage": 17,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "drainage": {
+      "src": "geography/archive/2025-mj-p1/drainage.webp",
+      "alt": "A network of streams with an arrow indicating direction of flow.",
+      "wide": false,
+      "width": 865,
+      "height": 653,
+      "sourcePage": 19,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "watershed": {
+      "src": "geography/archive/2025-mj-p1/watershed.webp",
+      "alt": "Block diagram of a river valley and tributaries, with a dotted boundary.",
+      "wide": false,
+      "width": 764,
+      "height": 439,
+      "sourcePage": 20,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "settlement": {
+      "src": "geography/archive/2025-mj-p1/settlement.webp",
+      "alt": "Sketch map of Blue Ridge with a town, road, swamp, mountains, coast, scale and key.",
+      "wide": false,
+      "width": 776,
+      "height": 610,
+      "sourcePage": 21,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "employment": {
+      "src": "geography/archive/2025-mj-p1/employment.webp",
+      "alt": "Graph of the employment shares of the primary, secondary and tertiary sectors over time.",
+      "wide": false,
+      "width": 618,
+      "height": 515,
+      "sourcePage": 22,
+      "sourcePaper": "2025-mj-p1"
+    },
+    "deforestation": {
+      "src": "geography/archive/2025-mj-p1/deforestation.webp",
+      "alt": "Flow diagram of consequences of tropical deforestation, including a box labelled X.",
+      "wide": false,
+      "width": 1040,
+      "height": 126,
+      "sourcePage": 23,
+      "sourcePaper": "2025-mj-p1"
+    }
+  },
+  "2023-mj-p2": {
+    "montego-bay": {
+      "src": "geography/archive/2023-mj-p2/montego-bay.webp",
+      "alt": "Montego Bay, Jamaica, 1:50,000 topographic map with numbered grid, scale and full legend.",
+      "wide": true,
+      "width": 2990,
+      "height": 3490,
+      "sourcePage": 22,
+      "sourcePaper": "2023-mj-p2"
+    },
+    "north-atlantic": {
+      "src": "geography/archive/2023-mj-p2/north-atlantic.webp",
+      "alt": "Map of the Caribbean and North Atlantic with latitude, longitude and a point marked H.",
+      "wide": true,
+      "width": 1343,
+      "height": 807,
+      "sourcePage": 5,
+      "sourcePaper": "2023-mj-p2"
+    },
+    "tropical-island": {
+      "src": "geography/archive/2023-mj-p2/tropical-island.webp",
+      "alt": "Drawing of a tropical island with mountains and clouds.",
+      "wide": false,
+      "width": 953,
+      "height": 621,
+      "sourcePage": 7,
+      "sourcePaper": "2023-mj-p2"
+    },
+    "birth-rate-grid": {
+      "src": "geography/archive/2023-mj-p2/birth-rate-grid.webp",
+      "alt": "Line graph grid with years marked along the horizontal axis and a numerical vertical scale.",
+      "wide": false,
+      "width": 1339,
+      "height": 1660,
+      "sourcePage": 11,
+      "sourcePaper": "2023-mj-p2"
+    },
+    "agriculture-grid": {
+      "src": "geography/archive/2023-mj-p2/agriculture-grid.webp",
+      "alt": "Bar chart grid for agricultural land by county in Trinidad and Tobago.",
+      "wide": false,
+      "width": 1326,
+      "height": 1596,
+      "sourcePage": 17,
+      "sourcePaper": "2023-mj-p2"
+    },
+    "farming-photo": {
+      "src": "geography/archive/2023-mj-p2/farming-photo.webp",
+      "alt": "Photograph of a type of farming found in the Caribbean.",
+      "wide": false,
+      "width": 1036,
+      "height": 715,
+      "sourcePage": 18,
+      "sourcePaper": "2023-mj-p2"
+    }
+  },
+  "2010-mj-p3": {
+    "pointe-michel": {
+      "src": "geography/archive/2010-mj-p3/pointe-michel.webp",
+      "alt": "Pointe Michel, Dominica topographic map with labelled grid, scale and complete legend.",
+      "wide": true,
+      "width": 3779,
+      "height": 4045,
+      "sourcePage": 11,
+      "sourcePaper": "2010-mj-p3"
+    },
+    "location-outline": {
+      "src": "geography/archive/2010-mj-p3/location-outline.webp",
+      "alt": "Outline map with grid lines, north arrow, coast and the sea labelled.",
+      "wide": false,
+      "width": 966,
+      "height": 741,
+      "sourcePage": 2,
+      "sourcePaper": "2010-mj-p3"
+    },
+    "geneva-sketch": {
+      "src": "geography/archive/2010-mj-p3/geneva-sketch.webp",
+      "alt": "Partially completed sketch map of the Geneva Estate area, with coast, rivers, roads and the key.",
+      "wide": false,
+      "width": 1084,
+      "height": 1272,
+      "sourcePage": 3,
+      "sourcePaper": "2010-mj-p3"
+    },
+    "channel-profile-grid": {
+      "src": "geography/archive/2010-mj-p3/channel-profile-grid.webp",
+      "alt": "Grid for the Station A cross section, showing the surface of the stream, depth and measuring points.",
+      "wide": false,
+      "width": 1498,
+      "height": 939,
+      "sourcePage": 6,
+      "sourcePaper": "2010-mj-p3"
+    },
+    "velocity-grid": {
+      "src": "geography/archive/2010-mj-p3/velocity-grid.webp",
+      "alt": "Graph grid with depth fraction on the vertical axis and velocity on the horizontal axis.",
+      "wide": false,
+      "width": 1500,
+      "height": 1688,
+      "sourcePage": 9,
+      "sourcePaper": "2010-mj-p3"
+    }
+  },
+  "2018-mj-p2": {
+    "soufriere-profile": {
+      "src": "geography/archive/2018-mj-p2/soufriere-profile.webp",
+      "alt": "Long profile of the Soufrière River, with elevation, distance, source, school and sea.",
+      "wide": false,
+      "width": 1183,
+      "height": 720,
+      "sourcePage": 3,
+      "sourcePaper": "2018-mj-p2"
+    },
+    "port-of-spain-climograph": {
+      "src": "geography/archive/2018-mj-p2/port-of-spain-climograph.webp",
+      "alt": "Monthly rainfall and temperature graph for Port of Spain, Trinidad.",
+      "wide": false,
+      "width": 1136,
+      "height": 723,
+      "sourcePage": 8,
+      "sourcePaper": "2018-mj-p2"
+    },
+    "immigration-graph-grid": {
+      "src": "geography/archive/2018-mj-p2/immigration-graph-grid.webp",
+      "alt": "Bar graph grid with a title line, the number of immigrants axis and the countries axis.",
+      "wide": false,
+      "width": 1266,
+      "height": 1398,
+      "sourcePage": 15,
+      "sourcePaper": "2018-mj-p2"
+    },
+    "major-latitudes": {
+      "src": "geography/archive/2018-mj-p2/major-latitudes.webp",
+      "alt": "Earth diagram with five lines of latitude labelled A, B, C, M and N.",
+      "wide": false,
+      "width": 851,
+      "height": 496,
+      "sourcePage": 20,
+      "sourcePaper": "2018-mj-p2"
+    }
+  },
+  "2015-mj-p3": {
+    "moneague": {
+      "src": "geography/archive/2015-mj-p3/moneague.webp",
+      "alt": "Topographic map of Moneague, Jamaica, with a 1:50,000 scale and legend.",
+      "wide": true,
+      "width": 4158,
+      "height": 3548,
+      "sourcePage": 16,
+      "sourcePaper": "2015-mj-p2"
+    },
+    "moneague-grid": {
+      "src": "geography/archive/2015-mj-p3/moneague-grid.webp",
+      "alt": "Grid covering eastings 36 to 40 and northings 78 to 82, with the main Class A road and a key.",
+      "wide": false,
+      "width": 1123,
+      "height": 743,
+      "sourcePage": 3,
+      "sourcePaper": "2015-mj-p3"
+    },
+    "occupation-grid": {
+      "src": "geography/archive/2015-mj-p3/occupation-grid.webp",
+      "alt": "Bar graph grid for professionals, casual labourers and farmers, with percentages on the vertical axis.",
+      "wide": false,
+      "width": 1081,
+      "height": 1189,
+      "sourcePage": 9,
+      "sourcePaper": "2015-mj-p3"
+    }
+  },
+  "2014-mj-p3": {
+    "speightstown": {
+      "src": "geography/archive/2014-mj-p3/speightstown.webp",
+      "alt": "Barbados Sheet 3 topographic map with Speightstown, grid, scale bar, contours and legend.",
+      "wide": true,
+      "width": 4057,
+      "height": 2848,
+      "sourcePage": 14,
+      "sourcePaper": "2014-mj-p2"
+    },
+    "speightstown-grid": {
+      "src": "geography/archive/2014-mj-p3/speightstown-grid.webp",
+      "alt": "Sketch grid from eastings 20 to 22 and northings 82 to 84, with a coastline and two streams.",
+      "wide": false,
+      "width": 1153,
+      "height": 884,
+      "sourcePage": 3,
+      "sourcePaper": "2014-mj-p3"
+    },
+    "wind-graph-grid": {
+      "src": "geography/archive/2014-mj-p3/wind-graph-grid.webp",
+      "alt": "Graph paper for wind direction, labelled E, NE and SE along the horizontal axis.",
+      "wide": false,
+      "width": 400,
+      "height": 1606,
+      "sourcePage": 9,
+      "sourcePaper": "2014-mj-p3"
+    }
+  },
+  "2021-mj-p2": {
+    "basseterre": {
+      "src": "geography/archive/2021-mj-p2/basseterre.webp",
+      "alt": "Basseterre, St Christopher, topographic map with grid numbers, scales and the legend.",
+      "wide": true,
+      "width": 3329,
+      "height": 3973,
+      "sourcePage": 18,
+      "sourcePaper": "2021-mj-p2"
+    },
+    "basseterre-grid": {
+      "src": "geography/archive/2021-mj-p2/basseterre-grid.webp",
+      "alt": "Basseterre grid with a coastline, contour, eastings 19 to 22, northings 11 to 14 and a partially completed key.",
+      "wide": false,
+      "width": 1283,
+      "height": 925,
+      "sourcePage": 3,
+      "sourcePaper": "2021-mj-p2"
+    },
+    "rock-types": {
+      "src": "geography/archive/2021-mj-p2/rock-types.webp",
+      "alt": "Diagram of the relationships between rock types, with parts labelled A, B and C.",
+      "wide": false,
+      "width": 1362,
+      "height": 462,
+      "sourcePage": 6,
+      "sourcePaper": "2021-mj-p2"
+    },
+    "caribbean-countries": {
+      "src": "geography/archive/2021-mj-p2/caribbean-countries.webp",
+      "alt": "Map of the Caribbean with locations labelled A to G.",
+      "wide": false,
+      "width": 958,
+      "height": 800,
+      "sourcePage": 10,
+      "sourcePaper": "2021-mj-p2"
+    },
+    "disaster-events": {
+      "src": "geography/archive/2021-mj-p2/disaster-events.webp",
+      "alt": "Graph of annual disaster events in Latin America and the Caribbean, 1970 to 1999.",
+      "wide": false,
+      "width": 1147,
+      "height": 593,
+      "sourcePage": 14,
+      "sourcePaper": "2021-mj-p2"
+    }
+  },
+  "2012-mj-p3": {
+    "wesley-map": {
+      "src": "geography/archive/2012-mj-p3/wesley-map.webp",
+      "alt": "Dominica map of Wesley, La Soie, with its numbered grid, scale and legend.",
+      "wide": true,
+      "width": 3466,
+      "height": 4129,
+      "sourcePage": 17,
+      "sourcePaper": "2012-mj-p2"
+    },
+    "wesley-grid": {
+      "src": "geography/archive/2012-mj-p3/wesley-grid.webp",
+      "alt": "Grid bounded by eastings 80 and 84 and northings 20 and 22, with scale 1:50,000.",
+      "wide": false,
+      "width": 800,
+      "height": 447,
+      "sourcePage": 2,
+      "sourcePaper": "2012-mj-p3"
+    },
+    "pyramid-grid": {
+      "src": "geography/archive/2012-mj-p3/pyramid-grid.webp",
+      "alt": "Population pyramid grid with three age groups and matching percentage scales.",
+      "wide": false,
+      "width": 1375,
+      "height": 732,
+      "sourcePage": 4,
+      "sourcePaper": "2012-mj-p3"
+    }
+  },
+  "2013-mj-p3": {
+    "nevis-map": {
+      "src": "geography/archive/2013-mj-p3/nevis-map.webp",
+      "alt": "Map of Nevis showing the numbered grid, 1:25,000 scale and legend.",
+      "wide": true,
+      "width": 2906,
+      "height": 4167,
+      "sourcePage": 15,
+      "sourcePaper": "2013-mj-p2"
+    },
+    "nevis-outline": {
+      "src": "geography/archive/2013-mj-p3/nevis-outline.webp",
+      "alt": "Outline map of Nevis with parish boundaries, Charlestown and an area of forest.",
+      "wide": false,
+      "width": 844,
+      "height": 607,
+      "sourcePage": 2,
+      "sourcePaper": "2013-mj-p3"
+    },
+    "nevis-contour-grid": {
+      "src": "geography/archive/2013-mj-p3/nevis-contour-grid.webp",
+      "alt": "Grid eastings 35 to 37 and northings 95 to 97, showing three contour lines.",
+      "wide": false,
+      "width": 743,
+      "height": 706,
+      "sourcePage": 3,
+      "sourcePaper": "2013-mj-p3"
+    },
+    "temperature-grid": {
+      "src": "geography/archive/2013-mj-p3/temperature-grid.webp",
+      "alt": "Line graph grid for monthly low temperatures in Charlestown.",
+      "wide": false,
+      "width": 1057,
+      "height": 513,
+      "sourcePage": 6,
+      "sourcePaper": "2013-mj-p3"
+    },
+    "rainfall-grid": {
+      "src": "geography/archive/2013-mj-p3/rainfall-grid.webp",
+      "alt": "Blank graph grid for rainfall in the last week of February.",
+      "wide": false,
+      "width": 670,
+      "height": 685,
+      "sourcePage": 9,
+      "sourcePaper": "2013-mj-p3"
+    }
+  },
+  "2022-mj-p2": {
+    "pointe-a-pierre": {
+      "src": "geography/archive/2022-mj-p2/pointe-a-pierre.webp",
+      "alt": "Pointe-a-Pierre, Trinidad, topographic map with kilometre grid, scale, north indicators, conversion table and legend.",
+      "wide": true,
+      "width": 1684,
+      "height": 2114,
+      "sourcePage": 19,
+      "sourcePaper": "2022-mj-p2"
+    },
+    "coastal-features": {
+      "src": "geography/archive/2022-mj-p2/coastal-features.webp",
+      "alt": "Coastline drawing with two bays and features labelled A, B, C and D.",
+      "wide": false,
+      "width": 1063,
+      "height": 575,
+      "sourcePage": 5,
+      "sourcePaper": "2022-mj-p2"
+    },
+    "energy-sources": {
+      "src": "geography/archive/2022-mj-p2/energy-sources.webp",
+      "alt": "Pie chart of global energy sources showing solar, wind and other, hydro, nuclear, gas, oil and coal.",
+      "wide": false,
+      "width": 943,
+      "height": 724,
+      "sourcePage": 9,
+      "sourcePaper": "2022-mj-p2"
+    }
+  },
+  "2023-mj-p1": {
+    "caribbean-region": {
+      "src": "geography/archive/2023-mj-p1/caribbean-region.webp",
+      "alt": "Map of the Caribbean region showing islands, coastal countries, cities, latitude, longitude and a kilometre scale.",
+      "wide": false,
+      "width": 1431,
+      "height": 749,
+      "sourcePage": 2,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "intervisibility": {
+      "src": "geography/archive/2023-mj-p1/intervisibility.webp",
+      "alt": "Contour map showing a river and points P, Q, R, S and T, with a vertical interval of 25 metres.",
+      "wide": false,
+      "width": 594,
+      "height": 465,
+      "sourcePage": 4,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "contour-bearing": {
+      "src": "geography/archive/2023-mj-p1/contour-bearing.webp",
+      "alt": "Contour sketch map showing eastings 29 to 37, northings 38 to 42 and points W, X and Y.",
+      "wide": false,
+      "width": 701,
+      "height": 349,
+      "sourcePage": 5,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "estate-sketch": {
+      "src": "geography/archive/2023-mj-p1/estate-sketch.webp",
+      "alt": "Sketch map of an area with points X, Y and Z, an estate boundary, villages and a legend.",
+      "wide": false,
+      "width": 1301,
+      "height": 779,
+      "sourcePage": 6,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "contour-landforms": {
+      "src": "geography/archive/2023-mj-p1/contour-landforms.webp",
+      "alt": "Coastal contour map showing a line from A to B and locations X and Y.",
+      "wide": false,
+      "width": 885,
+      "height": 335,
+      "sourcePage": 7,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "landscape": {
+      "src": "geography/archive/2023-mj-p1/landscape.webp",
+      "alt": "Black-and-white landscape photograph showing water in a shallow depression and palms in the background.",
+      "wide": false,
+      "width": 1169,
+      "height": 579,
+      "sourcePage": 7,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "africa-zone": {
+      "src": "geography/archive/2023-mj-p1/africa-zone.webp",
+      "alt": "Map of Africa with diagonal shading between 23½° N and 23½° S.",
+      "wide": false,
+      "width": 628,
+      "height": 547,
+      "sourcePage": 8,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "caribbean-weather": {
+      "src": "geography/archive/2023-mj-p1/caribbean-weather.webp",
+      "alt": "Caribbean weather diagram with four pressure lines, two weather station models and lines labelled X and Y.",
+      "wide": false,
+      "width": 777,
+      "height": 511,
+      "sourcePage": 9,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "earth-section": {
+      "src": "geography/archive/2023-mj-p1/earth-section.webp",
+      "alt": "Cross-section showing the lithosphere, asthenosphere and depths of 2,900, 5,100 and 6,378 kilometres.",
+      "wide": false,
+      "width": 751,
+      "height": 455,
+      "sourcePage": 10,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "limestone-section": {
+      "src": "geography/archive/2023-mj-p1/limestone-section.webp",
+      "alt": "Cross-section with a river flowing into limestone over impermeable rock, and a feature labelled Y.",
+      "wide": false,
+      "width": 551,
+      "height": 338,
+      "sourcePage": 11,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "island-density": {
+      "src": "geography/archive/2023-mj-p1/island-density.webp",
+      "alt": "Map of Island P with four population density ranges and areas marked I, II, III and IV.",
+      "wide": false,
+      "width": 983,
+      "height": 384,
+      "sourcePage": 12,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "river-profile": {
+      "src": "geography/archive/2023-mj-p1/river-profile.webp",
+      "alt": "River long profile showing the first, second and third stages between 800 metres and sea level.",
+      "wide": false,
+      "width": 855,
+      "height": 218,
+      "sourcePage": 13,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "drainage-pattern": {
+      "src": "geography/archive/2023-mj-p1/drainage-pattern.webp",
+      "alt": "Diagram of streams flowing from a central uplift.",
+      "wide": false,
+      "width": 466,
+      "height": 341,
+      "sourcePage": 14,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "drainage-basin": {
+      "src": "geography/archive/2023-mj-p1/drainage-basin.webp",
+      "alt": "Block diagram of a mountain and stream channel with tributaries, headwaters, and dotted lines.",
+      "wide": false,
+      "width": 611,
+      "height": 418,
+      "sourcePage": 14,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "coastal-settlement": {
+      "src": "geography/archive/2023-mj-p1/coastal-settlement.webp",
+      "alt": "Sketch map of a coastal area with contour lines, a swamp and points W, X, Y and Z.",
+      "wide": false,
+      "width": 900,
+      "height": 458,
+      "sourcePage": 16,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "land-use": {
+      "src": "geography/archive/2023-mj-p1/land-use.webp",
+      "alt": "Sketch map of Bacc Town and Port Albert with areas I to IV, Jack Mountain, wind direction and a key.",
+      "wide": false,
+      "width": 1309,
+      "height": 731,
+      "sourcePage": 17,
+      "sourcePaper": "2023-mj-p1"
+    },
+    "deforestation": {
+      "src": "geography/archive/2023-mj-p1/deforestation.webp",
+      "alt": "Flow chart linking tropical deforestation, great overland flow, soil erosion and X.",
+      "wide": false,
+      "width": 849,
+      "height": 108,
+      "sourcePage": 18,
+      "sourcePaper": "2023-mj-p1"
+    }
+  },
+  "2011-mj-p3": {
+    "mango-creek": {
+      "src": "geography/archive/2011-mj-p3/mango-creek.webp",
+      "alt": "Mango Creek, Belize, map with Placentia Lagoon, Placencia Village, Seine Bright Village, a 1:50,000 scale and a legend.",
+      "wide": true,
+      "width": 4149,
+      "height": 3386,
+      "sourcePage": 15,
+      "sourcePaper": "2011-mj-p2"
+    },
+    "placentia-grid": {
+      "src": "geography/archive/2011-mj-p3/placentia-grid.webp",
+      "alt": "Site map of Placentia Village with a partly drawn coastline, grid references and a scale of 1:50,000.",
+      "wide": false,
+      "width": 751,
+      "height": 1355,
+      "sourcePage": 3,
+      "sourcePaper": "2011-mj-p3"
+    },
+    "parking-grid": {
+      "src": "geography/archive/2011-mj-p3/parking-grid.webp",
+      "alt": "Graph paper for parking as a nuisance. The axes are labelled Frequency and Nuisance Categories.",
+      "wide": false,
+      "width": 610,
+      "height": 1159,
+      "sourcePage": 5,
+      "sourcePaper": "2011-mj-p3"
+    }
+  },
+  "2009-mj-p3": {
+    "port-of-spain": {
+      "src": "geography/archive/2009-mj-p3/port-of-spain.webp",
+      "alt": "Trinidad Sheet 13 topographic map showing Port of Spain and the Santa Cruz River valley, with grid, 1:25,000 scale and legend.",
+      "wide": true,
+      "width": 4179,
+      "height": 2921,
+      "sourcePage": 16,
+      "sourcePaper": "2009-mj-p2"
+    },
+    "cantaro-grid": {
+      "src": "geography/archive/2009-mj-p3/cantaro-grid.webp",
+      "alt": "Grid for the valley west of Cantaro with four-figure grid references at the corners and scale 1:50,000.",
+      "wide": false,
+      "width": 858,
+      "height": 635,
+      "sourcePage": 3,
+      "sourcePaper": "2009-mj-p3"
+    },
+    "channel-grid": {
+      "src": "geography/archive/2009-mj-p3/channel-grid.webp",
+      "alt": "Blank graph paper for the cross-section of the stream channel.",
+      "wide": false,
+      "width": 1411,
+      "height": 490,
+      "sourcePage": 7,
+      "sourcePaper": "2009-mj-p3"
+    },
+    "land-use-grid": {
+      "src": "geography/archive/2009-mj-p3/land-use-grid.webp",
+      "alt": "Blank graph paper for percentage land use by category in 1970 and 2008.",
+      "wide": false,
+      "width": 1412,
+      "height": 1193,
+      "sourcePage": 9,
+      "sourcePaper": "2009-mj-p3"
+    }
+  },
+  "2008-mj-p3": {
+    "port-antonio": {
+      "src": "geography/archive/2008-mj-p3/port-antonio.webp",
+      "alt": "Port Antonio, Jamaica, topographic map with a 1:50,000 scale, coastline, roads and river valleys.",
+      "wide": true,
+      "width": 4163,
+      "height": 3710,
+      "sourcePage": 14,
+      "sourcePaper": "2008-mj-p2"
+    },
+    "port-antonio-grid": {
+      "src": "geography/archive/2008-mj-p3/port-antonio-grid.webp",
+      "alt": "Blank sketch grid for Port Antonio, covering eastings 06 to 11 and northings 66 to 71, with a north arrow.",
+      "wide": false,
+      "width": 893,
+      "height": 869,
+      "sourcePage": 3,
+      "sourcePaper": "2008-mj-p3"
+    },
+    "traffic-grid": {
+      "src": "geography/archive/2008-mj-p3/traffic-grid.webp",
+      "alt": "Line graph grid with Number of vehicles and Time axes.",
+      "wide": false,
+      "width": 1426,
+      "height": 1506,
+      "sourcePage": 7,
+      "sourcePaper": "2008-mj-p3"
+    }
+  },
+  "2007-mj-p3": {
+    "basseterre-2007": {
+      "src": "geography/archive/2007-mj-p3/basseterre-2007.webp",
+      "alt": "Basseterre, St Christopher, topographic map with a 1:25,000 scale, legend and inset parish maps of St Christopher and Nevis.",
+      "wide": true,
+      "width": 3364,
+      "height": 3918,
+      "sourcePage": 15,
+      "sourcePaper": "2007-mj-p2"
+    },
+    "st-kitts-nevis-frame": {
+      "src": "geography/archive/2007-mj-p3/st-kitts-nevis-frame.webp",
+      "alt": "Blank square frame for an outline map of St Kitts and Nevis.",
+      "wide": false,
+      "width": 388,
+      "height": 398,
+      "sourcePage": 2,
+      "sourcePaper": "2007-mj-p3"
+    },
+    "basseterre-sketch-grid": {
+      "src": "geography/archive/2007-mj-p3/basseterre-sketch-grid.webp",
+      "alt": "Blank sketch grid for Basseterre, with eastings 21 to 26 and northings 10 to 15.",
+      "wide": false,
+      "width": 776,
+      "height": 754,
+      "sourcePage": 3,
+      "sourcePaper": "2007-mj-p3"
+    },
+    "pebble-grid": {
+      "src": "geography/archive/2007-mj-p3/pebble-grid.webp",
+      "alt": "Blank graph paper for the bar graph of mean pebble length.",
+      "wide": false,
+      "width": 1049,
+      "height": 449,
+      "sourcePage": 7,
+      "sourcePaper": "2007-mj-p3"
+    }
+  },
+  "2006-mj-p3": {
+    "nevis-2006-map": {
+      "src": "geography/archive/2006-mj-p3/nevis-2006-map.webp",
+      "alt": "Nevis topographic map with the coast, parish boundaries, grid, scale of 1:25,000 and map legend.",
+      "wide": true,
+      "width": 2921,
+      "height": 4170,
+      "sourcePage": 14,
+      "sourcePaper": "2006-mj-p2"
+    },
+    "nevis-frame": {
+      "src": "geography/archive/2006-mj-p3/nevis-frame.webp",
+      "alt": "Blank frame for a sketch map of Nevis.",
+      "wide": false,
+      "width": 319,
+      "height": 386,
+      "sourcePage": 2,
+      "sourcePaper": "2006-mj-p3"
+    },
+    "nevis-settlement-grid": {
+      "src": "geography/archive/2006-mj-p3/nevis-settlement-grid.webp",
+      "alt": "Sketch frame bounded by eastings 38 and 40 and northings 00 and 02.",
+      "wide": false,
+      "width": 795,
+      "height": 780,
+      "sourcePage": 3,
+      "sourcePaper": "2006-mj-p3"
+    },
+    "coast-photo": {
+      "src": "geography/archive/2006-mj-p3/coast-photo.webp",
+      "alt": "Black-and-white photograph of a low rocky coast, waves and a sandy foreground.",
+      "wide": false,
+      "width": 1043,
+      "height": 710,
+      "sourcePage": 8,
+      "sourcePaper": "2006-mj-p3"
+    }
+  },
+  "2005-mj-p3": {
+    "kingston": {
+      "src": "geography/archive/2005-mj-p3/kingston.webp",
+      "alt": "Kingston, Jamaica, map with the Mineral Bath, Long Mountain and Harbour View, and an inset index map of Jamaica, grid, scale and legend.",
+      "wide": true,
+      "width": 4146,
+      "height": 3636,
+      "sourcePage": 16,
+      "sourcePaper": "2016-mj-p2"
+    },
+    "jamaica-frame": {
+      "src": "geography/archive/2005-mj-p3/jamaica-frame.webp",
+      "alt": "Blank frame for a sketch map of Jamaica.",
+      "wide": false,
+      "width": 994,
+      "height": 752,
+      "sourcePage": 2,
+      "sourcePaper": "2005-mj-p3"
+    },
+    "mineral-bath-grid": {
+      "src": "geography/archive/2005-mj-p3/mineral-bath-grid.webp",
+      "alt": "Grid for Kingston bounded by eastings 75 and 82 and northings 43 and 48.",
+      "wide": false,
+      "width": 1127,
+      "height": 828,
+      "sourcePage": 3,
+      "sourcePaper": "2005-mj-p3"
+    },
+    "tree-crops-frame": {
+      "src": "geography/archive/2005-mj-p3/tree-crops-frame.webp",
+      "alt": "Blank frame for a diagram of the percentages of estate land used for tree crops.",
+      "wide": false,
+      "width": 1074,
+      "height": 956,
+      "sourcePage": 6,
+      "sourcePaper": "2005-mj-p3"
+    },
+    "broiler-farms-frame": {
+      "src": "geography/archive/2005-mj-p3/broiler-farms-frame.webp",
+      "alt": "Blank frame for the diagram comparing the number of broiler farms by group size.",
+      "wide": false,
+      "width": 1081,
+      "height": 876,
+      "sourcePage": 7,
+      "sourcePaper": "2005-mj-p3"
+    }
+  },
+  "2019-mj-p2": {
+    "penal": {
+      "src": "geography/archive/2019-mj-p2/penal.webp",
+      "alt": "Penal, Trinidad, topographic map showing the numbered grid, 1:25,000 scale, legend and inset.",
+      "wide": true,
+      "width": 2514,
+      "height": 2982,
+      "sourcePage": 19,
+      "sourcePaper": "2019-mj-p2"
+    },
+    "plate-boundaries": {
+      "src": "geography/archive/2019-mj-p2/plate-boundaries.webp",
+      "alt": "Cross-section showing the crust, mantle and core, with plate movement arrows and points A, B and C.",
+      "wide": false,
+      "width": 1154,
+      "height": 676,
+      "sourcePage": 5,
+      "sourcePaper": "2019-mj-p2"
+    },
+    "trinidad-population": {
+      "src": "geography/archive/2019-mj-p2/trinidad-population.webp",
+      "alt": "Population pyramid for Trinidad and Tobago in 2014, with five-year age bands and scales in thousands for males and females.",
+      "wide": false,
+      "width": 1209,
+      "height": 812,
+      "sourcePage": 10,
+      "sourcePaper": "2019-mj-p2"
+    },
+    "air-pollutants": {
+      "src": "geography/archive/2019-mj-p2/air-pollutants.webp",
+      "alt": "Pie chart of six sources of air pollutant emissions.",
+      "wide": false,
+      "width": 1006,
+      "height": 801,
+      "sourcePage": 15,
+      "sourcePaper": "2019-mj-p2"
+    }
+  },
+  "2017-mj-p2": {
+    "port-antonio-2017": {
+      "src": "geography/archive/2017-mj-p2/port-antonio-2017.webp",
+      "alt": "Port Antonio, Jamaica, map with Spring Bank, the Rio Grande, a kilometre grid and 1:50,000 scale and legend.",
+      "wide": true,
+      "width": 4150,
+      "height": 3724,
+      "sourcePage": 19,
+      "sourcePaper": "2017-mj-p2"
+    },
+    "sediment-grid": {
+      "src": "geography/archive/2017-mj-p2/sediment-grid.webp",
+      "alt": "Bar graph grid for sediment. Years 2005 to 2010 and a scale of 100 metric tonnes per two units are shown, with spaces for a title and axis labels.",
+      "wide": false,
+      "width": 1319,
+      "height": 1775,
+      "sourcePage": 7,
+      "sourcePaper": "2017-mj-p2"
+    },
+    "barbados-population": {
+      "src": "geography/archive/2017-mj-p2/barbados-population.webp",
+      "alt": "Barbados 2014 population pyramid with five-year age groups and scales in thousands for males and females.",
+      "wide": false,
+      "width": 1028,
+      "height": 598,
+      "sourcePage": 10,
+      "sourcePaper": "2017-mj-p2"
+    }
+  },
+  "2016-mj-p2": {
+    "jeanne-track": {
+      "src": "geography/archive/2016-mj-p2/jeanne-track.webp",
+      "alt": "Map of Hurricane Jeanne’s track from 13 to 26 September 2004, with Caribbean islands and a key for tropical depression, tropical storm and hurricane.",
+      "wide": false,
+      "width": 1530,
+      "height": 1300,
+      "sourcePage": 9,
+      "sourcePaper": "2016-mj-p2"
+    },
+    "reef-health": {
+      "src": "geography/archive/2016-mj-p2/reef-health.webp",
+      "alt": "Graph of regional coral reef health scores in 2003 with thresholds for grades A, B and C.",
+      "wide": false,
+      "width": 1341,
+      "height": 644,
+      "sourcePage": 11,
+      "sourcePaper": "2016-mj-p2"
+    },
+    "town-growth-grid": {
+      "src": "geography/archive/2016-mj-p2/town-growth-grid.webp",
+      "alt": "Line graph grid for a Caribbean town, with years 1975 to 2016 and space for a title.",
+      "wide": false,
+      "width": 1162,
+      "height": 1150,
+      "sourcePage": 13,
+      "sourcePaper": "2016-mj-p2"
+    },
+    "labour-force-circle": {
+      "src": "geography/archive/2016-mj-p2/labour-force-circle.webp",
+      "alt": "Circle with its centre marked and space for a title, for drawing labour force shares.",
+      "wide": false,
+      "width": 1142,
+      "height": 897,
+      "sourcePage": 14,
+      "sourcePaper": "2016-mj-p2"
+    },
+    "banana-exports-grid": {
+      "src": "geography/archive/2016-mj-p2/banana-exports-grid.webp",
+      "alt": "Bar graph grid with 1990 and 2003 repeated for the two countries and space for a title.",
+      "wide": false,
+      "width": 1149,
+      "height": 1148,
+      "sourcePage": 15,
+      "sourcePaper": "2016-mj-p2"
+    }
+  },
+  "2015-mj-p2": {
+    "friendship-pen-grid": {
+      "src": "geography/archive/2015-mj-p2/friendship-pen-grid.webp",
+      "alt": "Friendship Pen grid bounded by eastings 30 to 34 and northings 80 to 83, with the 600-metre contour and its key.",
+      "wide": false,
+      "width": 941,
+      "height": 794,
+      "sourcePage": 14,
+      "sourcePaper": "2015-mj-p2"
+    },
+    "caribbean-plates": {
+      "src": "geography/archive/2015-mj-p2/caribbean-plates.webp",
+      "alt": "Caribbean map with five tectonic plates labelled A to E, a scale bar and a north arrow.",
+      "wide": false,
+      "width": 1400,
+      "height": 1040,
+      "sourcePage": 4,
+      "sourcePaper": "2015-mj-p2"
+    },
+    "water-movement": {
+      "src": "geography/archive/2015-mj-p2/water-movement.webp",
+      "alt": "Cross-section showing movement of water at the surface and through unsaturated and saturated rock, with a symbol key to complete.",
+      "wide": false,
+      "width": 912,
+      "height": 941,
+      "sourcePage": 15,
+      "sourcePaper": "2015-mj-p2"
+    },
+    "weather-zones": {
+      "src": "geography/archive/2015-mj-p2/weather-zones.webp",
+      "alt": "Caribbean weather map with five numbered zones and a key showing different patterns and shading.",
+      "wide": false,
+      "width": 1396,
+      "height": 1320,
+      "sourcePage": 6,
+      "sourcePaper": "2015-mj-p2"
+    },
+    "eastern-islands": {
+      "src": "geography/archive/2015-mj-p2/eastern-islands.webp",
+      "alt": "Map of the Eastern Caribbean islands with locations marked P, Q, R, S and T.",
+      "wide": false,
+      "width": 651,
+      "height": 812,
+      "sourcePage": 11,
+      "sourcePaper": "2015-mj-p2"
+    }
+  },
+  "2014-mj-p2": {
+    "haymann-profile": {
+      "src": "geography/archive/2014-mj-p2/haymann-profile.webp",
+      "alt": "Cross-section grid for Northing 82, with height in metres, Haymann’s Factory and a partially completed profile.",
+      "wide": false,
+      "width": 1339,
+      "height": 483,
+      "sourcePage": 12,
+      "sourcePaper": "2014-mj-p2"
+    },
+    "river-features": {
+      "src": "geography/archive/2014-mj-p2/river-features.webp",
+      "alt": "Block diagram of a river valley, with features identified by letters A to D.",
+      "wide": false,
+      "width": 873,
+      "height": 400,
+      "sourcePage": 4,
+      "sourcePaper": "2014-mj-p2"
+    },
+    "world-outline": {
+      "src": "geography/archive/2014-mj-p2/world-outline.webp",
+      "alt": "Unlabelled outline map of the world.",
+      "wide": false,
+      "width": 1336,
+      "height": 750,
+      "sourcePage": 13,
+      "sourcePaper": "2014-mj-p2"
+    },
+    "gdp-sectors": {
+      "src": "geography/archive/2014-mj-p2/gdp-sectors.webp",
+      "alt": "Stacked bar chart of services, industry and agriculture as percentages of GDP in Anguilla, Barbados, Cuba and Dominica.",
+      "wide": false,
+      "width": 1047,
+      "height": 626,
+      "sourcePage": 7,
+      "sourcePaper": "2014-mj-p2"
+    },
+    "forest-cover": {
+      "src": "geography/archive/2014-mj-p2/forest-cover.webp",
+      "alt": "Bar chart showing percentage forest cover in 12 Caribbean countries and territories.",
+      "wide": false,
+      "width": 1040,
+      "height": 644,
+      "sourcePage": 10,
+      "sourcePaper": "2014-mj-p2"
+    }
+  },
+  "2013-mj-p2": {
+    "nevis-north-coast": {
+      "src": "geography/archive/2013-mj-p2/nevis-north-coast.webp",
+      "alt": "North Coast of Nevis sketch with the coastline, numbered grid, legend and scale line.",
+      "wide": false,
+      "width": 1193,
+      "height": 1240,
+      "sourcePage": 13,
+      "sourcePaper": "2013-mj-p2"
+    },
+    "water-cycle": {
+      "src": "geography/archive/2013-mj-p2/water-cycle.webp",
+      "alt": "Cross-section of hillsides and a stream, with upward and downward arrows, a spring and labels A to F.",
+      "wide": false,
+      "width": 1164,
+      "height": 556,
+      "sourcePage": 5,
+      "sourcePaper": "2013-mj-p2"
+    },
+    "climate-graph": {
+      "src": "geography/archive/2013-mj-p2/climate-graph.webp",
+      "alt": "Monthly rainfall and temperature chart with inches, millimetres, Fahrenheit and Celsius scales.",
+      "wide": false,
+      "width": 1018,
+      "height": 683,
+      "sourcePage": 6,
+      "sourcePaper": "2013-mj-p2"
+    },
+    "barbados-workforce": {
+      "src": "geography/archive/2013-mj-p2/barbados-workforce.webp",
+      "alt": "Two pie charts comparing the percentage of the workforce by sector in Barbados in 1946 and 2003.",
+      "wide": false,
+      "width": 1173,
+      "height": 511,
+      "sourcePage": 8,
+      "sourcePaper": "2013-mj-p2"
+    },
+    "singapore-jobs-grid": {
+      "src": "geography/archive/2013-mj-p2/singapore-jobs-grid.webp",
+      "alt": "Blank graph paper for the bar graph of employment by industry in Singapore.",
+      "wide": false,
+      "width": 1416,
+      "height": 1338,
+      "sourcePage": 14,
+      "sourcePaper": "2013-mj-p2"
+    }
+  },
+  "2012-mj-p2": {
+    "marigot-grid": {
+      "src": "geography/archive/2012-mj-p2/marigot-grid.webp",
+      "alt": "Grid between eastings 80 and 85 and northings 18 and 20.",
+      "wide": false,
+      "width": 472,
+      "height": 209,
+      "sourcePage": 2,
+      "sourcePaper": "2012-mj-p2"
+    },
+    "trig-station-grid": {
+      "src": "geography/archive/2012-mj-p2/trig-station-grid.webp",
+      "alt": "Grid between eastings 75 and 77 and northings 19 and 20.",
+      "wide": false,
+      "width": 249,
+      "height": 147,
+      "sourcePage": 2,
+      "sourcePaper": "2012-mj-p2"
+    },
+    "volcanic-features": {
+      "src": "geography/archive/2012-mj-p2/volcanic-features.webp",
+      "alt": "Cross-section showing surface and below-ground volcanic features labelled A to E.",
+      "wide": false,
+      "width": 1019,
+      "height": 598,
+      "sourcePage": 4,
+      "sourcePaper": "2012-mj-p2"
+    },
+    "water-movement": {
+      "src": "geography/archive/2012-mj-p2/water-movement.webp",
+      "alt": "Cross-section showing water movement on a slope with transpiration, precipitation, arrows A to D and level X.",
+      "wide": false,
+      "width": 1051,
+      "height": 693,
+      "sourcePage": 5,
+      "sourcePaper": "2012-mj-p2"
+    },
+    "climate-graph": {
+      "src": "geography/archive/2012-mj-p2/climate-graph.webp",
+      "alt": "Climate graph showing average monthly temperatures and monthly rainfall in millimetres and inches.",
+      "wide": false,
+      "width": 430,
+      "height": 517,
+      "sourcePage": 7,
+      "sourcePaper": "2012-mj-p2"
+    },
+    "disasters-grid": {
+      "src": "geography/archive/2012-mj-p2/disasters-grid.webp",
+      "alt": "Bar graph grid showing four years and the number of people affected, with room for a title.",
+      "wide": false,
+      "width": 990,
+      "height": 1093,
+      "sourcePage": 15,
+      "sourcePaper": "2012-mj-p2"
+    },
+    "temperature-grid": {
+      "src": "geography/archive/2012-mj-p2/temperature-grid.webp",
+      "alt": "Line graph grid with a temperature axis and years 2010 to 2040.",
+      "wide": false,
+      "width": 1509,
+      "height": 888,
+      "sourcePage": 16,
+      "sourcePaper": "2012-mj-p2"
+    }
+  },
+  "2024-mj-p1": {
+    "st-margarets-bay": {
+      "src": "geography/archive/2024-mj-p1/st-margarets-bay.webp",
+      "alt": "Topographic extract around St Margaret’s Bay, showing grid numbers, contours, settlements and scales in miles and kilometres.",
+      "wide": true,
+      "width": 1193,
+      "height": 1178,
+      "sourcePage": 2,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "river-x-gradient": {
+      "src": "geography/archive/2024-mj-p1/river-x-gradient.webp",
+      "alt": "Contour sketch showing River X from its source to the sea, with a contour interval of 20 metres.",
+      "wide": false,
+      "width": 551,
+      "height": 485,
+      "sourcePage": 3,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "village-elevations": {
+      "src": "geography/archive/2024-mj-p1/village-elevations.webp",
+      "alt": "Contour map on each side of a river showing villages W, X, Y and Z, with a key and north arrow.",
+      "wide": false,
+      "width": 769,
+      "height": 554,
+      "sourcePage": 4,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "tourist-centre": {
+      "src": "geography/archive/2024-mj-p1/tourist-centre.webp",
+      "alt": "Contour map showing a tourist centre, points R, T, V, W, X and Y, buildings, sand and a scale.",
+      "wide": false,
+      "width": 990,
+      "height": 494,
+      "sourcePage": 5,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "profile-a": {
+      "src": "geography/archive/2024-mj-p1/profile-a.webp",
+      "alt": "Graph of height against distance from R to X, with a small early peak and a taller second peak.",
+      "wide": false,
+      "width": 460,
+      "height": 258,
+      "sourcePage": 5,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "profile-b": {
+      "src": "geography/archive/2024-mj-p1/profile-b.webp",
+      "alt": "Graph of height against distance from R to X, rising in several stages to a broad top, then sloping down.",
+      "wide": false,
+      "width": 447,
+      "height": 260,
+      "sourcePage": 5,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "profile-c": {
+      "src": "geography/archive/2024-mj-p1/profile-c.webp",
+      "alt": "Graph of height against distance from R to X, rising steadily to a broad top, then falling sharply close to X.",
+      "wide": false,
+      "width": 455,
+      "height": 262,
+      "sourcePage": 5,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "profile-d": {
+      "src": "geography/archive/2024-mj-p1/profile-d.webp",
+      "alt": "Graph of height against distance from R to X, with two prominent peaks separated by a dip.",
+      "wide": false,
+      "width": 455,
+      "height": 263,
+      "sourcePage": 5,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "coastline": {
+      "src": "geography/archive/2024-mj-p1/coastline.webp",
+      "alt": "Block diagram of a coastline with bays and features shown on the adjoining land and seabed.",
+      "wide": false,
+      "width": 676,
+      "height": 390,
+      "sourcePage": 6,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "world-map": {
+      "src": "geography/archive/2024-mj-p1/world-map.webp",
+      "alt": "World map with New Orleans, St Petersburg, latitude and longitude lines, and shading in the northern hemisphere.",
+      "wide": false,
+      "width": 1231,
+      "height": 796,
+      "sourcePage": 7,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "central-america": {
+      "src": "geography/archive/2024-mj-p1/central-america.webp",
+      "alt": "Map of Guatemala and Honduras with the Pacific Ocean, Caribbean Sea and a country marked X.",
+      "wide": false,
+      "width": 754,
+      "height": 619,
+      "sourcePage": 8,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "trinidad-weather": {
+      "src": "geography/archive/2024-mj-p1/trinidad-weather.webp",
+      "alt": "Weather chart with Trinidad, the islands of the Caribbean and a key for the trade-wind arrows.",
+      "wide": false,
+      "width": 1203,
+      "height": 540,
+      "sourcePage": 8,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "river-valley": {
+      "src": "geography/archive/2024-mj-p1/river-valley.webp",
+      "alt": "River valley block diagram with features marked M and N.",
+      "wide": false,
+      "width": 579,
+      "height": 419,
+      "sourcePage": 9,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "caribbean-exports": {
+      "src": "geography/archive/2024-mj-p1/caribbean-exports.webp",
+      "alt": "Percentage of exports by value for Barbados, Guyana, Jamaica and Trinidad and Tobago, divided into primary and manufactured products.",
+      "wide": false,
+      "width": 1308,
+      "height": 366,
+      "sourcePage": 10,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "earth-structure": {
+      "src": "geography/archive/2024-mj-p1/earth-structure.svg",
+      "alt": "Cutaway showing Earth's layers. X marks the broad grey band between the dark centre and the thin outer rim.",
+      "wide": false,
+      "width": 333,
+      "height": 334,
+      "sourcePage": 10,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "caribbean-plates": {
+      "src": "geography/archive/2024-mj-p1/caribbean-plates.webp",
+      "alt": "Map of crustal plates in the Caribbean with an arrow key, a numbered plate and a boundary marked X.",
+      "wide": false,
+      "width": 1346,
+      "height": 863,
+      "sourcePage": 11,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "country-p-climate": {
+      "src": "geography/archive/2024-mj-p1/country-p-climate.webp",
+      "alt": "Combined rainfall and temperature chart for Country P, with months on the horizontal axis.",
+      "wide": false,
+      "width": 1016,
+      "height": 547,
+      "sourcePage": 12,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "hydrological-cycle": {
+      "src": "geography/archive/2024-mj-p1/hydrological-cycle.webp",
+      "alt": "Hydrological cycle sketch showing clouds, runoff, the sea, and a labelled arrow X.",
+      "wide": false,
+      "width": 691,
+      "height": 442,
+      "sourcePage": 13,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "central-uplift": {
+      "src": "geography/archive/2024-mj-p1/central-uplift.webp",
+      "alt": "Diagram of drainage around a point marked Central uplift.",
+      "wide": false,
+      "width": 469,
+      "height": 359,
+      "sourcePage": 14,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "river-channel": {
+      "src": "geography/archive/2024-mj-p1/river-channel.webp",
+      "alt": "Diagram of a river from its source, labelled X and showing the riverbank, channel, riverbed and load.",
+      "wide": false,
+      "width": 608,
+      "height": 773,
+      "sourcePage": 15,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "urban-locations": {
+      "src": "geography/archive/2024-mj-p1/urban-locations.webp",
+      "alt": "Map with high land, sea, a road, railway, bauxite reserves and locations I to IV.",
+      "wide": false,
+      "width": 652,
+      "height": 458,
+      "sourcePage": 15,
+      "sourcePaper": "2024-mj-p1"
+    },
+    "country-x-population": {
+      "src": "geography/archive/2024-mj-p1/country-x-population.webp",
+      "alt": "Population pyramid of Country X in 2020, showing five-year age groups and male and female percentages.",
+      "wide": false,
+      "width": 916,
+      "height": 844,
+      "sourcePage": 16,
+      "sourcePaper": "2024-mj-p1"
+    }
+  },
+  "2011-mj-p2": {
+    "vegetation-grid": {
+      "src": "geography/archive/2011-mj-p2/vegetation-grid.webp",
+      "alt": "Grid enclosed by eastings 40 and 51 and northings 25 and 27.",
+      "wide": false,
+      "width": 859,
+      "height": 241,
+      "sourcePage": 2,
+      "sourcePaper": "2011-mj-p2"
+    },
+    "mango-creek-profile": {
+      "src": "geography/archive/2011-mj-p2/mango-creek-profile.webp",
+      "alt": "Profile along Northing 29 between eastings 47 and 52 with features numbered 1, 2 and 3.",
+      "wide": false,
+      "width": 1261,
+      "height": 646,
+      "sourcePage": 10,
+      "sourcePaper": "2011-mj-p2"
+    },
+    "belize-contours": {
+      "src": "geography/archive/2011-mj-p2/belize-contours.webp",
+      "alt": "Contour sketch for eastings 40 to 45 and northings 31 to 34, with 20-metre contours and a key.",
+      "wide": false,
+      "width": 836,
+      "height": 593,
+      "sourcePage": 11,
+      "sourcePaper": "2011-mj-p2"
+    },
+    "world-map": {
+      "src": "geography/archive/2011-mj-p2/world-map.webp",
+      "alt": "Unlabelled world outline for shading three climatic regions.",
+      "wide": false,
+      "width": 1531,
+      "height": 851,
+      "sourcePage": 12,
+      "sourcePaper": "2011-mj-p2"
+    },
+    "countries-p-q": {
+      "src": "geography/archive/2011-mj-p2/countries-p-q.webp",
+      "alt": "Map showing Countries P and Q, the Atlantic Ocean, rivers, forest and a 100-kilometre scale.",
+      "wide": false,
+      "width": 641,
+      "height": 745,
+      "sourcePage": 5,
+      "sourcePaper": "2011-mj-p2"
+    },
+    "caribbean-hazards": {
+      "src": "geography/archive/2011-mj-p2/caribbean-hazards.webp",
+      "alt": "Map of the Caribbean with locations labelled A through F, a north arrow and 300-kilometre scale.",
+      "wide": false,
+      "width": 1633,
+      "height": 1171,
+      "sourcePage": 13,
+      "sourcePaper": "2011-mj-p2"
+    },
+    "deforestation-grid": {
+      "src": "geography/archive/2011-mj-p2/deforestation-grid.webp",
+      "alt": "Graph grid for area deforested, with a square kilometre axis labelled from 0 to 30,000.",
+      "wide": false,
+      "width": 1516,
+      "height": 731,
+      "sourcePage": 14,
+      "sourcePaper": "2011-mj-p2"
+    }
+  },
+  "2010-mj-p2": {
+    "pointe-michel-2010": {
+      "src": "geography/archive/2010-mj-p2/pointe-michel-2010.webp",
+      "alt": "Pointe Michel, Dominica topographic map with the numbered grid, scale of 1:25,000 and legend.",
+      "wide": true,
+      "width": 3818,
+      "height": 4049,
+      "sourcePage": 12,
+      "sourcePaper": "2010-mj-p2"
+    },
+    "tectonic-plates": {
+      "src": "geography/archive/2010-mj-p2/tectonic-plates.webp",
+      "alt": "World map of the main tectonic plates with boundary and movement symbols and marked latitude lines.",
+      "wide": false,
+      "width": 825,
+      "height": 529,
+      "sourcePage": 3,
+      "sourcePaper": "2010-mj-p2"
+    },
+    "active-volcanoes": {
+      "src": "geography/archive/2010-mj-p2/active-volcanoes.webp",
+      "alt": "World map showing the distribution of active volcanoes.",
+      "wide": false,
+      "width": 825,
+      "height": 522,
+      "sourcePage": 3,
+      "sourcePaper": "2010-mj-p2"
+    },
+    "apparel-exports": {
+      "src": "geography/archive/2010-mj-p2/apparel-exports.webp",
+      "alt": "Line graph showing the value of Jamaica’s apparel exports to the USA and to all markets over 1995–2005.",
+      "wide": false,
+      "width": 1056,
+      "height": 481,
+      "sourcePage": 6,
+      "sourcePaper": "2010-mj-p2"
+    },
+    "natural-hazard-effects": {
+      "src": "geography/archive/2010-mj-p2/natural-hazard-effects.webp",
+      "alt": "Illustration of a settlement after a natural hazard, showing buildings, a vehicle, a pole and a damaged road.",
+      "wide": false,
+      "width": 803,
+      "height": 589,
+      "sourcePage": 8,
+      "sourcePaper": "2010-mj-p2"
+    },
+    "waste-treatment-grid": {
+      "src": "geography/archive/2010-mj-p2/waste-treatment-grid.webp",
+      "alt": "Partially completed bar chart of waste water treated by six cities.",
+      "wide": false,
+      "width": 1368,
+      "height": 1438,
+      "sourcePage": 10,
+      "sourcePaper": "2010-mj-p2"
+    },
+    "coral-islands": {
+      "src": "geography/archive/2010-mj-p2/coral-islands.webp",
+      "alt": "Two imaginary coral islands with 30-centimetre contours, a scale bar and legend.",
+      "wide": false,
+      "width": 1059,
+      "height": 623,
+      "sourcePage": 11,
+      "sourcePaper": "2010-mj-p2"
+    }
+  },
+  "2009-mj-p2": {
+    "land-use-area": {
+      "src": "geography/archive/2009-mj-p2/land-use-area.webp",
+      "alt": "Grid showing the area bounded by eastings 65 and 70 and northings 80 and 87.",
+      "wide": false,
+      "width": 380,
+      "height": 216,
+      "sourcePage": 2,
+      "sourcePaper": "2009-mj-p2"
+    },
+    "maraval-profile": {
+      "src": "geography/archive/2009-mj-p2/maraval-profile.webp",
+      "alt": "Partly completed profile along Northing 82 between eastings 60 and 63, with a vertical scale in feet.",
+      "wide": false,
+      "width": 1063,
+      "height": 718,
+      "sourcePage": 13,
+      "sourcePaper": "2009-mj-p2"
+    },
+    "mountain-temperature": {
+      "src": "geography/archive/2009-mj-p2/mountain-temperature.webp",
+      "alt": "Temperature against height graph for a 2,000-metre mountain, with a cloud outline and condensation line.",
+      "wide": false,
+      "width": 876,
+      "height": 810,
+      "sourcePage": 4,
+      "sourcePaper": "2009-mj-p2"
+    },
+    "population-2000": {
+      "src": "geography/archive/2009-mj-p2/population-2000.webp",
+      "alt": "Population pyramid showing the age and sex composition of a Caribbean country in 2000.",
+      "wide": false,
+      "width": 1191,
+      "height": 568,
+      "sourcePage": 6,
+      "sourcePaper": "2009-mj-p2"
+    },
+    "population-2025": {
+      "src": "geography/archive/2009-mj-p2/population-2025.webp",
+      "alt": "Population pyramid of the projected age and sex composition of the same Caribbean country in 2025.",
+      "wide": false,
+      "width": 1191,
+      "height": 563,
+      "sourcePage": 6,
+      "sourcePaper": "2009-mj-p2"
+    },
+    "tourist-arrivals-circle": {
+      "src": "geography/archive/2009-mj-p2/tourist-arrivals-circle.webp",
+      "alt": "Partially filled pie chart with labelled sectors of 7% and 9%.",
+      "wide": false,
+      "width": 664,
+      "height": 656,
+      "sourcePage": 14,
+      "sourcePaper": "2009-mj-p2"
+    },
+    "plymouth-before": {
+      "src": "geography/archive/2009-mj-p2/plymouth-before.webp",
+      "alt": "Plymouth, Montserrat, before the eruption. The clock tower and surrounding town are visible.",
+      "wide": false,
+      "width": 692,
+      "height": 577,
+      "sourcePage": 10,
+      "sourcePaper": "2009-mj-p2"
+    },
+    "plymouth-after": {
+      "src": "geography/archive/2009-mj-p2/plymouth-after.webp",
+      "alt": "Plymouth, Montserrat, after the eruption. The clock tower stands among damaged buildings and deposits.",
+      "wide": false,
+      "width": 709,
+      "height": 577,
+      "sourcePage": 10,
+      "sourcePaper": "2009-mj-p2"
+    },
+    "world-time-zones": {
+      "src": "geography/archive/2009-mj-p2/world-time-zones.webp",
+      "alt": "World time zone map locating New Orleans, London, Panama City, Auckland and Jamaica.",
+      "wide": false,
+      "width": 1810,
+      "height": 952,
+      "sourcePage": 15,
+      "sourcePaper": "2009-mj-p2"
+    }
+  },
+  "2008-mj-p2": {
+    "port-antonio-area": {
+      "src": "geography/archive/2008-mj-p2/port-antonio-area.webp",
+      "alt": "Shaded area bounded by eastings 19 and 21 and northings 64 and 67.",
+      "wide": false,
+      "width": 334,
+      "height": 463,
+      "sourcePage": 2,
+      "sourcePaper": "2008-mj-p2"
+    },
+    "rio-grande-profile": {
+      "src": "geography/archive/2008-mj-p2/rio-grande-profile.webp",
+      "alt": "Cross-section grid for the Rio Grande valley along Northing 67, with Eastings 03 to 06 and a height scale in metres.",
+      "wide": false,
+      "width": 771,
+      "height": 479,
+      "sourcePage": 11,
+      "sourcePaper": "2008-mj-p2"
+    },
+    "agriculture-exports-grid": {
+      "src": "geography/archive/2008-mj-p2/agriculture-exports-grid.webp",
+      "alt": "Graph grid of export value, in thousands of dollars, against years 2001 to 2004.",
+      "wide": false,
+      "width": 1088,
+      "height": 1065,
+      "sourcePage": 13,
+      "sourcePaper": "2008-mj-p2"
+    },
+    "annual-temperature": {
+      "src": "geography/archive/2008-mj-p2/annual-temperature.webp",
+      "alt": "Graph of the difference in average annual temperature from the 1900 average, between 1900 and 2000.",
+      "wide": false,
+      "width": 663,
+      "height": 524,
+      "sourcePage": 10,
+      "sourcePaper": "2008-mj-p2"
+    }
+  },
+  "2007-mj-p2": {
+    "basseterre-northeast": {
+      "src": "geography/archive/2007-mj-p2/basseterre-northeast.webp",
+      "alt": "Sketch grid for northeastern Basseterre, covering eastings 24 to 27 and northings 13 to 16.",
+      "wide": false,
+      "width": 499,
+      "height": 490,
+      "sourcePage": 12,
+      "sourcePaper": "2007-mj-p2"
+    },
+    "plate-boundaries": {
+      "src": "geography/archive/2007-mj-p2/plate-boundaries.webp",
+      "alt": "Map of the Caribbean and adjacent tectonic plates, with points A, B and X.",
+      "wide": false,
+      "width": 683,
+      "height": 701,
+      "sourcePage": 3,
+      "sourcePaper": "2007-mj-p2"
+    },
+    "boundary-symbol": {
+      "src": "geography/archive/2007-mj-p2/boundary-symbol.webp",
+      "alt": "Plate boundary symbol, a line with small triangles along one side.",
+      "wide": false,
+      "width": 93,
+      "height": 29,
+      "sourcePage": 3,
+      "sourcePaper": "2007-mj-p2"
+    },
+    "mass-movement": {
+      "src": "geography/archive/2007-mj-p2/mass-movement.webp",
+      "alt": "Cross-section showing tension gashes in a road, a tilted pole and tree, and soil pressing on a wall.",
+      "wide": false,
+      "width": 623,
+      "height": 423,
+      "sourcePage": 4,
+      "sourcePaper": "2007-mj-p2"
+    },
+    "rainfall-and-temperature": {
+      "src": "geography/archive/2007-mj-p2/rainfall-and-temperature.webp",
+      "alt": "Monthly rainfall and temperature graph with both vertical scales.",
+      "wide": false,
+      "width": 991,
+      "height": 726,
+      "sourcePage": 5,
+      "sourcePaper": "2007-mj-p2"
+    },
+    "demographic-transition": {
+      "src": "geography/archive/2007-mj-p2/demographic-transition.webp",
+      "alt": "Birth-rate and death-rate curves across four stages, with rates per 1,000.",
+      "wide": false,
+      "width": 682,
+      "height": 456,
+      "sourcePage": 6,
+      "sourcePaper": "2007-mj-p2"
+    },
+    "world-economies-grid": {
+      "src": "geography/archive/2007-mj-p2/world-economies-grid.webp",
+      "alt": "Partly completed grid for agriculture, industry and services in three income groups.",
+      "wide": false,
+      "width": 1278,
+      "height": 1291,
+      "sourcePage": 13,
+      "sourcePaper": "2007-mj-p2"
+    },
+    "hurricane-months": {
+      "src": "geography/archive/2007-mj-p2/hurricane-months.webp",
+      "alt": "Bar graph showing when hurricanes started from 1881 to 1972.",
+      "wide": false,
+      "width": 886,
+      "height": 545,
+      "sourcePage": 9,
+      "sourcePaper": "2007-mj-p2"
+    },
+    "waste-graph-grid": {
+      "src": "geography/archive/2007-mj-p2/waste-graph-grid.webp",
+      "alt": "Partly completed bar graph with six categories of waste and two bars already drawn.",
+      "wide": false,
+      "width": 1382,
+      "height": 1463,
+      "sourcePage": 14,
+      "sourcePaper": "2007-mj-p2"
+    }
+  },
+  "2006-mj-p2": {
+    "nevis-cross-section": {
+      "src": "geography/archive/2006-mj-p2/nevis-cross-section.webp",
+      "alt": "Partly completed Nevis cross-section from grid reference 330960 to 360960, with horizontal and vertical scales.",
+      "wide": false,
+      "width": 1338,
+      "height": 1186,
+      "sourcePage": 12,
+      "sourcePaper": "2006-mj-p2"
+    },
+    "river-system": {
+      "src": "geography/archive/2006-mj-p2/river-system.webp",
+      "alt": "Diagram of a river system with a dashed boundary A and a point B.",
+      "wide": false,
+      "width": 496,
+      "height": 446,
+      "sourcePage": 4,
+      "sourcePaper": "2006-mj-p2"
+    },
+    "coniferous-forests": {
+      "src": "geography/archive/2006-mj-p2/coniferous-forests.webp",
+      "alt": "World map showing the distribution of coniferous forests, the Arctic Circle and the Tropic of Cancer.",
+      "wide": false,
+      "width": 1259,
+      "height": 393,
+      "sourcePage": 6,
+      "sourcePaper": "2006-mj-p2"
+    },
+    "cruise-arrivals-grid": {
+      "src": "geography/archive/2006-mj-p2/cruise-arrivals-grid.webp",
+      "alt": "Line graph grid for cruise ship arrivals in thousands from 1980 to 2004.",
+      "wide": false,
+      "width": 1302,
+      "height": 1511,
+      "sourcePage": 13,
+      "sourcePaper": "2006-mj-p2"
+    },
+    "energy-sources": {
+      "src": "geography/archive/2006-mj-p2/energy-sources.webp",
+      "alt": "Pie chart of energy sources in Trinidad and Tobago with percentage slices and a separate legend.",
+      "wide": false,
+      "width": 858,
+      "height": 375,
+      "sourcePage": 10,
+      "sourcePaper": "2006-mj-p2"
+    }
+  },
+  "2005-mj-p2": {
+    "savanna-la-mar": {
+      "src": "geography/archive/2005-mj-p2/savanna-la-mar.webp",
+      "alt": "Savanna-la-Mar, Jamaica, topographic map with the numbered grid, scale of 1:50,000 and legend.",
+      "wide": true,
+      "width": 4154,
+      "height": 2917,
+      "sourcePage": 14,
+      "sourcePaper": "2005-mj-p2"
+    },
+    "negril-hill": {
+      "src": "geography/archive/2005-mj-p2/negril-hill.webp",
+      "alt": "Profile across Negril Hill on Easting 10 with five arrows and height in metres.",
+      "wide": false,
+      "width": 1156,
+      "height": 389,
+      "sourcePage": 11,
+      "sourcePaper": "2005-mj-p2"
+    },
+    "tectonic-plates": {
+      "src": "geography/archive/2005-mj-p2/tectonic-plates.webp",
+      "alt": "Map of the Americas showing tectonic plates A and B, and movement arrows between the Pacific and Nazca plates.",
+      "wide": false,
+      "width": 724,
+      "height": 757,
+      "sourcePage": 3,
+      "sourcePaper": "2005-mj-p2"
+    },
+    "river-long-profile": {
+      "src": "geography/archive/2005-mj-p2/river-long-profile.webp",
+      "alt": "Long profile of a river with a band of resistant rock near point A, and notes for the upper and lower sections.",
+      "wide": false,
+      "width": 1243,
+      "height": 364,
+      "sourcePage": 4,
+      "sourcePaper": "2005-mj-p2"
+    },
+    "caribbean-weather": {
+      "src": "geography/archive/2005-mj-p2/caribbean-weather.webp",
+      "alt": "Caribbean weather chart showing Butch, isobars, station symbols, scale and point X.",
+      "wide": false,
+      "width": 547,
+      "height": 662,
+      "sourcePage": 5,
+      "sourcePaper": "2005-mj-p2"
+    },
+    "world-map": {
+      "src": "geography/archive/2005-mj-p2/world-map.webp",
+      "alt": "Unlabelled world outline for locating three vegetation zones.",
+      "wide": false,
+      "width": 1309,
+      "height": 757,
+      "sourcePage": 12,
+      "sourcePaper": "2005-mj-p2"
+    },
+    "food-trade": {
+      "src": "geography/archive/2005-mj-p2/food-trade.webp",
+      "alt": "Line graph showing food imports and exports in a Caribbean territory from 1991 to 2000, in millions of US dollars.",
+      "wide": false,
+      "width": 999,
+      "height": 658,
+      "sourcePage": 7,
+      "sourcePaper": "2005-mj-p2"
+    },
+    "usa-industrial-centres": {
+      "src": "geography/archive/2005-mj-p2/usa-industrial-centres.webp",
+      "alt": "Outline map of the United States with industrial centres marked near the Great Lakes and in the northeast.",
+      "wide": false,
+      "width": 1308,
+      "height": 872,
+      "sourcePage": 13,
+      "sourcePaper": "2005-mj-p2"
+    },
+    "caribbean-visitors": {
+      "src": "geography/archive/2005-mj-p2/caribbean-visitors.webp",
+      "alt": "Map showing the origins and destinations of visitors to the Caribbean, with scaled arrows and a legend.",
+      "wide": false,
+      "width": 1323,
+      "height": 757,
+      "sourcePage": 9,
+      "sourcePaper": "2005-mj-p2"
+    },
+    "trinidad-population": {
+      "src": "geography/archive/2005-mj-p2/trinidad-population.webp",
+      "alt": "Choropleth map of Trinidad and Tobago showing population density and proportional circles for towns.",
+      "wide": false,
+      "width": 1267,
+      "height": 685,
+      "sourcePage": 10,
+      "sourcePaper": "2005-mj-p2"
+    }
+  },
+  "2020-mj-p1": {
+    "caribbean-region": {
+      "src": "geography/archive/2020-mj-p1/caribbean-region.webp",
+      "alt": "Map of the Caribbean region showing islands, coastal countries and cities, with latitude, longitude and a kilometre scale.",
+      "wide": false,
+      "width": 1122,
+      "height": 598,
+      "sourcePage": 3,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "contour-sketch": {
+      "src": "geography/archive/2020-mj-p1/contour-sketch.webp",
+      "alt": "Contour sketch map with grid eastings and northings, points X, W and Z and Area Y.",
+      "wide": false,
+      "width": 600,
+      "height": 310,
+      "sourcePage": 4,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "world-map": {
+      "src": "geography/archive/2020-mj-p1/world-map.webp",
+      "alt": "World map showing New Orleans and St Petersburg, the prime meridian and a shaded zone.",
+      "wide": false,
+      "width": 1043,
+      "height": 667,
+      "sourcePage": 5,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "limestone-landform": {
+      "src": "geography/archive/2020-mj-p1/limestone-landform.webp",
+      "alt": "Cross-section of a river and limestone over impermeable rock, with a landform indicated by Y.",
+      "wide": false,
+      "width": 468,
+      "height": 308,
+      "sourcePage": 6,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "coastline": {
+      "src": "geography/archive/2020-mj-p1/coastline.webp",
+      "alt": "Diagram of a coastline, with the sea and two bays drawn.",
+      "wide": false,
+      "width": 572,
+      "height": 324,
+      "sourcePage": 6,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "caribbean-weather": {
+      "src": "geography/archive/2020-mj-p1/caribbean-weather.webp",
+      "alt": "Weather map of the northern Caribbean, with station models, fronts and location X.",
+      "wide": false,
+      "width": 826,
+      "height": 381,
+      "sourcePage": 7,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "rainfall-and-temperature": {
+      "src": "geography/archive/2020-mj-p1/rainfall-and-temperature.webp",
+      "alt": "Monthly rainfall and temperature graph with rainfall in millimetres and temperature in degrees Celsius.",
+      "wide": false,
+      "width": 379,
+      "height": 404,
+      "sourcePage": 8,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "country-p-climate": {
+      "src": "geography/archive/2020-mj-p1/country-p-climate.webp",
+      "alt": "Rainfall and temperature graph for Country P, with months along the bottom.",
+      "wide": false,
+      "width": 897,
+      "height": 479,
+      "sourcePage": 9,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "country-q-population": {
+      "src": "geography/archive/2020-mj-p1/country-q-population.webp",
+      "alt": "Population pyramid for Country Q, divided by sex and age group, with the population scale in millions.",
+      "wide": false,
+      "width": 849,
+      "height": 605,
+      "sourcePage": 10,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "volcanic-landform": {
+      "src": "geography/archive/2020-mj-p1/volcanic-landform.webp",
+      "alt": "Sketch of a volcanic landscape with a 0 to 2 kilometre scale.",
+      "wide": false,
+      "width": 481,
+      "height": 437,
+      "sourcePage": 11,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "plate-margins": {
+      "src": "geography/archive/2020-mj-p1/plate-margins.webp",
+      "alt": "Diagram of two moving plate margins with a continent and features at R.",
+      "wide": false,
+      "width": 554,
+      "height": 304,
+      "sourcePage": 11,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "latitude-globe": {
+      "src": "geography/archive/2020-mj-p1/latitude-globe.webp",
+      "alt": "Globe sketch showing lines of latitude and point P.",
+      "wide": false,
+      "width": 479,
+      "height": 501,
+      "sourcePage": 12,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "drainage-pattern": {
+      "src": "geography/archive/2020-mj-p1/drainage-pattern.webp",
+      "alt": "Drainage pattern diagram with a central uplift and streams.",
+      "wide": false,
+      "width": 410,
+      "height": 320,
+      "sourcePage": 14,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "riverbed-potholes": {
+      "src": "geography/archive/2020-mj-p1/riverbed-potholes.webp",
+      "alt": "Block diagram showing pebbles trapped in potholes on the riverbed.",
+      "wide": false,
+      "width": 583,
+      "height": 403,
+      "sourcePage": 13,
+      "sourcePaper": "2020-mj-p1"
+    },
+    "coastal-area": {
+      "src": "geography/archive/2020-mj-p1/coastal-area.webp",
+      "alt": "Diagram of a coastal area with sea on both sides of the curved feature labelled X.",
+      "wide": false,
+      "width": 507,
+      "height": 317,
+      "sourcePage": 16,
+      "sourcePaper": "2020-mj-p1"
+    }
+  },
+  "2021-mj-p1": {
+    "boot-river": {
+      "src": "geography/archive/2021-mj-p1/boot-river.webp",
+      "alt": "Map of Boot River and Boot Bay, with contours, a grid, a north arrow, a mileage scale and a key.",
+      "wide": true,
+      "width": 1184,
+      "height": 1053,
+      "sourcePage": 2,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "river-mouth": {
+      "src": "geography/archive/2021-mj-p1/river-mouth.webp",
+      "alt": "River with several branches meeting the sea and a feature identified by the number 1.",
+      "wide": false,
+      "width": 654,
+      "height": 417,
+      "sourcePage": 3,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "black-river": {
+      "src": "geography/archive/2021-mj-p1/black-river.webp",
+      "alt": "Map extract of Black River and Black River Bay with grid eastings and northings, a point X and a legend.",
+      "wide": true,
+      "width": 1020,
+      "height": 1065,
+      "sourcePage": 4,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "contour-bearing": {
+      "src": "geography/archive/2021-mj-p1/contour-bearing.webp",
+      "alt": "Contour map with grid numbers, Points X and W and Area Y.",
+      "wide": false,
+      "width": 729,
+      "height": 366,
+      "sourcePage": 5,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "clouds-highland": {
+      "src": "geography/archive/2021-mj-p1/clouds-highland.webp",
+      "alt": "Diagram of air rising and clouds forming over a highland, with heights above sea level.",
+      "wide": false,
+      "width": 760,
+      "height": 451,
+      "sourcePage": 5,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "estate-sketch": {
+      "src": "geography/archive/2021-mj-p1/estate-sketch.webp",
+      "alt": "Sketch map of an area with points X, Y and Z, estate boundaries, village symbols and a key.",
+      "wide": false,
+      "width": 1344,
+      "height": 828,
+      "sourcePage": 6,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "composite-volcano": {
+      "src": "geography/archive/2021-mj-p1/composite-volcano.webp",
+      "alt": "Cross-section of a composite volcanic cone with lava, ash, a magma chamber and a feature labelled P.",
+      "wide": false,
+      "width": 986,
+      "height": 559,
+      "sourcePage": 7,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "africa-zone": {
+      "src": "geography/archive/2021-mj-p1/africa-zone.webp",
+      "alt": "Map of Africa with a band shaded between two lines of latitude.",
+      "wide": false,
+      "width": 620,
+      "height": 605,
+      "sourcePage": 7,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "rain-and-temperature": {
+      "src": "geography/archive/2021-mj-p1/rain-and-temperature.webp",
+      "alt": "Monthly rainfall and temperature graph with rainfall in millimetres and temperature in Celsius.",
+      "wide": false,
+      "width": 434,
+      "height": 546,
+      "sourcePage": 8,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "plate-margins": {
+      "src": "geography/archive/2021-mj-p1/plate-margins.webp",
+      "alt": "Diagram showing the movement of plate margins, a continent and features at R.",
+      "wide": false,
+      "width": 613,
+      "height": 378,
+      "sourcePage": 9,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "island-density": {
+      "src": "geography/archive/2021-mj-p1/island-density.webp",
+      "alt": "Population density map of Island P, showing four labelled areas and a density key.",
+      "wide": false,
+      "width": 1048,
+      "height": 430,
+      "sourcePage": 10,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "river-profile": {
+      "src": "geography/archive/2021-mj-p1/river-profile.webp",
+      "alt": "River long profile showing its first, second and third stages and elevations of 0 and 800 metres.",
+      "wide": false,
+      "width": 909,
+      "height": 241,
+      "sourcePage": 11,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "hydrologic-cycle": {
+      "src": "geography/archive/2021-mj-p1/hydrologic-cycle.webp",
+      "alt": "Hydrologic cycle diagram showing rainfall and runoff, and an arrow labelled X.",
+      "wide": false,
+      "width": 739,
+      "height": 425,
+      "sourcePage": 12,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "drainage-basin": {
+      "src": "geography/archive/2021-mj-p1/drainage-basin.webp",
+      "alt": "Block diagram of a mountain with tributaries that lead to a river and dotted lines on the land surface.",
+      "wide": false,
+      "width": 628,
+      "height": 467,
+      "sourcePage": 13,
+      "sourcePaper": "2021-mj-p1"
+    },
+    "weather-front": {
+      "src": "geography/archive/2021-mj-p1/weather-front.webp",
+      "alt": "Weather system diagram with cold dry air, warm moist air, clouds, rain and the earth’s surface.",
+      "wide": false,
+      "width": 550,
+      "height": 433,
+      "sourcePage": 15,
+      "sourcePaper": "2021-mj-p1"
+    }
+  },
+  "2017-mj-p1": {
+    "eastern-caribbean": {
+      "src": "geography/archive/2017-mj-p1/eastern-caribbean.webp",
+      "alt": "Map of the eastern Caribbean with five islands labelled I, II, III, IV and V, and with latitude, longitude, scales and a north arrow.",
+      "wide": true,
+      "width": 1231,
+      "height": 1659,
+      "sourcePage": 2,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "river-contours": {
+      "src": "geography/archive/2017-mj-p1/river-contours.webp",
+      "alt": "River across three contour lines of 100, 200 and 300 metres, with a north arrow.",
+      "wide": false,
+      "width": 670,
+      "height": 362,
+      "sourcePage": 4,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "black-river": {
+      "src": "geography/archive/2017-mj-p1/black-river.webp",
+      "alt": "Black River area, Jamaica, showing the grid, the river and the location labelled X.",
+      "wide": true,
+      "width": 787,
+      "height": 1039,
+      "sourcePage": 5,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "agricultural-employment": {
+      "src": "geography/archive/2017-mj-p1/agricultural-employment.webp",
+      "alt": "Bar chart showing the percentage employed in agriculture in 1950 and 2000 for ten Caribbean territories.",
+      "wide": false,
+      "width": 1202,
+      "height": 694,
+      "sourcePage": 6,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "river-valley": {
+      "src": "geography/archive/2017-mj-p1/river-valley.webp",
+      "alt": "River valley diagram with labels M, N and O.",
+      "wide": false,
+      "width": 658,
+      "height": 389,
+      "sourcePage": 7,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "tourist-centre": {
+      "src": "geography/archive/2017-mj-p1/tourist-centre.webp",
+      "alt": "Contour map of a tourist centre and coast, with the key, scale and points R, T, V, W, X and Y.",
+      "wide": false,
+      "width": 1045,
+      "height": 453,
+      "sourcePage": 8,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "profile-a": {
+      "src": "geography/archive/2017-mj-p1/profile-a.webp",
+      "alt": "Contour profile A.",
+      "wide": false,
+      "width": 463,
+      "height": 253,
+      "sourcePage": 8,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "profile-b": {
+      "src": "geography/archive/2017-mj-p1/profile-b.webp",
+      "alt": "Contour profile B.",
+      "wide": false,
+      "width": 463,
+      "height": 248,
+      "sourcePage": 8,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "profile-c": {
+      "src": "geography/archive/2017-mj-p1/profile-c.webp",
+      "alt": "Contour profile C.",
+      "wide": false,
+      "width": 463,
+      "height": 243,
+      "sourcePage": 8,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "profile-d": {
+      "src": "geography/archive/2017-mj-p1/profile-d.webp",
+      "alt": "Contour profile D.",
+      "wide": false,
+      "width": 463,
+      "height": 243,
+      "sourcePage": 8,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "weather-system": {
+      "src": "geography/archive/2017-mj-p1/weather-system.webp",
+      "alt": "Weather chart with lines X and Y and two weather station models.",
+      "wide": false,
+      "width": 897,
+      "height": 554,
+      "sourcePage": 9,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "island-density": {
+      "src": "geography/archive/2017-mj-p1/island-density.webp",
+      "alt": "Population density map of Island P with four areas labelled I to IV and a key.",
+      "wide": false,
+      "width": 1117,
+      "height": 407,
+      "sourcePage": 10,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "population-growth": {
+      "src": "geography/archive/2017-mj-p1/population-growth.webp",
+      "alt": "Line graph of the population of a country over time. The vertical axis is measured in millions.",
+      "wide": false,
+      "width": 619,
+      "height": 550,
+      "sourcePage": 11,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "hydrologic-cycle": {
+      "src": "geography/archive/2017-mj-p1/hydrologic-cycle.webp",
+      "alt": "Hydrologic cycle with rainfall, runoff, the sea and arrows, including one labelled X.",
+      "wide": false,
+      "width": 787,
+      "height": 400,
+      "sourcePage": 11,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "watershed": {
+      "src": "geography/archive/2017-mj-p1/watershed.webp",
+      "alt": "Block diagram of a mountain with tributaries, a river and a dotted line along the high ground.",
+      "wide": false,
+      "width": 686,
+      "height": 444,
+      "sourcePage": 12,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "coastal-area": {
+      "src": "geography/archive/2017-mj-p1/coastal-area.webp",
+      "alt": "Block diagram of a coastal area with a beach, the sea and the feature labelled X.",
+      "wide": false,
+      "width": 663,
+      "height": 368,
+      "sourcePage": 12,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "settlement-sites": {
+      "src": "geography/archive/2017-mj-p1/settlement-sites.webp",
+      "alt": "Contour map of four possible settlement sites labelled W, X, Y and Z, with a swamp, the sea and a key.",
+      "wide": false,
+      "width": 1017,
+      "height": 488,
+      "sourcePage": 14,
+      "sourcePaper": "2017-mj-p1"
+    },
+    "deforestation": {
+      "src": "geography/archive/2017-mj-p1/deforestation.webp",
+      "alt": "Flowchart reading Tropical Deforestation, Great Overland Flow, Soil Erosion, then X.",
+      "wide": false,
+      "width": 955,
+      "height": 118,
+      "sourcePage": 15,
+      "sourcePaper": "2017-mj-p1"
+    }
+  },
+  "2018-mj-p1": {
+    "boot-river": {
+      "src": "geography/archive/2018-mj-p1/boot-river.webp",
+      "alt": "Map of Boot River with contours, a numbered grid, a north arrow, the legend and a scale in miles.",
+      "wide": true,
+      "width": 1295,
+      "height": 975,
+      "sourcePage": 2,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "river-mouth": {
+      "src": "geography/archive/2018-mj-p1/river-mouth.webp",
+      "alt": "River with several branches that meet the sea. A feature is labelled 1.",
+      "wide": false,
+      "width": 690,
+      "height": 449,
+      "sourcePage": 3,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "landforms": {
+      "src": "geography/archive/2018-mj-p1/landforms.webp",
+      "alt": "Contour map showing the areas marked X and Y, the sea and the line from A to B.",
+      "wide": false,
+      "width": 998,
+      "height": 398,
+      "sourcePage": 3,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "global-temperature": {
+      "src": "geography/archive/2018-mj-p1/global-temperature.webp",
+      "alt": "Line graph showing annual mean global surface temperature in degrees Celsius over time.",
+      "wide": false,
+      "width": 1315,
+      "height": 955,
+      "sourcePage": 4,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "railway-map": {
+      "src": "geography/archive/2018-mj-p1/railway-map.webp",
+      "alt": "Sketch map with points P, Q and S and with a grid, a north arrow, a scale and a key.",
+      "wide": false,
+      "width": 1353,
+      "height": 996,
+      "sourcePage": 5,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "world-map": {
+      "src": "geography/archive/2018-mj-p1/world-map.webp",
+      "alt": "World map showing St Petersburg and New Orleans on a latitude and longitude grid.",
+      "wide": false,
+      "width": 1445,
+      "height": 959,
+      "sourcePage": 6,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "coastline": {
+      "src": "geography/archive/2018-mj-p1/coastline.webp",
+      "alt": "Block diagram of a coastline with two bays and the sea labelled.",
+      "wide": false,
+      "width": 722,
+      "height": 419,
+      "sourcePage": 7,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "contour-bearing": {
+      "src": "geography/archive/2018-mj-p1/contour-bearing.webp",
+      "alt": "Contour map with a numbered grid, points X and W and area Y.",
+      "wide": false,
+      "width": 767,
+      "height": 391,
+      "sourcePage": 7,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "highland": {
+      "src": "geography/archive/2018-mj-p1/highland.webp",
+      "alt": "Diagram of air rising over a highland, with clouds and a height scale in metres.",
+      "wide": false,
+      "width": 820,
+      "height": 504,
+      "sourcePage": 8,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "river-valley": {
+      "src": "geography/archive/2018-mj-p1/river-valley.webp",
+      "alt": "Block diagram of a river valley with features and areas labelled M, N and O.",
+      "wide": false,
+      "width": 620,
+      "height": 419,
+      "sourcePage": 8,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "country-p-climate": {
+      "src": "geography/archive/2018-mj-p1/country-p-climate.webp",
+      "alt": "Monthly rainfall and temperature graph for Country P, with scales in millimetres and degrees Celsius.",
+      "wide": false,
+      "width": 1108,
+      "height": 619,
+      "sourcePage": 9,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "volcanic-landform": {
+      "src": "geography/archive/2018-mj-p1/volcanic-landform.webp",
+      "alt": "Sketch of a landform showing the elevation 1850 metres and a scale from 0 to 2 kilometres.",
+      "wide": false,
+      "width": 630,
+      "height": 572,
+      "sourcePage": 10,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "island-population": {
+      "src": "geography/archive/2018-mj-p1/island-population.webp",
+      "alt": "Map of an island with four labelled areas, a north arrow and a key measured in persons per square kilometre.",
+      "wide": false,
+      "width": 1083,
+      "height": 531,
+      "sourcePage": 10,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "coastal-section": {
+      "src": "geography/archive/2018-mj-p1/coastal-section.webp",
+      "alt": "Coastal cross-section with the land, the sea and a point labelled X.",
+      "wide": false,
+      "width": 676,
+      "height": 446,
+      "sourcePage": 12,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "exports": {
+      "src": "geography/archive/2018-mj-p1/exports.webp",
+      "alt": "Stacked bar graph of export value by product type for four Caribbean territories.",
+      "wide": false,
+      "width": 1426,
+      "height": 414,
+      "sourcePage": 13,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "hydrologic-cycle": {
+      "src": "geography/archive/2018-mj-p1/hydrologic-cycle.webp",
+      "alt": "Diagram showing rainfall, runoff, the sea and an arrow labelled X.",
+      "wide": false,
+      "width": 651,
+      "height": 487,
+      "sourcePage": 14,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "farm-land": {
+      "src": "geography/archive/2018-mj-p1/farm-land.webp",
+      "alt": "Pie chart showing the percentages of land used for cows, pigs, tomatoes, cauliflower and beans.",
+      "wide": false,
+      "width": 631,
+      "height": 572,
+      "sourcePage": 16,
+      "sourcePaper": "2018-mj-p1"
+    },
+    "land-use-map": {
+      "src": "geography/archive/2018-mj-p1/land-use-map.webp",
+      "alt": "Land-use map showing wind direction, the location of Jack Mountain, two settlements, the coast, woodland and areas I through V.",
+      "wide": false,
+      "width": 1438,
+      "height": 837,
+      "sourcePage": 17,
+      "sourcePaper": "2018-mj-p1"
+    }
+  },
+  "2019-mj-p1": {
+    "st-margarets-bay": {
+      "src": "geography/archive/2019-mj-p1/st-margarets-bay.webp",
+      "alt": "Topographic map of St Margaret’s Bay with numbered grid, scales in miles and kilometres, and the grid square labelled T.",
+      "wide": true,
+      "width": 1442,
+      "height": 1297,
+      "sourcePage": 2,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "river-contours": {
+      "src": "geography/archive/2019-mj-p1/river-contours.webp",
+      "alt": "River across contour lines labelled 100, 200 and 300 metres, with a north arrow.",
+      "wide": false,
+      "width": 689,
+      "height": 418,
+      "sourcePage": 4,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "cruise-visitors": {
+      "src": "geography/archive/2019-mj-p1/cruise-visitors.webp",
+      "alt": "Line graph showing monthly cruise visitors in thousands for a Caribbean island in 2017.",
+      "wide": false,
+      "width": 1037,
+      "height": 848,
+      "sourcePage": 5,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "estate-sketch": {
+      "src": "geography/archive/2019-mj-p1/estate-sketch.webp",
+      "alt": "Sketch map of an area with points X, Y and Z, estate boundaries, village symbols and a key.",
+      "wide": false,
+      "width": 1440,
+      "height": 920,
+      "sourcePage": 6,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "climate-graph": {
+      "src": "geography/archive/2019-mj-p1/climate-graph.webp",
+      "alt": "Monthly rainfall and temperature graph with rainfall in millimetres and temperature in degrees Celsius.",
+      "wide": false,
+      "width": 480,
+      "height": 600,
+      "sourcePage": 7,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "tobago": {
+      "src": "geography/archive/2019-mj-p1/tobago.webp",
+      "alt": "Three maps of Tobago showing relief, annual rainfall and land use, with their keys and a scale.",
+      "wide": false,
+      "width": 589,
+      "height": 1453,
+      "sourcePage": 8,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "tourist-centre": {
+      "src": "geography/archive/2019-mj-p1/tourist-centre.webp",
+      "alt": "Contour map of a tourist centre and coast, with the key, scale and points R, T, V, W, X and Y.",
+      "wide": false,
+      "width": 1067,
+      "height": 511,
+      "sourcePage": 9,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "profile-a": {
+      "src": "geography/archive/2019-mj-p1/profile-a.webp",
+      "alt": "Contour profile A.",
+      "wide": false,
+      "width": 484,
+      "height": 276,
+      "sourcePage": 9,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "profile-b": {
+      "src": "geography/archive/2019-mj-p1/profile-b.webp",
+      "alt": "Contour profile B.",
+      "wide": false,
+      "width": 484,
+      "height": 281,
+      "sourcePage": 9,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "profile-c": {
+      "src": "geography/archive/2019-mj-p1/profile-c.webp",
+      "alt": "Contour profile C.",
+      "wide": false,
+      "width": 484,
+      "height": 271,
+      "sourcePage": 9,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "profile-d": {
+      "src": "geography/archive/2019-mj-p1/profile-d.webp",
+      "alt": "Contour profile D.",
+      "wide": false,
+      "width": 484,
+      "height": 269,
+      "sourcePage": 9,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "exports": {
+      "src": "geography/archive/2019-mj-p1/exports.webp",
+      "alt": "Stacked bar graph of export value by product type for four Caribbean territories.",
+      "wide": false,
+      "width": 1491,
+      "height": 412,
+      "sourcePage": 10,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "plate-margin": {
+      "src": "geography/archive/2019-mj-p1/plate-margin.webp",
+      "alt": "Block diagram of a plate margin with labelled rock layers, a continent, direction of movement and features at R.",
+      "wide": false,
+      "width": 816,
+      "height": 456,
+      "sourcePage": 10,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "earth-section": {
+      "src": "geography/archive/2019-mj-p1/earth-section.webp",
+      "alt": "Cross-section of Earth with the lithosphere and underlying layers labelled by depth and physical state. Source: San Diego State University, How Volcanoes Work.",
+      "wide": false,
+      "width": 882,
+      "height": 554,
+      "sourcePage": 11,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "river-profile": {
+      "src": "geography/archive/2019-mj-p1/river-profile.webp",
+      "alt": "Long profile of a river with three stages and an elevation scale from 0 to 800 metres.",
+      "wide": false,
+      "width": 980,
+      "height": 259,
+      "sourcePage": 13,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "slope-contours": {
+      "src": "geography/archive/2019-mj-p1/slope-contours.webp",
+      "alt": "Contour map with values of 300, 320, 340, 360 and 380 metres.",
+      "wide": false,
+      "width": 772,
+      "height": 456,
+      "sourcePage": 13,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "agricultural-employment": {
+      "src": "geography/archive/2019-mj-p1/agricultural-employment.webp",
+      "alt": "Bar graph comparing agricultural employment percentages for eight Caribbean territories in 1991 and 2017.",
+      "wide": false,
+      "width": 1040,
+      "height": 680,
+      "sourcePage": 14,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "coastal-area": {
+      "src": "geography/archive/2019-mj-p1/coastal-area.webp",
+      "alt": "Block diagram of a beach and seas separated by the feature labelled X.",
+      "wide": false,
+      "width": 679,
+      "height": 425,
+      "sourcePage": 15,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "watershed": {
+      "src": "geography/archive/2019-mj-p1/watershed.webp",
+      "alt": "Block diagram of a mountain with headwaters, a floodplain, a stream channel, a tributary, a dotted watershed boundary and the water table.",
+      "wide": false,
+      "width": 708,
+      "height": 481,
+      "sourcePage": 15,
+      "sourcePaper": "2019-mj-p1"
+    },
+    "settlement-sites": {
+      "src": "geography/archive/2019-mj-p1/settlement-sites.webp",
+      "alt": "Contour map of four possible settlement sites labelled W, X, Y and Z, with a swamp, the sea and a key.",
+      "wide": false,
+      "width": 1032,
+      "height": 548,
+      "sourcePage": 17,
+      "sourcePaper": "2019-mj-p1"
+    }
+  },
+  "2016-mj-p1": {
+    "caribbean-map": {
+      "src": "geography/archive/2016-mj-p1/caribbean-map.webp",
+      "alt": "Caribbean region map with cities, islands, coastal countries, latitude, longitude and a kilometre scale.",
+      "wide": true,
+      "width": 1556,
+      "height": 842,
+      "sourcePage": 2,
+      "sourcePaper": "2016-mj-p1"
+    },
+    "railway-map": {
+      "src": "geography/archive/2016-mj-p1/railway-map.webp",
+      "alt": "Sketch map with points P, Q and S and with a numbered grid, north arrow, scale and key.",
+      "wide": false,
+      "width": 1448,
+      "height": 1056,
+      "sourcePage": 4,
+      "sourcePaper": "2016-mj-p1"
+    },
+    "estate-sketch": {
+      "src": "geography/archive/2016-mj-p1/estate-sketch.webp",
+      "alt": "Sketch map with points A, Y and Z, estate boundaries, contour lines, villages, scale and a key.",
+      "wide": false,
+      "width": 1426,
+      "height": 833,
+      "sourcePage": 5,
+      "sourcePaper": "2016-mj-p1"
+    },
+    "contour-bearing": {
+      "src": "geography/archive/2016-mj-p1/contour-bearing.webp",
+      "alt": "Contour sketch map showing points X and W, area Y, a numbered grid and heights in metres.",
+      "wide": false,
+      "width": 765,
+      "height": 400,
+      "sourcePage": 6,
+      "sourcePaper": "2016-mj-p1"
+    },
+    "island-population": {
+      "src": "geography/archive/2016-mj-p1/island-population.webp",
+      "alt": "Map of an island with four labelled areas, a north arrow and a key measured in persons per square kilometre.",
+      "wide": false,
+      "width": 1138,
+      "height": 523,
+      "sourcePage": 8,
+      "sourcePaper": "2016-mj-p1"
+    },
+    "plate-margin": {
+      "src": "geography/archive/2016-mj-p1/plate-margin.webp",
+      "alt": "Block diagram of movement at a plate margin, showing a continent and the features labelled R.",
+      "wide": false,
+      "width": 707,
+      "height": 410,
+      "sourcePage": 10,
+      "sourcePaper": "2016-mj-p1"
+    },
+    "exports": {
+      "src": "geography/archive/2016-mj-p1/exports.webp",
+      "alt": "Stacked bar graph of export value by product type for four Caribbean territories.",
+      "wide": false,
+      "width": 1420,
+      "height": 390,
+      "sourcePage": 12,
+      "sourcePaper": "2016-mj-p1",
+      "caption": "Percentage scale, from left to right: 0%, 25%, 50%, 75%, 100%."
+    },
+    "coastal-area": {
+      "src": "geography/archive/2016-mj-p1/coastal-area.webp",
+      "alt": "Block diagram of a coastal area with a beach, the sea and the feature labelled X.",
+      "wide": false,
+      "width": 736,
+      "height": 439,
+      "sourcePage": 12,
+      "sourcePaper": "2016-mj-p1"
+    },
+    "pollution": {
+      "src": "geography/archive/2016-mj-p1/pollution.webp",
+      "alt": "Drawings of a cement mixer truck, a radio, a worker using a jackhammer and a race car.",
+      "wide": false,
+      "width": 759,
+      "height": 667,
+      "sourcePage": 14,
+      "sourcePaper": "2016-mj-p1"
+    }
+  },
+  "2015-mj-p1": {
+    "golden-grove": {
+      "src": "geography/archive/2015-mj-p1/golden-grove.webp",
+      "alt": "Topographic map of Golden Grove and Port Morant, Jamaica, with numbered grid, a north arrow, and scales in miles and kilometres.",
+      "wide": true,
+      "width": 1332,
+      "height": 1323,
+      "sourcePage": 1,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "railway-map": {
+      "src": "geography/archive/2015-mj-p1/railway-map.webp",
+      "alt": "Sketch map showing point P, the railway station, a canal near the river, a numbered grid, scale and key.",
+      "wide": false,
+      "width": 1218,
+      "height": 956,
+      "sourcePage": 2,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "world-map": {
+      "src": "geography/archive/2015-mj-p1/world-map.webp",
+      "alt": "World map marking New Orleans and St Petersburg on a latitude and longitude grid.",
+      "wide": false,
+      "width": 1280,
+      "height": 766,
+      "sourcePage": 3,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "slope": {
+      "src": "geography/archive/2015-mj-p1/slope.webp",
+      "alt": "Contour sketch with points A, B, X and Y, a numbered grid and a kilometre scale.",
+      "wide": false,
+      "width": 1406,
+      "height": 621,
+      "sourcePage": 4,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "black-river": {
+      "src": "geography/archive/2015-mj-p1/black-river.webp",
+      "alt": "Map of the Black River area, Jamaica, with a numbered grid and the point labelled X.",
+      "wide": true,
+      "width": 784,
+      "height": 1053,
+      "sourcePage": 5,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "agricultural-employment": {
+      "src": "geography/archive/2015-mj-p1/agricultural-employment.webp",
+      "alt": "Bar chart showing the percentage of the population employed in agriculture in 1950 and 2000 in ten Caribbean territories.",
+      "wide": false,
+      "width": 1182,
+      "height": 791,
+      "sourcePage": 6,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "africa-zone": {
+      "src": "geography/archive/2015-mj-p1/africa-zone.webp",
+      "alt": "Map of Africa with a shaded band between two lines of latitude.",
+      "wide": false,
+      "width": 789,
+      "height": 766,
+      "sourcePage": 7,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "rainfall-patterns": {
+      "src": "geography/archive/2015-mj-p1/rainfall-patterns.webp",
+      "alt": "Four monthly rainfall graphs, labelled I, II, III and IV, with vertical scales in millimetres.",
+      "wide": false,
+      "width": 1226,
+      "height": 706,
+      "sourcePage": 8,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "tourist-centre": {
+      "src": "geography/archive/2015-mj-p1/tourist-centre.webp",
+      "alt": "Contour map of a tourist centre and coast, with a key, scale and seven labelled points.",
+      "wide": false,
+      "width": 1225,
+      "height": 607,
+      "sourcePage": 9,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "profile-a": {
+      "src": "geography/archive/2015-mj-p1/profile-a.webp",
+      "alt": "Contour profile A.",
+      "wide": false,
+      "width": 471,
+      "height": 241,
+      "sourcePage": 9,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "profile-b": {
+      "src": "geography/archive/2015-mj-p1/profile-b.webp",
+      "alt": "Contour profile B.",
+      "wide": false,
+      "width": 471,
+      "height": 246,
+      "sourcePage": 9,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "profile-c": {
+      "src": "geography/archive/2015-mj-p1/profile-c.webp",
+      "alt": "Contour profile C.",
+      "wide": false,
+      "width": 477,
+      "height": 246,
+      "sourcePage": 9,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "profile-d": {
+      "src": "geography/archive/2015-mj-p1/profile-d.webp",
+      "alt": "Contour profile D.",
+      "wide": false,
+      "width": 476,
+      "height": 244,
+      "sourcePage": 9,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "climate-graph": {
+      "src": "geography/archive/2015-mj-p1/climate-graph.webp",
+      "alt": "Monthly rainfall and temperature graph with rainfall in millimetres and temperature in degrees Celsius.",
+      "wide": false,
+      "width": 453,
+      "height": 570,
+      "sourcePage": 10,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "trinidad-density": {
+      "src": "geography/archive/2015-mj-p1/trinidad-density.webp",
+      "alt": "Population density map of Trinidad using the 1970 census, with a north arrow and a key.",
+      "wide": false,
+      "width": 1448,
+      "height": 817,
+      "sourcePage": 11,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "earthquake": {
+      "src": "geography/archive/2015-mj-p1/earthquake.webp",
+      "alt": "Block diagram of wave fronts along an earthquake fault, with points W, X, Y and Z.",
+      "wide": false,
+      "width": 911,
+      "height": 510,
+      "sourcePage": 12,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "relief-rainfall": {
+      "src": "geography/archive/2015-mj-p1/relief-rainfall.webp",
+      "alt": "An island and mountain with prevailing winds, rising and descending air, and rainfall on one side.",
+      "wide": false,
+      "width": 761,
+      "height": 580,
+      "sourcePage": 13,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "hydrologic-cycle": {
+      "src": "geography/archive/2015-mj-p1/hydrologic-cycle.webp",
+      "alt": "Diagram of rainfall, runoff, the sea and a downward arrow marked X.",
+      "wide": false,
+      "width": 750,
+      "height": 439,
+      "sourcePage": 14,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "watershed": {
+      "src": "geography/archive/2015-mj-p1/watershed.webp",
+      "alt": "Block diagram of a river, tributaries, the sea and a dotted line following higher ground.",
+      "wide": false,
+      "width": 653,
+      "height": 520,
+      "sourcePage": 14,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "blue-ridge": {
+      "src": "geography/archive/2015-mj-p1/blue-ridge.webp",
+      "alt": "Blue Ridge sketch map showing the urban centre, mountains, swamp, roads, coast, a scale and a key.",
+      "wide": false,
+      "width": 759,
+      "height": 646,
+      "sourcePage": 15,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "bauxite-map": {
+      "src": "geography/archive/2015-mj-p1/bauxite-map.webp",
+      "alt": "Coastal sketch map with bauxite reserves, road, rail, the sea and points I, II, III and IV.",
+      "wide": false,
+      "width": 704,
+      "height": 480,
+      "sourcePage": 15,
+      "sourcePaper": "2015-mj-p1"
+    },
+    "deforestation": {
+      "src": "geography/archive/2015-mj-p1/deforestation.webp",
+      "alt": "Flowchart reading Tropical Deforestation, Great Overland Flow, X, then Soil Erosion.",
+      "wide": false,
+      "width": 996,
+      "height": 135,
+      "sourcePage": 17,
+      "sourcePaper": "2015-mj-p1"
+    }
+  },
+  "2014-mj-p1": {
+    "caribbean-map": {
+      "src": "geography/archive/2014-mj-p1/caribbean-map.webp",
+      "alt": "Map of the Caribbean region with coastal countries, islands and cities, with latitude, longitude and a kilometre scale.",
+      "wide": true,
+      "width": 1554,
+      "height": 868,
+      "sourcePage": 2,
+      "sourcePaper": "2014-mj-p1"
+    },
+    "hill-contours": {
+      "src": "geography/archive/2014-mj-p1/hill-contours.webp",
+      "alt": "Contour sketch of a hill with points A, B, C, D, X and Y, a numbered grid and a kilometre scale.",
+      "wide": false,
+      "width": 1385,
+      "height": 662,
+      "sourcePage": 3,
+      "sourcePaper": "2014-mj-p1"
+    },
+    "estate-sketch": {
+      "src": "geography/archive/2014-mj-p1/estate-sketch.webp",
+      "alt": "Sketch map with points A, Y and Z, a north arrow, estate boundaries, contour lines, villages, a scale and a key.",
+      "wide": false,
+      "width": 1423,
+      "height": 835,
+      "sourcePage": 4,
+      "sourcePaper": "2014-mj-p1"
+    },
+    "river-contours": {
+      "src": "geography/archive/2014-mj-p1/river-contours.webp",
+      "alt": "Contour map of a river valley with points P, Q, R, S and T and a 25-metre contour interval.",
+      "wide": false,
+      "width": 658,
+      "height": 549,
+      "sourcePage": 5,
+      "sourcePaper": "2014-mj-p1"
+    },
+    "global-temperature": {
+      "src": "geography/archive/2014-mj-p1/global-temperature.webp",
+      "alt": "Line graph showing annual mean global surface temperature in degrees Celsius over time.",
+      "wide": false,
+      "width": 1473,
+      "height": 941,
+      "sourcePage": 7,
+      "sourcePaper": "2014-mj-p1"
+    },
+    "island-population": {
+      "src": "geography/archive/2014-mj-p1/island-population.webp",
+      "alt": "Map of an island with four labelled areas, a north arrow and a key measured in persons per square kilometre.",
+      "wide": false,
+      "width": 1115,
+      "height": 515,
+      "sourcePage": 8,
+      "sourcePaper": "2014-mj-p1"
+    },
+    "plate-margin": {
+      "src": "geography/archive/2014-mj-p1/plate-margin.webp",
+      "alt": "Block diagram showing movement at a plate margin, a continent and the features at R.",
+      "wide": false,
+      "width": 701,
+      "height": 395,
+      "sourcePage": 8,
+      "sourcePaper": "2014-mj-p1"
+    },
+    "hydrologic-cycle": {
+      "src": "geography/archive/2014-mj-p1/hydrologic-cycle.webp",
+      "alt": "Diagram showing rainfall, runoff, the sea and an arrow labelled X.",
+      "wide": false,
+      "width": 683,
+      "height": 395,
+      "sourcePage": 9,
+      "sourcePaper": "2014-mj-p1"
+    },
+    "river-valley": {
+      "src": "geography/archive/2014-mj-p1/river-valley.webp",
+      "alt": "River valley block diagram with labelled features M, N and O.",
+      "wide": false,
+      "width": 638,
+      "height": 414,
+      "sourcePage": 9,
+      "sourcePaper": "2014-mj-p1"
+    },
+    "coastal-plain": {
+      "src": "geography/archive/2014-mj-p1/coastal-plain.webp",
+      "alt": "Coastal sketch map showing a coastal plain, river, town, swamps, corn cultivation, coconut trees and points W, X, Y and Z.",
+      "wide": false,
+      "width": 1246,
+      "height": 654,
+      "sourcePage": 13,
+      "sourcePaper": "2014-mj-p1"
+    }
+  },
+  "2013-mj-p1": {
+    "falmouth": {
+      "src": "geography/archive/2013-mj-p1/falmouth.webp",
+      "alt": "Topographic map of Falmouth, Jamaica, showing Gun Hill, Rock, a numbered grid, a north arrow and scales in miles and yards.",
+      "wide": true,
+      "width": 972,
+      "height": 755,
+      "sourcePage": 2,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "river-contours": {
+      "src": "geography/archive/2013-mj-p1/river-contours.webp",
+      "alt": "Contour map of a river valley with points P, Q, R, S and T and a 25-metre contour interval.",
+      "wide": false,
+      "width": 496,
+      "height": 423,
+      "sourcePage": 3,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "houston": {
+      "src": "geography/archive/2013-mj-p1/houston.webp",
+      "alt": "Map of part of North America with Houston marked and lines of latitude and longitude.",
+      "wide": false,
+      "width": 391,
+      "height": 336,
+      "sourcePage": 4,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "contour-bearing": {
+      "src": "geography/archive/2013-mj-p1/contour-bearing.webp",
+      "alt": "Contour map with points X and A, area Y, numbered eastings and a scale in metres.",
+      "wide": false,
+      "width": 540,
+      "height": 336,
+      "sourcePage": 4,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "hill-contours": {
+      "src": "geography/archive/2013-mj-p1/hill-contours.webp",
+      "alt": "Contour sketch of a hill with points A, B, C, D, X and Y, heights in metres and a kilometre scale.",
+      "wide": false,
+      "width": 1092,
+      "height": 493,
+      "sourcePage": 5,
+      "sourcePaper": "2013-mj-p1",
+      "caption": "Height in metres."
+    },
+    "africa-zone": {
+      "src": "geography/archive/2013-mj-p1/africa-zone.webp",
+      "alt": "Map of Africa with a shaded band between two lines of latitude.",
+      "wide": false,
+      "width": 451,
+      "height": 455,
+      "sourcePage": 5,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "island-density": {
+      "src": "geography/archive/2013-mj-p1/island-density.webp",
+      "alt": "Population density map of Island X with four areas labelled I to IV and a key.",
+      "wide": false,
+      "width": 784,
+      "height": 322,
+      "sourcePage": 6,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "river-valley": {
+      "src": "geography/archive/2013-mj-p1/river-valley.webp",
+      "alt": "Block diagram of a river valley with labelled features M, N and O.",
+      "wide": false,
+      "width": 473,
+      "height": 305,
+      "sourcePage": 6,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "climate-graph": {
+      "src": "geography/archive/2013-mj-p1/climate-graph.webp",
+      "alt": "Monthly rainfall and temperature graph with rainfall in millimetres and temperature in degrees Celsius.",
+      "wide": false,
+      "width": 353,
+      "height": 394,
+      "sourcePage": 7,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "population-growth": {
+      "src": "geography/archive/2013-mj-p1/population-growth.webp",
+      "alt": "Line graph of the population of a country over time. The vertical axis shows population in millions.",
+      "wide": false,
+      "width": 447,
+      "height": 442,
+      "sourcePage": 7,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "caribbean-plates": {
+      "src": "geography/archive/2013-mj-p1/caribbean-plates.webp",
+      "alt": "Map of tectonic plates around the Caribbean with plates X and Y, boundaries and arrows indicating plate movement.",
+      "wide": false,
+      "width": 1012,
+      "height": 616,
+      "sourcePage": 8,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "coastal-area": {
+      "src": "geography/archive/2013-mj-p1/coastal-area.webp",
+      "alt": "Block diagram of a coastal area with a beach, the sea and the feature labelled X.",
+      "wide": false,
+      "width": 471,
+      "height": 298,
+      "sourcePage": 9,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "land-use-map": {
+      "src": "geography/archive/2013-mj-p1/land-use-map.webp",
+      "alt": "Land-use map showing wind direction, Jack Mountain, two settlements, the coast, woodland and areas I through V.",
+      "wide": false,
+      "width": 1090,
+      "height": 637,
+      "sourcePage": 11,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "coastal-plain": {
+      "src": "geography/archive/2013-mj-p1/coastal-plain.webp",
+      "alt": "Coastal sketch map showing a plain, a river, a town, swamps, corn cultivation, coconuts and points W, X, Y and Z.",
+      "wide": false,
+      "width": 898,
+      "height": 452,
+      "sourcePage": 13,
+      "sourcePaper": "2013-mj-p1"
+    },
+    "hydrologic-cycle": {
+      "src": "geography/archive/2013-mj-p1/hydrologic-cycle.webp",
+      "alt": "Diagram showing rainfall, runoff, the sea and an arrow labelled X.",
+      "wide": false,
+      "width": 495,
+      "height": 354,
+      "sourcePage": 13,
+      "sourcePaper": "2013-mj-p1"
+    }
+  },
+  "2012-mj-p1": {
+    "st-margarets-bay": {
+      "src": "geography/archive/2012-mj-p1/st-margarets-bay.webp",
+      "alt": "Topographic map of St Margaret’s Bay with a numbered grid, distance scales in miles and kilometres and locations X and Y.",
+      "wide": true,
+      "width": 1288,
+      "height": 1233,
+      "sourcePage": 2,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "belmopan-santo-domingo": {
+      "src": "geography/archive/2012-mj-p1/belmopan-santo-domingo.webp",
+      "alt": "Map of part of the Caribbean showing Belmopan and Santo Domingo, with latitude, longitude and a kilometre scale.",
+      "wide": false,
+      "width": 1006,
+      "height": 584,
+      "sourcePage": 3,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "railway-map": {
+      "src": "geography/archive/2012-mj-p1/railway-map.webp",
+      "alt": "Sketch map with point P, a church, a railway, a numbered grid, a scale, a north arrow and a key.",
+      "wide": false,
+      "width": 1289,
+      "height": 928,
+      "sourcePage": 4,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "tourist-centre": {
+      "src": "geography/archive/2012-mj-p1/tourist-centre.webp",
+      "alt": "Contour map of a tourist centre with the location T, a quarry, a beach, a scale and a key.",
+      "wide": false,
+      "width": 1202,
+      "height": 556,
+      "sourcePage": 6,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "farming-photo": {
+      "src": "geography/archive/2012-mj-p1/farming-photo.webp",
+      "alt": "Photograph of fields in front of a range of hills.",
+      "wide": false,
+      "width": 1152,
+      "height": 1008,
+      "sourcePage": 7,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "trinidad-density": {
+      "src": "geography/archive/2012-mj-p1/trinidad-density.webp",
+      "alt": "Population density map of Trinidad using the 1970 census, with a north arrow and a key.",
+      "wide": false,
+      "width": 1335,
+      "height": 660,
+      "sourcePage": 8,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "profile-contours": {
+      "src": "geography/archive/2012-mj-p1/profile-contours.webp",
+      "alt": "Contour map with points R and X, a scale of 1:50,000 and a 250-metre contour interval.",
+      "wide": false,
+      "width": 1220,
+      "height": 557,
+      "sourcePage": 9,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "profile-a": {
+      "src": "geography/archive/2012-mj-p1/profile-a.webp",
+      "alt": "Contour profile A.",
+      "wide": false,
+      "width": 462,
+      "height": 246,
+      "sourcePage": 9,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "profile-b": {
+      "src": "geography/archive/2012-mj-p1/profile-b.webp",
+      "alt": "Contour profile B.",
+      "wide": false,
+      "width": 468,
+      "height": 248,
+      "sourcePage": 9,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "profile-c": {
+      "src": "geography/archive/2012-mj-p1/profile-c.webp",
+      "alt": "Contour profile C.",
+      "wide": false,
+      "width": 463,
+      "height": 253,
+      "sourcePage": 9,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "profile-d": {
+      "src": "geography/archive/2012-mj-p1/profile-d.webp",
+      "alt": "Contour profile D.",
+      "wide": false,
+      "width": 461,
+      "height": 254,
+      "sourcePage": 9,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "plate-margin": {
+      "src": "geography/archive/2012-mj-p1/plate-margin.webp",
+      "alt": "Block diagram of movement at a plate margin, showing a continent, rock layers and features labelled R.",
+      "wide": false,
+      "width": 784,
+      "height": 430,
+      "sourcePage": 10,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "land-use-map": {
+      "src": "geography/archive/2012-mj-p1/land-use-map.webp",
+      "alt": "Land-use map showing Jack Mountain, Port Albert, woodland, settlements, sand and areas I through V.",
+      "wide": false,
+      "width": 836,
+      "height": 428,
+      "sourcePage": 12,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "blue-ridge": {
+      "src": "geography/archive/2012-mj-p1/blue-ridge.webp",
+      "alt": "Blue Ridge sketch map showing the urban centre, mountains, swamp, roads, coast, a scale and a key.",
+      "wide": false,
+      "width": 741,
+      "height": 580,
+      "sourcePage": 13,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "coastal-plain": {
+      "src": "geography/archive/2012-mj-p1/coastal-plain.webp",
+      "alt": "Coastal sketch map showing a plain, a river, a town, swamps, corn cultivation, coconuts and points W, X, Y and Z.",
+      "wide": false,
+      "width": 1027,
+      "height": 676,
+      "sourcePage": 14,
+      "sourcePaper": "2012-mj-p1"
+    },
+    "pollution": {
+      "src": "geography/archive/2012-mj-p1/pollution.webp",
+      "alt": "Drawings of a cement mixer truck, a radio, a worker using a jackhammer and a race car.",
+      "wide": false,
+      "width": 720,
+      "height": 580,
+      "sourcePage": 15,
+      "sourcePaper": "2012-mj-p1"
+    }
+  },
+  "2024-mj-p2": {
+    "landscape-section": {
+      "src": "geography/archive/2024-mj-p2/landscape-section.webp",
+      "alt": "Cross-section of the landscape between Easting 26 and Easting 33, with a vertical scale in metres and three features labelled A, B and C.",
+      "wide": false,
+      "width": 766,
+      "height": 426,
+      "sourcePage": 3,
+      "sourcePaper": "2024-mj-p2",
+      "caption": "Figure 1. Cross-section of landscape."
+    },
+    "movement-of-water": {
+      "src": "geography/archive/2024-mj-p2/movement-of-water.webp",
+      "alt": "Block diagram with clouds, trees, flowing water, permeable and impermeable rock, a key and labels A through E.",
+      "wide": false,
+      "width": 1105,
+      "height": 913,
+      "sourcePage": 6,
+      "sourcePaper": "2024-mj-p2",
+      "caption": "Figure 2. Movement of water above, on and below the earth’s surface."
+    },
+    "caribbean-migration": {
+      "src": "geography/archive/2024-mj-p2/caribbean-migration.webp",
+      "alt": "Map of the Caribbean with proportional symbols and figures for immigrants and emigrants in 2020.",
+      "wide": true,
+      "width": 1607,
+      "height": 1074,
+      "sourcePage": 10,
+      "sourcePaper": "2024-mj-p2",
+      "caption": "Figure 3. Total population of immigrants and emigrants in select UN member countries in the Caribbean (2020). Adapted from the Migration Data Portal."
+    },
+    "lines-of-latitude": {
+      "src": "geography/archive/2024-mj-p2/lines-of-latitude.webp",
+      "alt": "Globe diagram showing lines of latitude, with 0 degrees and 66.5 degrees north labelled, and letters A, B, C, X and Y.",
+      "wide": false,
+      "width": 665,
+      "height": 568,
+      "sourcePage": 15,
+      "sourcePaper": "2024-mj-p2",
+      "caption": "Figure 4. Lines of latitude."
+    },
+    "greenhouse-effect": {
+      "src": "geography/archive/2024-mj-p2/greenhouse-effect.webp",
+      "alt": "Diagram showing incoming solar energy, the layer labelled Greenhouse Gases and arrows representing energy moving in the atmosphere.",
+      "wide": false,
+      "width": 1063,
+      "height": 828,
+      "sourcePage": 16,
+      "sourcePaper": "2024-mj-p2",
+      "caption": "Figure 5. Greenhouse effect. Source: Environmentally Inclined."
+    },
+    "spanish-town-may-pen": {
+      "src": "geography/archive/2024-mj-p2/spanish-town-may-pen.webp",
+      "alt": "Topographic map of Spanish Town and May Pen, Jamaica, with the numbered grid, kilometre scale, heights in metres and legend.",
+      "caption": "Jamaica 1:50,000 (Metric Edition), Sheet 17. Part of Spanish Town – May Pen.",
+      "wide": true,
+      "width": 1062,
+      "height": 904,
+      "sourcePage": 19,
+      "sourcePaper": "2024-mj-p2",
+      "sourceUrl": "https://www.scribd.com/document/759334530/CSEC-Geography-MayJune-P2-2024"
+    }
+  },
+  "2010-mj-p1": {
+    "st-margarets-bay": {
+      "src": "geography/archive/2010-mj-p1/st-margarets-bay.webp",
+      "alt": "Topographic map of St Margaret’s Bay with a numbered grid, scales in miles and kilometres and locations X and Y.",
+      "wide": true,
+      "width": 1274,
+      "height": 1246,
+      "sourcePage": 2,
+      "sourcePaper": "2010-mj-p1"
+    },
+    "world-map": {
+      "src": "geography/archive/2010-mj-p1/world-map.webp",
+      "alt": "World map marking New Orleans and St Petersburg on a latitude and longitude grid.",
+      "wide": false,
+      "width": 1284,
+      "height": 752,
+      "sourcePage": 3,
+      "sourcePaper": "2010-mj-p1"
+    },
+    "estate-sketch": {
+      "src": "geography/archive/2010-mj-p1/estate-sketch.webp",
+      "alt": "Sketch map with points A, Y and Z, estate boundaries, contour lines, villages, a scale and a key.",
+      "wide": false,
+      "width": 1268,
+      "height": 738,
+      "sourcePage": 4,
+      "sourcePaper": "2010-mj-p1"
+    },
+    "river-valley": {
+      "src": "geography/archive/2010-mj-p1/river-valley.webp",
+      "alt": "Block diagram of a river valley with labelled features M, N and O.",
+      "wide": false,
+      "width": 633,
+      "height": 414,
+      "sourcePage": 5,
+      "sourcePaper": "2010-mj-p1"
+    },
+    "hill-contours": {
+      "src": "geography/archive/2010-mj-p1/hill-contours.webp",
+      "alt": "Contour sketch of a hill with points A, B, C, D, X and Y, a numbered grid and a kilometre scale.",
+      "wide": false,
+      "width": 1402,
+      "height": 582,
+      "sourcePage": 5,
+      "sourcePaper": "2010-mj-p1"
+    },
+    "black-river": {
+      "src": "geography/archive/2010-mj-p1/black-river.webp",
+      "alt": "Map of the Black River area, Jamaica, with a numbered grid and the point labelled X.",
+      "wide": true,
+      "width": 794,
+      "height": 1104,
+      "sourcePage": 6,
+      "sourcePaper": "2010-mj-p1"
+    },
+    "coastline": {
+      "src": "geography/archive/2010-mj-p1/coastline.webp",
+      "alt": "Block diagram of a coastline with two bays and the sea labelled.",
+      "wide": false,
+      "width": 713,
+      "height": 343,
+      "sourcePage": 6,
+      "sourcePaper": "2010-mj-p1"
+    },
+    "global-temperature": {
+      "src": "geography/archive/2010-mj-p1/global-temperature.webp",
+      "alt": "Line graph showing annual mean global surface temperature in degrees Celsius over time.",
+      "wide": false,
+      "width": 1513,
+      "height": 925,
+      "sourcePage": 7,
+      "sourcePaper": "2010-mj-p1"
+    },
+    "coastal-landforms": {
+      "src": "geography/archive/2010-mj-p1/coastal-landforms.webp",
+      "alt": "Side view of coastal landforms labelled I, II, III and IV, with sea level indicated.",
+      "wide": false,
+      "width": 640,
+      "height": 341,
+      "sourcePage": 8,
+      "sourcePaper": "2010-mj-p1"
+    },
+    "highland": {
+      "src": "geography/archive/2010-mj-p1/highland.webp",
+      "alt": "Diagram of air rising over a highland, with clouds and a height scale in metres.",
+      "wide": false,
+      "width": 718,
+      "height": 428,
+      "sourcePage": 8,
+      "sourcePaper": "2010-mj-p1"
+    },
+    "exports": {
+      "src": "geography/archive/2010-mj-p1/exports.webp",
+      "alt": "Stacked bar graph of export value by product type for four Caribbean territories.",
+      "wide": false,
+      "width": 1017,
+      "height": 329,
+      "sourcePage": 8,
+      "sourcePaper": "2010-mj-p1"
+    },
+    "island-population": {
+      "src": "geography/archive/2010-mj-p1/island-population.webp",
+      "alt": "Map of an island with four labelled areas, a north arrow and a key measured in persons per square kilometre.",
+      "wide": false,
+      "width": 1083,
+      "height": 520,
+      "sourcePage": 9,
+      "sourcePaper": "2010-mj-p1"
+    },
+    "bauxite-map": {
+      "src": "geography/archive/2010-mj-p1/bauxite-map.webp",
+      "alt": "Coastal sketch map showing bauxite reserves, cultivated land, a road, rail, a port, the sea and points I, II, III and IV.",
+      "wide": false,
+      "width": 636,
+      "height": 419,
+      "sourcePage": 12,
+      "sourcePaper": "2010-mj-p1"
+    }
+  },
+  "2009-mj-p1": {
+    "golden-grove": {
+      "src": "geography/archive/2009-mj-p1/golden-grove.webp",
+      "alt": "Topographic map of Golden Grove and Port Morant, Jamaica, with numbered grid, a north arrow and scales in miles and kilometres.",
+      "wide": true,
+      "width": 1510,
+      "height": 1605,
+      "sourcePage": 2,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "river-contours": {
+      "src": "geography/archive/2009-mj-p1/river-contours.webp",
+      "alt": "Contour map of a river valley with points P, Q, R, S and T and a 25-metre contour interval.",
+      "wide": false,
+      "width": 669,
+      "height": 554,
+      "sourcePage": 3,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "belmopan-santo-domingo": {
+      "src": "geography/archive/2009-mj-p1/belmopan-santo-domingo.webp",
+      "alt": "Map of part of the Caribbean showing Belmopan and Santo Domingo, with latitude, longitude and a kilometre scale.",
+      "wide": false,
+      "width": 1024,
+      "height": 616,
+      "sourcePage": 4,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "profile-contours": {
+      "src": "geography/archive/2009-mj-p1/profile-contours.webp",
+      "alt": "Contour map with points R and X, a scale of 1:50,000 and a 250-metre contour interval.",
+      "wide": false,
+      "width": 1383,
+      "height": 637,
+      "sourcePage": 5,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "profile-a": {
+      "src": "geography/archive/2009-mj-p1/profile-a.webp",
+      "alt": "Contour profile A.",
+      "wide": false,
+      "width": 484,
+      "height": 240,
+      "sourcePage": 5,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "profile-b": {
+      "src": "geography/archive/2009-mj-p1/profile-b.webp",
+      "alt": "Contour profile B.",
+      "wide": false,
+      "width": 482,
+      "height": 232,
+      "sourcePage": 5,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "profile-c": {
+      "src": "geography/archive/2009-mj-p1/profile-c.webp",
+      "alt": "Contour profile C.",
+      "wide": false,
+      "width": 485,
+      "height": 246,
+      "sourcePage": 5,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "profile-d": {
+      "src": "geography/archive/2009-mj-p1/profile-d.webp",
+      "alt": "Contour profile D.",
+      "wide": false,
+      "width": 489,
+      "height": 246,
+      "sourcePage": 5,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "gulf-of-mexico": {
+      "src": "geography/archive/2009-mj-p1/gulf-of-mexico.webp",
+      "alt": "Map showing cities in Mexico and Miami, with the Tropic of Cancer and other lines of latitude and longitude.",
+      "wide": false,
+      "width": 1017,
+      "height": 513,
+      "sourcePage": 6,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "africa-zone": {
+      "src": "geography/archive/2009-mj-p1/africa-zone.webp",
+      "alt": "Map of Africa with a shaded band between two lines of latitude.",
+      "wide": false,
+      "width": 596,
+      "height": 601,
+      "sourcePage": 6,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "island-density": {
+      "src": "geography/archive/2009-mj-p1/island-density.webp",
+      "alt": "Population density map of Island X with four areas labelled I to IV and a key.",
+      "wide": false,
+      "width": 1056,
+      "height": 435,
+      "sourcePage": 7,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "rainfall-patterns": {
+      "src": "geography/archive/2009-mj-p1/rainfall-patterns.webp",
+      "alt": "Four monthly rainfall graphs, labelled I, II, III and IV, with a vertical scale in millimetres.",
+      "wide": false,
+      "width": 1241,
+      "height": 823,
+      "sourcePage": 8,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "tobago": {
+      "src": "geography/archive/2009-mj-p1/tobago.webp",
+      "alt": "Three maps of Tobago showing relief, rainfall and land use, with keys and a scale.",
+      "wide": false,
+      "width": 667,
+      "height": 1663,
+      "sourcePage": 9,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "bauxite-map": {
+      "src": "geography/archive/2009-mj-p1/bauxite-map.webp",
+      "alt": "Coastal sketch map with bauxite reserves, cultivated land, road, rail, the sea and points I, II, III and IV.",
+      "wide": false,
+      "width": 623,
+      "height": 389,
+      "sourcePage": 11,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "land-use-map": {
+      "src": "geography/archive/2009-mj-p1/land-use-map.webp",
+      "alt": "Land-use map showing Jack Mountain, Port Albert, settlements, woodland, sand and areas I through V.",
+      "wide": false,
+      "width": 1064,
+      "height": 534,
+      "sourcePage": 12,
+      "sourcePaper": "2009-mj-p1"
+    },
+    "coastal-plain": {
+      "src": "geography/archive/2009-mj-p1/coastal-plain.webp",
+      "alt": "Coastal sketch map showing a plain, a river, a town, swamps, corn cultivation, coconuts and points W, X, Y and P.",
+      "wide": false,
+      "width": 1029,
+      "height": 681,
+      "sourcePage": 14,
+      "sourcePaper": "2009-mj-p1",
+      "caption": "The southeastern point is marked P on the map and listed as Z in Question 53."
+    },
+    "hydrologic-cycle": {
+      "src": "geography/archive/2009-mj-p1/hydrologic-cycle.webp",
+      "alt": "Diagram showing rainfall, runoff, the sea and an arrow labelled X.",
+      "wide": false,
+      "width": 598,
+      "height": 437,
+      "sourcePage": 14,
+      "sourcePaper": "2009-mj-p1"
+    }
+  },
+  "2003-mj-p1": {
+    "cloud-profile": {
+      "src": "geography/archive/2003-mj-p1/cloud-profile.webp",
+      "alt": "Side view of a tall cloud with a horizontal upper extent and a height scale from 0 to 15 kilometres.",
+      "wide": false,
+      "width": 1165,
+      "height": 516,
+      "sourcePage": 2,
+      "sourcePaper": "2003-mj-p1"
+    },
+    "weather-symbol": {
+      "src": "geography/archive/2003-mj-p1/weather-symbol.webp",
+      "alt": "Weather chart segment with three curved pressure lines labelled 1012, 1014 and 1016 and a line crossing them.",
+      "wide": false,
+      "width": 948,
+      "height": 375,
+      "sourcePage": 2,
+      "sourcePaper": "2003-mj-p1"
+    },
+    "map-grid": {
+      "src": "geography/archive/2003-mj-p1/map-grid.webp",
+      "alt": "Map grid with eastings 60 and 61, northings 42 and 43 and a circle with a cross above it.",
+      "wide": false,
+      "width": 579,
+      "height": 571,
+      "sourcePage": 3,
+      "sourcePaper": "2003-mj-p1"
+    },
+    "mountain-profile": {
+      "src": "geography/archive/2003-mj-p1/mountain-profile.webp",
+      "alt": "Mountain profile showing wind direction, windward and leeward slopes, points P, Q, R and S, elevation and temperature at sea level.",
+      "wide": false,
+      "width": 1163,
+      "height": 465,
+      "sourcePage": 4,
+      "sourcePaper": "2003-mj-p1"
+    },
+    "plate-margin": {
+      "src": "geography/archive/2003-mj-p1/plate-margin.webp",
+      "alt": "Block diagram of movement at a plate margin, showing rock layers, a continent and features labelled R.",
+      "wide": false,
+      "width": 1101,
+      "height": 550,
+      "sourcePage": 5,
+      "sourcePaper": "2003-mj-p1"
+    },
+    "belmopan-santo-domingo": {
+      "src": "geography/archive/2003-mj-p1/belmopan-santo-domingo.webp",
+      "alt": "Map of part of the Caribbean showing Belmopan and Santo Domingo, with latitude, longitude, a north arrow and a kilometre scale.",
+      "wide": false,
+      "width": 1072,
+      "height": 538,
+      "sourcePage": 5,
+      "sourcePaper": "2003-mj-p1"
+    },
+    "station-models": {
+      "src": "geography/archive/2003-mj-p1/station-models.webp",
+      "alt": "Four weather station models labelled I, II, III and IV with symbols for wind and other weather conditions.",
+      "wide": false,
+      "width": 1385,
+      "height": 331,
+      "sourcePage": 6,
+      "sourcePaper": "2003-mj-p1"
+    },
+    "jalltown": {
+      "src": "geography/archive/2003-mj-p1/jalltown.webp",
+      "alt": "Jalltown map with numbered areas, major streets, a north arrow, a river, contours and its key.",
+      "wide": false,
+      "width": 1361,
+      "height": 538,
+      "sourcePage": 6,
+      "sourcePaper": "2003-mj-p1",
+      "caption": "Scale 1:100,000."
+    },
+    "altitude-and-climate": {
+      "src": "geography/archive/2003-mj-p1/altitude-and-climate.webp",
+      "alt": "Illustration showing vegetation, crops and livestock at different heights in the tropics. The height markers are 4,000 and 12,000 feet.",
+      "wide": false,
+      "width": 1257,
+      "height": 745,
+      "sourcePage": 7,
+      "sourcePaper": "2003-mj-p1"
+    },
+    "river-contours": {
+      "src": "geography/archive/2003-mj-p1/river-contours.webp",
+      "alt": "Contour map of a river valley with points P, Q, R, S and T and a 25-metre contour interval.",
+      "wide": false,
+      "width": 671,
+      "height": 554,
+      "sourcePage": 8,
+      "sourcePaper": "2003-mj-p1"
+    },
+    "circular-isobars": {
+      "src": "geography/archive/2003-mj-p1/circular-isobars.webp",
+      "alt": "Weather diagram with circular isobars labelled 998, 994 and 990 millibars and arrows showing wind direction.",
+      "wide": false,
+      "width": 541,
+      "height": 499,
+      "sourcePage": 9,
+      "sourcePaper": "2003-mj-p1"
+    },
+    "hispaniola": {
+      "src": "geography/archive/2003-mj-p1/hispaniola.webp",
+      "alt": "Relief map of Hispaniola with towns, latitude and longitude, the relief key and scales in miles and kilometres.",
+      "wide": false,
+      "width": 1195,
+      "height": 727,
+      "sourcePage": 10,
+      "sourcePaper": "2003-mj-p1"
+    },
+    "plate-movement": {
+      "src": "geography/archive/2003-mj-p1/plate-movement.webp",
+      "alt": "Three diagrams of plate movement labelled I to III, with a key for sial, sima and direction of movement.",
+      "wide": false,
+      "width": 1419,
+      "height": 342,
+      "sourcePage": 12,
+      "sourcePaper": "2003-mj-p1"
+    },
+    "africa-zone": {
+      "src": "geography/archive/2003-mj-p1/africa-zone.webp",
+      "alt": "Map of Africa with a shaded region near the equator.",
+      "wide": false,
+      "width": 679,
+      "height": 687,
+      "sourcePage": 12,
+      "sourcePaper": "2003-mj-p1"
+    }
+  },
+  "2007-mj-p1": {
+    "eastern-caribbean": {
+      "src": "geography/archive/2007-mj-p1/eastern-caribbean.webp",
+      "alt": "Map of the eastern Caribbean showing islands, cities, lines of latitude and longitude, a kilometre scale and an island labelled X.",
+      "wide": true,
+      "width": 925,
+      "height": 1070,
+      "sourcePage": 2,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "belmopan-santo-domingo": {
+      "src": "geography/archive/2007-mj-p1/belmopan-santo-domingo.webp",
+      "alt": "Map of part of the Caribbean showing Belmopan and Santo Domingo, with a north arrow and a kilometre scale.",
+      "wide": false,
+      "width": 1088,
+      "height": 552,
+      "sourcePage": 3,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "railway-map": {
+      "src": "geography/archive/2007-mj-p1/railway-map.webp",
+      "alt": "Sketch map with a numbered grid, railway station, river, settlement, point Y, a north arrow, a scale and a key.",
+      "wide": false,
+      "width": 1114,
+      "height": 940,
+      "sourcePage": 4,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "contour-bearing": {
+      "src": "geography/archive/2007-mj-p1/contour-bearing.webp",
+      "alt": "Contour map with points X, Y and A, a numbered grid and heights in metres.",
+      "wide": false,
+      "width": 850,
+      "height": 442,
+      "sourcePage": 5,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "coastal-photo": {
+      "src": "geography/archive/2007-mj-p1/coastal-photo.webp",
+      "alt": "Photograph of a rocky coast with features identified by X and Y.",
+      "wide": false,
+      "width": 649,
+      "height": 396,
+      "sourcePage": 6,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "farming-photo": {
+      "src": "geography/archive/2007-mj-p1/farming-photo.webp",
+      "alt": "Photograph of fields in front of a range of hills.",
+      "wide": false,
+      "width": 1049,
+      "height": 943,
+      "sourcePage": 7,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "trinidad-density": {
+      "src": "geography/archive/2007-mj-p1/trinidad-density.webp",
+      "alt": "Population density map of Trinidad with a north arrow and a key.",
+      "wide": false,
+      "width": 1245,
+      "height": 624,
+      "sourcePage": 8,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "tourist-centre": {
+      "src": "geography/archive/2007-mj-p1/tourist-centre.webp",
+      "alt": "Contour map of a tourist centre with the location T, a quarry, a beach, a scale and a key.",
+      "wide": false,
+      "width": 1217,
+      "height": 577,
+      "sourcePage": 9,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "profile-a": {
+      "src": "geography/archive/2007-mj-p1/profile-a.webp",
+      "alt": "Contour profile A.",
+      "wide": false,
+      "width": 453,
+      "height": 264,
+      "sourcePage": 9,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "profile-b": {
+      "src": "geography/archive/2007-mj-p1/profile-b.webp",
+      "alt": "Contour profile B.",
+      "wide": false,
+      "width": 452,
+      "height": 258,
+      "sourcePage": 9,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "profile-c": {
+      "src": "geography/archive/2007-mj-p1/profile-c.webp",
+      "alt": "Contour profile C.",
+      "wide": false,
+      "width": 454,
+      "height": 246,
+      "sourcePage": 9,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "profile-d": {
+      "src": "geography/archive/2007-mj-p1/profile-d.webp",
+      "alt": "Contour profile D.",
+      "wide": false,
+      "width": 445,
+      "height": 259,
+      "sourcePage": 9,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "hydrologic-cycle": {
+      "src": "geography/archive/2007-mj-p1/hydrologic-cycle.webp",
+      "alt": "Diagram showing rainfall, runoff, the sea and an arrow labelled X.",
+      "wide": false,
+      "width": 690,
+      "height": 515,
+      "sourcePage": 10,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "plate-margin": {
+      "src": "geography/archive/2007-mj-p1/plate-margin.webp",
+      "alt": "Block diagram of movement at a plate margin, showing a continent and the features labelled R.",
+      "wide": false,
+      "width": 600,
+      "height": 350,
+      "sourcePage": 10,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "land-use-map": {
+      "src": "geography/archive/2007-mj-p1/land-use-map.webp",
+      "alt": "Land-use map showing Jack Mountain, Port Albert, settlements, woodland, prevailing wind and areas I through V.",
+      "wide": false,
+      "width": 1148,
+      "height": 536,
+      "sourcePage": 12,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "blue-ridge": {
+      "src": "geography/archive/2007-mj-p1/blue-ridge.webp",
+      "alt": "Blue Ridge sketch map showing the town, mountains, swamp, roads, coast, a scale and a key.",
+      "wide": false,
+      "width": 684,
+      "height": 527,
+      "sourcePage": 12,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "coastal-plain": {
+      "src": "geography/archive/2007-mj-p1/coastal-plain.webp",
+      "alt": "Coastal sketch map showing a plain, a river, a town, swamps, corn cultivation, coconuts and points W, X, Y and Z.",
+      "wide": false,
+      "width": 1017,
+      "height": 680,
+      "sourcePage": 14,
+      "sourcePaper": "2007-mj-p1"
+    },
+    "pollution": {
+      "src": "geography/archive/2007-mj-p1/pollution.webp",
+      "alt": "Drawings of a racing car, portable radio, a cement mixer truck and a telephone.",
+      "wide": false,
+      "width": 673,
+      "height": 704,
+      "sourcePage": 15,
+      "sourcePaper": "2007-mj-p1"
+    }
+  },
+  "2001-mj-p1": {
+    "brown-river": {
+      "src": "geography/archive/2001-mj-p1/brown-river.webp",
+      "alt": "Map of the Brown River with a latitude and longitude grid, distance scales, a north arrow and the location Y.",
+      "wide": false,
+      "width": 606,
+      "height": 582,
+      "sourcePage": 2,
+      "sourcePaper": "2001-mj-p1"
+    },
+    "boot-river": {
+      "src": "geography/archive/2001-mj-p1/boot-river.webp",
+      "alt": "Map of Boot River, Boot Bay and Murray Point, with a numbered grid, contours, a key and a scale.",
+      "wide": true,
+      "width": 1360,
+      "height": 982,
+      "sourcePage": 3,
+      "sourcePaper": "2001-mj-p1"
+    },
+    "climate-graph": {
+      "src": "geography/archive/2001-mj-p1/climate-graph.webp",
+      "alt": "Monthly rainfall and temperature graph with rainfall in millimetres and temperature in degrees Celsius.",
+      "wide": false,
+      "width": 461,
+      "height": 501,
+      "sourcePage": 4,
+      "sourcePaper": "2001-mj-p1"
+    },
+    "jalltown": {
+      "src": "geography/archive/2001-mj-p1/jalltown.webp",
+      "alt": "Jalltown map with areas P, Q, R and S, major streets, a north arrow, a river, contours and a key.",
+      "wide": false,
+      "width": 1373,
+      "height": 538,
+      "sourcePage": 5,
+      "sourcePaper": "2001-mj-p1",
+      "caption": "Scale 1:100,000."
+    },
+    "south-america": {
+      "src": "geography/archive/2001-mj-p1/south-america.webp",
+      "alt": "Map of South America showing cities on a latitude and longitude grid.",
+      "wide": false,
+      "width": 843,
+      "height": 686,
+      "sourcePage": 6,
+      "sourcePaper": "2001-mj-p1"
+    },
+    "volcanic-landform": {
+      "src": "geography/archive/2001-mj-p1/volcanic-landform.webp",
+      "alt": "Sketch of a landform with the elevation 1850 metres marked.",
+      "wide": false,
+      "width": 539,
+      "height": 425,
+      "sourcePage": 7,
+      "sourcePaper": "2001-mj-p1"
+    },
+    "caribbean-plates": {
+      "src": "geography/archive/2001-mj-p1/caribbean-plates.webp",
+      "alt": "Map of tectonic plates around the Caribbean with plates X and Y, boundaries and arrows indicating plate movement.",
+      "wide": false,
+      "width": 1443,
+      "height": 828,
+      "sourcePage": 8,
+      "sourcePaper": "2001-mj-p1"
+    },
+    "coastal-plain": {
+      "src": "geography/archive/2001-mj-p1/coastal-plain.webp",
+      "alt": "Coastal sketch map showing a plain, a river, a town, swamps, corn cultivation, coconuts and points W, X, Y and Z.",
+      "wide": false,
+      "width": 1067,
+      "height": 692,
+      "sourcePage": 9,
+      "sourcePaper": "2001-mj-p1"
+    },
+    "land-use-map": {
+      "src": "geography/archive/2001-mj-p1/land-use-map.webp",
+      "alt": "Land-use map showing wind direction, Jack Mountain, two settlements, the coast, woodland and areas I through V.",
+      "wide": false,
+      "width": 1367,
+      "height": 635,
+      "sourcePage": 13,
+      "sourcePaper": "2001-mj-p1"
+    },
+    "settlement-map": {
+      "src": "geography/archive/2001-mj-p1/settlement-map.webp",
+      "alt": "Map with four numbered sites, a port, industries, roads, a railway, plains, mountains, swamp, crops and a kilometre scale.",
+      "wide": false,
+      "width": 1234,
+      "height": 614,
+      "sourcePage": 14,
+      "sourcePaper": "2001-mj-p1"
+    }
+  },
+  "2002-mj-p1": {
+    "island-density": {
+      "src": "geography/archive/2002-mj-p1/island-density.webp",
+      "alt": "Population density map of Island X with areas I, II, III and IV, a north arrow and a legend.",
+      "wide": false,
+      "width": 1060,
+      "height": 418,
+      "sourcePage": 3,
+      "sourcePaper": "2002-mj-p1"
+    },
+    "rainfall-graphs": {
+      "src": "geography/archive/2002-mj-p1/rainfall-graphs.webp",
+      "alt": "Four labelled graphs with monthly rainfall in millimetres.",
+      "wide": true,
+      "width": 1043,
+      "height": 697,
+      "sourcePage": 7,
+      "sourcePaper": "2011-mj-p1"
+    },
+    "weather-map": {
+      "src": "geography/archive/2002-mj-p1/weather-map.webp",
+      "alt": "Western Atlantic weather map with isobars, a frontal boundary and stations P, Q, R and S.",
+      "wide": true,
+      "width": 1401,
+      "height": 805,
+      "sourcePage": 5,
+      "sourcePaper": "2002-mj-p1"
+    },
+    "tourist-arrivals": {
+      "src": "geography/archive/2002-mj-p1/tourist-arrivals.webp",
+      "alt": "Bar chart of all tourist arrivals and cruise ship passenger arrivals between 1952 and 1988.",
+      "wide": false,
+      "width": 1177,
+      "height": 499,
+      "sourcePage": 6,
+      "sourcePaper": "2002-mj-p1"
+    },
+    "coordinates-grid": {
+      "src": "geography/archive/2002-mj-p1/coordinates-grid.webp",
+      "alt": "Latitude and longitude diagram with points A, B and C and a north arrow.",
+      "wide": false,
+      "width": 1202,
+      "height": 601,
+      "sourcePage": 6,
+      "sourcePaper": "2002-mj-p1"
+    },
+    "boot-river": {
+      "src": "geography/archive/2002-mj-p1/boot-river.webp",
+      "alt": "Contour map of Boot River, Boot Bay and Murray Point with the grid numbers, legend and scale in miles.",
+      "wide": true,
+      "width": 1259,
+      "height": 1014,
+      "sourcePage": 7,
+      "sourcePaper": "2002-mj-p1"
+    },
+    "river-valleys": {
+      "src": "geography/archive/2002-mj-p1/river-valleys.webp",
+      "alt": "Cross-sections of river valleys between X and Y, M and N, and Q and Z.",
+      "wide": false,
+      "width": 1177,
+      "height": 304,
+      "sourcePage": 8,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "hillside": {
+      "src": "geography/archive/2002-mj-p1/hillside.webp",
+      "alt": "Photograph of a hillside with a deep channel cutting through it.",
+      "wide": false,
+      "width": 988,
+      "height": 697,
+      "sourcePage": 9,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "settlement-map": {
+      "src": "geography/archive/2002-mj-p1/settlement-map.webp",
+      "alt": "Sketch map showing settlement sites A and B, points Y and Z, contours, roads, river, scrub and estate boundaries.",
+      "wide": false,
+      "width": 1577,
+      "height": 835,
+      "sourcePage": 15,
+      "sourcePaper": "2002-mj-p1"
+    }
+  },
+  "2005-mj-p1": {
+    "ap-grid": {
+      "src": "geography/archive/2005-mj-p1/ap-grid.webp",
+      "alt": "Numbered grid with eastings 55–61 and northings 19–23, and points A and P.",
+      "wide": true,
+      "width": 1428,
+      "height": 1144,
+      "sourcePage": 1,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "settlements": {
+      "src": "geography/archive/2005-mj-p1/settlements.webp",
+      "alt": "Sketch map showing the locations of settlements X and Y, buildings, roads, a north arrow and a kilometre scale.",
+      "wide": false,
+      "width": 697,
+      "height": 630,
+      "sourcePage": 2,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "eastern-caribbean": {
+      "src": "geography/archive/2005-mj-p1/eastern-caribbean.webp",
+      "alt": "Map of the eastern Caribbean showing the island labelled X, named settlements, latitude and longitude, a north arrow and a scale.",
+      "wide": true,
+      "width": 910,
+      "height": 1039,
+      "sourcePage": 3,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "brown-river": {
+      "src": "geography/archive/2005-mj-p1/brown-river.webp",
+      "alt": "Map of the Brown River with a latitude and longitude grid, church, trigonometrical station, scale, north arrow and point Y.",
+      "wide": false,
+      "width": 606,
+      "height": 582,
+      "sourcePage": 2,
+      "sourcePaper": "2001-mj-p1"
+    },
+    "rocky-coast": {
+      "src": "geography/archive/2005-mj-p1/rocky-coast.webp",
+      "alt": "Photograph of a rocky coastline with two features labelled X and Y.",
+      "wide": false,
+      "width": 574,
+      "height": 382,
+      "sourcePage": 4,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "caribbean-island": {
+      "src": "geography/archive/2005-mj-p1/caribbean-island.webp",
+      "alt": "Photograph of a Caribbean island with a field in the foreground, hills and clouds.",
+      "wide": false,
+      "width": 1030,
+      "height": 898,
+      "sourcePage": 5,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "weather-system": {
+      "src": "geography/archive/2005-mj-p1/weather-system.webp",
+      "alt": "Weather diagram showing a slanted line crossing isobars of 1012, 1014 and 1016.",
+      "wide": false,
+      "width": 930,
+      "height": 356,
+      "sourcePage": 6,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "station-models": {
+      "src": "geography/archive/2005-mj-p1/station-models.webp",
+      "alt": "Four numbered weather station models using symbols for cloud, precipitation, wind and temperature.",
+      "wide": false,
+      "width": 1291,
+      "height": 317,
+      "sourcePage": 6,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "plate-margin": {
+      "src": "geography/archive/2005-mj-p1/plate-margin.webp",
+      "alt": "Block diagram showing a continent, layers of rock, the sea, arrows and landforms labelled R.",
+      "wide": false,
+      "width": 630,
+      "height": 342,
+      "sourcePage": 7,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "river-valleys": {
+      "src": "geography/archive/2005-mj-p1/river-valleys.webp",
+      "alt": "Three cross-sections typical of river valleys between X and Y, M and N, and Q and Z.",
+      "wide": false,
+      "width": 1177,
+      "height": 304,
+      "sourcePage": 8,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "hillside": {
+      "src": "geography/archive/2005-mj-p1/hillside.webp",
+      "alt": "Photograph of a hillside with a deep channel cutting through it.",
+      "wide": false,
+      "width": 988,
+      "height": 697,
+      "sourcePage": 9,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "plate-movement": {
+      "src": "geography/archive/2005-mj-p1/plate-movement.webp",
+      "alt": "Diagram with opposing arrows and a key identifying sial and sima.",
+      "wide": false,
+      "width": 702,
+      "height": 313,
+      "sourcePage": 10,
+      "sourcePaper": "2005-mj-p1"
+    }
+  },
+  "2011-mj-p1": {
+    "golden-grove": {
+      "src": "geography/archive/2011-mj-p1/golden-grove.webp",
+      "alt": "Topographic map of Golden Grove and Port Morant with numbered grid lines, a north arrow and scale bars.",
+      "wide": true,
+      "width": 999,
+      "height": 1056,
+      "sourcePage": 1,
+      "sourcePaper": "2011-mj-p1"
+    },
+    "trinidad": {
+      "src": "geography/archive/2011-mj-p1/trinidad.webp",
+      "alt": "Map of Trinidad showing Port-of-Spain, Sangre Grande and Brechin Castle, with a scale and north arrow.",
+      "wide": false,
+      "width": 587,
+      "height": 563,
+      "sourcePage": 2,
+      "sourcePaper": "2011-mj-p1"
+    },
+    "rocky-coast": {
+      "src": "geography/archive/2011-mj-p1/rocky-coast.webp",
+      "alt": "Photograph of a rocky coastline with two features labelled X and Y.",
+      "wide": false,
+      "width": 574,
+      "height": 382,
+      "sourcePage": 4,
+      "sourcePaper": "2005-mj-p1"
+    },
+    "cruise-arrivals": {
+      "src": "geography/archive/2011-mj-p1/cruise-arrivals.webp",
+      "alt": "Line graph of monthly cruise visitors to a Caribbean island in 1989, measured in thousands.",
+      "wide": false,
+      "width": 868,
+      "height": 697,
+      "sourcePage": 3,
+      "sourcePaper": "2011-mj-p1"
+    },
+    "hill-contours": {
+      "src": "geography/archive/2011-mj-p1/hill-contours.webp",
+      "alt": "Grid showing contours labelled 40 to 80 metres, with the point Y.",
+      "wide": false,
+      "width": 734,
+      "height": 361,
+      "sourcePage": 4,
+      "sourcePaper": "2011-mj-p1"
+    },
+    "world-map": {
+      "src": "geography/archive/2011-mj-p1/world-map.webp",
+      "alt": "World map with latitude and longitude lines and the locations of New Orleans and St. Petersburg.",
+      "wide": false,
+      "width": 1072,
+      "height": 621,
+      "sourcePage": 4,
+      "sourcePaper": "2011-mj-p1"
+    },
+    "coastal-settlement": {
+      "src": "geography/archive/2011-mj-p1/coastal-settlement.webp",
+      "alt": "Coastal topographic map with a highlighted location X, sand, contours and a north arrow.",
+      "wide": false,
+      "width": 1308,
+      "height": 626,
+      "sourcePage": 5,
+      "sourcePaper": "2011-mj-p1"
+    },
+    "rainfall-graphs": {
+      "src": "geography/archive/2011-mj-p1/rainfall-graphs.webp",
+      "alt": "Four graphs of monthly rainfall in millimetres, labelled I, II, III and IV.",
+      "wide": true,
+      "width": 1043,
+      "height": 697,
+      "sourcePage": 7,
+      "sourcePaper": "2011-mj-p1"
+    },
+    "tobago": {
+      "src": "geography/archive/2011-mj-p1/tobago.webp",
+      "alt": "Three maps of Tobago showing relief, annual rainfall and land use, with legends and a kilometre scale.",
+      "wide": false,
+      "width": 614,
+      "height": 1614,
+      "sourcePage": 9,
+      "sourcePaper": "2011-mj-p1",
+      "sourceUrl": "https://www.slideshare.net/slideshow/csec-geography-2011-multiple-choice-past-paper/234658601"
+    },
+    "exports": {
+      "src": "geography/archive/2011-mj-p1/exports.webp",
+      "alt": "Stacked bar chart of export shares of primary and manufactured products in four Caribbean territories.",
+      "wide": false,
+      "width": 1657,
+      "height": 450,
+      "sourcePage": 11,
+      "sourcePaper": "2011-mj-p1",
+      "sourceUrl": "https://www.slideshare.net/slideshow/csec-geography-2011-multiple-choice-past-paper/234658601"
+    },
+    "island-rainfall": {
+      "src": "geography/archive/2011-mj-p1/island-rainfall.webp",
+      "alt": "Island cross-section showing prevailing winds, rising air, rainfall and descending air.",
+      "wide": false,
+      "width": 869,
+      "height": 669,
+      "sourcePage": 11,
+      "sourcePaper": "2011-mj-p1",
+      "sourceUrl": "https://www.slideshare.net/slideshow/csec-geography-2011-multiple-choice-past-paper/234658601"
+    },
+    "bauxite-map": {
+      "src": "geography/archive/2011-mj-p1/bauxite-map.webp",
+      "alt": "Sketch map of a coast with bauxite reserves, a road, a railway and sites I to IV.",
+      "wide": false,
+      "width": 779,
+      "height": 502,
+      "sourcePage": 11,
+      "sourcePaper": "2011-mj-p1",
+      "sourceUrl": "https://www.slideshare.net/slideshow/csec-geography-2011-multiple-choice-past-paper/234658601"
+    },
+    "drainage-basin": {
+      "src": "geography/archive/2011-mj-p1/drainage-basin.webp",
+      "alt": "River system flowing to the sea with a dotted line around its upper slopes.",
+      "wide": false,
+      "width": 825,
+      "height": 683,
+      "sourcePage": 12,
+      "sourcePaper": "2011-mj-p1",
+      "sourceUrl": "https://www.slideshare.net/slideshow/csec-geography-2011-multiple-choice-past-paper/234658601"
+    },
+    "land-use-map": {
+      "src": "geography/archive/2011-mj-p1/land-use-map.webp",
+      "alt": "Land-use map showing wind direction, Jack Mountain, two settlements, the coast, woodland and areas I through V.",
+      "wide": false,
+      "width": 1328,
+      "height": 743,
+      "sourcePage": 8,
+      "sourcePaper": "2011-mj-p1"
+    },
+    "blue-ridge": {
+      "src": "geography/archive/2011-mj-p1/blue-ridge.webp",
+      "alt": "Blue Ridge sketch map showing the town, mountains, swamp, roads, coast, a scale in miles and the legend.",
+      "wide": false,
+      "width": 1010,
+      "height": 651,
+      "sourcePage": 9,
+      "sourcePaper": "2011-mj-p1"
+    },
+    "coastal-plain": {
+      "src": "geography/archive/2011-mj-p1/coastal-plain.webp",
+      "alt": "Coastal sketch map showing a plain, a river, a town, swamps, corn, coconuts and points W, X, Y and Z.",
+      "wide": false,
+      "width": 1072,
+      "height": 563,
+      "sourcePage": 10,
+      "sourcePaper": "2011-mj-p1"
+    },
+    "hydrologic-cycle": {
+      "src": "geography/archive/2011-mj-p1/hydrologic-cycle.webp",
+      "alt": "Water cycle diagram showing sea, rainfall, runoff and a downward arrow labelled X.",
+      "wide": false,
+      "width": 544,
+      "height": 398,
+      "sourcePage": 11,
+      "sourcePaper": "2011-mj-p1"
+    }
+  }
+}

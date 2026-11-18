@@ -1,5 +1,6 @@
 import OfficeVisualGuide from "../officeAdministration/components/OfficeVisualGuide.jsx";
 import HistoryLessonCompanion from "../caribbeanHistory/components/HistoryLessonCompanion.jsx";
+import GeographyLessonFigures from "../geography/components/GeographyLessonFigures.jsx";
 import OfficeWorkspace from "../officeAdministration/components/OfficeWorkspace.jsx";
 import ForwardArrowIcon from "../components/ui/ForwardArrowIcon";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
@@ -294,6 +295,13 @@ export function GenericLessonContent({
       {pobHasVisuals&&<PobReferenceMedia topic={topic}/>}
       {isPob&&<div id="pob-lesson-tools"><PobLearningTools topic={topic} onActivityComplete={onActivityComplete}/></div>}
       {subjectId==="caribbean-history"&&<HistoryLessonCompanion topic={topic}/>}
+      {subjectId==="geography"&&<>
+        <GeographyLessonFigures key={topic.id} topic={topic}/>
+        {lesson.check?.question && <details><summary>Check your understanding</summary>
+          <p>{lesson.check.question}</p>
+          <details><summary>Show explanation</summary><p>{lesson.check.answer}</p></details>
+        </details>}
+      </>}
       {subjectId==="office-administration"&&<>
         <OfficeVisualGuide section={topic?.metadata?.syllabus?.section} topic={topic}/>
         <details><summary>Check your understanding</summary><p>{lesson.check?.question}</p><details><summary>Show explanation</summary><p>{lesson.check?.answer}</p></details></details>

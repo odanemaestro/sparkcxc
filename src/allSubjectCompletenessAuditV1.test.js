@@ -27,6 +27,7 @@ describe("SPARK all-subject completeness audit V1",()=>{
       "english-a",
       "office-administration",
       "caribbean-history",
+      "geography",
     ]);
     subjects.forEach(subject=>{
       expect(subject.routes.study).toBeTruthy();

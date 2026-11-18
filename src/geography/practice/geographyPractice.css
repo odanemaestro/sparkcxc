@@ -1,0 +1,43 @@
+.geo-practice .poa-paper-choices { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.geo-practice .poa-paper-choice { min-width: 0; }
+.geo-workspace { padding: clamp(16px, 3vw, 32px); }
+.geo-workspace h3 { margin: 26px 0 8px; }
+.geo-workspace output { display: block; margin-top: 12px; color: var(--poa-ink); font-weight: 700; }
+.geo-tool-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 12px; }
+.geo-tool-actions button[aria-pressed="true"] { border-color: var(--poa-accent); background: var(--poa-accent-soft); }
+.geo-tool-fields, .geo-months { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.geo-months { grid-template-columns: repeat(auto-fit,minmax(min(190px,100%),1fr)); margin-block: 16px; }
+.geo-months fieldset { min-width: 0; border: 1px solid var(--poa-line); border-radius: 10px; }
+.geo-months legend { font-weight: 650; }
+.geo-workspace label input { width: 100%; min-width: 0; }
+.geo-fieldwork { display: grid; gap: 16px; }
+.geo-fieldwork label span { color: var(--poa-soft-ink); font-weight: normal; }
+.geo-fieldwork textarea { width: 100%; min-width: 0; resize: vertical; }
+.geo-sketch { margin-block: 12px; }
+.poa-practice .geo-sketch svg { display: block; width: min(100%, var(--geo-sketch-max-width)); height: auto; background: #fff; border: 1px solid var(--poa-line); border-radius: 8px; }
+.geo-sketch-edit { touch-action: none; cursor: crosshair; }
+.geo-chart-scroll { overflow: auto; max-width: 100%; }
+.poa-practice .geo-chart-scroll svg { display: block; width: min(100%, 690px); min-width: 480px; height: auto; }
+.geo-exam .geo-exam-figure { margin-block: 18px; }
+.geo-exam .geo-exam-figure img { background: #fff; }
+.geo-exam .geo-exam-figure img[src$="/bayview-map.svg"] { width: min(100%, 670px); }
+.geo-exam .geo-exam-figure a { display: inline-block; margin-top: 8px; }
+.geo-exam .oa-options > .oa-option { display: flex; align-items: flex-start; }
+.geo-exam .oa-options > .oa-option span { min-width: 0; overflow-wrap: anywhere; }
+.geo-exam .geo-option-figure { display: block; width: min(240px, 100%); height: auto; margin-top: 6px; background: #fff; }
+@supports (appearance: base-select) and selector(::picker(select)) {
+  @media (forced-colors: none) {
+    .geo-practice .oa-library-filter select,
+    .geo-practice .oa-library-filter select::picker(select) { appearance: base-select; }
+    .geo-practice .oa-library-filter select { background-image: none !important; padding-inline-end: 12px !important; }
+    .geo-practice .oa-library-filter select::picker(select) {
+      margin-block: 4px; padding: 4px; max-block-size: min(320px, 55dvh);
+      border: 1px solid var(--poa-line); border-radius: 10px;
+      color: var(--poa-ink); background: var(--poa-paper);
+    }
+    .geo-practice .oa-library-filter option { min-height: 40px; padding: 8px; border-radius: 6px; }
+    .geo-practice .oa-library-filter option:is(:checked, :hover, :focus-visible) { background: var(--poa-accent-soft); }
+  }
+}
+@media (max-width: 1040px) { .geo-practice .poa-paper-choices { grid-template-columns: 1fr; } }
+@media (max-width: 530px) { .geo-tool-fields { grid-template-columns: 1fr; } }
