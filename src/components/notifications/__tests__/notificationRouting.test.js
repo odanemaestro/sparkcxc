@@ -1,6 +1,29 @@
 import { getNotificationRoute } from "../notificationRouting";
 
 describe("notification routing", () => {
+  test.each(["geography", "caribbean-history", "office-administration", "principles-of-accounts", "future-course"])(
+    "new %s announcement opens its enrollment card in My Subjects",
+    subjectId => {
+      expect(getNotificationRoute({
+        type: "new_course_added",
+        action_view: "dashboard",
+        metadata: { subject_id: subjectId },
+      }, "student")).toEqual({
+        view: "dashboard",
+        path: "/dashboard/subjects",
+        params: { subject: subjectId },
+        dashboardTarget: null,
+      });
+    }
+  );
+
+  test("an older course announcement without subject metadata still opens My Subjects", () => {
+    expect(getNotificationRoute({ type: "new_course_added" }, "student")).toMatchObject({
+      path: "/dashboard/subjects",
+      params: {},
+    });
+  });
+
   test.each([
     "booking_created",
     "booking_cancelled",

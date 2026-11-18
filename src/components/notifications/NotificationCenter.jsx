@@ -6,6 +6,7 @@ import Icon from "../ui/Icon";
 import "./notificationCenter.css";
 import { getNotificationRoute } from "./notificationRouting";
 import PushNotificationSettings from "./PushNotificationSettings";
+import { writeSparkNestedRoute } from "../../routing/sparkRoutingV270";
 
 const TYPE_META = {
   new_course_added: { icon: "✦", tone: "teal", label: "New course" },
@@ -432,7 +433,8 @@ export default function NotificationCenter({ user, profile, setView }) {
       window.dispatchEvent(new CustomEvent("spark:dashboard-notification-target", { detail: target }));
     }
 
-    if (route.view && setView) setView(route.view);
+    if (route.path) writeSparkNestedRoute(route.path, route.params);
+    else if (route.view && setView) setView(route.view);
     closeNotifications();
   }, [closeNotifications, markRead, profile?.role, setView, user?.id]);
 

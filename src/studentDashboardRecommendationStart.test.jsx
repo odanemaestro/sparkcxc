@@ -1,5 +1,5 @@
 import React from "react";
-import {act, fireEvent, render, screen, waitFor} from "@testing-library/react";
+import {act, fireEvent, render, screen, waitFor, within} from "@testing-library/react";
 import {DashboardView} from "./App";
 import {supabase} from "./lib/supabaseClient";
 
@@ -26,13 +26,13 @@ function queryResult(data) {
   return query;
 }
 
-function renderDashboard(setView = jest.fn()) {
+function renderDashboard(setView = jest.fn(), subjects = [mathematics]) {
   const rendered = render(<DashboardView
     user={{id:"student-1"}}
     profile={{id:"student-1", role:"student", name:"Odane Robinson"}}
     setView={setView}
     showToast={jest.fn()}
-    subjects={[mathematics]}
+    subjects={subjects}
   />);
   return {setView, ...rendered};
 }
@@ -59,6 +59,24 @@ describe("dashboard next-step recommendation tracking", () => {
       const channel = {on:() => channel, subscribe:() => channel};
       return channel;
     });
+  });
+
+  test("a course announcement route survives dashboard initialization and exposes enrollment for that course", async () => {
+    const geography = {
+      id:"geography", name:"CSEC Geography", shortName:"Geography", enabled:true, status:"live",
+      capabilities:{study:true}, routes:{study:"/study/geography"}, stats:{topics:25},
+    };
+    window.history.replaceState(null, "", "#/dashboard/subjects?subject=geography");
+    const {container} = renderDashboard(jest.fn(), [mathematics, geography]);
+
+    await screen.findByRole("heading", {name:"CSEC Geography"});
+    const card = container.querySelector('[data-subject-id="geography"]');
+    expect(card).toHaveClass("is-announced");
+    expect(window.location.hash).toBe("#/dashboard/subjects?subject=geography");
+    fireEvent.click(within(card).getByRole("button", {name:"Enroll"}));
+    await waitFor(() => expect(supabase.rpc).toHaveBeenCalledWith("spark_set_subject_enrollment", {
+      p_subject_id:"geography", p_enrolled:true,
+    }));
   });
 
   test("records the clicked snapshot once and opens its target without waiting for the RPC", async () => {

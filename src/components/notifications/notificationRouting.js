@@ -35,7 +35,12 @@ export function getNotificationRoute(notification, role, currentUserId = null) {
   const usesGenericSubjectProgress = Boolean(subjectId && subjectId !== "mathematics");
 
   if (type === "new_course_added") {
-    return { view: "dashboard", dashboardTarget: null };
+    return {
+      view: "dashboard",
+      path: "/dashboard/subjects",
+      params: subjectId ? { subject: subjectId } : {},
+      dashboardTarget: null,
+    };
   }
 
   if (type === "tutor_application_update") {
