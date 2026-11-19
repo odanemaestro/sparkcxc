@@ -22,10 +22,13 @@ test('an expired saved attempt submits once and does not reset the timer',async(
  jest.useFakeTimers();const key=oaAttemptKey('qa',p1.id);localStorage.setItem(key,JSON.stringify({paperId:p1.id,id:'expired',phase:'exam',index:0,answers:{one:'A'},flags:{},selectedQuestionIds:['one','two'],deadline:Date.now()-10,serverId:null}));
  await act(async()=>{render(<OaExam paper={p1} userId="qa"/>);});expect(screen.getByRole('heading',{name:'Your score: 1 / 2'})).toBeInTheDocument();await act(async()=>{jest.advanceTimersByTime(4000);});expect(recordSubjectActivity).toHaveBeenCalledTimes(1);
 });
-test('old Paper 2 requires six chosen questions and keeps original question numbers',()=>{
+test('old Paper 2 keeps its choices and opens digitally from a printed-layout link',()=>{
+ window.history.replaceState({},'', '/#/practice/office-administration?view=exam&layout=open');
  const questions=Array.from({length:8},(_,i)=>({id:'q'+(i+1),number:i+1,stem:'Office task '+(i+1),marks:15,parts:[{id:'q'+(i+1)+'-a',label:'(a)',prompt:'Explain the procedure.',marks:15,guidance:'Check the office procedure.'}]}));
- render(<OaExam paper={{id:'OA-P2-old',paper:2,title:'Historical Paper 2',questions,requiredQuestionCount:6,selectionRules:{compulsory:[1,2,3,4],optional:[5,6,7,8],choose:2},totalMarks:90,durationMinutes:120}} userId="qa"/>);
- expect(screen.getByRole('button',{name:'Start examination'})).toBeDisabled();fireEvent.click(screen.getByRole('checkbox',{name:'Question 5'}));fireEvent.click(screen.getByRole('checkbox',{name:'Question 8'}));fireEvent.click(screen.getByRole('button',{name:'Start examination'}));fireEvent.click(screen.getByRole('button',{name:'Question 8, unanswered'}));expect(screen.getByRole('heading',{name:/Question 8/})).toBeInTheDocument();expect(screen.queryByRole('button',{name:/accounting tools|Export/i})).not.toBeInTheDocument();
+ render(<OaExam paper={{id:'OA-P2-old',paper:2,title:'Historical Paper 2',sourceAsset:'office-administration/source-pages/OA-P2-old.json',questions,requiredQuestionCount:6,selectionRules:{compulsory:[1,2,3,4],optional:[5,6,7,8],choose:2},totalMarks:90,durationMinutes:120}} userId="qa"/>);
+ expect(screen.queryByRole('button',{name:'View printed layout'})).not.toBeInTheDocument();
+ expect(window.location.hash).not.toContain('layout=open');
+ expect(screen.getByRole('button',{name:'Start examination'})).toBeDisabled();fireEvent.click(screen.getByRole('checkbox',{name:'Question 5'}));fireEvent.click(screen.getByRole('checkbox',{name:'Question 8'}));fireEvent.click(screen.getByRole('button',{name:'Start examination'}));fireEvent.click(screen.getByRole('button',{name:'Question 8, unanswered'}));expect(screen.getByRole('heading',{name:/Question 8/})).toBeInTheDocument();expect(screen.queryByRole('button',{name:/accounting tools|Export|View printed layout/i})).not.toBeInTheDocument();
 });
 
 test('source charts keep their printed position and can be reached by keyboard on narrow screens',()=>{

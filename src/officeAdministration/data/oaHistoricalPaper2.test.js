@@ -100,8 +100,20 @@ it('keeps the repaired source boundaries, duplicated scan and image-only final t
  const finalPart=byId('OA-P2-2018-MJ').questions[5].parts[2];
  expect(finalPart).toMatchObject({id:'q6-c',marks:3});
  expect(finalPart.sourcePages).toContain(18);expect(finalPart.prompt).toContain('destination sheet');
- expect(byId('OA-P2-2024-MJ').questions[5].parts[1].sourceVisual.page).toBe(15);
- expect(byId('OA-P2-2025-MJ').questions[3].parts[2].sourceVisual.page).toBe(14);
+});
+
+it.each([
+ ['OA-P2-2024-MJ',6,'q6-b',15,4],
+ ['OA-P2-2025-MJ',4,'q4-c',14,3],
+])('uses only the figure cells for illustrated answers in %s',(id,number,partId,pageNumber,count)=>{
+ const part=byId(id).questions[number-1].parts.find(p=>p.id===partId);
+ expect(part.sourceVisual).toBeUndefined();
+ expect(part.sourcePages).toContain(pageNumber);
+ const [{rowFigures,rows,editable}]=part.responseTables;
+ expect(rowFigures.asset).toBe(`office-administration/figures/${id}-${String(pageNumber).padStart(3,'0')}.png`);
+ expect(rowFigures.crops).toHaveLength(count);
+ expect(rows).toHaveLength(count);
+ expect(editable).toEqual(rows.map((_,r)=>[r,1]));
 });
 
 it('attributes detached answer sheets to their questions rather than appending them to question 8',()=>{

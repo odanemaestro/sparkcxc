@@ -77,8 +77,6 @@ export function buildOAHistoricalPartGuidance(source,question,part) {
   provenance:{sourceId:source.id,filename:source.filename,sha256:source.sha256,sourceAsset:source.sourceAsset,pdfPages:[...part.sourcePages],originalQuestionNumber:question.number,originalPartLabel:part.label,kind:'spark-authored-source-based-guidance'},
   expectedApproach:approachFor(part.prompt),allocationBasis:'Printed examination part allocations; no historical official mark scheme was supplied.'};
  const result={guidance:guidance.expectedApproach.join(' '),markingGuidance:guidance,modelAnswerSource:modelAnswer?'SPARK worked example; no official historical marking scheme supplied':'SPARK approach guidance based on the printed task; no official historical marking scheme supplied',...(modelAnswer?{modelAnswer}:{})};
- if(source.id==='OA-P2-2024-MJ'&&part.id==='q6-b')result.sourceVisual={page:15,description:'Four numbered symbols: crossed-out cigarette; triangle containing a flame; triangle containing an exclamation mark; head wearing a hard hat.',region:[470,800,820,760]};
- if(source.id==='OA-P2-2025-MJ'&&part.id==='q4-c')result.sourceVisual={page:14,description:'Three safety items in a table: reflective vest, fire extinguisher and warning tape.',region:[275,405,950,1120]};
  return result;
 }
 export const OA_HISTORICAL_WORKED_GUIDANCE = Object.freeze(worked);

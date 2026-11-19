@@ -34,8 +34,18 @@ export const OA_HISTORICAL_PAPER2_PART_LAYOUTS={
  'OA-P2-2025-MJ::4::q4-b':{documentTitle:'EMAIL',fields:fields(['To','From','Date','Subject','Message']),layoutSourcePages:[13],layoutVerified:true},
  'OA-P2-2025-MJ::4::q4-c':{
   prompt:'The presence and proper use of personal protective equipment and safety tools are essential for protecting workers and the integrity of a construction project.\n\nIn the table below, suggest ONE reason why it is important to use the following displayed items in the operations department.',
-  sourceVisual:{page:14,description:'The three safety items in the printed question, in row order.',region:[288,440,455,910]},
-  responseTables:[{title:'Safety items',columns:['Safety item','Importance of use'],rows:[['Item 1',''],['Item 2',''],['Item 3','']],editable:[[0,1],[1,1],[2,1]]}],layoutSourcePages:[14],layoutVerified:true
+  responseTables:[{
+   title:'Safety items',columns:['Safety item','Importance of use'],
+   rows:[['Item 1',''],['Item 2',''],['Item 3','']],editable:[[0,1],[1,1],[2,1]],
+   rowFigures:{
+    asset:'office-administration/figures/OA-P2-2025-MJ-014.png',width:1414,height:2000,
+    crops:[
+     {region:[427,491,188,185],description:'Reflective vest'},
+     {region:[466,769,102,250],description:'Fire extinguisher'},
+     {region:[374,1067,265,219],description:'Warning tape'}
+    ]
+   }
+  }],layoutSourcePages:[14],layoutVerified:true
  },
  'OA-P2-2025-MJ::5::q5-c':{
   prompt:'Employees at PQR Enterprise Limited are paid weekly. Regular overtime is paid to employees at the rate of $10 per hour. Work done on public holidays is paid at double the overtime rate. National insurance (NIS) is deducted at 2% of basic pay and union dues are $12 per week.\n\nDuring the week ending 25 April 2025, overtime hours were as follows.\n\nUse the information given to complete the payroll sheet for week ending 25 April 2025.',

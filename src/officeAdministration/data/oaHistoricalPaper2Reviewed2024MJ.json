@@ -612,16 +612,6 @@
       "layoutVerified": true,
       "promptVerified": true,
       "layoutReviewDate": "2026-10-28",
-      "sourceVisual": {
-        "page": 15,
-        "description": "The four printed signs, in numbered order.",
-        "region": [
-          483.82000000000005,
-          800,
-          170.76,
-          680
-        ]
-      },
       "responseTables": [
         {
           "title": "Signs",
@@ -629,6 +619,17 @@
             "Sign",
             "Meaning"
           ],
+          "rowFigures": {
+            "asset": "office-administration/figures/OA-P2-2024-MJ-015.png",
+            "width": 1423,
+            "height": 2000,
+            "crops": [
+              { "region": [487, 805, 150, 150], "description": "A cigarette crossed out inside a circle" },
+              { "region": [489, 992, 146, 129], "description": "A triangle containing a flame" },
+              { "region": [488, 1168, 146, 127], "description": "A triangle containing an exclamation mark" },
+              { "region": [488, 1347, 144, 122], "description": "A head wearing a hard hat" }
+            ]
+          },
           "rows": [
             [
               "1",
